@@ -1,0 +1,1 @@
+﻿select * from   [CREDIT RISK] where   [RiskDate]='20131231'

@@ -1,0 +1,31 @@
+﻿Select 
+'CCB'
+,'LN'
+,A.Counterparty_No
+,0 as 'KGCIFF_KTONR'
+,A.[Contract] as 'KGCIFF_GSREF'
+,'-' as 'KGCIFF_ACCNR'
+,A.[EventDate] as '[KGCIFF_DXBEW]'
+,'0' as 'KGCIFF_ERART'
+,A.SumPrincipal*(-1) as 'KGCIFF_HOEHE'
+,'0' as 'KGCIFF_SALDO'
+,'KGCIFF_TILGA'= 
+Case 
+when (A.SumPrincipal-B.SumInterest)*(-1) is not NULL then (A.SumPrincipal-B.SumInterest)*(-1)
+when A.SumPrincipal is not null and B.SumInterest is NULL then A.SumPrincipal*(-1) 
+else 0 end
+,'KGCIFF_ZINSA'=Case when B.SumInterest*(-1) is not NULL then B.SumInterest*(-1) else 0 end 
+,A.OrgCcy as 'KGCIFF_WHISO'
+,'0' as 'KGCIFF_KZABL_New'
+,'KGCIFF' as 'KGCIFF_IFNAM'
+,'20151218' as 'KGCIFF_DXIFD'
+from 
+(Select [Counterparty_No],[Contract],[EventDate],[OrgCcy],Sum([OrgCcyAmount]) as 'SumPrincipal' from [FRISTEN] where [ProductType] in ('PHML') 
+and [RiskDate]='20151218'
+GROUP BY [Counterparty_No],[Contract],[EventDate],[OrgCcy])A
+LEFT JOIN
+(Select Sum([OrgCcyAmount]) as 'SumInterest',[Counterparty_No],[Contract],[EventDate],[OrgCcy] from [FRISTEN] where [ProductType] in ('PHML') and  [AmountType]='Interest' 
+and [RiskDate]='20151218'
+GROUP BY [Counterparty_No],[Contract],[EventDate],[OrgCcy])B 
+ON A.[Contract]=B.[Contract] and A.[EventDate]=B.[EventDate]
+ORDER BY A.[EventDate] asc

@@ -1,0 +1,14 @@
+﻿Select A.* from (
+  Select A.[Product Type],A.[Client No],C.[COUNTRY_OF_RESIDENCE],C.COUNTRY_OF_REGISTRATION, A.[Contract No],A.Counterparty,A.[Start Date],A.[Next Rollover], A.[Maturity Date],A.Currency,A.[Outstanding Principal],B.Exchange_Rate,Round(A.[Outstanding Principal EUR],2) as 'Outstanding Principal EUR',
+  B.AmountInEuro as 'TransactionAmount',B.[Event Type] as 'TransactionType'
+  ,'Transaction Type Description'= Case when B.[Event Type] in ('IS') then 'Interest' when B.[Event Type] in ('ST') then 'Start' when B.[Event Type] in ('RP') then 'Repayment' when B.[Event Type] in ('MA') then 'Matured' end,
+  B.GL_Rep_Date as 'TransactionDate'
+   from [CL_DRAWDOWN_OUTSTANDING] A INNER JOIN ALL_VOLUMES B 
+   on A.RepDate=B.GL_Rep_Date and A.[Contract No]=B.AccountNo
+   INNER JOIN [CUSTOMER_INFO] C on A.[Client No]=C.ClientNo where  B.[Event Type] in ('IS','ST','RP','MA') and A.[Contract No]='678110009270001')A
+order by Case A.TransactionType 
+when 'ST' then 1
+when 'IS' then 2
+when 'RP' then 3
+When 'MA' then 4
+end,A.TransactionDate asc

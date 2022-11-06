@@ -1,0 +1,14 @@
+﻿Select [GL_Item],'GL ITEM BAIS'=CASE when RIGHT([GL_Item],1)='I' then REPLACE([GL_Item],'I','01')
+  else [GL_Item]+'00' end 
+  ,[ReleatedAccountNr]
+   ,[GL_Account_Nr]
+   ,[GL_Account_Name]
+   ,[Orig_CUR]
+   ,[Orig_Balance]
+   ,[Balance_EUR_CR]
+   ,[Balance_EUR_DR]
+   ,[Total_Balance]
+   ,[BSDate] 
+   from [DailyBalanceDetailsSheets] where 
+   [BSDate]='20150630' 
+   and [GL_Account_Nr] in (Select [GL_AC_No] from [GL_ACCOUNTS] where [Description] like 'ACCRUED%')

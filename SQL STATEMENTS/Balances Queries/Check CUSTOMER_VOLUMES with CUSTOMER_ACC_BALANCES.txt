@@ -1,0 +1,7 @@
+﻿declare @RISKDATE datetime
+SET @RISKDATE='20180509'
+
+Select A.ClientNo, A.AccountNo,A.ClientName, LedgerBalanceEUR,AmountInEuro,ROUND(LedgerBalanceEUR,2) -ROUND(AmountInEuro,2) as 'Difference',a.BalanceDate 
+from CUSTOMER_ACC_BALANCES A INNER JOIN CUSTOMER_VOLUMES B on A.AccountNo=B.AccountNo and A.BalanceDate=B.GL_Rep_Date 
+where A.BalanceDate=@RISKDATE
+and B.BatchNo in ('CLOSING BALANCE')

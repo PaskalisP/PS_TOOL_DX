@@ -1,0 +1,2 @@
+select "GL ITEM"=Case when   RIGHT([GL_Item],1)='I' then   REPLACE( [GL_Item],'I','01') else   [GL_Item]+'00' end , [GL_Item_Name],0 from   [DailyBalanceSheets] where   [RilibiCode] is not NULL
+GROUP BY [GL_Item],[GL_Item_Name]  

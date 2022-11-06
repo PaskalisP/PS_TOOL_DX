@@ -1,0 +1,39 @@
+PS TOOL
+SWIFT_ACCOUNT_STATEMENTS
+-PS TOOL- Dataset:BalancesDataset (BALANCES-DataSet)
+-PS TOOL- Forms:SwiftStatement,SwiftStatementsAll (BALANCES-Forms)
+-Modified Module
+-After going Live and before import of camt.053
+execute SQL=
+ UPDATE SSIS 
+ SET [CORRESPONDENT BIC]='TRGTXEPMRTG'
+ ,[EXTERNAL ACCOUNT]='RDEEURPCBCDEFFXXX001'
+ ,AccountIdentifierStatement='RDEEURPCBCDEFFXXX001'
+ where [INTERNAL ACCOUNT]='9000902011'
+ 
+ -Add new Columns in Table:
+ ALTER TABLE [SWIFT_ACC_STATEMENTS]
+ ADD 
+ EntryStatus Nvarchar(50) NULL
+,UETR Nvarchar(50) NULL
+,RelatedParty_DebtorAcc Nvarchar(50) NULL
+,RelatedParty_CreditorAcc Nvarchar(50) NULL
+,RelatedParty_DebtorName Nvarchar(50) NULL
+,RelatedParty_DebtorBIC Nvarchar(50) NULL
+,RelatedParty_CreditorName Nvarchar(50) NULL
+,RelatedParty_CreditorBIC Nvarchar(50) NULL
+,RelatedAgent_InstructingAgent Nvarchar(50) NULL
+,RelatedAgent_InstructedAgent Nvarchar(50) NULL
+,LocalInstrument Nvarchar(50) NULL
+,RelatedDetails_InterbankSettlementDate Datetime NULL
+
+-Update Dataset:BalancesDataset - SWIFT_ACCOUNT_STATEMENTS (on BALANCES-DataSet)
+
+-New Parameter in ACCOUNTING- SWIFT_STATEMENTS_DIRECTORIES
+PARAMETER 1	PARAMETER 2	NUMERIC PARAMETER 1	NUMERIC PARAMETER 2	PARAMETER STATUS	PARAMETER INFO	ID DEPARTMENT PARAMETER	DATE PARAMETER 1	DATE PARAMETER 2
+Swift_Message_Importstatus_MT191	Y			VALID				
+Swift_Message_Importstatus_MT991	Y			VALID				
+Swift_Statement_Importstatus_camt.053_CBPR_Header_002	N			VALID				
+Swift_Statement_Importstatus_camt.053_RTGS_Header_001	N			VALID	
+Swift_Statement_Importstatus_MT940	Y			VALID		
+Swift_Statement_Importstatus_MT950	Y			VALID	Declares if the SWIFT Account Statements MT940 should be imported (Y) or No (N)	SWIFT_STATEMENTS_DIRECTORIES			

@@ -1,0 +1,5 @@
+﻿select tr.name as 'Trigger',t.name as 'Table',t.create_date,t.modify_date,m.definition 
+from sys.all_sql_modules m inner join  sys.triggers tr 
+on m.object_id = tr.object_id 
+inner join sys.tables t on t.object_id = tr.parent_id
+---SELECT ALL TRIGGERS AND THEIR RELEVANT TABLES--------------------------

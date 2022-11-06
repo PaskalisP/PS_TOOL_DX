@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wrapper:MMSRMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wrapper="urn:iso:std:iso:20022:tech:xsd:head.003.001.01" xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:head.003.001.01 MMSR_head.003.001.01_Wrapper.xsd">
+    <header:AppHdr xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:header="urn:iso:std:iso:20022:tech:xsd:head.001.001.01">
+        <header:Fr>
+            <header:OrgId>
+                <header:Id>
+                    <header:OrgId>
+                        <header:Othr>
+                            <header:Id>5493001KQW6DM7KEDR62</header:Id>
+                            <header:SchmeNm>
+                                <header:Cd>LEI</header:Cd>
+                            </header:SchmeNm>
+                        </header:Othr>
+                    </header:OrgId>
+                </header:Id>
+            </header:OrgId>
+        </header:Fr>
+        <header:To>
+            <header:OrgId>
+                <header:Id>
+                    <header:OrgId>
+                        <header:Othr>
+                            <header:Id>529900SEOICVR2VM6Y05</header:Id>
+                            <header:SchmeNm>
+                                <header:Cd>LEI</header:Cd>
+                            </header:SchmeNm>
+                        </header:Othr>
+                    </header:OrgId>
+                </header:Id>
+            </header:OrgId>
+        </header:To>
+        <header:BizMsgIdr>EORW160324</header:BizMsgIdr>
+        <header:MsgDefIdr>auth.015.001.01</header:MsgDefIdr>
+        <header:BizSvc>ECB_MMSR_PROD</header:BizSvc>
+        <header:CreDt>2016-03-29T11:20:11Z</header:CreDt>
+    </header:AppHdr>
+    <message:Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:message="urn:iso:std:iso:20022:tech:xsd:DRAFT9auth.015.001.01">
+        <message:MnyMktOvrnghtIndxSwpsSttstclRpt>
+            <message:RptHdr>
+                <message:RptgAgt>5493001KQW6DM7KEDR62</message:RptgAgt>
+                <message:RefPrd>
+                    <message:FrDtTm>2016-03-24T00:00:00+01:00</message:FrDtTm>
+                    <message:ToDtTm>2016-03-24T24:00:00+01:00</message:ToDtTm>
+                </message:RefPrd>
+            </message:RptHdr>
+            <message:OvrnghtIndxSwpsRpt>
+                <message:DataSetActn>NOTX</message:DataSetActn>
+            </message:OvrnghtIndxSwpsRpt>
+        </message:MnyMktOvrnghtIndxSwpsSttstclRpt>
+    </message:Document>
+</wrapper:MMSRMessage>

@@ -1,0 +1,34 @@
+﻿declare @RISKDATE datetime
+set @RISKDATE='20180319'
+
+IF EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_DIFF' AND xtype='U') DROP TABLE [#Temp_DIFF]
+	
+    ---CREATE TEMPORARY TABLES
+	CREATE TABLE [#Temp_DIFF](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GL_Account_Nr] [nvarchar](50) NULL,
+	[GL_Account_Name] [nvarchar](200) NULL,
+	[Amount_BS] [float] NULL,
+	[Amount_TB] [float] NULL,
+	[Amount_DIFF] [float] NULL) ON [PRIMARY]
+
+ALTER TABLE [#Temp_DIFF] ADD  CONSTRAINT [DF_#Temp_DIFF_Amount_BS]  DEFAULT ((0)) FOR [Amount_BS]
+ALTER TABLE [#Temp_DIFF] ADD  CONSTRAINT [DF_#Temp_DIFF_Amount_TB]  DEFAULT ((0)) FOR [Amount_TB]
+ALTER TABLE [#Temp_DIFF] ADD  CONSTRAINT [DF_#Temp_DIFF_Amount_DIFF]  DEFAULT ((0)) FOR [Amount_DIFF]
+
+Insert into #Temp_DIFF(GL_Account_Nr,GL_Account_Name)
+Select GL_Account_Nr,GL_Account_Name from DailyBalanceDetailsSheets where BSDate=@RISKDATE
+GROUP BY GL_Account_Nr,GL_Account_Name
+
+Insert into #Temp_DIFF(GL_Account_Nr,GL_Account_Name)
+select AccountNo,AccountName from TRIAL_BALANCE_218 where RepDate=@RISKDATE
+AND AccountNo NOT IN (Select GL_Account_Nr from #Temp_DIFF)
+
+update A set A.Amount_BS=B.Total_Balance from #Temp_DIFF A INNER JOIN DailyBalanceDetailsSheets B on A.GL_Account_Nr=B.GL_Account_Nr where B.BSDate=@RISKDATE
+update A set A.Amount_TB=B.Totals from #Temp_DIFF A INNER JOIN TRIAL_BALANCE_218 B on A.GL_Account_Nr=B.AccountNo where B.RepDate=@RISKDATE
+update #Temp_DIFF set Amount_DIFF=ROUND(ABS(Amount_BS)-ABS(Amount_TB),2)
+select * from #Temp_DIFF where Amount_DIFF<>0
+
+
+
+drop table #Temp_DIFF

@@ -1,0 +1,658 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/19/2013 2:16:16 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="CCB-WS-110"
+  DTS:CreatorName="CCB-FRANKFURT\Papas"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{F09E2680-CDF7-404A-8E19-B0463F427E8F}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="InterestRateRiskSum"
+  DTS:VersionGUID="{ED27E023-B4BC-46A2-8935-C2F32CE92403}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7FB72B87-098C-4E9F-9262-20BCEAF1C4DE}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=CCB-DB;Initial Catalog=PS TOOL Test;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{D655D64F-A667-43CE-A8D2-0A72EA8DD2F5}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\\CCB-DB\Apps\OdasImport\ODAS_unzip_folder\int_rate_risk_sum-en.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DTSID="{996C31E3-EB1F-4BD1-AC38-1400F830A87B}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - IMPORT RATERISK TOTALS"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[IMPORT RATERISK TOTALS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[Currency]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Currency"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[Currency]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Currency]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[Total net positions]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Total net positions"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[Total net positions]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Total net positions]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[Principal Amount/Value Balance]"
+                      cachedDataType="r8"
+                      cachedName="Principal Amount/Value Balance"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[Principal Amount/Value Balance]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Principal Amount/Value Balance]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[Principal Amount/Value Balance(EUR Equ)]"
+                      cachedDataType="r8"
+                      cachedName="Principal Amount/Value Balance(EUR Equ)"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[Principal Amount/Value Balance(EUR Equ)]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Principal Amount/Value Balance(EUR Equ)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[WF1]"
+                      cachedDataType="r8"
+                      cachedName="WF1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[WF1]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[AM1]"
+                      cachedDataType="r8"
+                      cachedName="AM1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[AM1]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[WF2]"
+                      cachedDataType="r8"
+                      cachedName="WF2"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[WF2]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[AM2]"
+                      cachedDataType="r8"
+                      cachedName="AM2"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[AM2]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[WF3]"
+                      cachedDataType="r8"
+                      cachedName="WF3"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[WF3]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[AM3]"
+                      cachedDataType="r8"
+                      cachedName="AM3"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[AM3]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[WF4]"
+                      cachedDataType="r8"
+                      cachedName="WF4"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[WF4]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF4]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[AM4]"
+                      cachedDataType="r8"
+                      cachedName="AM4"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[AM4]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM4]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[DATA DATE]"
+                      cachedDataType="date"
+                      cachedName="DATA DATE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[DATA DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[DATA DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].Columns[RISK DATE]"
+                      cachedDataType="date"
+                      cachedName="RISK DATE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[RISK DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[RISK DATE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[Currency]"
+                      dataType="wstr"
+                      length="255"
+                      name="Currency" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[Principal Amount/Value Balance]"
+                      dataType="r8"
+                      name="Principal Amount/Value Balance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[Total net positions]"
+                      dataType="wstr"
+                      length="255"
+                      name="Total net positions" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[Principal Amount/Value Balance(EUR Equ)]"
+                      dataType="r8"
+                      name="Principal Amount/Value Balance(EUR Equ)" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[WF1]"
+                      dataType="r8"
+                      name="WF1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[AM1]"
+                      dataType="r8"
+                      name="AM1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[WF2]"
+                      dataType="r8"
+                      name="WF2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[AM2]"
+                      dataType="r8"
+                      name="AM2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[WF3]"
+                      dataType="r8"
+                      name="WF3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[AM3]"
+                      dataType="r8"
+                      name="AM3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[WF4]"
+                      dataType="r8"
+                      name="WF4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[AM4]"
+                      dataType="r8"
+                      name="AM4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[DATA DATE]"
+                      dataType="dbTimeStamp"
+                      name="DATA DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input].ExternalColumns[RISK DATE]"
+                      dataType="dbTimeStamp"
+                      name="RISK DATE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Sheet1$"
+              componentClassID="{8C084929-27D1-479F-9641-ABB7CDADF1AC}"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - Sheet1$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Sheet1$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Currency]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[Currency]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Currency]"
+                      name="Currency"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Total net positions]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[Total net positions]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Total net positions]"
+                      name="Total net positions"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Principal Amount/Value Balance]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[Principal Amount/Value Balance]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Principal Amount/Value Balance]"
+                      name="Principal Amount/Value Balance"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Principal Amount/Value Balance(EUR Equ)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[Principal Amount/Value Balance(EUR Equ)]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[Principal Amount/Value Balance(EUR Equ)]"
+                      name="Principal Amount/Value Balance(EUR Equ)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[WF1]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF1]"
+                      name="WF1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[AM1]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM1]"
+                      name="AM1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF2]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[WF2]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF2]"
+                      name="WF2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM2]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[AM2]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM2]"
+                      name="AM2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF3]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[WF3]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF3]"
+                      name="WF3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM3]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[AM3]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM3]"
+                      name="AM3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF4]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[WF4]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[WF4]"
+                      name="WF4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM4]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[AM4]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[AM4]"
+                      name="AM4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[DATA DATE]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[DATA DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[DATA DATE]"
+                      name="DATA DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[RISK DATE]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[RISK DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].Columns[RISK DATE]"
+                      name="RISK DATE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[Currency]"
+                      dataType="wstr"
+                      length="255"
+                      name="Currency" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[Total net positions]"
+                      dataType="wstr"
+                      length="255"
+                      name="Total net positions" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[Principal Amount/Value Balance]"
+                      dataType="r8"
+                      name="Principal Amount/Value Balance" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[Principal Amount/Value Balance(EUR Equ)]"
+                      dataType="r8"
+                      name="Principal Amount/Value Balance(EUR Equ)" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[WF1]"
+                      dataType="r8"
+                      name="WF1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[AM1]"
+                      dataType="r8"
+                      name="AM1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[WF2]"
+                      dataType="r8"
+                      name="WF2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[AM2]"
+                      dataType="r8"
+                      name="AM2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[WF3]"
+                      dataType="r8"
+                      name="WF3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[AM3]"
+                      dataType="r8"
+                      name="AM3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[WF4]"
+                      dataType="r8"
+                      name="WF4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[AM4]"
+                      dataType="r8"
+                      name="AM4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[DATA DATE]"
+                      dataType="date"
+                      name="DATA DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output].ExternalColumns[RISK DATE]"
+                      dataType="date"
+                      name="RISK DATE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[Currency]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[Currency]"
+                      name="Currency" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[Total net positions]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[Total net positions]"
+                      name="Total net positions" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[Principal Amount/Value Balance]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[Principal Amount/Value Balance]"
+                      name="Principal Amount/Value Balance" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[Principal Amount/Value Balance(EUR Equ)]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[Principal Amount/Value Balance(EUR Equ)]"
+                      name="Principal Amount/Value Balance(EUR Equ)" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[WF1]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[WF1]"
+                      name="WF1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[AM1]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[AM1]"
+                      name="AM1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[WF2]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[WF2]"
+                      name="WF2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[AM2]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[AM2]"
+                      name="AM2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[WF3]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[WF3]"
+                      name="WF3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[AM3]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[AM3]"
+                      name="AM3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[WF4]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[WF4]"
+                      name="WF4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[AM4]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[AM4]"
+                      name="AM4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[DATA DATE]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[DATA DATE]"
+                      name="DATA DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[RISK DATE]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[RISK DATE]"
+                      name="RISK DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task 1\Destination - IMPORT RATERISK TOTALS.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source - Sheet1$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

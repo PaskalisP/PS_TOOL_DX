@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- (c) Deutsche Bundesbank, S 42-7 (Dr. Jürgen Krelaus)  2004, 2005, 2011 -->
+<xs:schema targetNamespace="http://www.bundesbank.de/statistik/wpinvest/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wpinvest="http://www.bundesbank.de/statistik/wpinvest/v1" xmlns:bbk="http://www.bundesbank.de/xmw/2003-01-01" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:import namespace="http://www.bundesbank.de/xmw/2003-01-01" schemaLocation="BbkXmwBasis.xsd"/>
+	<xs:element name="BLZ" type="bbk:zif8plus1" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Bankleitzahl (9 stellig, inklusive Prüfziffer) zur Verwendung als Instituts-Schlüssel</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TESTLZ" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Leitzahl für Testinstitute (Anfangsbuchstabe T, 8 Ziffern ohne Prüfziffer) zur Verwendung als Instituts-Schlüssel</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="bbk:alphanum">
+				<xs:pattern value="T\d\d\d\d\d\d\d\d"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="RZLZ" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Leitzahl für Rechenzentren (Anfangsbuchstabe R, 8 Ziffern ohne Prüfziffer) zur Verwendung als Instituts-Schlüssel</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="bbk:alphanum">
+				<xs:pattern value="R\d\d\d\d\d\d\d\d"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="KAGNR" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Nummer einer Kapitalanlagegesellschaft (3 Ziffern) zur Verwendung als Instituts-Schlüssel</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="bbk:alphanum">
+				<xs:pattern value="\d\d\d"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="LIEFERUNG-WPINVEST">
+		<xs:annotation>
+			<xs:documentation>Wurzelelement derMeldung zur Statistik über Wertpapierinvestments</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="bbk:basisLieferung">
+					<xs:sequence>
+						<xs:element name="MELDUNG">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="bbk:basisMeldung">
+										<xs:sequence>
+											<xs:element name="MELDETERMIN" type="wpinvest:terminTyp"/>
+											<xs:element name="FORMULAR">
+												<xs:complexType>
+													<xs:choice>
+														<xs:sequence>
+															<xs:element name="KUNDENDEPOTS" type="wpinvest:kdepListTyp"/>
+															<xs:element name="WERTPAPIERE" type="wpinvest:wpListTyp"/>
+														</xs:sequence>
+														<xs:element name="FEHLANZEIGE" nillable="true">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:length value="0"/>
+																	<xs:whiteSpace value="collapse"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:element>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="bereich" type="bbk:bereich" use="required" fixed="Statistik"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="terminTyp">
+		<xs:annotation>
+			<xs:documentation>Meldetermine (alle Monatstermine von 2010-01 bis 2029-12)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:gYearMonth">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="20(1|2)\d-0[1-9]"/>
+			<xs:pattern value="20(1|2)\d-1[0-2]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="kdepListTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für die  Kundendepot-Anzahlen aller Sektoren (Teil II der Meldung)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="S1100" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1215" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1225" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1228" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1230" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1240" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1251" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1252" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1261" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1262" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1270" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1280" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1290" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1311" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1312" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1313" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1314" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1400" type="wpinvest:kdepTyp"/>
+			<xs:element name="S1500" type="wpinvest:kdepTyp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="kdepTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für eine Kundendepot-Anzahl-Angabe eines Sektors (Teil II der Meldung)</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:nonNegativeInteger"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="wpListTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für die Aufzählung aller Wertpapierbestände (Teil III der Meldung)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="WP" type="wpinvest:wpTyp" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="wpTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für Stammdaten und Bestände eines Wertpapiers in der Bestandsmeldung (Teil III der Meldung)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="STAMM" type="wpinvest:stammTyp"/>
+			<xs:element name="BESTAND" type="wpinvest:bestandTyp"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="stammTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für die Angabe der Stammdaten eines Wertpapiers (Teil III. A der Meldung)</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="ISIN">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="wpinvest:isinTyp"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:sequence>
+				<xs:choice>
+					<xs:element name="WPNR-FORMAT-ISIN" type="wpinvest:isinTyp"/>
+					<xs:element name="WPNR-FORMAT-CUSIP" type="wpinvest:cusipTyp"/>
+					<xs:element name="WPNR-FORMAT-SEDOL" type="wpinvest:sedolTyp"/>
+				</xs:choice>
+				<xs:element name="NAME" type="bbk:alphanum"/>
+				<xs:element name="KURS" minOccurs="0">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="wpinvest:kurswertTyp">
+								<xs:attribute name="waehrung" type="bbk:isoWaehrung" use="required"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:choice>
+					<xs:element name="F3">
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="wpinvest:debtTyp"/>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="F5" type="wpinvest:nonDebtTyp"/>
+				</xs:choice>
+				<xs:element name="EMGRUPPE" type="wpinvest:emSektorTyp"/>
+				<xs:element name="EMLAND" type="bbk:isoLand"/>
+			</xs:sequence>
+		</xs:choice>
+	</xs:complexType>
+	<xs:simpleType name="debtWpClassTyp">
+		<xs:annotation>
+			<xs:documentation>Mögliche Wp-Klassifizierung für interne Schuldverschreibungen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="F.31"/>
+			<xs:enumeration value="F.32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="nonDebtWpClassTyp">
+		<xs:annotation>
+			<xs:documentation>Mögliche Wp-Klassifizierung für interne Papiere, die keine Schuldverschreibungen sind</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="F.511"/>
+			<xs:enumeration value="F.512"/>
+			<xs:enumeration value="F.52"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="isinTyp">
+		<xs:annotation>
+			<xs:documentation>ISIN-Muster (2 Großbuchstaben, 9 Ziffern oder Großbuchstaben, eine Ziffer</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:pattern value="\p{Lu}\p{Lu}(\d|\p{Lu}){9}\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sedolTyp">
+		<xs:annotation>
+			<xs:documentation>Wertpapier-Kennnummer im SEDOL-Stil (6-stellig, alphanumerisch + Prüfziffer)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:pattern value="(\d|\p{Lu}){6}\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="cusipTyp">
+		<xs:annotation>
+			<xs:documentation>Wertpapier-Kennnummer im CUSIP-Stil (9-stellig, alphanumerisch)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:pattern value="(\d|\p{Lu}){9}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="emSektorTyp">
+		<xs:annotation>
+			<xs:documentation>ESA 2010 Sektoren (für interne Papier)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="S.11"/>
+			<xs:enumeration value="S.121"/>
+			<xs:enumeration value="S.122"/>
+			<xs:enumeration value="S.123"/>
+			<xs:enumeration value="S.124"/>
+			<xs:enumeration value="S.125"/>
+			<xs:enumeration value="S.126"/>
+			<xs:enumeration value="S.127"/>
+			<xs:enumeration value="S.128"/>
+			<xs:enumeration value="S.129"/>
+			<xs:enumeration value="S.1311"/>
+			<xs:enumeration value="S.1312"/>
+			<xs:enumeration value="S.1313"/>
+			<xs:enumeration value="S.1314"/>
+			<xs:enumeration value="S.22"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="kurswertTyp">
+		<xs:annotation>
+			<xs:documentation>Nichtnegative Zahl mit bis zu 5 Vor- und 2 bis 5 Nachkommastellen zur Angabe von Kursen bei internen Papieren</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:pattern value="\+?\d\d?\d?\d?\d?\.\d\d\d?\d?\d?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="zinsartTyp">
+		<xs:annotation>
+			<xs:documentation>Aufzählungstyp zur Unterscheidung von fest/variableverzinslichen internen Papieren</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="fest"/>
+			<xs:enumeration value="variabel"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="zinsterminTyp">
+		<xs:annotation>
+			<xs:documentation>Angabe des Zinstermins: Monat-Tag (MM-DD)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:pattern value="\d\d\-\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="zinswertTyp">
+		<xs:annotation>
+			<xs:documentation>Nichtnegative Zahl mit 1 bis 2 Vor- und 2 bis 5 Nachkommastellen zur Angabe von Zinssätzen bei internen Papieren</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:pattern value="\+?\d\d?\.\d\d\d?\d?\d?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="debtTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für interne Schuldverschreibungen</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="0">
+			<xs:element name="ZINS" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="wpinvest:zinswertTyp">
+							<xs:attribute name="zinstermin" type="wpinvest:zinsterminTyp" use="required"/>
+							<xs:attribute name="zinsart" type="wpinvest:zinsartTyp" use="required"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="wpart" type="wpinvest:debtWpClassTyp" use="required"/>
+		<xs:attribute name="lzbeginn" type="xs:date" use="required"/>
+		<xs:attribute name="lzende" type="xs:date" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="nonDebtTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für interne Papiere, die keine Schuldverschreibungen sind</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="wpart" type="wpinvest:nonDebtWpClassTyp" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="bestandTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für die Angabe der Bestände eines Wertpapiers (Teil III. B der Meldung)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="S1100" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1211" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1212" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1213" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1215" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element ref="wpinvest:S1221" minOccurs="0"/>
+			<xs:element name="S1225" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1228" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1230" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1240" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1251" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1252" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1261" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1262" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1270" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1280" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1290" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1311" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1312" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1313" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1314" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1400" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+			<xs:element name="S1500" type="wpinvest:sektorBestandTyp" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="dim" type="bbk:isoWaehrung" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="sektorBestandTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für die Bestandsangaben eines Nicht-Eigenbestands-Sektors  (Teil III. B der Meldung)</xs:documentation>
+		</xs:annotation>
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="B" type="wpinvest:bestandElementTyp" minOccurs="0"/>
+			<xs:element name="B-" type="wpinvest:bestandElementTyp" minOccurs="0"/>
+			<xs:element name="V" type="wpinvest:bestandElementTyp" minOccurs="0"/>
+			<xs:element name="E" type="wpinvest:bestandElementTyp" minOccurs="0"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="bestandElementTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für ein Bestandselement mit beliebiger Landangabe</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:nonNegativeInteger">
+				<xs:attribute name="l" type="bbk:isoLand" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="sektorEigenbestandTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für die Bestandsangaben eines Eigenbestands-Sektors (Teil III. C des Meldeschemas)</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element ref="wpinvest:B" minOccurs="0"/>
+			<xs:element name="V" type="wpinvest:eigenbestandElementTyp" minOccurs="0"/>
+			<xs:element name="E" type="wpinvest:eigenbestandElementTyp" minOccurs="0"/>
+			<xs:element ref="wpinvest:BW" minOccurs="0"/>
+			<xs:element ref="wpinvest:H" minOccurs="0"/>
+			<xs:element ref="wpinvest:HBW" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+	<xs:element name="S1221" type="wpinvest:sektorEigenbestandTyp">
+		<xs:annotation>
+			<xs:documentation>Sektorelement für Eigenbestände (Möglichkeit 1)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="S1222" type="wpinvest:sektorEigenbestandTyp" substitutionGroup="wpinvest:S1221">
+		<xs:annotation>
+			<xs:documentation>Sektorelement für Eigenbestände (Möglichkeit 2)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="S1223" type="wpinvest:sektorEigenbestandTyp" substitutionGroup="wpinvest:S1221">
+		<xs:annotation>
+			<xs:documentation>Sektorelement für Eigenbestände (Möglichkeit 3)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="S1224" type="wpinvest:sektorEigenbestandTyp" substitutionGroup="wpinvest:S1221">
+		<xs:annotation>
+			<xs:documentation>Sektorelement für Eigenbestände (Möglichkeit 4)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="eigenbestandElementTyp">
+		<xs:annotation>
+			<xs:documentation>Typ für ein Bestandselement mit fixer Landangabe "DE" (für Eigenbestände)</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:restriction base="wpinvest:bestandElementTyp">
+				<xs:attribute name="l" type="bbk:isoLand" use="required" fixed="DE"/>
+			</xs:restriction>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="B" type="wpinvest:eigenbestandElementTyp">
+		<xs:annotation>
+			<xs:documentation>Bestandselement für pos. Eigenbestände</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="B-" type="wpinvest:eigenbestandElementTyp" substitutionGroup="wpinvest:B">
+		<xs:annotation>
+			<xs:documentation>Bestandselement für neg. Eigenbestände</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="H" type="wpinvest:eigenbestandElementTyp">
+		<xs:annotation>
+			<xs:documentation>Bestandselement für pos. Handelsbuchbestände</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="H-" type="wpinvest:eigenbestandElementTyp" substitutionGroup="wpinvest:H">
+		<xs:annotation>
+			<xs:documentation>Bestandselement für neg. Handelsbuchbestände</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="BW" type="wpinvest:eigenbestandElementTyp">
+		<xs:annotation>
+			<xs:documentation>Bestandselement für pos. Gesamtbuchwerte</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="BW-" type="wpinvest:eigenbestandElementTyp" substitutionGroup="wpinvest:BW">
+		<xs:annotation>
+			<xs:documentation>Bestandselement für neg. Gesamtbuchwerte</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="HBW" type="wpinvest:eigenbestandElementTyp">
+		<xs:annotation>
+			<xs:documentation>Bestandselement für pos. Buchwerte der Handelsbuchbestände</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="HBW-" type="wpinvest:eigenbestandElementTyp" substitutionGroup="wpinvest:HBW">
+		<xs:annotation>
+			<xs:documentation>Bestandselement für neg. Buchwerte der Handelsbuchbestände</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

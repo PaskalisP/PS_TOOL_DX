@@ -1,0 +1,21 @@
+﻿SELECT [Description]
+      ,[Reference]
+	  ,B.ClientNo
+      ,[ReportYear]
+      ,[RegisterDate]
+      ,[ValueDate]
+      ,[Orig_Cur]
+      ,[Orig_Amt]
+      ,[ExchangeRate]
+      ,[Amt_EUR]
+      ,[Paym_Art]
+      ,[MsgSenderCountry]
+      ,[MsgReceiverCountry]
+      ,[IdMeldepositionen]
+  FROM [PS TOOL DX Live].[dbo].[ZVSTAT_Details_from2014] A INNER JOIN CUSTOMER_ACCOUNTS B on LTRIM(RTRIM(A.Reference))=substring(B.[Client Account] , patindex('%[^0]%',B.[Client Account]), 10)
+  where ReportYear=2017 and Description='ONLINE KONTONR TÄGLICH FÄLLIGE EINLAGEN'
+
+SELECT B.ClientNo,B.[English Name]
+  FROM [PS TOOL DX Live].[dbo].[ZVSTAT_Details_from2014] A INNER JOIN CUSTOMER_ACCOUNTS B on LTRIM(RTRIM(A.Reference))=substring(B.[Client Account] , patindex('%[^0]%',B.[Client Account]), 10)
+  where ReportYear=2017 and Description='ONLINE KONTONR TÄGLICH FÄLLIGE EINLAGEN'
+  GROUP BY ClientNo,B.[English Name]

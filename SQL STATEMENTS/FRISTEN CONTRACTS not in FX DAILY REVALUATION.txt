@@ -1,0 +1,1 @@
+﻿select * from   [FRISTEN] where  [Contract] not in (Select   [ContractNr] from   [FX DAILY REVALUATION] where   [RiskDate]='20140722' and [ClientNo] is not NULL ) and   [RiskDate]='20140722' and   [AmountType]='Bank Buy Amount'  

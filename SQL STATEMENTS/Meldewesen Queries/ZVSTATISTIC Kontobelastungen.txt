@@ -1,0 +1,2 @@
+﻿select * from   [CUSTOMER_VOLUMES] where   [GL_Rep_Date]>='20140101' and [GL_Rep_Date]<='20140918' and   
+([Description] like'GEB%' or [Description] like'%GEB%' or [Description] like'ACF%' or [Description] like'%Zins%')and   [AmountInEuro]<0

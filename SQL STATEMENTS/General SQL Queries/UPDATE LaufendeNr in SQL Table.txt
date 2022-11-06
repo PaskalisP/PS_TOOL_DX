@@ -1,0 +1,7 @@
+﻿UPDATE x
+SET x.SQL_Float_1 = x.New_LFD
+FROM (
+      SELECT Id_SQL_Parameters_Details,SQL_Float_1,ROW_NUMBER() OVER (order by ID asc) AS New_LFD
+      FROM [SQL_PARAMETER_DETAILS_SECOND] where Id_SQL_Parameters_Details=296
+      ) x
+	where x.Id_SQL_Parameters_Details=296

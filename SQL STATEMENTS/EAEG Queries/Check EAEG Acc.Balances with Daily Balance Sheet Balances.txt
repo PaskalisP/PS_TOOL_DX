@@ -1,0 +1,98 @@
+﻿DECLARE @RISKDATE Datetime
+SET @RISKDATE='20181231'
+
+CREATE TABLE [#Temp_EAEG_Bilanz_Differences](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[GL_Art] [nvarchar](100) NULL,
+	[GL_Item] [nvarchar](10) NULL,
+	[GL_Item_Number] [float] NULL,
+	[ReleatedAccountNr] [nvarchar](50) NULL,
+	[AccountType] [nvarchar](50) NULL,
+	[ClientName] [nvarchar](255) NULL,
+	[Orig_CUR] [nvarchar](3) NULL,
+	[Orig_Capital_Balance] [float] NULL,
+	[Orig_Interest_Balance] [float] NULL,
+	[Total_Balance] [float] NULL,
+	ExchangeRate_BS float NULL,
+	[Total_Balance_EUR] [float] NULL,
+	[EAEG_Capital_Balance] [float] NULL,
+	[EAEG_Interest_Balance] [float] NULL,
+	[EAEG_Balance] [float] NULL,
+	Exchange_Rate_ECB float NULL,
+	[EAEG_Balance_EUR] [float] NULL,
+	[Difference_BalanceSheet_EAEG] float NULL,
+	[BSDate] [datetime] NULL
+) ON [PRIMARY]
+
+INSERT INTO #Temp_EAEG_Bilanz_Differences
+    ([GL_Art],
+	[GL_Item],
+	[GL_Item_Number],
+	[ReleatedAccountNr],
+	[Orig_CUR],
+	[Orig_Capital_Balance],
+	ExchangeRate_BS,
+	Exchange_Rate_ECB,
+	[BSDate])
+
+	Select 
+    [GL_Art],
+	[GL_Item],
+	[GL_Item_Number],
+	dbo.fn_StripCharacters([ReleatedAccountNr],'^0-9'),
+	[Orig_CUR],
+	Orig_Balance,
+	1,
+	1,
+	BSDate
+
+	from DailyBalanceDetailsSheets where BSDate=@RISKDATE
+	and GL_Item_Number between 3500 and 3698
+	and GL_Item not like '%I'
+
+	Update A set A.Orig_Interest_Balance=B.Orig_Balance 
+	from #Temp_EAEG_Bilanz_Differences A INNER JOIN DailyBalanceDetailsSheets B on A.ReleatedAccountNr=B.ReleatedAccountNr and A.BSDate=B.BSDate
+	and B.GL_Item like '%I'
+
+	Update #Temp_EAEG_Bilanz_Differences set Orig_Interest_Balance=0 where Orig_Interest_Balance is NULL
+
+	Update #Temp_EAEG_Bilanz_Differences set Total_Balance=Orig_Capital_Balance+Orig_Interest_Balance
+
+	Update A set A.ExchangeRate_BS=B.[MIDDLE RATE] from #Temp_EAEG_Bilanz_Differences A INNER JOIN [EXCHANGE RATES OCBS] B on A.Orig_CUR=B.[CURRENCY CODE] and A.BSDate=B.[EXCHANGE RATE DATE]
+
+	Update #Temp_EAEG_Bilanz_Differences set Total_Balance_EUR=ROUND(Total_Balance/ExchangeRate_BS,2)
+
+	Update A set A.EAEG_Capital_Balance=B.C9_KapitalsaldoInKontowährung,A.EAEG_Interest_Balance=B.C17_ZinssaldoInKontowährung
+	,A.Exchange_Rate_ECB=B.C10_Umrechnungskurs,A.EAEG_Balance_EUR=B.C19_KontosaldoInEuro,A.AccountType=B.C7_Kontoart 
+	from #Temp_EAEG_Bilanz_Differences A INNER JOIN [EAEG_C_Satz_Version4] B on 
+	SUBSTRING(A.[ReleatedAccountNr], PATINDEX('%[^0 ]%', A.[ReleatedAccountNr] + ' '), LEN(A.[ReleatedAccountNr]))=B.C2_Kontonummer and B.EAEG_Stichtag=@RISKDATE
+
+
+	Update #Temp_EAEG_Bilanz_Differences set EAEG_Balance=EAEG_Capital_Balance+EAEG_Capital_Balance
+
+	Update #Temp_EAEG_Bilanz_Differences set Difference_BalanceSheet_EAEG=ROUND(Total_Balance_EUR-EAEG_Balance_EUR,2)
+
+	Update A set A.ClientName=B.ClientName from #Temp_EAEG_Bilanz_Differences A INNER JOIN ALL_CONTRACTS_ACCOUNTS B on A.ReleatedAccountNr=B.Contract_Account
+
+
+	SELECT
+	GL_Item as 'BILANZ - GL Item'
+	,ReleatedAccountNr as 'Kontonummer'
+	,AccountType as 'Kontotyp' 
+	,ClientName as 'Kontoname'
+	,Orig_CUR as 'Kontowährung'
+	,Orig_Capital_Balance as 'BILANZ - Kapitalsaldo in Kontowährung'
+	,Orig_Interest_Balance as 'BILANZ - Zinssaldo in Kontowährung'
+	,Total_Balance as 'BILANZ - Gesamtsaldo in Kontowährung'
+	,ExchangeRate_BS as 'BILANZ - Umrechnungskurs'
+	,Total_Balance_EUR as 'BILANZ - Gesamtsaldo in EURO'
+	,EAEG_Capital_Balance as 'EinSiG - Kapitalsaldo in Kontowährung'
+	,EAEG_Interest_Balance as 'EinSiG - Zinssaldo in Kontowährung'
+	,EAEG_Balance as 'EinSiG - Gesamtsaldo in Kontowährung'
+	,Exchange_Rate_ECB as 'EinSiG - Umrechnungskurs (EZB)'
+	,EAEG_Balance_EUR as 'EinSiG - Gesamtsaldo in EURO'
+	,Difference_BalanceSheet_EAEG as 'Differenz BILANZ - EinSiG'
+	,BSDate as 'Stichtag'
+	from #Temp_EAEG_Bilanz_Differences
+
+	drop table #Temp_EAEG_Bilanz_Differences

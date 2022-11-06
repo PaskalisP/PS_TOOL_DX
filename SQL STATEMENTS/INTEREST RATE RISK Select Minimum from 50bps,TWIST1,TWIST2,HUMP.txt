@@ -1,0 +1,14 @@
+﻿Select Sum(z.A) from (SELECT [CURRENCY],MIN(x.a)A
+FROM
+    (
+        SELECT [CURRENCY],Sum([AM3]) a from [RATERISK TOTALS] where [IdRateRiskDate]='20141224' GROUP BY [CURRENCY]
+        UNION
+        SELECT [CURRENCY],Sum([AM3])*-1 a from [RATERISK TOTALS] where [IdRateRiskDate]='20141224' GROUP BY [CURRENCY]
+        UNION
+        SELECT [CURRENCY],sum([AMHUMP]) a from [RATERISK TOTALS] where [IdRateRiskDate]='20141224' GROUP BY [CURRENCY]
+		UNION
+        SELECT [CURRENCY],Sum([AM_TWIST1]) a from [RATERISK TOTALS] where [IdRateRiskDate]='20141224' GROUP BY [CURRENCY]
+		UNION
+        SELECT [CURRENCY],Sum([AM_TWIST2]) a from [RATERISK TOTALS] where [IdRateRiskDate]='20141224' GROUP BY [CURRENCY]
+    ) x
+GROUP BY [CURRENCY])z

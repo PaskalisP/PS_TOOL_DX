@@ -1,0 +1,3 @@
+﻿Declare @TEXT nvarchar(max)
+SET @TEXT ='3|10|100|4'
+SELECT LEN(@TEXT) - LEN(REPLACE(@TEXT, '|', ''))

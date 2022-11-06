@@ -1,0 +1,28 @@
+﻿Select 
+  'Period'='till 3 Months'
+  ,'Sum1'=
+  (select Sum(A.Sum_1) as 'Summe1' from (Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  where DATEDIFF(DAY,[RiskDate],[Maturity Date])<=90 and [RiskDate]='20150930'
+  Union
+  Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  where [Maturity Date]='99991231' and [RiskDate]='20150930'
+   Union
+  Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  where [Maturity Date] is NULL and [RiskDate]='20150930') as A) 
+  ,'Sum2'=
+  (select Sum(A.Sum_1) as 'Summe2' from (Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  where DATEDIFF(DAY,[RiskDate],[Maturity Date])<=90 and [RiskDate]='20150630'
+  Union
+  Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  where [Maturity Date]='99991231' and [RiskDate]='20150630'
+   Union
+  Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  where [Maturity Date] is NULL and [RiskDate]='20150630') as A)
+   Union all
+  Select 
+  'Period'='over 3 Months till 6 Months'
+  ,'Sum1'= (Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  
+  where DATEDIFF(DAY,[RiskDate],[Maturity Date])>90 and DATEDIFF(DAY,[RiskDate],[Maturity Date])<=180 and [RiskDate]='20150930')
+  ,'Sum2'=(Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  
+  where DATEDIFF(DAY,[RiskDate],[Maturity Date])>90 and DATEDIFF(DAY,[RiskDate],[Maturity Date])<=180 and [RiskDate]='20150630')
+   Union all
+  Select 
+  'Period'='over 6 Months till 12 Months'
+  ,'Sum1'= (Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  
+  where DATEDIFF(DAY,[RiskDate],[Maturity Date])>180 and DATEDIFF(DAY,[RiskDate],[Maturity Date])<=365 and [RiskDate]='20150930')
+  ,'Sum2'=(Select sum([Credit Outstanding (EUR Equ)]) as Sum_1 from [CREDIT RISK]  
+  where DATEDIFF(DAY,[RiskDate],[Maturity Date])>180 and DATEDIFF(DAY,[RiskDate],[Maturity Date])<=365 and [RiskDate]='20150630')

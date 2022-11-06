@@ -1,0 +1,1822 @@
+﻿<XtraSerializer version="1.0" application="PivotGrid">
+  <property name="#LayoutVersion" />
+  <property name="#LayoutScaleFactor">@1,Width=1@1,Height=1</property>
+  <property name="Appearance" isnull="true" iskey="true">
+    <property name="FocusedCell" iskey="true" value="FocusedCell">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseForeColor">true</property>
+        <property name="UseBackColor">true</property>
+        <property name="UseFont">true</property>
+      </property>
+      <property name="ForeColor">Black</property>
+      <property name="BackColor">Yellow</property>
+      <property name="BackColor2">Yellow</property>
+      <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+    </property>
+    <property name="SelectedCell" iskey="true" value="SelectedCell">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseForeColor">true</property>
+        <property name="UseBackColor">true</property>
+      </property>
+      <property name="ForeColor">Black</property>
+      <property name="BackColor">Yellow</property>
+      <property name="BackColor2">Yellow</property>
+    </property>
+    <property name="GrandTotalCell" iskey="true" value="GrandTotalCell">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseForeColor">true</property>
+        <property name="UseBackColor">true</property>
+        <property name="UseFont">true</property>
+      </property>
+      <property name="ForeColor">Black</property>
+      <property name="BackColor">255, 224, 192</property>
+      <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+    </property>
+    <property name="FieldValueGrandTotal" iskey="true" value="FieldValueGrandTotal">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseForeColor">true</property>
+        <property name="UseBackColor">true</property>
+        <property name="UseFont">true</property>
+      </property>
+      <property name="ForeColor">Black</property>
+      <property name="BackColor">192, 255, 255</property>
+      <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+    </property>
+    <property name="TotalCell" iskey="true" value="TotalCell">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="UseBackColor">true</property>
+      </property>
+      <property name="BackColor">192, 192, 255</property>
+    </property>
+  </property>
+  <property name="Fields" iskey="true" value="45">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldFinalMaturityDate</property>
+      <property name="FieldName">Final Maturity Date</property>
+      <property name="Caption">Final Maturity Date</property>
+      <property name="Index">0</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">d</property>
+        <property name="FormatType">DateTime</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">d</property>
+        <property name="FormatType">DateTime</property>
+      </property>
+      <property name="AreaIndex">8</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldNextEventDate</property>
+      <property name="FieldName">Next EventDate</property>
+      <property name="Caption">Next EventDate</property>
+      <property name="Index">1</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">d</property>
+        <property name="FormatType">DateTime</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">d</property>
+        <property name="FormatType">DateTime</property>
+      </property>
+      <property name="AreaIndex">7</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldNextEventType</property>
+      <property name="FieldName">Next EventType</property>
+      <property name="Caption">Next EventType</property>
+      <property name="Index">2</property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="ValuesCore" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="Value" type="System.String">MA</property>
+          </property>
+        </property>
+        <property name="ShowBlanks">false</property>
+        <property name="FilterType">Included</property>
+      </property>
+      <property name="AreaIndex">6</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldCustomerName</property>
+      <property name="FieldName">Counterparty/Issuer</property>
+      <property name="Caption">Customer Name</property>
+      <property name="Index">3</property>
+      <property name="AreaIndex">4</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldContract_Account</property>
+      <property name="FieldName">Contract/Account</property>
+      <property name="Caption">Contract/Account</property>
+      <property name="Index">4</property>
+      <property name="AreaIndex">3</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item6" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldClientNr</property>
+      <property name="FieldName">ClientNr</property>
+      <property name="Caption">ClientNr</property>
+      <property name="Index">5</property>
+      <property name="AreaIndex">16</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item7" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="GroupFilterMode">Tree</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldCURRENCY</property>
+      <property name="Area">RowArea</property>
+      <property name="FieldName">CURRENCY</property>
+      <property name="Caption">Currency</property>
+      <property name="Index">6</property>
+      <property name="AreaIndex">0</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">148</property>
+    </property>
+    <property name="Item8" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="GroupFilterMode">Tree</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellGrandTotal" iskey="true" value="CellGrandTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Calculated PERIOD based on the contracts next event Date</property>
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldPERIOD</property>
+      <property name="FieldName">PERIOD</property>
+      <property name="Caption">Period (Next Event Date)</property>
+      <property name="Index">7</property>
+      <property name="SortMode">Custom</property>
+      <property name="AreaIndex">18</property>
+      <property name="ActualSortMode">Custom</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">82</property>
+    </property>
+    <property name="Item9" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="GroupFilterMode">Tree</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldContractType</property>
+      <property name="FieldName">Contract Type</property>
+      <property name="Caption">Contract Type</property>
+      <property name="Index">8</property>
+      <property name="AreaIndex">0</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">112</property>
+    </property>
+    <property name="Item10" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="GroupFilterMode">Tree</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldProductType</property>
+      <property name="FieldName">ProductType</property>
+      <property name="Caption">Product Type</property>
+      <property name="Index">9</property>
+      <property name="AreaIndex">1</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">381</property>
+    </property>
+    <property name="Item11" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="GroupFilterMode">Tree</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldGLMasterAccountType</property>
+      <property name="FieldName">GLMaster / Account Type</property>
+      <property name="Caption">GLMaster / Account Type</property>
+      <property name="Index">10</property>
+      <property name="AreaIndex">4</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item12" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldType</property>
+      <property name="Area">RowArea</property>
+      <property name="FieldName">Type</property>
+      <property name="UnboundFieldName">PivotGridField3</property>
+      <property name="Caption">Type</property>
+      <property name="Index">11</property>
+      <property name="FilterValues" isnull="true" iskey="true">
+        <property name="ValuesCore" iskey="true" value="2">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="Value" type="System.String">Assets</property>
+          </property>
+          <property name="Item2" isnull="true" iskey="true">
+            <property name="Value" type="System.String">Liabilities</property>
+          </property>
+        </property>
+        <property name="ShowBlanks">false</property>
+        <property name="FilterType">Included</property>
+      </property>
+      <property name="AreaIndex">1</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item13" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="GroupFilterMode">Tree</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldPrincipalAmountValueBalance</property>
+      <property name="FieldName">Principal Amount/Value Balance</property>
+      <property name="Caption">Principal Amount (Orig CUR)</property>
+      <property name="EmptyCellText">0,00</property>
+      <property name="EmptyValueText">0,00</property>
+      <property name="Index">12</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">0</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">174</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item14" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="GroupFilterMode">Tree</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseTextOptions">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="TextOptions" isnull="true" iskey="true">
+            <property name="HAlignment">Center</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldPrincipalAmountValueBalanceEUREqu</property>
+      <property name="RunningTotal">true</property>
+      <property name="FieldName">Principal Amount/Value Balance(EUR Equ)</property>
+      <property name="Caption">Principal Amount (EUR Equ)</property>
+      <property name="EmptyCellText">0,00</property>
+      <property name="EmptyValueText">0,00</property>
+      <property name="Index">13</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="TotalCellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="TotalValueFormat" isnull="true" iskey="true">
+        <property name="FormatString" />
+        <property name="FormatType">None</property>
+      </property>
+      <property name="AreaIndex">19</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">193</property>
+    </property>
+    <property name="Item15" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ShowUnboundExpressionMenu">true</property>
+        <property name="ShowGrandTotal">false</property>
+        <property name="GroupFilterMode">Tree</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseTextOptions">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="TextOptions" isnull="true" iskey="true">
+            <property name="HAlignment">Center</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">fieldRISKDATE</property>
+      <property name="Area">ColumnArea</property>
+      <property name="FieldName">RISK DATE</property>
+      <property name="Caption">Business Date</property>
+      <property name="Index">14</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">d</property>
+        <property name="FormatType">DateTime</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">d</property>
+        <property name="FormatType">DateTime</property>
+      </property>
+      <property name="AreaIndex">0</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">117</property>
+    </property>
+    <property name="Item16" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldClientType</property>
+      <property name="FieldName">ClientType</property>
+      <property name="Caption">Client Type</property>
+      <property name="Index">15</property>
+      <property name="AreaIndex">9</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item17" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldCOUNTRY_OF_REGISTRATION</property>
+      <property name="Area">ColumnArea</property>
+      <property name="FieldName">COUNTRY_OF_REGISTRATION</property>
+      <property name="Caption">Country of Registration</property>
+      <property name="Index">16</property>
+      <property name="AreaIndex">3</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item18" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldCOUNTRY_OF_RESIDENCE</property>
+      <property name="FieldName">COUNTRY_OF_RESIDENCE</property>
+      <property name="Caption">Country of Residence</property>
+      <property name="Index">17</property>
+      <property name="AreaIndex">10</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item19" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldINDUSTRIAL_CLASS_CN</property>
+      <property name="Area">ColumnArea</property>
+      <property name="FieldName">INDUSTRIAL_CLASS_CN</property>
+      <property name="Caption">Industrial Class (CHINA)</property>
+      <property name="Index">18</property>
+      <property name="AreaIndex">4</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item20" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseTextOptions">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="TextOptions" isnull="true" iskey="true">
+            <property name="HAlignment">Center</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldCCB_Group</property>
+      <property name="FieldName">CCB_Group</property>
+      <property name="Caption">CCB Group</property>
+      <property name="Index">19</property>
+      <property name="AreaIndex">10</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item21" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseTextOptions">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="TextOptions" isnull="true" iskey="true">
+            <property name="HAlignment">Center</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldCCB_Group_OwnID</property>
+      <property name="FieldName">CCB_Group_OwnID</property>
+      <property name="Caption">CCB Group (Own ID)</property>
+      <property name="Index">20</property>
+      <property name="AreaIndex">12</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item22" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseTextOptions">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="TextOptions" isnull="true" iskey="true">
+            <property name="HAlignment">Center</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldEU_EEA</property>
+      <property name="FieldName">EU EEA</property>
+      <property name="Caption">EU Country</property>
+      <property name="Index">21</property>
+      <property name="AreaIndex">13</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item23" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseTextOptions">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="TextOptions" isnull="true" iskey="true">
+            <property name="HAlignment">Center</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldEWU</property>
+      <property name="FieldName">EWU</property>
+      <property name="Caption">EWU Country</property>
+      <property name="Index">22</property>
+      <property name="AreaIndex">14</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item24" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseTextOptions">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="TextOptions" isnull="true" iskey="true">
+            <property name="HAlignment">Center</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldIsBank</property>
+      <property name="FieldName">Is Bank</property>
+      <property name="Caption">Bank / No Bank</property>
+      <property name="Index">23</property>
+      <property name="AreaIndex">15</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item25" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldLANDKZ_BUBA</property>
+      <property name="FieldName">LANDKZ BUBA</property>
+      <property name="Caption">Landkennz. Bundesbank</property>
+      <property name="Index">24</property>
+      <property name="AreaIndex">18</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item26" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldCOUNTRY_NAME</property>
+      <property name="FieldName">COUNTRY NAME</property>
+      <property name="Caption">Country Name</property>
+      <property name="Index">25</property>
+      <property name="AreaIndex">16</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item27" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldStartDate</property>
+      <property name="FieldName">StartDate</property>
+      <property name="Caption">Start Date</property>
+      <property name="Index">26</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">d</property>
+        <property name="FormatType">DateTime</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">d</property>
+        <property name="FormatType">DateTime</property>
+      </property>
+      <property name="AreaIndex">5</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item28" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldBusinessType</property>
+      <property name="FieldName">BusinessType</property>
+      <property name="Caption">Business Type</property>
+      <property name="Index">27</property>
+      <property name="AreaIndex">2</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item29" isnull="true" iskey="true">
+      <property name="CustomTotals" iskey="true" value="1">
+        <property name="Item1" isnull="true" iskey="true">
+          <property name="SummaryType">Average</property>
+          <property name="Format" isnull="true" iskey="true">
+            <property name="FormatString">n6</property>
+            <property name="FormatType">Numeric</property>
+          </property>
+          <property name="CellFormat" isnull="true" iskey="true">
+            <property name="FormatString">n6</property>
+            <property name="FormatType">Numeric</property>
+          </property>
+        </property>
+      </property>
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+        <property name="ShowGrandTotal">false</property>
+        <property name="ShowTotals">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Imported from FRISTEN Report</property>
+        <property name="ValueText">Imported from FRISTEN Report</property>
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldInterestRate</property>
+      <property name="FieldName">InterestRate</property>
+      <property name="Caption">Interest Rate</property>
+      <property name="EmptyCellText">0</property>
+      <property name="EmptyValueText">0</property>
+      <property name="Index">28</property>
+      <property name="SummaryType">Average</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n6</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n6</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">17</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item30" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Imported from FRISTEN Report (Amount Type:Interest)-EURO Equivalent</property>
+        <property name="ValueText">Imported from FRISTEN Report (Amount Type:Interest)-EURO Equivalent</property>
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldInterestAmountOrigCur</property>
+      <property name="FieldName">InterestAmountOrigCur</property>
+      <property name="Caption">Interest Amount (OrigCur)</property>
+      <property name="EmptyCellText">0</property>
+      <property name="EmptyValueText">0</property>
+      <property name="Index">29</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">18</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item31" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldInterestAmountEuro</property>
+      <property name="FieldName">InterestAmountEuro</property>
+      <property name="Caption">Interest Amount (Euro)</property>
+      <property name="EmptyCellText">0</property>
+      <property name="EmptyValueText">0</property>
+      <property name="Index">30</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">20</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item32" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+        <property name="ShowUnboundExpressionMenu">true</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">0, 0, 192</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">[Principal Amount (EUR Equ)] + [Interest Amount Euro]</property>
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">[Principal Amount/Value Balance(EUR Equ)] + [InterestAmountEuro]</property>
+      <property name="Name">UB_FieldSumInOutflowEUR</property>
+      <property name="UnboundFieldName">UB_FieldSumInOutflow</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="Caption">Sum In- Outflow (EUR)</property>
+      <property name="EmptyCellText">0</property>
+      <property name="EmptyValueText">0</property>
+      <property name="Index">31</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">21</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item33" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+        <property name="ShowUnboundExpressionMenu">true</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">0, 0, 192</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">[Principal Amount (Orig CUR)] + [Interest Amount Orig Cur]</property>
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">[Principal Amount/Value Balance] + [InterestAmountOrigCur]</property>
+      <property name="Name">UB_FieldSumInOutflowCUR</property>
+      <property name="UnboundFieldName">UB_FieldSumInOutflowCUR</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="Caption">Sum In- Outflow (Orig.CUR)</property>
+      <property name="EmptyCellText">0,00</property>
+      <property name="EmptyValueText">0,00</property>
+      <property name="Index">32</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">20</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item34" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+        <property name="ShowUnboundExpressionMenu">true</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="UnboundExpression">[Principal Amount/Value Balance(EUR Equ)] + [AccruedInterestAmountEUR]</property>
+      <property name="Name">UB_PrincipalInterestEUR</property>
+      <property name="Area">DataArea</property>
+      <property name="UnboundFieldName">UB_PrincipalInterestEUR</property>
+      <property name="UnboundType">Decimal</property>
+      <property name="Caption">Sum Principal + Accrueds (EUR)</property>
+      <property name="Index">33</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">0</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item35" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldINDUSTRIAL_CLASS_LOCAL</property>
+      <property name="FieldName">INDUSTRIAL_CLASS_LOCAL</property>
+      <property name="Caption">Industrial Class Code (Local)</property>
+      <property name="Index">34</property>
+      <property name="AreaIndex">13</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item36" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldINDUSTRIAL_CLASS_LOCAL_NAME</property>
+      <property name="FieldName">INDUSTRIAL_CLASS_LOCAL_NAME</property>
+      <property name="Caption">Industrial Class Name (Local)</property>
+      <property name="Index">35</property>
+      <property name="AreaIndex">13</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item37" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldAccruedInterestAmountEUR</property>
+      <property name="FieldName">AccruedInterestAmountEUR</property>
+      <property name="Caption">Accrued Interest Amount (EUR)</property>
+      <property name="EmptyCellText">0,00</property>
+      <property name="EmptyValueText">0,00</property>
+      <property name="Index">36</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">22</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item38" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText" />
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldAccruedInterestAmountOrigCur</property>
+      <property name="FieldName">AccruedInterestAmountOrigCur</property>
+      <property name="Caption">Accrued Interest Amount (OrigCur)</property>
+      <property name="EmptyCellText">0,00</property>
+      <property name="EmptyValueText">0,00</property>
+      <property name="Index">37</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">21</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item39" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseImage">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">0, 0, 192</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">AVERAGE DURATION Calculation:Days Count from Business Date till Next Event Date x Principal Amount(EUR)/Sum Principal Amount EUR by Currency, Period and Type</property>
+        <property name="ValueText">Calculation:Days Count from Business Date till Next Event Date x Principal Amount(EUR)/Sum Principal Amount EUR by Currency, Period and Type</property>
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldAverageDuration</property>
+      <property name="FieldName">AverageDuration</property>
+      <property name="Caption">Average Duration</property>
+      <property name="EmptyCellText">0,00</property>
+      <property name="EmptyValueText">0,00</property>
+      <property name="Index">38</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n2</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">23</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item40" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseImage">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Days Count from current Business Date till Next Event Date</property>
+        <property name="ValueText">Days Count from current Business Date till Next Event Date</property>
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldDaysToEventDate</property>
+      <property name="Area">ColumnArea</property>
+      <property name="FieldName">DaysToEventDate</property>
+      <property name="Caption">Days Count till next Event Date</property>
+      <property name="EmptyCellText">0</property>
+      <property name="EmptyValueText">0</property>
+      <property name="Index">39</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n0</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">2</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item41" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">0, 0, 192</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Additional Maturity Periods (According to AMM Report)</property>
+        <property name="ValueText">Additional Maturity Periods (According to AMM Report)</property>
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldPERIOD_Additional</property>
+      <property name="Area">ColumnArea</property>
+      <property name="FieldName">PERIOD_Additional</property>
+      <property name="Caption">Additional Period (Next Event Date)</property>
+      <property name="Index">40</property>
+      <property name="AreaIndex">2</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item42" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">0, 0, 192</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseImage">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Days Count from current Business Date till Final Maturity (If Final Maturity is not NULL)</property>
+        <property name="ValueText">Days Count from current Business Date till Final Maturity (If Final Maturity is not NULL)</property>
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldDaysToMaturity</property>
+      <property name="Area">ColumnArea</property>
+      <property name="FieldName">DaysToMaturity</property>
+      <property name="Caption">Days To Maturity</property>
+      <property name="Index">41</property>
+      <property name="CellFormat" isnull="true" iskey="true">
+        <property name="FormatString">n0</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="ValueFormat" isnull="true" iskey="true">
+        <property name="FormatString">n0</property>
+        <property name="FormatType">Numeric</property>
+      </property>
+      <property name="AreaIndex">2</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+      <property name="Visible">false</property>
+    </property>
+    <property name="Item43" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+        <property name="AllowEdit">false</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Calculated PERIOD based on the contracts Maturity Date</property>
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldPERIOD_MaturityDate</property>
+      <property name="FieldName">PERIOD_MaturityDate</property>
+      <property name="Caption">PERIOD (Maturity Date)</property>
+      <property name="Index">42</property>
+      <property name="SortMode">Custom</property>
+      <property name="AreaIndex">24</property>
+      <property name="ActualSortMode">Custom</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+    <property name="Item44" isnull="true" iskey="true">
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Cell" iskey="true" value="Cell">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="CellTotal" iskey="true" value="CellTotal">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseForeColor">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="ForeColor">Navy</property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Calculated ALMM PERIOD based on the contracts Maturity Date</property>
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldALMMPeriod_MaturityDate</property>
+      <property name="Area">ColumnArea</property>
+      <property name="FieldName">PERIOD_ALMM_MaturityDate</property>
+      <property name="Caption">ALMM Period (Maturity Date)</property>
+      <property name="Index">43</property>
+      <property name="SortMode">Custom</property>
+      <property name="AreaIndex">1</property>
+      <property name="ActualSortMode">Custom</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">233</property>
+    </property>
+    <property name="Item45" isnull="true" iskey="true">
+      <property name="Options" isnull="true" iskey="true">
+        <property name="ReadOnly">true</property>
+      </property>
+      <property name="Appearance" isnull="true" iskey="true">
+        <property name="Value" iskey="true" value="Value">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseTextOptions">true</property>
+            <property name="UseFont">true</property>
+          </property>
+          <property name="TextOptions" isnull="true" iskey="true">
+            <property name="HAlignment">Center</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+        <property name="Header" iskey="true" value="Header">
+          <property name="Options" isnull="true" iskey="true">
+            <property name="UseFont">true</property>
+          </property>
+          <property name="Font">Tahoma, 8.25pt, style=Bold</property>
+        </property>
+      </property>
+      <property name="ImageIndex">-1</property>
+      <property name="ToolTips" isnull="true" iskey="true">
+        <property name="HeaderText">Member of the CHINA INVESTMENT CORP.</property>
+        <property name="ValueText" />
+      </property>
+      <property name="FieldEditName" />
+      <property name="Name">FieldCIC_Group</property>
+      <property name="FieldName">CIC_Group</property>
+      <property name="Caption">CIC Group</property>
+      <property name="Index">44</property>
+      <property name="AreaIndex">11</property>
+      <property name="MinWidth">20</property>
+      <property name="Width">100</property>
+    </property>
+  </property>
+  <property name="Prefilter" isnull="true" iskey="true">
+    <property name="Criteria" isnull="true" />
+    <property name="ShowOperandTypeIcon">false</property>
+    <property name="Enabled">true</property>
+  </property>
+  <property name="OptionsBehavior" isnull="true" iskey="true">
+    <property name="CopyToClipboardWithFieldValues">true</property>
+  </property>
+  <property name="OptionsFilterPopup" isnull="true" iskey="true">
+    <property name="FieldFilterPopupMode">Excel</property>
+  </property>
+  <property name="OptionsCustomization" isnull="true" iskey="true">
+    <property name="CustomizationFormSearchBoxVisible">true</property>
+    <property name="AllowSortInCustomizationForm">true</property>
+  </property>
+  <property name="OptionsSelection" isnull="true" iskey="true">
+    <property name="EnableAppearanceFocusedCell">true</property>
+  </property>
+  <property name="OptionsPrint" isnull="true" iskey="true">
+    <property name="PrintDataHeaders">False</property>
+    <property name="PrintFilterHeaders">False</property>
+    <property name="PrintColumnAreaOnEveryPage">true</property>
+    <property name="MergeColumnFieldValues">false</property>
+    <property name="MergeRowFieldValues">false</property>
+  </property>
+  <property name="OptionsView" isnull="true" iskey="true">
+    <property name="HeaderFilterButtonShowMode">SmartTag</property>
+    <property name="ShowColumnGrandTotals">false</property>
+  </property>
+  <property name="Groups" iskey="true" value="0" />
+  <property name="FormatRules" iskey="true" value="0" />
+  <property name="FormatConditions" iskey="true" value="0" />
+  <property name="MRUFilters" iskey="true" value="5">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="FilterString">[FieldType] In ('Assets', 'Liabilities')</property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="FilterString">Not [FieldNextEventType] = 'IS' And [FieldType] In ('Assets', 'Liabilities')</property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="FilterString">[FieldType] = 'Assets' And Not [FieldNextEventType] = 'IS'</property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="FilterString">Not [FieldNextEventType] = 'IS'</property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="FilterString">[FieldNextEventType] In ('MA', 'UA')</property>
+    </property>
+  </property>
+</XtraSerializer>

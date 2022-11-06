@@ -1,0 +1,10 @@
+﻿Select [AccNr],[Balance] FROM [ACCNR_TRIAL_BLNC_WEI_GUO] order by [AccNr] asc 
+
+Begin UPDATE [ACCNR_TRIAL_BLNC_WEI_GUO] SET [Balance]=0 
+end
+
+Begin UPDATE A SET A.[Balance]=B.[Totals]*(-1) 
+FROM [ACCNR_TRIAL_BLNC_WEI_GUO] A INNER JOIN [TRIAL_BALANCE_218] B on A.[AccNr]=LTRIM(Left(Cast(B.[AccountNo] as int),5)) where B.[RepDate]='20140930' 
+end
+
+ 

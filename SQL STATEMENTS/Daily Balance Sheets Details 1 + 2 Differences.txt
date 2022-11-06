@@ -1,0 +1,19 @@
+﻿SELECT A.[GL_Account_Name],
+    A.[GL_Account_Nr] as GL_Account,
+	A.[Orig_CUR] as Currency,
+	Convert(Decimal(18,2),A.BalanceSheet_1,2) as BalanceSheet_1,
+    Convert(Decimal(18,2),B.BalanceSheet_2,2) as BalanceSheet_2,
+	Convert(Decimal(18,2),A.BalanceSheet_1-B.BalanceSheet_2,2) as Difference
+FROM
+(
+    SELECT [BSDate],[GL_Account_Nr],[Orig_CUR],[GL_Account_Name], sum([Total_Balance]) AS BalanceSheet_1
+    FROM [DailyBalanceDetailsSheets]
+    GROUP BY [BSDate],[GL_Account_Nr],[Orig_CUR],[GL_Account_Name]
+) AS A
+JOIN
+(
+    SELECT [BSDate],[GL_Account_Nr],[Orig_CUR], sum([Total_Balance]) AS BalanceSheet_2
+    FROM [DailyBalanceDetailsSheets2]
+    GROUP BY [BSDate],[GL_Account_Nr],[Orig_CUR]
+) AS B
+ON A.[GL_Account_Nr] = B.[GL_Account_Nr] and A.[Orig_CUR]=B.[Orig_CUR] and A.[BSDate]='20150430' and  A.[BSDate]=B.[BSDate]

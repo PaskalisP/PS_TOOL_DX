@@ -1,0 +1,40 @@
+﻿DECLARE @RISKDATE datetime
+SET @RISKDATE='20161231'
+
+CREATE TABLE [dbo].[#Temp_TEST](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Type] [nvarchar](255) NOT NULL,
+	[Business Type] [nvarchar](255) NULL,
+	[ContractNr] [nvarchar](255) NULL,
+	[StartDate]datetime,
+	[MaturityDate]datetime,
+	[Org Ccy] [nvarchar](255) NULL,
+	[OriginalAmountEUR] float NULL,
+	[InterestRate] float NULL,
+	[PERIOD] [nvarchar](255) NULL,
+	[AccruedInterestAmount] float NULL,
+	[Interest_Amount] float NULL) ON [PRIMARY]
+
+INSERT INTO [#Temp_TEST] Select 'Assets' as 'Type',A.[BusinessType] as 'Business Type',[Contract Collateral ID] as 'ContractNr' 
+,B.StartDate,B.[Final Maturity Date]
+,A.[Org Ccy],A.[Credit Outstanding (EUR Equ)] as 'OriginalAmountEUR',B.InterestRate,B.PERIOD,0 as 'AccruedInterestAmount',0 as 'Interest_Amount'
+from [CREDIT RISK] A INNER JOIN [RATERISK DETAILS] B on A.[Contract Collateral ID]=B.ContractClear and A.RiskDate=B.[RISK DATE] where RiskDate=@RISKDATE
+and A.BusinessType not in ('BANK NOSTRO ACCOUNTS','DEPOSITS WITH DEUTSCHE BUNDESBANK','FX TRANSACTIONS','GUARANTEES','OTHERS')
+UNION ALL
+SELECT 'Liabilities' as 'Type',A.[BusinessTypeName] as 'Business Type',A.[Contract Collateral ID] as 'ContractNr'
+,B.StartDate,B.[Final Maturity Date], A.[OrgCcy],A.PrincipalAmountEUR as 'OriginalAmountEUR',B.InterestRate,B.PERIOD,0 as 'AccruedInterestAmount',0 as 'Interest_Amount'
+ FROM [PS TOOL DX Live].[dbo].[BusinessTypesLiabilitiesDetails] A INNER JOIN [RATERISK DETAILS] B on A.[Contract Collateral ID]=B.ContractClear and A.RiskDate=B.[RISK DATE] where RiskDate=@RISKDATE
+
+ DELETE from #Temp_TEST where ID not in (Select Min(ID) from #Temp_TEST group by ContractNr)
+
+
+  Update A Set A.AccruedInterestAmount=B.[Accrued Interest Coupon EUR Equ] from #Temp_TEST A Inner Join [ACCRUED INTEREST ANALYSIS] B on A.ContractNr=B.Contract where B.Datadate='20161231'
+  --Update A Set A.Interest_Amount=C.S from #Temp_TEST A Inner Join (Select B.Contract,Sum(EURequ) as S from (Select Contract,EventDate,EURequ from FRISTEN where EventDate between '20160101' and '20161231' 
+  --and AmountType in ('Interest') GROUP BY Contract,EventDate,EURequ)B Group by Contract)C
+  --on A.ContractNr=C.Contract
+Update A Set A.Interest_Amount=B.InterestAmountEuro from #Temp_TEST A Inner Join [RATERISK DETAILS] B on A.ContractNr=B.ContractClear where B.[RISK DATE]='20161231'
+  Update [#Temp_TEST] set AccruedInterestAmount=Case when Type in ('Liabilities') then AccruedInterestAmount *(-1) else AccruedInterestAmount end
+
+Select * from  [#Temp_TEST] order by period asc
+
+DROP Table [#Temp_TEST] 

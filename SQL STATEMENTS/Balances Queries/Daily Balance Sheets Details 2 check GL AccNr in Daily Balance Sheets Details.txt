@@ -1,0 +1,1 @@
+﻿select * from   [DailyBalanceDetailsSheets2] where   [GL_Account_Nr] not in (select   [GL_Account_Nr] from   [DailyBalanceDetailsSheets] where   [BSDate]='20150206') and   [BSDate]='20150206'  

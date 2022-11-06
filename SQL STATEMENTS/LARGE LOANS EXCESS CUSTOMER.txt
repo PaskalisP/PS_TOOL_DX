@@ -1,0 +1,23 @@
+﻿Select A.[RiskDate]
+      ,A.[Client No]
+     ,A.[ExposureAmountMAX] as 'Large LN Limit'
+      ,B.SumPrincipalEUR as 'LN Exposure in Euro'
+     ,"Excess"=Case when B.SumPrincipalEUR>A.[ExposureAmountMAX] then B.SumPrincipalEUR-A.[ExposureAmountMAX] else 0 END
+      ,Sum([Credit Outstanding (EUR Equ)]) as 'LN Exposure with acc.interest in Euro'
+      ,A.[ExchangeRateCurrent] as 'Exchange Rate'  
+     ,"Excess"=Case when Sum([Credit Outstanding (EUR Equ)])>A.[ExposureAmountMAX] then Sum([Credit Outstanding (EUR Equ)])-A.[ExposureAmountMAX] else 0 END
+  FROM [LARGE_LOANS_EXPOSURE]A 
+  INNER JOIN 
+  (Select [RepDate],Sum([Outstanding Principal EUR])as SumPrincipalEUR,[Client No]  from [CL_DRAWDOWN_OUTSTANDING] GROUP BY [RepDate],[Client No])B 
+  ON A.[RiskDate]=B.[RepDate] 
+  where A.[RiskDate]>='20141223' 
+  and A.[Client No]='67803364' 
+  and A.[Client No]=B.[Client No] 
+  GROUP BY 
+  A.[Client No],
+  A.[RiskDate]
+ ,A.[ExposureAmountMAX]
+ ,A.[ExchangeRateCurrent]
+ ,B.SumPrincipalEUR
+
+---LARGE LOANS EXCESS CUSTOMER------

@@ -1,0 +1,8 @@
+﻿Select A.[BSDate] as BalanceSheetDate,
+Convert(Decimal(18,2),Sum(A.[BalanceEUREqu]),2) as ACTIVA,
+Sum(B.[BalanceEUREqu]) as PASSIVA, 
+Convert(Decimal(18,2),(Sum(A.[BalanceEUREqu]) + Sum(B.[BalanceEUREqu])),2) as DIFFERENCE 
+from [DailyBalanceSheets] A INNER JOIN [DailyBalanceSheets] B on A.[BSDate]=B.[BSDate] 
+where A.[BSDate]>'20140101'
+and  A.[GL_Item_Number]=2999 and B.[GL_Item_Number]=4999 
+GROUP BY A.[BSDate] ORDER BY A.[BSDate] desc

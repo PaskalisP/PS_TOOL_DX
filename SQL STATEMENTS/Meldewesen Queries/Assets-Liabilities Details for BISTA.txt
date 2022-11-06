@@ -1,0 +1,38 @@
+﻿SELECT 'Customer Type'=CASE when A.[CUSTOMER TYPE] in ('F - FINANCIAL') then 'BANK' else 'CORPORATE' end
+      ,A.[BusinessType] 
+      ,A.[Contract Type]
+      ,A.[Product Type]
+      ,A.[Counterparty/Issuer/Collateral Provider]
+      ,A.[Client No]
+      ,A.[CUSTOMER TYPE]
+      ,A.[Client Group]
+      ,A.[Contract Collateral ID]
+      ,A.[Start Date]
+      ,A.[Maturity Date]
+      ,A.[Org Ccy]
+      ,A.[Credit Exposure]
+    ,A.[Euro Equivalent] as 'Amount EUR (without Accrued Interest)'
+FROM [MAK REPORT] A  
+where   A.[RiskDate]='20151130'
+and   A.[BusinessType] in ('BANK NOSTRO ACCOUNTS')
+
+UNION ALL
+
+SELECT 'Customer Type'=CASE when A.[CUSTOMER TYPE] in ('F - FINANCIAL') then 'BANK' else 'CORPORATE' end
+      ,A.[BusinessType]
+      ,A.[Contract Type]
+      ,A.[Product Type]
+      ,A.[Counterparty/Issuer/Collateral Provider]
+      ,A.[Client No]
+      ,A.[CUSTOMER TYPE]
+      ,A.[Client Group]
+      ,A.[Contract Collateral ID]
+      ,A.[Start Date]
+      ,A.[Maturity Date]
+      ,A.[Org Ccy]
+      ,A.[Credit Exposure]
+      ,B.[Principal (EUR Equivalent)] as 'Amount EUR (without Accrued Interest)'
+    FROM [MAK REPORT] A INNER JOIN [ACCRUED INTEREST ANALYSIS] B on A.[Contract Collateral ID]=B.[Contract] and A.[RiskDate]=B.Datadate
+  where  A.[RiskDate]='20151130'       --and B.[AmountType]='Principal' 
+
+ 

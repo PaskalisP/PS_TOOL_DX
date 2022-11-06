@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by XMLSPY 5 Professional Ed. Release 4, Concurrent for 10 users (Deutsche Bundesbank) -->
+<!-- (c) Deutsche Bundesbank 2004 -->
+<xs:schema targetNamespace="http://www.bundesbank.de/xmw/2003-01-01" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bbk="http://www.bundesbank.de/xmw/2003-01-01" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- *************************************************************************************** -->
+	<!-- ****   Fachverfahrenspezifische Schema-Datei Zahlungsbilanzstatisik                  **** -->
+	<!-- *************************************************************************************** -->
+	<xs:include schemaLocation="BbkXmwBasis.xsd"/>
+	<!-- ******                Elemente der Substitutionsgruppe IDENTNR   ******* -->
+	<xs:element name="BLZ" type="bbk:zif8plus1" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Bankleitzahl (mit Prüfziffer)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TESTLZ" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Test-Leitzahl (ohne Prüfziffer)</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="bbk:alphanum">
+				<xs:pattern value="T\d\d\d\d\d\d\d\d"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="RZLZ" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Leitzahl eines Rechenzentrums (ohne Prüfziffer)</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="bbk:alphanum">
+				<xs:pattern value="R\d\d\d\d\d\d\d\d"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="FIRMENNR" type="bbk:zif7plus1" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Firmennummer (mit  Prüfziffer)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--*******************************************************************************************-->
+	<!--*****************   Typen fuer AWZEL ***********************************************-->
+	<!--*****************************************************************************************************-->
+	<xs:simpleType name="belart">
+		<xs:annotation>
+			<xs:documentation>Belegarten</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="verrechnung">
+		<xs:annotation>
+			<xs:documentation>Kennzeichen für Verrechnungen und Einbringungen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="V"/>
+			<xs:enumeration value="E"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="isin">
+		<xs:annotation>
+			<xs:documentation>ISIN als Typ</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="12"/>
+			<xs:maxLength value="12"/>
+			<xs:pattern value="\p{Lu}\p{Lu}(\p{Lu}|\d){10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="wkn">
+		<xs:annotation>
+			<xs:documentation>WKN als Typ</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="6"/>
+			<xs:maxLength value="6"/>
+			<xs:pattern value="((\d)|(\p{Lu})){6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="zif2">
+		<xs:annotation>
+			<xs:documentation>2ziffrige Zahlenfolge</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="betrag18neg">
+		<xs:annotation>
+			<xs:documentation> max. 18 Stellen Betrag mit optionalem Vorzeichen links von der ersten Ziffer</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\s{0,17}-{0,1}\d{1,18}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--*******************************************************************************************-->
+	<!--*****************   Elemente fuer AWZEL ***********************************************-->
+	<!--*****************************************************************************************************-->
+	<xs:element name="LIEFERUNG-AWZEL">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="bbk:basisLieferung">
+					<xs:sequence>
+						<xs:element name="MELDUNG" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="MELDEPFLICHTIGER" type="bbk:adresse"/>
+									<xs:element ref="bbk:KOMMENTAR" minOccurs="0"/>
+									<xs:element ref="bbk:MELDETERMIN"/>
+									<xs:element name="MELDUNGSREF" minOccurs="0">
+										<xs:simpleType>
+											<xs:restriction base="bbk:alphanum">
+												<xs:maxLength value="35"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="VDR_04" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="DIKAPPOSTEN" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="BETRAG" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:simpleContent>
+																		<xs:extension base="bbk:betrag18neg">
+																			<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																			<xs:attribute name="landname" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="16"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																			<xs:attribute name="betragsref" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="35"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																			<xs:attribute name="verrkz" type="bbk:verrechnung" use="optional"/>
+																		</xs:extension>
+																	</xs:simpleContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="belegart" type="bbk:belart" use="required"/>
+														<xs:attribute name="kennzahl" type="bbk:zif3" use="required"/>
+														<xs:attribute name="zahlungszweck" use="required">
+															<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:whiteSpace value="collapse"/>
+																	<xs:minLength value="1"/>
+																	<xs:maxLength value="140"/>
+																</xs:restriction>
+															</xs:simpleType>
+														</xs:attribute>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="TRANSITPOSTEN" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="TRANSIT" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="BETRAG">
+																			<xs:complexType>
+																				<xs:simpleContent>
+																					<xs:extension base="bbk:betrag18neg">
+																						<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																						<xs:attribute name="landname" use="optional">
+																							<xs:simpleType>
+																								<xs:restriction base="bbk:alphanum">
+																									<xs:maxLength value="16"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:attribute>
+																						<xs:attribute name="betragsref" use="optional">
+																							<xs:simpleType>
+																								<xs:restriction base="bbk:alphanum">
+																									<xs:maxLength value="35"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:attribute>
+																						<xs:attribute name="verrkz" type="bbk:verrechnung" use="optional"/>
+																					</xs:extension>
+																				</xs:simpleContent>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element name="HANDELSPARTNER" minOccurs="0">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="HP-NAME" type="bbk:alphanum"/>
+																					<xs:element name="HP-STRASSE-NR">
+																						<xs:simpleType>
+																							<xs:restriction base="bbk:alphanum">
+																								<xs:maxLength value="70"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="HP-PLZ">
+																						<xs:simpleType>
+																							<xs:restriction base="bbk:alphanum">
+																								<xs:maxLength value="5"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element name="HP-ORT">
+																						<xs:simpleType>
+																							<xs:restriction base="bbk:alphanum">
+																								<xs:maxLength value="35"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																				</xs:sequence>
+																				<xs:attribute name="vornach" use="required">
+																					<xs:simpleType>
+																						<xs:restriction base="bbk:alphanum">
+																							<xs:maxLength value="1"/>
+																							<xs:enumeration value="N"/>
+																							<xs:enumeration value="V"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:attribute>
+																				<xs:attribute name="faelligkeit" type="xs:gYearMonth" use="optional"/>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																	<xs:attribute name="warencode" type="bbk:zif2" use="required"/>
+																	<xs:attribute name="warenbez" use="optional">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:whiteSpace value="collapse"/>
+																				<xs:minLength value="1"/>
+																				<xs:maxLength value="140"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="belegart" type="bbk:belart" use="required"/>
+														<xs:attribute name="kennzahl" type="bbk:zif3" use="required"/>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="DIRINVPOSTEN" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="WERTPAPIER" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="STUECK">
+																			<xs:complexType>
+																				<xs:simpleContent>
+																					<xs:extension base="bbk:betrag18neg"/>
+																				</xs:simpleContent>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element name="BETRAG">
+																			<xs:complexType>
+																				<xs:simpleContent>
+																					<xs:extension base="bbk:betrag18neg">
+																						<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																						<xs:attribute name="landname" use="optional">
+																							<xs:simpleType>
+																								<xs:restriction base="bbk:alphanum">
+																									<xs:maxLength value="16"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:attribute>
+																						<xs:attribute name="betragsref" use="optional">
+																							<xs:simpleType>
+																								<xs:restriction base="bbk:alphanum">
+																									<xs:maxLength value="35"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:attribute>
+																						<xs:attribute name="verrkz" type="bbk:verrechnung" use="optional"/>
+																					</xs:extension>
+																				</xs:simpleContent>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																	<xs:attribute name="isin" type="bbk:isin" use="required"/>
+																	<xs:attribute name="bezeichnung" use="required">
+																		<xs:simpleType>
+																			<xs:restriction base="bbk:alphanum">
+																				<xs:maxLength value="35"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="belegart" type="bbk:belart" use="required"/>
+														<xs:attribute name="kennzahl" type="bbk:zif3" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VDR_08" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="POSTEN" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="BETRAG" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:simpleContent>
+																		<xs:extension base="bbk:betrag18neg">
+																			<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																			<xs:attribute name="landname" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="16"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																			<xs:attribute name="betragsref" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="35"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:simpleContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="belegart" type="bbk:belart" use="required"/>
+														<xs:attribute name="kennzahl" type="bbk:zif3" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VDR_10" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="POSTEN" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="WERTPAPIER" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="NOMINAL_STUECK" minOccurs="0">
+																			<xs:complexType>
+																				<xs:simpleContent>
+																					<xs:extension base="bbk:betrag18neg">
+																						<xs:attribute name="s-oder-n" use="required">
+																							<xs:simpleType>
+																								<xs:restriction base="bbk:alphanum">
+																									<xs:maxLength value="1"/>
+																									<xs:enumeration value="S"/>
+																									<xs:enumeration value="N"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:attribute>
+																					</xs:extension>
+																				</xs:simpleContent>
+																			</xs:complexType>
+																		</xs:element>
+																		<xs:element name="BETRAG">
+																			<xs:complexType>
+																				<xs:simpleContent>
+																					<xs:extension base="bbk:betrag18neg">
+																						<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																						<xs:attribute name="landname" use="optional">
+																							<xs:simpleType>
+																								<xs:restriction base="bbk:alphanum">
+																									<xs:maxLength value="16"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:attribute>
+																						<xs:attribute name="wrg" type="bbk:isoWaehrung" use="optional"/>
+																						<xs:attribute name="betragsref" use="optional">
+																							<xs:simpleType>
+																								<xs:restriction base="bbk:alphanum">
+																									<xs:maxLength value="35"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:attribute>
+																					</xs:extension>
+																				</xs:simpleContent>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																	<xs:attribute name="isin" type="bbk:isin" use="required"/>
+																	<xs:attribute name="wkn" type="bbk:wkn" use="optional"/>
+																	<xs:attribute name="bezeichnung" use="required">
+																		<xs:simpleType>
+																			<xs:restriction base="bbk:alphanum">
+																				<xs:maxLength value="35"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:attribute>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="belegart" type="bbk:belart" use="required"/>
+														<xs:attribute name="kennzahl" type="bbk:zif3" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VDR_11" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="POSTEN" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="BETRAG" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:simpleContent>
+																		<xs:extension base="bbk:betrag18neg">
+																			<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																			<xs:attribute name="landname" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="16"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																			<xs:attribute name="betragsref" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="35"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:simpleContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="belegart" type="bbk:belart" use="required"/>
+														<xs:attribute name="kennzahl" type="bbk:zif3" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VDR_12" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="POSTEN" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="BETRAG" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:simpleContent>
+																		<xs:extension base="bbk:betrag18neg">
+																			<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																			<xs:attribute name="landname" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="16"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																			<xs:attribute name="betragsref" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="35"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:simpleContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="belegart" type="bbk:belart" use="required"/>
+														<xs:attribute name="kennzahl" type="bbk:zif3" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VDR_13" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="POSTEN" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="BETRAG" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:simpleContent>
+																		<xs:extension base="bbk:betrag18neg">
+																			<xs:attribute name="wrg" type="bbk:isoWaehrung" use="required"/>
+																			<xs:attribute name="betragsref" use="optional">
+																				<xs:simpleType>
+																					<xs:restriction base="bbk:alphanum">
+																						<xs:maxLength value="35"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:attribute>
+																		</xs:extension>
+																	</xs:simpleContent>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+														<xs:attribute name="belegart" type="bbk:belart" use="required"/>
+														<xs:attribute name="kennzahl" type="bbk:zif3" use="required"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VDR_14" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="BETRAG" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="bbk:betrag18neg">
+																<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																<xs:attribute name="landname" use="optional">
+																	<xs:simpleType>
+																		<xs:restriction base="bbk:alphanum">
+																			<xs:maxLength value="16"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:attribute>
+																<xs:attribute name="betragsref" use="optional">
+																	<xs:simpleType>
+																		<xs:restriction base="bbk:alphanum">
+																			<xs:maxLength value="35"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:attribute>
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="VDR_15" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="BETRAG" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:simpleContent>
+															<xs:extension base="bbk:betrag18neg">
+																<xs:attribute name="land" type="bbk:isoLand" use="required"/>
+																<xs:attribute name="landname" use="optional">
+																	<xs:simpleType>
+																		<xs:restriction base="bbk:alphanum">
+																			<xs:maxLength value="16"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:attribute>
+																<xs:attribute name="betragsref" use="optional">
+																	<xs:simpleType>
+																		<xs:restriction base="bbk:alphanum">
+																			<xs:maxLength value="35"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:attribute>
+															</xs:extension>
+														</xs:simpleContent>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+								<xs:attribute name="erstellzeit" type="xs:dateTime" use="required"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="bereich" type="bbk:bereich" use="required"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

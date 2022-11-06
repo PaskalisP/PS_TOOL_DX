@@ -1,0 +1,216 @@
+﻿Select 
+'LCR_IN' as 'Report'
+,'020' as 'Row'
+,A.[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A. [Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[Org Ccy] as 'Original Currency'
+,B.[Principal (EUR Equivalent)]  as 'Principal (EURO)'
+,B.[Interest Coupon Amount EUR Equ] as 'Interest (EURO)'
+,B.[Principal (EUR Equivalent)]  + B.[Interest Coupon Amount EUR Equ] as 'Principal + Interest (EURO)'
+from   [BusinessTypesCreditPortfolioDetails] A INNER JOIN [ACCRUED INTEREST ANALYSIS] B ON A.[Contract Collateral ID] =B.[Contract] and A.[RiskDate]=B.[Datadate] where   A.[RiskDate]='20150731' 
+and A.[Maturity Date]<DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,A.[RiskDate])+2,0))-1 and   A.[BusinessTypeName] in ('AUTHORIZED PAYMENTS','COMMERCIAL LOANS')
+Union All
+Select 
+'LCR_IN' as 'Report'
+,'070' as 'Row'
+,A.[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A. [Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[Org Ccy] as 'Original Currency'
+,A.[Credit Outstanding (EUR Equ)]  as 'Principal (EURO)'
+,'0' as 'Interest (EURO)'
+,A.[Credit Outstanding (EUR Equ)]  as 'Principal + Interest (EURO)'
+from   [BusinessTypesCreditPortfolioDetails] A where   A.[RiskDate]='20150731' 
+and   A.[BusinessTypeName] in ('BANK NOSTRO ACCOUNTS')
+Union All
+Select
+'LCR_IN' as 'Report'
+,'090' as 'Row'
+,A.[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A. [Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[Org Ccy] as 'Original Currency'
+,B.[Principal (EUR Equivalent)]  as 'Principal (EURO)'
+,'0' as 'Interest (EURO)'
+,B.[Principal (EUR Equivalent)]  as 'Principal + Interest (EURO)'
+from   [BusinessTypesCreditPortfolioDetails] A INNER JOIN [ACCRUED INTEREST ANALYSIS] B ON A.[Contract Collateral ID] =B.[Contract] and A.[RiskDate]=B.[Datadate] where   A.[RiskDate]='20150731' 
+and A.[Maturity Date]<DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,A.[RiskDate])+2,0))-1 and   A.[BusinessTypeName] like 'FORFAITING + FACTORING%'
+Union All
+Select 
+'LCR_IN' as 'Report'
+,'090' as 'Row'
+,A.[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A. [Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[Org Ccy] as 'Original Currency'
+,B.[Principal (EUR Equivalent)]  as 'Principal (EURO)'
+,B.[Interest Coupon Amount EUR Equ] as 'Interest (EURO)'
+,B.[Principal (EUR Equivalent)]  + B.[Interest Coupon Amount EUR Equ] as 'Principal + Interest (EURO)'
+from   [BusinessTypesCreditPortfolioDetails] A INNER JOIN [ACCRUED INTEREST ANALYSIS] B ON A.[Contract Collateral ID] =B.[Contract] and A.[RiskDate]=B.[Datadate] where   A.[RiskDate]='20150731' 
+and A.[Maturity Date]<DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,A.[RiskDate])+2,0))-1 and   A.[BusinessTypeName] Like 'PREFINANCINGS%'
+Union All
+Select 
+'LCR_IN' as 'Report'
+,'090' as 'Row'
+,A.[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A. [Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[Org Ccy] as 'Original Currency'
+,B.[Principal (EUR Equivalent)]  as 'Principal (EURO)'
+,B.[Interest Coupon Amount EUR Equ] as 'Interest (EURO)'
+,B.[Principal (EUR Equivalent)]  + B.[Interest Coupon Amount EUR Equ] as 'Principal + Interest (EURO)'
+from   [BusinessTypesCreditPortfolioDetails] A INNER JOIN [ACCRUED INTEREST ANALYSIS] B ON A.[Contract Collateral ID] =B.[Contract] and A.[RiskDate]=B.[Datadate] where   A.[RiskDate]='20150731' 
+and A.[Maturity Date]<DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,A.[RiskDate])+2,0))-1 and   A.[BusinessTypeName] in ('FUNDED RISK PARTICIPATION')
+Union All
+Select 
+'LCR_IN' as 'Report'
+,'980' as 'Row'
+,A.[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A. [Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[Org Ccy] as 'Original Currency'
+,B.[Principal (EUR Equivalent)]  as 'Principal (EURO)'
+,'0' as 'Interest (EURO)'
+,B.[Principal (EUR Equivalent)]  as 'Principal + Interest (EURO)'
+from   [BusinessTypesCreditPortfolioDetails] A INNER JOIN [ACCRUED INTEREST ANALYSIS] B ON A.[Contract Collateral ID] =B.[Contract] and A.[RiskDate]=B.[Datadate] where   A.[RiskDate]='20150731' 
+and A.[Maturity Date]<DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,A.[RiskDate])+2,0))-1 and   A.[BusinessTypeName] in ('MM TRANSACTIONS')
+Union All
+Select 
+'LCR_IN' as 'Report'
+,'980' as 'Row'
+,'CL DRAWDOWN' as 'BUSINESS TYPE'
+,A.[Counterparty_No] as 'Client Nr.'
+,A.[Counterparty_Name] as 'Client Name'
+,A.[Contract] as 'Contract Collateral ID'
+,A.[ContractType] as 'Contract Type'
+,A.[ProductType] as 'Product Type'
+,A.[Final_Maturity_Date] as 'Maturity Date'
+,A.[OrgCcy] as 'Original Currency'
+,A.SumPrincipal as 'Principal (EURO)'
+,B.SumInterest  as 'Interest (EURO)'
+,A.SumPrincipal + B.SumInterest  as 'Principal + Interest (EURO)'
+from   
+(Select [Counterparty_No],[Counterparty_Name],[Contract],[ContractType],[ProductType],[Final_Maturity_Date],[OrgCcy],Sum([EURequ]) as 'SumPrincipal' from [FRISTEN] 
+where [RiskDate]='20150731' and [EventDate]<DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,[RiskDate])+2,0))-1 and [EventType] in ('RL') 
+and [AmountType]='Principal' GROUP BY [Counterparty_No],[Counterparty_Name],[Contract],[ContractType],[ProductType],[Final_Maturity_Date],[OrgCcy])A
+LEFT JOIN 
+(Select Sum([EURequ]) as 'SumInterest',[Contract] from [FRISTEN] 
+where [RiskDate]='20150731' and [EventDate]<DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,[RiskDate])+2,0))-1 and [EventType] in ('RL') 
+and [AmountType]='Interest' GROUP BY [Contract])B
+ON A.[Contract]=B.[Contract]
+Union All
+Select 
+'LCR_OUT' as 'Report'
+,'1000' as 'Row'---------------------------------------------------------------------------------------------------------------------------------------FEHLER
+,[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A.[Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[OrgCcy] as 'Original Currency'
+,A.[PrincipalAmountEUR] as 'Principal (EURO)'
+,A.[InterestAmountEUR] as 'Interest (EURO)'
+,A.[TotalAmountEUR]  as 'Principal + Interest (EURO)'
+from   
+[BusinessTypesLiabilitiesDetails] A where A.[RiskDate]='20150731' and [BusinessTypeName] like 'BANKS DEMAND DEPOSITS%'
+Union All
+Select 
+'LCR_OUT' as 'Report'
+,'1060' as 'Row'---------------------------------------------------------------------------------------------------------------------------------------FEHLER + 1070 ROW
+,[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A.[Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[OrgCcy] as 'Original Currency'
+,A.[PrincipalAmountEUR] as 'Principal (EURO)'
+,A.[InterestAmountEUR] as 'Interest (EURO)'
+,A.[TotalAmountEUR]  as 'Principal + Interest (EURO)'
+from   
+[BusinessTypesLiabilitiesDetails] A where A.[RiskDate]='20150731' 
+and [BusinessTypeName] like 'CUSTOMERS DEMAND DEPOSITS%' 
+Union All
+Select 
+'LCR_OUT' as 'Report'
+,'1110' as 'Row'
+,A.[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A. [Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[Org Ccy] as 'Original Currency'
+,A.[Credit Outstanding (EUR Equ)]  as 'Principal (EURO)'
+,'0' as 'Interest (EURO)'
+,A.[Credit Outstanding (EUR Equ)]  as 'Principal + Interest (EURO)'
+from   [BusinessTypesCreditPortfolioDetails] A where   A.[RiskDate]='20150731' 
+and   A.[BusinessTypeName] in ('GUARANTEES')
+and A.[Product Type] in ('LGNFN')
+Union All
+Select 
+'LCR_OUT' as 'Report'
+,'1120' as 'Row'
+,A.[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A. [Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[Org Ccy] as 'Original Currency'
+,A.[Credit Outstanding (EUR Equ)]  as 'Principal (EURO)'
+,'0' as 'Interest (EURO)'
+,A.[Credit Outstanding (EUR Equ)]  as 'Principal + Interest (EURO)'
+from   [BusinessTypesCreditPortfolioDetails] A where   A.[RiskDate]='20150731' 
+and   A.[BusinessTypeName] in ('GUARANTEES')
+and A.[Product Type] not in ('LGNFN')
+Union All
+Select 
+'LCR_OUT' as 'Report'
+,'1130' as 'Row'---------------------------------------------------------------------------------------------------------------------------------------FEHLER
+,[BusinessTypeName] as 'BUSINESS TYPE'
+,A.[Client No] as 'Client Nr.'
+,A.[Counterparty/Issuer/Collateral Name] as 'Client Name'
+,A.[Contract Collateral ID] as 'Contract Collateral ID'
+,A.[Contract Type] as 'Contract Type'
+,A.[Product Type] as 'Product Type'
+,A.[Maturity Date] as 'Maturity Date'
+,A.[OrgCcy] as 'Original Currency'
+,A.[PrincipalAmountEUR] as 'Principal (EURO)'
+,A.[InterestAmountEUR] as 'Interest (EURO)'
+,A.[TotalAmountEUR]  as 'Principal + Interest (EURO)'
+from   
+[BusinessTypesLiabilitiesDetails] A 
+where A.[RiskDate]='20150731' and [BusinessTypeName] like 'BANKS TIME DEPOSITS%' 
+and A.[Maturity Date]<DATEADD(s,-1,DATEADD(mm, DATEDIFF(m,0,A.[RiskDate])+2,0))-1
+               

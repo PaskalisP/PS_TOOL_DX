@@ -1,0 +1,823 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0052)http://ccb-domino/applications/ccb-IBO-Transfer.nsf/ -->
+<HTML lang=de><HEAD><META content="IE=7.0000" http-equiv="X-UA-Compatible">
+<TITLE></TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type><LINK 
+rel=stylesheet type=text/css 
+href="CCB-IBO-Transfer_files/@Da&amp;@Ib&amp;2Tfxsp.css&amp;2TfxspLTR.css.css">
+<SCRIPT type=text/javascript>var dojoConfig = {locale: 'de-de'};</SCRIPT>
+
+<SCRIPT type=text/javascript src="CCB-IBO-Transfer_files/dojo.js"></SCRIPT>
+
+<SCRIPT type=text/javascript src="CCB-IBO-Transfer_files/@Iq.js"></SCRIPT>
+
+<SCRIPT 
+type=text/javascript>dojo.require("ibm.xsp.widget.layout.xspClientDojo")</SCRIPT>
+
+<META name=GENERATOR content="MSHTML 11.00.9600.18500"></HEAD>
+<BODY class="xspView tundra">
+<FORM id=view:_id1 class=xspForm encType=multipart/form-data method=post 
+action=/applications/ccb-IBO-Transfer.nsf/XPageIndexSearch.xsp>
+<TABLE role=presentation id=view:_id1:tableSearch style="WIDTH: 100%">
+  <TBODY>
+  <TR>
+    <TD align=right>
+      <TABLE role=presentation style="WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD 
+          style="WIDTH: 220px; BACKGROUND-IMAGE: url(CCBVerlauf.jpg); BACKGROUND-REPEAT: repeat-x" 
+          vAlign=middle align=left>
+            <TABLE role=presentation style="WIDTH: 415px">
+              <TBODY>
+              <TR>
+                <TD style="WIDTH: 220px"><SPAN id=view:_id1:lblSearchText 
+                  class=xspTextLabel 
+                  style="FONT-SIZE: 8pt; COLOR: rgb(0,0,0)">Search </SPAN><INPUT 
+                  id=view:_id1:inputText1 class=xspInputFieldEditBox 
+                  style="FONT-SIZE: 8pt" name=view:_id1:inputText1><BUTTON 
+                  id=view:_id1:btnSeach class=xspButtonCommand 
+                  style="FONT-SIZE: 8pt" name=view:_id1:btnSeach>start searching 
+                  开始搜索</BUTTON><BUTTON id=view:_id1:btnClearSearchField 
+                  class=xspButtonCommand style="FONT-SIZE: 8pt" 
+                  name=view:_id1:btnClearSearchField>clear field 
+                  清空</BUTTON><BR><SPAN 
+                  style="FONT-SIZE: 8pt; COLOR: rgb(0,0,0)">(please</SPAN> <SPAN 
+                  style="FONT-SIZE: 8pt; COLOR: rgb(0,0,0)">use</SPAN> <SPAN 
+                  style="FONT-SIZE: 8pt; COLOR: rgb(0,0,0)">'*</SPAN> <SPAN 
+                  style="FONT-SIZE: 8pt; COLOR: rgb(0,0,0)">'</SPAN> <SPAN 
+                  style="FONT-SIZE: 8pt; COLOR: rgb(0,0,0)">for</SPAN> <SPAN 
+                  style="FONT-SIZE: 8pt; COLOR: rgb(0,0,0)">unknown</SPAN> <SPAN 
+                  style="FONT-SIZE: 8pt; COLOR: rgb(0,0,0)">characters)</SPAN> 
+                  <SPAN 
+                style="FONT-SIZE: 8pt; COLOR: rgb(255,255,255)"></SPAN></TD></TR></TBODY></TABLE><SPAN 
+            style="FONT-SIZE: 8pt; FONT-FAMILY: Courier New; COLOR: rgb(255,0,0)">pre-Alpha-Version 
+            - optimized for Google Chrome Browser</SPAN> <BR 
+            style="FONT-SIZE: 8pt; FONT-FAMILY: Courier New; COLOR: rgb(255,0,0)"><SPAN 
+            id=view:_id1:computedField1 class=xspTextComputedField 
+            style="FONT-SIZE: 8pt; FONT-WEIGHT: bold">Hello Anonymous 
+            Europe/Berlin</SPAN>&nbsp;</TD>
+          <TD 
+          style="BACKGROUND-IMAGE: url(CCBVerlauf.jpg); BACKGROUND-REPEAT: repeat-x" 
+          vAlign=middle align=right><IMG id=view:_id1:image1 class=xspImage 
+            alt="" 
+        src="CCB-IBO-Transfer_files/CCB_logo_verlauf.gif"></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<DIV align=center>
+<TABLE role=presentation id=view:_id1:tableHead 
+style="BORDER-TOP-COLOR: rgb(0,0,0); WIDTH: 100%; BORDER-LEFT-COLOR: rgb(0,0,0); BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0)">
+  <TBODY>
+  <TR>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(240,240,240)"><BUTTON 
+      id=view:_id1:btnAllDocs class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnAllDocs>All 
+      Documents 所有文件</BUTTON></TD>
+    <TD 
+    style="BORDER-TOP-COLOR: rgb(191,191,255); BORDER-LEFT-COLOR: rgb(191,191,255); BORDER-BOTTOM-COLOR: rgb(191,191,255); TEXT-ALIGN: center; BORDER-RIGHT-COLOR: rgb(191,191,255); BACKGROUND-COLOR: rgb(0,102,179)"><BUTTON 
+      id=view:_id1:btnHO class=xspButtonCommand 
+      style="WIDTH: 250px; FONT-WEIGHT: bold; FONT-STYLE: italic" 
+      name=view:_id1:btnHO>Head Office 总行</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(240,240,240)"><BUTTON 
+      id=view:_id1:btnDeskInstructions class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" 
+      name=view:_id1:btnDeskInstructions>Desk Instructions 
+      工作指引</BUTTON><BR><BUTTON id=view:_id1:btnJobDescriptions 
+      class=xspButtonCommand style="FONT-SIZE: 8pt; WIDTH: 200px" 
+      name=view:_id1:btnJobDescriptions>Job Descriptions 职位描述</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(240,240,240)"><BUTTON 
+      id=view:_id1:btnOrganigramm class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" 
+      name=view:_id1:btnOrganigramm>Organigramms 组织架构</BUTTON><BR><BUTTON 
+      id=view:_id1:btnProcesses class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnProcesses>Processes 
+      工作流程</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(240,240,240)"><BUTTON 
+      id=view:_id1:btnInterOffice class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnInterOffice>Inter 
+      Office Documents 内部文件</BUTTON><BR><BUTTON id=view:_id1:btnHODoc 
+      class=xspButtonCommand style="FONT-SIZE: 8pt; WIDTH: 200px" 
+      name=view:_id1:btnHODoc>Head Office Documents 总行文件</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(240,240,240)"><BUTTON 
+      id=view:_id1:btnCheckList class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" 
+      name=view:_id1:btnCheckList>Checklists 工作清单</BUTTON><BR><BUTTON 
+      id=view:_id1:button4 class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" 
+      name=view:_id1:button4>Reports</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(240,240,240)"><BUTTON 
+      id=view:_id1:btnEmployee class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnEmployee>Employee 
+      员工信息</BUTTON><BR><BUTTON id=view:_id1:button5 class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" 
+    name=view:_id1:button5>Forms</BUTTON></TD></TR>
+  <TR>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(0,102,179)"></TD>
+    <TD 
+    style="BORDER-TOP-COLOR: rgb(191,191,255); BORDER-LEFT-COLOR: rgb(191,191,255); BORDER-BOTTOM-COLOR: rgb(191,191,255); TEXT-ALIGN: center; BORDER-RIGHT-COLOR: rgb(191,191,255); BACKGROUND-COLOR: rgb(0,102,179)"><BUTTON 
+      id=view:_id1:btnCurOrganigramm class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; HEIGHT: auto; WIDTH: 200px" 
+      name=view:_id1:btnCurOrganigramm>current CCB Organigramm 
+      组织架构表</BUTTON><BR><BR><BUTTON id=view:_id1:btnGeneralManagement 
+      class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 225px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnGeneralManagement>General Management 管理层</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(0,102,179)"></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(0,102,179)"></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(0,102,179)"></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(0,102,179)"></TD>
+    <TD id=view:_id1:td1 
+    style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(0,102,179)"></TD></TR>
+  <TR>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(224,255,202)"><BUTTON 
+      id=view:_id1:btnFrontOffice class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnFrontOffice>Management Front Office</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"><BUTTON 
+      id=view:_id1:btnBackOffice class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnBackOffice>Management Back Office</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(204,255,255)"><BUTTON 
+      id=view:_id1:btnCompliance class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnCompliance>Compliance 合规团队</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(251,252,216)"><BUTTON 
+      id=view:_id1:btnInternalAudit class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; HEIGHT: auto; WIDTH: 180px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnInternalAudit>Internal Audit Representative 
+      内审负责人</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(233,233,233)"><BUTTON 
+      id=view:_id1:btnHRA class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 178px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnHRA>HR &amp; Admin 综合事务部</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(247,221,255)"><BUTTON 
+      id=view:_id1:btnGMA class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnGMA>GM assistance 秘书</BUTTON></TD>
+    <TD style="TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(210,255,241)"><BUTTON 
+      id=view:_id1:btnFC class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnFC>Functional Committees 职能委员会</BUTTON></TD></TR>
+  <TR>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(224,255,202)"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(204,255,255)"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(210,255,241)"></TD></TR>
+  <TR>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(224,255,202)"><BUTTON 
+      id=view:_id1:button1 class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; FONT-WEIGHT: bold" 
+      name=view:_id1:button1>Credit Marketing 市场部</BUTTON></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"><BUTTON 
+      id=view:_id1:btnRis class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; HEIGHT: auto; WIDTH: 200px" 
+      name=view:_id1:btnRis>Risk Management and Risk Controlling 
+    风险管理部</BUTTON></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(204,255,255)"><BUTTON 
+      id=view:_id1:btnAML class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; HEIGHT: auto; WIDTH: 200px" 
+      name=view:_id1:btnAML>Prevention of criminal offences (AML) 
+反洗钱</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(210,255,241)"><BUTTON 
+      id=view:_id1:btnRiskCommittee class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; TEXT-ALIGN: center" 
+      name=view:_id1:btnRiskCommittee>Risk Committee 风险委员会</BUTTON></TD></TR>
+  <TR>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(224,255,202)"><BUTTON 
+      id=view:_id1:btnMarketingI class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnMarketingI>Credit 
+      Marketing I 市场一部</BUTTON></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(204,255,255)"><BUTTON 
+      id=view:_id1:btnICS class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnICS>Internal 
+      Control System 内控体系</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(210,255,241)"><BUTTON 
+      id=view:_id1:btnCreditCommittee class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; TEXT-ALIGN: center" 
+      name=view:_id1:btnCreditCommittee>Credit Committee 信贷委员会</BUTTON></TD></TR>
+  <TR>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(224,255,202)"><BUTTON 
+      id=view:_id1:btnMarketingII class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnMarketingII>Credit 
+      Marketing II 市场二部</BUTTON></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"><BUTTON 
+      id=view:_id1:btnCA class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnCA>Credit 
+      Administration 信贷管理部</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"><BUTTON id=view:_id1:btnBKA 
+      class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; HEIGHT: auto; WIDTH: 200px; FONT-STYLE: italic" 
+      name=view:_id1:btnBKA>- Legal Inventory - BKA - BaFin - Circular 
+    -</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(210,255,241)"><BUTTON 
+      id=view:_id1:btnManagementCommittee class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; TEXT-ALIGN: center" 
+      name=view:_id1:btnManagementCommittee>Management Committee 
+    管理委员会</BUTTON></TD></TR>
+  <TR>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(224,255,202)"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(210,255,241)"><BUTTON 
+      id=view:_id1:button3 class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; HEIGHT: auto; WIDTH: 200px; TEXT-ALIGN: center" 
+      name=view:_id1:button3>IT Management Committee</BUTTON></TD></TR>
+  <TR>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(224,255,202)"><BUTTON 
+      id=view:_id1:btnTreasury class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnTreasury>Treasury 
+      资金部</BUTTON></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"><BUTTON 
+      id=view:_id1:btnOperations class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px; FONT-WEIGHT: bold" 
+      name=view:_id1:btnOperations>Operations 运营部</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(210,255,241)"><BUTTON 
+      id=view:_id1:button2 class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; HEIGHT: auto; WIDTH: 200px; TEXT-ALIGN: center" 
+      name=view:_id1:button2>Steering Committee for the new building 
+      改建委员会</BUTTON></TD></TR>
+  <TR>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"><BUTTON 
+      id=view:_id1:btnAccounting class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" 
+      name=view:_id1:btnAccounting>Accounting 会计部</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD>
+    <TD style="FONT-SIZE: 8pt; TEXT-ALIGN: center"></TD></TR>
+  <TR>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"><BUTTON 
+      id=view:_id1:btnReporting class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnReporting>Reporting 
+      报表</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD></TR>
+  <TR>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"><BUTTON 
+      id=view:_id1:btnEDP class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnEDP>EDP 
+    科技部</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD></TR>
+  <TR>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD 
+    style="FONT-SIZE: 8pt; TEXT-ALIGN: center; BACKGROUND-COLOR: rgb(255,234,213)"><BUTTON 
+      id=view:_id1:btnPayment class=xspButtonCommand 
+      style="FONT-SIZE: 8pt; WIDTH: 200px" name=view:_id1:btnPayment>Payment and 
+      Settlement 清算部</BUTTON></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD>
+    <TD style="FONT-SIZE: 8pt"></TD></TR></TBODY></TABLE></DIV><BR>
+<TABLE role=presentation id=view:_id1:viewPanel1_OUTER_TABLE 
+class=xspDataTableViewPanel style="WIDTH: 100%" cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR>
+    <TD class=xspDataTableViewPanelHeaderStart>&nbsp; </TD>
+    <TD class=xspDataTableViewPanelHeaderMiddle>
+      <TABLE role=presentation style="HEIGHT: 100%; WIDTH: 100%">
+        <TBODY>
+        <TR>
+          <TD style="WHITE-SPACE: nowrap"></TD>
+          <TD style="WHITE-SPACE: nowrap">
+            <DIV class=xspPagerContainer>
+            <DIV role=navigation id=view:_id1:viewPanel1:pager1 
+            class=xspPagerRight><SPAN class=xspPagerNav>Page</SPAN><SPAN 
+            class="xspPagerNav xspStatus">1</SPAN><SPAN 
+            id=view:_id1:viewPanel1:pager1__FirstImage class=xspPagerNav><IMG 
+            alt="Go to first page:" 
+            src="CCB-IBO-Transfer_files/PagerArrowhead2-L_d.png"></SPAN><SPAN 
+            id=view:_id1:viewPanel1:pager1__PreviousImage class=xspPagerNav><IMG 
+            alt="Go to previous page:" 
+            src="CCB-IBO-Transfer_files/PagerArrowhead-L_d.png"></SPAN><SPAN 
+            class=xspPagerNav>Page</SPAN><SPAN 
+            id=view:_id1:viewPanel1:pager1__Group 
+            class="xspPagerNav xspGroup"><SPAN><SPAN 
+            class="xspFirstItem xspCurrentItem">1</SPAN><SPAN><A 
+            id=view:_id1:viewPanel1:pager1__Group__lnk__1 title="Go to page 2" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/#">2</A></SPAN><SPAN 
+            class=xspLastItem><A id=view:_id1:viewPanel1:pager1__Group__lnk__2 
+            title="Go to page 3" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/#">3</A></SPAN></SPAN></SPAN><SPAN 
+            id=view:_id1:viewPanel1:pager1__NextImage class=xspPagerNav><A 
+            id=view:_id1:viewPanel1:pager1__NextImage__img 
+            title="Go to next page:" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/#"><IMG 
+            alt="Go to next page:" 
+            src="CCB-IBO-Transfer_files/PagerArrowhead.png"></A></SPAN><SPAN 
+            id=view:_id1:viewPanel1:pager1__LastImage class=xspPagerNav><A 
+            id=view:_id1:viewPanel1:pager1__LastImage__img 
+            title="Go to last page:" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/#"><IMG 
+            alt="Go to last page:" 
+            src="CCB-IBO-Transfer_files/PagerArrowhead2.png"></A></SPAN></DIV></DIV></TD></TR></TBODY></TABLE></TD>
+    <TD class=xspDataTableViewPanelHeaderEnd>&nbsp; </TD></TR>
+  <TR>
+    <TD 
+    style="PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px" 
+    height="100%" vAlign=top width="100%" colSpan=3>
+      <TABLE role=grid aria-readonly=true id=view:_id1:viewPanel1 
+      class=xspDataTable>
+        <THEAD>
+        <TR role=row>
+          <TH role=columnheader style="FONT-SIZE: 8pt; WIDTH: 150px" 
+            scope=col><DIV class=xspPanelViewColumnHeader 
+            style="FONT-SIZE: 8pt; WIDTH: 150px"><SPAN><SPAN 
+            id=view:_id1:viewPanel1:viewColumn3:__internal_header_title_id 
+            class=xspPanelViewColumnHeader 
+            style="FONT-SIZE: 8pt; WIDTH: 150px">Document 
+            Type</SPAN></SPAN></DIV></TH>
+          <TH role=columnheader style="FONT-SIZE: 8pt" scope=col>
+            <DIV class=xspPanelViewColumnHeader 
+            style="FONT-SIZE: 8pt"><SPAN><SPAN 
+            id=view:_id1:viewPanel1:viewColumn1:__internal_header_title_id 
+            class=xspPanelViewColumnHeader style="FONT-SIZE: 8pt">Doc 
+            description</SPAN></SPAN></DIV></TH>
+          <TH role=columnheader style="FONT-SIZE: 8pt" scope=col>
+            <DIV class=xspPanelViewColumnHeader 
+            style="FONT-SIZE: 8pt"><SPAN><SPAN 
+            id=view:_id1:viewPanel1:viewColumn2:__internal_header_title_id 
+            class=xspPanelViewColumnHeader style="FONT-SIZE: 8pt">latest 
+            Update</SPAN></SPAN></DIV></TH></TR></THEAD>
+        <TBODY>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px" colSpan=3>
+            <DIV class=xspColumnViewStart 
+            style="FONT-SIZE: 8pt; WIDTH: 150px"><BUTTON 
+            id=view:_id1:viewPanel1:0:viewColumn3__shrink:1button 
+            title="expanded Job Description" 
+            style="BORDER-TOP-STYLE: none; CURSOR: pointer; WIDTH: 20px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: transparent"><IMG 
+            id=view:_id1:viewPanel1:0:viewColumn3__shrink:1img 
+            alt="expanded Job Description" 
+            src="CCB-IBO-Transfer_files/collapse.gif"></BUTTON><A 
+            id=view:_id1:viewPanel1:0:viewColumn3__shrink:1link 
+            class=xspColumnViewStart style="CURSOR: pointer">Job 
+            Description</A></DIV></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:1:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=0CE81093E740C037C1258033004F4A14&amp;action=openDocument">JD_Credit 
+            Dep_Ping Li</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:1:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">19.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:2:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=A63821B33A3CD433C1258033004F63CB&amp;action=openDocument">JD_Credit 
+            Dep_Zhijin Li</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:2:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">19.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:3:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=19771AA4E3B377CBC1258033004F86E6&amp;action=openDocument">JD_Credit 
+            Dep_Dang Wang-2015-04-01</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:3:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">19.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:4:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=9A53F25ECDF9A5A3C1258033004F9831&amp;action=openDocument">JD_Credit 
+            Dep_Faithi EL Jendoubi</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:4:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">19.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:5:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=2FD0A457414C0E52C1258033004F78ED&amp;action=openDocument">JD_Credit 
+            Dep_Jing Qu</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:5:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">19.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px" colSpan=3>
+            <DIV class=xspColumnViewStart 
+            style="FONT-SIZE: 8pt; WIDTH: 150px"><BUTTON 
+            id=view:_id1:viewPanel1:6:viewColumn3__shrink:2button 
+            title="expanded Desk Instruction" 
+            style="BORDER-TOP-STYLE: none; CURSOR: pointer; WIDTH: 20px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: transparent"><IMG 
+            id=view:_id1:viewPanel1:6:viewColumn3__shrink:2img 
+            alt="expanded Desk Instruction" 
+            src="CCB-IBO-Transfer_files/collapse.gif"></BUTTON><A 
+            id=view:_id1:viewPanel1:6:viewColumn3__shrink:2link 
+            class=xspColumnViewStart style="CURSOR: pointer">Desk 
+            Instruction</A></DIV></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:7:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=AE26C837B17DB5D7C12580640030FFA8&amp;action=openDocument">DI_CAD_001_CreditDept_Large 
+            Loans Million Loans</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:7:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">21.02.2017</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:8:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=CED0AB58B8C7BDFCC1258033004E7F7F&amp;action=openDocument">DI_CAD_002_CreditDept_02001 
+            _Credit Manual 2016</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:8:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">09.12.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:9:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=2AA0B2A1EF294FC0C1258033004EF52A&amp;action=openDocument">DI_CAD_003_CreditDept_02003_CCB 
+            Frankfurt Branch Rating System</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:9:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">09.12.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:10:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=847DCFCBD7744867C1258033004EDC73&amp;action=openDocument">DI_CAD_004_Credit 
+            Dept_02002_Bildung von Kreditnehmereinheiten</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:10:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">09.12.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:11:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=412F1CA9E7B075D6C1258033004F05E2&amp;action=openDocument">DI_CAD_005_Credit 
+            Dept_02004_MaRisk Problem Loans</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:11:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">09.12.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:12:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=12827D3E3CE4C41AC1258033004F1567&amp;action=openDocument">DI_CAD_006_Credit 
+            Dept_02005_Measures of CCBFF for Mortgage (pledge) and 
+          Guarantee</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:12:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">09.12.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:13:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=E8E99F6B27B6B45AC1258033004EBC57&amp;action=openDocument">DI_CAD_007_CreditDept_02001 
+            _Credit_Manual_2015_Anlage</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:13:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">09.12.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px" colSpan=3>
+            <DIV class=xspColumnViewStart 
+            style="FONT-SIZE: 8pt; WIDTH: 150px"><BUTTON 
+            id=view:_id1:viewPanel1:14:viewColumn3__shrink:3button 
+            title="expanded Process" 
+            style="BORDER-TOP-STYLE: none; CURSOR: pointer; WIDTH: 20px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: transparent"><IMG 
+            id=view:_id1:viewPanel1:14:viewColumn3__shrink:3img 
+            alt="expanded Process" 
+            src="CCB-IBO-Transfer_files/collapse.gif"></BUTTON><A 
+            id=view:_id1:viewPanel1:14:viewColumn3__shrink:3link 
+            class=xspColumnViewStart 
+        style="CURSOR: pointer">Process</A></DIV></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:15:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=B7BFC8345FD6CCABC1258034002C9DCE&amp;action=openDocument">CRE_ 
+            Authorized payment_FRP loan procedure</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:15:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">20.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:16:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=B287E1B99FE6B31AC1258034002D0B95&amp;action=openDocument">CRE_Bilateral 
+            Loan Procedure_en</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:16:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">20.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:17:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=91C1454C331C7B8EC1258034002D2095&amp;action=openDocument">CRE_Schuldscheindarlehen 
+            Procedure_en</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:17:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">20.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:18:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=1EFF355CC413D67FC1258033003025EA&amp;action=openDocument">UEB_Forfaitierung_dt</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:18:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">20.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:19:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=8F8A34A85D4E5401C125803300302E11&amp;action=openDocument">UEB_Forfaiting_en</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:19:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">20.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:20:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=7CEDB225E1CB7AF7C1258033003035B4&amp;action=openDocument">UEB_Sale 
+            of Pre-Finance_en</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:20:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">20.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:21:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=8EEFD4D9E28A5737C125803300303EA1&amp;action=openDocument">UEB_Verkauf 
+            Prefinancing_dt</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:21:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">20.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px" colSpan=3>
+            <DIV class=xspColumnViewStart 
+            style="FONT-SIZE: 8pt; WIDTH: 150px"><BUTTON 
+            id=view:_id1:viewPanel1:22:viewColumn3__shrink:4button 
+            title="expanded Head Office Document" 
+            style="BORDER-TOP-STYLE: none; CURSOR: pointer; WIDTH: 20px; BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: transparent"><IMG 
+            id=view:_id1:viewPanel1:22:viewColumn3__shrink:4img 
+            alt="expanded Head Office Document" 
+            src="CCB-IBO-Transfer_files/collapse.gif"></BUTTON><A 
+            id=view:_id1:viewPanel1:22:viewColumn3__shrink:4link 
+            class=xspColumnViewStart style="CURSOR: pointer">Head Office 
+            Document</A></DIV></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:23:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=9EEC15580CCE0A01C12580330047D456&amp;action=openDocument">1.1_JZH[2013] 
+            736_A1_ENG Credit Rating Manual for the Customers of Overseas 
+            Institutions</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:23:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">19.09.2016</SPAN></TD></TR>
+        <TR role=row>
+          <TD role=gridcell class=xspColumnViewStart 
+          style="FONT-SIZE: 8pt; WIDTH: 150px"></TD>
+          <TD role=gridcell class=xspColumnViewMiddle 
+            style="FONT-SIZE: 8pt"><A 
+            id=view:_id1:viewPanel1:24:viewColumn1:_internalColumnLink 
+            class=xspLinkViewColumn style="FONT-SIZE: 8pt" 
+            href="http://ccb-domino/applications/ccb-IBO-Transfer.nsf/myTopic.xsp?documentId=188543DF1C343CD9C125803300486C2F&amp;action=openDocument">1.1_JZH[2013] 
+            736_A310_ENG Credit Rating Manual for the Customers of Overseas 
+            Institutions (Commercial Bank)</A></TD>
+          <TD role=gridcell class=xspColumnViewEnd 
+            style="FONT-SIZE: 8pt"><SPAN 
+            id=view:_id1:viewPanel1:24:viewColumn2:_internalViewText 
+            class=xspTextViewColumn 
+        style="FONT-SIZE: 8pt">19.09.2016</SPAN></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD class=xspDataTableViewPanelFooterStart>&nbsp; </TD>
+    <TD class=xspDataTableViewPanelFooterMiddle>&nbsp;</TD>
+    <TD class=xspDataTableViewPanelFooterEnd>&nbsp; </TD></TR></TBODY></TABLE>
+<TABLE role=presentation style="WIDTH: 100%">
+  <TBODY>
+  <TR></TR></TBODY></TABLE><BR><BR><BR><BR><SPAN 
+style="FONT-SIZE: 8pt; FONT-FAMILY: Arial"></SPAN><INPUT id=view:_id1__VUID 
+type=hidden value=!eomh5u4n86! name=$$viewid> <INPUT type=hidden 
+name=$$xspsubmitid> <INPUT type=hidden name=$$xspexecid> <INPUT type=hidden 
+name=$$xspsubmitvalue> <INPUT type=hidden name=$$xspsubmitscroll> <INPUT 
+type=hidden value=view:_id1 name=view:_id1></FORM>
+<SCRIPT type=text/javascript>
+
+XSP.addOnLoad(function() {
+XSP.attachPartial("view:_id1:_id15", "view:_id1:btnSeach", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachEvent("view:_id1:_id16", "view:_id1:btnClearSearchField", "onclick", null, true, 2);
+XSP.attachEvent("view:_id1:_id41", "view:_id1:btnAllDocs", "onclick", null, true, 2);
+XSP.attachPartial("view:_id1:_id43", "view:_id1:btnHO", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id45", "view:_id1:btnDeskInstructions", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id47", "view:_id1:btnJobDescriptions", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id49", "view:_id1:btnOrganigramm", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id51", "view:_id1:btnProcesses", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id53", "view:_id1:btnInterOffice", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id55", "view:_id1:btnHODoc", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id57", "view:_id1:btnCheckList", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id59", "view:_id1:button4", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachEvent("view:_id1:_id61", "view:_id1:btnEmployee", "onclick", null, true, 2);
+XSP.attachEvent("view:_id1:_id63", "view:_id1:button5", "onclick", null, true, 2);
+XSP.attachPartial("view:_id1:_id67", "view:_id1:btnCurOrganigramm", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id70", "view:_id1:btnGeneralManagement", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id77", "view:_id1:btnFrontOffice", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id79", "view:_id1:btnBackOffice", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id81", "view:_id1:btnCompliance", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id83", "view:_id1:btnInternalAudit", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id85", "view:_id1:btnHRA", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id87", "view:_id1:btnGMA", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id89", "view:_id1:btnFC", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id100", "view:_id1:button1", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id102", "view:_id1:btnRis", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id104", "view:_id1:btnAML", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id109", "view:_id1:btnRiskCommittee", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id112", "view:_id1:btnMarketingI", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id115", "view:_id1:btnICS", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id120", "view:_id1:btnCreditCommittee", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id123", "view:_id1:btnMarketingII", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id125", "view:_id1:btnCA", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id127", "view:_id1:btnBKA", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id132", "view:_id1:btnManagementCommittee", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id141", "view:_id1:button3", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id144", "view:_id1:btnTreasury", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id146", "view:_id1:btnOperations", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id152", "view:_id1:button2", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id156", "view:_id1:btnAccounting", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id165", "view:_id1:btnReporting", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id174", "view:_id1:btnEDP", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:_id183", "view:_id1:btnPayment", null, "onclick", function(){}, 2, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:pager1__Group__lnk__1", null, "view:_id1:viewPanel1:pager1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:pager1__Group__lnk__2", null, "view:_id1:viewPanel1:pager1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:pager1__NextImage", "view:_id1:viewPanel1:pager1__NextImage__img", "view:_id1:viewPanel1:pager1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:pager1__LastImage", "view:_id1:viewPanel1:pager1__LastImage__img", "view:_id1:viewPanel1:pager1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:0:viewColumn3__shrink:1", "view:_id1:viewPanel1:0:viewColumn3__shrink:1button", "view:_id1:viewPanel1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:0:viewColumn3__shrink:1", "view:_id1:viewPanel1:0:viewColumn3__shrink:1link", "view:_id1:viewPanel1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:6:viewColumn3__shrink:2", "view:_id1:viewPanel1:6:viewColumn3__shrink:2button", "view:_id1:viewPanel1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:6:viewColumn3__shrink:2", "view:_id1:viewPanel1:6:viewColumn3__shrink:2link", "view:_id1:viewPanel1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:14:viewColumn3__shrink:3", "view:_id1:viewPanel1:14:viewColumn3__shrink:3button", "view:_id1:viewPanel1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:14:viewColumn3__shrink:3", "view:_id1:viewPanel1:14:viewColumn3__shrink:3link", "view:_id1:viewPanel1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:22:viewColumn3__shrink:4", "view:_id1:viewPanel1:22:viewColumn3__shrink:4button", "view:_id1:viewPanel1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+XSP.attachPartial("view:_id1:viewPanel1:22:viewColumn3__shrink:4", "view:_id1:viewPanel1:22:viewColumn3__shrink:4link", "view:_id1:viewPanel1", "onclick", function(){}, 0, "view:_id1:viewPanel1_OUTER_TABLE");
+}); 
+
+</SCRIPT>
+</BODY></HTML>

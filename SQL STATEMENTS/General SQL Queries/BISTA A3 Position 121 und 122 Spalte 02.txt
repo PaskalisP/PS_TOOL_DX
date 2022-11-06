@@ -1,0 +1,11 @@
+﻿Select '121-02' as Row,A.*, B.[COUNTRY_OF_RESIDENCE] ,B.[CCB_Group],B.[CCB_Group_OwnID],C.[EU EEA],C.[CURRENCY CODE] from   
+[BusinessTypesLiabilitiesDetails] A INNER JOIN  [CUSTOMER_INFO] B on   A.[Client No]=  B.[ClientNo]
+INNER JOIN   [COUNTRIES] C on B.[COUNTRY_OF_RESIDENCE]=C.[COUNTRY CODE] where   A.[RiskDate]='20160630'  
+and A.[BusinessTypeName] in ('BANKS DEMAND DEPOSITS','BANKS DEMAND DEPOSITS - INTERGROUP','BANKS DEPOSITS OVERNIGHT - INTERGROUP') and A.[Product Type] not in ('DDPSUP01')
+and C.[EU EEA]='EU' and C.[CURRENCY CODE]='EUR'  
+UNION ALL
+Select '122-02' as Row,A.*, B.[COUNTRY_OF_RESIDENCE] ,B.[CCB_Group],B.[CCB_Group_OwnID],C.[EU EEA],C.[CURRENCY CODE] from   
+[BusinessTypesLiabilitiesDetails] A INNER JOIN  [CUSTOMER_INFO] B on   A.[Client No]=  B.[ClientNo]
+INNER JOIN   [COUNTRIES] C on B.[COUNTRY_OF_RESIDENCE]=C.[COUNTRY CODE] where   A.[RiskDate]='20160630'  
+and A.[BusinessTypeName] in ('BANKS DEMAND DEPOSITS','BANKS DEMAND DEPOSITS - INTERGROUP','BANKS DEPOSITS OVERNIGHT - INTERGROUP') and A.[Product Type] not in ('DDPSUP01')
+and C.[CURRENCY CODE]<>'EUR' 

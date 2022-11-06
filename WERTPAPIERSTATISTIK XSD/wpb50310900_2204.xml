@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LIEFERUNG-WPINVEST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/statistik/wpinvest/v1 BbkXmwWpInvest.xsd" xmlns:bbk="http://www.bundesbank.de/xmw/2003-01-01" version="1.0" erstellzeit="2022-06-16T08:16:47-05:00" stufe="Produktion" bereich="Statistik" xmlns="http://www.bundesbank.de/statistik/wpinvest/v1">
+    <bbk:ABSENDER>
+        <BLZ>50310900</BLZ>
+        <bbk:NAME>China Construction Bank Corporation , Niederlassung Frankfurt</bbk:NAME>
+        <bbk:STRASSE>Bockenheimer Landstr. 75</bbk:STRASSE>
+        <bbk:ORT>60325 Frankfurt am Main</bbk:ORT>
+        <bbk:LAND>DE</bbk:LAND>
+        <bbk:KONTAKT>
+            <bbk:ANREDE>Herr</bbk:ANREDE>
+            <bbk:VORNAME>Joerg</bbk:VORNAME>
+            <bbk:ZUNAME>Ernst</bbk:ZUNAME>
+            <bbk:ABTEILUNG>Accounting</bbk:ABTEILUNG>
+            <bbk:TELEFON>069/971495-55</bbk:TELEFON>
+            <bbk:FAX>069/971495-77</bbk:FAX>
+            <bbk:EMAIL />
+            <bbk:EXTRANET-ID>EXN5265X</bbk:EXTRANET-ID>
+        </bbk:KONTAKT>
+    </bbk:ABSENDER>
+    <MELDUNG erstellzeit="2022-06-16T08:16:47-05:00">
+        <bbk:MELDER>
+            <BLZ>50310900</BLZ>
+            <bbk:NAME>China Construction Bank Corporation , Niederlassung Frankfurt</bbk:NAME>
+        </bbk:MELDER>
+        <MELDETERMIN>2022-04</MELDETERMIN>
+        <FORMULAR>
+            <KUNDENDEPOTS>
+                <S1100>0</S1100>
+                <S1215>0</S1215>
+                <S1225>0</S1225>
+                <S1228>0</S1228>
+                <S1230>0</S1230>
+                <S1240>0</S1240>
+                <S1251>0</S1251>
+                <S1252>0</S1252>
+                <S1261>0</S1261>
+                <S1262>0</S1262>
+                <S1270>0</S1270>
+                <S1280>0</S1280>
+                <S1290>0</S1290>
+                <S1311>0</S1311>
+                <S1312>0</S1312>
+                <S1313>0</S1313>
+                <S1314>0</S1314>
+                <S1400>0</S1400>
+                <S1500>0</S1500>
+            </KUNDENDEPOTS>
+            <WERTPAPIERE>
+                <WP>
+                    <STAMM>
+                        <ISIN>IT0005215246</ISIN>
+                    </STAMM>
+                    <BESTAND dim="EUR">
+                        <S1224>
+                            <B l="DE">40000000</B>
+                            <BW l="DE">39196000</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>IT0005135840</ISIN>
+                    </STAMM>
+                    <BESTAND dim="EUR">
+                        <S1224>
+                            <B l="DE">38000000</B>
+                            <BW l="DE">38305140</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>XS2078532913</ISIN>
+                    </STAMM>
+                    <BESTAND dim="EUR">
+                        <S1224>
+                            <B l="DE">10000000</B>
+                            <BW l="DE">9541500</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>XS2078532913</ISIN>
+                    </STAMM>
+                    <BESTAND dim="EUR">
+                        <S1224>
+                            <B l="DE">20000000</B>
+                            <BW l="DE">19083000</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>IT0005437147</ISIN>
+                    </STAMM>
+                    <BESTAND dim="EUR">
+                        <S1224>
+                            <B l="DE">39000000</B>
+                            <BW l="DE">37183770</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>IT0005452989</ISIN>
+                    </STAMM>
+                    <BESTAND dim="EUR">
+                        <S1224>
+                            <B l="DE">38000000</B>
+                            <BW l="DE">37394660</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>XS2387567311</ISIN>
+                    </STAMM>
+                    <BESTAND dim="USD">
+                        <S1224>
+                            <B l="DE">67946322.4</B>
+                            <BW l="DE">67564848.7</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>XS2378772417</ISIN>
+                    </STAMM>
+                    <BESTAND dim="USD">
+                        <S1224>
+                            <B l="DE">1732726.88</B>
+                            <BW l="DE">1728367.68</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>XS2378772417</ISIN>
+                    </STAMM>
+                    <BESTAND dim="USD">
+                        <S1224>
+                            <B l="DE">10396361.28</B>
+                            <BW l="DE">10370206.08</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+                <WP>
+                    <STAMM>
+                        <ISIN>XS9999999999</ISIN>
+                    </STAMM>
+                    <BESTAND dim="EUR">
+                        <S1224>
+                            <B l="DE">20000000</B>
+                            <BW l="DE">20000000</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+            </WERTPAPIERE>
+        </FORMULAR>
+    </MELDUNG>
+</LIEFERUNG-WPINVEST>

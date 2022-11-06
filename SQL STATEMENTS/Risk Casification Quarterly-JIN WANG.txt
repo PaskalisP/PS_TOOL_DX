@@ -1,0 +1,22 @@
+﻿Select  m.[Product Type],  m.[Counterparty/Issuer/Collateral Provider],  m.[Client No],  m.[Country of Risk],  m.[Country of Residence],  m.[Contract Collateral ID],  m.[Start Date],  m.[Maturity Date],  m.[Org Ccy],  m.[Credit Exposure] , l.[Outstanding Principal EUR] as [Amount Euro Equivelant Principal],  c.[Obligor Rate],m.[Industry(HO)]
+ from   
+[MAK REPORT] as m,
+[CREDIT RISK] as c,
+[CL_DRAWDOWN_OUTSTANDING] as l
+where   m.[RiskDate]='20141231' and c.[RiskDate]= '20141231' and l.[RepDate]='20141231'
+and m.[Contract Collateral ID]=c.[Contract Collateral ID] 
+and m.[Contract Collateral ID]=l.[Contract No] 
+and m.[Product Type]=c.[Product Type]
+and m.[Contract Type]=c.[Contract Type]
+and m.[Client No]=c.[Client No] and m.[Org Ccy]=c.[Org Ccy]
+and m.[Product Type] in ('BLFNBD','BLFTDD','CLCCTP','EALLC','FORFTDL','FRP','PHML','SYFTDD','LGNFN')
+
+
+
+
+
+
+
+
+
+

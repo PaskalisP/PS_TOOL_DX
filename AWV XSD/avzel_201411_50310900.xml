@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<LIEFERUNG-AWZEL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/xmw/2003-01-01 BbkXmwAwzel.xsd" version="1.0" erstellzeit="2014-12-03T01:15:05" stufe="Produktion" bereich="Statistik" xmlns="http://www.bundesbank.de/xmw/2003-01-01">
+    <ABSENDER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank,Niederlassung Frankfurt am Main</NAME>
+        <STRASSE>Bockenheimer Landstr. 51 - 53</STRASSE>
+        <PLZ>60325</PLZ>
+        <ORT>Frankfurt am Main</ORT>
+        <LAND>DE</LAND>
+        <KONTAKT>
+            <ANREDE>Herr</ANREDE>
+            <VORNAME>Paschalis</VORNAME>
+            <ZUNAME>Papas</ZUNAME>
+            <ABTEILUNG>EDV Abteilung</ABTEILUNG>
+            <TELEFON>069/971495-43</TELEFON>
+            <FAX>069/971495-72</FAX>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            <EXTRANET-ID>EXNDBWDF</EXTRANET-ID>
+        </KONTAKT>
+    </ABSENDER>
+    <ERSTELLER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank,Niederlassung Frankfurt am Main</NAME>
+        <KONTAKT>
+            <ZUNAME>Papas</ZUNAME>
+            <TELEFON>069/971495-43</TELEFON>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+        </KONTAKT>
+    </ERSTELLER>
+    <KOMMENTAR>Monatsmeldung AWV</KOMMENTAR>
+    <MELDUNG erstellzeit="2014-12-03T01:15:05">
+        <MELDEPFLICHTIGER>
+            <FIRMENNR>50310900</FIRMENNR>
+            <NAME>China Construction Bank,Niederlassung Frankfurt am Main</NAME>
+            <STRASSE>Bockenheimer Landstr. 51 - 53</STRASSE>
+            <PLZ>60325</PLZ>
+            <ORT>Frankfurt am Main</ORT>
+            <KONTAKT>
+                <ZUNAME>Papas</ZUNAME>
+                <TELEFON>069/971495-43</TELEFON>
+                <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            </KONTAKT>
+        </MELDEPFLICHTIGER>
+        <MELDETERMIN>2014-11</MELDETERMIN>
+        <MELDUNGSREF>meldung vom November 2014</MELDUNGSREF>
+        <VDR_04>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="SWIFT GEBÜHREN">
+                <BETRAG land="BE" landname="BELGIUM">3</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="KONTOFÜHRUNGSGEBÜHREN">
+                <BETRAG land="CN" landname="CHINA">13</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="3" kennzahl="583" zahlungszweck="ZINSEN AUF WERTPAPIERE GEBIETSFREMDER EMITTENTEN">
+                <BETRAG land="US" landname="UNITED STATES">7</BETRAG>
+            </DIKAPPOSTEN>
+        </VDR_04>
+        <VDR_14>
+            <BETRAG land="LU" landname="LUXEMBOURG">2</BETRAG>
+            <BETRAG land="CN" landname="CHINA">4126</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">23</BETRAG>
+        </VDR_14>
+        <VDR_15>
+            <BETRAG land="NL" landname="NETHERLANDS">41</BETRAG>
+            <BETRAG land="SG" landname="SINGAPORE">35</BETRAG>
+            <BETRAG land="AT" landname="AUSTRIA">47</BETRAG>
+            <BETRAG land="CN" landname="CHINA">218</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">250</BETRAG>
+            <BETRAG land="MO" landname="MACAO">275</BETRAG>
+        </VDR_15>
+    </MELDUNG>
+</LIEFERUNG-AWZEL>

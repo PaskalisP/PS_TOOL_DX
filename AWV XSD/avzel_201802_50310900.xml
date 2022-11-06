@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<LIEFERUNG-AWZEL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/xmw/2003-01-01 BbkXmwAwzel.xsd" version="1.0" erstellzeit="2018-03-05T11:44:48" stufe="Produktion" bereich="Statistik" xmlns="http://www.bundesbank.de/xmw/2003-01-01">
+    <ABSENDER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+        <STRASSE>Bockenheimer Landstr. 75</STRASSE>
+        <PLZ>60325</PLZ>
+        <ORT>Frankfurt am Main</ORT>
+        <LAND>DE</LAND>
+        <KONTAKT>
+            <ANREDE>Herr</ANREDE>
+            <VORNAME>Paschalis</VORNAME>
+            <ZUNAME>Papas</ZUNAME>
+            <ABTEILUNG>EDV Abteilung</ABTEILUNG>
+            <TELEFON>069/971495-43</TELEFON>
+            <FAX>069/971495-72</FAX>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            <EXTRANET-ID>EXNDBWDF</EXTRANET-ID>
+        </KONTAKT>
+    </ABSENDER>
+    <ERSTELLER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+        <KONTAKT>
+            <ZUNAME>Papas</ZUNAME>
+            <TELEFON>069/971495-43</TELEFON>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+        </KONTAKT>
+    </ERSTELLER>
+    <KOMMENTAR>Monatsmeldung AWV</KOMMENTAR>
+    <MELDUNG erstellzeit="2018-03-05T11:44:48">
+        <MELDEPFLICHTIGER>
+            <FIRMENNR>50310900</FIRMENNR>
+            <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+            <STRASSE>Bockenheimer Landstr. 75</STRASSE>
+            <PLZ>60325</PLZ>
+            <ORT>Frankfurt am Main</ORT>
+            <KONTAKT>
+                <ZUNAME>Memadathil</ZUNAME>
+                <TELEFON>069/971495-82</TELEFON>
+                <EMAIL>Benny_Memadathil@ccbff.de</EMAIL>
+            </KONTAKT>
+        </MELDEPFLICHTIGER>
+        <MELDETERMIN>2018-02</MELDETERMIN>
+        <MELDUNGSREF>meldung vom Februar 2018</MELDUNGSREF>
+        <VDR_04>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="KONTOFUEHRUNGSGEBUEHREN">
+                <BETRAG land="CN" landname="CHINA" betragsref="CCB HO">15</BETRAG>
+            </DIKAPPOSTEN>
+        </VDR_04>
+        <VDR_14>
+            <BETRAG land="NL" landname="NETHERLANDS">55</BETRAG>
+            <BETRAG land="VG" landname="VIRGIN ISLANDS, ">240</BETRAG>
+            <BETRAG land="AT" landname="AUSTRIA">108</BETRAG>
+            <BETRAG land="CN" landname="CHINA">816</BETRAG>
+            <BETRAG land="FI" landname="FINLAND">124</BETRAG>
+        </VDR_14>
+        <VDR_15>
+            <BETRAG land="JP" landname="JAPAN">79</BETRAG>
+            <BETRAG land="SG" landname="SINGAPORE">68</BETRAG>
+            <BETRAG land="US" landname="UNITED STATES">522</BETRAG>
+            <BETRAG land="VN" landname="VIET NAM">5</BETRAG>
+            <BETRAG land="AE" landname="UNITED ARAB EMIR">50</BETRAG>
+            <BETRAG land="CN" landname="CHINA">3682</BETRAG>
+            <BETRAG land="FR" landname="FRANCE">36</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">1851</BETRAG>
+        </VDR_15>
+    </MELDUNG>
+</LIEFERUNG-AWZEL>

@@ -1,0 +1,1 @@
+﻿SELECT SUBSTRING([Contract Collateral ID], PATINDEX('%[^0 ]%', [Contract Collateral ID] + ' '), LEN([Contract Collateral ID]))

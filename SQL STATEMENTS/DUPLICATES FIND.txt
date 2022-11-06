@@ -1,0 +1,1 @@
+﻿SELECT *  FROM [ODAS REMMITANCES] where [ID] not in (Select Min([ID]) from [ODAS REMMITANCES] group by [EM00KEY0])

@@ -1,0 +1,1 @@
+﻿update  [RATERISK TOTALS] Set   [Principal Amount/Value Balance]=504150364.81,  [Principal Amount/Value Balance(EUR Equ)]=59514858.32 where   [ID]=13380

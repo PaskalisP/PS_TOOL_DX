@@ -1,0 +1,103 @@
+﻿
+CREATE TABLE [#Temp_AnaCreditCheckResults](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CheckingDataTable] [nvarchar](50) NULL,
+	[ClientNr] [nvarchar](50) NULL,
+	[ClientName] [nvarchar](200) NULL,
+	[Country_EU_NoneEU] [nvarchar](1) NULL,
+	[PostalCode_Check] [nvarchar](1) NULL,
+	[NUTS3_EU_Check] [nvarchar](1) NULL,
+	[NationalIdentifier_Check] [nvarchar](1) NULL,
+	[LegalForm_ALL_Check] [nvarchar](1) NULL,
+	[EnterpriseSize_ALL_Check] [nvarchar](1) NULL,
+	[EnterpriseSizeDate_EU_Check] [nvarchar](1) NULL,
+	[EmployeeNr_EU_Check] [nvarchar](1) NULL,
+	[BalanceSheet_EU_Check] [nvarchar](1) NULL,
+	[AnnualTurnover_EU_Check] [nvarchar](1) NULL,
+	[LegalProceedingsDate_EU_Check] [nvarchar](1) NULL,
+	[CheckResult] [nvarchar](1) NULL) ON [PRIMARY]
+
+
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_Country_EU_NoneEU]  DEFAULT (N'N') FOR [Country_EU_NoneEU]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_PostalCode_EU_Check]  DEFAULT (N'N') FOR [PostalCode_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_NUTS3_EU_Check]  DEFAULT (N'N') FOR [NUTS3_EU_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_NationalIdentifier_noDE_Check]  DEFAULT (N'N') FOR [NationalIdentifier_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_LegalForm_ALL_Check]  DEFAULT (N'N') FOR [LegalForm_ALL_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_EnterpriseSize_ALL_Check]  DEFAULT (N'N') FOR [EnterpriseSize_ALL_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_EnterpriseSizeDate_EU_Check]  DEFAULT (N'N') FOR [EnterpriseSizeDate_EU_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_EmployeeNr_EU_Check]  DEFAULT (N'N') FOR [EmployeeNr_EU_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_BalanceSheet_EU_Check]  DEFAULT (N'N') FOR [BalanceSheet_EU_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_AnnualTurnover_EU_Check]  DEFAULT (N'N') FOR [AnnualTurnover_EU_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_LegalProceedingsDate_EU_Check]  DEFAULT (N'N') FOR [LegalProceedingsDate_EU_Check]
+ALTER TABLE [#Temp_AnaCreditCheckResults] ADD  CONSTRAINT [DF_#Temp_AnaCreditCheckResults_CheckResult]  DEFAULT (N'N') FOR [CheckResult]
+
+INSERT INTO [#Temp_AnaCreditCheckResults]
+           ([CheckingDataTable]
+           ,[ClientNr]
+           ,[ClientName]
+           ,[Country_EU_NoneEU])
+   Select 
+           'CUSTOMER INFO'
+          ,ClientNo
+         ,[English Name]
+         ,EU_COUNTRY
+    from CUSTOMER_INFO where AnaCredit_Customer in ('Y') and CLOSE_DATE is NULL
+
+Update A SET A.PostalCode_Check='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B on A.ClientNr=B.ClientNo where B.ADDRESS3 is not NULL 
+Update A SET A.NUTS3_EU_Check='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B on A.ClientNr=B.ClientNo where B.NUTS_3_Region is not NULL and a.Country_EU_NoneEU in ('Y')
+Update A SET A.NationalIdentifier_Check='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where B.National_Identifier_Type is not NULL  and b.COUNTRY_OF_RESIDENCE not in ('DE')
+Update A SET A.NationalIdentifier_Check='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where  b.COUNTRY_OF_RESIDENCE in ('DE')
+ and National_Identifier_Type in ('DE_HRA_CD','DE_HRB_CD','DE_PR_CD','DE_VR_CD','DE_GNR_CD')
+	 and National_Identifier_Type_Value like '%-%' 
+	 and dbo.GetStringPartByDelimeter(National_Identifier_Type_Value,'-',2) in 
+	 (Select SQL_Name_1 from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details in (Select ID from  SQL_PARAMETER_DETAILS where SQL_Name_1 in ('JUSTIZ_ID_DE')))
+
+Update A SET A.LegalForm_ALL_Check='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where B.Legal_Form is not NULL
+
+Update A SET A.[EnterpriseSize_ALL_Check]='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where B.Enterprice_Size is not NULL
+
+Update A SET A.[EnterpriseSizeDate_EU_Check]='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where B.Employees_Nr is not NULL and a.Country_EU_NoneEU in ('Y')
+
+Update A SET A.[EmployeeNr_EU_Check]='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where B.Enterprice_Size_Date is not NULL and a.Country_EU_NoneEU in ('Y')
+
+Update A SET A.[BalanceSheet_EU_Check]='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where B.Balance_Sheet_Total is not NULL and a.Country_EU_NoneEU in ('Y')
+
+Update A SET A.[AnnualTurnover_EU_Check]='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where B.Annual_Turnover_in_EUR_Mio is not NULL and a.Country_EU_NoneEU in ('Y')
+
+Update A SET A.[LegalProceedingsDate_EU_Check]='Y' from [#Temp_AnaCreditCheckResults] A INNER JOIN CUSTOMER_INFO B 
+on A.ClientNr=B.ClientNo where (B.Legal_Proceedings_Status not in ('N') and Legal_Proceedings_Date is not NULL and a.Country_EU_NoneEU in ('Y'))
+or (B.Legal_Proceedings_Status in ('N') and Legal_Proceedings_Date is NULL and a.Country_EU_NoneEU in ('Y'))
+
+Update [#Temp_AnaCreditCheckResults] set [NUTS3_EU_Check]='Y'
+	,[EnterpriseSizeDate_EU_Check]='Y'
+	,[EmployeeNr_EU_Check]='Y',
+	[BalanceSheet_EU_Check]='Y',
+	[AnnualTurnover_EU_Check]='Y',
+	[LegalProceedingsDate_EU_Check]='Y' where Country_EU_NoneEU in ('N')
+
+	Update [#Temp_AnaCreditCheckResults] set [CheckResult]='Y' where 
+	[PostalCode_Check]='Y' and 
+	[NUTS3_EU_Check]='Y' and
+	[NationalIdentifier_Check]='Y' and 
+	[LegalForm_ALL_Check]='Y' and 
+	[EnterpriseSize_ALL_Check]='Y' and 
+	[EnterpriseSizeDate_EU_Check]='Y' and 
+	[EmployeeNr_EU_Check]='Y' and 
+	[BalanceSheet_EU_Check]='Y' and 
+	[AnnualTurnover_EU_Check]='Y' and 
+	[LegalProceedingsDate_EU_Check]='Y' 
+
+select * from [#Temp_AnaCreditCheckResults]
+
+drop table #Temp_AnaCreditCheckResults
+
+
+

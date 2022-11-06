@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<zvs:LIEFERUNG-ZVS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/statistik/zvs/v1 BbkXmwZVS2014.xsd" xmlns:zvs="http://www.bundesbank.de/statistik/zvs/v1" xmlns:bbk="http://www.bundesbank.de/xmw/2003-01-01" version="1.0" erstellzeit="2015-01-19T03:55:02Z" stufe="Produktion" bereich="Statistik">
+    <bbk:ABSENDER>
+        <zvs:BLZ>50310900</zvs:BLZ>
+        <bbk:NAME>China Construction Bank , Niederlassung Frankfurt am Main</bbk:NAME>
+        <bbk:STRASSE>Bockenheimer Landstr. 51 - 53</bbk:STRASSE>
+        <bbk:ORT>60325 Frankfurt am Main</bbk:ORT>
+        <bbk:LAND>DE</bbk:LAND>
+        <bbk:KONTAKT>
+            <bbk:ANREDE>Herr</bbk:ANREDE>
+            <bbk:VORNAME>Paschalis</bbk:VORNAME>
+            <bbk:ZUNAME>Papas</bbk:ZUNAME>
+            <bbk:ABTEILUNG>EDV</bbk:ABTEILUNG>
+            <bbk:TELEFON>069/971495-43</bbk:TELEFON>
+            <bbk:FAX>069/971495-72</bbk:FAX>
+            <bbk:EMAIL>Paschalis_Papas@ccbff.de</bbk:EMAIL>
+            <bbk:EXTRANET-ID>EXNDBWDF</bbk:EXTRANET-ID>
+        </bbk:KONTAKT>
+    </bbk:ABSENDER>
+    <zvs:MELDUNG erstellzeit="2015-01-19T03:55:02Z">
+        <bbk:MELDER>
+            <zvs:BLZ>50310900</zvs:BLZ>
+            <bbk:NAME>China Construction Bank , Niederlassung Frankfurt am Main</bbk:NAME>
+            <bbk:STRASSE>Bockenheimer Landstr. 51 - 53</bbk:STRASSE>
+            <bbk:ORT>60325  Frankfurt am Main</bbk:ORT>
+            <bbk:KONTAKT>
+                <bbk:ANREDE>Herr</bbk:ANREDE>
+                <bbk:VORNAME>Paschalis</bbk:VORNAME>
+                <bbk:ZUNAME>Papas</bbk:ZUNAME>
+                <bbk:ABTEILUNG>EDV</bbk:ABTEILUNG>
+                <bbk:TELEFON>069/971495-43</bbk:TELEFON>
+                <bbk:FAX>069/971495-72</bbk:FAX>
+                <bbk:EMAIL>Paschalis_Papas@ccbff.de</bbk:EMAIL>
+                <bbk:EXTRANET-ID>EXNDBWDF</bbk:EXTRANET-ID>
+            </bbk:KONTAKT>
+        </bbk:MELDER>
+        <zvs:MELDETERMIN>2014-12</zvs:MELDETERMIN>
+        <zvs:FORMULAR-ZVS1>
+            <zvs:FELD Pos="A1" Land="DE" Anzahl="150" />
+            <zvs:FELD Pos="A11" Land="DE" Anzahl="59" />
+            <zvs:FELD Pos="A12" Land="DE" Anzahl="150" />
+            <zvs:FELD Pos="A121" Land="DE" Anzahl="59" />
+        </zvs:FORMULAR-ZVS1>
+        <zvs:FORMULAR-ZVS4>
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="A1" Anzahl="3644" Wert="5020115337" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="DE" Anzahl="2486" Wert="2553284851" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="U9" Anzahl="982" Wert="2438493466" />
+            <zvs:FELD Pos="T2.I21" Landkontext="FROM" Land="Z9" Anzahl="892" Wert="58858938" />
+            <zvs:FELD Pos="T2.I211" Landkontext="TO" Land="A1" Anzahl="1925" Wert="4969163184" />
+            <zvs:FELD Pos="T2.I212" Landkontext="TO" Land="A1" Anzahl="1719" Wert="50952153" />
+            <zvs:FELD Pos="T2.I2122" Landkontext="TO" Land="A1" Anzahl="1719" Wert="50952153" />
+            <zvs:FELD Pos="T2.I21001" Landkontext="TO" Land="A1" Anzahl="3644" Wert="5020115337" />
+            <zvs:FELD Pos="T2.I22" Landkontext="FROM" Land="Z9" Anzahl="50" Wert="1960293" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="A1" Anzahl="3644" Wert="5020115337" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="DE" Anzahl="2486" Wert="2553284851" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="U9" Anzahl="982" Wert="2438493466" />
+            <zvs:FELD Pos="T0" Landkontext="FROM" Land="Z9" Anzahl="892" Wert="58858938" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="AT" Anzahl="27" Wert="9276724" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="BE" Anzahl="6" Wert="37800" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="CZ" Anzahl="50" Wert="839450" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="DK" Anzahl="1" Wert="451" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="ES" Anzahl="12" Wert="33066" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="FR" Anzahl="12" Wert="2996854" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="GB" Anzahl="51" Wert="11922898" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="IT" Anzahl="3" Wert="642619" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="NL" Anzahl="12" Wert="559622" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="PL" Anzahl="1" Wert="1601355" />
+            <zvs:FELD Pos="T2.I21" Landkontext="TO" Land="RO" Anzahl="1" Wert="426182" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="AT" Anzahl="27" Wert="9276724" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="BE" Anzahl="6" Wert="37800" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="CZ" Anzahl="50" Wert="839450" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="DK" Anzahl="1" Wert="451" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="ES" Anzahl="12" Wert="33066" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="FR" Anzahl="12" Wert="2996854" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="GB" Anzahl="51" Wert="11922898" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="IT" Anzahl="3" Wert="642619" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="NL" Anzahl="12" Wert="559622" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="PL" Anzahl="1" Wert="1601355" />
+            <zvs:FELD Pos="T0" Landkontext="TO" Land="RO" Anzahl="1" Wert="426182" />
+        </zvs:FORMULAR-ZVS4>
+        <zvs:FORMULAR-ZVS8>
+            <zvs:FELD Pos="T2.I241" Landkontext="TO" Land="A1" Anzahl="525" Wert="178519943" />
+            <zvs:FELD Pos="T2.I242" Landkontext="TO" Land="A1" Anzahl="908" Wert="192621447" />
+        </zvs:FORMULAR-ZVS8>
+    </zvs:MELDUNG>
+</zvs:LIEFERUNG-ZVS>

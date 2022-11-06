@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<LIEFERUNG-AWZEL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/xmw/2003-01-01 BbkXmwAwzel.xsd" version="1.0" erstellzeit="2017-01-05T02:41:01" stufe="Produktion" bereich="Statistik" xmlns="http://www.bundesbank.de/xmw/2003-01-01">
+    <ABSENDER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+        <STRASSE>Bockenheimer Landstr. 51 - 53</STRASSE>
+        <PLZ>60325</PLZ>
+        <ORT>Frankfurt am Main</ORT>
+        <LAND>DE</LAND>
+        <KONTAKT>
+            <ANREDE>Herr</ANREDE>
+            <VORNAME>Paschalis</VORNAME>
+            <ZUNAME>Papas</ZUNAME>
+            <ABTEILUNG>EDV Abteilung</ABTEILUNG>
+            <TELEFON>069/971495-43</TELEFON>
+            <FAX>069/971495-72</FAX>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            <EXTRANET-ID>EXNDBWDF</EXTRANET-ID>
+        </KONTAKT>
+    </ABSENDER>
+    <ERSTELLER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+        <KONTAKT>
+            <ZUNAME>Papas</ZUNAME>
+            <TELEFON>069/971495-43</TELEFON>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+        </KONTAKT>
+    </ERSTELLER>
+    <KOMMENTAR>Monatsmeldung AWV</KOMMENTAR>
+    <MELDUNG erstellzeit="2017-01-05T02:41:01">
+        <MELDEPFLICHTIGER>
+            <FIRMENNR>50310900</FIRMENNR>
+            <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+            <STRASSE>Bockenheimer Landstr. 51 - 53</STRASSE>
+            <PLZ>60325</PLZ>
+            <ORT>Frankfurt am Main</ORT>
+            <KONTAKT>
+                <ZUNAME>Memadathil</ZUNAME>
+                <TELEFON>069/971495-82</TELEFON>
+                <EMAIL>Benny_Memadathil@ccbff.de</EMAIL>
+            </KONTAKT>
+        </MELDEPFLICHTIGER>
+        <MELDETERMIN>2016-12</MELDETERMIN>
+        <MELDUNGSREF>meldung vom Dezember 2016</MELDUNGSREF>
+        <VDR_04>
+            <DIKAPPOSTEN belegart="2" kennzahl="536" zahlungszweck="GEBUEHREN">
+                <BETRAG land="GB" landname="UNITED KINGDOM" betragsref="Taylor Wessing">5</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="571" zahlungszweck="ERSTATTUNG HO">
+                <BETRAG land="CN" landname="CHINA" betragsref="17900000">82</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="KONTOFUEHRUNGSGEBUEHREN">
+                <BETRAG land="CN" landname="CHINA" betragsref="53118934">15</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="523" zahlungszweck="PROVISIONEN">
+                <BETRAG land="IE" landname="IRELAND" betragsref="Haitong">15</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="523" zahlungszweck="PROVISIONEN">
+                <BETRAG land="LU" landname="LUXEMBOURG" betragsref="CCB Lux (53306939)">13</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="523" zahlungszweck="PROVISIONEN">
+                <BETRAG land="HK" landname="HONG KONG" betragsref="TipTop (53405942)">3</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="HO LIMIT">
+                <BETRAG land="CN" landname="CHINA" betragsref="58115000">242</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="695" zahlungszweck="SOZIALVERSICHERUNGEN EXPATRIATES">
+                <BETRAG land="CN" landname="CHINA" betragsref="71990000">69</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="SWIFT">
+                <BETRAG land="BE" landname="BELGIUM" betragsref="75301000">3</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="619" zahlungszweck="CHINESISCHE BANKENAUFSICHT">
+                <BETRAG land="CN" landname="CHINA" betragsref="79701000">70</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="4" kennzahl="223" zahlungszweck="SSD SEB">
+                <BETRAG land="FR" landname="FRANCE" betragsref="SEB S.A.">15000</BETRAG>
+            </DIKAPPOSTEN>
+        </VDR_04>
+        <VDR_14>
+            <BETRAG land="CN" landname="CHINA">4899</BETRAG>
+            <BETRAG land="FR" landname="FRANCE">34</BETRAG>
+            <BETRAG land="GB" landname="UNITED KINGDOM">28</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">7</BETRAG>
+            <BETRAG land="JP" landname="JAPAN">102</BETRAG>
+            <BETRAG land="LU" landname="LUXEMBOURG">168</BETRAG>
+            <BETRAG land="NL" landname="NETHERLANDS">8</BETRAG>
+        </VDR_14>
+        <VDR_15>
+            <BETRAG land="AT" landname="AUSTRIA">14</BETRAG>
+            <BETRAG land="AU" landname="AUSTRALIA">48</BETRAG>
+            <BETRAG land="CN" landname="CHINA">7748</BETRAG>
+            <BETRAG land="GB" landname="UNITED KINGDOM">7</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">641</BETRAG>
+            <BETRAG land="JP" landname="JAPAN">24</BETRAG>
+            <BETRAG land="MY" landname="MALAYSIA">28</BETRAG>
+        </VDR_15>
+    </MELDUNG>
+</LIEFERUNG-AWZEL>

@@ -1,0 +1,32 @@
+﻿INSERT INTO [dbo].[CREDIT RISK]
+           ([Obligor Rate]
+           ,[Contract Type]
+           ,[Product Type]
+           ,[Counterparty/Issuer/Collateral Name]
+           ,[Client No]
+           ,[Contract Collateral ID]
+           ,[Maturity Date]
+           ,[Remaining Year(s) to Maturity]
+           ,[Org Ccy]
+           ,[Credit Outstanding (EUR Equ)]
+           ,[RiskDate]
+           ,[RepDate]
+           ,[DateMakCrTotals]
+           ,[ClientGroup]
+           ,[ClientGroupName])
+     VALUES
+           ('2'
+           ,'DLDPL'
+           ,'DLDPL'
+           ,'CCB SHANGHAI BRANCH SHY'
+           ,'67820053'
+           ,'TIME DEPOSIT CCB SHANGHAI'
+           ,'20150829'
+           ,2
+           ,'CNY'
+           ,59024908.51
+           ,'20140630'
+           ,'20140630'
+           ,'20140630'
+           ,'1000'
+           ,'CCB GROUP')

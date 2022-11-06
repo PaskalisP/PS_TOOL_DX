@@ -1,0 +1,15 @@
+﻿Select [AccNr],[Balance] FROM [ACCNR_TRIAL_BLNC_WEI_GUO_NEW] order by [ID] asc 
+
+Begin UPDATE [ACCNR_TRIAL_BLNC_WEI_GUO_NEW] SET [Balance]=0 
+end
+
+Begin UPDATE A SET A.[Balance]=B.[Totals]*(-1) 
+FROM [ACCNR_TRIAL_BLNC_WEI_GUO_NEW] A INNER JOIN [TRIAL_BALANCE_218] B on A.[AccNr]=LTRIM(Left(Cast(B.[AccountNo] as int),5)) where B.[RepDate]='20141231' 
+end
+-------------------------------------------------------------------------------------------
+--++++Command muss zweimal ausgeführt werden+++++++++
+--IM EXCEL FORMULAR HABEN FOLGENDE ZEILEN KEINEN WERT
+--Zeile 913-917  und Zeile 1373
+--------------------------------------------------------------------------------------------
+
+ 

@@ -1,0 +1,1 @@
+﻿update   [RISK LIMIT DAILY CONTROL] set   [CCBINFO Obligo Liability surplus Default]=291347758.49  where   [RLDC Date]='20140701'

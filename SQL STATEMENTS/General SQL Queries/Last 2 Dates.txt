@@ -1,0 +1,11 @@
+﻿SELECT A.GL_Rep_Date,B.RowNumber
+FROM CUSTOMER_VOLUMES A
+JOIN (SELECT TOP 2
+        GL_Rep_Date, 
+        ROW_NUMBER() OVER (ORDER BY GL_Rep_Date DESC) AS RowNumber
+      FROM CUSTOMER_VOLUMES B --where GL_Rep_Date<@RISKDATE
+      GROUP BY GL_Rep_Date
+     ) B
+  ON A.GL_Rep_Date = B.GL_Rep_Date
+ AND B.RowNumber in (1,2)
+ GROUP BY A.GL_Rep_Date,B.RowNumber

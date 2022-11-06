@@ -1,0 +1,163 @@
+Ordnungskennzeichen : 1->67803014
+              Konto : 1->8030145000
+Ordnungskennzeichen : 2->67803016
+              Konto : 2->8030162000
+Ordnungskennzeichen : 3->67803020
+              Konto : 3->8030208000
+              Konto : 4->8030207100
+Ordnungskennzeichen : 4->67803036
+              Konto : 5->8030367000
+              Konto : 6->678110031240001
+              Konto : 7->678110031240002
+Ordnungskennzeichen : 5->67803053
+              Konto : 8->8030530000
+Ordnungskennzeichen : 6->67803056
+              Konto : 9->8030561000
+              Konto : 10->678110029260001
+Ordnungskennzeichen : 7->67803350
+              Konto : 11->8033507000
+Ordnungskennzeichen : 8->67803398
+              Konto : 12->8033985000
+Ordnungskennzeichen : 9->67803399
+              Konto : 13->8033999000
+Ordnungskennzeichen : 10->67803408
+              Konto : 14->8034089000
+Ordnungskennzeichen : 11->67803444
+              Konto : 15->8034443000
+              Konto : 16->8034442100
+Ordnungskennzeichen : 12->67803445
+              Konto : 17->8034457000
+Ordnungskennzeichen : 13->67803469
+              Konto : 18->8034696000
+Ordnungskennzeichen : 14->67803485
+              Konto : 19->8034856000
+              Konto : 20->678110033190001
+Ordnungskennzeichen : 15->67803493
+              Konto : 21->8034934200
+              Konto : 22->8034935100
+              Konto : 23->8034936000
+Ordnungskennzeichen : 16->67803565
+              Konto : 24->8035650000
+Ordnungskennzeichen : 17->67803566
+              Konto : 25->8035664000
+Ordnungskennzeichen : 18->67803567
+              Konto : 26->8035678000
+Ordnungskennzeichen : 19->67803569
+              Konto : 27->8035695000
+              Konto : 28->678110022780001
+              Konto : 29->678110028190001
+              Konto : 30->678110033910001
+Ordnungskennzeichen : 20->67803572
+              Konto : 31->8035727000
+Ordnungskennzeichen : 21->67803577
+              Konto : 32->8035775000
+Ordnungskennzeichen : 22->67803582
+              Konto : 33->8035824000
+Ordnungskennzeichen : 23->67803590
+              Konto : 34->8035904000
+Ordnungskennzeichen : 24->67803591
+              Konto : 35->8035918000
+Ordnungskennzeichen : 25->67803592
+              Konto : 36->678250000000606
+Ordnungskennzeichen : 26->67803593
+              Konto : 37->8035935000
+Ordnungskennzeichen : 27->67803597
+              Konto : 38->8035970000
+Ordnungskennzeichen : 28->67803600
+              Konto : 39->8036008000
+Ordnungskennzeichen : 29->67803604
+              Konto : 40->8036042000
+Ordnungskennzeichen : 30->67803605
+              Konto : 41->8036056000
+Ordnungskennzeichen : 31->67803613
+              Konto : 42->8036136000
+              Konto : 43->8036135100
+Ordnungskennzeichen : 32->67803616
+              Konto : 44->8036167000
+Ordnungskennzeichen : 33->67803618
+              Konto : 45->8036184000
+Ordnungskennzeichen : 34->67803622
+              Konto : 46->8036220000
+Ordnungskennzeichen : 35->67803638
+              Konto : 47->8036389000
+Ordnungskennzeichen : 36->67803640
+              Konto : 48->8036407000
+Ordnungskennzeichen : 37->67803641
+              Konto : 49->8036410000
+Ordnungskennzeichen : 38->67803644
+              Konto : 50->8036441000
+Ordnungskennzeichen : 39->67803645
+              Konto : 51->8036455000
+Ordnungskennzeichen : 40->67803652
+              Konto : 52->8036521000
+Ordnungskennzeichen : 41->67803653
+              Konto : 53->8036535000
+Ordnungskennzeichen : 42->67803655
+              Konto : 54->8036552000
+Ordnungskennzeichen : 43->67803658
+              Konto : 55->8036583000
+Ordnungskennzeichen : 44->67803665
+              Konto : 56->8036650000
+Ordnungskennzeichen : 45->67830033
+              Konto : 57->300332
+              Konto : 58->40300331
+Ordnungskennzeichen : 46->67831052
+              Konto : 59->310527
+              Konto : 60->40310526
+Ordnungskennzeichen : 47->67831112
+              Konto : 61->311125
+Ordnungskennzeichen : 48->67831115
+              Konto : 62->311159
+              Konto : 63->40311158
+Ordnungskennzeichen : 49->67831143
+              Konto : 64->311430
+              Konto : 65->6311430
+              Konto : 66->40311430
+Ordnungskennzeichen : 50->67831146
+              Konto : 67->311464
+Ordnungskennzeichen : 51->67831147
+              Konto : 68->311479
+Ordnungskennzeichen : 52->67831175
+              Konto : 69->311750
+Ordnungskennzeichen : 53->67831184
+              Konto : 70->311840
+Ordnungskennzeichen : 54->67831199
+              Konto : 71->311996
+Ordnungskennzeichen : 55->67831201
+              Konto : 72->312010
+Ordnungskennzeichen : 56->67831215
+              Konto : 73->312151
+              Konto : 74->39312157
+              Konto : 75->40312150
+              Konto : 76->8312150200
+Ordnungskennzeichen : 57->67831217
+              Konto : 77->312170
+Ordnungskennzeichen : 58->67831229
+              Konto : 78->312293
+              Konto : 79->40312292
+Ordnungskennzeichen : 59->67831235
+              Konto : 80->312359
+Ordnungskennzeichen : 60->67831243
+              Konto : 81->312433
+              Konto : 82->40312432
+Ordnungskennzeichen : 61->67831253
+              Konto : 83->40312536
+Ordnungskennzeichen : 62->67831254
+              Konto : 84->312541
+Ordnungskennzeichen : 63->67831255
+              Konto : 85->312556
+Ordnungskennzeichen : 64->67831257
+              Konto : 86->312575
+Ordnungskennzeichen : 65->67831259
+              Konto : 87->312594
+              Konto : 88->40312593
+              Konto : 89->8312593200
+              Konto : 90->8312596360
+Ordnungskennzeichen : 66->67831264
+              Konto : 91->312645
+Ordnungskennzeichen : 67->67831265
+              Konto : 92->312650
+Ordnungskennzeichen : 68->67831269
+              Konto : 93->678110015000001
+Ordnungskennzeichen : 69->67831288
+              Konto : 94->312880

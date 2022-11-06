@@ -1,0 +1,2855 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B753541-1F03-4C10-AD4D-A498BA769CB6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>PS_TOOL_DX.My.MyApplication</StartupObject>
+    <RootNamespace>PS_TOOL_DX</RootNamespace>
+    <AssemblyName>PS TOOL DX</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>\\CCB-DATEN\Apps\PS TOOL DX\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ProductName>PS TOOL DX</ProductName>
+    <PublisherName>Paskalis</PublisherName>
+    <SuiteName>PP</SuiteName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>PS TOOL DX.xml</DocumentationFile>
+    <NoWarn>40000,42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>PS TOOL DX.xml</DocumentationFile>
+    <NoWarn>40000,42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>86DC81404CC164C2B0BE71294E039503A6A2A099</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>PS.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>PS TOOL DX.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>PS TOOL DX.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bytescout.PDFExtractor, Version=3.0.0.825, Culture=neutral, PublicKeyToken=f7dd1bd9d40a50eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\Bytescout PDF Extractor SDK\net4.00 ClientProfile\Bytescout.PDFExtractor.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Dialogs.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.TreeMap.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dashboard.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Docs.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.Win.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v19.2.Drawing, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Persistent.Base.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2.UI, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2.Wizard, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2.Extensions, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.2.UI, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraDialogs.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v19.2.UI, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v19.2.Extensions, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Reporting.Extensions, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpellChecker.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="EvalProvider">
+      <HintPath>..\..\Users\Papas\Downloads\EvalTester\bin\EvalProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="GemBox.Spreadsheet, Version=37.3.30.1088, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Program Files\GemBox Software\GemBox.Spreadsheet 3.7\Bin\NET3X4X\GemBox.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\Users\Papas.CCB-FRANKFURT\Downloads\net-20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\Users\Papas\Downloads\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\Users\Papas\Downloads\PdfGenerator_VB\PdfGenerator_VB\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\Windows\assembly\GAC\Microsoft.Office.Interop.Excel\12.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Outlook\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Outlook.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Deployment">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Design">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing.Design">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Service References\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.ServiceModel">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="GemBox" />
+    <Import Include="Microsoft.SqlServer" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Datasets\AccountingDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountingDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Datasets\AccountingDataSet.vb">
+      <DependentUpon>AccountingDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Datasets\AccountsReconciliationsDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountsReconciliationsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Datasets\FormblattBalanceDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormblattBalanceDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Datasets\FxDailyRevaluationDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FxDailyRevaluationDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Datasets\InventarDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventarDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Datasets\VerlustfreieBewertung.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VerlustfreieBewertung.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\ChinesseReporting.Designer.vb">
+      <DependentUpon>ChinesseReporting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\ChinesseReporting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\FxCreditEquivalentCalculation.Designer.vb">
+      <DependentUpon>FxCreditEquivalentCalculation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\FxCreditEquivalentCalculation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\FxDailyRevaluation.Designer.vb">
+      <DependentUpon>FxDailyRevaluation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\FxDailyRevaluation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\FxDailyRevaluationNew.Designer.vb">
+      <DependentUpon>FxDailyRevaluationNew.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\FxDailyRevaluationNew.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\HGB_BS.designer.vb">
+      <DependentUpon>HGB_BS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\HGB_BS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\HGB_GV.designer.vb">
+      <DependentUpon>HGB_GV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\HGB_GV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\InterestOnAccountALL.Designer.vb">
+      <DependentUpon>InterestOnAccountALL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\InterestOnAccountALL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\InventarGesamt.designer.vb">
+      <DependentUpon>InventarGesamt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\InventarGesamt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\IrsCreditEquivalentCalculation.Designer.vb">
+      <DependentUpon>IrsCreditEquivalentCalculation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\IrsCreditEquivalentCalculation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\LoansBookings.Designer.vb">
+      <DependentUpon>LoansBookings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\LoansBookings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\Mindestreserve.Designer.vb">
+      <DependentUpon>Mindestreserve.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\Mindestreserve.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliationManItems.designer.vb">
+      <DependentUpon>NostroReconciliationManItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliationManItems.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\Pivot_VerlustfreieBewertung.designer.vb">
+      <DependentUpon>Pivot_VerlustfreieBewertung.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\Pivot_VerlustfreieBewertung.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\SuspenceAccReconciliations.Designer.vb">
+      <DependentUpon>SuspenceAccReconciliations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\SuspenceAccReconciliations.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliations.Designer.vb">
+      <DependentUpon>NostroReconciliations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliations.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\Rechnungslegung.Designer.vb">
+      <DependentUpon>Rechnungslegung.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\Rechnungslegung.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\SteuerbescheinigungKunden.Designer.vb">
+      <DependentUpon>SteuerbescheinigungKunden.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\SteuerbescheinigungKunden.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Datasets\BalancesDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BalancesDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Datasets\BalancesDataset.vb">
+      <DependentUpon>BalancesDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Datasets\BalancesNEWGDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BalancesNEWGDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\AllPostings.Designer.vb">
+      <DependentUpon>AllPostings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\AllPostings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\AllPostingsNEWG.designer.vb">
+      <DependentUpon>AllPostingsNEWG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\AllPostingsNEWG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\AllPostingsNGS_Search.designer.vb">
+      <DependentUpon>AllPostingsNGS_Search.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\AllPostingsNGS_Search.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\AllPostingsOCBS_Search.designer.vb">
+      <DependentUpon>AllPostingsOCBS_Search.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\AllPostingsOCBS_Search.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\CustomerBalances.Designer.vb">
+      <DependentUpon>CustomerBalances.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\CustomerBalances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\CustomerBalancesNEWG.designer.vb">
+      <DependentUpon>CustomerBalancesNEWG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\CustomerBalancesNEWG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\CustomerVostroBalances.Designer.vb">
+      <DependentUpon>CustomerVostroBalances.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\CustomerVostroBalances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\CustomerVostroBalancesNEWG.designer.vb">
+      <DependentUpon>CustomerVostroBalancesNEWG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\CustomerVostroBalancesNEWG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\InternalNostroBalances.Designer.vb">
+      <DependentUpon>InternalNostroBalances.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\InternalNostroBalances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\SuspenceBalances.Designer.vb">
+      <DependentUpon>SuspenceBalances.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\SuspenceBalances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\SwiftStatements.Designer.vb">
+      <DependentUpon>SwiftStatements.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\SwiftStatements.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\SwiftStatementsAll.Designer.vb">
+      <DependentUpon>SwiftStatementsAll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\BALANCES\Forms\SwiftStatementsAll.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Dataset\ClearingDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClearingDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Dataset\ClearingDataSet.vb">
+      <DependentUpon>ClearingDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\AntiMoneyAllPaymentItems.designer.vb">
+      <DependentUpon>AntiMoneyAllPaymentItems.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\AntiMoneyAllPaymentItems.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\ChargesRequests.designer.vb">
+      <DependentUpon>ChargesRequests.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\ChargesRequests.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\ChequeCollections.Designer.vb">
+      <DependentUpon>ChequeCollections.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\ChequeCollections.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\GmpsPaymentsIn.Designer.vb">
+      <DependentUpon>GmpsPaymentsIn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\GmpsPaymentsIn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\GmpsPaymentsOut.Designer.vb">
+      <DependentUpon>GmpsPaymentsOut.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\GmpsPaymentsOut.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\OdasRemmitances.Designer.vb">
+      <DependentUpon>OdasRemmitances.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CLEARING\Forms\OdasRemmitances.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\COMPLIANCE\Forms\MultibankKontenPersonen.designer.vb">
+      <DependentUpon>MultibankKontenPersonen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\COMPLIANCE\Forms\MultibankKontenPersonen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\CREDIT\Forms\LoansMonthlyHO_Rep.designer.vb">
+      <DependentUpon>LoansMonthlyHO_Rep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\CREDIT\Forms\LoansMonthlyHO_Rep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EAEG\Dataset\EAEGDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EAEGDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EAEG\Forms\EAEG_Datei_New.Designer.vb">
+      <DependentUpon>EAEG_Datei_New.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EAEG\Forms\EAEG_Datei_New.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EAEG\Forms\EAEG_StammDaten.Designer.vb">
+      <DependentUpon>EAEG_StammDaten.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EAEG\Forms\EAEG_StammDaten.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EAEG\Forms\EAEG_StichtagNeu.Designer.vb">
+      <DependentUpon>EAEG_StichtagNeu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EAEG\Forms\EAEG_StichtagNeu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Datasets\AuditDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuditDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Datasets\AuditDataSet.vb">
+      <DependentUpon>AuditDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Datasets\EDPDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDPDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Datasets\EDPDataSet.vb">
+      <DependentUpon>EDPDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Datasets\OnlineBankingDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OnlineBankingDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Datasets\UserSystemsPermissionsDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserSystemsPermissionsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\Audit.designer.vb">
+      <DependentUpon>Audit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\Audit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\AuditDDL.designer.vb">
+      <DependentUpon>AuditDDL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\AuditDDL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV127.Designer.vb">
+      <DependentUpon>BaisExportAlphaV127.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV127.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV128.designer.vb">
+      <DependentUpon>BaisExportAlphaV128.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV128.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV129.designer.vb">
+      <DependentUpon>BaisExportAlphaV129.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV129.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV130.designer.vb">
+      <DependentUpon>BaisExportAlphaV130.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV130.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV131.designer.vb">
+      <DependentUpon>BaisExportAlphaV131.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV131.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV132.designer.vb">
+      <DependentUpon>BaisExportAlphaV132.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV132.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV127.Designer.vb">
+      <DependentUpon>BaisExportAnaCreditV127.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV127.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV128.designer.vb">
+      <DependentUpon>BaisExportAnaCreditV128.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV128.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV129.designer.vb">
+      <DependentUpon>BaisExportAnaCreditV129.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV129.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV130.designer.vb">
+      <DependentUpon>BaisExportAnaCreditV130.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV130.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV131.designer.vb">
+      <DependentUpon>BaisExportAnaCreditV131.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV131.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV132.designer.vb">
+      <DependentUpon>BaisExportAnaCreditV132.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV132.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisImport.Designer.vb">
+      <DependentUpon>BaisImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisInterfaceImport.Designer.vb">
+      <DependentUpon>BaisInterfaceImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisInterfaceImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\DailyEmail.Designer.vb">
+      <DependentUpon>DailyEmail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\DailyEmail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\DebugRuntime.Designer.vb">
+      <DependentUpon>DebugRuntime.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\DebugRuntime.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\ImportEvents.Designer.vb">
+      <DependentUpon>ImportEvents.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\ImportEvents.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\ManualImport.Designer.vb">
+      <DependentUpon>ManualImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\ManualImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\OcbsImport.Designer.vb">
+      <DependentUpon>OcbsImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\OcbsImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\OdasImport.Designer.vb">
+      <DependentUpon>OdasImport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\OdasImport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\OnlineBanking.designer.vb">
+      <DependentUpon>OnlineBanking.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\OnlineBanking.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\RunClient.Designer.vb">
+      <DependentUpon>RunClient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\RunClient.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\SqlParameter.Designer.vb">
+      <DependentUpon>SqlParameter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\SqlParameter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\SqlServerQueries.Designer.vb">
+      <DependentUpon>SqlServerQueries.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\SqlServerQueries.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\UserDirectoryPermissions.Designer.vb">
+      <DependentUpon>UserDirectoryPermissions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\UserDirectoryPermissions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Datasets\EXTERNALDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EXTERNALDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Datasets\EXTERNALDataset.vb">
+      <DependentUpon>EXTERNALDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_DIRECTORY.Designer.vb">
+      <DependentUpon>BIC_DIRECTORY.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_DIRECTORY.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_DIRECTORY_PLUS.Designer.vb">
+      <DependentUpon>BIC_DIRECTORY_PLUS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_DIRECTORY_PLUS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_HISTORY.designer.vb">
+      <DependentUpon>BIC_HISTORY.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_HISTORY.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\BLZ_DIRECTORY.Designer.vb">
+      <DependentUpon>BLZ_DIRECTORY.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\BLZ_DIRECTORY.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\Countries.Designer.vb">
+      <DependentUpon>Countries.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\Countries.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\Currencies.Designer.vb">
+      <DependentUpon>Currencies.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\Currencies.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\CurrencyConverterECB.Designer.vb">
+      <DependentUpon>CurrencyConverterECB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\CurrencyConverterECB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\ExchangeRatesECB.Designer.vb">
+      <DependentUpon>ExchangeRatesECB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\ExchangeRatesECB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\German_ZIP_Codes.Designer.vb">
+      <DependentUpon>German_ZIP_Codes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\German_ZIP_Codes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\Holidays.Designer.vb">
+      <DependentUpon>Holidays.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\Holidays.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\JustizRegisterID_DE.designer.vb">
+      <DependentUpon>JustizRegisterID_DE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\JustizRegisterID_DE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\Nuts3_Codes.designer.vb">
+      <DependentUpon>Nuts3_Codes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\Nuts3_Codes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\SEPA_DIRECTORY.Designer.vb">
+      <DependentUpon>SEPA_DIRECTORY.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\SEPA_DIRECTORY.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\T2_DIRECTORY.Designer.vb">
+      <DependentUpon>T2_DIRECTORY.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EXTERNAL DATA\Forms\T2_DIRECTORY.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Dataset\CollectionDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CollectionDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Dataset\ForeignDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ForeignDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Dataset\LcDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LcDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Dataset\LcDataset.vb">
+      <DependentUpon>LcDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\ExportCollection.designer.vb">
+      <DependentUpon>ExportCollection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\ExportCollection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\LcExportApplicants.designer.vb">
+      <DependentUpon>LcExportApplicants.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\LcExportApplicants.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\LcExportCustomers.Designer.vb">
+      <DependentUpon>LcExportCustomers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\LcExportCustomers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\LcExportMaturities.Designer.vb">
+      <DependentUpon>LcExportMaturities.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\LcExportMaturities.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\LcExportMT7.Designer.vb">
+      <DependentUpon>LcExportMT7.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\LcExportMT7.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\SwiftMessagesAll.Designer.vb">
+      <DependentUpon>SwiftMessagesAll.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Forms\SwiftMessagesAll.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Reports\ExportLCMaturitiesPending_Xtrareport.Designer.vb">
+      <DependentUpon>ExportLCMaturitiesPending_Xtrareport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\FOREIGN\Reports\ExportLCMaturitiesPending_Xtrareport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Datasets\AllContractsAccountsDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllContractsAccountsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Datasets\ClientsDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Datasets\ClientsDataSet.vb">
+      <DependentUpon>ClientsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Datasets\CustomerGroups.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerGroups.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Datasets\IbanCalVerDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IbanCalVerDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Datasets\PSTOOLDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PSTOOLDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\AccruedInterestAnalysis.Designer.vb">
+      <DependentUpon>AccruedInterestAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\AccruedInterestAnalysis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\AllContractsAccounts.Designer.vb">
+      <DependentUpon>AllContractsAccounts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\AllContractsAccounts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\AllContractsAccountsVG.Designer.vb">
+      <DependentUpon>AllContractsAccountsVG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\AllContractsAccountsVG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Calendar.Designer.vb">
+      <DependentUpon>Calendar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Calendar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Cash_Flows.designer.vb">
+      <DependentUpon>Cash_Flows.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Cash_Flows.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Client.designer.vb">
+      <DependentUpon>Client.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Client.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\ContractTypesOCBS.Designer.vb">
+      <DependentUpon>ContractTypesOCBS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\ContractTypesOCBS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CreditRisk.Designer.vb">
+      <DependentUpon>CreditRisk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CreditRisk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CurrencyConverterOCBS.Designer.vb">
+      <DependentUpon>CurrencyConverterOCBS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CurrencyConverterOCBS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomerAccounts.Designer.vb">
+      <DependentUpon>CustomerAccounts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomerAccounts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomerGrouping.designer.vb">
+      <DependentUpon>CustomerGrouping.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomerGrouping.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Customers.Designer.vb">
+      <DependentUpon>Customers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Customers.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersAdd.Designer.vb">
+      <DependentUpon>CustomersAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersMerge.Designer.vb">
+      <DependentUpon>CustomersMerge.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersMerge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersVG.designer.vb">
+      <DependentUpon>CustomersVG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersVG.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\DailyBalanceSheets.designer.vb">
+      <DependentUpon>DailyBalanceSheets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\DailyBalanceSheets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\DailyBalanceSheetsDetails.Designer.vb">
+      <DependentUpon>DailyBalanceSheetsDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\DailyBalanceSheetsDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\DailyProfitLossSheets.Designer.vb">
+      <DependentUpon>DailyProfitLossSheets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\DailyProfitLossSheets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\ExchangeRatesOCBS.Designer.vb">
+      <DependentUpon>ExchangeRatesOCBS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\ExchangeRatesOCBS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\FinRecon.designer.vb">
+      <DependentUpon>FinRecon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\FinRecon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Fristen.Designer.vb">
+      <DependentUpon>Fristen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Fristen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\GL_Accounts.Designer.vb">
+      <DependentUpon>GL_Accounts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\GL_Accounts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\IbanCalculateVerify.Designer.vb">
+      <DependentUpon>IbanCalculateVerify.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\IbanCalculateVerify.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\IndustrialValuesOCBS.Designer.vb">
+      <DependentUpon>IndustrialValuesOCBS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\IndustrialValuesOCBS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\InterestCalculator.Designer.vb">
+      <DependentUpon>InterestCalculator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\InterestCalculator.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\InternalCurrencies.Designer.vb">
+      <DependentUpon>InternalCurrencies.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\InternalCurrencies.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\MAK.Designer.vb">
+      <DependentUpon>MAK.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\MAK.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\ObligoLiabilitySurplus.designer.vb">
+      <DependentUpon>ObligoLiabilitySurplus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\ObligoLiabilitySurplus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\ProductTypesOCBS.Designer.vb">
+      <DependentUpon>ProductTypesOCBS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\ProductTypesOCBS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Ssis.Designer.vb">
+      <DependentUpon>Ssis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Ssis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\TrialBalance218.Designer.vb">
+      <DependentUpon>TrialBalance218.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\TrialBalance218.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Reports\ExchangeRatesOCBSXtraReport.Designer.vb">
+      <DependentUpon>ExchangeRatesOCBSXtraReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Reports\ExchangeRatesOCBSXtraReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Reports\SSISXtraReport.designer.vb">
+      <DependentUpon>SSISXtraReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Reports\SSISXtraReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Datasets\BISTA_DataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BISTA_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Datasets\LiqV_Dataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LiqV_Dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Datasets\MeldewesenDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeldewesenDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Datasets\MeldewesenDataSet.vb">
+      <DependentUpon>MeldewesenDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Datasets\MM_Statistic_Dataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MM_Statistic_Dataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\AnaCreditContracts.designer.vb">
+      <DependentUpon>AnaCreditContracts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\AnaCreditContracts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\AssetsEncumbrance.Designer.vb">
+      <DependentUpon>AssetsEncumbrance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\AssetsEncumbrance.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\AssetsLiabilities_Details.Designer.vb">
+      <DependentUpon>AssetsLiabilities_Details.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\AssetsLiabilities_Details.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\AWV.Designer.vb">
+      <DependentUpon>AWV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\AWV.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\BAIS_BISTA.Designer.vb">
+      <DependentUpon>BAIS_BISTA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\BAIS_BISTA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\Bista_HV11_HV21.Designer.vb">
+      <DependentUpon>Bista_HV11_HV21.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\Bista_HV11_HV21.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\EmployesAverage.Designer.vb">
+      <DependentUpon>EmployesAverage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\EmployesAverage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\KapiSoliMeldungen.Designer.vb">
+      <DependentUpon>KapiSoliMeldungen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\KapiSoliMeldungen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\LCR_Details.Designer.vb">
+      <DependentUpon>LCR_Details.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\LCR_Details.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\LeverageRatioCalculation.designer.vb">
+      <DependentUpon>LeverageRatioCalculation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\LeverageRatioCalculation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\LiqV_Calc.Designer.vb">
+      <DependentUpon>LiqV_Calc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\LiqV_Calc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\MIFIR.designer.vb">
+      <DependentUpon>MIFIR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\MIFIR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\MM_Statistic.Designer.vb">
+      <DependentUpon>MM_Statistic.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\MM_Statistic.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\OPICS_MM_FX.Designer.vb">
+      <DependentUpon>OPICS_MM_FX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\OPICS_MM_FX.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\Pivot_NSFR.designer.vb">
+      <DependentUpon>Pivot_NSFR.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\Pivot_NSFR.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\ZvSta2013.Designer.vb">
+      <DependentUpon>ZvSta2013.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\ZvSta2013.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\ZvSta2014.Designer.vb">
+      <DependentUpon>ZvSta2014.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\MELDEWESEN\Forms\ZvSta2014.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\CurrencyRiskCalcDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrencyRiskCalcDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\IncidentsDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncidentsDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingBasicsDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RiskControllingBasicsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RiskControllingDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingDataSet.vb">
+      <DependentUpon>RiskControllingDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskStrategyPlanningProcessDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RiskStrategyPlanningProcessDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\ScenarioAnalysisDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScenarioAnalysisDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\SolvaCalculationDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SolvaCalculationDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\BusinessTypes.Designer.vb">
+      <DependentUpon>BusinessTypes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\BusinessTypes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\BusinessTypesLiabilities.Designer.vb">
+      <DependentUpon>BusinessTypesLiabilities.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\BusinessTypesLiabilities.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CashPledge.Designer.vb">
+      <DependentUpon>CashPledge.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CashPledge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.Designer.vb">
+      <DependentUpon>CreditRiskMak.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc.Designer.vb">
+      <DependentUpon>CurrencyRiskCalc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CustomerRating.Designer.vb">
+      <DependentUpon>CustomerRating.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CustomerRating.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\IncidentsDatabase.Designer.vb">
+      <DependentUpon>IncidentsDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\IncidentsDatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRisk.Designer.vb">
+      <DependentUpon>InterestRateRisk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRisk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2.designer.vb">
+      <DependentUpon>InterestRateRiskCalc2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc3.designer.vb">
+      <DependentUpon>InterestRateRiskCalc3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\PD.Designer.vb">
+      <DependentUpon>PD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\PD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskLimitDailyControl.Designer.vb">
+      <DependentUpon>RiskLimitDailyControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskLimitDailyControl.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskStrategyPlanningProcess.designer.vb">
+      <DependentUpon>RiskStrategyPlanningProcess.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskStrategyPlanningProcess.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalysis.Designer.vb">
+      <DependentUpon>ScenarioAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalysis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\SolvCalculation.Designer.vb">
+      <DependentUpon>SolvCalculation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\SolvCalculation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\StressTestsHO.Designer.vb">
+      <DependentUpon>StressTestsHO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\StressTestsHO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLoss.Designer.vb">
+      <DependentUpon>UnexpectedLoss.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLoss.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\WeightingFactors.Designer.vb">
+      <DependentUpon>WeightingFactors.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\WeightingFactors.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Datasets\SECURITIESDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SECURITIESDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_AddNewDailyPrice.Designer.vb">
+      <DependentUpon>Securities_AddNewDailyPrice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_AddNewDailyPrice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_AddNewSecurity.Designer.vb">
+      <DependentUpon>Securities_AddNewSecurity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_AddNewSecurity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Bestand.Designer.vb">
+      <DependentUpon>Securities_Bestand.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Bestand.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Bookings.Designer.vb">
+      <DependentUpon>Securities_Bookings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Bookings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Dailyprice.Designer.vb">
+      <DependentUpon>Securities_Dailyprice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Dailyprice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Depreciations.Designer.vb">
+      <DependentUpon>Securities_Depreciations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Depreciations.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_LiquidityReserve.Designer.vb">
+      <DependentUpon>Securities_LiquidityReserve.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_LiquidityReserve.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Our.Designer.vb">
+      <DependentUpon>Securities_Our.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Forms\Securities_Our.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Reports\LiquidityBestandXtraReport.Designer.vb">
+      <DependentUpon>LiquidityBestandXtraReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Reports\LiquidityBestandXtraReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Reports\LiquidityReserveALLXtraReport.Designer.vb">
+      <DependentUpon>LiquidityReserveALLXtraReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Reports\LiquidityReserveALLXtraReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Reports\LiquidityReserveXtraReport.Designer.vb">
+      <DependentUpon>LiquidityReserveXtraReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Reports\LiquidityReserveXtraReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\TREASURY\Datasets\TreasuryDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TreasuryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\TREASURY\Forms\FxCreditEquivalentCalculationRealTime.Designer.vb">
+      <DependentUpon>FxCreditEquivalentCalculationRealTime.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\TREASURY\Forms\FxCreditEquivalentCalculationRealTime.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\TREASURY\Forms\Fx_Deals_ALL.Designer.vb">
+      <DependentUpon>Fx_Deals_ALL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\TREASURY\Forms\Fx_Deals_ALL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Default\AccDatesForm.designer.vb">
+      <DependentUpon>AccDatesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\AccDatesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\API.vb" />
+    <Compile Include="Default\ClassUnzip.vb" />
+    <Compile Include="Default\Crypto.vb" />
+    <Compile Include="Default\CrystalReportsForm.Designer.vb">
+      <DependentUpon>CrystalReportsForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\CrystalReportsForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\CustomSyntaxHighlightService.vb" />
+    <Compile Include="Default\cVBEvalProvider.vb" />
+    <Compile Include="Default\DatesForm.Designer.vb">
+      <DependentUpon>DatesForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\DatesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\EvalMethod.vb" />
+    <Compile Include="Default\ExcelForm.Designer.vb">
+      <DependentUpon>ExcelForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\ExcelForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\FlashedCell.vb" />
+    <Compile Include="Default\FlashedCellsHelper.vb" />
+    <Compile Include="Default\GeneralInfoTiles.Designer.vb">
+      <DependentUpon>GeneralInfoTiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\GeneralInfoTiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\GlobalClass.vb" />
+    <Compile Include="Default\GlobalVariables.vb" />
+    <Compile Include="Default\InputBox.designer.vb">
+      <DependentUpon>InputBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\InputBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\MyPivotGrid.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Default\MyPivotGridLocalizer.vb" />
+    <Compile Include="Default\MySyntaxHighlightService.vb" />
+    <Compile Include="Default\PdfDevForm.Designer.vb">
+      <DependentUpon>PdfDevForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PdfDevForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PdfForm.Designer.vb">
+      <DependentUpon>PdfForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PdfForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PivotGrids\DetailsPivot.Designer.vb">
+      <DependentUpon>DetailsPivot.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PivotGrids\DetailsPivot.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_All_Volumes.Designer.vb">
+      <DependentUpon>Pivot_All_Volumes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_All_Volumes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_BS_Details.Designer.vb">
+      <DependentUpon>Pivot_BS_Details.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_BS_Details.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_BS_Totals.Designer.vb">
+      <DependentUpon>Pivot_BS_Totals.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_BS_Totals.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_Finrecon.designer.vb">
+      <DependentUpon>Pivot_Finrecon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_Finrecon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_HGB_Positions.designer.vb">
+      <DependentUpon>Pivot_HGB_Positions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_HGB_Positions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_Liquidity_Overview.Designer.vb">
+      <DependentUpon>Pivot_Liquidity_Overview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_Liquidity_Overview.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_ObligoLiabilitySurplus.designer.vb">
+      <DependentUpon>Pivot_ObligoLiabilitySurplus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PivotGrids\Pivot_ObligoLiabilitySurplus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PSTOOL_Login.Designer.vb">
+      <DependentUpon>PSTOOL_Login.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PSTOOL_Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\PSTOOL_SplashScreen1.Designer.vb">
+      <DependentUpon>PSTOOL_SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\PSTOOL_SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\SearchHelper.vb" />
+    <Compile Include="Default\SelectFromListForm1.Designer.vb">
+      <DependentUpon>SelectFromListForm1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\SelectFromListForm1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\UpperCaseUTF8Encoding.vb" />
+    <Compile Include="Default\WaitForm1.Designer.vb">
+      <DependentUpon>WaitForm1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\WaitForm1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Bank_Data.Designer.vb">
+      <DependentUpon>Bank_Data.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Bank_Data.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Configuration.Designer.vb">
+      <DependentUpon>Configuration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\INTERNAL DATA\Forms\Configuration.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\WordForm.Designer.vb">
+      <DependentUpon>WordForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\WordForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PSTOOL_MAIN_Form.Designer.vb">
+      <DependentUpon>PSTOOL_MAIN_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PSTOOL_MAIN_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Person.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\ChinesseReporting.resx">
+      <DependentUpon>ChinesseReporting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\FxCreditEquivalentCalculation.resx">
+      <DependentUpon>FxCreditEquivalentCalculation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\FxDailyRevaluation.resx">
+      <DependentUpon>FxDailyRevaluation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\FxDailyRevaluationNew.resx">
+      <DependentUpon>FxDailyRevaluationNew.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\HGB_BS.resx">
+      <DependentUpon>HGB_BS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\HGB_GV.resx">
+      <DependentUpon>HGB_GV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\InterestOnAccountALL.resx">
+      <DependentUpon>InterestOnAccountALL.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\InventarGesamt.resx">
+      <DependentUpon>InventarGesamt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\IrsCreditEquivalentCalculation.resx">
+      <DependentUpon>IrsCreditEquivalentCalculation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\LoansBookings.resx">
+      <DependentUpon>LoansBookings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\Mindestreserve.resx">
+      <DependentUpon>Mindestreserve.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliationManItems.resx">
+      <DependentUpon>NostroReconciliationManItems.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\Pivot_VerlustfreieBewertung.resx">
+      <DependentUpon>Pivot_VerlustfreieBewertung.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\SuspenceAccReconciliations.resx">
+      <DependentUpon>SuspenceAccReconciliations.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliations.resx">
+      <DependentUpon>NostroReconciliations.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\Rechnungslegung.resx">
+      <DependentUpon>Rechnungslegung.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\SteuerbescheinigungKunden.resx">
+      <DependentUpon>SteuerbescheinigungKunden.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\AllPostings.resx">
+      <DependentUpon>AllPostings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\AllPostingsNEWG.resx">
+      <DependentUpon>AllPostingsNEWG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\AllPostingsNGS_Search.resx">
+      <DependentUpon>AllPostingsNGS_Search.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\AllPostingsOCBS_Search.resx">
+      <DependentUpon>AllPostingsOCBS_Search.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\CustomerBalances.resx">
+      <DependentUpon>CustomerBalances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\CustomerBalancesNEWG.resx">
+      <DependentUpon>CustomerBalancesNEWG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\CustomerVostroBalances.resx">
+      <DependentUpon>CustomerVostroBalances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\CustomerVostroBalancesNEWG.resx">
+      <DependentUpon>CustomerVostroBalancesNEWG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\InternalNostroBalances.resx">
+      <DependentUpon>InternalNostroBalances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\SuspenceBalances.resx">
+      <DependentUpon>SuspenceBalances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\SwiftStatements.resx">
+      <DependentUpon>SwiftStatements.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\BALANCES\Forms\SwiftStatementsAll.resx">
+      <DependentUpon>SwiftStatementsAll.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\CLEARING\Forms\AntiMoneyAllPaymentItems.resx">
+      <DependentUpon>AntiMoneyAllPaymentItems.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\CLEARING\Forms\ChargesRequests.resx">
+      <DependentUpon>ChargesRequests.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\CLEARING\Forms\ChequeCollections.resx">
+      <DependentUpon>ChequeCollections.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\CLEARING\Forms\GmpsPaymentsIn.resx">
+      <DependentUpon>GmpsPaymentsIn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\CLEARING\Forms\GmpsPaymentsOut.resx">
+      <DependentUpon>GmpsPaymentsOut.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\CLEARING\Forms\OdasRemmitances.resx">
+      <DependentUpon>OdasRemmitances.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\COMPLIANCE\Forms\MultibankKontenPersonen.resx">
+      <DependentUpon>MultibankKontenPersonen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\CREDIT\Forms\LoansMonthlyHO_Rep.resx">
+      <DependentUpon>LoansMonthlyHO_Rep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EAEG\Forms\EAEG_Datei_New.resx">
+      <DependentUpon>EAEG_Datei_New.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EAEG\Forms\EAEG_StammDaten.resx">
+      <DependentUpon>EAEG_StammDaten.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EAEG\Forms\EAEG_StichtagNeu.resx">
+      <DependentUpon>EAEG_StichtagNeu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\Audit.resx">
+      <DependentUpon>Audit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\AuditDDL.resx">
+      <DependentUpon>AuditDDL.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV127.resx">
+      <DependentUpon>BaisExportAlphaV127.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV128.resx">
+      <DependentUpon>BaisExportAlphaV128.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV129.resx">
+      <DependentUpon>BaisExportAlphaV129.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV130.resx">
+      <DependentUpon>BaisExportAlphaV130.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV131.resx">
+      <DependentUpon>BaisExportAlphaV131.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV132.resx">
+      <DependentUpon>BaisExportAlphaV132.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV127.resx">
+      <DependentUpon>BaisExportAnaCreditV127.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV128.resx">
+      <DependentUpon>BaisExportAnaCreditV128.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV129.resx">
+      <DependentUpon>BaisExportAnaCreditV129.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV130.resx">
+      <DependentUpon>BaisExportAnaCreditV130.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV131.resx">
+      <DependentUpon>BaisExportAnaCreditV131.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV132.resx">
+      <DependentUpon>BaisExportAnaCreditV132.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisImport.resx">
+      <DependentUpon>BaisImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisInterfaceImport.resx">
+      <DependentUpon>BaisInterfaceImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\DailyEmail.resx">
+      <DependentUpon>DailyEmail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\DebugRuntime.resx">
+      <DependentUpon>DebugRuntime.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\ImportEvents.resx">
+      <DependentUpon>ImportEvents.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\ManualImport.resx">
+      <DependentUpon>ManualImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\OcbsImport.resx">
+      <DependentUpon>OcbsImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\OdasImport.resx">
+      <DependentUpon>OdasImport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\OnlineBanking.resx">
+      <DependentUpon>OnlineBanking.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\RunClient.resx">
+      <DependentUpon>RunClient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\SqlParameter.resx">
+      <DependentUpon>SqlParameter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\SqlServerQueries.resx">
+      <DependentUpon>SqlServerQueries.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\UserDirectoryPermissions.resx">
+      <DependentUpon>UserDirectoryPermissions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_DIRECTORY.resx">
+      <DependentUpon>BIC_DIRECTORY.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_DIRECTORY_PLUS.resx">
+      <DependentUpon>BIC_DIRECTORY_PLUS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\BIC_HISTORY.resx">
+      <DependentUpon>BIC_HISTORY.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\BLZ_DIRECTORY.resx">
+      <DependentUpon>BLZ_DIRECTORY.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\Countries.resx">
+      <DependentUpon>Countries.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\Currencies.resx">
+      <DependentUpon>Currencies.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\CurrencyConverterECB.resx">
+      <DependentUpon>CurrencyConverterECB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\ExchangeRatesECB.resx">
+      <DependentUpon>ExchangeRatesECB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\German_ZIP_Codes.resx">
+      <DependentUpon>German_ZIP_Codes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\Holidays.resx">
+      <DependentUpon>Holidays.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\JustizRegisterID_DE.resx">
+      <DependentUpon>JustizRegisterID_DE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\Nuts3_Codes.resx">
+      <DependentUpon>Nuts3_Codes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\SEPA_DIRECTORY.resx">
+      <DependentUpon>SEPA_DIRECTORY.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EXTERNAL DATA\Forms\T2_DIRECTORY.resx">
+      <DependentUpon>T2_DIRECTORY.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\FOREIGN\Forms\ExportCollection.resx">
+      <DependentUpon>ExportCollection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\FOREIGN\Forms\LcExportApplicants.resx">
+      <DependentUpon>LcExportApplicants.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\FOREIGN\Forms\LcExportCustomers.resx">
+      <DependentUpon>LcExportCustomers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\FOREIGN\Forms\LcExportMaturities.resx">
+      <DependentUpon>LcExportMaturities.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\FOREIGN\Forms\LcExportMT7.resx">
+      <DependentUpon>LcExportMT7.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\FOREIGN\Forms\SwiftMessagesAll.resx">
+      <DependentUpon>SwiftMessagesAll.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\FOREIGN\Reports\ExportLCMaturitiesPending_Xtrareport.resx">
+      <DependentUpon>ExportLCMaturitiesPending_Xtrareport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\AccruedInterestAnalysis.resx">
+      <DependentUpon>AccruedInterestAnalysis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\AllContractsAccounts.resx">
+      <DependentUpon>AllContractsAccounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\AllContractsAccountsVG.resx">
+      <DependentUpon>AllContractsAccountsVG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\Calendar.resx">
+      <DependentUpon>Calendar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\Cash_Flows.resx">
+      <DependentUpon>Cash_Flows.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\Client.resx">
+      <DependentUpon>Client.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\ContractTypesOCBS.resx">
+      <DependentUpon>ContractTypesOCBS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\CreditRisk.resx">
+      <DependentUpon>CreditRisk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\CurrencyConverterOCBS.resx">
+      <DependentUpon>CurrencyConverterOCBS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\CustomerAccounts.resx">
+      <DependentUpon>CustomerAccounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\CustomerGrouping.resx">
+      <DependentUpon>CustomerGrouping.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\Customers.resx">
+      <DependentUpon>Customers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersAdd.resx">
+      <DependentUpon>CustomersAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersMerge.resx">
+      <DependentUpon>CustomersMerge.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\CustomersVG.resx">
+      <DependentUpon>CustomersVG.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\DailyBalanceSheets.resx">
+      <DependentUpon>DailyBalanceSheets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\DailyBalanceSheetsDetails.resx">
+      <DependentUpon>DailyBalanceSheetsDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\DailyProfitLossSheets.resx">
+      <DependentUpon>DailyProfitLossSheets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\ExchangeRatesOCBS.resx">
+      <DependentUpon>ExchangeRatesOCBS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\FinRecon.resx">
+      <DependentUpon>FinRecon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\Fristen.resx">
+      <DependentUpon>Fristen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\GL_Accounts.resx">
+      <DependentUpon>GL_Accounts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\IbanCalculateVerify.resx">
+      <DependentUpon>IbanCalculateVerify.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\IndustrialValuesOCBS.resx">
+      <DependentUpon>IndustrialValuesOCBS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\InterestCalculator.resx">
+      <DependentUpon>InterestCalculator.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\InternalCurrencies.resx">
+      <DependentUpon>InternalCurrencies.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\MAK.resx">
+      <DependentUpon>MAK.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\ObligoLiabilitySurplus.resx">
+      <DependentUpon>ObligoLiabilitySurplus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\ProductTypesOCBS.resx">
+      <DependentUpon>ProductTypesOCBS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\Ssis.resx">
+      <DependentUpon>Ssis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\TrialBalance218.resx">
+      <DependentUpon>TrialBalance218.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Reports\ExchangeRatesOCBSXtraReport.resx">
+      <DependentUpon>ExchangeRatesOCBSXtraReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Reports\SSISXtraReport.resx">
+      <DependentUpon>SSISXtraReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\AnaCreditContracts.resx">
+      <DependentUpon>AnaCreditContracts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\AssetsEncumbrance.resx">
+      <DependentUpon>AssetsEncumbrance.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\AssetsLiabilities_Details.resx">
+      <DependentUpon>AssetsLiabilities_Details.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\AWV.resx">
+      <DependentUpon>AWV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\BAIS_BISTA.resx">
+      <DependentUpon>BAIS_BISTA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\Bista_HV11_HV21.resx">
+      <DependentUpon>Bista_HV11_HV21.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\EmployesAverage.resx">
+      <DependentUpon>EmployesAverage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\KapiSoliMeldungen.resx">
+      <DependentUpon>KapiSoliMeldungen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\LCR_Details.resx">
+      <DependentUpon>LCR_Details.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\LeverageRatioCalculation.resx">
+      <DependentUpon>LeverageRatioCalculation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\LiqV_Calc.resx">
+      <DependentUpon>LiqV_Calc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\MIFIR.resx">
+      <DependentUpon>MIFIR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\MM_Statistic.resx">
+      <DependentUpon>MM_Statistic.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\OPICS_MM_FX.resx">
+      <DependentUpon>OPICS_MM_FX.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\Pivot_NSFR.resx">
+      <DependentUpon>Pivot_NSFR.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\ZvSta2013.resx">
+      <DependentUpon>ZvSta2013.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\MELDEWESEN\Forms\ZvSta2014.resx">
+      <DependentUpon>ZvSta2014.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\BusinessTypes.resx">
+      <DependentUpon>BusinessTypes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\BusinessTypesLiabilities.resx">
+      <DependentUpon>BusinessTypesLiabilities.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CashPledge.resx">
+      <DependentUpon>CashPledge.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.resx">
+      <DependentUpon>CreditRiskMak.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc.resx">
+      <DependentUpon>CurrencyRiskCalc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CustomerRating.resx">
+      <DependentUpon>CustomerRating.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\IncidentsDatabase.resx">
+      <DependentUpon>IncidentsDatabase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRisk.resx">
+      <DependentUpon>InterestRateRisk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2.resx">
+      <DependentUpon>InterestRateRiskCalc2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc3.resx">
+      <DependentUpon>InterestRateRiskCalc3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\PD.resx">
+      <DependentUpon>PD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskLimitDailyControl.resx">
+      <DependentUpon>RiskLimitDailyControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskStrategyPlanningProcess.resx">
+      <DependentUpon>RiskStrategyPlanningProcess.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalysis.resx">
+      <DependentUpon>ScenarioAnalysis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\SolvCalculation.resx">
+      <DependentUpon>SolvCalculation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\StressTestsHO.resx">
+      <DependentUpon>StressTestsHO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLoss.resx">
+      <DependentUpon>UnexpectedLoss.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\WeightingFactors.resx">
+      <DependentUpon>WeightingFactors.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Forms\Securities_AddNewDailyPrice.resx">
+      <DependentUpon>Securities_AddNewDailyPrice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Forms\Securities_AddNewSecurity.resx">
+      <DependentUpon>Securities_AddNewSecurity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Forms\Securities_Bestand.resx">
+      <DependentUpon>Securities_Bestand.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Forms\Securities_Bookings.resx">
+      <DependentUpon>Securities_Bookings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Forms\Securities_Dailyprice.resx">
+      <DependentUpon>Securities_Dailyprice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Forms\Securities_Depreciations.resx">
+      <DependentUpon>Securities_Depreciations.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Forms\Securities_LiquidityReserve.resx">
+      <DependentUpon>Securities_LiquidityReserve.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Forms\Securities_Our.resx">
+      <DependentUpon>Securities_Our.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Reports\LiquidityBestandXtraReport.resx">
+      <DependentUpon>LiquidityBestandXtraReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Reports\LiquidityReserveALLXtraReport.resx">
+      <DependentUpon>LiquidityReserveALLXtraReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Reports\LiquidityReserveXtraReport.resx">
+      <DependentUpon>LiquidityReserveXtraReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\TREASURY\Forms\FxCreditEquivalentCalculationRealTime.resx">
+      <DependentUpon>FxCreditEquivalentCalculationRealTime.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\TREASURY\Forms\Fx_Deals_ALL.resx">
+      <DependentUpon>Fx_Deals_ALL.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\AccDatesForm.resx">
+      <DependentUpon>AccDatesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\CrystalReportsForm.resx">
+      <DependentUpon>CrystalReportsForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\DatesForm.resx">
+      <DependentUpon>DatesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\ExcelForm.resx">
+      <DependentUpon>ExcelForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\GeneralInfoTiles.resx">
+      <DependentUpon>GeneralInfoTiles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\InputBox.resx">
+      <DependentUpon>InputBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PdfDevForm.resx">
+      <DependentUpon>PdfDevForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PdfForm.resx">
+      <DependentUpon>PdfForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PivotGrids\DetailsPivot.resx">
+      <DependentUpon>DetailsPivot.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PivotGrids\Pivot_All_Volumes.resx">
+      <DependentUpon>Pivot_All_Volumes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PivotGrids\Pivot_BS_Details.resx">
+      <DependentUpon>Pivot_BS_Details.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PivotGrids\Pivot_BS_Totals.resx">
+      <DependentUpon>Pivot_BS_Totals.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PivotGrids\Pivot_Finrecon.resx">
+      <DependentUpon>Pivot_Finrecon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PivotGrids\Pivot_HGB_Positions.resx">
+      <DependentUpon>Pivot_HGB_Positions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PivotGrids\Pivot_Liquidity_Overview.resx">
+      <DependentUpon>Pivot_Liquidity_Overview.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PivotGrids\Pivot_ObligoLiabilitySurplus.resx">
+      <DependentUpon>Pivot_ObligoLiabilitySurplus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PSTOOL_Login.resx">
+      <DependentUpon>PSTOOL_Login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\PSTOOL_SplashScreen1.resx">
+      <DependentUpon>PSTOOL_SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\SelectFromListForm1.resx">
+      <DependentUpon>SelectFromListForm1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\WaitForm1.resx">
+      <DependentUpon>WaitForm1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\Bank_Data.resx">
+      <DependentUpon>Bank_Data.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\INTERNAL DATA\Forms\Configuration.resx">
+      <DependentUpon>Configuration.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\WordForm.resx">
+      <DependentUpon>WordForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PSTOOL_MAIN_Form.resx">
+      <DependentUpon>PSTOOL_MAIN_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\AccountingDataSet.xsc">
+      <DependentUpon>AccountingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\AccountingDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AccountingDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\AccountingDataSet.xss">
+      <DependentUpon>AccountingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\AccountsReconciliationsDataSet.xsc">
+      <DependentUpon>AccountsReconciliationsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\AccountsReconciliationsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AccountsReconciliationsDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\AccountsReconciliationsDataSet.xss">
+      <DependentUpon>AccountsReconciliationsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\FormblattBalanceDataset.xsc">
+      <DependentUpon>FormblattBalanceDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\FormblattBalanceDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FormblattBalanceDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\FormblattBalanceDataset.xss">
+      <DependentUpon>FormblattBalanceDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\FxDailyRevaluationDataSet.xsc">
+      <DependentUpon>FxDailyRevaluationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\FxDailyRevaluationDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FxDailyRevaluationDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\FxDailyRevaluationDataSet.xss">
+      <DependentUpon>FxDailyRevaluationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\InventarDataSet.xsc">
+      <DependentUpon>InventarDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\InventarDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InventarDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\InventarDataSet.xss">
+      <DependentUpon>InventarDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\VerlustfreieBewertung.xsc">
+      <DependentUpon>VerlustfreieBewertung.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\VerlustfreieBewertung.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>VerlustfreieBewertung.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Datasets\VerlustfreieBewertung.xss">
+      <DependentUpon>VerlustfreieBewertung.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\ACCOUNTING\Forms\Forms_Backup\NostroReconciliations.Designer.vb.bak" />
+    <None Include="ALL ITEMS\ACCOUNTING\Forms\Forms_Backup\NostroReconciliations.resx.bak" />
+    <None Include="ALL ITEMS\ACCOUNTING\Forms\Forms_Backup\NostroReconciliations.vb.bak" />
+    <None Include="ALL ITEMS\BALANCES\Datasets\BalancesDataset.xsc">
+      <DependentUpon>BalancesDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\BALANCES\Datasets\BalancesDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BalancesDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\BALANCES\Datasets\BalancesDataset.xss">
+      <DependentUpon>BalancesDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\BALANCES\Datasets\BalancesNEWGDataset.xsc">
+      <DependentUpon>BalancesNEWGDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\BALANCES\Datasets\BalancesNEWGDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BalancesNEWGDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\BALANCES\Datasets\BalancesNEWGDataset.xss">
+      <DependentUpon>BalancesNEWGDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\CLEARING\Dataset\ClearingDataSet.xsc">
+      <DependentUpon>ClearingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\CLEARING\Dataset\ClearingDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClearingDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\CLEARING\Dataset\ClearingDataSet.xss">
+      <DependentUpon>ClearingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EAEG\Dataset\EAEGDataSet.xsc">
+      <DependentUpon>EAEGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EAEG\Dataset\EAEGDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EAEGDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\EAEG\Dataset\EAEGDataSet.xss">
+      <DependentUpon>EAEGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\AuditDataSet.xsc">
+      <DependentUpon>AuditDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\AuditDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AuditDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\AuditDataSet.xss">
+      <DependentUpon>AuditDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\EDPDataSet.xsc">
+      <DependentUpon>EDPDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\EDPDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EDPDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\EDPDataSet.xss">
+      <DependentUpon>EDPDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\OnlineBankingDataSet.xsc">
+      <DependentUpon>OnlineBankingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\OnlineBankingDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OnlineBankingDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\OnlineBankingDataSet.xss">
+      <DependentUpon>OnlineBankingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\UserSystemsPermissionsDataSet.xsc">
+      <DependentUpon>UserSystemsPermissionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\UserSystemsPermissionsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserSystemsPermissionsDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ALL ITEMS\EDP\Datasets\UserSystemsPermissionsDataSet.xss">
+      <DependentUpon>UserSystemsPermissionsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EXTERNAL DATA\Datasets\EXTERNALDataset.xsc">
+      <DependentUpon>EXTERNALDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\EXTERNAL DATA\Datasets\EXTERNALDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EXTERNALDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\EXTERNAL DATA\Datasets\EXTERNALDataset.xss">
+      <DependentUpon>EXTERNALDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\CollectionDataSet.xsc">
+      <DependentUpon>CollectionDataSet.xsd</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\CollectionDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CollectionDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\CollectionDataSet.xss">
+      <DependentUpon>CollectionDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\ForeignDataset.xsc">
+      <DependentUpon>ForeignDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\ForeignDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ForeignDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\ForeignDataset.xss">
+      <DependentUpon>ForeignDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\LcDataset.xsc">
+      <DependentUpon>LcDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\LcDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LcDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\FOREIGN\Dataset\LcDataset.xss">
+      <DependentUpon>LcDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\AllContractsAccountsDataSet.xsc">
+      <DependentUpon>AllContractsAccountsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\AllContractsAccountsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AllContractsAccountsDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\AllContractsAccountsDataSet.xss">
+      <DependentUpon>AllContractsAccountsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\ClientsDataSet.xsc">
+      <DependentUpon>ClientsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\ClientsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClientsDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\ClientsDataSet.xss">
+      <DependentUpon>ClientsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\CustomerGroups.xsc">
+      <DependentUpon>CustomerGroups.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\CustomerGroups.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CustomerGroups.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\CustomerGroups.xss">
+      <DependentUpon>CustomerGroups.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\IbanCalVerDataset.xsc">
+      <DependentUpon>IbanCalVerDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\IbanCalVerDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IbanCalVerDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\IbanCalVerDataset.xss">
+      <DependentUpon>IbanCalVerDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\PSTOOLDataset.xsc">
+      <DependentUpon>PSTOOLDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\PSTOOLDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PSTOOLDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\INTERNAL DATA\Datasets\PSTOOLDataset.xss">
+      <DependentUpon>PSTOOLDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\BISTA_DataSet.xsc">
+      <DependentUpon>BISTA_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\BISTA_DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BISTA_DataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\BISTA_DataSet.xss">
+      <DependentUpon>BISTA_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\LiqV_Dataset.xsc">
+      <DependentUpon>LiqV_Dataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\LiqV_Dataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LiqV_Dataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\LiqV_Dataset.xss">
+      <DependentUpon>LiqV_Dataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\MeldewesenDataSet.xsc">
+      <DependentUpon>MeldewesenDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\MeldewesenDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MeldewesenDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\MeldewesenDataSet.xss">
+      <DependentUpon>MeldewesenDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\MM_Statistic_Dataset.xsc">
+      <DependentUpon>MM_Statistic_Dataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\MM_Statistic_Dataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MM_Statistic_Dataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\MELDEWESEN\Datasets\MM_Statistic_Dataset.xss">
+      <DependentUpon>MM_Statistic_Dataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CurrencyRiskCalcDataSet.xsc">
+      <DependentUpon>CurrencyRiskCalcDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CurrencyRiskCalcDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CurrencyRiskCalcDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CurrencyRiskCalcDataSet.xss">
+      <DependentUpon>CurrencyRiskCalcDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\IncidentsDataset.xsc">
+      <DependentUpon>IncidentsDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\IncidentsDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IncidentsDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\IncidentsDataset.xss">
+      <DependentUpon>IncidentsDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingBasicsDataSet.xsc">
+      <DependentUpon>RiskControllingBasicsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingBasicsDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RiskControllingBasicsDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingBasicsDataSet.xss">
+      <DependentUpon>RiskControllingBasicsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingDataSet.xsc">
+      <DependentUpon>RiskControllingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RiskControllingDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingDataSet.xss">
+      <DependentUpon>RiskControllingDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskStrategyPlanningProcessDataset.xsc">
+      <DependentUpon>RiskStrategyPlanningProcessDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskStrategyPlanningProcessDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RiskStrategyPlanningProcessDataset.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskStrategyPlanningProcessDataset.xss">
+      <DependentUpon>RiskStrategyPlanningProcessDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\ScenarioAnalysisDataset.xsc">
+      <DependentUpon>ScenarioAnalysisDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\ScenarioAnalysisDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ScenarioAnalysisDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\ScenarioAnalysisDataset.xss">
+      <DependentUpon>ScenarioAnalysisDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\SolvaCalculationDataset.xsc">
+      <DependentUpon>SolvaCalculationDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\SolvaCalculationDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SolvaCalculationDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\SolvaCalculationDataset.xss">
+      <DependentUpon>SolvaCalculationDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\SECURITIES\Datasets\SECURITIESDataset.xsc">
+      <DependentUpon>SECURITIESDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\SECURITIES\Datasets\SECURITIESDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SECURITIESDataset.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\SECURITIES\Datasets\SECURITIESDataset.xss">
+      <DependentUpon>SECURITIESDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\TREASURY\Datasets\TreasuryDataSet.xsc">
+      <DependentUpon>TreasuryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\TREASURY\Datasets\TreasuryDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TreasuryDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\TREASURY\Datasets\TreasuryDataSet.xss">
+      <DependentUpon>TreasuryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Default\Dictionaries\american.xlg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Default\Dictionaries\CustomEnglish.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Default\Dictionaries\de_DE.aff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Default\Dictionaries\de_DE.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Default\Dictionaries\dict-en.oxt" />
+    <None Include="Default\Dictionaries\english.aff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Default\Dictionaries\en_US.aff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Default\Dictionaries\en_US.dic">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ALL ITEMS\ACCOUNTING\Reports\" />
+    <Folder Include="ALL ITEMS\ANTIMONEY LAUNDERING\Datasets\" />
+    <Folder Include="ALL ITEMS\ANTIMONEY LAUNDERING\Forms\" />
+    <Folder Include="ALL ITEMS\ANTIMONEY LAUNDERING\Reports\" />
+    <Folder Include="ALL ITEMS\BALANCES\Reports\" />
+    <Folder Include="ALL ITEMS\CLEARING\Reports\" />
+    <Folder Include="ALL ITEMS\COMPLIANCE\Datasets\" />
+    <Folder Include="ALL ITEMS\COMPLIANCE\Reports\" />
+    <Folder Include="ALL ITEMS\CREDIT\Dataset\" />
+    <Folder Include="ALL ITEMS\CREDIT\Reports\" />
+    <Folder Include="ALL ITEMS\EAEG\Reports\" />
+    <Folder Include="ALL ITEMS\EDP\Reports\" />
+    <Folder Include="ALL ITEMS\EXTERNAL DATA\Reports\" />
+    <Folder Include="ALL ITEMS\MANAGEMENT\Datasets\" />
+    <Folder Include="ALL ITEMS\MANAGEMENT\Forms\" />
+    <Folder Include="ALL ITEMS\MANAGEMENT\Reports\" />
+    <Folder Include="ALL ITEMS\MELDEWESEN\Reports\" />
+    <Folder Include="ALL ITEMS\RISK CONTROLLING\Reports\" />
+    <Folder Include="ALL ITEMS\TREASURY\Reports\" />
+    <Folder Include="ALL ITEMS\Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default\Dictionaries\EnglishAlphabet.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Default\OldScripts\All Postings.txt" />
+    <Content Include="Default\OldScripts\RunClient.txt" />
+    <Content Include="Icons\SWIFT.ico" />
+    <Content Include="PS.ico" />
+    <None Include="Resources\Info.ico" />
+    <None Include="Resources\Form.ico" />
+    <None Include="Resources\mail_delete.png" />
+    <Content Include="Resources\PS.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

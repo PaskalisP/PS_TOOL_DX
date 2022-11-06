@@ -1,0 +1,24 @@
+﻿INSERT [DIVERSE_VOLUMES]
+           ([BatchNo]
+           ,[GL_AC_No]
+           ,[Value Date]
+           ,[CCY]
+           ,[Amount]
+           ,[DR_CR]
+           ,[GL_Rep_Date]
+           ,[GL_Item_Nr]
+           ,[GL_AC_No_Name]
+           ,[Exchange_Rate]
+           ,[AmountInEuro])
+     VALUES
+           ('CLOSING BALANCE OCBS ACC.'
+           ,<GL_AC_No, float,>
+           ,<Value Date, datetime,>
+           ,<CCY, nvarchar(255),>
+           ,<Amount, float,>
+           ,<DR_CR, nvarchar(255),>
+           ,<GL_Rep_Date, datetime,>
+           ,<GL_Item_Nr, int,>
+           ,<GL_AC_No_Name, nvarchar(255),>
+           ,<Exchange_Rate, float,>
+           ,<AmountInEuro, float,>)

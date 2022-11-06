@@ -1,0 +1,120 @@
+﻿Declare @MINDATE Datetime 
+Declare @MAXDATE Datetime
+Declare @SUM_EARNINGS float
+Declare @MinId int
+Declare @MaxId int
+
+--Insert data from Table:EXPORT_LC_MT700 to Table:EXPORT LC DETAILS ALL where Date of Issue>20121231
+INSERT INTO [EXPORT LC DETAILS ALL] ([BENEFNAME],[SENDER BIC],[M40A],[M20],[OURREF],[M31C],[M31D_Date],[M31D_Country],[M50_1],[CCY],[M32B]) 
+SELECT UPPER([Beneficiary]),[SenderBIC],[LC_Form],[LC_Nr],[OurReference],[DateOfIssue],[M31D_Date],[M31D_Country],UPPER([Applicant]),[LC_Currency],[LC_Amount] 
+FROM [EXPORT_LC_MT700] where  [DateOfIssue]>'20121231' and [LC_Nr] not in (SELECT [M20] from [EXPORT LC DETAILS ALL])
+
+--Update Field IdLCMonth in Table:EXPORT LC DETAILS ALL
+--Erster Tag des Monats
+UPDATE [EXPORT LC DETAILS ALL] SET [IdLCMonth]=DATEADD(MONTH, DATEDIFF(MONTH, 0, [M31C]), 0) Where [IdLCMonth] is NULL
+--Update Sender Name and Branch from BIC DIRECTORY...BIC11
+UPDATE [EXPORT LC DETAILS ALL] SET [SENDERNAME]= B.[INSTITUTION NAME],[SENDER BRANCH]=B.[BRANCH INFORMATION]+B.[CITY HEADING] 
+FROM [EXPORT LC DETAILS ALL] A INNER JOIN [BIC DIRECTORY] B ON Left(A.[SENDER BIC],8)=B.[BIC CODE] where Right(A.[SENDER BIC],3)=B.[BRANCH CODE] and A.[SENDERNAME] is NULL 
+and B.[BRANCH INFORMATION] is not NULL
+UPDATE [EXPORT LC DETAILS ALL] SET [SENDERNAME]= B.[INSTITUTION NAME],[SENDER BRANCH]=B.[CITY HEADING] FROM [EXPORT LC DETAILS ALL] A INNER JOIN [BIC DIRECTORY] B 
+ON Left(A.[SENDER BIC],8)=B.[BIC CODE] where Right(A.[SENDER BIC],3)=B.[BRANCH CODE] and A.[SENDERNAME] is NULL and A.[SENDER BRANCH] is NULL
+--Update Exchange Rate-Currency EURO
+UPDATE [EXPORT LC DETAILS ALL] SET [EXCHANGE RATE]= 1 WHERE [CCY]='EUR'
+
+--Select Max Exchange Rate Date - GROUP BY Month
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_MaxExchange_Rates' AND xtype='U') 
+Create Table #Temp_MaxExchange_Rates
+([ID] [int] IDENTITY(1,1) NOT NULL,
+MaxExchangeDate Datetime NULL,
+MaxMonthYear Datetime NULL)
+ELSE DELETE FROM #Temp_MaxExchange_Rates
+
+INSERT INTO #Temp_MaxExchange_Rates
+(MaxExchangeDate,MaxMonthYear)
+Select  
+Max([EXCHANGE RATE DATE]) as MaxExchangeDate,DATEADD(MONTH, DATEDIFF(MONTH, 0, Max([EXCHANGE RATE DATE])), 0) as MaxMonthYear
+from   [EXCHANGE RATES OCBS] where [EXCHANGE RATE DATE] is not NULL GROUP BY Month([EXCHANGE RATE DATE])
+
+
+SET @MinId= (select min([ID]) from #Temp_MaxExchange_Rates)
+SET @MaxId= (select Max(ID) from #Temp_MaxExchange_Rates)
+
+while (@MinId<=@MaxId) 
+begin 
+
+UPDATE A SET A.[EXCHANGE_RATE_DATE]=B.MaxExchangeDate FROM  [EXPORT LC DETAILS ALL] A INNER JOIN #Temp_MaxExchange_Rates B on A.IdLCMonth=B.MaxMonthYear 
+where  A.[IdLCMonth]=B.MaxMonthYear and B.ID=@MinId
+
+Set @MinId=@MinId+1
+end
+
+--Update Exchange Rates-Foreign Currencies
+UPDATE A  SET A.[EXCHANGE RATE]=B.[MIDDLE RATE] 
+FROM [EXPORT LC DETAILS ALL] A INNER JOIN [EXCHANGE RATES OCBS] B On A.[EXCHANGE_RATE_DATE]=B.[EXCHANGE RATE DATE] where A.[CCY]=B.[CURRENCY CODE] and A.[CCY] not in ('EUR')
+
+--Calculate LC Amounts in EURO
+UPDATE [EXPORT LC DETAILS ALL] SET [AMTEUR]=Round([M32B]/[EXCHANGE RATE],2)
+
+--Insert into EXPORT LC MONTH
+INSERT INTO [EXPORT LC MONTH] ([LC Month],IdLCYear) 
+Select distinct [IdLCMonth],DATEADD(YEAR, DATEDIFF(YEAR, 0, [IdLCMonth]), 0) 
+from [EXPORT LC DETAILS ALL] WHERE [IdLCMonth] not in (Select  [LC Month] from  [EXPORT LC MONTH])
+
+--Insert into EXPORT LC YEAR
+INSERT INTO [EXPORT LC YEAR] ([LC Year]) 
+Select distinct [IdLCYear] from [EXPORT LC MONTH] WHERE [IdLCYear] not in (Select  [LC Year] from   [EXPORT LC YEAR])
+
+--Select LC Amt Sum,LC Items for Each Month and Update Table EXPORT LC MONTH
+UPDATE A SET A.[LC Items]=B.LCItems,A.[LC Amounts]=B.SumLCAmt 
+from [EXPORT LC MONTH] A INNER JOIN (Select sum([AMTEUR]) as SumLCAmt,Count([ID])as LCItems,[IdLCMonth] from   [EXPORT LC DETAILS ALL] GROUP BY Month([IdLCMonth]),[IdLCMonth])B 
+on A.[LC Month]=B.[IdLCMonth]
+
+--Select Sum of Volumes from PROFIT AND LOSS VOLUMES
+IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_MaxBookingDates' AND xtype='U') 
+Create Table #Temp_MaxBookingDates
+([ID] [int] IDENTITY(1,1) NOT NULL,
+MaxBookingDate Datetime NULL,
+MaxMonth int NULL,
+MaxYear int NULL,
+MaxMonthYear Datetime NULL)
+ELSE DELETE FROM #Temp_MaxBookingDates
+
+INSERT INTO #Temp_MaxBookingDates
+(MaxBookingDate,MaxMonth,MaxYear,MaxMonthYear)
+Select Max([RepDate]) as MaxBookingDate
+	,Month(Max([RepDate]))as MaxMonth
+	,Year(Max([RepDate]))as MaxYear
+	,DATEADD(MONTH, DATEDIFF(MONTH, 0, Max([RepDate])), 0)   as MaxMonthYear 
+	from TRIAL_BALANCE_218
+	where [AccountNo] in ('53208300','53211306','533735','533701','533732') GROUP BY Month([RepDate])
+	order by MaxMonth asc
+
+SET @MinId= (select min([ID]) from #Temp_MaxBookingDates)
+SET @MaxId= (select Max(ID) from #Temp_MaxBookingDates)
+
+while (@MinId<=@MaxId) 
+begin 
+Set @MINDATE=(Select MaxMonthYear from #Temp_MaxBookingDates where ID=@MinId)
+Set @MAXDATE=(Select MaxBookingDate from #Temp_MaxBookingDates where ID=@MinId)
+Set @SUM_EARNINGS=(Select Sum([AmountInEuro]) from ALL_VOLUMES
+	where [Description] is not NULL 
+	and [Description] not like '%YEAR-END P&L TRANSFER%' 
+	--and [CCY]='EUR' 
+	and [GL_AC_No] in ('53208300','53211306','533735','533701','533732')  
+	and [Value Date]>=@MINDATE and [Value Date]<=@MAXDATE)
+
+--Update Earnings
+UPDATE [EXPORT LC MONTH] SET [LC Earnings]=Case when @SUM_EARNINGS is not NULL then @SUM_EARNINGS else 0 end 
+where [LC Month]=@MINDATE
+
+set @SUM_EARNINGS=0
+Set @MinId=@MinId+1
+end
+
+--Import in Tabelle EXPORT LC YEAR
+INSERT INTO [EXPORT LC YEAR] ([LC Year]) 
+Select distinct [IdLCYear] from [EXPORT LC MONTH] WHERE [IdLCYear] not in (Select  [LC Year] from   [EXPORT LC YEAR])
+
+
+drop table #Temp_MaxBookingDates
+drop table #Temp_MaxExchange_Rates

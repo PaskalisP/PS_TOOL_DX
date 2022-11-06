@@ -1,0 +1,8 @@
+﻿Select A.[BSDate] as BalanceSheetDate,B.[GL_AC_No_Name] as 'Account Name',A.[ReleatedAccountNr] as CustomerAccNr,
+A.[Total_Balance] as 'Passiva Customer Account Balance', B.[AmountInEuro] as 'PS TOOL Customer Account Balance',
+Convert(Decimal(18,2),(A.[Total_Balance] - B.[AmountInEuro]),2) as DIFFERENCE 
+from [DailyBalanceDetailsSheets] A INNER JOIN [CUSTOMER_VOLUMES] B on A.[BSDate]=B.[GL_Rep_Date]
+and A.[ReleatedAccountNr]=B.[AccountNo] and B.[BatchNo]='CLOSING BALANCE'
+where A.[BSDate]='20150615'
+and  A.[GL_Item]='3500'
+order by A.[Total_Balance] desc

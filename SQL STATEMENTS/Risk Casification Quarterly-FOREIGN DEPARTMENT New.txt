@@ -1,0 +1,11 @@
+﻿Select  m.[Product Type],  m.[Counterparty/Issuer/Collateral Provider],  m.[Client No],  m.[Country of Risk],  m.[Country of Residence],  m.[Contract Collateral ID],  m.[Start Date],  m.[Maturity Date],  m.[Org Ccy],  m.[Credit Exposure] ,   c.[Obligor Rate],m.[Industry(HO)],m.[Euro Equivalent]
+ from   
+[MAK REPORT] as m,
+[CREDIT RISK] as c
+where   m.[RiskDate]='20140630' and c.[RiskDate]= '20140630' 
+and m.[Contract Collateral ID]=c.[Contract Collateral ID] 
+and m.[Product Type]=c.[Product Type]
+and m.[Contract Type]=c.[Contract Type]
+and m.[Client No]=c.[Client No] 
+and m.[Org Ccy]=c.[Org Ccy]
+and m.[Product Type] in ('CLCCTP','EALLC','FORFTDL','PREFI','FTBRDD','FRP','EXRFDD')  

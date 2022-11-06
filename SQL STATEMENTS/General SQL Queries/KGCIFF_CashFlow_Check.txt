@@ -1,0 +1,33 @@
+﻿DECLARE @RISKDATE Datetime
+Set @RISKDATE='20181218'
+SELECT  A.[ID]
+      --,[KGCIFF_MDANT]
+      ,[KGCIFF_MODUL]
+      ,[KGCIFF_KDNRH]
+      --,[KGCIFF_KTONR]
+      ,[KGCIFF_GSREF]
+      --,[KGCIFF_ACCNR]
+      --,[KGCIFF_PTYPI]
+      --,[KGCIFF_CURCD]
+      ,[KGCIFF_DXBEW]
+	  ,B.EventDate
+	  ,'EventDateCheck'=Case when [KGCIFF_DXBEW]=B.EventDate then 'OK' else 'NO' end
+      ,[KGCIFF_ERART]
+      ,[KGCIFF_HOEHE]
+	  ,'Total CashFlow CCY'= Case when [KGCIFF_HOEHE]<0 then B.Total_CASHFLOW_CCY*(-1) else B.Total_CASHFLOW_CCY end
+	  ,'Difference Total CF'=ROUND(ABS([KGCIFF_HOEHE])-ABS(B.Total_CASHFLOW_CCY),2)
+      --,[KGCIFF_SALDO]
+      ,[KGCIFF_TILGA]
+	   ,'Principal CF CCY'= Case when [KGCIFF_TILGA]<0 then B.PrincipalOrigCCY *(-1) else B.PrincipalOrigCCY end
+	  ,'Difference Principal CF'=ROUND(ABS([KGCIFF_TILGA])-ABS(B.PrincipalOrigCCY),2)
+      ,[KGCIFF_ZINSA]
+	  ,'Interest CF CCY'= Case when [KGCIFF_TILGA]<0 then B.InterestCCY *(-1) else B.InterestCCY end
+	  ,'Difference Interest CF'=ROUND(ABS([KGCIFF_ZINSA])-ABS(B.InterestCCY),2)
+      ,[KGCIFF_WHISO]
+      --,[KGCIFF_KZABL]
+      --,[KGCIFF_POOLI]
+      --,[KGCIFF_IFNAM]
+      ,[KGCIFF_DXIFD]
+  FROM [PS TOOL DX Live].[dbo].[BAIS_KGCIFF] A INNER JOIN CASH_FLOWS_FINRECON B on A.KGCIFF_GSREF=B.Contract_Nr_Clear and A.KGCIFF_DXIFD=B.RiskDate 
+  where KGCIFF_DXIFD=@RISKDATE and
+  A.ID in (Select min(ID) from BAIS_KGCIFF where KGCIFF_DXIFD=@RISKDATE GROUP by KGCIFF_GSREF)

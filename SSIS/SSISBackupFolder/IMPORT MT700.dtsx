@@ -1,0 +1,1490 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/7/2014 5:14:59 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="CCB-WS-110"
+  DTS:CreatorName="CCB-FRANKFURT\Papas"
+  DTS:Description="MT700 Import"
+  DTS:DTSID="{C6DACE09-D3FB-4FAB-B019-D499B39C0E07}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="IMPORT MT700"
+  DTS:VersionGUID="{9F8D25BD-2DCA-45E5-9DAB-FE106DEE4E23}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C180104C-FF29-47DF-A1BE-4BF58B4E2639}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=CCB-DB;Initial Catalog=PS TOOL DX Live;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{12201F54-3A5D-4AF8-8EEB-3AFBBCF9A562}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=\\CCB-DATEN\Apps\SWIFT\Swift.accdb;OLE DB SERVICES=0;Provider=Microsoft.ACE.OLEDB.12.0;Persist Security Info=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{7EA1DC01-0A4A-4572-B558-74B07C0EA9F1}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - MT700 Temp"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - MT700 Temp"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[MT700 Temp]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - MT700 Temp.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Datei]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Datei"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Datei]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Datei]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Number]"
+                      cachedDataType="i4"
+                      cachedName="Number"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Number]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[MT]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="MT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[MT]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[MT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[IN_OUT]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="IN_OUT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[IN_OUT]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[IN_OUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M40A]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="M40A"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M40A]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M40A]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M20]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="M20"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M20]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M20]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M21]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="M21"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M21]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M21]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M31C]"
+                      cachedDataType="date"
+                      cachedName="M31C"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M31C]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31C]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M44C]"
+                      cachedDataType="date"
+                      cachedName="M44C"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M44C]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M44C]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M31D_Date]"
+                      cachedDataType="date"
+                      cachedName="M31D_Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M31D_Date]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31D_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M31D_Country]"
+                      cachedDataType="wstr"
+                      cachedLength="29"
+                      cachedName="M31D_Country"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M31D_Country]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31D_Country]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M50_1]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="M50_1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M50_1]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M50_2]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="M50_2"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M50_2]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M50_3]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="M50_3"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M50_3]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M50_4]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="M50_4"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M50_4]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_4]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M59_1]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="M59_1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M59_1]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M59_2]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="M59_2"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M59_2]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M59_3]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="M59_3"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M59_3]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M59_4]"
+                      cachedDataType="wstr"
+                      cachedLength="35"
+                      cachedName="M59_4"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M59_4]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_4]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M39A]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="M39A"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M39A]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M39A]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[SENDER]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="SENDER"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[SENDER]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[SENDER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[CCY]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="CCY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[CCY]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M32B]"
+                      cachedDataType="cy"
+                      cachedName="M32B"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M32B]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M32B]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[L_C]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="L_C"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[L_C]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[L_C]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Done]"
+                      cachedDataType="bool"
+                      cachedName="Done"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Done]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Done]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Done_Date]"
+                      cachedDataType="date"
+                      cachedName="Done_Date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Done_Date]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Done_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Advice_Only]"
+                      cachedDataType="bool"
+                      cachedName="Advice_Only"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Advice_Only]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Advice_Only]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Amount_Paid]"
+                      cachedDataType="cy"
+                      cachedName="Amount_Paid"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Amount_Paid]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Amount_Paid]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Charge_CCY]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="Charge_CCY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Charge_CCY]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Charge_CCY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Charge]"
+                      cachedDataType="cy"
+                      cachedName="Charge"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Charge]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Charge]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[Send]"
+                      cachedDataType="bool"
+                      cachedName="Send"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Send]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Send]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[KD_NR]"
+                      cachedDataType="i4"
+                      cachedName="KD_NR"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[KD_NR]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[KD_NR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[CCY_33]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CCY_33"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[CCY_33]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY_33]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M33B]"
+                      cachedDataType="cy"
+                      cachedName="M33B"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M33B]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M33B]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[CCY_34]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CCY_34"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[CCY_34]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY_34]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M34B]"
+                      cachedDataType="cy"
+                      cachedName="M34B"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M34B]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M34B]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M31E]"
+                      cachedDataType="date"
+                      cachedName="M31E"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M31E]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31E]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].Columns[M30]"
+                      cachedDataType="date"
+                      cachedName="M30"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M30]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M30]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Datei]"
+                      dataType="wstr"
+                      length="20"
+                      name="Datei" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Number]"
+                      dataType="i4"
+                      name="Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[MT]"
+                      dataType="wstr"
+                      length="5"
+                      name="MT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[IN_OUT]"
+                      dataType="wstr"
+                      length="1"
+                      name="IN_OUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M40A]"
+                      dataType="wstr"
+                      length="24"
+                      name="M40A" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M20]"
+                      dataType="wstr"
+                      length="16"
+                      name="M20" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M21]"
+                      dataType="wstr"
+                      length="16"
+                      name="M21" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M31C]"
+                      dataType="date"
+                      name="M31C" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M44C]"
+                      dataType="date"
+                      name="M44C" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M31D_Date]"
+                      dataType="date"
+                      name="M31D_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M31D_Country]"
+                      dataType="wstr"
+                      length="29"
+                      name="M31D_Country" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M50_1]"
+                      dataType="wstr"
+                      length="35"
+                      name="M50_1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M50_2]"
+                      dataType="wstr"
+                      length="35"
+                      name="M50_2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M50_3]"
+                      dataType="wstr"
+                      length="35"
+                      name="M50_3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M50_4]"
+                      dataType="wstr"
+                      length="35"
+                      name="M50_4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M59_1]"
+                      dataType="wstr"
+                      length="35"
+                      name="M59_1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M59_2]"
+                      dataType="wstr"
+                      length="35"
+                      name="M59_2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M59_3]"
+                      dataType="wstr"
+                      length="35"
+                      name="M59_3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M59_4]"
+                      dataType="wstr"
+                      length="35"
+                      name="M59_4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M39A]"
+                      dataType="wstr"
+                      length="6"
+                      name="M39A" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[SENDER]"
+                      dataType="wstr"
+                      length="20"
+                      name="SENDER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[CCY]"
+                      dataType="wstr"
+                      length="3"
+                      name="CCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M32B]"
+                      dataType="cy"
+                      name="M32B" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[L_C]"
+                      dataType="wstr"
+                      length="12"
+                      name="L_C" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Done]"
+                      dataType="bool"
+                      name="Done" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Done_Date]"
+                      dataType="date"
+                      name="Done_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Advice_Only]"
+                      dataType="bool"
+                      name="Advice_Only" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Amount_Paid]"
+                      dataType="cy"
+                      name="Amount_Paid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Charge_CCY]"
+                      dataType="wstr"
+                      length="3"
+                      name="Charge_CCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Charge]"
+                      dataType="cy"
+                      name="Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[Send]"
+                      dataType="bool"
+                      name="Send" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[KD_NR]"
+                      dataType="i4"
+                      name="KD_NR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[CCY_33]"
+                      dataType="wstr"
+                      length="50"
+                      name="CCY_33" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M33B]"
+                      dataType="cy"
+                      name="M33B" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[CCY_34]"
+                      dataType="wstr"
+                      length="50"
+                      name="CCY_34" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M34B]"
+                      dataType="cy"
+                      name="M34B" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M31E]"
+                      dataType="date"
+                      name="M31E" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input].ExternalColumns[M30]"
+                      dataType="date"
+                      name="M30" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - MT700 Temp.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - MT700 Temp.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - MT700 Temp.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - MT700 Temp.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - MT700"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - MT700"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">MT700</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - MT700.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Datei]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Datei]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Datei]"
+                      name="Datei"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Number]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Number]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Number]"
+                      name="Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[MT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[MT]"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[MT]"
+                      name="MT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[IN_OUT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[IN_OUT]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[IN_OUT]"
+                      name="IN_OUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M40A]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M40A]"
+                      length="24"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M40A]"
+                      name="M40A"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M20]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M20]"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M20]"
+                      name="M20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M21]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M21]"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M21]"
+                      name="M21"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31C]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M31C]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31C]"
+                      name="M31C"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M44C]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M44C]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M44C]"
+                      name="M44C"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31D_Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M31D_Date]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31D_Date]"
+                      name="M31D_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31D_Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M31D_Country]"
+                      length="29"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31D_Country]"
+                      name="M31D_Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M50_1]"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_1]"
+                      name="M50_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M50_2]"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_2]"
+                      name="M50_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M50_3]"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_3]"
+                      name="M50_3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_4]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M50_4]"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M50_4]"
+                      name="M50_4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M59_1]"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_1]"
+                      name="M59_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M59_2]"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_2]"
+                      name="M59_2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M59_3]"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_3]"
+                      name="M59_3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_4]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M59_4]"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M59_4]"
+                      name="M59_4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M39A]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M39A]"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M39A]"
+                      name="M39A"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[SENDER]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[SENDER]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[SENDER]"
+                      name="SENDER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[CCY]"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY]"
+                      name="CCY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M32B]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M32B]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M32B]"
+                      name="M32B"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[L_C]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[L_C]"
+                      length="12"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[L_C]"
+                      name="L_C"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Done]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Done]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Done]"
+                      name="Done"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Done_Date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Done_Date]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Done_Date]"
+                      name="Done_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Advice_Only]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Advice_Only]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Advice_Only]"
+                      name="Advice_Only"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Amount_Paid]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Amount_Paid]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Amount_Paid]"
+                      name="Amount_Paid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Charge_CCY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Charge_CCY]"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Charge_CCY]"
+                      name="Charge_CCY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Charge]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Charge]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Charge]"
+                      name="Charge"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Send]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Send]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[Send]"
+                      name="Send"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[KD_NR]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[KD_NR]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[KD_NR]"
+                      name="KD_NR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY_33]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[CCY_33]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY_33]"
+                      name="CCY_33"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M33B]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M33B]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M33B]"
+                      name="M33B"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY_34]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[CCY_34]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[CCY_34]"
+                      name="CCY_34"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M34B]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M34B]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M34B]"
+                      name="M34B"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31E]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M31E]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M31E]"
+                      name="M31E"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M30]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M30]"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].Columns[M30]"
+                      name="M30"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Datei]"
+                      dataType="wstr"
+                      length="20"
+                      name="Datei" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Number]"
+                      dataType="i4"
+                      name="Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[MT]"
+                      dataType="wstr"
+                      length="5"
+                      name="MT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[IN_OUT]"
+                      dataType="wstr"
+                      length="1"
+                      name="IN_OUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M40A]"
+                      dataType="wstr"
+                      length="24"
+                      name="M40A" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M20]"
+                      dataType="wstr"
+                      length="16"
+                      name="M20" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M21]"
+                      dataType="wstr"
+                      length="16"
+                      name="M21" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M31C]"
+                      dataType="date"
+                      name="M31C" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M44C]"
+                      dataType="date"
+                      name="M44C" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M31D_Date]"
+                      dataType="date"
+                      name="M31D_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M31D_Country]"
+                      dataType="wstr"
+                      length="29"
+                      name="M31D_Country" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M50_1]"
+                      dataType="wstr"
+                      length="35"
+                      name="M50_1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M50_2]"
+                      dataType="wstr"
+                      length="35"
+                      name="M50_2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M50_3]"
+                      dataType="wstr"
+                      length="35"
+                      name="M50_3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M50_4]"
+                      dataType="wstr"
+                      length="35"
+                      name="M50_4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M59_1]"
+                      dataType="wstr"
+                      length="35"
+                      name="M59_1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M59_2]"
+                      dataType="wstr"
+                      length="35"
+                      name="M59_2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M59_3]"
+                      dataType="wstr"
+                      length="35"
+                      name="M59_3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M59_4]"
+                      dataType="wstr"
+                      length="35"
+                      name="M59_4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M39A]"
+                      dataType="wstr"
+                      length="6"
+                      name="M39A" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[SENDER]"
+                      dataType="wstr"
+                      length="20"
+                      name="SENDER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[CCY]"
+                      dataType="wstr"
+                      length="3"
+                      name="CCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M32B]"
+                      dataType="cy"
+                      name="M32B" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[L_C]"
+                      dataType="wstr"
+                      length="12"
+                      name="L_C" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Done]"
+                      dataType="bool"
+                      name="Done" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Done_Date]"
+                      dataType="date"
+                      name="Done_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Advice_Only]"
+                      dataType="bool"
+                      name="Advice_Only" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Amount_Paid]"
+                      dataType="cy"
+                      name="Amount_Paid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Charge_CCY]"
+                      dataType="wstr"
+                      length="3"
+                      name="Charge_CCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Charge]"
+                      dataType="cy"
+                      name="Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[Send]"
+                      dataType="bool"
+                      name="Send" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[KD_NR]"
+                      dataType="i4"
+                      name="KD_NR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[CCY_33]"
+                      dataType="wstr"
+                      length="50"
+                      name="CCY_33" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M33B]"
+                      dataType="cy"
+                      name="M33B" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[CCY_34]"
+                      dataType="wstr"
+                      length="50"
+                      name="CCY_34" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M34B]"
+                      dataType="cy"
+                      name="M34B" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M31E]"
+                      dataType="date"
+                      name="M31E" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output].ExternalColumns[M30]"
+                      dataType="date"
+                      name="M30" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Datei]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Datei]"
+                      name="Datei" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Number]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Number]"
+                      name="Number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[MT]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[MT]"
+                      name="MT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[IN_OUT]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[IN_OUT]"
+                      name="IN_OUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M40A]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M40A]"
+                      name="M40A" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M20]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M20]"
+                      name="M20" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M21]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M21]"
+                      name="M21" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M31C]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M31C]"
+                      name="M31C" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M44C]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M44C]"
+                      name="M44C" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M31D_Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M31D_Date]"
+                      name="M31D_Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M31D_Country]"
+                      dataType="wstr"
+                      length="29"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M31D_Country]"
+                      name="M31D_Country" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M50_1]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M50_1]"
+                      name="M50_1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M50_2]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M50_2]"
+                      name="M50_2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M50_3]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M50_3]"
+                      name="M50_3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M50_4]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M50_4]"
+                      name="M50_4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M59_1]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M59_1]"
+                      name="M59_1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M59_2]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M59_2]"
+                      name="M59_2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M59_3]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M59_3]"
+                      name="M59_3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M59_4]"
+                      dataType="wstr"
+                      length="35"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M59_4]"
+                      name="M59_4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M39A]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M39A]"
+                      name="M39A" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[SENDER]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[SENDER]"
+                      name="SENDER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[CCY]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[CCY]"
+                      name="CCY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M32B]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M32B]"
+                      name="M32B" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[L_C]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[L_C]"
+                      name="L_C" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Done]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Done]"
+                      name="Done" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Done_Date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Done_Date]"
+                      name="Done_Date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Advice_Only]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Advice_Only]"
+                      name="Advice_Only" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Amount_Paid]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Amount_Paid]"
+                      name="Amount_Paid" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Charge_CCY]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Charge_CCY]"
+                      name="Charge_CCY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Charge]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Charge]"
+                      name="Charge" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Send]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[Send]"
+                      name="Send" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[KD_NR]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[KD_NR]"
+                      name="KD_NR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[CCY_33]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[CCY_33]"
+                      name="CCY_33" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M33B]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M33B]"
+                      name="M33B" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[CCY_34]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[CCY_34]"
+                      name="CCY_34" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M34B]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M34B]"
+                      name="M34B" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M31E]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M31E]"
+                      name="M31E" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M30]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[M30]"
+                      name="M30" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - MT700 Temp.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - MT700.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DTSID="{BE8558B7-3616-4B3C-AE6C-44C81AC059AC}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C180104C-FF29-47DF-A1BE-4BF58B4E2639}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[MT700 Temp] (&#xA;[ID] int NOT NULL,&#xA;[Datei] nvarchar(20),&#xA;[Number] int,&#xA;[MT] nvarchar(5),&#xA;[IN_OUT] nvarchar(1),&#xA;[M40A] nvarchar(24),&#xA;[M20] nvarchar(16),&#xA;[M21] nvarchar(16),&#xA;[M31C] datetime,&#xA;[M44C] datetime,&#xA;[M31D_Date] datetime,&#xA;[M31D_Country] nvarchar(29),&#xA;[M50_1] nvarchar(35),&#xA;[M50_2] nvarchar(35),&#xA;[M50_3] nvarchar(35),&#xA;[M50_4] nvarchar(35),&#xA;[M59_1] nvarchar(35),&#xA;[M59_2] nvarchar(35),&#xA;[M59_3] nvarchar(35),&#xA;[M59_4] nvarchar(35),&#xA;[M39A] nvarchar(6),&#xA;[SENDER] nvarchar(20),&#xA;[CCY] nvarchar(3),&#xA;[M32B] money,&#xA;[L_C] nvarchar(12),&#xA;[Done] bit NOT NULL,&#xA;[Done_Date] datetime,&#xA;[Advice_Only] bit NOT NULL,&#xA;[Amount_Paid] money,&#xA;[Charge_CCY] nvarchar(3),&#xA;[Charge] money,&#xA;[Send] bit NOT NULL,&#xA;[KD_NR] int,&#xA;[CCY_33] nvarchar(50),&#xA;[M33B] money,&#xA;[CCY_34] nvarchar(50),&#xA;[M34B] money,&#xA;[M31E] datetime,&#xA;[M30] datetime&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{960F6D24-8771-44DE-B823-8583E6CD20C1\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{960F6D24-8771-44DE-B823-8583E6CD20C1}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{960F6D24-8771-44DE-B823-8583E6CD20C1}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

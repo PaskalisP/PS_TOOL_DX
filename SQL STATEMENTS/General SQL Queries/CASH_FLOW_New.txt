@@ -1,0 +1,51 @@
+﻿DECLARE @RISKDATE Datetime
+SET @RISKDATE='20181231'
+
+CREATE TABLE [#Temp_CASH_FLOWS_FINRECON](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Class] [nvarchar](255) NULL,
+	[ContractType] [nvarchar](255) NULL,
+	[ProductType] [nvarchar](255) NULL,
+	[Contract_Nr_Clear] [nvarchar](255) NULL,
+	[Client_Name] [nvarchar](255) NULL,
+	[Client_No] [nvarchar](255) NULL,
+	[TradeDate] [datetime] NULL,
+	[StartDate] [datetime] NULL,
+	[Final_Maturity_Date] [datetime] NULL,
+	[Current_Interest_Rate] [float] NULL,
+	[EventDate] [datetime] NULL,
+	[OrigCCY] [nvarchar](50) NULL,
+	[PrincipalOrigCCY] [float] NULL,
+	[InterestCCY] [float] NULL,
+	[Total_CASHFLOW_CCY] [float] NULL,
+	[Principal_EUR] [float] NULL,
+	[Interest_EUR] [float] NULL,
+	[Total_CASHFLOW] [float] NULL,
+	[RiskDate] [datetime] NULL)
+
+INSERT INTO #Temp_CASH_FLOWS_FINRECON
+(Class,Contract_Nr_Clear,EventDate,RiskDate,PrincipalOrigCCY,InterestCCY,Principal_EUR,Interest_EUR)
+select 'class'=Case when Class in ('Assets') then 'Asset' else class end,Contract,EventDate,RiskDate,0,0,0,0 from MOVEMENTS
+where class in ('Assets','Liabilities')
+group by Class, Contract,EventDate,RiskDate
+
+UPDATE A SET A.ContractType=B.ContractType,A.ProductType=B.ProductType,A.Client_Name=B.Client_Name,A.Client_No=B.Client_Nr 
+,A.TradeDate=B.InputDate,A.StartDate=B.StartDate,A.Final_Maturity_Date=B.MaturityDate,A.Current_Interest_Rate=B.InterestRate,A.OrigCCY=B.CCY
+from #Temp_CASH_FLOWS_FINRECON A INNER JOIN FINRECON_NG B on A.Contract_Nr_Clear=B.Contract_Nr_Clear and A.RiskDate=B.RiskDate where B.RiskDate=@RISKDATE
+
+UPDATE A SET A.PrincipalOrigCCY=B.Amount,A.Principal_EUR=B.AmountEUR from #Temp_CASH_FLOWS_FINRECON A INNER JOIN MOVEMENTS B 
+on A.Contract_Nr_Clear+Convert(varchar(10),A.EventDate,104)=B.Contract+Convert(varchar(10),B.EventDate,104)
+and A.RiskDate=B.RiskDate where A.RiskDate=@RISKDATE and B.AmountType in ('Principal','Nominal Value')
+
+UPDATE A SET A.InterestCCY=B.Amount,A.Interest_EUR=B.AmountEUR from #Temp_CASH_FLOWS_FINRECON A INNER JOIN MOVEMENTS B 
+on A.Contract_Nr_Clear+Convert(varchar(10),A.EventDate,104)=B.Contract+Convert(varchar(10),B.EventDate,104)
+and A.RiskDate=B.RiskDate where A.RiskDate=@RISKDATE and B.AmountType in ('Interest','Coupon')
+
+UPDATE #Temp_CASH_FLOWS_FINRECON set Total_CASHFLOW_CCY=PrincipalOrigCCY+InterestCCY,Total_CASHFLOW=Principal_EUR+Interest_EUR where RiskDate=@RISKDATE
+
+select * from #Temp_CASH_FLOWS_FINRECON where RiskDate=@RISKDATE order by eventdate asc
+--select * from CASH_FLOWS_FINRECON where RiskDate=@RISKDATE
+
+
+
+drop table #Temp_CASH_FLOWS_FINRECON

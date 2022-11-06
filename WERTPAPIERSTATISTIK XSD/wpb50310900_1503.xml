@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LIEFERUNG-WPINVEST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/statistik/wpinvest/v1 BbkXmwWpInvest.xsd" xmlns:bbk="http://www.bundesbank.de/xmw/2003-01-01" version="1.0" erstellzeit="2015-04-02T05:32:49-05:00" stufe="Produktion" bereich="Statistik" xmlns="http://www.bundesbank.de/statistik/wpinvest/v1">
+    <bbk:ABSENDER>
+        <BLZ>50310900</BLZ>
+        <bbk:NAME>China Construction Bank , Niederlassung Frankfurt am Main</bbk:NAME>
+        <bbk:STRASSE>Bockenheimer Landstr. 51 - 53</bbk:STRASSE>
+        <bbk:ORT>60325 Frankfurt am Main</bbk:ORT>
+        <bbk:LAND>DE</bbk:LAND>
+        <bbk:KONTAKT>
+            <bbk:ANREDE>Herr</bbk:ANREDE>
+            <bbk:VORNAME>Peter</bbk:VORNAME>
+            <bbk:ZUNAME>Noeske</bbk:ZUNAME>
+            <bbk:ABTEILUNG>Accounting</bbk:ABTEILUNG>
+            <bbk:TELEFON>069/971495-25</bbk:TELEFON>
+            <bbk:FAX>069/971495-77</bbk:FAX>
+            <bbk:EMAIL>Peter_Noeske@ccbff.de</bbk:EMAIL>
+            <bbk:EXTRANET-ID>EXNIZOBT</bbk:EXTRANET-ID>
+        </bbk:KONTAKT>
+    </bbk:ABSENDER>
+    <MELDUNG erstellzeit="2015-04-02T05:32:49-05:00">
+        <bbk:MELDER>
+            <BLZ>50310900</BLZ>
+            <bbk:NAME>China Construction Bank , Niederlassung Frankfurt am Main</bbk:NAME>
+        </bbk:MELDER>
+        <MELDETERMIN>2015-03</MELDETERMIN>
+        <FORMULAR>
+            <KUNDENDEPOTS>
+                <S1100>0</S1100>
+                <S1215>0</S1215>
+                <S1225>0</S1225>
+                <S1228>0</S1228>
+                <S1230>0</S1230>
+                <S1240>0</S1240>
+                <S1251>0</S1251>
+                <S1252>0</S1252>
+                <S1261>0</S1261>
+                <S1262>0</S1262>
+                <S1270>0</S1270>
+                <S1280>0</S1280>
+                <S1290>0</S1290>
+                <S1311>0</S1311>
+                <S1312>0</S1312>
+                <S1313>0</S1313>
+                <S1314>0</S1314>
+                <S1400>0</S1400>
+                <S1500>0</S1500>
+            </KUNDENDEPOTS>
+            <WERTPAPIERE>
+                <WP>
+                    <STAMM>
+                        <ISIN>DE0001137461</ISIN>
+                    </STAMM>
+                    <BESTAND dim="EUR">
+                        <S1224>
+                            <B l="DE">35000000</B>
+                            <BW l="DE">35153650</BW>
+                        </S1224>
+                    </BESTAND>
+                </WP>
+            </WERTPAPIERE>
+        </FORMULAR>
+    </MELDUNG>
+</LIEFERUNG-WPINVEST>

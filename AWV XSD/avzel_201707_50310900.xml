@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<LIEFERUNG-AWZEL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/xmw/2003-01-01 BbkXmwAwzel.xsd" version="1.0" erstellzeit="2017-08-02T03:39:59" stufe="Produktion" bereich="Statistik" xmlns="http://www.bundesbank.de/xmw/2003-01-01">
+    <ABSENDER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+        <STRASSE>Bockenheimer Landstr. 75</STRASSE>
+        <PLZ>60325</PLZ>
+        <ORT>Frankfurt am Main</ORT>
+        <LAND>DE</LAND>
+        <KONTAKT>
+            <ANREDE>Herr</ANREDE>
+            <VORNAME>Paschalis</VORNAME>
+            <ZUNAME>Papas</ZUNAME>
+            <ABTEILUNG>EDV Abteilung</ABTEILUNG>
+            <TELEFON>069/971495-43</TELEFON>
+            <FAX>069/971495-72</FAX>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            <EXTRANET-ID>EXNDBWDF</EXTRANET-ID>
+        </KONTAKT>
+    </ABSENDER>
+    <ERSTELLER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+        <KONTAKT>
+            <ZUNAME>Papas</ZUNAME>
+            <TELEFON>069/971495-43</TELEFON>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+        </KONTAKT>
+    </ERSTELLER>
+    <KOMMENTAR>Monatsmeldung AWV</KOMMENTAR>
+    <MELDUNG erstellzeit="2017-08-02T03:39:59">
+        <MELDEPFLICHTIGER>
+            <FIRMENNR>50310900</FIRMENNR>
+            <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+            <STRASSE>Bockenheimer Landstr. 75</STRASSE>
+            <PLZ>60325</PLZ>
+            <ORT>Frankfurt am Main</ORT>
+            <KONTAKT>
+                <ZUNAME>Memadathil</ZUNAME>
+                <TELEFON>069/971495-82</TELEFON>
+                <EMAIL>Benny_Memadathil@ccbff.de</EMAIL>
+            </KONTAKT>
+        </MELDEPFLICHTIGER>
+        <MELDETERMIN>2017-07</MELDETERMIN>
+        <MELDUNGSREF>meldung vom Juli 2017</MELDUNGSREF>
+        <VDR_04>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="NEGATIV ZINSEN">
+                <BETRAG land="SG" landname="SINGAPORE">3</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="NEGATIV ZINSEN">
+                <BETRAG land="BE" landname="BELGIUM">34</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="KONTOFUEHRUNGSGEBUEHREN">
+                <BETRAG land="CN" landname="CHINA" betragsref="HO">15</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="AVALPROVISION">
+                <BETRAG land="CN" landname="CHINA" betragsref="China Eastern Airlines">4</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="571" zahlungszweck="ERSTATTUNG HO">
+                <BETRAG land="CN" landname="CHINA" betragsref="Delegation">6</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="571" zahlungszweck="FX-ERSTATTUNG">
+                <BETRAG land="CN" landname="CHINA" betragsref="CCB Fujian">4</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="SONST. BETRIEBL. ERTRAEGE">
+                <BETRAG land="SG" landname="SINGAPORE" betragsref="OCBC (TD-D-004 v 13/7/17)">22</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="MAKLERGEBUEHREN">
+                <BETRAG land="HK" landname="HONG KONG" betragsref="ICAP &amp; Tradition Asia">4</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="MAKLERGEBUEHREN">
+                <BETRAG land="NL" landname="NETHERLANDS" betragsref="AFS Interest">6</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="SWIFT">
+                <BETRAG land="BE" landname="BELGIUM" betragsref="Swift">6</BETRAG>
+            </DIKAPPOSTEN>
+        </VDR_04>
+        <VDR_10>
+            <POSTEN belegart="4" kennzahl="702">
+                <WERTPAPIER isin="XS1641442246" bezeichnung="BRIGHT FOOD SINGAPORE PTE.  LTD.">
+                    <NOMINAL_STUECK s-oder-n="N">4000</NOMINAL_STUECK>
+                    <BETRAG land="SG" landname="SINGAPORE" wrg="EUR">3992</BETRAG>
+                </WERTPAPIER>
+            </POSTEN>
+        </VDR_10>
+        <VDR_14>
+            <BETRAG land="AT" landname="AUSTRIA">301</BETRAG>
+            <BETRAG land="CN" landname="CHINA">1165</BETRAG>
+            <BETRAG land="FR" landname="FRANCE">265</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">226</BETRAG>
+            <BETRAG land="NL" landname="NETHERLANDS">54</BETRAG>
+        </VDR_14>
+        <VDR_15>
+            <BETRAG land="AE" landname="UNITED ARAB EMIR">53</BETRAG>
+            <BETRAG land="AU" landname="AUSTRALIA">6</BETRAG>
+            <BETRAG land="BH" landname="BAHRAIN">17</BETRAG>
+            <BETRAG land="CN" landname="CHINA">3042</BETRAG>
+            <BETRAG land="FR" landname="FRANCE">38</BETRAG>
+            <BETRAG land="GB" landname="UNITED KINGDOM">13</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">1218</BETRAG>
+            <BETRAG land="KW" landname="KUWAIT">11</BETRAG>
+            <BETRAG land="LU" landname="LUXEMBOURG">26</BETRAG>
+            <BETRAG land="MY" landname="MALAYSIA">20</BETRAG>
+            <BETRAG land="SG" landname="SINGAPORE">1329</BETRAG>
+            <BETRAG land="TW" landname="TAIWAN">1033</BETRAG>
+            <BETRAG land="US" landname="UNITED STATES">343</BETRAG>
+            <BETRAG land="ZA" landname="SOUTH AFRICA">59</BETRAG>
+        </VDR_15>
+    </MELDUNG>
+</LIEFERUNG-AWZEL>

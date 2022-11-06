@@ -1,0 +1,16 @@
+﻿Select C.NewClient,C.CustomerName,'ACTIVE CLIENT ACCOUNT' as ClientStatus from
+(Select   A.[ClientNo] as 'NewClient', A.[English Name] as 'CustomerName'  from   [CUSTOMER_INFO] A INNER JOIN
+(select distinct([ClientNo]) as 'ClientNr'  from   [CUSTOMER_ACCOUNTS] where [ProductCode]='DDPCUR01' and   [CLOSE_DATE] is not NULL GROUP BY  [ClientNo]) B 
+on A.[ClientNo]=B.ClientNr 
+where   A.[CLOSE_DATE] is NULL 
+and A.[ClientNo]  not in (Select [Client No] from [MAK REPORT] where [RiskDate] in (Select Max([RiskDate]) from [MAK CR TOTALS])))C
+where C.NewClient in (Select [ClientNo] from  [CUSTOMER_ACCOUNTS] where [ProductCode]='DDPCUR01' and   [CLOSE_DATE] is  NULL)
+Union All
+Select C.NewClient,C.CustomerName,'CLOSED CLIENT ACCOUNT' as ClientStatus from
+(Select   A.[ClientNo] as 'NewClient', A.[English Name] as 'CustomerName'  from   [CUSTOMER_INFO] A INNER JOIN
+(select distinct([ClientNo]) as 'ClientNr'  from   [CUSTOMER_ACCOUNTS] where [ProductCode]='DDPCUR01' and   [CLOSE_DATE] is not NULL GROUP BY  [ClientNo]) B 
+on A.[ClientNo]=B.ClientNr 
+where   A.[CLOSE_DATE] is NULL 
+and A.[ClientNo]  not in (Select [Client No] from [MAK REPORT] where [RiskDate] in (Select Max([RiskDate]) from [MAK CR TOTALS])))C
+where C.NewClient in (Select [ClientNo] from  [CUSTOMER_ACCOUNTS] where [ProductCode]='DDPCUR01' and   [CLOSE_DATE] is not NULL)
+order by C.NewClient asc

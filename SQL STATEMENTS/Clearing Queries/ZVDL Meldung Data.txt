@@ -1,0 +1,25 @@
+﻿DECLARE @MINDATE Datetime
+DECLARE @MAXDATE Datetime
+SET @MINDATE='20161001'
+SET @MAXDATE='20161231'
+
+SELECT [IncomingDate]
+      ,[OurReference]
+      ,A.[ValueDate]
+	  ,A.MessageSender
+	  ,A.[MsgSenderCountry]
+,A.MessageSenderName
+,A.[MTTYPE]
+	  ,B.ORDERCUSTNAME as 'Ordering Customer Line 1'
+	  ,B.ORDERCUSTBR as  'Ordering Customer Line 2'
+	  ,B.ORDERCUSTADD1 as 'Ordering Customer Line 3'
+	  ,B.ORDERCUSTADD2 as 'Ordering Customer Line 4'
+	   ,[BENEFACNO] as 'Beneficiary Acc.Nr.'
+      ,[BENEFCUSTID] as 'Beneficiary client Nr.'
+      ,[BENEFCUSTNAME] as 'Beneficiary Line 1'
+	  ,BENEFCUSTBR as 'Beneficiary Line 2'
+	  ,BENEFCUSTADR1 as 'Beneficiary Line 3'
+	  ,BENEFCUSTADR2 as 'Beneficiary Line 4'
+     
+  FROM [GMPS PAYMENTS IN] A INNER JOIN [ODAS REMMITANCES] B on A.[OurReference]=B.[OURTRANREFNO] 
+  where IncomingDate BETWEEN @MINDATE and @MAXDATE and B.BENEFACNO in (Select [Client Account] from CUSTOMER_ACCOUNTS)

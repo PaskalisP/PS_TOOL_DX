@@ -1,0 +1,1 @@
+﻿UPDATE A SET A.[OwnDeal] = 'Y' FROM [FX DAILY REVALUATION] A INNER JOIN OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=" & OWN_FX_DEALS_DIR & ";', 'SELECT ContractNo FROM [Sheet1$]') B ON A.[ContractNr] = B.ContractNo AND A.[DealStatus]='U' and A.[OwnDeal] = 'N'

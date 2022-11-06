@@ -1,0 +1,2192 @@
+﻿Imports System
+Imports System.IO
+Imports System.Data.SqlClient
+Imports System.ComponentModel
+Imports DevExpress.Skins
+Imports DevExpress.LookAndFeel
+Imports DevExpress.UserSkins
+Imports DevExpress.XtraBars
+Imports DevExpress.XtraBars.Ribbon
+Imports DevExpress.XtraBars.Helpers
+Imports DevExpress.XtraEditors
+Imports DevExpress.XtraGrid.Views.Grid
+Imports System.Text
+Imports System.Collections
+Imports System.Windows.Forms
+Imports DevExpress.XtraSplashScreen
+Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
+Imports DevExpress.XtraGrid.Views.Layout.ViewInfo
+Imports DevExpress.XtraLayout.Customization
+Imports DevExpress.XtraGrid.Views.Layout.Drawing
+Imports DevExpress.XtraLayout.Utils
+Imports DevExpress.XtraGrid.Views.Base
+Imports DevExpress.XtraNavBar
+Imports DevExpress.XtraPrinting
+Imports System.Threading
+Imports DevExpress.XtraTab
+Imports DevExpress.XtraTab.ViewInfo
+Imports DevExpress.XtraReports.UI
+Imports DevExpress.XtraReports.Parameters
+Imports DevExpress.XtraPrintingLinks
+Imports CrystalDecisions.Shared
+Imports CrystalDecisions.CrystalReports.Engine
+Imports DevExpress.Utils
+Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraEditors.Controls
+Imports DevExpress.XtraEditors.Popup
+Imports DevExpress.Data
+Imports DevExpress.XtraGrid
+Imports System.Diagnostics
+Imports System.Collections.Generic
+Imports Bytescout.PDFExtractor
+Imports Microsoft.VisualBasic
+Imports System.Data
+Imports System.Drawing
+
+Public Class NostroReconciliations
+
+    Dim CrystalRepDir As String = ""
+    Dim CREATE_DUMMY_BOOKINGS As String = Nothing
+    Dim ActiveTabGroup As Double = 0
+    Dim ActiveTabGroupQueries As Double = 0
+
+    Dim conn As New SqlConnection
+    Dim cmd As New SqlCommand
+
+    Dim d As Date
+    Dim dsql As String = Nothing
+    Dim rd As Date
+    Dim rdsql As String = Nothing
+
+    Private QueryText As String = ""
+    Private da As New SqlDataAdapter
+    Private dt As New DataTable
+    Private da1 As New SqlDataAdapter
+    Private dt1 As New DataTable
+    Private da2 As New SqlDataAdapter
+    Private dt2 As New DataTable
+
+    Dim dtID As New DataTable
+
+    Dim LastRecDate As Date
+    Dim LastRecDate_ALL_NOSTROS As Date
+    Dim NostroAccount As String = Nothing
+    Dim Currency As String = Nothing
+    Dim NostroName As String = Nothing
+    Dim NostroAccountExternal As String = Nothing
+    Private BS_OutstandingBookings As BindingSource
+    Private BS_LastReconciliations As BindingSource
+    Dim ID_OUTSTANDING_BOOKING As String = Nothing
+
+    Dim NostroAccount_LastReconcile As String = Nothing
+    Dim NostroAccountName_LastReconcile As String = Nothing
+    Dim NostroAccountCCY_LastReconcile As String = Nothing
+    Dim rdlr As Date
+    Dim rdlrsql As String = Nothing
+
+    Dim Balance_IB As Double = 0
+    Dim Balance_EB As Double = 0
+
+    Dim ID_MAIN As Integer = 0
+    Dim BOOKING_ROUTE_MAIN As String = Nothing
+    Dim BOOKING_ID_MAIN As String = Nothing
+    Dim DESCRIPTION_MAIN As String = Nothing
+    Dim BOOKING_DATE_MAIN As Date
+    Dim VALUE_DATE_MAIN As Date
+    Dim CUR_MAIN As String = Nothing
+    Dim AMOUNT_MAIN As Double = 0
+
+    Dim d1 As Date
+    Dim d2 As Date
+    Dim sqld1 As String = Nothing
+    Dim sqld2 As String = Nothing
+    Dim rdsql1 As String = Nothing
+    Dim rdsql2 As String = Nothing
+
+    'Strings for Contextmenu Reset Bookings
+    Dim RESET_ID As String = Nothing
+    Dim RESET_RECONCILE_STATUS As String = Nothing
+    Dim RESET_BookingRoute_IB As String = Nothing
+    Dim RESET_ID_IB As String = Nothing
+    Dim RESET_BookingRoute_EB As String = Nothing
+    Dim RESET_ID_EB As String = Nothing
+    Dim RESET_NOSTRO_ACC As String = Nothing
+
+    'Balance Outstanding
+    Dim CheckFieldValueDate As Date
+    Dim SumBalanceOutstanding As Double = 0
+    Dim SelectedSum As Double = 0
+    Dim InternalBookingSelected As Boolean = False
+    
+
+
+    Sub New()
+        InitSkins()
+        InitializeComponent()
+        SkinManager.EnableMdiFormSkins()
+    End Sub
+    Sub InitSkins()
+        DevExpress.Skins.SkinManager.EnableFormSkins()
+        DevExpress.UserSkins.BonusSkins.Register()
+        UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
+    End Sub
+
+    Private Sub NostroReconciliations_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        'Get connection
+        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
+        cmd.Connection = conn
+        cmd.CommandTimeout = 50000
+        'Me.External_BaseView.ActiveFilterString = "[SwiftTagName] NOT LIKE 'Intermed%'"
+
+        '*******CRYSTAL REPORTS DIRECTORY************
+        '+++++++++++++++++++++++++++++++++++++++++++++++++++
+        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
+        cmd.Connection.Open()
+        CrystalRepDir = cmd.ExecuteScalar
+        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='NostroReconcileCreateDummyBookings' and [IdABTEILUNGSPARAMETER]='NOSTRO_RECONCILIATION' and [PARAMETER STATUS]='Y' "
+        CREATE_DUMMY_BOOKINGS = cmd.ExecuteScalar
+        cmd.Connection.Close()
+        '***********************************************************************
+
+
+        'Bind Combobox
+        Me.FromDateEdit.Properties.Items.Clear()
+        Me.QueryText = "Select CONVERT(VARCHAR(10),Max([ReconcileDate]),104) as 'RLDC Date' from [NOSTRO_ACC_RECONCILIATIONS]"
+        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        dt = New System.Data.DataTable()
+        da.Fill(dt)
+        For Each row As DataRow In dt.Rows
+            If dt.Rows.Count > 0 Then
+                Me.FromDateEdit.Properties.Items.Add(row("RLDC Date"))
+            End If
+        Next
+        If dt.Rows.Count > 0 Then
+            Me.FromDateEdit.Text = dt.Rows.Item(0).Item("RLDC Date")
+        End If
+
+        LastRecDate_ALL_NOSTROS = Me.FromDateEdit.Text
+
+        'Load Nostro Accounts with their Reconciliation Date
+        Dim objCMD As SqlCommand = New SqlCommand("Select A.[ReconcileDate],A.[CCY_IB],A.[AccountNr_Internal],A.[AccountName_Internal],B.AccountIdentifierStatement from [NOSTRO_ACC_RECONCILIATIONS] A INNER JOIN SSIS B on A.[AccountNr_Internal]=B.[INTERNAL ACCOUNT] GROUP BY A.[ReconcileDate],A.[CCY_IB],A.[AccountNr_Internal],A.[AccountName_Internal],B.AccountIdentifierStatement order by ReconcileDate desc", conn)
+        objCMD.CommandTimeout = 5000
+        da = New SqlDataAdapter(objCMD)
+        dt = New DataTable()
+        da.Fill(dt)
+        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+            Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = Nothing
+            Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = dt
+        End If
+       
+
+        'Load all Nostro Accounts which are have a reconciliation Date
+        Dim objCMD1 As SqlCommand = New SqlCommand("Select A.[CCY_IB],A.[AccountNr_Internal],A.[AccountName_Internal],B.AccountIdentifierStatement from [NOSTRO_ACC_RECONCILIATIONS] A INNER JOIN SSIS B on A.[AccountNr_Internal]=B.[INTERNAL ACCOUNT] GROUP BY A.[CCY_IB],A.[AccountNr_Internal],A.[AccountName_Internal],B.AccountIdentifierStatement order by AccountNr_Internal asc", conn)
+        objCMD1.CommandTimeout = 5000
+        da = New SqlDataAdapter(objCMD1)
+        dt = New DataTable()
+        da.Fill(dt)
+        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+            Me.OCBS_LookUpEdit.Properties.DataSource = Nothing
+            Me.OCBS_LookUpEdit.Properties.DataSource = dt
+        End If
+
+        Me.LayoutControlGroup8.Visibility = LayoutVisibility.Never
+
+        'Add column to Datatable for ID's
+        dtID.Columns.Add("BookingRoute_IB", GetType(String))
+        dtID.Columns.Add("ID_IB", GetType(Integer))
+        dtID.Columns.Add("BookingRoute_EB", GetType(String))
+        dtID.Columns.Add("ID_EB", GetType(Integer))
+
+
+    End Sub
+
+    Private Sub NOSTRO_RECONCILIATIONS_FILL()
+        Dim objCMD1 As SqlCommand = New SqlCommand("exec [NOSTRO_REC_FILL] @RISKDATE='" & rdsql & "',@NOSTRO_ACCOUNT='" & Me.NostroAcc_SearchLookUpEdit.Text & "'", conn)
+        objCMD1.CommandTimeout = 5000
+        da = New SqlDataAdapter(objCMD1)
+        dt = New DataTable()
+        da.Fill(dt)
+        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+            Me.GridControl_Internal.DataSource = Nothing
+            Me.GridControl_Internal.DataSource = dt
+            Me.GridControl_Internal.ForceInitialize()
+        End If
+    End Sub
+
+    Private Sub SWIFT_ACC_BALANCES_FILL()
+        'FILL SWIFT ACC BALANCES
+        Dim objCMD2 As SqlCommand = New SqlCommand("exec [SWIFT_ACCOUNT_STATEMENTS_BOOKING_DATE] @FROMDATE='" & rdsql & "', @TILLDATE='" & rdsql & "',@ACCOUNT_NR='" & NostroAccount & "'", conn)
+        objCMD2.CommandTimeout = 5000
+        da = New SqlDataAdapter(objCMD2)
+        dt = New DataTable()
+        da.Fill(dt)
+        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+            Me.GridControl_External.DataSource = Nothing
+            Me.GridControl_External.DataSource = dt
+            Me.GridControl_External.ForceInitialize()
+            'Me.External_BaseView.Columns.ColumnByFieldName("Nostro_Name").Visible = False
+            'Me.External_BaseView.Columns.ColumnByFieldName("TransactionTypeID").Visible = True
+            'Me.External_BaseView.Columns.ColumnByFieldName("ReferenceAccountOwner").Visible = True
+            'Me.External_BaseView.Columns.ColumnByFieldName("ReferenceServiInstitution").Visible = True
+            'Me.External_BaseView.Columns.ColumnByFieldName("SupplementaryDetails").Visible = True
+            'Me.External_BaseView.Columns.ColumnByFieldName("TransactionTypeID").VisibleIndex = 13
+            'Me.External_BaseView.Columns.ColumnByFieldName("ReferenceAccountOwner").VisibleIndex = 14
+            'Me.External_BaseView.Columns.ColumnByFieldName("ReferenceServiInstitution").VisibleIndex = 15
+            'Me.External_BaseView.Columns.ColumnByFieldName("SupplementaryDetails").VisibleIndex = 16
+        Else
+            Dim objCMD3 As SqlCommand = New SqlCommand("exec [SWIFT_ACCOUNT_STATEMENTS_BOOKING_DATE_LastBalance] @RISKDATE='" & rdsql & "',@ACCOUNT_NR='" & NostroAccount & "'", conn)
+            objCMD3.CommandTimeout = 5000
+            da1 = New SqlDataAdapter(objCMD3)
+            dt1 = New DataTable()
+            da1.Fill(dt1)
+            If dt1 IsNot Nothing AndAlso dt1.Rows.Count > 0 Then
+                Me.GridControl_External.DataSource = Nothing
+                Me.GridControl_External.DataSource = dt1
+                Me.GridControl_External.ForceInitialize()
+                'Me.External_BaseView.Columns.ColumnByFieldName("Nostro_Name").Visible = False
+                'Me.External_BaseView.Columns.ColumnByFieldName("TransactionTypeID").Visible = True
+                'Me.External_BaseView.Columns.ColumnByFieldName("ReferenceAccountOwner").Visible = True
+                'Me.External_BaseView.Columns.ColumnByFieldName("ReferenceServiInstitution").Visible = True
+                'Me.External_BaseView.Columns.ColumnByFieldName("SupplementaryDetails").Visible = True
+                'Me.External_BaseView.Columns.ColumnByFieldName("TransactionTypeID").VisibleIndex = 13
+                'Me.External_BaseView.Columns.ColumnByFieldName("ReferenceAccountOwner").VisibleIndex = 14
+                'Me.External_BaseView.Columns.ColumnByFieldName("ReferenceServiInstitution").VisibleIndex = 15
+                'Me.External_BaseView.Columns.ColumnByFieldName("SupplementaryDetails").VisibleIndex = 16
+            End If
+        End If
+    End Sub
+
+    Private Sub NostroAcc_SearchLookUpEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles NostroAcc_SearchLookUpEdit.ButtonClick
+        If e.Button.Caption = "Reload" Then
+            'Load Nostro Accounts with their Reconciliation Date
+            Dim objCMD As SqlCommand = New SqlCommand("Select A.[ReconcileDate],A.[CCY_IB],A.[AccountNr_Internal],A.[AccountName_Internal],B.AccountIdentifierStatement from [NOSTRO_ACC_RECONCILIATIONS] A INNER JOIN SSIS B on A.[AccountNr_Internal]=B.[INTERNAL ACCOUNT] GROUP BY A.[ReconcileDate],A.[CCY_IB],A.[AccountNr_Internal],A.[AccountName_Internal],B.AccountIdentifierStatement order by ReconcileDate desc", conn)
+            objCMD.CommandTimeout = 5000
+            da = New SqlDataAdapter(objCMD)
+            dt = New DataTable()
+            da.Fill(dt)
+            If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+                Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = Nothing
+                Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = dt
+            End If
+        End If
+        If e.Button.Caption = "Restart" Then
+            If Me.NostroAcc_SearchLookUpEdit.Text <> "" Then
+                If MessageBox.Show("Should the Reconciliation for Nostro Account: " & NostroAccount & " be re-executed for the last outstanding Bookings?", "MANUAL RECONCILIATION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Try
+                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                        SplashScreenManager.Default.SetWaitFormCaption("Restart Reconciliation for Nostro Account: " & NostroAccount & "  on " & rd)
+                        Dim objCMD As SqlCommand = New SqlCommand("exec [RECONCILE_NOSTRO_ACCOUNTS_MANUAL] @RISKDATE='" & rdsql & "',@INTERNAL_NOSTRO_ACCOUNT='" & NostroAccount & "'", conn)
+                        objCMD.CommandTimeout = 5000
+                        If objCMD.Connection.State = ConnectionState.Closed Then
+                            objCMD.Connection.Open()
+                        End If
+                        objCMD.ExecuteNonQuery()
+                        objCMD = New SqlCommand("UPDATE PARAMETER SET PARAMETER2='N' where PARAMETER1='NostroReconciliationTaskStatus' and IdABTEILUNGSPARAMETER='NOSTRO_RECONCILIATION'", conn)
+                        objCMD.ExecuteNonQuery()
+                        If objCMD.Connection.State = ConnectionState.Open Then
+                            objCMD.Connection.Close()
+                        End If
+                        NOSTRO_RECONCILIATIONS_FILL()
+                        SWIFT_ACC_BALANCES_FILL()
+                        Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+
+                        SplashScreenManager.CloseForm(False)
+                    Catch ex As Exception
+                        SplashScreenManager.CloseForm(False)
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                        Exit Sub
+                    End Try
+
+                End If
+
+            End If
+        End If
+        If e.Button.Caption = "Reset" Then
+            If Me.NostroAcc_SearchLookUpEdit.Text <> "" Then
+                If MessageBox.Show("Should the current Reconciliation for Nostro Account: " & NostroAccount & " be reseted?" & vbNewLine & vbNewLine & "ATTENTION: ALL MANUAL RECONCILED POSTINGS WILL BE DELETED!!!", "RESET RECONCILIATION", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = System.Windows.Forms.DialogResult.Yes Then
+                    Try
+                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                        SplashScreenManager.Default.SetWaitFormCaption("Reset Reconciliation for Nostro Account: " & NostroAccount & "  on " & rd)
+                        If cmd.Connection.State = ConnectionState.Closed Then
+                            cmd.Connection.Open()
+                        End If
+                        cmd.CommandTimeout = 5000
+                        cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS] where AccountNr_Internal='" & NostroAccount & "' and ReconcileDate='" & rdsql & "'"
+                        cmd.ExecuteNonQuery()
+                        cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where AccountNr_Internal='" & NostroAccount & "' and ReconcileDate='" & rdsql & "'"
+                        cmd.ExecuteNonQuery()
+                        cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB],[Reconciled],[Reconciled_Tag],[ReconcileInfo],[ReconcileDate],[UserMemo],[PostingType]) Select [BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB],[Reconciled],[Reconciled_Tag],[ReconcileInfo],[ReconcileDate],[UserMemo],[PostingType] from [NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY] where [AccountNr_Internal]='" & NostroAccount & "' and ReconcileDate=(Select Max(ReconcileDate) from [NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY] where [AccountNr_Internal]='" & NostroAccount & "')"
+                        cmd.ExecuteNonQuery()
+                        'Delete Items if there reconciled in the past (INTERNAL BOOKINGS)
+                        cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where AccountNr_Internal='" & NostroAccount & "' and ReconcileDate='" & rdsql & "'  and [ID_IB] in (Select [ID_IB] from [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [Reconciled] in ('Y')) and [ID_IB] is not NULL"
+                        cmd.ExecuteNonQuery()
+                        'Delete Items if there reconciled in the past (EXTERNAL BOOKINGS)
+                        cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where AccountNr_Internal='" & NostroAccount & "' and ReconcileDate='" & rdsql & "'  and [ID_EB] in (Select [ID] from [SWIFT_ACC_STATEMENTS] where [Reconciled] in ('Y')) and [ID_EB] is not NULL"
+                        cmd.ExecuteNonQuery()
+                        cmd.CommandText = "exec [RECONCILE_NOSTRO_ACCOUNTS] @RISKDATE='" & rdsql & "',@INTERNAL_NOSTRO_ACCOUNT='" & NostroAccount & "'"
+                        cmd.ExecuteNonQuery()
+                        cmd.CommandText = "UPDATE PARAMETER SET PARAMETER2='N' where PARAMETER1='NostroReconciliationTaskStatus' and IdABTEILUNGSPARAMETER='NOSTRO_RECONCILIATION'"
+                        cmd.ExecuteNonQuery()
+                        If cmd.Connection.State = ConnectionState.Open Then
+                            cmd.Connection.Close()
+                        End If
+                        NOSTRO_RECONCILIATIONS_FILL()
+                        SWIFT_ACC_BALANCES_FILL()
+                        Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+
+                        SplashScreenManager.CloseForm(False)
+                    Catch ex As Exception
+                        SplashScreenManager.CloseForm(False)
+                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                        Exit Sub
+                    End Try
+
+                End If
+
+            End If
+
+        End If
+    End Sub
+
+    
+
+
+    Private Sub NostroAcc_SearchLookUpEdit_Click(sender As Object, e As EventArgs) Handles NostroAcc_SearchLookUpEdit.Click
+
+        If Me.NostroAcc_SearchLookUpEdit.Text = "" Then
+            Me.NostroAcc_SearchLookUpEdit.Text = ""
+            Me.NostroInfo_MemoEdit.Text = ""
+            Me.InternalExternalDifferenceTextEdit.Text = ""
+            Me.ReconciliationDate_TextEdit.Text = ""
+            Me.GridControl_Internal.DataSource = Nothing
+            Me.GridControl_External.DataSource = Nothing
+            Me.GridControl_OutstandingBookings.DataSource = Nothing
+        End If
+
+
+
+    End Sub
+
+    Private Sub NostroAcc_SearchLookUpEditView_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles NostroAcc_SearchLookUpEditView.FocusedRowChanged
+        Me.NostroAcc_SearchLookUpEdit.Text = ""
+        Me.NostroInfo_MemoEdit.Text = ""
+        Me.InternalExternalDifferenceTextEdit.Text = ""
+        Me.ReconciliationDate_TextEdit.Text = ""
+        Me.GridControl_Internal.DataSource = Nothing
+        Me.GridControl_External.DataSource = Nothing
+        Me.GridControl_OutstandingBookings.DataSource = Nothing
+    End Sub
+
+    Private Sub NostroAcc_SearchLookUpEdit_TextChanged(sender As Object, e As EventArgs) Handles NostroAcc_SearchLookUpEdit.TextChanged
+        If Me.NostroAcc_SearchLookUpEdit.Text <> Nothing Then
+            Me.ReconciliationReportsCurrent_BarSubItem.Visibility = BarItemVisibility.Always
+        Else
+            Me.ReconciliationReportsCurrent_BarSubItem.Visibility = BarItemVisibility.Never
+        End If
+    End Sub
+
+    Private Sub NostroAcc_SearchLookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles NostroAcc_SearchLookUpEdit.EditValueChanged
+        If NostroAcc_SearchLookUpEdit.Text <> "" Then
+            Dim view As GridView = NostroAcc_SearchLookUpEdit.Properties.View
+            Dim rowHandle As Integer = view.FocusedRowHandle
+            NostroAccount = view.GetRowCellValue(rowHandle, "AccountNr_Internal")
+            NostroAccountExternal = view.GetRowCellValue(rowHandle, "AccountIdentifierStatement")
+            Currency = view.GetRowCellValue(rowHandle, "CCY_IB")
+            Dim NostroName As String = view.GetRowCellValue(rowHandle, "AccountName_Internal")
+            rd = view.GetRowCellValue(rowHandle, "ReconcileDate")
+            rdsql = rd.ToString("yyyyMMdd")
+            Me.NostroInfo_MemoEdit.Text = "(" & Currency & ")" & "  " & NostroName & "  Extern: " & NostroAccountExternal
+            Me.ReconciliationDate_TextEdit.Text = rd
+
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Load Reconciliation Data for " & rd & "  Account:" & NostroAcc_SearchLookUpEdit.Text)
+            
+           
+            NOSTRO_RECONCILIATIONS_FILL()
+            SWIFT_ACC_BALANCES_FILL()
+
+            'Bind Combobox with the latest reconcile date of the Nostro Account
+            Me.FromDateEdit.Properties.Items.Clear()
+            Me.QueryText = "Select Max([ReconcileDate]) as 'RLDC Date' from [NOSTRO_ACC_RECONCILIATIONS] where AccountNr_Internal='" & NostroAccount & "'" 'GROUP BY [ReconcileDate] ORDER BY [ReconcileDate] desc"
+            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            dt = New System.Data.DataTable()
+            da.Fill(dt)
+            For Each row As DataRow In dt.Rows
+                If dt.Rows.Count > 0 Then
+                    Me.FromDateEdit.Properties.Items.Add(row("RLDC Date"))
+                End If
+            Next
+            If dt.Rows.Count > 0 Then
+                Me.FromDateEdit.Text = dt.Rows.Item(0).Item("RLDC Date")
+            End If
+
+          
+            'FILL OUTSTANDING BOOKINGS
+            LastRecDate = Me.FromDateEdit.Text
+            If LastRecDate = rd Then
+                Me.LayoutControlGroup8.Visibility = LayoutVisibility.Always
+                Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+                Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(2).Visible = True
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(3).Visible = True
+            Else
+                Me.LayoutControlGroup8.Visibility = LayoutVisibility.Always
+                Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORYBindingSource
+                Me.NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORYTableAdapter.FillByRecAccOpenHistory(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY, NostroAccount, rd)
+                'Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpen(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(2).Visible = False
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(3).Visible = False
+            End If
+
+            'Calculating balance differences between Internal and External booked balances
+            If cmd.Connection.State = ConnectionState.Closed Then
+                cmd.Connection.Open()
+            End If
+
+            'In the old Code after Else 0
+            cmd.CommandText = "Select 'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]='" & rdsql & "') else (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]=(Select Max([BalanceDate]) from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]<='" & rdsql & "'))  end"
+            Balance_IB = cmd.ExecuteScalar
+
+            cmd.CommandText = " Select '62F'=Case when exists(Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else 0 end"
+            If cmd.ExecuteScalar IsNot DBNull.Value Then
+                Balance_EB = cmd.ExecuteScalar
+            Else
+                cmd.CommandText = "Select '62F'=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "' and [SwiftTag] in ('62F'))))  end"
+                If cmd.ExecuteScalar IsNot DBNull.Value Then
+                    Balance_EB = cmd.ExecuteScalar
+                Else
+                    Balance_EB = 0
+                End If
+
+                End If
+                'difference
+                Me.InternalExternalDifferenceTextEdit.Text = Balance_IB - Balance_EB
+
+                If cmd.Connection.State = ConnectionState.Open Then
+                    cmd.Connection.Close()
+                End If
+                SplashScreenManager.CloseForm(False)
+        Else
+                Me.InternalExternalDifferenceTextEdit.Text = ""
+                Me.NostroInfo_MemoEdit.Text = ""
+                Me.ReconciliationDate_TextEdit.Text = ""
+                Me.GridControl_Internal.DataSource = Nothing
+                Me.GridControl_External.DataSource = Nothing
+                Me.GridControl_OutstandingBookings.DataSource = Nothing
+
+        End If
+
+    End Sub
+
+    
+   
+    Private Sub GridControl_Internal_Paint(sender As Object, e As PaintEventArgs) Handles GridControl_Internal.Paint
+        Dim viewInfo As GridViewInfo = CType(Me.InternalBaseView.GetViewInfo(), GridViewInfo)
+        Dim r As Rectangle = viewInfo.ViewCaptionBounds
+        Dim f As Font = New Font(Me.InternalBaseView.Appearance.ViewCaption.Font.FontFamily, 12.0F, FontStyle.Bold)
+
+        Dim backColor As Color = Me.InternalBaseView.PaintAppearance.ViewCaption.BackColor
+        Dim foreColor As Color = Color.Black
+
+        e.Graphics.FillRectangle(Brushes.Cyan, r)
+        e.Graphics.DrawString("I N T E R N A L", f, New SolidBrush(foreColor), r, New StringFormat() With {.Alignment = StringAlignment.Near, .LineAlignment = StringAlignment.Near})
+
+    End Sub
+
+    Private Sub GridControl_External_Paint(sender As Object, e As PaintEventArgs) Handles GridControl_External.Paint
+        Dim viewInfo As GridViewInfo = CType(Me.External_BaseView.GetViewInfo(), GridViewInfo)
+        Dim r As Rectangle = viewInfo.ViewCaptionBounds
+        Dim f As Font = New Font(Me.External_BaseView.Appearance.ViewCaption.Font.FontFamily, 12.0F, FontStyle.Bold)
+
+        Dim backColor As Color = Me.External_BaseView.PaintAppearance.ViewCaption.BackColor
+        Dim foreColor As Color = Color.White
+
+        e.Graphics.FillRectangle(Brushes.Navy, r)
+        e.Graphics.DrawString("E X T E R N A L", f, New SolidBrush(foreColor), r, New StringFormat() With {.Alignment = StringAlignment.Far, .LineAlignment = StringAlignment.Far})
+    End Sub
+
+    Private Sub GridControl_OutstandingBookings_Paint(sender As Object, e As PaintEventArgs) Handles GridControl_OutstandingBookings.Paint
+        Dim viewInfo As GridViewInfo = CType(Me.NostroOutstandingBookings_GridView.GetViewInfo(), GridViewInfo)
+        Dim r As Rectangle = viewInfo.ViewCaptionBounds
+        Dim f As Font = New Font(Me.NostroOutstandingBookings_GridView.Appearance.ViewCaption.Font.FontFamily, 12.0F, FontStyle.Bold)
+
+        Dim backColor As Color = Me.NostroOutstandingBookings_GridView.PaintAppearance.ViewCaption.BackColor
+        Dim foreColor As Color = Color.White
+
+        If Me.ReconciliationDate_TextEdit.Text <> "" Then
+            e.Graphics.FillRectangle(Brushes.Red, r)
+            e.Graphics.DrawString("O U T S T A N D I N G    B O O K I N G S  on " & rd, f, New SolidBrush(foreColor), r, New StringFormat() With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center})
+        Else
+            e.Graphics.FillRectangle(Brushes.Red, r)
+            e.Graphics.DrawString("O U T S T A N D I N G    B O O K I N G S", f, New SolidBrush(foreColor), r, New StringFormat() With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center})
+        End If
+
+    End Sub
+
+    Private Sub NostroOutstandingBookings_GridView_CustomColumnGroup(sender As Object, e As CustomColumnSortEventArgs) Handles NostroOutstandingBookings_GridView.CustomColumnGroup
+        'If e.Column.Name = "colUB_Amount" Then
+        'Dim groupSummary As New GridGroupSummaryItem()
+        'groupSummary.ShowInGroupColumnFooter = NostroOutstandingBookings_GridView.Columns("colUB_Amount")
+        'groupSummary.FieldName = "colUB_Amount"
+        'groupSummary.SummaryType = SummaryItemType.Sum
+        'NostroOutstandingBookings_GridView.GroupSummary.Add(groupSummary)
+        'End If
+
+    End Sub
+
+    Private Sub NostroOutstandingBookings_GridView_CustomDrawFooterCell(sender As Object, e As FooterCellCustomDrawEventArgs) Handles NostroOutstandingBookings_GridView.CustomDrawFooterCell
+        e.Appearance.ForeColor = Color.Cyan
+    End Sub
+
+    Private Sub NostroOutstandingBookings_GridView_CustomSummaryCalculate(sender As Object, e As CustomSummaryEventArgs) Handles NostroOutstandingBookings_GridView.CustomSummaryCalculate
+        Dim View As GridView = CType(sender, GridView)
+        Dim summaryID As Integer = Convert.ToInt32(CType(e.Item, GridSummaryItem).Tag)
+        If e.SummaryProcess = DevExpress.Data.CustomSummaryProcess.Start Then
+            SumBalanceOutstanding = 0
+            SelectedSum = 0
+        End If
+        ' Calculation 
+        If e.SummaryProcess = DevExpress.Data.CustomSummaryProcess.Calculate Then
+            CheckFieldValueDate = View.GetRowCellValue(e.RowHandle, colUB_ValueDate)
+            If summaryID = 0 Then
+                Dim SumField As Double = CDbl(View.GetRowCellValue(e.RowHandle, colUB_Amount))
+                If CheckFieldValueDate <= rd Then
+                    SumBalanceOutstanding += Convert.ToDecimal(e.FieldValue)
+                End If
+            End If
+            If summaryID = 1 Then
+                Dim SumField As Double = CDbl(View.GetRowCellValue(e.RowHandle, colUB_Amount))
+                If View.IsRowSelected(e.RowHandle) Then
+                    SelectedSum += Convert.ToDecimal(e.FieldValue)
+                End If
+
+            End If
+        End If
+        ' Finalization 
+        If e.SummaryProcess = DevExpress.Data.CustomSummaryProcess.Finalize Then
+            If summaryID = 0 Then
+                e.TotalValue = SumBalanceOutstanding
+            End If
+            If summaryID = 1 Then
+                e.TotalValue = SelectedSum
+            End If
+        End If
+
+    End Sub
+
+    Private Sub NostroOutstandingBookings_GridView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles NostroOutstandingBookings_GridView.SelectionChanged
+        NostroOutstandingBookings_GridView.UpdateSummary()
+
+    End Sub
+   
+
+   
+    Private Sub NostroOutstandingBookings_GridView_ShowingEditor(sender As Object, e As CancelEventArgs) Handles NostroOutstandingBookings_GridView.ShowingEditor
+
+        If LastRecDate <> rd Then
+            e.Cancel = True
+        ElseIf LastRecDate = rd Then
+            Dim view As GridView = TryCast(sender, GridView)
+            Dim rowHandle As Integer = view.FocusedRowHandle
+            BOOKING_ROUTE_MAIN = view.GetRowCellValue(rowHandle, colUB_BookingRoute)
+            BOOKING_ID_MAIN = view.GetRowCellValue(rowHandle, col_UB_ID_IB_EB)
+            DESCRIPTION_MAIN = view.GetRowCellValue(rowHandle, colUB_Description)
+            BOOKING_DATE_MAIN = view.GetRowCellValue(rowHandle, colUB_BookingDate)
+            VALUE_DATE_MAIN = view.GetRowCellValue(rowHandle, colUB_ValueDate)
+            CUR_MAIN = view.GetRowCellValue(rowHandle, colUB_CCY)
+            AMOUNT_MAIN = view.GetRowCellValue(rowHandle, colUB_Amount)
+
+            'Hide Editor for EXTERNAL BOOKING ROUTE
+            'If BOOKING_ROUTE_MAIN = "EXTERNAL" Then
+            'e.Cancel = True
+            'Else
+            ID_OUTSTANDING_BOOKING = view.GetRowCellValue(rowHandle, "ID")
+            OUTSTANDING_BOOKINGS_initData()
+            'OUTSTANDING_BOOKINGS_InitLookUp()
+            Me.GridControl2.DataSource = Nothing
+            Me.GridControl2.DataSource = BS_OutstandingBookings
+            'End If
+
+
+
+            Me.BookingsForRec_GridView.ClearColumnsFilter()
+            Me.BookingsForRec_GridView.ClearSelection()
+
+            dtID.Clear()
+
+            Me.BookingRoute_Rec_TextEdit.Text = ""
+            Me.BookingID_Rec_TextEdit.Text = ""
+            Me.Description_Rec_TextEdit.Text = ""
+            Me.BookingDate_Rec_TextEdit.Text = ""
+            Me.ValueDate_Rec_TextEdit.Text = ""
+            Me.CUR_Rec_TextEdit.Text = ""
+            Me.Amount_Rec_TextEdit.Text = 0
+            Me.ReconciliationInfo_MemoEdit.Text = ""
+
+            Me.BOOKING_ROUTE_ALL_TextEdit.Text = BOOKING_ROUTE_MAIN
+            Me.ID_IB_TextEdit.Text = BOOKING_ID_MAIN
+            Me.Description_IB_TextEdit.Text = DESCRIPTION_MAIN
+            Me.Bookingdate_IB_TextEdit.Text = BOOKING_DATE_MAIN
+            Me.Valuedate_IB_TextEdit1.Text = VALUE_DATE_MAIN
+            Me.CCY_IB_TextEdit.Text = CUR_MAIN
+            Me.Amount_IB_TextEdit.Text = Format(AMOUNT_MAIN, "#,##0.00")
+        End If
+
+
+    End Sub
+
+   
+
+    Private Sub OUTSTANDING_BOOKINGS_initData()
+        Dim ds As DataSet = New DataSet()
+        Dim dbOutstandingBooking As SqlDataAdapter = New SqlDataAdapter("Select * from [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [AccountNr_Internal]='" & NostroAccount & "' and [ID]<> '" & ID_OUTSTANDING_BOOKING & "' and [ReconcileDate]='" & rdsql & "' and [Reconciled] in ('N')", conn) '
+        Try
+
+            dbOutstandingBooking.Fill(ds, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_OutstandingBookings = New BindingSource(ds, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+
+    End Sub
+
+    Private Sub OUTSTANDING_BOOKINGS_InitLookUp()
+        ' Me.OutstandingBookings_LookUpEdit.Properties.DataSource = BS_OutstandingBookings
+        'Me.OutstandingBookings_LookUpEdit.Properties.DisplayMember = "ID"
+        'Me.OutstandingBookings_LookUpEdit.Properties.ValueMember = "ID"
+    End Sub
+
+    Private Sub LAST_RECONCILIATIONS_initData()
+
+        Dim objCMD1 As SqlCommand = New SqlCommand("exec [NOSTRO_LAST_RECONCILIATIONS]", conn)
+        objCMD1.CommandTimeout = 5000
+        Dim dbLastReconciliations As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+        
+        Dim ds As DataSet = New DataSet()
+        'Dim dbLastReconciliations As SqlDataAdapter = New SqlDataAdapter("Select AccountNr_Internal as 'Nostro Account',CCY_IB as 'Currency',AccountName_Internal as 'Nostro Account Name',Max(ReconcileDate) as 'Last Reconcile Date' from NOSTRO_ACC_RECONCILIATIONS GROUP BY AccountNr_Internal,AccountName_Internal,CCY_IB order by  'Last Reconcile Date' desc", conn) '
+        Try
+
+            dbLastReconciliations.Fill(ds, "NOSTRO_LAST_RECONCILIATIONS") 'NOSTRO_ACC_RECONCILIATIONS
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_LastReconciliations = New BindingSource(ds, "NOSTRO_LAST_RECONCILIATIONS") 'NOSTRO_ACC_RECONCILIATIONS
+    End Sub
+
+    Private Sub LAST_RECONCILIATIONS_InitLookUp()
+        Me.RepositoryItemGridLookUpEdit2.DataSource = BS_LastReconciliations
+        Me.RepositoryItemGridLookUpEdit2.DisplayMember = "Nostro Account"
+        Me.RepositoryItemGridLookUpEdit2.ValueMember = "Nostro Account"
+    End Sub
+
+
+#Region "RECONCILIATION MANUAL"
+    Private Sub Cancel_Rec_btn_Click(sender As Object, e As EventArgs) Handles Cancel_Rec_btn.Click
+        Me.BookingRoute_Rec_TextEdit.Text = ""
+        Me.BookingID_Rec_TextEdit.Text = ""
+        Me.Description_Rec_TextEdit.Text = ""
+        Me.BookingDate_Rec_TextEdit.Text = ""
+        Me.ValueDate_Rec_TextEdit.Text = ""
+        Me.CUR_Rec_TextEdit.Text = ""
+        Me.Amount_Rec_TextEdit.Text = 0
+        Me.ReconciliationInfo_MemoEdit.Text = ""
+
+        Me.BookingsForRec_GridView.ClearColumnsFilter()
+        Me.BookingsForRec_GridView.ClearSelection()
+
+        InternalBookingSelected = False
+        dtID.Clear()
+
+
+        Dim edit As PopupContainerControl = PopupContainerControl1
+        edit.OwnerEdit.CancelPopup()
+    End Sub
+
+
+    Private Function GetSelectedRows(ByVal view As GridView) As String
+        Dim ret As String = ""
+
+        Dim rowIndex As Integer = -1
+
+
+        For Each i As Integer In BookingsForRec_GridView.GetSelectedRows()
+            Dim row_Renamed As DataRow = BookingsForRec_GridView.GetDataRow(i)
+
+
+            If ret <> "" Then
+                ret &= ControlChars.CrLf
+            End If
+            If IsDBNull(row_Renamed("ID_IB")) = False Then
+                InternalBookingSelected = True
+                ret &= "Booking:INTERNAL -" & " ID Internal Booking: " & row_Renamed("ID_IB") & " - CCY: " & row_Renamed("CCY_IB") & " - Amount: " & Format(row_Renamed("Amount_IB"), "#,##0.00") & " - Booking Date:" & row_Renamed("BookingDate_IB") & " -Value Date:" & row_Renamed("ValueDate_IB") & " -Description:" & row_Renamed("Description_IB")
+                dtID.Rows.Add("INTERNAL", ID_IB_TextEdit.Text, row_Renamed("BookingRoute_IB"), row_Renamed("ID_IB"))
+            Else
+                ret &= "Booking:EXTERNAL -" & " ID External Booking: " & row_Renamed("ID_EB") & " - CCY: " & row_Renamed("CCY_EB") & " - Amount: " & Format(row_Renamed("Amount_EB"), "#,##0.00") & " - Booking Date:" & row_Renamed("BookingDate_EB") & " -Value Date:" & row_Renamed("ValueDate_EB") & " -Description:" & row_Renamed("Reference_AccountOwner_EB") & " + " & row_Renamed("Reference_AccountOwner_EB") & " + " & row_Renamed("ReferenceServiInstitution_EB") & " + " & row_Renamed("SupplementaryDetails_EB") & " - Transaction Type ID:" & row_Renamed("TransactionTypeID_EB")
+                dtID.Rows.Add("INTERNAL", ID_IB_TextEdit.Text, row_Renamed("BookingRoute_EB"), row_Renamed("ID_EB"))
+            End If
+
+
+        Next i
+        Return ret
+
+    End Function
+
+    Private Function GetSelectedRowsSum(ByVal view As GridView) As Double
+        Dim AMT As Double = 0
+        For Each i As Integer In BookingsForRec_GridView.GetSelectedRows()
+            Dim row_Renamed As DataRow = BookingsForRec_GridView.GetDataRow(i)
+
+
+            If IsDBNull(row_Renamed("ID_IB")) = False Then
+                AMT += row_Renamed("Amount_IB")
+            Else
+                AMT += row_Renamed("Amount_EB")
+            End If
+
+
+        Next i
+        Return AMT
+    End Function
+
+   
+
+    Private Sub BookingsForRec_GridView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles BookingsForRec_GridView.SelectionChanged
+        Dim view As GridView = BookingsForRec_GridView
+        If BookingsForRec_GridView.SelectedRowsCount = 0 Then
+            Me.BookingRoute_Rec_TextEdit.Text = ""
+            Me.BookingID_Rec_TextEdit.Text = ""
+            Me.Description_Rec_TextEdit.Text = ""
+            Me.BookingDate_Rec_TextEdit.Text = ""
+            Me.ValueDate_Rec_TextEdit.Text = ""
+            Me.CUR_Rec_TextEdit.Text = ""
+            Me.Amount_Rec_TextEdit.Text = 0
+            Me.ReconciliationInfo_MemoEdit.Text = ""
+        ElseIf BookingsForRec_GridView.SelectedRowsCount = 1 Then
+            ' MsgBox(GetSelectedRows(view), , "ONE")
+            Dim rowHandle As Integer = view.FocusedRowHandle
+            Dim BookingRoute_Rec_For As String = Nothing
+            Dim BookingID_IB_Rec_For As String = Nothing
+            Dim Description As String = Nothing
+            Dim CUR As String = Nothing
+            Dim BookingAmount_rec_for As Double = 0
+            Dim BookingDate As Date
+            Dim ValueDate As Date
+
+            BookingRoute_Rec_For = view.GetRowCellValue(rowHandle, colUB_Rec_BookingRoute1)
+            BookingID_IB_Rec_For = view.GetRowCellValue(rowHandle, colUB_Rec_ID_IB_1)
+            Description = view.GetRowCellValue(rowHandle, colUB_Rec_Description1) & "  " & view.GetRowCellValue(rowHandle, col_Rec_TransactionTypeID_EB)
+            BookingDate = view.GetRowCellValue(rowHandle, colUB_Rec_BookingDate1)
+            ValueDate = view.GetRowCellValue(rowHandle, colUB_Rec_ValueDate1)
+            CUR = view.GetRowCellValue(rowHandle, colUB_Rec_CCY1)
+            BookingAmount_rec_for = view.GetRowCellValue(rowHandle, colUB_Rec_Amount1)
+
+            Me.BookingRoute_Rec_TextEdit.Text = BookingRoute_Rec_For
+            Me.BookingID_Rec_TextEdit.Text = BookingID_IB_Rec_For
+            Me.Description_Rec_TextEdit.Text = Description
+            Me.BookingDate_Rec_TextEdit.Text = BookingDate
+            Me.ValueDate_Rec_TextEdit.Text = ValueDate
+            Me.CUR_Rec_TextEdit.Text = CUR
+            Me.Amount_Rec_TextEdit.Text = Format(BookingAmount_rec_for, "#,##0.00")
+            Me.ReconciliationInfo_MemoEdit.Text = ""
+
+        ElseIf BookingsForRec_GridView.SelectedRowsCount > 1 Then
+            'MsgBox(GetSelectedRows(view), , "MORE")
+            Me.BookingRoute_Rec_TextEdit.Text = "MULTIPLE"
+            Me.BookingID_Rec_TextEdit.Text = 0
+            Me.Description_Rec_TextEdit.Text = "Multiple Bookings - See Reconciliation Details in Additional Info"
+            Me.BookingDate_Rec_TextEdit.Text = Me.Bookingdate_IB_TextEdit.Text
+            Me.ValueDate_Rec_TextEdit.Text = Me.Valuedate_IB_TextEdit1.Text
+            Me.CUR_Rec_TextEdit.Text = Me.CCY_IB_TextEdit.Text
+            Me.Amount_Rec_TextEdit.Text = Format(GetSelectedRowsSum(view), "#,##0.00")
+            Me.ReconciliationInfo_MemoEdit.Text = GetSelectedRows(view)
+
+        End If
+        'Fill ID to Datatable
+        dtID.Clear()
+        InternalBookingSelected = False
+        GetSelectedRows(view)
+        For i = 0 To dtID.Rows.Count - 1
+            Dim test As String = ""
+            If dtID.Rows.Count > 0 Then
+
+                If test <> "" Then
+                    test &= ControlChars.CrLf
+                End If
+                test &= dtID.Rows.Item(i).Item("BookingRoute_IB") & "  " & dtID.Rows.Item(i).Item("ID_IB") & "  " & dtID.Rows.Item(i).Item("BookingRoute_EB") & "  " & dtID.Rows.Item(i).Item("ID_EB")
+
+            End If
+            'MsgBox(test)
+        Next
+
+    End Sub
+
+
+    Private Sub Match_Rec_btn_Click(sender As Object, e As EventArgs) Handles Match_Rec_btn.Click
+        Dim view As GridView = BookingsForRec_GridView
+
+        If cmd.Connection.State = ConnectionState.Closed Then
+            cmd.Connection.Open()
+        End If
+
+        If Me.ID_IB_TextEdit.Text <> "" AndAlso Me.BookingID_Rec_TextEdit.Text <> "" Then
+            Dim ID_NOSTRO_REC As String = Me.ID_NOSTRO_REC_Textedit.Text
+            Dim ID_IB As String = Me.ID_IB_TextEdit.Text
+            Dim BookingRoute_IB As String = Me.BOOKING_ROUTE_ALL_TextEdit.Text
+            Dim Description_IB As String = Me.Description_IB_TextEdit.Text
+            Dim BookingDate_IB As Date = Me.Bookingdate_IB_TextEdit.Text
+            Dim SQL_BookingDate_IB As String = BookingDate_IB.ToString("yyyyMMdd")
+            Dim ValueDate_IB As Date = Me.Valuedate_IB_TextEdit1.Text
+            Dim SQL_ValueDate_IB As String = ValueDate_IB.ToString("yyyyMMdd")
+
+
+            Dim BookingRoute_EB As String = Me.BookingRoute_Rec_TextEdit.Text
+            Dim ID_EB As String = Me.BookingID_Rec_TextEdit.Text
+            Dim Description_EB As String = Me.Description_Rec_TextEdit.Text
+            Dim BookingDate_EB As Date = Me.BookingDate_Rec_TextEdit.Text
+            Dim SQL_BookingDate_EB As String = BookingDate_EB.ToString("yyyyMMdd")
+            Dim ValueDate_EB As Date = Me.ValueDate_Rec_TextEdit.Text
+            Dim SQL_ValueDate_EB As String = ValueDate_EB.ToString("yyyyMMdd")
+            Dim Amount_1 As Double = Me.Amount_IB_TextEdit.Text
+            Dim CUR_2 As String = Me.CUR_Rec_TextEdit.Text
+            Dim Amount_2 As Double = Me.Amount_Rec_TextEdit.Text
+
+            If Math.Abs(Amount_1) = Math.Abs(Amount_2) AndAlso Amount_1 <> Amount_2 Then 'Check if both Amounts are equal or difference=0
+                If MessageBox.Show("Should the Reconciliation of the Bookings be proceded?", "RECONCILIATION", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    If Me.BOOKING_ROUTE_ALL_TextEdit.Text = "INTERNAL" Then
+                        If BookingsForRec_GridView.SelectedRowsCount = 1 Then
+                            If BookingRoute_EB = "INTERNAL" Then
+                                If MessageBox.Show("You try to reconcile an INTERNAL BOOKING with another INTERNAL BOOKING!Should the Reconciliation of the Bookings be proceded?", "RECONCILIATION INTERNAL <---> INTERNAL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                                    'User Memos
+                                    If Me.UserMemo_MemoEdit.Text <> "" Then
+                                        cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]='" & Me.UserMemo_MemoEdit.Text & "' where [ID]='" & ID_NOSTRO_REC & "'and [ReconcileDate]='" & rdsql & "'"
+                                        cmd.ExecuteNonQuery()
+                                    Else
+                                        cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]=NULL where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                        cmd.ExecuteNonQuery()
+                                    End If
+                                    'Update NOSTRO_ACC_RECONCILIATIONS_OPEN
+                                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [BookingRoute_EB]='" & BookingRoute_EB & "',[ID_EB]='" & ID_EB & "',[BookingDate_EB]='" & SQL_BookingDate_EB & "',[ValueDate_EB]='" & SQL_ValueDate_EB & "',[CCY_EB]= '" & CUR_2 & "',[Amount_EB]=" & Str(Amount_2) & ",[Reference_AccountOwner_EB]='" & Description_EB & "',[Reconciled]='Y',[Reconciled_Tag]='M' where [ID_IB]='" & ID_IB & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [Reconciled]='Y' where [ID_EB]='" & ID_EB & "' and [Reconciled]='N' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                    'Update Item in [NOSTRO_ACC_RECONCILIATIONS]
+                                    cmd.CommandText = "UPDATE A SET A.[BookingRoute_EB]=B.[BookingRoute_EB],A.[ID_EB]=B.[ID_EB],A.[AccountNr_External]= C.AccountIdentifierStatement,A.[BookingDate_EB]=B.[BookingDate_EB],A.[ValueDate_EB]=B.[ValueDate_EB],A.[CCY_EB]=B.[CCY_EB],A.[Amount_EB]=B.[Amount_EB],A.[Reference_AccountOwner_EB]=B.[Reference_AccountOwner_EB],A.[Reconciled]=B.[Reconciled],A.[Reconciled_Tag]=B.[Reconciled_Tag],A.[ReconcileInfo] = Case when A.[ReconcileInfo] is NULL then 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) else A.[ReconcileInfo]  + CHAR(13)+CHAR(10) + 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) end FROM [NOSTRO_ACC_RECONCILIATIONS] A INNER JOIN [NOSTRO_ACC_RECONCILIATIONS_OPEN] B on A.[ID_IB]=B.[ID_IB] INNER JOIN SSIS C on A.AccountNr_Internal=C.[INTERNAL ACCOUNT] where A.[ID_IB]='" & ID_IB & "' and A.[ReconcileDate]='" & rdsql & "' and B.[ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                    'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS]
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS] where [ID_IB]='" & ID_EB & "' and [Reconciled]='N' and [ReconcileDate]='" & rdsql & "' "
+                                    cmd.ExecuteNonQuery()
+                                    'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS_OPEN]
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_IB] in ('" & ID_IB & "','" & ID_EB & "')"
+                                    cmd.ExecuteNonQuery()
+
+                                    Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource.EndEdit()
+
+                                    Me.BookingRoute_Rec_TextEdit.Text = ""
+                                    Me.BookingID_Rec_TextEdit.Text = ""
+                                    Me.Description_Rec_TextEdit.Text = ""
+                                    Me.BookingDate_Rec_TextEdit.Text = ""
+                                    Me.ValueDate_Rec_TextEdit.Text = ""
+                                    Me.CUR_Rec_TextEdit.Text = ""
+                                    Me.Amount_Rec_TextEdit.Text = 0
+                                    Me.ReconciliationInfo_MemoEdit.Text = ""
+
+                                    dtID.Clear()
+
+                                    'FILL NOSTRO ACCOUNT DATA
+                                    'Me.GridControl_Internal.DataSource = Nothing
+                                    'Me.GridControl_Internal.DataSource = Me.NOSTRO_REC_FILL_ProcedureBindingSource
+                                    'Me.NOSTRO_REC_FILL_ProcedureTableAdapter.FillRecAcc(Me.AccountsReconciliationsDataSet.NOSTRO_REC_FILL_Procedure, rd, NostroAccount)
+                                    NOSTRO_RECONCILIATIONS_FILL()
+
+                                    'FILL NOSTRO OPEN DATA
+                                    Me.GridControl_OutstandingBookings.DataSource = Nothing
+                                    Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+                                    Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                                End If
+
+                            End If
+                            If BookingRoute_EB = "EXTERNAL" Then
+                                'User Memos
+                                If Me.UserMemo_MemoEdit.Text <> "" Then
+                                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]='" & Me.UserMemo_MemoEdit.Text & "' where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                Else
+                                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]=NULL where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                End If
+                                'Update NOSTRO_ACC_RECONCILIATIONS_OPEN
+                                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [BookingRoute_EB]='" & BookingRoute_EB & "',[ID_EB]='" & ID_EB & "',[BookingDate_EB]='" & SQL_BookingDate_EB & "',[ValueDate_EB]='" & SQL_ValueDate_EB & "',[CCY_EB]= '" & CUR_2 & "',[Amount_EB]=" & Str(Amount_2) & ",[Reference_AccountOwner_EB]='" & Description_EB & "',[Reconciled]='Y',[Reconciled_Tag]='M' where [ID_IB]='" & ID_IB & "' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [Reconciled]='Y' where [ID_EB]='" & ID_EB & "' and [Reconciled]='N' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                'Update Item in [NOSTRO_ACC_RECONCILIATIONS]
+                                cmd.CommandText = "UPDATE A SET A.[BookingRoute_EB]=B.[BookingRoute_EB],A.[ID_EB]=B.[ID_EB],A.[AccountNr_External]= C.AccountIdentifierStatement,A.[BookingDate_EB]=B.[BookingDate_EB],A.[ValueDate_EB]=B.[ValueDate_EB],A.[CCY_EB]=B.[CCY_EB],A.[Amount_EB]=B.[Amount_EB],A.[Reference_AccountOwner_EB]=B.[Reference_AccountOwner_EB],A.[Reconciled]=B.[Reconciled],A.[Reconciled_Tag]=B.[Reconciled_Tag],A.[ReconcileInfo] = Case when A.[ReconcileInfo] is NULL then 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) else A.[ReconcileInfo]  + CHAR(13)+CHAR(10) + 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) end FROM [NOSTRO_ACC_RECONCILIATIONS] A INNER JOIN [NOSTRO_ACC_RECONCILIATIONS_OPEN] B on A.[ID_IB]=B.[ID_IB] INNER JOIN SSIS C on A.AccountNr_Internal=C.[INTERNAL ACCOUNT] where A.[ID_IB]='" & ID_IB & "' and A.[ReconcileDate]='" & rdsql & "' and B.[ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                'UPDATE in SWIFT ACCOUNT STATEMENTS
+                                cmd.CommandText = "UPDATE [SWIFT_ACC_STATEMENTS] SET [Reconciled]='Y',[Reconciled_IB]='" & ID_IB & "' where [ID] in ('" & ID_EB & "','" & ID_IB & "' )"
+                                cmd.ExecuteNonQuery()
+                                'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS]
+                                'cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS] where [ID_IB]='" & ID_EB & "' and [Reconciled]='N' and [ReconcileDate]='" & rdsql & "' "
+                                'cmd.ExecuteNonQuery()
+                                'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS_OPEN]
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_IB] in ('" & ID_IB & "') and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_EB] in ('" & ID_EB & "') and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+
+                                Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource.EndEdit()
+
+                                Me.BookingRoute_Rec_TextEdit.Text = ""
+                                Me.BookingID_Rec_TextEdit.Text = ""
+                                Me.Description_Rec_TextEdit.Text = ""
+                                Me.BookingDate_Rec_TextEdit.Text = ""
+                                Me.ValueDate_Rec_TextEdit.Text = ""
+                                Me.CUR_Rec_TextEdit.Text = ""
+                                Me.Amount_Rec_TextEdit.Text = 0
+                                Me.ReconciliationInfo_MemoEdit.Text = ""
+
+                                dtID.Clear()
+
+
+                                'FILL NOSTRO ACCOUNT DATA
+                                'Me.GridControl_Internal.DataSource = Nothing
+                                'Me.GridControl_Internal.DataSource = Me.NOSTRO_REC_FILL_ProcedureBindingSource
+                                'Me.NOSTRO_REC_FILL_ProcedureTableAdapter.FillRecAcc(Me.AccountsReconciliationsDataSet.NOSTRO_REC_FILL_Procedure, rd, NostroAccount)
+                                NOSTRO_RECONCILIATIONS_FILL()
+                                SWIFT_ACC_BALANCES_FILL()
+
+                                'FILL NOSTRO OPEN DATA
+                                Me.GridControl_OutstandingBookings.DataSource = Nothing
+                                Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+                                Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                            End If
+                        ElseIf BookingsForRec_GridView.SelectedRowsCount > 1 Then
+                            'User Memos
+                            If Me.UserMemo_MemoEdit.Text <> "" Then
+                                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]='" & Me.UserMemo_MemoEdit.Text & "' where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                            Else
+                                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]=NULL where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                            End If
+                            'Update NOSTRO_ACC_RECONCILIATIONS_OPEN
+                            cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [BookingRoute_EB]='" & BookingRoute_EB & "',[ID_EB]='" & ID_EB & "',[BookingDate_EB]='" & SQL_BookingDate_EB & "',[ValueDate_EB]='" & SQL_ValueDate_EB & "',[CCY_EB]= '" & CUR_2 & "',[Amount_EB]=" & Str(Amount_2) & ",[Reference_AccountOwner_EB]='" & Description_EB & "',[ReconcileInfo]='" & Me.ReconciliationInfo_MemoEdit.Text & "',[Reconciled]='Y',[Reconciled_Tag]='M' where [ID_IB]='" & ID_IB & "' and [ReconcileDate]='" & rdsql & "'"
+                            cmd.ExecuteNonQuery()
+                            'Update Item in [NOSTRO_ACC_RECONCILIATIONS]
+                            cmd.CommandText = "UPDATE A SET A.[BookingRoute_EB]=B.[BookingRoute_EB],A.[ID_EB]=B.[ID_EB],A.[AccountNr_External]= C.AccountIdentifierStatement,A.[BookingDate_EB]=B.[BookingDate_EB],A.[ValueDate_EB]=B.[ValueDate_EB],A.[CCY_EB]=B.[CCY_EB],A.[Amount_EB]=B.[Amount_EB],A.[Reference_AccountOwner_EB]=B.[Reference_AccountOwner_EB],A.[Reconciled]=B.[Reconciled],A.[Reconciled_Tag]=B.[Reconciled_Tag],A.[ReconcileInfo] = Case when A.[ReconcileInfo] is NULL then '" & Me.ReconciliationInfo_MemoEdit.Text & "' + CHAR(13)+CHAR(10)+'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) else A.[ReconcileInfo]  + CHAR(13)+CHAR(10) + '" & Me.ReconciliationInfo_MemoEdit.Text & "' + CHAR(13)+CHAR(10)+'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) end FROM [NOSTRO_ACC_RECONCILIATIONS] A INNER JOIN [NOSTRO_ACC_RECONCILIATIONS_OPEN] B on A.[ID_IB]=B.[ID_IB] INNER JOIN SSIS C on A.AccountNr_Internal=C.[INTERNAL ACCOUNT] where A.[ID_IB]='" & ID_IB & "' and A.[ReconcileDate]='" & rdsql & "' and B.[ReconcileDate]='" & rdsql & "'"
+                            cmd.ExecuteNonQuery()
+                            'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS_OPEN]
+                            cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_IB] in ('" & ID_IB & "') and [ReconcileDate]='" & rdsql & "'"
+                            cmd.ExecuteNonQuery()
+                            'INSERT from dtID (Temporary Datatable) MULTIPLE ITEMS TO NOSTRO_ACC_RECONCILIATIONS_MULTIPLE
+                            For i = 0 To dtID.Rows.Count - 1
+                                If dtID.Rows.Count > 0 Then
+
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_MULTIPLE] where [BookingRoute_EB]='" & dtID.Rows.Item(i).Item("BookingRoute_EB") & "' and [ID_EB]='" & dtID.Rows.Item(i).Item("ID_EB") & "'"
+                                    cmd.ExecuteNonQuery()
+                                    cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_MULTIPLE]([BookingRoute_IB],[ID_IB],[BookingRoute_EB],[ID_EB]) Values ('" & dtID.Rows.Item(i).Item("BookingRoute_IB") & "'," & Str(dtID.Rows.Item(i).Item("ID_IB")) & ",'" & dtID.Rows.Item(i).Item("BookingRoute_EB") & "'," & Str(dtID.Rows.Item(i).Item("ID_EB")) & ")"
+                                    cmd.ExecuteNonQuery()
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [BookingRoute_IB]='" & dtID.Rows.Item(i).Item("BookingRoute_EB") & "' and [ID_IB]='" & dtID.Rows.Item(i).Item("ID_EB") & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [BookingRoute_EB]='" & dtID.Rows.Item(i).Item("BookingRoute_EB") & "' and [ID_EB]='" & dtID.Rows.Item(i).Item("ID_EB") & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS] where [BookingRoute_IB]='" & dtID.Rows.Item(i).Item("BookingRoute_EB") & "' and [ID_IB]='" & dtID.Rows.Item(i).Item("ID_EB") & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS] where [BookingRoute_EB]='" & dtID.Rows.Item(i).Item("BookingRoute_EB") & "' and [ID_EB]='" & dtID.Rows.Item(i).Item("ID_EB") & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                    'UPDATE in SWIFT ACCOUNT STATEMENTS
+                                    cmd.CommandText = "UPDATE [SWIFT_ACC_STATEMENTS] SET [Reconciled]='Y',[Reconciled_IB]=0 where [ID] in ('" & dtID.Rows.Item(i).Item("ID_EB") & "','" & dtID.Rows.Item(i).Item("ID_IB") & "')"
+                                    cmd.ExecuteNonQuery()
+                                End If
+                            Next
+                            Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource.EndEdit()
+
+                            Me.BookingRoute_Rec_TextEdit.Text = ""
+                            Me.BookingID_Rec_TextEdit.Text = ""
+                            Me.Description_Rec_TextEdit.Text = ""
+                            Me.BookingDate_Rec_TextEdit.Text = ""
+                            Me.ValueDate_Rec_TextEdit.Text = ""
+                            Me.CUR_Rec_TextEdit.Text = ""
+                            Me.Amount_Rec_TextEdit.Text = 0
+                            Me.ReconciliationInfo_MemoEdit.Text = ""
+
+                            dtID.Clear()
+
+
+                            'FILL NOSTRO ACCOUNT DATA
+                            'Me.GridControl_Internal.DataSource = Nothing
+                            'Me.GridControl_Internal.DataSource = Me.NOSTRO_REC_FILL_ProcedureBindingSource
+                            'Me.NOSTRO_REC_FILL_ProcedureTableAdapter.FillRecAcc(Me.AccountsReconciliationsDataSet.NOSTRO_REC_FILL_Procedure, rd, NostroAccount)
+                            NOSTRO_RECONCILIATIONS_FILL()
+                            SWIFT_ACC_BALANCES_FILL()
+
+                            'FILL NOSTRO OPEN DATA
+                            Me.GridControl_OutstandingBookings.DataSource = Nothing
+                            Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+                            Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                        End If
+
+                    ElseIf Me.BOOKING_ROUTE_ALL_TextEdit.Text = "EXTERNAL" Then
+
+                        If BookingsForRec_GridView.SelectedRowsCount = 1 Then
+                            If BookingRoute_EB = "INTERNAL" Then
+                                'User Memos
+                                If Me.UserMemo_MemoEdit.Text <> "" Then
+                                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]='" & Me.UserMemo_MemoEdit.Text & "' where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                Else
+                                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]=NULL where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                End If
+                                'Update NOSTRO_ACC_RECONCILIATIONS_OPEN
+                                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [BookingRoute_EB]='" & BookingRoute_IB & "',[ID_EB]='" & ID_IB & "',[BookingDate_EB]='" & SQL_BookingDate_IB & "',[ValueDate_EB]='" & SQL_ValueDate_IB & "',[CCY_EB]= '" & CUR_2 & "',[Amount_EB]=" & Str(Amount_1) & ",[Reference_AccountOwner_EB]='" & Description_IB & "',[Reconciled]='Y',[Reconciled_Tag]='M' where [ID_IB]='" & ID_EB & "' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [Reconciled]='Y' where [ID_EB]='" & ID_IB & "' and [Reconciled]='N' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                'UPDATE in SWIFT ACCOUNT STATEMENTS
+                                cmd.CommandText = "UPDATE [SWIFT_ACC_STATEMENTS] SET [Reconciled]='Y',[Reconciled_IB]='" & ID_EB & "' where [ID] in ('" & ID_EB & "','" & ID_IB & "' )"
+                                cmd.ExecuteNonQuery()
+                                'Update Item in [NOSTRO_ACC_RECONCILIATIONS]
+                                cmd.CommandText = "UPDATE A SET A.[BookingRoute_EB]=B.[BookingRoute_EB],A.[ID_EB]=B.[ID_EB],A.[AccountNr_External]= C.AccountIdentifierStatement,A.[BookingDate_EB]=B.[BookingDate_EB],A.[ValueDate_EB]=B.[ValueDate_EB],A.[CCY_EB]=B.[CCY_EB],A.[Amount_EB]=B.[Amount_EB],A.[Reference_AccountOwner_EB]=B.[Reference_AccountOwner_EB],A.[Reconciled]=B.[Reconciled],A.[Reconciled_Tag]=B.[Reconciled_Tag],A.[ReconcileInfo] = Case when A.[ReconcileInfo] is NULL then 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) else A.[ReconcileInfo]  + CHAR(13)+CHAR(10) + 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) end FROM [NOSTRO_ACC_RECONCILIATIONS] A INNER JOIN [NOSTRO_ACC_RECONCILIATIONS_OPEN] B on A.[ID_IB]=B.[ID_IB] INNER JOIN SSIS C on A.AccountNr_Internal=C.[INTERNAL ACCOUNT] where A.[ID_IB]='" & ID_EB & "' and A.[ReconcileDate]='" & rdsql & "' and B.[ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS]
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS] where [ID_EB] in ('" & ID_IB & "') and [Reconciled]='N' and [ReconcileDate]='" & rdsql & "' "
+                                cmd.ExecuteNonQuery()
+                                'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS_OPEN]
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_EB] in ('" & ID_IB & "','" & ID_EB & "') and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+
+                                Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource.EndEdit()
+
+                                Me.BookingRoute_Rec_TextEdit.Text = ""
+                                Me.BookingID_Rec_TextEdit.Text = ""
+                                Me.Description_Rec_TextEdit.Text = ""
+                                Me.BookingDate_Rec_TextEdit.Text = ""
+                                Me.ValueDate_Rec_TextEdit.Text = ""
+                                Me.CUR_Rec_TextEdit.Text = ""
+                                Me.Amount_Rec_TextEdit.Text = 0
+                                Me.ReconciliationInfo_MemoEdit.Text = ""
+
+                                dtID.Clear()
+
+                                'FILL NOSTRO ACCOUNT DATA
+                                'Me.GridControl_Internal.DataSource = Nothing
+                                'Me.GridControl_Internal.DataSource = Me.NOSTRO_REC_FILL_ProcedureBindingSource
+                                'Me.NOSTRO_REC_FILL_ProcedureTableAdapter.FillRecAcc(Me.AccountsReconciliationsDataSet.NOSTRO_REC_FILL_Procedure, rd, NostroAccount)
+                                NOSTRO_RECONCILIATIONS_FILL()
+                                SWIFT_ACC_BALANCES_FILL()
+
+                                'FILL NOSTRO OPEN DATA
+                                Me.GridControl_OutstandingBookings.DataSource = Nothing
+                                Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+                                Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                            End If
+                            If BookingRoute_EB = "EXTERNAL" Then
+                                If MessageBox.Show("You try to reconcile an EXTERNAL BOOKING with another EXTERNAL BOOKING!Should the Reconciliation of the Bookings be proceded?", "RECONCILIATION EXTERNAL <---> EXTERNAL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+
+                                    'User Memos
+                                    If Me.UserMemo_MemoEdit.Text <> "" Then
+                                        cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]='" & Me.UserMemo_MemoEdit.Text & "' where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                        cmd.ExecuteNonQuery()
+                                    Else
+                                        cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]=NULL where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                        cmd.ExecuteNonQuery()
+                                    End If
+                                    'UPDATE in SWIFT ACCOUNT STATEMENTS
+                                    cmd.CommandText = "UPDATE [SWIFT_ACC_STATEMENTS] SET [Reconciled]='Y',[Reconciled_IB]='" & ID_IB & "' where [ID] in ('" & ID_IB & "','" & ID_EB & "')"
+                                    cmd.ExecuteNonQuery()
+                                    'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS_OPEN]
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+                                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_EB] in ('" & ID_EB & "') and [ReconcileDate]='" & rdsql & "'"
+                                    cmd.ExecuteNonQuery()
+
+                                    Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource.EndEdit()
+
+                                    Me.BookingRoute_Rec_TextEdit.Text = ""
+                                    Me.BookingID_Rec_TextEdit.Text = ""
+                                    Me.Description_Rec_TextEdit.Text = ""
+                                    Me.BookingDate_Rec_TextEdit.Text = ""
+                                    Me.ValueDate_Rec_TextEdit.Text = ""
+                                    Me.CUR_Rec_TextEdit.Text = ""
+                                    Me.Amount_Rec_TextEdit.Text = 0
+                                    Me.ReconciliationInfo_MemoEdit.Text = ""
+
+                                    dtID.Clear()
+
+
+                                    'FILL NOSTRO ACCOUNT DATA
+                                    'Me.GridControl_Internal.DataSource = Nothing
+                                    'Me.GridControl_Internal.DataSource = Me.NOSTRO_REC_FILL_ProcedureBindingSource
+                                    'Me.NOSTRO_REC_FILL_ProcedureTableAdapter.FillRecAcc(Me.AccountsReconciliationsDataSet.NOSTRO_REC_FILL_Procedure, rd, NostroAccount)
+                                    NOSTRO_RECONCILIATIONS_FILL()
+                                    SWIFT_ACC_BALANCES_FILL()
+
+                                    'FILL NOSTRO OPEN DATA
+                                    Me.GridControl_OutstandingBookings.DataSource = Nothing
+                                    Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+                                    Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                                End If
+
+                            End If
+                        ElseIf BookingsForRec_GridView.SelectedRowsCount > 1 Then
+                            'User Memos
+                            If Me.UserMemo_MemoEdit.Text <> "" Then
+                                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]='" & Me.UserMemo_MemoEdit.Text & "' where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                            Else
+                                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]=NULL where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                            End If
+                            'UPDATE from dtID  TO NOSTRO_ACC_RECONCILIATIONS_OPEN and LIVE
+                            Me.ReconciliationInfo_MemoEdit.Text = ""
+
+                            If InternalBookingSelected = True Then
+                                MessageBox.Show("You try to reconcile an External Booking with several other Bookings incl. Internal booking(s)" & vbNewLine & "In this case please select first the Internal Booking and procced with the reconciliation!", "UNABLE TO RECONCILE", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                                Exit Sub
+                            Else
+                                'ONLY EXTERNALS (ALL SELECTED)
+                                For i = 0 To dtID.Rows.Count - 1
+                                    If dtID.Rows.Count > 0 Then
+
+                                        cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [BookingRoute_EB]='" & BookingRoute_IB & "',[ID_EB]='" & ID_IB & "',[BookingDate_EB]='" & SQL_BookingDate_IB & "',[ValueDate_EB]='" & SQL_ValueDate_IB & "',[CCY_EB]= '" & CUR_2 & "',[Amount_EB]=" & Str(Amount_1) & ",[Reference_AccountOwner_EB]='" & Description_IB & "',[Reconciled]='Y',[Reconciled_Tag]='M' where [ID_IB]='" & dtID.Rows.Item(i).Item("ID_EB") & "' and [ReconcileDate]='" & rdsql & "'"
+                                        cmd.ExecuteNonQuery()
+                                        cmd.CommandText = "UPDATE A SET A.[BookingRoute_EB]=B.[BookingRoute_EB],A.[ID_EB]=B.[ID_EB],A.[AccountNr_External]= C.AccountIdentifierStatement,A.[BookingDate_EB]=B.[BookingDate_EB],A.[ValueDate_EB]=B.[ValueDate_EB],A.[CCY_EB]=B.[CCY_EB],A.[Amount_EB]=B.[Amount_EB],A.[Reference_AccountOwner_EB]=B.[Reference_AccountOwner_EB],A.[Reconciled]=B.[Reconciled],A.[Reconciled_Tag]=B.[Reconciled_Tag],A.[ReconcileInfo] = Case when A.[ReconcileInfo] is NULL then 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) else A.[ReconcileInfo]  + CHAR(13)+CHAR(10) + 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) end FROM [NOSTRO_ACC_RECONCILIATIONS] A INNER JOIN [NOSTRO_ACC_RECONCILIATIONS_OPEN] B on A.[ID_IB]=B.[ID_IB] INNER JOIN SSIS C on A.AccountNr_Internal=C.[INTERNAL ACCOUNT] where A.[ID_IB]='" & dtID.Rows.Item(i).Item("ID_EB") & "' and A.[ReconcileDate]='" & rdsql & "' and B.[ReconcileDate]='" & rdsql & "'"
+                                        cmd.ExecuteNonQuery()
+                                        'UPDATE in SWIFT ACCOUNT STATEMENTS
+                                        cmd.CommandText = "UPDATE [SWIFT_ACC_STATEMENTS] SET [Reconciled]='Y',[Reconciled_IB]=0 where [ID] in ('" & dtID.Rows.Item(i).Item("ID_EB") & "','" & dtID.Rows.Item(i).Item("ID_IB") & "')"
+                                        cmd.ExecuteNonQuery()
+                                        cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_EB] in ('" & dtID.Rows.Item(i).Item("ID_EB") & "') and [ReconcileDate]='" & rdsql & "'"
+                                        cmd.ExecuteNonQuery()
+
+                                    End If
+
+                                Next
+                                'UPDATE in SWIFT ACCOUNT STATEMENTS
+                                'cmd.CommandText = "UPDATE [SWIFT_ACC_STATEMENTS] SET [Reconciled]='Y',[Reconciled_IB]=0 where [ID] in ('" & ID_IB & "','" & ID_EB & "')"
+                                'cmd.ExecuteNonQuery()
+                                'DELETE ITEM in [NOSTRO_ACC_RECONCILIATIONS_OPEN]
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID]='" & ID_NOSTRO_REC & "' and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_EB] in ('" & ID_EB & "') and [ReconcileDate]='" & rdsql & "'"
+                                cmd.ExecuteNonQuery()
+
+                                Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource.EndEdit()
+
+                                Me.BookingRoute_Rec_TextEdit.Text = ""
+                                Me.BookingID_Rec_TextEdit.Text = ""
+                                Me.Description_Rec_TextEdit.Text = ""
+                                Me.BookingDate_Rec_TextEdit.Text = ""
+                                Me.ValueDate_Rec_TextEdit.Text = ""
+                                Me.CUR_Rec_TextEdit.Text = ""
+                                Me.Amount_Rec_TextEdit.Text = 0
+                                Me.ReconciliationInfo_MemoEdit.Text = ""
+
+                                dtID.Clear()
+
+
+                                'FILL NOSTRO ACCOUNT DATA
+                                'Me.GridControl_Internal.DataSource = Nothing
+                                'Me.GridControl_Internal.DataSource = Me.NOSTRO_REC_FILL_ProcedureBindingSource
+                                'Me.NOSTRO_REC_FILL_ProcedureTableAdapter.FillRecAcc(Me.AccountsReconciliationsDataSet.NOSTRO_REC_FILL_Procedure, rd, NostroAccount)
+                                NOSTRO_RECONCILIATIONS_FILL()
+                                SWIFT_ACC_BALANCES_FILL()
+
+                                'FILL NOSTRO OPEN DATA
+                                Me.GridControl_OutstandingBookings.DataSource = Nothing
+                                Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+                                Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                            End If
+
+                        End If
+
+                    End If
+
+                    'DELETE FROM NOSTRO RECONCILIATIONS OPEN WHERE ITEM IS RECONCILED
+                    cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN]  where Reconciled='Y'"
+                    cmd.ExecuteNonQuery()
+                    'Update Item in [SWIFT_ACC_STATEMENTS]
+                    cmd.CommandText = "UPDATE A SET A.Reconciled=B.Reconciled,A.[Reconciled_IB]=B.ID_IB from SWIFT_ACC_STATEMENTS A INNER JOIN NOSTRO_ACC_RECONCILIATIONS B on A.ID=B.ID_EB where BookingDate='" & rdsql & "' and SwiftTag in ('61') and A.[InternalAccount]='" & NostroAccount & "'"
+                    cmd.ExecuteNonQuery()
+
+
+                End If
+            Else
+                MessageBox.Show("The Amounts are not equal!", "UNABLE TO RECONCILIATE", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+
+            End If
+        Else
+            'User Memos
+            If Me.UserMemo_MemoEdit.Text <> "" Then
+                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]='" & Me.UserMemo_MemoEdit.Text & "' where [ID]='" & Me.ID_NOSTRO_REC_Textedit.Text & " ' and [ReconcileDate]='" & rdsql & "'"
+                cmd.ExecuteNonQuery()
+            Else
+                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]=NULL where [ID]='" & Me.ID_NOSTRO_REC_Textedit.Text & " ' and [ReconcileDate]='" & rdsql & "'"
+                cmd.ExecuteNonQuery()
+            End If
+            Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource.EndEdit()
+            'FILL NOSTRO OPEN DATA
+            Me.GridControl_OutstandingBookings.DataSource = Nothing
+            Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+            Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+        End If
+        If cmd.Connection.State = ConnectionState.Open Then
+            cmd.Connection.Close()
+        End If
+    End Sub
+
+#End Region
+
+#Region "RECONCILIATION DETAILS DISPLAY"
+
+    Private Sub OCBS_LookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles OCBS_LookUpEdit.EditValueChanged
+        If Me.OCBS_LookUpEdit.Text <> "" Then
+            Dim view As GridView = OCBS_LookUpEdit.Properties.View
+            Dim rowHandle As Integer = view.FocusedRowHandle
+            NostroAccount = view.GetRowCellValue(rowHandle, "AccountNr_Internal")
+            NostroAccountExternal = view.GetRowCellValue(rowHandle, "AccountIdentifierStatement")
+            Dim Currency As String = view.GetRowCellValue(rowHandle, "CCY_IB")
+            NostroName = view.GetRowCellValue(rowHandle, "AccountName_Internal")
+            Me.CURlbl.Text = Currency
+            Me.NostroAccountNamelbl.Text = NostroName
+        Else
+            Me.CURlbl.Text = ""
+            Me.NostroAccountNamelbl.Text = ""
+
+        End If
+    End Sub
+
+    Private Sub LoadReconDetails_btn_Click(sender As Object, e As EventArgs) Handles LoadReconDetails_btn.Click
+        If IsDate(Me.OCBS_BookingDate_From.Text) = True AndAlso IsDate(Me.OCBS_BookingDate_Till.Text) = True Then
+
+            d1 = Me.OCBS_BookingDate_From.Text
+            d2 = Me.OCBS_BookingDate_Till.Text
+            'MsgBox(d1 & "  " & d2)
+            If d2 >= d1 Then
+                rdsql1 = d1.ToString("yyyyMMdd")
+                rdsql2 = d2.ToString("yyyyMMdd")
+                'ALL SEARCH ITEMS
+                If IsNothing(Me.OCBS_LookUpEdit.Text) = False AndAlso IsNumeric(Me.OCBS_LookUpEdit.Text) = True Then
+                    Try
+
+                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                        SplashScreenManager.Default.SetWaitFormCaption("Load  Reconciliation Details for Nostro Account: " & Me.OCBS_LookUpEdit.Text & " from: " & d1 & " till " & d2)
+
+
+                        Dim objCMD As SqlCommand = New SqlCommand("execute [NOSTRO_REC_DETAILS_FILL]  @FROMDATE='" & rdsql1 & "', @TILLDATE='" & rdsql2 & "',@NOSTRO_ACCOUNT='" & Me.OCBS_LookUpEdit.Text & "'  ", conn)
+                        objCMD.CommandTimeout = 5000
+                        da = New SqlDataAdapter(objCMD)
+                        dt = New DataTable()
+                        da.Fill(dt)
+                        'Results
+                        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+                            Me.GridControl_ReconciliationDetails.DataSource = Nothing
+                            Me.GridControl_ReconciliationDetails.DataSource = dt
+                            Me.GridControl_ReconciliationDetails.ForceInitialize()
+                            SplashScreenManager.CloseForm(False)
+
+                        Else
+                            SplashScreenManager.CloseForm(False)
+                            Me.GridControl_ReconciliationDetails.DataSource = Nothing
+                            Me.NostroRecDetailsSearch_GridView.ViewCaption = "RECONCILIATION DETAILS"
+                            MessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                            Exit Sub
+                        End If
+
+                    Catch ex As Exception
+                        System.Windows.Forms.MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                        SplashScreenManager.CloseForm(False)
+                    End Try
+                End If
+            Else
+                SplashScreenManager.CloseForm(False)
+                MessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            End If
+        Else
+            MessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+    End Sub
+
+
+#End Region
+
+#Region "SET TO OUTSTANDING"
+
+    Private Sub InternalBaseView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles InternalBaseView.PopupMenuShowing
+        Dim View As GridView = CType(sender, GridView)
+
+        Dim HitInfo As GridHitInfo = View.CalcHitInfo(e.Point)
+
+        If HitInfo.InRow AndAlso RESET_RECONCILE_STATUS = "Y" AndAlso RESET_BookingRoute_EB <> "MULTIPLE" Then
+
+            View.FocusedRowHandle = HitInfo.RowHandle
+            Me.ContextMenuStrip1.Show(View.GridControl, e.Point)
+
+        End If
+    End Sub
+
+
+    Private Sub InternalBaseView_RowClick(sender As Object, e As RowClickEventArgs) Handles InternalBaseView.RowClick
+        Dim view As GridView = DirectCast(sender, GridView)
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            RESET_ID = view.GetFocusedRowCellValue("ID").ToString
+            RESET_RECONCILE_STATUS = view.GetFocusedRowCellValue("Reconciled").ToString
+            RESET_BookingRoute_IB = view.GetFocusedRowCellValue("BookingRoute_IB").ToString
+            RESET_ID_IB = view.GetFocusedRowCellValue("ID_IB").ToString
+            RESET_BookingRoute_EB = view.GetFocusedRowCellValue("BookingRoute_EB").ToString
+            RESET_ID_EB = view.GetFocusedRowCellValue("ID_EB").ToString
+            RESET_NOSTRO_ACC = view.GetFocusedRowCellValue("AccountNr_Internal").ToString
+        End If
+    End Sub
+
+    Private Sub SetOutstanding_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetOutstanding_ToolStripMenuItem.Click
+        If cmd.Connection.State = ConnectionState.Closed Then
+            cmd.Connection.Open()
+        End If
+
+        Dim Lastrdsql As String = LastRecDate.ToString("yyyyMMdd")
+
+        'Multiple Bookings
+        If LastRecDate = rd Then
+            If RESET_ID_EB = "0" Then 'MULTIPLE BOOKINGS
+                If MessageBox.Show("Should the Reconciliation Status of the Booking be changed to Outstanding ?", "RECONCILIATION - MULTIPLE", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    'Reset Status in NOSTRO RECONCILIATIONS
+                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS] SET [BookingRoute_EB]=NULL,[ID_EB]=NULL,[AccountNr_External]=NULL,[BookingDate_EB]=NULL,[ValueDate_EB]=NULL,[CCY_EB]=NULL,[Amount_EB]=0,[TransactionTypeID_EB]=NULL,[Reference_AccountOwner_EB]=NULL,[ReferenceServiInstitution_EB]=NULL,[SupplementaryDetails_EB]=NULL,[Reconciled]='N',[Reconciled_Tag]='N',[ReconcileInfo]=[ReconcileInfo] + CHAR(13)+CHAR(10) + 'Changed Status to OUTSTANDING from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) where [ID]='" & RESET_ID & "'"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[UserMemo],[ReconcileDate])SELECT [BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[UserMemo],' " & rdsql & "' FROM [NOSTRO_ACC_RECONCILIATIONS] where [ID]='" & RESET_ID & "'"
+                    cmd.ExecuteNonQuery()
+
+                    'Add from Multiple Bookings
+                    Me.QueryText = "Select [ID],[BookingRoute_EB] as 'BookingRouteExt',[ID_EB] as 'BookingIDExt' from [NOSTRO_ACC_RECONCILIATIONS_MULTIPLE] where [ID_IB]='" & RESET_ID_IB & "'"
+                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    dt = New System.Data.DataTable()
+                    da.Fill(dt)
+                    For i = 0 To dt.Rows.Count - 1
+                        If dt.Rows.Count > 0 Then
+                            Dim MultipleID As String = dt.Rows.Item(i).Item("ID")
+                            Dim BookingRouteExt As String = dt.Rows.Item(i).Item("BookingRouteExt")
+                            Dim BookingIDExt As String = dt.Rows.Item(i).Item("BookingIDExt")
+
+                            If BookingRouteExt = "INTERNAL" Then
+                                cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[UserMemo],[ReconcileDate]) SELECT  'INTERNAL',A.[IdNr],A.[AccountNo],B.NOSTRO_NAME,A.[GL_Rep_Date],A.[Value Date],A.CCY,A.Amount,A.Description,Case when [Description] like '%//%' then REPLACE(SUBSTRING([Description],0,charindex('//',[Description])),'//','')  end ,Case when [Description] like '%//%' then REPLACE(SUBSTRING([Description],charindex('//',[Description]),len([Description])+1),'//','') end ,NULL,'" & rdsql & "' FROM [ALL_VOLUMES] A INNER JOIN [SSIS] B on A.AccountNo=B.[INTERNAL ACCOUNT] where A.IdNr='" & BookingIDExt & "' "
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[UserMemo],[ReconcileDate]) SELECT  'INTERNAL',A.[IdNr],A.[AccountNo],B.NOSTRO_NAME,A.[GL_Rep_Date],A.[Value Date],A.CCY,A.Amount,A.Description,Case when [Description] like '%//%' then REPLACE(SUBSTRING([Description],0,charindex('//',[Description])),'//','')  end ,Case when [Description] like '%//%' then REPLACE(SUBSTRING([Description],charindex('//',[Description]),len([Description])+1),'//','') end ,NULL,'" & rdsql & "' FROM [ALL_VOLUMES] A INNER JOIN [SSIS] B on A.AccountNo=B.[INTERNAL ACCOUNT] where A.IdNr='" & BookingIDExt & "' "
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_MULTIPLE] where [ID]='" & MultipleID & "'"
+                                cmd.ExecuteNonQuery()
+                            ElseIf BookingRouteExt = "EXTERNAL" Then
+                                cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN](AccountNr_Internal,AccountName_Internal,[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB],[ReconcileDate])SELECT [InternalAccount],[Nostro_Name],'EXTERNAL',[ID],[AccountIdentification],[BookingDate],[ValueDate],[CUR],[Amount],[TransactionTypeID],[ReferenceAccountOwner],[ReferenceServiInstitution],[SupplementaryDetails],'" & rdsql & "' FROM [SWIFT_ACC_STATEMENTS] where ID='" & BookingIDExt & "' "
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "UPDATE [SWIFT_ACC_STATEMENTS] set Reconciled='N',Reconciled_IB=NULL where ID='" & BookingIDExt & "'"
+                                cmd.ExecuteNonQuery()
+                                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_MULTIPLE] where [ID]='" & MultipleID & "'"
+                                cmd.ExecuteNonQuery()
+                            End If
+
+                        End If
+                    Next
+                End If
+            ElseIf RESET_ID_EB = "1" Then 'ALL INTERNAL BOOKINGS
+                If MessageBox.Show("Should the Reconciliation Status of the Booking be changed to Outstanding ?" & vbNewLine & vbNewLine & "ATTENTION: All reconciled Internal Bookings will be marked as outstanding!!", "RECONCILIATION - INTERNAL BOOKINGS", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.QueryText = "Select * from [NOSTRO_ACC_RECONCILIATIONS] where [ID_EB]='1' and [AccountNr_Internal]='" & RESET_NOSTRO_ACC & "' and [ReconcileDate]='" & rdsql & "'"
+                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    dt = New System.Data.DataTable()
+                    da.Fill(dt)
+                    For i = 0 To dt.Rows.Count - 1
+                        If dt.Rows.Count > 0 Then
+                            Dim ResetIDrecon As String = dt.Rows.Item(i).Item("ID")
+                            cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS] SET [BookingRoute_EB]=NULL,[ID_EB]=NULL,[AccountNr_External]=NULL,[BookingDate_EB]=NULL,[ValueDate_EB]=NULL,[CCY_EB]=NULL,[Amount_EB]=0,[TransactionTypeID_EB]=NULL,[Reference_AccountOwner_EB]=NULL,[ReferenceServiInstitution_EB]=NULL,[SupplementaryDetails_EB]=NULL,[Reconciled]='N',[Reconciled_Tag]='N',[ReconcileInfo]=[ReconcileInfo] + CHAR(13)+CHAR(10) + 'Changed Status to OUTSTANDING from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) where [ID]='" & ResetIDrecon & "'"
+                            cmd.ExecuteNonQuery()
+                            cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[UserMemo],[ReconcileDate])SELECT [BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[UserMemo],' " & rdsql & "' FROM [NOSTRO_ACC_RECONCILIATIONS] where [ID]='" & ResetIDrecon & "'"
+                            cmd.ExecuteNonQuery()
+                        End If
+                    Next
+                End If
+            ElseIf RESET_ID_EB <> "0" AndAlso RESET_ID_EB <> "1" Then 'INTERNAL vs EXTERNAL
+                If MessageBox.Show("Should the Reconciliation Status of the Booking be changed to Outstanding ?", "RECONCILIATION - INTERNAL <--> EXTERNAL", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS] SET [BookingRoute_EB]=NULL,[ID_EB]=NULL,[AccountNr_External]=NULL,[BookingDate_EB]=NULL,[ValueDate_EB]=NULL,[CCY_EB]=NULL,[Amount_EB]=0,[TransactionTypeID_EB]=NULL,[Reference_AccountOwner_EB]=NULL,[ReferenceServiInstitution_EB]=NULL,[SupplementaryDetails_EB]=NULL,[Reconciled]='N',[Reconciled_Tag]='N',[ReconcileInfo]=[ReconcileInfo] + CHAR(13)+CHAR(10) + 'Changed Status to OUTSTANDING from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) where [ID]='" & RESET_ID & "'"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[UserMemo],[ReconcileDate])SELECT [BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[UserMemo],' " & rdsql & "' FROM [NOSTRO_ACC_RECONCILIATIONS] where [ID]='" & RESET_ID & "'"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN](AccountNr_Internal,AccountName_Internal,[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB],[ReconcileDate])SELECT [InternalAccount],[Nostro_Name],'EXTERNAL',[ID],[AccountIdentification],[BookingDate],[ValueDate],[CUR],[Amount],[TransactionTypeID],[ReferenceAccountOwner],[ReferenceServiInstitution],[SupplementaryDetails],'" & rdsql & "' FROM [SWIFT_ACC_STATEMENTS] where ID='" & RESET_ID_EB & "' "
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "UPDATE [SWIFT_ACC_STATEMENTS] set Reconciled='N',Reconciled_IB=NULL where ID='" & RESET_ID_EB & "'"
+                    cmd.ExecuteNonQuery()
+                End If
+            End If
+            'DELETE DUPLICATES IN NOSTRO RECONCILIATION OPEN
+            cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where ID not in (Select Min(ID) from [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_IB] is not NULL GROUP BY [ID_IB]) and BookingRoute_IB='INTERNAL'"
+            cmd.ExecuteNonQuery()
+            cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where ID not in (Select Min(ID) from [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ID_EB] is not NULL GROUP BY [ID_EB]) and BookingRoute_EB='EXTERNAL'"
+            cmd.ExecuteNonQuery()
+
+        Else
+            MessageBox.Show("Reconciliation Date of the relevant Booking is less than the last Reconciliation Date: " & LastRecDate, "Unable to change the Reconciliation Status to Outstanding", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+
+        If cmd.Connection.State = ConnectionState.Open Then
+            cmd.Connection.Close()
+        End If
+
+        NOSTRO_RECONCILIATIONS_FILL()
+        'FILL NOSTRO OPEN DATA
+        Me.GridControl_OutstandingBookings.DataSource = Nothing
+        Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+        Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+    End Sub
+#End Region
+
+#Region "CREATE INTERNAL DUMMY BOOKING for RECONCILIATION EXTERNAL BOOKING"
+
+    Private Sub NostroOutstandingBookings_GridView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles NostroOutstandingBookings_GridView.PopupMenuShowing
+
+        If CREATE_DUMMY_BOOKINGS = "Y" Then
+            Dim View As GridView = CType(sender, GridView)
+
+            Dim HitInfo As GridHitInfo = View.CalcHitInfo(e.Point)
+
+            If HitInfo.InRow AndAlso BOOKING_ROUTE_MAIN = "EXTERNAL" Then
+
+                View.FocusedRowHandle = HitInfo.RowHandle
+                Me.ContextMenuStrip2.Show(View.GridControl, e.Point)
+            Else
+                Return
+
+            End If
+        End If
+
+
+
+    End Sub
+
+    Private Sub NostroOutstandingBookings_GridView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles NostroOutstandingBookings_GridView.RowCellClick
+
+
+    End Sub
+
+    Private Sub NostroOutstandingBookings_GridView_RowClick(sender As Object, e As RowClickEventArgs) Handles NostroOutstandingBookings_GridView.RowClick
+        Dim view As GridView = TryCast(sender, GridView)
+        Dim rowHandle As Integer = view.FocusedRowHandle
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            ID_MAIN = view.GetRowCellValue(rowHandle, colID1)
+            BOOKING_ROUTE_MAIN = view.GetRowCellValue(rowHandle, colUB_BookingRoute)
+            BOOKING_ID_MAIN = view.GetRowCellValue(rowHandle, col_UB_ID_IB_EB)
+            DESCRIPTION_MAIN = view.GetRowCellValue(rowHandle, colUB_Description)
+            BOOKING_DATE_MAIN = view.GetRowCellValue(rowHandle, colUB_BookingDate)
+            VALUE_DATE_MAIN = view.GetRowCellValue(rowHandle, colUB_ValueDate)
+            CUR_MAIN = view.GetRowCellValue(rowHandle, colUB_CCY)
+            AMOUNT_MAIN = view.GetRowCellValue(rowHandle, colUB_Amount)
+
+        End If
+    End Sub
+
+    Private Sub CreateDummyBooking_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateDummyBooking_ToolStripMenuItem.Click
+        If cmd.Connection.State = ConnectionState.Closed Then
+            cmd.Connection.Open()
+        End If
+
+        Dim Lastrdsql As String = LastRecDate.ToString("yyyyMMdd")
+
+        If BOOKING_ROUTE_MAIN = "EXTERNAL" Then
+            If LastRecDate = rd Then
+                If MessageBox.Show("Should for this External Booking a dummy Internal booking be created in order to reconcile?", "RECONCILIATION - CREATE INTERNAL DUMMY BOOKING", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Dim DUMMY_BOOKING_AMOUNT As Double = AMOUNT_MAIN * (-1)
+                    cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[ReconcileDate])VALUES ('INTERNAL',0,'" & Me.NostroAcc_SearchLookUpEdit.Text & "','" & Lastrdsql & "','" & Lastrdsql & "','" & CUR_MAIN & "'," & Str(DUMMY_BOOKING_AMOUNT) & ",'INTERNAL DUMMY BOOKING CREATED FOR RECONCILIATION','" & Lastrdsql & "')"
+                    cmd.ExecuteNonQuery()
+                    Me.GridControl_OutstandingBookings.DataSource = Nothing
+                    Me.GridControl_OutstandingBookings.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource
+                    Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, Me.NostroAcc_SearchLookUpEdit.Text, rd)
+                End If
+            Else
+                MessageBox.Show("Unable to create a Internal Dummy Booking for reconciliation", "RECONCILIATION DATE IS IN THE PAST", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
+            End If
+        Else
+            MessageBox.Show("Unable to create a Internal Dummy Booking for reconciliation", "SELECTED BOOKING IS AN INTERNAL BOOKING", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Return
+        End If
+
+
+        If cmd.Connection.State = ConnectionState.Open Then
+            cmd.Connection.Close()
+        End If
+    End Sub
+
+   
+
+#End Region
+
+#Region "REPORTS CREATION"
+
+    Private Sub RR_DefaultFormat_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles RR_DefaultFormat_BarButtonItem.ItemClick
+        If NostroAcc_SearchLookUpEdit.Text <> "" Then
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Creating Reconciliation Report for " & NostroAccount & " CUR:" & Currency & vbNewLine & NostroName & " on " & rd)
+            'load data to NOSTRO_ACC_RECON_DATA
+            If cmd.Connection.State = ConnectionState.Closed Then
+                cmd.Connection.Open()
+            End If
+            cmd.CommandText = "Delete from [NOSTRO_ACC_RECON_DATA]"
+            cmd.ExecuteNonQuery()
+            'OLD CODE
+            'cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else NULL end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else 0 end,'" & rdsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount & "'"
+            'cmd.ExecuteNonQuery()
+            cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else (SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & NostroAccount & "') end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]=(SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & NostroAccount & "')) end,'" & rdsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount & "'"
+            cmd.ExecuteNonQuery()
+
+
+            cmd.CommandText = "Select '62F'=Case when exists(Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else 0 end"
+            If cmd.ExecuteScalar IsNot DBNull.Value Then
+                Balance_EB = cmd.ExecuteScalar
+                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]='" & rdsql & "'"
+                cmd.ExecuteNonQuery()
+            Else
+                cmd.CommandText = "Select '62F'=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "' and [SwiftTag] in ('62F'))))  end"
+                Balance_EB = cmd.ExecuteScalar
+                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select [BookingDate] from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select [BookingDate] from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "')))  end"
+                cmd.ExecuteNonQuery()
+            End If
+            If cmd.Connection.State = ConnectionState.Open Then
+                cmd.Connection.Close()
+            End If
+
+            'Select from Last Reconcile Date
+            If LastRecDate_ALL_NOSTROS = rd OrElse LastRecDate = rd Then
+                Dim RefiDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECON_DATA]", conn)
+                Dim BankDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [AccountNr_Internal]='" & NostroAccount & "' and [ReconcileDate]='" & rdsql & "'", conn)
+                Dim REPORTINGdataset As New DataSet("REPORTING")
+                REPORTINGdataset.Clear()
+                BankDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                BankDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                Dim BankDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                RefiDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECON_DATA")
+                RefiDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECON_DATA")
+                Dim RefiDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECON_DATA")
+
+                Dim CrRep As New ReportDocument
+                CrRep.Load(CrystalRepDir & "\NostroReconciliationRep.rpt")
+                CrRep.SetDataSource(REPORTINGdataset)
+                Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
+                Dim myParams As ParameterField = New ParameterField
+                myValue.Value = rd
+                myParams.ParameterFieldName = "RiskDate"
+                myParams.CurrentValues.Add(myValue)
+                Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
+                Dim myParams1 As ParameterField = New ParameterField
+                myValue1.Value = NostroAccount
+                myParams1.ParameterFieldName = "NostroAccount"
+                myParams1.CurrentValues.Add(myValue1)
+                Dim c As New CrystalReportsForm
+                c.MdiParent = Me.MdiParent
+                c.Show()
+                c.WindowState = FormWindowState.Maximized
+                c.Text = "Reconciliation Report for " & NostroAccount & " CUR:" & Currency & " on " & rd
+                c.CrystalReportViewer1.ParameterFieldInfo = New ParameterFields
+                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams)
+                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams1)
+                c.CrystalReportViewer1.ReportSource = CrRep
+                c.CrystalReportViewer1.ShowParameterPanelButton = False
+                c.CrystalReportViewer1.ShowRefreshButton = False
+                c.CrystalReportViewer1.ShowGroupTreeButton = False
+                c.CrystalReportViewer1.Zoom(100)
+            ElseIf LastRecDate_ALL_NOSTROS <> rd Then
+                Dim RefiDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECON_DATA]", conn)
+                Dim BankDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY] where [AccountNr_Internal]='" & NostroAccount & "' and [ReconcileDate]='" & rdsql & "'", conn)
+                Dim REPORTINGdataset As New DataSet("REPORTING")
+                REPORTINGdataset.Clear()
+                BankDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY")
+                BankDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY")
+                Dim BankDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY")
+                RefiDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECON_DATA")
+                RefiDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECON_DATA")
+                Dim RefiDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECON_DATA")
+
+                Dim CrRep As New ReportDocument
+                CrRep.Load(CrystalRepDir & "\NostroReconciliationRepHistory.rpt")
+                CrRep.SetDataSource(REPORTINGdataset)
+                Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
+                Dim myParams As ParameterField = New ParameterField
+                myValue.Value = rd
+                myParams.ParameterFieldName = "RiskDate"
+                myParams.CurrentValues.Add(myValue)
+                Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
+                Dim myParams1 As ParameterField = New ParameterField
+                myValue1.Value = NostroAccount
+                myParams1.ParameterFieldName = "NostroAccount"
+                myParams1.CurrentValues.Add(myValue1)
+                Dim c As New CrystalReportsForm
+                c.MdiParent = Me.MdiParent
+                c.Show()
+                c.WindowState = FormWindowState.Maximized
+                c.Text = "Reconciliation Report for " & NostroAccount & " CUR:" & Currency & " on " & rd
+                c.CrystalReportViewer1.ParameterFieldInfo = New ParameterFields
+                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams)
+                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams1)
+                c.CrystalReportViewer1.ReportSource = CrRep
+                c.CrystalReportViewer1.ShowParameterPanelButton = False
+                c.CrystalReportViewer1.ShowRefreshButton = False
+                c.CrystalReportViewer1.ShowGroupTreeButton = False
+                c.CrystalReportViewer1.Zoom(100)
+            End If
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+    Private Sub RR_NewFormat_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles RR_NewFormat_BarButtonItem.ItemClick
+        If NostroAcc_SearchLookUpEdit.Text <> "" Then
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Creating Reconciliation Report for " & NostroAccount & " CUR:" & Currency & vbNewLine & NostroName & " on " & rd)
+            'load data to NOSTRO_ACC_RECON_DATA
+            If cmd.Connection.State = ConnectionState.Closed Then
+                cmd.Connection.Open()
+            End If
+            cmd.CommandText = "Delete from [NOSTRO_ACC_RECON_DATA]"
+            cmd.ExecuteNonQuery()
+            'OLD CODE
+            'cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else NULL end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else 0 end,'" & rdsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount & "'"
+            'cmd.ExecuteNonQuery()
+            cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else (SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & NostroAccount & "') end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]=(SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & NostroAccount & "')) end,'" & rdsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount & "'"
+            cmd.ExecuteNonQuery()
+
+            cmd.CommandText = "Select '62F'=Case when exists(Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else 0 end"
+            If cmd.ExecuteScalar IsNot DBNull.Value Then
+                Balance_EB = cmd.ExecuteScalar
+                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]='" & rdsql & "'"
+                cmd.ExecuteNonQuery()
+            Else
+                cmd.CommandText = "Select '62F'=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "' and [SwiftTag] in ('62F'))))  end"
+                Balance_EB = cmd.ExecuteScalar
+                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select [BookingDate] from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select [BookingDate] from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "')))  end"
+                cmd.ExecuteNonQuery()
+            End If
+            If cmd.Connection.State = ConnectionState.Open Then
+                cmd.Connection.Close()
+            End If
+
+            'Select from Last Reconcile Date
+            If LastRecDate_ALL_NOSTROS = rd OrElse LastRecDate = rd Then
+                Dim RefiDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECON_DATA]", conn)
+                Dim BankDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [AccountNr_Internal]='" & NostroAccount & "' and [ReconcileDate]='" & rdsql & "'", conn)
+                Dim REPORTINGdataset As New DataSet("REPORTING")
+                REPORTINGdataset.Clear()
+                BankDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                BankDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                Dim BankDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                RefiDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECON_DATA")
+                RefiDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECON_DATA")
+                Dim RefiDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECON_DATA")
+
+                Dim CrRep As New ReportDocument
+                CrRep.Load(CrystalRepDir & "\NostroReconciliationRepNew.rpt")
+                CrRep.SetDataSource(REPORTINGdataset)
+                Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
+                Dim myParams As ParameterField = New ParameterField
+                myValue.Value = rd
+                myParams.ParameterFieldName = "RiskDate"
+                myParams.CurrentValues.Add(myValue)
+                Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
+                Dim myParams1 As ParameterField = New ParameterField
+                myValue1.Value = NostroAccount
+                myParams1.ParameterFieldName = "NostroAccount"
+                myParams1.CurrentValues.Add(myValue1)
+                Dim c As New CrystalReportsForm
+                c.MdiParent = Me.MdiParent
+                c.Show()
+                c.WindowState = FormWindowState.Maximized
+                c.Text = "Reconciliation Report for " & NostroAccount & " CUR:" & Currency & " on " & rd
+                c.CrystalReportViewer1.ParameterFieldInfo = New ParameterFields
+                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams)
+                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams1)
+                c.CrystalReportViewer1.ReportSource = CrRep
+                c.CrystalReportViewer1.ShowParameterPanelButton = False
+                c.CrystalReportViewer1.ShowRefreshButton = False
+                c.CrystalReportViewer1.ShowGroupTreeButton = False
+                c.CrystalReportViewer1.Zoom(100)
+            ElseIf LastRecDate_ALL_NOSTROS <> rd Then
+                Dim RefiDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECON_DATA]", conn)
+                Dim BankDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY] where [AccountNr_Internal]='" & NostroAccount & "' and [ReconcileDate]='" & rdsql & "'", conn)
+                Dim REPORTINGdataset As New DataSet("REPORTING")
+                REPORTINGdataset.Clear()
+                BankDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY")
+                BankDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY")
+                Dim BankDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY")
+                RefiDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECON_DATA")
+                RefiDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECON_DATA")
+                Dim RefiDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECON_DATA")
+
+                Dim CrRep As New ReportDocument
+                CrRep.Load(CrystalRepDir & "\NostroReconciliationRepHistoryNew.rpt")
+                CrRep.SetDataSource(REPORTINGdataset)
+                Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
+                Dim myParams As ParameterField = New ParameterField
+                myValue.Value = rd
+                myParams.ParameterFieldName = "RiskDate"
+                myParams.CurrentValues.Add(myValue)
+                Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
+                Dim myParams1 As ParameterField = New ParameterField
+                myValue1.Value = NostroAccount
+                myParams1.ParameterFieldName = "NostroAccount"
+                myParams1.CurrentValues.Add(myValue1)
+                Dim c As New CrystalReportsForm
+                c.MdiParent = Me.MdiParent
+                c.Show()
+                c.WindowState = FormWindowState.Maximized
+                c.Text = "Reconciliation Report for " & NostroAccount & " CUR:" & Currency & " on " & rd
+                c.CrystalReportViewer1.ParameterFieldInfo = New ParameterFields
+                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams)
+                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams1)
+                c.CrystalReportViewer1.ReportSource = CrRep
+                c.CrystalReportViewer1.ShowParameterPanelButton = False
+                c.CrystalReportViewer1.ShowRefreshButton = False
+                c.CrystalReportViewer1.ShowGroupTreeButton = False
+                c.CrystalReportViewer1.Zoom(100)
+            End If
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+    Private Sub RR_AllOutstandings_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles RR_AllOutstandings_BarButtonItem.ItemClick
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        SplashScreenManager.Default.SetWaitFormCaption("Outstanding Bookings for all Nostro Accounts Report on " & Today)
+        'Dim OutAll_Da As New SqlDataAdapter("Select C.* from [NOSTRO_ACC_RECONCILIATIONS_OPEN] C INNER JOIN (Select max([ReconcileDate])as 'RecDate',AccountNr_Internal as 'Account' from [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [ReconcileDate] in (Select Max(ReconcileDate) from [NOSTRO_ACC_RECONCILIATIONS_OPEN] GROUP BY AccountNr_Internal) GROUP BY AccountNr_Internal)A on C.ReconcileDate=A.RecDate and C.AccountNr_Internal=A.Account ", conn)
+        Dim OutAll_Da As New SqlDataAdapter("Select * from [NOSTRO_ACC_RECONCILIATIONS_OPEN]", conn)
+        Dim OutAll_Dataset As New DataSet("NOSTRO_ACC_RECONCILIATIONS_OPEN")
+        OutAll_Da.Fill(OutAll_Dataset, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+
+        Dim CrRep As New ReportDocument
+        CrRep.Load(CrystalRepDir & "\NostroReconciliationAllOutBookings_Rep.rpt")
+        CrRep.SetDataSource(OutAll_Dataset)
+        Dim c As New CrystalReportsForm
+        c.MdiParent = Me.MdiParent
+        c.Show()
+        c.WindowState = FormWindowState.Maximized
+        c.Text = "Outstanding Bookings for all Nostro Accounts Report on " & Today.ToShortDateString
+        c.CrystalReportViewer1.ReportSource = CrRep
+        c.CrystalReportViewer1.ShowParameterPanelButton = False
+        c.CrystalReportViewer1.ShowRefreshButton = False
+        c.CrystalReportViewer1.ShowGroupTreeButton = False
+        c.CrystalReportViewer1.Zoom(100)
+
+        SplashScreenManager.CloseForm(False)
+    End Sub
+#End Region
+
+#Region "LAST RECONCILIATIONS REPORT"
+
+    Private Sub Reports_Dropdownbutton_Click(sender As Object, e As EventArgs) Handles Reports_Dropdownbutton.Click
+
+        LAST_RECONCILIATIONS_initData()
+        LAST_RECONCILIATIONS_InitLookUp()
+
+    End Sub
+
+    Private Sub RepositoryItemGridLookUpEdit2_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles RepositoryItemGridLookUpEdit2.ButtonClick
+        If e.Button.Caption = "Load" Then
+            If NostroAccount_LastReconcile <> Nothing And IsDate(rdlr) = True Then
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Creating Last Reconciliation Report for " & NostroAccount_LastReconcile & " CUR: " & NostroAccountCCY_LastReconcile & vbNewLine & NostroAccountName_LastReconcile & " on " & rdlr)
+                'load data to NOSTRO_ACC_RECON_DATA
+                If cmd.Connection.State = ConnectionState.Closed Then
+                    cmd.Connection.Open()
+                End If
+                cmd.CommandText = "Delete from [NOSTRO_ACC_RECON_DATA]"
+                cmd.ExecuteNonQuery()
+                cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount_LastReconcile & "' and [BalanceDate]='" & rdlrsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount_LastReconcile & "' and [BalanceDate]='" & rdlrsql & "') else NULL end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount_LastReconcile & "' and [BalanceDate]='" & rdlrsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount_LastReconcile & "' and [BalanceDate]='" & rdlrsql & "') else 0 end,'" & rdlrsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount_LastReconcile & "'"
+                cmd.ExecuteNonQuery()
+
+                cmd.CommandText = "Select '62F'=Case when exists(Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') else 0 end"
+                If cmd.ExecuteScalar IsNot DBNull.Value Then
+                    Balance_EB = cmd.ExecuteScalar
+                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]='" & rdlrsql & "'"
+                    cmd.ExecuteNonQuery()
+                Else
+                    cmd.CommandText = "Select '62F'=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') is not NULL then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') else (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdlrsql & "' and [SwiftTag] in ('62F'))))  end"
+                    If cmd.ExecuteScalar IsNot DBNull.Value Then
+                        Balance_EB = cmd.ExecuteScalar
+                    Else
+                        Balance_EB = 0
+                    End If
+
+                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') is not NULL then (Select [BookingDate] from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') else (Select [BookingDate] from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdlrsql & "')))  end"
+                    cmd.ExecuteNonQuery()
+                    End If
+                    If cmd.Connection.State = ConnectionState.Open Then
+                        cmd.Connection.Close()
+                    End If
+
+
+                    Dim RefiDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECON_DATA]", conn)
+                    Dim BankDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where [AccountNr_Internal]='" & NostroAccount_LastReconcile & "' and [ReconcileDate]='" & rdlrsql & "'", conn)
+                    Dim REPORTINGdataset As New DataSet("REPORTING")
+                    REPORTINGdataset.Clear()
+                    BankDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                    BankDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                    Dim BankDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECONCILIATIONS_OPEN")
+                    RefiDa.FillSchema(REPORTINGdataset, SchemaType.Source, "NOSTRO_ACC_RECON_DATA")
+                    RefiDa.Fill(REPORTINGdataset, "NOSTRO_ACC_RECON_DATA")
+                    Dim RefiDt As DataTable = REPORTINGdataset.Tables("NOSTRO_ACC_RECON_DATA")
+
+                    Dim CrRep As New ReportDocument
+                    CrRep.Load(CrystalRepDir & "\NostroReconciliationRep.rpt")
+                    CrRep.SetDataSource(REPORTINGdataset)
+                    Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
+                    Dim myParams As ParameterField = New ParameterField
+                    myValue.Value = rdlr
+                    myParams.ParameterFieldName = "RiskDate"
+                    myParams.CurrentValues.Add(myValue)
+                    Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
+                    Dim myParams1 As ParameterField = New ParameterField
+                    myValue1.Value = NostroAccount_LastReconcile
+                    myParams1.ParameterFieldName = "NostroAccount"
+                    myParams1.CurrentValues.Add(myValue1)
+                    Dim c As New CrystalReportsForm
+                    c.MdiParent = Me.MdiParent
+                    c.Show()
+                    c.WindowState = FormWindowState.Maximized
+                    c.Text = "Reconciliation Report for " & NostroAccount_LastReconcile & " CUR:" & NostroAccountCCY_LastReconcile & " on " & rdlr
+                    c.CrystalReportViewer1.ParameterFieldInfo = New ParameterFields
+                    c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams)
+                    c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams1)
+                    c.CrystalReportViewer1.ReportSource = CrRep
+                    c.CrystalReportViewer1.ShowParameterPanelButton = False
+                    c.CrystalReportViewer1.ShowRefreshButton = False
+                    c.CrystalReportViewer1.ShowGroupTreeButton = False
+                    c.CrystalReportViewer1.Zoom(100)
+                    SplashScreenManager.CloseForm(False)
+            End If
+        End If
+    End Sub
+
+    Private Sub RepositoryItemGridLookUpEdit2_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemGridLookUpEdit2.EditValueChanged
+        Dim edit As DevExpress.XtraEditors.GridLookUpEdit = CType(sender, DevExpress.XtraEditors.GridLookUpEdit)
+        Dim row As DataRow = edit.Properties.View.GetDataRow(edit.Properties.View.FocusedRowHandle)
+        NostroAccount_LastReconcile = row("Nostro Account")
+        NostroAccountName_LastReconcile = row("Nostro Account Name")
+        NostroAccountCCY_LastReconcile = row("Currency")
+        rdlr = row("Last Reconcile Date")
+        rdlrsql = rdlr.ToString("yyyyMMdd")
+    End Sub
+
+#End Region
+
+#Region "PRINT GRIDVIEWS"
+    Private Sub TabbedControlGroup1_SelectedPageChanged(sender As Object, e As DevExpress.XtraLayout.LayoutTabPageChangedEventArgs) Handles TabbedControlGroup1.SelectedPageChanged
+        If Me.TabbedControlGroup1.SelectedTabPage.Text = "Reconciliations - Outstanding Bookings" Then
+            ActiveTabGroup = 0
+            Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+        ElseIf Me.TabbedControlGroup1.SelectedTabPage.Text = "Nostro Reconciliations Details" Then
+            ActiveTabGroup = 1
+            Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+        End If
+
+    End Sub
+
+    Private Sub Print_Export_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_btn.Click
+        If ActiveTabGroup = 0 Then
+
+            Dim composLink As CompositeLink = New CompositeLink(New PrintingSystem())
+            AddHandler composLink.CreateMarginalHeaderArea, AddressOf composLink_CreateMarginalHeaderArea
+            Dim pcLink1 As PrintableComponentLink = New PrintableComponentLink()
+            Dim pcLink11 As PrintableComponentLink = New PrintableComponentLink()
+            Dim pcLink2 As PrintableComponentLink = New PrintableComponentLink()
+
+            Dim linkMainReport As Link = New Link()
+            AddHandler linkMainReport.CreateDetailArea, AddressOf linkMainReport_CreateDetailArea
+            Dim linkGrid1Report As Link = New Link()
+            AddHandler linkGrid1Report.CreateDetailArea, AddressOf linkGrid1Report_CreateDetailArea
+            Dim linkGrid11Report As Link = New Link()
+            AddHandler linkGrid11Report.CreateDetailArea, AddressOf linkGrid11Report_CreateDetailArea
+            Dim linkGrid2Report As Link = New Link()
+            AddHandler linkGrid2Report.CreateDetailArea, AddressOf linkGrid2Report_CreateDetailArea
+
+            ' Assign the controls to the printing links.
+            pcLink1.Component = Me.GridControl_Internal
+            pcLink11.Component = Me.GridControl_OutstandingBookings
+            pcLink2.Component = Me.GridControl_External
+
+            ' Populate the collection of links in the composite link.
+            ' The order of operations corresponds to the document structure.
+            composLink.Links.Add(linkGrid1Report)
+            composLink.Links.Add(pcLink1)
+            composLink.Links.Add(linkGrid11Report)
+            composLink.Links.Add(pcLink11)
+
+            composLink.Links.Add(linkMainReport)
+            composLink.Links.Add(linkGrid2Report)
+            composLink.Links.Add(pcLink2)
+
+            composLink.Landscape = True
+            composLink.PaperKind = System.Drawing.Printing.PaperKind.A3
+
+
+            ' Create the report and show the preview window.
+            composLink.ShowPreviewDialog()
+
+
+        ElseIf ActiveTabGroup = 1 Then
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            PrintableComponentLink1.CreateDocument()
+            PrintableComponentLink1.ShowPreview()
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+    Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
+        Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
+        Try
+            iSize = e.Graph.MeasureString(String.Format("Printed: {0:F}M", DateTime.Now)).ToSize
+            r = New RectangleF(New PointF(e.Graph.ClientPageSize.Width - iSize.Width, 0), iSize)
+            pinfoBrick = e.Graph.DrawPageInfo(PageInfo.DateTime, "Printed: {0:F}", e.Graph.ForeColor, r, DevExpress.XtraPrinting.BorderSide.None)
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
+        Dim reportfooter As String = "Reconciliation Details for Nostro Account Nr.:" & OCBS_LookUpEdit.Text & "   " & Me.NostroAccountNamelbl.Text & "from: " & Me.OCBS_BookingDate_From.Text & "  till: " & Me.OCBS_BookingDate_Till.Text
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+    End Sub
+
+    Private Sub composLink_CreateMarginalHeaderArea(ByVal sender As Object, ByVal e As CreateAreaEventArgs)
+        Dim reportfooter As String = "All reconciliation Details for Nostro Account: " & NostroAccount & "  " & "on" & rd & "  " & "Printed on: " & Now
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+    End Sub
+
+    ' Creates a text header for the first grid.
+    Private Sub linkGrid1Report_CreateDetailArea(ByVal sender As Object, _
+    ByVal e As CreateAreaEventArgs)
+        Dim tb As TextBrick = New TextBrick()
+        tb.Text = "INTERNAL BALANCES AND BOOKINGS"
+        tb.Font = New Font("Arial", 10)
+        tb.Rect = New RectangleF(0, 0, 300, 25)
+        tb.BorderWidth = 0
+        tb.BackColor = Color.Transparent
+        tb.HorzAlignment = DevExpress.Utils.HorzAlignment.Near
+        e.Graph.DrawBrick(tb)
+    End Sub
+
+    Private Sub linkGrid11Report_CreateDetailArea(ByVal sender As Object, _
+    ByVal e As CreateAreaEventArgs)
+        Dim tb As TextBrick = New TextBrick()
+        tb.Text = "OUTSTANDING BOOKINGS"
+        tb.Font = New Font("Arial", 10)
+        tb.Rect = New RectangleF(0, 0, 300, 25)
+        tb.BorderWidth = 0
+        tb.BackColor = Color.Transparent
+        tb.HorzAlignment = DevExpress.Utils.HorzAlignment.Near
+        e.Graph.DrawBrick(tb)
+    End Sub
+
+    ' Creates an interval between the grids and fills it with color.
+    Private Sub linkMainReport_CreateDetailArea(ByVal sender As Object, _
+    ByVal e As CreateAreaEventArgs)
+        Dim tb As TextBrick = New TextBrick()
+        tb.Rect = New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 50)
+        tb.BackColor = Color.Gray
+        e.Graph.DrawBrick(tb)
+    End Sub
+
+    ' Creates a text header for the second grid.
+    Private Sub linkGrid2Report_CreateDetailArea(ByVal sender As Object, _
+    ByVal e As CreateAreaEventArgs)
+        Dim tb As TextBrick = New TextBrick()
+        tb.Text = "SWIFT ACCOUNT STATEMENT"
+        tb.Font = New Font("Arial", 10)
+        tb.Rect = New RectangleF(0, 0, 300, 25)
+        tb.BorderWidth = 0
+        tb.BackColor = Color.Transparent
+        tb.HorzAlignment = DevExpress.Utils.HorzAlignment.Near
+        e.Graph.DrawBrick(tb)
+    End Sub
+
+#End Region
+
+
+
+
+#Region "GRIDVIEWS STYLES"
+
+    Private Sub NostroAcc_SearchLookUpEditView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles NostroAcc_SearchLookUpEditView.RowStyle
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub NostroAcc_SearchLookUpEditView_ShownEditor(sender As Object, e As EventArgs) Handles NostroAcc_SearchLookUpEditView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub InternalBaseView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles InternalBaseView.RowStyle
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub InternalBaseView_ShownEditor(sender As Object, e As EventArgs) Handles InternalBaseView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
+        End If
+    End Sub
+
+    Private Sub External_BaseView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles External_BaseView.RowStyle
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub External_BaseView_ShownEditor(sender As Object, e As EventArgs) Handles External_BaseView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
+        End If
+    End Sub
+
+    Private Sub NostroOutstandingBookings_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles NostroOutstandingBookings_GridView.RowStyle
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub NostroOutstandingBookings_GridView_ShownEditor(sender As Object, e As EventArgs) Handles NostroOutstandingBookings_GridView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub NostroRecDetailsSearch_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles NostroRecDetailsSearch_GridView.RowStyle
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub NostroRecDetailsSearch_GridView_ShownEditor(sender As Object, e As EventArgs) Handles NostroRecDetailsSearch_GridView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
+        End If
+    End Sub
+
+    Private Sub NostroReconciliationDetails_AdvancedGridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles NostroReconciliationDetails_AdvancedGridView.RowStyle
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub NostroReconciliationDetails_AdvancedGridView_ShownEditor(sender As Object, e As EventArgs) Handles NostroReconciliationDetails_AdvancedGridView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
+        End If
+    End Sub
+
+    Private Sub BookingsForRec_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles BookingsForRec_GridView.RowStyle
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub BookingsForRec_GridView_ShownEditor(sender As Object, e As EventArgs) Handles BookingsForRec_GridView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
+        End If
+    End Sub
+
+    Private Sub All_Nostro_Last_Reconciliations_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles All_Nostro_Last_Reconciliations_GridView.RowStyle
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub All_Nostro_Last_Reconciliations_GridView_ShownEditor(sender As Object, e As EventArgs) Handles All_Nostro_Last_Reconciliations_GridView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
+        End If
+    End Sub
+#End Region
+
+    
+   
+    Private Sub ToolTipController1_GetActiveObjectInfo(sender As Object, e As DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventArgs) Handles ToolTipController1.GetActiveObjectInfo
+        If e.SelectedControl IsNot GridControl_OutstandingBookings Then
+            Return
+        End If
+
+        Dim info As ToolTipControlInfo = Nothing
+
+        Dim view As GridView = TryCast(GridControl_OutstandingBookings.GetViewAt(e.ControlMousePosition), GridView)
+        'Dim view As GridView = GridControl_OutstandingBookings.GetViewAt(e.ControlMousePosition)
+        If view Is Nothing Then
+
+            Return
+        End If
+        Dim hi As GridHitInfo = view.CalcHitInfo(e.ControlMousePosition)
+        If hi.HitTest = GridHitTest.Footer AndAlso hi.Column IsNot Nothing Then 'AndAlso hi.Column.SummaryItem.SummaryType = SummaryItemType.Custom Then
+
+
+            If hi.Column.Caption = "Amount" Then
+
+                Dim o As Object = hi.Column.Name + hi.FooterCell.ToString()
+
+                'Dim text As String = hi.FooterCell.SummaryItem.SummaryType.ToString() & " = " & hi.FooterCell.SummaryItem.SummaryValue.ToString()
+                Dim text As String = "Balance Outst. is calculated as follows:" & vbNewLine & "Sum of all Internal Postings till " & rd & vbNewLine & "+ Sum of all External Postings" & vbNewLine & vbNewLine _
+                                     & "Selected Sum is calculated based on the selected rows"
+                info = New ToolTipControlInfo(o, text)
+            End If
+
+        End If
+        If info IsNot Nothing Then
+            e.Info = info
+        End If
+    End Sub
+    
+
+    
+    Private Sub NostroOutstandingBookings_GridView_CustomDrawRowIndicator(sender As Object, e As RowIndicatorCustomDrawEventArgs) Handles NostroOutstandingBookings_GridView.CustomDrawRowIndicator
+        e.Info.DisplayText = e.RowHandle.ToString
+    End Sub
+
+   
+
+
+
+
+
+    
+    
+   
+    
+    
+   
+   
+    
+End Class
+
+
+

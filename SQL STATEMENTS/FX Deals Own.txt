@@ -1,0 +1,5 @@
+﻿SELECT  
+ [ContractNr],[ClientNo],[ClientName],[ContractType] ,[ProductType],[InputDate] as 'Trade Date'
+  ,[ValueDate],[MaturityDate],[DealSellBuy] ,[BuyCCY] ,[BuyAmount],[SellCCY],[SellAmount] 
+ ,[PL_EUR],[PL_inEUR_Equ],[DealStatus],[DealType],[RiskDate] as 'Spot Date',[SpotBuyRate],[SpotSellRate],[TradeBuyRate],[TradeSellRate],[TradeDateBuySellAmount],[AmortizationToRiskDate],[Buy2Buy1Amount],[Sell2Sell1Amount],[IDW_Amount]
+  FROM [FX DAILY REVALUATION] where [OwnDeal]='Y' and [RiskDate]='20150513'order by ID asc

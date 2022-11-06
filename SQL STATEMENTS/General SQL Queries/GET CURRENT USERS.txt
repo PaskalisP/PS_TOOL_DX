@@ -1,0 +1,2 @@
+﻿SELECT [UserName],CONVERT(VARCHAR(24),[Logged on],113) as 'Loged on'
+  FROM [CURRENT USERS]

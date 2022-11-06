@@ -1,0 +1,2 @@
+﻿execute [CREDIT_DEPT_MONTHLY_QUERY]  @RISKDATE='20160331' 
+--Zhijin Li Query monthly execution

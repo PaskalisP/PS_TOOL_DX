@@ -1,0 +1,3 @@
+﻿Module RibbonLogoHeldper
+
+End Module

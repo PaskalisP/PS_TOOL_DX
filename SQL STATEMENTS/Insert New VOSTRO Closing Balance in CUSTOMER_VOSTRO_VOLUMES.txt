@@ -1,0 +1,18 @@
+﻿INSERT [CUSTOMER_VOSTRO_VOLUMES]
+           ([BatchNo]
+           ,[GL_AC_No]
+           ,[Value Date]
+           ,[AccountNo]
+           ,[CCY]
+           ,[Amount]
+           ,[DR_CR]
+           ,[GL_Rep_Date])
+     VALUES
+           ('CLOSING BALANCE'
+           ,27012213
+           ,'20131231'
+           ,671540110101
+           ,'USD'
+           ,0
+           ,'CR'
+           ,'20131231')

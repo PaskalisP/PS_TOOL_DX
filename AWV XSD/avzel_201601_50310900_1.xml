@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<LIEFERUNG-AWZEL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/xmw/2003-01-01 BbkXmwAwzel.xsd" version="1.0" erstellzeit="2016-02-05T11:06:22" stufe="Produktion" bereich="Statistik" xmlns="http://www.bundesbank.de/xmw/2003-01-01">
+    <ABSENDER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+        <STRASSE>Bockenheimer Landstr. 51 - 53</STRASSE>
+        <PLZ>60325</PLZ>
+        <ORT>Frankfurt am Main</ORT>
+        <LAND>DE</LAND>
+        <KONTAKT>
+            <ANREDE>Herr</ANREDE>
+            <VORNAME>Paschalis</VORNAME>
+            <ZUNAME>Papas</ZUNAME>
+            <ABTEILUNG>EDV Abteilung</ABTEILUNG>
+            <TELEFON>069/971495-43</TELEFON>
+            <FAX>069/971495-72</FAX>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            <EXTRANET-ID>EXNDBWDF</EXTRANET-ID>
+        </KONTAKT>
+    </ABSENDER>
+    <ERSTELLER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+        <KONTAKT>
+            <ZUNAME>Papas</ZUNAME>
+            <TELEFON>069/971495-43</TELEFON>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+        </KONTAKT>
+    </ERSTELLER>
+    <KOMMENTAR>Monatsmeldung AWV</KOMMENTAR>
+    <MELDUNG erstellzeit="2016-02-05T11:06:22">
+        <MELDEPFLICHTIGER>
+            <FIRMENNR>50310900</FIRMENNR>
+            <NAME>China Construction Bank Corporation,Niederlassung Frankfurt</NAME>
+            <STRASSE>Bockenheimer Landstr. 51 - 53</STRASSE>
+            <PLZ>60325</PLZ>
+            <ORT>Frankfurt am Main</ORT>
+            <KONTAKT>
+                <ZUNAME>Papas</ZUNAME>
+                <TELEFON>069/971495-43</TELEFON>
+                <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            </KONTAKT>
+        </MELDEPFLICHTIGER>
+        <MELDETERMIN>2016-01</MELDETERMIN>
+        <MELDUNGSREF>meldung vom Januar 2016</MELDUNGSREF>
+        <VDR_04>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="KONTOFÜHRUNGSGEBÜHR">
+                <BETRAG land="CN" landname="CHINA">13</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="571" zahlungszweck="ERSTATTUNG KOSTEN DELEGATION">
+                <BETRAG land="CN" landname="CHINA">15</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="MAKLERGEBÜHR">
+                <BETRAG land="NL" landname="NETHERLANDS">15</BETRAG>
+            </DIKAPPOSTEN>
+        </VDR_04>
+        <VDR_14>
+            <BETRAG land="CN" landname="CHINA">4131</BETRAG>
+            <BETRAG land="FR" landname="FRANCE">169</BETRAG>
+            <BETRAG land="US" landname="UNITED STATES">22</BETRAG>
+        </VDR_14>
+        <VDR_15>
+            <BETRAG land="CH" landname="SWITZERLAND">365</BETRAG>
+            <BETRAG land="CN" landname="CHINA">2406</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">153</BETRAG>
+            <BETRAG land="JP" landname="JAPAN">522</BETRAG>
+            <BETRAG land="LU" landname="LUXEMBOURG">583</BETRAG>
+            <BETRAG land="MO" landname="MACAO">1354</BETRAG>
+            <BETRAG land="US" landname="UNITED STATES">2</BETRAG>
+        </VDR_15>
+    </MELDUNG>
+</LIEFERUNG-AWZEL>

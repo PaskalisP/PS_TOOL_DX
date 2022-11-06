@@ -1,0 +1,1 @@
+﻿select * from   [UNEXPECTED_LOSS] where   [RiskDate]='20140527'

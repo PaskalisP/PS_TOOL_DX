@@ -1,0 +1,2 @@
+﻿Update [Calendar] set [HolidayType]='BBD' where convert(VARCHAR(10),[CalendarDate],112) like'%1231'
+--SET as BANK BUSINESS DAY all Dates in Calendar with 31.12

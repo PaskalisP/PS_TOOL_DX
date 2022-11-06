@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2012 rel. 2 sp1 (http://www.altova.com) by 21 users of IT (Deutsche Bundesbank Frankfurt) -->
+<!-- (c) Deutsche Bundesbank, S 42-7 (Dr. Jürgen Krelaus)  2004, 2014 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:zvs="http://www.bundesbank.de/statistik/zvs/v1" xmlns:bbk="http://www.bundesbank.de/xmw/2003-01-01" targetNamespace="http://www.bundesbank.de/statistik/zvs/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+	<xs:import namespace="http://www.bundesbank.de/xmw/2003-01-01" schemaLocation="BbkXmwBasis.xsd"/>
+	<xs:element name="BLZ" type="bbk:zif8plus1" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Bankleitzahl (9 stellig, inklusive Prüfziffer) zur Verwendung als Instituts-Schlüssel</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="TESTLZ" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Leitzahl für Testinstitute (Anfangsbuchstabe T, 8 Ziffern ohne Prüfziffer) zur Verwendung als Instituts-Schlüssel</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="bbk:alphanum">
+				<xs:pattern value="T\d\d\d\d\d\d\d\d"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="RZLZ" substitutionGroup="bbk:IDENTNR">
+		<xs:annotation>
+			<xs:documentation>Leitzahl für Rechenzentren (Anfangsbuchstabe R, 8 Ziffern ohne Prüfziffer) zur Verwendung als Instituts-Schlüssel</xs:documentation>
+		</xs:annotation>
+		<xs:simpleType>
+			<xs:restriction base="bbk:alphanum">
+				<xs:pattern value="R\d\d\d\d\d\d\d\d"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="LIEFERUNG-ZVS">
+		<xs:annotation>
+			<xs:documentation>Wurzelelement der Meldung zur Zahlungsverkehrsstatistik</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="bbk:basisLieferung">
+					<xs:sequence>
+						<xs:element name="MELDUNG">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="bbk:basisMeldung">
+										<xs:sequence>
+											<xs:element name="MELDETERMIN" type="zvs:TerminTyp"/>
+											<xs:element name="FORMULAR-ZVS1" type="zvs:FormularZvs1Typ" minOccurs="0"/>
+											<xs:element name="FORMULAR-ZVS2" type="zvs:FormularZvs2Typ" minOccurs="0"/>
+											<xs:element name="FORMULAR-ZVS3" type="zvs:FormularZvs3Typ" minOccurs="0"/>
+											<xs:element name="FORMULAR-ZVS4" type="zvs:FormularZvs4Typ" minOccurs="0"/>
+											<xs:element name="FORMULAR-ZVS5" type="zvs:FormularZvs5Typ" minOccurs="0"/>
+											<xs:element name="FORMULAR-ZVS8" type="zvs:FormularZvs8Typ" minOccurs="0"/>
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="bereich" type="bbk:bereich" use="required" fixed="Statistik"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+		<xs:unique name="U1">
+			<xs:selector xpath="zvs:MELDUNG/zvs:FORMULAR-ZVS1/zvs:FELD"/>
+			<xs:field xpath="@Pos"/>
+			<xs:field xpath="@Land"/>
+		</xs:unique>
+		<xs:unique name="U2">
+			<xs:selector xpath="zvs:MELDUNG/zvs:FORMULAR-ZVS2/zvs:FELD"/>
+			<xs:field xpath="@Pos"/>
+			<xs:field xpath="@Land"/>
+		</xs:unique>
+		<xs:unique name="U3">
+			<xs:selector xpath="zvs:MELDUNG/zvs:FORMULAR-ZVS3/zvs:FELD"/>
+			<xs:field xpath="@Pos"/>
+			<xs:field xpath="@Land"/>
+		</xs:unique>
+		<xs:unique name="U4">
+			<xs:selector xpath="zvs:MELDUNG/zvs:FORMULAR-ZVS4/zvs:FELD"/>
+			<xs:field xpath="@Pos"/>
+			<xs:field xpath="@Landkontext"/>
+			<xs:field xpath="@Land"/>
+		</xs:unique>
+		<xs:unique name="U5">
+			<xs:selector xpath="zvs:MELDUNG/zvs:FORMULAR-ZVS5/zvs:FELD"/>
+			<xs:field xpath="@Terminalkennung"/>
+			<xs:field xpath="@Pos"/>
+			<xs:field xpath="@Land"/>
+		</xs:unique>
+		<xs:unique name="U8">
+			<xs:selector xpath="zvs:MELDUNG/zvs:FORMULAR-ZVS8/zvs:FELD"/>
+			<xs:field xpath="@Pos"/>
+			<xs:field xpath="@Landkontext"/>
+			<xs:field xpath="@Land"/>
+		</xs:unique>
+	</xs:element>
+	<xs:simpleType name="TerminTyp">
+		<xs:annotation>
+			<xs:documentation>Meldetermine (alle Monatstermine von 2010-01 bis 2029-12)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:gYearMonth">
+			<xs:whiteSpace value="collapse"/>
+			<xs:pattern value="20(1|2)\d-0[1-9]"/>
+			<xs:pattern value="20(1|2)\d-1[0-2]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PosZvs1Typ">
+		<xs:annotation>
+			<xs:documentation>Zvs1-Positionen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="A1"/>
+			<xs:enumeration value="A11"/>
+			<xs:enumeration value="A12"/>
+			<xs:enumeration value="A121"/>
+			<xs:enumeration value="A2"/>
+			<xs:enumeration value="A3"/>
+			<xs:enumeration value="I31"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PosZvs2Typ">
+		<xs:annotation>
+			<xs:documentation>Zvs2-Positionen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="I1"/>
+			<xs:enumeration value="I11"/>
+			<xs:enumeration value="I12"/>
+			<xs:enumeration value="I121"/>
+			<xs:enumeration value="I122"/>
+			<xs:enumeration value="I123"/>
+			<xs:enumeration value="I124"/>
+			<xs:enumeration value="I125"/>
+			<xs:enumeration value="I13"/>
+			<xs:enumeration value="I131"/>
+			<xs:enumeration value="I132"/>
+			<xs:enumeration value="I1301"/>
+			<xs:enumeration value="I1001"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PosZvs3Typ">
+		<xs:annotation>
+			<xs:documentation>Zvs3-Positionen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="S11"/>
+			<xs:enumeration value="S111"/>
+			<xs:enumeration value="S112"/>
+			<xs:enumeration value="S12"/>
+			<xs:enumeration value="S121"/>
+			<xs:enumeration value="S122"/>
+			<xs:enumeration value="S13"/>
+			<xs:enumeration value="S131"/>
+			<xs:enumeration value="S132"/>
+			<xs:enumeration value="S2"/>
+			<xs:enumeration value="S3"/>
+			<xs:enumeration value="S31"/>
+			<xs:enumeration value="S32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PosZvs4Typ">
+		<xs:annotation>
+			<xs:documentation>Zvs4-Positionen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="T2.I21"/>
+			<xs:enumeration value="T2.I211"/>
+			<xs:enumeration value="T2.I212"/>
+			<xs:enumeration value="T2.I2121"/>
+			<xs:enumeration value="T2.I2122"/>
+			<xs:enumeration value="T2.I21001"/>
+			<xs:enumeration value="T2.I22"/>
+			<xs:enumeration value="T2.I221"/>
+			<xs:enumeration value="T2.I222"/>
+			<xs:enumeration value="T2.I2201"/>
+			<xs:enumeration value="T2.I2202"/>
+			<xs:enumeration value="T1.I12"/>
+			<xs:enumeration value="T1.I121"/>
+			<xs:enumeration value="T1.I122"/>
+			<xs:enumeration value="T1.I123"/>
+			<xs:enumeration value="T1.I124"/>
+			<xs:enumeration value="T1.I125"/>
+			<xs:enumeration value="T1.I12.S1"/>
+			<xs:enumeration value="T1.I12.S3"/>
+			<xs:enumeration value="T3"/>
+			<xs:enumeration value="T3.I131"/>
+			<xs:enumeration value="T3.A3"/>
+			<xs:enumeration value="T3.I132"/>
+			<xs:enumeration value="T0.I23"/>
+			<xs:enumeration value="T0.I24"/>
+			<xs:enumeration value="T0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PosZvs5Typ">
+		<xs:annotation>
+			<xs:documentation>Zvs5-Positionen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="T0.S1"/>
+			<xs:enumeration value="T41.S111"/>
+			<xs:enumeration value="T42.S111"/>
+			<xs:enumeration value="T1.S12"/>
+			<xs:enumeration value="T3.S131"/>
+			<xs:enumeration value="T3.S132"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PosZvs8Typ">
+		<xs:annotation>
+			<xs:documentation>Zvs8-Positionen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="T2.I2122.S31"/>
+			<xs:enumeration value="T2.I241"/>
+			<xs:enumeration value="T2.I242"/>
+			<xs:enumeration value="T4.I21"/>
+			<xs:enumeration value="T2.S32"/>
+			<xs:enumeration value="T41.S12"/>
+			<xs:enumeration value="T41.S2"/>
+			<xs:enumeration value="T42.S2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TerminalbereitstellungTyp">
+		<xs:annotation>
+			<xs:documentation>Terminalbereitstellungs-Typen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="C"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AnzahlTyp">
+		<xs:restriction base="xs:nonNegativeInteger"/>
+	</xs:simpleType>
+	<xs:simpleType name="WertTyp">
+		<xs:restriction base="xs:nonNegativeInteger"/>
+	</xs:simpleType>
+	<xs:simpleType name="LandkontextTyp">
+		<xs:annotation>
+			<xs:documentation>Landkontext-Typen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="bbk:alphanum">
+			<xs:enumeration value="TO"/>
+			<xs:enumeration value="FROM"/>
+			<xs:enumeration value="IN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="FormularZvs1Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="FELD" type="zvs:FeldZvs1Typ"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FormularZvs2Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="FELD" type="zvs:FeldZvs2Typ"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FormularZvs3Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="FELD" type="zvs:FeldZvs3Typ"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FormularZvs4Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="FELD" type="zvs:FeldZvs4Typ"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FormularZvs5Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="FELD" type="zvs:FeldZvs5Typ"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FormularZvs8Typ">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="FELD" type="zvs:FeldZvs8Typ"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FeldZvs1Typ">
+		<xs:attribute name="Pos" type="zvs:PosZvs1Typ" use="required"/>
+		<xs:attribute name="Land" type="bbk:isoLand" use="required" fixed="DE"/>
+		<xs:attribute name="Anzahl" type="zvs:AnzahlTyp"/>
+		<xs:attribute name="Wert" type="zvs:WertTyp"/>
+	</xs:complexType>
+	<xs:complexType name="FeldZvs2Typ">
+		<xs:attribute name="Pos" type="zvs:PosZvs2Typ" use="required"/>
+		<xs:attribute name="Land" type="bbk:isoLand" use="required" fixed="DE"/>
+		<xs:attribute name="Anzahl" type="zvs:AnzahlTyp" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="FeldZvs3Typ">
+		<xs:attribute name="Pos" type="zvs:PosZvs3Typ" use="required"/>
+		<xs:attribute name="Land" type="bbk:isoLand" use="required"/>
+		<xs:attribute name="Anzahl" type="zvs:AnzahlTyp" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="FeldZvs4Typ">
+		<xs:attribute name="Pos" type="zvs:PosZvs4Typ" use="required"/>
+		<xs:attribute name="Landkontext" type="zvs:LandkontextTyp" use="required"/>
+		<xs:attribute name="Land" type="bbk:isoLand" use="required"/>
+		<xs:attribute name="Anzahl" type="zvs:AnzahlTyp" use="required"/>
+		<xs:attribute name="Wert" type="zvs:WertTyp" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="FeldZvs5Typ">
+		<xs:attribute name="Terminalkennung" type="zvs:TerminalbereitstellungTyp" use="required"/>
+		<xs:attribute name="Pos" type="zvs:PosZvs5Typ" use="required"/>
+		<xs:attribute name="Land" type="bbk:isoLand" use="required"/>
+		<xs:attribute name="Anzahl" type="zvs:AnzahlTyp" use="required"/>
+		<xs:attribute name="Wert" type="zvs:WertTyp" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="FeldZvs8Typ">
+		<xs:attribute name="Pos" type="zvs:PosZvs8Typ" use="required"/>
+		<xs:attribute name="Landkontext" type="zvs:LandkontextTyp" use="required"/>
+		<xs:attribute name="Land" type="bbk:isoLand" use="required"/>
+		<xs:attribute name="Anzahl" type="zvs:AnzahlTyp" use="required"/>
+		<xs:attribute name="Wert" type="zvs:WertTyp" use="required"/>
+	</xs:complexType>
+</xs:schema>

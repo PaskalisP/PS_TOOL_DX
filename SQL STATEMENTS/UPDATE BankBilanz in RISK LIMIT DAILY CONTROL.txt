@@ -1,0 +1,2 @@
+﻿UPDATE A SET A.[Bank Bilanz]=B.S from [RISK LIMIT DAILY CONTROL]A INNER JOIN (select [GL_Rep_Date],sum([AmountInEuro]) as S from   [CUSTOMER_VOLUMES] where   [BatchNo]='CLOSING BALANCE'  and [AmountInEuro] >0 and   [GL_Rep_Date]>'20140910' group by [GL_Rep_Date]) B on A.[RLDC Date]=B.[GL_Rep_Date] where A.[RLDC Date]>'20140910'
+                       

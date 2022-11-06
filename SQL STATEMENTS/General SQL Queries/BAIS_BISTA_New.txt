@@ -1,0 +1,149 @@
+﻿DECLARE @BUSINESS_DATE_NR float
+SET @BUSINESS_DATE_NR=20170519
+
+SELECT
+'EINZEL_POS' ART, PRSGGF_BILKT, 
+case when(PRSBIF_KTONR = null) then('NO') else(PRSBIF_VORDR) end as PRSBIF_VORDR,
+case when(PRSBIF_KTONR = null) then(cast(0 as numeric)) else(PRSBIF_VDRZL) end as PRSBIF_VDRZL,
+PRSGGF_KOART, PRSGGF_WHISO, PRSGGF_KDNRH, PRSGGF_MODUL, PRSGGF_GSREF, 
+cast(PRSGGF_SLDKP as numeric(18,2)) PRSGGF_SLDKP, 
+cast(PRSGGF_ABGBT / WHGSHF_MKURS as numeric(18,2)) ABGR_Kunde, 
+PRSGGF_GSKLA, PRSGGF_SUKLA, PRSGGF_GSART, PRSGGF_ULFZT 
+
+from [CCB-BAIS-PROD].[baisjdb].dbo.PRSGGF
+ 
+left outer join [CCB-BAIS-PROD].[baisjdb].dbo.GSTBIF on
+GSTBIF_MDANT = PRSGGF_MDANT and
+GSTBIF_KDNRH = PRSGGF_KDNRH and
+GSTBIF_KTONR = PRSGGF_KTONR and
+GSTBIF_GSREF = PRSGGF_GSREF and
+GSTBIF_MODUL = PRSGGF_MODUL
+
+left outer join [CCB-BAIS-PROD].[baisjdb].dbo.PRSBIF on
+PRSBIF_MDANT = PRSGGF_MDANT and
+PRSBIF_MODUL = PRSGGF_MODUL and
+PRSBIF_KDNRH = PRSGGF_KDNRH and
+PRSBIF_KTONR = PRSGGF_KTONR and
+PRSBIF_GSREF = PRSGGF_GSREF and
+PRSBIF_DXSTA = PRSGGF_DXSTA and
+(PRSBIF_VORDR = 'HV11' or PRSBIF_VORDR = 'HV21')
+
+left join [CCB-BAIS-PROD].[baisjdb].dbo.WHGSHF on
+WHGSHF_DXSTA = PRSGGF_DXSTA and
+WHGSHF_WHISO = PRSGGF_WHISO
+
+where 
+PRSGGF_MDANT = 'CCB' and 
+PRSGGF_DXSTA = @BUSINESS_DATE_NR and
+PRSGGF_BILKT <> 0 and 
+PRSGGF_MODUL <> 'GU' and
+PRSGGF_SLDKP <> 0 and 
+( ( PRSGGF_GSKLA = 'SK' and PRSGGF_SUKLA <> '00' ) or 
+  ( PRSGGF_GSKLA <> 'SK' )  )
+
+union
+
+select 
+'EINZEL_UNBEK' ART, GSTBIF_BILKT, 'UNBEK.' GSTBIF_VORDR,
+cast(0 as numeric) as GSTBIF_VDRZL,
+GSTBIF_KOART, GSTBIF_WHISO, GSTBIF_KDNRH, GSTBIF_MODUL, GSTBIF_GSREF, 
+cast(GSTFIF_SLDKP as numeric(18,2)) GSTFIF_SLDKP, 
+cast(GSTFIF_ABGBT / WHGSHF_MKURS as numeric(18,2)) ABGR_Kunde  , 
+GSTBIF_GSKLA, GSTBIF_SUKLA, GSTBIF_GSART, GSTBIF_ULFZT 
+
+from [CCB-BAIS-PROD].[baisjdb].dbo.gstbif 
+left join [CCB-BAIS-PROD].[baisjdb].dbo.GSTFIF on
+GSTFIF_MDANT = GSTBIF_MDANT and
+GSTFIF_KDNRH = GSTBIF_KDNRH and
+GSTFIF_KTONR = GSTBIF_KTONR and
+GSTFIF_GSREF = GSTBIF_GSREF and
+GSTFIF_MODUL = GSTBIF_MODUL
+
+left join [CCB-BAIS-PROD].[baisjdb].dbo.WHGSHF on
+whgshf_dxsta = @BUSINESS_DATE_NR and
+whgshf_whiso = GSTBIF_WHISO
+
+where 
+gstbif_mdant = 'CCB' and 
+gstbif_loekz <> 'L' and
+gstbif_modul <> 'GU' and
+gstfif_sldkp <> 0 and 
+( ( gstbif_gskla = 'SK' and gstbif_sukla <> '00' ) or 
+  ( GSTBIF_gskla <> 'SK' ) or 
+  ( gstbif_gskla = 'SK' and gstbif_sukla = '00' and (GSTBIF_BILKT >=  400000  ) )  )
+and not exists
+( select * from [CCB-BAIS-PROD].[baisjdb].dbo.PRSBIF
+  where
+  prsbif_mdant = GSTBIF_MDANT and
+  prsbif_modul = GSTBIF_modul and
+  prsbif_kdnrh = gstbif_kdnrh and
+  prsbif_ktonr = gstbif_ktonr and
+  prsbif_gsref = gstbif_gsref and
+  prsbif_dxsta = @BUSINESS_DATE_NR and
+  ( prsbif_vordr = 'HV11' or prsbif_vordr = 'HV21') ) 
+
+union
+
+select 
+'SUMME_1_POS' ART, PRSGGF_BILKT,
+' ', cast(0 as numeric), ' ', ' ', cast(0 as numeric), ' ',  ' ', 
+sum(PRSGGF_SLDKP), cast(0 as numeric) , '  ', ' ', ' ', cast(0 as numeric) 
+
+from [CCB-BAIS-PROD].[baisjdb].dbo.PRSGGF
+
+where 
+PRSGGF_MDANT = 'CCB' and 
+PRSGGF_DXSTA = @BUSINESS_DATE_NR and
+PRSGGF_BILKT <> 0 and 
+PRSGGF_MODUL <> 'GU' and
+PRSGGF_SLDKP <> 0 and 
+( ( PRSGGF_GSKLA = 'SK' and PRSGGF_SUKLA <> '00' ) or 
+  ( PRSGGF_GSKLA <> 'SK' ) or 
+  ( PRSGGF_GSKLA = 'SK' and PRSGGF_SUKLA = '00' and (PRSGGF_BILKT >=  400000  ) )  )
+
+group by PRSGGF_BILKT
+
+union
+
+select 
+'SUMME_2_ABGR' ART, PRSGGF_BILKT,
+' ', cast(0 as numeric), ' ', ' ', cast(0 as numeric), ' ', ' ', cast(0 as numeric), 
+cast(sum(PRSGGF_ABGBT/WHGSHF_MKURS) as numeric(18,2)) PRSGGF_ABGBT, '  ', ' ', ' ', cast(0 as numeric) 
+
+from [CCB-BAIS-PROD].[baisjdb].dbo.PRSGGF
+
+left join [CCB-BAIS-PROD].[baisjdb].dbo.WHGSHF on
+WHGSHF_DXSTA = PRSGGF_DXSTA and
+WHGSHF_WHISO = PRSGGF_WHISO
+
+where 
+PRSGGF_MDANT = 'CCB' and 
+PRSGGF_DXSTA = @BUSINESS_DATE_NR and
+PRSGGF_BILKT <> 0 and 
+PRSGGF_MODUL <> 'GU' and
+PRSGGF_SLDKP <> 0 and 
+( ( PRSGGF_GSKLA = 'SK' and PRSGGF_SUKLA <> '00' ) or 
+  ( PRSGGF_GSKLA <> 'SK' ) or 
+  ( PRSGGF_GSKLA = 'SK' and PRSGGF_SUKLA = '00' and ( PRSGGF_BILKT >=  499000  ) )  )
+
+
+group by PRSGGF_BILKT
+
+union
+
+select 
+'SUMME_3_GUV' ART, cast(799999 as numeric) PRSGGF_BILKT,
+' ', cast(0 as numeric), ' ', ' ', cast(0 as numeric), ' ',  ' ', 
+sum(PRSGGF_SLDKP), cast(0 as numeric) , '  ', ' ', ' ', cast(0 as numeric) 
+
+from [CCB-BAIS-PROD].[baisjdb].dbo.PRSGGF
+
+where 
+PRSGGF_MDANT = 'CCB' and 
+PRSGGF_DXSTA = @BUSINESS_DATE_NR and
+PRSGGF_BILKT <> 0 and 
+PRSGGF_MODUL <> 'GU' and
+PRSGGF_SLDKP <> 0 and 
+PRSGGF_GSKLA = 'SK' and PRSGGF_BILKT between 500000 and 800000  
+
+order by PRSGGF_BILKT, ART, PRSGGF_SLDKP, PRSGGF_KDNRH, PRSGGF_MODUL, PRSGGF_GSREF

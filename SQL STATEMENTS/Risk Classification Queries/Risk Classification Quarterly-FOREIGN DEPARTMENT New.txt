@@ -1,0 +1,16 @@
+﻿DECLARE @RISKDATE Datetime
+SET @RISKDATE='20170630'
+
+Select  m.[Product Type],  m.[Counterparty/Issuer/Collateral Provider],  m.[Client No],  m.[Country of Risk],  m.[Country of Residence],  m.[Contract Collateral ID],  m.[Start Date],  m.[Maturity Date],  m.[Org Ccy],  m.[Credit Exposure] ,   c.[Obligor Rate],m.[Industry(HO)],m.[Euro Equivalent]
+ from   
+[MAK REPORT] as m,
+[CREDIT RISK] as c
+where   m.[RiskDate]=@RISKDATE
+and c.[RiskDate]= @RISKDATE
+and m.[Contract Collateral ID]=c.[Contract Collateral ID] 
+and m.[Product Type]=c.[Product Type]
+and m.[Contract Type]=c.[Contract Type]
+and m.[Client No]=c.[Client No] 
+and m.[Org Ccy]=c.[Org Ccy]
+and m.[Product Type] in ('CLCCTP','EALLC','FORFTDL','PREFI','FTBRDD','FRP','EXRFDD','DBP','LGCC',
+'00132754','00132755','00132014','00132015','00132016','00132017','00132019','00132020','00132021','00132023','00132024','00132025','00132026','00132757','00132706','00132544')  

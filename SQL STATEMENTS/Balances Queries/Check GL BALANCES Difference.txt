@@ -1,0 +1,1 @@
+﻿select * from   [GL BALANCES RECONCILE] where   [BalanceDate]='20150601'

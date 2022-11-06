@@ -1,0 +1,4 @@
+﻿select * from   [RATERISK DETAILS] where  
+dbo.fn_StripCharacters([Contract/Account],'^0-9') not in (Select   [ReleatedAccountNr] from   [DailyBalanceDetailsSheets] 
+where   [BSDate]='20160205' and [ReleatedAccountNr] is not NULL) 
+and [RISK DATE]='20160205' and   [Contract Type] not in ('NOSTRO','FXD','FXMK')   and [Principal Amount/Value Balance(EUR Equ)]<>0

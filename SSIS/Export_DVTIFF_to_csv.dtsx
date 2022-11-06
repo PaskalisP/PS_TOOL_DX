@@ -1,0 +1,1719 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/19/2015 2:16:28 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="CCB-WS-110"
+  DTS:CreatorName="CCB-FRANKFURT\Papas"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{AFF41F76-3131-4176-A5B6-0EF361FB8F4D}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Export_DVTIFF_to_csv"
+  DTS:VersionGUID="{8F98BF9F-A954-41C7-AC03-21C6DFB2E923}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{9CE9AA60-33D8-4CE0-AC1A-6488B6198D03}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\DVTIFF_CCB.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_MDANT"
+              DTS:DTSID="{94EFCCF0-9986-4260-9632-641F58F1011F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_GSREF"
+              DTS:DTSID="{EB839EC1-6978-4FAB-88B3-1F546CFE883E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_FILNR"
+              DTS:DTSID="{5DFAE7FC-6283-4BF9-93E8-796A567A35C0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_KDNRH"
+              DTS:DTSID="{F616D2E4-9940-4F3A-9464-E151280637A3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DXABD"
+              DTS:DTSID="{52D7276C-20D1-4F7D-A904-6C7D1F1362CD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_GSKLA"
+              DTS:DTSID="{899BEC46-FE3C-4F0E-85F0-20E0CD827CAB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_SUKLA"
+              DTS:DTSID="{1E1E68BC-ECDB-4E31-9672-07013DB9B573}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DVART"
+              DTS:DTSID="{AFB866B0-8F50-4F7A-AD32-6CD1380709B6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DXVAL"
+              DTS:DTSID="{7A9EEF46-DB82-4FE3-8931-9D209D7276EF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DANWC"
+              DTS:DTSID="{A86FAF9D-22D4-4B7F-A6EE-F871E727EB92}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DANBT"
+              DTS:DTSID="{BCBB116F-64B0-4DD4-B157-D8B452F76096}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DVKWC"
+              DTS:DTSID="{34518960-24EF-45DD-9903-B9F2E0B1E17C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DVKBT"
+              DTS:DTSID="{FFF210BC-C803-428A-90E6-3AC01DA37964}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_HBKZN"
+              DTS:DTSID="{FD1B77D0-1DB8-4095-853A-8BA3AAF29E14}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_ZWRIS"
+              DTS:DTSID="{334F0021-7F36-47DD-A1F2-40C42188A0D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_KBTRG"
+              DTS:DTSID="{3D06D6B9-6C25-422C-8967-CBF53213947B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_PTEIN"
+              DTS:DTSID="{4F3D568E-18E2-4516-9E90-EB2DA36C3BFB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_WHGKP"
+              DTS:DTSID="{6A1CDEF3-BBF5-45A7-83D1-B43435FA03BF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_BCHSW"
+              DTS:DTSID="{9109866F-0564-4441-9A95-699985430FEB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_WHGBU"
+              DTS:DTSID="{E05EBEAD-3657-4A39-BF60-47ECC0C935EB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_URDEA"
+              DTS:DTSID="{6CEEAC58-27C4-4811-B7CC-0C09DBA8A744}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_NETKR"
+              DTS:DTSID="{B1290E3B-D43A-4C1E-87CE-3A35151C7999}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_KZCVA"
+              DTS:DTSID="{75CFCFF4-FDFA-4E56-A4FE-86D1B8754EDF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_GSARE"
+              DTS:DTSID="{7D36A4E1-44AF-4D84-9366-DB50682F5BFF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_FAIRV"
+              DTS:DTSID="{D0147AD3-B6FC-4AD7-8CF0-EC4EB135F48C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DXVKT"
+              DTS:DTSID="{55CA69D9-125F-452B-A034-5C02E4C6506D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_HFZGP"
+              DTS:DTSID="{DCA79ACC-6703-4054-84ED-CDCAAB52754C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_AFREF"
+              DTS:DTSID="{F386348F-A94D-4700-9529-C5674D49F79F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_RESE1"
+              DTS:DTSID="{B649C919-1554-4026-B80C-85D986F13F4A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_RESE2"
+              DTS:DTSID="{87DF8E66-7B3C-46B0-ABF0-17F76CF104C5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_FREI1"
+              DTS:DTSID="{20183C73-6526-4B3B-8E45-3A91871E3B93}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_FREI2"
+              DTS:DTSID="{288DFFEA-9BB7-41B6-8702-0DC16F198C63}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_FREI3"
+              DTS:DTSID="{12439F17-B1E8-49ED-BB3C-B9BF9B732DD3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_LOEKZ"
+              DTS:DTSID="{A78EDE84-CCDC-45B2-B088-F8D741BE8E82}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_IFNAM"
+              DTS:DTSID="{AE3708E7-4C61-4417-A76D-1FAC390F2013}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DVTIFF_DXIFD"
+              DTS:DTSID="{FE10E030-F210-437D-9935-CA6CDAEA91A9}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4CE2A5CF-E2BE-4D2A-B4FB-76FE10024389}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=CCB-DB;Initial Catalog=PS TOOL DX Live;Provider=SQLNCLI10;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{C05DA2F2-9E13-42CC-A912-FAFBBABC98AE}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv"
+              componentClassID="{8DA75FED-1B7C-407D-B2AD-2B24209CCCA4}"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Destination - DVTIFF_CCB_csv"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_MDANT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_MDANT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_MDANT]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_MDANT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_GSREF]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_GSREF"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_GSREF]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSREF]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_FILNR]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_FILNR"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FILNR]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FILNR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_KDNRH]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_KDNRH"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_KDNRH]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KDNRH]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DXABD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DXABD"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DXABD]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXABD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_GSKLA]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_GSKLA"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_GSKLA]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSKLA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_SUKLA]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_SUKLA"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_SUKLA]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_SUKLA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DVART]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DVART"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DVART]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVART]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DXVAL]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DXVAL"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DXVAL]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXVAL]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DANWC]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DANWC"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DANWC]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DANWC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DANBT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DANBT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DANBT]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DANBT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DVKWC]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DVKWC"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DVKWC]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVKWC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DVKBT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DVKBT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DVKBT]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVKBT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_HBKZN]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_HBKZN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_HBKZN]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_HBKZN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_ZWRIS]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_ZWRIS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_ZWRIS]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_ZWRIS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_KBTRG]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_KBTRG"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_KBTRG]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KBTRG]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_PTEIN]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_PTEIN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_PTEIN]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_PTEIN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_WHGKP]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_WHGKP"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_WHGKP]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_WHGKP]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_BCHSW]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_BCHSW"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_BCHSW]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_BCHSW]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_WHGBU]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_WHGBU"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_WHGBU]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_WHGBU]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_URDEA]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_URDEA"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_URDEA]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_URDEA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_NETKR]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_NETKR"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_NETKR]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_NETKR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_KZCVA]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_KZCVA"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_KZCVA]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KZCVA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_GSARE]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_GSARE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_GSARE]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSARE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_FAIRV]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_FAIRV"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FAIRV]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FAIRV]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DXVKT]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DXVKT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DXVKT]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXVKT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_HFZGP]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_HFZGP"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_HFZGP]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_HFZGP]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_AFREF]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_AFREF"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_AFREF]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_AFREF]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_RESE1]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_RESE1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_RESE1]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_RESE1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_RESE2]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_RESE2"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_RESE2]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_RESE2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_FREI1]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_FREI1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FREI1]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_FREI2]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_FREI2"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FREI2]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_FREI3]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_FREI3"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FREI3]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_LOEKZ]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_LOEKZ"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_LOEKZ]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_LOEKZ]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_IFNAM]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_IFNAM"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_IFNAM]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_IFNAM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].Columns[DVTIFF_DXIFD]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DVTIFF_DXIFD"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DXIFD]"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXIFD]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_MDANT]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_MDANT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_GSREF]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_GSREF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FILNR]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FILNR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_KDNRH]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_KDNRH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DXABD]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DXABD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_GSKLA]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_GSKLA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_SUKLA]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_SUKLA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DVART]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DVART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DXVAL]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DXVAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DANWC]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DANWC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DANBT]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DANBT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DVKWC]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DVKWC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DVKBT]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DVKBT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_HBKZN]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_HBKZN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_ZWRIS]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_ZWRIS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_KBTRG]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_KBTRG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_PTEIN]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_PTEIN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_WHGKP]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_WHGKP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_BCHSW]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_BCHSW" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_WHGBU]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_WHGBU" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_URDEA]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_URDEA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_NETKR]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_NETKR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_KZCVA]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_KZCVA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_GSARE]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_GSARE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FAIRV]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FAIRV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DXVKT]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DXVKT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_HFZGP]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_HFZGP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_AFREF]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_AFREF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_RESE1]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_RESE1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_RESE2]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_RESE2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FREI1]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FREI1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FREI2]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FREI2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_FREI3]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FREI3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_LOEKZ]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_LOEKZ" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_IFNAM]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_IFNAM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input].ExternalColumns[DVTIFF_DXIFD]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DXIFD" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - DVTIFF_CCB"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - DVTIFF_CCB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DVTIFF_CCB]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_MDANT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_MDANT]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_MDANT]"
+                      name="DVTIFF_MDANT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSREF]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_GSREF]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSREF]"
+                      name="DVTIFF_GSREF"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FILNR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FILNR]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FILNR]"
+                      name="DVTIFF_FILNR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KDNRH]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_KDNRH]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KDNRH]"
+                      name="DVTIFF_KDNRH"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXABD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DXABD]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXABD]"
+                      name="DVTIFF_DXABD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSKLA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_GSKLA]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSKLA]"
+                      name="DVTIFF_GSKLA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_SUKLA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_SUKLA]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_SUKLA]"
+                      name="DVTIFF_SUKLA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVART]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DVART]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVART]"
+                      name="DVTIFF_DVART"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXVAL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DXVAL]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXVAL]"
+                      name="DVTIFF_DXVAL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DANWC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DANWC]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DANWC]"
+                      name="DVTIFF_DANWC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DANBT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DANBT]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DANBT]"
+                      name="DVTIFF_DANBT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVKWC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DVKWC]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVKWC]"
+                      name="DVTIFF_DVKWC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVKBT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DVKBT]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DVKBT]"
+                      name="DVTIFF_DVKBT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_HBKZN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_HBKZN]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_HBKZN]"
+                      name="DVTIFF_HBKZN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_ZWRIS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_ZWRIS]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_ZWRIS]"
+                      name="DVTIFF_ZWRIS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KBTRG]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_KBTRG]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KBTRG]"
+                      name="DVTIFF_KBTRG"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_PTEIN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_PTEIN]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_PTEIN]"
+                      name="DVTIFF_PTEIN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_WHGKP]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_WHGKP]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_WHGKP]"
+                      name="DVTIFF_WHGKP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_BCHSW]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_BCHSW]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_BCHSW]"
+                      name="DVTIFF_BCHSW"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_WHGBU]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_WHGBU]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_WHGBU]"
+                      name="DVTIFF_WHGBU"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_URDEA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_URDEA]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_URDEA]"
+                      name="DVTIFF_URDEA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_NETKR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_NETKR]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_NETKR]"
+                      name="DVTIFF_NETKR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KZCVA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_KZCVA]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_KZCVA]"
+                      name="DVTIFF_KZCVA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSARE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_GSARE]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_GSARE]"
+                      name="DVTIFF_GSARE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FAIRV]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FAIRV]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FAIRV]"
+                      name="DVTIFF_FAIRV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXVKT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DXVKT]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXVKT]"
+                      name="DVTIFF_DXVKT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_HFZGP]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_HFZGP]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_HFZGP]"
+                      name="DVTIFF_HFZGP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_AFREF]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_AFREF]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_AFREF]"
+                      name="DVTIFF_AFREF"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_RESE1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_RESE1]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_RESE1]"
+                      name="DVTIFF_RESE1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_RESE2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_RESE2]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_RESE2]"
+                      name="DVTIFF_RESE2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FREI1]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI1]"
+                      name="DVTIFF_FREI1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI2]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FREI2]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI2]"
+                      name="DVTIFF_FREI2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI3]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FREI3]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_FREI3]"
+                      name="DVTIFF_FREI3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_LOEKZ]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_LOEKZ]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_LOEKZ]"
+                      name="DVTIFF_LOEKZ"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_IFNAM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_IFNAM]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_IFNAM]"
+                      name="DVTIFF_IFNAM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXIFD]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DXIFD]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].Columns[DVTIFF_DXIFD]"
+                      name="DVTIFF_DXIFD"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_MDANT]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_MDANT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_GSREF]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_GSREF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FILNR]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FILNR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_KDNRH]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_KDNRH" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DXABD]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DXABD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_GSKLA]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_GSKLA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_SUKLA]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_SUKLA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DVART]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DVART" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DXVAL]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DXVAL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DANWC]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DANWC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DANBT]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DANBT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DVKWC]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DVKWC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DVKBT]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DVKBT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_HBKZN]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_HBKZN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_ZWRIS]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_ZWRIS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_KBTRG]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_KBTRG" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_PTEIN]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_PTEIN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_WHGKP]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_WHGKP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_BCHSW]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_BCHSW" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_WHGBU]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_WHGBU" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_URDEA]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_URDEA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_NETKR]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_NETKR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_KZCVA]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_KZCVA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_GSARE]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_GSARE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FAIRV]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FAIRV" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DXVKT]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DXVKT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_HFZGP]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_HFZGP" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_AFREF]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_AFREF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_RESE1]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_RESE1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_RESE2]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_RESE2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FREI1]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FREI1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FREI2]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FREI2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_FREI3]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_FREI3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_LOEKZ]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_LOEKZ" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_IFNAM]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_IFNAM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output].ExternalColumns[DVTIFF_DXIFD]"
+                      dataType="wstr"
+                      length="50"
+                      name="DVTIFF_DXIFD" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_MDANT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_MDANT]"
+                      name="DVTIFF_MDANT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_GSREF]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_GSREF]"
+                      name="DVTIFF_GSREF" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FILNR]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FILNR]"
+                      name="DVTIFF_FILNR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_KDNRH]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_KDNRH]"
+                      name="DVTIFF_KDNRH" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DXABD]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DXABD]"
+                      name="DVTIFF_DXABD" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_GSKLA]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_GSKLA]"
+                      name="DVTIFF_GSKLA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_SUKLA]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_SUKLA]"
+                      name="DVTIFF_SUKLA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DVART]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DVART]"
+                      name="DVTIFF_DVART" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DXVAL]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DXVAL]"
+                      name="DVTIFF_DXVAL" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DANWC]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DANWC]"
+                      name="DVTIFF_DANWC" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DANBT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DANBT]"
+                      name="DVTIFF_DANBT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DVKWC]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DVKWC]"
+                      name="DVTIFF_DVKWC" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DVKBT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DVKBT]"
+                      name="DVTIFF_DVKBT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_HBKZN]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_HBKZN]"
+                      name="DVTIFF_HBKZN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_ZWRIS]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_ZWRIS]"
+                      name="DVTIFF_ZWRIS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_KBTRG]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_KBTRG]"
+                      name="DVTIFF_KBTRG" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_PTEIN]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_PTEIN]"
+                      name="DVTIFF_PTEIN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_WHGKP]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_WHGKP]"
+                      name="DVTIFF_WHGKP" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_BCHSW]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_BCHSW]"
+                      name="DVTIFF_BCHSW" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_WHGBU]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_WHGBU]"
+                      name="DVTIFF_WHGBU" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_URDEA]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_URDEA]"
+                      name="DVTIFF_URDEA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_NETKR]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_NETKR]"
+                      name="DVTIFF_NETKR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_KZCVA]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_KZCVA]"
+                      name="DVTIFF_KZCVA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_GSARE]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_GSARE]"
+                      name="DVTIFF_GSARE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FAIRV]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FAIRV]"
+                      name="DVTIFF_FAIRV" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DXVKT]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DXVKT]"
+                      name="DVTIFF_DXVKT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_HFZGP]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_HFZGP]"
+                      name="DVTIFF_HFZGP" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_AFREF]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_AFREF]"
+                      name="DVTIFF_AFREF" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_RESE1]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_RESE1]"
+                      name="DVTIFF_RESE1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_RESE2]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_RESE2]"
+                      name="DVTIFF_RESE2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FREI1]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FREI1]"
+                      name="DVTIFF_FREI1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FREI2]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FREI2]"
+                      name="DVTIFF_FREI2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FREI3]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_FREI3]"
+                      name="DVTIFF_FREI3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_LOEKZ]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_LOEKZ]"
+                      name="DVTIFF_LOEKZ" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_IFNAM]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_IFNAM]"
+                      name="DVTIFF_IFNAM" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DXIFD]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[DVTIFF_DXIFD]"
+                      name="DVTIFF_DXIFD" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - DVTIFF_CCB_csv.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - DVTIFF_CCB.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

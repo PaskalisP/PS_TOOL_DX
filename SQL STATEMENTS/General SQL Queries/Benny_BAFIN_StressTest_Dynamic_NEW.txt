@@ -1,0 +1,152 @@
+﻿DECLARE @RISKDATE Datetime
+SET @RISKDATE='20161231'
+
+CREATE TABLE [#Temp_Contracts](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[BS_Type] [nvarchar](50) NULL,
+	[Contract_Account] [nvarchar](50) NULL,
+	[ClientNr] [nvarchar](255) NULL,
+	[ClientName] [nvarchar](255) NULL,
+	[OrigCUR][nvarchar](10) NULL,
+	[ContractType] [nvarchar](255) NULL,
+	[ProductType] [nvarchar](255) NULL,
+	[StartDate] Datetime NULL,
+	[MaturityDate] Datetime NULL,
+	[InterestRate] float NULL,
+	[BusinessType] [nvarchar](255) NULL,
+	[Valid] [nvarchar](5) NULL,
+	[Amount_Principal] [float] NULL,
+	[Amount_Capitalized_Interest] [float] NULL,
+	[Amount_Accrued_Interest] [float] NULL) ON [PRIMARY]
+
+INSERT INTO [#Temp_Contracts]
+([Contract_Account]
+      ,[ClientNr]
+      ,[ClientName]
+      ,[ContractType]
+      ,[ProductType]
+      ,[StartDate]
+      ,[MaturityDate]
+	  ,[InterestRate]
+      ,[BusinessType]
+      ,[Valid]
+	  ,[Amount_Principal]
+	  ,[Amount_Capitalized_Interest]
+	  ,[Amount_Accrued_Interest])
+SELECT [Contract_Account]
+      ,[ClientNr]
+      ,[ClientName]
+      ,[ContractType]
+      ,[ProductType]
+      ,[StartDate]
+      ,[MaturityDate]
+	  ,0
+      ,[BusinessType]
+      ,[Valid]
+	  ,0
+	  ,0
+	  ,0
+  FROM [PS TOOL DX Live].[dbo].[ALL_CONTRACTS_ACCOUNTS] where BusinessType not in ('BANK NOSTRO ACCOUNTS','DEPOSITS WITH DEUTSCHE BUNDESBANK','FX TRANSACTIONS','GUARANTEES','OTHERS')
+  and StartDate<'20160101' and MaturityDate between '20160101' and '20161231'
+  UNION ALL
+  SELECT  [Contract_Account]
+      ,[ClientNr]
+      ,[ClientName]
+      ,[ContractType]
+      ,[ProductType]
+      ,[StartDate]
+      ,[MaturityDate]
+	  ,0
+      ,[BusinessType]
+      ,[Valid]
+	  ,0
+	  ,0
+	  ,0
+  FROM [PS TOOL DX Live].[dbo].[ALL_CONTRACTS_ACCOUNTS] where BusinessType not in ('BANK NOSTRO ACCOUNTS','DEPOSITS WITH DEUTSCHE BUNDESBANK','FX TRANSACTIONS','GUARANTEES','OTHERS')
+  and StartDate<'20160101' and MaturityDate >'20161231'
+  UNION ALL
+  SELECT [Contract_Account]
+      ,[ClientNr]
+      ,[ClientName]
+      ,[ContractType]
+      ,[ProductType]
+      ,[StartDate]
+      ,[MaturityDate]
+	  ,0
+      ,[BusinessType]
+      ,[Valid]
+	  ,0
+	  ,0
+	  ,0
+  FROM [PS TOOL DX Live].[dbo].[ALL_CONTRACTS_ACCOUNTS] where BusinessType not in ('BANK NOSTRO ACCOUNTS','DEPOSITS WITH DEUTSCHE BUNDESBANK','FX TRANSACTIONS','GUARANTEES','OTHERS')
+  and StartDate between '20160101' and '20161231'
+  
+  
+
+  Update A set A.Amount_Principal=B.Total_Balance,A.BS_Type=B.GL_Art from #Temp_Contracts A Inner join DailyBalanceDetailsSheets B 
+  on A.Contract_Account=B.ReleatedAccountNr --and A.StartDate=B.BSDate 
+  where B.ReleatedAccountNr is not NULL and B.GL_Item not like '%I'
+
+   Update A set A.Amount_Principal=B.[Credit Outstanding (EUR Equ)],A.BS_Type='Activa' from #Temp_Contracts A Inner join [CREDIT RISK] B
+  on A.Contract_Account=B.[Contract Collateral ID] --and A.StartDate=B.RiskDate 
+
+  Update A set A.Amount_Principal=B.TotalAmountEUR,A.BS_Type='Passiva' from #Temp_Contracts A Inner join BusinessTypesLiabilitiesDetails B
+  on A.Contract_Account=B.[Contract Collateral ID] --and A.StartDate=B.RiskDate 
+
+  Update A set A.Amount_Principal=B.PrincipalEuroAmt,A.BS_Type='Activa' from #Temp_Contracts A Inner join SECURITIES_OUR B
+  on A.Contract_Account=B.ContractNrOCBS 
+
+ DELETE from #Temp_Contracts where BusinessType='NOSTRO ACCOUNT'
+
+UPDATE #Temp_Contracts set BS_Type='Passiva' where BusinessType in ('DEMAND DEPOSIT')
+
+Update A set A.InterestRate=B.InterestRate from #Temp_Contracts A inner join [RATERISK DETAILS] B on A.Contract_Account=B.ContractClear
+
+Update A set A.Amount_Capitalized_Interest=B.S from #Temp_Contracts A INNER JOIN 
+(Select AccountNo,Sum([AmountInEuro]) as S from ALL_VOLUMES where GL_AC_No_Name like 'Int p%' and GL_Rep_Date between '20160101' and '20161231' and [Other System Key] is NULL GROUP BY AccountNo)B
+on A.Contract_Account=B.AccountNo
+
+Update A set A.Amount_Capitalized_Interest=B.S from #Temp_Contracts A INNER JOIN 
+(Select AccountNo,Sum([AmountInEuro]) as S from ALL_VOLUMES where GL_AC_No_Name like 'Int r%' and GL_Rep_Date between '20160101' and '20161231' and [Other System Key] is NULL GROUP BY AccountNo)B
+on A.Contract_Account=B.AccountNo
+
+Update A set A.Amount_Accrued_Interest=B.S from #Temp_Contracts A INNER JOIN 
+(Select AccountNo,Sum([AmountInEuro]) as S from ALL_VOLUMES where GL_AC_No_Name like 'Acc int p%' and GL_Rep_Date between '20160101' and '20161231' and [Other System Key] is NULL GROUP BY AccountNo)B
+on A.Contract_Account=B.AccountNo where A.Valid='Y'
+
+Update A set A.Amount_Accrued_Interest=B.S from #Temp_Contracts A INNER JOIN 
+(Select AccountNo,Sum([AmountInEuro]) as S from ALL_VOLUMES where GL_AC_No_Name like 'Acc int r%' and GL_Rep_Date between '20160101' and '20161231' and [Other System Key] is NULL GROUP BY AccountNo)B
+on A.Contract_Account=B.AccountNo where A.Valid='Y'
+
+---------------------------------------------------
+Update A set A.Amount_Capitalized_Interest=B.S from #Temp_Contracts A INNER JOIN 
+(Select LEFT([Other System Key],7) as AccountNo,Sum([AmountInEuro]) as S from ALL_VOLUMES where GL_AC_No_Name like 'Int p%' and GL_Rep_Date between '20160101' and '20161231' and AccountNo is NULL GROUP BY LEFT([Other System Key],7))B
+on A.Contract_Account=B.AccountNo 
+
+Update A set A.Amount_Capitalized_Interest=B.S from #Temp_Contracts A INNER JOIN 
+(Select LEFT([Other System Key],7) as AccountNo,Sum([AmountInEuro]) as S from ALL_VOLUMES where GL_AC_No_Name like 'Int r%' and GL_Rep_Date between '20160101' and '20161231' and AccountNo is NULL GROUP BY LEFT([Other System Key],7))B
+on A.Contract_Account=B.AccountNo 
+
+Update A set A.Amount_Accrued_Interest=B.S from #Temp_Contracts A INNER JOIN 
+(Select LEFT([Other System Key],7) as AccountNo,Sum([AmountInEuro]) as S from ALL_VOLUMES where GL_AC_No_Name like 'Acc int p%' and GL_Rep_Date between '20160101' and '20161231' and AccountNo is NULL GROUP BY LEFT([Other System Key],7))B
+on A.Contract_Account=B.AccountNo where A.Valid='Y'
+
+Update A set A.Amount_Accrued_Interest=B.S from #Temp_Contracts A INNER JOIN 
+(Select LEFT([Other System Key],7) as AccountNo,Sum([AmountInEuro]) as S from ALL_VOLUMES where GL_AC_No_Name like 'Acc int r%' and GL_Rep_Date between '20160101' and '20161231' and AccountNo is NULL GROUP BY LEFT([Other System Key],7))B
+on A.Contract_Account=B.AccountNo where A.Valid='Y'
+
+Update #Temp_Contracts Set Amount_Accrued_Interest=ABS(Amount_Accrued_Interest),Amount_Capitalized_Interest=ABS(Amount_Capitalized_Interest),Amount_Principal=ABS(Amount_Principal)
+
+Update #Temp_Contracts Set Amount_Principal=Amount_Principal*(-1)
+where BS_Type='Activa'
+
+Update #Temp_Contracts Set Amount_Accrued_Interest=Amount_Accrued_Interest *(-1),Amount_Capitalized_Interest=Amount_Capitalized_Interest *(-1)
+where BS_Type='Passiva'
+
+Update A set A.OrigCUR=B.[Org Ccy] from #Temp_Contracts A INNER JOIN BusinessTypesCreditPortfolioDetails B on A.Contract_Account=B.[Contract Collateral ID]
+Update A set A.OrigCUR=B.OrgCcy from #Temp_Contracts A INNER JOIN BusinessTypesLiabilitiesDetails B on A.Contract_Account=B.[Contract Collateral ID]
+Update A set A.OrigCUR=B.Orig_CUR from #Temp_Contracts A INNER JOIN DailyBalanceDetailsSheets B on A.Contract_Account=B.ReleatedAccountNr where A.OrigCUR is NULL
+Update A set A.OrigCUR=B.[Deal Currency] from #Temp_Contracts A INNER JOIN CUSTOMER_ACCOUNTS B on A.Contract_Account=B.[Client Account] where A.OrigCUR is NULL
+
+Select * from [#Temp_Contracts]
+  DROP TABLE [#Temp_Contracts]

@@ -1,0 +1,35 @@
+﻿select  'CCB FRANKFURT' as 'Name of Branch', L.[Counterparty],  L.[Contract No],C.[COUNTRY_OF_RESIDENCE] as 'Country of Residence',C.[COUNTRY_OF_REGISTRATION] as 'Country of Registration',C.[INDUSTRIAL_CLASS_LOCAL_NAME] as 'Industrial Class Local',(Select [Industry Description] from [INDUSTRY VALUES] where  [Industry Code]= C.[INDUSTRIAL_CLASS_CN]) as 'Industrial Class China',R.[Rating] as 'Internal Rating of CCB Frankfurt',R.[StandardPoorsRating] as 'S & P Rating',R.[MoodysRating] as 'Moodys Rating',L.[Product Type],L.[Outstanding Principal] as 'Outstanding Principal (Original Currency)',L.[Currency],(Select Case L.[Currency]
+When 'USD' then 1
+When 'EUR' then 
+(Select Round([MIDDLE RATE],4) FROM [EXCHANGE RATES OCBS] Where 
+
+[EXCHANGE RATE DATE]='20150331' 
+
+and [CURRENCY CODE]='USD')
+Else
+(Select Round((Select 1/[MIDDLE RATE] FROM [EXCHANGE RATES OCBS] Where 
+
+[EXCHANGE RATE DATE]='20150331' 
+
+and [CURRENCY CODE]=L.[Currency])/(Select 1/[MIDDLE RATE] FROM [EXCHANGE RATES OCBS] Where 
+
+[EXCHANGE RATE DATE]='20150331' 
+
+and [CURRENCY CODE]='USD'),4))
+end) as 'USD EXCHANGE RATES',
+(Select Case L.[Currency]
+When 'USD' then Round(1*L.[Outstanding Principal] /10000,2)
+When 'EUR' then 
+(Select Round(Round([MIDDLE RATE],4)*L.[Outstanding Principal] /10000,2) FROM [EXCHANGE RATES OCBS] Where 
+
+[EXCHANGE RATE DATE]='20150331' and [CURRENCY CODE]='USD')
+Else
+(Select Round(Round((Select 1/[MIDDLE RATE] FROM [EXCHANGE RATES OCBS] Where 
+[EXCHANGE RATE DATE]='20150331' and [CURRENCY CODE]=L.[Currency])/(Select 1/[MIDDLE RATE] FROM [EXCHANGE RATES OCBS] Where 
+[EXCHANGE RATE DATE]='20150331' and [CURRENCY CODE]='USD'),4)*L.[Outstanding Principal] /10000,2))
+end) as 'OUTSTANDING PRINCIPAL (in 10 Thsd USD)',L.[Start Date], L.[Commitment Expiry Date],L.[Contract Start Date],L.[Maturity Date],L.[Base rate (ie Cost of Fund Rate)],L. [Add on rate]
+from
+[CL_DRAWDOWN_OUTSTANDING] as L, [CUSTOMER_INFO] as C,[CUSTOMER_RATING] as R
+where L.[Client No]=C.[ClientNo] and L.[Client No]=R.[ClientNo]
+and   L.[RepDate]='20150331'
+                               

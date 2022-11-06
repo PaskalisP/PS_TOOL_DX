@@ -1,0 +1,3076 @@
+﻿ID;MeetingDate;TaskID;Priority;TaskTopic;TaskDescription;Participants;FollowUp;ResponsibleDepartment;ResponsibleStaffMember;Beginning;ExpectedTermination;Status;StatusText;CurrentUser
+46;2012-10-18 00:00:00.000;1;C;"Reporting Z 14/Z 15
+Interest Income - Interest Expense
+AWV";"Since January 2012 reports have not been issued and sent to Deutsche Bundesbank. Reason: EDP conversion from Multibank to OCBS on 18.11.2011. Meanwhile IT Department has managed to create the necessary reports starting from January 2012. In close coordination with Deutsche Bundesbank (see e-mail from Mr. Nöske dd. 14.06.2012 to Mr. Olberding) we shall forward the 2012 reports to Deutsche Bundesbank and inform our internal auditor (W+ST) accordingly.
+";NULL;"+++ Update from Nieli on 21.11.2012 08:26:30 +++ 
+Mr. Papas implemented missing Z14/Z15 datas from January until July 2012 in reporting tool. 
+
+Accounting Department is in charge to forward the Z14/Z15 datas to Bundesbank. Mr. Olberding from Bundesbank has to be informed. 
+
++++ Update from Nieli on 21.11.2012 15:22:03 +++ 
+Mr. Nöske prepared Z14/Z15 reporting forms which have been checked by Mrs. Qiuan and Mr. Nieli.
+
+Mr. Olberding has been informed bout the sucessfull completion of the Z14/Z15 reporting by Mr. Nieli 
+Z14/Z15 reporting forms were sent to the Deutsche Bundebank Service Center Mainz.
+
+";"Accounting
+Risk Management";Nöske - Nieli;2012-11-13 00:00:00.000;2012-11-02 00:00:00.000;CLOSED;TASK CLOSED from Sternheimer on 23.01.2014 09:38:55;NULL
+47;2012-11-16 00:00:00.000;2;B;"Reporting Tool
+In and Outoing Payments
+Z 4 AWV ";NULL;NULL;"+++ Update from Nieli on 10.04.2013 16:23:18 +++ 
+IT Dep. implemented AWV reporting tool ";IT;Yu;2012-11-13 00:00:00.000;2012-12-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 10.04.2013 16:24:21;NULL
+48;2012-11-16 00:00:00.000;3;B;Reporting 24 c KWG;NULL;NULL;"+++ Update from Nieli on 10.04.2013 16:23:49 +++ 
+";"IT
+Risk Management";"Yu
+Nieli";2012-11-13 00:00:00.000;2013-01-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 10.04.2013 16:24:12;NULL
+49;2012-11-16 00:00:00.000;4;C;"Reporting ZVDL 
+Incomplete date files 
+Payment/ML";"ML/Prevention of criminal offences office  is responsible to supervise/check and settle incomplete client´s payment data. Each quarter this duty is carried out by Mrs. Römer in close cooperation with our Operations Department (Payments). The check carried out is documented in writing. ";NULL;"+++ Update from Nieli on 21.01.2013 11:14:08 +++ 
+Procedure has been implemented and shall be executed quarterly.I4";Money Laundering;Römer;2012-11-13 00:00:00.000;2013-01-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 21.01.2013 11:14:11;NULL
+50;2012-11-16 00:00:00.000;5;B;"Reporting
+Jährliche Zahlungsverkehrsstatistik";"Actual the yearly statistic about clearing and payments related to interest income from other countries is done manually by Mr. Yu. This is due to the fact that our GMPS system is not providing an interface to our BAIS reporting tool because our internal payment system GMPS does not contain a reporting function. 
+Our Guangzhou Developement Center is responsible for the GMPS programming. We have to apply for a reporting function accordingly. Parallel the program parameters according to the local reporting demands have to be defined and communicated. Accounting/IT and Risk Management Department are in charge to execute this work until  mid of December 2012. In a second step Guangzhou Development Center needs to program the necessary statistic until March 2013.  
+
+
+
+";NULL;"+++ Update from Nieli on 10.04.2013 16:22:25 +++ 
+IT Department implemented a semi-automatic reporting tool (please see user guide ""Annual payment statistic"")";"IT
+Accounting";"Yu
+Nöske
+";2012-11-13 00:00:00.000;2013-03-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 10.04.2013 16:22:27;NULL
+51;2012-11-16 00:00:00.000;6;B;"Reporting  
+Limit Management/daily duties
+";"Mr. Jin Wang, new colleague in Risk Department has to be trained by Mrs. Ran Zhi in our MTS system. This training enables him to supervise the country and counterparty limits. ";NULL;"+++ Update from Nieli on 14.12.2012 15:15:47 +++ 
+Training took place. Mr. Nieli and Mr. Wang are capable to set new counterparties to our system. 
+CCB Singapore data correctly inputted. 
+KONDOR application sent to CCB London.";Risk Management;Nieli;2012-11-13 00:00:00.000;2012-12-14 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 14.12.2012 15:15:50;NULL
+52;2012-11-16 00:00:00.000;7;B;"Proper Time Recording
+";"Proper use of the time recording. All participants of the MCM had been requested to properly use the time recording machine and to ensure that also their subordinates fulfilling the working guideline of the bank. Starting from today it is the sole responsibility of the Supervisors to control their employees.
+
+In detail the responsibilities are as follows:
+
+Mr. Li controls
+Mr. Zheng controls:
+- Mr. Dupré
+- Mr. Xiaodong Wang
+
+Mr. Sternheimer controls:
+Mr. Nöske controls:
+- Mrs. Qian
+- Mr. Guo
+
+Mr. Sternheimer controls:
+Mr. Yu controls:
+- Mr. Papas
+- Mrs. Zhang Li
+- Miss Lu
+- Mrs. Shang
+- Mrs. Fasanella
+- Mrs. Kraus
+
+Mr. Sternheimer controls:
+Mrs. Ping Li controls:
+- Mrs. Claudia Römer
+- Mrs. Zhijin Li
+
+Mr. Sternheimer controls:
+Mr. Nieli controls:
+- Mr. Jin Wang
+
+Mr. Xie controls:
+Mr. Ott controls:
+- Mrs. Baeseler
+- Mr. Schreiber
+- Mr. Dong Fu
+- Mr. Fantao Fu
+
+Mr. Xie controls:
+Mrs. Meijuan Liu
+
+
+ ";NULL;NULL;Senior Management;Sternheimer;2012-11-13 00:00:00.000;2012-12-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 27.12.2012 09:19:46;NULL
+53;2012-11-13 00:00:00.000;8;I;Open IT issues (info provided by Mr. Yu);"1.  System Upgrade Online Banking to be executed on 17.11.2012
+2.  OCBS (Saldenbestätigungen/Annuitätendarlen) to be executed on 17.11.2012
+3.  ODAS (System Upgrade) to be executed on 17.11.2012
+4.  SWIFT (System Upgrade) to be executed on 17.11.2012
+5.  Delivery of Hardware from China (Value: TUSD 170) to be delivered within this and next week
+6.  Reorganisation EDP Room to be done in this week
+7.  BSM Update (Version 1.14) Accounting Department must compare the figures and report the result to EDP
+8.  LCR/NSFR reporting is scheduled for the 1st of January 2013. 
+      BSM is still waiting for the last valid legal version from the european commission. 
+      Liquid Coverage Ratio defines how much liquid assets have to be held by financial institutions. 
+      The necessity to held high liquid assets impacts negatively short term lendings.
+9.   Net Stable Funding Ratio. This funding ratio seeks to calculate the proportion of long-term assets funded by long term deposits. 
+10.OCBS Obligo Online Report ";NULL;"+++ Update from Nieli on 12.12.2012 14:05:17 +++ 
+System upgrades with minor problems and differences executed.
+
+LCR/NSFR not implemented due to lack of final EU regulations
+
++++ Update from Nieli on 21.01.2013 11:10:46 +++ 
+New topic LCR/NSFR added.I8";"Accounting 
+IT";"Peter Nöske
+Maoyuan Yu";2012-11-16 00:00:00.000;2012-12-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 21.01.2013 11:10:49;NULL
+54;2012-11-19 00:00:00.000;1;I;Follow up MCM 13.11.2012;"IT - AWV Reporting
+Mr. Papas has to import the datas to finalize AWV Z14/Z15 reportings this week
+
+Risk Management
+Mr. Wang and Mr. Nieli shall receive training from Mrs. Ran Zhi in the limit system manangement (MTS).
+
+All Departments
+Time recording, the control procedure is set.
+
+IT (see meeting 13.11.2012)
+to 1) Last weekend updates were executed. Occured problems solved. 
+to 2) Balance confirmation results shall be received tomorrow. In the future confirmation balances can be generated daily.
+to 3) Upgrade executed
+to 4) Upgrade executed
+to 5) Hardware delivered and stored
+to 6) done 
+to 7) done - Mr. Nöske executed reconcilation. 
+to 8) LCR/NSFR 1st week of January 2013
+to 9) Obligo OCBS Report is still in testing phase. 
+
+Foreign Business
+- no staff problems stated by Mr. Ott
+- new expatriatas (Dong Fu and Fantao Fu) must get training and get familiar with our local processings - partially managed
+
+Risk Department
+- IT Report related to outsourced IT needs to be issued by CCB´s IT Auditors/or PWC China to fulfill Art. 25a German Banking Act. 
+   DGM Mr. Xie responded that H.O. is working on it. They shall build special audit team to fulifill our requirements.
+
+ 
+
+ ";NULL;NULL;"All Departments
+";"Xie
+Sternheimer
+Gilhaus
+Zheng
+Nieli
+Ping Li
+Yu
+Ott
+Nöske";2012-11-19 00:00:00.000;2012-11-21 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 21.11.2012 08:21:07;NULL
+55;2012-12-05 00:00:00.000;1;B;"BISTA report 10/12 not correctly reported to Deutsche Bundesbank. 
+Differences between trial balance and BISTA report occured.";"Order to Mr. Nöske to check and compare the former monthly BISTA report with the trial balance. ";NULL;"BISTA Reports (asset and liability positions) checked with trial balance by Mr. Nöske. No mistakes detected.
+Defective reporting is due to a parameter change on the wrong advice of BSM (Mr. Erdelt).
+Phone complaint to BSM Senior Management (Mr. Karner) by Mr. Sternheimer.  ";"Accounting
+IT";"Nöske
+Yu
+Papas";2012-12-05 00:00:00.000;2012-12-07 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 12.12.2012 14:23:04;NULL
+56;2013-07-02 00:00:00.000;1;I;"TOPICS
+
+1. Implementation of a money pool amounting to 3,6 bn USD for all overseas branches.
+2. Discussion press articles regarding finance and mortgage bubble in China
+3. Schuldscheindarlehen and Syndicated loans
+4. New Banking Law CRD IC and CRR comes into force 01.01.2014.
+     ";"to 1) HO maintained and maintains enough Liability Surplus to finance our current business activities.
+          Nevertheless before entering new business we need to hava always a close eye on our Liabiltiy Surplus.
+to 2) Regarding the actual press articles Mr Zheng, Head of Treasury informed us that the Chinese Central Bank is very  strict in the observance of the rules. 
+          The chinese Banks stay in alert and act very conservative. Furthermore, Mr Zheng explained that there is no liquidity problem in the CCB.
+to 3) Margins for the ""SSD"" is too low and the term period is too long. At the moment the execution of authorized payments is the better business option.     
+to 4) European Commission issued the CRD (Capital requirement directive) / CRR (Capital requirement regulations) in the official EU journal. 
+          The legislative package has to be implemented into national law by the EU members states at the 1st of Jan 2014.
+          CCB Frankfurt Branch has to analyse the final regulations and the impact on our reporting. 
+
+";NULL;NULL;"Foreign Department
+Risk Controlling
+Treasury ";"Sternheimer
+Nieli
+Zheng
+Fu Dong
+Gilhaus
+Xiadong Wang
+Ott";2013-07-02 00:00:00.000;2013-11-30 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 22.07.2013 14:36:15;NULL
+57;2013-07-03 00:00:00.000;1;I;"TOPICS
+1.  Public Audit 2012 
+      Preparation of the ""To Do List"" for each department (please see ""To Do List for the public audit 2012"")
+
+ 2. Low risk Credit Business 
+      Issuance desk instruction related to internal rating classifications of low risk businesses.
+";"Task description defined for each department in the To Do List related to 2012. ";NULL;NULL;"Risk Controlling
+Accounting 
+IT
+Prevention Office/AML Department
+Credit Marketing
+Credit Administration Department";"Sternheimer
+Nieli
+Nöske
+Qian
+Yu
+Papas
+Gilhaus
+Ping Li";2013-07-03 00:00:00.000;2013-11-30 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 22.07.2013 14:36:38;NULL
+58;2013-07-22 00:00:00.000;1;I;"
+1. Communication 
+2. MIS - PS Tool
+3. new procjects (Online banking, SEPA)
+4  PwC Audit Report 2012 – Follow up
+5. Personnel 
+6. Internal/External Audits
+";"to 1 - communication between the departments needs to be improved
+to 2 - PS Tool provides many internal valuable data/reports and features
+            Departement Heads and employees are requested to use this new tool
+to 3 -  HO changed log in procedure for online Banking - customers to be 
+            informed by Mr. Ott until 19th of August latest 
+         - SEPA - problems occured with Multibank Converter 
+            Converter update to be organized with Multibank (PASS)
+         - EAEG Einreicherdatei has been sent to Prüfungsverband - no reply so far 
+to 4 -  IT Audit Dept. of CCB China must finalize their audit latest until 12/2013
+to 5 -  Info about Personnel 
+            1. Donggue Zeng (expatriate) leaves to China in September 2013
+            2. Wolfgang Breunig (new Accounting Head) starts in November 2013
+            3. Suosheng Li (General Manager) shall overtake post in CCB Luxembourg
+            4. Biao Li (new General Manager) is expected to come in September 2013
+            5. Junle Xie (Deputy General Manager) shall overtake a post in CCB London
+            6. Bo Xiong (new Deputy General Manager) shall replace Mr. Xie
+            7. Staff equipment according to responsibles statements are sufficient in 
+                 IT, Treasury, Credit Administration, Operations and Risk Controlling 
+                 
+                 Additional info related to different departments:
+                 - Credit Administration has already managed 60 from 80 credit reviews
+                 - Starting from 03.05.2013 until today a lot of reportings (Einzelanzeigen)
+                    had to be issued by Mr. Gilhaus and the colleagues from Credit Admin.
+                 - Announcement that KPMG shall carry out General Internal Audit Tasks 
+                    starting 2014 replacing the W+ST company
+                 - Operations Dept. raised communication problems with Foreign Dept. 
+                    especially related to incomplete payment instructions. 
+                    Special meeting among the persons involved shall be held to solve the problem
+
+
+  
+
+ 
+
+ ";NULL;NULL;All Departments;"Sternheimer
+Xie
+Ping Li
+Nieli
+Fasanella
+Gilhaus
+Zheng
+Römer
+Yu
+Papas
+Xiaodong Wang
+Nöske";2013-07-22 00:00:00.000;2013-08-06 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 10.10.2013 08:50:02;NULL
+59;2013-09-09 00:00:00.000;1;B;"Desk Instructions
+Work Manuals
+Work Flow Plans
+Job Descriptions";"Review, update and synchronize all documents due to change in Senior Management
+";"Biao Li, Karl Sternheimer, Wolfgang Gilhaus, Dong Fu, Weihua Lv, Ping Li, Peter Nöske, Maoyuan Yu, Joachim Ott, Jin Wang, Meijuan Liu, 
+
+Time: 3 p.m. - 4.45 p.m. 
+
+";"+++ Update from Nieli on 03.01.2014 09:45:25 +++ 
+The Orga system updated in Dec 2013";Risk Controlling in close cooperation with other units;Nieli;2013-09-09 00:00:00.000;2013-10-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:45:35;NULL
+60;2013-09-09 00:00:00.000;1;B;Marketing Material/Tools;Review and Revise all Marketing Materials;NULL;NULL;"Marketing Units I and II
+Foreign Department
+Credit Marketing Department";"Ott 
+Dong Fu 
+Gilhaus";2013-09-09 00:00:00.000;2013-09-30 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 21.10.2013 10:32:41;NULL
+61;2013-09-09 00:00:00.000;2;C;Credit Marketing;"Market new medium and big sized corporates (also DAX companies) ";NULL;NULL;Credit Marketing;"Gilhaus
+Ott
+Dong Fu
+Fantao Fu";2013-09-09 00:00:00.000;2013-12-31 00:00:00.000;STILL PENDING;NULL;NULL
+62;2013-09-09 00:00:00.000;3;A;Profit Increase Treasury;"Approach our chinese domestic branches via e-mail or phone to offer our price for RMB FX transactions with the aim to generate additional profits for the bank. Start with CCB Shandong  - continue with other domestic branches in China. 
+Start parallel action to insert the business in our MTS Treasury System with support of IT and Accounting. 
+Arrange for a system test - if successful start the transactions. 
+In order to cope with the time difference problem start treasury work at 7 a.m.   
+ 
+";NULL;"Xiadong Wang described the business procedure of the daily EUR/US Dollars SWAP deals in five steps and forwarded 
+the description to Operations/IT and Risk Management responsibles for final review (e-mail dd. 04.10.2013 - 18:01)
+";"Treasury 
+IT ";"Weihua Lv
+Xiadong Wang
+Mayuan Yu";2013-09-09 00:00:00.000;2013-12-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:46:20;NULL
+63;2013-09-09 00:00:00.000;4;NULL;"Personnel
+Secretary
+Senior Management";"Start search process to employ qualified candidate as quick as possible - preferably 01.10.2013. ";NULL;"+++ Update from Sternheimer on 19.09.2013 16:39:31 +++ 
+Three candidates have been interviewed on 19.09.2013 by Mr. Sternheimer and Mrs. Liu.
+
++++ Update from Sternheimer on 07.10.2013 11:23:59 +++ 
+Miss Susanna Hein has been employed as secretary to the Senior Management as per 01.10.2013.";Senior Management;Sternheimer;2013-09-10 00:00:00.000;2013-09-27 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 10.10.2013 08:49:12;NULL
+64;2013-09-09 00:00:00.000;1;A;Offshore RMB Working Group;"Support our and the interest of our CCB Head Office to play a leading role in the possible RMB Clearing Center and/or RMB Trade platform to be established in Frankfurt to our best efforts and with the support of our Head Office. 
+Contact the responsible German institutions (Ministry of Economics Wiesbaden) and Authorities (BaFin and Bundesbank) to get more knowledge about the approval procedures to overtake such a role as ""Clearing Bank"". 
+Play an active role in the new to established RMB Working Group, consisting of Deutsche Bank, Commerzbank, Bank of China, ICBC and us.";NULL;NULL;Treasury and Senior Management;"Xiadong Wang
+Lv
+Biao Li
+Sternheimer
+Joachim Ott
+Yu
+Papas";2013-09-09 00:00:00.000;2013-12-31 00:00:00.000;ONGOING;NULL;NULL
+65;2013-09-09 00:00:00.000;2;A;"Performance CCB Frankfurt
+as per 31.08.2013
+Comparison Budget - Real Results";"Analyse and compare on a monthly interval our budget figures with the real financial results in writing. Explain in writing the reasons for deviations towards the budget figures to Senior Management and the MCM members. ";NULL;"+++ Update from Sternheimer on 07.10.2013 11:59:01 +++ 
+Presentation of the August 2013 figures had been made by Mrs. Qian on 24.09.2013. 
+
+Operational Income
+EUR    13.2 Mio.  Budget
+EUR      7,5 Mio.   I21Ist
+
+Profit before Income Tax and Reserves
+EUR      7,3 Mio.   Budget
+EUR      4,2 Mio.    Ist
+
+Total Operating Expenses
+EUR      5,7 Mio.    Budget
+EUR      3,2 Mio.    Ist
+
+Syndicated Loans
+EUR  129,0 Mio.   Budget
+EUR    77,0 Mio.    Ist
+
+Bilateral Credits
+EUR  359,0 Mio.    Budget
+EUR  255,0 Mio.    Ist
+
+Securities
+EUR    30,0 Mio.    Budget
+EUR      9,0 Mio.     Ist
+
+Customer Deposits
+EUR    56,0 Mio.    Budget
+EUR    26,0 Mio.    Ist
+
+
+";Accounting;"Nöske 
+Qian";2013-09-09 00:00:00.000;2013-12-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:47:02;NULL
+66;2013-09-09 00:00:00.000;3;A;Head Office Instructions and Regulations;Inform - communicate - discuss and implement new Head Office regulations/instructions in the weekly Management Committee Meeting;NULL;NULL;"Risk Management
+Senior Management";"Jin Wang 
+Meijuan Liu
+
+";2013-09-09 00:00:00.000;2013-12-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:47:27;NULL
+67;2013-09-16 00:00:00.000;1;B;Marketing Offers Schuldscheindarlehen;"Nabaltec - chemical group - presentation - total SSD volume 80 m EUR - intended participation 8 m EUR
+Biotest - Pharmaceutical industry - total SSD volum 100 m EUR - intendet participation 5 - 10 m EUR
+";"Biao Li
+Sternheimer
+Xie
+Lv 
+Yu 
+Qian
+Jin Wang 
+Dong Fu 
+Gilhaus
+Ping Li ";"+++ Update from Nieli on 03.01.2014 09:49:06 +++ 
+SSD offers cannot be proceeded due to non conformity with our HO policies";Credit Marketing;"Gilhaus
+";2013-09-16 00:00:00.000;2013-10-07 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:49:15;NULL
+68;2013-09-24 00:00:00.000;1;B;IT Internal Audit (GDB);"Audit start (GDB)23.09.2013 until 26.09.2013. ";"Biao Li
+Xie 
+Sternheimer
+Xiadong Wang
+Gilhaus
+Jin Wang
+Ping Li
+Qian
+Yu
+Dong Fu
+Meijuan Liu";"+++ Update from Sternheimer on 07.10.2013 13:52:14 +++ 
+On 26.09.2013 Mr. van Dyck shall present his findings which shall be monitored and settled by our IT and Risk Controlling Department. 
+Mr. Nieli shall write the minutes of the meeting and shall supervise the settlement of the findings in coordination with our IT Department
+
++++ Update from Nieli on 21.10.2013 10:35:57 +++ 
+Mr. Nieli prepared the minutes of meeting. (please see attachment ""minutes of meeting, IT-Audit"")";IT;"Yu 
+Papas
+";2013-09-24 00:00:00.000;2013-09-27 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 21.10.2013 10:36:05;NULL
+69;2013-09-13 00:00:00.000;2;A;"Installation ""Lan Desk Software"" to disable PC users to use external data storages";"In order to increase our data security Senior Management decided to restrict the usage of USB sticks/external hardware drives to selected employees only.
+Consequently the computers of most staff members must configurated with a ""disabled function mode"".  ";NULL;"+++ Update from Sternheimer on 07.10.2013 14:06:15 +++ 
+Mr. Yu has already received the software from our Head Office. After testing this software shall be implemented within the month of October 2013.";"EDP ";"Maoyuan Yu
+Paschalis Papas";2013-09-16 00:00:00.000;2013-10-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:49:29;NULL
+70;2013-10-07 00:00:00.000;1;I;"Performance CCB Frankfurt
+as per 30.09.2013
+Comparison Budget - Real Results";"1. Presentation of September 2013 figures by Mr. Nöske as follows: 
+
+     附表五：资债完成预算情况			
+     			货币单位：万欧元
+     项目	月末余额	预算数	预算执行进度
+     		 	
+     各项贷款	                                                               154.442         101.057        153 %
+      团贷款 syndicated loans	                                     8.271           12.926           64 %
+      双边贷款 bilateral loans                                     25.394           35.860           71 %
+      其中：内保外贷 with CCB Guarantees       21.923           30.871           71 %
+      非内保外贷类 without guarantees                  3.471             4.989           70 %
+      贸易融资 Trade finance                                     143.635           52.271         275 %
+      其中：海外代付 Prefinacings                           1.760           10.000            18 %
+      其他贸易融资 sonstige 	                                 141.874          42.270           336 %
+      债券投资 Securities                                                      901            3.000              30 %
+     总资产  total balance without HO 
+      扣除总行清算沉淀资金）                               208.357       140.876 
+      客户存款 Customer Deposits                                2.381           5.624               42 %
+       同业拆入 Money Market                                      89.828         57.833            155 %
+
+       Mr. Noeske has been requested to present the 3rd quarter figures during 
+       the next meeting via a power point presentation
+
+
+2.  Head Office info related to SSD/Syndicated business (email F. Fu dd. 27.09.2013) 
+     - H.O. prefers to do business less than 3 years
+     - H.O. wants CCB Frankfurt Branch to act as arranger and not as participant
+     - If the amount of the Syndicated loan is less than €/US 100 mil. approval is not to be expected 
+
+     Mr. Gilhaus outlined that:
+     - most syndicated loans have a tenor of 3,5,7 or 10 years. Syndicated loans with a duration less 
+        than 3 years are unusual in the daily business.
+     - the marketing position of CCB Frankfurt is not strong enough to act as a leader or arranger for 
+        syndicated loans (low dotation captial) which does not allow us to absorb the the credit risk 
+     - numerous loans of medium scaled customers are below € 100 million
+
+     With regard to the strong regulations of the H.O., most invitations do not match their conditions.
+     Therefore the loans mentioned in Mr. Gilhaus attachment dd. 07.10.2013 cannot be proceeded 
+
+3. Presentation Dong Fu on the following tables/figures in 2013:
+     - expired loans               US $      1.301.660.101.86
+     - non expired loans      US $          997.268.634.61
+     - total loans                     US $      2.298.928,736.47
+
+     Mr. Fu explained that due to our CAR limitation there won’t be space for new authorized payments 
+     in the future. Mr Fu says that EALLC and prefinance are two  possible options to increase the bank’s 
+     assets. Due to the competition with 3 other overseas branches it is necessary to lower the margin 
+     and increase the business volume in order to meet the budget. Nevertheless, he believes that due 
+     to the cooperation with foreign banks, lowering the margin would result in 30-40 BPS. 
+     Furthermore, Mr. Fu informed about the liability surplus as per 04.10.2013:    373 M USD
+
+4. Credit Administration
+     Mrs. Ping Li states that all necessary info regarding article 18 KWG has been received and analyzed 
+     and is ready for inspection. 
+
+5. IT
+     Mr. Papas is currently testing the Multibank platform. He would like to go live in November 2013.
+     The internal IT audit, carried out by Prüfungs- und Beratungsgesellschaft stated that the PS tool
+     generated by Mr. Papas meets the programming requirements. Mr. Papas is required to issue a
+     full workflow procedure and to describe the programming and testing. 
+
+6. Risk Controlling
+     Mr. Nieli is currently preparing the risk controlling figures for the 3rd quarter 2013.
+     So far he has not encountered any problems. The capital ratio is stable over 8.5. Only low risk 
+     businesses are executed. All key controlling figures are met. A power point presentation shall
+     be prepared.
+
+7. Treasury
+     Mr. Xiadong Wang informed about the EUR USD Swap Deals which generated a profit of € 3.000
+     within one week. Based on our last discussions Mr. Wang expects the approval to purchase 
+     German Treasury Notes and asked Mr. Papas (IT) to instal a test environment.
+     Mr. Wang further informed that other chinese banks are allowed to issue commercial papers with
+     a duration of 3 - 6 months. He suggested for further investigations and to consider this product also
+     for our Branch.
+
+8. Foreign Department
+     Mr. Ott informed that numerous collection based payments from our chinese branches related to 
+     VW /Audi transactions are still unsettled. He shall approach VW/Audi to continue sending letters to
+     CCB China and their own Joint Ventures in China to speed up the settlement process.
+     Mr. Ott also shall evaluate further business possibilities to generate additional income out of FX spot
+     transactions and financings related to Jilin Branch (VW/Audit) transactions.
+     Mr. Ott shall furthermore explore marketing opportunities with well performing medium sized 
+     corporates.
+
+9. General Information
+
+    End of October 2013 our Chairman Mr. Hongzhang Wang and the Vice President of CCB Beijing shall 
+    visit Deutsche Bundesbank and the Ministry of Economics in Wiesbaden. The goal of the visit is to
+    express CCB´s strong interest be the RMB clearing bank for the financial Market Place Frankfurt. 
+    In addition to that they are also interested to issue a RMB bond via our CCB Frankfurt Branch.  
+    Our branch must get prepared that the delegation from China shall also come to our office.
+
+    Customer deposit taking - insured by Deutsche Einlagensicherung
+    Based on the latest arrangements with Prüfungsverband deutscher Banken CCBF can take customer
+    deposits up to 100 m n total. This amount was restricted by Senior Management internally to € 65 m.
+    In the future we consider to increase the already approved limit (€ 100 m) and shall negotiate with 
+    Prüfungsverband accordingly.
+     
+
+ ";NULL;NULL;All;"Li
+Sternheimer
+Nieli
+Noeske
+Papas
+Ping Li
+Gilhaus
+Ott
+Dong Fu
+Liu
+Wang 
+Lv
+Hein";2013-10-07 00:00:00.000;2013-10-08 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 10.10.2013 08:46:12;NULL
+71;2013-10-07 00:00:00.000;2;B;"Task 1: Mr. Noeske is asked to prepare a PowerPoint presentation stating all relevant figures regarding the 3rd quarter for next week’s meeting.
+";"Accounting/Controlling
+Preparation of a PowerPoint presentation stating all relevant accounting figures 3rd quarter on 18.10.2013
+";NULL;"+++ Update from Nieli on 18.10.2013 14:20:10 +++ 
+Mr. Nöske presented the financials key figures in the meeting as of 14.10.2013";Accounting;Noeske;2013-10-07 00:00:00.000;2013-10-14 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 18.10.2013 14:20:13;NULL
+72;2013-10-07 00:00:00.000;3;B;Task 2: Mr. Papas is however required to present a full workflow procedure, including the task, the programming stage, a testing phase as well as the audit.;Task 2: PS Tool - Mr. Papas is however required to present a full workflow procedure, including the task, the programming stage, a testing phase as well as the audit.;NULL;NULL;EDP;Papas;2013-10-07 00:00:00.000;2013-10-31 00:00:00.000;STILL PENDING;NULL;NULL
+73;2013-10-31 00:00:00.000;1;A;Task 3: Mr. Papas offers a test environment for Mr. Wang;Task 3: Mr. Papas offers a test environment for Mr. Wang;NULL;"+++ Update from Nieli on 18.10.2013 14:22:43 +++ 
+The test environment for the treasury department will be provided in the 47th calendar week.";"EDP, Treasury ";"Papas
+Xiadong Wang";2013-10-07 00:00:00.000;2013-10-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:50:01;NULL
+74;2013-10-14 00:00:00.000;4;B;Task 4: Mr. Ott will present medium-sized enterprises during the next meeting;Task 4: Mr. Ott will present medium-sized enterprises during the next meeting;NULL;"+++ Update from Nieli on 18.10.2013 14:21:10 +++ 
+Mr. Ott presented a list of medium sized companies in the meeting as at 14.10.2013";Marketing II;"Ott 
+";2013-10-07 00:00:00.000;2013-10-31 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 18.10.2013 14:21:12;NULL
+75;2013-10-14 00:00:00.000;5;I;Management Committee Meeting 14.10.2013;"1. Risk Management
+Presentation of the risk controlling key figures for the 3rd quarter and the composition of the credit portfolio.
+In terms of the risk bearing capacity, the bank has to cover 2,5 million Euros. At the end of the third quarter, 
+23,48% of the total risk bearing capacity have been used by the bank. The capital ratio amounts to 9,1 % and
+the liquidity key figure is currently between 3 and 4. 
+
+2. Accounting 
+There has been an increase in receivables to banks as well as a significant increase in  receivables to non-banks, 
+which is due to the authorized payments/funded receivables participation.
+The Liabilities to banks have been decreased - Liabilities to customers are nearly the same like in the last year.
+CCBF´s total profit amounts to € 2,87 m. 
+
+3. Marketing I
+Gilhaus presented two offered deals. One of them had to be rejected (Ipsos S.A.Paris) because it did not match with our 
+internal requirements. The offered loan ""Altana Chemical Group"" is attractive. Mr. Gilhaus shall apply HO`s approval. 
+
+4. IT
+Mr. Yu needs HO approval build the test environment for Treasury Department. 
+Regarding SEPA, Mr. Yu and Mr. Papas require an update of the current software to connect the Multibank converter.
+Mr. Yu is preparing the IT import for the year end report. 
+
+5. Marketing II
+Mr. Fu Dong pointed out that due to tight obligo and tight CAR new business cannot done. He suggested to approach 
+third banks (f.e. Helaba) to sell our assets. 
+Mr. Ott said that it is very important to aquire new mid-sized companies as new customers. He informed that he 
+received an invitation from VW to get in contact with new responsibles due to a management change. He outlined 
+the difficulites with our Jilin Branch related to delayed VW Audi collection payments. 
+Jilin branch needs to execute for outstanding payments amounting to € 90 m which is the equivalent of roughly 
+80 VW/Audi payments. 
+
+6. Treasury
+HO decided to increase the limit of Sydney Branch which widens to range of business opportunites for our branch.
+
+7. General Management
+Everybody shall take notice that our Chairman and his delegation shall visit Bundesbank and Ministry of Economics Hesse
+in due course. Additionally the delegation shall most probably visit our branch. Therefore each of the participants should
+get prepared accordingly. 
+
+Announcements:
+17.10.2013:   Senior Management shall visit Prüfungsverband in Cologne to negotiate for a higher deposit ceiling.
+21.10.2013:   Senior Management shall visit Ministry of Economics Wiesbaden to prepare the visit of our Chairman. 
+Customer relationships have to be evaluated in order to identify potential customers for the future. 
+
+
+
+
+
+
+";"Biao Li
+Sternheimer
+Xiong
+Ott
+Gilhaus
+Dong Fu
+Nieli
+Noeske
+Yu
+Lv
+Ping Li
+Liu 
+Xiaodong Wang
+Hein";NULL;All;All;2013-10-14 00:00:00.000;2013-10-15 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 21.10.2013 10:36:50;NULL
+76;2013-10-21 00:00:00.000;1;I;Management Committee Meeting 21.10.2013;"1. Marketing II
+Hebei Branch doesn’t want to provide another guarantee for the due KSM loan which means that the KSM loan must be repaid at maturity date. 
+Credit Suisse has asked for a meeting on 30.10.2013 in our premises to discuss common business opportunities. 
+
+2. IT
+No news related to the IT Audit Report from Head Office.
+Related to SEPA transactions, BSM sent an offer to implement four updates which should be accepted by us.
+CCB Hong Kong Branch announced an update of the interface. 
+Program work for treasury (FX Swap transaction) finalized. Treasury is enabled to use the new program.
+
+3. Credit Administration 
+Intended Amendmend of credit approval process for trade finance transactions should be discussed with Internal and external auditors.
+Altana Schuldschein offer in working process.. 
+KION and CIC under review.
+
+4. Risk Management
+HO has allocated Germany, Austria, Greece, Cyprus, Malta, Slovenia and Slovakia to CCB Frankfurt
+Except Austria the other aformentioned countries because of their weak financial background are not of our business interest.
+HO shall be asked to allocate Switzerland to CCB Frankfurt because of geographic and cultural similiarities. 
+
+5. Accounting
+Accounting is preparing for the year end. 
+
+6. Senior Management
+Mrs. Xioang Bo (new deputy general Manager) is entitled to legally bind the bank by signing  together with  one of the Managing Directors.
+Mr. Nieli is asked to update the signature list.
+
+Besides CCBF our competitors ICBC and Bank of China shall join the ""clearing bank meeting"" in the premises of Deutsche Bundesbank. 
+Related documents should be submitted to Senior Management until 25.10.2013. 
+
+
+";"Biao Li
+Sternheimer
+Xiong
+Nieli
+Noeske
+Ping Li
+Yu
+Fantao Fu
+Ott
+Hein";NULL;All;All;2013-10-21 00:00:00.000;2013-10-22 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:50:27;NULL
+77;2013-10-25 00:00:00.000;1;I;Management Committee Meeting 25.10.2013;"1. Marketing  I
+SSD offers:
+Hannover Airport - owned by the city of Hannover & Lower Saxony = very low default, low margin - recommendation: reject
+IT company based in Stuttgart - high marging - Marketing would like to proceed with the deal
+
+Sold Assets
+Meetings with Unicredit and Bayern LB shall be arranged
+Helaba Frankfurt wants to renew the exisitng agreement based on the old contract terms.
+
+2. Marketing II
+Processing for transfer business runs smoothly.  However, one US$ balance had to be booked in the Nostro account of the bank. Dong Fu informed that he has encountered problems with US$ transactions. Treasury department must be informed about the US$ amounts. The US$ figures are delivered by the Payment Department (Operations). It is agreed that US$ figures have to be delivered to Marketing and Treasury before 4 p.m. daily. 
+Meeting shall be held next week in order to coordinate an efficient cooperation among the three departments.
+
+3. IT
+Our Customers shall be about SEPA transactions as the old version shall not be applicable after Feb 2014. 
+Information letter should be send together with our account statements at year end so that our customers can get prepared to use the new bank transfer method.
+Our H.O. Data Center needs to change some SEPA related program tools to enable a smooth work execution with our converter. 
+
+4. Treasury
+Eurocity Bank and AKBANK Frankfurt are interested in a bilateral business relationship (MM transactions or selling CCB assets). 
+Daimler Benz is interested in a Foreign Exchange contract with CCBFF.  
+VW also sent an agreement for foreign exchange. 
+CCB Hong Kong granted a loan for CCBFF.
+Our assets could be enlarged by granting a 40 m EUR loan to Bank of Communications.
+
+5. General Management
+Latest Overseas branches figures (September 2013) had been published. 
+CCBFF performs before CCB London and CCB Johannesburg in terms of assets. Overall the results of CCBFF were 11% lower compared to last year. 
+CCB Shanghai will become second headquarter for the CCB group. There will be a new CCB branches in Osaka, Japan.
+
+6. Accounting
+“Performance Analysis by end of September” had been presented.
+
+7. Risk Controlling
+Risk analyis of CCBF´s asset structure presented. Different scenarios explained how the CCBF could be affected by its current asset structure. 
+Details: “Risk Analysis Asset Structure – 3rd Quarter 2013”
+";"Sternheimer
+Biao Li
+Xiong
+Nöske
+Nieli
+LV 
+Xiaodong Wang
+Qian
+Yu
+Gilhaus
+Ott
+Dong Fu
+Hein";NULL;All;All;2013-10-25 00:00:00.000;2013-10-26 00:00:00.000;CLOSED;TASK CLOSED from hein on 29.10.2013 15:12:33;NULL
+78;2013-11-04 00:00:00.000;1;I;Management Committee Meeting 04.11.2013;"1. Senior Management 
+Welcome to Mr. Breunig as new Accounting Head and explanations related to our regular weekly meetings
+
+2. IT
+H.O. had been contacted regarding software updates related to SEPA. H.O. agreed to execute them as soon as possible.
+Old hardware components shall be destroyed by issuing a protocol to provide more storage space. 
+Testing environment for Treasury had been set up and can be started this week.
+
+3. Accounting Department
+Month end statements for Deutsche Bundesbank and HO are in preparation together with new Accounting Head. 
+
+4. Marketing II
+SSD offer Hannover Airport declined due to the low margin. 
+SSD offers from Austrian company declined as well due lack of austrian country limit. 
+SMPA with LBBW signed which enables us to start business. 
+
+5. Credit Department
+H.O. would like to know CCBFF’s business strategy. H.O. suggested that loans can be approved locally and booked in Hong Kong. 
+For further details please see email dd. 30.10.2013 from Mrs. Ping Li.
+
+6. Marketing I
+LBBW used € 40 m to purchase CCB LC based assets. DZ and other banks are approached to extend the asset selling.
+Total Loans end of October 2013 amount to appr. 2.1 bn Euros (appr. 3 bn US $).
+Two audit deals matured and have been repaid in time. Prefinancing loans amounted to € 400 m. and had been paid out CCB Jilin Branch.
+
+7. Risk Management
+CAR stable despite EUR-US $ ratio decrease. In case of further EUR-US $ decrease we need closely to monitor and counteract.
+Bundesbank confirmed that the lending of government related loans have a risk-weighting factor of 0%. 
+
+8. Senior Management 
+Meeting between our Chinese delegation (Chairman) and Deutsche Bundesbank and Ministry of Economics Wiesbade positive.
+Our Chairman comitted full support to CCBF especially to play an active role as RMB clearing bank and/or member in the clearing house.
+Additionally HO provides full support to the Financial Market place FFM to issue a RMB bond amounting to 1 bn RMB (100 - 100 m €)
+in due course. CCB Frankfurt shall participate in all future working group meetings related to the establishment of the RMB Clearing Center
+in Frankfurt. 
+";"Sternheimer
+Biao Li
+Xiong
+Nieli
+Ott,
+Ping Li
+Xiaodong Wang
+Lv
+Yu
+Gilhaus
+Noeske
+Breunig
+Dong Fu
+Hein";NULL;All;All;2013-11-04 00:00:00.000;2013-11-05 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:44:37;NULL
+79;2013-11-11 00:00:00.000;1;I;Management Committee Meeting 11.11.2013;"1. IT
+HO started software update to meet SEPA requirements.
+
+2. Marketing I
+Offer from NordLB - SSD Meyer Werft - ship building company discussed and rejected.
+Offer from DZ Bank - SSD GKM Electricity in progress
+
+3. Accounting
+Proposal to implement a common database for Chinese and German financial account statements. 
+Booking of FX Transactions under review. Reportings October 2013 finalized. 
+
+4. Risk Management
+PWC shall start on 02.01.2014. 
+CAR: 8,9 due to the weak Euro/USD FX rate. 
+Liquiditiy ratio: 2,52. Without the irrevocable lending commitment liquidity ratio will just match the required ration of at least 1. 
+(please see attachment daily liquidity chart). 
+
+5. Marketing II
+Ak Bank approach regarding asset selling in progress.
+
+6. Treasury
+Tests related to FX customer deals successfully completed. German Government bond purchase under discussion. Desk insruction has to be issued.
+Furthermore, he said that the treasury department had a meeting with the Accounting and Payment Department to discuss the purchase of bonds. A new Desk Instruction has to be issued.
+
+7. Senior Management 
+RMB Bond shall be issued together with another strong financial institution (f.e. Coba, Deutsche Bank or HSBC) according to the wish of our Chairman.
+CCBF assets should reach € 3 bn as per end of 2013 to be in line with our budget target.
+Regarding our liquidity planning the so called “Available for Sale Bonds” are an option to increase the bank’s short termed liquidity assets.
+This would support CCB Frankfurt not to be so dependend from H.O or domestic branches support. A
+Liquidity key ratio is stable over 1,0 (Please see daily liquidity chart). 
+In the future the bank has to ensure the liquidity according to the new regulations starting 1st January 2014. 
+Liquidity strategy shall be prepared in close cooperation between Risk Management, Operations and Treasury.
+";"Biao Li
+Xiong
+Yu
+Gilhaus
+Breunig
+Dong Fu
+Lv
+Nöske
+Ott
+Nieli
+Hein
+";NULL;All;All;2013-11-11 00:00:00.000;2013-11-12 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:50:39;NULL
+80;2013-11-18 00:00:00.000;1;I;Management Committee Meeting 18.11.2013;"1. Marketing I
+SSD offer from Société Générale rejected because of non available France country limit for CCB Frankfurt.
+
+2. Accounting
+Subordinated loans could strengthen our capital basis. Total amount could be 50% of our core capital = 36,950,000.-EUR
+Subordinated loans should have a duration of 5 years (to be prolonged after 3 years).
+Our total loans exposure (Solva) could be increased in case we could strengthen our capital basis.
+Short term customer deposits do not have a positive impact on our liquidity ratio.
+
+3. IT
+Mr. Yu and Mrs. Xiong went to a meeting with other Chinese banks last week. They reported that Tier 2 capital was also a discussion item. 
+Furthermore he says that other Chinese banks calculate their liquidity on a daily basis. 
+Mr. Yu and Mr. Papas attended the Bundesbank Working Group ""clearing centre"". Bundesbank prefers to have a Clearing House 
+consisting of some German and Chinese Banks instead of a single Clearing bank runned by a single credit institution.
+
+4.  Treasury
+HO decided to increase the lending limit to overseas branches to US § 1 bn. which shall have a positive impact on our branch. 
+
+5. Marketing II
+Two other banks have countersigned contracts to purchase CCB LC based businesses from our branches. 
+CIC limit has to be monitored during the absence Mr. Nieli and Mrs. Ping Li. 
+
+6. Senior Management - Treasury - Business Trip China 
+Mr. Sternheimer and Mr. Xiadong Wang accompaniend the delegation organized by Mr. Florian Rentsch from the Ministry of Economics in Wiesbaden.
+The business trip lasted from 09.11.2013 -17.11.2013 and included a lot of talks and presentation with responsibles of CBRC - Peoples bank of China and other local business orientated german chinese organisations in Beijing, Shanhai and Hongkong. CCBF took the opportunity to establish good contacts to the delegation members and the parties visited in China. One of our goals shall be to win Volkswagen and Lufthansa as deposit customers and to strengthen the
+good communication with Dr. Bredt (Ministry of Economics Wiesbaden) to show our branch as reliable partner for the issuance of RMB bonds and the position
+as RMB clearing bank.
+
+CCB´s Johannesburg approach to receive a capital increase from HO had been approved. We are still waiting to get our application approved.
+
+Starting January 2014 HO implements an extensive rating procedure to all overseas branches. The necessary documentation shall be forwarded to us shortly.
+
+Mr. Sternheimer and Mr. Wang had a meeting regarding the RMB hub issue with the Chinese Trading Promotion Agency. They consider Frankfurt as a strong potential partner and would like to consider closer cooperation in the future.
+
+In Shanghai Mr. Sternheimer and Mr. Wang attended the “2nd Hessisches Shanghai Business Forum” 
+In Hong Kong Mr. Sternheimer and Mr. Wang had different talks related to our plans for the first RMB Bond issuance.  
+Dr. Bredt shall support our activities to issue a RMB bond as quick as possible to strengthen the financial market place Frankfurt. 
+
+7. General Information
+Mr. Sternheimer informed that according to his info the so far accepted Irrevocable Lending Limit might in our liquidity calculation cannot be considered in 
+future anymore. Therefore we need to get prepared for such a scenario and to plan some counteractions to maintain a sufficient liquidity ratio under this scenario . 
+In 2014 new extensive regulations (CRR) will be in force. Risk Management/Accounting  and Credit Administration shall get familiar with the relevant new rules. 
+The ""similiar supervision status of China´s Supervisory Banking Authority"" had been discussed. Since - according to the nowadays regulation - China has not
+a similiar comparable banking regulatory status to Germany. Therefore lendings to Chinese banks starting in 2014 cannot exceed 25% (€ 18.4 m) of our dotation capital (€ 73.9 m). ";"Sternheimer
+Xiong
+Yu
+Gilhaus
+Breunig
+Fu
+Lv
+Jin Wang
+Ott
+Hein ";NULL;All;All;2013-11-18 00:00:00.000;2013-11-19 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:50:48;NULL
+81;2013-11-26 00:00:00.000;1;I;Management Committee Meeting 26.11.2013;"Marketing I
+no new SSD invitations from third parties.
+In case CCBFF wants to launch a Schuldscheindarlehen it would have to be decided whether it should be done with or without listing
+HSBC in Düsseldorf could act as a potential cooperation partner. Before starting HO should agree to this procedure.
+ 
+2. Accounting
+Currently they are preparing the year end work. Figures 2012 and 2013 are similar, CCBFF has achieved all budget targets.  
+
+3. Treasury
+700 Mio. EUR. obligo asset shall be sold. Furthermore a gap of 500 Mio. EUR must be managed unless assets can be sold. To cover the gap money from CCB Hong Kong, Head Office and CCB Sydney has been borrowed. Commerzbank reduced asset selling limit. As a last way out the gap could be closed by moving US$ from  HO to our account.
+VW has signed an FX agreement which enables us to start FX business with them 2014. 
+Swedish SEB Bank would also be a potential partner for SSD issuance.
+The purchase of German government bonds is recommended. Currently treasury carries out some research on the purchase.  
+
+4. Marketing II
+Problems with CCB Jilin branch are still existing. 115 collections with a total value of 56 Mio. EUR have been properly paid. There are still 38 unpaid collections item with a total value of 51 Mio. EUR. 
+XS Holding loan matures on 05.12.2013. We got in touch with our customer and the responsible Xuzhou Branch to get repaid in time. 
+
+5. IT
+SEPA test successfully completed.  
+Testing the Multibank converter led to problems and mistakes which shall be solved by Multibank/Pass programming in due course.
+HO finished its development work.
+New BSM software coming up. CCB Hong Kong has to develop and install the new interface.
+
+6. Risk Management
+CAR: 9
+liquidity ratio moves between 2 and 3. 
+CCB Frankfurt Branch’s credit portfolio contains only low risk business. 
+No value of adjustments necessary
+2nd internal audit, last time carried out by W+ST finishes end of this week. So far no essential audit remarks or findings.
+
+7. Credit Administration  
+New rating system shall be introduced to all branches and subsidiaries effective January 2014. 
+For every customer, parent company and guarantor a rating has to be done following the guidelines of the new rating system.
+CCBFF has to rate approximately 70-80 ratings in 2014
+The new rating tool is very time consuming and detailed
+Each branch or subsidiary is ordered to finish the new rating within the first half of 2014 - therefore a detailed action plan is required to finish the work in time. 
+According to HO guidelines the borrower rating should be executed by Credit Marketing. This is not in line with our daily practice - Credit Administration is 
+exercising the rating task.
+";"Sternheimer
+Xiong
+Yu
+Gilhaus
+Breunig
+Dong Fu
+Nieli 
+Ott
+Li
+Hein";NULL;All;All;2013-11-26 00:00:00.000;2013-11-27 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:50:58;NULL
+82;2013-12-02 00:00:00.000;2;I;Management Committee Meeting 02.12.2013;"1. Treasury
+250 Million US$ could be funded and another 40 Million US$ funded today. Due to the established contact during the last chinese business trip VW AG would like to place customer deposits with CCB Frankfurt permanently. The total amount ranges between 100 - 500 m EUR. 
+Treasury is currently testing the FX trading with the HO.
+
+2. IT
+HO should provide a real time liquidity calculation.  
+FX trading tests shall be reviewed to evaluate the current program status. 
+
+3. Accounting
+Month end report completed.
+PwC Auditors start they work tomorrow. HO wants the PwC´s report on the 7th of January 2014. 
+
+4. Marketing II
+VW had been informed regarding the open collection items with CCB Jilin Branch. 
+FX agreements shall will be sent to VW and Daimler AG to start FX business as soon as possible. 
+XS Holding loan is repaid on the 4th of December 2013 (one day before maturity)
+
+5. Credit Administration 
+Total loan value across 6 CCB Branches is around 2,5 bn US $. 
+CCB Frankfurt’s share amounts to 800 m US $.
+Credit application Tiptop Energy Limited and Sinopec Century Bright Capital Investment Ltd. finalized and ready for approval.
+
+6. Risk Management
+Risk Controlling figures move within the limits.  
+
+7. Senior Management
+It is expected that BaFin deletes the position ""Irrevocable lending limit of 1.5 bn €"" in our liquidity calculation. Therefore counteractions have to be planned to cope with such an expected scenario.
+The opition ""capital Increase via subordinated loan"" should be discussed with our Public Auditors.
+CCB London has successfully placed a RMB bond in the market. CCBF intents to start such an action as well.  
+";"Sternheimer
+Biao Li
+Xiong
+Yu
+Breunig
+Liu
+Xiadong Wang
+Dong Fu
+Nieli
+Ott
+Ping Li
+Hein";NULL;All;All;2013-12-02 00:00:00.000;2013-12-03 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:51:05;NULL
+83;2013-12-09 00:00:00.000;1;I;Management Committee Meeting 09.12.2013;"1. Accounting
+year end reserve bookings need to be done. Accounting is in the process to analyze the expense side.  
+
+2. EDP
+Starting next Saturday evening until Sunday morning HO shall carry out an IT test. 
+
+3. Treasury
+liquidity gap of US $ 500 m had been lowered to US $ 200 m. 
+German Government Bonds shall be purchased soon.
+This week we expect a Volkswagen AG Deposit placement of around € 200 to strengthen our liquidity ratio
+
+4. Marketing II
+XS loan shall be repaid - CCB London is interested to take over the loan in the future
+
+5. Marketing I
+SSD budget target of 120 m € not met so far. 
+SSD offer Stada € 100 m with a margin of 125 bps does not meet our requirements.
+ 
+6. Risk Management
+Our credit portfolio consists of high quality assets. 
+Due to negative press info (downgrade of Thyssen Krupp) we should conservatively evaluate the cooperation with the company. 
+CAR moves between 8.8 and 8.9. Liquidity ratio is tight due to cancellation of the € 1.5 bn. 
+ 
+";"Biao Li
+Xiong
+Breunig
+Yu
+Xiaodong Wang
+Lv
+Liu
+Dong Fu
+Ott
+Ping Li
+Gilhaus
+Nieli
+Hein";NULL;All;All;2013-12-09 00:00:00.000;2013-12-10 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 03.01.2014 09:51:13;NULL
+84;2013-12-23 00:00:00.000;1;I;Management Committee Meeting 23.12.2013;"- Credit Marketing I
+Syndicated loans: no new business. Basically during 2013 many offers had been rejected due to non compliance with H.O. requirements
+tenor too long, transaction volume too small, margin too low, rating too weak (below BBB), unfavorable business sector, finance sector, 
+no country limit etc. 
+RMB Bond issuance - we are waiting for HSBC evaluation of the project.
+
+- Credit Administration
+Review of our credit files successfully completed
+
+- Accounting 
+The year end key figures are in line with the budget 
+
+- IT
+RMB Offshore Center - Mr. Yu attented the Working Group Meeting  -  all Chinese banks agreed to the solution ""clearing bank - clearing house)
+
+- Treasury
+Obligo and Liquidity management successfully managed for the end of year 2013.
+German Government Bonds purchased - budget fulfilled 
+
+- Risk Controlling
+Ratios in line with legal requirements 
+Good quality of our credit portfolio
+no bad loans
+All obligors rated as “pass” 
+
+
+
+";"Biao Li
+Breunig
+Yu
+Xiaodong Wang
+Ping Li
+Gilhaus
+Nieli";NULL;MCM;All;2013-12-23 00:00:00.000;2013-12-24 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 06.01.2014 09:38:58;NULL
+85;2013-12-30 00:00:00.000;1;I;MCM 30.12.2013;"- Markteting I
+Bonds: no news. We are waiting for info from H.O. how to proceed.
+
+- Accounting 
+year-end financial figures are finalized and nearly completed. 
+No major discrepancies between budget and acutal figures.
+
+- Credit Administration 
+Credit Documentation completed
+
+- Risk Controlling 
+Info about special audit according to article 44 German Banking Act starting on 05th of February 2014.
+";"Biao Li
+Nieli
+Gilhaus
+Breunig
+Ping Li
+Yu";NULL;All;All;2013-12-30 00:00:00.000;2013-12-31 00:00:00.000;STILL PENDING;NULL;NULL
+86;2013-12-16 00:00:00.000;1;I;Management Committee Meeting 16.12.2013;"1. Marketing I
+KWG reportings should be moved to accounting department
+BSM provides new reporting tool January 2014. 
+EU-regulations stipulate that new reportings have to be executed by May 2014.
+Main changes are related to article 13 and 14 German Banking Act. 
+
+2. Accounting
+Year end financial statements are in preperation. Currently Accounting deals with the balance sheet reconciliation.  
+the building of reserves need  by the General Management. Mr. Breunig already got the provisions from the Chinese banking authority.
+
+3. EDP
+HO has released a new SEPA tool – testing went successful. Operations can use the new system.
+CCB China IT auditors are finalizing the IT report (english version).
+
+4. Treasury
+Year end liquidity managed successfully. 
+Purchase of German government bonds executed.
+
+5. Credit Administration
+two now loans have been disbursed. Sanofi  loan of 50 m US $ shall be disbursed with 7.5 m US $ for the time being.
+Budget for syndicated loans € 130 m. not met. We reached € 103 m.  
+
+6. Risk Management
+no ratio changes since last week 
+
+7. Senior Management
+Applied capital increase not approved yet. HO shall be contacted again to speed up the matter.
+Particpants shall get prepared for Budget meeting talks in the 2nd week of 2014.  
+
+8. Marketing II
+Due to the forthcoming Christmas holidays and related due credit businesses after christmas our CAR shall decline to 8,7. 
+Regarding further prefinancings the available obligo is tight. Therefore emphazis should be put on the issue to sell asseets to third banks.
+Mizuho Bank has offered to purchase our assets - after contract check we should start business with them.
+";"Biao Li
+Xiong
+Sternheimer
+Breunig
+Yu
+Xiaodong Wang
+Lv
+Dong Fu
+Ping Li
+Gilhaus
+Nieli
+Hein";NULL;All;All;2013-12-16 00:00:00.000;2013-12-17 00:00:00.000;STILL PENDING;NULL;NULL
+87;2014-01-06 00:00:00.000;1;I;Management Committee Meeting;"Breunig,  Accounting
+- prelimanary result 10,5 Mil. € before tax
+- budget targets are fulfilled
+- Expense side also inside the budget
+
+Fu Dong, Foreign Department
+- simplify the procedure with the signatures
+- new processing of the Forfaiting business should be implemented. Mr Fu Dong presented a new Flowchart
+
+Yu, Operations
+Sepa should be implemented until Febraury 2014. Together with Pass Consulting Mr. Yu and Papas are still working on the converter. Furthermore, we will face in 2014 a lot of changes in the interface due to the new regulations (CRR CRD IV)
+The new rules should be applied at the end of this month.
+
+Wang, X. Treasury
+The Liquidity key figure is quite good and stable above ""1"" (1,28). No more comments.
+
+Nieli, P. 
+The quarterly risk classification will be finished in the next days.
+1st week PWC audit. Until now no considerable auditors remarks
+Capital ratio over 9,0 %. LiqV ratio stable over 1,0.
+Credit portfolio is stable, no bad debt loans, classification ""pass""
+
+
+Biao Li, General Management
+- Budget is fulfilled +  cost control
+- Purchase of a new office building is approved
+- Discussion about the restruturing of our credit portfolio.
+- Capital injection should be executed in the first half 2014
+
+Sternheimer, General Management
+- negoitation with the landlord because of the upcoming cancelation of the rental contract
+- introduction in the special audit § 44 KWG
+ ";"Biao Li
+Xiong
+Sternheimer
+Breunig
+Yu
+Lv
+Dong Fu
+Ping Li
+Gilhaus
+Nieli
+Ott";NULL;All;All;2014-01-06 00:00:00.000;2014-01-07 00:00:00.000;STILL PENDING;NULL;NULL
+88;2014-01-13 00:00:00.000;1;I;Management Committee Meeting 13.1.2014;"1. Credit Marketing
+
+SSD offers 
+- S&T Antriebstechnik, Austria:  € 75 Mil, margin: 220-250 bps / 5 years
+   Refused: no country limit for Austria, rating around BB (acc. to high margin)
+- AMG Advanced Metallurgical Group N.V., The Netherlands
+   conversion and recycling based businesses, vacuum systems and service business
+   Heavy losses in 2013, rating around BB. As far as we heard, country limit for the Netherlands was delegated to the United Kingdom.
+   Refused: Figures and BB rating are not in compliance with H.O. requirements
+- Meggle AG, Wasserburg:
+   € 50 million, 7 (125-150 bps) and 10 years (145-170 bps),
+   Book Closure: 12.02.2014
+   To check
+
+    Asset Sellings (contracts)
+    Commerzbank still in process
+    Raiffeisenlandesbank Linz in process
+
+2. Credit Administration
+No comments
+
+3. Accounting
+Year end Balance Sheet in preperation. 
+Budget 2014 in preperation. 
+Key planning figures demand an asset increase of 30 % and a 25 % Profit increase.
+BSM shall provide new reporting tools
+
+4. Marketing II
+- new agreement with Mizhou Bank
+- Financing Audi 40 Mil. USD 
+
+5. Treasury
+no special issues
+
+6. Risk Controlling
+- introduction to the special audit acc. to § 44 KWG
+- second week PWC Audit
+- CAR over 9,0 %, LiqvV over 1,0, Credit portfolio -> no signs of bad debt loans
+
+7. IT
+- Sepa implementation in testing phase
+
+8. Senior Management
+Telephone meeting on next Wednesday regarding RMB Bond 
+";"Biao Li
+Xiong
+Sternheimer
+Nieli
+Breunig
+Gilhaus
+Ping Li
+Fu Dong
+Lv
+Ott";NULL;All;All;2014-01-13 00:00:00.000;2014-01-14 00:00:00.000;CLOSED;TASK CLOSED from Nieli on 21.01.2014 13:19:07;NULL
+89;2014-01-20 00:00:00.000;1;I;Management Committee Meeting 20.01.2014;"1. Marketing I 
+Meggle AG, Wasserburg:
+€ 50 million, 7 (125-150 bps) and 10 years (145-170 bps),
+Book Closure: 12.02.2014
+-	Still to be examined
+-	In view of Chinese spring festival and long tenor min. 7 years) , an approval will not be appropriate
+
+2. Accounting
+- year end preperation for PwC in progress - no essential remarks or recommendations from PwC
+- 2014 Budget prepared and reported to Head Office. 
+
+3. Credit Administration
+- PWC request SNC Kumquat
+
+4. Credit Marketing II
+- responsibility for the balance confirmation
+- Preparation of the marketing proposal 2014
+- FX Booking -> much pressure on the Foreing Department. Switch to the Treasury
+
+5. Treasury
+- Meeting with Bank of Tokyo 31.1.2014 regarding asset trading
+- UK non-bank financial institution with 3 charity holding wants to  place eur deposit with us -> AML is already informed
+
+6. IT 
+- Focus on Sepa ( still pending) Timeline end of 2/14.
+- H.O. IT Auditors report will be finalized in the next days 
+
+7. Senior Management 
+- Linklaters presented the prelimanary timeline for the RMB Bond. They are working on the prospectus. Afterwards BaFin approval procedure has to be started
+
+";"Sternheimer
+Xiong
+Nieli
+Breunig
+Gilhaus
+Ping Li
+Fu Dong
+Lv
+Ott
+Yu";NULL;All;All;2014-01-20 00:00:00.000;2014-01-21 00:00:00.000;STILL PENDING;NULL;NULL
+90;2014-02-03 00:00:00.000;1;I;"Management Commitee Meeting
+";"SENIOR MANAGEMENT  
+
+Personnel Measures to be implemented within the first half of 2014: 
+
+Risk Controlling/Reporting 
+internal transfer of Mrs. Ran Zhi from our operations department to risk department. In November 2007 Mrs. Ran Zhi has successfully qualified as ""certified risk manager"" . With view to the manyfold tasks in our Risk Department and Mrs. Zhi´s good knowledge of our bank (operations/credit adminstration/reporting etc.) she shall support the risk management and parallel take over the legal credit reporting according to the German Banking Act and the CRR.
+
+Accounting
+Fixed employment of a qualified local accountant (Bachelor of Business Administration) to cope with the increasing accounting regulations/reporting demands according to German Accounting Law (HGB) and IFRS and to smoothly overtake the task and duties of Mr. Nöske who shall leave the bank for retirement in the course of the next year.
+
+Marketing I
+Fixed employment of a qualified local experienced marketing responsible supporting our local borrower´s marketing activities - this employment depends on our capital increase.
+
+Credit Administration 
+Fixed employment of a qualified local  credit analyst to cope with the increasing legal and reporting demands (f.e. new rating system HO). 
+
+IT
+Fixed employment  - transfer - of a qualified chinese expatriate to deal with the manyfold IT tasks and increasing demands and last but not least to replace Mrs. Li Zhang who left the bank end of December 2013.
+
+Marketing II - Foreign Department
+Fixed employment - transfer - of a qualified chinese expatriate to support the handling of our increasing foreign business
+and to overtake chinese marketing responsibilities as well. 
+
+
+
+ACCOUNTING 
+Profit end of January (1.5 m €) is mainly due to FX trading and needs to be analyzed
+
+TREASURY : 
+Profits gained via one year FX dealings related to FX or spot forwards with CCB Fujian and CCB Xiamen. CCBF earned 100 bps on average per deal.   
+CCB H.O. encourages CCB Frankfurt to purchase Chinese bonds and securities, but power of attorney - for the time being -  allows us government bond purchase only. 
+
+Marketing I: 
+SSD offer related to France had to be rejected because of missing limits.  
+
+FOREIGN DEPARTMENT 
+All interim accounts are cleared. Due to booking procedure (booking of FX transactions same day value - booking of the financing transactions with CCB mainland branches with prevalue two days)  Cpd account is technically affected (overdraft). 
+Foreign Department is obliged to adjust and set off the interims Accounts daily and to document and monitor the technical overdrafts daily. 
+
+RISK CONTROLLING 
+Liquidity key figure on 31.01.2014 amounted to 1.16. Treasury and Risk Controlling had been ordered to closely follow and plan the liquditiy daily comfortably so that the bank does not violate the minimum liquidity ratio of 1. 
+Without HO clearing money the liquidity ratio would be around 1,06. 
+
+
+";"Sternheimer
+Nieli
+Papas
+Ott
+Gilhaus
+Lv
+Römer";NULL;All;All;2014-02-03 00:00:00.000;2014-02-04 00:00:00.000;STILL PENDING;NULL;NULL
+91;2014-02-24 00:00:00.000;1;A;"Internal commnication problem
+loss due to incorrect handling and inproper communication by our Foreign dep and Treasury dep
+
+";"5 FX deals concluded by Foreign Dep. were reversed by decision of Foreign Dep. on 21.02.2014, which created a loss of RMB 1,33 mil.
+
+The Marketing II received the phone call from Fujian branch on 13.02.2014 about FRP inquiry for the following customers
+client	                   value date	tenor	maturity date  currency amount               margin	fixed date
+fangxing--dongying	2014-2-21	136	2014-7-7	        USD	 2,063,387.26   	200	2014-2-18
+xihe--quanzhou	 2014-2-24	182	2014-8-25          USD	 3,000,000.00   	200	2014-2-18
+justsun--quanzhou	2014-2-25	182	2014-8-26	        USD	 7,000,000.00   	200	2014-2-13
+justsun-quanzhou      2014-2-25  182              2014-8-26	        USD	 5,000,000.00   	200	2014-2-18
+lianhua--quanzhou	2014-2-26	184	2014-8-29	        USD	 3,000,000.00   	200	2014-2-18
+
+Foreign Dept informed the mainland branch about the aformentioned deals and supervise the receive of MT799 from mainland branch, after receiving the MT799 and they should transfer it continully to the Credit Administration to get signature and pay out.  
+Due to the external audit carried out by DBB on the order of BaFin, Foreign Dept were informed that we should stop all FRP and Authorized payment business. Foreign Dept got impression that those already concluded deals should be reversed and stopped.  Instead of avoiding a forseeable loss by asking Senior Management's final decision in this matter, Foreign Dept deceided on their own  without prior final approval of Senior Management.
+
+the following must be done:
+---------The certian procedure must be obeyed internally. 
+---------Nobody signed for the approval. The communication through email is not enough. 
+---------Check the procedure and modify the procedure";"Biao Li Karl Sternheimer Bo Xiong 
+Paolo Nieli Jin Wang
+Joachim Ott Dong Fu Fantao Fu
+Wolfgang Breunig
+Maoyuan Yu
+Xiaodong Wang 
+ Weihua Lv
+Ping Li 
+Gilhaus
+
+Ran Zhi";NULL;ALL;ALL;2014-02-24 00:00:00.000;2014-03-10 00:00:00.000;STILL PENDING;NULL;NULL
+92;2014-02-24 00:00:00.000;2;A;"Special audit according to §44 KWG
+";"Bundesbank audit head Mr. Scheblein hinted not to accept CCB mainland guarantees as a collateral. Such a treatment would have a heavy negative impact to our  exisiting business model (authorized payment and FRP, bilateral loans). Therefore SM in close cooperation with KPMG experts issued a letter to Buba audit head and defended the bank's position.
+CCB Guarantee will not be accepted by the auditors. Regarding to the risk bearing capacity, we have to increase the dotation capital quickly or decrease our business, e.g. Authorized payments and FRPs.  We will prepare a letter to BaFin in cooperation with KPMG to argue for the acceptance of the CCB guarantee.
+";NULL;"+++ Update from zhi on 2014-3-7 11:55:13 +++ 
+The letter is finished and sent to the BaFin on 05.03.2014. The team leader of the Bundesbank auditors received the copy of our letter.";GM Nieli Gilhaus;GM Nieli Gilhaus;2014-02-24 00:00:00.000;2014-02-28 00:00:00.000;CLOSED;TASK CLOSED from zhi on 2014-3-12 16:10:30;NULL
+93;2014-02-24 00:00:00.000;3;I;"AWV report
+";"Info: 
+AWV report- The new report form of Foreign economic regulation is already transfered to Accounting dep.
+
+";NULL;NULL;accounting;accounting;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;CLOSED;TASK CLOSED from zhi on 2014-3-12 11:44:01;NULL
+94;2014-02-24 00:00:00.000;4;I;Linuo acc. was blocked due to an order of payment from financial court Hamburg (T €37 tax not paid);"Info:
+ Linuo acc. was blocked due to an order of payment from financial court Hamburg (T €37 tax not paid)
+
+";NULL;NULL;money laundering;money laundering;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;STILL PENDING;TASK CLOSED from zhi on 2014-3-7 10:04:10;NULL
+95;2014-02-24 00:00:00.000;5;A;CIC limit control;"
+CIC limit control
+FX deals are done in the Treasury department and can not be seen in the OCBS. CIC limit must be tightly controlled by Risk dept.  
+
+Based on the yestoday's limit utilization, risk dept should manually calculate the available limit and  inform treasury dep. 
+How this should be done needs to be discussed.
+Regarding the limit, Mr. Yu will change the keys in  BAIS for all bank counterparties.
+
+  
+";NULL;NULL;all;all;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;STILL PENDING;TASK CLOSED from zhi on 2014-3-12 11:53:09;NULL
+96;2014-02-24 00:00:00.000;6;B;Fulfillment of budget target -credit business;"
+Status of credit business is decreasing. Bilateral loans shall matured this year. New bilateral loans (€250 mil) need to be concluded to fulfill ho budget target, the same applies for new Schuldscheindarlehen budget(€120 mil). 
+
+";NULL;NULL;all;all;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;STILL PENDING;NULL;NULL
+97;2014-02-24 00:00:00.000;1;C;Credit Business with CCB Henan branch;"
+L/G to CCB Henan Branch
+PWC considers that borrower for this Guarantee should be the CCB Henan'S Chinese customer. We have concluded the contract with CCB Henan Branch. Mr. Posselt (PWC) shall approach PWC's experts and revert to us regarding the aforementioned item.
+";NULL;NULL;Gilhaus pwc;Gilhaus pwc;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;STILL PENDING;NULL;NULL
+98;2014-02-24 00:00:00.000;7;I;Treatment of China as a country which has received a strong equal supervision status like Germany;"
+The foreign banking association is preparing a fundamental letter describing the situation for the local chinese banks in Frankfurt Germany.
+";NULL;NULL;all;all;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;STILL PENDING;TASK CLOSED from zhi on 2014-3-7 10:07:24;NULL
+99;2014-02-24 00:00:00.000;1;I;Circular about Bista;"Info: 
+Circular about Bista was transfered to Accounting dep
+
+";NULL;NULL;accounting;accounting;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;CLOSED;TASK CLOSED from zhi on 2014-3-12 12:04:35;NULL
+100;2014-02-24 00:00:00.000;1;I;"Liquidity ratio
+
+Building purchase
+
+
+
+
+Trading book or banking book
+
+
+
+PWC IT audit
+
+SEPA converter problem
+
+
+Overdraft limit problem .
+
+RMB bond issuing
+
+RMB clearing center ";"
+Funds deposits VW are needed to maintain surficient liquidity ratio and improve it above 1 further.
+
+On HO instructions the intended building purchase must be financed via returned earnings for the year 2011+2012 (€16 mil)+ profit per the year 2013(€6.5 mil), after our public auditor PWC has confirmed the 2013 final figures. Building purchase is also one risk weighted assets and will not effect much to the CAR. (according to CRR Chapter 116)
+
+Due to numerous new FX deals, originated since 09 2013, our public auditor PWC is of the opinion that we should consider our status as trading book bank. We do not schare this opinion and tried to convince PWC from the opposite. 
+
+PWC IT audit is carried out. No essential findings so far.
+
+SEPA converter problem: function of return of direct debit does not work. The software must be updated. 
+
+Overdraft limit problem will be solved next month till 20. 03 by the HO IT center.
+
+RMB bond shall be issued latest by the beginning of May.
+
+RMB clearing center in Germany will be set up in Frankfurt am Main. Our branch is applying for that.";NULL;NULL;all;all;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;CLOSED;TASK CLOSED from zhi on 2014-3-17 8:52:57;NULL
+101;2014-02-24 00:00:00.000;1;A;Sold assets--new contracts;"
+We issued the new contracts regarding the sold assets to confirm that all risks will be transfered to the other banks. The contracts fom OCBC Bank, ING Bank Hongkong, LBBW and Australian Raiffensenzentrale Bank are done. The Commerzbank confirmed orally. Mr. Gilhaus will call the Commerzbank and ask for the contract. The Standard Chartered Bank and The Standard Chartered Bank and Credit Suisse Bank have no answer.";NULL;"+++ Update from zhi on 2014-3-7 10:46:44 +++ 
+Mr. Gilhaus call Commerzbank. We need to still wait.";"Marketing ";Gilhaus;2014-02-24 00:00:00.000;2014-02-25 00:00:00.000;STILL PENDING;NULL;NULL
+102;2014-03-03 00:00:00.000;1;A;"trading book bank or  banking book bank
+
+";"
+Due to the numerous FX business, PWC auditor Mr. Posselt is of the opinion that we should consider our status as trading book bank. It is not clearly clarified. Mr. Wang talked to other 3 chinese banks, ask about their situation. They do not have this problem.";"Biao LI Karl Sternheimer Bo Xiong
+Breunig Gilhaus Wang
+Ping Li Joachim Ott 
+Maoyuan Yu
+Nieli";NULL;all;all;2014-03-03 00:00:00.000;2014-03-07 00:00:00.000;STILL PENDING;TASK CLOSED from zhi on 2014-3-13 9:51:59;NULL
+103;2014-03-03 00:00:00.000;1;I;"Two Schuldscheindarlehen refused
+
+Profit from FX deals
+
+
+
+
+
+New rating system
+
+Accrued interest for early repayment 
+
+
+IT public audit
+
+
+New version of BAIS
+
+Short overview to the daily risk controll. 
+
+Regarding to the audit finding, the related department could issue the memo to your improvement.
+";"
+Due to rating and lower margin, we refused the two.
+
+Our profit from FX deals for Feburary is EUR 1.3 mil and EUR 2.4 mil for January. 
+According to statitic of Treasury Dept, the existing FX business with mainland branches is as follows
+50% from CCB Shandong branch,
+25% from CCB Hebei branch and 17% from CCB Fujian branch
+
+The new rating system should be carried out to evaluate our chinese customers (Authorize payment and FRP) to get a summary of our internal rating and risk bearing capacity.
+
+Accrued interest for early repayment 
+The accrued interest for the early repayment is manually booked in January. It causes the problem of Balance I. The problem is today fixed.
+
+IT public auditors has no big finding. But lot of documents are required.
+
+New version of BAIS 1.17 will be installed in our bank.
+
+Short overview to the daily risk controll. 
+
+
+Regarding to the audit finding, the related department could issue the memo to your improvement.
+";NULL;NULL;all;all;2014-03-03 00:00:00.000;2014-03-04 00:00:00.000;CLOSED;TASK CLOSED from zhi on 2014-3-13 11:42:31;NULL
+104;2014-03-03 00:00:00.000;2;A;"CIC limit ";"CIC limit
+We have limit excess to the CIC due to the new regulation. We are permitted to hold our situation limit excess EUR 22 Mil for CIC limit till August 2015.
+We must find a solution to the business. e. g. How to calculate the FX business in the limit calcultion? 2% or daily evaluation--2 methods
+We need to clarify quickly within this week. 
+";NULL;NULL;all;all;2014-03-03 00:00:00.000;2014-03-07 00:00:00.000;STILL PENDING;NULL;NULL
+105;2014-03-03 00:00:00.000;3;A;FX deal with VW;"FX with VW, we got the limit USD 50 mil. The limit must be set up in the OCBS. Then we can do the business.
+";NULL;NULL;credit and risk;credit and risk;2014-03-03 00:00:00.000;2014-03-07 00:00:00.000;STILL PENDING;NULL;NULL
+106;2014-03-03 00:00:00.000;4;C;" The realtime OBLIGO ";"Info:
+ The realtime OBLIGO in the OCBS is being developed by  IT support center. Hopfully, that we can get the live till end of March.
+we can later discuss if we calculate the accrued interest in the OBLIGO calculation.
+
+
+
+";NULL;NULL;HO IT;HO IT;2014-03-03 00:00:00.000;2014-03-31 00:00:00.000;STILL PENDING;NULL;NULL
+107;2014-03-03 00:00:00.000;1;C;"GBB Rating questionare
+
+Seminar for the new CRR, who will take part in, we must decide.";"
+GBB Rating questionare
+
+Seminar for the new CRR, who will take part in, we must decide.";NULL;NULL;risk and all;risk and all;2014-03-03 00:00:00.000;2014-03-07 00:00:00.000;STILL PENDING;NULL;NULL
+108;2014-03-10 00:00:00.000;1;I;"Sold assets and FX business
+
+
+
+
+
+The business in Foreign Dep. is going well.
+
+FX business
+
+
+We will do the business with Daimler.
+
+Outsourcing for the New rating system
+
+new loan business with guarantee
+
+Online Obligo report 
+
+
+CIC limit supervision
+
+Risk overview
+
+
+";"Due to the not clear assignment in the contracts, wether our sold assets must be covered by Liability Surplus, the PWC auditors are not 100% sure. 
+Because of the big volume of FX forward business, according to PWC's opinion that we should be a trading book bank.
+Till now we do not receive any report in writing. We will wait till Friday.
+
+The business in Foreign Dep. is going well.
+VW-well financing party in China
+
+Profit from FX deals was USD T 450 for the first week in March. Compared to January and Febuary, it decreased because of the lower authorized payment and FRP
+
+We will do FX business with Daimler.
+
+For the New rating system we need a Service Level Agreement with HO considering it as an Outsourcing partner.
+
+New loan business with guarantee from mainland branch. 
+
+Online Obligo report will be carried out in the middle of April by our Head Office.
+
+Calculating with 2% of FX exposure, we will get EUR 29 mil (CAR) limit usage under CIC. Calculating with 1% and market revaluation, we will get EUR 12 mil limit usage under CIC.
+
+Risk overview
+Mr. Nieli will issue the minutes of call with Mrs. Mohn about the credit unit for P.R.C. ";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Paolo Nieli 
+Maoyuan Yu
+Ping Li
+Fantao Fu
+Xiaodong Wang
+Joachim Ott
+Wolfgang Breunig
+Ran Zhi";"+++ Update from zhi on 2014-3-13 11:22:16 +++ 
+From the end of March, we will calculate risk occupation for all FX business with 1% weight plus market revalation of the FX exposure, which will release the CIC limit utilization.";all;all;2014-03-10 00:00:00.000;2014-03-11 00:00:00.000;STILL PENDING;NULL;NULL
+109;2014-03-17 00:00:00.000;2;I;"Good news about isusses of sold assets and trading book bank
+
+
+General provision-0.13% of our credit portfolio
+
+
+Foreign business
+
+
+Treasury dept.
+
+
+Contracts for Authorized payment and FRP
+
+
+
+CIC limit calculation in the system
+
+
+
+
+Maoyuan Yu
+system testing
+
+
+
+
+
+Risk controlling
+
+
+
+
+
+Cooperation with Sparkasse and telephone meeting with KPMG
+";"Info:
+We are still non-trading book bank.
+The contracts of sold assets are considered as sub-participant contracts, which means that the obligo limit must not be used to cover the sold assets.
+
+We build up the general provision according to the german law. HO asked for whether we build up more of the general provision till 1%. Mr. Breunig has to check the feasibility.
+
+Foreign Dept finisched the basic information for the Daimler AG.  
+Foreign Dept is preparing some documents for the VW business.
+
+Exchange rate of CNY is lowing. The Chinese govement changes the range of the exchange rate of onshore CNY.
+The profit of FX business for last week was very small due to down of the RMB exchange rate and decreasing of AP and FRP. 
+
+FRP Contracts: we have the English version . We attach the english version to the signed contracts, new signature is not necessary.  
+For the Authorized payment we have  already the English version.
+
+CIC limit calculation in the system is still not correct. We must change it.  Because we will get more and more FX forward business requirements. Mr. Yu suggested to change the system with new method: 1%  of nominal value of FX business and daily revaluation, but with a conservative buffer. This must be decided.
+
+Problem of Online banking-token do not work correctly: We reported to HO, and now report it to HO again and try to give pressure to HO IT to solve the problem.
+We tested new function with GMPS--the mainland branches can directly do the payment at their terminals. This will reduce our manual working at the cleaing dept and reduce the operational risk.
+BAIS update-CCB Hong kong install the 
+Online Obligo in OCBS is still in the process in HO.
+
+We are in the way to complement the new risk bearing capacity.
+We will get the rating mapping.
+The availble CAR has to be calculated to develop the business. 
+We can diversify the business with low risk weight to fufill the budget, e.g. Bonds or Bank loans and so on.
+
+About the capital injection, HO can not tell the exact date, it is in the processing in CBRC.
+
+Mr. Sternheimer visited the Sparkasse in Berlin. The Cooperation with Sparkasse could bring us some business, e.g. credit card business, bilateral business and  foreign business.
+
+Telephone meeting with KPMG about the audit findings of Bundes bank.
+
+The new budget is in discussion within HO. Maybe we are asked for the 25% increas of assets.  
+
+";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Wolfgang Breunig
+Joachim Ott
+Xiaodong Wang
+Ping Li
+Dong Fu
+Maoyuan Yu
+Paolo Nieli
+Ran Zhi";NULL;all;all;2014-03-10 00:00:00.000;2014-03-11 00:00:00.000;CLOSED;TASK CLOSED from zhi on 17.03.2014 15:06:01;NULL
+110;2014-03-24 00:00:00.000;1;C;"Short check for last meeting
+";"
+GBB questionare 
+CRR seminar
+
+";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Wolfgang Gilhaus
+Wolfgang Breunig
+Joachim Ott
+Weihua Lv
+Ping Li
+Dong Fu
+Maoyuan Yu
+Paolo Nieli
+Ran Zhi";NULL;all;all;2014-03-24 00:00:00.000;2014-03-25 00:00:00.000;STILL PENDING;TASK CLOSED from Zhi on 26.03.2014 09:50:28;NULL
+111;2014-03-20 00:00:00.000;2;A;"Marketing I
+Mr. Gilhaus";"
+1. We received one invitation from CCB Luxemburg about Peugeot SA, because of the high risk, we refuse the business.
+
+2. Credit unit of P.R.C.
+We have credit outstanding for PRC unit for EUR108 mil on 21.03.2014.  If the credit unit of PRC was carried out in Germany, it means that we could not do the business with chinese background. It will be very difficult for us to do the credit business.
+
+3. Regarding the new legal report regulation, we must send new application of software development in OA to CCB Hongkong IT support center. And then the cooperation between CCB hongkong IT support center and BSM will be considered.
+Mr. Yu is working on the application draft, it will be sent out latest tomorrow. 
+";NULL;"+++ Update from Zhi on 31.03.2014 11:56:53 +++ 
+The application was sent to HO through OA on Friday.";"Marketing I
+EDV";"Gilhaus
+Yu";2014-03-24 00:00:00.000;2014-03-25 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 31.03.2014 11:56:55;NULL
+112;2014-03-24 00:00:00.000;3;B;"Accounting 
+Mr. Breunig";"
+We must deliever our preliminary financial figures for last year 2013 to the Bundesbank before the end of March. The accounting dept is preparing for that.
+
+The accounting dept is carrying out the new loan provision according to the new instruction of HO.
+";NULL;NULL;Accounting;Breunig;2014-03-24 00:00:00.000;2014-03-28 00:00:00.000;STILL PENDING;NULL;NULL
+113;2014-03-24 00:00:00.000;1;I;"Foreign dept.
+Mr. Ott";"
+FX swap business with Dachser Group
+FX swap business with Dachser Group is kind of the FX swap with customers. We never do this type business in the OCBS. The foreign dept will do the swap business with one leg spot and one leg forward. However it is possible that we can not seperate the FX swap with customers and with counterparty. Therefore it is necessary that we should firstly make the test in OCBS.
+
+
+";NULL;NULL;Foreign dept;"Foreign ";2014-03-24 00:00:00.000;2014-03-25 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 25.03.2014 09:41:10;NULL
+114;2014-03-24 00:00:00.000;4;I;Credit Administration;"
+The credit administration is working on the credit analysis of the Deutsche Bank(security investment).
+";NULL;NULL;credit administration;credit administration;2014-03-24 00:00:00.000;2014-03-28 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 25.03.2014 09:55:54;NULL
+115;2014-03-24 00:00:00.000;2;B;"Marketing II
+Mr. Fu";"
+Last week Mr. Fu refused almost EUR 200 mil prefinancing because of our Obligo limit and the sold assets with other banks are almost fully used.  Mr. sternheimer will call Commerzbank and ask for the business situation.
+";NULL;NULL;Marketing II;Fu;2014-03-24 00:00:00.000;2014-03-26 00:00:00.000;STILL PENDING;TASK CLOSED from Zhi on 25.03.2014 09:33:19;NULL
+116;2014-03-24 00:00:00.000;3;B;"Treasury Dept
+Mr. Lv";"
+The Treasury Dept are planning to buy EUR 25 mil bonds issued by Deutsche Bank. This investment must be approved by HO.
+Mrs. Xiong reminded that we must firstly check the related instructions from HO. about the security investment.
+";NULL;NULL;Treasury Dept;Lv;2014-03-24 00:00:00.000;2014-03-25 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 25.03.2014 10:07:22;NULL
+117;2014-03-24 00:00:00.000;4;I;"EDV
+Mr. YU";"
+Customer online problem was solved during this weekend. Now EDV dept can reset the status of token. 
+
+Overdraft limit for our customers in OCBS was solved. The risk dept have already deleted the account linkage and client linkage.
+
+Batch remittance in GMPS for mainland branches are sucessfully carried out by CCB Fujiang Branch.
+
+FX testing in MTS are blocked between test Kondo and test Opics. We need the support from HO to set up one new folder in the background. There are still many uncertainties to the transaction between the different systems. We need a lot of test before we carry it out in our system.
+
+Online obligo in system is complemented.
+
+
+";NULL;NULL;EDV;EDV;2014-03-24 00:00:00.000;2014-03-28 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 25.03.2014 12:07:34;NULL
+118;2014-03-24 00:00:00.000;5;I;Mr. Sternheimer;"
+Rental contracts
+We will prolong our office rental contact for half year. And we get the option to prolong another 3 monthe later.
+
+Risk Bearing Capacity (RTF)
+According to the new calculation of RTF, if the guarantee from HO is not acceptable from the Bundesbank, we can not do the AP and FRP. We must maintain the volume level from now.
+
+Capital increasing is urgent.
+";NULL;NULL;all;all;2014-03-24 00:00:00.000;2014-03-25 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 25.03.2014 12:14:08;NULL
+119;2014-03-24 00:00:00.000;6;A;Mr. Li;"
+Considering the Risk Bearing Capacity of the bank, upon the situation of now, we can not increase the AP and FRP business, we must visit our bilateral customers and try to find other business field.
+Marketing dept has to make a visit plan and get approved from GM.";NULL;NULL;Marketing;Marketing;2014-03-24 00:00:00.000;2014-03-28 00:00:00.000;STILL PENDING;NULL;NULL
+120;2014-03-31 00:00:00.000;1;I;"Accounting
+Mr. Breunig";"
+Mr. Breunig attended a seminar about the new regulation hold by foreign bank association on 28.03.2014.
+He will make an internal seminar about the new regulation when the system is ready.";"Biao Li
+Bo Xiong
+Wolfgang Gilhaus
+Wolfgang Breunig
+Xiaodong Wang
+Weihua Lv
+Joachim Ott
+Dong Fu
+Maoyuan Yu
+Paolo Nieli
+Ran Zhi";NULL;Accounting;Mr. Breunig;2014-03-31 00:00:00.000;2014-04-04 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.04.2014 11:53:51;NULL
+121;2014-03-31 00:00:00.000;1;NULL;"Marketing I
+Mr. Gilhaus
+";"
+One borrower unit---P.R.C.
+All 5 chinese banks are working on that. We will try to find the borrower unit for §13 which is not P.R.C. for us each bank under the cooperation within the 5 banks. 
+This wednesday 5 chinese banks will continually discuss the thing and try to finish the report and send out to the bundesbank.";NULL;NULL;all;all;2014-03-31 00:00:00.000;2014-04-04 00:00:00.000;STILL PENDING;NULL;NULL
+122;2014-03-31 00:00:00.000;2;I;"Treasury Dept
+Mr. Xiaodong Wang and Mr. Lv";"
+1. The funding cost is higher in the Asia market due to the high funding demand of Chinese banks. e.g. for USD 3 month, the interest rate will be Libor+200 bps. On the other hand, we get funds from VW for EUR200 mil for 2 months on 27.03.2014. The interest rate for VW is Euribor+60 bps which is much lower than the funds from Asia market. That means that we should try to find the funds from local customers
+
+2. The profit from FX business was EUR 0.9 min and decreased (EUR 2.2 mil for January and EUR 1.8 mil for Febuary).
+
+3. About the new generation system, mr. Lv will arrange a meeting with HO within this week.
+ ";NULL;NULL;all;all;2014-03-31 00:00:00.000;2014-04-01 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 31.03.2014 13:59:43;NULL
+123;2014-03-31 00:00:00.000;3;I;"Foreign Business dept
+Mr. Ott and Mr. Dong Fu";"
+1. Foreign business is going on well.
+
+2. Foreign business will do the test of the FX swap with customer.
+
+3. We sent out the contract of Sold Assets with amount USD 10 mil to KEB. We have contact to Helaba and will start the sold assets business with it. 
+
+4. During April EUR200 mil business will matur. The marketing II will try to fill up the Authorized payment and FRP business.
+ ";NULL;NULL;all;all;2014-03-31 00:00:00.000;2014-04-01 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 31.03.2014 14:07:35;NULL
+124;2014-03-31 00:00:00.000;4;I;"EDV
+Mr. YU
+";" 
+The application to the new regulation reports was sent out to HO.
+Hopfully, the CCB Hongkong IT support center will start the project soon.";NULL;NULL;all;all;2014-03-31 00:00:00.000;2014-04-01 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 31.03.2014 14:11:37;NULL
+125;2014-03-31 00:00:00.000;5;C;"Risk management
+Mr. Nieli";"
+1. short overview about our risk figures
+
+2. Mr. Nieli will review the calculation of the new risk bearing capacity as soon as possible and try to find the business room.";NULL;NULL;Risk Management;Nieli;2014-03-31 00:00:00.000;2014-04-04 00:00:00.000;STILL PENDING;NULL;NULL
+126;2014-03-31 00:00:00.000;6;I;"General management
+Mr. Li";"
+1. some infor regaring to RMB clearing center
+
+2. Detailed calculation of risk bearing capacity is needed. The calcultation of now is maybe very conservative. ";NULL;NULL;all;all;2014-03-31 00:00:00.000;2014-04-01 00:00:00.000;CLOSED;TASK CLOSED from Zhi on 31.03.2014 14:21:18;NULL
+127;2014-04-07 00:00:00.000;1;I;"Accounting dept
+Mr. Breunig";"
+The new legal report will continually be discussed with CCB Hongkong and BSM.
+The §13 and §14 for the first quarter will be done by Mr. Gilhaus and Accounting dept. The accounting dept will take this responsibility in future and also for other legal reports.";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Wolfgang Breunig
+Joachim Ott
+Xiaodong Wang
+Weihua Lv
+Ping Li
+Fantao Fu
+Maoyuan Yu
+Paolo Nieli";NULL;accounting dept;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.04.2014 13:54:32;NULL
+128;2014-04-07 00:00:00.000;2;I;"Foreign dept
+Mr. Ott";"
+We had the first customer RMB deposit from Dachser GmbH for RMB 8 mil last week.
+Other foreign business is going on well.";;NULL;Foreign dept.;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 09:05:11;NULL
+129;2014-04-07 00:00:00.000;3;I;"Treasury dept
+Mr. Wang
+";"
+The funding cost in the market is coming down since last week. 
+Bond investment application will be reported to HO for approval within this week. The price of this security Deutsche Bank is 99.91% with a coupon of 3 month Euribor+25 bps .
+
+";NULL;"+++ Update from zhi on 14.04.2014 16:03:40 +++ 
+Head Office rejected our application of new bond investment.
+Currently the investment of any commercial bonds will not allowed.";Treasury dept.;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 16:03:42;NULL
+130;2014-04-07 00:00:00.000;4;I;"Credit Administration
+Mrs. Li
+";"
+We received one schuldscheindarlehen invitation for QSC AG from Commerzbank for 5 years. The margin (+120 bps) is not so good.
+Considering the current situation, the Credit Committee will discuss this business in Credit Committee meeting.
+
+";NULL;NULL;Credit Administration;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 09:06:00;NULL
+131;2014-04-07 00:00:00.000;5;I;"Marketing II
+Mr. Fantao Fu";"
+2 new FRP applications was finished by Marketing dept and the due diligence was already transfered to the Credit Administration for approval.
+The risk dept must check the Rating and credit analysis.
+
+";NULL;NULL;Marketing II;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.04.2014 14:10:15;NULL
+132;2014-04-07 00:00:00.000;6;I;"EDV dept
+Mr. Yu";"
+
+The system of Multibank for SEPA is still available. We paid the invoice for EUR 13,000.
+
+The requirement of legal reports will be carried out by CCB Hong kong and BSM. 
+
+The realtime of Obligor will be implemented untill 19.04.2014.
+";NULL;NULL;EDV;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.04.2014 14:15:52;NULL
+133;2014-04-07 00:00:00.000;7;I;"Risk Management dept
+Mr. Nieli
+";"
+Regarding the risk bearing capacity Mr. Nieli talked to Bundesbank Mr. Kirsch and Mrs. Mohn and hinted what the auditors from Bundesbank calculated is not correct. e.g. CCB Prefinancing could not be calculated in the credit portfolio due to the coverage from Liability surplus, the FX business could not be calculated with nominal value, the deposit with Bundesbank and Bundesschatzbrief could not be calculated easily with LGD 45% and so on.
+
+We will wait for the reaction of Bundesbank.
+";NULL;NULL;Risk Management dept;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.04.2014 14:42:42;NULL
+134;2014-04-07 00:00:00.000;8;I;"General management
+Mr. Sternheimer";"
+The letter to BaFin about the P.R.C. credit unit is almost finished. We all 5 banks will send it out this week.
+
+The final result of PWC is still been waiting.
+
+We must get preparation for the auditing of HO.";NULL;NULL;all;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.04.2014 14:48:12;NULL
+135;2014-04-07 00:00:00.000;9;I;"General Management
+Mr. Li";"
+Detailed and correct risk bearing capacity calculation will be very helpful to our bank.
+
+Visiting customers and active marketing action will be currently very important. 
+
+Mr. President Zhang of CCB will come to our branch on 21.04.2014.";NULL;NULL;all;all;2014-04-07 00:00:00.000;2014-04-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.04.2014 14:49:57;NULL
+136;2014-04-14 00:00:00.000;1;NULL;"Accounting dept.
+Mr. Breunig
+";"
+LCR (liquidity coverage ratio)
+According to the new regulation, LCR (officially in implementation since 01.01.2015) must be more than 0.7.
+However we must report the new ratio figure quarterly to the Deutsche Bundesbank. For the first quarter it must be reported at latest on 30.04.2014.
+
+Important difference:
+The institution bonds will not be classified as liquidity assets. The company bonds with very good ratings will still be classified as liquidity assets.
+Off-balance business will be considered in LCR.
+";"Biao Li
+Karl Sternheimer
+Wolfgang Breunig
+Wolfgang Gilhaus
+Ping Li
+Joachim Ott
+Dong Fu
+Weihua Lv
+Maoyuan Yu
+Paolo Nieli
+ ";NULL;Accouting dept.;all;2014-04-14 00:00:00.000;2014-04-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 14:44:15;NULL
+137;2014-04-14 00:00:00.000;2;I;"Marketing I
+Mr. Gilhaus
+";"
+Invitation for Syndicated loans
+
+Report §14 million credit must be reported to bundesbank at latest till 23.04.2014. Since the software from BSM can not be installed in our BAIS, this report must be manually finished.
+
+Regarding RMB bonds there is still no further progress.
+
+
+";NULL;NULL;Marketing I;all;2014-04-14 00:00:00.000;2014-04-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 15:01:05;NULL
+138;2014-04-14 00:00:00.000;2;I;"Foreign dept. Marketing II
+Mr. Ott and Mr. Dong Fu";"
+L/C advise for new Chinese banks
+Some chinese banks are not familiar to the german banks. The Letter of Credits issued by such banks could be advised by our bank according to the requirement of german banks e.g. Commerzbank. We can profit from the advice of such L/C. We only need to apply for the BKE with those banks by our Head Office.
+
+Mr. Dong Fu
+Last week we started the FRP and Authorized Payment busienss. Some customers are with very good ratings or have the cash pledge in CCB mainland.
+After Easten Holiday, we will start CNY 900 mil financing for CCB Jilin Branch, the Obligor must be monitored strictly.
+
+";NULL;NULL;Foreign Dept and Marketing II;all;2014-04-14 00:00:00.000;2014-04-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 15:50:19;NULL
+139;2014-04-14 00:00:00.000;3;I;"Treasury dept.
+Mr. Lv";"
+Mr. Lv
+Head Office rejected our application of Deutsche Bank bond. We must find another bond.
+
+New generation system of core banking system will go life in November 2014 in all CCB overseas branches. CCB Hong Kong is currently testing bank.
+We have a lot of work due to the new generation system, e. g. the new outsourcing service level agreement must also be updated.
+We must inform the  tax authority and so on. 
+
+";NULL;NULL;Treasury dept;all;2014-04-14 00:00:00.000;2014-04-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 15:55:36;NULL
+140;2014-04-14 00:00:00.000;4;I;"EDV dept.
+Mr.Yu
+";"
+
+Software update will be implemented on 19.04.2014. The Online obligo will be done on this date.
+
+For the Online bank new token will be used. There should be no sycronise problem more.
+
+Cooperation between CCB Hong Kong and BSM began already. 
+
+";NULL;NULL;EDV dept;all;2014-04-14 00:00:00.000;2014-04-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 15:57:07;NULL
+141;2014-04-14 00:00:00.000;5;I;"Risk Management dept
+Mr. Nieli";"
+More detailed RTF was carried out. The RTF shows the new business room.
+
+We sent the email to Bundesbank concering their unreasonable risk bearing capacity calculation and will still wait for the response of Bundesbank.
+
+";NULL;NULL;Risk Management dept;all;2014-04-14 00:00:00.000;2014-04-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 15:59:41;NULL
+142;2014-04-14 00:00:00.000;6;I;General Management;"
+Mr.Sternheimer
+PWC will be required to give us a clear answer to our sold assets to Commerzbank. 
+Sold assets will maybe impacted considering the marketing change.
+
+The letter regarding the Unit P.R.C. to Deutsche Bundesbank will be sent out this week.
+
+
+
+
+
+";NULL;NULL;all;all;2014-04-14 00:00:00.000;2014-04-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 16:01:44;NULL
+143;2014-04-14 00:00:00.000;7;I;"General Management ";"Mr. Li
+Bonds investment: any commercial bonds will be not approved. 
+
+Next week we have two delegations: Mr. President Zhang and HO auditors, we have to get preparation for that. 
+
+The management meeting for next week will be cancelled.";NULL;NULL;all;all;2014-04-14 00:00:00.000;2014-04-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.04.2014 16:02:17;NULL
+144;2014-05-06 00:00:00.000;1;B;"Mr. Gilhaus
+
+Loan-invitation
+and something about HO Auditors' finding
+RMB  bonds";"
+two loan-invitatons
+Mahle GmbH 
+(6 Y: 95  – 115  bpa, 8 Y: 130  – 150 bps, 10 Y: 3,25%) 
+The margin is too low and the maturity is long.
+
+JF Hillebrand Group AG with rating BBB-
+3, 5 Y: 115 – 140 bps, 5 Y: 140 – 165 bps, 7 Y: 170-195 bps
+This schuldscheindarlehen could be fulfilled our guideline.
+
+HO auditors mentioned one thing with our credit contracts which is signed by Mr. Sternheimer and Mr. Gilhaus.
+How could it be correctly ruled in our branch? 
+
+For RMB bonds, we must check which account we need and transfer to Commerzbank.";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Wolfgang Gilhaus
+Wolfgang Breunig
+Fantao Fu
+Ping LI
+Jin Wang
+Dong Fu
+Weihua LV
+Paolo Nieli
+Maoyuan Yu
+Ran Zhi";NULL;GM;GM;2014-05-06 00:00:00.000;2014-05-07 00:00:00.000;STILL PENDING;NULL;NULL
+145;2014-05-06 00:00:00.000;2;I;"Accounting dept.
+Mr. Breunig
+";"
+Finding of HO Auditor:
+Credit card for Suosheng Li is opened very long.
+No reconciliation checking for Guarantee between Accounting dept. and Foreign dept.  
+
+PWC got the pressure to issue our annual report officially as soon as possible, at latest at the end of May.
+
+In cooperation with BSM for the report of LCR, accounting dept. is preparing the new LCR report for the first quarter which could be reported to Bundesbank at the end of June.
+
+For the new building we must seperate the P/L accounts with our own operational P/L accounts according to the requirement of HO. It means that we must keep two cost centers. There is no special requirments from the local authority for this item. The accounting dept. has opened all needed accounts.
+
+";NULL;NULL;Accounting dept.;Mr. Breunig;2014-05-06 00:00:00.000;2014-06-30 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.05.2014 08:51:55;NULL
+146;2014-05-06 00:00:00.000;3;I;"Marketing II
+Mr. Dong Fu and Mr. Fantao Fu
+
+";"
+
+Borrowing funds from CCB Taibei is now USD 260 mil. The funds was be totally used for the prefinancing business with CCB mainlandbranches.
+ 
+VW AG visiting will be planned in July. They contacted the Financing and settlement dept. of VW and will make a fixed appoinment. Due to the fact that VW AG  will issue the RMB bonds, according to the instruction from HO we could try to contact the Capital marketing dept. of VW AG, in order to get more deposit.
+
+They had a meeting with BNP Paribas London last week. BNP could provide interbank loan to us with Libor+60 or 80 bps. But they need a guarantee or comfort letter from our HO.
+
+Helaba visiting will be on 19th May.";NULL;NULL;all;all;2014-05-06 00:00:00.000;2014-05-07 00:00:00.000;CLOSED;TASK CLOSED from zhi on 06.05.2014 14:59:08;NULL
+147;2014-05-06 00:00:00.000;4;I;"Credit administration
+Mrs. Li";"
+There are 10 to 15 new clients for the new business FRP and Authorized payments. The Credit Adnimistration dept. is working on the credit analysis.";NULL;NULL;Credit Administration dept.;Credit Administration dept.;2014-05-06 00:00:00.000;2014-05-07 00:00:00.000;CLOSED;TASK CLOSED from zhi on 06.05.2014 15:24:45;NULL
+148;2014-05-06 00:00:00.000;5;I;"Treasury dept.
+Mr. Lv";"
+Due to our efforts, CCB Luxemburg set up the connection with Commerzbank. Last week CCB Luxemburg borrowed funds USD 220 mil from Commerzbank for 3 months. CCB Luxemburg place USD 110 mil with us as demand deposit. This funds is very helpful to our liquidity ratio and liability surplus.
+";NULL;NULL;all;all;2014-05-06 00:00:00.000;2014-05-07 00:00:00.000;CLOSED;TASK CLOSED from zhi on 06.05.2014 15:38:13;NULL
+149;2014-05-04 00:00:00.000;6;C;"EDV
+Mr. Yu
+";"
+There was online banking problems due to the upgrad of software by HO on 19.04.2014. Our customer could not use online banking. After the further upgrad on 04.05.2014, the problem was fixed. On the other hand we will start to use the new token. 
+
+Obligor online worked for somedays after 19.04.2014. On 28 and 29 April it got some problems with OCBS because some of settlements with CCB Hongkong were not correctly allocated in the calculation. The Obligor calculation in ODAS has been good.  Now obligor online works normally again.
+Mr. Yu will check it.
+
+For the new building we must provide some hardware budget to Head Office. Mr. Yu is preparing for the budget.
+
+";NULL;NULL;EDV;Mr. Yu;2014-05-06 00:00:00.000;2014-05-17 00:00:00.000;STILL PENDING;NULL;NULL
+150;2014-05-06 00:00:00.000;7;I;"GM
+Mr. Sternheimer";"
+Writing with Bundesbank about the new risk bearing capacity and progress of Risk management will be sent out today or tomorrow. 
+
+We informed BaFin that we have new internal auditors-KPMG
+
+The auditor of deposit insurence assosication will come.
+
+We have to talk to PWC again about our annual public report. 
+
+We can continue the sold assets business with Commerzbank.
+
+Compliance officer is now hold by Mr. Gilhaus. The new regulation about the compliance must be familiar by the compliance officer.";NULL;NULL;all;all;2014-05-06 00:00:00.000;2014-05-07 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.05.2014 08:57:11;NULL
+151;2014-05-06 00:00:00.000;8;I;"GM
+Mr. L i";"
+One of the HO audit findings
+Some desk instructions are not updated. All dept have to review all desk instructions, guideline and manual and update them. 
+Risk Dept will lead the whole procedure internally and other dept must cooperate. 
+We will set up one new 2014 version. Mr. Wang will make a plan and internal procedure.
+
+For the RMB bond issue we try to get a clear picture.
+
+New Risk bearing capacity is very important. We could consider more business now, but with good obligor rate.
+
+Local Marketing action must be carried out to help us to find more business.
+
+Bank of China has signed cooperation with Deutsche Börse. They will expand their service field.
+This could hint us that we can think about our new business.
+
+
+
+
+";NULL;NULL;all;all;2014-05-06 00:00:00.000;2014-05-07 00:00:00.000;CLOSED;TASK CLOSED from zhi on 06.05.2014 16:02:14;NULL
+152;2014-05-12 00:00:00.000;1;I;"Marketing Dept
+Mr. Gilhaus
+
+";"
+Mr. Gilhaus is working on the report §13 and §14- New customers with Million credit registration (Stammdatenanmeldung des Millionen Kredites) with the Bundesbank. Such report must be reported to the Bundesbank within 2 weeks after the new accounts were opened.
+";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Wolfgang Gilhaus
+Wolfgang Breunig
+Xiaodong Wang
+Ping Li
+Dong Fu
+Maoyuan Yu
+";NULL;"Compliance ";Mr. Gilhaus;2014-05-12 00:00:00.000;2014-05-16 00:00:00.000;CLOSED;TASK CLOSED from zhi on 13.05.2014 14:30:03;NULL
+153;2014-05-12 00:00:00.000;2;I;"Compliance
+Mr. Gilhaus";"
+Info
+RMB bond issuing is in the final stage. We will issue RMB bond on this Wednesday (14.05.2014).
+Mr. Li mentiones some questions: 
+1. The funds will be transfered from our acct with CCB Hong Kong to our acct with CCB Shanghai. Is there any problem with the transaction. Mr. Wang said that we have done 2 such transactions as testing. The transactions ran smoothly without any problem.
+2. Rating of RMB Bond will be fixed untill issuing date.
+3. Due to the transaction we have to pay close attention to the Liability surplus. ";NULL;NULL;Compliance;Mr. Gilhaus;2014-05-12 00:00:00.000;2014-05-13 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.05.2014 15:24:53;NULL
+154;2014-05-12 00:00:00.000;3;I;"Treasury dept.
+Mr. Wang";"
+Info
+CCB Zhejiang did the FX Forward with us at the first time owe to our marketing action in March and April.
+
+We will facilitate another MM deal for CCB Luxemburg with Commerzbank. It will be USD 250 mil for 6 months. CCB Luxemburg will take half of this funds with us as demand deposit. We could use this funds to increase our prefinancing business.";NULL;NULL;"Treasury Dept. ";Mr. Wang;2014-05-12 00:00:00.000;2014-05-13 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.05.2014 15:42:01;NULL
+155;2014-05-12 00:00:00.000;4;I;"Credit Administration
+Mrs. Li";"
+Info
+We will visit DZ bank on 19.05.2014 to discuss the business cooperation.
+Sold Assets business will be one point. Some Standard Contracts will be very important.
+Mr. Fu and Mrs. Li will bring the contracts with BHF bank and with OCBC as samples. ";NULL;NULL;Credit Administration;Mrs. Li;2014-05-12 00:00:00.000;2014-05-13 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.05.2014 15:47:51;NULL
+156;2014-05-12 00:00:00.000;5;I;"Marketing II
+Mr. Fu
+";"
+Info
+We will start sold assets business with Bayerisch Landesbank who agreed EUR 35 mil limit for our bank.
+Korea Exchange Bank preagreed EUR10 mil limit for our sold assets business. They are waiting for the further approval from their HO.
+
+In this week we will have 2 or 3 new customers for FRP or Authorized Payment business.
+";NULL;NULL;Marketing II;Mr. Fu;2014-05-12 00:00:00.000;2014-05-13 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.05.2014 16:08:38;NULL
+157;2014-05-12 00:00:00.000;6;A;"Marketing II
+Mr. Fu
+";"
+FX Swap with customers
+The Marketing dept. made the test in OCBS. 
+The test result is as follows:
+The booking of FX swap with customers is mixed with the booking of FX swap with counterparty which is made in OPICs by Treasury dept. No one is sure wether it is correct. Marketing dept stopped the business.
+
+Therefore we need to clarify with HO. Accounting dept has to contact with HO and clarify the problem.
+
+";NULL;NULL;Accoutning dept.;Accounting dept.;2014-05-12 00:00:00.000;2014-05-16 00:00:00.000;STILL PENDING;NULL;NULL
+158;2014-05-12 00:00:00.000;7;I;"EDV 
+Mr. Yu
+";"
+Info
+CCB London had overdraft on 27.04.2014 due to wrong parameter setting.
+HO will change the parameter.";NULL;NULL;EDV;Mr. Yu and HO;2014-05-12 00:00:00.000;2014-05-13 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.05.2014 16:32:05;NULL
+159;2014-05-12 00:00:00.000;8;A;Mrs. Xiong;"
+About RMB Bond issue, it is our new product, we have to issue one new desk instruction-new product.
+Also for the new business we need a new accounting model. Accounting dept. must check the product type and the accounting model.";NULL;NULL;"Accounting dept.--Accounting model
+Risk dept.--Desk Instruction of new Product";"Accounting dept.
+Risk dept.";2014-05-12 00:00:00.000;2014-05-23 00:00:00.000;STILL PENDING;NULL;NULL
+160;2014-05-19 00:00:00.000;1;I;"Compliance
+Mr. Gilhaus
+";"
+Info
+Our RMB Bond issued on 19.05.2014. Considering the very good ordering in the market, it is a sucessful deal.
+It will bring us more than RMB 1.5 bn which will also bring us the liability surplus problem, because we will place the funds in our account with CCB Shanghai. We must tightly supervise our Liability surplus. and insure that we have the business always in the legal way. Another point is the placement of the fund to get profit.
+
+to Liabilty surplus:
+Treasury has borrowed funds from CCB Taibei and CCB Tokyo for 3 months to partially cover the assets with CCB Shanghai and will roll over the deal possibly.
+
+to placement of the funds
+We will place the funds partially in CCB Shanghai to get higher Interest incoming and do other assets business.
+";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Wolfgang Gilhaus
+Wolfgang Breunig
+Joachim Ott
+Weihua Lv
+Xiaodong Wang
+Dong Fu
+Maoyuan Yu
+Paolo Nieli
+";NULL;"Compliance
+Treasury
+Marketing II";"Gilhaus
+Xiaodong Wang
+Weihua Lv
+Dong Fu";2014-05-19 00:00:00.000;2014-05-20 00:00:00.000;CLOSED;TASK CLOSED from zhi on 20.05.2014 09:38:16;NULL
+161;2014-05-19 00:00:00.000;2;I;"Accounting
+Mr. Breunig
+";"
+Info
+The accounting dept. is preparing some documentation for capital increaing application by CBRC.
+
+About the LCR calculated by Mr. Breunig, Mr. Yu mentioned it could be not correct that we calculate the HO clearing funds with 100% weight. Mr. Breunig will check the percentage figure.  ";NULL;NULL;Accounting Dept;Mr. Breunig;2014-05-19 00:00:00.000;2014-05-20 00:00:00.000;CLOSED;TASK CLOSED from zhi on 20.05.2014 09:49:07;NULL
+162;2014-05-19 00:00:00.000;3;I;"Foreign Dept, Marketing II
+
+Mr. Ott, Mr. Dong Fu";"
+Info
+The foreign dept will visit VW on 11.06.2014 and discuss the cooperated business. Also GM Mr. Li will visit VW on that day together with Mr. Wang and Mr. Fu to make preparation for the next visit from Mr. Zhu(CCB vice president) on 19.06.2014. 
+
+Mr. Dong Fu visited some banks to discuss the treasury business and Sold assets business together with Mr. Wang.
+1.DZ Bank will possibly offer us EUR10 -20 mil limit for our trade finance business.
+
+2.Helaba will offer EUR 10 mil limit for our trade finance business only with precondition that they act as a advice bank. It is difficult for us to handle it. We will currently not accept the offer, but we will keep the connect with them.
+
+3. Deutsche Bank HK can offer usd EUR500 mil limit but with higher Margin more than 230bps. It is too expensive for us. We will currently not accept the offer.
+
+4. Well Fargo Bank will come tomorrow to visit us.
+";NULL;NULL;Foreign Dept.;Mr. Ott;2014-05-19 00:00:00.000;2014-05-20 00:00:00.000;CLOSED;TASK CLOSED from zhi on 26.05.2014 14:29:40;NULL
+163;2014-05-19 00:00:00.000;4;I;"EDV 
+Mr. Yu";"
+Info
+EDV sent out the application for the usage of new token of Online Banking. According to his experience maybe HO will approve it in next month. After the approval we will get the new tokens and Foreign dept has to send them out to our customers.
+
+Operation dept. Treasury dept and Accounting dept are working on the test of new product--RMB bonds.
+
+The figure of FX equivalent is currently very high. We have to pay more attention to our CIC LIMIT. 
+ 
+";NULL;NULL;EDV dept.;Mr. Yu;2014-05-19 00:00:00.000;2014-05-20 00:00:00.000;CLOSED;TASK CLOSED from zhi on 20.05.2014 11:02:15;NULL
+164;2014-05-19 00:00:00.000;5;A;"EDV dept.
+Mr. Yu";"
+Realtime obligo does not work now. This function is more important after we issued RMB Bond. EDV dept must check the problem and apply for more surpport from HO if necessary.
+";NULL;NULL;EDV dept.;Mr. Yu;2014-05-19 00:00:00.000;2014-05-24 00:00:00.000;STILL PENDING;NULL;NULL
+165;2014-05-19 00:00:00.000;6;A;"Risk Management
+Mr. Nieli
+";"
+New product process for RMB bond will be issued by Risk Management.
+
+The implementation for the new product in our OCBS and Opics will be issued by Operation dept.
+
+";NULL;NULL;"Risk Management 
+Operational Dept.";"Mr. Nieli
+Mr. Yu";2014-05-19 00:00:00.000;2014-05-30 00:00:00.000;STILL PENDING;NULL;NULL
+166;2014-05-19 00:00:00.000;7;I;"Risk Management
+Mr. Nieli
+";"
+Info
+According to the new MaRisk, the Compliance officer will act more and more important role in banks. Compared to other chinese banks, it is time to us to think about it seriously.
+
+Situation in other Chinese banks:
+ICBC: Mrs. Yelda Acar, Lawyer and specialist in Banking Law
+ABC:  Mrs. Petra Klingelhoefer, Lawyer
+BoC:  Mr. Kai Jodlauk, Lawyer
+BoComm: GM Back Office
+";NULL;NULL;Risk Management;Mr. Nieli;2014-05-19 00:00:00.000;2014-05-20 00:00:00.000;CLOSED;TASK CLOSED from zhi on 20.05.2014 11:46:19;NULL
+167;2014-05-19 00:00:00.000;8;I;"GM
+Mr. Sternheimer
+";"
+Info
+Acceptance of HO Guarantee
+We will not authorize any lawyers to certify the valuation of the guarantee.
+
+Reacceptance of EUR1.5 Irrevecable Lending Commitment from HO 
+EUR 2.6 mil cost for necessary borrowed funds must be reflected in someway. ";NULL;NULL;all;all;2014-05-19 00:00:00.000;2014-05-20 00:00:00.000;CLOSED;TASK CLOSED from zhi on 20.05.2014 12:12:57;NULL
+168;2014-05-26 00:00:00.000;1;I;"Compliance
+Mr. Gilhaus";"
+Info
+The credit marketing received one SSD Invitation with very low margin 40-50 bps for 5 years. We refused the invitation.
+
+Mr. Gilhaus and Mr. Fantao Fu visited NBHS company in Nuremberg last Friday. This company was merged by a Chinese company which is a customer of CCB Zhejiang. Although the company's figures are still not good because of the acquisition, maybe we can keep the contact and find some new business chances. 
+";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Wolfgang Gilhaus
+Ping Li
+Joachim Ott
+Weihua LV
+Dong FU
+Fantao Fu
+Maoyuan Yu
+Jin Wang";NULL;Compliance;Mr. Gilhaus;2014-05-26 00:00:00.000;2014-05-27 00:00:00.000;STILL PENDING;TASK CLOSED from zhi on 27.05.2014 11:24:58;NULL
+169;2014-05-26 00:00:00.000;1;I;"Foeign dept
+Mr. Ott";"
+Info
+One new customer--Brauerei zoller-hof has opened a new account. The company will bring us some L/C business.
+
+rollovered deal with VW
+There was some problems with the rollovered deal with VW last Friday. They must send out the MT320 confimation to VW within very short time. In order to avoid possible failed deal, the front office is required to transfer the business earlier. 
+
+";NULL;NULL;Foreign dept.;Mr. Ott;2014-05-26 00:00:00.000;2014-05-27 00:00:00.000;CLOSED;TASK CLOSED from zhi on 28.05.2014 09:18:28;NULL
+170;2014-05-26 00:00:00.000;2;I;"Risk Management
+Mr. Wang
+";"
+Info
+The risk dept  with cooperation with other dept are working on providing some documents to HO auditors.
+
+FATCA will be implemented since 01.0.7.2014. German government has IGA 1 agreement with the U.S.A. If we have american customers, we must report it. ";NULL;NULL;"Risk management ";Mr. Wang;2014-05-26 00:00:00.000;2014-05-27 00:00:00.000;CLOSED;TASK CLOSED from zhi on 28.05.2014 09:18:40;NULL
+171;2014-05-26 00:00:00.000;2;I;"EDV
+Mr. Yu";"
+Info
+We will do the time deposit in MTS with CCB Shanghai. The new counterparty FT8CCBSH is already set up in MTS, Kondor and OPICS.
+
+Bonds booking
+The accounting dept. operational dept. and treasury dept. are still working on the test in OPICS and OCBS. ";NULL;NULL;EDV;Mr. Yu;2014-05-26 00:00:00.000;2014-05-27 00:00:00.000;CLOSED;TASK CLOSED from zhi on 27.05.2014 15:46:05;NULL
+172;2014-05-26 00:00:00.000;3;I;"General Management
+Mr. Sternheimer
+";"
+Info
+The risk dept is working on the risk inventory in cooperation with KPMG.
+
+PWC finished the draft of the annual report. Tomorrow we will hold the meeting with PWC.
+Mr. Sternheimer has shared with us about the equal treatment of chinese banks - equal supervisory status China from BaFin. This means that we could do the MM with other Chinese banks (excluding: Bank of China ). 
+
+Following is the email from Mr. Sternheimer
+Mr. Mestek (BaFin) called yesterday and provided the following information to me: 
+
+•	For the time being (until further notice) BaFin accepts that Chinese Banks exceed the last time reduced Large Exposure Limit of 25 % up to the dotation capital of our Branch
+•	This does not mean, that Chinese Banks are treated equal to other institutions from other countries within the EU, US etc. (no equal treatment according to article 391 CRR)
+•	The question of equal treatment is still under discussion in BAFIN and EBA and has not yet been decided. 
+Therefore our reporting duties have not been changed -  this means that in our reporting we still have to show Chinese banks as “not equal treated banks” with a limit of 25 %
+•	Condition: exposures should not exceed a tenor of 3 month
+•	Mr. Mestek pointed out, that there still exists the risk, that EBA (or Ministry of Finance) will finally decide that Chinese Banks cannot be treated equal according to article 391 CRR; 
+He said he cannot exclude such a result at the end of the day..
+•	In such a case we have to report the exceeding amount on request to BaFin, but due to the short term maturity BaFin shall show tolerance and shall not take any penalty action 
+against us. 
+•	Mr. Mestek asked to treat BaFin´s decision secret and not to spread around. He shall also approach the other Chinese banks to provide the same info to them like he did with our branch. 
+
+Treasury, Risk Management, Compliance, Accounting have already been informed accordingly.  
+
+
+GBB questionare must be finished at the end of May.
+Mr. Mestek (BaFin) called yesterday and provided the following information to me: 
+
+•	For the time being (until further notice) BaFin accepts that Chinese Banks exceed the last time reduced Large Exposure Limit of 25 % up to the dotation capital of our Branch
+•	This does not mean, that Chinese Banks are treated equal to other institutions from other countries within the EU, US etc. (no equal treatment according to article 391 CRR)
+•	The question of equal treatment is still under discussion in BAFIN and EBA and has not yet been decided. 
+Therefore our reporting duties have not been changed -  this means that in our reporting we still have to show Chinese banks as “not equal treated banks” with a limit of 25 %
+•	Condition: exposures should not exceed a tenor of 3 month
+•	Mr. Mestek pointed out, that there still exists the risk, that EBA (or Ministry of Finance) will finally decide that Chinese Banks cannot be treated equal according to article 391 CRR; 
+He said he cannot exclude such a result at the end of the day..
+•	In such a case we have to report the exceeding amount on request to BaFin, but due to the short term maturity BaFin shall show tolerance and shall not take any penalty action 
+against us. 
+•	Mr. Mestek asked to treat BaFin´s decision secret and not to spread around. He shall also approach the other Chinese banks to provide the same info to them like he did with our branch. 
+
+Treasury, Risk Management, Compliance, Accounting have already been informed accordingly.  
+
+with kind regards
+
+Karl Sternheimer
+
+
+
+";NULL;;GM;all;2014-05-26 00:00:00.000;2014-05-27 00:00:00.000;CLOSED;TASK CLOSED from zhi on 28.05.2014 09:18:54;NULL
+173;2014-05-26 00:00:00.000;3;C;"General Management
+Mr. Li";"
+Info
+Mr. Li will acompany HO delegation to visit VW, Behr and Bosch and so on.
+
+Schedule of Internal policy's update must be issued by risk dept.";NULL;NULL;Risk Dept.;Risk dept;2014-05-26 00:00:00.000;2014-06-06 00:00:00.000;STILL PENDING;NULL;NULL
+174;2014-06-02 00:00:00.000;1;I;"Accounting Dept.
+Mr. Breunig
+";"
+Info
+The Annual Report from PWC is almost finished. The result is better than last year. 
+Key performance changed??
+
+RMB bond 
+The funds received from RMB bond was placed in CCB Shanghai as time deposits. The booking related to the deposits is done automatically by system. The bond is also booked automatically, only the accrued interest must manually booked currently and till the middle of July, HO will update the software. Hopefully we will get accrued interest to be automatically booked in OCBS.";"Biao Li
+Karl Sternheimer
+Bo Xiong
+Wolfgang Breunig
+Wolfgang Gilhaus
+Joachnim Ott
+Dong Fu
+Fantao Fu
+Weihua Lv
+Maoyuan Yu
+Paolo Nieli
+Ran Zhi";NULL;Accounting dept.;Mr. Breunig;2014-06-03 00:00:00.000;2014-06-04 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 13:55:37;NULL
+175;2014-06-02 00:00:00.000;2;I;"Compliance
+Mr. Gilhaus
+";"
+Info
+The credit application for NBSH is still pending because we need some documents from CCB mainland branches.
+
+Till the end of June we must finish the report §13 for the first quarter 2014 according to the new regulation. This report will probably be done manually.
+";NULL;NULL;Compliance;Mr. Gilhaus;2014-06-02 00:00:00.000;2014-06-03 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 14:01:43;NULL
+176;2014-06-02 00:00:00.000;3;I;"Foreign Dept.
+Mr. Ott";"
+Info
+CCB Jilin Branch paid us the funds of collection about EUR 35 mil with delay. There is still a part of collection to be paid by CCB Jilin. The foreign dept will continully give CCB Jilin pressure to supervise the payment.
+";NULL;NULL;Foreign dept.;Mr. Ott;2014-06-02 00:00:00.000;2014-06-03 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 14:08:59;NULL
+177;2014-06-02 00:00:00.000;4;B;"Foreign dept
+Mr. Ott
+";"
+FATCA
+Mr. Gilhaus found out that we have 2 customer accounts which have american shareholders backgroud.
+We must decide whether we keep the accounts or close them. Mr. Sternheimer said if these customers are not important for our bank, we could close the accounts and avoid the legal report. ";NULL;"+++ Update from zhi on 12.06.2014 10:06:35 +++ 
+Mr. Gilhaus suggested that we close the two accounts. But it must decided by the General Management.";Foreign Dept.;Mr. Ott;2014-06-02 00:00:00.000;2014-06-06 00:00:00.000;STILL PENDING;NULL;NULL
+178;2014-06-02 00:00:00.000;5;I;"Marketing II
+Mr. Fu
+";"
+Info
+Due to the RMB bond we have very tight Liability surplus. There is no more place for prefinancing business.
+In order to fulfill our budget we have to do more FRP and AP business.";NULL;NULL;Marketing II;Mr. Fu;2014-06-02 00:00:00.000;2014-06-03 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 15:53:50;NULL
+179;2014-06-02 00:00:00.000;6;I;"Treasury Dept
+Mr. Lv
+";"
+Info
+We had one CNY repayment delay last Friday because the customer of CCB Jilin repaid to CCB Jilin later than the cut-off time of RMB clearing market of Hongkong. Therefore we must borrow funds to implement our payment to third party. We borrowed CNY 375 mil from CCB Hongkong for 3 days and paid the interest CNY 100,000 as our interest loss.
+
+In order to keep the Liability surplus (we have now CNY 5.122 bil time deposit with CCB Shanghai) we have borrowed USD from our intergroup which we exchanged to EUR and place the funds by Deutsche Bundesbank without interest income.";NULL;NULL;Treasury dept.;Mr. lv;2014-06-02 00:00:00.000;2014-06-03 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 14:51:51;NULL
+180;2014-06-03 00:00:00.000;7;I;"EDV
+Mr. YU
+";"
+Info
+Since last Wednesday we have the RMB bond booking and RMB time deposits, we have some problems with OCBS, ODAS and Legal reports.
+RMB time deposits are correctly booked in OCBS, but not shown in the related reports. Because there is problem in the interface between ODAS and BAIS. Mr. Yu wrote email to CCB Hongkong to ask for support. Till now we got no response. Tomorrow Mr. Yu will contact CCB Hongkong.
+
+Since the auditor from Deposit protection association will come next half of year, we must think about the EAEG report. We can not produce this report by ourselves till now. 
+
+";NULL;NULL;EDV dept;Mr. Yu and HO;2014-06-02 00:00:00.000;2014-06-03 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 15:05:16;NULL
+181;2014-06-02 00:00:00.000;7;I;"Risk Management
+Mr. Nieli
+";"
+Info
+Annual Report
+We got 2 main findings with F2 about Money laudering about which we are still fighting. It is possible that we could avoid the findings through more communication.
+
+The risk management dept is working on the Risk inventory. 
+KPMG calculated the unexpected loss with EUR 26 mil and transfered us the calculation with complicated formular which we are reseaching and trying to change some parameters to decrease the UL.   ";NULL;NULL;Risk management;Mr. Nieli;2014-06-02 00:00:00.000;2014-06-03 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 15:39:55;NULL
+182;2014-06-02 00:00:00.000;8;I;Mrs. Xiong;"
+FATCA
+HO issued some new circulars about FATCA. 
+HO planed to add some fields in OCBS. Our branch must check it and give our requirement if necessary.
+The procedure of account opening for company must be changed according to FATCA till the end of this year.
+The procedure of account opening for private person must be changed according to FATCA till the end of June.";NULL;NULL;"Risk dept
+Marketing II";"Risk dept
+Marketing II";2014-06-02 00:00:00.000;2014-06-03 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 15:53:32;NULL
+183;2014-06-02 00:00:00.000;9;I;Mr. Li;"
+For the marketing activity, the marketing dept has to issue one new info brochure as soon as possible. 
+
+We have sucessfully issued our RMB bond in Frankfurt stock exchange. We received some requirements from customers to issue RMB bond for customers.
+
+We must pay more attention to the new customers because of Money laundering and FATCA.
+
+Our assets was EUR3.46 bil at the end of May and increased EUR 500 mil compared to last month. 
+";NULL;NULL;Marketing II;Marketing II;2014-06-02 00:00:00.000;2014-06-03 00:00:00.000;CLOSED;TASK CLOSED from zhi on 02.06.2014 16:14:49;NULL
+184;2014-06-10 00:00:00.000;1;B;"Compliance
+Mr. Gilhaus";"
+Info
+The Bundesbank has finally agreed to new SILOS (separate Borrower’s Units) for the large loan reporting of ICBC and ABC.
+Until further notice, the treasury can lend money market transactions within 100% of our dotation capital -  up to 9o days. Loans exceeding 90 days are limited within the 25% of capital.
+Scheme:
+Over 90 days: maximum 25%
+Until 90 days: remaining 75%-100%.
+
+§13 report for the first quarter 2014 must be reported to Deutsche Bundesbank before the end of June. This report must be done manually.
+
+FATCA
+We have 2 customer accounts with American Shareholders. It will be decided by GM, wether we close the accounts or make the report to german finance minister.
+The 2 customers are
+                       IEA International Trading GmbH
+                       Hay Holding GmbH & Co. KG
+";"Biao Li
+Wolfgang Breunig
+Ping Li
+Wolfgang Gilhaus
+Joachim Ott
+Xiaodong Wang
+Dong Fu
+Jin Wang
+Weihua Lv
+Maoyuan Yu";"+++ Update from zhi on 26.06.2014 09:06:23 +++ 
+§13 report is sent out to Bundesbank on 25.06.2014.";Compliance and accounting dept;Mr. Gilhaus Mr. Breunig Mrs. Becker;2014-06-10 00:00:00.000;2014-06-30 00:00:00.000;CLOSED;TASK CLOSED from zhi on 26.06.2014 09:06:25;NULL
+185;2014-06-10 00:00:00.000;1;I;"Foreign dept
+mr. Ott";"
+Info
+Since the Deutsche Bundesbank decided to decrease the interest rate again to -0,10% for our deposits with it. We need to cut the interest rate of our customer from 0,02% to 0.
+
+FX deals with CCB mainland branches are booked by Foreign dept that was challenged by our Head Office auditors during their auditing this year. Such booking will be transfered to Treasury dept. Treasury dept is still working on the testing in our system.";NULL;NULL;Foreign Dept.;Foreign dept;2014-06-10 00:00:00.000;2014-06-11 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.06.2014 09:52:08;NULL
+186;2014-06-10 00:00:00.000;2;I;"Accounting dept
+Mr. Breunig";"
+Info
+The annual report carried out by PWC is finished. One report must be sent to BaFin. 
+
+The accounting dept will try their best to take over the §13 and 14 reports with the help of Mr. Gilhaus";NULL;NULL;Accounting dept;Mr. Breunig;2014-06-10 00:00:00.000;2014-06-11 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.06.2014 09:54:41;NULL
+187;2014-06-10 00:00:00.000;3;B;"Marketing II
+Mr. Fu Dong";"
+The agreement with Deutsche Bank Hong Kong is shared to related departments to get suggestions. Mr. Fu asked for the response from our colleagues.
+Deutsche Bank Hong Kong provides us USD 500 mil limit to do the sold assets business with us. This is a great chance to increase our assets and fulfill our budget.";NULL;"+++ Update from zhi on 13.06.2014 17:29:52 +++ 
+Mr. Gilhaus has already provided his suggestion. The Marketing II dept will begin the sold forfaiting with Deutsche Bank Singapore soon.";Marketing II;Mr. Fu Dong;2014-06-10 00:00:00.000;2014-06-11 00:00:00.000;CLOSED;TASK CLOSED from zhi on 13.06.2014 17:29:55;NULL
+188;2014-06-10 00:00:00.000;2;I;"Risk Management
+Mr. Nieli";"
+Info
+Annual report carried out by PWC is finished. Later we have to translate the main part to HO internal control and compliance department.
+
+Update of internal desk instruction, Manual and guideline will be updated again by all departments. This will be led by Risk Management department.
+
+About FATCA our Head Office will registrate after China get agreement with the USA, HO will registrate for our branch too
+
+
+";NULL;NULL;Risk Management dept;Mr. Wang;2014-06-10 00:00:00.000;2014-06-11 00:00:00.000;CLOSED;TASK CLOSED from zhi on 11.06.2014 14:01:17;NULL
+189;2014-06-10 00:00:00.000;3;I;"Treasury Dept.
+Mr. Lv";"
+Info
+Since Deutsche Bundesbank cut the intererst rate to -0,10% for our EUR deposits, Head Office is trying to make some measurement to avoid interest payment to Bundesbank.
+Head Office plans to seperate two parts of their EUR Clearing funds with us. One part is like now as normal liquidity funds. Another could be invested to the German governments Bonds. In emergency of liquidity, we could do the repo business with other banks.
+Since the repo is new business for us, we must set up the related accounting model in our system. 
+";NULL;NULL;Treasury dept;Mr. Lv;2014-06-10 00:00:00.000;2014-06-11 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.06.2014 09:47:18;NULL
+190;2014-06-10 00:00:00.000;4;A;"EDV
+Mr. Yu
+";"
+About our new term deposit with CCB Shanghai, the booking was correct booked, but not shown in related tables in ODAS.
+CCB HongKong  support center will modify the ODAS programm, firstly they did a favor to modify the old ODSB reports’ specifications for our branch. Now we need to confirm the modification by treasury dept. risk dept and accounting dept. Meanwhile we have to issue one OA application to HO and ask for further approval. The next system update will be in the middle of July.
+Treasury dept has already confirmed.
+ ";NULL;"+++ Update from zhi on 11.06.2014 14:57:55 +++ 
+Risk dept. confirmed the modification on 11.06.2014.
+
++++ Update from zhi on 12.06.2014 10:01:47 +++ 
+The accounting dept confirmed the modification.";EDV;Mr. Yu;2014-06-10 00:00:00.000;2014-06-13 00:00:00.000;CLOSED;TASK CLOSED from zhi on 12.06.2014 10:01:51;NULL
+191;2014-06-10 00:00:00.000;5;I;"General Management
+Mr. Li";"
+Info
+According to Power of Attorney, the large loan is limited to EUR17 mil. We must pay more attention to that limit which is not equal to our Large loan limit of Banking Act. 
+
+	                      better than A3/A-	A3/A- -----Baa3/BBB-                    others
+With collateral	     USD 40 mil	  USD 35 mil	                USD 24 mil
+Without collateral	     USD 40 mil                  USD 23 mil	                USD 18 mil
+
+According to instruction of Head Office, our business zone will be only in Germany.
+";NULL;NULL;General Management;All;2014-06-10 00:00:00.000;2014-06-11 00:00:00.000;CLOSED;TASK CLOSED from zhi on 11.06.2014 15:21:17;NULL
+192;2014-06-16 00:00:00.000;1;I;"Compliance
+Mr. Gilhaus";"
+Info
+We got two SSD invitation letters:
+--------W. CLASSEN GmbH and Co KG from Norddeutschen Landesbank,  3-7 years 180-280 bps
+              Since we never do any business with Norddeutschen Landesbank, and also the company is not a technic engaged, we will not consider it.
+--------Vopestalpine AG from Bayern Landesbank, 5-7 years 105-145 bps
+             Although the company is quite good, but we do not have the country limit for Austria. We could not do the business.";"Biao Li
+Bo Xiong
+Wolfgang Gilhaus
+Wolfgang Breunig
+Xiaodong Wang
+Jing Wang
+Ping Li
+Dong Fu
+Maoyuan Yu
+Paolo Nieli
+Ran Zhi
+";NULL;Compliance;Mr. Gilhaus;2014-06-16 00:00:00.000;2014-06-17 00:00:00.000;CLOSED;TASK CLOSED from zhi on 16.06.2014 11:12:56;NULL
+193;2014-06-16 00:00:00.000;2;I;"Accounting dept
+Mr. Breunig";"
+Info
+Sold assets--forfaiting
+Mr. Breunig will contact KPMG to ask, if we really need new product type for such business Sold Forfaiting.
+
+The accounting dept, EDV and CCB Hongkong support center will have a meeting at 11 o'clock to discuss the large loans report. Mr. Breunig will ask for one testing environment to do the reports §13 and §14.";NULL;NULL;Accounting dept;Mr. Breunig;2014-06-16 00:00:00.000;2014-06-17 00:00:00.000;CLOSED;TASK CLOSED from zhi on 16.06.2014 15:37:52;NULL
+194;2014-06-16 00:00:00.000;3;I;"Treasury dept
+Mr. Xiaodong Wang";"
+Info
+1. Our Head Office will provide USD 1 bn  within one monthrefinance limit to us. The Treasury dept will plan to get USD 400 mil borrowing and place to CCB NY. We could get 0,05% interest gap through these tractions.
+
+2. EURO clearing funds of Head Office
+Head Office will place EUR 500 mil as relative stable funds with us. According to the requirment of HO and in order to avoid paying punish interest to Deutsche Bundesbank, treasury dept will purchase German bonds with this EUR 500 mil and place the bonds with Bundesbank. If our Head Office needs the liquidity, we will get the overdraft funds per overnight from Bundesbank as we pledge our bonds with Bundesbank. The overdraft interest rate is 0.4%. Now the booking procedure must be defined and discussed internally, then treasury will do the test firstly.
+
+3. Visiting VW
+Mr. Xiaodong Wang discussed with VW about the EURO term deposit and FX business. He also made 3 parties telefone conference with VW and CCB Luxemburg to discuss new transaction model. e.g. VW place the term deposit with CCB Luxemburg and CCB Luxemburg will place the half of the funds with us. This will bring us more liability surplus.
+    ";NULL;NULL;Treasury dept;Mr. Wang;2014-06-16 00:00:00.000;2014-06-17 00:00:00.000;CLOSED;TASK CLOSED from zhi on 16.06.2014 13:51:34;NULL
+195;2014-06-16 00:00:00.000;4;I;"Risk Management
+Mr. Nieli and Mr. Wang";"
+Info
+We received the audit report draft from Head Office last week. The feed back must be gaven within this week.
+
+The main findings in the audit report from PWC will be translated by Mr. Nieli in English and reported to Head Office within this week.
+
+Risk department is working on updating our internal policies.
+ ";NULL;NULL;Risk Management;Mr. Wang;2014-06-16 00:00:00.000;2014-06-17 00:00:00.000;CLOSED;TASK CLOSED from zhi on 16.06.2014 14:09:21;NULL
+196;2014-06-16 00:00:00.000;5;I;"Credit Administration
+Mrs. Li
+";"
+Info
+This week the credit administration dept will finish the SSD contract of JF Hillenbrand and the billiteral loan contract of NBHX.
+
+The credit administration dept is working on two new credits (billateral loan to domestic customer with internal guarantee). They will be finished within this month. 
+
+Lot of credit reviews have to be finished before August. The credit dept will try to finish them before the next internal audit coming.
+
+They are also working on the rating of some German banks according to requirement from HO.";NULL;NULL;Credit Administration;Mrs. Li;2014-06-16 00:00:00.000;2014-06-17 00:00:00.000;CLOSED;TASK CLOSED from zhi on 16.06.2014 14:41:09;NULL
+197;2014-06-16 00:00:00.000;6;I;"Marketing II
+Mr. Dong Fu
+";"
+Info
+Marketing II will begin the sold forfaiting business with Deutsche Bank Singapore. First business will come from CCB Shenzhen and for one year. The gain gap of this business will be 50 bps.
+
+Prologation of KSM credit
+Mr. Gilhaus will contact KSM Germany and ask why the company has big loss last year. Meanwhile the cash pfledge must be reorganised again.
+
+Last week Mr. Ott visited VW and heard some claims about collection payment delay from our CCB Jilin. Mr. Dong Fu will contact CCB Jilin and ask for the further action.
+
+";NULL;NULL;Marketing II;Mr. Dong Fu;2014-06-16 00:00:00.000;2014-06-17 00:00:00.000;CLOSED;TASK CLOSED from zhi on 16.06.2014 15:05:13;NULL
+198;2014-06-16 00:00:00.000;7;I;"EDV
+Mr. Yu
+";"
+Info
+Mr. Yu is working on OA application for changes in ODAS and OPICS.
+
+Opics new version is availabe. The accounting dept, treasury dept and clearing dept will be involved in the new version testing. We have to provide test cases to OPICS project team before 09.07.2014.
+
+EAEG reports
+Mr. Yu issued one EAEG report manually. It is very difficult to produce such report either manually or automatically. Mr. Papas has begun to issue one programme for this report. It needs some time.
+";;NULL;EDV;Mr. Yu;2014-06-16 00:00:00.000;2014-06-17 00:00:00.000;CLOSED;TASK CLOSED from zhi on 16.06.2014 15:30:56;NULL
+199;2014-06-24 00:00:00.000;1;I;Management Committee Meeting 24.06.2014;"Breunig Accounting
+
+Accounting is still struggeling with HK concerning the new reporting tool. At the moment Accouning Department uses the test environment in  order to accomplish the reportings. Deadline for the first reporting is the 30.6.2014.
+We are facing a lot of work concerning the new reporting. We need the support from HK because the interface files are wrong.
+
+Gilhaus Compliance 
+A syndicated loan located in Africa was offered to us. Unfortunaetely, we do not have any country limits for Africa. Therefore, it is not possible for us to engage. Maybe we should inform CCB Johannesburg.
+
+Jin Wang Risk Management
+Together with Mrs. hein we reorganize our Orga Chart System. A lot of H.O. Documents have to be implemented.
+
+Fu Dong Credit Marketing II
+Mr Fu Dong presented a schedule in which the actual budget status  is described. At the moment  it is very hard to fulfill the H.O. budget. Especially, on the asset side the difference is very high.
+In the second half of 2014 we have to be careful in choosing new FRP and ""authorized payments"" . The risk classification of those loans could have a big impact on our risk bearing capacity.
+
+Yu EDP
+Still waiting for ODAS B/C. Maybe in July they are able to provide a solution. At the moment our 10 reportings are not working properly, especially the Riskmanagement reporting tools  (i.e. interest rate risk)
+
+Only slow progress in the  EAEG report. Mr Papas is in charge. We have to add more fields in our system in order to fulfill the regulation.
+
+Real time Obligo is still a problem. Without ODAS B/C we are not able to survey the Obligo on daily basis.
+
+Next weekend H.O. will release a new Online Banking tool.
+
+Wang, X. Treasury
+
+negative Buba interest -0,1. 
+Taken measures:
+Purchase of German government Bonds
+- deposit to Buba
+- in case of emergency we can get funds from BuBa
+- only overnight business
+
+- arrange an appointment with CFO of BMW concerning new business transactions.
+
+Bo Xiong
+- Profitability is also a target not only the asset increase
+- New audit from the Internal Control Department will be announced for CCB Frankfurt Branch (pilot project in july and august)
+
+Biao Li
+Mr. Biao Li informed us of the high level meeting with Bosch VW and Daimler. In future we should intensify contacting important german companies.
+The comparison of the branches shows negative key figures of CCbB Frankfurt in relation to other branches. Only sharp increase.
+
+
+ ";"Biao Li
+Sternheimer
+Xiong
+Nieli
+Yu
+Jin Wang
+Wang, X.
+Lv
+Ping li
+Breunig
+Gilhaus
+Fu Dong";NULL;All;All;2014-06-24 00:00:00.000;2014-06-30 00:00:00.000;STILL PENDING;NULL;NULL
+200;2014-06-30 00:00:00.000;1;I;Management Committe Meeting 30.06.2014;"Gilhaus
+From tomorrow on FATCA is obligated. H.O. already registered in IRS.
+
+Breunig
+The reporting item suceeded with the new consultant. We should insist in working together with the new BSm consultant. The performance of the other consultant was not acceptable.
+The first quarter was sucessfully sent to BuBa. Now we are concentration in the 2nd quarter reporting.
+
+At the moment we are under 20% of the budget!
+
+Next project is the reporting of the realized and unrealized figures in our booking system on a monthly or quarterly basis.
+
+Ott
+VW is not satisfied. There are still to many outstandings. They insist in paying all outstandings collections within 3 weeks. At the moment we recevied nearly 5-6 reminders. CCB Jilin is in charge to solve this item. Maybe they have to change their settlement struture. There are no problems with ICBC and BOC. Please see also the excel documentation of Mr. Ott for the collection outstandings.
+
+Facta is implemented in account opening froms of bankenverlag.
+
+Fu Dong
+The sold factoring is still pending. Next monday, we will be visited by DB Hong Kong.
+
+Lv
+This week we will purchase another german government bond for available for sale. The maturity date is June 2016.
+
+Ping Li
+She asks Fu Dong about the KSm cash pledge. Fu Dong replies that CCB mainland Branch is still working on it.
+
+Wang, Jin
+Last week HO registered in IRS concerning FATCA reporting. 
+PWC auditors report was forwarded to HO
+We are up to prepare the half year reporting and the asset classification has to be completed.
+
+Yu
+In the area of EAEG reporting we made big progresses. Mr Papas is in charge in writing the new EAEG format.
+OPICS and ODAS B/C still in process. The solution will be expected in september.
+ODAS B report still problems with the RMB Bond Booking on the asset side. The daily emails are not correct. they have to be adjusted manually.
+
+Nieli
+The Risk controlling key figures show a quiet comfortable situation.
+We are up to prepare the 2nd quarter risk report. we have to add the issue with the outstandings of VW in the risk report as a reputational risk. 
+Still working on the risk inventory with kpmg. Kpmg has to provide the granularity approach.
+Telephone call with Mrs. Mohn. She asked for the capital injection. I replied to her that it is not in our hand. But I  highlighted that we are not depending on the capital injection. Our capital is strong enough to cover all risk.
+
+Sternheimer
+The risk inventory has to be completed very soon.
+Mr. Sternheimer informed us that he also received a call from Mrs. Mohn concerning the capital injection.
+Liability surplus problem. The time lacks could cause problems that the passive liability surplus could turn on the active side. At the moment we have a moderate relation with Bafin and BuBa. We should not endanger the actual situation. We have to take measures in order to avoid such a scenario (Maybe with the help from CCB New York or CCB Luxemburg)
+
+Biao Li
+Restructure of the Departments
+Beginning from 1st of July 2014 Mrs. Fasanella will be in the AML Department
+Mrs. Zhang Li will join us again but now in the payment/clearing
+Mrs. Baeseler will be resposible for the due diligences in credit marketing I
+
+In the second half of the year 2014 we have to accomplish the budgets. This means a lot of work. We have to prepare the half year analysis. Accounting and Risk management are in charge.
+
+  
+
+
+ ";"Biao Li
+Sternheimer
+Xiong
+Nieli
+Yu
+Jin Wang
+Lv
+Fu Dong
+Breunig
+Gilhaus
+Ping Li
+Yu";NULL;all;all;2014-06-30 00:00:00.000;2014-07-01 00:00:00.000;STILL PENDING;NULL;NULL
+201;2014-07-07 00:00:00.000;1;I;"Accounting department
+Mr. Breunig";"
+Info
+1. Silo
+According to the memo from Mr. Gilhaus on 04.07.2014, Bundesbank has withdrawn ICBC and ABC from the SILO list (separated Borrower’s units within PRC). They now belong once again to the Borrower’s Unit PRC since 13.06.2014. As of 30.06.2014 (reporting date for million and large loans), the outstanding of both ABC and ICBC amounts to a total of € 111.6 mil which results in a large loan overdraft of € 37.8 mil.
+This large loan overdraft did not result of violation of the large loan rules, but because of the sudden cancellation of the SILOs through the Central Bank.
+
+Mr. Breunig will ask for the opinion of our consultant KPMG.
+Mr. Sternheimer said, that a letter to Bundesbank to explain our passive violation about this matter is in preparing. 
+
+2. Budget
+Mr. Breunig issued a column chart to show us our budget fulfillment till the end of June. From the P/L side, we are on track to meet our budget till the end of 2014, if the business develops well like now.
+From the balance side, we need to think about how we can meet our budget.
+";NULL;NULL;Accounting dept;Breunig;2014-07-07 00:00:00.000;2014-07-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.07.2014 15:48:03;NULL
+202;2014-07-07 00:00:00.000;2;I;"Foreign Department
+Mr. Ott
+Mr. Dong Fu
+";"
+Info
+CCB Jilin confirmed that they will pay back the collection  of VW for amuont UER100 mil till the end of July.
+
+Our bank will open accounts for some local customers for future forfaiting business. This will increase our trade finance business and bring us some provision incoming.
+
+The marketing I and treasury departments will have a meeting with Deutsche Bank Hongkong this afternoon. to dicscuss with them about the sold forfaiting and prefinancing business. 
+
+Last week we issued a L/C for our customer---Frankfurt Solar engergy. The customer provided 100% cash pledge for the application of the L/C. For such business with 100% cash pledge, it is necessary to improve our processing. Mr. Sternheimer suggested that we could use the email reply circle to give the approval of such credit application. 
+";NULL;NULL;"Foreign department
+Marketing I";"Mr. Ott
+Mr. Dong Fu";2014-07-07 00:00:00.000;2014-07-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.07.2014 16:08:10;NULL
+203;2014-07-07 00:00:00.000;3;I;"Risk Department 
+Mr. Wang";"
+Info
+The quarterly assets risk classification is begining. The foreign department and  treasury department finished their classification and already transfered to the risk department. The risk department is still waiting for the feedback from Credit department and accounting department.
+
+The risk department is working on the new job description version.
+";NULL;NULL;Risk Management;Mr. Wang;2014-07-07 00:00:00.000;2014-07-08 00:00:00.000;CLOSED;TASK CLOSED from zhi on 07.07.2014 16:17:21;NULL
+204;2014-07-07 00:00:00.000;4;I;"EDP
+Mr. Yu
+";"
+Info
+The OA report is already finished and sent out to HO, which includes the programme update of Securities issuing, Time deposits and REPO.
+For the time deposits we have already confirmed and modified the requiements to CCB Hongkong support center. For REPO the related deparments have to modify some requirments and send to Mr. Maoyuan Yu.
+
+
+";NULL;"+++ Update from zhi on 07.07.2014 16:36:14 +++ 
+Risk Department modified the requirement of ODASB with the support of Mr. Maoyuan YU.";EDP;Mr. Yu;2014-07-07 00:00:00.000;2014-07-15 00:00:00.000;STILL PENDING;NULL;NULL
+205;2014-07-14 00:00:00.000;1;I;"Compliance
+Mr. Gilhaus";"Info
+Mr. Gilhaus has reviewed the contract of Standard Chartered Bank with which we would like to do the sold assets business. He thought that there is one problem with the term of recall, which must be discussed internallly and modified eventually. He will discuss it with Mr. Sternheimer.
+
+§13 report for second quarter is almost finished.";"Biao Li
+Bo Xiong
+Wolfgang Gilhaus
+Ping Li
+Joachim Ott
+Wolfgang Breunig
+Jin Wang
+Fantao Fu
+Weihua Lv
+Maoyuan Yu
+Paolo Nieli
+Ran Zhi";NULL;Compliance;Mr. Gilhaus;2014-07-14 00:00:00.000;2014-07-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.07.2014 14:14:06;NULL
+206;2014-07-14 00:00:00.000;2;I;"Credit Administration Department
+Mrs. Li";"
+Info
+We received 2 SSD invitations. But the SSD debtors are not so famous and the term is for 4 years which is not prefered by our Head Office.
+Recently there are limited SSD offered by banks. SSD issued by turkish banks or russian banks could not be considered
+
+When the Treasury dept does new business with foreign financial institutions, they must inform credit department, because they must issue the credit application for large loan report to the Bundesbank.
+";NULL;NULL;Credit Administration dep;Mrs. Li;2014-07-14 00:00:00.000;2014-07-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.07.2014 14:23:19;NULL
+207;2014-07-14 00:00:00.000;3;I;"Foreign Department
+Mr. Ott";"
+The foreign department is reviewing the working process and their desk instruction. They will try to finish the review before the end of July.
+
+VW unpaid collection
+Last we got payment from CCB Jilin. Hopefully all the payment could be done within next 2 or 3 weeks.
+
+Trade limits for some Chinese banks
+Because of the demands of local customers, the foreign department needs more trade limit for some chinese banks. The Treasury department and foreign department must cooperate with each other and communicate tightly about the limit utilization.";NULL;NULL;Foreign department;Mr. Ott;2014-07-14 00:00:00.000;2014-07-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.07.2014 16:37:06;NULL
+208;2014-07-14 00:00:00.000;4;I;"Accounting department
+Mr. Breunig";"
+Info
+cost about the customer deposit
+
+	                                                         	                                                                                                                                                                                                                      Percentage      Amount EUR
+""Entschädigungseinrichtung Deutscher Banken/Mandatory (legal) Indemnisation Fund
+(100% belonging to """"Bundesverband Deutscher Banken"""")""   0,016%	            38.177
+			
+Einlagensicherung/Voluntary (optional) German Protection Fund	                                                                                                                                                            0,030%	            71.250
+	                                                                                                                                                                                                                                                                                            0,046%	          109.427
+FMSA Bankenabgabe/Restructuring Fund	Total Balance Sheet - Customer Deposits - Capital -allowance of 300 MioEUR	                                                  0,020%          225.648	
+
+
+
+
+
+
+
+
+
+
+";NULL;NULL;Accounting department;Mr. Breunig;2014-07-14 00:00:00.000;2014-07-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 15.07.2014 08:58:06;NULL
+209;2014-07-14 00:00:00.000;5;I;"Risk Management department
+Mr. Nieli and Mr. Wang";"
+Info
+The update of internal regulation will be done before 15.09.2014.
+
+Recently we received many instructions from Head Office which focused more on the treasury business.
+We can see that Head Office will pay more attention to the Market Price Risk. 
+
+Our risk key figures keep  in good position.";NULL;NULL;Risk Management;Mr. Wang;2014-07-14 00:00:00.000;2014-07-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.07.2014 17:09:00;NULL
+210;2014-07-14 00:00:00.000;6;I;"EDP
+Mr. Yu
+";"
+Info
+The programme update for ODASB about our 3 new products (Security, Time Deposit and Repo) will be done untill September 2014.
+
+Onlinebanking test is finished, EDV is working on the test report.
+
+New Opics test will be started in next week.
+
+EAEG report is almost finished. EDP is not sure about the format of such report. We have to ask for the verification. This will cost EUR 3,500 which should be decided by GM.";NULL;NULL;EDP;Mr. YU;2014-07-14 00:00:00.000;2014-07-18 00:00:00.000;STILL PENDING;NULL;NULL
+211;2014-07-14 00:00:00.000;7;I;"Marketing II
+Mr. Fantao Fu";"
+Info
+Now we have more and more pressure from Liability surplus.
+
+For the new loan to Ningbo Huaxiang we will get the Guarantee from CCB Ningbo within this week.";NULL;NULL;Marketing II;" Mr. Fantao Fu";2014-07-14 00:00:00.000;2014-07-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.07.2014 17:18:31;NULL
+212;2014-07-14 00:00:00.000;8;I;"General Management
+Mr. Li";"
+To fulfill our budget, we must increase our credit portfolio, but under considering our CAR and Risk bearing capacity.
+New product must be considered.
+
+Compared to other chinese banks, our local customers are very limited. We must do something.
+
+We will start our business analysis on the quarterly basis from second quarter 2014.";NULL;NULL;GM;all;2014-07-14 00:00:00.000;2014-07-15 00:00:00.000;CLOSED;TASK CLOSED from zhi on 14.07.2014 17:24:51;NULL
+214;2014-07-21 00:00:00.000;1;INFO;INFO;"Compliance 
+Mr. Gilhaus
+We got 2 SSD invitations
+1.
+2.
+
+
+ABC and ICBC are seperated again according to the BaFin letter. But we must still wait for the decision of European banking authorisation. Then we can start normal business with these two banks.
+
+
+Accounting department
+Mr. Breunig
+The accounting department will make reconciliation among the balance 1, balance 2 and trial balance.
+The legal reports SolvV ,LV1 and LCR and so on will be sent out within this week.
+
+
+Credit Administration
+Mrs. Li
+We will pay out the new loan EUR 5 mil to NBHX (billiateral loan approved by CC) this week.
+
+
+Treasury department
+Mr. Wang
+Head Office approved new MM limit to us for USD240 mil within one month. We will take it for improve our liquidity situation.
+VW will finish the contract with CCB Luxemburg. If they finish with the contract, we could get the VW deposit through CCB Luxemburg. This will also improve our liquidity ratio an our obligor pressure.
+We applied the CNY account opening with CCB mainland branches to Head Office, to find more CNY placement.
+According to the new instruction of Head Office, we are in the process of many business rules, e.g. re-authorisation of Power of Attorney; counterparty regulation; dealer regulation. They will review their internal policies and finish it till August.        
+
+
+Foreign department
+Mr. Ott
+VW is still waiting for the repayment from CCB Jilin. We hope that they will do the payment with big amount within this week. otherwise the VW will be disappointed. and maybe they will begin the next action against CCB. 82 Mil. € are still open.
+
+
+Risk department
+Mr. Wang
+Last week we received two audit reports from Head Office and Bundesbank. The audit report from Bundesbank will be briefly translated and sent to Head office.
+As requirement of Treasury department and Foreign department, we will apply many limits of foreign financial institutions. THese application must be issued by OA.
+Mr. Nieli
+He will prepare the TODOLIST according to the audit report of Bundesbank. It is better that we send the improvement report to BaFin before we get theleeter from fBaFin.
+
+
+Marketing I
+Mr. Fantao Fu
+He reminded that we review the contracts with Standard Chartered bank and Commerzbank, in order to do the sold assets business with them.
+
+
+EDP
+Mr. Maoyuan Yu
+He said that we can do the testing in OPICS.
+Hardware update will cost about TEUR110 according to the quotation provided by HP.
+
+
+
+       
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ";"Biao Li
+Karl Sternheimer
+Wolfgang Gilhaus
+Wolfgang Breunig
+Ping Li
+Xiaodong Wang
+Jin Wang
+Fantao Fu
+Weihua Lv
+Maoyuan Yu
+Paolo Nieli
+Ran Zhi";NULL;;;NULL;NULL;NULL;NULL;NULL
+216;2014-07-21 00:00:00.000;2;B;FATCA;"Last time we checked the customer accounts, Mr. Gilhaus found two customers with American shareholders. We must decide wether we keep the two accounts or close them. 
+Mr. Sternheimer said, if these two accounts are not important for us, we should decide to close  them to avoid complicated reports about FATCA. We must do the next step tot contact the customers and tell them our decision.";;NULL;Compliance and Foreign department;Mr. Gilhaus, Mr. Ott;2014-07-21 00:00:00.000;2014-07-25 00:00:00.000;NULL;NULL;NULL
+218;2014-07-28 00:00:00.000;1;INFO;MCM 28.7.2014;"Breunig - Accounting department
+Reatined eranings could be calculated as capital
+
+Lv, Wang, X. - Treasury Department
+Open new treasury accounts with Xiamen
+
+Cooperation with Korean Exchange Bank. Korean Exchage Bank wants to open a CNH Account for their customer ""Samsung"" (Account Holder is Korean Exchange Bank). We will open a CNH account in CCB London
+
+
+Ott - Foreign Department
+Mr. Fu Dong was in China. He negotiated with CCB Jilin Branch concerning VW trade business. The outstanding payments 
+New clients:
+Sun Soar
+Brewery Zoller Hof
+NBHX
+
+Fu Dong - Foreign Deaprtment
+Standard Chartered Bank sold asset contract should be reviewed just in time
+Offer: Loan against guarantee  for 3y 4% => Rating 5 BB-
+Investment amount of 750 Mil CNY is planned for the asset increase. The Deposits in CCB Shanghai will be matured at the 29.8.2014. In 09/14 100 Mil. CNY will be deposited in CCB Shanghai again.
+New Customer ""Ziegler""
+Invitation of the Bayer Bank
+KSM is still open issue. CCB Hebei, result still waiting. 80 Mil € for 3 years, waiting for rating
+
+Gilhaus - Compliance
+Appointment with Coba concerning SSD and sold assets will be held on the 6.8.2014
+
+Jin Wang - Riskmanagement
+Follow-up of the findings in the H.O. report was already sent to chinese colleagues.
+Orga Chart organisation is still in progress
+
+Ping Li - Credit Deaprtment
+New ratings has to be executed. 35 finished, 15 are still open. The reviews have to be finished until end of august 2014.
+
+Yu - EDP Department
+Together with Mr. Papas the EDP Deaprtment has to implement the new target 2 directory 
+
+Nieli- Riskmanagement
+Presentation of the actual risk controlling key figures. Comfortable situation
+
+ 
+";"Bo Xiong
+Sternheimer
+Nieli
+Breunig
+Lv
+Fu Dong
+Ping Li
+Wang Jin
+Wang, X.
+Yu
+";;All;All;2014-07-28 00:00:00.000;2014-07-29 00:00:00.000;NULL;NULL;NULL
+220;2014-08-04 00:00:00.000;1;INFO;MCM 4.8.2014;"Gilhaus - Compliance Department
+For ICBC the silo-approach is missing in the Bundesbank data base.
+ABC and ICBC are sperated, full amount € 73,9 Mil. for both are available.
+
+Ott - Foreign Department
+New deposit from Volkswagen (Please see X, Wang)
+Fantao Fu is in China and will visit Jilin Branch. CCB Jilin Branch continues the payments to VW. 
+Foreign Department is updating the Desk Instruction a Manuals. Fu Dong is responsible for updating the chinese products (FRP/AP)
+
+Ping Li - Credit Administration
+second payment to NBHX will be executed 
+New credit business with Shijuan and Korean company - documents will be checked in the next days
+Review update August 2014  has to be completed this month
+Problem with MTS (Treasury Limit system) and OCBS Limit system related to CIC Group exposures
+
+Jin Wang - Riskmanagement
+Reminder to the heads of departments concerning the orga chart update. Deadlin is middle of September 2014
+Application for 5 new foreign banks submitted to H.O.
+This week Mr. Jin Wang will finish the feedbacks to H.O. concerning H.O. Audit report and Bundesbank special audit report
+ 
+Xiaodong Wang - Treasury Department
+VW Deposit 350 Mil. for 3 Month 0,65 % Liquidity ratio is now over 2,00
+MM Deal 500 Mil USD => Swap in CNH Deposits in CCB Shanghai, which enlarges our Asset positions at the end of the month
+Investment proposal for Bundesland government bonds (waiting for H.O. approval)
+AOK Deposit from new MM Broker Mordix
+Update new treasury regulation according to H.O. requirements
+
+Nieli - Riskmanagement
+Presentation of risk controlling key figures. Comfortable situation.
+Meeting with Coba last week togehter with Mr. Gilhaus. Topic: SSD and sold asset. Concerning the sold assets Mr. Nieli will visit Coba's Head of legal Department (Dr. Lutz/Dr. Fischer) at the 12.8.2014
+
+Sternheimer General Management
+.....";"Sternheimer
+Bo Xiong
+Gilhaus
+Ping Li
+Wang Jin
+Ott
+Wang Xiaodong
+Nieli";NULL;;;NULL;NULL;NULL;NULL;NULL
+222;2014-08-18 00:00:00.000;1;INFO;MCM 18.8.2014;"Breunig Accouning&Finance
+CAR is now 11,9 %, new building 25 Mil € capital requirement for the building is 0,45%
+Capital increase as of 15th of August 2014 completed 22.692 T€ resulted in new capital 96.457 T€
+=> 3,45 % increase of CAR, now over 15%
+
+in discussion:
+FX aquivalent amount for FX derivatives business still in large loan exposure report or maybe we use the option of the Obligo/Liability Surplus (please refer to the KPMG legal oppinion)
+
+
+Ott Foreign Department
+Fu Fantao received an updated list of VW inkassi because Fantao Fu will visit CCB Jilin Branch in order to clarify the payment situation 
+Sunsoar Akkreditv/LC over 14 Mil. € CNY has to be sold/forwarded because of limit conflicts 
+
+
+X, Wang Treasury Department
+We received 600 Mil USD from H.O. . 200 until 3 Months, 200 3 to 6 Months, 200 until 1 year (conditions libor + 30)
+Treasury is planning to place the whole amount in intergroup business.
+
+
+Fu Dong Foreign Department
+For the new loan projects a special Marketing Meeting should be held.
+Because of the interbranch money borrowings (support of the oblogo) by Treasury the credit business could expand.
+Switching to the obligo is recommended.
+
+Ping Li Credit Administration
+10 Reviews have to be executed. We are still waiting for the year end balance statements. Reminder to the responsible CCB Branches was already sent. 
+
+
+Gilhaus Compliance
+Facta - general decision about US related business for the future
+Then we have two cases which have to be investigated related to US relations.
+
+
+Yu EDP and Operations
+5 projects to leading by H.O. three of them according to our requirments. 
+-Accounting OPIX <=> interface OCBS
+-Ten ODAS B Reporting
+-New Bais interface, new legal reporting according to the CRR
+The final implementation of all projects is planned for the mid of September 2014
+
+
+Nieli Riskmanagement
+1) In discussion with KPGM related to the consideration of FX Derivatives business in the Obligo (Liability Surplus) or Large loan exposure.
+Riskmanagement is warning for to fast decisions, because the tendency is to switch to obligo. We cannot switch from large loan exposure to obligo or from obligo to large loan exposure every month. Once we made this decision we are bound. Therefore, we have to check if our obligo could stand the FX exposures. There must be approx. 50 to 60 Mil. € buffer zone for the FX exposures. The advantage of the Obligo is the unlimited FX exposure line as long there is enough obligo. But there is also the danger of the violation of the obligo, if we rely on the clearing money of H.O. But also use the special clause of the GroMikv for intergroup loans meaning that only 10% of the exposures are counted in the CIC,  the solution of the large loan exposures is also good for us and furthermore we avoid the discussion of switching to obligo.
+2) Commerzbank, Meeting was held last week 12.8.2014. Conversation was good. We will send the old contract and our documentation to Dr. Fischer, he will change the contract according to the auditors oppinion. Before we launch the contract, PWC has to prove it beforehand.
+3) German Protection Fund audited ICBC with nearly the same findings  (unexpected loss and concentration risks). In September they will audit BaComm. We think in October or November GPF will audit CCB FFM. We have to get prepared.
+
+
+Biao Li General management
+After two weeks Mr. Biao Li returned from the Mamangement Meeting in China. The main topic was the bad debt/non-performing loans. In the area of following chinese industry sectors CCB detected the danger of default:
+-Copper industry
+-Aluminium industry
+-Steel Industry
+
+We have to be very carefull in choosing our loan engagements. CCB London and CCB Jo'burg are still struggeling with bad debt loans. This circumstances lead to penalties set by CCB H.O.
+
+In the monthly comparision of the overseas branches CCB FFM is in the midfield, ranked No. 8 related to the asset amount.
+But our profit increases to slow in order to reach the target profit budget at the end of the year. Compared with ICBC and BaComm CCB FFM has considerably more assets but less profit than ICBC and BaComm. BaComm already has 10 Mil € profit.
+After the capital increase with our own retained earnings, there will we be some space for asset increasing, but we have also to consider the profitability of the business 
+ 
+We have to get prepared for the year end. The follow-up of the bundesbank findings have to be finished until the end of the year. We should not rely only on our consultants (avoid high expenses) or on outsourcing/delegation of the problems. 
+
+
+
+";"Biao Li
+Bo Xiong
+Breunig
+Ott
+X. Wang
+Fu Dong
+Gilhaus
+Yu
+Nieli
+
+";;;;NULL;NULL;NULL;NULL;NULL
+227;NULL;NULL;;;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL;NULL
+228;2015-12-21 00:00:00.000;1;A;Management Commitee Meeting;"General meeting minute
+
+
+Compliance (Mr. Gilhaus)
+
+1) Compliance Report: Finalizing draft 
+2) Complaint by Mrs. Hermann-Fischer (PWC) due to incorrect format of job descriptions
+3) Sanctions against Russia: embargo has been extended for six months and expanded to further areas, e.g. gas exploration in Arctic
+- CCB Moscow intends to finance the Russian gas enterprise Novatek and its subsidiary company Yamal LNG up to 2 billion EUR with participation of Silk Road Fund up to 800Mio 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Marketing (Mr. F. Fu)
+
+1) CCB Xiamen: Intergroup loan of 129Mio USD 
+2) Corporation between China Southern Airlines and Boeing for 110 aircrafts next year
+- More business opportunities for CCB Frankfurt
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+IT (Mr. Yu)
+
+1) Tonbeller: 
+- Falk/Tonbeller provides installation, training, and seminar for CCB Frankfurt by end of January 2016
+- Testing for approx. two months 
+- Production by April 2016
+2) Batch Remittance:
+- Solely for Vostro and Remittance companies in cooperation
+- Tests already implemented
+3) BAIS:
+- Correcting phase 
+- Fault in cash flow
+- Incorrect definition
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Credit (Mrs. Li, P.)
+
+1) Loans completed
+- VW: 22Mio EUR 
+- CCB Xiamen: 129Mio USD 
+- MBHX: 18Mio EUR with margin 180 BPS on 6 month-euribor
+2) BWM 
+    - contract is prepared
+    - waiting for credit approval by CCB London and CCB Luxemburg ( as loan is for BMW Finance, which does not hold a rating, CCB London is currently approving credit limit)
+3) Move to 2nd floor 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Accounting (Mr. Nieli)
+
+1) CAR: 18% - 19%, which means that CCB Frankfurt is situated comfortably in regards to capital adequacy and is not in danger of any trigger events 
+2) LCR is 1,13 and Liquidity key figure (Liquiditätskennziffer) is 1,26, which means both are in “green zone”
+3) CIC: inter-branch FX amounted 50Mio, which means a 50% decrease in comparison to 2014
+4) FX business: accounting gap between bookings according to OCBS and local accounting system (HGB)
+- FX business are excluded from OCBS and booked manually
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Treasury (Mr. Lv)
+
+1) Fed raised interest rates by 25 bp
+2) LCR: from 1st Jan. 2016, minimum LCR set by Bafin is to be 0.7 instead of 0.6 
+3) AOK time deposit: 14Mio maturing by 31st Dec 2015
+- No extension planned since reasonable market rate is 0.05-0.08%, but AOK demanded 0.28%
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Risk Management (Mr. Li, W.)
+
+1) Plan Profit: planned, therefore unrealized, profit is to be taken out of RBS calculation, which will give a more realistic picture 
+- According to HGB, only realized profit, up to the time of calculation, is taken into RBS calculation 
+2) Back-testing: validation of CCB's risk assessment methods 
+3) FI limit:
+- 34 foreign FI: all limits are extended to June 2016
+- 11 Chinese FI: limits for five are extended (BOC, ICBC, ABC, BCOMM, China Merchant)
+- Concerning Marketing dep.: limit for China Citic Bank should be applied and extended due to upcoming forfaiting
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Management 
+
+Mrs. Xiong: 
+
+1) General: estimation of budget for 2016
+
+Mr. Sternheimer:
+
+1) Compliance: Risk assessment report must be finished ASAP 
+2) IT: 
+- Request for access to internet pages, also demanded by auditors
+- Start of research for cloud computing
+- Consult H.O for new technology, especially for CCB´s newly purchased building
+- Request timetable for new IT software
+3) Marketing: 
+- Discussion about ""external booking center"" is still ongoing 
+- Since CCB Frankfurt´s max. amount of loan for a single customer is 25% of capital, the external booking solution (booking loans externally into the books of other overseas branches) will raise the limit massively
+- External booking solution is met with legal and internal issues
+4) Accounting: 
+- Find a solution to eliminate the gap between different methods of booking for FX business
+- AWV: reporting of 3 important items; 
+     a) capital increase of 2014
+     b) purchase of building 
+     c) retained earning from 2011-2013
+5) General: 
+- New insurance for CCB Frankfurt, therefore new contracts must be reviewed
+
+Mr. Xie:
+
+1) Admin/IT: 
+- Christmas e-greeting cards for customer and other branches
+- Music event organized by Chamber of Commerce in Berlin. CCB is going to contribute 5000EUR to enable customers and staff to attend the event
+2) Marketing: 
+- CCB Leasing closed a deal with Hungarian-based low cost airline WIZZ for 11 aircrafts. CCB Frankfurt should make contact and find opportunities to participate
+3) Risk: 
+- Review of FI management and implementation of FI regulation
+4) General: 
+- No formal notice of budget planning from CCB H.O yet                                        
+- Approximately 15% growth in 2016 expected                                            
+- Growth and expansion in regards to customer base and local business    
+
+
+";" 1) Mr. Xie
+ 2) Mr. Sternheimer
+ 3) Mrs. Xiong
+ 4) Mr. Gilhaus
+ 5) Mr. Fu, Fantao
+ 6) Mr. Yu
+ 7) Mrs. Li, Ping
+ 8) Mr. Nieli
+ 9) Mr. Lv
+10) Mr. Li, Wenhai
+11) Mrs. Fu, Xiaoyu";;;;2015-12-21 00:00:00.000;2015-12-31 00:00:00.000;NULL;NULL;NULL

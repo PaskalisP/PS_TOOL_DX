@@ -1,0 +1,48 @@
+﻿INSERT INTO [dbo].[MAK REPORT]
+           ([Contract Type]
+           ,[Product Type]
+           ,[GL Master / Account Type]
+           ,[Account Type]
+           ,[Counterparty/Issuer/Collateral Provider]
+           ,[Client No]
+           ,[Country of Risk]
+           ,[Country of Residence]
+           ,[Industry(HO)]
+           ,[IndustrialClassLocalCode]
+           ,[IndustrialClassLocalCodeName]
+           ,[SPCODE]
+           ,[LBCODE]
+           ,[CUSTOMER TYPE]
+           ,[Client Group]
+           ,[Contract Collateral ID]
+           ,[Start Date]
+           ,[Maturity Date]
+           ,[Org Ccy]
+           ,[Euro Equivalent]
+           ,[RiskDate]
+           ,[RepDate]
+           ,[DateMakCrTotals])
+     VALUES
+           ('DLDPL'
+           ,'DLDPL'
+           ,'0'
+           ,'0'
+           ,'CCB SHANGHAI BRANCH SHY'
+           ,'67820053'
+           ,'CN'
+           ,'CN'
+           ,'J'
+           ,'64B'
+           ,'Other monetary intermediation (without central banks)'
+           ,'CCBG'
+           ,'CHINA INVESTMENT CO. LTD'
+           ,'F - FINANCIAL'
+           ,'1000'
+           ,'TIME DEPOSIT CCB SHANGHAI'
+           ,'20140630'
+           ,'20150529'
+           ,'CNY'
+           ,59024908.51
+           ,'20140630'
+           ,'20140630'
+           ,'20140630')

@@ -1,0 +1,30 @@
+﻿create table #temp_NumberGapsInSQL (
+ id int identity(1,1),
+ Statementnumber float,
+ ReceivedDate datetime) 
+
+ Insert into #temp_NumberGapsInSQL
+ (Statementnumber)
+ Select StatementNr from [SWIFT_ACC_STATEMENTS]
+ where InternalAccount='1072200800' and ReceivedDate>='20190301'
+ group by [StatementNr],ReceivedDate
+ order by StatementNr asc
+
+ --select * from #temp_NumberGapsInSQL
+ declare @MinID int=(select min(Statementnumber) from #temp_NumberGapsInSQL)
+declare @MaxID int=(select max(Statementnumber) from #temp_NumberGapsInSQL)
+--select * from dbo.NumbersTable(@MinID,@MaxID,1) 
+
+--delete from #temp_NumberGapsInSQL where Statementnumber not in (Select StatementNr from [SWIFT_ACC_STATEMENTS] where InternalAccount='1072200800' group by [StatementNr])
+
+ SELECT
+  n.i
+ FROM dbo.NumbersTable(@MinID,@MaxID,1) n
+ LEFT JOIN #temp_NumberGapsInSQL g ON g.Statementnumber = n.i
+ WHERE g.Statementnumber is null
+
+
+ --select * from #temp_NumberGapsInSQL
+
+
+drop table #temp_NumberGapsInSQL

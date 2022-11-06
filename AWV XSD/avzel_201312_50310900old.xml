@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<LIEFERUNG-AWZEL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bundesbank.de/xmw/2003-01-01 BbkXmwAwzel.xsd" version="1.0" erstellzeit="2014-01-06T05:21:48" stufe="Produktion" bereich="Statistik" xmlns="http://www.bundesbank.de/xmw/2003-01-01">
+    <ABSENDER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank,Niederlassung Frankfurt</NAME>
+        <STRASSE>Bockenheimer Landstr. 51 - 53</STRASSE>
+        <PLZ>60325</PLZ>
+        <ORT>Frankfurt am Main</ORT>
+        <LAND>DE</LAND>
+        <KONTAKT>
+            <ANREDE>Herr</ANREDE>
+            <VORNAME>Paschalis</VORNAME>
+            <ZUNAME>Papas</ZUNAME>
+            <ABTEILUNG>EDV</ABTEILUNG>
+            <TELEFON>069/971495-43</TELEFON>
+            <FAX>069/971495-72</FAX>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            <EXTRANET-ID>EXNDBWDF</EXTRANET-ID>
+        </KONTAKT>
+    </ABSENDER>
+    <ERSTELLER>
+        <FIRMENNR>50310900</FIRMENNR>
+        <NAME>China Construction Bank,Niederlassung Frankfurt</NAME>
+        <KONTAKT>
+            <ZUNAME>Papas</ZUNAME>
+            <TELEFON>069/971495-43</TELEFON>
+            <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+        </KONTAKT>
+    </ERSTELLER>
+    <KOMMENTAR>Monatsmeldung AWV</KOMMENTAR>
+    <MELDUNG erstellzeit="2014-01-06T05:21:48">
+        <MELDEPFLICHTIGER>
+            <FIRMENNR>50310900</FIRMENNR>
+            <NAME>China Construction Bank,Niederlassung Frankfurt</NAME>
+            <STRASSE>Bockenheimer Landstr. 51 - 53</STRASSE>
+            <PLZ>60325</PLZ>
+            <ORT>Frankfurt am Main</ORT>
+            <KONTAKT>
+                <ZUNAME>Papas</ZUNAME>
+                <TELEFON>069/971495-43</TELEFON>
+                <EMAIL>Paschalis_Papas@ccbff.de</EMAIL>
+            </KONTAKT>
+        </MELDEPFLICHTIGER>
+        <MELDETERMIN>2013-12</MELDETERMIN>
+        <MELDUNGSREF>meldung vom Dezember 2013</MELDUNGSREF>
+        <VDR_04>
+            <DIKAPPOSTEN belegart="1" kennzahl="583" zahlungszweck="ZINSEN AUF WERTPAPIERE GEBIETSFREMDER EMITTENTEN">
+                <BETRAG land="DK" landname="DENMARK">2</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="KONTOFÜHRUNGSGEBÜHREN">
+                <BETRAG land="CN" landname="CHINA">13</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="1" kennzahl="533" zahlungszweck="BEREITSTELLUNGSPROVISION">
+                <BETRAG land="HK" landname="HONG KONG">128</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="SWIFT GEBÜHREN">
+                <BETRAG land="BE" landname="BELGIUM">7</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="BEREITSTELLUNGSPROVISION/PROVISION FÜR INANSPRUCHNAHME">
+                <BETRAG land="CN" landname="CHINA">443</BETRAG>
+            </DIKAPPOSTEN>
+            <DIKAPPOSTEN belegart="2" kennzahl="533" zahlungszweck="KOSTEN FÜR CHINESISCHE BANKENAUFSICHT">
+                <BETRAG land="CN" landname="CHINA">70</BETRAG>
+            </DIKAPPOSTEN>
+        </VDR_04>
+        <VDR_10>
+            <POSTEN belegart="4" kennzahl="344">
+                <WERTPAPIER isin="DE0001119956" bezeichnung="GERMAN TREASURY BILL">
+                    <NOMINAL_STUECK s-oder-n="N">30000000</NOMINAL_STUECK>
+                    <BETRAG land="NL" landname="NETHERLANDS" wrg="EUR">29966</BETRAG>
+                </WERTPAPIER>
+            </POSTEN>
+            <POSTEN belegart="4" kennzahl="344">
+                <WERTPAPIER isin="DE0001119931" bezeichnung="GERMAN TREASURY BILL">
+                    <NOMINAL_STUECK s-oder-n="N">65000000</NOMINAL_STUECK>
+                    <BETRAG land="NL" landname="NETHERLANDS" wrg="EUR">64924</BETRAG>
+                </WERTPAPIER>
+            </POSTEN>
+        </VDR_10>
+        <VDR_14>
+            <BETRAG land="CN" landname="CHINA">2299</BETRAG>
+        </VDR_14>
+        <VDR_15>
+            <BETRAG land="SG" landname="SINGAPORE">674</BETRAG>
+            <BETRAG land="AU" landname="AUSTRALIA">493</BETRAG>
+            <BETRAG land="HK" landname="HONG KONG">331</BETRAG>
+            <BETRAG land="CN" landname="CHINA">134</BETRAG>
+            <BETRAG land="CH" landname="SWITZERLAND">94</BETRAG>
+            <BETRAG land="TW" landname="TAIWAN">87</BETRAG>
+        </VDR_15>
+    </MELDUNG>
+</LIEFERUNG-AWZEL>

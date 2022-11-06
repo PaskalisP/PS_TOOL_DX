@@ -1,0 +1,1 @@
+﻿select     [C2_Kontonummer],[B2_OrdnungskennzeichenId] from   [EAEG_KUNDEN_KONTEN] where   [B2_OrdnungskennzeichenId] in (Select   [Counterparty No] from   [ACCRUED INTEREST ANALYSIS] where   [Class]='Liabilities' and [Datadate]='20140617' ) and   [AccountStatus]='A - ACTIVE'      

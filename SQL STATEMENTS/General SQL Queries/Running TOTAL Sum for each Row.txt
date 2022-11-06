@@ -1,0 +1,2 @@
+﻿SELECT a.*, (SELECT SUM(b.Amount) FROM [TEST] b WHERE b.Date <= a.Date) AS 'total'
+FROM [TEST] a

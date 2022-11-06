@@ -1,0 +1,352 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class Calendar
+    Inherits DevExpress.XtraEditors.XtraForm
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing AndAlso components IsNot Nothing Then
+            components.Dispose()
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Calendar))
+        Me.DateNavigator1 = New DevExpress.XtraScheduler.DateNavigator()
+        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.Calculate_btn = New DevExpress.XtraEditors.SimpleButton()
+        Me.MonthsCount_lbl = New DevExpress.XtraEditors.LabelControl()
+        Me.WeeksCount_lbl = New DevExpress.XtraEditors.LabelControl()
+        Me.DaysCount_lbl = New DevExpress.XtraEditors.LabelControl()
+        Me.DateEdit2 = New DevExpress.XtraEditors.DateEdit()
+        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
+        Me.DateEdit1 = New DevExpress.XtraEditors.DateEdit()
+        Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.CalculatedDay_lbl = New DevExpress.XtraEditors.LabelControl()
+        Me.CalculatedDate_lbl = New DevExpress.XtraEditors.LabelControl()
+        Me.Day_SpinEdit = New DevExpress.XtraEditors.SpinEdit()
+        Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
+        Me.DateEdit3 = New DevExpress.XtraEditors.DateEdit()
+        Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
+        Me.IndustryDate_lbl = New DevExpress.XtraEditors.LabelControl()
+        Me.DateEdit4 = New DevExpress.XtraEditors.DateEdit()
+        CType(Me.DateNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl1.SuspendLayout()
+        CType(Me.DateEdit2.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit1.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl2.SuspendLayout()
+        CType(Me.Day_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit3.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit3.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl3.SuspendLayout()
+        CType(Me.DateEdit4.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateEdit4.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'DateNavigator1
+        '
+        Me.DateNavigator1.AppearanceCalendar.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.DateNavigator1.AppearanceCalendar.Options.UseFont = True
+        Me.DateNavigator1.AppearanceWeekNumber.Font = New System.Drawing.Font("Tahoma", 9.0!)
+        Me.DateNavigator1.AppearanceWeekNumber.Options.UseFont = True
+        Me.DateNavigator1.DateTime = New Date(CType(0, Long))
+        Me.DateNavigator1.HotDate = Nothing
+        Me.DateNavigator1.Location = New System.Drawing.Point(12, 12)
+        Me.DateNavigator1.Name = "DateNavigator1"
+        Me.DateNavigator1.Size = New System.Drawing.Size(255, 214)
+        Me.DateNavigator1.TabIndex = 0
+        '
+        'GroupControl1
+        '
+        Me.GroupControl1.Controls.Add(Me.Calculate_btn)
+        Me.GroupControl1.Controls.Add(Me.MonthsCount_lbl)
+        Me.GroupControl1.Controls.Add(Me.WeeksCount_lbl)
+        Me.GroupControl1.Controls.Add(Me.DaysCount_lbl)
+        Me.GroupControl1.Controls.Add(Me.DateEdit2)
+        Me.GroupControl1.Controls.Add(Me.LabelControl2)
+        Me.GroupControl1.Controls.Add(Me.LabelControl1)
+        Me.GroupControl1.Controls.Add(Me.DateEdit1)
+        Me.GroupControl1.Location = New System.Drawing.Point(287, 12)
+        Me.GroupControl1.Name = "GroupControl1"
+        Me.GroupControl1.Size = New System.Drawing.Size(329, 214)
+        Me.GroupControl1.TabIndex = 1
+        Me.GroupControl1.Text = "Calculations between two Dates"
+        '
+        'Calculate_btn
+        '
+        Me.Calculate_btn.Location = New System.Drawing.Point(140, 106)
+        Me.Calculate_btn.Name = "Calculate_btn"
+        Me.Calculate_btn.Size = New System.Drawing.Size(100, 23)
+        Me.Calculate_btn.TabIndex = 8
+        Me.Calculate_btn.Text = "Calculate"
+        '
+        'MonthsCount_lbl
+        '
+        Me.MonthsCount_lbl.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.MonthsCount_lbl.Location = New System.Drawing.Point(110, 186)
+        Me.MonthsCount_lbl.Name = "MonthsCount_lbl"
+        Me.MonthsCount_lbl.Size = New System.Drawing.Size(50, 16)
+        Me.MonthsCount_lbl.TabIndex = 7
+        Me.MonthsCount_lbl.Text = "Date till"
+        '
+        'WeeksCount_lbl
+        '
+        Me.WeeksCount_lbl.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.WeeksCount_lbl.Location = New System.Drawing.Point(110, 164)
+        Me.WeeksCount_lbl.Name = "WeeksCount_lbl"
+        Me.WeeksCount_lbl.Size = New System.Drawing.Size(50, 16)
+        Me.WeeksCount_lbl.TabIndex = 6
+        Me.WeeksCount_lbl.Text = "Date till"
+        '
+        'DaysCount_lbl
+        '
+        Me.DaysCount_lbl.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.DaysCount_lbl.Location = New System.Drawing.Point(110, 142)
+        Me.DaysCount_lbl.Name = "DaysCount_lbl"
+        Me.DaysCount_lbl.Size = New System.Drawing.Size(50, 16)
+        Me.DaysCount_lbl.TabIndex = 5
+        Me.DaysCount_lbl.Text = "Date till"
+        '
+        'DateEdit2
+        '
+        Me.DateEdit2.EditValue = New Date(2013, 12, 17, 14, 57, 1, 0)
+        Me.DateEdit2.Location = New System.Drawing.Point(140, 77)
+        Me.DateEdit2.Name = "DateEdit2"
+        Me.DateEdit2.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.DateEdit2.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit2.Properties.Appearance.Options.UseTextOptions = True
+        Me.DateEdit2.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateEdit2.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DateEdit2.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DateEdit2.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DateEdit2.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.DateEdit2.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.DateEdit2.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit2.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DateEdit2.Size = New System.Drawing.Size(100, 22)
+        Me.DateEdit2.TabIndex = 4
+        '
+        'LabelControl2
+        '
+        Me.LabelControl2.Location = New System.Drawing.Point(68, 85)
+        Me.LabelControl2.Name = "LabelControl2"
+        Me.LabelControl2.Size = New System.Drawing.Size(36, 13)
+        Me.LabelControl2.TabIndex = 3
+        Me.LabelControl2.Text = "Date till"
+        '
+        'LabelControl1
+        '
+        Me.LabelControl1.Location = New System.Drawing.Point(68, 44)
+        Me.LabelControl1.Name = "LabelControl1"
+        Me.LabelControl1.Size = New System.Drawing.Size(48, 13)
+        Me.LabelControl1.TabIndex = 1
+        Me.LabelControl1.Text = "Date from"
+        '
+        'DateEdit1
+        '
+        Me.DateEdit1.EditValue = New Date(2013, 12, 17, 14, 50, 35, 0)
+        Me.DateEdit1.Location = New System.Drawing.Point(140, 41)
+        Me.DateEdit1.Name = "DateEdit1"
+        Me.DateEdit1.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.DateEdit1.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit1.Properties.Appearance.Options.UseTextOptions = True
+        Me.DateEdit1.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateEdit1.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DateEdit1.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DateEdit1.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DateEdit1.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.DateEdit1.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.DateEdit1.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit1.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DateEdit1.Size = New System.Drawing.Size(100, 22)
+        Me.DateEdit1.TabIndex = 0
+        '
+        'GroupControl2
+        '
+        Me.GroupControl2.Controls.Add(Me.CalculatedDay_lbl)
+        Me.GroupControl2.Controls.Add(Me.CalculatedDate_lbl)
+        Me.GroupControl2.Controls.Add(Me.Day_SpinEdit)
+        Me.GroupControl2.Controls.Add(Me.LabelControl3)
+        Me.GroupControl2.Controls.Add(Me.DateEdit3)
+        Me.GroupControl2.Location = New System.Drawing.Point(12, 232)
+        Me.GroupControl2.Name = "GroupControl2"
+        Me.GroupControl2.Size = New System.Drawing.Size(255, 177)
+        Me.GroupControl2.TabIndex = 2
+        Me.GroupControl2.Text = "Calculate Date "
+        '
+        'CalculatedDay_lbl
+        '
+        Me.CalculatedDay_lbl.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.CalculatedDay_lbl.Location = New System.Drawing.Point(5, 144)
+        Me.CalculatedDay_lbl.Name = "CalculatedDay_lbl"
+        Me.CalculatedDay_lbl.Size = New System.Drawing.Size(0, 16)
+        Me.CalculatedDay_lbl.TabIndex = 7
+        '
+        'CalculatedDate_lbl
+        '
+        Me.CalculatedDate_lbl.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.CalculatedDate_lbl.Location = New System.Drawing.Point(5, 122)
+        Me.CalculatedDate_lbl.Name = "CalculatedDate_lbl"
+        Me.CalculatedDate_lbl.Size = New System.Drawing.Size(0, 16)
+        Me.CalculatedDate_lbl.TabIndex = 6
+        '
+        'Day_SpinEdit
+        '
+        Me.Day_SpinEdit.EditValue = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.Day_SpinEdit.Location = New System.Drawing.Point(75, 84)
+        Me.Day_SpinEdit.Name = "Day_SpinEdit"
+        Me.Day_SpinEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.Day_SpinEdit.Properties.Appearance.Options.UseFont = True
+        Me.Day_SpinEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.Day_SpinEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.Day_SpinEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.Day_SpinEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.Day_SpinEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.Day_SpinEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.Day_SpinEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.Day_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.Day_SpinEdit.Properties.DisplayFormat.FormatString = "n0"
+        Me.Day_SpinEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.Day_SpinEdit.Properties.EditFormat.FormatString = "n0"
+        Me.Day_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.Day_SpinEdit.Properties.Mask.EditMask = "n0"
+        Me.Day_SpinEdit.Properties.MaxValue = New Decimal(New Integer() {1000000, 0, 0, 0})
+        Me.Day_SpinEdit.Size = New System.Drawing.Size(100, 22)
+        Me.Day_SpinEdit.TabIndex = 3
+        '
+        'LabelControl3
+        '
+        Me.LabelControl3.Location = New System.Drawing.Point(116, 65)
+        Me.LabelControl3.Name = "LabelControl3"
+        Me.LabelControl3.Size = New System.Drawing.Size(8, 13)
+        Me.LabelControl3.TabIndex = 2
+        Me.LabelControl3.Text = "+"
+        '
+        'DateEdit3
+        '
+        Me.DateEdit3.EditValue = New Date(2013, 12, 17, 16, 0, 54, 0)
+        Me.DateEdit3.Location = New System.Drawing.Point(75, 37)
+        Me.DateEdit3.Name = "DateEdit3"
+        Me.DateEdit3.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.DateEdit3.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit3.Properties.Appearance.Options.UseTextOptions = True
+        Me.DateEdit3.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateEdit3.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DateEdit3.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DateEdit3.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DateEdit3.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.DateEdit3.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.DateEdit3.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit3.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DateEdit3.Size = New System.Drawing.Size(100, 22)
+        Me.DateEdit3.TabIndex = 0
+        '
+        'GroupControl3
+        '
+        Me.GroupControl3.Controls.Add(Me.IndustryDate_lbl)
+        Me.GroupControl3.Controls.Add(Me.DateEdit4)
+        Me.GroupControl3.Location = New System.Drawing.Point(287, 232)
+        Me.GroupControl3.Name = "GroupControl3"
+        Me.GroupControl3.Size = New System.Drawing.Size(329, 177)
+        Me.GroupControl3.TabIndex = 3
+        Me.GroupControl3.Text = "Industry Date "
+        '
+        'IndustryDate_lbl
+        '
+        Me.IndustryDate_lbl.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.IndustryDate_lbl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.IndustryDate_lbl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
+        Me.IndustryDate_lbl.Location = New System.Drawing.Point(5, 77)
+        Me.IndustryDate_lbl.Name = "IndustryDate_lbl"
+        Me.IndustryDate_lbl.Size = New System.Drawing.Size(319, 36)
+        Me.IndustryDate_lbl.TabIndex = 6
+        '
+        'DateEdit4
+        '
+        Me.DateEdit4.EditValue = New Date(2013, 12, 17, 16, 24, 45, 0)
+        Me.DateEdit4.Location = New System.Drawing.Point(110, 37)
+        Me.DateEdit4.Name = "DateEdit4"
+        Me.DateEdit4.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.DateEdit4.Properties.Appearance.Options.UseFont = True
+        Me.DateEdit4.Properties.Appearance.Options.UseTextOptions = True
+        Me.DateEdit4.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateEdit4.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DateEdit4.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DateEdit4.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DateEdit4.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.DateEdit4.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.DateEdit4.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateEdit4.Properties.VistaTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
+        Me.DateEdit4.Size = New System.Drawing.Size(100, 22)
+        Me.DateEdit4.TabIndex = 0
+        '
+        'Calendar
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(627, 421)
+        Me.Controls.Add(Me.GroupControl3)
+        Me.Controls.Add(Me.GroupControl2)
+        Me.Controls.Add(Me.GroupControl1)
+        Me.Controls.Add(Me.DateNavigator1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.Name = "Calendar"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.Text = "Calendar"
+        CType(Me.DateNavigator1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl1.ResumeLayout(False)
+        Me.GroupControl1.PerformLayout()
+        CType(Me.DateEdit2.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit2.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit1.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl2.ResumeLayout(False)
+        Me.GroupControl2.PerformLayout()
+        CType(Me.Day_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit3.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit3.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl3.ResumeLayout(False)
+        CType(Me.DateEdit4.Properties.VistaTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateEdit4.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+
+    End Sub
+    Friend WithEvents DateNavigator1 As DevExpress.XtraScheduler.DateNavigator
+    Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents MonthsCount_lbl As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents WeeksCount_lbl As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents DaysCount_lbl As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents DateEdit2 As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents DateEdit1 As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents Calculate_btn As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents GroupControl2 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents DateEdit3 As DevExpress.XtraEditors.DateEdit
+    Friend WithEvents CalculatedDay_lbl As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents CalculatedDate_lbl As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents Day_SpinEdit As DevExpress.XtraEditors.SpinEdit
+    Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents IndustryDate_lbl As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents DateEdit4 As DevExpress.XtraEditors.DateEdit
+End Class
