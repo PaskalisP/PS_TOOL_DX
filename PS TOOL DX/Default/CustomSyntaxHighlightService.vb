@@ -22,8 +22,8 @@ Namespace RichEditSyntaxSample
         Public Sub New(ByVal document As Document)
             Me.document = document
             Me.document.DefaultCharacterProperties.FontName = "Consolas"
-            Dim keywords() As String = {"UNION", "FULL OUTER JOIN", "RIGHT JOIN", "LEFT JOIN", "INNER JOIN", "DROP", "AS", "DELETE", "INSERT", "SELECT", "CREATE", "TABLE", "USE", "IDENTITY", "ON", "OFF", "NOT", "NULL", "IS NULL", "WITH", "SET", "GO", "DECLARE", "EXECUTE", "NVARCHAR", "FROM", "INTO", "VALUES", "WHERE", "AND", "WHILE", "BEGIN", "END", "IF" _
-                                       , "Union", "full outer join", "right join", "left join", "inner join", "drop", "As", "Delete", "Insert", "Select", "Create", "Table", "Use", "Identity", "On", "Off", "Not", "Null", "is Null", "With", "Set", "Go", "Declare", "Execute", "Nvarchar", "From", "Into", "Values", "Where", "And", "While", "Begin", "End", "If" _
+            Dim keywords() As String = {"UNION", "FULL OUTER JOIN", "RIGHT JOIN", "LEFT JOIN", "INNER JOIN", "DROP", "AS", "DELETE", "INSERT", "SELECT", "CREATE", "TABLE", "USE", "IDENTITY", "ON", "OFF", "NOT", "NULL", "WITH", "SET", "GO", "DECLARE", "EXECUTE", "NVARCHAR", "FROM", "INTO", "VALUES", "WHERE", "AND", "WHILE", "BEGIN", "END", "IF" _
+                                       , "Union", "full outer join", "right join", "left join", "inner join", "drop", "As", "Delete", "Insert", "Select", "Create", "Table", "Use", "Identity", "On", "Off", "Not", "Null", "With", "Set", "Go", "Declare", "Execute", "Nvarchar", "From", "Into", "Values", "Where", "And", "While", "Begin", "End", "If" _
                                        , "as", "delete", "insert", "select", "create", "table", "use", "identity", "on", "off", "not", "null", "with", "set", "go", "declare", "execute", "nvarchar", "from", "into", "values", "where", "and", "while", "begin", "end", "if" _
                                        , "datetime", "float", "varchar", "bit", "int", "char", "nchar", "ntext", "money", "numeric", "decimal" _
                                        , "Datetime", "Float", "Varchar", "Bit", "Int", "Char", "Nchar", "Ntext", "Money", "Numeric", "Decimal" _
@@ -31,13 +31,13 @@ Namespace RichEditSyntaxSample
                                        , "FIRSTROW", "CODEPAGE", "DATAFILETYPE", "FIELDTERMINATOR", "ROWTERMINATOR", "TABLOCK", "KEEPNULLS", "bulk", "Bulk", "BULK" _
                                        , "firstrow", "Firstrow", "codepage", "Codepage", "datafiletype", "Datafiletype", "fieldterminator", "Fieldterminator", "tablock", "Tablock", "keepnulls", "Keepnulls" _
                                        , "truncate", "Truncate", "TRUNCATE", "alter", "Alter", "ALTER", "add", "Add", "ADD", "case", "Case", "CASE", "when", "When", "WHEN", "then", "Then", "THEN" _
-                                       , "else", "Else", "ELSE", "GROUP BY", "Group By", "group by", "ORDER BY", "Order By", "order by", "OVER", "Over", "over"}
+                                       , "else", "Else", "ELSE", "GROUP BY", "Group By", "group by", "ORDER BY", "Order By", "order by", "OVER", "Over", "over", "OR", "Or", "or", "LIKE", "like", "Like", "TOP", "top", "Top"}
             Me._keywords = New Regex("\b(" & String.Join("|", keywords.Select(Function(w) Regex.Escape(w))) & ")\b")
             'SQL Functions
             Dim keywords_Functions() As String = {"convert", "Convert", "CONVERT", "replace", "Replace", "REPLACE", "len", "Len", "LEN", "update", "Update", "UPDATE", "max", "Max", "MAX" _
                                                   , "min", "Min", "MIN", "abs", "Abs", "ABS", "round", "Round", "ROUND", "avg", "Avg", "AVG", "cast", "Cast", "CAST", "ceiling", "Ceiling", "CEILING" _
                                                   , "str", "Str", "STR", "ltrim", "Ltrim", "LTRIM", "rtrim", "Rtrim", "RTRIM", "substring", "Substring", "SUBSTRING", "left", "Left", "LEFT" _
-                                                  , "right", "Right", "RIGHT", "stuff", "Stuff", "STUFF", "sum", "Sum", "SUM", "count", "Count", "COUNT", "dateadd", "Dateadd", "DATEADD", "datediff", "Datediff", "DATEDIFF" _
+                                                  , "right", "Right", "RIGHT", "stuff", "Stuff", "STUFF", "sum", "Sum", "SUM", "count", "Count", "COUNT", "dateadd", "Dateadd", "DATEADD", "datediff", "Datediff", "DATEDIFF", "DATEFROMPARTS", "Datefromparts", "datefromparts" _
                                                   , "datename", "Datename", "DATENAME", "datepart", "Datepart", "DATEPART", "coalesce", "Coalesce", "COALESCE", "isdate", "Isdate", "ISDATE", "isnull", "Isnull", "ISNULL" _
                                                   , "isnumeric", "Isnumeric", "ISNUMERIC", "lower", "Lower", "LOWER", "upper", "Upper", "UPPER", "floor", "Floor", "FLOOR", "day", "Day", "DAY" _
                                                   , "month", "Month", "MONTH", "year", "Year", "YEAR", "getdate", "Getdate", "GETDATE", "char", "Char", "CHAR", "COLLATE", "Collate", "collate", "ROW_NUMBER", "Row_Number", "row_number"}

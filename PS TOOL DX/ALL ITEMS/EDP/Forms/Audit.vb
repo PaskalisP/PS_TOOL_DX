@@ -32,6 +32,9 @@ Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.XtraReports.Parameters
 Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
+Imports PS_TOOL_DX.RichEditSyntaxSample
+Imports DevExpress.XtraRichEdit.Services
+
 Public Class Audit
 
     Dim conn As New SqlClient.SqlConnection
@@ -110,7 +113,7 @@ Public Class Audit
             Dim d2 As Date = Me.AuditDateTill_Comboedit.Text
             Dim rdsql1 As String = d1.ToString("yyyyMMdd")
             Dim rdsql2 As String = d2.ToString("yyyyMMdd")
-          
+
             'Dim objCMD As SqlCommand = New SqlCommand("execute [AUDIT_FILL_SEARCH]  @MINRISKDATE='" & rdsql1 & "', @MAXRISKDATE='" & rdsql2 & "'  ", conn)
             'objCMD.CommandTimeout = 5000
             'da = New SqlDataAdapter(objCMD)
@@ -169,7 +172,7 @@ Public Class Audit
 
     End Sub
 
-    
+
 
     Private Sub AuditEvents_BasicView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles AuditEvents_BasicView.PopupMenuShowing
         Dim View As GridView = CType(sender, GridView)
@@ -250,7 +253,7 @@ Public Class Audit
                 Try
                     SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                     SplashScreenManager.Default.SetWaitFormCaption("Loading Audit Items for " & d1 & " till " & d2)
-                   
+
                     'Dim objCMD As SqlCommand = New SqlCommand("execute [AUDIT_FILL_SEARCH]  @MINRISKDATE='" & sqld1 & "', @MAXRISKDATE='" & sqld2 & "'  ", conn)
                     'objCMD.CommandTimeout = 5000
                     'da = New SqlDataAdapter(objCMD)
@@ -318,11 +321,12 @@ Public Class Audit
         c.Show()
         c.WindowState = FormWindowState.Maximized
         c.RichEditControl1.Text = "Select * from [" & Table_Name & "] where ID=" & Related_ID & ""
-        c.SqlExecute_btn.PerformClick()
-        'c.LayoutControlGroup1.Visibility = LayoutVisibility.Never
+        c.BbiExecuteSqlCommand.PerformClick()
         c.TreeList1.Visible = False
-
-        'c.SplitterControl2.Visible = False
+        c.RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(c.RichEditControl1.Document))
+        c.Text = "Audit for Table: [" & Table_Name & "] and ID: " & Related_ID
+        c.RichEditControl1.ReadOnly = True
+        c.RichEditControl1.Enabled = False
         SplashScreenManager.CloseForm(False)
     End Sub
 End Class

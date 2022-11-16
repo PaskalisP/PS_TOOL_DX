@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class SqlParameter
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -61,13 +61,6 @@ Partial Class SqlParameter
         Me.PopupContainerEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit()
         Me.popupContainerControl = New DevExpress.XtraEditors.PopupContainerControl()
         Me.RichEditControl1 = New DevExpress.XtraRichEdit.RichEditControl()
-        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
-        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
-        Me.SQL_Duplicate_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.SQL_AddToPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.SQL_Parameter_Details_Second_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -104,6 +97,15 @@ Partial Class SqlParameter
         Me.GridColumn29 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn30 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colId_SQL_Parameters_Details_4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.SQL_Duplicate_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.SQL_AddToPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.SQL_DuplicateNextPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.SQL_PARAMETERTableAdapter = New PS_TOOL_DX.EDPDataSetTableAdapters.SQL_PARAMETERTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EDPDataSetTableAdapters.TableAdapterManager()
         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter = New PS_TOOL_DX.EDPDataSetTableAdapters.SQL_PARAMETER_DETAILS_SECONDTableAdapter()
@@ -132,13 +134,8 @@ Partial Class SqlParameter
         Me.GridColumn50 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn51 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LayoutControl3 = New DevExpress.XtraLayout.LayoutControl()
-        Me.Print_Export_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton3 = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlGroup6 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.TabbedControlGroup1 = New DevExpress.XtraLayout.TabbedControlGroup()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -148,8 +145,17 @@ Partial Class SqlParameter
         Me.SQL_PARAMETER_DETAILS_SECONDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SQL_PARAMETER_DETAILS_THIRDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SqlParameterGridviewPopupMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.SQL_DuplicateNextPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.bbiReload = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiSave = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiPrintPreview = New DevExpress.XtraBars.BarButtonItem()
+        Me.FindAndReplaceText_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiClose = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         CType(Me.SQL_Parameter_Details_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -166,9 +172,9 @@ Partial Class SqlParameter
         CType(Me.PopupContainerEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.popupContainerControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.popupContainerControl.SuspendLayout()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SQL_Parameter_Details_Second_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SQL_Parameter_Details_Third_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SQL_Parameter_ALL_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -176,9 +182,6 @@ Partial Class SqlParameter
         Me.LayoutControl3.SuspendLayout()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -188,6 +191,7 @@ Partial Class SqlParameter
         CType(Me.SQL_PARAMETER_DETAILS_SECONDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SQL_PARAMETER_DETAILS_THIRDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SqlParameterGridviewPopupMenu, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SQL_Parameter_Details_GridView
@@ -316,15 +320,17 @@ Partial Class SqlParameter
         '
         Me.RepositoryItemMemoExEdit3.Appearance.BackColor = System.Drawing.Color.Yellow
         Me.RepositoryItemMemoExEdit3.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemMemoExEdit3.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.RepositoryItemMemoExEdit3.Appearance.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RepositoryItemMemoExEdit3.Appearance.ForeColor = System.Drawing.Color.Black
         Me.RepositoryItemMemoExEdit3.Appearance.Options.UseBackColor = True
         Me.RepositoryItemMemoExEdit3.Appearance.Options.UseFont = True
         Me.RepositoryItemMemoExEdit3.Appearance.Options.UseForeColor = True
         Me.RepositoryItemMemoExEdit3.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.RepositoryItemMemoExEdit3.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemMemoExEdit3.AppearanceFocused.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RepositoryItemMemoExEdit3.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.RepositoryItemMemoExEdit3.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemMemoExEdit3.AppearanceFocused.Options.UseFont = True
         Me.RepositoryItemMemoExEdit3.AppearanceFocused.Options.UseForeColor = True
         Me.RepositoryItemMemoExEdit3.AutoHeight = False
         Me.RepositoryItemMemoExEdit3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
@@ -446,11 +452,15 @@ Partial Class SqlParameter
         Me.GridControl3.Cursor = System.Windows.Forms.Cursors.Default
         Me.GridControl3.DataSource = Me.SQL_PARAMETERBindingSource
         Me.GridControl3.EmbeddedNavigator.Buttons.Append.ImageIndex = 4
+        Me.GridControl3.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.GridControl3.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.GridControl3.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 8
+        Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl3.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GridControl3.EmbeddedNavigator.Buttons.Remove.ImageIndex = 7
         Me.GridControl3.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl3.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 7, True, True, "Delete selected Item", "Delete")})
+        Me.GridControl3.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 7, True, False, "Delete selected Item", "Delete")})
         GridLevelNode1.LevelTemplate = Me.SQL_Parameter_Details_GridView
         GridLevelNode2.LevelTemplate = Me.SQL_Parameter_Details_Second_GridView
         GridLevelNode3.LevelTemplate = Me.SQL_Parameter_Details_Third_GridView
@@ -460,11 +470,11 @@ Partial Class SqlParameter
         GridLevelNode1.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         GridLevelNode1.RelationName = "FK_SQL_PARAMETER_DETAILS_SQL_PARAMETER"
         Me.GridControl3.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl3.Location = New System.Drawing.Point(36, 85)
+        Me.GridControl3.Location = New System.Drawing.Point(36, 57)
         Me.GridControl3.MainView = Me.SQL_Parameter_Gridview
         Me.GridControl3.Name = "GridControl3"
         Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox3, Me.RepositoryItemTextEdit2, Me.RepositoryItemMemoExEdit3, Me.RepositoryItemSpinEdit1, Me.RepositoryItemImageComboBox1, Me.RepositoryItemDateEdit1, Me.PopupContainerEdit2})
-        Me.GridControl3.Size = New System.Drawing.Size(1362, 455)
+        Me.GridControl3.Size = New System.Drawing.Size(1362, 367)
         Me.GridControl3.TabIndex = 25
         Me.GridControl3.UseEmbeddedNavigator = True
         Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SQL_Parameter_Gridview, Me.SQL_Parameter_Details_Second_GridView, Me.SQL_Parameter_Details_Third_GridView, Me.SQL_Parameter_Details_GridView})
@@ -603,10 +613,10 @@ Partial Class SqlParameter
         'popupContainerControl
         '
         Me.popupContainerControl.Controls.Add(Me.RichEditControl1)
-        Me.popupContainerControl.Location = New System.Drawing.Point(24, 64)
+        Me.popupContainerControl.Location = New System.Drawing.Point(1214, 45)
         Me.popupContainerControl.Name = "popupContainerControl"
-        Me.popupContainerControl.Size = New System.Drawing.Size(189, 44)
-        Me.popupContainerControl.TabIndex = 11
+        Me.popupContainerControl.Size = New System.Drawing.Size(162, 38)
+        Me.popupContainerControl.TabIndex = 18
         '
         'RichEditControl1
         '
@@ -618,66 +628,8 @@ Partial Class SqlParameter
         Me.RichEditControl1.Location = New System.Drawing.Point(0, 0)
         Me.RichEditControl1.MenuManager = Me.BarManager1
         Me.RichEditControl1.Name = "RichEditControl1"
-        Me.RichEditControl1.Size = New System.Drawing.Size(189, 44)
+        Me.RichEditControl1.Size = New System.Drawing.Size(162, 38)
         Me.RichEditControl1.TabIndex = 2
-        '
-        'BarManager1
-        '
-        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
-        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
-        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
-        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
-        Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.SQL_Duplicate_BarButtonItem, Me.SQL_AddToPosition_BarButtonItem, Me.SQL_DuplicateCurrentPosition_BarButtonItem, Me.SQL_DuplicateNextPosition_BarButtonItem})
-        Me.BarManager1.MaxItemId = 4
-        '
-        'barDockControlTop
-        '
-        Me.barDockControlTop.CausesValidation = False
-        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1434, 0)
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = False
-        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 576)
-        Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1434, 0)
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = False
-        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 576)
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = False
-        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1434, 0)
-        Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 576)
-        '
-        'SQL_Duplicate_BarButtonItem
-        '
-        Me.SQL_Duplicate_BarButtonItem.Caption = "Duplicate current SQL Parameter (as new Parameter)"
-        Me.SQL_Duplicate_BarButtonItem.Id = 0
-        Me.SQL_Duplicate_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.SQL_Duplicate_BarButtonItem.Name = "SQL_Duplicate_BarButtonItem"
-        '
-        'SQL_AddToPosition_BarButtonItem
-        '
-        Me.SQL_AddToPosition_BarButtonItem.Caption = "Add new SQL Parameter to current position"
-        Me.SQL_AddToPosition_BarButtonItem.Id = 1
-        Me.SQL_AddToPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.SQL_AddToPosition_BarButtonItem.Name = "SQL_AddToPosition_BarButtonItem"
         '
         'SQL_Parameter_Details_Second_GridView
         '
@@ -1029,6 +981,80 @@ Partial Class SqlParameter
         Me.colId_SQL_Parameters_Details_4.OptionsColumn.ReadOnly = True
         Me.colId_SQL_Parameters_Details_4.Width = 70
         '
+        'BarManager1
+        '
+        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager1.Form = Me
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.SQL_Duplicate_BarButtonItem, Me.SQL_AddToPosition_BarButtonItem, Me.SQL_DuplicateCurrentPosition_BarButtonItem, Me.SQL_DuplicateNextPosition_BarButtonItem})
+        Me.BarManager1.MaxItemId = 4
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
+        Me.barDockControlTop.Size = New System.Drawing.Size(1434, 0)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 576)
+        Me.barDockControlBottom.Manager = Me.BarManager1
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1434, 0)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlLeft.Manager = Me.BarManager1
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 576)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(1434, 0)
+        Me.barDockControlRight.Manager = Me.BarManager1
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 576)
+        '
+        'SQL_Duplicate_BarButtonItem
+        '
+        Me.SQL_Duplicate_BarButtonItem.Caption = "Duplicate current SQL Parameter (as new Parameter)"
+        Me.SQL_Duplicate_BarButtonItem.Id = 0
+        Me.SQL_Duplicate_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_Duplicate_BarButtonItem.Name = "SQL_Duplicate_BarButtonItem"
+        '
+        'SQL_AddToPosition_BarButtonItem
+        '
+        Me.SQL_AddToPosition_BarButtonItem.Caption = "Add new SQL Parameter to current position"
+        Me.SQL_AddToPosition_BarButtonItem.Id = 1
+        Me.SQL_AddToPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_AddToPosition_BarButtonItem.Name = "SQL_AddToPosition_BarButtonItem"
+        '
+        'SQL_DuplicateCurrentPosition_BarButtonItem
+        '
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the current Position)"
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Id = 2
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Name = "SQL_DuplicateCurrentPosition_BarButtonItem"
+        '
+        'SQL_DuplicateNextPosition_BarButtonItem
+        '
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the next Position)"
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Id = 3
+        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Name = "SQL_DuplicateNextPosition_BarButtonItem"
+        '
         'SQL_PARAMETERTableAdapter
         '
         Me.SQL_PARAMETERTableAdapter.ClearBeforeFill = True
@@ -1087,10 +1113,10 @@ Partial Class SqlParameter
         Me.GridControl1.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl1.Location = New System.Drawing.Point(36, 85)
+        Me.GridControl1.Location = New System.Drawing.Point(36, 57)
         Me.GridControl1.MainView = Me.SQL_Parameter_ALL_GridView
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(1362, 455)
+        Me.GridControl1.Size = New System.Drawing.Size(1362, 367)
         Me.GridControl1.TabIndex = 26
         Me.GridControl1.UseEmbeddedNavigator = True
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SQL_Parameter_ALL_GridView})
@@ -1266,39 +1292,14 @@ Partial Class SqlParameter
         '
         Me.LayoutControl3.Controls.Add(Me.GridControl1)
         Me.LayoutControl3.Controls.Add(Me.GridControl3)
-        Me.LayoutControl3.Controls.Add(Me.Print_Export_Gridview_btn)
-        Me.LayoutControl3.Controls.Add(Me.SimpleButton3)
         Me.LayoutControl3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl3.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl3.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl3.Name = "LayoutControl3"
         Me.LayoutControl3.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 641, 547)
         Me.LayoutControl3.Root = Me.LayoutControlGroup2
-        Me.LayoutControl3.Size = New System.Drawing.Size(1434, 576)
+        Me.LayoutControl3.Size = New System.Drawing.Size(1434, 460)
         Me.LayoutControl3.TabIndex = 3
         Me.LayoutControl3.Text = "LayoutControl3"
-        '
-        'Print_Export_Gridview_btn
-        '
-        Me.Print_Export_Gridview_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_Gridview_btn.ImageOptions.ImageIndex = 2
-        Me.Print_Export_Gridview_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Print_Export_Gridview_btn.Location = New System.Drawing.Point(24, 24)
-        Me.Print_Export_Gridview_btn.Name = "Print_Export_Gridview_btn"
-        Me.Print_Export_Gridview_btn.Size = New System.Drawing.Size(162, 22)
-        Me.Print_Export_Gridview_btn.StyleController = Me.LayoutControl3
-        Me.Print_Export_Gridview_btn.TabIndex = 6
-        Me.Print_Export_Gridview_btn.Text = "Print or Export"
-        '
-        'SimpleButton3
-        '
-        Me.SimpleButton3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.SimpleButton3.ImageOptions.ImageIndex = 5
-        Me.SimpleButton3.Location = New System.Drawing.Point(1336, 24)
-        Me.SimpleButton3.Name = "SimpleButton3"
-        Me.SimpleButton3.Size = New System.Drawing.Size(74, 22)
-        Me.SimpleButton3.StyleController = Me.LayoutControl3
-        Me.SimpleButton3.TabIndex = 4
-        Me.SimpleButton3.Text = "Edit Details"
         '
         'LayoutControlGroup2
         '
@@ -1307,46 +1308,16 @@ Partial Class SqlParameter
         Me.LayoutControlGroup2.GroupBordersVisible = False
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup6})
         Me.LayoutControlGroup2.Name = "Root"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1434, 576)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1434, 460)
         '
         'LayoutControlGroup6
         '
         Me.LayoutControlGroup6.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem10, Me.EmptySpaceItem2, Me.LayoutControlItem11, Me.TabbedControlGroup1})
+        Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup1})
         Me.LayoutControlGroup6.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup6.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1414, 556)
+        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1414, 440)
         Me.LayoutControlGroup6.TextVisible = False
-        '
-        'LayoutControlItem10
-        '
-        Me.LayoutControlItem10.Control = Me.SimpleButton3
-        Me.LayoutControlItem10.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(1312, 0)
-        Me.LayoutControlItem10.Name = "LayoutControlItem2"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(78, 26)
-        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem10.TextVisible = False
-        Me.LayoutControlItem10.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(166, 0)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1146, 26)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem11
-        '
-        Me.LayoutControlItem11.Control = Me.Print_Export_Gridview_btn
-        Me.LayoutControlItem11.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem11.Name = "LayoutControlItem4"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(166, 26)
-        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem11.TextVisible = False
         '
         'TabbedControlGroup1
         '
@@ -1354,10 +1325,10 @@ Partial Class SqlParameter
         Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Yellow
         Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Options.UseFont = True
         Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
-        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 26)
+        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
         Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup1
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1390, 506)
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1390, 416)
         Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup1, Me.LayoutControlGroup3})
         '
         'LayoutControlGroup1
@@ -1365,7 +1336,7 @@ Partial Class SqlParameter
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem9})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1366, 459)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1366, 371)
         Me.LayoutControlGroup1.Text = "SQL Parameters"
         '
         'LayoutControlItem9
@@ -1374,7 +1345,7 @@ Partial Class SqlParameter
         Me.LayoutControlItem9.CustomizationFormText = "LayoutControlItem9"
         Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(1366, 459)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(1366, 371)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem9.TextVisible = False
         '
@@ -1383,7 +1354,7 @@ Partial Class SqlParameter
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "item0"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1366, 459)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1366, 371)
         Me.LayoutControlGroup3.Text = "All SQL Parameters (Display)"
         '
         'LayoutControlItem1
@@ -1391,7 +1362,7 @@ Partial Class SqlParameter
         Me.LayoutControlItem1.Control = Me.GridControl1
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1366, 459)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1366, 371)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -1416,29 +1387,104 @@ Partial Class SqlParameter
         Me.SqlParameterGridviewPopupMenu.Manager = Me.BarManager1
         Me.SqlParameterGridviewPopupMenu.Name = "SqlParameterGridviewPopupMenu"
         '
-        'SQL_DuplicateCurrentPosition_BarButtonItem
+        'RibbonControl1
         '
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the current Position)"
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Id = 2
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Name = "SQL_DuplicateCurrentPosition_BarButtonItem"
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbiReload, Me.bbiSave, Me.bbiDelete, Me.bbiPrintPreview, Me.FindAndReplaceText_bbi, Me.bbiClose})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 7
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.Size = New System.Drawing.Size(1434, 94)
+        Me.RibbonControl1.StatusBar = Me.RibbonStatusBar1
         '
-        'SQL_DuplicateNextPosition_BarButtonItem
+        'bbiReload
         '
-        Me.SQL_DuplicateNextPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the next Position)"
-        Me.SQL_DuplicateNextPosition_BarButtonItem.Id = 3
-        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.SQL_DuplicateNextPosition_BarButtonItem.Name = "SQL_DuplicateNextPosition_BarButtonItem"
+        Me.bbiReload.Caption = "Reload"
+        Me.bbiReload.Id = 1
+        Me.bbiReload.ImageOptions.Image = CType(resources.GetObject("bbiReload.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiReload.ImageOptions.LargeImage = CType(resources.GetObject("bbiReload.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiReload.Name = "bbiReload"
+        '
+        'bbiSave
+        '
+        Me.bbiSave.Caption = "Save changes"
+        Me.bbiSave.Id = 2
+        Me.bbiSave.ImageOptions.Image = CType(resources.GetObject("bbiSave.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiSave.ImageOptions.LargeImage = CType(resources.GetObject("bbiSave.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiSave.Name = "bbiSave"
+        '
+        'bbiDelete
+        '
+        Me.bbiDelete.Caption = "Delete"
+        Me.bbiDelete.Id = 3
+        Me.bbiDelete.ImageOptions.Image = CType(resources.GetObject("bbiDelete.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiDelete.ImageOptions.LargeImage = CType(resources.GetObject("bbiDelete.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiDelete.Name = "bbiDelete"
+        '
+        'bbiPrintPreview
+        '
+        Me.bbiPrintPreview.Caption = "Print Preview"
+        Me.bbiPrintPreview.Id = 4
+        Me.bbiPrintPreview.ImageOptions.Image = CType(resources.GetObject("bbiPrintPreview.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiPrintPreview.ImageOptions.LargeImage = CType(resources.GetObject("bbiPrintPreview.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiPrintPreview.Name = "bbiPrintPreview"
+        '
+        'FindAndReplaceText_bbi
+        '
+        Me.FindAndReplaceText_bbi.Caption = "Find and replace"
+        Me.FindAndReplaceText_bbi.Id = 5
+        Me.FindAndReplaceText_bbi.ImageOptions.Image = CType(resources.GetObject("FindAndReplaceText_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.FindAndReplaceText_bbi.ImageOptions.LargeImage = CType(resources.GetObject("FindAndReplaceText_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.FindAndReplaceText_bbi.Name = "FindAndReplaceText_bbi"
+        '
+        'bbiClose
+        '
+        Me.bbiClose.Caption = "Close"
+        Me.bbiClose.Id = 6
+        Me.bbiClose.ImageOptions.Image = CType(resources.GetObject("bbiClose.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiClose.ImageOptions.LargeImage = CType(resources.GetObject("bbiClose.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiClose.Name = "bbiClose"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiReload)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiSave, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiDelete, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiPrintPreview, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.FindAndReplaceText_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiClose, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonStatusBar1
+        '
+        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 554)
+        Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
+        Me.RibbonStatusBar1.Ribbon = Me.RibbonControl1
+        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1434, 22)
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
         '
         'SqlParameter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1434, 576)
-        Me.Controls.Add(Me.LayoutControl3)
         Me.Controls.Add(Me.popupContainerControl)
+        Me.Controls.Add(Me.LayoutControl3)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.Controls.Add(Me.RibbonStatusBar1)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
@@ -1446,7 +1492,9 @@ Partial Class SqlParameter
         Me.IconOptions.Icon = CType(resources.GetObject("SqlParameter.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "SqlParameter"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StatusBar = Me.RibbonStatusBar1
         Me.Text = "SQL Procedures Parameter"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.SQL_Parameter_Details_GridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1465,9 +1513,9 @@ Partial Class SqlParameter
         CType(Me.PopupContainerEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.popupContainerControl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.popupContainerControl.ResumeLayout(False)
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SQL_Parameter_Details_Second_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SQL_Parameter_Details_Third_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SQL_Parameter_ALL_GridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1475,9 +1523,6 @@ Partial Class SqlParameter
         Me.LayoutControl3.ResumeLayout(False)
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1487,6 +1532,7 @@ Partial Class SqlParameter
         CType(Me.SQL_PARAMETER_DETAILS_SECONDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SQL_PARAMETER_DETAILS_THIRDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SqlParameterGridviewPopupMenu, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1522,13 +1568,8 @@ Partial Class SqlParameter
     Friend WithEvents RepositoryItemTextEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents colSQL_Parameter_Info As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemComboBox3 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
-    Friend WithEvents Print_Export_Gridview_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SimpleButton3 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlGroup6 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
     Friend WithEvents SQL_PARAMETER_DETAILSBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents SQL_PARAMETER_DETAILSTableAdapter As PS_TOOL_DX.EDPDataSetTableAdapters.SQL_PARAMETER_DETAILSTableAdapter
@@ -1545,8 +1586,6 @@ Partial Class SqlParameter
     Friend WithEvents SQL_PARAMETER_DETAILS_THIRDBindingSource As BindingSource
     Friend WithEvents SQL_PARAMETER_DETAILS_THIRDTableAdapter As EDPDataSetTableAdapters.SQL_PARAMETER_DETAILS_THIRDTableAdapter
     Friend WithEvents SQL_Parameter_Details_Third_GridView As DevExpress.XtraGrid.Views.Grid.GridView
-    Private WithEvents popupContainerControl As DevExpress.XtraEditors.PopupContainerControl
-    Private WithEvents RichEditControl1 As DevExpress.XtraRichEdit.RichEditControl
     Friend WithEvents PopupContainerEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
@@ -1617,4 +1656,17 @@ Partial Class SqlParameter
     Friend WithEvents SQL_AddToPosition_BarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents SQL_DuplicateCurrentPosition_BarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents SQL_DuplicateNextPosition_BarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonStatusBar1 As DevExpress.XtraBars.Ribbon.RibbonStatusBar
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents bbiReload As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiSave As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiDelete As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiPrintPreview As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents FindAndReplaceText_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiClose As DevExpress.XtraBars.BarButtonItem
+    Private WithEvents popupContainerControl As DevExpress.XtraEditors.PopupContainerControl
+    Private WithEvents RichEditControl1 As DevExpress.XtraRichEdit.RichEditControl
 End Class

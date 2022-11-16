@@ -362,6 +362,7 @@ Public Class PSTOOL_MAIN_Form
         'Get Server Name and showing in Window Text
         Dim connection As SqlConnection = New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
         Dim server As String = connection.DataSource
+        CurrentUserWindowsID = SystemInformation.UserName
         Me.Text = "PS TOOL DX - SQL Server 2008: " & server
 
 

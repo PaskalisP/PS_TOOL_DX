@@ -35,11 +35,9 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.XtraRichEdit.Services
 Imports PS_TOOL_DX.RichEditSyntaxSample
 Imports DevExpress.XtraGrid.Views.Printing
+Imports DevExpress.XtraLayout
 
 Public Class SqlParameter
-
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
 
     Dim ID_1 As Integer = 0
     Dim ID_2 As Integer = 0
@@ -53,8 +51,6 @@ Public Class SqlParameter
     Dim CrystalRepDir As String = ""
 
     Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
 
     Dim rd As Date
     Dim rdsql As String = Nothing
@@ -91,10 +87,7 @@ Public Class SqlParameter
 
     Private Sub SqlParameter_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.F5 Then
-            Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
-            Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
-            Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
-            Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+            Me.bbiReload.PerformClick()
         End If
     End Sub
 
@@ -102,19 +95,21 @@ Public Class SqlParameter
 
         AddHandler GridControl3.EmbeddedNavigator.ButtonClick, AddressOf GridControl3_EmbeddedNavigator_ButtonClick
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
+
+        Me.RichEditControl1.Document.DefaultCharacterProperties.FontName = "Consolas"
+        Me.RichEditControl1.Document.DefaultCharacterProperties.FontSize = 9
 
         Me.PopupContainerEdit2.PopupFormMinSize = New Size(650, 500)
 
         '***********************************************************************
         '*******CRYSTAL REPORTS DIRECTORY************
         '+++++++++++++++++++++++++++++++++++++++++++++++++++
+        OpenSqlConnections()
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
-        cmd.Connection.Open()
         CrystalRepDir = cmd.ExecuteScalar
         '***********************************************************************
-        cmd.Connection.Close()
+        CloseSqlConnections()
+
 
         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
@@ -128,71 +123,70 @@ Public Class SqlParameter
 
     Private Sub LOAD_ALL_SQL_PARAMETER_DETAILS()
         'Fill Balance Sheet 2 details
-        Dim da As SqlDataAdapter
         Dim objCMD As SqlCommand = New SqlCommand("SELECT A.[ID] as 'ID-SQL_PARAMETER'
-,A.[SQL_Parameter_Name] as 'SQL_Parameter_Name-SQL_PARAMETER'
-,A.[SQL_Parameter_Info] as 'SQL_Parameter_Info-SQL_PARAMETER'
-,A.[SQL_Parameter_Status] as 'SQL_Parameter_Status-SQL_PARAMETER'
-,A.[SQL_Command_General] as 'SQL_Command_General-SQL_PARAMETER'
-,A.[SQL_Float] as 'SQL_Float-SQL_PARAMETER'
-,B.[ID] as 'ID-SQL_PARAMETER_DETAILS'
-,B.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS'
-,B.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS'
-,B.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS'
-,B.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS'
-,B.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS'
-,B.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS'
-,B.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS'
-,B.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS'
-,B.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS'
-,B.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS'
-,B.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS'
-,B.[SQL_Command_4] as 'SQL_Command_4-SQL_PARAMETER_DETAILS'
-,B.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS'
-,B.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS'
-,B.[Status] as 'Status-SQL_PARAMETER_DETAILS'
-,B.[Id_SQL_Parameters] as 'Id_SQL_Parameters-SQL_PARAMETER_DETAILS'
-,C.[ID] as 'ID-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Command_4] as 'SQL_Command_4SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS_SECOND'
-,C.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS_SECOND'
-,C.[Status] as 'Status-SQL_PARAMETER_DETAILS_SECOND'
-,C.[Id_SQL_Parameters_Details] as 'Id_SQL_Parameters_Details-SQL_PARAMETER_DETAILS_SECOND'
-,D.[ID] as 'ID-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Command_4] as 'SQL_Command_4-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS_THIRD'
-,D.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS_THIRD'
-,D.[Status] as 'Status-SQL_PARAMETER_DETAILS_THIRD'
-,D.[Id_SQL_Parameters_Details] as 'Id_SQL_Parameters_Details-SQL_PARAMETER_DETAILS_THIRD'
-FROM [SQL_PARAMETER] A FULL OUTER JOIN [SQL_PARAMETER_DETAILS] B
-ON A.[SQL_Parameter_Name]=B.Id_SQL_Parameters
-FULL OUTER JOIN [SQL_PARAMETER_DETAILS_SECOND] C
-ON B.ID=C.Id_SQL_Parameters_Details
-FULL OUTER JOIN [SQL_PARAMETER_DETAILS_THIRD] D
-ON C.ID=D.Id_SQL_Parameters_Details
-ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_1]", conn)
+                                                ,A.[SQL_Parameter_Name] as 'SQL_Parameter_Name-SQL_PARAMETER'
+                                                ,A.[SQL_Parameter_Info] as 'SQL_Parameter_Info-SQL_PARAMETER'
+                                                ,A.[SQL_Parameter_Status] as 'SQL_Parameter_Status-SQL_PARAMETER'
+                                                ,A.[SQL_Command_General] as 'SQL_Command_General-SQL_PARAMETER'
+                                                ,A.[SQL_Float] as 'SQL_Float-SQL_PARAMETER'
+                                                ,B.[ID] as 'ID-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Command_4] as 'SQL_Command_4-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS'
+                                                ,B.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS'
+                                                ,B.[Status] as 'Status-SQL_PARAMETER_DETAILS'
+                                                ,B.[Id_SQL_Parameters] as 'Id_SQL_Parameters-SQL_PARAMETER_DETAILS'
+                                                ,C.[ID] as 'ID-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Command_4] as 'SQL_Command_4SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[Status] as 'Status-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,C.[Id_SQL_Parameters_Details] as 'Id_SQL_Parameters_Details-SQL_PARAMETER_DETAILS_SECOND'
+                                                ,D.[ID] as 'ID-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Command_4] as 'SQL_Command_4-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[Status] as 'Status-SQL_PARAMETER_DETAILS_THIRD'
+                                                ,D.[Id_SQL_Parameters_Details] as 'Id_SQL_Parameters_Details-SQL_PARAMETER_DETAILS_THIRD'
+                                                FROM [SQL_PARAMETER] A FULL OUTER JOIN [SQL_PARAMETER_DETAILS] B
+                                                ON A.[SQL_Parameter_Name]=B.Id_SQL_Parameters
+                                                FULL OUTER JOIN [SQL_PARAMETER_DETAILS_SECOND] C
+                                                ON B.ID=C.Id_SQL_Parameters_Details
+                                                FULL OUTER JOIN [SQL_PARAMETER_DETAILS_THIRD] D
+                                                ON C.ID=D.Id_SQL_Parameters_Details
+                                                ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_1]", conn)
         objCMD.CommandTimeout = 5000
         da = New SqlDataAdapter(objCMD)
         dt = New DataTable()
@@ -207,12 +201,299 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
         End If
     End Sub
 
+    Private Sub FILL_ALL_DATA()
+        Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+        Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+        Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+        Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+    End Sub
+
+    Private Sub TabbedControlGroup1_SelectedPageChanged(sender As Object, e As LayoutTabPageChangedEventArgs) Handles TabbedControlGroup1.SelectedPageChanged
+        If Me.TabbedControlGroup1.SelectedTabPage.Text = "SQL Parameters" Then
+            Me.bbiSave.Visibility = BarItemVisibility.Always
+            Me.bbiDelete.Visibility = BarItemVisibility.Always
+            Me.FindAndReplaceText_bbi.Visibility = BarItemVisibility.Always
+        ElseIf Me.TabbedControlGroup1.SelectedTabPage.Text = "All SQL Parameters (Display)" Then
+            Me.bbiSave.Visibility = BarItemVisibility.Never
+            Me.bbiDelete.Visibility = BarItemVisibility.Never
+            Me.FindAndReplaceText_bbi.Visibility = BarItemVisibility.Never
+        End If
+    End Sub
+
+    Private Sub bbiReload_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiReload.ItemClick
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        SplashScreenManager.Default.SetWaitFormCaption("Reload SQL Parameters")
+        FILL_ALL_DATA()
+        SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub bbiSave_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiSave.ItemClick
+        OpenSqlConnections()
+        Try
+            Me.Validate()
+            Me.SQL_PARAMETERBindingSource.EndEdit()
+            Me.SQL_PARAMETER_DETAILSBindingSource.EndEdit()
+            Me.SQL_PARAMETER_DETAILS_SECONDBindingSource.EndEdit()
+            Me.SQL_PARAMETER_DETAILS_THIRDBindingSource.EndEdit()
+            If Me.EDPDataSet.HasChanges = True Then
+                If MessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.TableAdapterManager.UpdateAll(Me.EDPDataSet)
+                    Dim view As GridView = Me.GridControl3.FocusedView
+                    Dim focusedRow As Integer = view.FocusedRowHandle
+                    Me.GridControl3.BeginUpdate()
+
+                    If view.Name = Me.SQL_Parameter_Gridview.Name.ToString Then
+                        Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                        Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                        Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                        Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+                    ElseIf view.Name = Me.SQL_Parameter_Details_GridView.Name.ToString Then
+                        Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                        Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                        Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                    ElseIf view.Name = Me.SQL_Parameter_Details_Second_GridView.Name.ToString Then
+                        Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                        Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                    ElseIf view.Name = Me.SQL_Parameter_Details_Third_GridView.Name.ToString Then
+                        Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                    End If
+
+                    view.RefreshData()
+                    Me.GridControl3.EndUpdate()
+                    view.FocusedRowHandle = focusedRow
+
+                    'SET SQL COMMAND FIELDS TO NULL IF LEN=0
+                    cmd.CommandText = "Select * from [SQL_PARAMETER_DETAILS] where (Len([SQL_Command_1])=0 or Len([SQL_Command_2])=0 or Len([SQL_Command_3])=0 or Len([SQL_Command_4])=0) begin update [SQL_PARAMETER_DETAILS] set [SQL_Command_1]=NULL where Len([SQL_Command_1])=0 end begin update [SQL_PARAMETER_DETAILS] set [SQL_Command_2]=NULL where Len([SQL_Command_2])=0 end begin update [SQL_PARAMETER_DETAILS] set [SQL_Command_3]=NULL where Len([SQL_Command_3])=0 end begin update [SQL_PARAMETER_DETAILS] set [SQL_Command_4]=NULL where Len([SQL_Command_4])=0 end"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "Select * from [SQL_PARAMETER_DETAILS_SECOND] where (Len([SQL_Command_1])=0 or Len([SQL_Command_2])=0 or Len([SQL_Command_3])=0 or Len([SQL_Command_4])=0) begin update [SQL_PARAMETER_DETAILS_SECOND] set [SQL_Command_1]=NULL where Len([SQL_Command_1])=0 end begin update [SQL_PARAMETER_DETAILS_SECOND] set [SQL_Command_2]=NULL where Len([SQL_Command_2])=0 end begin update [SQL_PARAMETER_DETAILS_SECOND] set [SQL_Command_3]=NULL where Len([SQL_Command_3])=0 end begin update [SQL_PARAMETER_DETAILS_SECOND] set [SQL_Command_4]=NULL where Len([SQL_Command_4])=0 end"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "Select * from [SQL_PARAMETER_DETAILS_THIRD] where (Len([SQL_Command_1])=0 or Len([SQL_Command_2])=0 or Len([SQL_Command_3])=0 or Len([SQL_Command_4])=0) begin update [SQL_PARAMETER_DETAILS_THIRD] set [SQL_Command_1]=NULL where Len([SQL_Command_1])=0 end begin update [SQL_PARAMETER_DETAILS_THIRD] set [SQL_Command_2]=NULL where Len([SQL_Command_2])=0 end begin update [SQL_PARAMETER_DETAILS_THIRD] set [SQL_Command_3]=NULL where Len([SQL_Command_3])=0 end begin update [SQL_PARAMETER_DETAILS_THIRD] set [SQL_Command_4]=NULL where Len([SQL_Command_4])=0 end"
+                    cmd.ExecuteNonQuery()
+
+                Else
+                    Me.SQL_PARAMETERBindingSource.CancelEdit()
+                    Me.SQL_PARAMETER_DETAILSBindingSource.CancelEdit()
+                    Me.SQL_PARAMETER_DETAILS_SECONDBindingSource.CancelEdit()
+                    Me.SQL_PARAMETER_DETAILS_THIRDBindingSource.CancelEdit()
+
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+        CloseSqlConnections()
+
+        LOAD_ALL_SQL_PARAMETER_DETAILS()
+    End Sub
+
+    Private Sub bbiDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiDelete.ItemClick
+        OpenSqlConnections()
+        'Remove PARAMETER NAMES
+        If Me.GridControl3.FocusedView.Name = "SQL_Parameter_Gridview" Then
+            Dim row As System.Data.DataRow = SQL_Parameter_Gridview.GetDataRow(SQL_Parameter_Gridview.FocusedRowHandle)
+            Dim cellvalue As String = row(0)
+            Dim ParameterName As String = row(1)
+            If MessageBox.Show("Should the SQL Parameter " & ParameterName & " and all its details be deleted ?", "DELETE SQL PARAMETER", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'Delete Parameter with the same [Id_SQL_Parameters]
+                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "'))"
+                cmd.ExecuteNonQuery()
+                'Delete Parameter with the same [Id_SQL_Parameters]
+                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "')"
+                cmd.ExecuteNonQuery()
+                'Delete Parameter with the same [Id_SQL_Parameters]
+                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "'"
+                cmd.ExecuteNonQuery()
+                'Delete Abteilungen with the same ABTEILUNGS NAME 
+                cmd.CommandText = "DELETE  FROM [SQL_PARAMETER] where [SQL_Parameter_Name]='" & ParameterName & "'"
+                cmd.ExecuteNonQuery()
+                'Me.SQL_Parameter_Gridview.DeleteSelectedRows()
+                'GridControl3.Update()
+                Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+                SplashScreenManager.CloseForm(False)
+
+            End If
+        ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_GridView" Then
+            'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
+            'Dim cellvalue As String = row(0)
+            If MessageBox.Show("Should the SQL Parameter ID: " & ID_2 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                'Delete Parameter with the same [Id_SQL_Parameters]
+                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID]='" & ID_2 & "')"
+                cmd.ExecuteNonQuery()
+                'Delete Parameter with the same [Id_SQL_Parameters]
+                cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID='" & ID_2 & "')
+                                           DELETE FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]='" & ID_2 & "'
+                                           UPDATE A SET A.[SQL_Float_1]=B.New_LfdNr FROM  [SQL_PARAMETER_DETAILS_SECOND] A INNER JOIN 
+                                           (SELECT ID,[SQL_Float_1], ROW_NUMBER() OVER (ORDER BY [SQL_Float_1]) AS New_LfdNr
+                                           FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters) B on A.ID=B.ID"
+                cmd.ExecuteNonQuery()
+                'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
+                cmd.CommandText = "DECLARE @ID_SQL_Parameters nvarchar(max)=(Select [Id_SQL_Parameters] from [SQL_PARAMETER_DETAILS] where ID='" & ID_2 & "')
+                                           DELETE FROM [SQL_PARAMETER_DETAILS] where [ID]='" & ID_2 & "'
+                                           UPDATE A SET A.[SQL_Float_1]=B.New_LfdNr FROM  [SQL_PARAMETER_DETAILS] A INNER JOIN 
+                                           (SELECT ID,[SQL_Float_1], ROW_NUMBER() OVER (ORDER BY [SQL_Float_1]) AS New_LfdNr
+                                           FROM [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]=@ID_SQL_Parameters) B on A.ID=B.ID"
+                cmd.ExecuteNonQuery()
+                'Me.SQL_Parameter_Details_GridView.DeleteSelectedRows()
+                'GridControl3.Update()
+                Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+            End If
+        ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_Second_GridView" Then
+            'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
+            'Dim cellvalue As String = row(0)
+            If MessageBox.Show("Should the SQL Parameter ID: " & ID_3 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                'Delete Parameter with the same [Id_SQL_Parameters]
+                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID]='" & ID_3 & "')"
+                cmd.ExecuteNonQuery()
+                'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
+                cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID='" & ID_3 & "')
+                                           DELETE FROM [SQL_PARAMETER_DETAILS_SECOND] where [ID]='" & ID_3 & "'
+                                           UPDATE A SET A.[SQL_Float_1]=B.New_LfdNr FROM  [SQL_PARAMETER_DETAILS_SECOND] A INNER JOIN 
+                                           (SELECT ID,[SQL_Float_1], ROW_NUMBER() OVER (ORDER BY [SQL_Float_1]) AS New_LfdNr
+                                           FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters) B on A.ID=B.ID"
+                cmd.ExecuteNonQuery()
+                'Me.SQL_Parameter_Details_Second_GridView.DeleteSelectedRows()
+                'GridControl3.Update()
+                Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                'Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+            End If
+        ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_Third_GridView" Then
+            'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
+            'Dim cellvalue As String = row(0)
+            If MessageBox.Show("Should the SQL Parameter ID: " & ID_4 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
+                cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID='" & ID_4 & "')
+                                           DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [ID]='" & ID_4 & "'
+                                           UPDATE A SET A.[SQL_Float_1]=B.New_LfdNr FROM  [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN 
+                                           (SELECT ID,[SQL_Float_1], ROW_NUMBER() OVER (ORDER BY [SQL_Float_1]) AS New_LfdNr
+                                           FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters) B on A.ID=B.ID"
+                cmd.ExecuteNonQuery()
+                'Me.SQL_Parameter_Details_Second_GridView.DeleteSelectedRows()
+                'GridControl3.Update()
+                Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                'Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+
+            End If
+        End If
+        CloseSqlConnections()
+
+        LOAD_ALL_SQL_PARAMETER_DETAILS()
+
+    End Sub
+
+    Private Sub bbiPrintPreview_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiPrintPreview.ItemClick
+        If Me.TabbedControlGroup1.SelectedTabPageIndex = 0 Then
+            If Not GridControl3.IsPrintingAvailable Then
+                MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
+                Return
+            End If
+
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            PrintableComponentLink1.CreateDocument()
+            PrintableComponentLink1.ShowPreview()
+            SplashScreenManager.CloseForm(False)
+        ElseIf Me.TabbedControlGroup1.SelectedTabPageIndex = 1 Then
+            If Not GridControl1.IsPrintingAvailable Then
+                MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
+                Return
+            End If
+
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            PrintableComponentLink2.CreateDocument()
+            PrintableComponentLink2.ShowPreview()
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+    Private Sub FindAndReplaceText_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles FindAndReplaceText_bbi.ItemClick
+        Dim focusedView As GridView = CType(GridControl3.FocusedView, GridView)
+        Dim dtColumns As New DataTable
+        dtColumns.Columns.Add("ColumnName", Type.GetType("System.String"))
+        dtColumns.Columns.Add("ColumnCaption", Type.GetType("System.String"))
+
+        For Each column As DevExpress.XtraGrid.Columns.GridColumn In focusedView.Columns
+            If column.Visible = True Then
+                Dim dr As DataRow = dtColumns.NewRow
+                dr("ColumnName") = column.Name.ToString
+                If column.Caption.ToString <> "" Then
+                    dr("ColumnCaption") = column.Caption.ToString
+                Else
+                    dr("ColumnCaption") = column.FieldName.ToString
+                End If
+                dtColumns.Rows.Add(dr)
+
+            End If
+        Next
+
+        Dim c As New FindAndReplaceInGridview
+        c.ColumnsNames_LookUpEdit.Properties.DataSource = dtColumns
+        c.ColumnsNames_LookUpEdit.Properties.ForceInitialize()
+        c.ColumnsNames_LookUpEdit.Properties.PopulateColumns()
+        c.ColumnsNames_LookUpEdit.Properties.ValueMember = "ColumnName"
+        c.ColumnsNames_LookUpEdit.Properties.DisplayMember = "ColumnName"
+        'c.ColumnsNames_LookUpEdit.Text = dtColumns.Rows(1).Item("ColumnName").ToString
+
+        If DevExpress.XtraEditors.XtraDialog.Show(c, "SQL Parameter - Search and Replace", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+            If c.ColumnsNames_LookUpEdit.Text <> "" Then
+                Try
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    SplashScreenManager.Default.SetWaitFormCaption("Search and replace Text in the specified Column")
+                    'MsgBox(c.ColumnsNames_LookUpEdit.EditValue.ToString)
+                    Dim column As GridColumn = focusedView.Columns.ColumnByName(c.ColumnsNames_LookUpEdit.EditValue.ToString)
+                    Dim searchValue As String = c.SearchText_MemoEdit.Text
+                    Dim newValue As String = c.ReplaceText_MemoEdit.Text
+
+                    For i As Integer = focusedView.FocusedRowHandle To focusedView.DataRowCount - 1
+                        Dim value As Object = focusedView.GetRowCellDisplayText(i, column)
+                        'MsgBox(value)
+                        If value.ToString() = "" Then
+                            Continue For
+                        End If
+
+                        If searchValue <> "" Then
+                            If value.ToString().StartsWith(searchValue) Or value.ToString().Contains(searchValue) Or value.ToString().EndsWith(searchValue) Then
+                                focusedView.FocusedRowHandle = i
+                                SplashScreenManager.Default.SetWaitFormCaption("Replace Text in Row: " & i)
+                                focusedView.GetRowCellValue(i, column).ToString()
+                                'MsgBox(i & vbNewLine & column.FieldName)
+                                If newValue <> "" Then
+                                    focusedView.SetRowCellValue(i, column.FieldName, focusedView.GetRowCellValue(i, column).ToString().Replace(searchValue, newValue).ToString)
+                                ElseIf newValue = "" Then
+                                    focusedView.SetRowCellValue(i, column.FieldName, focusedView.GetRowCellValue(i, column).ToString().Replace(searchValue, "").ToString)
+                                End If
+
+                                'Exit For
+                            End If
+                        End If
+
+                    Next
+                    SplashScreenManager.CloseForm(False)
+                    XtraMessageBox.Show("Search and replace finished!" & vbNewLine & "To save changes click on the save button", "SEARCH + REPLACE FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                Catch ex As Exception
+                    SplashScreenManager.CloseForm(False)
+                    XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Return
+                End Try
+
+            End If
+        End If
+    End Sub
+
+
     Private Sub GridControl3_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
         'Save Changes
         If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.EndEdit Then
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             Try
                 Me.Validate()
                 Me.SQL_PARAMETERBindingSource.EndEdit()
@@ -259,9 +540,8 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
                 MessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End Try
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
+
             LOAD_ALL_SQL_PARAMETER_DETAILS()
         End If
 
@@ -270,9 +550,7 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
         'If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.Remove Then
         If e.Button.ButtonType = NavigatorButtonType.Custom Then
             If e.Button.Tag.ToString = "Delete" Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
                 'Remove PARAMETER NAMES
                 If Me.GridControl3.FocusedView.Name = "SQL_Parameter_Gridview" Then
                     Dim row As System.Data.DataRow = SQL_Parameter_Gridview.GetDataRow(SQL_Parameter_Gridview.FocusedRowHandle)
@@ -376,9 +654,7 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
                         e.Handled = True
                     End If
                 End If
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
             End If
             LOAD_ALL_SQL_PARAMETER_DETAILS()
         End If
@@ -467,7 +743,7 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
         End If
     End Sub
 
-   
+
 
     Private Sub SQL_Parameter_Details_GridView_RowClick(sender As Object, e As RowClickEventArgs) Handles SQL_Parameter_Details_GridView.RowClick
         If SQL_Parameter_Details_GridView.IsNewItemRow(e.RowHandle) = False Then
@@ -499,31 +775,6 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
             view.ActiveEditor.Properties.Appearance.BackColor = SystemColors.InactiveCaptionText
             view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
         End If
-    End Sub
-
-    Private Sub Print_Export_Gridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_Gridview_btn.Click
-        If Me.TabbedControlGroup1.SelectedTabPageIndex = 0 Then
-            If Not GridControl3.IsPrintingAvailable Then
-                MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
-                Return
-            End If
-
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            PrintableComponentLink1.CreateDocument()
-            PrintableComponentLink1.ShowPreview()
-            SplashScreenManager.CloseForm(False)
-        ElseIf Me.TabbedControlGroup1.SelectedTabPageIndex = 1 Then
-            If Not GridControl1.IsPrintingAvailable Then
-                MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
-                Return
-            End If
-
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            PrintableComponentLink2.CreateDocument()
-            PrintableComponentLink2.ShowPreview()
-            SplashScreenManager.CloseForm(False)
-        End If
-
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
@@ -642,7 +893,8 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
         RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
         Dim editor As BaseEdit = DirectCast(sender, BaseEdit)
         RichEditControl1.Document.Text = editor.EditValue.ToString()
-
+        Me.RichEditControl1.Document.DefaultCharacterProperties.FontName = "Consolas"
+        Me.RichEditControl1.Document.DefaultCharacterProperties.FontSize = 9
 
     End Sub
 
@@ -660,14 +912,16 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
 
     End Sub
 
-    Private Sub RichEditControl1_TextChanged(sender As Object, e As EventArgs) Handles RichEditControl1.TextChanged
+    Private Sub RichEditControl1_TextChanged(sender As Object, e As EventArgs)
         If Me.RichEditControl1.Text <> "" Then
             RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
         End If
     End Sub
 
-    Private Sub RichEditControl1_GotFocus(sender As Object, e As EventArgs) Handles RichEditControl1.GotFocus
+    Private Sub RichEditControl1_GotFocus(sender As Object, e As EventArgs)
         RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
+        Me.RichEditControl1.Document.DefaultCharacterProperties.FontName = "Consolas"
+        Me.RichEditControl1.Document.DefaultCharacterProperties.FontSize = 9
     End Sub
 
     Private Sub SQL_Parameter_Details_GridView_CustomRowCellEditForEditing(sender As Object, e As CustomRowCellEditEventArgs) Handles SQL_Parameter_Details_GridView.CustomRowCellEditForEditing
@@ -700,7 +954,17 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
         End If
     End Sub
 
-    Private Sub SQL_Parameter_Details_GridView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_GridView.PopupMenuShowing
+    'Private Sub SQL_Parameter_ALL_GridView_CustomRowCellEditForEditing(sender As Object, e As CustomRowCellEditEventArgs) Handles SQL_Parameter_ALL_GridView.CustomRowCellEditForEditing
+    '    Dim view As GridView = CType(sender, GridView)
+    '    If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+    '        If e.Column.FieldName.StartsWith("SQL_Command") = True Then
+    '            e.RepositoryItem = Me.RepositoryItemPopupContainerEdit1
+
+    '        End If
+    '    End If
+    'End Sub
+
+    Private Sub SQL_Parameter_Details_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_GridView.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             Dim ColumnMenu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = CType(e.Menu, DevExpress.XtraGrid.Menu.GridViewColumnMenu)
 
@@ -765,7 +1029,7 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
     End Sub
 
 
-    Private Sub SQL_Parameter_Details_Second_GridView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_Second_GridView.PopupMenuShowing
+    Private Sub SQL_Parameter_Details_Second_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_Second_GridView.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             Dim ColumnMenu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = CType(e.Menu, DevExpress.XtraGrid.Menu.GridViewColumnMenu)
 
@@ -828,7 +1092,7 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
 
     End Sub
 
-    Private Sub SQL_Parameter_Details_Third_GridView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_Third_GridView.PopupMenuShowing
+    Private Sub SQL_Parameter_Details_Third_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_Third_GridView.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             Dim ColumnMenu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = CType(e.Menu, DevExpress.XtraGrid.Menu.GridViewColumnMenu)
 
@@ -994,189 +1258,185 @@ ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in a new row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_FIRST nvarchar(max)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)=(Select SQL_Name_1 from [SQL_PARAMETER_DETAILS] where ID=@ID_A)+'_NEW'
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                            DECLARE @ID_FIRST nvarchar(max)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
+                                            DECLARE @SQL_Parameter_Name_New nvarchar(100)=(Select SQL_Name_1 from [SQL_PARAMETER_DETAILS] where ID=@ID_A)+'_NEW'
+                                            DECLARE @ID_B int
+                                            DECLARE @ID_C int
+                                            DECLARE @ID_D int
+                                            DECLARE @MinID int
+                                            DECLARE @MaxID int
+                                            DECLARE @MinID_New int
+                                            DECLARE @MaxID_New int
+                                            DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                            DECLARE @ID_A_New int
+                                            DECLARE @ID_B_New int
+                                            DECLARE @ID_C_New int
+                                            DECLARE @ID_D_New int
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
-
-
-INSERT INTO [SQL_PARAMETER_DETAILS]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,(Select Max([SQL_Float_1])+1 from [SQL_PARAMETER_DETAILS] where Id_SQL_Parameters=@ID_FIRST)
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters]
-FROM [SQL_PARAMETER_DETAILS] where ID=@ID_A
-
-SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]=@SQL_Parameter_Name_New)
-
-INSERT INTO @Param_C(ID_C,ID_SQL_C)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details=@ID_A
-
-UPDATE @Param_C SET ID_SQL_C_New=@MaxID_New
+                                            DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                            DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                            DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
 
-SET @MinID=(Select Min(ID_C) from @Param_C)
-SET @MaxID=(Select Max(ID_C) from @Param_C)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_C_New from @Param_C where ID_C=@MinID)
-INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_SECOND]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@MinID
+                                            INSERT INTO [SQL_PARAMETER_DETAILS]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters])
+                                            SELECT @SQL_Parameter_Name_New
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,(Select Max([SQL_Float_1])+1 from [SQL_PARAMETER_DETAILS] where Id_SQL_Parameters=@ID_FIRST)
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters]
+                                            FROM [SQL_PARAMETER_DETAILS] where ID=@ID_A
 
-UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
+                                            SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]=@SQL_Parameter_Name_New)
 
-SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
-end
+                                            INSERT INTO @Param_C(ID_C,ID_SQL_C)
+                                            Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details=@ID_A
+
+                                            UPDATE @Param_C SET ID_SQL_C_New=@MaxID_New
 
 
-SET @MinID=(Select Min(ID_C) from @Param_C)
-SET @MaxID=(Select Max(ID_C) from @Param_C)
-while (@MinId<=@MaxId) 
-begin 
-INSERT INTO @Param_D(ID_D,ID_SQL_D)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
+                                            SET @MinID=(Select Min(ID_C) from @Param_C)
+                                            SET @MaxID=(Select Max(ID_C) from @Param_C)
+                                            while (@MinId<=@MaxId) 
+                                            begin
+                                            SET @MaxID_New=(Select ID_SQL_C_New from @Param_C where ID_C=@MinID)
+                                            INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_SECOND]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters_Details])
+                                                SELECT [SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,@MaxID_New
+                                            FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@MinID
 
-UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
+                                            UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
 
-SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
-end
+                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            end
 
 
-SET @MinID=(Select Min(ID_D) from @Param_D)
-SET @MaxID=(Select Max(ID_D) from @Param_D)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
-INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
+                                            SET @MinID=(Select Min(ID_C) from @Param_C)
+                                            SET @MaxID=(Select Max(ID_C) from @Param_C)
+                                            while (@MinId<=@MaxId) 
+                                            begin 
+                                            INSERT INTO @Param_D(ID_D,ID_SQL_D)
+                                            Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
 
-UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
+                                            UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
-end"
+                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            end
+
+
+                                            SET @MinID=(Select Min(ID_D) from @Param_D)
+                                            SET @MaxID=(Select Max(ID_D) from @Param_D)
+                                            while (@MinId<=@MaxId) 
+                                            begin
+                                            SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
+                                            INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_THIRD]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters_Details])
+                                                SELECT [SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,@MaxID_New
+                                            FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
+
+                                            UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
+
+                                            SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                            SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            end"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_2)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
                         Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
@@ -1185,9 +1445,7 @@ end"
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -1197,128 +1455,124 @@ end"
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in a new row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_FIRST int=(Select Id_SQL_Parameters_Details from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)=(Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)+'_NEW'
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                        DECLARE @ID_FIRST int=(Select Id_SQL_Parameters_Details from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
+                                        DECLARE @SQL_Parameter_Name_New nvarchar(100)=(Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)+'_NEW'
+                                        DECLARE @ID_B int
+                                        DECLARE @ID_C int
+                                        DECLARE @ID_D int
+                                        DECLARE @MinID int
+                                        DECLARE @MaxID int
+                                        DECLARE @MinID_New int
+                                        DECLARE @MaxID_New int
+                                        DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                        DECLARE @ID_A_New int
+                                        DECLARE @ID_B_New int
+                                        DECLARE @ID_C_New int
+                                        DECLARE @ID_D_New int
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
+                                        DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                        DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                        DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
-INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,(Select Max([SQL_Float_1])+1 from [SQL_PARAMETER_DETAILS_SECOND] where Id_SQL_Parameters_Details=@ID_FIRST)
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details]
-FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A
+                                        INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
+                                                   ([SQL_Name_1]
+                                                   ,[SQL_Name_2]
+                                                   ,[SQL_Name_3]
+                                                   ,[SQL_Name_4]
+                                                   ,[SQL_Float_1]
+                                                   ,[SQL_Float_2]
+                                                   ,[SQL_Float_3]
+                                                   ,[SQL_Float_4]
+                                                   ,[SQL_Command_1]
+                                                   ,[SQL_Command_2]
+                                                   ,[SQL_Command_3]
+                                                   ,[SQL_Command_4]
+                                                   ,[SQL_Date1]
+                                                   ,[SQL_Date2]
+                                                   ,[Status]
+                                                   ,[Id_SQL_Parameters_Details])
+                                        SELECT @SQL_Parameter_Name_New
+                                                   ,[SQL_Name_2]
+                                                   ,[SQL_Name_3]
+                                                   ,[SQL_Name_4]
+                                                   ,(Select Max([SQL_Float_1])+1 from [SQL_PARAMETER_DETAILS_SECOND] where Id_SQL_Parameters_Details=@ID_FIRST)
+                                                   ,[SQL_Float_2]
+                                                   ,[SQL_Float_3]
+                                                   ,[SQL_Float_4]
+                                                   ,[SQL_Command_1]
+                                                   ,[SQL_Command_2]
+                                                   ,[SQL_Command_3]
+                                                   ,[SQL_Command_4]
+                                                   ,[SQL_Date1]
+                                                   ,[SQL_Date2]
+                                                   ,[Status]
+                                                   ,[Id_SQL_Parameters_Details]
+                                        FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A
 
-SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Name_1]=@SQL_Parameter_Name_New)
+                                        SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Name_1]=@SQL_Parameter_Name_New)
 
-INSERT INTO @Param_D(ID_D,ID_SQL_D)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@ID_A
-
-
-UPDATE @Param_D SET ID_SQL_D_New=@MaxID_New
+                                        INSERT INTO @Param_D(ID_D,ID_SQL_D)
+                                        Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@ID_A
 
 
-SET @MinID=(Select Min(ID_D) from @Param_D)
-SET @MaxID=(Select Max(ID_D) from @Param_D)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
+                                        UPDATE @Param_D SET ID_SQL_D_New=@MaxID_New
 
-UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
-end"
+                                        SET @MinID=(Select Min(ID_D) from @Param_D)
+                                        SET @MaxID=(Select Max(ID_D) from @Param_D)
+                                        while (@MinId<=@MaxId) 
+                                        begin
+                                        SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
+                                        INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
+                                                   ([SQL_Name_1]
+                                                   ,[SQL_Name_2]
+                                                   ,[SQL_Name_3]
+                                                   ,[SQL_Name_4]
+                                                   ,[SQL_Float_1]
+                                                   ,[SQL_Float_2]
+                                                   ,[SQL_Float_3]
+                                                   ,[SQL_Float_4]
+                                                   ,[SQL_Command_1]
+                                                   ,[SQL_Command_2]
+                                                   ,[SQL_Command_3]
+                                                   ,[SQL_Command_4]
+                                                   ,[SQL_Date1]
+                                                   ,[SQL_Date2]
+                                                   ,[Status]
+                                                   ,[Id_SQL_Parameters_Details])
+                                            SELECT [SQL_Name_1]
+                                                   ,[SQL_Name_2]
+                                                   ,[SQL_Name_3]
+                                                   ,[SQL_Name_4]
+                                                   ,[SQL_Float_1]
+                                                   ,[SQL_Float_2]
+                                                   ,[SQL_Float_3]
+                                                   ,[SQL_Float_4]
+                                                   ,[SQL_Command_1]
+                                                   ,[SQL_Command_2]
+                                                   ,[SQL_Command_3]
+                                                   ,[SQL_Command_4]
+                                                   ,[SQL_Date1]
+                                                   ,[SQL_Date2]
+                                                   ,[Status]
+                                                   ,@MaxID_New
+                                        FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
+
+                                        UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
+
+                                        SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                        SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                        end"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_3)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
                         focusedView.RefreshData()
@@ -1326,9 +1580,7 @@ end"
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -1338,83 +1590,77 @@ end"
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in a new row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_FIRST int=(Select Id_SQL_Parameters_Details from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)=(Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)+'_NEW'
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                            DECLARE @ID_FIRST int=(Select Id_SQL_Parameters_Details from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
+                                            DECLARE @SQL_Parameter_Name_New nvarchar(100)=(Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)+'_NEW'
+                                            DECLARE @ID_B int
+                                            DECLARE @ID_C int
+                                            DECLARE @ID_D int
+                                            DECLARE @MinID int
+                                            DECLARE @MaxID int
+                                            DECLARE @MinID_New int
+                                            DECLARE @MaxID_New int
+                                            DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                            DECLARE @ID_A_New int
+                                            DECLARE @ID_B_New int
+                                            DECLARE @ID_C_New int
+                                            DECLARE @ID_D_New int
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
+                                            DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                            DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                            DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
 
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,(Select Max([SQL_Float_1])+1 from [SQL_PARAMETER_DETAILS_THIRD] where Id_SQL_Parameters_Details=@ID_FIRST)
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details]
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A"
+                                            INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters_Details])
+                                            SELECT @SQL_Parameter_Name_New
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,(Select Max([SQL_Float_1])+1 from [SQL_PARAMETER_DETAILS_THIRD] where Id_SQL_Parameters_Details=@ID_FIRST)
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters_Details]
+                                            FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_4)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         focusedView.RefreshData()
                         focusedView.FocusedRowHandle = GetFocusedRow
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -1434,64 +1680,60 @@ FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A"
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting adding new SQL Parameter in current position")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_1 int=<ID_to_ADD>
-DECLARE @ID_SQL_PARAMETER nvarchar(255) =(Select [Id_SQL_Parameters] from [SQL_PARAMETER_DETAILS] where ID=@ID_1)
-DECLARE @ID_2 table (ID int IDENTITY(1,1) NOT NULL,Number float,MaxNr float)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                            DECLARE @ID_SQL_PARAMETER nvarchar(255) =(Select [Id_SQL_Parameters] from [SQL_PARAMETER_DETAILS] where ID=@ID_1)
+                                            DECLARE @ID_2 table (ID int IDENTITY(1,1) NOT NULL,Number float,MaxNr float)
+                                            DECLARE @DUBLICATE_NR float=0
+                                            DECLARE @NEW_RUNNING_NR float=0
+                                            DECLARE @ID_3 table (ID int NULL,Number float)
+                                            DECLARE @ID_4 table (ID int NULL,Number float)
 
-INSERT INTO [SQL_PARAMETER_DETAILS]
-([SQL_Float_1]
-,[SQL_Name_1]
-,[Id_SQL_Parameters]
-,Status)
-Select [SQL_Float_1]
-,'+++NEW SQL COMMAND NAME+++'
-,@ID_SQL_PARAMETER
-,'N' 
-from [SQL_PARAMETER_DETAILS] where ID=@ID_1
-
-
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS]
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where Id_SQL_Parameters=@ID_SQL_PARAMETER group by [SQL_Float_1])
-and Id_SQL_Parameters=@ID_SQL_PARAMETER)
+                                            INSERT INTO [SQL_PARAMETER_DETAILS]
+                                            ([SQL_Float_1]
+                                            ,[SQL_Name_1]
+                                            ,[Id_SQL_Parameters]
+                                            ,Status)
+                                            Select [SQL_Float_1]
+                                            ,'+++NEW SQL COMMAND NAME+++'
+                                            ,@ID_SQL_PARAMETER
+                                            ,'N' 
+                                            from [SQL_PARAMETER_DETAILS] where ID=@ID_1
 
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS] where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1]=@DUBLICATE_NR and Id_SQL_Parameters=@ID_SQL_PARAMETER)
-and Id_SQL_Parameters=@ID_SQL_PARAMETER
+                                            SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS]
+                                            where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where Id_SQL_Parameters=@ID_SQL_PARAMETER group by [SQL_Float_1])
+                                            and Id_SQL_Parameters=@ID_SQL_PARAMETER)
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS] where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1] >=@DUBLICATE_NR and Id_SQL_Parameters=@ID_SQL_PARAMETER 
-group by [SQL_Float_1]) and Id_SQL_Parameters=@ID_SQL_PARAMETER order by ID asc
-END
-END
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS] A INNER JOIN @ID_4 B on A.ID=B.ID"
+                                            IF @DUBLICATE_NR>0
+                                            BEGIN
+                                            SELECT @DUBLICATE_NR
+                                            --Find equal Nr to @DUPLICATE
+                                            INSERT INTO @ID_3
+                                            (ID,Number)
+                                            select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS] where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1]=@DUBLICATE_NR and Id_SQL_Parameters=@ID_SQL_PARAMETER)
+                                            and Id_SQL_Parameters=@ID_SQL_PARAMETER
+
+                                            SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                            IF @NEW_RUNNING_NR=0
+                                            BEGIN
+                                            SET @NEW_RUNNING_NR=1
+                                            INSERT INTO @ID_4
+                                            (ID,Number)
+                                            Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS] where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1] >=@DUBLICATE_NR and Id_SQL_Parameters=@ID_SQL_PARAMETER 
+                                            group by [SQL_Float_1]) and Id_SQL_Parameters=@ID_SQL_PARAMETER order by ID asc
+                                            END
+                                            END
+
+                                            UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS] A INNER JOIN @ID_4 B on A.ID=B.ID"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_ADD>", ID_2)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "removed to a new Position", "NEW SQL PARAMETER ADDED IN CURRENT POSITION", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
                         Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
@@ -1500,9 +1742,7 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS] A INNER JOIN 
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -1512,66 +1752,62 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS] A INNER JOIN 
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting adding new SQL Parameter in current position")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_1 int=<ID_to_ADD>
-DECLARE @ID_SQL_PARAMETER int =(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_1)
-DECLARE @ID_2 table (ID int IDENTITY(1,1) NOT NULL,Number float,MaxNr float)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                            DECLARE @ID_SQL_PARAMETER int =(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_1)
+                                            DECLARE @ID_2 table (ID int IDENTITY(1,1) NOT NULL,Number float,MaxNr float)
+                                            DECLARE @DUBLICATE_NR float=0
+                                            DECLARE @NEW_RUNNING_NR float=0
+                                            DECLARE @ID_3 table (ID int NULL,Number float)
+                                            DECLARE @ID_4 table (ID int NULL,Number float)
 
-INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
-([SQL_Float_1]
-,[SQL_Name_1]
-,[Id_SQL_Parameters_Details]
-,Status)
-Select [SQL_Float_1]
-,'+++NEW SQL COMMAND NAME+++'
-,@ID_SQL_PARAMETER
-,'N' 
-from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_1
-
-
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND] 
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where Id_SQL_Parameters_Details=@ID_SQL_PARAMETER group by [SQL_Float_1])
-and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER)
+                                            INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
+                                            ([SQL_Float_1]
+                                            ,[SQL_Name_1]
+                                            ,[Id_SQL_Parameters_Details]
+                                            ,Status)
+                                            Select [SQL_Float_1]
+                                            ,'+++NEW SQL COMMAND NAME+++'
+                                            ,@ID_SQL_PARAMETER
+                                            ,'N' 
+                                            from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_1
 
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1]=@DUBLICATE_NR and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER)
-and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER
+                                            SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND] 
+                                            where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where Id_SQL_Parameters_Details=@ID_SQL_PARAMETER group by [SQL_Float_1])
+                                            and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER)
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_SECOND] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1] >=@DUBLICATE_NR and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER 
-group by [SQL_Float_1]) and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER order by ID asc
-END
-END
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND] A INNER JOIN @ID_4 B on A.ID=B.ID"
+                                            IF @DUBLICATE_NR>0
+                                            BEGIN
+                                            SELECT @DUBLICATE_NR
+                                            --Find equal Nr to @DUPLICATE
+                                            INSERT INTO @ID_3
+                                            (ID,Number)
+                                            select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND] 
+                                            where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1]=@DUBLICATE_NR and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER)
+                                            and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER
+
+                                            SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                            IF @NEW_RUNNING_NR=0
+                                            BEGIN
+                                            SET @NEW_RUNNING_NR=1
+                                            INSERT INTO @ID_4
+                                            (ID,Number)
+                                            Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_SECOND] 
+                                            where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1] >=@DUBLICATE_NR and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER 
+                                            group by [SQL_Float_1]) and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER order by ID asc
+                                            END
+                                            END
+
+                                            UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND] A INNER JOIN @ID_4 B on A.ID=B.ID"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_ADD>", ID_3)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "removed to a new Position", "NEW SQL PARAMETER ADDED IN CURRENT POSITION", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
                         focusedView.RefreshData()
@@ -1579,9 +1815,7 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND] A INNE
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -1591,74 +1825,68 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND] A INNE
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting adding new SQL Parameter in current position")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_1 int=<ID_to_ADD>
-DECLARE @ID_SQL_PARAMETER int =(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_1)
-DECLARE @ID_2 table (ID int IDENTITY(1,1) NOT NULL,Number float,MaxNr float)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                            DECLARE @ID_SQL_PARAMETER int =(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_1)
+                                            DECLARE @ID_2 table (ID int IDENTITY(1,1) NOT NULL,Number float,MaxNr float)
+                                            DECLARE @DUBLICATE_NR float=0
+                                            DECLARE @NEW_RUNNING_NR float=0
+                                            DECLARE @ID_3 table (ID int NULL,Number float)
+                                            DECLARE @ID_4 table (ID int NULL,Number float)
 
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD] 
-([SQL_Float_1]
-,[SQL_Name_1]
-,[Id_SQL_Parameters_Details]
-,Status)
-Select [SQL_Float_1]
-,'+++NEW SQL COMMAND NAME+++'
-,@ID_SQL_PARAMETER
-,'N'
-from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_1
+                                            INSERT INTO [SQL_PARAMETER_DETAILS_THIRD] 
+                                            ([SQL_Float_1]
+                                            ,[SQL_Name_1]
+                                            ,[Id_SQL_Parameters_Details]
+                                            ,Status)
+                                            Select [SQL_Float_1]
+                                            ,'+++NEW SQL COMMAND NAME+++'
+                                            ,@ID_SQL_PARAMETER
+                                            ,'N'
+                                            from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_1
 
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD] 
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where Id_SQL_Parameters_Details=@ID_SQL_PARAMETER group by [SQL_Float_1])
-and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER)
+                                            SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD] 
+                                            where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where Id_SQL_Parameters_Details=@ID_SQL_PARAMETER group by [SQL_Float_1])
+                                            and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER)
 
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1]=@DUBLICATE_NR and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER)
-and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER
+                                            IF @DUBLICATE_NR>0
+                                            BEGIN
+                                            SELECT @DUBLICATE_NR
+                                            --Find equal Nr to @DUPLICATE
+                                            INSERT INTO @ID_3
+                                            (ID,Number)
+                                            select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD] 
+                                            where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1]=@DUBLICATE_NR and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER)
+                                            and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_THIRD] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1] >=@DUBLICATE_NR and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER 
-group by [SQL_Float_1]) and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER order by ID asc
-END
-END
+                                            SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                            IF @NEW_RUNNING_NR=0
+                                            BEGIN
+                                            SET @NEW_RUNNING_NR=1
+                                            INSERT INTO @ID_4
+                                            (ID,Number)
+                                            Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_THIRD] 
+                                            where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1] >=@DUBLICATE_NR and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER 
+                                            group by [SQL_Float_1]) and Id_SQL_Parameters_Details=@ID_SQL_PARAMETER order by ID asc
+                                            END
+                                            END
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN @ID_4 B on A.ID=B.ID"
+                                            UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN @ID_4 B on A.ID=B.ID"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_ADD>", ID_4)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "removed to a new Position", "NEW SQL PARAMETER ADDED IN CURRENT POSITION", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         focusedView.RefreshData()
                         focusedView.FocusedRowHandle = GetFocusedRow
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -1678,223 +1906,219 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_THIRD] A INNER
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in the current row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_SQL_Parameters nvarchar(100)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
-DECLARE @ID_FIRST nvarchar(max)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_'+ (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                            DECLARE @ID_SQL_Parameters nvarchar(100)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
+                                            DECLARE @ID_FIRST nvarchar(max)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
+                                            DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_'+ (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
+                                            DECLARE @DUBLICATE_NR float=0
+                                            DECLARE @NEW_RUNNING_NR float=0
+                                            DECLARE @ID_B int
+                                            DECLARE @ID_C int
+                                            DECLARE @ID_D int
+                                            DECLARE @MinID int
+                                            DECLARE @MaxID int
+                                            DECLARE @MinID_New int
+                                            DECLARE @MaxID_New int
+                                            DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                            DECLARE @ID_A_New int
+                                            DECLARE @ID_B_New int
+                                            DECLARE @ID_C_New int
+                                            DECLARE @ID_D_New int
 
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                            DECLARE @ID_3 table (ID int NULL,Number float)
+                                            DECLARE @ID_4 table (ID int NULL,Number float)
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
-
-
-INSERT INTO [SQL_PARAMETER_DETAILS]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters]
-FROM [SQL_PARAMETER_DETAILS] where ID=@ID_A
-
-SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]=@SQL_Parameter_Name_New)
-
-INSERT INTO @Param_C(ID_C,ID_SQL_C)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details=@ID_A
-
-UPDATE @Param_C SET ID_SQL_C_New=@MaxID_New
+                                            DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                            DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                            DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
 
-SET @MinID=(Select Min(ID_C) from @Param_C)
-SET @MaxID=(Select Max(ID_C) from @Param_C)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_C_New from @Param_C where ID_C=@MinID)
-INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_SECOND]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@MinID
+                                            INSERT INTO [SQL_PARAMETER_DETAILS]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters])
+                                            SELECT @SQL_Parameter_Name_New
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters]
+                                            FROM [SQL_PARAMETER_DETAILS] where ID=@ID_A
 
-UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
+                                            SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]=@SQL_Parameter_Name_New)
 
-SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
-end
+                                            INSERT INTO @Param_C(ID_C,ID_SQL_C)
+                                            Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details=@ID_A
+
+                                            UPDATE @Param_C SET ID_SQL_C_New=@MaxID_New
 
 
-SET @MinID=(Select Min(ID_C) from @Param_C)
-SET @MaxID=(Select Max(ID_C) from @Param_C)
-while (@MinId<=@MaxId) 
-begin 
-INSERT INTO @Param_D(ID_D,ID_SQL_D)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
+                                            SET @MinID=(Select Min(ID_C) from @Param_C)
+                                            SET @MaxID=(Select Max(ID_C) from @Param_C)
+                                            while (@MinId<=@MaxId) 
+                                            begin
+                                            SET @MaxID_New=(Select ID_SQL_C_New from @Param_C where ID_C=@MinID)
+                                            INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_SECOND]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters_Details])
+                                                SELECT [SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,@MaxID_New
+                                            FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@MinID
 
-UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
+                                            UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
 
-SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
-end
+                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            end
 
 
-SET @MinID=(Select Min(ID_D) from @Param_D)
-SET @MaxID=(Select Max(ID_D) from @Param_D)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
-INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
+                                            SET @MinID=(Select Min(ID_C) from @Param_C)
+                                            SET @MaxID=(Select Max(ID_C) from @Param_C)
+                                            while (@MinId<=@MaxId) 
+                                            begin 
+                                            INSERT INTO @Param_D(ID_D,ID_SQL_D)
+                                            Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
 
-UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
+                                            UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
-end
+                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            end
 
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS]
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]=@ID_SQL_Parameters group by [SQL_Float_1])
-and [Id_SQL_Parameters]=@ID_SQL_Parameters)
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters]=@ID_SQL_Parameters)
-and [Id_SQL_Parameters]=@ID_SQL_Parameters
+                                            SET @MinID=(Select Min(ID_D) from @Param_D)
+                                            SET @MaxID=(Select Max(ID_D) from @Param_D)
+                                            while (@MinId<=@MaxId) 
+                                            begin
+                                            SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
+                                            INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_THIRD]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters_Details])
+                                                SELECT [SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,@MaxID_New
+                                            FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters]=@ID_SQL_Parameters
-group by [SQL_Float_1]) and [Id_SQL_Parameters]=@ID_SQL_Parameters order by ID asc
-END
-END
+                                            UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS]  A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters]=@ID_SQL_Parameters"
+                                            SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                            SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            end
+
+                                            SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS]
+                                            where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]=@ID_SQL_Parameters group by [SQL_Float_1])
+                                            and [Id_SQL_Parameters]=@ID_SQL_Parameters)
+
+                                            IF @DUBLICATE_NR>0
+                                            BEGIN
+                                            SELECT @DUBLICATE_NR
+                                            --Find equal Nr to @DUPLICATE
+                                            INSERT INTO @ID_3
+                                            (ID,Number)
+                                            select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS] 
+                                            where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters]=@ID_SQL_Parameters)
+                                            and [Id_SQL_Parameters]=@ID_SQL_Parameters
+
+                                            SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                            IF @NEW_RUNNING_NR=0
+                                            BEGIN
+                                            SET @NEW_RUNNING_NR=1
+                                            INSERT INTO @ID_4
+                                            (ID,Number)
+                                            Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS] 
+                                            where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters]=@ID_SQL_Parameters
+                                            group by [SQL_Float_1]) and [Id_SQL_Parameters]=@ID_SQL_Parameters order by ID asc
+                                            END
+                                            END
+
+                                            UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS]  A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters]=@ID_SQL_Parameters"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_2)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated in current Position", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
                         Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
@@ -1903,9 +2127,7 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS]  A INNER JOIN
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -1915,224 +2137,220 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS]  A INNER JOIN
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in the current row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
-DECLARE @ID_FIRST int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_' + (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                                DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
+                                                DECLARE @ID_FIRST int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
+                                                DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_' + (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
+                                                DECLARE @DUBLICATE_NR float=0
+                                                DECLARE @NEW_RUNNING_NR float=0
+                                                DECLARE @ID_B int
+                                                DECLARE @ID_C int
+                                                DECLARE @ID_D int
+                                                DECLARE @MinID int
+                                                DECLARE @MaxID int
+                                                DECLARE @MinID_New int
+                                                DECLARE @MaxID_New int
+                                                DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                                DECLARE @ID_A_New int
+                                                DECLARE @ID_B_New int
+                                                DECLARE @ID_C_New int
+                                                DECLARE @ID_D_New int
 
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                                DECLARE @ID_3 table (ID int NULL,Number float)
+                                                DECLARE @ID_4 table (ID int NULL,Number float)
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
-
-
-INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details]
-FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A
-
-SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Name_1]=@SQL_Parameter_Name_New)
-
-INSERT INTO @Param_D(ID_D,ID_SQL_D)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@ID_A
+                                                DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                                DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                                DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
 
-UPDATE @Param_D SET ID_SQL_D_New=@MaxID_New
+                                                INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
+                                                           ([SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details])
+                                                SELECT @SQL_Parameter_Name_New
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details]
+                                                FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A
+
+                                                SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Name_1]=@SQL_Parameter_Name_New)
+
+                                                INSERT INTO @Param_D(ID_D,ID_SQL_D)
+                                                Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@ID_A
 
 
-SET @MinID=(Select Min(ID_D) from @Param_D)
-SET @MaxID=(Select Max(ID_D) from @Param_D)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
-
-UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
-
-SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
-end
+                                                UPDATE @Param_D SET ID_SQL_D_New=@MaxID_New
 
 
-SET @MinID=(Select Min(ID_C) from @Param_C)
-SET @MaxID=(Select Max(ID_C) from @Param_C)
-while (@MinId<=@MaxId) 
-begin 
-INSERT INTO @Param_D(ID_D,ID_SQL_D)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
+                                                SET @MinID=(Select Min(ID_D) from @Param_D)
+                                                SET @MaxID=(Select Max(ID_D) from @Param_D)
+                                                while (@MinId<=@MaxId) 
+                                                begin
+                                                SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
+                                                INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
+                                                           ([SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details])
+                                                    SELECT [SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,@MaxID_New
+                                                FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
 
-UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
+                                                UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
-end
+                                                SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                                SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                end
 
 
-SET @MinID=(Select Min(ID_D) from @Param_D)
-SET @MaxID=(Select Max(ID_D) from @Param_D)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
+                                                SET @MinID=(Select Min(ID_C) from @Param_C)
+                                                SET @MaxID=(Select Max(ID_C) from @Param_C)
+                                                while (@MinId<=@MaxId) 
+                                                begin 
+                                                INSERT INTO @Param_D(ID_D,ID_SQL_D)
+                                                Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
 
-UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
+                                                UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
-end
+                                                SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                                SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                                end
 
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND]
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters group by [SQL_Float_1])
-and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
-and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+                                                SET @MinID=(Select Min(ID_D) from @Param_D)
+                                                SET @MaxID=(Select Max(ID_D) from @Param_D)
+                                                while (@MinId<=@MaxId) 
+                                                begin
+                                                SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
+                                                INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
+                                                           ([SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details])
+                                                    SELECT [SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,@MaxID_New
+                                                FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_SECOND]
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
-group by [SQL_Float_1]) and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters order by ID asc
-END
-END
+                                                UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND]  A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters_Details]=@ID_SQL_Parameters"
+                                                SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                                SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                end
+
+                                                SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND]
+                                                where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters group by [SQL_Float_1])
+                                                and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
+
+                                                IF @DUBLICATE_NR>0
+                                                BEGIN
+                                                SELECT @DUBLICATE_NR
+                                                --Find equal Nr to @DUPLICATE
+                                                INSERT INTO @ID_3
+                                                (ID,Number)
+                                                select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND] 
+                                                where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
+                                                and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+
+                                                SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                                IF @NEW_RUNNING_NR=0
+                                                BEGIN
+                                                SET @NEW_RUNNING_NR=1
+                                                INSERT INTO @ID_4
+                                                (ID,Number)
+                                                Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_SECOND]
+                                                where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+                                                group by [SQL_Float_1]) and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters order by ID asc
+                                                END
+                                                END
+
+                                                UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND]  A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters_Details]=@ID_SQL_Parameters"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_3)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
                         focusedView.RefreshData()
@@ -2140,9 +2358,7 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND]  A INN
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -2152,119 +2368,113 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND]  A INN
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in the current row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
-DECLARE @ID_FIRST int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_' + (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                                DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
+                                                DECLARE @ID_FIRST int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
+                                                DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_' + (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
+                                                DECLARE @DUBLICATE_NR float=0
+                                                DECLARE @NEW_RUNNING_NR float=0
+                                                DECLARE @ID_B int
+                                                DECLARE @ID_C int
+                                                DECLARE @ID_D int
+                                                DECLARE @MinID int
+                                                DECLARE @MaxID int
+                                                DECLARE @MinID_New int
+                                                DECLARE @MaxID_New int
+                                                DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                                DECLARE @ID_A_New int
+                                                DECLARE @ID_B_New int
+                                                DECLARE @ID_C_New int
+                                                DECLARE @ID_D_New int
 
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                                DECLARE @ID_3 table (ID int NULL,Number float)
+                                                DECLARE @ID_4 table (ID int NULL,Number float)
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
-
-
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details]
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A
+                                                DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                                DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                                DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
 
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD]
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters group by [SQL_Float_1])
-and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
+                                                INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
+                                                           ([SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details])
+                                                SELECT @SQL_Parameter_Name_New
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details]
+                                                FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A
 
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
-and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+                                                SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD]
+                                                where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters group by [SQL_Float_1])
+                                                and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_THIRD]
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
-group by [SQL_Float_1]) and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters order by ID asc
-END
-END
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters_Details]=@ID_SQL_Parameters"
+                                                IF @DUBLICATE_NR>0
+                                                BEGIN
+                                                SELECT @DUBLICATE_NR
+                                                --Find equal Nr to @DUPLICATE
+                                                INSERT INTO @ID_3
+                                                (ID,Number)
+                                                select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD] 
+                                                where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
+                                                and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+
+                                                SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                                IF @NEW_RUNNING_NR=0
+                                                BEGIN
+                                                SET @NEW_RUNNING_NR=1
+                                                INSERT INTO @ID_4
+                                                (ID,Number)
+                                                Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_THIRD]
+                                                where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+                                                group by [SQL_Float_1]) and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters order by ID asc
+                                                END
+                                                END
+
+                                                UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters_Details]=@ID_SQL_Parameters"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_4)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         focusedView.RefreshData()
                         focusedView.FocusedRowHandle = GetFocusedRow
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -2284,223 +2494,219 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_THIRD] A INNER
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in the next row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_SQL_Parameters nvarchar(100)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
-DECLARE @ID_FIRST nvarchar(max)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_'+ (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                            DECLARE @ID_SQL_Parameters nvarchar(100)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
+                                            DECLARE @ID_FIRST nvarchar(max)=(Select Id_SQL_Parameters from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
+                                            DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_'+ (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS] where ID=@ID_A)
+                                            DECLARE @DUBLICATE_NR float=0
+                                            DECLARE @NEW_RUNNING_NR float=0
+                                            DECLARE @ID_B int
+                                            DECLARE @ID_C int
+                                            DECLARE @ID_D int
+                                            DECLARE @MinID int
+                                            DECLARE @MaxID int
+                                            DECLARE @MinID_New int
+                                            DECLARE @MaxID_New int
+                                            DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                            DECLARE @ID_A_New int
+                                            DECLARE @ID_B_New int
+                                            DECLARE @ID_C_New int
+                                            DECLARE @ID_D_New int
 
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                            DECLARE @ID_3 table (ID int NULL,Number float)
+                                            DECLARE @ID_4 table (ID int NULL,Number float)
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
-
-
-INSERT INTO [SQL_PARAMETER_DETAILS]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]+1
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters]
-FROM [SQL_PARAMETER_DETAILS] where ID=@ID_A
-
-SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]=@SQL_Parameter_Name_New)
-
-INSERT INTO @Param_C(ID_C,ID_SQL_C)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details=@ID_A
-
-UPDATE @Param_C SET ID_SQL_C_New=@MaxID_New
+                                            DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                            DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                            DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
 
-SET @MinID=(Select Min(ID_C) from @Param_C)
-SET @MaxID=(Select Max(ID_C) from @Param_C)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_C_New from @Param_C where ID_C=@MinID)
-INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@MinID
+                                            INSERT INTO [SQL_PARAMETER_DETAILS]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters])
+                                            SELECT @SQL_Parameter_Name_New
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]+1
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters]
+                                            FROM [SQL_PARAMETER_DETAILS] where ID=@ID_A
 
-UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
+                                            SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]=@SQL_Parameter_Name_New)
 
-SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
-end
+                                            INSERT INTO @Param_C(ID_C,ID_SQL_C)
+                                            Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details=@ID_A
+
+                                            UPDATE @Param_C SET ID_SQL_C_New=@MaxID_New
 
 
-SET @MinID=(Select Min(ID_C) from @Param_C)
-SET @MaxID=(Select Max(ID_C) from @Param_C)
-while (@MinId<=@MaxId) 
-begin 
-INSERT INTO @Param_D(ID_D,ID_SQL_D)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
+                                            SET @MinID=(Select Min(ID_C) from @Param_C)
+                                            SET @MaxID=(Select Max(ID_C) from @Param_C)
+                                            while (@MinId<=@MaxId) 
+                                            begin
+                                            SET @MaxID_New=(Select ID_SQL_C_New from @Param_C where ID_C=@MinID)
+                                            INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters_Details])
+                                                SELECT [SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,@MaxID_New
+                                            FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@MinID
 
-UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
+                                            UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
 
-SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
-end
+                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            end
 
 
-SET @MinID=(Select Min(ID_D) from @Param_D)
-SET @MaxID=(Select Max(ID_D) from @Param_D)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
-INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
+                                            SET @MinID=(Select Min(ID_C) from @Param_C)
+                                            SET @MaxID=(Select Max(ID_C) from @Param_C)
+                                            while (@MinId<=@MaxId) 
+                                            begin 
+                                            INSERT INTO @Param_D(ID_D,ID_SQL_D)
+                                            Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
 
-UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
+                                            UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
-end
+                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            end
 
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS]
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]=@ID_SQL_Parameters group by [SQL_Float_1])
-and [Id_SQL_Parameters]=@ID_SQL_Parameters)
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters]=@ID_SQL_Parameters)
-and [Id_SQL_Parameters]=@ID_SQL_Parameters
+                                            SET @MinID=(Select Min(ID_D) from @Param_D)
+                                            SET @MaxID=(Select Max(ID_D) from @Param_D)
+                                            while (@MinId<=@MaxId) 
+                                            begin
+                                            SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
+                                            INSERT INTO [dbo].[SQL_PARAMETER_DETAILS_THIRD]
+                                                       ([SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,[Id_SQL_Parameters_Details])
+                                                SELECT [SQL_Name_1]
+                                                       ,[SQL_Name_2]
+                                                       ,[SQL_Name_3]
+                                                       ,[SQL_Name_4]
+                                                       ,[SQL_Float_1]
+                                                       ,[SQL_Float_2]
+                                                       ,[SQL_Float_3]
+                                                       ,[SQL_Float_4]
+                                                       ,[SQL_Command_1]
+                                                       ,[SQL_Command_2]
+                                                       ,[SQL_Command_3]
+                                                       ,[SQL_Command_4]
+                                                       ,[SQL_Date1]
+                                                       ,[SQL_Date2]
+                                                       ,[Status]
+                                                       ,@MaxID_New
+                                            FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters]=@ID_SQL_Parameters
-group by [SQL_Float_1]) and [Id_SQL_Parameters]=@ID_SQL_Parameters order by ID asc
-END
-END
+                                            UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS]  A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters]=@ID_SQL_Parameters"
+                                            SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                            SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            end
+
+                                            SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS]
+                                            where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]=@ID_SQL_Parameters group by [SQL_Float_1])
+                                            and [Id_SQL_Parameters]=@ID_SQL_Parameters)
+
+                                            IF @DUBLICATE_NR>0
+                                            BEGIN
+                                            SELECT @DUBLICATE_NR
+                                            --Find equal Nr to @DUPLICATE
+                                            INSERT INTO @ID_3
+                                            (ID,Number)
+                                            select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS] 
+                                            where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters]=@ID_SQL_Parameters)
+                                            and [Id_SQL_Parameters]=@ID_SQL_Parameters
+
+                                            SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                            IF @NEW_RUNNING_NR=0
+                                            BEGIN
+                                            SET @NEW_RUNNING_NR=1
+                                            INSERT INTO @ID_4
+                                            (ID,Number)
+                                            Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS] 
+                                            where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters]=@ID_SQL_Parameters
+                                            group by [SQL_Float_1]) and [Id_SQL_Parameters]=@ID_SQL_Parameters order by ID asc
+                                            END
+                                            END
+
+                                            UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS]  A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters]=@ID_SQL_Parameters"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_2)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated in current Position", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
                         Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
@@ -2509,9 +2715,7 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS]  A INNER JOIN
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -2521,224 +2725,220 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS]  A INNER JOIN
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in a new row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
-DECLARE @ID_FIRST int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_' + (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                                DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
+                                                DECLARE @ID_FIRST int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
+                                                DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_' + (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A)
+                                                DECLARE @DUBLICATE_NR float=0
+                                                DECLARE @NEW_RUNNING_NR float=0
+                                                DECLARE @ID_B int
+                                                DECLARE @ID_C int
+                                                DECLARE @ID_D int
+                                                DECLARE @MinID int
+                                                DECLARE @MaxID int
+                                                DECLARE @MinID_New int
+                                                DECLARE @MaxID_New int
+                                                DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                                DECLARE @ID_A_New int
+                                                DECLARE @ID_B_New int
+                                                DECLARE @ID_C_New int
+                                                DECLARE @ID_D_New int
 
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                                DECLARE @ID_3 table (ID int NULL,Number float)
+                                                DECLARE @ID_4 table (ID int NULL,Number float)
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
-
-
-INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]+1
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details]
-FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A
-
-SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Name_1]=@SQL_Parameter_Name_New)
-
-INSERT INTO @Param_D(ID_D,ID_SQL_D)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@ID_A
+                                                DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                                DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                                DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
 
-UPDATE @Param_D SET ID_SQL_D_New=@MaxID_New
+                                                INSERT INTO [SQL_PARAMETER_DETAILS_SECOND]
+                                                           ([SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details])
+                                                SELECT @SQL_Parameter_Name_New
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]+1
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details]
+                                                FROM [SQL_PARAMETER_DETAILS_SECOND] where ID=@ID_A
+
+                                                SET @MaxID_New=(SELECT Max(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Name_1]=@SQL_Parameter_Name_New)
+
+                                                INSERT INTO @Param_D(ID_D,ID_SQL_D)
+                                                Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@ID_A
 
 
-SET @MinID=(Select Min(ID_D) from @Param_D)
-SET @MaxID=(Select Max(ID_D) from @Param_D)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
-
-UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
-
-SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
-end
+                                                UPDATE @Param_D SET ID_SQL_D_New=@MaxID_New
 
 
-SET @MinID=(Select Min(ID_C) from @Param_C)
-SET @MaxID=(Select Max(ID_C) from @Param_C)
-while (@MinId<=@MaxId) 
-begin 
-INSERT INTO @Param_D(ID_D,ID_SQL_D)
-Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
+                                                SET @MinID=(Select Min(ID_D) from @Param_D)
+                                                SET @MaxID=(Select Max(ID_D) from @Param_D)
+                                                while (@MinId<=@MaxId) 
+                                                begin
+                                                SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
+                                                INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
+                                                           ([SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details])
+                                                    SELECT [SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,@MaxID_New
+                                                FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
 
-UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
+                                                UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
-end
+                                                SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                                SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                end
 
 
-SET @MinID=(Select Min(ID_D) from @Param_D)
-SET @MaxID=(Select Max(ID_D) from @Param_D)
-while (@MinId<=@MaxId) 
-begin
-SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-    SELECT [SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,@MaxID_New
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
+                                                SET @MinID=(Select Min(ID_C) from @Param_C)
+                                                SET @MaxID=(Select Max(ID_C) from @Param_C)
+                                                while (@MinId<=@MaxId) 
+                                                begin 
+                                                INSERT INTO @Param_D(ID_D,ID_SQL_D)
+                                                Select ID,Id_SQL_Parameters_Details from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details=@MinId
 
-UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
+                                                UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
-end
+                                                SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                                SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                                end
 
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND]
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters group by [SQL_Float_1])
-and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
-and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+                                                SET @MinID=(Select Min(ID_D) from @Param_D)
+                                                SET @MaxID=(Select Max(ID_D) from @Param_D)
+                                                while (@MinId<=@MaxId) 
+                                                begin
+                                                SET @MaxID_New=(Select ID_SQL_D_New from @Param_D where ID_D=@MinID)
+                                                INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
+                                                           ([SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details])
+                                                    SELECT [SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,@MaxID_New
+                                                FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@MinID
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_SECOND]
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
-group by [SQL_Float_1]) and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters order by ID asc
-END
-END
+                                                UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND]  A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters_Details]=@ID_SQL_Parameters"
+                                                SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                                SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                end
+
+                                                SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND]
+                                                where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters group by [SQL_Float_1])
+                                                and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
+
+                                                IF @DUBLICATE_NR>0
+                                                BEGIN
+                                                SELECT @DUBLICATE_NR
+                                                --Find equal Nr to @DUPLICATE
+                                                INSERT INTO @ID_3
+                                                (ID,Number)
+                                                select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND] 
+                                                where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
+                                                and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+
+                                                SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                                IF @NEW_RUNNING_NR=0
+                                                BEGIN
+                                                SET @NEW_RUNNING_NR=1
+                                                INSERT INTO @ID_4
+                                                (ID,Number)
+                                                Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_SECOND]
+                                                where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+                                                group by [SQL_Float_1]) and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters order by ID asc
+                                                END
+                                                END
+
+                                                UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND]  A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters_Details]=@ID_SQL_Parameters"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_3)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
                         focusedView.RefreshData()
@@ -2746,9 +2946,7 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND]  A INN
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
@@ -2758,124 +2956,123 @@ UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_SECOND]  A INN
                         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                         SplashScreenManager.Default.SetWaitFormCaption("Starting SQL Parameter duplication in the next row")
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
-DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
-DECLARE @ID_FIRST int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
-DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_' + (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
-DECLARE @DUBLICATE_NR float=0
-DECLARE @NEW_RUNNING_NR float=0
-DECLARE @ID_B int
-DECLARE @ID_C int
-DECLARE @ID_D int
-DECLARE @MinID int
-DECLARE @MaxID int
-DECLARE @MinID_New int
-DECLARE @MaxID_New int
-DECLARE @CURRENT_ID int
+                                                DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
+                                                DECLARE @ID_FIRST int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
+                                                DECLARE @SQL_Parameter_Name_New nvarchar(100)='NEW_' + (Select SQL_Name_1 from [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A)
+                                                DECLARE @DUBLICATE_NR float=0
+                                                DECLARE @NEW_RUNNING_NR float=0
+                                                DECLARE @ID_B int
+                                                DECLARE @ID_C int
+                                                DECLARE @ID_D int
+                                                DECLARE @MinID int
+                                                DECLARE @MaxID int
+                                                DECLARE @MinID_New int
+                                                DECLARE @MaxID_New int
+                                                DECLARE @CURRENT_ID int
 
-DECLARE @ID_A_New int
-DECLARE @ID_B_New int
-DECLARE @ID_C_New int
-DECLARE @ID_D_New int
+                                                DECLARE @ID_A_New int
+                                                DECLARE @ID_B_New int
+                                                DECLARE @ID_C_New int
+                                                DECLARE @ID_D_New int
 
-DECLARE @ID_3 table (ID int NULL,Number float)
-DECLARE @ID_4 table (ID int NULL,Number float)
+                                                DECLARE @ID_3 table (ID int NULL,Number float)
+                                                DECLARE @ID_4 table (ID int NULL,Number float)
 
-DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
-DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
-DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
-
-
-INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
-           ([SQL_Name_1]
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details])
-SELECT @SQL_Parameter_Name_New
-           ,[SQL_Name_2]
-           ,[SQL_Name_3]
-           ,[SQL_Name_4]
-           ,[SQL_Float_1]+1
-           ,[SQL_Float_2]
-           ,[SQL_Float_3]
-           ,[SQL_Float_4]
-           ,[SQL_Command_1]
-           ,[SQL_Command_2]
-           ,[SQL_Command_3]
-           ,[SQL_Command_4]
-           ,[SQL_Date1]
-           ,[SQL_Date2]
-           ,[Status]
-           ,[Id_SQL_Parameters_Details]
-FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A
+                                                DECLARE @Param_B TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_B int NULL,ID_SQL_B int NULL,ID_B_New int NULL,ID_SQL_B_New int NULL)
+                                                DECLARE @Param_C TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_C int NULL,ID_SQL_C int NULL,ID_C_New int NULL,ID_SQL_C_New int NULL)
+                                                DECLARE @Param_D TABLE([ID] int IDENTITY(1,1) NOT NULL,ID_D int NULL,ID_SQL_D int NULL,ID_D_New int NULL,ID_SQL_D_New int NULL)
 
 
-SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD]
-where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters group by [SQL_Float_1])
-and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
+                                                INSERT INTO [SQL_PARAMETER_DETAILS_THIRD]
+                                                           ([SQL_Name_1]
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details])
+                                                SELECT @SQL_Parameter_Name_New
+                                                           ,[SQL_Name_2]
+                                                           ,[SQL_Name_3]
+                                                           ,[SQL_Name_4]
+                                                           ,[SQL_Float_1]+1
+                                                           ,[SQL_Float_2]
+                                                           ,[SQL_Float_3]
+                                                           ,[SQL_Float_4]
+                                                           ,[SQL_Command_1]
+                                                           ,[SQL_Command_2]
+                                                           ,[SQL_Command_3]
+                                                           ,[SQL_Command_4]
+                                                           ,[SQL_Date1]
+                                                           ,[SQL_Date2]
+                                                           ,[Status]
+                                                           ,[Id_SQL_Parameters_Details]
+                                                FROM [SQL_PARAMETER_DETAILS_THIRD] where ID=@ID_A
 
 
-IF @DUBLICATE_NR>0
-BEGIN
-SELECT @DUBLICATE_NR
---Find equal Nr to @DUPLICATE
-INSERT INTO @ID_3
-(ID,Number)
-select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD] 
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
-and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+                                                SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD]
+                                                where ID not in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters group by [SQL_Float_1])
+                                                and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
 
-SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
-IF @NEW_RUNNING_NR=0
-BEGIN
-SET @NEW_RUNNING_NR=1
-INSERT INTO @ID_4
-(ID,Number)
-Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_THIRD]
-where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
-group by [SQL_Float_1]) and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters order by ID asc
-END
-END
 
-UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters_Details]=@ID_SQL_Parameters"
+                                                IF @DUBLICATE_NR>0
+                                                BEGIN
+                                                SELECT @DUBLICATE_NR
+                                                --Find equal Nr to @DUPLICATE
+                                                INSERT INTO @ID_3
+                                                (ID,Number)
+                                                select ID,[SQL_Float_1] from [SQL_PARAMETER_DETAILS_THIRD] 
+                                                where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1]=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters)
+                                                and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+
+                                                SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                                IF @NEW_RUNNING_NR=0
+                                                BEGIN
+                                                SET @NEW_RUNNING_NR=1
+                                                INSERT INTO @ID_4
+                                                (ID,Number)
+                                                Select ID,[SQL_Float_1]+@NEW_RUNNING_NR from [SQL_PARAMETER_DETAILS_THIRD]
+                                                where ID in (Select Min(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [SQL_Float_1] >=@DUBLICATE_NR and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters
+                                                group by [SQL_Float_1]) and [Id_SQL_Parameters_Details]=@ID_SQL_Parameters order by ID asc
+                                                END
+                                                END
+
+                                                UPDATE A SET A.[SQL_Float_1]=B.Number from [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN @ID_4 B on A.ID=B.ID where A.[Id_SQL_Parameters_Details]=@ID_SQL_Parameters"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_4)
                         cmd.CommandText = cmd.CommandText
                         cmd.ExecuteNonQuery()
                         SplashScreenManager.CloseForm(False)
 
                         XtraMessageBox.Show("SQL Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "SQL_Float_1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
                         focusedView.RefreshData()
                         focusedView.FocusedRowHandle = GetFocusedRow
 
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End Try
                 End If
             End If
         End If
     End Sub
+
+    Private Sub bbiClose_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiClose.ItemClick
+        Me.Close()
+    End Sub
+
 
 End Class

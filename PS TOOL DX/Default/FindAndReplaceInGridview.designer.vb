@@ -26,11 +26,12 @@ Partial Class FindAndReplaceInGridview
         Me.ReplaceText_MemoEdit = New DevExpress.XtraEditors.MemoEdit()
         Me.EditFormUserControlLayoutControl1ConvertedLayout = New DevExpress.XtraLayout.LayoutControl()
         Me.SearchText_MemoEdit = New DevExpress.XtraEditors.MemoEdit()
-        Me.ColumnsNames_LookUpEdit = New DevExpress.XtraEditors.LookUpEdit()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem17 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EditFormUserControlLayoutControl1ConvertedLayoutitem = New DevExpress.XtraLayout.LayoutControlItem()
@@ -427,17 +428,17 @@ Partial Class FindAndReplaceInGridview
         Me.LayoutControlItem174 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem38 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.EmptySpaceItem39 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.ColumnsNames_LookUpEdit = New DevExpress.XtraEditors.LookUpEdit()
         CType(Me.ReplaceText_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EditFormUserControlLayoutControl1ConvertedLayout, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.EditFormUserControlLayoutControl1ConvertedLayout.SuspendLayout()
         CType(Me.SearchText_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ColumnsNames_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -888,8 +889,7 @@ Partial Class FindAndReplaceInGridview
         CType(Me.LayoutControlItem174, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem39, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ColumnsNames_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ReplaceText_MemoEdit
@@ -941,18 +941,6 @@ Partial Class FindAndReplaceInGridview
         Me.SearchText_MemoEdit.StyleController = Me.EditFormUserControlLayoutControl1ConvertedLayout
         Me.SearchText_MemoEdit.TabIndex = 4
         '
-        'ColumnsNames_LookUpEdit
-        '
-        Me.SetBoundPropertyName(Me.ColumnsNames_LookUpEdit, "")
-        Me.ColumnsNames_LookUpEdit.Location = New System.Drawing.Point(225, 12)
-        Me.ColumnsNames_LookUpEdit.Name = "ColumnsNames_LookUpEdit"
-        Me.ColumnsNames_LookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ColumnsNames_LookUpEdit.Properties.NullText = ""
-        Me.ColumnsNames_LookUpEdit.Properties.UseReadOnlyAppearance = False
-        Me.ColumnsNames_LookUpEdit.Size = New System.Drawing.Size(496, 20)
-        Me.ColumnsNames_LookUpEdit.StyleController = Me.EditFormUserControlLayoutControl1ConvertedLayout
-        Me.ColumnsNames_LookUpEdit.TabIndex = 5
-        '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
@@ -997,6 +985,22 @@ Partial Class FindAndReplaceInGridview
         Me.LayoutControlItem2.Text = "Replace with ..."
         Me.LayoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(97, 16)
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(713, 0)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(171, 24)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem3
+        '
+        Me.EmptySpaceItem3.AllowHotTrack = False
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 0)
+        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(125, 24)
+        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControl1
         '
@@ -6080,21 +6084,17 @@ Partial Class FindAndReplaceInGridview
         Me.EmptySpaceItem39.Size = New System.Drawing.Size(1063, 11)
         Me.EmptySpaceItem39.TextSize = New System.Drawing.Size(0, 0)
         '
-        'EmptySpaceItem1
+        'ColumnsNames_LookUpEdit
         '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(713, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(171, 24)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'EmptySpaceItem3
-        '
-        Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 0)
-        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(125, 24)
-        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
+        Me.SetBoundPropertyName(Me.ColumnsNames_LookUpEdit, "")
+        Me.ColumnsNames_LookUpEdit.Location = New System.Drawing.Point(225, 12)
+        Me.ColumnsNames_LookUpEdit.Name = "ColumnsNames_LookUpEdit"
+        Me.ColumnsNames_LookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ColumnsNames_LookUpEdit.Properties.NullText = ""
+        Me.ColumnsNames_LookUpEdit.Properties.UseReadOnlyAppearance = False
+        Me.ColumnsNames_LookUpEdit.Size = New System.Drawing.Size(496, 20)
+        Me.ColumnsNames_LookUpEdit.StyleController = Me.EditFormUserControlLayoutControl1ConvertedLayout
+        Me.ColumnsNames_LookUpEdit.TabIndex = 5
         '
         'FindAndReplaceInGridview
         '
@@ -6107,11 +6107,12 @@ Partial Class FindAndReplaceInGridview
         CType(Me.EditFormUserControlLayoutControl1ConvertedLayout, System.ComponentModel.ISupportInitialize).EndInit()
         Me.EditFormUserControlLayoutControl1ConvertedLayout.ResumeLayout(False)
         CType(Me.SearchText_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ColumnsNames_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -6562,8 +6563,7 @@ Partial Class FindAndReplaceInGridview
         CType(Me.LayoutControlItem174, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem38, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem39, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ColumnsNames_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -6970,8 +6970,8 @@ Partial Class FindAndReplaceInGridview
     Friend WithEvents EmptySpaceItem38 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem39 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents SearchText_MemoEdit As DevExpress.XtraEditors.MemoEdit
-    Friend WithEvents ColumnsNames_LookUpEdit As DevExpress.XtraEditors.LookUpEdit
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents ColumnsNames_LookUpEdit As DevExpress.XtraEditors.LookUpEdit
 End Class

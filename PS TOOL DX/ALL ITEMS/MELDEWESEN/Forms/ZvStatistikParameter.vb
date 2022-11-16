@@ -1430,10 +1430,12 @@ Public Class ZvStatistikParameter
     Private Sub FindAndReplaceText_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles FindAndReplaceText_bbi.ItemClick
         Dim dtColumns As New DataTable
         dtColumns.Columns.Add("ColumnName", Type.GetType("System.String"))
+        dtColumns.Columns.Add("ColumnCaption", Type.GetType("System.String"))
         For Each column As DevExpress.XtraGrid.Columns.GridColumn In ZVSTAT_Meldeschemas_Gridview.Columns
             If column.Visible = True Then
                 Dim dr As DataRow = dtColumns.NewRow
                 dr("ColumnName") = column.Name.ToString
+                dr("ColumnCaption") = column.Caption.ToString
                 dtColumns.Rows.Add(dr)
 
             End If

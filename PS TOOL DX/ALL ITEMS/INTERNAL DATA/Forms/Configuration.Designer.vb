@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Configuration
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -33,6 +33,9 @@ Partial Class Configuration
         Me.colABTEILUNGSPARAMETERINFO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemMemoExEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit()
         Me.colIdABTEILUNGSCODE = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.ABTEILUNGENBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PSTOOLDataset = New PS_TOOL_DX.PSTOOLDataset()
@@ -51,6 +54,11 @@ Partial Class Configuration
         Me.colCURRENTUSER = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colBearbeitungsstatus = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colIdBANK = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.RepositoryItemSpinEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.LayoutView1 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.LayoutViewColumn1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.layoutViewField_colID = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
@@ -88,6 +96,11 @@ Partial Class Configuration
         Me.colIdABTEILUNGSPARAMETER = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNPARAMETER1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNPARAMETER2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDPARAMETER1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDPARAMETER2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -102,14 +115,21 @@ Partial Class Configuration
         Me.Parameter_All_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPARAMETER11 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.colPARAMETER21 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPARAMETERSTATUS1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPARAMETERINFO1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colIdABTEILUNGSPARAMETER1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNPARAMETER11 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Number_RepositoryItemSpinEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.colNPARAMETER21 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDPARAMETER11 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RepositoryItemDateEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.DPARAMETER22 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colIdABTEILUNGSCODE_NAME = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.colLastAction3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -166,11 +186,20 @@ Partial Class Configuration
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
-        Me.colDPARAMETER1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colDPARAMETER2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colDPARAMETER11 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.DPARAMETER22 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.bbiReload = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiAdd = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiSave = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiPrintPreview = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiClose = New DevExpress.XtraBars.BarButtonItem()
+        Me.FindAndReplaceText_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.DateTime_RepositoryItemDateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.DateTime_RepositoryItemDateEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         CType(Me.DepartmentsParameterView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DEPARTMENT_CODERepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VALIDRepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -181,6 +210,9 @@ Partial Class Configuration
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DepartmentsView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ALL_OTHERRepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colABTEILUNGSCODE, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -205,6 +237,9 @@ Partial Class Configuration
         CType(Me.PARAMETER_AllBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Parameter_All_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Number_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemDateEdit2.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -233,8 +268,11 @@ Partial Class Configuration
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTime_RepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTime_RepositoryItemDateEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DepartmentsParameterView
@@ -244,14 +282,16 @@ Partial Class Configuration
         Me.DepartmentsParameterView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
         Me.DepartmentsParameterView.Appearance.FocusedRow.Options.UseBackColor = True
         Me.DepartmentsParameterView.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.DepartmentsParameterView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID1, Me.colABTEILUNGSPARAMETERNAME, Me.colABTEILUNGSPARAMETERSTATUS, Me.colABTEILUNGSPARAMETERINFO, Me.colIdABTEILUNGSCODE})
+        Me.DepartmentsParameterView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID1, Me.colABTEILUNGSPARAMETERNAME, Me.colABTEILUNGSPARAMETERSTATUS, Me.colABTEILUNGSPARAMETERINFO, Me.colIdABTEILUNGSCODE, Me.colLastAction1, Me.colLastUpdateDate1, Me.colLastUpdateUser1})
         Me.DepartmentsParameterView.GridControl = Me.GridControl1
         Me.DepartmentsParameterView.Name = "DepartmentsParameterView"
         Me.DepartmentsParameterView.NewItemRowText = "Add New Department Parameter"
         Me.DepartmentsParameterView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.DepartmentsParameterView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.DepartmentsParameterView.OptionsBehavior.AllowIncrementalSearch = True
+        Me.DepartmentsParameterView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
         Me.DepartmentsParameterView.OptionsDetail.AllowExpandEmptyDetails = True
+        Me.DepartmentsParameterView.OptionsDetail.AutoZoomDetail = True
         Me.DepartmentsParameterView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
         Me.DepartmentsParameterView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.DepartmentsParameterView.OptionsFilter.UseNewCustomFilterDialog = True
@@ -262,6 +302,7 @@ Partial Class Configuration
         Me.DepartmentsParameterView.OptionsView.ColumnAutoWidth = False
         Me.DepartmentsParameterView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
         Me.DepartmentsParameterView.OptionsView.ShowAutoFilterRow = True
+        Me.DepartmentsParameterView.OptionsView.ShowGroupPanel = False
         Me.DepartmentsParameterView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colABTEILUNGSPARAMETERNAME, DevExpress.Data.ColumnSortOrder.Ascending)})
         Me.DepartmentsParameterView.ViewCaption = "DEPARTMENT PARAMETERS"
         '
@@ -278,17 +319,14 @@ Partial Class Configuration
         Me.colABTEILUNGSPARAMETERNAME.FieldName = "ABTEILUNGSPARAMETER NAME"
         Me.colABTEILUNGSPARAMETERNAME.Name = "colABTEILUNGSPARAMETERNAME"
         Me.colABTEILUNGSPARAMETERNAME.OptionsColumn.ReadOnly = True
+        Me.colABTEILUNGSPARAMETERNAME.OptionsEditForm.ColumnSpan = 3
+        Me.colABTEILUNGSPARAMETERNAME.OptionsEditForm.UseEditorColRowSpan = False
         Me.colABTEILUNGSPARAMETERNAME.Visible = True
         Me.colABTEILUNGSPARAMETERNAME.VisibleIndex = 0
         Me.colABTEILUNGSPARAMETERNAME.Width = 197
         '
         'DEPARTMENT_CODERepositoryItemTextEdit1
         '
-        Me.DEPARTMENT_CODERepositoryItemTextEdit1.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.DEPARTMENT_CODERepositoryItemTextEdit1.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.DEPARTMENT_CODERepositoryItemTextEdit1.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.DEPARTMENT_CODERepositoryItemTextEdit1.Appearance.Options.UseBackColor = True
-        Me.DEPARTMENT_CODERepositoryItemTextEdit1.Appearance.Options.UseForeColor = True
         Me.DEPARTMENT_CODERepositoryItemTextEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.DEPARTMENT_CODERepositoryItemTextEdit1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
         Me.DEPARTMENT_CODERepositoryItemTextEdit1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
@@ -304,6 +342,8 @@ Partial Class Configuration
         Me.colABTEILUNGSPARAMETERSTATUS.ColumnEdit = Me.VALIDRepositoryItemImageComboBox1
         Me.colABTEILUNGSPARAMETERSTATUS.FieldName = "ABTEILUNGSPARAMETER STATUS"
         Me.colABTEILUNGSPARAMETERSTATUS.Name = "colABTEILUNGSPARAMETERSTATUS"
+        Me.colABTEILUNGSPARAMETERSTATUS.OptionsEditForm.StartNewRow = True
+        Me.colABTEILUNGSPARAMETERSTATUS.OptionsEditForm.UseEditorColRowSpan = False
         Me.colABTEILUNGSPARAMETERSTATUS.Visible = True
         Me.colABTEILUNGSPARAMETERSTATUS.VisibleIndex = 1
         Me.colABTEILUNGSPARAMETERSTATUS.Width = 183
@@ -314,6 +354,11 @@ Partial Class Configuration
         Me.VALIDRepositoryItemImageComboBox1.Appearance.Options.UseFont = True
         Me.VALIDRepositoryItemImageComboBox1.Appearance.Options.UseTextOptions = True
         Me.VALIDRepositoryItemImageComboBox1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.VALIDRepositoryItemImageComboBox1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.VALIDRepositoryItemImageComboBox1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.VALIDRepositoryItemImageComboBox1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.VALIDRepositoryItemImageComboBox1.AppearanceFocused.Options.UseBackColor = True
+        Me.VALIDRepositoryItemImageComboBox1.AppearanceFocused.Options.UseForeColor = True
         Me.VALIDRepositoryItemImageComboBox1.AutoHeight = False
         Me.VALIDRepositoryItemImageComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.VALIDRepositoryItemImageComboBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
@@ -352,17 +397,14 @@ Partial Class Configuration
         Me.colABTEILUNGSPARAMETERINFO.ColumnEdit = Me.RepositoryItemMemoExEdit1
         Me.colABTEILUNGSPARAMETERINFO.FieldName = "ABTEILUNGSPARAMETER INFO"
         Me.colABTEILUNGSPARAMETERINFO.Name = "colABTEILUNGSPARAMETERINFO"
+        Me.colABTEILUNGSPARAMETERINFO.OptionsEditForm.StartNewRow = True
+        Me.colABTEILUNGSPARAMETERINFO.OptionsEditForm.UseEditorColRowSpan = False
         Me.colABTEILUNGSPARAMETERINFO.Visible = True
         Me.colABTEILUNGSPARAMETERINFO.VisibleIndex = 2
         Me.colABTEILUNGSPARAMETERINFO.Width = 175
         '
         'RepositoryItemMemoExEdit1
         '
-        Me.RepositoryItemMemoExEdit1.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemMemoExEdit1.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemMemoExEdit1.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemMemoExEdit1.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemMemoExEdit1.Appearance.Options.UseForeColor = True
         Me.RepositoryItemMemoExEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.RepositoryItemMemoExEdit1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
         Me.RepositoryItemMemoExEdit1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
@@ -377,33 +419,66 @@ Partial Class Configuration
         Me.colIdABTEILUNGSCODE.FieldName = "IdABTEILUNGSCODE"
         Me.colIdABTEILUNGSCODE.Name = "colIdABTEILUNGSCODE"
         Me.colIdABTEILUNGSCODE.OptionsColumn.ReadOnly = True
+        Me.colIdABTEILUNGSCODE.OptionsEditForm.StartNewRow = True
+        Me.colIdABTEILUNGSCODE.OptionsEditForm.UseEditorColRowSpan = False
         Me.colIdABTEILUNGSCODE.Visible = True
         Me.colIdABTEILUNGSCODE.VisibleIndex = 3
         Me.colIdABTEILUNGSCODE.Width = 126
+        '
+        'colLastAction1
+        '
+        Me.colLastAction1.FieldName = "LastAction"
+        Me.colLastAction1.Name = "colLastAction1"
+        Me.colLastAction1.OptionsColumn.ReadOnly = True
+        Me.colLastAction1.OptionsEditForm.StartNewRow = True
+        Me.colLastAction1.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateDate1
+        '
+        Me.colLastUpdateDate1.AppearanceCell.Options.UseTextOptions = True
+        Me.colLastUpdateDate1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colLastUpdateDate1.ColumnEdit = Me.DateTime_RepositoryItemDateEdit
+        Me.colLastUpdateDate1.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.colLastUpdateDate1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colLastUpdateDate1.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate1.Name = "colLastUpdateDate1"
+        Me.colLastUpdateDate1.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateDate1.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateUser1
+        '
+        Me.colLastUpdateUser1.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser1.Name = "colLastUpdateUser1"
+        Me.colLastUpdateUser1.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateUser1.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
         '
         'GridControl1
         '
         Me.GridControl1.Cursor = System.Windows.Forms.Cursors.Default
         Me.GridControl1.DataSource = Me.ABTEILUNGENBindingSource
         Me.GridControl1.EmbeddedNavigator.Buttons.Append.ImageIndex = 3
+        Me.GridControl1.EmbeddedNavigator.Buttons.Append.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.CancelEdit.ImageIndex = 5
+        Me.GridControl1.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.Edit.ImageIndex = 10
+        Me.GridControl1.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 9
+        Me.GridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.ImageIndex = 7
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl1.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(2, "Print"), New DevExpress.XtraEditors.NavigatorCustomButton(8, "ExportToExcel"), New DevExpress.XtraEditors.NavigatorCustomButton(11, "ImportFromExcel"), New DevExpress.XtraEditors.NavigatorCustomButton(7, "Delete")})
+        Me.GridControl1.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 2, True, False, "Print", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, False, "ExportToExcel", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 11, True, False, "ImportFromExcel", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 7, True, False, "Delete", Nothing)})
         GridLevelNode1.LevelTemplate = Me.DepartmentsParameterView
         GridLevelNode2.LevelTemplate = Me.ParameterView
         GridLevelNode2.RelationName = "PARAMETER_FK00"
         GridLevelNode1.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         GridLevelNode1.RelationName = "FK_ABTEILUNGSPARAMETER_ABTEILUNGEN"
         Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl1.Location = New System.Drawing.Point(24, 46)
+        Me.GridControl1.Location = New System.Drawing.Point(24, 45)
         Me.GridControl1.MainView = Me.DepartmentsView
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.DEPARTMENT_CODERepositoryItemTextEdit1, Me.ALL_OTHERRepositoryItemTextEdit1, Me.RepositoryItemMemoExEdit1, Me.VALIDRepositoryItemImageComboBox1, Me.RepositoryItemDateEdit1})
-        Me.GridControl1.Size = New System.Drawing.Size(1482, 611)
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.DEPARTMENT_CODERepositoryItemTextEdit1, Me.ALL_OTHERRepositoryItemTextEdit1, Me.RepositoryItemMemoExEdit1, Me.VALIDRepositoryItemImageComboBox1, Me.RepositoryItemDateEdit1, Me.RepositoryItemSpinEdit1, Me.DateTime_RepositoryItemDateEdit})
+        Me.GridControl1.Size = New System.Drawing.Size(1384, 413)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.UseEmbeddedNavigator = True
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DepartmentsView, Me.LayoutView1, Me.ParameterView, Me.DepartmentsParameterView})
@@ -427,7 +502,7 @@ Partial Class Configuration
         Me.DepartmentsView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.DepartmentsView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.DepartmentsView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.DepartmentsView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colABTEILUNGSCODE, Me.colABTEILUNGSNAME, Me.colABTEILUNGSLEITER, Me.colABTEILUNGTEL, Me.colABTEILUNGFAX, Me.GridColumn1, Me.colABTEILUNGBEMERKUNGEN, Me.colABTEILUNGEVENTJOURNAL, Me.colABTEILUNGSTATUS, Me.colCURRENTUSER, Me.colBearbeitungsstatus, Me.colIdBANK})
+        Me.DepartmentsView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colABTEILUNGSCODE, Me.colABTEILUNGSNAME, Me.colABTEILUNGSLEITER, Me.colABTEILUNGTEL, Me.colABTEILUNGFAX, Me.GridColumn1, Me.colABTEILUNGBEMERKUNGEN, Me.colABTEILUNGEVENTJOURNAL, Me.colABTEILUNGSTATUS, Me.colCURRENTUSER, Me.colBearbeitungsstatus, Me.colIdBANK, Me.colLastAction, Me.colLastUpdateDate, Me.colLastUpdateUser})
         Me.DepartmentsView.GridControl = Me.GridControl1
         Me.DepartmentsView.Images = Me.ImageCollection1
         Me.DepartmentsView.Name = "DepartmentsView"
@@ -436,7 +511,9 @@ Partial Class Configuration
         Me.DepartmentsView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.DepartmentsView.OptionsBehavior.AllowIncrementalSearch = True
         Me.DepartmentsView.OptionsBehavior.AutoExpandAllGroups = True
+        Me.DepartmentsView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
         Me.DepartmentsView.OptionsDetail.AllowExpandEmptyDetails = True
+        Me.DepartmentsView.OptionsDetail.AutoZoomDetail = True
         Me.DepartmentsView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
         Me.DepartmentsView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.DepartmentsView.OptionsFind.AlwaysVisible = True
@@ -456,6 +533,7 @@ Partial Class Configuration
         Me.DepartmentsView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.DepartmentsView.OptionsView.ShowFooter = True
         Me.DepartmentsView.OptionsView.ShowGroupedColumns = True
+        Me.DepartmentsView.OptionsView.ShowGroupPanel = False
         Me.DepartmentsView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colABTEILUNGSCODE, DevExpress.Data.ColumnSortOrder.Ascending)})
         '
         'colID
@@ -471,6 +549,8 @@ Partial Class Configuration
         Me.colABTEILUNGSCODE.FieldName = "ABTEILUNGS CODE"
         Me.colABTEILUNGSCODE.Name = "colABTEILUNGSCODE"
         Me.colABTEILUNGSCODE.OptionsColumn.ReadOnly = True
+        Me.colABTEILUNGSCODE.OptionsEditForm.ColumnSpan = 2
+        Me.colABTEILUNGSCODE.OptionsEditForm.UseEditorColRowSpan = False
         Me.colABTEILUNGSCODE.Visible = True
         Me.colABTEILUNGSCODE.VisibleIndex = 0
         Me.colABTEILUNGSCODE.Width = 166
@@ -481,17 +561,15 @@ Partial Class Configuration
         Me.colABTEILUNGSNAME.ColumnEdit = Me.ALL_OTHERRepositoryItemTextEdit1
         Me.colABTEILUNGSNAME.FieldName = "ABTEILUNGS NAME"
         Me.colABTEILUNGSNAME.Name = "colABTEILUNGSNAME"
+        Me.colABTEILUNGSNAME.OptionsEditForm.ColumnSpan = 2
+        Me.colABTEILUNGSNAME.OptionsEditForm.StartNewRow = True
+        Me.colABTEILUNGSNAME.OptionsEditForm.UseEditorColRowSpan = False
         Me.colABTEILUNGSNAME.Visible = True
         Me.colABTEILUNGSNAME.VisibleIndex = 1
         Me.colABTEILUNGSNAME.Width = 408
         '
         'ALL_OTHERRepositoryItemTextEdit1
         '
-        Me.ALL_OTHERRepositoryItemTextEdit1.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.ALL_OTHERRepositoryItemTextEdit1.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.ALL_OTHERRepositoryItemTextEdit1.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.ALL_OTHERRepositoryItemTextEdit1.Appearance.Options.UseBackColor = True
-        Me.ALL_OTHERRepositoryItemTextEdit1.Appearance.Options.UseForeColor = True
         Me.ALL_OTHERRepositoryItemTextEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.ALL_OTHERRepositoryItemTextEdit1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
         Me.ALL_OTHERRepositoryItemTextEdit1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
@@ -542,6 +620,8 @@ Partial Class Configuration
         Me.colABTEILUNGBEMERKUNGEN.ColumnEdit = Me.RepositoryItemMemoExEdit1
         Me.colABTEILUNGBEMERKUNGEN.FieldName = "ABTEILUNG BEMERKUNGEN"
         Me.colABTEILUNGBEMERKUNGEN.Name = "colABTEILUNGBEMERKUNGEN"
+        Me.colABTEILUNGBEMERKUNGEN.OptionsEditForm.StartNewRow = True
+        Me.colABTEILUNGBEMERKUNGEN.OptionsEditForm.UseEditorColRowSpan = False
         Me.colABTEILUNGBEMERKUNGEN.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowForFocusedCell
         Me.colABTEILUNGBEMERKUNGEN.Visible = True
         Me.colABTEILUNGBEMERKUNGEN.VisibleIndex = 3
@@ -566,6 +646,8 @@ Partial Class Configuration
         Me.colABTEILUNGSTATUS.ColumnEdit = Me.VALIDRepositoryItemImageComboBox1
         Me.colABTEILUNGSTATUS.FieldName = "ABTEILUNG STATUS"
         Me.colABTEILUNGSTATUS.Name = "colABTEILUNGSTATUS"
+        Me.colABTEILUNGSTATUS.OptionsEditForm.StartNewRow = True
+        Me.colABTEILUNGSTATUS.OptionsEditForm.UseEditorColRowSpan = False
         Me.colABTEILUNGSTATUS.Visible = True
         Me.colABTEILUNGSTATUS.VisibleIndex = 2
         Me.colABTEILUNGSTATUS.Width = 130
@@ -596,6 +678,61 @@ Partial Class Configuration
         Me.colIdBANK.OptionsColumn.ShowInCustomizationForm = False
         Me.colIdBANK.OptionsColumn.ShowInExpressionEditor = False
         Me.colIdBANK.Width = 124
+        '
+        'colLastAction
+        '
+        Me.colLastAction.FieldName = "LastAction"
+        Me.colLastAction.Name = "colLastAction"
+        Me.colLastAction.OptionsColumn.ReadOnly = True
+        Me.colLastAction.OptionsEditForm.StartNewRow = True
+        Me.colLastAction.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateDate
+        '
+        Me.colLastUpdateDate.AppearanceCell.Options.UseTextOptions = True
+        Me.colLastUpdateDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colLastUpdateDate.ColumnEdit = Me.DateTime_RepositoryItemDateEdit
+        Me.colLastUpdateDate.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.colLastUpdateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colLastUpdateDate.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate.Name = "colLastUpdateDate"
+        Me.colLastUpdateDate.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateDate.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateUser
+        '
+        Me.colLastUpdateUser.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser.Name = "colLastUpdateUser"
+        Me.colLastUpdateUser.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateUser.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'RepositoryItemDateEdit1
+        '
+        Me.RepositoryItemDateEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemDateEdit1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemDateEdit1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemDateEdit1.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemDateEdit1.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemDateEdit1.AutoHeight = False
+        Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
+        '
+        'RepositoryItemSpinEdit1
+        '
+        Me.RepositoryItemSpinEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemSpinEdit1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemSpinEdit1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemSpinEdit1.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemSpinEdit1.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemSpinEdit1.AutoHeight = False
+        Me.RepositoryItemSpinEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemSpinEdit1.DisplayFormat.FormatString = "n6"
+        Me.RepositoryItemSpinEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.RepositoryItemSpinEdit1.EditFormat.FormatString = "n6"
+        Me.RepositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.RepositoryItemSpinEdit1.Mask.EditMask = "n6"
+        Me.RepositoryItemSpinEdit1.Name = "RepositoryItemSpinEdit1"
         '
         'LayoutView1
         '
@@ -804,12 +941,13 @@ Partial Class Configuration
         Me.ParameterView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
         Me.ParameterView.Appearance.FocusedRow.Options.UseBackColor = True
         Me.ParameterView.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.ParameterView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colPARAMETER1, Me.colPARAMETER2, Me.colPARAMETERSTATUS, Me.colPARAMETERINFO, Me.colIdABTEILUNGSPARAMETER, Me.colNPARAMETER1, Me.colNPARAMETER2, Me.colDPARAMETER1, Me.colDPARAMETER2})
+        Me.ParameterView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colPARAMETER1, Me.colPARAMETER2, Me.colPARAMETERSTATUS, Me.colPARAMETERINFO, Me.colIdABTEILUNGSPARAMETER, Me.colNPARAMETER1, Me.colNPARAMETER2, Me.colDPARAMETER1, Me.colDPARAMETER2, Me.colLastAction2, Me.colLastUpdateDate2, Me.colLastUpdateUser2})
         Me.ParameterView.GridControl = Me.GridControl1
         Me.ParameterView.Name = "ParameterView"
         Me.ParameterView.NewItemRowText = "Add new Parameters"
         Me.ParameterView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.ParameterView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
+        Me.ParameterView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
         Me.ParameterView.OptionsDetail.AllowExpandEmptyDetails = True
         Me.ParameterView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
         Me.ParameterView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
@@ -821,6 +959,7 @@ Partial Class Configuration
         Me.ParameterView.OptionsView.ShowAutoFilterRow = True
         Me.ParameterView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.ParameterView.OptionsView.ShowFooter = True
+        Me.ParameterView.OptionsView.ShowGroupPanel = False
         Me.ParameterView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colPARAMETER1, DevExpress.Data.ColumnSortOrder.Ascending)})
         Me.ParameterView.ViewCaption = "PARAMETERS"
         '
@@ -837,6 +976,8 @@ Partial Class Configuration
         Me.colPARAMETER1.ColumnEdit = Me.ALL_OTHERRepositoryItemTextEdit1
         Me.colPARAMETER1.FieldName = "PARAMETER1"
         Me.colPARAMETER1.Name = "colPARAMETER1"
+        Me.colPARAMETER1.OptionsEditForm.ColumnSpan = 3
+        Me.colPARAMETER1.OptionsEditForm.UseEditorColRowSpan = False
         Me.colPARAMETER1.Visible = True
         Me.colPARAMETER1.VisibleIndex = 0
         Me.colPARAMETER1.Width = 433
@@ -847,6 +988,9 @@ Partial Class Configuration
         Me.colPARAMETER2.ColumnEdit = Me.ALL_OTHERRepositoryItemTextEdit1
         Me.colPARAMETER2.FieldName = "PARAMETER2"
         Me.colPARAMETER2.Name = "colPARAMETER2"
+        Me.colPARAMETER2.OptionsEditForm.ColumnSpan = 3
+        Me.colPARAMETER2.OptionsEditForm.StartNewRow = True
+        Me.colPARAMETER2.OptionsEditForm.UseEditorColRowSpan = False
         Me.colPARAMETER2.Visible = True
         Me.colPARAMETER2.VisibleIndex = 1
         Me.colPARAMETER2.Width = 440
@@ -857,8 +1001,10 @@ Partial Class Configuration
         Me.colPARAMETERSTATUS.ColumnEdit = Me.VALIDRepositoryItemImageComboBox1
         Me.colPARAMETERSTATUS.FieldName = "PARAMETER STATUS"
         Me.colPARAMETERSTATUS.Name = "colPARAMETERSTATUS"
+        Me.colPARAMETERSTATUS.OptionsEditForm.StartNewRow = True
+        Me.colPARAMETERSTATUS.OptionsEditForm.UseEditorColRowSpan = False
         Me.colPARAMETERSTATUS.Visible = True
-        Me.colPARAMETERSTATUS.VisibleIndex = 4
+        Me.colPARAMETERSTATUS.VisibleIndex = 6
         Me.colPARAMETERSTATUS.Width = 109
         '
         'colPARAMETERINFO
@@ -867,8 +1013,9 @@ Partial Class Configuration
         Me.colPARAMETERINFO.ColumnEdit = Me.RepositoryItemMemoExEdit1
         Me.colPARAMETERINFO.FieldName = "PARAMETER INFO"
         Me.colPARAMETERINFO.Name = "colPARAMETERINFO"
+        Me.colPARAMETERINFO.OptionsEditForm.StartNewRow = True
         Me.colPARAMETERINFO.Visible = True
-        Me.colPARAMETERINFO.VisibleIndex = 5
+        Me.colPARAMETERINFO.VisibleIndex = 7
         Me.colPARAMETERINFO.Width = 99
         '
         'colIdABTEILUNGSPARAMETER
@@ -877,8 +1024,11 @@ Partial Class Configuration
         Me.colIdABTEILUNGSPARAMETER.FieldName = "IdABTEILUNGSPARAMETER"
         Me.colIdABTEILUNGSPARAMETER.Name = "colIdABTEILUNGSPARAMETER"
         Me.colIdABTEILUNGSPARAMETER.OptionsColumn.ReadOnly = True
+        Me.colIdABTEILUNGSPARAMETER.OptionsEditForm.ColumnSpan = 2
+        Me.colIdABTEILUNGSPARAMETER.OptionsEditForm.StartNewRow = True
+        Me.colIdABTEILUNGSPARAMETER.OptionsEditForm.UseEditorColRowSpan = False
         Me.colIdABTEILUNGSPARAMETER.Visible = True
-        Me.colIdABTEILUNGSPARAMETER.VisibleIndex = 6
+        Me.colIdABTEILUNGSPARAMETER.VisibleIndex = 8
         Me.colIdABTEILUNGSPARAMETER.Width = 158
         '
         'colNPARAMETER1
@@ -886,8 +1036,11 @@ Partial Class Configuration
         Me.colNPARAMETER1.AppearanceCell.Options.UseTextOptions = True
         Me.colNPARAMETER1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.colNPARAMETER1.Caption = "NUMERIC PARAMETER 1"
+        Me.colNPARAMETER1.ColumnEdit = Me.RepositoryItemSpinEdit1
         Me.colNPARAMETER1.FieldName = "NPARAMETER1"
         Me.colNPARAMETER1.Name = "colNPARAMETER1"
+        Me.colNPARAMETER1.OptionsEditForm.StartNewRow = True
+        Me.colNPARAMETER1.OptionsEditForm.UseEditorColRowSpan = False
         Me.colNPARAMETER1.Visible = True
         Me.colNPARAMETER1.VisibleIndex = 2
         Me.colNPARAMETER1.Width = 126
@@ -897,11 +1050,71 @@ Partial Class Configuration
         Me.colNPARAMETER2.AppearanceCell.Options.UseTextOptions = True
         Me.colNPARAMETER2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
         Me.colNPARAMETER2.Caption = "NUMERIC PARAMETER 2"
+        Me.colNPARAMETER2.ColumnEdit = Me.RepositoryItemSpinEdit1
         Me.colNPARAMETER2.FieldName = "NPARAMETER2"
         Me.colNPARAMETER2.Name = "colNPARAMETER2"
+        Me.colNPARAMETER2.OptionsEditForm.UseEditorColRowSpan = False
         Me.colNPARAMETER2.Visible = True
         Me.colNPARAMETER2.VisibleIndex = 3
         Me.colNPARAMETER2.Width = 136
+        '
+        'colDPARAMETER1
+        '
+        Me.colDPARAMETER1.AppearanceCell.Options.UseTextOptions = True
+        Me.colDPARAMETER1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colDPARAMETER1.Caption = "DATE PARAMETER 1"
+        Me.colDPARAMETER1.ColumnEdit = Me.RepositoryItemDateEdit1
+        Me.colDPARAMETER1.DisplayFormat.FormatString = "d"
+        Me.colDPARAMETER1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colDPARAMETER1.FieldName = "DPARAMETER1"
+        Me.colDPARAMETER1.Name = "colDPARAMETER1"
+        Me.colDPARAMETER1.OptionsEditForm.StartNewRow = True
+        Me.colDPARAMETER1.OptionsEditForm.UseEditorColRowSpan = False
+        Me.colDPARAMETER1.Visible = True
+        Me.colDPARAMETER1.VisibleIndex = 4
+        Me.colDPARAMETER1.Width = 108
+        '
+        'colDPARAMETER2
+        '
+        Me.colDPARAMETER2.AppearanceCell.Options.UseTextOptions = True
+        Me.colDPARAMETER2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colDPARAMETER2.Caption = "DATE PARAMETER 2"
+        Me.colDPARAMETER2.ColumnEdit = Me.RepositoryItemDateEdit1
+        Me.colDPARAMETER2.DisplayFormat.FormatString = "d"
+        Me.colDPARAMETER2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colDPARAMETER2.FieldName = "DPARAMETER2"
+        Me.colDPARAMETER2.Name = "colDPARAMETER2"
+        Me.colDPARAMETER2.OptionsEditForm.UseEditorColRowSpan = False
+        Me.colDPARAMETER2.Visible = True
+        Me.colDPARAMETER2.VisibleIndex = 5
+        Me.colDPARAMETER2.Width = 120
+        '
+        'colLastAction2
+        '
+        Me.colLastAction2.FieldName = "LastAction"
+        Me.colLastAction2.Name = "colLastAction2"
+        Me.colLastAction2.OptionsColumn.ReadOnly = True
+        Me.colLastAction2.OptionsEditForm.StartNewRow = True
+        Me.colLastAction2.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateDate2
+        '
+        Me.colLastUpdateDate2.AppearanceCell.Options.UseTextOptions = True
+        Me.colLastUpdateDate2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colLastUpdateDate2.ColumnEdit = Me.DateTime_RepositoryItemDateEdit
+        Me.colLastUpdateDate2.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.colLastUpdateDate2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colLastUpdateDate2.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate2.Name = "colLastUpdateDate2"
+        Me.colLastUpdateDate2.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateDate2.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateUser2
+        '
+        Me.colLastUpdateUser2.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser2.Name = "colLastUpdateUser2"
+        Me.colLastUpdateUser2.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateUser2.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
         '
         'GridView1
         '
@@ -948,11 +1161,6 @@ Partial Class Configuration
         '
         'RepositoryItemTextEdit1
         '
-        Me.RepositoryItemTextEdit1.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit1.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit1.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemTextEdit1.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit1.Appearance.Options.UseForeColor = True
         Me.RepositoryItemTextEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.RepositoryItemTextEdit1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
         Me.RepositoryItemTextEdit1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
@@ -978,6 +1186,11 @@ Partial Class Configuration
         Me.RepositoryItemImageComboBox1.Appearance.Options.UseFont = True
         Me.RepositoryItemImageComboBox1.Appearance.Options.UseTextOptions = True
         Me.RepositoryItemImageComboBox1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.RepositoryItemImageComboBox1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemImageComboBox1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemImageComboBox1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemImageComboBox1.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemImageComboBox1.AppearanceFocused.Options.UseForeColor = True
         Me.RepositoryItemImageComboBox1.AutoHeight = False
         Me.RepositoryItemImageComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemImageComboBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
@@ -1031,15 +1244,16 @@ Partial Class Configuration
         Me.GridControl2.EmbeddedNavigator.Buttons.Edit.ImageIndex = 10
         Me.GridControl2.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 9
+        Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.ImageIndex = 7
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl2.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(7, "Delete Parameter"), New DevExpress.XtraEditors.NavigatorCustomButton(2, "PrintAllParameters")})
-        Me.GridControl2.Location = New System.Drawing.Point(24, 46)
+        Me.GridControl2.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 7, True, False, "Delete Parameter", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 2, True, False, "PrintAllParameters", Nothing)})
+        Me.GridControl2.Location = New System.Drawing.Point(24, 45)
         Me.GridControl2.MainView = Me.Parameter_All_GridView
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEdit2, Me.RepositoryItemMemoExEdit2, Me.RepositoryItemImageComboBox1})
-        Me.GridControl2.Size = New System.Drawing.Size(1482, 611)
+        Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEdit2, Me.RepositoryItemMemoExEdit2, Me.RepositoryItemImageComboBox1, Me.Number_RepositoryItemSpinEdit, Me.RepositoryItemDateEdit2, Me.DateTime_RepositoryItemDateEdit3})
+        Me.GridControl2.Size = New System.Drawing.Size(1384, 413)
         Me.GridControl2.TabIndex = 2
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.Parameter_All_GridView, Me.GridView2, Me.LayoutView2, Me.GridView1})
@@ -1058,7 +1272,7 @@ Partial Class Configuration
         Me.Parameter_All_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.Parameter_All_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.Parameter_All_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.Parameter_All_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID3, Me.colPARAMETER11, Me.colPARAMETER21, Me.colPARAMETERSTATUS1, Me.colPARAMETERINFO1, Me.colIdABTEILUNGSPARAMETER1, Me.colNPARAMETER11, Me.colNPARAMETER21, Me.colDPARAMETER11, Me.DPARAMETER22, Me.colIdABTEILUNGSCODE_NAME})
+        Me.Parameter_All_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID3, Me.colPARAMETER11, Me.colPARAMETER21, Me.colPARAMETERSTATUS1, Me.colPARAMETERINFO1, Me.colIdABTEILUNGSPARAMETER1, Me.colNPARAMETER11, Me.colNPARAMETER21, Me.colDPARAMETER11, Me.DPARAMETER22, Me.colIdABTEILUNGSCODE_NAME, Me.colLastAction3, Me.colLastUpdateDate3, Me.colLastUpdateUser3})
         Me.Parameter_All_GridView.GridControl = Me.GridControl2
         Me.Parameter_All_GridView.Images = Me.ImageCollection1
         Me.Parameter_All_GridView.Name = "Parameter_All_GridView"
@@ -1067,6 +1281,7 @@ Partial Class Configuration
         Me.Parameter_All_GridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.Parameter_All_GridView.OptionsBehavior.AllowIncrementalSearch = True
         Me.Parameter_All_GridView.OptionsBehavior.AutoExpandAllGroups = True
+        Me.Parameter_All_GridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
         Me.Parameter_All_GridView.OptionsDetail.AllowExpandEmptyDetails = True
         Me.Parameter_All_GridView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
         Me.Parameter_All_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
@@ -1087,11 +1302,13 @@ Partial Class Configuration
         Me.Parameter_All_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.Parameter_All_GridView.OptionsView.ShowFooter = True
         Me.Parameter_All_GridView.OptionsView.ShowGroupedColumns = True
+        Me.Parameter_All_GridView.OptionsView.ShowGroupPanel = False
         Me.Parameter_All_GridView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colID3, DevExpress.Data.ColumnSortOrder.Descending)})
         '
         'colID3
         '
         Me.colID3.FieldName = "ID"
+        Me.colID3.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
         Me.colID3.Name = "colID3"
         Me.colID3.OptionsColumn.AllowEdit = False
         Me.colID3.OptionsColumn.ReadOnly = True
@@ -1100,16 +1317,36 @@ Partial Class Configuration
         '
         'colPARAMETER11
         '
+        Me.colPARAMETER11.ColumnEdit = Me.RepositoryItemTextEdit2
         Me.colPARAMETER11.FieldName = "PARAMETER1"
+        Me.colPARAMETER11.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
         Me.colPARAMETER11.Name = "colPARAMETER11"
+        Me.colPARAMETER11.OptionsEditForm.ColumnSpan = 3
+        Me.colPARAMETER11.OptionsEditForm.StartNewRow = True
+        Me.colPARAMETER11.OptionsEditForm.UseEditorColRowSpan = False
         Me.colPARAMETER11.Visible = True
         Me.colPARAMETER11.VisibleIndex = 1
         Me.colPARAMETER11.Width = 464
         '
+        'RepositoryItemTextEdit2
+        '
+        Me.RepositoryItemTextEdit2.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemTextEdit2.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemTextEdit2.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemTextEdit2.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemTextEdit2.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemTextEdit2.AutoHeight = False
+        Me.RepositoryItemTextEdit2.Name = "RepositoryItemTextEdit2"
+        '
         'colPARAMETER21
         '
+        Me.colPARAMETER21.ColumnEdit = Me.RepositoryItemTextEdit2
         Me.colPARAMETER21.FieldName = "PARAMETER2"
+        Me.colPARAMETER21.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
         Me.colPARAMETER21.Name = "colPARAMETER21"
+        Me.colPARAMETER21.OptionsEditForm.ColumnSpan = 3
+        Me.colPARAMETER21.OptionsEditForm.StartNewRow = True
+        Me.colPARAMETER21.OptionsEditForm.UseEditorColRowSpan = False
         Me.colPARAMETER21.Visible = True
         Me.colPARAMETER21.VisibleIndex = 2
         Me.colPARAMETER21.Width = 439
@@ -1119,6 +1356,8 @@ Partial Class Configuration
         Me.colPARAMETERSTATUS1.ColumnEdit = Me.RepositoryItemImageComboBox1
         Me.colPARAMETERSTATUS1.FieldName = "PARAMETER STATUS"
         Me.colPARAMETERSTATUS1.Name = "colPARAMETERSTATUS1"
+        Me.colPARAMETERSTATUS1.OptionsEditForm.StartNewRow = True
+        Me.colPARAMETERSTATUS1.OptionsEditForm.UseEditorColRowSpan = False
         Me.colPARAMETERSTATUS1.Visible = True
         Me.colPARAMETERSTATUS1.VisibleIndex = 7
         Me.colPARAMETERSTATUS1.Width = 108
@@ -1128,6 +1367,8 @@ Partial Class Configuration
         Me.colPARAMETERINFO1.ColumnEdit = Me.RepositoryItemMemoExEdit2
         Me.colPARAMETERINFO1.FieldName = "PARAMETER INFO"
         Me.colPARAMETERINFO1.Name = "colPARAMETERINFO1"
+        Me.colPARAMETERINFO1.OptionsEditForm.StartNewRow = True
+        Me.colPARAMETERINFO1.OptionsEditForm.UseEditorColRowSpan = False
         Me.colPARAMETERINFO1.Visible = True
         Me.colPARAMETERINFO1.VisibleIndex = 8
         Me.colPARAMETERINFO1.Width = 80
@@ -1139,6 +1380,8 @@ Partial Class Configuration
         Me.colIdABTEILUNGSPARAMETER1.Name = "colIdABTEILUNGSPARAMETER1"
         Me.colIdABTEILUNGSPARAMETER1.OptionsColumn.AllowEdit = False
         Me.colIdABTEILUNGSPARAMETER1.OptionsColumn.ReadOnly = True
+        Me.colIdABTEILUNGSPARAMETER1.OptionsEditForm.ColumnSpan = 2
+        Me.colIdABTEILUNGSPARAMETER1.OptionsEditForm.UseEditorColRowSpan = False
         Me.colIdABTEILUNGSPARAMETER1.Visible = True
         Me.colIdABTEILUNGSPARAMETER1.VisibleIndex = 9
         Me.colIdABTEILUNGSPARAMETER1.Width = 217
@@ -1146,20 +1389,84 @@ Partial Class Configuration
         'colNPARAMETER11
         '
         Me.colNPARAMETER11.Caption = "Nummeric Parameter 1"
+        Me.colNPARAMETER11.ColumnEdit = Me.Number_RepositoryItemSpinEdit
         Me.colNPARAMETER11.FieldName = "NPARAMETER1"
         Me.colNPARAMETER11.Name = "colNPARAMETER11"
+        Me.colNPARAMETER11.OptionsEditForm.StartNewRow = True
+        Me.colNPARAMETER11.OptionsEditForm.UseEditorColRowSpan = False
         Me.colNPARAMETER11.Visible = True
         Me.colNPARAMETER11.VisibleIndex = 3
         Me.colNPARAMETER11.Width = 97
         '
+        'Number_RepositoryItemSpinEdit
+        '
+        Me.Number_RepositoryItemSpinEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.Number_RepositoryItemSpinEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.Number_RepositoryItemSpinEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.Number_RepositoryItemSpinEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.Number_RepositoryItemSpinEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.Number_RepositoryItemSpinEdit.AutoHeight = False
+        Me.Number_RepositoryItemSpinEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.Number_RepositoryItemSpinEdit.DisplayFormat.FormatString = "n6"
+        Me.Number_RepositoryItemSpinEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.Number_RepositoryItemSpinEdit.EditFormat.FormatString = "n6"
+        Me.Number_RepositoryItemSpinEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.Number_RepositoryItemSpinEdit.Mask.EditMask = "n6"
+        Me.Number_RepositoryItemSpinEdit.Name = "Number_RepositoryItemSpinEdit"
+        '
         'colNPARAMETER21
         '
         Me.colNPARAMETER21.Caption = "Nummeric Parameter 2"
+        Me.colNPARAMETER21.ColumnEdit = Me.Number_RepositoryItemSpinEdit
         Me.colNPARAMETER21.FieldName = "NPARAMETER2"
         Me.colNPARAMETER21.Name = "colNPARAMETER21"
+        Me.colNPARAMETER21.OptionsEditForm.UseEditorColRowSpan = False
         Me.colNPARAMETER21.Visible = True
         Me.colNPARAMETER21.VisibleIndex = 4
         Me.colNPARAMETER21.Width = 100
+        '
+        'colDPARAMETER11
+        '
+        Me.colDPARAMETER11.AppearanceCell.Options.UseTextOptions = True
+        Me.colDPARAMETER11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colDPARAMETER11.Caption = "Date Parameter 1"
+        Me.colDPARAMETER11.ColumnEdit = Me.RepositoryItemDateEdit2
+        Me.colDPARAMETER11.DisplayFormat.FormatString = "d"
+        Me.colDPARAMETER11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colDPARAMETER11.FieldName = "DPARAMETER1"
+        Me.colDPARAMETER11.Name = "colDPARAMETER11"
+        Me.colDPARAMETER11.OptionsColumn.AllowEdit = False
+        Me.colDPARAMETER11.OptionsEditForm.StartNewRow = True
+        Me.colDPARAMETER11.OptionsEditForm.UseEditorColRowSpan = False
+        Me.colDPARAMETER11.Visible = True
+        Me.colDPARAMETER11.VisibleIndex = 5
+        '
+        'RepositoryItemDateEdit2
+        '
+        Me.RepositoryItemDateEdit2.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemDateEdit2.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemDateEdit2.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemDateEdit2.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemDateEdit2.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemDateEdit2.AutoHeight = False
+        Me.RepositoryItemDateEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit2.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemDateEdit2.Name = "RepositoryItemDateEdit2"
+        '
+        'DPARAMETER22
+        '
+        Me.DPARAMETER22.AppearanceCell.Options.UseTextOptions = True
+        Me.DPARAMETER22.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DPARAMETER22.Caption = "Date Parameter 2"
+        Me.DPARAMETER22.ColumnEdit = Me.RepositoryItemDateEdit2
+        Me.DPARAMETER22.DisplayFormat.FormatString = "d"
+        Me.DPARAMETER22.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DPARAMETER22.FieldName = "DPARAMETER2"
+        Me.DPARAMETER22.Name = "DPARAMETER22"
+        Me.DPARAMETER22.OptionsColumn.AllowEdit = False
+        Me.DPARAMETER22.OptionsEditForm.UseEditorColRowSpan = False
+        Me.DPARAMETER22.Visible = True
+        Me.DPARAMETER22.VisibleIndex = 6
         '
         'colIdABTEILUNGSCODE_NAME
         '
@@ -1168,24 +1475,45 @@ Partial Class Configuration
         Me.colIdABTEILUNGSCODE_NAME.Name = "colIdABTEILUNGSCODE_NAME"
         Me.colIdABTEILUNGSCODE_NAME.OptionsColumn.AllowEdit = False
         Me.colIdABTEILUNGSCODE_NAME.OptionsColumn.ReadOnly = True
+        Me.colIdABTEILUNGSCODE_NAME.OptionsEditForm.ColumnSpan = 3
+        Me.colIdABTEILUNGSCODE_NAME.OptionsEditForm.StartNewRow = True
+        Me.colIdABTEILUNGSCODE_NAME.OptionsEditForm.UseEditorColRowSpan = False
         Me.colIdABTEILUNGSCODE_NAME.Visible = True
         Me.colIdABTEILUNGSCODE_NAME.VisibleIndex = 10
         Me.colIdABTEILUNGSCODE_NAME.Width = 161
         '
-        'RepositoryItemTextEdit2
+        'colLastAction3
         '
-        Me.RepositoryItemTextEdit2.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit2.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit2.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemTextEdit2.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit2.Appearance.Options.UseForeColor = True
-        Me.RepositoryItemTextEdit2.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit2.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit2.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemTextEdit2.AppearanceFocused.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit2.AppearanceFocused.Options.UseForeColor = True
-        Me.RepositoryItemTextEdit2.AutoHeight = False
-        Me.RepositoryItemTextEdit2.Name = "RepositoryItemTextEdit2"
+        Me.colLastAction3.FieldName = "LastAction"
+        Me.colLastAction3.Name = "colLastAction3"
+        Me.colLastAction3.OptionsColumn.ReadOnly = True
+        Me.colLastAction3.OptionsEditForm.StartNewRow = True
+        Me.colLastAction3.Visible = True
+        Me.colLastAction3.VisibleIndex = 11
+        Me.colLastAction3.Width = 113
+        '
+        'colLastUpdateDate3
+        '
+        Me.colLastUpdateDate3.AppearanceCell.Options.UseTextOptions = True
+        Me.colLastUpdateDate3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colLastUpdateDate3.ColumnEdit = Me.DateTime_RepositoryItemDateEdit3
+        Me.colLastUpdateDate3.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.colLastUpdateDate3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colLastUpdateDate3.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate3.Name = "colLastUpdateDate3"
+        Me.colLastUpdateDate3.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateDate3.Visible = True
+        Me.colLastUpdateDate3.VisibleIndex = 12
+        Me.colLastUpdateDate3.Width = 145
+        '
+        'colLastUpdateUser3
+        '
+        Me.colLastUpdateUser3.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser3.Name = "colLastUpdateUser3"
+        Me.colLastUpdateUser3.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateUser3.Visible = True
+        Me.colLastUpdateUser3.VisibleIndex = 13
+        Me.colLastUpdateUser3.Width = 141
         '
         'GridView2
         '
@@ -1573,7 +1901,7 @@ Partial Class Configuration
         '
         Me.PrintableComponentLink2.Component = Me.GridControl2
         Me.PrintableComponentLink2.Landscape = True
-        Me.PrintableComponentLink2.PaperKind = System.Drawing.Printing.PaperKind.A4
+        Me.PrintableComponentLink2.PaperKind = System.Drawing.Printing.PaperKind.A3
         Me.PrintableComponentLink2.PrintingSystemBase = Me.PrintingSystem1
         '
         'OpenFileDialog1
@@ -1585,11 +1913,11 @@ Partial Class Configuration
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(390, 162, 768, 587)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1530, 681)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1432, 482)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -1600,7 +1928,7 @@ Partial Class Configuration
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup1})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1530, 681)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1432, 482)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'TabbedControlGroup1
@@ -1609,7 +1937,7 @@ Partial Class Configuration
         Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
         Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup2
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1510, 661)
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1412, 462)
         Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup2, Me.LayoutControlGroup3})
         '
         'LayoutControlGroup2
@@ -1622,7 +1950,7 @@ Partial Class Configuration
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1486, 615)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1388, 417)
         Me.LayoutControlGroup2.Text = "Parameter Configuration"
         '
         'LayoutControlItem1
@@ -1631,7 +1959,7 @@ Partial Class Configuration
         Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1486, 615)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1388, 417)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -1645,7 +1973,7 @@ Partial Class Configuration
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1486, 615)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1388, 417)
         Me.LayoutControlGroup3.Text = "All Parameters"
         '
         'LayoutControlItem2
@@ -1654,88 +1982,154 @@ Partial Class Configuration
         Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
         Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(1486, 615)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(1388, 417)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
-        'RepositoryItemDateEdit1
+        'RibbonControl1
         '
-        Me.RepositoryItemDateEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemDateEdit1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemDateEdit1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemDateEdit1.AppearanceFocused.Options.UseBackColor = True
-        Me.RepositoryItemDateEdit1.AppearanceFocused.Options.UseForeColor = True
-        Me.RepositoryItemDateEdit1.AutoHeight = False
-        Me.RepositoryItemDateEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemDateEdit1.Name = "RepositoryItemDateEdit1"
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbiReload, Me.bbiAdd, Me.bbiSave, Me.bbiDelete, Me.bbiPrintPreview, Me.bbiClose, Me.FindAndReplaceText_bbi})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 8
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.Size = New System.Drawing.Size(1432, 94)
+        Me.RibbonControl1.StatusBar = Me.RibbonStatusBar1
         '
-        'colDPARAMETER1
+        'bbiReload
         '
-        Me.colDPARAMETER1.AppearanceCell.Options.UseTextOptions = True
-        Me.colDPARAMETER1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colDPARAMETER1.Caption = "DATE PARAMETER 1"
-        Me.colDPARAMETER1.ColumnEdit = Me.RepositoryItemDateEdit1
-        Me.colDPARAMETER1.DisplayFormat.FormatString = "d"
-        Me.colDPARAMETER1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.colDPARAMETER1.FieldName = "DPARAMETER1"
-        Me.colDPARAMETER1.Name = "colDPARAMETER1"
-        Me.colDPARAMETER1.Visible = True
-        Me.colDPARAMETER1.VisibleIndex = 7
-        Me.colDPARAMETER1.Width = 108
+        Me.bbiReload.Caption = "Reload"
+        Me.bbiReload.Id = 1
+        Me.bbiReload.ImageOptions.Image = CType(resources.GetObject("bbiReload.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiReload.ImageOptions.LargeImage = CType(resources.GetObject("bbiReload.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiReload.Name = "bbiReload"
         '
-        'colDPARAMETER2
+        'bbiAdd
         '
-        Me.colDPARAMETER2.AppearanceCell.Options.UseTextOptions = True
-        Me.colDPARAMETER2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colDPARAMETER2.Caption = "DATE PARAMETER 2"
-        Me.colDPARAMETER2.ColumnEdit = Me.RepositoryItemDateEdit1
-        Me.colDPARAMETER2.DisplayFormat.FormatString = "d"
-        Me.colDPARAMETER2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.colDPARAMETER2.FieldName = "DPARAMETER2"
-        Me.colDPARAMETER2.Name = "colDPARAMETER2"
-        Me.colDPARAMETER2.Visible = True
-        Me.colDPARAMETER2.VisibleIndex = 8
-        Me.colDPARAMETER2.Width = 120
+        Me.bbiAdd.Caption = "Add new Department/Code/Parameter"
+        Me.bbiAdd.Id = 2
+        Me.bbiAdd.ImageOptions.Image = CType(resources.GetObject("bbiAdd.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiAdd.ImageOptions.LargeImage = CType(resources.GetObject("bbiAdd.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiAdd.Name = "bbiAdd"
         '
-        'colDPARAMETER11
+        'bbiSave
         '
-        Me.colDPARAMETER11.AppearanceCell.Options.UseTextOptions = True
-        Me.colDPARAMETER11.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colDPARAMETER11.Caption = "Date Parameter"
-        Me.colDPARAMETER11.DisplayFormat.FormatString = "d"
-        Me.colDPARAMETER11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.colDPARAMETER11.FieldName = "DPARAMETER1"
-        Me.colDPARAMETER11.Name = "colDPARAMETER11"
-        Me.colDPARAMETER11.OptionsColumn.AllowEdit = False
-        Me.colDPARAMETER11.OptionsColumn.ReadOnly = True
-        Me.colDPARAMETER11.Visible = True
-        Me.colDPARAMETER11.VisibleIndex = 5
+        Me.bbiSave.Caption = "Save Changes"
+        Me.bbiSave.Id = 3
+        Me.bbiSave.ImageOptions.Image = CType(resources.GetObject("bbiSave.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiSave.ImageOptions.LargeImage = CType(resources.GetObject("bbiSave.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiSave.Name = "bbiSave"
         '
-        'DPARAMETER22
+        'bbiDelete
         '
-        Me.DPARAMETER22.AppearanceCell.Options.UseTextOptions = True
-        Me.DPARAMETER22.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.DPARAMETER22.Caption = "Date Parameter 2"
-        Me.DPARAMETER22.DisplayFormat.FormatString = "d"
-        Me.DPARAMETER22.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.DPARAMETER22.FieldName = "DPARAMETER2"
-        Me.DPARAMETER22.Name = "DPARAMETER22"
-        Me.DPARAMETER22.OptionsColumn.AllowEdit = False
-        Me.DPARAMETER22.OptionsColumn.ReadOnly = True
-        Me.DPARAMETER22.Visible = True
-        Me.DPARAMETER22.VisibleIndex = 6
+        Me.bbiDelete.Caption = "Delete"
+        Me.bbiDelete.Id = 4
+        Me.bbiDelete.ImageOptions.Image = CType(resources.GetObject("bbiDelete.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiDelete.ImageOptions.LargeImage = CType(resources.GetObject("bbiDelete.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiDelete.Name = "bbiDelete"
+        '
+        'bbiPrintPreview
+        '
+        Me.bbiPrintPreview.Caption = "Print Preview"
+        Me.bbiPrintPreview.Id = 5
+        Me.bbiPrintPreview.ImageOptions.Image = CType(resources.GetObject("bbiPrintPreview.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiPrintPreview.ImageOptions.LargeImage = CType(resources.GetObject("bbiPrintPreview.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiPrintPreview.Name = "bbiPrintPreview"
+        '
+        'bbiClose
+        '
+        Me.bbiClose.Caption = "Close"
+        Me.bbiClose.Id = 6
+        Me.bbiClose.ImageOptions.Image = CType(resources.GetObject("bbiClose.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiClose.ImageOptions.LargeImage = CType(resources.GetObject("bbiClose.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiClose.Name = "bbiClose"
+        '
+        'FindAndReplaceText_bbi
+        '
+        Me.FindAndReplaceText_bbi.Caption = "Find and Replace"
+        Me.FindAndReplaceText_bbi.Id = 7
+        Me.FindAndReplaceText_bbi.ImageOptions.Image = CType(resources.GetObject("FindAndReplaceText_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.FindAndReplaceText_bbi.ImageOptions.LargeImage = CType(resources.GetObject("FindAndReplaceText_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.FindAndReplaceText_bbi.Name = "FindAndReplaceText_bbi"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiReload, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiAdd, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiSave, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiDelete, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiPrintPreview, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.FindAndReplaceText_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiClose, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonStatusBar1
+        '
+        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 576)
+        Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
+        Me.RibbonStatusBar1.Ribbon = Me.RibbonControl1
+        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1432, 22)
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
+        'DateTime_RepositoryItemDateEdit
+        '
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.DateTime_RepositoryItemDateEdit.AutoHeight = False
+        Me.DateTime_RepositoryItemDateEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTime_RepositoryItemDateEdit.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.DateTime_RepositoryItemDateEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateTime_RepositoryItemDateEdit.EditFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.DateTime_RepositoryItemDateEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateTime_RepositoryItemDateEdit.Name = "DateTime_RepositoryItemDateEdit"
+        '
+        'DateTime_RepositoryItemDateEdit3
+        '
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.Options.UseBackColor = True
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.Options.UseForeColor = True
+        Me.DateTime_RepositoryItemDateEdit3.AutoHeight = False
+        Me.DateTime_RepositoryItemDateEdit3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTime_RepositoryItemDateEdit3.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.DateTime_RepositoryItemDateEdit3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateTime_RepositoryItemDateEdit3.EditFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.DateTime_RepositoryItemDateEdit3.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateTime_RepositoryItemDateEdit3.Name = "DateTime_RepositoryItemDateEdit3"
         '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1530, 681)
+        Me.ClientSize = New System.Drawing.Size(1432, 598)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonStatusBar1)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.Icon = CType(resources.GetObject("Configuration.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "Configuration"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StatusBar = Me.RibbonStatusBar1
         Me.Text = "Configuration"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DepartmentsParameterView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1748,6 +2142,9 @@ Partial Class Configuration
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DepartmentsView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ALL_OTHERRepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.layoutViewField_colID, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.layoutViewField_colABTEILUNGSCODE, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1772,6 +2169,9 @@ Partial Class Configuration
         CType(Me.PARAMETER_AllBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Parameter_All_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Number_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit2.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemDateEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1800,9 +2200,13 @@ Partial Class Configuration
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTime_RepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTime_RepositoryItemDateEdit3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents PSTOOLDataset As PS_TOOL_DX.PSTOOLDataset
@@ -1953,4 +2357,33 @@ Partial Class Configuration
     Friend WithEvents colDPARAMETER2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colDPARAMETER11 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents DPARAMETER22 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonStatusBar1 As DevExpress.XtraBars.Ribbon.RibbonStatusBar
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents bbiReload As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiAdd As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiSave As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiDelete As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiPrintPreview As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiClose As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Number_RepositoryItemSpinEdit As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
+    Friend WithEvents RepositoryItemDateEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents RepositoryItemSpinEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
+    Friend WithEvents colLastAction1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents FindAndReplaceText_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents DateTime_RepositoryItemDateEdit As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents DateTime_RepositoryItemDateEdit3 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
 End Class

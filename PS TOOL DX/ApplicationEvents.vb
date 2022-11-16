@@ -17,26 +17,13 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
 
-        Dim conn As New SqlConnection
-        Dim cmd As New SqlCommand
-
-
-
-
-
-        Protected Overrides Function OnInitialize( _
-    ByVal commandLineArgs As  _
-    System.Collections.ObjectModel.ReadOnlyCollection(Of String) _
-) As Boolean
+        Protected Overrides Function OnInitialize(ByVal commandLineArgs As System.Collections.ObjectModel.ReadOnlyCollection(Of String)) As Boolean
             ' Set the display time to 5000 milliseconds (5 seconds). 
-            Me.MinimumSplashScreenDisplayTime = 8000
+            Me.MinimumSplashScreenDisplayTime = 5000
             Return MyBase.OnInitialize(commandLineArgs)
         End Function
 
         Private Sub MyApplication_NetworkAvailabilityChanged(sender As Object, e As Devices.NetworkAvailableEventArgs) Handles Me.NetworkAvailabilityChanged
-
-            conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-            cmd.Connection = conn
 
             If My.Computer.Network.IsAvailable = False Then
                 XtraMessageBox.Show("There's no available Network Connection!" & vbNewLine & "Application will be closed!" & vbNewLine & vbNewLine & "Please contact your Network Administrator!!", "MISSING NETWORK CONNECTION", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
@@ -61,8 +48,6 @@ Namespace My
 
 
         Private Sub MyApplication_Startup(sender As Object, e As ApplicationServices.StartupEventArgs) Handles Me.Startup
-            conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-            cmd.Connection = conn
 
             Dim splash As PSTOOL_SplashScreen1 = CType(My.Application.SplashScreen, PSTOOL_SplashScreen1)
             My.Application.SplashScreen = PSTOOL_SplashScreen1
@@ -89,32 +74,56 @@ Namespace My
                 'System.Windows.Forms.Application.Exit()
 
             ElseIf My.Computer.Network.IsAvailable = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
                 Try
                     cmd.CommandText = "Exec [GET_LOGIN_USER]"
                     Dim result As Integer = cmd.ExecuteScalar
                     If result = 0 Then
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show("Current User is not registered User in the PS TOOL Database or " & vbNewLine & "has not permissions!" & vbNewLine & vbNewLine & "Please contact your Network Administrator!!", "NO REGISTERED USER/NO PERMISSIONS", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                         Environment.Exit(2)
+                    Else
+                        'Get all Tables and Columns
+                        cmd.CommandText = "DELETE FROM [ALL_TABLE_COLUMNS]
+                                       TRUNCATE TABLE [ALL_TABLE_COLUMNS]
+
+                                        INSERT INTO [ALL_TABLE_COLUMNS]
+                                                    ([TABLE_CATALOG]
+                                                    ,[TABLE_SCHEMA]
+                                                    ,[TABLE_NAME]
+                                                    ,[COLUMN_NAME]
+                                                    ,[ORDINAL_POSITION]
+                                                    ,[COLUMN_DEFAULT]
+                                                    ,[IS_NULLABLE]
+                                                    ,[DATA_TYPE]
+                                                    ,[CHARACTER_MAXIMUM_LENGTH]
+                                                    ,[CHARACTER_OCTET_LENGTH]
+                                                    ,[NUMERIC_PRECISION]
+                                                    ,[NUMERIC_PRECISION_RADIX]
+                                                    ,[NUMERIC_SCALE]
+                                                    ,[DATETIME_PRECISION]
+                                                    ,[CHARACTER_SET_CATALOG]
+                                                    ,[CHARACTER_SET_SCHEMA]
+                                                    ,[CHARACTER_SET_NAME]
+                                                    ,[COLLATION_CATALOG]
+                                                    ,[COLLATION_SCHEMA]
+                                                    ,[COLLATION_NAME]
+                                                    ,[DOMAIN_CATALOG]
+                                                    ,[DOMAIN_SCHEMA]
+                                                    ,[DOMAIN_NAME]) 
+                                         SELECT * FROM information_schema.Columns"
+                        cmd.ExecuteNonQuery()
                     End If
+                    CloseSqlConnections()
 
 
 
                 Catch ex As Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show(ex.Message & vbNewLine & vbNewLine & "Current User is not registered User in the PS TOOL Database or " & vbNewLine & "has not permissions!" & vbNewLine & vbNewLine & "Please contact your Network Administrator!!", "NO REGISTERED USER/NO PERMISSIONS", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Environment.Exit(2)
                 End Try
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
             End If
 

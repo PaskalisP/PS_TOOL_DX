@@ -15097,3 +15097,45 @@ GSWAIF File created successfully - C:\PS TOOL DX\Bais Files from PS TOOL\GSWAIF_
 SCNTIF File created successfully - C:\PS TOOL DX\Bais Files from PS TOOL\SCNTIF_CCB.csv
 SCDRIF File created successfully - C:\PS TOOL DX\Bais Files from PS TOOL\SCDRIF_CCB.csv
 File(s) zipped in BAIS_Files_ALPHA_v1.35_from_PSTOOL_20190606.rar  PS TOOL BAIS EXPORT
+12.11.2022 16:11:11  NGS  Locate the NGS Current and Temp Directory  
+12.11.2022 16:11:11  NGS  NGS Directories - Current: \\wdmycloud\Public\ImportFiles\ - Temporary: \\wdmycloud\Public\ImportFiles\Extractedfiles  
+12.11.2022 16:11:12  NGS  Copy Folder:\\wdmycloud\Public\ImportFiles\20221109 to \\wdmycloud\Public\ImportFiles\Extractedfiles  
+12.11.2022 16:11:13  NGS  NGS File for Import:   20221109 is ready  
+12.11.2022 16:11:13  NGS  Starting the NGS Import procedures...  
+12.11.2022 16:11:13  NGS  Procedure:IMPORT ALL VOLUMES - Start import procedure: IMPORT ALL VOLUMES  
+12.11.2022 16:11:13  NGS  Procedure:IMPORT ALL VOLUMES - Start reformating Excel File: AI-D-249_710030000_20221109.xlsx  
+12.11.2022 16:11:17  NGS  Procedure:IMPORT ALL VOLUMES - Booking Date defined as 09.11.2022  
+12.11.2022 16:11:18  NGS  Procedure:IMPORT ALL VOLUMES - Excel File: \AI-D-249 - General Ledger Journal List-en.xls reformated sucesfully  
+12.11.2022 16:11:18  NGS  Procedure:IMPORT ALL VOLUMES - Check if entries allready exist in Table ALL_VOLUMES  
+12.11.2022 16:11:18  NGS  Procedure:IMPORT ALL VOLUMES - Start entries Import to table  
+12.11.2022 16:11:24  NGS  Procedure:IMPORT ALL VOLUMES - 12364 rows imported in ALL_VOLUMES  
+12.11.2022 16:11:24  NGS  Procedure:IMPORT ALL VOLUMES - Update General Ledger Account Names from Table: GL_ACCOUNTS_NEWG  
+12.11.2022 16:11:24  NGS  Procedure:IMPORT ALL VOLUMES - Reverse Debit Sign based on the DR_CR Value  
+12.11.2022 16:11:25  NGS  Procedure:IMPORT ALL VOLUMES - Reverse Debit Sign if Reversal Flag = Y  
+12.11.2022 16:11:25  NGS  Procedure:IMPORT ALL VOLUMES - Insert Exchange rates for all entries in all Currencies  
+12.11.2022 16:11:25  NGS  Procedure:IMPORT ALL VOLUMES - Calculate Amounts in Euro  
+12.11.2022 16:11:25  NGS  Procedure:IMPORT ALL VOLUMES - Update Client Name  
+12.11.2022 16:11:30  NGS  Procedure:IMPORT ALL VOLUMES - Update Nostro Accounts  
+12.11.2022 16:11:30  NGS  Procedure:IMPORT ALL VOLUMES - Import procedure: IMPORT ALL VOLUMES finished successfully  
+12.11.2022 16:11:30  NGS  Procedure:IMPORT ALL VOLUMES - Check if booking entries for Bundesbank Interests are present  
+12.11.2022 16:11:30  NGS  Procedure:IMPORT ALL VOLUMES - Start SEVERAL SELECTIONS/Email_Bundesbank_Interests_Bookings  
+12.11.2022 16:11:30  NGS  Procedure:IMPORT ALL VOLUMES - Execute SQL Commands in : Check if Bundesbank Interest bookings are present for current Business Date and send Email  
+12.11.2022 16:11:31  NGS  Delete Directory:   \\wdmycloud\Public\ImportFiles\Extractedfiles  
+12.11.2022 16:11:31  NGS  NGS File Import:  20221109 is finished ...  
+12.11.2022 16:11:31  NGS  NGS Import finished ...  
+12.11.2022 16:11:56  NGS  Locate the NGS Current and Temp Directory  
+12.11.2022 16:11:56  NGS  NGS Directories - Current: \\wdmycloud\Public\ImportFiles\ - Temporary: \\wdmycloud\Public\ImportFiles\Extractedfiles  
+12.11.2022 16:11:56  NGS  Copy Folder:\\wdmycloud\Public\ImportFiles\20221109 to \\wdmycloud\Public\ImportFiles\Extractedfiles  
+12.11.2022 16:11:57  NGS  NGS File for Import:   20221109 is ready  
+12.11.2022 16:11:57  NGS  Starting the NGS Import procedures...  
+12.11.2022 16:11:57  NGS  Procedure:IMPORT CUSTOMER VOLUMES - Start import procedure: IMPORT CUSTOMER VOLUMES  
+12.11.2022 16:11:57  NGS  Procedure:IMPORT CUSTOMER VOLUMES - Delete Data from CUSTOMER VOLUMES where GL_Rep_Date=09.11.2022  
+12.11.2022 16:11:58  NGS  Procedure:IMPORT CUSTOMER VOLUMES - Get last Closing Ledger Balance Date  
+12.11.2022 16:11:58  NGS  Procedure:IMPORT CUSTOMER VOLUMES - Insert Opening Ledger Balances to the Table CUSTOMER VOLUMES  
+12.11.2022 16:11:58  NGS  Procedure:IMPORT CUSTOMER VOLUMES - Start Import entries to table  
+12.11.2022 16:11:58  NGS  Procedure:IMPORT CUSTOMER VOLUMES - Update Customer Account Names in Table CUSTOMER_VOLUMES  
+12.11.2022 16:11:58  NGS  Procedure:IMPORT CUSTOMER VOLUMES - Calculate Closing Balances for all Customer Accounts (Not EURO)  
+12.11.2022 16:11:58  NGS  ERROR+++Procedure:IMPORT CUSTOMER VOLUMES - Incorrect syntax near ∞.  
+12.11.2022 16:11:58  NGS  Delete Directory:   \\wdmycloud\Public\ImportFiles\Extractedfiles  
+12.11.2022 16:11:58  NGS  NGS File Import:  20221109 is finished ...  
+12.11.2022 16:11:58  NGS  NGS Import finished ...  
