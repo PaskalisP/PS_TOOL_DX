@@ -39,21 +39,8 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.Spreadsheet
 Public Class EAEG_Datei_New
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-    Dim connEVENT As New SqlConnection
-    Dim cmdEVENT As New SqlCommand
-    Dim SqlCommandText As String = Nothing
-
     Dim CrystalRepDir As String = ""
     Dim ExcelFileName As String = Nothing
-
-    Private QueryText As String = ""
-    Private QueryText1 As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
 
     Dim workbook As IWorkbook
     Dim worksheet As Worksheet
@@ -108,22 +95,13 @@ Public Class EAEG_Datei_New
 
         AddHandler EAEG_ALL_GridControl.EmbeddedNavigator.ButtonClick, AddressOf EAEG_ALL_GridControl_EmbeddedNavigator_ButtonClick
 
-
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-        cmd.CommandTimeout = 60000
-
-        connEVENT.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmdEVENT.Connection = connEVENT
-        cmdEVENT.CommandTimeout = 60000
-
         '***********************************************************************
         '*******CRYSTAL REPORTS DIRECTORY************
         '+++++++++++++++++++++++++++++++++++++++++++++++++++
+        OpenSqlConnections()
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
-        cmd.Connection.Open()
         CrystalRepDir = cmd.ExecuteScalar
-        cmd.Connection.Close()
+        CloseSqlConnections()
         '***********************************************************************
 
         Me.EAEG_A_E_Satz_Version4_ALL_TableAdapter.Fill(Me.EAEGDataSet.EAEG_A_E_Satz_Version4_ALL)
@@ -183,9 +161,7 @@ Public Class EAEG_Datei_New
 
     'ERWEITERTE VERSION
     Private Sub dxOK_NewStichtag_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         If IsDate(EAEG_NewStichtag.Stichtag_Comboedit.Text) = True Then
             Try
                 rd = EAEG_NewStichtag.Stichtag_Comboedit.Text
@@ -225,16 +201,12 @@ Public Class EAEG_Datei_New
                 Exit Sub
             End Try
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 
     'BASIS VERSION
     Private Sub dxOK_NewStichtagBASIS_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         If IsDate(EAEG_NewStichtag.Stichtag_Comboedit.Text) = True Then
             Try
                 rd = EAEG_NewStichtag.Stichtag_Comboedit.Text
@@ -274,9 +246,7 @@ Public Class EAEG_Datei_New
                 Exit Sub
             End Try
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 
 #Region "EAEG STANDARTWERTE"
@@ -286,9 +256,7 @@ Public Class EAEG_Datei_New
                 If XtraMessageBox.Show("Soll der Standartwert für die Zugehörigkeit der Entschädigungseinrichtungen auf " & Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.EditValue.ToString & " geändert werden?", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                     Try
                         Dim DefaultValueA3 As String = Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.EditValue.ToString
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                         cmd.ExecuteNonQuery()
                         cmd.CommandText = "ALTER TABLE [EAEG_A_E_Satz_Version4] drop constraint [DF_EAEG_A_E_Satz_Version4_A3_ZugehoerigkeitZuEntsaedigungseinrichtungen]"
@@ -297,9 +265,7 @@ Public Class EAEG_Datei_New
                         cmd.ExecuteNonQuery()
                         cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                         cmd.ExecuteNonQuery()
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         XtraMessageBox.Show("Standartwert für die Zugehörigkeit der Entschädigungseinrichtungen wurde geändert!", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                     Catch ex As System.Exception
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
@@ -314,9 +280,7 @@ Public Class EAEG_Datei_New
             If XtraMessageBox.Show("Soll der Standartwert für die gesetzliche Entschädigungsobergrenze EAEG auf " & Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Text & " geändert werden?", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueA4 As Double = Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Text
-                    If cmd.Connection.State = ConnectionState.Closed Then
-                        cmd.Connection.Open()
-                    End If
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [EAEG_A_E_Satz_Version4] drop constraint [DF_EAEG_A_E_Satz_Version4_A4_GesetzlicheEntschaedigungsobergrenzeEAEG]"
@@ -325,9 +289,7 @@ Public Class EAEG_Datei_New
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show("Standartwert der gesetzlichen Entschädigungsobergrenzewurde EAEG wurde geändert!", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
@@ -343,9 +305,7 @@ Public Class EAEG_Datei_New
             If XtraMessageBox.Show("Soll der Standartwert für die gesetzliche Entschädigungsobergrenze EU Herkunftsstaat auf " & Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Text & " geändert werden?", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueA5 As Double = Me.EntschaedigungsObergrenzeEU_ButtonEdit.Text
-                    If cmd.Connection.State = ConnectionState.Closed Then
-                        cmd.Connection.Open()
-                    End If
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [EAEG_A_E_Satz_Version4] drop constraint [DF_EAEG_A_E_Satz_Version4_A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland]"
@@ -354,9 +314,7 @@ Public Class EAEG_Datei_New
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show("Standartwert der gesetzlichen Entschädigungsobergrenzewurde EU Herkunftsstaat wurde geändert!", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
@@ -372,9 +330,7 @@ Public Class EAEG_Datei_New
             If XtraMessageBox.Show("Soll der Standartwert für die Sicherungsgrenze bei Zusatzsicherung auf " & Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Text & " geändert werden?", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueA6 As Double = Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Text
-                    If cmd.Connection.State = ConnectionState.Closed Then
-                        cmd.Connection.Open()
-                    End If
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [EAEG_A_E_Satz_Version4] drop constraint [DF_EAEG_A_E_Satz_Version4_A6_SicherungsgrenzeBeiZusatzsicherung]"
@@ -383,9 +339,7 @@ Public Class EAEG_Datei_New
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show("Standartwert der Sicherungsgrenze bei Zusatzsicherung  wurde geändert!", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
@@ -401,9 +355,7 @@ Public Class EAEG_Datei_New
             If XtraMessageBox.Show("Soll der Standartwert für die Sicherungsgrenze bei Zusatzsicherung (Altfall-Regelung) auf " & Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Text & " geändert werden?", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueA7 As Double = Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Text
-                    If cmd.Connection.State = ConnectionState.Closed Then
-                        cmd.Connection.Open()
-                    End If
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [EAEG_A_E_Satz_Version4] drop constraint [DF_EAEG_A_E_Satz_Version4_A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG]"
@@ -412,9 +364,7 @@ Public Class EAEG_Datei_New
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show("Standartwert der Sicherungsgrenze bei Zusatzsicherung (Altfall-Regelung)  wurde geändert!", "ÄNDERUNG DES STANDARTWERTES", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
@@ -434,9 +384,7 @@ Public Class EAEG_Datei_New
         Try
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("Starte EAEG Daten ertellung zum Stichtag: " & rd)
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             cmd.CommandText = "SELECT Count([ID]) FROM [EAEG_KUNDEN_STAMM] WHERE  (EAEG_Valid = 'Y') AND [B12_Geburtsdatum] is NULL AND (B2_Ordnungskennzeichen IN (SELECT  B2_OrdnungskennzeichenId FROM EAEG_KUNDEN_KONTEN))"
             If cmd.ExecuteScalar = 0 Then
                 'Check if ECB Exchange Rates are present
@@ -477,8 +425,8 @@ Public Class EAEG_Datei_New
                         'C-SATZ
                         SplashScreenManager.Default.SetWaitFormCaption("Einfügen neue Daten in Tabelle" & vbNewLine & "EAEG_C_Satz_Version4 für Stichtag " & rd)
                         Me.BgwEAEG_Daten_Erstellung.ReportProgress(40, "Einfügen neue Daten in Tabelle EAEG_C_Satz_Version4 für Stichtag " & rd)
-                        Me.QueryText = "SELECT * FROM [EAEG_B_D_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "SELECT * FROM [EAEG_B_D_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New DataTable()
                         da.Fill(dt)
                         For i = 0 To dt.Rows.Count - 1
@@ -542,8 +490,8 @@ Public Class EAEG_Datei_New
                                 'KONTOKORRENT SALDO + ZINSSALDEN (ABGRENZUNG)
                                 SplashScreenManager.Default.SetWaitFormCaption("Einfügen (Buchungssaldo) der KK und Zinssalden zum Stichtag " & rd)
                                 Me.BgwEAEG_Daten_Erstellung.ReportProgress(40, "Einfügen (Buchungssaldo) der KK und Zinssalden zum Stichtag " & rd)
-                                Me.QueryText = "SELECT * FROM [EAEG_C_Satz_Version4] where [C7_Kontoart]='KK' and [EAEG_Stichtag]='" & rdsql & "' "
-                                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                                QueryText = "SELECT * FROM [EAEG_C_Satz_Version4] where [C7_Kontoart]='KK' and [EAEG_Stichtag]='" & rdsql & "' "
+                                da = New SqlDataAdapter(QueryText.Trim(), conn)
                                 dt = New DataTable()
                                 da.Fill(dt)
                                 For i = 0 To dt.Rows.Count - 1
@@ -585,8 +533,8 @@ Public Class EAEG_Datei_New
                                 'BOOKED BALANCE
                                 SplashScreenManager.Default.SetWaitFormCaption("Einfügen (Buchungssaldo) der KK und Zinssalden zum Stichtag " & rd)
                                 Me.BgwEAEG_Daten_Erstellung.ReportProgress(40, "Einfügen (Buchungssaldo) der KK und Zinssalden zum Stichtag " & rd)
-                                Me.QueryText = "SELECT * FROM [EAEG_C_Satz_Version4] where [C7_Kontoart]='KK' and [EAEG_Stichtag]='" & rdsql & "' "
-                                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                                QueryText = "SELECT * FROM [EAEG_C_Satz_Version4] where [C7_Kontoart]='KK' and [EAEG_Stichtag]='" & rdsql & "' "
+                                da = New SqlDataAdapter(QueryText.Trim(), conn)
                                 dt = New DataTable()
                                 da.Fill(dt)
                                 For i = 0 To dt.Rows.Count - 1
@@ -628,8 +576,8 @@ Public Class EAEG_Datei_New
                         'FESTGELDER KONTOSALDO,ZINSATZ,LETZTE ZINSFÄLLIGKEIT EINFÜGEN
                         SplashScreenManager.Default.SetWaitFormCaption("Einfügen der FG Salden,Zinsatz und " & vbNewLine & "Letzte Zinsfaelligkeit zum Stichtag " & rd)
                         Me.BgwEAEG_Daten_Erstellung.ReportProgress(40, "Einfügen der FG Salden,Zinsatz,Letzte Zinsfaelligkeit zum Stichtag " & rd)
-                        Me.QueryText = "SELECT * FROM [EAEG_C_Satz_Version4] where [C7_Kontoart]='FG' and [EAEG_Stichtag]='" & rdsql & "'"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "SELECT * FROM [EAEG_C_Satz_Version4] where [C7_Kontoart]='FG' and [EAEG_Stichtag]='" & rdsql & "'"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New DataTable()
                         da.Fill(dt)
                         For i = 0 To dt.Rows.Count - 1
@@ -669,8 +617,8 @@ Public Class EAEG_Datei_New
                         'DARLEHEN
                         SplashScreenManager.Default.SetWaitFormCaption("Einfügen der DARLEHENS Salden zum Stichtag " & rd)
                         Me.BgwEAEG_Daten_Erstellung.ReportProgress(40, "Einfügen der DARLEHENS Salden zum Stichtag " & rd)
-                        Me.QueryText = "SELECT * FROM [EAEG_C_Satz_Version4] where [C7_Kontoart]='Darlehen' and [EAEG_Stichtag]='" & rdsql & "'"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "SELECT * FROM [EAEG_C_Satz_Version4] where [C7_Kontoart]='Darlehen' and [EAEG_Stichtag]='" & rdsql & "'"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New DataTable()
                         da.Fill(dt)
                         For i = 0 To dt.Rows.Count - 1
@@ -721,8 +669,8 @@ Public Class EAEG_Datei_New
                         'D-SATZ SUMMEN
                         SplashScreenManager.Default.SetWaitFormCaption("Aktualissieren der Summenfelder in Tabelle " & vbNewLine & "EAEG_B_D_Satz_Version4 (D-SÄTZE) für Stichtag " & rd)
                         Me.BgwEAEG_Daten_Erstellung.ReportProgress(40, "Aktualissieren der Summenfelder in Tabelle EAEG_B_D_Satz_Version4 (D-SÄTZE) für Stichtag " & rd)
-                        Me.QueryText = "SELECT [B2_Ordnungskennzeichen],[ID] FROM [EAEG_B_D_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "' GROUP BY [B2_Ordnungskennzeichen],[ID] "
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "SELECT [B2_Ordnungskennzeichen],[ID] FROM [EAEG_B_D_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "' GROUP BY [B2_Ordnungskennzeichen],[ID] "
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New DataTable()
                         da.Fill(dt)
                         For i = 0 To dt.Rows.Count - 1
@@ -1048,37 +996,31 @@ Public Class EAEG_Datei_New
                         cmd.ExecuteNonQuery()
 
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
+
                     Else
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
+
                         XtraMessageBox.Show("Nicht Gültige Adressendaten von Kunde(n) gefunden in EAEG Stamm Daten! Bitte Adressendaten prüfen und ergänzen!", "EAEG Einreicherdateierstellung nicht möglich", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                         Exit Sub
                     End If
                 Else
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
+
                     XtraMessageBox.Show("EZB Währungskurse sind nicht vorhanden für den " & rd & vbNewLine & "Bitte EZB Währungskurse importieren!", "EAEG Einreicherdateierstellung nicht möglich", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Sub
                 End If
 
 
             Else
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
+
                 XtraMessageBox.Show("Kunde(n) ohne Geburts bzw. Gründungsdatum in EAEG Stamm Daten! Bitte fehlende Daten eintragen!", "EAEG Einreicherdateierstellung nicht möglich", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
         Catch ex As Exception
             SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwEAEG_Daten_Erstellung.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -1086,7 +1028,7 @@ Public Class EAEG_Datei_New
     End Sub
 
     Private Sub BgwEAEG_Daten_Erstellung_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwEAEG_Daten_Erstellung.ProgressChanged
-        cmdEVENT.Connection.Open()
+        OpenEVENT_SqlConnection()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','EAEG Daten erstellung Version 4.1 (ERWEITERT)','EAEG Daten erstellung Version 4.1 (ERWEITERT)')"
             cmdEVENT.ExecuteNonQuery()
@@ -1095,7 +1037,7 @@ Public Class EAEG_Datei_New
             cmdEVENT.ExecuteNonQuery()
             Exit Try
         End Try
-        cmdEVENT.Connection.Close()
+        CloseEVENT_SqlConnection()
     End Sub
 
     Private Sub BgwEAEG_Daten_Erstellung_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwEAEG_Daten_Erstellung.RunWorkerCompleted
@@ -1116,9 +1058,7 @@ Public Class EAEG_Datei_New
         Try
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("Starte EAEG Daten ertellung zum Stichtag: " & rd)
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             cmd.CommandText = "SELECT Count([ID]) FROM [EAEG_KUNDEN_STAMM] WHERE  (EAEG_Valid = 'Y') AND [B12_Geburtsdatum] is NULL AND (B2_Ordnungskennzeichen IN (SELECT  B2_OrdnungskennzeichenId FROM EAEG_KUNDEN_KONTEN))"
             If cmd.ExecuteScalar = 0 Then
                 'Check if ECB Exchange Rates are present
@@ -1128,8 +1068,8 @@ Public Class EAEG_Datei_New
                     cmd.CommandText = "SELECT * FROM [EAEG_KUNDEN_STAMM] where [Adresse_Valid]='N' and EAEG_Valid='Y' and [B2_Ordnungskennzeichen] IN (SELECT  [B2_OrdnungskennzeichenId] FROM [EAEG_KUNDEN_KONTEN])"
                     If cmd.ExecuteScalar = 0 Then
 
-                        Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EAEG_BASIS_V4.1')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EAEG_BASIS_V4.1')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New System.Data.DataTable()
                         da.Fill(dt)
                         For i = 0 To dt.Rows.Count - 1
@@ -1145,37 +1085,31 @@ Public Class EAEG_Datei_New
 
 
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
+
                     Else
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
+
                         XtraMessageBox.Show("Nicht Gültige Adressendaten von Kunde(n) gefunden in EAEG Stamm Daten! Bitte Adressendaten prüfen und ergänzen!", "EAEG Einreicherdateierstellung nicht möglich", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                         Exit Sub
                     End If
                 Else
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
+
                     XtraMessageBox.Show("EZB Währungskurse sind nicht vorhanden für den " & rd & vbNewLine & "Bitte EZB Währungskurse importieren!", "EAEG Einreicherdateierstellung nicht möglich", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Sub
                 End If
 
 
             Else
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
+
                 XtraMessageBox.Show("Kunde(n) ohne Geburts bzw. Gründungsdatum in EAEG Stamm Daten! Bitte fehlende Daten eintragen!", "EAEG Einreicherdateierstellung nicht möglich", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
         Catch ex As Exception
             SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwEAEG_Daten_Erstellung.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -1183,7 +1117,7 @@ Public Class EAEG_Datei_New
     End Sub
 
     Private Sub BgwEAEG_Daten_ErstellungBASIS_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwEAEG_Daten_ErstellungBASIS.ProgressChanged
-        cmdEVENT.Connection.Open()
+        OpenEVENT_SqlConnection()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','EAEG Daten erstellung Version 4.1 (BASIS)','EAEG Daten erstellung Version 4.1 (BASIS)')"
             cmdEVENT.ExecuteNonQuery()
@@ -1192,7 +1126,8 @@ Public Class EAEG_Datei_New
             cmdEVENT.ExecuteNonQuery()
             Exit Try
         End Try
-        cmdEVENT.Connection.Close()
+        CloseEVENT_SqlConnection()
+
     End Sub
 
     Private Sub BgwEAEG_Daten_ErstellungBASIS_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwEAEG_Daten_ErstellungBASIS.RunWorkerCompleted
@@ -1448,9 +1383,7 @@ Public Class EAEG_Datei_New
         SplashScreenManager.Default.SetWaitFormCaption("Erstellung der Gesetzlichen Einlagensicherung (Kundenliste) für den Stichtag: " & Me.EAEG_Stichtag_DateEdit.Text)
         rd = Me.EAEG_Stichtag_DateEdit.Text
         rdsql = rd.ToString("yyyyMMdd")
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         cmd.CommandText = "Delete from [EINLAGENSICHERUNG_MELDUNG_PRUFVERB]"
         cmd.ExecuteNonQuery()
         'New Code
@@ -1461,9 +1394,7 @@ Public Class EAEG_Datei_New
         cmd.CommandText = "Select [NPARAMETER1] from [PARAMETER] where [IdABTEILUNGSPARAMETER]='EINLAGENSICHERUNG' and [PARAMETER1]='SicherungsgrenzeGesetzlich'"
         Sicherungsgrenze = cmd.ExecuteScalar
 
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
         'FILL DATASET
         Dim EinlagensicherungDa As New SqlDataAdapter("SELECT * FROM [EINLAGENSICHERUNG_MELDUNG_PRUFVERB]", conn)
         Dim EINLAGENSICHERUNGdataset As New DataSet("EINLAGENSICHERUNG")
@@ -1531,9 +1462,8 @@ Public Class EAEG_Datei_New
                 'Dim E14 As Double = 0
                 'Dim E15 As Double = 0
 
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
+
 
                 SplashScreenManager.Default.SetWaitFormCaption("Lade EAEG Dateiverzeichnis")
                 'Get EAEG File directory
@@ -1542,8 +1472,8 @@ Public Class EAEG_Datei_New
 
                 'A und E SATZ
                 SplashScreenManager.Default.SetWaitFormCaption("Lade Daten für A Satz")
-                Me.QueryText = "SELECT  [ID],[EAEG_Stichtag],[A1_Satzidentifikator],[A2_Institut],[A3_ZugehoerigkeitZuEntsaedigungseinrichtungen],[A4_GesetzlicheEntschaedigungsobergrenzeEAEG],[A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland],[A6_SicherungsgrenzeBeiZusatzsicherung],[A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG],[E1_Satzidentifikator],[E2_Institut],[E3_GesamteinreichersaldoEinlagen],[E4_GesamteinreichersaldoAusschluesseEinSiG],[E5_GesamteinreichersaldoEntschaedigungsFaehigerEinlagenEinSiG],[E6_GesamteinreichersaldoGedekterEinlagenEinSiG],[E7_GesamteinreichersaldoKappungEinSiG],[E8_GesamteinreichersaldoEWR_Niederlassungen],[E9_GesamteinreichersaldoGedekterEinlagenEU_Herkunftsstaat],[E10_GesamteinreichersaldoAusschlueseNachStatutEinSiGundNurStatut],[E11_GesamteinreichersaldoAusschlueseNurStatut],[E12_GesamteinreichersaldoZusatzsicherung],[E13_GesamteinreichersaldoZusatzabsicherungAnteil_ALTFALLREGELUNG],[E14_GesamteinreichersaldoForderungenAnKunden],[E15_GesamteinreichersaldoNichtEWR_Niederlassungen] FROM [EAEG_A_E_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  [ID],[EAEG_Stichtag],[A1_Satzidentifikator],[A2_Institut],[A3_ZugehoerigkeitZuEntsaedigungseinrichtungen],[A4_GesetzlicheEntschaedigungsobergrenzeEAEG],[A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland],[A6_SicherungsgrenzeBeiZusatzsicherung],[A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG],[E1_Satzidentifikator],[E2_Institut],[E3_GesamteinreichersaldoEinlagen],[E4_GesamteinreichersaldoAusschluesseEinSiG],[E5_GesamteinreichersaldoEntschaedigungsFaehigerEinlagenEinSiG],[E6_GesamteinreichersaldoGedekterEinlagenEinSiG],[E7_GesamteinreichersaldoKappungEinSiG],[E8_GesamteinreichersaldoEWR_Niederlassungen],[E9_GesamteinreichersaldoGedekterEinlagenEU_Herkunftsstaat],[E10_GesamteinreichersaldoAusschlueseNachStatutEinSiGundNurStatut],[E11_GesamteinreichersaldoAusschlueseNurStatut],[E12_GesamteinreichersaldoZusatzsicherung],[E13_GesamteinreichersaldoZusatzabsicherungAnteil_ALTFALLREGELUNG],[E14_GesamteinreichersaldoForderungenAnKunden],[E15_GesamteinreichersaldoNichtEWR_Niederlassungen] FROM [EAEG_A_E_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -1804,9 +1734,9 @@ Public Class EAEG_Datei_New
                 'Dim D15 As Double = 0
 
                 SplashScreenManager.Default.SetWaitFormCaption("Lade Daten für B und D Satz")
-                Me.QueryText = "Select * from [EAEG_B_D_Satz_Version4] where [B2_Ordnungskennzeichen] in (Select [B2_OrdnungskennzeichenId] from [EAEG_C_Satz_Version4] where [C19_KontosaldoInEuro]<>0 and [EAEG_Stichtag]='" & rdsql & "') and [EAEG_Stichtag]='" & rdsql & "'"
-                'Me.QueryText = "Select * from [EAEG_B_D_Satz_Version4]"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from [EAEG_B_D_Satz_Version4] where [B2_Ordnungskennzeichen] in (Select [B2_OrdnungskennzeichenId] from [EAEG_C_Satz_Version4] where [C19_KontosaldoInEuro]<>0 and [EAEG_Stichtag]='" & rdsql & "') and [EAEG_Stichtag]='" & rdsql & "'"
+                'QueryText = "Select * from [EAEG_B_D_Satz_Version4]"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -1892,9 +1822,9 @@ Public Class EAEG_Datei_New
                     System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, B_SATZ & vbCrLf)
 
                     Dim STAMM As String = dt.Rows.Item(i).Item("B2_Ordnungskennzeichen")
-                    Me.QueryText1 = "Select * from [EAEG_C_Satz_Version4] where [B2_OrdnungskennzeichenId]='" & STAMM & "' and [C19_KontosaldoInEuro]<>0 and [EAEG_Stichtag]='" & rdsql & "'"
-                    'Me.QueryText1 = "Select * from [EAEG_C_Satz_Version4] where [B2_OrdnungskennzeichenId]='" & STAMM & "'"
-                    da1 = New SqlDataAdapter(Me.QueryText1.Trim(), conn)
+                    QueryText1 = "Select * from [EAEG_C_Satz_Version4] where [B2_OrdnungskennzeichenId]='" & STAMM & "' and [C19_KontosaldoInEuro]<>0 and [EAEG_Stichtag]='" & rdsql & "'"
+                    'QueryText1 = "Select * from [EAEG_C_Satz_Version4] where [B2_OrdnungskennzeichenId]='" & STAMM & "'"
+                    da1 = New SqlDataAdapter(QueryText1.Trim(), conn)
                     dt1 = New DataTable()
                     da1.Fill(dt1)
                     For y = 0 To dt1.Rows.Count - 1
@@ -2102,9 +2032,7 @@ Public Class EAEG_Datei_New
                 System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, E_SATZ)
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 SplashScreenManager.CloseForm(False)
 
@@ -2349,9 +2277,8 @@ Public Class EAEG_Datei_New
                     'Dim M146 As Double = 0
 
 
-                    If cmd.Connection.State = ConnectionState.Closed Then
-                        cmd.Connection.Open()
-                    End If
+                    OpenSqlConnections()
+
 
                     SplashScreenManager.Default.SetWaitFormCaption("Lade EAEG Dateiverzeichnis")
                     'Get EAEG File directory
@@ -2360,8 +2287,8 @@ Public Class EAEG_Datei_New
 
                     'A und E SATZ
                     SplashScreenManager.Default.SetWaitFormCaption("Lade Daten für M Satz")
-                    Me.QueryText = "SELECT  [ID],[EAEG_Stichtag],[A1_Satzidentifikator],[A2_Institut],[A3_ZugehoerigkeitZuEntsaedigungseinrichtungen],[A4_GesetzlicheEntschaedigungsobergrenzeEAEG],[A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland],[A6_SicherungsgrenzeBeiZusatzsicherung],[A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG],[E1_Satzidentifikator],[E2_Institut],[E3_GesamteinreichersaldoEinlagen],[E4_GesamteinreichersaldoAusschluesseEinSiG],[E5_GesamteinreichersaldoEntschaedigungsFaehigerEinlagenEinSiG],[E6_GesamteinreichersaldoGedekterEinlagenEinSiG],[E7_GesamteinreichersaldoKappungEinSiG],[E8_GesamteinreichersaldoEWR_Niederlassungen],[E9_GesamteinreichersaldoGedekterEinlagenEU_Herkunftsstaat],[E10_GesamteinreichersaldoAusschlueseNachStatutEinSiGundNurStatut],[E11_GesamteinreichersaldoAusschlueseNurStatut],[E12_GesamteinreichersaldoZusatzsicherung],[E13_GesamteinreichersaldoZusatzabsicherungAnteil_ALTFALLREGELUNG],[E14_GesamteinreichersaldoForderungenAnKunden],[E15_GesamteinreichersaldoNichtEWR_Niederlassungen] FROM [EAEG_A_E_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "SELECT  [ID],[EAEG_Stichtag],[A1_Satzidentifikator],[A2_Institut],[A3_ZugehoerigkeitZuEntsaedigungseinrichtungen],[A4_GesetzlicheEntschaedigungsobergrenzeEAEG],[A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland],[A6_SicherungsgrenzeBeiZusatzsicherung],[A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG],[E1_Satzidentifikator],[E2_Institut],[E3_GesamteinreichersaldoEinlagen],[E4_GesamteinreichersaldoAusschluesseEinSiG],[E5_GesamteinreichersaldoEntschaedigungsFaehigerEinlagenEinSiG],[E6_GesamteinreichersaldoGedekterEinlagenEinSiG],[E7_GesamteinreichersaldoKappungEinSiG],[E8_GesamteinreichersaldoEWR_Niederlassungen],[E9_GesamteinreichersaldoGedekterEinlagenEU_Herkunftsstaat],[E10_GesamteinreichersaldoAusschlueseNachStatutEinSiGundNurStatut],[E11_GesamteinreichersaldoAusschlueseNurStatut],[E12_GesamteinreichersaldoZusatzsicherung],[E13_GesamteinreichersaldoZusatzabsicherungAnteil_ALTFALLREGELUNG],[E14_GesamteinreichersaldoForderungenAnKunden],[E15_GesamteinreichersaldoNichtEWR_Niederlassungen] FROM [EAEG_A_E_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
@@ -2664,9 +2591,7 @@ Public Class EAEG_Datei_New
 
                         System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, M_SATZ & vbCrLf)
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
 
                         SplashScreenManager.CloseForm(False)
 
@@ -2686,9 +2611,7 @@ Public Class EAEG_Datei_New
 
                         System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, M_SATZ & vbCrLf)
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
 
                         SplashScreenManager.CloseForm(False)
 
@@ -2708,9 +2631,7 @@ Public Class EAEG_Datei_New
 
                         System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, M_SATZ & vbCrLf)
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
 
                         SplashScreenManager.CloseForm(False)
 
@@ -2724,9 +2645,7 @@ Public Class EAEG_Datei_New
 
                 Catch ex As Exception
                     SplashScreenManager.CloseForm(False)
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
                 End Try
@@ -2779,20 +2698,18 @@ Public Class EAEG_Datei_New
                 Dim E14 As Double = 0
                 Dim E15 As Double = 0
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                OpenSqlConnections()
+
 
                 SplashScreenManager.Default.SetWaitFormCaption("Lade EAEG Dateiverzeichnis")
                 'Get EAEG File directory
                 cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='EAEG_File_Directory' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='EAEG_CREATION_PATH'"
-                cmd.Connection.Open()
                 Dim EAEG_FILE_DIR As String = cmd.ExecuteScalar
 
                 'A und E SATZ
                 SplashScreenManager.Default.SetWaitFormCaption("Lade Daten für A Satz")
-                Me.QueryText = "SELECT  [ID],[EAEG_Stichtag],[A1_Satzidentifikator],[A2_Institut],[A3_ZugehoerigkeitZuEntsaedigungseinrichtungen],[A4_GesetzlicheEntschaedigungsobergrenzeEAEG],[A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland],[A6_SicherungsgrenzeBeiZusatzsicherung],[A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG],[E1_Satzidentifikator],[E2_Institut],[E3_GesamteinreichersaldoEinlagen],[E4_GesamteinreichersaldoAusschluesseEinSiG],[E5_GesamteinreichersaldoEntschaedigungsFaehigerEinlagenEinSiG],[E6_GesamteinreichersaldoGedekterEinlagenEinSiG],[E7_GesamteinreichersaldoKappungEinSiG],[E8_GesamteinreichersaldoEWR_Niederlassungen],[E9_GesamteinreichersaldoGedekterEinlagenEU_Herkunftsstaat],[E10_GesamteinreichersaldoAusschlueseNachStatutEinSiGundNurStatut],[E11_GesamteinreichersaldoAusschlueseNurStatut],[E12_GesamteinreichersaldoZusatzsicherung],[E13_GesamteinreichersaldoZusatzabsicherungAnteil_ALTFALLREGELUNG],[E14_GesamteinreichersaldoForderungenAnKunden],[E15_GesamteinreichersaldoNichtEWR_Niederlassungen] FROM [EAEG_A_E_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  [ID],[EAEG_Stichtag],[A1_Satzidentifikator],[A2_Institut],[A3_ZugehoerigkeitZuEntsaedigungseinrichtungen],[A4_GesetzlicheEntschaedigungsobergrenzeEAEG],[A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland],[A6_SicherungsgrenzeBeiZusatzsicherung],[A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG],[E1_Satzidentifikator],[E2_Institut],[E3_GesamteinreichersaldoEinlagen],[E4_GesamteinreichersaldoAusschluesseEinSiG],[E5_GesamteinreichersaldoEntschaedigungsFaehigerEinlagenEinSiG],[E6_GesamteinreichersaldoGedekterEinlagenEinSiG],[E7_GesamteinreichersaldoKappungEinSiG],[E8_GesamteinreichersaldoEWR_Niederlassungen],[E9_GesamteinreichersaldoGedekterEinlagenEU_Herkunftsstaat],[E10_GesamteinreichersaldoAusschlueseNachStatutEinSiGundNurStatut],[E11_GesamteinreichersaldoAusschlueseNurStatut],[E12_GesamteinreichersaldoZusatzsicherung],[E13_GesamteinreichersaldoZusatzabsicherungAnteil_ALTFALLREGELUNG],[E14_GesamteinreichersaldoForderungenAnKunden],[E15_GesamteinreichersaldoNichtEWR_Niederlassungen] FROM [EAEG_A_E_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -3053,9 +2970,9 @@ Public Class EAEG_Datei_New
                 Dim D15 As Double = 0
 
                 SplashScreenManager.Default.SetWaitFormCaption("Lade Daten für B und D Satz")
-                Me.QueryText = "Select * from [EAEG_B_D_Satz_Version4] where [B2_Ordnungskennzeichen] in (Select [B2_OrdnungskennzeichenId] from [EAEG_C_Satz_Version4] where [C19_KontosaldoInEuro]<>0 and [EAEG_Stichtag]='" & rdsql & "') and [EAEG_Stichtag]='" & rdsql & "'"
-                'Me.QueryText = "Select * from [EAEG_B_D_Satz_Version4]"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from [EAEG_B_D_Satz_Version4] where [B2_Ordnungskennzeichen] in (Select [B2_OrdnungskennzeichenId] from [EAEG_C_Satz_Version4] where [C19_KontosaldoInEuro]<>0 and [EAEG_Stichtag]='" & rdsql & "') and [EAEG_Stichtag]='" & rdsql & "'"
+                'QueryText = "Select * from [EAEG_B_D_Satz_Version4]"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -3141,9 +3058,9 @@ Public Class EAEG_Datei_New
                     System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, B_SATZ & vbCrLf)
 
                     Dim STAMM As String = dt.Rows.Item(i).Item("B2_Ordnungskennzeichen")
-                    Me.QueryText1 = "Select * from [EAEG_C_Satz_Version4] where [B2_OrdnungskennzeichenId]='" & STAMM & "' and [C19_KontosaldoInEuro]<>0 and [EAEG_Stichtag]='" & rdsql & "'"
-                    'Me.QueryText1 = "Select * from [EAEG_C_Satz_Version4] where [B2_OrdnungskennzeichenId]='" & STAMM & "'"
-                    da1 = New SqlDataAdapter(Me.QueryText1.Trim(), conn)
+                    QueryText1 = "Select * from [EAEG_C_Satz_Version4] where [B2_OrdnungskennzeichenId]='" & STAMM & "' and [C19_KontosaldoInEuro]<>0 and [EAEG_Stichtag]='" & rdsql & "'"
+                    'QueryText1 = "Select * from [EAEG_C_Satz_Version4] where [B2_OrdnungskennzeichenId]='" & STAMM & "'"
+                    da1 = New SqlDataAdapter(QueryText1.Trim(), conn)
                     dt1 = New DataTable()
                     da1.Fill(dt1)
                     For y = 0 To dt1.Rows.Count - 1
@@ -3351,9 +3268,7 @@ Public Class EAEG_Datei_New
                 System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, E_SATZ)
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 SplashScreenManager.CloseForm(False)
 
@@ -3365,9 +3280,7 @@ Public Class EAEG_Datei_New
 
             Catch ex As System.Exception
                 SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End Try
@@ -3602,9 +3515,8 @@ Public Class EAEG_Datei_New
                     Dim M146 As Double = 0
 
 
-                    If cmd.Connection.State = ConnectionState.Closed Then
-                        cmd.Connection.Open()
-                    End If
+                    OpenSqlConnections()
+
 
                     SplashScreenManager.Default.SetWaitFormCaption("Lade EAEG Dateiverzeichnis")
                     'Get EAEG File directory
@@ -3613,8 +3525,8 @@ Public Class EAEG_Datei_New
 
                     'A und E SATZ
                     SplashScreenManager.Default.SetWaitFormCaption("Lade Daten für M Satz")
-                    Me.QueryText = "SELECT  [ID],[EAEG_Stichtag],[A1_Satzidentifikator],[A2_Institut],[A3_ZugehoerigkeitZuEntsaedigungseinrichtungen],[A4_GesetzlicheEntschaedigungsobergrenzeEAEG],[A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland],[A6_SicherungsgrenzeBeiZusatzsicherung],[A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG],[E1_Satzidentifikator],[E2_Institut],[E3_GesamteinreichersaldoEinlagen],[E4_GesamteinreichersaldoAusschluesseEinSiG],[E5_GesamteinreichersaldoEntschaedigungsFaehigerEinlagenEinSiG],[E6_GesamteinreichersaldoGedekterEinlagenEinSiG],[E7_GesamteinreichersaldoKappungEinSiG],[E8_GesamteinreichersaldoEWR_Niederlassungen],[E9_GesamteinreichersaldoGedekterEinlagenEU_Herkunftsstaat],[E10_GesamteinreichersaldoAusschlueseNachStatutEinSiGundNurStatut],[E11_GesamteinreichersaldoAusschlueseNurStatut],[E12_GesamteinreichersaldoZusatzsicherung],[E13_GesamteinreichersaldoZusatzabsicherungAnteil_ALTFALLREGELUNG],[E14_GesamteinreichersaldoForderungenAnKunden],[E15_GesamteinreichersaldoNichtEWR_Niederlassungen] FROM [EAEG_A_E_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "SELECT  [ID],[EAEG_Stichtag],[A1_Satzidentifikator],[A2_Institut],[A3_ZugehoerigkeitZuEntsaedigungseinrichtungen],[A4_GesetzlicheEntschaedigungsobergrenzeEAEG],[A5_GesetzlicheEntschaedigungsobergrenzeEU_Herkunftsland],[A6_SicherungsgrenzeBeiZusatzsicherung],[A7_SicherungsgrenzeBeiZusatzsicherungALTFALL_REGELUNG],[E1_Satzidentifikator],[E2_Institut],[E3_GesamteinreichersaldoEinlagen],[E4_GesamteinreichersaldoAusschluesseEinSiG],[E5_GesamteinreichersaldoEntschaedigungsFaehigerEinlagenEinSiG],[E6_GesamteinreichersaldoGedekterEinlagenEinSiG],[E7_GesamteinreichersaldoKappungEinSiG],[E8_GesamteinreichersaldoEWR_Niederlassungen],[E9_GesamteinreichersaldoGedekterEinlagenEU_Herkunftsstaat],[E10_GesamteinreichersaldoAusschlueseNachStatutEinSiGundNurStatut],[E11_GesamteinreichersaldoAusschlueseNurStatut],[E12_GesamteinreichersaldoZusatzsicherung],[E13_GesamteinreichersaldoZusatzabsicherungAnteil_ALTFALLREGELUNG],[E14_GesamteinreichersaldoForderungenAnKunden],[E15_GesamteinreichersaldoNichtEWR_Niederlassungen] FROM [EAEG_A_E_Satz_Version4] where [EAEG_Stichtag]='" & rdsql & "'"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
@@ -3859,9 +3771,8 @@ Public Class EAEG_Datei_New
 
                         System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, M_SATZ & vbCrLf)
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
+
 
                         SplashScreenManager.CloseForm(False)
 
@@ -3881,9 +3792,8 @@ Public Class EAEG_Datei_New
 
                         System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, M_SATZ & vbCrLf)
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
+
 
                         SplashScreenManager.CloseForm(False)
 
@@ -3903,9 +3813,7 @@ Public Class EAEG_Datei_New
 
                         System.IO.File.AppendAllText(EAEG_FILE_DIR & EAEGDATEI, M_SATZ & vbCrLf)
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
 
                         SplashScreenManager.CloseForm(False)
 
@@ -3919,9 +3827,7 @@ Public Class EAEG_Datei_New
 
                 Catch ex As Exception
                     SplashScreenManager.CloseForm(False)
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
                 End Try
@@ -4296,18 +4202,18 @@ Public Class EAEG_Datei_New
         '***********************************************************************
         '*******EXCEL FILES DIRECTORY************
         '+++++++++++++++++++++++++++++++++++++++++++++++++++
+        OpenSqlConnections()
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='EXCEL_FILES_DIR_EAEG_BILANZ_DIFFERENCE' and [IdABTEILUNGSPARAMETER]='EXCEL_FILES' and [PARAMETER STATUS]='Y' "
-        cmd.Connection.Open()
         ExcelFileName = cmd.ExecuteScalar
         '***********************************************************************
-        cmd.Connection.Close()
+        CloseSqlConnections()
 
-        Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EAEG_BILANZ_Differences')  and [Status] in ('Y') and Id_SQL_Parameters in ('EAEG')"
-        da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "Select * from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EAEG_BILANZ_Differences')  and [Status] in ('Y') and Id_SQL_Parameters in ('EAEG')"
+        da1 = New SqlDataAdapter(QueryText.Trim(), conn)
         dt1 = New System.Data.DataTable()
         da1.Fill(dt1)
         SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
-        da = New SqlDataAdapter(Me.SqlCommandText.Trim(), conn)
+        da = New SqlDataAdapter(SqlCommandText.Trim(), conn)
         dt = New System.Data.DataTable()
         da.Fill(dt)
 

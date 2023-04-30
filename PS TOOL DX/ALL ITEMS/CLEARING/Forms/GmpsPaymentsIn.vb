@@ -121,7 +121,8 @@ Public Class GmpsPaymentsIn
     Private strHideExtendedMode As String = "View List"
     Private strShowExtendedMode As String = "View Details"
     Protected Sub HideDetail(ByVal rowHandle As Integer)
-        If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" Then
+        If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" OrElse MessageType.ToString = "103-EMZ-CT" _
+            OrElse MessageType.ToString.StartsWith("pacs.008") Then
             GridControl2.MainView.PostEditor()
             Dim datasourceRowIndex As Integer = PaymentsIn_MT103_LayoutView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsIn_GridView
@@ -132,7 +133,7 @@ Public Class GmpsPaymentsIn
             LayoutViews_btn.Text = strShowExtendedMode
             LayoutViews_btn.ImageIndex = 1
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_MT103_LayoutView)
-        ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" Then
+        ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" OrElse MessageType.ToString = "103-EMZ-DD" Then
             GridControl2.MainView.PostEditor()
             Dim datasourceRowIndex As Integer = PaymentsIn_SEPA_DD_LayoutView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsIn_GridView
@@ -143,7 +144,7 @@ Public Class GmpsPaymentsIn
             LayoutViews_btn.Text = strShowExtendedMode
             LayoutViews_btn.ImageIndex = 1
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_SEPA_DD_LayoutView)
-        ElseIf MessageType = "202" Then
+        ElseIf MessageType.ToString.StartsWith("202") OrElse MessageType.ToString.StartsWith("pacs.009") OrElse MessageType.ToString.StartsWith("pacs.004") Then
             GridControl2.MainView.PostEditor()
             Dim datasourceRowIndex As Integer = PaymentsIn_MT202_LayoutView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsIn_GridView
@@ -158,7 +159,8 @@ Public Class GmpsPaymentsIn
 
     End Sub
     Protected Sub ShowDetail(ByVal rowHandle As Integer)
-        If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" Then
+        If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" OrElse MessageType.ToString = "103-EMZ-CT" _
+            OrElse MessageType.ToString.StartsWith("pacs.008") Then
             Dim datasourceRowIndex As Integer = PaymentsIn_GridView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsIn_MT103_LayoutView
             SynchronizeOrdersDetailView(datasourceRowIndex)
@@ -168,7 +170,7 @@ Public Class GmpsPaymentsIn
             LayoutViews_btn.Text = strHideExtendedMode
             LayoutViews_btn.ImageIndex = 0
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_MT103_LayoutView)
-        ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" Then
+        ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" OrElse MessageType.ToString = "103-EMZ-DD" Then
             Dim datasourceRowIndex As Integer = PaymentsIn_GridView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsIn_SEPA_DD_LayoutView
             SynchronizeOrdersDetailView(datasourceRowIndex)
@@ -178,7 +180,7 @@ Public Class GmpsPaymentsIn
             LayoutViews_btn.Text = strHideExtendedMode
             LayoutViews_btn.ImageIndex = 0
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_SEPA_DD_LayoutView)
-        ElseIf MessageType = "202" Then
+        ElseIf MessageType.ToString.StartsWith("202") OrElse MessageType.ToString.StartsWith("pacs.009") OrElse MessageType.ToString.StartsWith("pacs.004") Then
             Dim datasourceRowIndex As Integer = PaymentsIn_GridView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsIn_MT202_LayoutView
             SynchronizeOrdersDetailView(datasourceRowIndex)
@@ -198,15 +200,16 @@ Public Class GmpsPaymentsIn
         PaymentsIn_GridView.FocusedRowHandle = rowHandle
     End Sub
     Protected Sub SynchronizeOrdersDetailView(ByVal dataSourceRowIndex As Integer)
-        If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" Then
+        If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" OrElse MessageType.ToString = "103-EMZ-CT" _
+            OrElse MessageType.ToString.StartsWith("pacs.008") Then
             Dim rowHandle As Integer = PaymentsIn_MT103_LayoutView.GetRowHandle(dataSourceRowIndex)
             PaymentsIn_MT103_LayoutView.VisibleRecordIndex = PaymentsIn_MT103_LayoutView.GetVisibleIndex(rowHandle)
             PaymentsIn_MT103_LayoutView.FocusedRowHandle = dataSourceRowIndex
-        ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" Then
+        ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" OrElse MessageType.ToString = "103-EMZ-DD" Then
             Dim rowHandle As Integer = PaymentsIn_SEPA_DD_LayoutView.GetRowHandle(dataSourceRowIndex)
             PaymentsIn_SEPA_DD_LayoutView.VisibleRecordIndex = PaymentsIn_SEPA_DD_LayoutView.GetVisibleIndex(rowHandle)
             PaymentsIn_SEPA_DD_LayoutView.FocusedRowHandle = dataSourceRowIndex
-        ElseIf MessageType = "202" Then
+        ElseIf MessageType.ToString.StartsWith("202") OrElse MessageType.ToString.StartsWith("pacs.009") OrElse MessageType.ToString.StartsWith("pacs.004") Then
             Dim rowHandle As Integer = PaymentsIn_MT202_LayoutView.GetRowHandle(dataSourceRowIndex)
             PaymentsIn_MT202_LayoutView.VisibleRecordIndex = PaymentsIn_MT202_LayoutView.GetVisibleIndex(rowHandle)
             PaymentsIn_MT202_LayoutView.FocusedRowHandle = dataSourceRowIndex
@@ -396,7 +399,8 @@ Public Class GmpsPaymentsIn
             PrintableComponentLink1.ShowPreview()
             SplashScreenManager.CloseForm(False)
         Else
-            If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" Then
+            If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" OrElse MessageType.ToString = "103-EMZ-CT" _
+            OrElse MessageType.ToString.StartsWith("pacs.008") Then
                 Me.PaymentsIn_MT103_LayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
                 Me.PaymentsIn_MT103_LayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
                 Me.PaymentsIn_MT103_LayoutView.Columns.ColumnByName("colMessageSender1").AppearanceCell.ForeColor = Color.Navy
@@ -419,7 +423,7 @@ Public Class GmpsPaymentsIn
                 Me.PaymentsIn_MT103_LayoutView.Columns.ColumnByName("colBeneficiaryBank1").AppearanceCell.ForeColor = Color.Aqua
                 Me.PaymentsIn_MT103_LayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
                 Me.PaymentsIn_MT103_LayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
-            ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" Then
+            ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" OrElse MessageType.ToString = "103-EMZ-DD" Then
                 Me.PaymentsIn_SEPA_DD_LayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
                 Me.PaymentsIn_SEPA_DD_LayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
                 Me.PaymentsIn_SEPA_DD_LayoutView.OptionsPrint.PrintSelectedCardsOnly = True
@@ -429,7 +433,7 @@ Public Class GmpsPaymentsIn
                 PreviewPrintableComponent(GridControl2, GridControl2.LookAndFeel)
                 Me.PaymentsIn_SEPA_DD_LayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
                 Me.PaymentsIn_SEPA_DD_LayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
-            ElseIf MessageType = "202" Then
+            ElseIf MessageType.ToString.StartsWith("202") OrElse MessageType.ToString.StartsWith("pacs.009") OrElse MessageType.ToString.StartsWith("pacs.004") Then
                 Me.PaymentsIn_MT202_LayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
                 Me.PaymentsIn_MT202_LayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
                 Me.PaymentsIn_MT202_LayoutView.OptionsPrint.PrintSelectedCardsOnly = True
@@ -473,8 +477,8 @@ Public Class GmpsPaymentsIn
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(ByVal sender As Object, ByVal e As DevExpress.XtraPrinting.CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
 
-        Dim reportfooter As String = "INCOMING PAYMENT ORDERS"
-       e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+        Dim reportfooter As String = "INCOMING PAYMENT MESSAGES"
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
 
     End Sub
 

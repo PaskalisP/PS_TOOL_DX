@@ -54,6 +54,10 @@ Public Class GmpsPaymentsOut
 
     Dim MessageType As String = Nothing
 
+    Dim CustPayOrders_MyStringCollection As New System.Collections.Specialized.StringCollection
+    Dim BankPayOrders_MyStringCollection As New System.Collections.Specialized.StringCollection
+
+
     Sub New()
         InitSkins()
         InitializeComponent()
@@ -73,6 +77,9 @@ Public Class GmpsPaymentsOut
     End Sub
 
     Private Sub GmpsPaymentsOut_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CustPayOrders_MyStringCollection.AddRange(New String() {"2", "31", "35", "43"})
+        BankPayOrders_MyStringCollection.AddRange(New String() {"3", "32", "34"})
+
         conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
         cmd.Connection = conn
 
@@ -120,7 +127,7 @@ Public Class GmpsPaymentsOut
     Private strHideExtendedMode As String = "View List"
     Private strShowExtendedMode As String = "View Details"
     Protected Sub HideDetail(ByVal rowHandle As Integer)
-        If MessageType.ToString = "103"  Then
+        If MessageType.ToString = "103" OrElse CustPayOrders_MyStringCollection.Contains(MessageType.ToString.Trim()) OrElse MessageType.ToString.StartsWith("pacs.008") Then
             GridControl2.MainView.PostEditor()
             Dim datasourceRowIndex As Integer = PaymentsOut_MT103_LayoutView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsOut_GridView
@@ -142,7 +149,8 @@ Public Class GmpsPaymentsOut
             LayoutViews_btn.Text = strShowExtendedMode
             LayoutViews_btn.ImageIndex = 1
             fExtendedEditMode = (GridControl2.MainView Is PaymentsOut_SEPA_DD_LayoutView)
-        ElseIf MessageType.ToString = "200" OrElse MessageType.ToString = "202" OrElse MessageType.ToString = "202COV" Then
+        ElseIf MessageType.ToString = "200" OrElse MessageType.ToString = "202" OrElse MessageType.ToString = "202COV" OrElse BankPayOrders_MyStringCollection.Contains(MessageType.ToString.Trim()) _
+            OrElse MessageType.ToString.StartsWith("pacs.009") Then
             GridControl2.MainView.PostEditor()
             Dim datasourceRowIndex As Integer = PaymentsOut_MT202_LayoutView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsOut_GridView
@@ -158,7 +166,8 @@ Public Class GmpsPaymentsOut
 
     End Sub
     Protected Sub ShowDetail(ByVal rowHandle As Integer)
-        If MessageType.ToString = "103" Then
+
+        If MessageType.ToString = "103" OrElse CustPayOrders_MyStringCollection.Contains(MessageType.ToString.Trim()) OrElse MessageType.ToString.StartsWith("pacs.008") Then
             Dim datasourceRowIndex As Integer = PaymentsOut_GridView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsOut_MT103_LayoutView
             SynchronizeOrdersDetailView(datasourceRowIndex)
@@ -178,7 +187,8 @@ Public Class GmpsPaymentsOut
             LayoutViews_btn.Text = strHideExtendedMode
             LayoutViews_btn.ImageIndex = 0
             fExtendedEditMode = (GridControl2.MainView Is PaymentsOut_SEPA_DD_LayoutView)
-        ElseIf MessageType.ToString = "200" OrElse MessageType.ToString = "202" OrElse MessageType.ToString = "202COV" Then
+        ElseIf MessageType.ToString = "200" OrElse MessageType.ToString = "202" OrElse MessageType.ToString = "202COV" OrElse BankPayOrders_MyStringCollection.Contains(MessageType.ToString.Trim()) _
+            OrElse MessageType.ToString.StartsWith("pacs.009") Then
             Dim datasourceRowIndex As Integer = PaymentsOut_GridView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = PaymentsOut_MT202_LayoutView
             SynchronizeOrdersDetailView(datasourceRowIndex)
@@ -196,7 +206,8 @@ Public Class GmpsPaymentsOut
         PaymentsOut_GridView.FocusedRowHandle = rowHandle
     End Sub
     Protected Sub SynchronizeOrdersDetailView(ByVal dataSourceRowIndex As Integer)
-        If MessageType.ToString = "103" Then
+
+        If MessageType.ToString = "103" OrElse CustPayOrders_MyStringCollection.Contains(MessageType.ToString) OrElse MessageType.ToString.StartsWith("pacs.008") Then
             Dim rowHandle As Integer = PaymentsOut_MT103_LayoutView.GetRowHandle(dataSourceRowIndex)
             PaymentsOut_MT103_LayoutView.VisibleRecordIndex = PaymentsOut_MT103_LayoutView.GetVisibleIndex(rowHandle)
             PaymentsOut_MT103_LayoutView.FocusedRowHandle = dataSourceRowIndex
@@ -204,7 +215,8 @@ Public Class GmpsPaymentsOut
             Dim rowHandle As Integer = PaymentsOut_SEPA_DD_LayoutView.GetRowHandle(dataSourceRowIndex)
             PaymentsOut_SEPA_DD_LayoutView.VisibleRecordIndex = PaymentsOut_SEPA_DD_LayoutView.GetVisibleIndex(rowHandle)
             PaymentsOut_SEPA_DD_LayoutView.FocusedRowHandle = dataSourceRowIndex
-        ElseIf MessageType.ToString = "200" OrElse MessageType.ToString = "202" OrElse MessageType.ToString = "202COV" Then
+        ElseIf MessageType.ToString = "200" OrElse MessageType.ToString = "202" OrElse MessageType.ToString = "202COV" OrElse BankPayOrders_MyStringCollection.Contains(MessageType.ToString) _
+            OrElse MessageType.ToString.StartsWith("pacs.009") Then
             Dim rowHandle As Integer = PaymentsOut_MT202_LayoutView.GetRowHandle(dataSourceRowIndex)
             PaymentsOut_MT202_LayoutView.VisibleRecordIndex = PaymentsOut_MT202_LayoutView.GetVisibleIndex(rowHandle)
             PaymentsOut_MT202_LayoutView.FocusedRowHandle = dataSourceRowIndex
@@ -372,7 +384,8 @@ Public Class GmpsPaymentsOut
             PrintableComponentLink1.ShowPreview()
             SplashScreenManager.CloseForm(False)
         Else
-            If MessageType.ToString = "103" Then
+
+            If MessageType.ToString = "103" OrElse CustPayOrders_MyStringCollection.Contains(MessageType.ToString) OrElse MessageType.ToString.StartsWith("pacs.008") Then
                 Me.PaymentsOut_MT103_LayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
                 Me.PaymentsOut_MT103_LayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
                 Me.PaymentsOut_MT103_LayoutView.OptionsPrint.PrintSelectedCardsOnly = True
@@ -392,7 +405,8 @@ Public Class GmpsPaymentsOut
                 PreviewPrintableComponent(GridControl2, GridControl2.LookAndFeel)
                 Me.PaymentsOut_SEPA_DD_LayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
                 Me.PaymentsOut_SEPA_DD_LayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
-            ElseIf MessageType.ToString = "200" OrElse MessageType.ToString = "202" OrElse MessageType.ToString = "202COV" Then
+            ElseIf MessageType.ToString = "200" OrElse MessageType.ToString = "202" OrElse MessageType.ToString = "202COV" OrElse BankPayOrders_MyStringCollection.Contains(MessageType.ToString) _
+            OrElse MessageType.ToString.StartsWith("pacs.009") Then
                 Me.PaymentsOut_MT202_LayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
                 Me.PaymentsOut_MT202_LayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
                 Me.PaymentsOut_MT202_LayoutView.OptionsPrint.PrintSelectedCardsOnly = True
@@ -435,7 +449,7 @@ Public Class GmpsPaymentsOut
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(ByVal sender As Object, ByVal e As DevExpress.XtraPrinting.CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
 
-        Dim reportfooter As String = "OUTGOING PAYMENT ORDERS"
+        Dim reportfooter As String = "OUTGOING PAYMENT MESSAGES"
         e.Graph.StringFormat = New BrickStringFormat(StringAlignment.Center)
         e.Graph.Font = New System.Drawing.Font("Tahoma", 10, FontStyle.Bold)
         Dim rec As RectangleF = New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 100)

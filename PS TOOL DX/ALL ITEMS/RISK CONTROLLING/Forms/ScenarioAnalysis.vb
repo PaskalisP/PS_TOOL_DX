@@ -48,9 +48,6 @@ Imports DevExpress.SpreadsheetSource
 
 Public Class ScenarioAnalysis
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
     Dim CrystalRepDir As String = ""
 
     Dim excel As Microsoft.Office.Interop.Excel.Application
@@ -62,8 +59,6 @@ Public Class ScenarioAnalysis
     Private da1 As New SqlDataAdapter
     Private dt1 As New DataTable
 
-    Dim rd As Date
-    Dim rdsql As String = Nothing
 
     Dim ExcelFileName As String = Nothing
 
@@ -100,16 +95,13 @@ Public Class ScenarioAnalysis
     Private Sub ScenarioAnalysis_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
         '***********************************************************************
         '*******CRYSTAL REPORTS DIRECTORY************
         '+++++++++++++++++++++++++++++++++++++++++++++++++++
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
-        cmd.Connection.Open()
+        OpenSqlConnections()
         CrystalRepDir = cmd.ExecuteScalar
-        cmd.Connection.Close()
+        CloseSqlConnections()
         '***********************************************************************
         'Bind Combobox
 
@@ -156,11 +148,8 @@ Public Class ScenarioAnalysis
                     rd = Me.AnalysisDate_Comboedit.Text
                     rdsql = rd.ToString("yyyyMMdd")
 
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
-                    cmd.Connection.Open()
-                    cmd.CommandTimeout = 500
+                    OpenSqlConnections()
+                    cmd.CommandTimeout = 5000
                     SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                     SplashScreenManager.Default.SetWaitFormCaption("Delete all current Data in SCENARIO ANALYZES")
                     cmd.CommandText = "DELETE from [ScenarioAnalyze_ConcentrationRiskCHINA_Details]"
@@ -205,9 +194,7 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "INSERT INTO [ScenarioAnalyze_GeneralStressTest_Date]([RiskDate],[IdDate])Select [ScenarioAnalyzesDate],[ID] from [SCENARIO_ANALYZES_DATE]"
                     cmd.ExecuteNonQuery()
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     SplashScreenManager.Default.SetWaitFormCaption("Load Scenario Analysis date " & rd)
                     'Load all data
                     Me.ScenarioAnalyze_GeneralStressTest_DetailsALLTableAdapter.Fill(Me.ScenarioAnalysisDataset.ScenarioAnalyze_GeneralStressTest_DetailsALL)
@@ -225,9 +212,7 @@ Public Class ScenarioAnalysis
                 Catch ex As Exception
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     SplashScreenManager.CloseForm(False)
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
 
                     Exit Sub
                 End Try
@@ -260,29 +245,30 @@ Public Class ScenarioAnalysis
                 'Me.TableAdapterManager.UpdateAll(Me.ScenarioAnalysisDataset)
 
 
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
-                cmd.CommandTimeout = 500
+                OpenSqlConnections()
+                cmd.CommandTimeout = 5000
                 SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 'Update Parameters for each Scenario
                 SplashScreenManager.Default.SetWaitFormCaption("Update Parameters for each Scenario")
-                cmd.CommandText = "UPDATE [ScenarioAnalyze_GeneralStressTest_Date] set [LGD_mod]=@LGD_mod, [R_Colleration_Mod]=@R_Colleration_Mod,[ObligorRate_Mod]=@ObligorRate_Mod,[SumEL]=0,[SumUL]=0,[SumGA_rel]=0,[SumGA_Total]=0"
+                cmd.CommandText = "UPDATE [ScenarioAnalyze_GeneralStressTest_Date] set [LGD_mod]=@LGD_mod, [R_Colleration_Mod]=@R_Colleration_Mod,[ObligorRate_Mod]=@ObligorRate_Mod,LevelOfConfidence=@LevelOfConfidence,[SumEL]=0,[SumUL]=0,[SumGA_rel]=0,[SumGA_Total]=0"
                 cmd.Parameters.Add("@LGD_mod", SqlDbType.Float).Value = Me.LGD_GST_SpinEdit.EditValue
                 cmd.Parameters.Add("@R_Colleration_Mod", SqlDbType.Float).Value = Me.Colleration_GST_SpinEdit.EditValue
                 cmd.Parameters.Add("@ObligorRate_Mod", SqlDbType.Float).Value = Me.ObligorRate_Mod_GST_SpinEdit.EditValue
+                cmd.Parameters.Add("@LevelOfConfidence", SqlDbType.Float).Value = Me.LevelConfidence_General_SpinEdit.EditValue
                 cmd.ExecuteNonQuery()
                 cmd.Parameters.Clear()
-                cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskCHINA_Date] set [LGD_mod]=@LGD_mod, [R_Colleration_Mod]=@R_Colleration_Mod,[ObligorRate_Mod]=@ObligorRate_Mod ,[SumEL]=0,[SumUL]=0,[SumGA_rel]=0,[SumGA_Total]=0"
+                cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskCHINA_Date] set [LGD_mod]=@LGD_mod, [R_Colleration_Mod]=@R_Colleration_Mod,[ObligorRate_Mod]=@ObligorRate_Mod,LevelOfConfidence=@LevelOfConfidence ,[SumEL]=0,[SumUL]=0,[SumGA_rel]=0,[SumGA_Total]=0"
                 cmd.Parameters.Add("@LGD_mod", SqlDbType.Float).Value = Me.LGD_CHINA_SpinEdit.EditValue
                 cmd.Parameters.Add("@R_Colleration_Mod", SqlDbType.Float).Value = Me.Colleration_CHINA_SpinEdit.EditValue
                 cmd.Parameters.Add("@ObligorRate_Mod", SqlDbType.Float).Value = Me.ObligorRate_Mod_CHINA_SpinEdit.EditValue
+                cmd.Parameters.Add("@LevelOfConfidence", SqlDbType.Float).Value = Me.LevelConfidence_China_SpinEdit.EditValue
                 cmd.ExecuteNonQuery()
                 cmd.Parameters.Clear()
-                cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskTBA_Date] set [LGD_mod]=@LGD_mod, [R_Colleration_Mod]=@R_Colleration_Mod,[ObligorRate_Mod]=@ObligorRate_Mod ,[SumEL]=0,[SumUL]=0,[SumGA_rel]=0,[SumGA_Total]=0"
+                cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskTBA_Date] set [LGD_mod]=@LGD_mod, [R_Colleration_Mod]=@R_Colleration_Mod,[ObligorRate_Mod]=@ObligorRate_Mod ,LevelOfConfidence=@LevelOfConfidence ,[SumEL]=0,[SumUL]=0,[SumGA_rel]=0,[SumGA_Total]=0"
                 cmd.Parameters.Add("@LGD_mod", SqlDbType.Float).Value = Me.LGD_FI_SpinEdit.EditValue
                 cmd.Parameters.Add("@R_Colleration_Mod", SqlDbType.Float).Value = Me.Colleration_FI_SpinEdit.EditValue
                 cmd.Parameters.Add("@ObligorRate_Mod", SqlDbType.Float).Value = Me.ObligorRate_Mod_FI_SpinEdit.EditValue
+                cmd.Parameters.Add("@LevelOfConfidence", SqlDbType.Float).Value = Me.LevelConfidence_Financial_SpinEdit.EditValue
                 cmd.ExecuteNonQuery()
                 cmd.Parameters.Clear()
                 SplashScreenManager.Default.SetWaitFormCaption("Delete all relevant Data in SCENARIO ANALYZES for " & rd)
@@ -318,18 +304,14 @@ Public Class ScenarioAnalysis
 
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 LOAD_ANALYSIS_DATA()
                 SplashScreenManager.CloseForm(False)
             Catch ex As Exception
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show(ex.Message & vbNewLine & ex.StackTrace, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 Exit Sub
             End Try
@@ -473,6 +455,9 @@ Public Class ScenarioAnalysis
         For i = 0 To dt.Rows.Count - 1
             Dim ClientGroup As String = dt.Rows.Item(i).Item("ClientGroup")
             Dim PD As Double = dt.Rows.Item(i).Item("PD_3bps_floor")
+            If PD = 0 Then
+                PD = 1
+            End If
             Dim PDminus As Double = PD * (-50)
             cmd.CommandText = "UPDATE [ScenarioAnalyze_GeneralStressTest_Totals] SET [R_CoefficientOfColleration]=(SELECT 0.12 * (1- Power(2.71828182845904," & Str(PDminus) & ")/1-Power(2.71828182845904,-50))+0.24 * (1-(1- Power(2.71828182845904," & Str(PDminus) & ")/1-Power(2.71828182845904,-50)))) where   [ClientGroup]='" & ClientGroup & "' "
             cmd.ExecuteNonQuery()
@@ -500,6 +485,9 @@ Public Class ScenarioAnalysis
             Dim LGD As Double = dt.Rows.Item(i).Item("LGD")
             Dim R As Double = dt.Rows.Item(i).Item("R_CoefficientOfColleration")
             Dim PD As Double = dt.Rows.Item(i).Item("PD_3bps_floor")
+            If PD = 0 Then
+                PD = 1
+            End If
             Dim M As Double = dt.Rows.Item(i).Item("MaturityEADweigthed")
             Dim b As Double = dt.Rows.Item(i).Item("b_MaturityAdjustment")
             'Check if PD<>1 then execute Formula otherwise if PD=1 then it goes to error
@@ -784,6 +772,9 @@ Public Class ScenarioAnalysis
         For i = 0 To dt.Rows.Count - 1
             Dim ClientGroup As String = dt.Rows.Item(i).Item("ClientGroup")
             Dim PD As Double = dt.Rows.Item(i).Item("PD_3bps_floor")
+            If PD = 0 Then
+                PD = 1
+            End If
             Dim PDminus As Double = PD * (-50)
             cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskCHINA_Totals] SET [R_CoefficientOfColleration]=(SELECT 0.12 * (1- Power(2.71828182845904," & Str(PDminus) & ")/1-Power(2.71828182845904,-50))+0.24 * (1-(1- Power(2.71828182845904," & Str(PDminus) & ")/1-Power(2.71828182845904,-50)))) where   [ClientGroup]='" & ClientGroup & "' "
             cmd.ExecuteNonQuery()
@@ -811,6 +802,9 @@ Public Class ScenarioAnalysis
             Dim LGD As Double = dt.Rows.Item(i).Item("LGD")
             Dim R As Double = dt.Rows.Item(i).Item("R_CoefficientOfColleration")
             Dim PD As Double = dt.Rows.Item(i).Item("PD_3bps_floor")
+            If PD = 0 Then
+                PD = 1
+            End If
             Dim M As Double = dt.Rows.Item(i).Item("MaturityEADweigthed")
             Dim b As Double = dt.Rows.Item(i).Item("b_MaturityAdjustment")
             'Check if PD<>1 then execute Formula otherwise if PD=1 then it goes to error
@@ -1095,6 +1089,9 @@ Public Class ScenarioAnalysis
         For i = 0 To dt.Rows.Count - 1
             Dim ClientGroup As String = dt.Rows.Item(i).Item("ClientGroup")
             Dim PD As Double = dt.Rows.Item(i).Item("PD_3bps_floor")
+            If PD = 0 Then
+                PD = 1
+            End If
             Dim PDminus As Double = PD * (-50)
             cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskTBA_Totals] SET [R_CoefficientOfColleration]=(SELECT 0.12 * (1- Power(2.71828182845904," & Str(PDminus) & ")/1-Power(2.71828182845904,-50))+0.24 * (1-(1- Power(2.71828182845904," & Str(PDminus) & ")/1-Power(2.71828182845904,-50)))) where   [ClientGroup]='" & ClientGroup & "' "
             cmd.ExecuteNonQuery()
@@ -1122,6 +1119,9 @@ Public Class ScenarioAnalysis
             Dim LGD As Double = dt.Rows.Item(i).Item("LGD")
             Dim R As Double = dt.Rows.Item(i).Item("R_CoefficientOfColleration")
             Dim PD As Double = dt.Rows.Item(i).Item("PD_3bps_floor")
+            If PD = 0 Then
+                PD = 1
+            End If
             Dim M As Double = dt.Rows.Item(i).Item("MaturityEADweigthed")
             Dim b As Double = dt.Rows.Item(i).Item("b_MaturityAdjustment")
             'Check if PD<>1 then execute Formula otherwise if PD=1 then it goes to error
@@ -1448,7 +1448,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the LGD Multiplicator default value for General Stress Test  be changed to " & Me.LGD_GST_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueLGDmultiplicator As Double = Me.LGD_GST_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_GeneralStressTest_Date] drop constraint [DF_ScenarioAnalyze_GeneralStressTest_Date_LGD_mod]"
@@ -1457,12 +1457,10 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("LGD Multiplicator default value for General Stress Test has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1475,7 +1473,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the Colleration increase default value for General Stress Test  be changed to " & Me.Colleration_GST_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueCollerationIncrease As Double = Me.Colleration_GST_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_GeneralStressTest_Date] drop constraint [DF_ScenarioAnalyze_GeneralStressTest_Date_R_Colleration_Mod]"
@@ -1484,12 +1482,10 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("Colleration increase default value for General Stress Test has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1502,7 +1498,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the Obligor rate notches default value for General Stress Test  be changed to " & Me.ObligorRate_Mod_GST_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueObligorRateNotches As Double = Me.ObligorRate_Mod_GST_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_GeneralStressTest_Date] drop constraint [DF_ScenarioAnalyze_GeneralStressTest_Date_PD_Mod]"
@@ -1511,12 +1507,10 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("Obligor rate notches default value for General Stress Test has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1529,7 +1523,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the LGD Multiplicator default value for Concentration Risk CHINA  be changed to " & Me.LGD_CHINA_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueLGDmultiplicator As Double = Me.LGD_CHINA_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskCHINA_Date] drop constraint [DF_ScenarioAnalyze_ConcentrationRiskCHINA_Date_LGDmod]"
@@ -1538,12 +1532,10 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("LGD Multiplicator default value for Concentration Risk CHINA has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1556,7 +1548,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the Colleration increase default value for Concentration Risk CHINA  be changed to " & Me.Colleration_CHINA_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueCollerationIncrease As Double = Me.Colleration_CHINA_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskCHINA_Date] drop constraint [DF_ScenarioAnalyze_ConcentrationRiskCHINA_Date_R_CollerationMod]"
@@ -1565,12 +1557,10 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("Colleration increase default value for Concentration Risk CHINA  has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1583,7 +1573,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the Obligor rate notches default value for Concentration Risk CHINA  be changed to " & Me.ObligorRate_Mod_CHINA_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueObligorRateNotches As Double = Me.ObligorRate_Mod_CHINA_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskCHINA_Date] drop constraint [DF_ScenarioAnalyze_ConcentrationRiskCHINA_Date_PD_Mod]"
@@ -1592,12 +1582,10 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("Obligor rate notches default value for Concentration Risk CHINA has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1610,7 +1598,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the LGD Multiplicator default value for Concentration Risk FINANCIAL INSTITUTIONS  be changed to " & Me.LGD_FI_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueLGDmultiplicator As Double = Me.LGD_FI_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskTBA_Date] drop constraint [DF_ScenarioAnalyze_ConcentrationRiskTBA_Date_LGD_mod]"
@@ -1619,12 +1607,10 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("LGD Multiplicator default value for Concentration Risk FINANCIAL INSTITUTIONS has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1638,7 +1624,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the Colleration increase default value for Concentration Risk FINANCIAL INSTITUTION  be changed to " & Me.Colleration_FI_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueCollerationIncrease As Double = Me.Colleration_FI_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskTBA_Date] drop constraint [DF_ScenarioAnalyze_ConcentrationRiskTBA_Date_R_Colleration_Mod]"
@@ -1647,12 +1633,10 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("Colleration increase default value for Concentration Risk FINANCIAL INSTITUTIONS  has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1665,7 +1649,7 @@ Public Class ScenarioAnalysis
             If MessageBox.Show("Should the Obligor rate notches default value for Concentration Risk FINANCIAL INSTITUTIONS  be changed to " & Me.ObligorRate_Mod_FI_SpinEdit.Text, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Try
                     Dim DefaultValueObligorRateNotches As Double = Me.ObligorRate_Mod_FI_SpinEdit.Text
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskTBA_Date] drop constraint [DF_ScenarioAnalyze_ConcentrationRiskTBA_Date_PD_Mod]"
@@ -1674,12 +1658,85 @@ Public Class ScenarioAnalysis
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     MessageBox.Show("Obligor rate notches default value for Concentration Risk FINANCIAL INSTITUTION has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Catch ex As System.Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Exit Try
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub LevelConfidence_China_SpinEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles LevelConfidence_China_SpinEdit.ButtonClick
+        If e.Button.Tag = "ChangeStandardValue" Then
+            If MessageBox.Show("Should the Level of confidence default value in Concentration Risk for China be changed to " & Me.LevelConfidence_China_SpinEdit.EditValue.ToString, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                Try
+                    Dim DefaultValueLevelofConfidence As Double = Me.LevelConfidence_China_SpinEdit.EditValue
+                    OpenSqlConnections()
+                    cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskCHINA_Date] drop constraint [DF_ScenarioAnalyze_ConcentrationRiskCHINA_Date_LevelOfConfidence]"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskCHINA_Date] ADD  CONSTRAINT [DF_ScenarioAnalyze_ConcentrationRiskCHINA_Date_LevelOfConfidence]  default (" & Str(DefaultValueLevelofConfidence) & ") FOR [LevelOfConfidence]"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
+                    cmd.ExecuteNonQuery()
+                    CloseSqlConnections()
+                    MessageBox.Show("Level of confidence default value for Concentration Risk for China has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                Catch ex As System.Exception
+                    CloseSqlConnections()
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Exit Try
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub LevelConfidence_Financial_SpinEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles LevelConfidence_Financial_SpinEdit.ButtonClick
+        If e.Button.Tag = "ChangeStandardValue" Then
+            If MessageBox.Show("Should the Level of confidence default value in Concentration Risk for Financial Institutions  be changed to " & Me.LevelConfidence_Financial_SpinEdit.EditValue.ToString, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                Try
+                    Dim DefaultValueLevelofConfidence As Double = Me.LevelConfidence_Financial_SpinEdit.EditValue
+                    OpenSqlConnections()
+                    cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskTBA_Date] drop constraint [DF_ScenarioAnalyze_Concentrationrisk_Date_LevelOfConfidence]"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_ConcentrationRiskTBA_Date] ADD  CONSTRAINT [DF_ScenarioAnalyze_Concentrationrisk_Date_LevelOfConfidence]  default (" & Str(DefaultValueLevelofConfidence) & ") FOR [LevelOfConfidence]"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
+                    cmd.ExecuteNonQuery()
+                    CloseSqlConnections()
+                    MessageBox.Show("Level of confidence default value for Concentration Risk in Financial institutions has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                Catch ex As System.Exception
+                    CloseSqlConnections()
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Exit Try
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub LevelConfidence_General_SpinEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles LevelConfidence_General_SpinEdit.ButtonClick
+        If e.Button.Tag = "ChangeStandardValue" Then
+            If MessageBox.Show("Should the Level of confidence default value in GENERAL STRESS TEST  be changed to " & Me.LevelConfidence_General_SpinEdit.EditValue.ToString, "CHANGE DEFAULT VALUE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                Try
+                    Dim DefaultValueLevelofConfidence As Double = Me.LevelConfidence_General_SpinEdit.EditValue
+                    OpenSqlConnections()
+                    cmd.CommandText = "DISABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_GeneralStressTest_Date] drop constraint [DF_ScenarioAnalyze_GeneralStressTest_Totals_LevelOfConfidence]"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ALTER TABLE [ScenarioAnalyze_GeneralStressTest_Date] ADD  CONSTRAINT [DF_ScenarioAnalyze_GeneralStressTest_Totals_LevelOfConfidence]  default (" & Str(DefaultValueLevelofConfidence) & ") FOR [LevelOfConfidence]"
+                    cmd.ExecuteNonQuery()
+                    cmd.CommandText = "ENABLE TRIGGER TR_ProtectCriticalTables ON DATABASE"
+                    cmd.ExecuteNonQuery()
+                    CloseSqlConnections()
+                    MessageBox.Show("Level of confidence default value for GENERAL STRESS TEST has being changed!", "DEFAULT VALUE CHANGED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                Catch ex As System.Exception
+                    CloseSqlConnections()
                     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Try
                 End Try
@@ -1967,6 +2024,8 @@ Public Class ScenarioAnalysis
         workbook.Worksheets(0).Cells("H5").Value = ColerationIncrease
         Dim ObligorRateNoches As Double = Me.ObligorRate_Mod_GST_SpinEdit.Text
         workbook.Worksheets(0).Cells("H6").Value = ObligorRateNoches
+        Dim LevelOfConfidence As Double = Me.LevelConfidence_General_SpinEdit.Text
+        workbook.Worksheets(0).Cells("L6").Value = LevelOfConfidence
         'Stress Test Values
         'Dim ExpectedLoss_Test As Double = Me.ExpectedLoss_GST_TextEdit.Text
         'workbook.Worksheets(0).Cells("C5").Value = ExpectedLoss_Test
@@ -2155,6 +2214,8 @@ Public Class ScenarioAnalysis
         workbook.Worksheets(0).Cells("H5").Value = ColerationIncrease
         Dim ObligorRateNoches As Double = Me.ObligorRate_Mod_CHINA_SpinEdit.Text
         workbook.Worksheets(0).Cells("H6").Value = ObligorRateNoches
+        Dim LevelOfConfidence As Double = Me.LevelConfidence_General_SpinEdit.Text
+        workbook.Worksheets(0).Cells("L6").Value = LevelOfConfidence
         'Stress Test Values
         'Dim ExpectedLoss_Test As Double = Me.ExpectedLoss_CHINA_TextEdit.Text
         'workbook.Worksheets(0).Cells("C5").Value = ExpectedLoss_Test
@@ -2350,6 +2411,8 @@ Public Class ScenarioAnalysis
         workbook.Worksheets(0).Cells("H5").Value = ColerationIncrease
         Dim ObligorRateNoches As Double = Me.ObligorRate_Mod_FI_SpinEdit.Text
         workbook.Worksheets(0).Cells("H6").Value = ObligorRateNoches
+        Dim LevelOfConfidence As Double = Me.LevelConfidence_General_SpinEdit.Text
+        workbook.Worksheets(0).Cells("L6").Value = LevelOfConfidence
         'Stress Test Values
         'Dim ExpectedLoss_Test As Double = Me.ExpectedLoss_FI_TextEdit.Text
         'workbook.Worksheets(0).Cells("C5").Value = ExpectedLoss_Test
@@ -2777,5 +2840,6 @@ Public Class ScenarioAnalysis
         End If
 
     End Sub
+
 
 End Class

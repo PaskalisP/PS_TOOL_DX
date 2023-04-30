@@ -421,6 +421,12 @@
     <Compile Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliationManItems.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliationMissingPostings.designer.vb">
+      <DependentUpon>NostroReconciliationMissingPostings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliationMissingPostings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ALL ITEMS\ACCOUNTING\Forms\Pivot_VerlustfreieBewertung.designer.vb">
       <DependentUpon>Pivot_VerlustfreieBewertung.vb</DependentUpon>
     </Compile>
@@ -820,6 +826,12 @@
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\SqlServerQueries.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\UpdateSqlScript.designer.vb">
+      <DependentUpon>UpdateSqlScript.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\UpdateSqlScript.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\UserDirectoryPermissions.Designer.vb">
       <DependentUpon>UserDirectoryPermissions.vb</DependentUpon>
@@ -1787,7 +1799,6 @@
     <Compile Include="Default\PSTOOL_SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Default\SearchHelper.vb" />
     <Compile Include="Default\SelectFromListForm1.Designer.vb">
       <DependentUpon>SelectFromListForm1.vb</DependentUpon>
     </Compile>
@@ -1878,6 +1889,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliationManItems.resx">
       <DependentUpon>NostroReconciliationManItems.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\NostroReconciliationMissingPostings.resx">
+      <DependentUpon>NostroReconciliationMissingPostings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\Pivot_VerlustfreieBewertung.resx">
       <DependentUpon>Pivot_VerlustfreieBewertung.vb</DependentUpon>
@@ -2052,6 +2066,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\SqlServerQueries.resx">
       <DependentUpon>SqlServerQueries.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\UpdateSqlScript.resx">
+      <DependentUpon>UpdateSqlScript.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\UserDirectoryPermissions.resx">
       <DependentUpon>UserDirectoryPermissions.vb</DependentUpon>

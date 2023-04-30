@@ -36,6 +36,8 @@ Imports DevExpress.XtraRichEdit.Services
 Imports PS_TOOL_DX.RichEditSyntaxSample
 Imports DevExpress.XtraGrid.Views.Printing
 Imports DevExpress.XtraLayout
+Imports DevExpress.Spreadsheet
+Imports System.Linq
 
 Public Class SqlParameter
 
@@ -66,6 +68,12 @@ Public Class SqlParameter
 
     Dim GetFocusedRow As Integer = 0
     Dim GetView As GridView = Nothing
+
+    Dim workbookI As IWorkbook
+    Dim workbook As Workbook
+    Dim worksheet As Worksheet
+    Dim ExcelFileDirectory As String = Nothing
+    Dim ExcelFileExtension As String = Nothing
 
     Sub New()
         InitSkins()
@@ -98,8 +106,11 @@ Public Class SqlParameter
 
         Me.RichEditControl1.Document.DefaultCharacterProperties.FontName = "Consolas"
         Me.RichEditControl1.Document.DefaultCharacterProperties.FontSize = 9
+        Me.RichEditControl2.Document.DefaultCharacterProperties.FontName = "Consolas"
+        Me.RichEditControl2.Document.DefaultCharacterProperties.FontSize = 9
 
         Me.PopupContainerEdit2.PopupFormMinSize = New Size(650, 500)
+        Me.ALL_PopupContainerEdit.PopupFormMinSize = New Size(650, 500)
 
         '***********************************************************************
         '*******CRYSTAL REPORTS DIRECTORY************
@@ -122,72 +133,9 @@ Public Class SqlParameter
     End Sub
 
     Private Sub LOAD_ALL_SQL_PARAMETER_DETAILS()
-        'Fill Balance Sheet 2 details
-        Dim objCMD As SqlCommand = New SqlCommand("SELECT A.[ID] as 'ID-SQL_PARAMETER'
-                                                ,A.[SQL_Parameter_Name] as 'SQL_Parameter_Name-SQL_PARAMETER'
-                                                ,A.[SQL_Parameter_Info] as 'SQL_Parameter_Info-SQL_PARAMETER'
-                                                ,A.[SQL_Parameter_Status] as 'SQL_Parameter_Status-SQL_PARAMETER'
-                                                ,A.[SQL_Command_General] as 'SQL_Command_General-SQL_PARAMETER'
-                                                ,A.[SQL_Float] as 'SQL_Float-SQL_PARAMETER'
-                                                ,B.[ID] as 'ID-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Command_4] as 'SQL_Command_4-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS'
-                                                ,B.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS'
-                                                ,B.[Status] as 'Status-SQL_PARAMETER_DETAILS'
-                                                ,B.[Id_SQL_Parameters] as 'Id_SQL_Parameters-SQL_PARAMETER_DETAILS'
-                                                ,C.[ID] as 'ID-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Command_4] as 'SQL_Command_4SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[Status] as 'Status-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,C.[Id_SQL_Parameters_Details] as 'Id_SQL_Parameters_Details-SQL_PARAMETER_DETAILS_SECOND'
-                                                ,D.[ID] as 'ID-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Name_1] as 'SQL_Name_1-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Name_2] as 'SQL_Name_2-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Name_3] as 'SQL_Name_3-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Name_4] as 'SQL_Name_4-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Float_1] as 'SQL_Float_1-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Float_2] as 'SQL_Float_2-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Float_3] as 'SQL_Float_3-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Float_4] as 'SQL_Float_4-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Command_1] as 'SQL_Command_1-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Command_2] as 'SQL_Command_2-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Command_3] as 'SQL_Command_3-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Command_4] as 'SQL_Command_4-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Date1] as 'SQL_Date1-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[SQL_Date2] as 'SQL_Date2-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[Status] as 'Status-SQL_PARAMETER_DETAILS_THIRD'
-                                                ,D.[Id_SQL_Parameters_Details] as 'Id_SQL_Parameters_Details-SQL_PARAMETER_DETAILS_THIRD'
-                                                FROM [SQL_PARAMETER] A FULL OUTER JOIN [SQL_PARAMETER_DETAILS] B
-                                                ON A.[SQL_Parameter_Name]=B.Id_SQL_Parameters
-                                                FULL OUTER JOIN [SQL_PARAMETER_DETAILS_SECOND] C
-                                                ON B.ID=C.Id_SQL_Parameters_Details
-                                                FULL OUTER JOIN [SQL_PARAMETER_DETAILS_THIRD] D
-                                                ON C.ID=D.Id_SQL_Parameters_Details
-                                                ORDER BY A.[SQL_Float] asc,B.[SQL_Float_1] asc,C.[SQL_Float_1] asc,D.[SQL_Float_1]", conn)
-        objCMD.CommandTimeout = 5000
+        'Fill SQL Details
+        Dim objCMD As SqlCommand = New SqlCommand("execute [LOAD_ALL_SQL_PARAMETER_DETAILS]", conn)
+        objCMD.CommandTimeout = 50000
         da = New SqlDataAdapter(objCMD)
         dt = New DataTable()
         da.Fill(dt)
@@ -195,10 +143,16 @@ Public Class SqlParameter
             Me.GridControl1.DataSource = Nothing
             Me.GridControl1.DataSource = dt
             Me.GridControl1.ForceInitialize()
+            Me.GridControl1.RefreshDataSource()
             Me.SQL_Parameter_ALL_GridView.PopulateColumns()
             Me.SQL_Parameter_ALL_GridView.BestFitColumns()
-            Me.GridControl1.RefreshDataSource()
         End If
+        For Each column As DevExpress.XtraGrid.Columns.GridColumn In SQL_Parameter_ALL_GridView.Columns
+            column.OptionsColumn.ReadOnly = True
+            If column.FieldName.StartsWith("SQL_Command") Then
+                column.OptionsColumn.ReadOnly = False
+            End If
+        Next
     End Sub
 
     Private Sub FILL_ALL_DATA()
@@ -224,10 +178,12 @@ Public Class SqlParameter
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Reload SQL Parameters")
         FILL_ALL_DATA()
+        LOAD_ALL_SQL_PARAMETER_DETAILS()
         SplashScreenManager.CloseForm(False)
     End Sub
 
     Private Sub bbiSave_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiSave.ItemClick
+
         OpenSqlConnections()
         Try
             Me.Validate()
@@ -237,6 +193,8 @@ Public Class SqlParameter
             Me.SQL_PARAMETER_DETAILS_THIRDBindingSource.EndEdit()
             If Me.EDPDataSet.HasChanges = True Then
                 If MessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    SplashScreenManager.Default.SetWaitFormCaption("Save Changes - Reload SQL Parameters")
                     Me.TableAdapterManager.UpdateAll(Me.EDPDataSet)
                     Dim view As GridView = Me.GridControl3.FocusedView
                     Dim focusedRow As Integer = view.FocusedRowHandle
@@ -279,12 +237,14 @@ Public Class SqlParameter
                 End If
             End If
         Catch ex As Exception
+            SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End Try
         CloseSqlConnections()
 
         LOAD_ALL_SQL_PARAMETER_DETAILS()
+        SplashScreenManager.CloseForm(False)
     End Sub
 
     Private Sub bbiDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiDelete.ItemClick
@@ -422,7 +382,7 @@ Public Class SqlParameter
         dtColumns.Columns.Add("ColumnCaption", Type.GetType("System.String"))
 
         For Each column As DevExpress.XtraGrid.Columns.GridColumn In focusedView.Columns
-            If column.Visible = True Then
+            If column.Visible = True And column.OptionsColumn.ReadOnly = False And column.OptionsColumn.AllowEdit = True Then
                 Dim dr As DataRow = dtColumns.NewRow
                 dr("ColumnName") = column.Name.ToString
                 If column.Caption.ToString <> "" Then
@@ -743,8 +703,6 @@ Public Class SqlParameter
         End If
     End Sub
 
-
-
     Private Sub SQL_Parameter_Details_GridView_RowClick(sender As Object, e As RowClickEventArgs) Handles SQL_Parameter_Details_GridView.RowClick
         If SQL_Parameter_Details_GridView.IsNewItemRow(e.RowHandle) = False Then
             Dim view As GridView = DirectCast(sender, GridView)
@@ -869,26 +827,6 @@ Public Class SqlParameter
         End If
     End Sub
 
-    Private Sub SQL_Parameter_Gridview_CustomDrawRowIndicator(sender As Object, e As RowIndicatorCustomDrawEventArgs) Handles SQL_Parameter_Gridview.CustomDrawRowIndicator
-        'If e.RowHandle >= 0 Then e.Info.DisplayText = e.RowHandle.ToString()
-
-    End Sub
-
-    Private Sub SQL_Parameter_Details_GridView_CustomDrawRowIndicator(sender As Object, e As RowIndicatorCustomDrawEventArgs) Handles SQL_Parameter_Details_GridView.CustomDrawRowIndicator
-        'If e.RowHandle >= 0 Then e.Info.DisplayText = e.RowHandle.ToString()
-
-    End Sub
-
-    Private Sub SQL_Parameter_Details_Second_GridView_CustomDrawRowIndicator(sender As Object, e As RowIndicatorCustomDrawEventArgs) Handles SQL_Parameter_Details_Second_GridView.CustomDrawRowIndicator
-        'If e.RowHandle >= 0 Then e.Info.DisplayText = e.RowHandle.ToString()
-
-    End Sub
-
-    Private Sub SQL_Parameter_Details_Third_GridView_CustomDrawRowIndicator(sender As Object, e As RowIndicatorCustomDrawEventArgs) Handles SQL_Parameter_Details_Third_GridView.CustomDrawRowIndicator
-        'If e.RowHandle >= 0 Then e.Info.DisplayText = e.RowHandle.ToString()
-
-    End Sub
-
     Private Sub PopupContainerEdit2_QueryPopUp(sender As Object, e As CancelEventArgs) Handles PopupContainerEdit2.QueryPopUp
         RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
         Dim editor As BaseEdit = DirectCast(sender, BaseEdit)
@@ -898,19 +836,10 @@ Public Class SqlParameter
 
     End Sub
 
-    Private Sub PopupContainerEdit2_QueryDisplayText(sender As Object, e As QueryDisplayTextEventArgs) Handles PopupContainerEdit2.QueryDisplayText
-        'e.DisplayText = RichEditControl1.Document.Text
-    End Sub
-
     Private Sub PopupContainerEdit2_QueryResultValue(sender As Object, e As QueryResultValueEventArgs) Handles PopupContainerEdit2.QueryResultValue
         e.Value = RichEditControl1.Document.Text
     End Sub
 
-    Private Sub PopupContainerEdit2_QueryCloseUp(sender As Object, e As CancelEventArgs) Handles PopupContainerEdit2.QueryCloseUp
-        'Me.RichEditControl1.DataBindings.Clear()
-        'BbiSave.PerformClick()
-
-    End Sub
 
     Private Sub RichEditControl1_TextChanged(sender As Object, e As EventArgs)
         If Me.RichEditControl1.Text <> "" Then
@@ -953,16 +882,6 @@ Public Class SqlParameter
             End If
         End If
     End Sub
-
-    'Private Sub SQL_Parameter_ALL_GridView_CustomRowCellEditForEditing(sender As Object, e As CustomRowCellEditEventArgs) Handles SQL_Parameter_ALL_GridView.CustomRowCellEditForEditing
-    '    Dim view As GridView = CType(sender, GridView)
-    '    If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-    '        If e.Column.FieldName.StartsWith("SQL_Command") = True Then
-    '            e.RepositoryItem = Me.RepositoryItemPopupContainerEdit1
-
-    '        End If
-    '    End If
-    'End Sub
 
     Private Sub SQL_Parameter_Details_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_GridView.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
@@ -1155,11 +1074,7 @@ Public Class SqlParameter
 
     End Sub
 
-    Private Sub GridControl3_Load(sender As Object, e As EventArgs) Handles GridControl3.Load
-        'Me.SQL_Parameter_Gridview.BestFitColumns()
-        'Me.SQL_Parameter_Details_GridView.BestFitColumns()
 
-    End Sub
 
     Private Sub SQL_Parameter_Gridview_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles SQL_Parameter_Gridview.RowCellClick
         ID_1 = 0
@@ -1245,6 +1160,52 @@ Public Class SqlParameter
             ID_4_SQL_Parameters_Details = CInt(view.GetRowCellValue(rowHandle, colId_SQL_Parameters_Details_4))
         End If
     End Sub
+
+
+    Private Sub SQL_Parameter_ALL_GridView_CustomRowCellEdit(sender As Object, e As CustomRowCellEditEventArgs) Handles SQL_Parameter_ALL_GridView.CustomRowCellEdit
+        Dim view As GridView = TryCast(sender, GridView)
+        If e.Column.FieldName.ToString.Contains("Status") Then
+            e.RepositoryItem = ALL_STATUS_ImageComboBox
+        End If
+        If e.Column.FieldName.ToString.StartsWith("SQL_Command") Then
+            e.RepositoryItem = ALL_MemoExEdit
+        End If
+    End Sub
+
+    Private Sub SQL_Parameter_ALL_GridView_CustomRowCellEditForEditing(sender As Object, e As CustomRowCellEditEventArgs) Handles SQL_Parameter_ALL_GridView.CustomRowCellEditForEditing
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            If e.Column.FieldName.StartsWith("SQL_Command") = True Then
+                e.RepositoryItem = Me.ALL_PopupContainerEdit
+
+            End If
+        End If
+    End Sub
+
+    Private Sub ALL_PopupContainerEdit_QueryPopUp(sender As Object, e As CancelEventArgs) Handles ALL_PopupContainerEdit.QueryPopUp
+        RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+        Dim editor As BaseEdit = DirectCast(sender, BaseEdit)
+        RichEditControl2.Document.Text = editor.EditValue.ToString()
+        Me.RichEditControl2.Document.DefaultCharacterProperties.FontName = "Consolas"
+        Me.RichEditControl2.Document.DefaultCharacterProperties.FontSize = 9
+    End Sub
+
+    Private Sub ALL_PopupContainerEdit_QueryResultValue(sender As Object, e As QueryResultValueEventArgs) Handles ALL_PopupContainerEdit.QueryResultValue
+        e.Value = RichEditControl2.Document.Text
+    End Sub
+
+    Private Sub RichEditControl2_TextChanged(sender As Object, e As EventArgs)
+        If Me.RichEditControl2.Text <> "" Then
+            RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+        End If
+    End Sub
+
+    Private Sub RichEditControl2_GotFocus(sender As Object, e As EventArgs)
+        RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+        Me.RichEditControl2.Document.DefaultCharacterProperties.FontName = "Consolas"
+        Me.RichEditControl2.Document.DefaultCharacterProperties.FontSize = 9
+    End Sub
+
 
     Private Sub SQL_Duplicate_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles SQL_Duplicate_BarButtonItem.ItemClick
         Dim focusedView As GridView = CType(GridControl3.FocusedView, GridView)
@@ -3074,5 +3035,568 @@ Public Class SqlParameter
         Me.Close()
     End Sub
 
+    Private Sub bbiExportCurrentSqlParameter_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiExportCurrentSqlParameter.ItemClick
+        If XtraMessageBox.Show(CType("Should the selected SQL Parameter/Command be exported in Excel ?", String), "EXPORT PARAMETER IN EXCEL", buttons:=MessageBoxButtons.YesNo, icon:=MessageBoxIcon.Question, defaultButton:=MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
 
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Exporting SQL Command/Parameter")
+                Dim focusedView As GridView = CType(GridControl3.FocusedView, GridView)
+                Dim EXPORT_VALIDITY As String = "N"
+                Dim OverlyingSqlTable As String = Nothing
+                Dim OverlyingColumnID As String = Nothing
+                Dim CurrentSqlTable As String = Nothing
+                Dim UnderlyingSqlTable As String = Nothing
+                Dim UnderlyingColumnID As String = Nothing
+                Dim SQL_Name_1 As String = Nothing
+                'ID's
+                Dim CurrentID As Integer = CInt(focusedView.GetRowCellValue(focusedView.FocusedRowHandle, colID))
+                Dim OverlyingID As Integer = 0
+                Dim UnderlyingID As Integer = 0
+
+                If focusedView.RowCount > 0 Then
+                    Dim focusedViewName As String = focusedView.Name
+                    Select Case focusedViewName
+                        Case = "SQL_Parameter_Gridview"
+                            CurrentSqlTable = "SQL_PARAMETER"
+                            OverlyingSqlTable = "SQL_PARAMETER"
+                            OverlyingColumnID = "ID"
+                            UnderlyingSqlTable = "SQL_PARAMETER_DETAILS"
+                            UnderlyingColumnID = "Id_SQL_Parameters"
+                            OpenSqlConnections()
+                            cmd.CommandText = "Select COUNT(A.ID) from SQL_PARAMETER A 
+                                                INNER JOIN SQL_PARAMETER_DETAILS B on A.[SQL_Parameter_Name]=B.Id_SQL_Parameters
+                                                INNER JOIN SQL_PARAMETER_DETAILS_SECOND C on B.ID=C.Id_SQL_Parameters_Details
+                                                where A.ID=" & CurrentID
+                            If CInt(cmd.ExecuteScalar) = 0 Then
+                                EXPORT_VALIDITY = "Y"
+                            Else
+                                EXPORT_VALIDITY = "N"
+                            End If
+                            CloseSqlConnections()
+
+                        Case = "SQL_Parameter_Details_GridView"
+                            CurrentSqlTable = "SQL_PARAMETER_DETAILS"
+                            OverlyingSqlTable = "SQL_PARAMETER"
+                            OverlyingColumnID = "ID"
+                            UnderlyingSqlTable = "SQL_PARAMETER_DETAILS_SECOND"
+                            UnderlyingColumnID = "Id_SQL_Parameters_Details"
+                            OpenSqlConnections()
+                            cmd.CommandText = "Select COUNT(B.ID) from SQL_PARAMETER_DETAILS B 
+                                                INNER JOIN SQL_PARAMETER_DETAILS_SECOND C on B.ID=C.Id_SQL_Parameters_Details
+                                                INNER JOIN SQL_PARAMETER_DETAILS_THIRD D on C.ID=D.Id_SQL_Parameters_Details
+                                                where B.ID=" & CurrentID
+                            If CInt(cmd.ExecuteScalar) = 0 Then
+                                EXPORT_VALIDITY = "Y"
+                            Else
+                                EXPORT_VALIDITY = "N"
+                            End If
+                            CloseSqlConnections()
+                        Case = "SQL_Parameter_Details_Second_GridView"
+                            CurrentSqlTable = "SQL_PARAMETER_DETAILS_SECOND"
+                            OverlyingSqlTable = "SQL_PARAMETER_DETAILS"
+                            OverlyingColumnID = "ID"
+                            UnderlyingSqlTable = "SQL_PARAMETER_DETAILS_THIRD"
+                            UnderlyingColumnID = "Id_SQL_Parameters_Details"
+                            OpenSqlConnections()
+                            cmd.CommandText = "Select COUNT(C.ID) from SQL_PARAMETER_DETAILS_SECOND C 
+                                                INNER JOIN SQL_PARAMETER_DETAILS_THIRD D on C.ID=D.Id_SQL_Parameters_Details
+                                                where C.ID=" & CurrentID
+                            If CInt(cmd.ExecuteScalar) > 0 Then
+                                EXPORT_VALIDITY = "Y"
+                            Else
+                                EXPORT_VALIDITY = "N"
+                            End If
+                            CloseSqlConnections()
+                        Case = "SQL_Parameter_Details_Third_GridView"
+                            CurrentSqlTable = "SQL_PARAMETER_DETAILS_THIRD"
+                            OverlyingSqlTable = "SQL_PARAMETER_DETAILS_SECOND"
+                            OverlyingColumnID = "ID"
+                            UnderlyingSqlTable = "SQL_PARAMETER_DETAILS_THIRD"
+                            UnderlyingColumnID = "Id_SQL_Parameters_Details"
+                            EXPORT_VALIDITY = "N"
+                    End Select
+
+                    If EXPORT_VALIDITY = "Y" Then
+                        'Check for Excel File Directory
+                        QueryText = "Select * from [PARAMETER]  where PARAMETER1 in ('Export_SQL_Parameter_ExcelFile') and IdABTEILUNGSPARAMETER in ('EXCEL_FILES') 
+                                 and IdABTEILUNGSCODE_NAME in ('EDP') and [PARAMETER STATUS] in ('Y')"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
+                        dt = New System.Data.DataTable()
+                        da.Fill(dt)
+                        If dt.Rows.Count = 1 Then
+                            ExcelFileDirectory = dt.Rows.Item(0).Item("Parameter2").ToString
+                            ExcelFileExtension = Path.GetExtension(dt.Rows.Item(0).Item("Parameter2").ToString)
+                        End If
+                        dt.Clear()
+
+                        If ExcelFileDirectory <> "" Then
+                            If focusedViewName <> Nothing Then
+                                OpenSqlConnections()
+                                If focusedViewName = "SQL_Parameter_Gridview" Then
+                                    cmd.CommandText = "Select SQL_Parameter_Name from " & CurrentSqlTable & " where ID=" & CurrentID
+                                    SQL_Name_1 = CStr(cmd.ExecuteScalar)
+                                    OverlyingID = CurrentID
+                                    cmd.CommandText = "Select " & UnderlyingColumnID & " from " & UnderlyingSqlTable & " where Id_SQL_Parameters=" & SQL_Name_1 '++++++Needs to be changed as 
+                                    'cmd.CommandText = "Select " & UnderlyingColumnID & " from " & UnderlyingSqlTable 
+                                    '& " where Id_SQL_Parameters="  & SQL_Name_1
+                                    UnderlyingID = CInt(cmd.ExecuteScalar)
+                                Else
+                                    cmd.CommandText = "Select SQL_Name_1 from " & CurrentSqlTable & " where ID=" & CurrentID
+                                    SQL_Name_1 = CStr(cmd.ExecuteScalar)
+                                    cmd.CommandText = "Select " & OverlyingColumnID & " from " & OverlyingSqlTable & " where " & OverlyingColumnID & "=" & CurrentID
+                                    OverlyingID = CInt(cmd.ExecuteScalar)
+                                    cmd.CommandText = "Select " & UnderlyingColumnID & " from " & UnderlyingSqlTable & " where " & UnderlyingColumnID & "=" & CurrentID
+                                    UnderlyingID = CInt(cmd.ExecuteScalar)
+                                End If
+                                CloseSqlConnections()
+
+                                'Load SQL Commands from Underlying Table for export
+                                QueryText = "Select * from " & CurrentSqlTable & " where ID=" & CurrentID
+                                da = New SqlDataAdapter(QueryText.Trim(), conn)
+                                dt = New System.Data.DataTable()
+                                da.Fill(dt)
+
+                                '+++MODIFIED
+                                If focusedViewName = "SQL_Parameter_Gridview" Then
+                                    'Load SQL Commands from Underlying Table for export
+                                    QueryText = "Select * from " & UnderlyingSqlTable & " where Id_SQL_Parameters=" & SQL_Name_1
+                                    da1 = New SqlDataAdapter(QueryText.Trim(), conn)
+                                    dt1 = New System.Data.DataTable()
+                                    da1.Fill(dt1)
+                                Else
+                                    QueryText = "Select * from " & UnderlyingSqlTable & " where " & UnderlyingColumnID & "=" & CurrentID
+                                    da1 = New SqlDataAdapter(QueryText.Trim(), conn)
+                                    dt1 = New System.Data.DataTable()
+                                    da1.Fill(dt1)
+                                End If
+
+
+                                Dim workbook As Workbook = New DevExpress.Spreadsheet.Workbook()
+
+                                workbook.LoadDocument(ExcelFileDirectory, DevExpress.Spreadsheet.DocumentFormat.OpenXml)
+                                workbook.BeginUpdate()
+                                'Delete all Sheets except the first
+                                For Each WS As Worksheet In workbook.Worksheets.ToList
+                                    If WS.Index > 0 Then
+                                        workbook.Worksheets.RemoveAt(WS.Index)
+                                    End If
+                                Next
+
+                                'workbook.EndUpdate()
+                                'workbook.SaveDocument(ExcelFileDirectory, DevExpress.Spreadsheet.DocumentFormat.OpenXml)
+                                'MsgBox("OK")
+
+                                'workbook.LoadDocument(ExcelFileDirectory, DevExpress.Spreadsheet.DocumentFormat.OpenXml)
+                                'workbook.BeginUpdate()
+                                'workbook.Worksheets.RemoveAt(0)
+                                workbook.Worksheets(0).Name = UnderlyingSqlTable
+                                'workbook.Worksheets.Insert(0, "SQL_PARAMETER_B")
+                                'workbook.Worksheets.Insert(1, "SQL_PARAMETER_C")
+
+
+                                Dim worksheet1 As Worksheet = workbook.Worksheets(0)
+                                'Dim worksheet2 As Worksheet = workbook.Worksheets(1)
+                                worksheet1.Clear(worksheet1.GetUsedRange)
+                                'worksheet2.Clear(worksheet2.GetUsedRange)
+                                worksheet1.Cells("A1").Value = "Exported_SQL_Parameter_Name"
+                                worksheet1.Cells("B1").Value = SQL_Name_1
+                                worksheet1.Cells("A2").Value = "Exported_SQL_Parameter_ID"
+                                worksheet1.Cells("B2").Value = CurrentID
+                                worksheet1.Cells("A3").Value = "Parameter_from_SQL_Table"
+                                worksheet1.Cells("B3").Value = CurrentSqlTable
+                                worksheet1.Import(dt, True, 3, 0)
+                                worksheet1.Cells("A6").Value = "Exported_Commands_from_SQL_Table"
+                                worksheet1.Cells("B6").Value = UnderlyingSqlTable
+                                worksheet1.Import(dt1, True, 6, 0)
+                                'worksheet2.Import(dt1, True, 0, 0)
+
+                                workbook.EndUpdate()
+
+                                workbook.SaveDocument(ExcelFileDirectory, DevExpress.Spreadsheet.DocumentFormat.OpenXml)
+
+                                'MsgBox("OK")
+
+                                Dim c As New ExcelForm
+                                c.MdiParent = Me.MdiParent
+                                c.Show()
+                                c.WindowState = FormWindowState.Maximized
+
+
+                                c.Text = "EXPORTED_SQL_PARAMETER-" & SQL_Name_1
+                                c.SpreadsheetControl1.ReadOnly = True
+
+
+                                workbookI = c.SpreadsheetControl1.Document
+                                Using stream As New FileStream(ExcelFileDirectory, FileMode.Open)
+                                    SplashScreenManager.Default.SetWaitFormCaption("Loading SQL Parameter Export Excel File")
+                                    System.Threading.Thread.Sleep(2000)
+                                    workbookI.LoadDocument(stream, DevExpress.Spreadsheet.DocumentFormat.OpenXml)
+                                    SplashScreenManager.CloseForm(False)
+                                    XtraMessageBox.Show("Selected Parameter exported successfully!", "SQL PARAMETER EXPORT STATUS", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                                End Using
+
+                            End If
+                        End If
+                    ElseIf EXPORT_VALIDITY = "N" Then
+                        SplashScreenManager.CloseForm(False)
+                        XtraMessageBox.Show("Unable to export Parameter" & vbNewLine _
+                                          & "Parameter has more than 1 underlying levels or has no underlying levels" & vbNewLine _
+                                          & "Only Parameters with exactly 1 underlying level can be exported", "UNABLE TO EXPORT SELECTED PARAMETER", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                        Return
+                    End If
+
+                End If
+
+
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
+            End Try
+
+        End If
+
+    End Sub
+
+    Private Sub ImportSqlFromExcelFile_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles ImportSqlFromExcelFile_bbi.ItemClick
+        Dim focusedView As GridView = CType(GridControl3.FocusedView, GridView)
+
+        If focusedView.RowCount > 0 Then
+
+            Dim dtColumns As New DataTable
+            dtColumns.Columns.Add("ColumnName", Type.GetType("System.String"))
+            dtColumns.Columns.Add("ColumnCaption", Type.GetType("System.String"))
+            dtColumns.Columns.Add("TableFieldName", Type.GetType("System.String"))
+            For Each column As DevExpress.XtraGrid.Columns.GridColumn In focusedView.Columns
+                If column.Visible = True And column.OptionsColumn.ReadOnly = False And column.OptionsColumn.AllowEdit = True Then
+                    Dim dr As DataRow = dtColumns.NewRow
+                    dr("ColumnName") = column.Name.ToString
+                    dr("ColumnCaption") = column.Caption.ToString
+                    dr("TableFieldName") = column.FieldName.ToString
+                    dtColumns.Rows.Add(dr)
+
+                End If
+            Next
+            Dim c As New UpdateSqlScript
+            c.ColumnsNames_LookUpEdit.Properties.DataSource = dtColumns
+            c.ColumnsNames_LookUpEdit.Properties.ForceInitialize()
+            c.ColumnsNames_LookUpEdit.Properties.PopulateColumns()
+            c.ColumnsNames_LookUpEdit.Properties.ValueMember = "TableFieldName"
+            c.ColumnsNames_LookUpEdit.Properties.DisplayMember = "TableFieldName"
+
+            Dim focusedViewName As String = focusedView.Name
+            Select Case focusedViewName
+                Case = "SQL_Parameter_Gridview"
+                    c.SQL_Table_TextEdit.Text = "SQL_PARAMETER"
+                    c.SQL_Table_Underlying_TextEdit.Text = "SQL_PARAMETER_DETAILS"
+                Case = "SQL_Parameter_Details_GridView"
+                    c.SQL_Table_TextEdit.Text = "SQL_PARAMETER_DETAILS"
+                    c.SQL_Table_Underlying_TextEdit.Text = "SQL_PARAMETER_DETAILS_SECOND"
+                Case = "SQL_Parameter_Details_Second_GridView"
+                    c.SQL_Table_TextEdit.Text = "SQL_PARAMETER_DETAILS_SECOND"
+                    c.SQL_Table_Underlying_TextEdit.Text = "SQL_PARAMETER_DETAILS_THIRD"
+                Case = "SQL_Parameter_Details_Third_GridView"
+                    c.SQL_Table_TextEdit.Text = "SQL_PARAMETER_DETAILS_THIRD"
+                    c.SQL_Table_Underlying_TextEdit.Text = ""
+            End Select
+
+
+            If DevExpress.XtraEditors.XtraDialog.Show(c, "SQL Parameter - Update SQL Script", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+                If c.FileValidity_BarEditItem.EditValue.ToString = "Y" Then
+                    Try
+                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                        SplashScreenManager.Default.SetWaitFormCaption("Start updating SQL Parameter/Script from Excel File")
+                        Dim CUR_FILE_DIR_IMPORT As String = c.FileName_TextEdit.Text
+                        Dim CurrentExcelSheetName As String = Nothing
+                        Dim workbook As Workbook = New DevExpress.Spreadsheet.Workbook()
+                        workbook.LoadDocument(CUR_FILE_DIR_IMPORT, DevExpress.Spreadsheet.DocumentFormat.Xlsx)
+                        Dim worksheet As Worksheet = workbook.Worksheets(0)
+                        CurrentExcelSheetName = worksheet.Name
+                        Dim SQL_PARAMETER_NAME As String = Nothing
+                        Dim SQL_PARAMETER_TABLE_NAME As String = Nothing
+                        Dim SQL_COMMANDS_TABLE_NAME As String = Nothing
+                        Dim PARAMETER_NAME_ID As Integer = 0
+
+                        SplashScreenManager.Default.SetWaitFormCaption("Start reading parameter from Excel File")
+                        OpenSqlConnections()
+                        cmd.CommandText = "IF OBJECT_ID('tempdb..#Temp_SQL_PARAMETER') IS NOT NULL DROP TABLE #Temp_SQL_PARAMETER
+                                       IF OBJECT_ID('tempdb..#Temp_SQL_COMMANDS') IS NOT NULL DROP TABLE #Temp_SQL_COMMANDS
+                                       IF OBJECT_ID('tempdb..#Temp_DECLARED_PARAMETER') IS NOT NULL DROP TABLE #Temp_DECLARED_PARAMETER
+
+                                        CREATE TABLE [#Temp_DECLARED_PARAMETER](
+                                        [ID] int identity (1,1) NOT NULL,
+                                        [ParameterName] [nvarchar](255) NULL,
+                                        [ParameterValue] [nvarchar](255) NULL,
+                                        Check_Result Nvarchar(1) Default ('N'),
+                                        [ParameterName_ID] int NULL)
+
+                                        DECLARE @query  AS NVARCHAR(MAX)
+
+                                        DECLARE @SQL_PARAMETER_TABLE_NAME Nvarchar(255)=(SELECT * 
+                                        FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=<IMPORT_DIR_FILE>', 'SELECT * FROM [<ExcelSheet>$B2:B3]')) 
+
+                                        DECLARE @SQL_COMMANDS_TABLE_NAME Nvarchar(255)=(SELECT * 
+                                        FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=<IMPORT_DIR_FILE>', 'SELECT * FROM [<ExcelSheet>$B5:B6]')) 
+
+                                        DECLARE @SQL_PARAMETER_NAME Nvarchar(255)=(SELECT * 
+                                        FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=<IMPORT_DIR_FILE>; HDR=No', 'SELECT * FROM [<ExcelSheet>$B1:B1]')) 
+
+                                        SELECT * INTO #Temp_SQL_PARAMETER 
+                                        FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=<IMPORT_DIR_FILE>', 'SELECT * FROM [<ExcelSheet>$A4:Z5]')
+
+                                        SELECT * INTO #Temp_SQL_COMMANDS FROM 
+                                        OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=<IMPORT_DIR_FILE>', 'SELECT * FROM [<ExcelSheet>$A7:Z50000]') 
+
+                                        INSERT INTO #Temp_DECLARED_PARAMETER
+                                        VALUES 
+                                        ('SQL_PARAMETER_TABLE_NAME',@SQL_PARAMETER_TABLE_NAME,'N',0)
+                                        ,('SQL_COMMANDS_TABLE_NAME',@SQL_COMMANDS_TABLE_NAME,'N',0)
+                                        ,('SQL_PARAMETER_NAME',@SQL_PARAMETER_NAME,'N',0)
+
+                                        --Check if Parameter Name exists
+                                        IF @SQL_PARAMETER_TABLE_NAME<>'SQL_PARAMETER'
+                                        BEGIN
+                                        set @query = 'DECLARE @CHECK_PARAMETER_EXISTS int=
+                                                                                          (Select COUNT(ID) from '+ @SQL_PARAMETER_TABLE_NAME +' where SQL_Name_1 in ('''+ @SQL_PARAMETER_NAME +'''))
+                                                  
+                                                                                          IF @CHECK_PARAMETER_EXISTS>0
+                                                                                          BEGIN
+                                                                                          DECLARE @PARAMETER_NAME_ID int=(Select ID from '+ @SQL_PARAMETER_TABLE_NAME +' where SQL_Name_1 in ('''+ @SQL_PARAMETER_NAME +'''))
+                                                                                          UPDATE #Temp_DECLARED_PARAMETER SET Check_Result=''Y'',ParameterName_ID=@PARAMETER_NAME_ID 
+                                                                                          END'
+                                        END
+                                        ELSE 
+                                        IF @SQL_PARAMETER_TABLE_NAME in ('SQL_PARAMETER')
+                                        BEGIN
+                                        set @query = 'DECLARE @CHECK_PARAMETER_EXISTS int=
+                                                                                          (Select COUNT(ID) from '+ @SQL_PARAMETER_TABLE_NAME +' where SQL_Parameter_Name in ('''+ @SQL_PARAMETER_NAME +'''))
+                                                  
+                                                                                          IF @CHECK_PARAMETER_EXISTS>0
+                                                                                          BEGIN
+                                                                                          DECLARE @PARAMETER_NAME_ID int=(Select ID from '+ @SQL_PARAMETER_TABLE_NAME +' where SQL_Name_1 in ('''+ @SQL_PARAMETER_NAME +'''))
+                                                                                          UPDATE #Temp_DECLARED_PARAMETER SET Check_Result=''Y'',ParameterName_ID=@PARAMETER_NAME_ID 
+                                                                                          END'
+                                        END             
+
+
+                                        --Select @query
+                                        exec(@query)
+                                        "
+                        cmd.CommandText = cmd.CommandText.Replace("<IMPORT_DIR_FILE>", CUR_FILE_DIR_IMPORT).Replace("<ExcelSheet>", CurrentExcelSheetName)
+                        cmd.ExecuteNonQuery()
+
+                        SplashScreenManager.Default.SetWaitFormCaption("Get current SQL Parameter/Script SQL PARAMETER")
+                        QueryText = "select * from #Temp_DECLARED_PARAMETER"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
+                        da.SelectCommand.CommandTimeout = 60000
+                        dt = New System.Data.DataTable()
+                        da.Fill(dt)
+                        Dim dr() As System.Data.DataRow
+                        dr = dt.Select("ID=3")
+                        SQL_PARAMETER_NAME = dr(0)("ParameterValue").ToString()
+                        PARAMETER_NAME_ID = CInt(dr(0)("ParameterName_ID").ToString())
+                        dr = dt.Select("ID=2")
+                        SQL_COMMANDS_TABLE_NAME = dr(0)("ParameterValue").ToString()
+                        dr = dt.Select("ID=1")
+                        SQL_PARAMETER_TABLE_NAME = dr(0)("ParameterValue").ToString()
+
+                        SplashScreenManager.Default.SetWaitFormCaption("Check if Parameter ID is present in the current SQL Command")
+                        If PARAMETER_NAME_ID = 0 Then
+                            Dim PARAMETER_LEVEL As String = Nothing
+                            Select Case SQL_PARAMETER_TABLE_NAME
+                                Case = "SQL_PARAMETER"
+                                    PARAMETER_LEVEL = "General SQL Parameter"
+                                Case = "SQL_PARAMETER_DETAILS"
+                                    PARAMETER_LEVEL = "Level 1"
+                                Case = "SQL_PARAMETER_DETAILS_SECOND"
+                                    PARAMETER_LEVEL = "Level 2"
+                                Case = "SQL_PARAMETER_DETAILS_THIRD"
+                                    PARAMETER_LEVEL = "Level 3"
+                            End Select
+                            SplashScreenManager.CloseForm(False)
+                            XtraMessageBox.Show("The SQL Command Parameter: " & SQL_PARAMETER_NAME & vbNewLine _
+                                                & "is not present in Table: " & SQL_PARAMETER_TABLE_NAME & vbNewLine _
+                                                & "Please first add parameter to relevant Table: " & SQL_PARAMETER_TABLE_NAME & " - Level: " & PARAMETER_LEVEL & vbNewLine _
+                                                & "and start import procedure again!", "UNABLE TO UPDATE SQL SCRIPT - MISSING PARAMETER", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                            CloseSqlConnections()
+                            Return
+                        ElseIf PARAMETER_NAME_ID <> 0 Then
+                            SplashScreenManager.Default.SetWaitFormCaption("Update SQL Parameter")
+                            'Update Parameter Table Name
+                            Select Case SQL_PARAMETER_TABLE_NAME
+                                Case = "SQL_PARAMETER"
+                                    cmd.CommandText = "UPDATE A SET A.[SQL_Parameter_Info]=B.[SQL_Parameter_Info]
+                                                  ,A.[SQL_Parameter_Status]=B.[SQL_Parameter_Status]
+                                                  ,A.[SQL_Command_General]=B.[SQL_Command_General]
+                                                  ,A.[SQL_Float]=B.[SQL_Float]
+                                                              from SQL_PARAMETER A INNER JOIN #Temp_SQL_PARAMETER B 
+                                                  on A.[SQL_Parameter_Name]=B.[SQL_Parameter_Name]
+                                                              where A.ID=" & PARAMETER_NAME_ID
+                                Case = "SQL_PARAMETER_DETAILS"
+                                    cmd.CommandText = "UPDATE A SET 
+                                                    A.[SQL_Name_1]=B.[SQL_Name_1]
+                                                    ,A.[SQL_Name_2]=B.[SQL_Name_2]
+                                                    ,A.[SQL_Name_3]=B.[SQL_Name_3]
+                                                    ,A.[SQL_Name_4]=B.[SQL_Name_4]
+                                                    ,A.[SQL_Float_1]=B.[SQL_Float_1]
+                                                    ,A.[SQL_Float_2]=B.[SQL_Float_2]
+                                                    ,A.[SQL_Float_3]=B.[SQL_Float_3]
+                                                    ,A.[SQL_Float_4]=B.[SQL_Float_4]
+                                                    ,A.[SQL_Command_1]=B.[SQL_Command_1]
+                                                    ,A.[SQL_Command_2]=B.[SQL_Command_2]
+                                                    ,A.[SQL_Command_3]=B.[SQL_Command_3]
+                                                    ,A.[SQL_Command_4]=B.[SQL_Command_4]
+                                                    ,A.[SQL_Date1]=B.[SQL_Date1]
+                                                    ,A.[SQL_Date2]=B.[SQL_Date2]
+                                                    ,A.[Status]=B.[Status]
+                                                                from SQL_PARAMETER_DETAILS A INNER JOIN #Temp_SQL_PARAMETER B on A.[SQL_Name_1]=B.[SQL_Name_1]
+                                                                 where A.ID=" & PARAMETER_NAME_ID
+                                Case = "SQL_PARAMETER_DETAILS_SECOND"
+                                    cmd.CommandText = "UPDATE A SET 
+                                                    A.[SQL_Name_1]=B.[SQL_Name_1]
+                                                    ,A.[SQL_Name_2]=B.[SQL_Name_2]
+                                                    ,A.[SQL_Name_3]=B.[SQL_Name_3]
+                                                    ,A.[SQL_Name_4]=B.[SQL_Name_4]
+                                                    ,A.[SQL_Float_1]=B.[SQL_Float_1]
+                                                    ,A.[SQL_Float_2]=B.[SQL_Float_2]
+                                                    ,A.[SQL_Float_3]=B.[SQL_Float_3]
+                                                    ,A.[SQL_Float_4]=B.[SQL_Float_4]
+                                                    ,A.[SQL_Command_1]=B.[SQL_Command_1]
+                                                    ,A.[SQL_Command_2]=B.[SQL_Command_2]
+                                                    ,A.[SQL_Command_3]=B.[SQL_Command_3]
+                                                    ,A.[SQL_Command_4]=B.[SQL_Command_4]
+                                                    ,A.[SQL_Date1]=B.[SQL_Date1]
+                                                    ,A.[SQL_Date2]=B.[SQL_Date2]
+                                                    ,A.[Status]=B.[Status]
+                                                                from SQL_PARAMETER_DETAILS_SECOND A INNER JOIN #Temp_SQL_PARAMETER B on A.[SQL_Name_1]=B.[SQL_Name_1]
+                                                                 where A.ID=" & PARAMETER_NAME_ID
+                                Case = "SQL_PARAMETER_DETAILS_THIRD"
+                                    cmd.CommandText = "UPDATE A SET 
+                                                    A.[SQL_Name_1]=B.[SQL_Name_1]
+                                                    ,A.[SQL_Name_2]=B.[SQL_Name_2]
+                                                    ,A.[SQL_Name_3]=B.[SQL_Name_3]
+                                                    ,A.[SQL_Name_4]=B.[SQL_Name_4]
+                                                    ,A.[SQL_Float_1]=B.[SQL_Float_1]
+                                                    ,A.[SQL_Float_2]=B.[SQL_Float_2]
+                                                    ,A.[SQL_Float_3]=B.[SQL_Float_3]
+                                                    ,A.[SQL_Float_4]=B.[SQL_Float_4]
+                                                    ,A.[SQL_Command_1]=B.[SQL_Command_1]
+                                                    ,A.[SQL_Command_2]=B.[SQL_Command_2]
+                                                    ,A.[SQL_Command_3]=B.[SQL_Command_3]
+                                                    ,A.[SQL_Command_4]=B.[SQL_Command_4]
+                                                    ,A.[SQL_Date1]=B.[SQL_Date1]
+                                                    ,A.[SQL_Date2]=B.[SQL_Date2]
+                                                    ,A.[Status]=B.[Status]
+                                                                from SQL_PARAMETER_DETAILS_THIRD A INNER JOIN #Temp_SQL_PARAMETER B on A.[SQL_Name_1]=B.[SQL_Name_1]
+                                                                 where A.ID=" & PARAMETER_NAME_ID
+                            End Select
+                            cmd.ExecuteNonQuery()
+
+                            SplashScreenManager.Default.SetWaitFormCaption("Update SQL Commands for relevant Parameter")
+                            Select Case SQL_COMMANDS_TABLE_NAME
+                                Case = "SQL_PARAMETER_DETAILS"
+                                    'Delete current commands
+                                    cmd.CommandText = "DELETE FROM SQL_PARAMETER_DETAILS Where [Id_SQL_Parameters]=" & PARAMETER_NAME_ID
+                                    cmd.ExecuteNonQuery()
+                                    'Add new SQL commands
+                                    cmd.CommandText = "INSERT INTO [SQL_PARAMETER_B]
+                                                   ([SQL_Name_1]
+                                                   ,[SQL_Name_2]
+                                                   ,[SQL_Name_3]
+                                                   ,[SQL_Name_4]
+                                                   ,[SQL_Float_1]
+                                                   ,[SQL_Float_2]
+                                                   ,[SQL_Float_3]
+                                                   ,[SQL_Float_4]
+                                                   ,[SQL_Command_1]
+                                                   ,[SQL_Command_2]
+                                                   ,[SQL_Command_3]
+                                                   ,[SQL_Command_4]
+                                                   ,[SQL_Date1]
+                                                   ,[SQL_Date2]
+                                                   ,[Status]
+                                                   ,[Id_SQL_Parameters])
+                                             SELECT [SQL_Name_1]
+                                                   ,[SQL_Name_2]
+                                                   ,[SQL_Name_3]
+                                                   ,[SQL_Name_4]
+                                                   ,[SQL_Float_1]
+                                                   ,[SQL_Float_2]
+                                                   ,[SQL_Float_3]
+                                                   ,[SQL_Float_4]
+                                                   ,[SQL_Command_1]
+                                                   ,[SQL_Command_2]
+                                                   ,[SQL_Command_3]
+                                                   ,[SQL_Command_4]
+                                                   ,[SQL_Date1]
+                                                   ,[SQL_Date2]
+                                                   ,[Status]
+                                                   ,[Id_SQL_Parameters]=" & PARAMETER_NAME_ID & " FROM #Temp_SQL_COMMANDS"
+
+                                    cmd.ExecuteNonQuery()
+
+                                Case "SQL_PARAMETER_DETAILS_SECOND", "SQL_PARAMETER_DETAILS_THIRD"
+                                    'Delete current commands
+                                    cmd.CommandText = "DELETE FROM " & SQL_COMMANDS_TABLE_NAME & "  Where [Id_SQL_Parameters_Details]=" & PARAMETER_NAME_ID
+                                    cmd.ExecuteNonQuery()
+                                    'Add new SQL commands
+                                    cmd.CommandText = "INSERT INTO " & SQL_COMMANDS_TABLE_NAME & " 
+                                                   ([SQL_Name_1]
+                                                   ,[SQL_Name_2]
+                                                   ,[SQL_Name_3]
+                                                   ,[SQL_Name_4]
+                                                   ,[SQL_Float_1]
+                                                   ,[SQL_Float_2]
+                                                   ,[SQL_Float_3]
+                                                   ,[SQL_Float_4]
+                                                   ,[SQL_Command_1]
+                                                   ,[SQL_Command_2]
+                                                   ,[SQL_Command_3]
+                                                   ,[SQL_Command_4]
+                                                   ,[SQL_Date1]
+                                                   ,[SQL_Date2]
+                                                   ,[Status]
+                                                   ,[Id_SQL_Parameters_Details])
+                                             SELECT [SQL_Name_1]
+                                                   ,[SQL_Name_2]
+                                                   ,[SQL_Name_3]
+                                                   ,[SQL_Name_4]
+                                                   ,[SQL_Float_1]
+                                                   ,[SQL_Float_2]
+                                                   ,[SQL_Float_3]
+                                                   ,[SQL_Float_4]
+                                                   ,[SQL_Command_1]
+                                                   ,[SQL_Command_2]
+                                                   ,[SQL_Command_3]
+                                                   ,[SQL_Command_4]
+                                                   ,[SQL_Date1]
+                                                   ,[SQL_Date2]
+                                                   ,[Status]
+                                                   ,[Id_SQL_Parameters]=" & PARAMETER_NAME_ID & " FROM #Temp_SQL_COMMANDS"
+                                    cmd.ExecuteNonQuery()
+                            End Select
+                        End If
+                        CloseSqlConnections()
+                        SplashScreenManager.Default.SetWaitFormCaption("Update finished - Load all data")
+                        FILL_ALL_DATA()
+                        SplashScreenManager.CloseForm(False)
+                    Catch ex As Exception
+                        SplashScreenManager.CloseForm(False)
+                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                        Return
+                    End Try
+
+                Else
+                    'File Validity=N
+                    XtraMessageBox.Show("The uploaded SQL Script file is not valid!", "UNABLE TO UPDATE SQL SCRIPT - INVALID SCRIPT FILE", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                    Return
+                End If
+
+            End If
+
+
+        End If
+
+    End Sub
 End Class

@@ -51,7 +51,6 @@ Imports DevExpress.XtraRichEdit
 Imports DevExpress.Data
 Imports DevExpress.XtraEditors.DXErrorProvider
 Imports DevExpress.XtraRichEdit.Services
-Imports PDataTool.RichEditSyntaxSample
 Imports DevExpress.XtraGrid.Views.Printing
 Imports PS_TOOL_DX.RichEditSyntaxSample
 

@@ -135,7 +135,7 @@ Partial Class SqlServerQueries
         Me.Gridview1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
         Me.Gridview1.Appearance.FocusedRow.Options.UseBackColor = True
         Me.Gridview1.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.Gridview1.Appearance.GroupRow.ForeColor = System.Drawing.Color.Navy
+        Me.Gridview1.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.Gridview1.Appearance.GroupRow.Options.UseForeColor = True
         Me.Gridview1.DetailHeight = 303
         Me.Gridview1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus

@@ -126,6 +126,8 @@ Partial Class GmpsPaymentsOut
         Me.layoutViewField_LayoutViewColumn98 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.col_UB_SenderCity1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.layoutViewField_LayoutViewColumn98_1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colSendType1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn102 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.PaymentsOut_MT202_LayoutView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.LayoutViewColumn1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
@@ -406,6 +408,7 @@ Partial Class GmpsPaymentsOut
         Me.colPaymentYear = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colProcessedBy = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colMsgSenderCountry = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSendType = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.Group1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.item40 = New DevExpress.XtraLayout.EmptySpaceItem()
@@ -422,6 +425,7 @@ Partial Class GmpsPaymentsOut
         Me.item10 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.item15 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.item0 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.item11 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.GMPS_PAYMENTS_OUTBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ClearingDataSet = New PS_TOOL_DX.ClearingDataSet()
         Me.GMPS_PAYMENTS_OUTTableAdapter = New PS_TOOL_DX.ClearingDataSetTableAdapters.GMPS_PAYMENTS_OUTTableAdapter()
@@ -447,6 +451,10 @@ Partial Class GmpsPaymentsOut
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutViewColumn102 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn102_1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.LayoutViewColumn103 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn103 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         CType(Me.PaymentsOut_MT103_LayoutView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colMTTYPE1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -499,6 +507,7 @@ Partial Class GmpsPaymentsOut
         CType(Me.layoutViewField_LayoutViewColumn95, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_LayoutViewColumn98, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_LayoutViewColumn98_1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn102, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PaymentsOut_MT202_LayoutView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -648,6 +657,7 @@ Partial Class GmpsPaymentsOut
         CType(Me.item10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.item15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.item0, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GMPS_PAYMENTS_OUTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClearingDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -668,6 +678,8 @@ Partial Class GmpsPaymentsOut
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn102_1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn103, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PaymentsOut_MT103_LayoutView
@@ -676,8 +688,8 @@ Partial Class GmpsPaymentsOut
         Me.PaymentsOut_MT103_LayoutView.Appearance.FieldValue.Options.UseForeColor = True
         Me.PaymentsOut_MT103_LayoutView.AppearancePrint.FieldValue.ForeColor = System.Drawing.Color.Navy
         Me.PaymentsOut_MT103_LayoutView.AppearancePrint.FieldValue.Options.UseForeColor = True
-        Me.PaymentsOut_MT103_LayoutView.CardMinSize = New System.Drawing.Size(401, 831)
-        Me.PaymentsOut_MT103_LayoutView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.colID1, Me.colMTTYPE1, Me.colRegisterDate1, Me.colOurReference1, Me.colSenderReference1, Me.colAmount1, Me.colCurrency1, Me.colExchangeRate1, Me.colAmountEuro1, Me.colSenderBIC1, Me.colSenderName1, Me.colSenderCity1, Me.colValueDate1, Me.colReceivingBankBIC1, Me.colReceivingBankCountryCode1, Me.colReceivingBankName1, Me.colReceivingBankCity1, Me.colOrderingCustomersAccountServicingInstitution1, Me.colTransactionType1, Me.colOrderingCustomer1, Me.colOrderingCustomersAccNo1, Me.colIntermediaryInstitutionBIC1, Me.colIntermediaryInstitutionName1, Me.colIntermediaryInstitutionCity1, Me.colIntermediaryInstitutionAccNo1, Me.colAccountPayeeBIC1, Me.colAccountPayeeNameAddress1, Me.colAccountPayeeCity1, Me.colAccountOfInstitutionAccNo1, Me.colBeneficiaryBankBIC1, Me.colBeneficiaryBankName1, Me.colBeneficiaryBankCity1, Me.colBeneficiaryBankAccNo1, Me.colBeneficiaryCustomerBIC1, Me.colBeneficiaryCustomerAccNo1, Me.colBeneficiaryCustomerNameAddress1, Me.colDetailsOfCharges1, Me.colRemittanceInformation1, Me.colPayStartTime1, Me.colSenderToReceiverInformation1, Me.colDebitTransactionsSigns1, Me.colProcessingQueue1, Me.colACK_State1, Me.colStatus1, Me.colPaymentYear1, Me.colProcessedBy1, Me.colMsgSenderCountry1, Me.LayoutViewColumn95, Me.col_UB_SenderName1, Me.col_UB_SenderCity1})
+        Me.PaymentsOut_MT103_LayoutView.CardMinSize = New System.Drawing.Size(1011, 840)
+        Me.PaymentsOut_MT103_LayoutView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.colID1, Me.colMTTYPE1, Me.colRegisterDate1, Me.colOurReference1, Me.colSenderReference1, Me.colAmount1, Me.colCurrency1, Me.colExchangeRate1, Me.colAmountEuro1, Me.colSenderBIC1, Me.colSenderName1, Me.colSenderCity1, Me.colValueDate1, Me.colReceivingBankBIC1, Me.colReceivingBankCountryCode1, Me.colReceivingBankName1, Me.colReceivingBankCity1, Me.colOrderingCustomersAccountServicingInstitution1, Me.colTransactionType1, Me.colOrderingCustomer1, Me.colOrderingCustomersAccNo1, Me.colIntermediaryInstitutionBIC1, Me.colIntermediaryInstitutionName1, Me.colIntermediaryInstitutionCity1, Me.colIntermediaryInstitutionAccNo1, Me.colAccountPayeeBIC1, Me.colAccountPayeeNameAddress1, Me.colAccountPayeeCity1, Me.colAccountOfInstitutionAccNo1, Me.colBeneficiaryBankBIC1, Me.colBeneficiaryBankName1, Me.colBeneficiaryBankCity1, Me.colBeneficiaryBankAccNo1, Me.colBeneficiaryCustomerBIC1, Me.colBeneficiaryCustomerAccNo1, Me.colBeneficiaryCustomerNameAddress1, Me.colDetailsOfCharges1, Me.colRemittanceInformation1, Me.colPayStartTime1, Me.colSenderToReceiverInformation1, Me.colDebitTransactionsSigns1, Me.colProcessingQueue1, Me.colACK_State1, Me.colStatus1, Me.colPaymentYear1, Me.colProcessedBy1, Me.colMsgSenderCountry1, Me.LayoutViewColumn95, Me.col_UB_SenderName1, Me.col_UB_SenderCity1, Me.colSendType1})
         Me.PaymentsOut_MT103_LayoutView.GridControl = Me.GridControl2
         Me.PaymentsOut_MT103_LayoutView.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colID1, Me.layoutViewField_colPaymentYear1, Me.layoutViewField_colDebitTransactionsSigns1, Me.layoutViewField_colPayStartTime1, Me.layoutViewField_colBeneficiaryBankAccNo1, Me.layoutViewField_colReceivingBankCountryCode1, Me.layoutViewField_colMsgSenderCountry1, Me.layoutViewField_colIntermediaryInstitutionAccNo1, Me.layoutViewField_colAccountOfInstitutionAccNo1, Me.layoutViewField_colBeneficiaryCustomerBIC1, Me.layoutViewField_colBeneficiaryBankBIC1, Me.layoutViewField_colBeneficiaryBankName1, Me.layoutViewField_colBeneficiaryBankCity1})
         Me.PaymentsOut_MT103_LayoutView.Name = "PaymentsOut_MT103_LayoutView"
@@ -763,7 +775,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colRegisterDate1
         '
-        Me.layoutViewField_colRegisterDate1.EditorPreferredWidth = 102
+        Me.layoutViewField_colRegisterDate1.EditorPreferredWidth = 101
         Me.layoutViewField_colRegisterDate1.Location = New System.Drawing.Point(165, 24)
         Me.layoutViewField_colRegisterDate1.Name = "layoutViewField_colRegisterDate1"
         Me.layoutViewField_colRegisterDate1.Size = New System.Drawing.Size(201, 24)
@@ -777,7 +789,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colOurReference1
         '
-        Me.layoutViewField_colOurReference1.EditorPreferredWidth = 327
+        Me.layoutViewField_colOurReference1.EditorPreferredWidth = 326
         Me.layoutViewField_colOurReference1.Location = New System.Drawing.Point(0, 264)
         Me.layoutViewField_colOurReference1.Name = "layoutViewField_colOurReference1"
         Me.layoutViewField_colOurReference1.Size = New System.Drawing.Size(493, 24)
@@ -792,7 +804,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colSenderReference1
         '
-        Me.layoutViewField_colSenderReference1.EditorPreferredWidth = 327
+        Me.layoutViewField_colSenderReference1.EditorPreferredWidth = 326
         Me.layoutViewField_colSenderReference1.Location = New System.Drawing.Point(0, 288)
         Me.layoutViewField_colSenderReference1.Name = "layoutViewField_colSenderReference1"
         Me.layoutViewField_colSenderReference1.Size = New System.Drawing.Size(493, 24)
@@ -810,7 +822,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colAmount1
         '
-        Me.layoutViewField_colAmount1.EditorPreferredWidth = 234
+        Me.layoutViewField_colAmount1.EditorPreferredWidth = 233
         Me.layoutViewField_colAmount1.Location = New System.Drawing.Point(0, 360)
         Me.layoutViewField_colAmount1.Name = "layoutViewField_colAmount1"
         Me.layoutViewField_colAmount1.Size = New System.Drawing.Size(400, 24)
@@ -826,7 +838,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colCurrency1
         '
-        Me.layoutViewField_colCurrency1.EditorPreferredWidth = 131
+        Me.layoutViewField_colCurrency1.EditorPreferredWidth = 130
         Me.layoutViewField_colCurrency1.Location = New System.Drawing.Point(0, 336)
         Me.layoutViewField_colCurrency1.Name = "layoutViewField_colCurrency1"
         Me.layoutViewField_colCurrency1.Size = New System.Drawing.Size(297, 24)
@@ -844,7 +856,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colExchangeRate1
         '
-        Me.layoutViewField_colExchangeRate1.EditorPreferredWidth = 234
+        Me.layoutViewField_colExchangeRate1.EditorPreferredWidth = 233
         Me.layoutViewField_colExchangeRate1.Location = New System.Drawing.Point(0, 384)
         Me.layoutViewField_colExchangeRate1.Name = "layoutViewField_colExchangeRate1"
         Me.layoutViewField_colExchangeRate1.Size = New System.Drawing.Size(400, 24)
@@ -863,7 +875,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colAmountEuro1
         '
-        Me.layoutViewField_colAmountEuro1.EditorPreferredWidth = 234
+        Me.layoutViewField_colAmountEuro1.EditorPreferredWidth = 233
         Me.layoutViewField_colAmountEuro1.Location = New System.Drawing.Point(0, 408)
         Me.layoutViewField_colAmountEuro1.Name = "layoutViewField_colAmountEuro1"
         Me.layoutViewField_colAmountEuro1.Size = New System.Drawing.Size(400, 24)
@@ -894,7 +906,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colSenderName1
         '
-        Me.layoutViewField_colSenderName1.EditorPreferredWidth = 767
+        Me.layoutViewField_colSenderName1.EditorPreferredWidth = 765
         Me.layoutViewField_colSenderName1.Location = New System.Drawing.Point(198, 0)
         Me.layoutViewField_colSenderName1.Name = "layoutViewField_colSenderName1"
         Me.layoutViewField_colSenderName1.Size = New System.Drawing.Size(771, 24)
@@ -909,7 +921,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colSenderCity1
         '
-        Me.layoutViewField_colSenderCity1.EditorPreferredWidth = 767
+        Me.layoutViewField_colSenderCity1.EditorPreferredWidth = 765
         Me.layoutViewField_colSenderCity1.Location = New System.Drawing.Point(198, 24)
         Me.layoutViewField_colSenderCity1.Name = "layoutViewField_colSenderCity1"
         Me.layoutViewField_colSenderCity1.Size = New System.Drawing.Size(771, 24)
@@ -925,7 +937,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colValueDate1
         '
-        Me.layoutViewField_colValueDate1.EditorPreferredWidth = 184
+        Me.layoutViewField_colValueDate1.EditorPreferredWidth = 183
         Me.layoutViewField_colValueDate1.Location = New System.Drawing.Point(0, 312)
         Me.layoutViewField_colValueDate1.Name = "layoutViewField_colValueDate1"
         Me.layoutViewField_colValueDate1.Size = New System.Drawing.Size(350, 24)
@@ -971,7 +983,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colReceivingBankName1
         '
-        Me.layoutViewField_colReceivingBankName1.EditorPreferredWidth = 766
+        Me.layoutViewField_colReceivingBankName1.EditorPreferredWidth = 764
         Me.layoutViewField_colReceivingBankName1.Location = New System.Drawing.Point(199, 0)
         Me.layoutViewField_colReceivingBankName1.Name = "layoutViewField_colReceivingBankName1"
         Me.layoutViewField_colReceivingBankName1.Size = New System.Drawing.Size(770, 24)
@@ -986,7 +998,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colReceivingBankCity1
         '
-        Me.layoutViewField_colReceivingBankCity1.EditorPreferredWidth = 766
+        Me.layoutViewField_colReceivingBankCity1.EditorPreferredWidth = 764
         Me.layoutViewField_colReceivingBankCity1.Location = New System.Drawing.Point(199, 24)
         Me.layoutViewField_colReceivingBankCity1.Name = "layoutViewField_colReceivingBankCity1"
         Me.layoutViewField_colReceivingBankCity1.Size = New System.Drawing.Size(770, 24)
@@ -1004,7 +1016,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colOrderingCustomersAccountServicingInstitution1
         '
-        Me.layoutViewField_colOrderingCustomersAccountServicingInstitution1.EditorPreferredWidth = 184
+        Me.layoutViewField_colOrderingCustomersAccountServicingInstitution1.EditorPreferredWidth = 183
         Me.layoutViewField_colOrderingCustomersAccountServicingInstitution1.Location = New System.Drawing.Point(0, 480)
         Me.layoutViewField_colOrderingCustomersAccountServicingInstitution1.Name = "layoutViewField_colOrderingCustomersAccountServicingInstitution1"
         Me.layoutViewField_colOrderingCustomersAccountServicingInstitution1.Size = New System.Drawing.Size(350, 48)
@@ -1018,7 +1030,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colTransactionType1
         '
-        Me.layoutViewField_colTransactionType1.EditorPreferredWidth = 267
+        Me.layoutViewField_colTransactionType1.EditorPreferredWidth = 266
         Me.layoutViewField_colTransactionType1.Location = New System.Drawing.Point(0, 72)
         Me.layoutViewField_colTransactionType1.Name = "layoutViewField_colTransactionType1"
         Me.layoutViewField_colTransactionType1.Size = New System.Drawing.Size(366, 24)
@@ -1033,7 +1045,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colOrderingCustomer1
         '
-        Me.layoutViewField_colOrderingCustomer1.EditorPreferredWidth = 827
+        Me.layoutViewField_colOrderingCustomer1.EditorPreferredWidth = 825
         Me.layoutViewField_colOrderingCustomer1.Location = New System.Drawing.Point(0, 456)
         Me.layoutViewField_colOrderingCustomer1.Name = "layoutViewField_colOrderingCustomer1"
         Me.layoutViewField_colOrderingCustomer1.Size = New System.Drawing.Size(993, 24)
@@ -1048,7 +1060,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colOrderingCustomersAccNo1
         '
-        Me.layoutViewField_colOrderingCustomersAccNo1.EditorPreferredWidth = 330
+        Me.layoutViewField_colOrderingCustomersAccNo1.EditorPreferredWidth = 329
         Me.layoutViewField_colOrderingCustomersAccNo1.Location = New System.Drawing.Point(0, 432)
         Me.layoutViewField_colOrderingCustomersAccNo1.Name = "layoutViewField_colOrderingCustomersAccNo1"
         Me.layoutViewField_colOrderingCustomersAccNo1.Size = New System.Drawing.Size(496, 24)
@@ -1065,7 +1077,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colIntermediaryInstitutionBIC1
         '
-        Me.layoutViewField_colIntermediaryInstitutionBIC1.EditorPreferredWidth = 184
+        Me.layoutViewField_colIntermediaryInstitutionBIC1.EditorPreferredWidth = 183
         Me.layoutViewField_colIntermediaryInstitutionBIC1.Location = New System.Drawing.Point(0, 528)
         Me.layoutViewField_colIntermediaryInstitutionBIC1.Name = "layoutViewField_colIntermediaryInstitutionBIC1"
         Me.layoutViewField_colIntermediaryInstitutionBIC1.Size = New System.Drawing.Size(350, 48)
@@ -1079,7 +1091,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colIntermediaryInstitutionName1
         '
-        Me.layoutViewField_colIntermediaryInstitutionName1.EditorPreferredWidth = 639
+        Me.layoutViewField_colIntermediaryInstitutionName1.EditorPreferredWidth = 638
         Me.layoutViewField_colIntermediaryInstitutionName1.Location = New System.Drawing.Point(350, 528)
         Me.layoutViewField_colIntermediaryInstitutionName1.Name = "layoutViewField_colIntermediaryInstitutionName1"
         Me.layoutViewField_colIntermediaryInstitutionName1.Size = New System.Drawing.Size(643, 24)
@@ -1094,7 +1106,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colIntermediaryInstitutionCity1
         '
-        Me.layoutViewField_colIntermediaryInstitutionCity1.EditorPreferredWidth = 639
+        Me.layoutViewField_colIntermediaryInstitutionCity1.EditorPreferredWidth = 638
         Me.layoutViewField_colIntermediaryInstitutionCity1.Location = New System.Drawing.Point(350, 552)
         Me.layoutViewField_colIntermediaryInstitutionCity1.Name = "layoutViewField_colIntermediaryInstitutionCity1"
         Me.layoutViewField_colIntermediaryInstitutionCity1.Size = New System.Drawing.Size(643, 24)
@@ -1127,7 +1139,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colAccountPayeeBIC1
         '
-        Me.layoutViewField_colAccountPayeeBIC1.EditorPreferredWidth = 184
+        Me.layoutViewField_colAccountPayeeBIC1.EditorPreferredWidth = 183
         Me.layoutViewField_colAccountPayeeBIC1.Location = New System.Drawing.Point(0, 576)
         Me.layoutViewField_colAccountPayeeBIC1.Name = "layoutViewField_colAccountPayeeBIC1"
         Me.layoutViewField_colAccountPayeeBIC1.Size = New System.Drawing.Size(350, 48)
@@ -1141,7 +1153,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colAccountPayeeNameAddress1
         '
-        Me.layoutViewField_colAccountPayeeNameAddress1.EditorPreferredWidth = 639
+        Me.layoutViewField_colAccountPayeeNameAddress1.EditorPreferredWidth = 638
         Me.layoutViewField_colAccountPayeeNameAddress1.Location = New System.Drawing.Point(350, 576)
         Me.layoutViewField_colAccountPayeeNameAddress1.Name = "layoutViewField_colAccountPayeeNameAddress1"
         Me.layoutViewField_colAccountPayeeNameAddress1.Size = New System.Drawing.Size(643, 24)
@@ -1156,7 +1168,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colAccountPayeeCity1
         '
-        Me.layoutViewField_colAccountPayeeCity1.EditorPreferredWidth = 639
+        Me.layoutViewField_colAccountPayeeCity1.EditorPreferredWidth = 638
         Me.layoutViewField_colAccountPayeeCity1.Location = New System.Drawing.Point(350, 600)
         Me.layoutViewField_colAccountPayeeCity1.Name = "layoutViewField_colAccountPayeeCity1"
         Me.layoutViewField_colAccountPayeeCity1.Size = New System.Drawing.Size(643, 24)
@@ -1264,7 +1276,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colBeneficiaryCustomerAccNo1
         '
-        Me.layoutViewField_colBeneficiaryCustomerAccNo1.EditorPreferredWidth = 827
+        Me.layoutViewField_colBeneficiaryCustomerAccNo1.EditorPreferredWidth = 825
         Me.layoutViewField_colBeneficiaryCustomerAccNo1.Location = New System.Drawing.Point(0, 624)
         Me.layoutViewField_colBeneficiaryCustomerAccNo1.Name = "layoutViewField_colBeneficiaryCustomerAccNo1"
         Me.layoutViewField_colBeneficiaryCustomerAccNo1.Size = New System.Drawing.Size(993, 24)
@@ -1279,7 +1291,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colBeneficiaryCustomerNameAddress1
         '
-        Me.layoutViewField_colBeneficiaryCustomerNameAddress1.EditorPreferredWidth = 827
+        Me.layoutViewField_colBeneficiaryCustomerNameAddress1.EditorPreferredWidth = 825
         Me.layoutViewField_colBeneficiaryCustomerNameAddress1.Location = New System.Drawing.Point(0, 648)
         Me.layoutViewField_colBeneficiaryCustomerNameAddress1.Name = "layoutViewField_colBeneficiaryCustomerNameAddress1"
         Me.layoutViewField_colBeneficiaryCustomerNameAddress1.Size = New System.Drawing.Size(993, 24)
@@ -1310,7 +1322,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_LayoutViewColumn1
         '
-        Me.layoutViewField_LayoutViewColumn1.EditorPreferredWidth = 827
+        Me.layoutViewField_LayoutViewColumn1.EditorPreferredWidth = 825
         Me.layoutViewField_LayoutViewColumn1.Location = New System.Drawing.Point(0, 672)
         Me.layoutViewField_LayoutViewColumn1.Name = "layoutViewField_LayoutViewColumn1"
         Me.layoutViewField_LayoutViewColumn1.Size = New System.Drawing.Size(993, 24)
@@ -1349,7 +1361,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colSenderToReceiverInformation1
         '
-        Me.layoutViewField_colSenderToReceiverInformation1.EditorPreferredWidth = 989
+        Me.layoutViewField_colSenderToReceiverInformation1.EditorPreferredWidth = 987
         Me.layoutViewField_colSenderToReceiverInformation1.Location = New System.Drawing.Point(0, 720)
         Me.layoutViewField_colSenderToReceiverInformation1.Name = "layoutViewField_colSenderToReceiverInformation1"
         Me.layoutViewField_colSenderToReceiverInformation1.Size = New System.Drawing.Size(993, 39)
@@ -1378,7 +1390,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colProcessingQueue1
         '
-        Me.layoutViewField_colProcessingQueue1.EditorPreferredWidth = 504
+        Me.layoutViewField_colProcessingQueue1.EditorPreferredWidth = 503
         Me.layoutViewField_colProcessingQueue1.Location = New System.Drawing.Point(366, 24)
         Me.layoutViewField_colProcessingQueue1.Name = "layoutViewField_colProcessingQueue1"
         Me.layoutViewField_colProcessingQueue1.Size = New System.Drawing.Size(603, 24)
@@ -1393,7 +1405,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colACK_State1
         '
-        Me.layoutViewField_colACK_State1.EditorPreferredWidth = 504
+        Me.layoutViewField_colACK_State1.EditorPreferredWidth = 503
         Me.layoutViewField_colACK_State1.Location = New System.Drawing.Point(366, 48)
         Me.layoutViewField_colACK_State1.Name = "layoutViewField_colACK_State1"
         Me.layoutViewField_colACK_State1.Size = New System.Drawing.Size(603, 24)
@@ -1407,7 +1419,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colStatus1
         '
-        Me.layoutViewField_colStatus1.EditorPreferredWidth = 504
+        Me.layoutViewField_colStatus1.EditorPreferredWidth = 503
         Me.layoutViewField_colStatus1.Location = New System.Drawing.Point(366, 72)
         Me.layoutViewField_colStatus1.Name = "layoutViewField_colStatus1"
         Me.layoutViewField_colStatus1.Size = New System.Drawing.Size(603, 24)
@@ -1435,7 +1447,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_colProcessedBy1
         '
-        Me.layoutViewField_colProcessedBy1.EditorPreferredWidth = 267
+        Me.layoutViewField_colProcessedBy1.EditorPreferredWidth = 266
         Me.layoutViewField_colProcessedBy1.Location = New System.Drawing.Point(0, 48)
         Me.layoutViewField_colProcessedBy1.Name = "layoutViewField_colProcessedBy1"
         Me.layoutViewField_colProcessedBy1.Size = New System.Drawing.Size(366, 24)
@@ -1472,12 +1484,12 @@ Partial Class GmpsPaymentsOut
         Me.LayoutViewColumn95.LayoutViewField = Me.layoutViewField_LayoutViewColumn95
         Me.LayoutViewColumn95.Name = "LayoutViewColumn95"
         Me.LayoutViewColumn95.OptionsColumn.ReadOnly = True
-        Me.LayoutViewColumn95.UnboundExpression = "'SINGLE CUSTOMER TRANSFER'"
+        Me.LayoutViewColumn95.UnboundExpression = "'SINGLE CUSTOMER TRANSFER - ' + [MTTYPE]"
         Me.LayoutViewColumn95.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         '
         'layoutViewField_LayoutViewColumn95
         '
-        Me.layoutViewField_LayoutViewColumn95.EditorPreferredWidth = 362
+        Me.layoutViewField_LayoutViewColumn95.EditorPreferredWidth = 361
         Me.layoutViewField_LayoutViewColumn95.Location = New System.Drawing.Point(0, 0)
         Me.layoutViewField_LayoutViewColumn95.Name = "layoutViewField_LayoutViewColumn95"
         Me.layoutViewField_LayoutViewColumn95.Size = New System.Drawing.Size(366, 24)
@@ -1499,7 +1511,7 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_LayoutViewColumn98
         '
-        Me.layoutViewField_LayoutViewColumn98.EditorPreferredWidth = 639
+        Me.layoutViewField_LayoutViewColumn98.EditorPreferredWidth = 638
         Me.layoutViewField_LayoutViewColumn98.Location = New System.Drawing.Point(350, 480)
         Me.layoutViewField_LayoutViewColumn98.Name = "layoutViewField_LayoutViewColumn98"
         Me.layoutViewField_LayoutViewColumn98.Size = New System.Drawing.Size(643, 24)
@@ -1518,12 +1530,27 @@ Partial Class GmpsPaymentsOut
         '
         'layoutViewField_LayoutViewColumn98_1
         '
-        Me.layoutViewField_LayoutViewColumn98_1.EditorPreferredWidth = 639
+        Me.layoutViewField_LayoutViewColumn98_1.EditorPreferredWidth = 638
         Me.layoutViewField_LayoutViewColumn98_1.Location = New System.Drawing.Point(350, 504)
         Me.layoutViewField_LayoutViewColumn98_1.Name = "layoutViewField_LayoutViewColumn98_1"
         Me.layoutViewField_LayoutViewColumn98_1.Size = New System.Drawing.Size(643, 24)
         Me.layoutViewField_LayoutViewColumn98_1.TextSize = New System.Drawing.Size(0, 0)
         Me.layoutViewField_LayoutViewColumn98_1.TextVisible = False
+        '
+        'colSendType1
+        '
+        Me.colSendType1.Caption = "Send Type"
+        Me.colSendType1.FieldName = "SendType"
+        Me.colSendType1.LayoutViewField = Me.layoutViewField_LayoutViewColumn102
+        Me.colSendType1.Name = "colSendType1"
+        '
+        'layoutViewField_LayoutViewColumn102
+        '
+        Me.layoutViewField_LayoutViewColumn102.EditorPreferredWidth = 99
+        Me.layoutViewField_LayoutViewColumn102.Location = New System.Drawing.Point(0, 769)
+        Me.layoutViewField_LayoutViewColumn102.Name = "layoutViewField_LayoutViewColumn102"
+        Me.layoutViewField_LayoutViewColumn102.Size = New System.Drawing.Size(266, 24)
+        Me.layoutViewField_LayoutViewColumn102.TextSize = New System.Drawing.Size(157, 13)
         '
         'GridControl2
         '
@@ -1544,7 +1571,7 @@ Partial Class GmpsPaymentsOut
         Me.GridControl2.MainView = Me.PaymentsOut_GridView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemMemoEdit1})
-        Me.GridControl2.Size = New System.Drawing.Size(1415, 654)
+        Me.GridControl2.Size = New System.Drawing.Size(1407, 453)
         Me.GridControl2.TabIndex = 7
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.PaymentsOut_MT202_LayoutView, Me.PaymentsOut_SEPA_DD_LayoutView, Me.PaymentsOut_GridView, Me.PaymentsOut_MT103_LayoutView})
@@ -1556,7 +1583,7 @@ Partial Class GmpsPaymentsOut
         Me.PaymentsOut_MT202_LayoutView.AppearancePrint.FieldValue.ForeColor = System.Drawing.Color.Navy
         Me.PaymentsOut_MT202_LayoutView.AppearancePrint.FieldValue.Options.UseForeColor = True
         Me.PaymentsOut_MT202_LayoutView.CardMinSize = New System.Drawing.Size(401, 735)
-        Me.PaymentsOut_MT202_LayoutView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.LayoutViewColumn1, Me.LayoutViewColumn2, Me.LayoutViewColumn3, Me.LayoutViewColumn4, Me.LayoutViewColumn5, Me.LayoutViewColumn6, Me.LayoutViewColumn7, Me.LayoutViewColumn8, Me.LayoutViewColumn9, Me.LayoutViewColumn10, Me.LayoutViewColumn11, Me.LayoutViewColumn12, Me.LayoutViewColumn13, Me.LayoutViewColumn14, Me.LayoutViewColumn15, Me.LayoutViewColumn16, Me.LayoutViewColumn17, Me.LayoutViewColumn18, Me.LayoutViewColumn19, Me.LayoutViewColumn20, Me.LayoutViewColumn21, Me.LayoutViewColumn22, Me.LayoutViewColumn23, Me.LayoutViewColumn24, Me.LayoutViewColumn25, Me.LayoutViewColumn26, Me.LayoutViewColumn27, Me.LayoutViewColumn28, Me.LayoutViewColumn29, Me.LayoutViewColumn30, Me.LayoutViewColumn31, Me.LayoutViewColumn32, Me.LayoutViewColumn33, Me.LayoutViewColumn34, Me.LayoutViewColumn35, Me.LayoutViewColumn36, Me.LayoutViewColumn37, Me.LayoutViewColumn38, Me.LayoutViewColumn39, Me.LayoutViewColumn40, Me.LayoutViewColumn41, Me.LayoutViewColumn42, Me.LayoutViewColumn43, Me.LayoutViewColumn44, Me.LayoutViewColumn45, Me.LayoutViewColumn46, Me.LayoutViewColumn47, Me.LayoutViewColumn96, Me.LayoutViewColumn98, Me.LayoutViewColumn99})
+        Me.PaymentsOut_MT202_LayoutView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.LayoutViewColumn1, Me.LayoutViewColumn2, Me.LayoutViewColumn3, Me.LayoutViewColumn4, Me.LayoutViewColumn5, Me.LayoutViewColumn6, Me.LayoutViewColumn7, Me.LayoutViewColumn8, Me.LayoutViewColumn9, Me.LayoutViewColumn10, Me.LayoutViewColumn11, Me.LayoutViewColumn12, Me.LayoutViewColumn13, Me.LayoutViewColumn14, Me.LayoutViewColumn15, Me.LayoutViewColumn16, Me.LayoutViewColumn17, Me.LayoutViewColumn18, Me.LayoutViewColumn19, Me.LayoutViewColumn20, Me.LayoutViewColumn21, Me.LayoutViewColumn22, Me.LayoutViewColumn23, Me.LayoutViewColumn24, Me.LayoutViewColumn25, Me.LayoutViewColumn26, Me.LayoutViewColumn27, Me.LayoutViewColumn28, Me.LayoutViewColumn29, Me.LayoutViewColumn30, Me.LayoutViewColumn31, Me.LayoutViewColumn32, Me.LayoutViewColumn33, Me.LayoutViewColumn34, Me.LayoutViewColumn35, Me.LayoutViewColumn36, Me.LayoutViewColumn37, Me.LayoutViewColumn38, Me.LayoutViewColumn39, Me.LayoutViewColumn40, Me.LayoutViewColumn41, Me.LayoutViewColumn42, Me.LayoutViewColumn43, Me.LayoutViewColumn44, Me.LayoutViewColumn45, Me.LayoutViewColumn46, Me.LayoutViewColumn47, Me.LayoutViewColumn96, Me.LayoutViewColumn98, Me.LayoutViewColumn99, Me.LayoutViewColumn102})
         Me.PaymentsOut_MT202_LayoutView.GridControl = Me.GridControl2
         Me.PaymentsOut_MT202_LayoutView.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colID2, Me.layoutViewField_colPaymentYear2, Me.layoutViewField_colDebitTransactionsSigns2, Me.layoutViewField_colPayStartTime2, Me.layoutViewField_colBeneficiaryBankAccNo2, Me.layoutViewField_colReceivingBankCountryCode2, Me.layoutViewField_colMsgSenderCountry2, Me.layoutViewField_colIntermediaryInstitutionAccNo2, Me.layoutViewField_colAccountOfInstitutionAccNo2, Me.layoutViewField_colOrderingCustomersAccNo2, Me.layoutViewField_colOrderingCustomer2, Me.layoutViewField_colBeneficiaryCustomerBIC2, Me.layoutViewField_colBeneficiaryCustomerAccNo2, Me.layoutViewField_colBeneficiaryCustomerNameAddress2, Me.layoutViewField_colRemittanceInformation1, Me.layoutViewField_colDetailsOfCharges2})
         Me.PaymentsOut_MT202_LayoutView.Name = "PaymentsOut_MT202_LayoutView"
@@ -2345,8 +2372,7 @@ Partial Class GmpsPaymentsOut
         Me.LayoutViewColumn96.LayoutViewField = Me.layoutViewField_LayoutViewColumn96
         Me.LayoutViewColumn96.Name = "LayoutViewColumn96"
         Me.LayoutViewColumn96.OptionsColumn.ReadOnly = True
-        Me.LayoutViewColumn96.UnboundExpression = "Iif([MTTYPE] = '202', 'BANK TO BANK TRANSFER', Iif([MTTYPE] = '202COV', 'BANK TO " &
-    "BANK COVER TRANSFER', Iif([MTTYPE] = '200', 'TRANSFER FOR OWN ACCOUNT', '')))"
+        Me.LayoutViewColumn96.UnboundExpression = resources.GetString("LayoutViewColumn96.UnboundExpression")
         Me.LayoutViewColumn96.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         '
         'layoutViewField_LayoutViewColumn96
@@ -2402,7 +2428,7 @@ Partial Class GmpsPaymentsOut
         '
         Me.LayoutViewCard2.CustomizationFormText = "TemplateCard"
         Me.LayoutViewCard2.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colOurReference2, Me.layoutViewField_colSenderReference2, Me.layoutViewField_colAmount2, Me.layoutViewField_colExchangeRate2, Me.layoutViewField_colAmountEuro2, Me.layoutViewField_colOrderingCustomersAccountServicingInstitution2, Me.layoutViewField_colSenderToReceiverInformation2, Me.item2, Me.item12, Me.item14, Me.item17, Me.layoutViewField_colValueDate2, Me.layoutViewField_colCurrency2, Me.item18, Me.item19, Me.item20, Me.item21, Me.item22, Me.item23, Me.item29, Me.layoutViewField_colIntermediaryInstitutionBIC2, Me.layoutViewField_colIntermediaryInstitutionName2, Me.layoutViewField_colIntermediaryInstitutionCity2, Me.layoutViewField_colAccountPayeeBIC2, Me.layoutViewField_colAccountPayeeNameAddress2, Me.layoutViewField_colAccountPayeeCity2, Me.layoutViewField_colBeneficiaryBankBIC2, Me.layoutViewField_colBeneficiaryBankName2, Me.layoutViewField_colBeneficiaryBankCity2, Me.layoutViewField_LayoutViewColumn98_2, Me.layoutViewField_LayoutViewColumn99})
+        Me.LayoutViewCard2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colOurReference2, Me.layoutViewField_colSenderReference2, Me.layoutViewField_colAmount2, Me.layoutViewField_colExchangeRate2, Me.layoutViewField_colAmountEuro2, Me.layoutViewField_colOrderingCustomersAccountServicingInstitution2, Me.layoutViewField_colSenderToReceiverInformation2, Me.item2, Me.item12, Me.item14, Me.item17, Me.layoutViewField_colValueDate2, Me.layoutViewField_colCurrency2, Me.item18, Me.item19, Me.item20, Me.item21, Me.item22, Me.item23, Me.item29, Me.layoutViewField_colIntermediaryInstitutionBIC2, Me.layoutViewField_colIntermediaryInstitutionName2, Me.layoutViewField_colIntermediaryInstitutionCity2, Me.layoutViewField_colAccountPayeeBIC2, Me.layoutViewField_colAccountPayeeNameAddress2, Me.layoutViewField_colAccountPayeeCity2, Me.layoutViewField_colBeneficiaryBankBIC2, Me.layoutViewField_colBeneficiaryBankName2, Me.layoutViewField_colBeneficiaryBankCity2, Me.layoutViewField_LayoutViewColumn98_2, Me.layoutViewField_LayoutViewColumn99, Me.layoutViewField_LayoutViewColumn102_1})
         Me.LayoutViewCard2.Name = "LayoutViewCard2"
         Me.LayoutViewCard2.OptionsCustomization.AllowDrag = DevExpress.XtraLayout.ItemDragDropMode.Allow
         Me.LayoutViewCard2.OptionsItemText.TextToControlDistance = 5
@@ -2522,7 +2548,7 @@ Partial Class GmpsPaymentsOut
         Me.item29.CustomizationFormText = "item0"
         Me.item29.Location = New System.Drawing.Point(0, 663)
         Me.item29.Name = "item29"
-        Me.item29.Size = New System.Drawing.Size(984, 34)
+        Me.item29.Size = New System.Drawing.Size(984, 10)
         Me.item29.TextSize = New System.Drawing.Size(0, 0)
         '
         'PaymentsOut_SEPA_DD_LayoutView
@@ -2532,7 +2558,7 @@ Partial Class GmpsPaymentsOut
         Me.PaymentsOut_SEPA_DD_LayoutView.AppearancePrint.FieldValue.ForeColor = System.Drawing.Color.Navy
         Me.PaymentsOut_SEPA_DD_LayoutView.AppearancePrint.FieldValue.Options.UseForeColor = True
         Me.PaymentsOut_SEPA_DD_LayoutView.CardMinSize = New System.Drawing.Size(401, 759)
-        Me.PaymentsOut_SEPA_DD_LayoutView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.LayoutViewColumn48, Me.LayoutViewColumn49, Me.LayoutViewColumn50, Me.LayoutViewColumn51, Me.LayoutViewColumn52, Me.LayoutViewColumn53, Me.LayoutViewColumn54, Me.LayoutViewColumn55, Me.LayoutViewColumn56, Me.LayoutViewColumn57, Me.LayoutViewColumn58, Me.LayoutViewColumn59, Me.LayoutViewColumn60, Me.LayoutViewColumn61, Me.LayoutViewColumn62, Me.LayoutViewColumn63, Me.LayoutViewColumn64, Me.LayoutViewColumn65, Me.LayoutViewColumn66, Me.LayoutViewColumn67, Me.LayoutViewColumn68, Me.LayoutViewColumn69, Me.LayoutViewColumn70, Me.LayoutViewColumn71, Me.LayoutViewColumn72, Me.LayoutViewColumn73, Me.LayoutViewColumn74, Me.LayoutViewColumn75, Me.LayoutViewColumn76, Me.LayoutViewColumn77, Me.LayoutViewColumn78, Me.LayoutViewColumn79, Me.LayoutViewColumn80, Me.LayoutViewColumn81, Me.LayoutViewColumn82, Me.LayoutViewColumn83, Me.LayoutViewColumn84, Me.LayoutViewColumn85, Me.LayoutViewColumn86, Me.LayoutViewColumn87, Me.LayoutViewColumn88, Me.LayoutViewColumn89, Me.LayoutViewColumn90, Me.LayoutViewColumn91, Me.LayoutViewColumn92, Me.LayoutViewColumn93, Me.LayoutViewColumn94, Me.LayoutViewColumn97, Me.LayoutViewColumn100, Me.LayoutViewColumn101})
+        Me.PaymentsOut_SEPA_DD_LayoutView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.LayoutViewColumn48, Me.LayoutViewColumn49, Me.LayoutViewColumn50, Me.LayoutViewColumn51, Me.LayoutViewColumn52, Me.LayoutViewColumn53, Me.LayoutViewColumn54, Me.LayoutViewColumn55, Me.LayoutViewColumn56, Me.LayoutViewColumn57, Me.LayoutViewColumn58, Me.LayoutViewColumn59, Me.LayoutViewColumn60, Me.LayoutViewColumn61, Me.LayoutViewColumn62, Me.LayoutViewColumn63, Me.LayoutViewColumn64, Me.LayoutViewColumn65, Me.LayoutViewColumn66, Me.LayoutViewColumn67, Me.LayoutViewColumn68, Me.LayoutViewColumn69, Me.LayoutViewColumn70, Me.LayoutViewColumn71, Me.LayoutViewColumn72, Me.LayoutViewColumn73, Me.LayoutViewColumn74, Me.LayoutViewColumn75, Me.LayoutViewColumn76, Me.LayoutViewColumn77, Me.LayoutViewColumn78, Me.LayoutViewColumn79, Me.LayoutViewColumn80, Me.LayoutViewColumn81, Me.LayoutViewColumn82, Me.LayoutViewColumn83, Me.LayoutViewColumn84, Me.LayoutViewColumn85, Me.LayoutViewColumn86, Me.LayoutViewColumn87, Me.LayoutViewColumn88, Me.LayoutViewColumn89, Me.LayoutViewColumn90, Me.LayoutViewColumn91, Me.LayoutViewColumn92, Me.LayoutViewColumn93, Me.LayoutViewColumn94, Me.LayoutViewColumn97, Me.LayoutViewColumn100, Me.LayoutViewColumn101, Me.LayoutViewColumn103})
         Me.PaymentsOut_SEPA_DD_LayoutView.GridControl = Me.GridControl2
         Me.PaymentsOut_SEPA_DD_LayoutView.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colID3, Me.layoutViewField_colPaymentYear3, Me.layoutViewField_colDebitTransactionsSigns3, Me.layoutViewField_colPayStartTime3, Me.layoutViewField_colBeneficiaryBankAccNo3, Me.layoutViewField_colReceivingBankCountryCode3, Me.layoutViewField_colMsgSenderCountry3, Me.layoutViewField_colIntermediaryInstitutionAccNo3, Me.layoutViewField_colAccountOfInstitutionAccNo3, Me.layoutViewField_colBeneficiaryCustomerBIC3, Me.layoutViewField_colBeneficiaryBankBIC3, Me.layoutViewField_colBeneficiaryBankName3, Me.layoutViewField_colBeneficiaryBankCity3, Me.layoutViewField_colIntermediaryInstitutionBIC3, Me.layoutViewField_colIntermediaryInstitutionName3, Me.layoutViewField_colIntermediaryInstitutionCity3, Me.layoutViewField_colDetailsOfCharges3})
         Me.PaymentsOut_SEPA_DD_LayoutView.Name = "PaymentsOut_SEPA_DD_LayoutView"
@@ -3203,7 +3229,7 @@ Partial Class GmpsPaymentsOut
         Me.layoutViewField_colSenderToReceiverInformation3.EditorPreferredWidth = 989
         Me.layoutViewField_colSenderToReceiverInformation3.Location = New System.Drawing.Point(0, 648)
         Me.layoutViewField_colSenderToReceiverInformation3.Name = "layoutViewField_colSenderToReceiverInformation3"
-        Me.layoutViewField_colSenderToReceiverInformation3.Size = New System.Drawing.Size(993, 86)
+        Me.layoutViewField_colSenderToReceiverInformation3.Size = New System.Drawing.Size(993, 39)
         Me.layoutViewField_colSenderToReceiverInformation3.TextLocation = DevExpress.Utils.Locations.Top
         Me.layoutViewField_colSenderToReceiverInformation3.TextSize = New System.Drawing.Size(157, 13)
         '
@@ -3323,7 +3349,7 @@ Partial Class GmpsPaymentsOut
         Me.LayoutViewColumn97.LayoutViewField = Me.layoutViewField_LayoutViewColumn97
         Me.LayoutViewColumn97.Name = "LayoutViewColumn97"
         Me.LayoutViewColumn97.OptionsColumn.ReadOnly = True
-        Me.LayoutViewColumn97.UnboundExpression = "'SEPA DIRECT DEBIT'"
+        Me.LayoutViewColumn97.UnboundExpression = "'SEPA DIRECT DEBIT - ' + [MTTYPE]"
         Me.LayoutViewColumn97.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         '
         'layoutViewField_LayoutViewColumn97
@@ -3379,7 +3405,7 @@ Partial Class GmpsPaymentsOut
         '
         Me.LayoutViewCard3.CustomizationFormText = "TemplateCard"
         Me.LayoutViewCard3.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colOurReference3, Me.layoutViewField_colSenderReference3, Me.layoutViewField_colAmount3, Me.layoutViewField_colExchangeRate3, Me.layoutViewField_colAmountEuro3, Me.layoutViewField_colOrderingCustomersAccountServicingInstitution3, Me.layoutViewField_colBeneficiaryCustomerAccNo3, Me.layoutViewField_colBeneficiaryCustomerNameAddress3, Me.layoutViewField_colSenderToReceiverInformation3, Me.item16, Me.item24, Me.item27, Me.item28, Me.layoutViewField_colValueDate3, Me.layoutViewField_colCurrency3, Me.item30, Me.item31, Me.item32, Me.item33, Me.item34, Me.item35, Me.layoutViewField_colOrderingCustomersAccNo3, Me.layoutViewField_colOrderingCustomer3, Me.item36, Me.item39, Me.layoutViewField_colRemittanceInformation2, Me.layoutViewField_colAccountPayeeBIC3, Me.layoutViewField_colAccountPayeeNameAddress3, Me.layoutViewField_colAccountPayeeCity3, Me.layoutViewField_LayoutViewColumn100, Me.layoutViewField_LayoutViewColumn101})
+        Me.LayoutViewCard3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colOurReference3, Me.layoutViewField_colSenderReference3, Me.layoutViewField_colAmount3, Me.layoutViewField_colExchangeRate3, Me.layoutViewField_colAmountEuro3, Me.layoutViewField_colOrderingCustomersAccountServicingInstitution3, Me.layoutViewField_colBeneficiaryCustomerAccNo3, Me.layoutViewField_colBeneficiaryCustomerNameAddress3, Me.layoutViewField_colSenderToReceiverInformation3, Me.item16, Me.item24, Me.item27, Me.item28, Me.layoutViewField_colValueDate3, Me.layoutViewField_colCurrency3, Me.item30, Me.item31, Me.item32, Me.item33, Me.item34, Me.item35, Me.layoutViewField_colOrderingCustomersAccNo3, Me.layoutViewField_colOrderingCustomer3, Me.item36, Me.item39, Me.layoutViewField_colRemittanceInformation2, Me.layoutViewField_colAccountPayeeBIC3, Me.layoutViewField_colAccountPayeeNameAddress3, Me.layoutViewField_colAccountPayeeCity3, Me.layoutViewField_LayoutViewColumn100, Me.layoutViewField_LayoutViewColumn101, Me.layoutViewField_LayoutViewColumn103})
         Me.LayoutViewCard3.Name = "LayoutViewCard3"
         Me.LayoutViewCard3.OptionsCustomization.AllowDrag = DevExpress.XtraLayout.ItemDragDropMode.Allow
         Me.LayoutViewCard3.OptionsItemText.TextToControlDistance = 5
@@ -3506,9 +3532,9 @@ Partial Class GmpsPaymentsOut
         '
         Me.item39.AllowHotTrack = False
         Me.item39.CustomizationFormText = "item0"
-        Me.item39.Location = New System.Drawing.Point(0, 734)
+        Me.item39.Location = New System.Drawing.Point(0, 687)
         Me.item39.Name = "item39"
-        Me.item39.Size = New System.Drawing.Size(993, 11)
+        Me.item39.Size = New System.Drawing.Size(993, 10)
         Me.item39.TextSize = New System.Drawing.Size(0, 0)
         '
         'PaymentsOut_GridView
@@ -3520,7 +3546,7 @@ Partial Class GmpsPaymentsOut
         Me.PaymentsOut_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.PaymentsOut_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Cyan
         Me.PaymentsOut_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.PaymentsOut_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colMTTYPE, Me.colRegisterDate, Me.colOurReference, Me.colSenderReference, Me.colAmount, Me.colCurrency, Me.colExchangeRate, Me.colAmountEuro, Me.colSenderBIC, Me.colSenderName, Me.colSenderCity, Me.colValueDate, Me.colReceivingBankBIC, Me.colReceivingBankCountryCode, Me.colReceivingBankName, Me.colReceivingBankCity, Me.colOrderingCustomersAccountServicingInstitution, Me.colTransactionType, Me.colOrderingCustomer, Me.colOrderingCustomersAccNo, Me.colIntermediaryInstitutionBIC, Me.colIntermediaryInstitutionName, Me.colIntermediaryInstitutionCity, Me.colIntermediaryInstitutionAccNo, Me.colAccountPayeeBIC, Me.colAccountPayeeNameAddress, Me.colAccountPayeeCity, Me.colAccountOfInstitutionAccNo, Me.colBeneficiaryBankBIC, Me.colBeneficiaryBankName, Me.colBeneficiaryBankCity, Me.colBeneficiaryBankAccNo, Me.colBeneficiaryCustomerBIC, Me.colBeneficiaryCustomerAccNo, Me.colBeneficiaryCustomerNameAddress, Me.colDetailsOfCharges, Me.colRemittanceInformation, Me.colPayStartTime, Me.colSenderToReceiverInformation, Me.colDebitTransactionsSigns, Me.colProcessingQueue, Me.colACK_State, Me.colStatus, Me.colPaymentYear, Me.colProcessedBy, Me.colMsgSenderCountry})
+        Me.PaymentsOut_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colMTTYPE, Me.colRegisterDate, Me.colOurReference, Me.colSenderReference, Me.colAmount, Me.colCurrency, Me.colExchangeRate, Me.colAmountEuro, Me.colSenderBIC, Me.colSenderName, Me.colSenderCity, Me.colValueDate, Me.colReceivingBankBIC, Me.colReceivingBankCountryCode, Me.colReceivingBankName, Me.colReceivingBankCity, Me.colOrderingCustomersAccountServicingInstitution, Me.colTransactionType, Me.colOrderingCustomer, Me.colOrderingCustomersAccNo, Me.colIntermediaryInstitutionBIC, Me.colIntermediaryInstitutionName, Me.colIntermediaryInstitutionCity, Me.colIntermediaryInstitutionAccNo, Me.colAccountPayeeBIC, Me.colAccountPayeeNameAddress, Me.colAccountPayeeCity, Me.colAccountOfInstitutionAccNo, Me.colBeneficiaryBankBIC, Me.colBeneficiaryBankName, Me.colBeneficiaryBankCity, Me.colBeneficiaryBankAccNo, Me.colBeneficiaryCustomerBIC, Me.colBeneficiaryCustomerAccNo, Me.colBeneficiaryCustomerNameAddress, Me.colDetailsOfCharges, Me.colRemittanceInformation, Me.colPayStartTime, Me.colSenderToReceiverInformation, Me.colDebitTransactionsSigns, Me.colProcessingQueue, Me.colACK_State, Me.colStatus, Me.colPaymentYear, Me.colProcessedBy, Me.colMsgSenderCountry, Me.colSendType})
         Me.PaymentsOut_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.PaymentsOut_GridView.GridControl = Me.GridControl2
         Me.PaymentsOut_GridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AmountEuro", Nothing, "(Amount Euro: SUM={0:n2})"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AmountEuro", Me.colAmountEuro, "(Amount Euro: SUM={0:n2})"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "AmountEuro", Nothing, "(Amount Euro: Count={0})")})
@@ -3530,6 +3556,9 @@ Partial Class GmpsPaymentsOut
         Me.PaymentsOut_GridView.OptionsCustomization.AllowRowSizing = True
         Me.PaymentsOut_GridView.OptionsCustomization.CustomizationFormSearchBoxVisible = True
         Me.PaymentsOut_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
+        Me.PaymentsOut_GridView.OptionsFilter.DefaultFilterEditorView = DevExpress.XtraEditors.FilterEditorViewMode.VisualAndText
+        Me.PaymentsOut_GridView.OptionsFilter.ShowCustomFunctions = DevExpress.Utils.DefaultBoolean.[True]
+        Me.PaymentsOut_GridView.OptionsFilter.UseNewCustomFilterDialog = True
         Me.PaymentsOut_GridView.OptionsFind.AlwaysVisible = True
         Me.PaymentsOut_GridView.OptionsMenu.ShowFooterItem = True
         Me.PaymentsOut_GridView.OptionsMenu.ShowGroupSummaryEditorItem = True
@@ -3539,6 +3568,7 @@ Partial Class GmpsPaymentsOut
         Me.PaymentsOut_GridView.OptionsView.ShowAutoFilterRow = True
         Me.PaymentsOut_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.PaymentsOut_GridView.OptionsView.ShowFooter = True
+        Me.PaymentsOut_GridView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -3558,7 +3588,7 @@ Partial Class GmpsPaymentsOut
         Me.colMTTYPE.OptionsColumn.ReadOnly = True
         Me.colMTTYPE.Visible = True
         Me.colMTTYPE.VisibleIndex = 0
-        Me.colMTTYPE.Width = 102
+        Me.colMTTYPE.Width = 151
         '
         'colRegisterDate
         '
@@ -3570,7 +3600,7 @@ Partial Class GmpsPaymentsOut
         Me.colRegisterDate.OptionsColumn.ReadOnly = True
         Me.colRegisterDate.Visible = True
         Me.colRegisterDate.VisibleIndex = 2
-        Me.colRegisterDate.Width = 82
+        Me.colRegisterDate.Width = 103
         '
         'colOurReference
         '
@@ -3652,7 +3682,7 @@ Partial Class GmpsPaymentsOut
         Me.colSenderBIC.OptionsColumn.ReadOnly = True
         Me.colSenderBIC.Visible = True
         Me.colSenderBIC.VisibleIndex = 1
-        Me.colSenderBIC.Width = 97
+        Me.colSenderBIC.Width = 110
         '
         'colSenderName
         '
@@ -4003,11 +4033,21 @@ Partial Class GmpsPaymentsOut
         Me.colMsgSenderCountry.OptionsColumn.AllowEdit = False
         Me.colMsgSenderCountry.OptionsColumn.ReadOnly = True
         '
+        'colSendType
+        '
+        Me.colSendType.Caption = "Send Type"
+        Me.colSendType.FieldName = "SendType"
+        Me.colSendType.Name = "colSendType"
+        Me.colSendType.OptionsColumn.AllowEdit = False
+        Me.colSendType.OptionsColumn.ReadOnly = True
+        Me.colSendType.Visible = True
+        Me.colSendType.VisibleIndex = 23
+        '
         'LayoutViewCard1
         '
         Me.LayoutViewCard1.CustomizationFormText = "TemplateCard"
         Me.LayoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colOurReference1, Me.layoutViewField_colSenderReference1, Me.layoutViewField_colAmount1, Me.layoutViewField_colExchangeRate1, Me.layoutViewField_colAmountEuro1, Me.layoutViewField_colOrderingCustomersAccountServicingInstitution1, Me.layoutViewField_colBeneficiaryCustomerAccNo1, Me.layoutViewField_colBeneficiaryCustomerNameAddress1, Me.layoutViewField_colDetailsOfCharges1, Me.layoutViewField_colSenderToReceiverInformation1, Me.Group1, Me.item1, Me.Group2, Me.item4, Me.layoutViewField_colValueDate1, Me.layoutViewField_colCurrency1, Me.item3, Me.item5, Me.item6, Me.item7, Me.item8, Me.item9, Me.layoutViewField_colOrderingCustomersAccNo1, Me.layoutViewField_colOrderingCustomer1, Me.item10, Me.item15, Me.item0, Me.layoutViewField_LayoutViewColumn1, Me.layoutViewField_colIntermediaryInstitutionBIC1, Me.layoutViewField_colIntermediaryInstitutionName1, Me.layoutViewField_colIntermediaryInstitutionCity1, Me.layoutViewField_colAccountPayeeBIC1, Me.layoutViewField_colAccountPayeeNameAddress1, Me.layoutViewField_colAccountPayeeCity1, Me.layoutViewField_LayoutViewColumn98, Me.layoutViewField_LayoutViewColumn98_1})
+        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colOurReference1, Me.layoutViewField_colSenderReference1, Me.layoutViewField_colAmount1, Me.layoutViewField_colExchangeRate1, Me.layoutViewField_colAmountEuro1, Me.layoutViewField_colOrderingCustomersAccountServicingInstitution1, Me.layoutViewField_colBeneficiaryCustomerAccNo1, Me.layoutViewField_colBeneficiaryCustomerNameAddress1, Me.layoutViewField_colDetailsOfCharges1, Me.layoutViewField_colSenderToReceiverInformation1, Me.Group1, Me.item1, Me.Group2, Me.item4, Me.layoutViewField_colValueDate1, Me.layoutViewField_colCurrency1, Me.item3, Me.item5, Me.item6, Me.item7, Me.item8, Me.item9, Me.layoutViewField_colOrderingCustomersAccNo1, Me.layoutViewField_colOrderingCustomer1, Me.item10, Me.item15, Me.item0, Me.layoutViewField_LayoutViewColumn1, Me.layoutViewField_colIntermediaryInstitutionBIC1, Me.layoutViewField_colIntermediaryInstitutionName1, Me.layoutViewField_colIntermediaryInstitutionCity1, Me.layoutViewField_colAccountPayeeBIC1, Me.layoutViewField_colAccountPayeeNameAddress1, Me.layoutViewField_colAccountPayeeCity1, Me.layoutViewField_LayoutViewColumn98, Me.layoutViewField_LayoutViewColumn98_1, Me.layoutViewField_LayoutViewColumn102, Me.item11})
         Me.LayoutViewCard1.Name = "LayoutViewCard1"
         Me.LayoutViewCard1.OptionsCustomization.AllowDrag = DevExpress.XtraLayout.ItemDragDropMode.Allow
         Me.LayoutViewCard1.OptionsItemText.TextToControlDistance = 5
@@ -4019,6 +4059,7 @@ Partial Class GmpsPaymentsOut
         Me.Group1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colMTTYPE1, Me.layoutViewField_colRegisterDate1, Me.layoutViewField_colProcessingQueue1, Me.layoutViewField_colProcessedBy1, Me.layoutViewField_colACK_State1, Me.layoutViewField_colStatus1, Me.layoutViewField_colTransactionType1, Me.layoutViewField_LayoutViewColumn95, Me.item40})
         Me.Group1.Location = New System.Drawing.Point(0, 0)
         Me.Group1.Name = "Group1"
+        Me.Group1.OptionsItemText.TextToControlDistance = 3
         Me.Group1.Size = New System.Drawing.Size(993, 120)
         Me.Group1.TextVisible = False
         '
@@ -4037,6 +4078,7 @@ Partial Class GmpsPaymentsOut
         Me.item1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colSenderCity1, Me.layoutViewField_colSenderBIC1, Me.layoutViewField_colSenderName1, Me.EmptySpaceItem3})
         Me.item1.Location = New System.Drawing.Point(0, 120)
         Me.item1.Name = "item1"
+        Me.item1.OptionsItemText.TextToControlDistance = 3
         Me.item1.Size = New System.Drawing.Size(993, 72)
         Me.item1.TextVisible = False
         '
@@ -4055,6 +4097,7 @@ Partial Class GmpsPaymentsOut
         Me.Group2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colReceivingBankBIC1, Me.layoutViewField_colReceivingBankName1, Me.layoutViewField_colReceivingBankCity1})
         Me.Group2.Location = New System.Drawing.Point(0, 192)
         Me.Group2.Name = "Group2"
+        Me.Group2.OptionsItemText.TextToControlDistance = 3
         Me.Group2.Size = New System.Drawing.Size(993, 72)
         Me.Group2.TextVisible = False
         '
@@ -4145,8 +4188,17 @@ Partial Class GmpsPaymentsOut
         Me.item0.CustomizationFormText = "item0"
         Me.item0.Location = New System.Drawing.Point(0, 759)
         Me.item0.Name = "item0"
-        Me.item0.Size = New System.Drawing.Size(993, 34)
+        Me.item0.Size = New System.Drawing.Size(993, 10)
         Me.item0.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'item11
+        '
+        Me.item11.AllowHotTrack = False
+        Me.item11.CustomizationFormText = "item11"
+        Me.item11.Location = New System.Drawing.Point(266, 769)
+        Me.item11.Name = "item11"
+        Me.item11.Size = New System.Drawing.Size(727, 24)
+        Me.item11.TextSize = New System.Drawing.Size(0, 0)
         '
         'GMPS_PAYMENTS_OUTBindingSource
         '
@@ -4202,7 +4254,7 @@ Partial Class GmpsPaymentsOut
         Me.LabelControl2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.Location = New System.Drawing.Point(629, 13)
+        Me.LabelControl2.Location = New System.Drawing.Point(625, 13)
         Me.LabelControl2.Name = "LabelControl2"
         Me.LabelControl2.Size = New System.Drawing.Size(44, 13)
         Me.LabelControl2.TabIndex = 2
@@ -4212,7 +4264,7 @@ Partial Class GmpsPaymentsOut
         '
         Me.PaymentTillDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.PaymentTillDateEdit.EditValue = Nothing
-        Me.PaymentTillDateEdit.Location = New System.Drawing.Point(629, 32)
+        Me.PaymentTillDateEdit.Location = New System.Drawing.Point(625, 32)
         Me.PaymentTillDateEdit.Name = "PaymentTillDateEdit"
         Me.PaymentTillDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.PaymentTillDateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
@@ -4241,7 +4293,7 @@ Partial Class GmpsPaymentsOut
         Me.LabelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.LabelControl1.Appearance.Options.UseFont = True
-        Me.LabelControl1.Location = New System.Drawing.Point(487, 13)
+        Me.LabelControl1.Location = New System.Drawing.Point(483, 13)
         Me.LabelControl1.Name = "LabelControl1"
         Me.LabelControl1.Size = New System.Drawing.Size(57, 13)
         Me.LabelControl1.TabIndex = 0
@@ -4253,7 +4305,7 @@ Partial Class GmpsPaymentsOut
         Me.LoadPaymentsData_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LoadPaymentsData_btn.ImageOptions.ImageIndex = 6
         Me.LoadPaymentsData_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.LoadPaymentsData_btn.Location = New System.Drawing.Point(765, 32)
+        Me.LoadPaymentsData_btn.Location = New System.Drawing.Point(761, 32)
         Me.LoadPaymentsData_btn.Name = "LoadPaymentsData_btn"
         Me.LoadPaymentsData_btn.Size = New System.Drawing.Size(111, 22)
         Me.LoadPaymentsData_btn.TabIndex = 4
@@ -4263,7 +4315,7 @@ Partial Class GmpsPaymentsOut
         '
         Me.PaymentFromDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.PaymentFromDateEdit.EditValue = Nothing
-        Me.PaymentFromDateEdit.Location = New System.Drawing.Point(487, 32)
+        Me.PaymentFromDateEdit.Location = New System.Drawing.Point(483, 32)
         Me.PaymentFromDateEdit.Name = "PaymentFromDateEdit"
         Me.PaymentFromDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.PaymentFromDateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
@@ -4301,7 +4353,7 @@ Partial Class GmpsPaymentsOut
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1040, 149, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1439, 704)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1431, 503)
         Me.LayoutControl1.TabIndex = 35
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -4324,7 +4376,7 @@ Partial Class GmpsPaymentsOut
         Me.LayoutViews_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LayoutViews_btn.ImageOptions.ImageIndex = 0
         Me.LayoutViews_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.LayoutViews_btn.Location = New System.Drawing.Point(1281, 12)
+        Me.LayoutViews_btn.Location = New System.Drawing.Point(1273, 12)
         Me.LayoutViews_btn.Name = "LayoutViews_btn"
         Me.LayoutViews_btn.Size = New System.Drawing.Size(146, 22)
         Me.LayoutViews_btn.StyleController = Me.LayoutControl1
@@ -4338,7 +4390,7 @@ Partial Class GmpsPaymentsOut
         Me.Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_btn.Location = New System.Drawing.Point(12, 12)
         Me.Print_Export_btn.Name = "Print_Export_btn"
-        Me.Print_Export_btn.Size = New System.Drawing.Size(159, 22)
+        Me.Print_Export_btn.Size = New System.Drawing.Size(158, 22)
         Me.Print_Export_btn.StyleController = Me.LayoutControl1
         Me.Print_Export_btn.TabIndex = 5
         Me.Print_Export_btn.Text = "Print or Export"
@@ -4359,16 +4411,16 @@ Partial Class GmpsPaymentsOut
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.LayoutControlItem4})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1439, 704)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1431, 503)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(291, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(289, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(976, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(971, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem1
@@ -4377,7 +4429,7 @@ Partial Class GmpsPaymentsOut
         Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(163, 26)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(162, 26)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -4385,16 +4437,16 @@ Partial Class GmpsPaymentsOut
         '
         Me.EmptySpaceItem4.AllowHotTrack = False
         Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(163, 0)
+        Me.EmptySpaceItem4.Location = New System.Drawing.Point(162, 0)
         Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(128, 26)
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(127, 26)
         Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.LayoutViews_btn
         Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1269, 0)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(1261, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
         Me.LayoutControlItem3.Size = New System.Drawing.Size(150, 26)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
@@ -4404,9 +4456,9 @@ Partial Class GmpsPaymentsOut
         '
         Me.SimpleSeparator1.AllowHotTrack = False
         Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1267, 0)
+        Me.SimpleSeparator1.Location = New System.Drawing.Point(1260, 0)
         Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
+        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
         '
         'LayoutControlItem4
         '
@@ -4414,22 +4466,52 @@ Partial Class GmpsPaymentsOut
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 26)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1419, 658)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1411, 457)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutViewColumn102
+        '
+        Me.LayoutViewColumn102.Caption = "Send Type"
+        Me.LayoutViewColumn102.FieldName = "SendType"
+        Me.LayoutViewColumn102.LayoutViewField = Me.layoutViewField_LayoutViewColumn102_1
+        Me.LayoutViewColumn102.Name = "LayoutViewColumn102"
+        '
+        'layoutViewField_LayoutViewColumn102_1
+        '
+        Me.layoutViewField_LayoutViewColumn102_1.EditorPreferredWidth = 10
+        Me.layoutViewField_LayoutViewColumn102_1.Location = New System.Drawing.Point(0, 673)
+        Me.layoutViewField_LayoutViewColumn102_1.Name = "layoutViewField_LayoutViewColumn102_1"
+        Me.layoutViewField_LayoutViewColumn102_1.Size = New System.Drawing.Size(984, 20)
+        Me.layoutViewField_LayoutViewColumn102_1.TextSize = New System.Drawing.Size(157, 13)
+        '
+        'LayoutViewColumn103
+        '
+        Me.LayoutViewColumn103.Caption = "Send Type"
+        Me.LayoutViewColumn103.FieldName = "SendType"
+        Me.LayoutViewColumn103.LayoutViewField = Me.layoutViewField_LayoutViewColumn103
+        Me.LayoutViewColumn103.Name = "LayoutViewColumn103"
+        '
+        'layoutViewField_LayoutViewColumn103
+        '
+        Me.layoutViewField_LayoutViewColumn103.EditorPreferredWidth = 10
+        Me.layoutViewField_LayoutViewColumn103.Location = New System.Drawing.Point(0, 697)
+        Me.layoutViewField_LayoutViewColumn103.Name = "layoutViewField_LayoutViewColumn103"
+        Me.layoutViewField_LayoutViewColumn103.Size = New System.Drawing.Size(993, 20)
+        Me.layoutViewField_LayoutViewColumn103.TextSize = New System.Drawing.Size(157, 13)
         '
         'GmpsPaymentsOut
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1432, 757)
+        Me.ClientSize = New System.Drawing.Size(1424, 556)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.PaymentTillDateEdit)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.LoadPaymentsData_btn)
         Me.Controls.Add(Me.PaymentFromDateEdit)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("GmpsPaymentsOut.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "GmpsPaymentsOut"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "GMPS PAYMENTS - OUTGOING"
@@ -4485,6 +4567,7 @@ Partial Class GmpsPaymentsOut
         CType(Me.layoutViewField_LayoutViewColumn95, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.layoutViewField_LayoutViewColumn98, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.layoutViewField_LayoutViewColumn98_1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn102, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PaymentsOut_MT202_LayoutView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.layoutViewField_colID2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4634,6 +4717,7 @@ Partial Class GmpsPaymentsOut
         CType(Me.item10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.item15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.item0, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GMPS_PAYMENTS_OUTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClearingDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4654,6 +4738,8 @@ Partial Class GmpsPaymentsOut
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn102_1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn103, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -4880,58 +4966,8 @@ Partial Class GmpsPaymentsOut
     Friend WithEvents LayoutViewColumn95 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewColumn96 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewColumn97 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colID1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colMTTYPE1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colRegisterDate1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colOurReference1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colSenderReference1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colAmount1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colCurrency1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colExchangeRate1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colAmountEuro1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colSenderBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colSenderName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colSenderCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colValueDate1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colReceivingBankBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colReceivingBankCountryCode1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colReceivingBankName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colReceivingBankCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colOrderingCustomersAccountServicingInstitution1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colTransactionType1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colOrderingCustomer1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colOrderingCustomersAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colIntermediaryInstitutionBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colIntermediaryInstitutionName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colIntermediaryInstitutionCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colIntermediaryInstitutionAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colAccountPayeeBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colAccountPayeeNameAddress1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colAccountPayeeCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colAccountOfInstitutionAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colBeneficiaryBankBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colBeneficiaryBankName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colBeneficiaryBankCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colBeneficiaryBankAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colBeneficiaryCustomerBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colBeneficiaryCustomerAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colBeneficiaryCustomerNameAddress1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colDetailsOfCharges1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_LayoutViewColumn1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colPayStartTime1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colSenderToReceiverInformation1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colDebitTransactionsSigns1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colProcessingQueue1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colACK_State1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colStatus1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colPaymentYear1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colProcessedBy1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_colMsgSenderCountry1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents layoutViewField_LayoutViewColumn95 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents col_UB_SenderName1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_LayoutViewColumn98 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents col_UB_SenderCity1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_LayoutViewColumn98_1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colID2 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colMTTYPE2 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colRegisterDate2 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
@@ -5000,22 +5036,6 @@ Partial Class GmpsPaymentsOut
     Friend WithEvents item29 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents LayoutViewColumn100 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewColumn101 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewCard1 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
-    Friend WithEvents Group1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents item40 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents Group2 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents item4 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item3 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item5 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item6 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item7 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item8 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item9 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item10 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item15 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents item0 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents layoutViewField_colID3 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colMTTYPE3 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colRegisterDate3 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
@@ -5081,4 +5101,78 @@ Partial Class GmpsPaymentsOut
     Friend WithEvents item35 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item36 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item39 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents layoutViewField_colID1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colMTTYPE1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colRegisterDate1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colOurReference1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colSenderReference1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colAmount1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colCurrency1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colExchangeRate1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colAmountEuro1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colSenderBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colSenderName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colSenderCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colValueDate1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colReceivingBankBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colReceivingBankCountryCode1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colReceivingBankName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colReceivingBankCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colOrderingCustomersAccountServicingInstitution1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colTransactionType1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colOrderingCustomer1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colOrderingCustomersAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colIntermediaryInstitutionBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colIntermediaryInstitutionName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colIntermediaryInstitutionCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colIntermediaryInstitutionAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colAccountPayeeBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colAccountPayeeNameAddress1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colAccountPayeeCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colAccountOfInstitutionAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colBeneficiaryBankBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colBeneficiaryBankName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colBeneficiaryBankCity1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colBeneficiaryBankAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colBeneficiaryCustomerBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colBeneficiaryCustomerAccNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colBeneficiaryCustomerNameAddress1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colDetailsOfCharges1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_LayoutViewColumn1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colPayStartTime1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colSenderToReceiverInformation1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colDebitTransactionsSigns1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colProcessingQueue1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colACK_State1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colStatus1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colPaymentYear1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colProcessedBy1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_colMsgSenderCountry1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_LayoutViewColumn95 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_LayoutViewColumn98 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents layoutViewField_LayoutViewColumn98_1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents colSendType1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
+    Friend WithEvents layoutViewField_LayoutViewColumn102 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents colSendType As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LayoutViewCard1 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
+    Friend WithEvents Group1 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents item40 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item1 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents Group2 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents item4 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item3 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item5 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item6 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item7 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item8 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item9 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item10 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item15 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item0 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item11 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents LayoutViewColumn102 As DevExpress.XtraGrid.Columns.LayoutViewColumn
+    Friend WithEvents layoutViewField_LayoutViewColumn102_1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
+    Friend WithEvents LayoutViewColumn103 As DevExpress.XtraGrid.Columns.LayoutViewColumn
+    Friend WithEvents layoutViewField_LayoutViewColumn103 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
 End Class

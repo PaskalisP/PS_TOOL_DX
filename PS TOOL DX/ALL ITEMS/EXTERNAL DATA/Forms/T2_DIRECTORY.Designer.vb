@@ -22,6 +22,11 @@ Partial Class T2_DIRECTORY
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(T2_DIRECTORY))
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem1 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -37,6 +42,9 @@ Partial Class T2_DIRECTORY
         Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -108,6 +116,10 @@ Partial Class T2_DIRECTORY
         Me.item1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.item2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.item3 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.item4 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.item5 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.item6 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.item7 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.T2_DIRECTORYTableAdapter = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.T2_DIRECTORYTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
@@ -135,6 +147,8 @@ Partial Class T2_DIRECTORY
         Me.CurrencyName_lbl = New DevExpress.XtraEditors.LabelControl()
         Me.ValidFrom_DateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
+        Me.LastUpdate_txt = New DevExpress.XtraEditors.TextEdit()
         Me.DropDownButton1 = New DevExpress.XtraEditors.DropDownButton()
         Me.PopupMenu1 = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.ReCreateT2Directory_BarSubItem = New DevExpress.XtraBars.BarSubItem()
@@ -180,9 +194,9 @@ Partial Class T2_DIRECTORY
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.DxValidationProvider1 = New DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(Me.components)
-        Me.LastUpdate_txt = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem_ProgressPanel = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.DxValidationProvider1 = New DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(Me.components)
         CType(Me.T2DetailView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BICCODERepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -215,6 +229,10 @@ Partial Class T2_DIRECTORY
         CType(Me.item1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.item2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.item3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl1.SuspendLayout()
@@ -229,6 +247,7 @@ Partial Class T2_DIRECTORY
         CType(Me.ValidFrom_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
+        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -247,14 +266,20 @@ Partial Class T2_DIRECTORY
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem_ProgressPanel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'T2DetailView
         '
-        Me.T2DetailView.CardMinSize = New System.Drawing.Size(257, 398)
+        Me.T2DetailView.Appearance.FieldCaption.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.T2DetailView.Appearance.FieldCaption.Options.UseFont = True
+        Me.T2DetailView.Appearance.FieldEditingValue.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold)
+        Me.T2DetailView.Appearance.FieldEditingValue.Options.UseFont = True
+        Me.T2DetailView.Appearance.FieldValue.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.T2DetailView.Appearance.FieldValue.Options.UseFont = True
+        Me.T2DetailView.CardMinSize = New System.Drawing.Size(950, 481)
         Me.T2DetailView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.colID1, Me.colBIC111, Me.colADDRESSEE1, Me.colADDRESSEE_NAME1, Me.colACCOUNT_HOLDER1, Me.colACCOUNT_HOLDER_NAME1, Me.colINSTITUTION_NAME1, Me.colCITY_HEADING1, Me.colSORTCODE1, Me.colMAIN_BIC_FLAG1, Me.colTYPE_OF_CHANGE1, Me.colVALID_FROM1, Me.colVALID_TILL1, Me.colPARTICIPATION_TYPE1, Me.colPARTICIPATION_TYPE_NAME1, Me.colRESERVE1, Me.colDeletable1})
         Me.T2DetailView.GridControl = Me.GridControl2
         Me.T2DetailView.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colID1})
@@ -298,6 +323,8 @@ Partial Class T2_DIRECTORY
         '
         'colID1
         '
+        Me.colID1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colID1.AppearanceCell.Options.UseFont = True
         Me.colID1.FieldName = "ID"
         Me.colID1.LayoutViewField = Me.layoutViewField_colID1
         Me.colID1.Name = "colID1"
@@ -309,12 +336,14 @@ Partial Class T2_DIRECTORY
         Me.layoutViewField_colID1.EditorPreferredWidth = 20
         Me.layoutViewField_colID1.Location = New System.Drawing.Point(0, 0)
         Me.layoutViewField_colID1.Name = "layoutViewField_colID1"
-        Me.layoutViewField_colID1.Size = New System.Drawing.Size(931, 384)
+        Me.layoutViewField_colID1.Size = New System.Drawing.Size(931, 360)
         Me.layoutViewField_colID1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colBIC111
         '
+        Me.colBIC111.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
         Me.colBIC111.AppearanceCell.ForeColor = System.Drawing.Color.Yellow
+        Me.colBIC111.AppearanceCell.Options.UseFont = True
         Me.colBIC111.AppearanceCell.Options.UseForeColor = True
         Me.colBIC111.Caption = "Participant BIC"
         Me.colBIC111.ColumnEdit = Me.BICCODERepositoryItemTextEdit
@@ -329,15 +358,17 @@ Partial Class T2_DIRECTORY
         Me.BICCODERepositoryItemTextEdit.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.BICCODERepositoryItemTextEdit.Appearance.BackColor = System.Drawing.Color.Yellow
         Me.BICCODERepositoryItemTextEdit.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.BICCODERepositoryItemTextEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.BICCODERepositoryItemTextEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BICCODERepositoryItemTextEdit.Appearance.ForeColor = System.Drawing.Color.Black
         Me.BICCODERepositoryItemTextEdit.Appearance.Options.UseBackColor = True
         Me.BICCODERepositoryItemTextEdit.Appearance.Options.UseFont = True
         Me.BICCODERepositoryItemTextEdit.Appearance.Options.UseForeColor = True
         Me.BICCODERepositoryItemTextEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.BICCODERepositoryItemTextEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.BICCODERepositoryItemTextEdit.AppearanceFocused.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BICCODERepositoryItemTextEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.BICCODERepositoryItemTextEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.BICCODERepositoryItemTextEdit.AppearanceFocused.Options.UseFont = True
         Me.BICCODERepositoryItemTextEdit.AppearanceFocused.Options.UseForeColor = True
         Me.BICCODERepositoryItemTextEdit.AutoHeight = False
         Me.BICCODERepositoryItemTextEdit.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
@@ -349,15 +380,17 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colBIC111
         '
-        Me.layoutViewField_colBIC111.EditorPreferredWidth = 294
-        Me.layoutViewField_colBIC111.Location = New System.Drawing.Point(0, 0)
+        Me.layoutViewField_colBIC111.EditorPreferredWidth = 284
+        Me.layoutViewField_colBIC111.Location = New System.Drawing.Point(10, 10)
         Me.layoutViewField_colBIC111.Name = "layoutViewField_colBIC111"
-        Me.layoutViewField_colBIC111.Size = New System.Drawing.Size(423, 24)
+        Me.layoutViewField_colBIC111.Size = New System.Drawing.Size(413, 24)
         Me.layoutViewField_colBIC111.TextSize = New System.Drawing.Size(120, 13)
         '
         'colADDRESSEE1
         '
+        Me.colADDRESSEE1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
         Me.colADDRESSEE1.AppearanceCell.ForeColor = System.Drawing.Color.Aqua
+        Me.colADDRESSEE1.AppearanceCell.Options.UseFont = True
         Me.colADDRESSEE1.AppearanceCell.Options.UseForeColor = True
         Me.colADDRESSEE1.Caption = "Addressee BIC"
         Me.colADDRESSEE1.ColumnEdit = Me.BICCODERepositoryItemTextEdit
@@ -367,14 +400,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colADDRESSEE1
         '
-        Me.layoutViewField_colADDRESSEE1.EditorPreferredWidth = 294
-        Me.layoutViewField_colADDRESSEE1.Location = New System.Drawing.Point(0, 72)
+        Me.layoutViewField_colADDRESSEE1.EditorPreferredWidth = 284
+        Me.layoutViewField_colADDRESSEE1.Location = New System.Drawing.Point(10, 82)
         Me.layoutViewField_colADDRESSEE1.Name = "layoutViewField_colADDRESSEE1"
-        Me.layoutViewField_colADDRESSEE1.Size = New System.Drawing.Size(423, 24)
+        Me.layoutViewField_colADDRESSEE1.Size = New System.Drawing.Size(413, 24)
         Me.layoutViewField_colADDRESSEE1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colADDRESSEE_NAME1
         '
+        Me.colADDRESSEE_NAME1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colADDRESSEE_NAME1.AppearanceCell.Options.UseFont = True
         Me.colADDRESSEE_NAME1.Caption = "Addressee Name"
         Me.colADDRESSEE_NAME1.FieldName = "ADDRESSEE_NAME"
         Me.colADDRESSEE_NAME1.LayoutViewField = Me.layoutViewField_colADDRESSEE_NAME1
@@ -384,15 +419,17 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colADDRESSEE_NAME1
         '
-        Me.layoutViewField_colADDRESSEE_NAME1.EditorPreferredWidth = 802
-        Me.layoutViewField_colADDRESSEE_NAME1.Location = New System.Drawing.Point(0, 96)
+        Me.layoutViewField_colADDRESSEE_NAME1.EditorPreferredWidth = 685
+        Me.layoutViewField_colADDRESSEE_NAME1.Location = New System.Drawing.Point(10, 106)
         Me.layoutViewField_colADDRESSEE_NAME1.Name = "layoutViewField_colADDRESSEE_NAME1"
-        Me.layoutViewField_colADDRESSEE_NAME1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colADDRESSEE_NAME1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colADDRESSEE_NAME1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colACCOUNT_HOLDER1
         '
+        Me.colACCOUNT_HOLDER1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
         Me.colACCOUNT_HOLDER1.AppearanceCell.ForeColor = System.Drawing.Color.Aqua
+        Me.colACCOUNT_HOLDER1.AppearanceCell.Options.UseFont = True
         Me.colACCOUNT_HOLDER1.AppearanceCell.Options.UseForeColor = True
         Me.colACCOUNT_HOLDER1.Caption = "Account Holder BIC"
         Me.colACCOUNT_HOLDER1.ColumnEdit = Me.BICCODERepositoryItemTextEdit
@@ -402,14 +439,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colACCOUNT_HOLDER1
         '
-        Me.layoutViewField_colACCOUNT_HOLDER1.EditorPreferredWidth = 294
-        Me.layoutViewField_colACCOUNT_HOLDER1.Location = New System.Drawing.Point(0, 120)
+        Me.layoutViewField_colACCOUNT_HOLDER1.EditorPreferredWidth = 284
+        Me.layoutViewField_colACCOUNT_HOLDER1.Location = New System.Drawing.Point(10, 130)
         Me.layoutViewField_colACCOUNT_HOLDER1.Name = "layoutViewField_colACCOUNT_HOLDER1"
-        Me.layoutViewField_colACCOUNT_HOLDER1.Size = New System.Drawing.Size(423, 24)
+        Me.layoutViewField_colACCOUNT_HOLDER1.Size = New System.Drawing.Size(413, 24)
         Me.layoutViewField_colACCOUNT_HOLDER1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colACCOUNT_HOLDER_NAME1
         '
+        Me.colACCOUNT_HOLDER_NAME1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colACCOUNT_HOLDER_NAME1.AppearanceCell.Options.UseFont = True
         Me.colACCOUNT_HOLDER_NAME1.Caption = "Account Holder Name"
         Me.colACCOUNT_HOLDER_NAME1.FieldName = "ACCOUNT_HOLDER_NAME"
         Me.colACCOUNT_HOLDER_NAME1.LayoutViewField = Me.layoutViewField_colACCOUNT_HOLDER_NAME1
@@ -419,15 +458,17 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colACCOUNT_HOLDER_NAME1
         '
-        Me.layoutViewField_colACCOUNT_HOLDER_NAME1.EditorPreferredWidth = 802
-        Me.layoutViewField_colACCOUNT_HOLDER_NAME1.Location = New System.Drawing.Point(0, 144)
+        Me.layoutViewField_colACCOUNT_HOLDER_NAME1.EditorPreferredWidth = 685
+        Me.layoutViewField_colACCOUNT_HOLDER_NAME1.Location = New System.Drawing.Point(10, 154)
         Me.layoutViewField_colACCOUNT_HOLDER_NAME1.Name = "layoutViewField_colACCOUNT_HOLDER_NAME1"
-        Me.layoutViewField_colACCOUNT_HOLDER_NAME1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colACCOUNT_HOLDER_NAME1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colACCOUNT_HOLDER_NAME1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colINSTITUTION_NAME1
         '
+        Me.colINSTITUTION_NAME1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
         Me.colINSTITUTION_NAME1.AppearanceCell.ForeColor = System.Drawing.Color.Yellow
+        Me.colINSTITUTION_NAME1.AppearanceCell.Options.UseFont = True
         Me.colINSTITUTION_NAME1.AppearanceCell.Options.UseForeColor = True
         Me.colINSTITUTION_NAME1.Caption = "Participant Name"
         Me.colINSTITUTION_NAME1.FieldName = "INSTITUTION_NAME"
@@ -438,14 +479,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colINSTITUTION_NAME1
         '
-        Me.layoutViewField_colINSTITUTION_NAME1.EditorPreferredWidth = 802
-        Me.layoutViewField_colINSTITUTION_NAME1.Location = New System.Drawing.Point(0, 24)
+        Me.layoutViewField_colINSTITUTION_NAME1.EditorPreferredWidth = 685
+        Me.layoutViewField_colINSTITUTION_NAME1.Location = New System.Drawing.Point(10, 34)
         Me.layoutViewField_colINSTITUTION_NAME1.Name = "layoutViewField_colINSTITUTION_NAME1"
-        Me.layoutViewField_colINSTITUTION_NAME1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colINSTITUTION_NAME1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colINSTITUTION_NAME1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colCITY_HEADING1
         '
+        Me.colCITY_HEADING1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colCITY_HEADING1.AppearanceCell.Options.UseFont = True
         Me.colCITY_HEADING1.Caption = "City Heading"
         Me.colCITY_HEADING1.FieldName = "CITY_HEADING"
         Me.colCITY_HEADING1.LayoutViewField = Me.layoutViewField_colCITY_HEADING1
@@ -455,14 +498,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colCITY_HEADING1
         '
-        Me.layoutViewField_colCITY_HEADING1.EditorPreferredWidth = 802
-        Me.layoutViewField_colCITY_HEADING1.Location = New System.Drawing.Point(0, 48)
+        Me.layoutViewField_colCITY_HEADING1.EditorPreferredWidth = 685
+        Me.layoutViewField_colCITY_HEADING1.Location = New System.Drawing.Point(10, 58)
         Me.layoutViewField_colCITY_HEADING1.Name = "layoutViewField_colCITY_HEADING1"
-        Me.layoutViewField_colCITY_HEADING1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colCITY_HEADING1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colCITY_HEADING1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colSORTCODE1
         '
+        Me.colSORTCODE1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colSORTCODE1.AppearanceCell.Options.UseFont = True
         Me.colSORTCODE1.Caption = "Sort Code"
         Me.colSORTCODE1.FieldName = "SORTCODE"
         Me.colSORTCODE1.LayoutViewField = Me.layoutViewField_colSORTCODE1
@@ -472,14 +517,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colSORTCODE1
         '
-        Me.layoutViewField_colSORTCODE1.EditorPreferredWidth = 802
-        Me.layoutViewField_colSORTCODE1.Location = New System.Drawing.Point(0, 168)
+        Me.layoutViewField_colSORTCODE1.EditorPreferredWidth = 685
+        Me.layoutViewField_colSORTCODE1.Location = New System.Drawing.Point(10, 178)
         Me.layoutViewField_colSORTCODE1.Name = "layoutViewField_colSORTCODE1"
-        Me.layoutViewField_colSORTCODE1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colSORTCODE1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colSORTCODE1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colMAIN_BIC_FLAG1
         '
+        Me.colMAIN_BIC_FLAG1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colMAIN_BIC_FLAG1.AppearanceCell.Options.UseFont = True
         Me.colMAIN_BIC_FLAG1.Caption = "Main BIC Flag"
         Me.colMAIN_BIC_FLAG1.FieldName = "MAIN_BIC_FLAG"
         Me.colMAIN_BIC_FLAG1.LayoutViewField = Me.layoutViewField_colMAIN_BIC_FLAG1
@@ -489,14 +536,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colMAIN_BIC_FLAG1
         '
-        Me.layoutViewField_colMAIN_BIC_FLAG1.EditorPreferredWidth = 802
-        Me.layoutViewField_colMAIN_BIC_FLAG1.Location = New System.Drawing.Point(0, 192)
+        Me.layoutViewField_colMAIN_BIC_FLAG1.EditorPreferredWidth = 685
+        Me.layoutViewField_colMAIN_BIC_FLAG1.Location = New System.Drawing.Point(10, 202)
         Me.layoutViewField_colMAIN_BIC_FLAG1.Name = "layoutViewField_colMAIN_BIC_FLAG1"
-        Me.layoutViewField_colMAIN_BIC_FLAG1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colMAIN_BIC_FLAG1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colMAIN_BIC_FLAG1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colTYPE_OF_CHANGE1
         '
+        Me.colTYPE_OF_CHANGE1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colTYPE_OF_CHANGE1.AppearanceCell.Options.UseFont = True
         Me.colTYPE_OF_CHANGE1.Caption = "Type of Change"
         Me.colTYPE_OF_CHANGE1.ColumnEdit = Me.RepositoryItemImageComboBox1
         Me.colTYPE_OF_CHANGE1.FieldName = "TYPE_OF_CHANGE"
@@ -536,14 +585,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colTYPE_OF_CHANGE1
         '
-        Me.layoutViewField_colTYPE_OF_CHANGE1.EditorPreferredWidth = 802
-        Me.layoutViewField_colTYPE_OF_CHANGE1.Location = New System.Drawing.Point(0, 216)
+        Me.layoutViewField_colTYPE_OF_CHANGE1.EditorPreferredWidth = 685
+        Me.layoutViewField_colTYPE_OF_CHANGE1.Location = New System.Drawing.Point(10, 226)
         Me.layoutViewField_colTYPE_OF_CHANGE1.Name = "layoutViewField_colTYPE_OF_CHANGE1"
-        Me.layoutViewField_colTYPE_OF_CHANGE1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colTYPE_OF_CHANGE1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colTYPE_OF_CHANGE1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colVALID_FROM1
         '
+        Me.colVALID_FROM1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colVALID_FROM1.AppearanceCell.Options.UseFont = True
         Me.colVALID_FROM1.Caption = "Valid from"
         Me.colVALID_FROM1.FieldName = "VALID_FROM"
         Me.colVALID_FROM1.LayoutViewField = Me.layoutViewField_colVALID_FROM1
@@ -551,14 +602,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colVALID_FROM1
         '
-        Me.layoutViewField_colVALID_FROM1.EditorPreferredWidth = 802
-        Me.layoutViewField_colVALID_FROM1.Location = New System.Drawing.Point(0, 240)
+        Me.layoutViewField_colVALID_FROM1.EditorPreferredWidth = 685
+        Me.layoutViewField_colVALID_FROM1.Location = New System.Drawing.Point(10, 250)
         Me.layoutViewField_colVALID_FROM1.Name = "layoutViewField_colVALID_FROM1"
-        Me.layoutViewField_colVALID_FROM1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colVALID_FROM1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colVALID_FROM1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colVALID_TILL1
         '
+        Me.colVALID_TILL1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colVALID_TILL1.AppearanceCell.Options.UseFont = True
         Me.colVALID_TILL1.Caption = "Valid Till"
         Me.colVALID_TILL1.FieldName = "VALID_TILL"
         Me.colVALID_TILL1.LayoutViewField = Me.layoutViewField_colVALID_TILL1
@@ -566,14 +619,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colVALID_TILL1
         '
-        Me.layoutViewField_colVALID_TILL1.EditorPreferredWidth = 802
-        Me.layoutViewField_colVALID_TILL1.Location = New System.Drawing.Point(0, 264)
+        Me.layoutViewField_colVALID_TILL1.EditorPreferredWidth = 685
+        Me.layoutViewField_colVALID_TILL1.Location = New System.Drawing.Point(10, 274)
         Me.layoutViewField_colVALID_TILL1.Name = "layoutViewField_colVALID_TILL1"
-        Me.layoutViewField_colVALID_TILL1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colVALID_TILL1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colVALID_TILL1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colPARTICIPATION_TYPE1
         '
+        Me.colPARTICIPATION_TYPE1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colPARTICIPATION_TYPE1.AppearanceCell.Options.UseFont = True
         Me.colPARTICIPATION_TYPE1.Caption = "Participation Type"
         Me.colPARTICIPATION_TYPE1.FieldName = "PARTICIPATION_TYPE"
         Me.colPARTICIPATION_TYPE1.LayoutViewField = Me.layoutViewField_colPARTICIPATION_TYPE1
@@ -583,14 +638,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colPARTICIPATION_TYPE1
         '
-        Me.layoutViewField_colPARTICIPATION_TYPE1.EditorPreferredWidth = 802
-        Me.layoutViewField_colPARTICIPATION_TYPE1.Location = New System.Drawing.Point(0, 288)
+        Me.layoutViewField_colPARTICIPATION_TYPE1.EditorPreferredWidth = 685
+        Me.layoutViewField_colPARTICIPATION_TYPE1.Location = New System.Drawing.Point(10, 298)
         Me.layoutViewField_colPARTICIPATION_TYPE1.Name = "layoutViewField_colPARTICIPATION_TYPE1"
-        Me.layoutViewField_colPARTICIPATION_TYPE1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colPARTICIPATION_TYPE1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colPARTICIPATION_TYPE1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colPARTICIPATION_TYPE_NAME1
         '
+        Me.colPARTICIPATION_TYPE_NAME1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colPARTICIPATION_TYPE_NAME1.AppearanceCell.Options.UseFont = True
         Me.colPARTICIPATION_TYPE_NAME1.Caption = "Participation Type Name"
         Me.colPARTICIPATION_TYPE_NAME1.FieldName = "PARTICIPATION_TYPE_NAME"
         Me.colPARTICIPATION_TYPE_NAME1.LayoutViewField = Me.layoutViewField_colPARTICIPATION_TYPE_NAME1
@@ -600,14 +657,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colPARTICIPATION_TYPE_NAME1
         '
-        Me.layoutViewField_colPARTICIPATION_TYPE_NAME1.EditorPreferredWidth = 802
-        Me.layoutViewField_colPARTICIPATION_TYPE_NAME1.Location = New System.Drawing.Point(0, 312)
+        Me.layoutViewField_colPARTICIPATION_TYPE_NAME1.EditorPreferredWidth = 685
+        Me.layoutViewField_colPARTICIPATION_TYPE_NAME1.Location = New System.Drawing.Point(10, 322)
         Me.layoutViewField_colPARTICIPATION_TYPE_NAME1.Name = "layoutViewField_colPARTICIPATION_TYPE_NAME1"
-        Me.layoutViewField_colPARTICIPATION_TYPE_NAME1.Size = New System.Drawing.Size(931, 24)
+        Me.layoutViewField_colPARTICIPATION_TYPE_NAME1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colPARTICIPATION_TYPE_NAME1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colRESERVE1
         '
+        Me.colRESERVE1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colRESERVE1.AppearanceCell.Options.UseFont = True
         Me.colRESERVE1.Caption = "Reserve"
         Me.colRESERVE1.FieldName = "RESERVE"
         Me.colRESERVE1.LayoutViewField = Me.layoutViewField_colRESERVE1
@@ -617,14 +676,16 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_colRESERVE1
         '
-        Me.layoutViewField_colRESERVE1.EditorPreferredWidth = 802
-        Me.layoutViewField_colRESERVE1.Location = New System.Drawing.Point(0, 336)
+        Me.layoutViewField_colRESERVE1.EditorPreferredWidth = 685
+        Me.layoutViewField_colRESERVE1.Location = New System.Drawing.Point(10, 346)
         Me.layoutViewField_colRESERVE1.Name = "layoutViewField_colRESERVE1"
-        Me.layoutViewField_colRESERVE1.Size = New System.Drawing.Size(931, 48)
+        Me.layoutViewField_colRESERVE1.Size = New System.Drawing.Size(814, 24)
         Me.layoutViewField_colRESERVE1.TextSize = New System.Drawing.Size(120, 13)
         '
         'colDeletable1
         '
+        Me.colDeletable1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 11.25!)
+        Me.colDeletable1.AppearanceCell.Options.UseFont = True
         Me.colDeletable1.Caption = "Deletable"
         Me.colDeletable1.ColumnEdit = Me.RepositoryItemImageComboBox2
         Me.colDeletable1.FieldName = "Deletable"
@@ -643,10 +704,10 @@ Partial Class T2_DIRECTORY
         '
         'layoutViewField_LayoutViewColumn1
         '
-        Me.layoutViewField_LayoutViewColumn1.EditorPreferredWidth = 60
-        Me.layoutViewField_LayoutViewColumn1.Location = New System.Drawing.Point(423, 0)
+        Me.layoutViewField_LayoutViewColumn1.EditorPreferredWidth = 59
+        Me.layoutViewField_LayoutViewColumn1.Location = New System.Drawing.Point(423, 10)
         Me.layoutViewField_LayoutViewColumn1.Name = "layoutViewField_LayoutViewColumn1"
-        Me.layoutViewField_LayoutViewColumn1.Size = New System.Drawing.Size(118, 24)
+        Me.layoutViewField_LayoutViewColumn1.Size = New System.Drawing.Size(117, 24)
         Me.layoutViewField_LayoutViewColumn1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
         Me.layoutViewField_LayoutViewColumn1.TextSize = New System.Drawing.Size(49, 13)
         Me.layoutViewField_LayoutViewColumn1.TextToControlDistance = 5
@@ -665,11 +726,11 @@ Partial Class T2_DIRECTORY
         GridLevelNode1.LevelTemplate = Me.T2DetailView
         GridLevelNode1.RelationName = "Level1"
         Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(12, 38)
+        Me.GridControl2.Location = New System.Drawing.Point(12, 58)
         Me.GridControl2.MainView = Me.T2BaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.RepositoryItemImageComboBox2, Me.RepositoryItemComboBox1, Me.RepositoryItemTextEdit1, Me.BICCODERepositoryItemTextEdit})
-        Me.GridControl2.Size = New System.Drawing.Size(1473, 553)
+        Me.GridControl2.Size = New System.Drawing.Size(1390, 440)
         Me.GridControl2.TabIndex = 23
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.T2BaseView, Me.T2DetailView})
@@ -933,8 +994,8 @@ Partial Class T2_DIRECTORY
         '
         Me.LayoutViewCard1.CustomizationFormText = "TemplateCard"
         Me.LayoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colBIC111, Me.layoutViewField_colADDRESSEE1, Me.layoutViewField_colADDRESSEE_NAME1, Me.layoutViewField_colACCOUNT_HOLDER1, Me.layoutViewField_colACCOUNT_HOLDER_NAME1, Me.layoutViewField_colSORTCODE1, Me.layoutViewField_colMAIN_BIC_FLAG1, Me.layoutViewField_colTYPE_OF_CHANGE1, Me.layoutViewField_colVALID_FROM1, Me.layoutViewField_colVALID_TILL1, Me.layoutViewField_colPARTICIPATION_TYPE1, Me.layoutViewField_colPARTICIPATION_TYPE_NAME1, Me.layoutViewField_colRESERVE1, Me.item1, Me.layoutViewField_colINSTITUTION_NAME1, Me.item2, Me.item3, Me.layoutViewField_colCITY_HEADING1, Me.layoutViewField_LayoutViewColumn1})
-        Me.LayoutViewCard1.Name = "LayoutViewCard1"
+        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colBIC111, Me.layoutViewField_colADDRESSEE1, Me.layoutViewField_colADDRESSEE_NAME1, Me.layoutViewField_colACCOUNT_HOLDER1, Me.layoutViewField_colACCOUNT_HOLDER_NAME1, Me.layoutViewField_colSORTCODE1, Me.layoutViewField_colMAIN_BIC_FLAG1, Me.layoutViewField_colTYPE_OF_CHANGE1, Me.layoutViewField_colVALID_FROM1, Me.layoutViewField_colVALID_TILL1, Me.layoutViewField_colPARTICIPATION_TYPE1, Me.layoutViewField_colPARTICIPATION_TYPE_NAME1, Me.layoutViewField_colRESERVE1, Me.item1, Me.layoutViewField_colINSTITUTION_NAME1, Me.item2, Me.item3, Me.layoutViewField_colCITY_HEADING1, Me.layoutViewField_LayoutViewColumn1, Me.item4, Me.item5, Me.item6, Me.item7})
+        Me.LayoutViewCard1.Name = "layoutViewTemplateCard"
         Me.LayoutViewCard1.OptionsItemText.TextToControlDistance = 5
         Me.LayoutViewCard1.Text = "TemplateCard"
         '
@@ -942,28 +1003,64 @@ Partial Class T2_DIRECTORY
         '
         Me.item1.AllowHotTrack = False
         Me.item1.CustomizationFormText = "item1"
-        Me.item1.Location = New System.Drawing.Point(541, 0)
+        Me.item1.Location = New System.Drawing.Point(540, 10)
         Me.item1.Name = "item1"
-        Me.item1.Size = New System.Drawing.Size(390, 24)
+        Me.item1.Size = New System.Drawing.Size(284, 24)
         Me.item1.TextSize = New System.Drawing.Size(0, 0)
         '
         'item2
         '
         Me.item2.AllowHotTrack = False
         Me.item2.CustomizationFormText = "item2"
-        Me.item2.Location = New System.Drawing.Point(423, 72)
+        Me.item2.Location = New System.Drawing.Point(423, 82)
         Me.item2.Name = "item2"
-        Me.item2.Size = New System.Drawing.Size(508, 24)
+        Me.item2.Size = New System.Drawing.Size(401, 24)
         Me.item2.TextSize = New System.Drawing.Size(0, 0)
         '
         'item3
         '
         Me.item3.AllowHotTrack = False
         Me.item3.CustomizationFormText = "item3"
-        Me.item3.Location = New System.Drawing.Point(423, 120)
+        Me.item3.Location = New System.Drawing.Point(423, 130)
         Me.item3.Name = "item3"
-        Me.item3.Size = New System.Drawing.Size(508, 24)
+        Me.item3.Size = New System.Drawing.Size(401, 24)
         Me.item3.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'item4
+        '
+        Me.item4.AllowHotTrack = False
+        Me.item4.CustomizationFormText = "item4"
+        Me.item4.Location = New System.Drawing.Point(0, 10)
+        Me.item4.Name = "item4"
+        Me.item4.Size = New System.Drawing.Size(10, 360)
+        Me.item4.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'item5
+        '
+        Me.item5.AllowHotTrack = False
+        Me.item5.CustomizationFormText = "item5"
+        Me.item5.Location = New System.Drawing.Point(0, 370)
+        Me.item5.Name = "item5"
+        Me.item5.Size = New System.Drawing.Size(824, 10)
+        Me.item5.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'item6
+        '
+        Me.item6.AllowHotTrack = False
+        Me.item6.CustomizationFormText = "item6"
+        Me.item6.Location = New System.Drawing.Point(824, 10)
+        Me.item6.Name = "item6"
+        Me.item6.Size = New System.Drawing.Size(10, 370)
+        Me.item6.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'item7
+        '
+        Me.item7.AllowHotTrack = False
+        Me.item7.CustomizationFormText = "item7"
+        Me.item7.Location = New System.Drawing.Point(0, 0)
+        Me.item7.Name = "item7"
+        Me.item7.Size = New System.Drawing.Size(834, 10)
+        Me.item7.TextSize = New System.Drawing.Size(0, 0)
         '
         'T2_DIRECTORYTableAdapter
         '
@@ -974,6 +1071,7 @@ Partial Class T2_DIRECTORY
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BIC_DIRECTORY_PLUSTableAdapter = Nothing
         Me.TableAdapterManager.BIC_DIRECTORYTableAdapter = Nothing
+        Me.TableAdapterManager.BIC_HISTORYTableAdapter = Nothing
         Me.TableAdapterManager.BLZTableAdapter = Nothing
         Me.TableAdapterManager.COUNTRIESTableAdapter = Nothing
         Me.TableAdapterManager.CURRENCIESTableAdapter = Nothing
@@ -1022,22 +1120,34 @@ Partial Class T2_DIRECTORY
         Me.GroupControl1.Controls.Add(Me.LabelControl2)
         Me.GroupControl1.Controls.Add(Me.CurrencyName_lbl)
         Me.GroupControl1.Controls.Add(Me.ValidFrom_DateEdit)
-        Me.GroupControl1.Location = New System.Drawing.Point(255, 89)
+        Me.GroupControl1.Location = New System.Drawing.Point(261, 39)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(982, 340)
+        Me.GroupControl1.Size = New System.Drawing.Size(899, 408)
         Me.GroupControl1.TabIndex = 0
-        Me.GroupControl1.Text = "New T2 Participant"
+        Me.GroupControl1.Text = "New T2/RTGS Participant"
         '
         'AddNewT2ParticipantAllBranches_btn
         '
-        Me.AddNewT2ParticipantAllBranches_btn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.AddNewT2ParticipantAllBranches_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.AddNewT2ParticipantAllBranches_btn.ImageOptions.ImageIndex = 13
         Me.AddNewT2ParticipantAllBranches_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.AddNewT2ParticipantAllBranches_btn.Location = New System.Drawing.Point(246, 309)
+        Me.AddNewT2ParticipantAllBranches_btn.Location = New System.Drawing.Point(299, 377)
         Me.AddNewT2ParticipantAllBranches_btn.Name = "AddNewT2ParticipantAllBranches_btn"
         Me.AddNewT2ParticipantAllBranches_btn.Size = New System.Drawing.Size(283, 23)
+        ToolTipTitleItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        ToolTipTitleItem1.Text = "Add new T2/RTGS Participant and all his " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Branches"
+        ToolTipItem1.LeftIndent = 6
+        ToolTipItem1.Text = "Adds the entered participant and all of his branches based on BIC8"
+        ToolTipTitleItem2.LeftIndent = 6
+        ToolTipTitleItem2.Text = "Example: Adding new participant BIC:PCBCCNBJXXX " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "all other Branches" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "PCBCCNBJ001" &
+    ",PCBCCNBJ002... etc." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "will be added into directory" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        SuperToolTip1.Items.Add(ToolTipTitleItem1)
+        SuperToolTip1.Items.Add(ToolTipItem1)
+        SuperToolTip1.Items.Add(ToolTipSeparatorItem1)
+        SuperToolTip1.Items.Add(ToolTipTitleItem2)
+        Me.AddNewT2ParticipantAllBranches_btn.SuperTip = SuperToolTip1
         Me.AddNewT2ParticipantAllBranches_btn.TabIndex = 20
-        Me.AddNewT2ParticipantAllBranches_btn.Text = "Add new T2 Participant and all his Branches"
+        Me.AddNewT2ParticipantAllBranches_btn.Text = "Add new T2/RTGS Participant and all his Branches"
         '
         'LabelControl8
         '
@@ -1078,16 +1188,15 @@ Partial Class T2_DIRECTORY
         Me.ValidTill_DateEdit.Name = "ValidTill_DateEdit"
         Me.ValidTill_DateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ValidTill_DateEdit.Properties.Appearance.Options.UseFont = True
-        Me.ValidTill_DateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.ValidTill_DateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
         Me.ValidTill_DateEdit.Properties.AppearanceFocused.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.ValidTill_DateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.ValidTill_DateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.ValidTill_DateEdit.Properties.AppearanceFocused.Options.UseFont = True
-        Me.ValidTill_DateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.ValidTill_DateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ValidTill_DateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.ValidTill_DateEdit.Properties.Mask.EditMask = "[A-Z0-9]+"
+        Me.ValidTill_DateEdit.Properties.DisplayFormat.FormatString = "dd.MM.yyyy"
+        Me.ValidTill_DateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.ValidTill_DateEdit.Properties.EditFormat.FormatString = "dd.MM.yyyy"
+        Me.ValidTill_DateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.ValidTill_DateEdit.Properties.Mask.EditMask = ""
         Me.ValidTill_DateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.ValidTill_DateEdit.Properties.ReadOnly = True
         Me.ValidTill_DateEdit.Size = New System.Drawing.Size(112, 22)
@@ -1240,9 +1349,9 @@ Partial Class T2_DIRECTORY
         Me.Cancel_btn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cancel_btn.ImageOptions.ImageIndex = 10
         Me.Cancel_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Cancel_btn.Location = New System.Drawing.Point(872, 309)
+        Me.Cancel_btn.Location = New System.Drawing.Point(747, 377)
         Me.Cancel_btn.Name = "Cancel_btn"
-        Me.Cancel_btn.Size = New System.Drawing.Size(105, 23)
+        Me.Cancel_btn.Size = New System.Drawing.Size(147, 23)
         Me.Cancel_btn.TabIndex = 19
         Me.Cancel_btn.Text = "Cancel"
         '
@@ -1251,11 +1360,18 @@ Partial Class T2_DIRECTORY
         Me.AddNewT2Participant_btn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.AddNewT2Participant_btn.ImageOptions.ImageIndex = 8
         Me.AddNewT2Participant_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.AddNewT2Participant_btn.Location = New System.Drawing.Point(5, 309)
+        Me.AddNewT2Participant_btn.Location = New System.Drawing.Point(5, 377)
         Me.AddNewT2Participant_btn.Name = "AddNewT2Participant_btn"
-        Me.AddNewT2Participant_btn.Size = New System.Drawing.Size(166, 23)
+        Me.AddNewT2Participant_btn.Size = New System.Drawing.Size(187, 23)
+        ToolTipTitleItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        ToolTipTitleItem3.Text = "Add new T2/RTGS Participant"
+        ToolTipItem2.LeftIndent = 6
+        ToolTipItem2.Text = "Adds only the entered Participants data into " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T2 RTGS Directory"
+        SuperToolTip2.Items.Add(ToolTipTitleItem3)
+        SuperToolTip2.Items.Add(ToolTipItem2)
+        Me.AddNewT2Participant_btn.SuperTip = SuperToolTip2
         Me.AddNewT2Participant_btn.TabIndex = 18
-        Me.AddNewT2Participant_btn.Text = "Add new T2 Participant"
+        Me.AddNewT2Participant_btn.Text = "Add new T2/RTGS Participant"
         '
         'InternalAccount_txt
         '
@@ -1315,16 +1431,15 @@ Partial Class T2_DIRECTORY
         Me.ValidFrom_DateEdit.Name = "ValidFrom_DateEdit"
         Me.ValidFrom_DateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ValidFrom_DateEdit.Properties.Appearance.Options.UseFont = True
-        Me.ValidFrom_DateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.ValidFrom_DateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
         Me.ValidFrom_DateEdit.Properties.AppearanceFocused.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.ValidFrom_DateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.ValidFrom_DateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.ValidFrom_DateEdit.Properties.AppearanceFocused.Options.UseFont = True
-        Me.ValidFrom_DateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.ValidFrom_DateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.ValidFrom_DateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.ValidFrom_DateEdit.Properties.Mask.EditMask = "[A-Z0-9]+"
+        Me.ValidFrom_DateEdit.Properties.DisplayFormat.FormatString = "dd.MM.yyyy"
+        Me.ValidFrom_DateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.ValidFrom_DateEdit.Properties.EditFormat.FormatString = "dd.MM.yyyy"
+        Me.ValidFrom_DateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.ValidFrom_DateEdit.Properties.Mask.EditMask = ""
         Me.ValidFrom_DateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.ValidFrom_DateEdit.Properties.ReadOnly = True
         Me.ValidFrom_DateEdit.Size = New System.Drawing.Size(112, 22)
@@ -1332,6 +1447,7 @@ Partial Class T2_DIRECTORY
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.LastUpdate_txt)
         Me.LayoutControl1.Controls.Add(Me.DropDownButton1)
         Me.LayoutControl1.Controls.Add(Me.Reload_T2_Dir_btn)
@@ -1341,23 +1457,58 @@ Partial Class T2_DIRECTORY
         Me.LayoutControl1.Controls.Add(Me.Print_Export_btn)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 20)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 21)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1040, 149, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1497, 603)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1414, 510)
         Me.LayoutControl1.TabIndex = 5
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(188, 38)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 24
+        Me.ProgressPanel1.Text = "ProgressPanel1"
+        '
+        'LastUpdate_txt
+        '
+        Me.LastUpdate_txt.Location = New System.Drawing.Point(572, 12)
+        Me.LastUpdate_txt.Name = "LastUpdate_txt"
+        Me.LastUpdate_txt.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LastUpdate_txt.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.LastUpdate_txt.Properties.Appearance.Options.UseFont = True
+        Me.LastUpdate_txt.Properties.Appearance.Options.UseForeColor = True
+        Me.LastUpdate_txt.Properties.ReadOnly = True
+        Me.LastUpdate_txt.Properties.UseReadOnlyAppearance = False
+        Me.LastUpdate_txt.Size = New System.Drawing.Size(176, 20)
+        Me.LastUpdate_txt.StyleController = Me.LayoutControl1
+        Me.LastUpdate_txt.TabIndex = 10
         '
         'DropDownButton1
         '
         Me.DropDownButton1.DropDownControl = Me.PopupMenu1
         Me.DropDownButton1.ImageOptions.ImageIndex = 12
         Me.DropDownButton1.ImageOptions.ImageList = Me.ImageCollection1
-        Me.DropDownButton1.Location = New System.Drawing.Point(379, 12)
+        Me.DropDownButton1.Location = New System.Drawing.Point(368, 12)
         Me.DropDownButton1.MenuManager = Me.BarManager1
         Me.DropDownButton1.Name = "DropDownButton1"
-        Me.DropDownButton1.Size = New System.Drawing.Size(147, 22)
+        Me.DropDownButton1.Size = New System.Drawing.Size(137, 22)
         Me.DropDownButton1.StyleController = Me.LayoutControl1
         Me.DropDownButton1.TabIndex = 26
         Me.DropDownButton1.Text = "T2 Directory"
@@ -1445,31 +1596,31 @@ Partial Class T2_DIRECTORY
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1497, 20)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1414, 21)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 623)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 531)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1497, 52)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1414, 39)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 20)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 21)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 603)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 510)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1497, 20)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1414, 21)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 603)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 510)
         '
         'SQL_Run_BarButtonItem
         '
@@ -1649,9 +1800,9 @@ Partial Class T2_DIRECTORY
         '
         Me.Reload_T2_Dir_btn.ImageOptions.ImageIndex = 7
         Me.Reload_T2_Dir_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Reload_T2_Dir_btn.Location = New System.Drawing.Point(178, 12)
+        Me.Reload_T2_Dir_btn.Location = New System.Drawing.Point(169, 12)
         Me.Reload_T2_Dir_btn.Name = "Reload_T2_Dir_btn"
-        Me.Reload_T2_Dir_btn.Size = New System.Drawing.Size(197, 22)
+        Me.Reload_T2_Dir_btn.Size = New System.Drawing.Size(195, 22)
         Me.Reload_T2_Dir_btn.StyleController = Me.LayoutControl1
         Me.Reload_T2_Dir_btn.TabIndex = 24
         Me.Reload_T2_Dir_btn.Text = "Reload T2 Directory - check Validity"
@@ -1661,9 +1812,9 @@ Partial Class T2_DIRECTORY
         Me.ViewEdit_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.ViewEdit_btn.ImageOptions.ImageIndex = 0
         Me.ViewEdit_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.ViewEdit_btn.Location = New System.Drawing.Point(1370, 12)
+        Me.ViewEdit_btn.Location = New System.Drawing.Point(1289, 12)
         Me.ViewEdit_btn.Name = "ViewEdit_btn"
-        Me.ViewEdit_btn.Size = New System.Drawing.Size(115, 22)
+        Me.ViewEdit_btn.Size = New System.Drawing.Size(113, 22)
         Me.ViewEdit_btn.StyleController = Me.LayoutControl1
         Me.ViewEdit_btn.TabIndex = 22
         Me.ViewEdit_btn.Text = "Edit T2 Participant"
@@ -1689,7 +1840,7 @@ Partial Class T2_DIRECTORY
         Me.Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_btn.Location = New System.Drawing.Point(12, 12)
         Me.Print_Export_btn.Name = "Print_Export_btn"
-        Me.Print_Export_btn.Size = New System.Drawing.Size(162, 22)
+        Me.Print_Export_btn.Size = New System.Drawing.Size(153, 22)
         Me.Print_Export_btn.StyleController = Me.LayoutControl1
         Me.Print_Export_btn.TabIndex = 20
         Me.Print_Export_btn.Text = "Print or Export"
@@ -1708,18 +1859,18 @@ Partial Class T2_DIRECTORY
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem8, Me.LayoutControlItem6, Me.LayoutControlItem5})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem8, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem_ProgressPanel})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1497, 603)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1414, 510)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(1177, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(1113, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(179, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(163, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem1
@@ -1728,7 +1879,7 @@ Partial Class T2_DIRECTORY
         Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(166, 26)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(157, 26)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -1736,26 +1887,26 @@ Partial Class T2_DIRECTORY
         '
         Me.EmptySpaceItem4.AllowHotTrack = False
         Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(778, 0)
+        Me.EmptySpaceItem4.Location = New System.Drawing.Point(740, 0)
         Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(399, 26)
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(373, 26)
         Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
         'SimpleSeparator1
         '
         Me.SimpleSeparator1.AllowHotTrack = False
         Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1356, 0)
+        Me.SimpleSeparator1.Location = New System.Drawing.Point(1276, 0)
         Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
+        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 46)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1477, 557)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1394, 444)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -1763,18 +1914,18 @@ Partial Class T2_DIRECTORY
         '
         Me.LayoutControlItem3.Control = Me.ViewEdit_btn
         Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1358, 0)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(1277, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(119, 26)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(117, 26)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
         'LayoutControlItem8
         '
         Me.LayoutControlItem8.Control = Me.DropDownButton1
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(367, 0)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(356, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(151, 26)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(141, 26)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -1782,54 +1933,51 @@ Partial Class T2_DIRECTORY
         '
         Me.LayoutControlItem6.Control = Me.Reload_T2_Dir_btn
         Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem6"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(166, 0)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(157, 0)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(201, 26)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(199, 26)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.LastUpdate_txt
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(497, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(243, 26)
+        Me.LayoutControlItem5.Text = "Last Update"
+        Me.LayoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(58, 13)
+        Me.LayoutControlItem5.TextToControlDistance = 5
+        '
+        'LayoutControlItem_ProgressPanel
+        '
+        Me.LayoutControlItem_ProgressPanel.Control = Me.ProgressPanel1
+        Me.LayoutControlItem_ProgressPanel.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem_ProgressPanel.Name = "LayoutControlItem_ProgressPanel"
+        Me.LayoutControlItem_ProgressPanel.Size = New System.Drawing.Size(1394, 20)
+        Me.LayoutControlItem_ProgressPanel.TextSize = New System.Drawing.Size(164, 13)
+        Me.LayoutControlItem_ProgressPanel.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'DxValidationProvider1
         '
         Me.DxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.[Auto]
         '
-        'LastUpdate_txt
-        '
-        Me.LastUpdate_txt.Location = New System.Drawing.Point(591, 12)
-        Me.LastUpdate_txt.Name = "LastUpdate_txt"
-        Me.LastUpdate_txt.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LastUpdate_txt.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseFont = True
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseForeColor = True
-        Me.LastUpdate_txt.Properties.ReadOnly = True
-        Me.LastUpdate_txt.Properties.UseReadOnlyAppearance = False
-        Me.LastUpdate_txt.Size = New System.Drawing.Size(195, 20)
-        Me.LastUpdate_txt.StyleController = Me.LayoutControl1
-        Me.LastUpdate_txt.TabIndex = 10
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.LastUpdate_txt
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(518, 0)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(260, 26)
-        Me.LayoutControlItem5.Text = "Last Update"
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(58, 13)
-        '
         'T2_DIRECTORY
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1497, 675)
+        Me.ClientSize = New System.Drawing.Size(1414, 570)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("T2_DIRECTORY.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "T2_DIRECTORY"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "T2 DIRECTORY"
+        Me.Text = "T2 RTGS DIRECTORY"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.T2DetailView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1863,6 +2011,10 @@ Partial Class T2_DIRECTORY
         CType(Me.item1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.item2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.item3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
@@ -1878,6 +2030,7 @@ Partial Class T2_DIRECTORY
         CType(Me.ValidFrom_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1896,9 +2049,9 @@ Partial Class T2_DIRECTORY
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem_ProgressPanel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2021,6 +2174,8 @@ Partial Class T2_DIRECTORY
     Friend WithEvents DxValidationProvider1 As DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider
     Friend WithEvents colDeletable1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents colDeletable As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LastUpdate_txt As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents layoutViewField_colID1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colBIC111 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colADDRESSEE1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
@@ -2042,6 +2197,10 @@ Partial Class T2_DIRECTORY
     Friend WithEvents item1 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item2 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item3 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LastUpdate_txt As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents item4 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item5 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item6 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents item7 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem_ProgressPanel As DevExpress.XtraLayout.LayoutControlItem
 End Class

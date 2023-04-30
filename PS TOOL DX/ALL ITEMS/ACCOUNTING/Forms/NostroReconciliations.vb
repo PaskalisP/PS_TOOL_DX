@@ -50,8 +50,8 @@ Public Class NostroReconciliations
     Dim ActiveTabGroup As Double = 0
     Dim ActiveTabGroupQueries As Double = 0
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
+    'Dim conn As New SqlConnection
+    'Dim cmd As New SqlCommand
 
     Dim d As Date
     Dim dsql As String = Nothing
@@ -67,6 +67,8 @@ Public Class NostroReconciliations
     Private dt2 As New DataTable
 
     Dim dtID As New DataTable
+
+    Dim SqlCommandText As String
 
     Dim LastRecDate As Date
     Dim LastRecDate_ALL_NOSTROS As Date
@@ -149,23 +151,19 @@ Public Class NostroReconciliations
 
 
         'Get connection
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-        cmd.CommandTimeout = 50000
+        'conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
+        'cmd.Connection = conn
+        'cmd.CommandTimeout = 50000
         'Me.External_BaseView.ActiveFilterString = "[SwiftTagName] NOT LIKE 'Intermed%'"
 
         '*******CRYSTAL REPORTS DIRECTORY************
         '+++++++++++++++++++++++++++++++++++++++++++++++++++
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
         CrystalRepDir = cmd.ExecuteScalar
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='NostroReconcileCreateDummyBookings' and [IdABTEILUNGSPARAMETER]='NOSTRO_RECONCILIATION' and [PARAMETER STATUS]='Y' "
         CREATE_DUMMY_BOOKINGS = cmd.ExecuteScalar
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
         '***********************************************************************
 
         AddHandler GridControl_OutstandingBookings.EmbeddedNavigator.ButtonClick, AddressOf GridControl_OutstandingBookings_EmbeddedNavigator_ButtonClick
@@ -198,22 +196,6 @@ Public Class NostroReconciliations
             Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = Nothing
             Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = dt
         End If
-
-        'Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('LOAD_ALL_NOSTRO_RECONCILIATIONS') and Status in ('Y') order by SQL_Float_1 asc"
-        'da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-        'dt1 = New System.Data.DataTable()
-        'da1.Fill(dt1)
-        'If dt1.Rows.Count > 0 Then
-        '    Dim SqlCommandText As String = dt1.Rows.Item(0).Item("SQL_Command_1").ToString
-        '    Me.QueryText = SqlCommandText
-        '    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-        '    dt = New System.Data.DataTable()
-        '    da.Fill(dt)
-        '    If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-        '        Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = Nothing
-        '        Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = dt
-        '    End If
-        'End If
 
 
         'Load all Nostro Accounts which are set for reconciliation
@@ -270,48 +252,62 @@ Public Class NostroReconciliations
 
     Private Sub NOSTRO_RECONCILIATIONS_FILL()
         'Dim objCMD1 As SqlCommand = New SqlCommand("exec [NOSTRO_REC_FILL] @RISKDATE='" & rdsql & "',@NOSTRO_ACCOUNT='" & Me.NostroAcc_SearchLookUpEdit.Text & "'", conn)
-        Dim objCMD1 As SqlCommand = New SqlCommand("Select [BalanceDate] as 'BookingDate_IB',[Value Balance] as 'Amount_IB' from [NOSTRO BALANCES] where [BalanceDate]= CASE WHEN exists(Select [BalanceDate] from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]='" & rdsql & "') THEN  (Select [BalanceDate] from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]='" & rdsql & "') ELSE (SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "') END and [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "'", conn)
-        objCMD1.CommandTimeout = 5000
-        da = New SqlDataAdapter(objCMD1)
-        dt = New DataTable()
-        da.Fill(dt)
-        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-            Me.InternalValueBalanceDate_TextEdit.Text = dt.Rows.Item(0).Item("BookingDate_IB")
-            Me.InternalValueBalanceAmount_TextEdit.Text = FormatNumber(dt.Rows.Item(0).Item("Amount_IB"), 2)
-            'Me.GridControl_Internal.DataSource = Nothing
-            'Me.GridControl_Internal.DataSource = dt
-            'Me.GridControl_Internal.ForceInitialize()
-        End If
+        'NOSTRO_INTERNAL_ACC_BALANCES_FILL
+        Try
+            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_SECOND where SQL_Name_1 in ('NOSTRO_INTERNAL_ACC_BALANCES_FILL') and Status in ('Y') order by SQL_Float_1 asc"
+            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            dt = New System.Data.DataTable()
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                SqlCommandText = dt.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql).Replace("<InternalNostroAccount>", Me.NostroAcc_SearchLookUpEdit.Text).ToString
+                Dim objCMD1 As SqlCommand = New SqlCommand(SqlCommandText, conn)
+                objCMD1.CommandTimeout = 5000
+                da1 = New SqlDataAdapter(objCMD1)
+                dt1 = New DataTable()
+                da1.Fill(dt1)
+                If dt1 IsNot Nothing AndAlso dt1.Rows.Count > 0 Then
+                    Me.InternalValueBalanceDate_TextEdit.Text = dt1.Rows.Item(0).Item("BookingDate_IB")
+                    Me.InternalValueBalanceAmount_TextEdit.Text = FormatNumber(dt1.Rows.Item(0).Item("Amount_IB"), 2)
+                Else
+                    Me.InternalValueBalanceDate_TextEdit.Text = ""
+                    Me.InternalValueBalanceAmount_TextEdit.Text = "0,00"
+                End If
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Return
+        End Try
     End Sub
 
     Private Sub SWIFT_ACC_BALANCES_FILL()
-
         'FILL SWIFT ACC BALANCES
-        'Dim objCMD2 As SqlCommand = New SqlCommand("exec [SWIFT_ACCOUNT_STATEMENTS_BOOKING_DATE] @FROMDATE='" & rdsql & "', @TILLDATE='" & rdsql & "',@ACCOUNT_NR='" & NostroAccount & "'", conn)
-        Dim objCMD2 As SqlCommand = New SqlCommand("SELECT [BookingDate],[Amount] FROM  [SWIFT_ACC_STATEMENTS] WHERE  [InternalAccount]= '" & Me.NostroAcc_SearchLookUpEdit.Text & "' AND [BookingDate] ='" & rdsql & "' and SwiftTag in ('62F') ", conn)
-        objCMD2.CommandTimeout = 5000
-        da = New SqlDataAdapter(objCMD2)
-        dt = New DataTable()
-        da.Fill(dt)
-        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-            Me.ExternalBookedBalanceDate_TextEdit.Text = dt.Rows.Item(0).Item("BookingDate")
-            Me.ExternalBookedBalanceAmount_TextEdit.Text = FormatNumber(dt.Rows.Item(0).Item("Amount"), 2)
-
-        Else
-            'Dim objCMD3 As SqlCommand = New SqlCommand("exec [SWIFT_ACCOUNT_STATEMENTS_BOOKING_DATE_LastBalance] @RISKDATE='" & rdsql & "',@ACCOUNT_NR='" & NostroAccount & "'", conn)
-            Dim objCMD3 As SqlCommand = New SqlCommand("SELECT [BookingDate],[Amount] FROM  [SWIFT_ACC_STATEMENTS] WHERE  ([InternalAccount]= '" & Me.NostroAcc_SearchLookUpEdit.Text & "') AND [SwiftTag] in ('62F') AND ([BookingDate] = (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and SwiftTag in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM  [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "' and SwiftTag in ('62F'))))", conn)
-            objCMD3.CommandTimeout = 5000
-            da1 = New SqlDataAdapter(objCMD3)
-            dt1 = New DataTable()
-            da1.Fill(dt1)
-            If dt1 IsNot Nothing AndAlso dt1.Rows.Count > 0 Then
-                Me.ExternalBookedBalanceDate_TextEdit.Text = dt1.Rows.Item(0).Item("BookingDate")
-                Me.ExternalBookedBalanceAmount_TextEdit.Text = FormatNumber(dt1.Rows.Item(0).Item("Amount"), 2)
-            Else
-                Me.ExternalBookedBalanceDate_TextEdit.Text = ""
-                Me.ExternalBookedBalanceAmount_TextEdit.Text = "0,00"
+        Try
+            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_SECOND where SQL_Name_1 in ('NOSTRO_SWIFT_ACC_BALANCES_FILL') and Status in ('Y') order by SQL_Float_1 asc"
+            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            dt = New System.Data.DataTable()
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                SqlCommandText = dt.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql).Replace("<InternalNostroAccount>", Me.NostroAcc_SearchLookUpEdit.Text).ToString
+                Dim objCMD1 As SqlCommand = New SqlCommand(SqlCommandText, conn)
+                objCMD1.CommandTimeout = 5000
+                da1 = New SqlDataAdapter(objCMD1)
+                dt1 = New DataTable()
+                da1.Fill(dt1)
+                If dt1 IsNot Nothing AndAlso dt1.Rows.Count > 0 Then
+                    Me.ExternalBookedBalanceDate_TextEdit.Text = dt1.Rows.Item(0).Item("BookingDate")
+                    Me.ExternalBookedBalanceAmount_TextEdit.Text = FormatNumber(dt1.Rows.Item(0).Item("Amount"), 2)
+                Else
+                    Me.ExternalBookedBalanceDate_TextEdit.Text = ""
+                    Me.ExternalBookedBalanceAmount_TextEdit.Text = "0,00"
+                End If
             End If
-        End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Return
+        End Try
+
     End Sub
 
     Private Sub NostroAcc_SearchLookUpEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles NostroAcc_SearchLookUpEdit.ButtonClick
@@ -332,6 +328,11 @@ Public Class NostroReconciliations
                 Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = Nothing
                 Me.NostroAcc_SearchLookUpEdit.Properties.DataSource = dt
             End If
+            OpenSqlConnections()
+            'Set all Open Postings in NOSTRO_ACC_RECONCILIATIONS_OPEN as Open
+            cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [Reconciled]='N',[Reconciled_Tag]='N',[Reconciled_Nr]=0"
+            cmd.ExecuteNonQuery()
+            CloseSqlConnections()
             SplashScreenManager.CloseForm(False)
         End If
         If e.Button.Caption = "Restart" Then
@@ -355,10 +356,26 @@ Public Class NostroReconciliations
                     Me.GridControl_OutstandingBookings.Enabled = False
                     Me.LayoutControlGroup6.Visibility = LayoutVisibility.Always
                     Me.LayoutControlGroup6.Text = "Re-executing Reconciliation for Nostro Account: " & NostroAccount & "  on " & rd
-
-
-
                 End If
+            End If
+        End If
+        If e.Button.Caption = "Missing Postings" Then
+            If Me.NostroAcc_SearchLookUpEdit.Text <> "" Then
+                Dim c As NostroReconciliationMissingPostings = New NostroReconciliationMissingPostings
+
+                c.Text = "Missing Postings for reconciliation of Nostro Account: " & Me.NostroAcc_SearchLookUpEdit.Text & " - Nostro Acc.Name: " & Me.NostroInfo_MemoEdit.Text
+                c.InternalNostroAccount_BarEditItem.EditValue = Me.NostroAcc_SearchLookUpEdit.Text
+                QueryText = "SELECT CONVERT(VARCHAR(10),[ReconcileDate],104) as 'ReconcileDates',ReconcileDate  from NOSTRO_ACC_RECONCILIATIONS_ALL 
+                             where AccountNr_Internal='" & Me.NostroAcc_SearchLookUpEdit.Text & "' order by ReconcileDate desc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
+                dt = New System.Data.DataTable()
+                da.Fill(dt)
+                c.RepositoryItemSearchLookUpEdit1.DataSource = dt
+                c.RepositoryItemSearchLookUpEdit1.DisplayMember = "ReconcileDates"
+                c.RepositoryItemSearchLookUpEdit1.ValueMember = "ReconcileDates"
+                c.ReconcileDate_BarEditItem.EditValue = dt.Rows.Item(0).Item("ReconcileDates").ToString
+                c.ShowDialog(Me)
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(1).PerformClick()
 
             End If
         End If
@@ -367,14 +384,14 @@ Public Class NostroReconciliations
 
     Private Sub BgwReconciliation_ReExecute_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwReconciliation_ReExecute.DoWork
         Try
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             'SplashScreenManager.Default.SetWaitFormCaption("Restart Reconciliation for Nostro Account: " & NostroAccount & "  on " & rd)
             Me.BgwReconciliation_ReExecute.ReportProgress(10, "Restart Reconciliation for Nostro Account: " & NostroAccount & "  on " & rd)
 
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details in (Select ID from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('NOSTRO_RECONCILIATIONS_MANUAL')) and Status in ('Y') order by SQL_Float_1 asc"
+            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details 
+                            in (Select ID from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('NOSTRO_RECONCILIATIONS_MANUAL')) 
+                            and Status in ('Y') order by SQL_Float_1 asc"
             da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
@@ -461,9 +478,7 @@ Public Class NostroReconciliations
                     Me.TotalsDifference_TextEdit.Text = FormatNumber(ALL_DIFFERENCE, 2)
                 End If
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
 
@@ -624,7 +639,9 @@ Public Class NostroReconciliations
                 Me.GridControl_OutstandingBookings.UseEmbeddedNavigator = True
                 Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, Me.NostroAcc_SearchLookUpEdit.Text, rd)
                 Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(2).Visible = True
-
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(3).Visible = True
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(4).Visible = True
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(5).Visible = True
             Else
                 'Me.LayoutControlGroup8.Visibility = LayoutVisibility.Always
                 Me.GridControl_Internal.DataSource = NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORYBindingSource
@@ -635,29 +652,13 @@ Public Class NostroReconciliations
                 Me.GridControl_OutstandingBookings.UseEmbeddedNavigator = False
                 Me.NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORYTableAdapter.FillByRecAccOpenHistory(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORY, Me.NostroAcc_SearchLookUpEdit.Text, rd)
                 Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(2).Visible = False
-
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(3).Visible = False
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(4).Visible = False
+                Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(5).Visible = False
             End If
 
             'Calculating balance differences between Internal and External booked balances
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
-
-            'In the old Code after Else 0
-            'cmd.CommandText = "Select 'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]='" & rdsql & "') else (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]=(Select Max([BalanceDate]) from [NOSTRO BALANCES] where [Nostro Code]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [BalanceDate]<='" & rdsql & "'))  end"
-            'Balance_IB = cmd.ExecuteScalar
-
-            'cmd.CommandText = " Select '62F'=Case when exists(Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else 0 end"
-            'If cmd.ExecuteScalar IsNot DBNull.Value Then
-            'Balance_EB = cmd.ExecuteScalar
-            'Else
-            'cmd.CommandText = "Select '62F'=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & Me.NostroAcc_SearchLookUpEdit.Text & "' and [SwiftTag] in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "' and [SwiftTag] in ('62F'))))  end"
-            'If cmd.ExecuteScalar IsNot DBNull.Value Then
-            'Balance_EB = cmd.ExecuteScalar
-            'Else
-            'Balance_EB = 0
-            'End If
-            'End If
+            OpenSqlConnections()
 
             'Balance difference (Internal-External)
             Balance_IB = Me.InternalValueBalanceAmount_TextEdit.Text
@@ -690,9 +691,7 @@ Public Class NostroReconciliations
             End If
 
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             SplashScreenManager.CloseForm(False)
         Else
             Me.InternalExternalDifferenceTextEdit.Text = ""
@@ -936,41 +935,65 @@ Public Class NostroReconciliations
     End Sub
 
     Private Sub dxOK_NewDP_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Dim SumColumn As Double = CDbl(NewDP.GridView1.Columns.Item("colUB_Amount").SummaryItem.SummaryValue.ToString)
+        If SumColumn = 0 Then
+            Try
 
-        Try
-
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("Start Manual Reconciliation for Nostro Account: " & NostroAccount & "  on " & rd)
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
-            cmd.CommandText = "Select 'MAX_RECON_NR'=Case when (SELECT Max([Reconciled_Nr])+1 from [NOSTRO_ACC_RECONCILIATIONS] where [AccountNr_Internal]='" & NostroAccount & "' and [ReconcileDate]='" & rdsql & "') is NULL then 1 Else (SELECT Max([Reconciled_Nr])+1 from [NOSTRO_ACC_RECONCILIATIONS] where [AccountNr_Internal]='" & NostroAccount & "' and [ReconcileDate]='" & rdsql & "') end"
-            Dim NextReconciliationNr As Integer = cmd.ExecuteScalar
-            For i = 0 To dtID.Rows.Count - 1
-                cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [Reconciled]='Y',[Reconciled_Tag]='M',[Reconciled_Nr]=" & Str(NextReconciliationNr) & ",[ReconcileInfo] = Case when [ReconcileInfo] is NULL then 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) else [ReconcileInfo]  + CHAR(13)+CHAR(10) + 'Reconciled from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) end where [ID]='" & dtID.Rows.Item(i).Item("ID") & "'"
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Start Manual Reconciliation for Nostro Account: " & NostroAccount & "  on " & rd)
+                OpenSqlConnections()
+                cmd.CommandText = "Select 'MAX_RECON_NR'=Case when (SELECT Max([Reconciled_Nr])+1 from [NOSTRO_ACC_RECONCILIATIONS] 
+                                   where [AccountNr_Internal]='" & NostroAccount & "' and [ReconcileDate]='" & rdsql & "') is NULL then 1 
+                                   Else (SELECT Max([Reconciled_Nr])+1 from [NOSTRO_ACC_RECONCILIATIONS] where [AccountNr_Internal]='" & NostroAccount & "' 
+                                   and [ReconcileDate]='" & rdsql & "') end"
+                Dim NextReconciliationNr As Integer = cmd.ExecuteScalar
+                For i = 0 To dtID.Rows.Count - 1
+                    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [Reconciled]='Y',[Reconciled_Tag]='M'
+                                      ,[Reconciled_Nr]=" & Str(NextReconciliationNr) & "
+                                      ,[ReconcileInfo] = Case when [ReconcileInfo] is NULL then 'Reconciled from ' + SUSER_SNAME() + ' on ' 
+                                      + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) 
+                                      else [ReconcileInfo]  + CHAR(13)+CHAR(10) + 'Reconciled from ' + SUSER_SNAME() + ' on ' 
+                                      + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)) end 
+                                      where [ID]='" & dtID.Rows.Item(i).Item("ID") & "'"
+                    cmd.ExecuteNonQuery()
+                Next
+                cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS]
+                                ([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB]
+                                ,[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second]
+                                ,[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB]
+                                ,[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB]
+                                ,[Reconciled],[Reconciled_Tag],[Reconciled_Nr],[ReconcileDate],[ReconcileInfo],[UserMemo]) 
+                                Select 
+                                [BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB]
+                                ,[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second]
+                                ,[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB]
+                                ,[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB]
+                                ,[Reconciled],[Reconciled_Tag],[Reconciled_Nr],[ReconcileDate],[ReconcileInfo],[UserMemo] 
+                                from NOSTRO_ACC_RECONCILIATIONS_OPEN where ReconcileDate='" & rdsql & "' 
+                                and AccountNr_Internal='" & NostroAccount & "' and Reconciled in ('Y')"
                 cmd.ExecuteNonQuery()
-            Next
-            cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB],[Reconciled],[Reconciled_Tag],[Reconciled_Nr],[ReconcileDate],[ReconcileInfo],[UserMemo]) Select [BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB],[Reconciled],[Reconciled_Tag],[Reconciled_Nr],[ReconcileDate],[ReconcileInfo],[UserMemo] from NOSTRO_ACC_RECONCILIATIONS_OPEN where ReconcileDate='" & rdsql & "' and AccountNr_Internal='" & NostroAccount & "' and Reconciled in ('Y')"
-            cmd.ExecuteNonQuery()
-            cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where AccountNr_Internal='" & NostroAccount & "' and Reconciled in ('Y')"
-            cmd.ExecuteNonQuery()
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            dtID.Clear()
-            Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
-            SplashScreenManager.CloseForm(False)
-            XtraMessageBox.Show("Selected outstanding postings where reconciled under the Reconciliation Nr.: " & NextReconciliationNr, "MANUAL RECONCILIATION STATUS", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
-            NewDP.Close()
-        Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-            Return
+                cmd.CommandText = "DELETE FROM [NOSTRO_ACC_RECONCILIATIONS_OPEN] where AccountNr_Internal='" & NostroAccount & "' and Reconciled in ('Y')"
+                cmd.ExecuteNonQuery()
+                CloseSqlConnections()
+                dtID.Clear()
+                Me.NOSTRO_ACC_RECONCILIATIONS_OPENTableAdapter.FillByRecAccOpenFromLastRecDay(Me.AccountsReconciliationsDataSet.NOSTRO_ACC_RECONCILIATIONS_OPEN, NostroAccount, rd)
+                SplashScreenManager.CloseForm(False)
+                XtraMessageBox.Show("Selected outstanding postings where reconciled under the Reconciliation Nr.: " & NextReconciliationNr, "MANUAL RECONCILIATION STATUS", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+                NewDP.Close()
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                If cmd.Connection.State = ConnectionState.Open Then
+                    cmd.Connection.Close()
+                End If
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
 
-        End Try
+            End Try
+
+        Else
+            XtraMessageBox.Show("Unable to proceed with the reconciliation" & vbNewLine & "Total Sum of Postings is not equal to 0!!!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Return
+        End If
 
 
     End Sub
@@ -1016,7 +1039,6 @@ Public Class NostroReconciliations
 
 
 #End Region
-
 
 #Region "RECONCILIATION DETAILS DISPLAY"
     Private Sub OCBS_LookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles OCBS_LookUpEdit.EditValueChanged
@@ -1099,8 +1121,6 @@ Public Class NostroReconciliations
 
 #End Region
 
-
-
 #Region "SET TO OUTSTANDING"
 
     Private Sub NostroReconciliationDetails_GridView_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles NostroReconciliationDetails_GridView.FocusedRowChanged
@@ -1146,54 +1166,82 @@ Public Class NostroReconciliations
 
 
     Private Sub SetOutstanding_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetOutstanding_ToolStripMenuItem.Click
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        Try
+            OpenSqlConnections()
+            cmd.CommandText = "SELECT CONVERT(VARCHAR(10),Max([ReconcileDate]),104) from NOSTRO_ACC_RECONCILIATIONS 
+                               where  AccountNr_Internal='" & RESET_NOSTRO_ACC & "'"
+            Dim Last_rd As Date = cmd.ExecuteScalar
+            Dim Lastrdsql As String = Last_rd.ToString("yyyyMMdd")
 
-        cmd.CommandText = "SELECT CONVERT(VARCHAR(10),Max([ReconcileDate]),104) from NOSTRO_ACC_RECONCILIATIONS where  AccountNr_Internal='" & RESET_NOSTRO_ACC & "'"
-        Dim Last_rd As Date = cmd.ExecuteScalar
-        Dim Lastrdsql As String = Last_rd.ToString("yyyyMMdd")
+
+            If Last_rd = RESET_RECONCILITION_DATE Then
+
+                If XtraMessageBox.Show("Should the Reconciliation Status of the Bookings" & vbNewLine & "with Reconciliation Nr.: " & RESET_RECONCILIATION_NR & " be changed to Outstanding ?", "RECONCILIATION STATUS CHANGE", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    'Reset Status in NOSTRO RECONCILIATIONS
+                    Try
+                        cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN]
+                                    ([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB]
+                                    ,[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second]
+                                    ,[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB]
+                                    ,[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB]
+                                    ,[Reconciled]
+                                    ,[Reconciled_Tag]
+                                    ,[Reconciled_Nr]
+                                    ,[ReconcileDate]
+                                    ,[ReconcileInfo]
+                                    ,[UserMemo]) 
+                                    SELECT
+                                    [BookingRoute_IB],[ID_IB],[AccountNr_Internal]
+                                    ,[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First]
+                                    ,[Reference_AccountOwner_IB_Second],[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB]
+                                    ,[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB]
+                                    ,'N'
+                                    ,'N'
+                                    ,0
+                                    ,'" & Lastrdsql & "'
+                                    ,[ReconcileInfo] + CHAR(13)+CHAR(10) + 'Changed Status to OUTSTANDING from ' + SUSER_SNAME() 
+                                    + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108))
+                                    ,[UserMemo] 
+                                    from NOSTRO_ACC_RECONCILIATIONS 
+                                    where ReconcileDate='" & Lastrdsql & "' and AccountNr_Internal='" & RESET_NOSTRO_ACC & "' and [Reconciled_Nr]='" & RESET_RECONCILIATION_NR & "'"
+                        cmd.ExecuteNonQuery()
+                        'Set all Open Postings in NOSTRO_ACC_RECONCILIATIONS_OPEN as Open
+                        cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] SET [Reconciled]='N',[Reconciled_Tag]='N',[Reconciled_Nr]=0 
+                                           where ReconcileDate='" & Lastrdsql & "' and AccountNr_Internal='" & RESET_NOSTRO_ACC & "'"
+                        cmd.ExecuteNonQuery()
+                        cmd.CommandText = "DELETE FROM NOSTRO_ACC_RECONCILIATIONS where ReconcileDate='" & Lastrdsql & "' 
+                                           and AccountNr_Internal='" & RESET_NOSTRO_ACC & "' and [Reconciled_Nr]='" & RESET_RECONCILIATION_NR & "'"
+                        cmd.ExecuteNonQuery()
+                        CloseSqlConnections()
+                        Me.LoadReconDetails_btn.PerformClick()
+                    Catch ex As Exception
+                        CloseSqlConnections()
+                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                        Return
+                    End Try
+
+                End If
 
 
-        If Last_rd = RESET_RECONCILITION_DATE Then
-
-            If XtraMessageBox.Show("Should the Reconciliation Status of the Bookings" & vbNewLine & "with Reconciliation Nr.: " & RESET_RECONCILIATION_NR & " be changed to Outstanding ?", "RECONCILIATION STATUS CHANGE", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
-                'Reset Status in NOSTRO RECONCILIATIONS
-                Try
-                    cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECONCILIATIONS_OPEN]([BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB],[Reconciled],[Reconciled_Tag],[Reconciled_Nr],[ReconcileDate],[ReconcileInfo],[UserMemo]) Select [BookingRoute_IB],[ID_IB],[AccountNr_Internal],[AccountName_Internal],[BookingDate_IB],[ValueDate_IB],[CCY_IB],[Amount_IB],[Description_IB],[Reference_AccountOwner_IB_First],[Reference_AccountOwner_IB_Second],[BookingRoute_EB],[ID_EB],[AccountNr_External],[BookingDate_EB],[ValueDate_EB],[CCY_EB],[Amount_EB],[TransactionTypeID_EB],[Reference_AccountOwner_EB],[ReferenceServiInstitution_EB],[SupplementaryDetails_EB],'N','N',0,'" & Lastrdsql & "',[ReconcileInfo] + CHAR(13)+CHAR(10) + 'Changed Status to OUTSTANDING from ' + SUSER_SNAME() + ' on ' + (SELECT CONVERT(VARCHAR(10), GETDATE(), 104) AS [DD.MM.YYYY]) + '  ' + (Select convert(varchar(8),getdate(),108)),[UserMemo] from NOSTRO_ACC_RECONCILIATIONS where ReconcileDate='" & Lastrdsql & "' and AccountNr_Internal='" & RESET_NOSTRO_ACC & "' and [Reconciled_Nr]='" & RESET_RECONCILIATION_NR & "'"
-                    cmd.ExecuteNonQuery()
-                    cmd.CommandText = "DELETE FROM NOSTRO_ACC_RECONCILIATIONS where ReconcileDate='" & Lastrdsql & "' and AccountNr_Internal='" & RESET_NOSTRO_ACC & "' and [Reconciled_Nr]='" & RESET_RECONCILIATION_NR & "'"
-                    cmd.ExecuteNonQuery()
-
-                    Me.LoadReconDetails_btn.PerformClick()
-                Catch ex As Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
-                    XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    Return
-                End Try
+            Else
+                XtraMessageBox.Show("Reconciliation Date of the relevant Bookings is less than the last Reconciliation Date: " & LastRecDate, "Unable to change the Reconciliation Status to Outstanding", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                Return
 
             End If
 
+            CloseSqlConnections()
 
-        Else
-            XtraMessageBox.Show("Reconciliation Date of the relevant Bookings is less than the last Reconciliation Date: " & LastRecDate, "Unable to change the Reconciliation Status to Outstanding", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+        Catch ex As Exception
+            CloseSqlConnections()
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
             Return
+        End Try
 
-        End If
-
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
 
     End Sub
 
     Private Sub SetAllReconciledPostingsAsOutstandingBookingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetAllReconciledPostingsAsOutstandingBookingsToolStripMenuItem.Click
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
-
+        OpenSqlConnections()
         cmd.CommandText = "SELECT CONVERT(VARCHAR(10),Max([ReconcileDate]),104) from NOSTRO_ACC_RECONCILIATIONS where  AccountNr_Internal='" & RESET_NOSTRO_ACC & "'"
         Dim Last_rd As Date = cmd.ExecuteScalar
         Dim Lastrdsql As String = Last_rd.ToString("yyyyMMdd")
@@ -1211,9 +1259,7 @@ Public Class NostroReconciliations
 
                     Me.LoadReconDetails_btn.PerformClick()
                 Catch ex As Exception
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
                 End Try
@@ -1229,9 +1275,7 @@ Public Class NostroReconciliations
 
         End If
 
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 #End Region
 
@@ -1336,10 +1380,7 @@ Public Class NostroReconciliations
     End Sub
 
     Private Sub CreateDummyBooking_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CreateDummyBooking_ToolStripMenuItem.Click
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
-
+        OpenSqlConnections()
         Dim Lastrdsql As String = LastRecDate.ToString("yyyyMMdd")
 
         If BOOKING_ROUTE_MAIN = "EXTERNAL" AndAlso AMOUNT_MAIN <> 0 Then
@@ -1394,9 +1435,8 @@ Public Class NostroReconciliations
         End If
 
 
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
+
     End Sub
 
 
@@ -1408,19 +1448,11 @@ Public Class NostroReconciliations
     Private Sub RR_DefaultFormat_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles RR_DefaultFormat_BarButtonItem.ItemClick
         If NostroAcc_SearchLookUpEdit.Text <> "" Then
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("Creating Reconciliation Report for " & NostroAccount & " CUR:" & Currency & vbNewLine & NostroName & " on " & rd)
+            SplashScreenManager.Default.SetWaitFormCaption("Creating Reconciliation Report for " & NostroAccount & " CUR:" & Currency & vbNewLine & NostroInfo_MemoEdit.EditValue.ToString & vbNewLine & " on " & rd)
             'load data to NOSTRO_ACC_RECON_DATA
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             cmd.CommandText = "Delete from [NOSTRO_ACC_RECON_DATA]"
             cmd.ExecuteNonQuery()
-            'OLD CODE
-            'cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else NULL end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else 0 end,'" & rdsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount & "'"
-            'cmd.ExecuteNonQuery()
-            'NEW CODE
-            'cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else (SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & NostroAccount & "') end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]=(SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & NostroAccount & "')) end,'" & rdsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount & "'"
-            'cmd.ExecuteNonQuery()
 
             '+++++++++++++++++++++++++++++++++++++++++++++++++++++++
             Dim InternalValueBalance_Date As Date = Me.InternalValueBalanceDate_TextEdit.Text
@@ -1428,7 +1460,22 @@ Public Class NostroReconciliations
             Dim ExternalBookedBalance_Date As Date = Me.ExternalBookedBalanceDate_TextEdit.Text
             Dim ExternalBookedBalance_Amount As Double = Me.ExternalBookedBalanceAmount_TextEdit.Text
 
-            cmd.CommandText = "INSERT INTO [dbo].[NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[CUR],[BalanceDate_Internal],[BalanceAmount_Internal],[BalanceDate_External],[BalanceAmount_External],[ReconcileDate])VALUES(@NostroAccount,@NostroCurrency,@InternalValueBalanceDate,@InternalValueBalanceAmount,@ExternalBookedBalanceDate,@ExternalBookedBalanceAmount,@ReconciliationDate)"
+            cmd.CommandText = "INSERT INTO [dbo].[NOSTRO_ACC_RECON_DATA]
+                                           ([NostroAccount_Intern]
+                                            ,[CUR]
+                                            ,[BalanceDate_Internal]
+                                            ,[BalanceAmount_Internal]
+                                            ,[BalanceDate_External]
+                                            ,[BalanceAmount_External]
+                                            ,[ReconcileDate])
+                                            VALUES
+                                            (@NostroAccount
+                                            ,@NostroCurrency
+                                            ,@InternalValueBalanceDate
+                                            ,@InternalValueBalanceAmount
+                                            ,@ExternalBookedBalanceDate
+                                            ,@ExternalBookedBalanceAmount
+                                            ,@ReconciliationDate)"
             cmd.Parameters.Add("@NostroAccount", SqlDbType.NVarChar).Value = NostroAccount
             cmd.Parameters.Add("@NostroCurrency", SqlDbType.NVarChar).Value = Currency
             cmd.Parameters.Add("@InternalValueBalanceDate", SqlDbType.DateTime).Value = InternalValueBalance_Date
@@ -1439,25 +1486,12 @@ Public Class NostroReconciliations
             cmd.ExecuteNonQuery()
             cmd.Parameters.Clear()
             'UPDATE
-            cmd.CommandText = "UPDATE A SET A.[NostroAccount_Extern]=B.AccountIdentifierStatement,A.AccountName_Internal=B.NOSTRO_NAME from [NOSTRO_ACC_RECON_DATA] A INNER JOIN SSIS B on A.NostroAccount_Intern=B.[INTERNAL ACCOUNT]"
+            cmd.CommandText = "UPDATE A SET A.[NostroAccount_Extern]=B.AccountIdentifierStatement
+                                ,A.AccountName_Internal=B.NOSTRO_NAME from [NOSTRO_ACC_RECON_DATA] A INNER JOIN SSIS B 
+                                on A.NostroAccount_Intern=B.[INTERNAL ACCOUNT]"
             cmd.ExecuteNonQuery()
             '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-            'cmd.CommandText = "Select '62F'=Case when exists(Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else 0 end"
-            'If cmd.ExecuteScalar IsNot DBNull.Value Then
-            'Balance_EB = cmd.ExecuteScalar
-            'cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]='" & rdsql & "'"
-            'cmd.ExecuteNonQuery()
-            'Else
-            'cmd.CommandText = "Select '62F'=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "' and [SwiftTag] in ('62F'))))  end"
-            'Balance_EB = cmd.ExecuteScalar
-            'cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select [BookingDate] from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select [BookingDate] from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "')))  end"
-            'cmd.ExecuteNonQuery()
-            'End If
-
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
 
             'Select from Last Reconcile Date
             If LastRecDate_ALL_NOSTROS = rd OrElse LastRecDate = rd Then
@@ -1544,19 +1578,11 @@ Public Class NostroReconciliations
     Private Sub RR_NewFormat_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles RR_NewFormat_BarButtonItem.ItemClick
         If NostroAcc_SearchLookUpEdit.Text <> "" Then
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("Creating Reconciliation Report for " & NostroAccount & " CUR:" & Currency & vbNewLine & NostroName & " on " & rd)
+            SplashScreenManager.Default.SetWaitFormCaption("Creating Reconciliation Report for " & NostroAccount & " CUR:" & Currency & vbNewLine & NostroInfo_MemoEdit.EditValue.ToString & vbNewLine & " on " & rd)
             'load data to NOSTRO_ACC_RECON_DATA
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             cmd.CommandText = "Delete from [NOSTRO_ACC_RECON_DATA]"
             cmd.ExecuteNonQuery()
-            'OLD CODE
-            'cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else NULL end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else 0 end,'" & rdsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount & "'"
-            'cmd.ExecuteNonQuery()
-            'NEW CODE
-            'cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else (SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & NostroAccount & "') end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]='" & rdsql & "') else (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount & "' and [BalanceDate]=(SELECT MAX([BalanceDate]) AS second FROM   [NOSTRO BALANCES] WHERE  [BalanceDate] <= '" & rdsql & "' and [Nostro Code]='" & NostroAccount & "')) end,'" & rdsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount & "'"
-            'cmd.ExecuteNonQuery()
 
             '+++++++++++++++++++++++++++++++++++++++++++++++++++++++
             Dim InternalValueBalance_Date As Date = Me.InternalValueBalanceDate_TextEdit.Text
@@ -1564,7 +1590,21 @@ Public Class NostroReconciliations
             Dim ExternalBookedBalance_Date As Date = Me.ExternalBookedBalanceDate_TextEdit.Text
             Dim ExternalBookedBalance_Amount As Double = Me.ExternalBookedBalanceAmount_TextEdit.Text
 
-            cmd.CommandText = "INSERT INTO [dbo].[NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[CUR],[BalanceDate_Internal],[BalanceAmount_Internal],[BalanceDate_External],[BalanceAmount_External],[ReconcileDate])VALUES(@NostroAccount,@NostroCurrency,@InternalValueBalanceDate,@InternalValueBalanceAmount,@ExternalBookedBalanceDate,@ExternalBookedBalanceAmount,@ReconciliationDate)"
+            cmd.CommandText = "INSERT INTO [dbo].[NOSTRO_ACC_RECON_DATA]
+                                ([NostroAccount_Intern]
+                                ,[CUR],[BalanceDate_Internal]
+                                ,[BalanceAmount_Internal]
+                                ,[BalanceDate_External]
+                                ,[BalanceAmount_External]
+                                ,[ReconcileDate])
+                                VALUES
+                                (@NostroAccount
+                                ,@NostroCurrency
+                                ,@InternalValueBalanceDate
+                                ,@InternalValueBalanceAmount
+                                ,@ExternalBookedBalanceDate
+                                ,@ExternalBookedBalanceAmount
+                                ,@ReconciliationDate)"
             cmd.Parameters.Add("@NostroAccount", SqlDbType.NVarChar).Value = NostroAccount
             cmd.Parameters.Add("@NostroCurrency", SqlDbType.NVarChar).Value = Currency
             cmd.Parameters.Add("@InternalValueBalanceDate", SqlDbType.DateTime).Value = InternalValueBalance_Date
@@ -1575,26 +1615,12 @@ Public Class NostroReconciliations
             cmd.ExecuteNonQuery()
             cmd.Parameters.Clear()
             'UPDATE
-            cmd.CommandText = "UPDATE A SET A.[NostroAccount_Extern]=B.AccountIdentifierStatement,A.AccountName_Internal=B.NOSTRO_NAME from [NOSTRO_ACC_RECON_DATA] A INNER JOIN SSIS B on A.NostroAccount_Intern=B.[INTERNAL ACCOUNT]"
+            cmd.CommandText = "UPDATE A SET A.[NostroAccount_Extern]=B.AccountIdentifierStatement
+                                ,A.AccountName_Internal=B.NOSTRO_NAME from [NOSTRO_ACC_RECON_DATA] A INNER JOIN SSIS B 
+                                on A.NostroAccount_Intern=B.[INTERNAL ACCOUNT]"
             cmd.ExecuteNonQuery()
             '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-            'cmd.CommandText = "Select '62F'=Case when exists(Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else 0 end"
-            'If cmd.ExecuteScalar IsNot DBNull.Value Then
-            'Balance_EB = cmd.ExecuteScalar
-            'cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]='" & rdsql & "'"
-            'cmd.ExecuteNonQuery()
-            'Else
-            'cmd.CommandText = "Select '62F'=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "' and [SwiftTag] in ('62F'))))  end"
-            'Balance_EB = cmd.ExecuteScalar
-            'cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') is not NULL then (Select [BookingDate] from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdsql & "') else (Select [BookingDate] from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount & "' and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdsql & "')))  end"
-            '
-            'cmd.ExecuteNonQuery()
-            'End If
-
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
 
             'Select from Last Reconcile Date
             If LastRecDate_ALL_NOSTROS = rd OrElse LastRecDate = rd Then
@@ -1718,9 +1744,7 @@ Public Class NostroReconciliations
             If NostroAccount_LastReconcile <> Nothing And IsDate(rdlr) = True Then
                 SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 SplashScreenManager.Default.SetWaitFormCaption("Creating Last Reconciliation Report for " & NostroAccount_LastReconcile & " CUR: " & NostroAccountCCY_LastReconcile & vbNewLine & NostroAccountName_LastReconcile & " on " & rdlr)
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
                 'load data to NOSTRO_ACC_RECON_DATA
                 Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_SECOND where Id_SQL_Parameters_Details in (Select ID from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('NOSTRO_LAST_RECONCILIATION_REPORT')) and Status in ('Y') order by SQL_Float_1 asc"
                 da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
@@ -1737,31 +1761,7 @@ Public Class NostroReconciliations
                     Next i
 
                 End If
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
-                'cmd.CommandText = "Delete from [NOSTRO_ACC_RECON_DATA]"
-                'cmd.ExecuteNonQuery()
-                'cmd.CommandText = "INSERT INTO [NOSTRO_ACC_RECON_DATA]([NostroAccount_Intern],[NostroAccount_Extern],[CUR],[AccountName_Internal],[BalanceDate_Internal],[BalanceAmount_Internal],[ReconcileDate])Select distinct(A.[Nostro Code]),B.AccountIdentifierStatement,A.Currency,B.NOSTRO_NAME,'ValueDate'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount_LastReconcile & "' and [BalanceDate]='" & rdlrsql & "') then (Select BalanceDate from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount_LastReconcile & "' and [BalanceDate]='" & rdlrsql & "') else NULL end,'ValueBalance'=Case when exists(Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount_LastReconcile & "' and [BalanceDate]='" & rdlrsql & "') then (Select [Value Balance] from [NOSTRO BALANCES] where [Nostro Code]='" & NostroAccount_LastReconcile & "' and [BalanceDate]='" & rdlrsql & "') else 0 end,'" & rdlrsql & "' from [NOSTRO BALANCES] A INNER JOIN SSIS B on A.[Nostro Code]=B.[INTERNAL ACCOUNT] where A.[Nostro Code]='" & NostroAccount_LastReconcile & "'"
-                'cmd.ExecuteNonQuery()
-
-                'cmd.CommandText = "Select '62F'=Case when exists(Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') else 0 end"
-                'If cmd.ExecuteScalar IsNot DBNull.Value Then
-                '    Balance_EB = cmd.ExecuteScalar
-                '    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]='" & rdlrsql & "'"
-                '    cmd.ExecuteNonQuery()
-                'Else
-                '    cmd.CommandText = "Select '62F'=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') is not NULL then (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') else (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdlrsql & "' and [SwiftTag] in ('62F'))))  end"
-                '    If cmd.ExecuteScalar IsNot DBNull.Value Then
-                '        Balance_EB = cmd.ExecuteScalar
-                '    Else
-                '        Balance_EB = 0
-                '    End If
-
-                '    cmd.CommandText = "UPDATE [NOSTRO_ACC_RECON_DATA] set [BalanceAmount_External]=" & Str(Balance_EB) & ",[BalanceDate_External]=Case when (Select Sum([Amount]) from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') is not NULL then (Select [BookingDate] from [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and [BookingDate]='" & rdlrsql & "') else (Select [BookingDate] from [SWIFT_ACC_STATEMENTS]  where [InternalAccount]='" & NostroAccount_LastReconcile & "' and [SwiftTag] in ('62F') and  [BookingDate]= (SELECT MAX([BookingDate]) AS second FROM   [SWIFT_ACC_STATEMENTS] where [InternalAccount]='" & NostroAccount_LastReconcile & "' and  [BookingDate] < (SELECT MAX([BookingDate]) AS first FROM   [SWIFT_ACC_STATEMENTS] where [BookingDate]='" & rdlrsql & "')))  end"
-                '    cmd.ExecuteNonQuery()
-                'End If
-
+                CloseSqlConnections()
 
 
                 Dim RefiDa As New SqlDataAdapter("SELECT * FROM [NOSTRO_ACC_RECON_DATA]", conn)
@@ -2218,9 +2218,7 @@ Public Class NostroReconciliations
 
 
     Private Sub Match_Rec_btn_Click(sender As Object, e As EventArgs) Handles Match_Rec_btn.Click
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         If Me.UserMemo_MemoEdit.Text <> "" Then
             cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]='" & Me.UserMemo_MemoEdit.Text & "' where [ID]='" & Me.ID_NOSTRO_REC_Textedit.Text & " ' and [ReconcileDate]='" & rdsql & "'"
             cmd.ExecuteNonQuery()
@@ -2228,9 +2226,7 @@ Public Class NostroReconciliations
             cmd.CommandText = "UPDATE [NOSTRO_ACC_RECONCILIATIONS_OPEN] set [UserMemo]=NULL where [ID]='" & Me.ID_NOSTRO_REC_Textedit.Text & " ' and [ReconcileDate]='" & rdsql & "'"
             cmd.ExecuteNonQuery()
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
         Me.UserMemo_MemoEdit.Text = ""
         Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource.EndEdit()
         'FILL NOSTRO OPEN DATA
@@ -2285,9 +2281,7 @@ Public Class NostroReconciliations
     End Sub
 
     Private Sub CreateMissingRecon_btn_Click(sender As Object, e As EventArgs) Handles CreateMissingRecon_btn.Click
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         If IsNothing(Me.NostrosForMissingRecon_SearchLookUpEdit.Text) = False AndAlso IsNumeric(Me.NostrosForMissingRecon_SearchLookUpEdit.Text) = True Then
             Dim mrd As Date = Me.CreateMissingRecon_FromDateEdit.Text
             Dim mrdsql As String = mrd.ToString("yyyyMMdd")
@@ -2383,6 +2377,7 @@ Public Class NostroReconciliations
 
                         SplashScreenManager.CloseForm(False)
                     Catch ex As Exception
+                        CloseSqlConnections()
                         SplashScreenManager.CloseForm(False)
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
                         Exit Sub
@@ -2397,12 +2392,24 @@ Public Class NostroReconciliations
             XtraMessageBox.Show("Please select first a Nostro Account for the missing reconciliation", "UNABLE TO RECONCILE - NOSTRO ACCOUNT NOT SELECTED", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
             Return
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 
+    Private Sub NostroAcc_SearchLookUpEdit_GotFocus(sender As Object, e As EventArgs) Handles NostroAcc_SearchLookUpEdit.GotFocus
+        Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(1).Appearance.ForeColor = Color.Black
+        Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(3).Appearance.ForeColor = Color.Black
+        Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(5).Appearance.ForeColor = Color.Black
+    End Sub
 
+    Private Sub NostroAcc_SearchLookUpEdit_LostFocus(sender As Object, e As EventArgs) Handles NostroAcc_SearchLookUpEdit.LostFocus
+
+    End Sub
+
+    Private Sub NostroAcc_SearchLookUpEdit_Leave(sender As Object, e As EventArgs) Handles NostroAcc_SearchLookUpEdit.Leave
+        Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(1).Appearance.ForeColor = Color.White
+        Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(3).Appearance.ForeColor = Color.White
+        Me.NostroAcc_SearchLookUpEdit.Properties.Buttons(5).Appearance.ForeColor = Color.White
+    End Sub
 End Class
 
 

@@ -45,6 +45,7 @@ Partial Class ManualImport
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.MANUAL_Procedures_XtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.Edit_BICDIR_Details_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -150,6 +151,8 @@ Partial Class ManualImport
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem_ProgressPanel = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.ImportEvents_XtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
         Me.Print_Export_ImportEvents_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -391,6 +394,8 @@ Partial Class ManualImport
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem_ProgressPanel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ImportEvents_XtraTabPage.SuspendLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
@@ -571,7 +576,7 @@ Partial Class ManualImport
         Me.XtraTabControl1.Location = New System.Drawing.Point(0, 0)
         Me.XtraTabControl1.Name = "XtraTabControl1"
         Me.XtraTabControl1.SelectedTabPage = Me.MANUAL_Procedures_XtraTabPage
-        Me.XtraTabControl1.Size = New System.Drawing.Size(1542, 728)
+        Me.XtraTabControl1.Size = New System.Drawing.Size(1411, 581)
         Me.XtraTabControl1.TabIndex = 22
         Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.MANUAL_Procedures_XtraTabPage, Me.ImportEvents_XtraTabPage})
         '
@@ -584,11 +589,12 @@ Partial Class ManualImport
         Me.MANUAL_Procedures_XtraTabPage.Controls.Add(Me.LayoutControl1)
         Me.MANUAL_Procedures_XtraTabPage.Name = "MANUAL_Procedures_XtraTabPage"
         Me.MANUAL_Procedures_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.MANUAL_Procedures_XtraTabPage.Size = New System.Drawing.Size(1536, 700)
+        Me.MANUAL_Procedures_XtraTabPage.Size = New System.Drawing.Size(1409, 558)
         Me.MANUAL_Procedures_XtraTabPage.Text = "MANUAL IMPORTS"
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn)
         Me.LayoutControl1.Controls.Add(Me.Edit_BICDIR_Details_btn)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
@@ -597,9 +603,30 @@ Partial Class ManualImport
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1536, 700)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1409, 558)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(406, 24)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 18)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 23
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'Print_Export_MANUAL_ImportProcedures_Gridview_btn
         '
@@ -608,7 +635,7 @@ Partial Class ManualImport
         Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Location = New System.Drawing.Point(24, 24)
         Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Name = "Print_Export_MANUAL_ImportProcedures_Gridview_btn"
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Size = New System.Drawing.Size(175, 22)
+        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Size = New System.Drawing.Size(159, 22)
         Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.StyleController = Me.LayoutControl1
         Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.TabIndex = 6
         Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Text = "Print or Export"
@@ -640,9 +667,9 @@ Partial Class ManualImport
         '
         Me.Edit_BICDIR_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Edit_BICDIR_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1426, 24)
+        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1307, 24)
         Me.Edit_BICDIR_Details_btn.Name = "Edit_BICDIR_Details_btn"
-        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(86, 22)
+        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(78, 22)
         Me.Edit_BICDIR_Details_btn.StyleController = Me.LayoutControl1
         Me.Edit_BICDIR_Details_btn.TabIndex = 4
         Me.Edit_BICDIR_Details_btn.Text = "Edit Details"
@@ -662,7 +689,7 @@ Partial Class ManualImport
         Me.GridControl1.MainView = Me.ManualImportProcedures_BasicView
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.ManualImportProcedureRepositoryItemTextEdit, Me.RepositoryItemTextEditBIC8, Me.RepositoryItemTextEditBIC3, Me.RepositoryItemMemoExEdit2, Me.ValidRepositoryItemImageComboBox, Me.StartImportButtonEdit, Me.SelectFileButtonEdit, Me.RepositoryItemSpinEdit1})
-        Me.GridControl1.Size = New System.Drawing.Size(1512, 626)
+        Me.GridControl1.Size = New System.Drawing.Size(1385, 484)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.UseEmbeddedNavigator = True
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ManualImportProcedures_BasicView, Me.BT_CP_Details_GridView, Me.LayoutView1})
@@ -877,20 +904,22 @@ Partial Class ManualImport
         '
         Me.StartImportButtonEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.StartImportButtonEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.StartImportButtonEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.StartImportButtonEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Red
         Me.StartImportButtonEdit.AppearanceFocused.Options.UseBackColor = True
         Me.StartImportButtonEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.StartImportButtonEdit.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
         EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
         EditorButtonImageOptions2.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
         SerializableAppearanceObject5.ForeColor = System.Drawing.Color.Gold
         SerializableAppearanceObject5.Options.UseForeColor = True
-        SerializableAppearanceObject6.ForeColor = System.Drawing.Color.Gold
+        SerializableAppearanceObject6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         SerializableAppearanceObject6.Options.UseForeColor = True
-        SerializableAppearanceObject7.ForeColor = System.Drawing.Color.Gold
+        SerializableAppearanceObject7.ForeColor = System.Drawing.Color.Red
         SerializableAppearanceObject7.Options.UseForeColor = True
-        SerializableAppearanceObject8.ForeColor = System.Drawing.Color.Gold
-        SerializableAppearanceObject8.Options.UseForeColor = True
         Me.StartImportButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Start Import", 30, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.StartImportButtonEdit.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.StartImportButtonEdit.LookAndFeel.SkinName = "Office 2019 Colorful"
+        Me.StartImportButtonEdit.LookAndFeel.UseDefaultLookAndFeel = False
         Me.StartImportButtonEdit.Name = "StartImportButtonEdit"
         Me.StartImportButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
         '
@@ -1728,7 +1757,7 @@ Partial Class ManualImport
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlGroup3})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1536, 700)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1409, 558)
         '
         'LayoutControlItem1
         '
@@ -1737,7 +1766,7 @@ Partial Class ManualImport
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1516, 630)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1389, 488)
         Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
@@ -1745,19 +1774,19 @@ Partial Class ManualImport
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem_ProgressPanel, Me.EmptySpaceItem2})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1516, 50)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1389, 50)
         Me.LayoutControlGroup3.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.Edit_BICDIR_Details_btn
         Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1402, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1283, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(90, 26)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(82, 26)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         Me.LayoutControlItem2.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -1766,9 +1795,9 @@ Partial Class ManualImport
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(179, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(1254, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1223, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(29, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -1777,9 +1806,29 @@ Partial Class ManualImport
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(179, 26)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(163, 26)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem_ProgressPanel
+        '
+        Me.LayoutControlItem_ProgressPanel.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LayoutControlItem_ProgressPanel.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem_ProgressPanel.Control = Me.ProgressPanel1
+        Me.LayoutControlItem_ProgressPanel.Location = New System.Drawing.Point(183, 0)
+        Me.LayoutControlItem_ProgressPanel.Name = "LayoutControlItem_ProgressPanel"
+        Me.LayoutControlItem_ProgressPanel.Size = New System.Drawing.Size(1071, 26)
+        Me.LayoutControlItem_ProgressPanel.Text = "Executing Import Procedure:"
+        Me.LayoutControlItem_ProgressPanel.TextSize = New System.Drawing.Size(187, 18)
+        Me.LayoutControlItem_ProgressPanel.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(163, 0)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(20, 26)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'ImportEvents_XtraTabPage
         '
@@ -1790,7 +1839,7 @@ Partial Class ManualImport
         Me.ImportEvents_XtraTabPage.Controls.Add(Me.LayoutControl2)
         Me.ImportEvents_XtraTabPage.Name = "ImportEvents_XtraTabPage"
         Me.ImportEvents_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.ImportEvents_XtraTabPage.Size = New System.Drawing.Size(1536, 700)
+        Me.ImportEvents_XtraTabPage.Size = New System.Drawing.Size(1409, 558)
         Me.ImportEvents_XtraTabPage.Text = "IMPORT EVENTS"
         '
         'LayoutControl2
@@ -1803,7 +1852,7 @@ Partial Class ManualImport
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(550, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup4
-        Me.LayoutControl2.Size = New System.Drawing.Size(1536, 700)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1409, 558)
         Me.LayoutControl2.TabIndex = 2
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -1814,7 +1863,7 @@ Partial Class ManualImport
         Me.Print_Export_ImportEvents_Gridview_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_ImportEvents_Gridview_btn.Location = New System.Drawing.Point(24, 24)
         Me.Print_Export_ImportEvents_Gridview_btn.Name = "Print_Export_ImportEvents_Gridview_btn"
-        Me.Print_Export_ImportEvents_Gridview_btn.Size = New System.Drawing.Size(175, 22)
+        Me.Print_Export_ImportEvents_Gridview_btn.Size = New System.Drawing.Size(159, 22)
         Me.Print_Export_ImportEvents_Gridview_btn.StyleController = Me.LayoutControl2
         Me.Print_Export_ImportEvents_Gridview_btn.TabIndex = 6
         Me.Print_Export_ImportEvents_Gridview_btn.Text = "Print or Export"
@@ -1823,9 +1872,9 @@ Partial Class ManualImport
         '
         Me.Edit_INTERBANKV_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Edit_INTERBANKV_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1307, 24)
+        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1197, 24)
         Me.Edit_INTERBANKV_Details_btn.Name = "Edit_INTERBANKV_Details_btn"
-        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(205, 22)
+        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(188, 22)
         Me.Edit_INTERBANKV_Details_btn.StyleController = Me.LayoutControl2
         Me.Edit_INTERBANKV_Details_btn.TabIndex = 4
         Me.Edit_INTERBANKV_Details_btn.Text = "Show Details"
@@ -1842,7 +1891,7 @@ Partial Class ManualImport
         Me.GridControl2.MainView = Me.MANUALImportEvents_BasicView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox2, Me.RepositoryItemTextEdit4, Me.RepositoryItemMemoExEdit1})
-        Me.GridControl2.Size = New System.Drawing.Size(1512, 626)
+        Me.GridControl2.Size = New System.Drawing.Size(1385, 484)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.MANUALImportEvents_BasicView, Me.LayoutView4, Me.LayoutView3, Me.LayoutView2})
@@ -3559,7 +3608,7 @@ Partial Class ManualImport
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.LayoutControlGroup5})
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1536, 700)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1409, 558)
         '
         'LayoutControlItem5
         '
@@ -3568,7 +3617,7 @@ Partial Class ManualImport
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem5.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem5.Name = "LayoutControlItem1"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1516, 630)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1389, 488)
         Me.LayoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
@@ -3579,16 +3628,16 @@ Partial Class ManualImport
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem8})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1516, 50)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1389, 50)
         Me.LayoutControlGroup5.TextVisible = False
         '
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.Edit_INTERBANKV_Details_btn
         Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(1283, 0)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(1173, 0)
         Me.LayoutControlItem6.Name = "LayoutControlItem2"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(209, 26)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(192, 26)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         Me.LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -3597,9 +3646,9 @@ Partial Class ManualImport
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(179, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(163, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1104, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1010, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem8
@@ -3608,7 +3657,7 @@ Partial Class ManualImport
         Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem4"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(179, 26)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(163, 26)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -3651,9 +3700,9 @@ Partial Class ManualImport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1542, 728)
+        Me.ClientSize = New System.Drawing.Size(1411, 581)
         Me.Controls.Add(Me.XtraTabControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("ManualImport.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "ManualImport"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Manual Imports"
@@ -3711,6 +3760,8 @@ Partial Class ManualImport
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem_ProgressPanel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ImportEvents_XtraTabPage.ResumeLayout(False)
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
@@ -4113,4 +4164,7 @@ Partial Class ManualImport
     Friend WithEvents XtraOpenFileDialog1 As DevExpress.XtraEditors.XtraOpenFileDialog
     Friend WithEvents XtraSaveFileDialog1 As DevExpress.XtraEditors.XtraSaveFileDialog
     Friend WithEvents XtraFolderBrowserDialog1 As DevExpress.XtraEditors.XtraFolderBrowserDialog
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem_ProgressPanel As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
 End Class

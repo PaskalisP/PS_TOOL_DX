@@ -54,6 +54,21 @@ Module GlobalFunctions
         Return connSYSTEM
     End Function
 
+    Public Function OpenEVENT_SqlConnection() As SqlConnection
+        cmdEVENT.CommandTimeout = 60000
+        If cmdEVENT.Connection.State = ConnectionState.Closed Then
+            cmdEVENT.Connection.Open()
+        End If
+        Return connEVENT
+    End Function
+
+    Public Function CloseEVENT_SqlConnection() As SqlConnection
+        If cmdEVENT.Connection.State = ConnectionState.Open Then
+            cmdEVENT.Connection.Close()
+        End If
+        Return connEVENT
+    End Function
+
     Public Function Fileinfo_To_DataTable(ByVal directory As String) As DataTable
         Try
             'Create a new data table

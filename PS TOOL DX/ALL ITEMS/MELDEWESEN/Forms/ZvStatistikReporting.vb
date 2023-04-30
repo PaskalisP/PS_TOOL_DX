@@ -917,7 +917,7 @@ Public Class ZvStatistikReporting
 
 
             'DELETE ALL and LOAD PAYMENTS
-            Me.BgwZVSTA_Processing.ReportProgress(10, "Execute SQL Parameter: ZV_STAT\ZVSTAT_2022_PAYMENTS_LOAD_ONLY - Load Payments into ZVSTA_Payments")
+            Me.BgwZVSTA_Executing.ReportProgress(10, "Execute SQL Parameter: ZV_STAT\ZVSTAT_2022_PAYMENTS_LOAD_ONLY - Load Payments into ZVSTA_Payments")
             System.Threading.Thread.Sleep(ExecutingSQLThreadSleep)
             cmd.CommandText = "Select [Status] FROM SQL_PARAMETER_DETAILS where  [SQL_Name_1] In ('ZVSTAT_2022_PAYMENTS_LOAD_ONLY') and [Id_SQL_Parameters] in ('ZV_STAT')"
             Dim ParameterStatusZVSTA_LOAD As String = cmd.ExecuteScalar.ToString
@@ -931,7 +931,7 @@ Public Class ZvStatistikReporting
                     cmd.CommandText = SqlCommandText
                     If dt.Rows.Item(i).Item("SQL_Name_1").ToString <> "" Then
                         System.Threading.Thread.Sleep(ExecutingSQLThreadSleep)
-                        Me.BgwZVSTA_Processing.ReportProgress(10, dt.Rows.Item(i).Item("SQL_Float_1").ToString & " - " & dt.Rows.Item(i).Item("SQL_Name_1").ToString)
+                        Me.BgwZVSTA_Executing.ReportProgress(10, dt.Rows.Item(i).Item("SQL_Float_1").ToString & " - " & dt.Rows.Item(i).Item("SQL_Name_1").ToString)
                         cmd.ExecuteNonQuery()
                     End If
                 Next

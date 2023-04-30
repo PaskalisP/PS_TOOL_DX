@@ -61,6 +61,16 @@ Partial Class SqlParameter
         Me.PopupContainerEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit()
         Me.popupContainerControl = New DevExpress.XtraEditors.PopupContainerControl()
         Me.RichEditControl1 = New DevExpress.XtraRichEdit.RichEditControl()
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.SQL_Duplicate_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.SQL_AddToPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.SQL_DuplicateNextPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiExportCurrentSqlParameter = New DevExpress.XtraBars.BarButtonItem()
         Me.SQL_Parameter_Details_Second_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -97,15 +107,6 @@ Partial Class SqlParameter
         Me.GridColumn29 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn30 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colId_SQL_Parameters_Details_4 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
-        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
-        Me.SQL_Duplicate_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.SQL_AddToPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.SQL_DuplicateNextPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.SQL_PARAMETERTableAdapter = New PS_TOOL_DX.EDPDataSetTableAdapters.SQL_PARAMETERTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EDPDataSetTableAdapters.TableAdapterManager()
         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter = New PS_TOOL_DX.EDPDataSetTableAdapters.SQL_PARAMETER_DETAILS_SECONDTableAdapter()
@@ -120,7 +121,9 @@ Partial Class SqlParameter
         Me.GridColumn36 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn37 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn38 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ALL_STATUS_ImageComboBox = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.GridColumn39 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ALL_MemoExEdit = New DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit()
         Me.GridColumn40 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn41 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn42 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -133,6 +136,49 @@ Partial Class SqlParameter
         Me.GridColumn49 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn50 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn51 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn31 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn34 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn52 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn53 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn54 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn55 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn56 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn57 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn58 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn59 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn60 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn61 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn62 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn63 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn64 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn65 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn66 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn67 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn68 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn69 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn70 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn71 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn72 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn73 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn74 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn75 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn76 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn77 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn78 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn79 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn80 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn81 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn82 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn83 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn84 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn85 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn86 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn87 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn88 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn89 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ALL_PopupContainerEdit = New DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit()
+        Me.PopupContainerControl1 = New DevExpress.XtraEditors.PopupContainerControl()
+        Me.RichEditControl2 = New DevExpress.XtraRichEdit.RichEditControl()
         Me.LayoutControl3 = New DevExpress.XtraLayout.LayoutControl()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlGroup6 = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -152,6 +198,7 @@ Partial Class SqlParameter
         Me.bbiPrintPreview = New DevExpress.XtraBars.BarButtonItem()
         Me.FindAndReplaceText_bbi = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiClose = New DevExpress.XtraBars.BarButtonItem()
+        Me.ImportSqlFromExcelFile_bbi = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
@@ -172,12 +219,17 @@ Partial Class SqlParameter
         CType(Me.PopupContainerEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.popupContainerControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.popupContainerControl.SuspendLayout()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SQL_Parameter_Details_Second_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SQL_Parameter_Details_Third_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SQL_Parameter_ALL_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ALL_STATUS_ImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ALL_MemoExEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ALL_PopupContainerEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PopupContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PopupContainerControl1.SuspendLayout()
         CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl3.SuspendLayout()
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -215,6 +267,7 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_GridView.OptionsDetail.AutoZoomDetail = True
         Me.SQL_Parameter_Details_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.SQL_Parameter_Details_GridView.OptionsFind.AlwaysVisible = True
+        Me.SQL_Parameter_Details_GridView.OptionsSelection.MultiSelect = True
         Me.SQL_Parameter_Details_GridView.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Full
         Me.SQL_Parameter_Details_GridView.OptionsView.ColumnAutoWidth = False
         Me.SQL_Parameter_Details_GridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
@@ -631,6 +684,88 @@ Partial Class SqlParameter
         Me.RichEditControl1.Size = New System.Drawing.Size(162, 38)
         Me.RichEditControl1.TabIndex = 2
         '
+        'BarManager1
+        '
+        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager1.Form = Me
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.SQL_Duplicate_BarButtonItem, Me.SQL_AddToPosition_BarButtonItem, Me.SQL_DuplicateCurrentPosition_BarButtonItem, Me.SQL_DuplicateNextPosition_BarButtonItem, Me.bbiExportCurrentSqlParameter})
+        Me.BarManager1.MaxItemId = 5
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
+        Me.barDockControlTop.Size = New System.Drawing.Size(1434, 0)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 576)
+        Me.barDockControlBottom.Manager = Me.BarManager1
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1434, 0)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlLeft.Manager = Me.BarManager1
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 576)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(1434, 0)
+        Me.barDockControlRight.Manager = Me.BarManager1
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 576)
+        '
+        'SQL_Duplicate_BarButtonItem
+        '
+        Me.SQL_Duplicate_BarButtonItem.Caption = "Duplicate current SQL Parameter (as new Parameter)"
+        Me.SQL_Duplicate_BarButtonItem.Id = 0
+        Me.SQL_Duplicate_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_Duplicate_BarButtonItem.Name = "SQL_Duplicate_BarButtonItem"
+        '
+        'SQL_AddToPosition_BarButtonItem
+        '
+        Me.SQL_AddToPosition_BarButtonItem.Caption = "Add new SQL Parameter to current position"
+        Me.SQL_AddToPosition_BarButtonItem.Id = 1
+        Me.SQL_AddToPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_AddToPosition_BarButtonItem.Name = "SQL_AddToPosition_BarButtonItem"
+        '
+        'SQL_DuplicateCurrentPosition_BarButtonItem
+        '
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the current Position)"
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Id = 2
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Name = "SQL_DuplicateCurrentPosition_BarButtonItem"
+        '
+        'SQL_DuplicateNextPosition_BarButtonItem
+        '
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the next Position)"
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Id = 3
+        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Name = "SQL_DuplicateNextPosition_BarButtonItem"
+        '
+        'bbiExportCurrentSqlParameter
+        '
+        Me.bbiExportCurrentSqlParameter.Caption = "Export current SQL Parameter"
+        Me.bbiExportCurrentSqlParameter.Id = 4
+        Me.bbiExportCurrentSqlParameter.ImageOptions.Image = CType(resources.GetObject("bbiExportCurrentSqlParameter.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiExportCurrentSqlParameter.ImageOptions.LargeImage = CType(resources.GetObject("bbiExportCurrentSqlParameter.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiExportCurrentSqlParameter.Name = "bbiExportCurrentSqlParameter"
+        '
         'SQL_Parameter_Details_Second_GridView
         '
         Me.SQL_Parameter_Details_Second_GridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
@@ -652,6 +787,7 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_Second_GridView.OptionsDetail.AutoZoomDetail = True
         Me.SQL_Parameter_Details_Second_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.SQL_Parameter_Details_Second_GridView.OptionsFind.AlwaysVisible = True
+        Me.SQL_Parameter_Details_Second_GridView.OptionsSelection.MultiSelect = True
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Full
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.ColumnAutoWidth = False
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
@@ -827,6 +963,7 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_Third_GridView.OptionsDetail.AutoZoomDetail = True
         Me.SQL_Parameter_Details_Third_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.SQL_Parameter_Details_Third_GridView.OptionsFind.AlwaysVisible = True
+        Me.SQL_Parameter_Details_Third_GridView.OptionsSelection.MultiSelect = True
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Full
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.ColumnAutoWidth = False
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
@@ -981,80 +1118,6 @@ Partial Class SqlParameter
         Me.colId_SQL_Parameters_Details_4.OptionsColumn.ReadOnly = True
         Me.colId_SQL_Parameters_Details_4.Width = 70
         '
-        'BarManager1
-        '
-        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
-        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
-        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
-        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
-        Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.SQL_Duplicate_BarButtonItem, Me.SQL_AddToPosition_BarButtonItem, Me.SQL_DuplicateCurrentPosition_BarButtonItem, Me.SQL_DuplicateNextPosition_BarButtonItem})
-        Me.BarManager1.MaxItemId = 4
-        '
-        'barDockControlTop
-        '
-        Me.barDockControlTop.CausesValidation = False
-        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1434, 0)
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = False
-        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 576)
-        Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1434, 0)
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = False
-        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 576)
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = False
-        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1434, 0)
-        Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 576)
-        '
-        'SQL_Duplicate_BarButtonItem
-        '
-        Me.SQL_Duplicate_BarButtonItem.Caption = "Duplicate current SQL Parameter (as new Parameter)"
-        Me.SQL_Duplicate_BarButtonItem.Id = 0
-        Me.SQL_Duplicate_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.SQL_Duplicate_BarButtonItem.Name = "SQL_Duplicate_BarButtonItem"
-        '
-        'SQL_AddToPosition_BarButtonItem
-        '
-        Me.SQL_AddToPosition_BarButtonItem.Caption = "Add new SQL Parameter to current position"
-        Me.SQL_AddToPosition_BarButtonItem.Id = 1
-        Me.SQL_AddToPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.SQL_AddToPosition_BarButtonItem.Name = "SQL_AddToPosition_BarButtonItem"
-        '
-        'SQL_DuplicateCurrentPosition_BarButtonItem
-        '
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the current Position)"
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Id = 2
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Name = "SQL_DuplicateCurrentPosition_BarButtonItem"
-        '
-        'SQL_DuplicateNextPosition_BarButtonItem
-        '
-        Me.SQL_DuplicateNextPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the next Position)"
-        Me.SQL_DuplicateNextPosition_BarButtonItem.Id = 3
-        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.SQL_DuplicateNextPosition_BarButtonItem.Name = "SQL_DuplicateNextPosition_BarButtonItem"
-        '
         'SQL_PARAMETERTableAdapter
         '
         Me.SQL_PARAMETERTableAdapter.ClearBeforeFill = True
@@ -1116,6 +1179,7 @@ Partial Class SqlParameter
         Me.GridControl1.Location = New System.Drawing.Point(36, 57)
         Me.GridControl1.MainView = Me.SQL_Parameter_ALL_GridView
         Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ALL_MemoExEdit, Me.ALL_PopupContainerEdit, Me.ALL_STATUS_ImageComboBox})
         Me.GridControl1.Size = New System.Drawing.Size(1362, 367)
         Me.GridControl1.TabIndex = 26
         Me.GridControl1.UseEmbeddedNavigator = True
@@ -1130,14 +1194,13 @@ Partial Class SqlParameter
         Me.SQL_Parameter_ALL_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.SQL_Parameter_ALL_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.SQL_Parameter_ALL_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.SQL_Parameter_ALL_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn35, Me.GridColumn36, Me.GridColumn37, Me.GridColumn38, Me.GridColumn39, Me.GridColumn40, Me.GridColumn41, Me.GridColumn42, Me.GridColumn43, Me.GridColumn44, Me.GridColumn45, Me.GridColumn46, Me.GridColumn47, Me.GridColumn48, Me.GridColumn49, Me.GridColumn50, Me.GridColumn51})
+        Me.SQL_Parameter_ALL_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn35, Me.GridColumn36, Me.GridColumn37, Me.GridColumn38, Me.GridColumn39, Me.GridColumn40, Me.GridColumn41, Me.GridColumn42, Me.GridColumn43, Me.GridColumn44, Me.GridColumn45, Me.GridColumn46, Me.GridColumn47, Me.GridColumn48, Me.GridColumn49, Me.GridColumn50, Me.GridColumn51, Me.GridColumn31, Me.GridColumn34, Me.GridColumn52, Me.GridColumn53, Me.GridColumn54, Me.GridColumn55, Me.GridColumn56, Me.GridColumn57, Me.GridColumn58, Me.GridColumn59, Me.GridColumn60, Me.GridColumn61, Me.GridColumn62, Me.GridColumn63, Me.GridColumn64, Me.GridColumn65, Me.GridColumn66, Me.GridColumn67, Me.GridColumn68, Me.GridColumn69, Me.GridColumn70, Me.GridColumn71, Me.GridColumn72, Me.GridColumn73, Me.GridColumn74, Me.GridColumn75, Me.GridColumn76, Me.GridColumn77, Me.GridColumn78, Me.GridColumn79, Me.GridColumn80, Me.GridColumn81, Me.GridColumn82, Me.GridColumn83, Me.GridColumn84, Me.GridColumn85, Me.GridColumn86, Me.GridColumn87, Me.GridColumn88, Me.GridColumn89})
         Me.SQL_Parameter_ALL_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.SQL_Parameter_ALL_GridView.GridControl = Me.GridControl1
         Me.SQL_Parameter_ALL_GridView.Name = "SQL_Parameter_ALL_GridView"
         Me.SQL_Parameter_ALL_GridView.NewItemRowText = "Add new SQL Parameter Command"
         Me.SQL_Parameter_ALL_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
         Me.SQL_Parameter_ALL_GridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[False]
-        Me.SQL_Parameter_ALL_GridView.OptionsBehavior.ReadOnly = True
         Me.SQL_Parameter_ALL_GridView.OptionsCustomization.CustomizationFormSearchBoxVisible = True
         Me.SQL_Parameter_ALL_GridView.OptionsDetail.AllowExpandEmptyDetails = True
         Me.SQL_Parameter_ALL_GridView.OptionsDetail.AutoZoomDetail = True
@@ -1153,140 +1216,593 @@ Partial Class SqlParameter
         '
         'GridColumn35
         '
-        Me.GridColumn35.FieldName = "ID"
+        Me.GridColumn35.Caption = "ID-SQL_PARAMETER"
+        Me.GridColumn35.FieldName = "ID-SQL_PARAMETER"
         Me.GridColumn35.Name = "GridColumn35"
         Me.GridColumn35.OptionsColumn.ReadOnly = True
+        Me.GridColumn35.Visible = True
+        Me.GridColumn35.VisibleIndex = 48
         '
         'GridColumn36
         '
-        Me.GridColumn36.Caption = "SQL Name 1"
-        Me.GridColumn36.FieldName = "SQL_Name_1"
+        Me.GridColumn36.Caption = "SQL_Parameter_Name-SQL_PARAMETER"
+        Me.GridColumn36.FieldName = "SQL_Parameter_Name-SQL_PARAMETER"
         Me.GridColumn36.Name = "GridColumn36"
+        Me.GridColumn36.OptionsColumn.ReadOnly = True
         Me.GridColumn36.Visible = True
         Me.GridColumn36.VisibleIndex = 1
         Me.GridColumn36.Width = 191
         '
         'GridColumn37
         '
-        Me.GridColumn37.Caption = "SQL Name 2"
-        Me.GridColumn37.FieldName = "SQL_Name_2"
+        Me.GridColumn37.Caption = "SQL_Parameter_Info-SQL_PARAMETER"
+        Me.GridColumn37.FieldName = "SQL_Parameter_Info-SQL_PARAMETER"
         Me.GridColumn37.Name = "GridColumn37"
+        Me.GridColumn37.OptionsColumn.ReadOnly = True
         Me.GridColumn37.Visible = True
         Me.GridColumn37.VisibleIndex = 2
         Me.GridColumn37.Width = 201
         '
         'GridColumn38
         '
-        Me.GridColumn38.Caption = "SQL Name 3"
-        Me.GridColumn38.FieldName = "SQL_Name_3"
+        Me.GridColumn38.Caption = "SQL_Parameter_Status-SQL_PARAMETER"
+        Me.GridColumn38.ColumnEdit = Me.ALL_STATUS_ImageComboBox
+        Me.GridColumn38.FieldName = "SQL_Parameter_Status-SQL_PARAMETER"
         Me.GridColumn38.Name = "GridColumn38"
+        Me.GridColumn38.OptionsColumn.ReadOnly = True
+        Me.GridColumn38.Visible = True
+        Me.GridColumn38.VisibleIndex = 49
         Me.GridColumn38.Width = 193
+        '
+        'ALL_STATUS_ImageComboBox
+        '
+        Me.ALL_STATUS_ImageComboBox.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.ALL_STATUS_ImageComboBox.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.ALL_STATUS_ImageComboBox.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.ALL_STATUS_ImageComboBox.AppearanceFocused.Options.UseBackColor = True
+        Me.ALL_STATUS_ImageComboBox.AppearanceFocused.Options.UseForeColor = True
+        Me.ALL_STATUS_ImageComboBox.AutoHeight = False
+        Me.ALL_STATUS_ImageComboBox.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ALL_STATUS_ImageComboBox.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("ACTIVE", "Y", 5), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("DEACTIVATED", "N", 6)})
+        Me.ALL_STATUS_ImageComboBox.Name = "ALL_STATUS_ImageComboBox"
+        Me.ALL_STATUS_ImageComboBox.SmallImages = Me.ImageCollection1
         '
         'GridColumn39
         '
-        Me.GridColumn39.Caption = "SQL Name 4"
-        Me.GridColumn39.FieldName = "SQL_Name_4"
+        Me.GridColumn39.Caption = "SQL_Command_General-SQL_PARAMETER"
+        Me.GridColumn39.ColumnEdit = Me.ALL_MemoExEdit
+        Me.GridColumn39.FieldName = "SQL_Command_General-SQL_PARAMETER"
         Me.GridColumn39.Name = "GridColumn39"
+        Me.GridColumn39.OptionsColumn.ReadOnly = True
+        Me.GridColumn39.Visible = True
+        Me.GridColumn39.VisibleIndex = 50
         Me.GridColumn39.Width = 198
+        '
+        'ALL_MemoExEdit
+        '
+        Me.ALL_MemoExEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.ALL_MemoExEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.ALL_MemoExEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.ALL_MemoExEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.ALL_MemoExEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.ALL_MemoExEdit.AutoHeight = False
+        Me.ALL_MemoExEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ALL_MemoExEdit.Name = "ALL_MemoExEdit"
         '
         'GridColumn40
         '
-        Me.GridColumn40.Caption = "Float 1"
-        Me.GridColumn40.FieldName = "SQL_Float_1"
+        Me.GridColumn40.Caption = "SQL_Float-SQL_PARAMETER"
+        Me.GridColumn40.FieldName = "SQL_Float-SQL_PARAMETER"
         Me.GridColumn40.Name = "GridColumn40"
+        Me.GridColumn40.OptionsColumn.ReadOnly = True
         Me.GridColumn40.Visible = True
         Me.GridColumn40.VisibleIndex = 0
-        Me.GridColumn40.Width = 95
+        Me.GridColumn40.Width = 145
         '
         'GridColumn41
         '
-        Me.GridColumn41.Caption = "Float 2"
-        Me.GridColumn41.FieldName = "SQL_Float_2"
+        Me.GridColumn41.Caption = "ID-SQL_PARAMETER_DETAILS"
+        Me.GridColumn41.FieldName = "ID-SQL_PARAMETER_DETAILS"
         Me.GridColumn41.Name = "GridColumn41"
+        Me.GridColumn41.OptionsColumn.ReadOnly = True
+        Me.GridColumn41.Visible = True
+        Me.GridColumn41.VisibleIndex = 51
         Me.GridColumn41.Width = 74
         '
         'GridColumn42
         '
-        Me.GridColumn42.Caption = "Float 3"
-        Me.GridColumn42.FieldName = "SQL_Float_3"
+        Me.GridColumn42.Caption = "SQL_Name_1-SQL_PARAMETER_DETAILS"
+        Me.GridColumn42.FieldName = "SQL_Name_1-SQL_PARAMETER_DETAILS"
         Me.GridColumn42.Name = "GridColumn42"
+        Me.GridColumn42.OptionsColumn.ReadOnly = True
+        Me.GridColumn42.Visible = True
+        Me.GridColumn42.VisibleIndex = 52
         Me.GridColumn42.Width = 74
         '
         'GridColumn43
         '
-        Me.GridColumn43.Caption = "Float 4"
-        Me.GridColumn43.FieldName = "SQL_Float_4"
+        Me.GridColumn43.Caption = "SQL_Name_2-SQL_PARAMETER_DETAILS"
+        Me.GridColumn43.FieldName = "SQL_Name_2-SQL_PARAMETER_DETAILS"
         Me.GridColumn43.Name = "GridColumn43"
+        Me.GridColumn43.OptionsColumn.ReadOnly = True
+        Me.GridColumn43.Visible = True
+        Me.GridColumn43.VisibleIndex = 53
         Me.GridColumn43.Width = 72
         '
         'GridColumn44
         '
-        Me.GridColumn44.Caption = "SQL Command 1"
-        Me.GridColumn44.FieldName = "SQL_Command_1"
+        Me.GridColumn44.Caption = "SQL_Name_3-SQL_PARAMETER_DETAILS"
+        Me.GridColumn44.FieldName = "SQL_Name_3-SQL_PARAMETER_DETAILS"
         Me.GridColumn44.Name = "GridColumn44"
+        Me.GridColumn44.OptionsColumn.ReadOnly = True
         Me.GridColumn44.Visible = True
         Me.GridColumn44.VisibleIndex = 4
         Me.GridColumn44.Width = 97
         '
         'GridColumn45
         '
-        Me.GridColumn45.Caption = "SQL Command 2"
-        Me.GridColumn45.FieldName = "SQL_Command_2"
+        Me.GridColumn45.Caption = "SQL_Name_4-SQL_PARAMETER_DETAILS"
+        Me.GridColumn45.FieldName = "SQL_Name_4-SQL_PARAMETER_DETAILS"
         Me.GridColumn45.Name = "GridColumn45"
+        Me.GridColumn45.OptionsColumn.ReadOnly = True
         Me.GridColumn45.Visible = True
         Me.GridColumn45.VisibleIndex = 5
         Me.GridColumn45.Width = 103
         '
         'GridColumn46
         '
-        Me.GridColumn46.Caption = "SQL Command 3"
-        Me.GridColumn46.FieldName = "SQL_Command_3"
+        Me.GridColumn46.Caption = "SQL_Float_1-SQL_PARAMETER_DETAILS"
+        Me.GridColumn46.FieldName = "SQL_Float_1-SQL_PARAMETER_DETAILS"
         Me.GridColumn46.Name = "GridColumn46"
+        Me.GridColumn46.OptionsColumn.ReadOnly = True
+        Me.GridColumn46.Visible = True
+        Me.GridColumn46.VisibleIndex = 54
         Me.GridColumn46.Width = 108
         '
         'GridColumn47
         '
-        Me.GridColumn47.Caption = "SQL Command 4"
-        Me.GridColumn47.FieldName = "SQL_Command_4"
+        Me.GridColumn47.Caption = "SQL_Float_2-SQL_PARAMETER_DETAILS"
+        Me.GridColumn47.FieldName = "SQL_Float_2-SQL_PARAMETER_DETAILS"
         Me.GridColumn47.Name = "GridColumn47"
+        Me.GridColumn47.OptionsColumn.ReadOnly = True
+        Me.GridColumn47.Visible = True
+        Me.GridColumn47.VisibleIndex = 55
         Me.GridColumn47.Width = 110
         '
         'GridColumn48
         '
-        Me.GridColumn48.Caption = "Date 1"
+        Me.GridColumn48.Caption = "SQL_Float_3-SQL_PARAMETER_DETAILS"
         Me.GridColumn48.DisplayFormat.FormatString = "d"
         Me.GridColumn48.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.GridColumn48.FieldName = "SQL_Date1"
+        Me.GridColumn48.FieldName = "SQL_Float_3-SQL_PARAMETER_DETAILS"
         Me.GridColumn48.Name = "GridColumn48"
+        Me.GridColumn48.OptionsColumn.ReadOnly = True
         Me.GridColumn48.Visible = True
         Me.GridColumn48.VisibleIndex = 6
         Me.GridColumn48.Width = 101
         '
         'GridColumn49
         '
-        Me.GridColumn49.Caption = "Date 2"
+        Me.GridColumn49.Caption = "SQL_Float_4-SQL_PARAMETER_DETAILS"
         Me.GridColumn49.DisplayFormat.FormatString = "d"
         Me.GridColumn49.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.GridColumn49.FieldName = "SQL_Date2"
+        Me.GridColumn49.FieldName = "SQL_Float_4-SQL_PARAMETER_DETAILS"
         Me.GridColumn49.Name = "GridColumn49"
+        Me.GridColumn49.OptionsColumn.ReadOnly = True
         Me.GridColumn49.Visible = True
         Me.GridColumn49.VisibleIndex = 7
         Me.GridColumn49.Width = 99
         '
         'GridColumn50
         '
-        Me.GridColumn50.FieldName = "Status"
+        Me.GridColumn50.Caption = "SQL_Command_1-SQL_PARAMETER_DETAILS"
+        Me.GridColumn50.FieldName = "SQL_Command_1-SQL_PARAMETER_DETAILS"
         Me.GridColumn50.Name = "GridColumn50"
+        Me.GridColumn50.OptionsColumn.ReadOnly = True
         Me.GridColumn50.Visible = True
         Me.GridColumn50.VisibleIndex = 3
-        Me.GridColumn50.Width = 115
+        Me.GridColumn50.Width = 196
         '
         'GridColumn51
         '
-        Me.GridColumn51.FieldName = "Id_SQL_Parameters"
+        Me.GridColumn51.Caption = "SQL_Command_2-SQL_PARAMETER_DETAILS"
+        Me.GridColumn51.FieldName = "SQL_Command_2-SQL_PARAMETER_DETAILS"
         Me.GridColumn51.Name = "GridColumn51"
         Me.GridColumn51.OptionsColumn.ReadOnly = True
+        Me.GridColumn51.Visible = True
+        Me.GridColumn51.VisibleIndex = 56
         Me.GridColumn51.Width = 70
+        '
+        'GridColumn31
+        '
+        Me.GridColumn31.Caption = "GridColumn31"
+        Me.GridColumn31.FieldName = "SQL_Command_3-SQL_PARAMETER_DETAILS"
+        Me.GridColumn31.Name = "GridColumn31"
+        Me.GridColumn31.OptionsColumn.ReadOnly = True
+        Me.GridColumn31.Visible = True
+        Me.GridColumn31.VisibleIndex = 8
+        '
+        'GridColumn34
+        '
+        Me.GridColumn34.Caption = "GridColumn34"
+        Me.GridColumn34.FieldName = "SQL_Command_4-SQL_PARAMETER_DETAILS"
+        Me.GridColumn34.Name = "GridColumn34"
+        Me.GridColumn34.OptionsColumn.ReadOnly = True
+        Me.GridColumn34.Visible = True
+        Me.GridColumn34.VisibleIndex = 9
+        '
+        'GridColumn52
+        '
+        Me.GridColumn52.Caption = "GridColumn52"
+        Me.GridColumn52.FieldName = "SQL_Date1-SQL_PARAMETER_DETAILS"
+        Me.GridColumn52.Name = "GridColumn52"
+        Me.GridColumn52.OptionsColumn.ReadOnly = True
+        Me.GridColumn52.Visible = True
+        Me.GridColumn52.VisibleIndex = 10
+        '
+        'GridColumn53
+        '
+        Me.GridColumn53.Caption = "GridColumn53"
+        Me.GridColumn53.FieldName = "SQL_Date2-SQL_PARAMETER_DETAILS"
+        Me.GridColumn53.Name = "GridColumn53"
+        Me.GridColumn53.OptionsColumn.ReadOnly = True
+        Me.GridColumn53.Visible = True
+        Me.GridColumn53.VisibleIndex = 11
+        '
+        'GridColumn54
+        '
+        Me.GridColumn54.Caption = "GridColumn54"
+        Me.GridColumn54.FieldName = "Status-SQL_PARAMETER_DETAILS"
+        Me.GridColumn54.Name = "GridColumn54"
+        Me.GridColumn54.OptionsColumn.ReadOnly = True
+        Me.GridColumn54.Visible = True
+        Me.GridColumn54.VisibleIndex = 12
+        '
+        'GridColumn55
+        '
+        Me.GridColumn55.Caption = "GridColumn55"
+        Me.GridColumn55.FieldName = "Id_SQL_Parameters-SQL_PARAMETER_DETAILS"
+        Me.GridColumn55.Name = "GridColumn55"
+        Me.GridColumn55.OptionsColumn.ReadOnly = True
+        Me.GridColumn55.Visible = True
+        Me.GridColumn55.VisibleIndex = 13
+        '
+        'GridColumn56
+        '
+        Me.GridColumn56.Caption = "GridColumn56"
+        Me.GridColumn56.FieldName = "ID-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn56.Name = "GridColumn56"
+        Me.GridColumn56.OptionsColumn.ReadOnly = True
+        Me.GridColumn56.Visible = True
+        Me.GridColumn56.VisibleIndex = 14
+        '
+        'GridColumn57
+        '
+        Me.GridColumn57.Caption = "GridColumn57"
+        Me.GridColumn57.FieldName = "SQL_Name_1-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn57.Name = "GridColumn57"
+        Me.GridColumn57.OptionsColumn.ReadOnly = True
+        Me.GridColumn57.Visible = True
+        Me.GridColumn57.VisibleIndex = 15
+        '
+        'GridColumn58
+        '
+        Me.GridColumn58.Caption = "GridColumn58"
+        Me.GridColumn58.FieldName = "SQL_Name_2-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn58.Name = "GridColumn58"
+        Me.GridColumn58.OptionsColumn.ReadOnly = True
+        Me.GridColumn58.Visible = True
+        Me.GridColumn58.VisibleIndex = 16
+        '
+        'GridColumn59
+        '
+        Me.GridColumn59.Caption = "GridColumn59"
+        Me.GridColumn59.FieldName = "SQL_Name_3-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn59.Name = "GridColumn59"
+        Me.GridColumn59.OptionsColumn.ReadOnly = True
+        Me.GridColumn59.Visible = True
+        Me.GridColumn59.VisibleIndex = 17
+        '
+        'GridColumn60
+        '
+        Me.GridColumn60.Caption = "GridColumn60"
+        Me.GridColumn60.FieldName = "SQL_Name_4-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn60.Name = "GridColumn60"
+        Me.GridColumn60.OptionsColumn.ReadOnly = True
+        Me.GridColumn60.Visible = True
+        Me.GridColumn60.VisibleIndex = 18
+        '
+        'GridColumn61
+        '
+        Me.GridColumn61.Caption = "GridColumn61"
+        Me.GridColumn61.FieldName = "SQL_Float_1-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn61.Name = "GridColumn61"
+        Me.GridColumn61.OptionsColumn.ReadOnly = True
+        Me.GridColumn61.Visible = True
+        Me.GridColumn61.VisibleIndex = 19
+        '
+        'GridColumn62
+        '
+        Me.GridColumn62.Caption = "GridColumn62"
+        Me.GridColumn62.FieldName = "SQL_Float_2-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn62.Name = "GridColumn62"
+        Me.GridColumn62.OptionsColumn.ReadOnly = True
+        Me.GridColumn62.Visible = True
+        Me.GridColumn62.VisibleIndex = 20
+        '
+        'GridColumn63
+        '
+        Me.GridColumn63.Caption = "GridColumn63"
+        Me.GridColumn63.FieldName = "SQL_Float_3-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn63.Name = "GridColumn63"
+        Me.GridColumn63.OptionsColumn.ReadOnly = True
+        Me.GridColumn63.Visible = True
+        Me.GridColumn63.VisibleIndex = 21
+        '
+        'GridColumn64
+        '
+        Me.GridColumn64.Caption = "GridColumn64"
+        Me.GridColumn64.FieldName = "SQL_Float_4-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn64.Name = "GridColumn64"
+        Me.GridColumn64.OptionsColumn.ReadOnly = True
+        Me.GridColumn64.Visible = True
+        Me.GridColumn64.VisibleIndex = 22
+        '
+        'GridColumn65
+        '
+        Me.GridColumn65.Caption = "GridColumn65"
+        Me.GridColumn65.FieldName = "SQL_Command_1-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn65.Name = "GridColumn65"
+        Me.GridColumn65.OptionsColumn.ReadOnly = True
+        Me.GridColumn65.Visible = True
+        Me.GridColumn65.VisibleIndex = 23
+        '
+        'GridColumn66
+        '
+        Me.GridColumn66.Caption = "GridColumn66"
+        Me.GridColumn66.FieldName = "SQL_Command_2-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn66.Name = "GridColumn66"
+        Me.GridColumn66.OptionsColumn.ReadOnly = True
+        Me.GridColumn66.Visible = True
+        Me.GridColumn66.VisibleIndex = 24
+        '
+        'GridColumn67
+        '
+        Me.GridColumn67.Caption = "GridColumn67"
+        Me.GridColumn67.FieldName = "SQL_Command_3-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn67.Name = "GridColumn67"
+        Me.GridColumn67.OptionsColumn.ReadOnly = True
+        Me.GridColumn67.Visible = True
+        Me.GridColumn67.VisibleIndex = 25
+        '
+        'GridColumn68
+        '
+        Me.GridColumn68.Caption = "GridColumn68"
+        Me.GridColumn68.FieldName = "SQL_Command_4SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn68.Name = "GridColumn68"
+        Me.GridColumn68.OptionsColumn.ReadOnly = True
+        Me.GridColumn68.Visible = True
+        Me.GridColumn68.VisibleIndex = 26
+        '
+        'GridColumn69
+        '
+        Me.GridColumn69.Caption = "GridColumn69"
+        Me.GridColumn69.FieldName = "SQL_Date1-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn69.Name = "GridColumn69"
+        Me.GridColumn69.OptionsColumn.ReadOnly = True
+        Me.GridColumn69.Visible = True
+        Me.GridColumn69.VisibleIndex = 27
+        '
+        'GridColumn70
+        '
+        Me.GridColumn70.Caption = "GridColumn70"
+        Me.GridColumn70.FieldName = "SQL_Date2-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn70.Name = "GridColumn70"
+        Me.GridColumn70.OptionsColumn.ReadOnly = True
+        Me.GridColumn70.Visible = True
+        Me.GridColumn70.VisibleIndex = 28
+        '
+        'GridColumn71
+        '
+        Me.GridColumn71.Caption = "GridColumn71"
+        Me.GridColumn71.FieldName = "Status-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn71.Name = "GridColumn71"
+        Me.GridColumn71.OptionsColumn.ReadOnly = True
+        Me.GridColumn71.Visible = True
+        Me.GridColumn71.VisibleIndex = 29
+        '
+        'GridColumn72
+        '
+        Me.GridColumn72.Caption = "GridColumn72"
+        Me.GridColumn72.FieldName = "Id_SQL_Parameters_Details-SQL_PARAMETER_DETAILS_SECOND"
+        Me.GridColumn72.Name = "GridColumn72"
+        Me.GridColumn72.OptionsColumn.ReadOnly = True
+        Me.GridColumn72.Visible = True
+        Me.GridColumn72.VisibleIndex = 30
+        '
+        'GridColumn73
+        '
+        Me.GridColumn73.Caption = "GridColumn73"
+        Me.GridColumn73.FieldName = "ID-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn73.Name = "GridColumn73"
+        Me.GridColumn73.OptionsColumn.ReadOnly = True
+        Me.GridColumn73.Visible = True
+        Me.GridColumn73.VisibleIndex = 31
+        '
+        'GridColumn74
+        '
+        Me.GridColumn74.Caption = "GridColumn74"
+        Me.GridColumn74.FieldName = "SQL_Name_1-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn74.Name = "GridColumn74"
+        Me.GridColumn74.OptionsColumn.ReadOnly = True
+        Me.GridColumn74.Visible = True
+        Me.GridColumn74.VisibleIndex = 32
+        '
+        'GridColumn75
+        '
+        Me.GridColumn75.Caption = "GridColumn75"
+        Me.GridColumn75.FieldName = "SQL_Name_2-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn75.Name = "GridColumn75"
+        Me.GridColumn75.OptionsColumn.ReadOnly = True
+        Me.GridColumn75.Visible = True
+        Me.GridColumn75.VisibleIndex = 33
+        '
+        'GridColumn76
+        '
+        Me.GridColumn76.Caption = "GridColumn76"
+        Me.GridColumn76.FieldName = "SQL_Name_3-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn76.Name = "GridColumn76"
+        Me.GridColumn76.OptionsColumn.ReadOnly = True
+        Me.GridColumn76.Visible = True
+        Me.GridColumn76.VisibleIndex = 34
+        '
+        'GridColumn77
+        '
+        Me.GridColumn77.Caption = "GridColumn77"
+        Me.GridColumn77.FieldName = "SQL_Name_4-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn77.Name = "GridColumn77"
+        Me.GridColumn77.OptionsColumn.ReadOnly = True
+        Me.GridColumn77.Visible = True
+        Me.GridColumn77.VisibleIndex = 35
+        '
+        'GridColumn78
+        '
+        Me.GridColumn78.Caption = "GridColumn78"
+        Me.GridColumn78.FieldName = "SQL_Float_1-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn78.Name = "GridColumn78"
+        Me.GridColumn78.OptionsColumn.ReadOnly = True
+        Me.GridColumn78.Visible = True
+        Me.GridColumn78.VisibleIndex = 36
+        '
+        'GridColumn79
+        '
+        Me.GridColumn79.Caption = "GridColumn79"
+        Me.GridColumn79.FieldName = "SQL_Float_2-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn79.Name = "GridColumn79"
+        Me.GridColumn79.OptionsColumn.ReadOnly = True
+        Me.GridColumn79.Visible = True
+        Me.GridColumn79.VisibleIndex = 37
+        '
+        'GridColumn80
+        '
+        Me.GridColumn80.Caption = "GridColumn80"
+        Me.GridColumn80.FieldName = "SQL_Float_3-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn80.Name = "GridColumn80"
+        Me.GridColumn80.OptionsColumn.ReadOnly = True
+        Me.GridColumn80.Visible = True
+        Me.GridColumn80.VisibleIndex = 38
+        '
+        'GridColumn81
+        '
+        Me.GridColumn81.Caption = "GridColumn81"
+        Me.GridColumn81.FieldName = "SQL_Float_4-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn81.Name = "GridColumn81"
+        Me.GridColumn81.OptionsColumn.ReadOnly = True
+        Me.GridColumn81.Visible = True
+        Me.GridColumn81.VisibleIndex = 39
+        '
+        'GridColumn82
+        '
+        Me.GridColumn82.Caption = "GridColumn82"
+        Me.GridColumn82.FieldName = "SQL_Command_1-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn82.Name = "GridColumn82"
+        Me.GridColumn82.OptionsColumn.ReadOnly = True
+        Me.GridColumn82.Visible = True
+        Me.GridColumn82.VisibleIndex = 40
+        '
+        'GridColumn83
+        '
+        Me.GridColumn83.Caption = "GridColumn83"
+        Me.GridColumn83.FieldName = "SQL_Command_2-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn83.Name = "GridColumn83"
+        Me.GridColumn83.OptionsColumn.ReadOnly = True
+        Me.GridColumn83.Visible = True
+        Me.GridColumn83.VisibleIndex = 41
+        '
+        'GridColumn84
+        '
+        Me.GridColumn84.Caption = "GridColumn84"
+        Me.GridColumn84.FieldName = "SQL_Command_3-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn84.Name = "GridColumn84"
+        Me.GridColumn84.OptionsColumn.ReadOnly = True
+        Me.GridColumn84.Visible = True
+        Me.GridColumn84.VisibleIndex = 42
+        '
+        'GridColumn85
+        '
+        Me.GridColumn85.Caption = "GridColumn85"
+        Me.GridColumn85.FieldName = "SQL_Command_4-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn85.Name = "GridColumn85"
+        Me.GridColumn85.OptionsColumn.ReadOnly = True
+        Me.GridColumn85.Visible = True
+        Me.GridColumn85.VisibleIndex = 43
+        '
+        'GridColumn86
+        '
+        Me.GridColumn86.Caption = "GridColumn86"
+        Me.GridColumn86.FieldName = "SQL_Date1-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn86.Name = "GridColumn86"
+        Me.GridColumn86.OptionsColumn.ReadOnly = True
+        Me.GridColumn86.Visible = True
+        Me.GridColumn86.VisibleIndex = 44
+        '
+        'GridColumn87
+        '
+        Me.GridColumn87.Caption = "GridColumn87"
+        Me.GridColumn87.FieldName = "SQL_Date2-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn87.Name = "GridColumn87"
+        Me.GridColumn87.OptionsColumn.ReadOnly = True
+        Me.GridColumn87.Visible = True
+        Me.GridColumn87.VisibleIndex = 45
+        '
+        'GridColumn88
+        '
+        Me.GridColumn88.Caption = "GridColumn88"
+        Me.GridColumn88.FieldName = "Status-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn88.Name = "GridColumn88"
+        Me.GridColumn88.OptionsColumn.ReadOnly = True
+        Me.GridColumn88.Visible = True
+        Me.GridColumn88.VisibleIndex = 46
+        '
+        'GridColumn89
+        '
+        Me.GridColumn89.Caption = "GridColumn89"
+        Me.GridColumn89.FieldName = "Id_SQL_Parameters_Details-SQL_PARAMETER_DETAILS_THIRD"
+        Me.GridColumn89.Name = "GridColumn89"
+        Me.GridColumn89.OptionsColumn.ReadOnly = True
+        Me.GridColumn89.Visible = True
+        Me.GridColumn89.VisibleIndex = 47
+        '
+        'ALL_PopupContainerEdit
+        '
+        Me.ALL_PopupContainerEdit.Appearance.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ALL_PopupContainerEdit.Appearance.Options.UseFont = True
+        Me.ALL_PopupContainerEdit.AutoHeight = False
+        Me.ALL_PopupContainerEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ALL_PopupContainerEdit.Name = "ALL_PopupContainerEdit"
+        Me.ALL_PopupContainerEdit.PopupControl = Me.PopupContainerControl1
+        '
+        'PopupContainerControl1
+        '
+        Me.PopupContainerControl1.Controls.Add(Me.RichEditControl2)
+        Me.PopupContainerControl1.Location = New System.Drawing.Point(1030, 45)
+        Me.PopupContainerControl1.Name = "PopupContainerControl1"
+        Me.PopupContainerControl1.Size = New System.Drawing.Size(162, 38)
+        Me.PopupContainerControl1.TabIndex = 25
+        '
+        'RichEditControl2
+        '
+        Me.RichEditControl2.ActiveViewType = DevExpress.XtraRichEdit.RichEditViewType.Simple
+        Me.RichEditControl2.Appearance.Text.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RichEditControl2.Appearance.Text.Options.UseFont = True
+        Me.RichEditControl2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichEditControl2.LayoutUnit = DevExpress.XtraRichEdit.DocumentLayoutUnit.Pixel
+        Me.RichEditControl2.Location = New System.Drawing.Point(0, 0)
+        Me.RichEditControl2.MenuManager = Me.BarManager1
+        Me.RichEditControl2.Name = "RichEditControl2"
+        Me.RichEditControl2.ReadOnly = True
+        Me.RichEditControl2.Size = New System.Drawing.Size(162, 38)
+        Me.RichEditControl2.TabIndex = 2
         '
         'LayoutControl3
         '
@@ -1322,7 +1838,7 @@ Partial Class SqlParameter
         'TabbedControlGroup1
         '
         Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Yellow
+        Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Aqua
         Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Options.UseFont = True
         Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
         Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 0)
@@ -1383,7 +1899,7 @@ Partial Class SqlParameter
         '
         'SqlParameterGridviewPopupMenu
         '
-        Me.SqlParameterGridviewPopupMenu.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_DuplicateCurrentPosition_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_Duplicate_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_DuplicateNextPosition_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_AddToPosition_BarButtonItem)})
+        Me.SqlParameterGridviewPopupMenu.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_DuplicateCurrentPosition_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_Duplicate_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_DuplicateNextPosition_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_AddToPosition_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiExportCurrentSqlParameter, True)})
         Me.SqlParameterGridviewPopupMenu.Manager = Me.BarManager1
         Me.SqlParameterGridviewPopupMenu.Name = "SqlParameterGridviewPopupMenu"
         '
@@ -1391,9 +1907,9 @@ Partial Class SqlParameter
         '
         Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbiReload, Me.bbiSave, Me.bbiDelete, Me.bbiPrintPreview, Me.FindAndReplaceText_bbi, Me.bbiClose})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbiReload, Me.bbiSave, Me.bbiDelete, Me.bbiPrintPreview, Me.FindAndReplaceText_bbi, Me.bbiClose, Me.ImportSqlFromExcelFile_bbi})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 7
+        Me.RibbonControl1.MaxItemId = 8
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
         Me.RibbonControl1.Size = New System.Drawing.Size(1434, 94)
@@ -1447,6 +1963,14 @@ Partial Class SqlParameter
         Me.bbiClose.ImageOptions.LargeImage = CType(resources.GetObject("bbiClose.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.bbiClose.Name = "bbiClose"
         '
+        'ImportSqlFromExcelFile_bbi
+        '
+        Me.ImportSqlFromExcelFile_bbi.Caption = "Update SQL parameters from File"
+        Me.ImportSqlFromExcelFile_bbi.Id = 7
+        Me.ImportSqlFromExcelFile_bbi.ImageOptions.Image = CType(resources.GetObject("ImportSqlFromExcelFile_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.ImportSqlFromExcelFile_bbi.ImageOptions.LargeImage = CType(resources.GetObject("ImportSqlFromExcelFile_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.ImportSqlFromExcelFile_bbi.Name = "ImportSqlFromExcelFile_bbi"
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
@@ -1460,6 +1984,7 @@ Partial Class SqlParameter
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiDelete, True)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiPrintPreview, True)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.FindAndReplaceText_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.ImportSqlFromExcelFile_bbi, True)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiClose, True)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
@@ -1481,6 +2006,7 @@ Partial Class SqlParameter
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1434, 576)
+        Me.Controls.Add(Me.PopupContainerControl1)
         Me.Controls.Add(Me.popupContainerControl)
         Me.Controls.Add(Me.LayoutControl3)
         Me.Controls.Add(Me.RibbonControl1)
@@ -1513,12 +2039,17 @@ Partial Class SqlParameter
         CType(Me.PopupContainerEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.popupContainerControl, System.ComponentModel.ISupportInitialize).EndInit()
         Me.popupContainerControl.ResumeLayout(False)
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SQL_Parameter_Details_Second_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SQL_Parameter_Details_Third_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SQL_Parameter_ALL_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ALL_STATUS_ImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ALL_MemoExEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ALL_PopupContainerEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PopupContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PopupContainerControl1.ResumeLayout(False)
         CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl3.ResumeLayout(False)
         CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1669,4 +2200,51 @@ Partial Class SqlParameter
     Friend WithEvents bbiClose As DevExpress.XtraBars.BarButtonItem
     Private WithEvents popupContainerControl As DevExpress.XtraEditors.PopupContainerControl
     Private WithEvents RichEditControl1 As DevExpress.XtraRichEdit.RichEditControl
+    Private WithEvents PopupContainerControl1 As DevExpress.XtraEditors.PopupContainerControl
+    Private WithEvents RichEditControl2 As DevExpress.XtraRichEdit.RichEditControl
+    Friend WithEvents ALL_MemoExEdit As DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit
+    Friend WithEvents ALL_PopupContainerEdit As DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit
+    Friend WithEvents ALL_STATUS_ImageComboBox As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
+    Friend WithEvents GridColumn31 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn34 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn52 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn53 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn54 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn55 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn56 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn57 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn58 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn59 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn60 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn61 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn62 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn63 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn64 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn65 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn66 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn67 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn68 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn69 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn70 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn71 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn72 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn73 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn74 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn75 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn76 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn77 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn78 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn79 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn80 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn81 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn82 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn83 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn84 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn85 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn86 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn87 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn88 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn89 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents bbiExportCurrentSqlParameter As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ImportSqlFromExcelFile_bbi As DevExpress.XtraBars.BarButtonItem
 End Class

@@ -1432,10 +1432,15 @@ Public Class ZvStatistikParameter
         dtColumns.Columns.Add("ColumnName", Type.GetType("System.String"))
         dtColumns.Columns.Add("ColumnCaption", Type.GetType("System.String"))
         For Each column As DevExpress.XtraGrid.Columns.GridColumn In ZVSTAT_Meldeschemas_Gridview.Columns
-            If column.Visible = True Then
+            If column.Visible = True And column.OptionsColumn.ReadOnly = False And column.OptionsColumn.AllowEdit = True Then
                 Dim dr As DataRow = dtColumns.NewRow
                 dr("ColumnName") = column.Name.ToString
-                dr("ColumnCaption") = column.Caption.ToString
+                If column.Caption.ToString <> "" Then
+                    dr("ColumnCaption") = column.Caption.ToString
+                Else
+                    dr("ColumnCaption") = column.FieldName.ToString
+                End If
+
                 dtColumns.Rows.Add(dr)
 
             End If

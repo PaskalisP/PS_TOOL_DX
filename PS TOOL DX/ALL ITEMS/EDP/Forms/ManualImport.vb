@@ -41,9 +41,25 @@ Imports GemBox.Spreadsheet
 Imports System.Collections.ObjectModel
 Imports System.Management.Automation
 Imports System.Management.Automation.Runspaces
+Imports System.Net
+Imports System.Net.NetworkInformation
 
 
 
+'*****************************************
+'Class Name: ManualImport
+'Version: V1.0.0.0
+'Version Explanation:
+'Author: CCBFF
+'Email: info@ccbff.de
+'Creation Time:
+'Content:
+'Function:
+'Description:
+'Modify log:  
+'    1. Add by WYQ; Time:01.04.2022; Content: the imported file add one column "Send Type"   of  "Outward Remittance Report"， Delete this  column
+
+'******************************************
 
 Public Class ManualImport
 
@@ -55,8 +71,8 @@ Public Class ManualImport
     Dim BAISDirectory As String = "" 'OCBS FILE DIRECTORY
     Dim BAISFileNewDirectory As String = "" 'NEW DIRECTORY FOR OCBS FILE
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
+    'Dim conn As New SqlConnection
+    'Dim cmd As New SqlCommand
     Dim connEVENT As New SqlConnection
     Dim cmdEVENT As New SqlCommand
     'Oledb Connection for OCBS
@@ -81,6 +97,7 @@ Public Class ManualImport
     'Dim pkgResults As Microsoft.SqlServer.Dts.Runtime.DTSExecResult
     Dim SSISDirectory As String = Nothing
 
+    Dim CurrentExecutingProcedure As String = Nothing
 
     Dim CBAIF As Double = Nothing 'CurrentImportBAISFile
     Dim LBAIF As Double = Nothing ' LastImportedBAISFile
@@ -141,6 +158,8 @@ Public Class ManualImport
     Dim MULTIBANK_KONVERTER_Kontoinhaber_FileDirectoryImport As String = ""
     Dim T2_DIR_FILE As String = ""
     Dim T2FileDirectoryImport As String = ""
+    Dim T2_XML_DIR_FILE As String = ""
+    Dim T2_XML_FileDirectoryImport As String = ""
     Dim FX_DIR_FILE As String = ""
     Dim FXFileDirectoryImport As String = ""
     Dim IBAN_PLUS_FULL_DIR As String = ""
@@ -198,6 +217,7 @@ Public Class ManualImport
     Friend WithEvents BgwEcbRatesDirectory As BackgroundWorker
     Friend WithEvents BgwMultibankKonverterKontoinhaberDirectoty As BackgroundWorker
     Friend WithEvents BgwT2Directory As BackgroundWorker
+    Friend WithEvents BgwT2_XML_Directory As BackgroundWorker
     Friend WithEvents BgwFxDeals As BackgroundWorker
     Friend WithEvents BgwIbanFullDirectory As BackgroundWorker
     Friend WithEvents BgwIbanStructureFullDirectory As BackgroundWorker
@@ -321,9 +341,9 @@ Public Class ManualImport
                 If MessageBox.Show("Should the manual Import Procedure: " & ProcName & " be deleted?", "DELETE MANUAL IMPORT PROCEDURE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                     'Get Max Date
                     cmd.CommandText = "DELETE FROM [MANUAL IMPORTS] where [ID]='" & ID_ProcName & "'"
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
 
                     Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
                 Else
@@ -341,9 +361,9 @@ Public Class ManualImport
                 If MessageBox.Show("Should the manual Import Procedure: " & ProcName & " be deleted?", "DELETE MANUAL IMPORT PROCEDURE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                     'Get Max Date
                     cmd.CommandText = "DELETE FROM [MANUAL IMPORTS] where [ID]='" & ID_ProcName & "'"
-                    cmd.Connection.Open()
+                    OpenSqlConnections()
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
 
                     'Dim ProcNameDelete As EDPDataSet.MANUAL_IMPORTSRow
                     'ProcNameDelete = EDPDataSet.MANUAL_IMPORTS.FindByID(ID_ProcName)
@@ -537,8 +557,9 @@ Public Class ManualImport
     Private Sub ManualImport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler GridControl1.EmbeddedNavigator.ButtonClick, AddressOf GridControl1_EmbeddedNavigator_ButtonClick
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+        'conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
+        'cmd.Connection = conn
         cmd.CommandTimeout = 120
 
         connEVENT.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
@@ -546,13 +567,13 @@ Public Class ManualImport
 
         'Get Max Date
         cmd.CommandText = "SELECT MAX([ProcDate]) FROM [IMPORT EVENTS]"
-        cmd.Connection.Open()
+        OpenSqlConnections()
         MaxProcDate = cmd.ExecuteScalar
         'Get SSIS Directory
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='SSIS_Directory' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='SSIS_DIRECTORY'"
         SSISDirectory = cmd.ExecuteScalar()
         'Special Case - Get OPICS new Directory
-        cmd.Connection.Close()
+        CloseSqlConnections()
 
         Me.IMPORT_EVENTSTableAdapter.FillByManualImportDate(Me.EDPDataSet.IMPORT_EVENTS, MaxProcDate)
         Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
@@ -605,6 +626,10 @@ Public Class ManualImport
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "TARGET2 DIRECTORY" Then
             T2FileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
             T2_DIR_FILE = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colCurrentFileName)
+        End If
+        If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "TARGET2 XML DIRECTORY" Then
+            T2_XML_FileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
+            T2_XML_DIR_FILE = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colCurrentFileName)
         End If
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "ODAS FX DEALS" Then
             FXFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
@@ -682,7 +707,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new BIC DIRECTORY be imported?", "IMPORT BIC DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwBicDirectory = New BackgroundWorker
@@ -698,7 +727,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new SEPA DIRECTORY be imported?", "IMPORT SEPA DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwSepaDirectory = New BackgroundWorker
@@ -714,7 +747,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new SEPA FULL DIRECTORY be imported?", "IMPORT SEPA FULL DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwSepaFullDirectory = New BackgroundWorker
@@ -730,7 +767,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new BLZ DIRECTORY be imported?", "IMPORT BLZ DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwBlzDirectory = New BackgroundWorker
@@ -746,7 +787,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new CUSTOMER INFO Data be imported?", "IMPORT CUSTOMER INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwCustInfoDirectory = New BackgroundWorker
@@ -762,7 +807,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new CUSTOMER ACCOUNT INFO Data be imported?", "IMPORT CUSTOMER ACC INFO", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwCustAccInfoDirectory = New BackgroundWorker
@@ -778,7 +827,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the ODAS Remmitance Payment File be imported?", "IMPORT ODAS REMMITANCE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwOdasRemmitancePayDirectory = New BackgroundWorker
@@ -794,7 +847,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the GMPS Payment File(s) be imported?", "IMPORT GMPS PAYMENTS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwGMPSPayDirectory = New BackgroundWorker
@@ -810,7 +867,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the today's ECB RATES be imported?", "IMPORT ECB RATES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwEcbRatesDirectory = New BackgroundWorker
@@ -826,7 +887,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the MULTIBANK KONVERTER KONTOINHABER File be imported?", "IMPORT MULTIBANK KONVERTER KONTOINHABER", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwMultibankKonverterKontoinhaberDirectoty = New BackgroundWorker
@@ -842,7 +907,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new TARGET2 DIRECTORY be imported?", "IMPORT TARGET2 DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwT2Directory = New BackgroundWorker
@@ -853,12 +922,36 @@ Public Class ManualImport
                 Exit Sub
             End If
         End If
+        'IMPORT T2 XML DIRECTORY
+        If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "TARGET2 XML DIRECTORY" And T2FileDirectoryImport <> "" Then
+            If MessageBox.Show("Should the new TARGET2 XML DIRECTORY be imported?", "IMPORT TARGET2 XML DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                Me.MANUAL_IMPORTSBindingSource.EndEdit()
+                Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
+                Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
+                BgwT2_XML_Directory = New BackgroundWorker
+                bgws.Add(BgwT2_XML_Directory)
+                BgwT2_XML_Directory.WorkerReportsProgress = True
+                BgwT2_XML_Directory.RunWorkerAsync()
+            Else
+                Exit Sub
+            End If
+        End If
         'ODAS FX DEALS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "ODAS FX DEALS" And FXFileDirectoryImport <> "" Then
             If MessageBox.Show("Should the ODAS FX DEALS be imported?", "IMPORT ODAS FX DEALS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwFxDeals = New BackgroundWorker
@@ -875,7 +968,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new BIC PLUS DIRECTORY be imported?", "IMPORT BIC PLUS DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwBicPlusDirectory = New BackgroundWorker
@@ -892,7 +989,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new BANK DIRECTORY PLUS be imported?", "IMPORT BANK DIRECTORY PLUS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwBankDirectoryPlus = New BackgroundWorker
@@ -908,7 +1009,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new IBAN PLUS DIRECTORY be imported?", "IMPORT IBAN PLUS DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwIbanFullDirectory = New BackgroundWorker
@@ -924,7 +1029,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new IBAN STRUCTURE DIRECTORY be imported?", "IMPORT IBAN STRUCTURE DIRECTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwIbanStructureFullDirectory = New BackgroundWorker
@@ -940,7 +1049,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new HOLIDAYS File be imported?", "IMPORT HOLIDAYS DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwHolidayData = New BackgroundWorker
@@ -956,7 +1069,11 @@ Public Class ManualImport
             If MessageBox.Show("Should our own FX Deals for the Liquidity Management be updated in Table FX DAILY REVALUATION ?", "UPDATE OWN FX DEALS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwOwnFxDealsUpdate = New BackgroundWorker
@@ -979,7 +1096,11 @@ Public Class ManualImport
                 Next
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwBaisFiles = New BackgroundWorker
@@ -1006,7 +1127,11 @@ Public Class ManualImport
                     Next
                     Me.MANUAL_IMPORTSBindingSource.EndEdit()
                     Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    Me.GridControl1.Enabled = False
+                    Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                    Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                    Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                     Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                     Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                     BgwOpicsCustUpdateFiles = New BackgroundWorker
@@ -1028,7 +1153,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the OPICS MM and FX Deals be imported?", "IMPORT OPICS MM+FX DEALS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwOpicsMMDeals = New BackgroundWorker
@@ -1046,7 +1175,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the DAILY BALANCE SHEET be imported?", "IMPORT DAILY BALANCE SHEET", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwDailyBalanceSheet = New BackgroundWorker
@@ -1062,7 +1195,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the DAILY BALANCE SHEET DETAILS be imported?", "IMPORT DAILY BALANCE SHEET DETAILS ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwDailyBalanceSheetDetail = New BackgroundWorker
@@ -1078,7 +1215,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the TRIAL BALANCE AVERAGE 222 Report be imported?", "TRIAL BALANCE AVERAGE 222 Report ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwTriallBalanceAverage222 = New BackgroundWorker
@@ -1094,7 +1235,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the ACCRUED INTEREST ANALYSIS Report be imported?", "ACCRUED INTEREST ANALYSIS Report ", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwAccruedInterestAnalysis = New BackgroundWorker
@@ -1110,7 +1255,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the USER PERMISSIONS Reports be imported?", "USER PERMISSIONS IMPORT", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwUserPermissions = New BackgroundWorker
@@ -1126,7 +1275,11 @@ Public Class ManualImport
             If MessageBox.Show("Should new Inventory from Excel File be imported?", "IMPORT NEW INVENTORY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwInventarExcel = New BackgroundWorker
@@ -1142,7 +1295,11 @@ Public Class ManualImport
             If MessageBox.Show("Should the new MIFIR File be imported?", "IMPORT MIFIR", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Me.MANUAL_IMPORTSBindingSource.EndEdit()
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                Me.GridControl1.Enabled = False
+                Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
+                Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
+                Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = True
                 Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = False
                 BgwMifir = New BackgroundWorker
@@ -1356,6 +1513,26 @@ Public Class ManualImport
                 If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
                     Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
                     T2_DIR_FILE = Me.OpenFileDialog1.FileName
+                End If
+            End With
+        End If
+
+        'IMPORT TARGET2 XML DIRECTORY
+        If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "TARGET2 XML DIRECTORY" Then
+            With OpenFileDialog1
+                T2FileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
+                .Filter = "XML Files (*.xml;*.XML)|*.xml;*.XML"
+                .DefaultExt = "xml"
+                .FilterIndex = 1
+                .InitialDirectory = T2_XML_FileDirectoryImport
+                .FileName = ""
+                .Title = "Import new Target2 XML Directory"
+                .RestoreDirectory = True
+                .Multiselect = False
+
+                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
+                    T2_XML_DIR_FILE = Me.OpenFileDialog1.FileName
                 End If
             End With
         End If
@@ -1715,9 +1892,9 @@ Public Class ManualImport
     Private Sub BgwCustInfoDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwCustInfoDirectory.DoWork
         Try
             If File.Exists(CUST_INFO_DIR_FILE) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
+
+                cmd.CommandTimeout = 50000
 
                 Dim workbook As Workbook = New DevExpress.Spreadsheet.Workbook()
                 workbook.LoadDocument(CUST_INFO_DIR_FILE, DocumentFormat.Xlsx)
@@ -1777,40 +1954,36 @@ Public Class ManualImport
                         SqlCommandText1 = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<CUST_INFO_DIR_FILE>", CUST_INFO_DIR_FILE)
                         cmd.CommandText = SqlCommandText1
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i).Item("SQL_Name_1"))
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i).Item("SQL_Name_1"))
                             Me.BgwCustInfoDirectory.ReportProgress(i, dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwCustInfoDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_CUSTOMER_INFO! Parameter Status is Invalid!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_CUSTOMER_INFO! Parameter Status is Invalid!!", "CUSTOMER INFO IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
 
                 End If
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
-                SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & CUST_INFO_DIR_FILE)
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & CUST_INFO_DIR_FILE)
                 Me.BgwCustInfoDirectory.ReportProgress(80, "Delete File: " & CUST_INFO_DIR_FILE)
                 File.Delete(CUST_INFO_DIR_FILE)
-                SplashScreenManager.Default.SetWaitFormCaption("CUSTOMER INFO IMPORT finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("CUSTOMER INFO IMPORT finished")
                 Me.BgwCustInfoDirectory.ReportProgress(90, "CUSTOMER INFO IMPORT finished")
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwCustInfoDirectory.ReportProgress(30, "Unable to Import the new CUSTOMER INFO! File does not exist!")
                 MessageBox.Show("Unable to Import the new CUSTOMER INFO! File does not exist!", "CUSTOMER INFO IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwCustInfoDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -1818,6 +1991,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwCustInfoDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwCustInfoDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','CUSTOMER INFO IMPORT','MANUAL IMPORTS')"
@@ -1841,6 +2015,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwCustInfoDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwCustInfoDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -1855,9 +2032,10 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwCustInfoDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
 
     End Sub
+
 #End Region
 
 #Region "IMPORT ODAS FX DEALS"
@@ -1865,10 +2043,8 @@ Public Class ManualImport
 
         Try
             If File.Exists(FX_DIR_FILE) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
-                Dim NewFX_File As String = "\\ccb-pstool\Apps\PS TOOL DX File Imports\FX_ALL.xlsx"
+                OpenSqlConnections()
+                Dim NewFX_File As String = "\\ccb-pstool-new\Apps\PS TOOL DX File Imports\FX_ALL.xlsx"
                 My.Computer.FileSystem.CopyFile(FX_DIR_FILE, NewFX_File, Microsoft.VisualBasic.FileIO.UIOption.AllDialogs, Microsoft.VisualBasic.FileIO.UICancelOption.DoNothing)
                 Dim attributes As FileAttributes
                 attributes = File.GetAttributes(NewFX_File)
@@ -1924,39 +2100,35 @@ Public Class ManualImport
                         SqlCommandText1 = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<NewFX_File>", NewFX_File)
                         cmd.CommandText = SqlCommandText1
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i).Item("SQL_Name_1"))
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i).Item("SQL_Name_1"))
                             Me.BgwFxDeals.ReportProgress(i, dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwFxDeals.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_ODAS_FX_DEALS! Parameter Status is Invalid!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_ODAS_FX_DEALS! Parameter Status is Invalid!!", "ODAS FX DEALS IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
 
                 End If
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
-                SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & NewFX_File)
+                CloseSqlConnections()
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & NewFX_File)
                 Me.BgwFxDeals.ReportProgress(80, "Delete File: " & NewFX_File)
                 File.Delete(NewFX_File)
-                SplashScreenManager.Default.SetWaitFormCaption("ODAS FX DEALS import finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("ODAS FX DEALS import finished")
                 Me.BgwFxDeals.ReportProgress(90, "ODAS FX DEALS import finished")
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwFxDeals.ReportProgress(30, "Unable to Import ODAS FX DEALS! File does not exist!")
                 MessageBox.Show("Unable to Import ODAS FX DEALS! File does not exist!", "ODAS FX DEALS IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwFxDeals.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -1965,6 +2137,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwFxDeals_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwFxDeals.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','ODAS FX DEALS IMPORT','MANUAL IMPORTS')"
@@ -1988,6 +2161,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwFxDeals_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwFxDeals.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2002,12 +2178,10 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwFxDeals, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
 
 
     End Sub
-
-
 
 
 #End Region
@@ -2019,9 +2193,7 @@ Public Class ManualImport
                 For i = 0 To dir_MM_OpicsFiles.Count - 1
                     OPICS_MM_DEALS_DIR = dir_MM_OpicsFiles.Item(i).ToString
 
-                    If cmd.Connection.State = ConnectionState.Closed Then
-                        cmd.Connection.Open()
-                    End If
+                    OpenSqlConnections()
                     Dim ExcelFileName As String = OPICS_MM_DEALS_DIR
                     Dim MM_ExcelFileName As String = System.IO.Path.GetFileName(ExcelFileName)
                     If File.Exists(ExcelFileName) = True And MM_ExcelFileName.StartsWith("MM_") = True Then
@@ -2041,13 +2213,13 @@ Public Class ManualImport
                                 SqlCommandText2 = SqlCommandText1.ToString.Replace("<RiskDate>", rdsql)
                                 cmd.CommandText = SqlCommandText2
                                 If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                                    SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                                    'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                                     Me.BgwOpicsMMDeals.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                                     cmd.ExecuteNonQuery()
                                 End If
                             Next
                         Else
-                            SplashScreenManager.CloseForm(False)
+                            'SplashScreenManager.CloseForm(False)
                             Me.BgwOpicsMMDeals.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_OPICS_MM_DEALS! Parameter Status is Invalid!!")
                             MessageBox.Show("Unable to execute Import Procedure:IMPORT_OPICS_MM_DEALS! Parameter Status is Invalid!!", "OPICS MM DEALS IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                             Return
@@ -2057,7 +2229,7 @@ Public Class ManualImport
 
 
                         Me.BgwOpicsMMDeals.ReportProgress(100, "Import procedure: OPICS MM finished sucesfully")
-                        SplashScreenManager.Default.SetWaitFormCaption("Import procedure: Import procedure: OPICS MM finished sucesfully")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import procedure: Import procedure: OPICS MM finished sucesfully")
 
                         File.Delete(OPICS_MM_DEALS_DIR)
 
@@ -2078,13 +2250,13 @@ Public Class ManualImport
                                 SqlCommandText2 = SqlCommandText1.ToString.Replace("<RiskDate>", rdsql)
                                 cmd.CommandText = SqlCommandText2
                                 If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                                    SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                                    'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                                     Me.BgwOpicsMMDeals.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                                     cmd.ExecuteNonQuery()
                                 End If
                             Next
                         Else
-                            SplashScreenManager.CloseForm(False)
+                            'SplashScreenManager.CloseForm(False)
                             Me.BgwOpicsMMDeals.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_OPICS_FX_DEALS! Parameter Status is Invalid!!")
                             MessageBox.Show("Unable to execute Import Procedure:IMPORT_OPICS_FX_DEALS! Parameter Status is Invalid!!", "OPICS FX DEALS IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                             Return
@@ -2094,7 +2266,7 @@ Public Class ManualImport
 
 
                         Me.BgwOpicsMMDeals.ReportProgress(100, "Import procedure: OPICS FX finished sucesfully")
-                        SplashScreenManager.Default.SetWaitFormCaption("Import procedure: Import procedure: OPICS FX finished sucesfully")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import procedure: Import procedure: OPICS FX finished sucesfully")
 
                         File.Delete(OPICS_MM_DEALS_DIR)
 
@@ -2105,24 +2277,21 @@ Public Class ManualImport
 
                     End If
 
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                 Next
             End If
 
         Catch ex As Exception
             Me.BgwOpicsMMDeals.ReportProgress(100, "ERROR+++" & ex.Message.Replace("'", ""))
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Exit Sub
 
         End Try
     End Sub
 
     Private Sub BgwOpicsMMDeals_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwOpicsMMDeals.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','OPICS MM-FX IMPORT','MANUAL IMPORTS')"
@@ -2146,6 +2315,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwOpicsMMDeals_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwOpicsMMDeals.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2160,7 +2332,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwOpicsMMDeals, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 #End Region
 
@@ -2168,10 +2340,8 @@ Public Class ManualImport
     Private Sub BgwMifir_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwMifir.DoWork
         Try
             If File.Exists(MIFIR_IMPORT_DIR) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
-                SplashScreenManager.Default.SetWaitFormCaption("Reformating MIFIR Excel File")
+                OpenSqlConnections()
+                'SplashScreenManager.Default.SetWaitFormCaption("Reformating MIFIR Excel File")
                 Me.BgwMifir.ReportProgress(60, "Reformating MIFIR Excel File")
                 Dim workbook As Workbook = New DevExpress.Spreadsheet.Workbook()
                 workbook.LoadDocument(MIFIR_IMPORT_DIR, DocumentFormat.Xlsx)
@@ -2246,54 +2416,51 @@ Public Class ManualImport
                             SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<MIFIR_IMPORT_DIR>", MIFIR_IMPORT_DIR)
                             cmd.CommandText = SqlCommandText1
                             If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                                SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                                'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                                 Me.BgwMifir.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                                 cmd.ExecuteNonQuery()
                             End If
                         Next
                     Else
-                        SplashScreenManager.CloseForm(False)
+                        'SplashScreenManager.CloseForm(False)
                         Me.BgwMifir.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_MIFIR! Parameter Status is Invalid!!")
                         MessageBox.Show("Unable to execute Import Procedure:IMPORT_MIFIR! Parameter Status is Invalid!!", "MIFIR IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                         Exit Sub
 
                     End If
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwMifir.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_MIFIR! File contains SWAP Deals with no ISIN!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_MIFIR! File contains SWAP Deals with no ISIN!!", "MIFIR IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Sub
                 End If
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
-                SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & MIFIR_IMPORT_DIR)
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & MIFIR_IMPORT_DIR)
                 Me.BgwMifir.ReportProgress(80, "Delete File: " & MIFIR_IMPORT_DIR)
                 File.Delete(MIFIR_IMPORT_DIR)
-                SplashScreenManager.Default.SetWaitFormCaption("MIFIR IMPORT finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("MIFIR IMPORT finished")
                 Me.BgwMifir.ReportProgress(90, "MIFIR IMPORT finished")
 
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwMifir.ReportProgress(30, "Unable to Import the new MIFIR File! File does not exist!")
                 MessageBox.Show("Unable to Import the new MIFIR File! File does not exist!", "MIFIR IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwMifir.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Exit Sub
         End Try
     End Sub
 
     Private Sub BgwMifir_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwMifir.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','MIFIR IMPORT','MANUAL IMPORTS')"
@@ -2317,6 +2484,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwMifir_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwMifir.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2331,7 +2501,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwMifir, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
 
     End Sub
 #End Region
@@ -2339,11 +2509,8 @@ Public Class ManualImport
 #Region "IMPORT BIC DIRECTORY"
     Private Sub BgwBicDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwBicDirectory.DoWork
         Try
-            conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-            cmd.Connection = conn
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+
+            OpenSqlConnections()
             'cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('BIC_DIRECTORY_NEW_TXT_FILE') and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
             'Dim BIC_DIRECTORY_NEW_TXT_FILE As String = cmd.ExecuteScalar
 
@@ -2428,29 +2595,27 @@ Public Class ManualImport
                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<BIC_DIRECTORY_TXT_FILE>", BIC_DIR_FILE)
                     cmd.CommandText = SqlCommandText1
                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                         Me.BgwBicDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwBicDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_BIC_DIRECTORY! Parameter Status is Invalid!!")
                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_BIC_DIRECTORY! Parameter Status is Invalid!!", "BIC DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Return
 
             End If
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             '*********************************************************************************************************
             'File.Delete(BIC_DIRECTORY_NEW_TXT_FILE)
 
             Me.BgwBicDirectory.ReportProgress(100, "BIC DIRECTORY IMPORT FINISHED")
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwBicDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -2459,6 +2624,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBicDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwBicDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','BIC DIRECTORY IMPORT','MANUAL IMPORTS')"
@@ -2486,6 +2652,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBicDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBicDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2500,7 +2669,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwBicDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -2509,9 +2678,7 @@ Public Class ManualImport
     Private Sub BgwSepaDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwSepaDirectory.DoWork
         Try
             If File.Exists(SEPA_DIR_FILE) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_SEPA_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
@@ -2523,37 +2690,33 @@ Public Class ManualImport
                         SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<SEPA_DIR_FILE>", SEPA_DIR_FILE)
                         cmd.CommandText = SqlCommandText1
                         If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                            SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                             Me.BgwSepaDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwSepaDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_SEPA_DIRECTORY! Parameter Status is Invalid!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_SEPA_DIRECTORY! Parameter Status is Invalid!!", "SEPA DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
 
                 End If
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 'File.Delete(SEPA_DIR_FILE)
-                SplashScreenManager.Default.SetWaitFormCaption("SEPA DIRECTORY IMPORT finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("SEPA DIRECTORY IMPORT finished")
                 Me.BgwSepaDirectory.ReportProgress(30, "SEPA DIRECTORY IMPORT finished")
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwSepaDirectory.ReportProgress(30, "Unable to Import the new SEPA DIRECTORY! File does not exist!")
                 MessageBox.Show("Unable to Import the new SEPA DIRECTORY! File does not exist!", "SEPA DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwSepaDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -2561,6 +2724,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwSepaDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwSepaDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','SEPA DIRECTORY IMPORT','MANUAL IMPORTS')"
@@ -2584,6 +2748,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwSepaDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwSepaDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2598,7 +2765,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwSepaDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -2607,11 +2774,7 @@ Public Class ManualImport
     Private Sub BgwSepaFullDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwSepaFullDirectory.DoWork
         Try
             If File.Exists(SEPA_FULL_DIR_FILE) = True Then
-
-
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_SEPA_FULL_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
@@ -2623,36 +2786,32 @@ Public Class ManualImport
                         SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<SEPA_FULL_DIR_FILE>", SEPA_FULL_DIR_FILE)
                         cmd.CommandText = SqlCommandText1
                         If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                            SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                             Me.BgwSepaFullDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwSepaFullDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_SEPA_FULL_DIRECTORY! Parameter Status is Invalid!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_SEPA_FULL_DIRECTORY! Parameter Status is Invalid!!", "SEPA DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
 
                 End If
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
-                SplashScreenManager.Default.SetWaitFormCaption("SEPA FULL DIRECTORY IMPORT finished")
+                CloseSqlConnections()
+                'SplashScreenManager.Default.SetWaitFormCaption("SEPA FULL DIRECTORY IMPORT finished")
                 Me.BgwSepaFullDirectory.ReportProgress(30, "SEPA FULL DIRECTORY IMPORT finished")
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwSepaFullDirectory.ReportProgress(30, "Unable to Import the new SEPA FULL DIRECTORY! File does not exist!")
                 MessageBox.Show("Unable to Import the new SEPA FULL DIRECTORY! File does not exist!", "SEPA FULL DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwSepaFullDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -2660,6 +2819,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwSepaFullDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwSepaFullDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','SEPA FULL DIRECTORY IMPORT','MANUAL IMPORTS')"
@@ -2683,6 +2843,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwSepaFullDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwSepaFullDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2697,7 +2860,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwSepaFullDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -2705,10 +2868,9 @@ Public Class ManualImport
 #Region "IMPORT BLZ DIRECTORY"
     Private Sub BgwBlzDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwBlzDirectory.DoWork
         Try
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
-            cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('BLZ_DIRECTORY_NEW_TXT_FILE') and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
+            OpenSqlConnections()
+            cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('BLZ_DIRECTORY_NEW_TXT_FILE') 
+                                and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
             Dim BLZ_DIRECTORY_NEW_TXT_FILE As String = cmd.ExecuteScalar
 
             If File.Exists(BLZ_DIRECTORY_NEW_TXT_FILE) = True Then
@@ -2740,7 +2902,7 @@ Public Class ManualImport
             'Dim Arr() As String
 
 
-            SplashScreenManager.Default.SetWaitFormCaption("Creating file: " & BLZ_DIRECTORY_NEW_TXT_FILE)
+            'SplashScreenManager.Default.SetWaitFormCaption("Creating file: " & BLZ_DIRECTORY_NEW_TXT_FILE)
             Me.BgwBlzDirectory.ReportProgress(30, "Creating file: " & BLZ_DIRECTORY_NEW_TXT_FILE)
             Do While Not sr.EndOfStream
                 Zeileninhalt = sr.ReadLine().Replace(",", " ")
@@ -2769,7 +2931,7 @@ Public Class ManualImport
             sr.Close()
             sr1.Close()
 
-            SplashScreenManager.Default.SetWaitFormCaption("Replace German Characters")
+            'SplashScreenManager.Default.SetWaitFormCaption("Replace German Characters")
             Me.BgwBlzDirectory.ReportProgress(30, "Replace German Characters")
             My.Computer.FileSystem.WriteAllText(BLZ_DIRECTORY_NEW_TXT_FILE, My.Computer.FileSystem.ReadAllText(BLZ_DIRECTORY_NEW_TXT_FILE).Replace("Ü", "UE"), False)
             My.Computer.FileSystem.WriteAllText(BLZ_DIRECTORY_NEW_TXT_FILE, My.Computer.FileSystem.ReadAllText(BLZ_DIRECTORY_NEW_TXT_FILE).Replace("Ä", "AE"), False)
@@ -2788,13 +2950,13 @@ Public Class ManualImport
                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<BLZ_DIRECTORY_NEW_TXT_FILE>", BLZ_DIRECTORY_NEW_TXT_FILE)
                     cmd.CommandText = SqlCommandText1
                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                         Me.BgwBlzDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwBlzDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_BLZ_DIRECTORY! Parameter Status is Invalid!!")
                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_BLZ_DIRECTORY! Parameter Status is Invalid!!", "BLZ IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Return
@@ -2802,14 +2964,12 @@ Public Class ManualImport
             End If
 
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BLZ_DIRECTORY_NEW_TXT_FILE)
+            CloseSqlConnections()
+            'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BLZ_DIRECTORY_NEW_TXT_FILE)
             Me.BgwBlzDirectory.ReportProgress(30, "Delete File: " & BLZ_DIRECTORY_NEW_TXT_FILE)
             'File.Delete(BLZ_DIR_FILE)
             File.Delete(BLZ_DIRECTORY_NEW_TXT_FILE)
-            SplashScreenManager.Default.SetWaitFormCaption("BLZ DIRECTORY IMPORT finished")
+            'SplashScreenManager.Default.SetWaitFormCaption("BLZ DIRECTORY IMPORT finished")
             Me.BgwBlzDirectory.ReportProgress(30, "BLZ DIRECTORY IMPORT finished")
             'Else
             'SplashScreenManager.CloseForm(False)
@@ -2818,10 +2978,8 @@ Public Class ManualImport
             'Exit Sub
             'End If
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwBlzDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -2829,6 +2987,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBlzDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwBlzDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','BLZ DIRECTORY IMPORT','MANUAL IMPORTS')"
@@ -2852,6 +3011,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBlzDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBlzDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2866,7 +3028,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwBlzDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 #End Region
 
@@ -2874,48 +3036,45 @@ Public Class ManualImport
     Private Sub BgwCustAccInfoDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwCustAccInfoDirectory.DoWork
         Try
             If File.Exists(CUST_ACC_INFO_DIR_FILE) = True Then
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
-                SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_CUSTOMER_ACC_INFO_Temp")
+                CloseSqlConnections()
+                'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_CUSTOMER_ACC_INFO_Temp")
                 Me.BgwCustAccInfoDirectory.ReportProgress(40, "Create Temporary Table:CUSTOMER_INFO_Temp")
                 cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_CUSTOMER_ACC_INFO_Temp' AND xtype='U')  CREATE TABLE [#Temp_CUSTOMER_ACC_INFO_Temp]([ODAS_BRANCH] [nvarchar](255) NULL,[Client Account] [nvarchar](255) NULL,[Account Status] [nvarchar](255) NULL,[ProductCode] [nvarchar](255) NULL,[Currency Status] [nvarchar](255) NULL,[Deal Currency] [nvarchar](255) NULL,[LEDGER_BALANCE] [nvarchar](255) NULL,[ClientNo] [nvarchar](255) NULL,[English Name] [nvarchar](255) NULL,[Country] [nvarchar](255) NULL,[PRD_TYPE] [nvarchar](255) NULL,[OPEN_DATE] [nvarchar](255) NULL,[CLOSE_DATE] [nvarchar](255) NULL,[AVAILABLE_BALANCE] [nvarchar](255) NULL,[AccountingCenter] [nvarchar](255) NULL,[BRANCH2] [nvarchar](255) NULL,[Column 16] [nvarchar](255) NULL) ELSE DELETE FROM [#Temp_CUSTOMER_ACC_INFO_Temp]"
-                cmd.Connection.Open()
                 cmd.ExecuteNonQuery()
                 'Import Data to Temp Table
-                SplashScreenManager.Default.SetWaitFormCaption("Import Data to #Temp_CUSTOMER_ACC_INFO_Temp")
+                'SplashScreenManager.Default.SetWaitFormCaption("Import Data to #Temp_CUSTOMER_ACC_INFO_Temp")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Import Data to #Temp_CUSTOMER_ACC_INFO_Temp")
                 cmd.CommandText = "BULK INSERT  [#Temp_CUSTOMER_ACC_INFO_Temp] FROM '" & CUST_ACC_INFO_DIR_FILE & "' with (FIRSTROW = 2,fieldterminator = '|')"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Set CLOSE_DATE to NULL if CLOSE_DATE is 0 in Table #Temp_CUSTOMER_ACC_INFO_Temp")
+                'SplashScreenManager.Default.SetWaitFormCaption("Set CLOSE_DATE to NULL if CLOSE_DATE is 0 in Table #Temp_CUSTOMER_ACC_INFO_Temp")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Set CLOSE_DATE to NULL if CLOSE_DATE is 0 in Table #Temp_CUSTOMER_ACC_INFO_Temp")
                 cmd.CommandText = "UPDATE [#Temp_CUSTOMER_ACC_INFO_Temp] SET [CLOSE_DATE]=NULL where [CLOSE_DATE]='0'"
                 cmd.ExecuteNonQuery()
                 'Alter Table
-                SplashScreenManager.Default.SetWaitFormCaption("Alter Table #Temp_CUSTOMER_ACC_INFO_Temp for OPEN_DATE and CLOSE_DATE")
+                'SplashScreenManager.Default.SetWaitFormCaption("Alter Table #Temp_CUSTOMER_ACC_INFO_Temp for OPEN_DATE and CLOSE_DATE")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Alter Table #Temp_CUSTOMER_ACC_INFO_Temp for OPEN_DATE and CLOSE_DATE")
                 cmd.CommandText = "ALTER TABLE [#Temp_CUSTOMER_ACC_INFO_Temp] ALTER COLUMN [OPEN_DATE] datetime"
                 cmd.ExecuteNonQuery()
                 cmd.CommandText = "ALTER TABLE [#Temp_CUSTOMER_ACC_INFO_Temp] ALTER COLUMN [CLOSE_DATE] datetime"
                 cmd.ExecuteNonQuery()
                 'Update data in CUSTOMER_ACCOUNTS
-                SplashScreenManager.Default.SetWaitFormCaption("Update Data to CUSTOMER_ACCOUNTS from #Temp_CUSTOMER_ACC_INFO_Temp")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update Data to CUSTOMER_ACCOUNTS from #Temp_CUSTOMER_ACC_INFO_Temp")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Update Data to CUSTOMER_ACCOUNTS from #Temp_CUSTOMER_ACC_INFO_Temp")
                 cmd.CommandText = "UPDATE A SET A.[Account Status]=B.[Account Status], A.[English Name]=B.[English Name], A.[ProductCode]=B.[ProductCode], A.[Currency Status]=B.[Currency Status],A.[Country]=B.[Country],A.[PRD_TYPE]=B.[PRD_TYPE],A.[OPEN_DATE]=B.[OPEN_DATE],A.[CLOSE_DATE]=B.[CLOSE_DATE] from [CUSTOMER_ACCOUNTS] A INNER JOIN [#Temp_CUSTOMER_ACC_INFO_Temp] B ON A.[Client Account]=B.[Client Account]"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Delete from #Temp_CUSTOMER_ACC_INFO_Temp if Data allready presenjt in Table CUSTOMER_ACCOUNTS")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete from #Temp_CUSTOMER_ACC_INFO_Temp if Data allready presenjt in Table CUSTOMER_ACCOUNTS")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Delete from #Temp_CUSTOMER_ACC_INFO_Temp if Data allready presenjt in Table CUSTOMER_ACCOUNTS")
                 cmd.CommandText = "DELETE  FROM [#Temp_CUSTOMER_ACC_INFO_Temp] where [Client Account] in (Select [Client Account] from [CUSTOMER_ACCOUNTS])"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Insert New data in Table CUSTOMER_ACCOUNTS")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert New data in Table CUSTOMER_ACCOUNTS")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Insert New data in Table CUSTOMER_ACCOUNTS")
                 cmd.CommandText = "INSERT INTO [CUSTOMER_ACCOUNTS] ([ClientNo],[Client Account],[Deal Currency],[Account Status],[English Name],[ProductCode],[Currency Status],[Country],[PRD_TYPE],[OPEN_DATE],[CLOSE_DATE]) SELECT [ClientNo],[Client Account],[Deal Currency],[Account Status],[English Name],[ProductCode],[Currency Status],[Country],[PRD_TYPE],[OPEN_DATE],[CLOSE_DATE] from [#Temp_CUSTOMER_ACC_INFO_Temp]"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Update CLIENT ACCOUNT DOMESTIC")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update CLIENT ACCOUNT DOMESTIC")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Update CLIENT ACCOUNT DOMESTIC")
                 cmd.CommandText = "UPDATE [CUSTOMER_ACCOUNTS] SET [ClientAccountDomestic]=RIGHT([Client Account],10) where [ClientAccountDomestic] is NULL"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Update CLIENT IBAN NR")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update CLIENT IBAN NR")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Update CLIENT IBAN NR")
                 QueryText = "Select  '50310900'+[ClientAccountDomestic]+'131400' as BBAN,[ClientAccountDomestic] as ClientAccount from [CUSTOMER_ACCOUNTS] where [IBAN] is NULL"
                 da = New SqlDataAdapter(QueryText.Trim(), conn)
@@ -2938,17 +3097,17 @@ Public Class ManualImport
                         cmd.ExecuteNonQuery()
                     End If
                 Next
-                SplashScreenManager.Default.SetWaitFormCaption("Update ClientType in CUSTOMER_ACCOUNTS")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update ClientType in CUSTOMER_ACCOUNTS")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Update ClientType in CUSTOMER_ACCOUNTS")
                 cmd.CommandText = "UPDATE A SET A.[ClientType]=B.ClientType from CUSTOMER_ACCOUNTS A INNER JOIN CUSTOMER_INFO B on A.ClientNo=B.ClientNo"
                 cmd.ExecuteNonQuery()
 
-                SplashScreenManager.Default.SetWaitFormCaption("DROP Table #Temp_CUSTOMER_ACC_INFO_Temp")
+                'SplashScreenManager.Default.SetWaitFormCaption("DROP Table #Temp_CUSTOMER_ACC_INFO_Temp")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "DROP Table #Temp_CUSTOMER_ACC_INFO_Temp")
                 cmd.CommandText = "DROP TABLE [#Temp_CUSTOMER_ACC_INFO_Temp]"
                 cmd.ExecuteNonQuery()
 
-                SplashScreenManager.Default.SetWaitFormCaption("Update Data in Table: CLIENTS_ACCOUNTS")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update Data in Table: CLIENTS_ACCOUNTS")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Update Data in Table: CLIENTS_ACCOUNTS")
                 cmd.CommandText = "UPDATE A SET A.[Account Status]=B.[Account Status], A.[English Name]=B.[English Name], A.[ProductCode]=B.[ProductCode], A.[Currency Status]=B.[Currency Status],A.[ClientAccountDomestic]=B.[ClientAccountDomestic],A.[Online]=B.[Online],A.[IBAN]=B.[IBAN],A.[Country]=B.[Country],A.[PRD_TYPE]=B.[PRD_TYPE],A.[OPEN_DATE]=B.[OPEN_DATE],A.[CLOSE_DATE]=B.[CLOSE_DATE] from [CLIENTS_ACCOUNTS] A INNER JOIN [CUSTOMER_ACCOUNTS] B ON A.[Client Account]=B.[Client Account]"
                 cmd.ExecuteNonQuery()
@@ -2957,7 +3116,7 @@ Public Class ManualImport
                 cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('CLIENTS_DOCS_FOLDER') and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
                 Dim CLIENTS_DOCS_FOLDER As String = cmd.ExecuteScalar
                 'CREATE FOLDERS AND SUBFOLDERS FOR NEW CUSTOMERS
-                SplashScreenManager.Default.SetWaitFormCaption("Create Document Folders and Subfolders for new Clients")
+                'SplashScreenManager.Default.SetWaitFormCaption("Create Document Folders and Subfolders for new Clients")
                 Me.BgwCustAccInfoDirectory.ReportProgress(75, "Create Document Folders and Subfolders for new Clients")
                 Me.QueryText = "Select [ClientNo] from [CUSTOMER_INFO] where [ClientType] in ('C - COMPANY') and [ClientNo] in (Select [ClientNo] from [CUSTOMER_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02')) and [ClientNo] not in (Select [ClientNo] from [CLIENTS])"
                 da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
@@ -2965,7 +3124,7 @@ Public Class ManualImport
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
                     Dim ClientNr As String = dt.Rows.Item(i).Item("ClientNo")
-                    SplashScreenManager.Default.SetWaitFormCaption("Create Document Folders and Subfolders for Client Nr.: " & ClientNr)
+                    'SplashScreenManager.Default.SetWaitFormCaption("Create Document Folders and Subfolders for Client Nr.: " & ClientNr)
                     Me.BgwCustAccInfoDirectory.ReportProgress(75, "Create Document Folders and Subfolders for Client Nr.: " & ClientNr)
                     cmd.CommandText = "EXEC master.dbo.xp_cmdshell 'MD " & CLIENTS_DOCS_FOLDER & ClientNr & "'"
                     cmd.ExecuteNonQuery()
@@ -2985,12 +3144,12 @@ Public Class ManualImport
                     cmd.ExecuteNonQuery()
                 Next
 
-                SplashScreenManager.Default.SetWaitFormCaption("INSERT NEW CLIENTS in Table:CLIENTS")
+                'SplashScreenManager.Default.SetWaitFormCaption("INSERT NEW CLIENTS in Table:CLIENTS")
                 Me.BgwCustAccInfoDirectory.ReportProgress(75, "INSERT NEW CLIENTS in Table:CLIENTS")
                 cmd.CommandText = "INSERT INTO [CLIENTS]([ClientNo],[ClientType],[ID Type],[ID No],[ID_TYPE_2],[ID_NO_2],[English Name],[ESTABLISH_DATE],[Joint Account],[ACCOUNT_OFFICER_NAME],[Chinese Name],[LEGAL_STATUS],[CLIENT_OPEN_DATE],[CLIENT_RISK],[City],[COUNTRY_OF_REGISTRATION],[SHORT_NAME],[Internal Type],[OIC No],[RiskCountry],[Open Date],[Teller],[OIC_BR],[COUNTRY_OF_RESIDENCE],[INSTITUTION_SECTOR_CODE],[INDUSTRIAL_CLASS_LOCAL],[INDUSTRIAL_CLASS_LOCAL_NAME],[INDUSTRIAL_CLASS_CN],[FINANCIAL_BACKGROUND],[BUSINESS_GROUP],[CREDIT_AGENCY],[credit rating],[CLOSE_DATE],[ADDRESS_NO01],[ADDRESS_TYPE01],[ADDRESS1],[ADDRESS2],[ADDRESS3],[ADDRESS4],[ADDRESS_NO02],[ADDRESS5],[ADDRESS6],[ADDRESS_TYPE02],[ClientDocsDirectory])SELECT [ClientNo],[ClientType ],[ID Type],[ID No],[ID_TYPE_2],[ID_NO_2],[English Name],[ESTABLISH_DATE],[Joint Account],[ACCOUNT_OFFICER_NAME],[Chinese Name],[LEGAL_STATUS],[CLIENT_OPEN_DATE],[CLIENT_RISK],[City],[COUNTRY_OF_REGISTRATION],[SHORT_NAME],[Internal Type],[OIC No],[RiskCountry],[Open Date],[Teller],[OIC_BR],[COUNTRY_OF_RESIDENCE],[INSTITUTION_SECTOR_CODE],[INDUSTRIAL_CLASS_LOCAL],[INDUSTRIAL_CLASS_LOCAL_NAME],[INDUSTRIAL_CLASS_CN],[FINANCIAL_BACKGROUND],[BUSINESS_GROUP],[CREDIT_AGENCY],[credit rating],[CLOSE_DATE],[ADDRESS_NO01],[ADDRESS_TYPE01],[ADDRESS1],[ADDRESS2],[ADDRESS3],[ADDRESS4],[ADDRESS_NO02],[ADDRESS5],[ADDRESS6],[ADDRESS_TYPE02],'\\CCB-PSTOOL\Apps\CLIENTS\'+[ClientNo] from [CUSTOMER_INFO] where [ClientType] in ('C - COMPANY') and [ClientNo] in (Select [ClientNo] from [CUSTOMER_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02')) and [ClientNo] not in (Select [ClientNo] from [CLIENTS]) "
                 cmd.ExecuteNonQuery()
 
-                SplashScreenManager.Default.SetWaitFormCaption("Insert AML Classification Parameters for new Clients")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert AML Classification Parameters for new Clients")
                 Me.BgwCustAccInfoDirectory.ReportProgress(75, "Insert AML Classification Parameters for new Clients")
                 Me.QueryText = "Select [ClientNo] from [CUSTOMER_INFO] where [ClientType] in ('C - COMPANY') and [ClientNo] in (Select [ClientNo] from [CUSTOMER_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02')) and [ClientNo] not in (Select distinct [Id_ClientNo] from [CLIENTS_AML_CLASSIFIC])"
                 da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
@@ -3003,11 +3162,11 @@ Public Class ManualImport
                 Next
 
 
-                SplashScreenManager.Default.SetWaitFormCaption("Insert New Data in Table: CLIENTS_ACCOUNTS")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert New Data in Table: CLIENTS_ACCOUNTS")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Insert New Data in Table: CLIENTS_ACCOUNTS")
                 cmd.CommandText = "INSERT INTO [CLIENTS_ACCOUNTS] ([ClientNo],[Client Account],[Deal Currency],[ClientAccountDomestic],[IBAN],[Online],[Account Status],[English Name],[ProductCode],[Currency Status],[Country],[PRD_TYPE],[OPEN_DATE],[CLOSE_DATE],[Id_ClientNo]) SELECT [ClientNo],[Client Account],[Deal Currency],[ClientAccountDomestic],[IBAN],[Online],[Account Status],[English Name],[ProductCode],[Currency Status],[Country],[PRD_TYPE],[OPEN_DATE],[CLOSE_DATE],[ClientNo] from [CUSTOMER_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02') and [Client Account] not in (Select [Client Account] from [CLIENTS_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02')) "
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Insert New Data in Table: CLIENTS_ACCOUNTS_VOLUMES after removing the old one-Stored Procedure:CLIENTS_ACCOUNTS_VOLUMES_CALCULATE")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert New Data in Table: CLIENTS_ACCOUNTS_VOLUMES after removing the old one-Stored Procedure:CLIENTS_ACCOUNTS_VOLUMES_CALCULATE")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Insert New Data in Table: CLIENTS_ACCOUNTS_VOLUMES after removing the old one-Stored Procedure:CLIENTS_ACCOUNTS_VOLUMES_CALCULATE")
                 'cmd.CommandText = "DELETE FROM [CLIENTS_ACCOUNTS_VOLUMES]"
                 'cmd.ExecuteNonQuery()
@@ -3025,36 +3184,36 @@ Public Class ManualImport
                 'EAEG DATEN
                 'Import GiroKonten
 
-                SplashScreenManager.Default.SetWaitFormCaption("Insert new GIROKONTEN in EAEG_KUNDEN_KONTEN")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert new GIROKONTEN in EAEG_KUNDEN_KONTEN")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Insert new GIROKONTEN in EAEG_KUNDEN_KONTEN")
                 cmd.CommandText = "INSERT INTO [EAEG_KUNDEN_KONTEN]([B2_OrdnungskennzeichenId],[C2_Kontonummer],[C6_Kontoerröfnung],[C7_Kontoart],[ClosingDate],[AccountStatus],[ProductType],[C8_Währung])SELECT[ClientNo],REPLACE(LTRIM(REPLACE([ClientAccountDomestic], '0', ' ')), ' ', '0'),[OPEN_DATE],'KK',[CLOSE_DATE],[Account Status],[ProductCode],[Deal Currency] from [CUSTOMER_ACCOUNTS] where [ProductCode] in('DDPCUR01','DDPCUR02') and REPLACE(LTRIM(REPLACE([ClientAccountDomestic], '0', ' ')), ' ', '0') not in (Select [C2_Kontonummer] from [EAEG_KUNDEN_KONTEN]) and [ClientNo] in (Select [B2_Ordnungskennzeichen] from [EAEG_KUNDEN_STAMM])"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("UPDATE DATA in EAEG_KUNDEN_KONTEN for existing GIROKONTEN")
+                'SplashScreenManager.Default.SetWaitFormCaption("UPDATE DATA in EAEG_KUNDEN_KONTEN for existing GIROKONTEN")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "UPDATE DATA in EAEG_KUNDEN_KONTEN for existing Accounts")
                 cmd.CommandText = "UPDATE A SET A.[ClosingDate]=B.[CLOSE_DATE],A.[AccountStatus]=B.[Account Status],A.[Kontoname]=B.[English Name] from [EAEG_KUNDEN_KONTEN] A INNER JOIN [CUSTOMER_ACCOUNTS] B ON A.[C2_Kontonummer]=REPLACE(LTRIM(REPLACE(B.[ClientAccountDomestic], '0', ' ')), ' ', '0')"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Set C13_LetzteZinsfaelligkeit in EAEG_KUNDEN_KONTEN for Active GIROKONTEN")
+                'SplashScreenManager.Default.SetWaitFormCaption("Set C13_LetzteZinsfaelligkeit in EAEG_KUNDEN_KONTEN for Active GIROKONTEN")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Set C13_LetzteZinsfaelligkeit in EAEG_KUNDEN_KONTEN for Active GIROKONTEN")
                 cmd.CommandText = "UPDATE [EAEG_KUNDEN_KONTEN] SET [C13_LetzteZinsfaelligkeit]=DATEADD(d,-1,DATEADD(mm, DATEDIFF(m,0,GETDATE()),0)) where [AccountStatus]='A - ACTIVE' and [C7_Kontoart]='KK'"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Set Closing Date to 31.12.9999 for Active GIROKONTEN")
+                'SplashScreenManager.Default.SetWaitFormCaption("Set Closing Date to 31.12.9999 for Active GIROKONTEN")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Set Closing Date to 31.12.9999 for Active GIROKONTEN")
                 cmd.CommandText = "UPDATE [EAEG_KUNDEN_KONTEN] SET [ClosingDate]='99991231' where [AccountStatus]='A - ACTIVE' and [C7_Kontoart]='KK'"
                 cmd.ExecuteNonQuery()
                 'Import Festgelder
-                SplashScreenManager.Default.SetWaitFormCaption("Insert new TIME DEPOSITS in EAEG_KUNDEN_KONTEN-C6_Kontoerröfnung=StartDate if StartDate=Current Interest Coupon Period Start Date")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert new TIME DEPOSITS in EAEG_KUNDEN_KONTEN-C6_Kontoerröfnung=StartDate if StartDate=Current Interest Coupon Period Start Date")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Insert new TIME DEPOSITS in EAEG_KUNDEN_KONTEN")
                 cmd.CommandText = "INSERT INTO [EAEG_KUNDEN_KONTEN]([B2_OrdnungskennzeichenId],[C2_Kontonummer],[C6_Kontoerröfnung],[C7_Kontoart],[ClosingDate],[C14_Endfaelligkeit],[ProductType],[C8_Währung])SELECT[Counterparty No],[Contract],[Start Date],'FG',[Final Maturity Date],[Final Maturity Date],[Product Type],[Org Ccy] from [ACCRUED INTEREST ANALYSIS] where [Product Type] in('MMFCUD','MMPVCU') and [Start Date]=[Current Interest Coupon Period Start Date] and [Contract] not in (Select [C2_Kontonummer] from [EAEG_KUNDEN_KONTEN]) and [Counterparty No] in (Select [B2_Ordnungskennzeichen] from [EAEG_KUNDEN_STAMM] where [EAEG_Valid]='Y')"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Insert new TIME DEPOSITS in EAEG_KUNDEN_KONTEN-C6_Kontoerröfnung=TradeDate if StartDate<>Current Interest Coupon Period Start Date")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert new TIME DEPOSITS in EAEG_KUNDEN_KONTEN-C6_Kontoerröfnung=TradeDate if StartDate<>Current Interest Coupon Period Start Date")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Insert new TIME DEPOSITS in EAEG_KUNDEN_KONTEN")
                 cmd.CommandText = "INSERT INTO [EAEG_KUNDEN_KONTEN]([B2_OrdnungskennzeichenId],[C2_Kontonummer],[C6_Kontoerröfnung],[C7_Kontoart],[ClosingDate],[C14_Endfaelligkeit],[ProductType],[C8_Währung])SELECT[Counterparty No],[Contract],[Trade Date],'FG',[Final Maturity Date],[Final Maturity Date],[Product Type],[Org Ccy] from [ACCRUED INTEREST ANALYSIS] where [Product Type] in('MMFCUD','MMPVCU') and [Start Date]<>[Current Interest Coupon Period Start Date] and [Contract] not in (Select [C2_Kontonummer] from [EAEG_KUNDEN_KONTEN]) and [Counterparty No] in (Select [B2_Ordnungskennzeichen] from [EAEG_KUNDEN_STAMM] where [EAEG_Valid]='Y')"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Delete duplicates in EAEG_KUNDEN_KONTEN")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete duplicates in EAEG_KUNDEN_KONTEN")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Delete duplicates in EAEG_KUNDEN_KONTEN")
                 cmd.CommandText = "DELETE  FROM [EAEG_KUNDEN_KONTEN] where [ID] not in (Select Min([ID]) from [EAEG_KUNDEN_KONTEN] group by [C2_Kontonummer])"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Insert Assets in EAEG_KUNDEN_KONTEN only if Customer Accounts are KK and/or FG")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert Assets in EAEG_KUNDEN_KONTEN only if Customer Accounts are KK and/or FG")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Insert Assets in EAEG_KUNDEN_KONTEN only if Customer Accounts are KK and/or FG")
                 QueryText = "SELECT [B2_OrdnungskennzeichenId] FROM [EAEG_KUNDEN_KONTEN] where [C7_Kontoart] in ('KK','FG') GROUP BY [B2_OrdnungskennzeichenId]"
                 da = New SqlDataAdapter(QueryText.Trim(), conn)
@@ -3065,19 +3224,19 @@ Public Class ManualImport
                     cmd.CommandText = "INSERT INTO [EAEG_KUNDEN_KONTEN]([B2_OrdnungskennzeichenId],[C2_Kontonummer],[C6_Kontoerröfnung],[C7_Kontoart],[ClosingDate],[C14_Endfaelligkeit],[ProductType],[C8_Währung])SELECT[Counterparty No],[Contract],[Trade Date],'Darlehen',[Final Maturity Date],[Final Maturity Date],[Product Type],[Org Ccy] from [ACCRUED INTEREST ANALYSIS] where [Class] in('Assets') and [Contract] not in (Select [C2_Kontonummer] from [EAEG_KUNDEN_KONTEN]) and [Counterparty No]='" & StammNr & "'"
                     cmd.ExecuteNonQuery()
                 Next
-                SplashScreenManager.Default.SetWaitFormCaption("Delete duplicates in EAEG_KUNDEN_KONTEN")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete duplicates in EAEG_KUNDEN_KONTEN")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Delete duplicates in EAEG_KUNDEN_KONTEN")
                 cmd.CommandText = "DELETE  FROM [EAEG_KUNDEN_KONTEN] where [ID] not in (Select Min([ID]) from [EAEG_KUNDEN_KONTEN] group by [C2_Kontonummer])"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Set C5_AnzahlKontoinhaber to 1 for all EAEG_KUNDEN_KONTEN")
+                'SplashScreenManager.Default.SetWaitFormCaption("Set C5_AnzahlKontoinhaber to 1 for all EAEG_KUNDEN_KONTEN")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Set C5_AnzahlKontoinhaber to 1 for all EAEG_KUNDEN_KONTEN")
                 cmd.CommandText = "UPDATE [EAEG_KUNDEN_KONTEN] SET [C5_AnzahlKontoinhaber]=1" 'where [C5_AnzahlKontoinhaber] is NULL"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Set C16_Zinsmethode for all EAEG_KUNDEN_KONTEN")
+                'SplashScreenManager.Default.SetWaitFormCaption("Set C16_Zinsmethode for all EAEG_KUNDEN_KONTEN")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Set C16_Zinsmethode for all EAEG_KUNDEN_KONTEN")
                 cmd.CommandText = "SELECT [C7_Kontoart] from [EAEG_KUNDEN_KONTEN] Begin UPDATE [EAEG_KUNDEN_KONTEN] SET [C16_Zinsmethode]='01' where [C7_Kontoart] in ('KK','FG') and [C8_Währung] not in ('GBP') and [C16_Zinsmethode] is NULL  end Begin UPDATE [EAEG_KUNDEN_KONTEN] SET [C16_Zinsmethode]='02' where [C7_Kontoart] in ('KK','FG') and [C8_Währung] in ('GBP') and [C16_Zinsmethode] is NULL end"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Update Kontoname in EAEG_KUNDEN_KONTEN from CUSTOMER_INFO")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update Kontoname in EAEG_KUNDEN_KONTEN from CUSTOMER_INFO")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Update Kontoname in EAEG_KUNDEN_KONTEN from CUSTOMER_INFO")
                 cmd.CommandText = "UPDATE A set A.[Kontoname]=B.[English Name] from [EAEG_KUNDEN_KONTEN] A INNER JOIN [CUSTOMER_INFO] B On A.[B2_OrdnungskennzeichenId]=B.[ClientNo] where A.[Kontoname] is NULL"
                 cmd.ExecuteNonQuery()
@@ -3087,38 +3246,34 @@ Public Class ManualImport
                 'Wenn START Date<>Cupon Interest Start Date dan Zinsfälligkeit=Cupon Interest Start Date
                 '++++++++++++++++++++++++++++++++++++++++++++++
                 'SPEZIELLE STATEMENTS FÜR VERSCHLÜSSELUNGEN
-                SplashScreenManager.Default.SetWaitFormCaption("Set C21_WeitereZustandsverschluesselungen_Pos2=Y where Product Type=MMPVCU (Verpfändete und abgetretene Guthaben)")
+                'SplashScreenManager.Default.SetWaitFormCaption("Set C21_WeitereZustandsverschluesselungen_Pos2=Y where Product Type=MMPVCU (Verpfändete und abgetretene Guthaben)")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Set C21_WeitereZustandsverschluesselungen_Pos2=Y where Product Type=MMPVCU (Verpfändete und abgetretene Guthaben)")
                 cmd.CommandText = "UPDATE [EAEG_KUNDEN_KONTEN] SET [C21_WeitereZustandsverschluesselungen_Pos2]='Y' where [ProductType]='MMPVCU'"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Update Field C20_GESAMT and C21_GESAMT based on Stored Procedure:EAEG_KUNDENKONTEN_C20_C21_AUSSCHLUSS")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update Field C20_GESAMT and C21_GESAMT based on Stored Procedure:EAEG_KUNDENKONTEN_C20_C21_AUSSCHLUSS")
                 Me.BgwCustAccInfoDirectory.ReportProgress(60, "Update Field C20_GESAMT and C21_GESAMT based on Stored Procedure:EAEG_KUNDENKONTEN_C20_C21_AUSSCHLUSS")
                 cmd.CommandText = "EXEC [EAEG_KUNDENKONTEN_C20_C21_AUSSCHLUSS]"
                 cmd.ExecuteNonQuery()
 
                 'End If
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Text File: " & CUST_ACC_INFO_DIR_FILE)
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Text File: " & CUST_ACC_INFO_DIR_FILE)
                 Me.BgwCustAccInfoDirectory.ReportProgress(80, "Delete Text File: " & CUST_ACC_INFO_DIR_FILE)
                 File.Delete(CUST_ACC_INFO_DIR_FILE)
-                SplashScreenManager.Default.SetWaitFormCaption("CUSTOMER ACC INFO IMPORT finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("CUSTOMER ACC INFO IMPORT finished")
                 Me.BgwCustAccInfoDirectory.ReportProgress(90, "CUSTOMER ACC INFO IMPORT finished")
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwCustAccInfoDirectory.ReportProgress(30, "Unable to Import the new CUSTOMER ACCOUNT INFO! File does not exist!")
                 MessageBox.Show("Unable to Import the new CUSTOMER ACCOUNT INFO! File does not exist!", "CUSTOMER ACC INFO IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwCustAccInfoDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -3126,6 +3281,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwCustAccInfoDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwCustAccInfoDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','CUSTOMER ACC INFO IMPORT','MANUAL IMPORTS')"
@@ -3149,6 +3305,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwCustAccInfoDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwCustAccInfoDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -3163,7 +3322,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwCustAccInfoDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 #End Region
 
@@ -3172,10 +3331,8 @@ Public Class ManualImport
 
         Try
             If File.Exists(ODAS_REMMITANCE_PAY_FILE) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
-                SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_ODAS_REMMITANCE_Temp")
+                OpenSqlConnections()
+                'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_ODAS_REMMITANCE_Temp")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(40, "Create Temporary Table:#Temp_ODAS_REMMITANCE_Temp")
 
                 cmd.CommandText = "IF EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_ODAS_REMMITANCE_Temp' AND xtype='U') DROP TABLE [#Temp_ODAS_REMMITANCE_Temp]"
@@ -3183,28 +3340,28 @@ Public Class ManualImport
                 cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_ODAS_REMMITANCE_Temp' AND xtype='U')  CREATE TABLE [#Temp_ODAS_REMMITANCE_Temp]([EM00KEY0] [nvarchar](255) NULL,[EM00KEY1] [nvarchar](255) NULL,[EM00KEY2] [nvarchar](255) NULL,[Client Account] [nvarchar](255) NULL,[OURTRANREFNO] [nvarchar](255) NULL,[INWARDOUTWARD] [nvarchar](255) NULL,[METHOD] [nvarchar](255) NULL,[RECEIVERID] [nvarchar](255) NULL,[RECEIVERNAME] [nvarchar](255) NULL,[RECEIVERBRANCH] [nvarchar](255) NULL,[RECEIVERSWIFT] [nvarchar](255) NULL,[SENDERCORBKID] [nvarchar](255) NULL,[SENDERCORRNAME] [nvarchar](255) NULL,[SENDERCORRBR] [nvarchar](255) NULL,[SENDERCORRST] [nvarchar](255) NULL,[RECRCORRID] [nvarchar](255) NULL,[RECRCORRNAME] [nvarchar](255) NULL,[RECRCORRBR] [nvarchar](255) NULL,[RECRCORRSWIFT] [nvarchar](255) NULL,[ACWITHINSTID] [nvarchar](255) NULL,[ACWITHINSTNA] [nvarchar](255) NULL,[ACWITHINSTBR] [nvarchar](255) NULL,[ACWITHINSTST] [nvarchar](255) NULL,[BENEFACNO] [nvarchar](255) NULL,[BENEFCUSTID] [nvarchar](255) NULL,[BENEFCUSTNAME] [nvarchar](255) NULL,[BENEFCUSTBR] [nvarchar](255) NULL,[BENEFCUSTADR1] [nvarchar](255) NULL,[BENEFCUSTADR2] [nvarchar](255) NULL,[DETOFCHARGE] [nvarchar](255) NULL,[SETOREINFO] [nvarchar](255) NULL,[TRANSACTIONDATE] [nvarchar](20) NULL,[VALUEDATE] [nvarchar](20) NULL,[CURRENCYCODE] [nvarchar](255) NULL,[Deal Amount] [nvarchar](50) NULL,[HANDLINGFEE] [nvarchar](50) NULL,[ORDERCUSTID] [nvarchar](255) NULL,[ORDERCUSTNAME] [nvarchar](255) NULL,[ORDERCUSTBR] [nvarchar](255) NULL,[ORDERCUSTADD1] [nvarchar](255) NULL,[ORDERCUSTADD2] [nvarchar](255) NULL,[ORDERCUSTADD3] [nvarchar](255) NULL,[SWIFTINREF] [nvarchar](255) NULL,[HOLDFUNC] [nvarchar](255) NULL,[Column 44] [nvarchar](255) NULL) ELSE DELETE FROM [#Temp_ODAS_REMMITANCE_Temp]"
                 cmd.ExecuteNonQuery()
                 'Import Data to Temp Table
-                SplashScreenManager.Default.SetWaitFormCaption("Import Data to #Temp_ODAS_REMMITANCE_Temp")
+                'SplashScreenManager.Default.SetWaitFormCaption("Import Data to #Temp_ODAS_REMMITANCE_Temp")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(60, "Import Data to #Temp_ODAS_REMMITANCE_Temp")
                 cmd.CommandText = "BULK INSERT  [#Temp_ODAS_REMMITANCE_Temp] FROM '" & ODAS_REMMITANCE_PAY_FILE & "' with (FIRSTROW = 2,fieldterminator = '|')"
                 cmd.ExecuteNonQuery()
                 'Alter Table 
-                SplashScreenManager.Default.SetWaitFormCaption("ALTER Column TRANSACTIONDATE to Datetime")
+                'SplashScreenManager.Default.SetWaitFormCaption("ALTER Column TRANSACTIONDATE to Datetime")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(60, "ALTER Column TRANSACTIONDATE to Datetime")
                 cmd.CommandText = "ALTER TABLE [#Temp_ODAS_REMMITANCE_Temp] ALTER COLUMN [TRANSACTIONDATE] datetime"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("ALTER Column VALUEDATE to Datetime")
+                'SplashScreenManager.Default.SetWaitFormCaption("ALTER Column VALUEDATE to Datetime")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(60, "ALTER Column VALUEDATE to Datetime")
                 cmd.CommandText = "ALTER TABLE [#Temp_ODAS_REMMITANCE_Temp] ALTER COLUMN [VALUEDATE] datetime"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("ALTER Column Deal Amount to float")
+                'SplashScreenManager.Default.SetWaitFormCaption("ALTER Column Deal Amount to float")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(60, "ALTER Column Deal Amount to float")
                 cmd.CommandText = "ALTER TABLE [#Temp_ODAS_REMMITANCE_Temp] ALTER COLUMN [Deal Amount] float"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("ALTER Column HANDLINGFEE to float")
+                'SplashScreenManager.Default.SetWaitFormCaption("ALTER Column HANDLINGFEE to float")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(60, "ALTER Column HANDLINGFEE to float")
                 cmd.CommandText = "ALTER TABLE [#Temp_ODAS_REMMITANCE_Temp] ALTER COLUMN [HANDLINGFEE] float"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Insert new Columns in Temporary Table:ID,EXCHANGE_RATE,Deal Amount Euro and Default Values")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert new Columns in Temporary Table:ID,EXCHANGE_RATE,Deal Amount Euro and Default Values")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(60, "Insert new Columns in Temporary Table:ID,EXCHANGE_RATE,Deal Amount Euro")
                 cmd.CommandText = "ALTER TABLE [#Temp_ODAS_REMMITANCE_Temp] ADD [ID] [int] IDENTITY(1,1) NOT NULL"
                 cmd.ExecuteNonQuery()
@@ -3220,29 +3377,29 @@ Public Class ManualImport
                 cmd.ExecuteNonQuery()
 
                 'Exchange Rates definieren(NICHT EURO)
-                SplashScreenManager.Default.SetWaitFormCaption("Define Exchange Rates for Currency not in EURO based on TRANSACTIONDATE")
+                'SplashScreenManager.Default.SetWaitFormCaption("Define Exchange Rates for Currency not in EURO based on TRANSACTIONDATE")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "Define Exchange Rates for Currency not in EURO based on TRANSACTIONDATE")
                 cmd.CommandText = "UPDATE A SET A.[EXCHANGE_RATE]=B.[MIDDLE RATE] FROM [#Temp_ODAS_REMMITANCE_Temp] A INNER JOIN [EXCHANGE RATES OCBS] B ON A.[TRANSACTIONDATE]=B.[EXCHANGE RATE DATE]  where A.[CURRENCYCODE]=B.[CURRENCY CODE] and A.[EXCHANGE_RATE]=0"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Define Exchange Rates for Currency not in EURO based on VALUEDATE")
+                'SplashScreenManager.Default.SetWaitFormCaption("Define Exchange Rates for Currency not in EURO based on VALUEDATE")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "Define Exchange Rates for Currency not in EURO based on VALUEDATE")
                 cmd.CommandText = "UPDATE A SET A.[EXCHANGE_RATE]=B.[MIDDLE RATE] FROM [#Temp_ODAS_REMMITANCE_Temp] A INNER JOIN [EXCHANGE RATES OCBS] B ON A.[VALUEDATE]=B.[EXCHANGE RATE DATE]  where A.[CURRENCYCODE]=B.[CURRENCY CODE] and A.[EXCHANGE_RATE]=0"
                 cmd.ExecuteNonQuery()
                 'Exchange Rates definieren(EURO)
-                SplashScreenManager.Default.SetWaitFormCaption("Define Exchange Rates for Currency in EURO")
+                'SplashScreenManager.Default.SetWaitFormCaption("Define Exchange Rates for Currency in EURO")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "Define Exchange Rates for Currency in EURO")
                 cmd.CommandText = "UPDATE [#Temp_ODAS_REMMITANCE_Temp] SET [EXCHANGE_RATE]=1 where [CURRENCYCODE]='EUR' and [EXCHANGE_RATE]=0"
                 cmd.ExecuteNonQuery()
                 'Calculate Payment Amount in EURO
-                SplashScreenManager.Default.SetWaitFormCaption("Calculate Payment Amount in EURO")
+                'SplashScreenManager.Default.SetWaitFormCaption("Calculate Payment Amount in EURO")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "Calculate Payment Amount in EURO")
                 cmd.CommandText = "UPDATE [#Temp_ODAS_REMMITANCE_Temp] SET [Deal Amount Euro]=Round([Deal Amount]/[EXCHANGE_RATE],2) where  [Deal Amount Euro]=0 and [EXCHANGE_RATE]<>0"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Insert Data to ODAS REMMITANCES")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert Data to ODAS REMMITANCES")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "Insert Data to ODAS REMMITANCES")
                 cmd.CommandText = "INSERT INTO [ODAS REMMITANCES]([EM00KEY0],[EM00KEY1],[EM00KEY2],[Client Account],[OURTRANREFNO],[INWARDOUTWARD],[METHOD],[RECEIVERID],[RECEIVERNAME],[RECEIVERBRANCH],[RECEIVERSWIFT],[SENDERCORBKID],[SENDERCORRNAME],[SENDERCORRBR],[SENDERCORRST],[RECRCORRID],[RECRCORRNAME],[RECRCORRBR],[RECRCORRSWIFT],[ACWITHINSTID],[ACWITHINSTNA],[ACWITHINSTBR],[ACWITHINSTST],[BENEFACNO],[BENEFCUSTID],[BENEFCUSTNAME],[BENEFCUSTBR],[BENEFCUSTADR1],[BENEFCUSTADR2],[DETOFCHARGE],[SETOREINFO],[TRANSACTIONDATE],[VALUEDATE],[CURRENCYCODE],[Deal Amount],[EXCHANGE_RATE],[Deal Amount Euro],[HANDLINGFEE],[ORDERCUSTID],[ORDERCUSTNAME],[ORDERCUSTBR],[ORDERCUSTADD1],[ORDERCUSTADD2],[ORDERCUSTADD3],[SWIFTINREF],[HOLDFUNC])SELECT [EM00KEY0],[EM00KEY1],[EM00KEY2],[Client Account],[OURTRANREFNO],[INWARDOUTWARD],[METHOD],[RECEIVERID],[RECEIVERNAME],[RECEIVERBRANCH],[RECEIVERSWIFT],[SENDERCORBKID],[SENDERCORRNAME],[SENDERCORRBR],[SENDERCORRST],[RECRCORRID],[RECRCORRNAME],[RECRCORRBR],[RECRCORRSWIFT],[ACWITHINSTID],[ACWITHINSTNA],[ACWITHINSTBR],[ACWITHINSTST],[BENEFACNO],[BENEFCUSTID],[BENEFCUSTNAME],[BENEFCUSTBR],[BENEFCUSTADR1],[BENEFCUSTADR2],[DETOFCHARGE],[SETOREINFO],[TRANSACTIONDATE],[VALUEDATE],[CURRENCYCODE],[Deal Amount],[EXCHANGE_RATE],[Deal Amount Euro],[HANDLINGFEE],[ORDERCUSTID],[ORDERCUSTNAME],[ORDERCUSTBR],[ORDERCUSTADD1],[ORDERCUSTADD2],[ORDERCUSTADD3],[SWIFTINREF],[HOLDFUNC] from [#Temp_ODAS_REMMITANCE_Temp]"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Delete only Duplicate Payments in ODAS REMMITANCES comparing with EM00KEY0-Payment Reference")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete only Duplicate Payments in ODAS REMMITANCES comparing with EM00KEY0-Payment Reference")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "Delete only Duplicate Payments in ODAS REMMITANCES comparing with EM00KEY0-Payment Reference")
                 cmd.CommandText = "DELETE  FROM [ODAS REMMITANCES] where [ID] not in (Select Min([ID]) from [ODAS REMMITANCES] group by [EM00KEY0])"
                 cmd.ExecuteNonQuery()
@@ -3250,7 +3407,7 @@ Public Class ManualImport
                 '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 '++++++++++++++++++ CODE FOR ANTIMONEY LAUNDERING PAYMENTS AND ITEMS+++++++++++++++++++++++++
                 '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Select only relevant Data")
+                'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Select only relevant Data")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "Insert Data to ODAS REMMITANCES")
                 cmd.CommandText = "DELETE from [#Temp_ODAS_REMMITANCE_Temp] where [METHOD] not like '%103'"
                 cmd.ExecuteNonQuery()
@@ -3259,22 +3416,22 @@ Public Class ManualImport
                 cmd.CommandText = "DELETE from [#Temp_ODAS_REMMITANCE_Temp] where  [EM00KEY1] like '//%'"
                 cmd.ExecuteNonQuery()
                 'RICHTIGE STAMM NR DEFINIEREN BASIEREND AUF ACCOUNT NR.
-                SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID based on Client Account")
+                'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID based on Client Account")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID based on Client Account")
                 cmd.CommandText = "UPDATE A SET A.[ORDERCUSTID]=B.[ClientNo] from  [#Temp_ODAS_REMMITANCE_Temp] A INNER JOIN [CUSTOMER_ACCOUNTS] B ON A.[Client Account]=B.[Client Account] where A.[Client Account] is not NULL"
                 cmd.ExecuteNonQuery()
                 'RICHTIGE STAMM NR DEFINIEREN
-                SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID-Set Customer ID to 678... if OORDERCUSTID like 670")
+                'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID-Set Customer ID to 678... if OORDERCUSTID like 670")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID-Set Customer ID to 678... if OORDERCUSTID like 670")
                 cmd.CommandText = "UPDATE [#Temp_ODAS_REMMITANCE_Temp] SET [ORDERCUSTID]='678' + SUBSTRING([Client Account],7,5) where [ORDERCUSTID] like '670%'"
                 cmd.ExecuteNonQuery()
                 'STAMM NR DEFINIEREN wenn STAMMNR nur '678' ist basierent auf Customer Name
-                SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID if Customer ID=678")
+                'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID if Customer ID=678")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID if Customer ID=678")
                 cmd.CommandText = "UPDATE [#Temp_ODAS_REMMITANCE_Temp] SET  [ORDERCUSTID]=(Select   [ClientNo] from   [CUSTOMER_INFO] where UPPER([#Temp_ODAS_REMMITANCE_Temp].[ORDERCUSTNAME])=[CUSTOMER_INFO].[English Name]) where [ORDERCUSTID]='678'"
                 cmd.ExecuteNonQuery()
                 'STAMM NR DEFINIEREN wenn STAMMNR NULL ist basierent auf Customer Name
-                SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID if CustomerID is NULL")
+                'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID if CustomerID is NULL")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "ANTIMONEY LAUNDERING PAYMENTS-Define correct Customer ID if CustomerID is NULL")
                 cmd.CommandText = "UPDATE [#Temp_ODAS_REMMITANCE_Temp] SET   [ORDERCUSTID]=(Select   [ClientNo] from   [CUSTOMER_INFO] where UPPER([#Temp_ODAS_REMMITANCE_Temp].[ORDERCUSTNAME])=[CUSTOMER_INFO].[English Name]) where [ORDERCUSTID] is NULL"
                 cmd.ExecuteNonQuery()
@@ -3286,7 +3443,7 @@ Public Class ManualImport
                 cmd.CommandText = "DELETE from  [#Temp_ODAS_REMMITANCE_Temp] where   [ORDERCUSTID] in (Select   [ClientNo] from   [CUSTOMER_INFO] where  [ClientNo]='67803022')"
                 cmd.ExecuteNonQuery()
                 '++++++++++AUSWAHL DER ZAHLUNGEN (MINDESTENS 5 STÜCK pro Tag pro Kunde)++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS ITEMS")
+                'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS ITEMS")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS ITEMS")
                 Me.QueryText = "SELECT  [TRANSACTIONDATE],  [ORDERCUSTID]  from   [#Temp_ODAS_REMMITANCE_Temp] GROUP BY [TRANSACTIONDATE],  [ORDERCUSTID]"
                 da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
@@ -3310,7 +3467,7 @@ Public Class ManualImport
                 cmd.ExecuteNonQuery()
                 '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 '++++++++++AUSWAHL DER ZAHLUNGEN (Insgesamt AB 10000 EURO pro Tag und Pro Kunde)++++++++++++
-                SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS AMOUNTS")
+                'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS AMOUNTS")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS AMOUNTS")
                 Me.QueryText = "SELECT  [TRANSACTIONDATE],  [ORDERCUSTID]  from   [#Temp_ODAS_REMMITANCE_Temp] GROUP BY [TRANSACTIONDATE],  [ORDERCUSTID]"
                 da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
@@ -3334,31 +3491,28 @@ Public Class ManualImport
                 cmd.ExecuteNonQuery()
                 '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-                SplashScreenManager.Default.SetWaitFormCaption("DROP TABLE #Temp_ODAS_REMMITANCE_Temp")
+                'SplashScreenManager.Default.SetWaitFormCaption("DROP TABLE #Temp_ODAS_REMMITANCE_Temp")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "DROP TABLE #Temp_ODAS_REMMITANCE_Temp")
                 cmd.CommandText = "DROP TABLE [#Temp_ODAS_REMMITANCE_Temp]"
                 cmd.ExecuteNonQuery()
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Text File: " & ODAS_REMMITANCE_PAY_FILE)
+                CloseSqlConnections()
+
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Text File: " & ODAS_REMMITANCE_PAY_FILE)
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(80, "Delete Text File: " & ODAS_REMMITANCE_PAY_FILE)
                 File.Delete(ODAS_REMMITANCE_PAY_FILE)
-                SplashScreenManager.Default.SetWaitFormCaption("ODAS REMMITANCE IMPORT finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("ODAS REMMITANCE IMPORT finished")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(90, "ODAS REMMITANCE IMPORT finished")
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(30, "Unable to Import ODAS REMMITANCE! File does not exist!")
                 MessageBox.Show("Unable to Import ODAS REMMITANCE! File does not exist!", "ODAS REMMITANCE IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwOdasRemmitancePayDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -3367,6 +3521,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwOdasRemmitancePayDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwOdasRemmitancePayDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','ODAS REMMITANCE IMPORT','MANUAL IMPORTS')"
@@ -3390,6 +3545,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwOdasRemmitancePayDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwOdasRemmitancePayDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -3404,16 +3562,14 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwOdasRemmitancePayDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
 
 #Region "IMPORT GMPS PAYMENTS"
     Private Sub BgwGMPSPayDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwGMPSPayDirectory.DoWork
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         cmd.CommandTimeout = 50000
 
         Try
@@ -3422,7 +3578,7 @@ Public Class ManualImport
                     GMPS_PAY_FILE = dir.Item(i).ToString
 
                     If File.Exists(GMPS_PAY_FILE) = True Then
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import with File: " & GMPS_PAY_FILE)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import with File: " & GMPS_PAY_FILE)
                         Me.BgwGMPSPayDirectory.ReportProgress(40, "Start Import with File: " & GMPS_PAY_FILE)
 
                         EXCELL = CreateObject("Excel.Application")
@@ -3432,7 +3588,7 @@ Public Class ManualImport
 
                         'IMPORT INCOMING PAYMENTS-CUSTOMER or BANK TRANSFER
                         If xlWorksheet1.Range("A1").Value = "Bank Transfer" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
+                            'SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
                             Me.BgwGMPSPayDirectory.ReportProgress(40, "Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
                             'Rows delete
                             xlWorksheet1.Rows("1:2").delete()
@@ -3482,30 +3638,30 @@ Public Class ManualImport
                                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<GMPS_PAY_FILE>", GMPS_PAY_FILE)
                                     cmd.CommandText = SqlCommandText1
                                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                                         Me.BgwGMPSPayDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                                         cmd.ExecuteNonQuery()
                                     End If
                                 Next
                             Else
-                                SplashScreenManager.CloseForm(False)
+                                'SplashScreenManager.CloseForm(False)
                                 Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!")
                                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                                 Return
 
                             End If
 
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
+                            'SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
                             Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
                             File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT INCOMING finished")
+                            'SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT INCOMING finished")
                             Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT INCOMING finished")
                             'Save the last imported Payment File
                             Me.MANUAL_IMPORTSBindingSource.EndEdit()
                             Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
 
                         ElseIf xlWorksheet1.Range("A1").Value = "Customer Transfer" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
+                            'SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
                             Me.BgwGMPSPayDirectory.ReportProgress(40, "Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
                             'Rows delete
                             xlWorksheet1.Rows("1:2").delete()
@@ -3526,7 +3682,9 @@ Public Class ManualImport
                             xlWorksheet1.Range("N1").Value = "ReceiverBICofConstructMessage" '
                             xlWorksheet1.Range("O1").Value = "PAYMENT_CODE" '
                             xlWorksheet1.Range("P1").Value = "ProcessedBy"
-
+                            xlWorksheet1.Range("Q1").Value = "PrivateFlag"
+                            xlWorksheet1.Range("R1").Value = "RemittanceInformation"
+                            xlWorksheet1.Range("S1").Value = "SenderToReceiverInformation"
 
                             EXCELL.DisplayAlerts = False
                             xlWorkBook.SaveAs(GMPS_PAY_FILE, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal)
@@ -3547,7 +3705,7 @@ Public Class ManualImport
                             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                             Dim ParameterStatus2 As String = cmd.ExecuteScalar
                             If ParameterStatus2 = "Y" Then
-                                Me.QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Incoming_Customer_Transfer') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
+                                Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Incoming_Customer_Transfer') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
                                 da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
                                 dt = New System.Data.DataTable()
                                 da.Fill(dt)
@@ -3555,13 +3713,13 @@ Public Class ManualImport
                                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<GMPS_PAY_FILE>", GMPS_PAY_FILE)
                                     cmd.CommandText = SqlCommandText1
                                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                                         Me.BgwGMPSPayDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                                         cmd.ExecuteNonQuery()
                                     End If
                                 Next
                             Else
-                                SplashScreenManager.CloseForm(False)
+                                'SplashScreenManager.CloseForm(False)
                                 Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!")
                                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                                 Return
@@ -3569,17 +3727,17 @@ Public Class ManualImport
                             End If
 
 
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
+                            'SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
                             Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
                             File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT INCOMING finished")
+                            'SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT INCOMING finished")
                             Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT INCOMING finished")
                             'Save the last imported Payment File
                             Me.MANUAL_IMPORTSBindingSource.EndEdit()
                             Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
 
                         ElseIf xlWorksheet1.Range("A1").Value.ToString.StartsWith("Inward Remittance Report") = True Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
+                            'SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
                             Me.BgwGMPSPayDirectory.ReportProgress(40, "Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
                             'Rows delete
                             xlWorksheet1.Rows("1:1").delete()
@@ -3606,6 +3764,9 @@ Public Class ManualImport
                             xlWorksheet1.Range("T1").Value = "ProcessingQueue"
                             xlWorksheet1.Range("U1").Value = "ACK_State"
                             xlWorksheet1.Range("V1").Value = "ProcessedBy"
+                            xlWorksheet1.Range("W1").Value = "PrivateFlag"
+                            xlWorksheet1.Range("X1").Value = "RemittanceInformation"
+                            xlWorksheet1.Range("Y1").Value = "SenderToReceiverInformation"
 
                             xlWorksheet1.Name = "INWARD_REMITANCE_GMPS"
 
@@ -3635,23 +3796,23 @@ Public Class ManualImport
                                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<GMPS_PAY_FILE>", GMPS_PAY_FILE)
                                     cmd.CommandText = SqlCommandText1
                                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                                         Me.BgwGMPSPayDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                                         cmd.ExecuteNonQuery()
                                     End If
                                 Next
                             Else
-                                SplashScreenManager.CloseForm(False)
+                                'SplashScreenManager.CloseForm(False)
                                 Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!")
                                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                                 Return
 
                             End If
 
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
+                            'SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
                             Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
                             File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS INWARD REMMITANCE Import finished")
+                            'SplashScreenManager.Default.SetWaitFormCaption("GMPS INWARD REMMITANCE Import finished")
                             Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS INWARD REMMITANCE Import finished")
                             'Save the last imported Payment File
                             Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -3661,46 +3822,89 @@ Public Class ManualImport
 
                             'OUTGOINGS
                         ElseIf xlWorksheet1.Range("A1").Value.ToString.StartsWith("Outward Remittance Report") = True Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT OUTGOING as :" & xlWorksheet1.Range("A1").Value)
+                            'SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT OUTGOING as :" & xlWorksheet1.Range("A1").Value)
+                            Me.BgwGMPSPayDirectory.ReportProgress(90, "Define GMPS PAYMENT OUTGOING as :" & xlWorksheet1.Range("A1").Value)
                             'Rows delete
                             xlWorksheet1.Rows("1:1").delete()
 
-                            xlWorksheet1.Range("A1").Value = "MTTYPE"
-                            xlWorksheet1.Range("B1").Value = "RegisterDate"
-                            xlWorksheet1.Range("C1").Value = "SenderReference"
-                            xlWorksheet1.Range("D1").Value = "OurReference"
+                            'Add by WYQ; Time:01.04.2022; Content: the imported file add one column "Send Type"   of  "Outward Remittance Report"， Delete this  column
+                            'xlWorksheet1.Columns(2).Delete()
+                            'Old File
+                            If xlWorksheet1.Range("B1").Value = "Register Date" Then
+                                xlWorksheet1.Columns("B:B").Insert(Microsoft.Office.Interop.Excel.XlDirection.xlToRight)
+                                xlWorksheet1.Range("A1").Value = "MTTYPE"
+                                xlWorksheet1.Range("B1").Value = "SendType"
+                                xlWorksheet1.Range("C1").Value = "RegisterDate"
+                                xlWorksheet1.Range("D1").Value = "SenderReference"
+                                xlWorksheet1.Range("E1").Value = "OurReference"
+                                xlWorksheet1.Range("H1").Value = "ValueDate"
+                                xlWorksheet1.Range("I1").Value = "SenderBIC"
+                                xlWorksheet1.Range("J1").Value = "Sender52BIC"
+                                xlWorksheet1.Range("K1").Value = "ReceivingBankBIC"
+                                xlWorksheet1.Range("L1").Value = "ReceivingBankCountryCode"
+                                xlWorksheet1.Range("M1").Value = "TransactionType"
+                                xlWorksheet1.Range("N1").Value = "OrderingCustomersAccountServicingInstitution"
+                                xlWorksheet1.Range("O1").Value = "OrderingCustomersAccNo"
+                                xlWorksheet1.Range("P1").Value = "OrderingCustomer"
+                                xlWorksheet1.Range("Q1").Value = "IntermediaryInstitutionBIC"
+                                xlWorksheet1.Range("R1").Value = "IntermediaryInstitutionAccNo"
+                                xlWorksheet1.Range("S1").Value = "IntermediaryInstitutionName"
+                                xlWorksheet1.Range("T1").Value = "AccountPayeeBIC"
+                                xlWorksheet1.Range("U1").Value = "AccountOfInstitutionAccNo"
+                                xlWorksheet1.Range("V1").Value = "AccountPayeeNameAddress"
+                                xlWorksheet1.Range("W1").Value = "BeneficiaryBankBIC"
+                                xlWorksheet1.Range("X1").Value = "BeneficiaryBankAccNo"
+                                xlWorksheet1.Range("Y1").Value = "BeneficiaryBankName"
+                                xlWorksheet1.Range("Z1").Value = "BeneficiaryCustomerBIC"
+                                xlWorksheet1.Range("AA1").Value = "BeneficiaryCustomerAccNo"
+                                xlWorksheet1.Range("AB1").Value = "BeneficiaryCustomerNameAddress"
+                                xlWorksheet1.Range("AC1").Value = "DetailsOfCharges"
+                                xlWorksheet1.Range("AD1").Value = "RemittanceInformation"
+                                xlWorksheet1.Range("AE1").Value = "SenderToReceiverInformation"
+                                xlWorksheet1.Range("AF1").Value = "PayStartTime"
+                                xlWorksheet1.Range("AG1").Value = "DebitTransactionsSigns"
+                                xlWorksheet1.Range("AH1").Value = "ProcessingQueue"
+                                xlWorksheet1.Range("AJ1").Value = "ACK_State"
+                                xlWorksheet1.Range("AK1").Value = "ProcessedBy"
+                                xlWorksheet1.Range("AL1").Value = "PrivateFlag"
+                            ElseIf xlWorksheet1.Range("B1").Value = "Send Type" Then 'New File with SendType
+                                xlWorksheet1.Range("A1").Value = "MTTYPE"
+                                xlWorksheet1.Range("B1").Value = "SendType"
+                                xlWorksheet1.Range("C1").Value = "RegisterDate"
+                                xlWorksheet1.Range("D1").Value = "SenderReference"
+                                xlWorksheet1.Range("E1").Value = "OurReference"
+                                xlWorksheet1.Range("H1").Value = "ValueDate"
+                                xlWorksheet1.Range("I1").Value = "SenderBIC"
+                                xlWorksheet1.Range("J1").Value = "Sender52BIC"
+                                xlWorksheet1.Range("K1").Value = "ReceivingBankBIC"
+                                xlWorksheet1.Range("L1").Value = "ReceivingBankCountryCode"
+                                xlWorksheet1.Range("M1").Value = "TransactionType"
+                                xlWorksheet1.Range("N1").Value = "OrderingCustomersAccountServicingInstitution"
+                                xlWorksheet1.Range("O1").Value = "OrderingCustomersAccNo"
+                                xlWorksheet1.Range("P1").Value = "OrderingCustomer"
+                                xlWorksheet1.Range("Q1").Value = "IntermediaryInstitutionBIC"
+                                xlWorksheet1.Range("R1").Value = "IntermediaryInstitutionAccNo"
+                                xlWorksheet1.Range("S1").Value = "IntermediaryInstitutionName"
+                                xlWorksheet1.Range("T1").Value = "AccountPayeeBIC"
+                                xlWorksheet1.Range("U1").Value = "AccountOfInstitutionAccNo"
+                                xlWorksheet1.Range("V1").Value = "AccountPayeeNameAddress"
+                                xlWorksheet1.Range("W1").Value = "BeneficiaryBankBIC"
+                                xlWorksheet1.Range("X1").Value = "BeneficiaryBankAccNo"
+                                xlWorksheet1.Range("Y1").Value = "BeneficiaryBankName"
+                                xlWorksheet1.Range("Z1").Value = "BeneficiaryCustomerBIC"
+                                xlWorksheet1.Range("AA1").Value = "BeneficiaryCustomerAccNo"
+                                xlWorksheet1.Range("AB1").Value = "BeneficiaryCustomerNameAddress"
+                                xlWorksheet1.Range("AC1").Value = "DetailsOfCharges"
+                                xlWorksheet1.Range("AD1").Value = "RemittanceInformation"
+                                xlWorksheet1.Range("AE1").Value = "SenderToReceiverInformation"
+                                xlWorksheet1.Range("AF1").Value = "PayStartTime"
+                                xlWorksheet1.Range("AG1").Value = "DebitTransactionsSigns"
+                                xlWorksheet1.Range("AH1").Value = "ProcessingQueue"
+                                xlWorksheet1.Range("AJ1").Value = "ACK_State"
+                                xlWorksheet1.Range("AK1").Value = "ProcessedBy"
+                                xlWorksheet1.Range("AL1").Value = "PrivateFlag"
+                            End If
 
-                            xlWorksheet1.Range("G1").Value = "ValueDate"
-                            xlWorksheet1.Range("H1").Value = "SenderBIC"
-                            xlWorksheet1.Range("I1").Value = "Sender52BIC"
-                            xlWorksheet1.Range("J1").Value = "ReceivingBankBIC"
-                            xlWorksheet1.Range("K1").Value = "ReceivingBankCountryCode"
-                            xlWorksheet1.Range("L1").Value = "TransactionType"
-                            xlWorksheet1.Range("M1").Value = "OrderingCustomersAccountServicingInstitution"
-                            xlWorksheet1.Range("N1").Value = "OrderingCustomersAccNo"
-                            xlWorksheet1.Range("O1").Value = "OrderingCustomer"
-                            xlWorksheet1.Range("P1").Value = "IntermediaryInstitutionBIC"
-                            xlWorksheet1.Range("Q1").Value = "IntermediaryInstitutionAccNo"
-                            xlWorksheet1.Range("R1").Value = "IntermediaryInstitutionName"
-                            xlWorksheet1.Range("S1").Value = "AccountPayeeBIC"
-                            xlWorksheet1.Range("T1").Value = "AccountOfInstitutionAccNo"
-                            xlWorksheet1.Range("U1").Value = "AccountPayeeNameAddress"
-                            xlWorksheet1.Range("V1").Value = "BeneficiaryBankBIC"
-                            xlWorksheet1.Range("W1").Value = "BeneficiaryBankAccNo"
-                            xlWorksheet1.Range("X1").Value = "BeneficiaryBankName"
-                            xlWorksheet1.Range("Y1").Value = "BeneficiaryCustomerBIC"
-                            xlWorksheet1.Range("Z1").Value = "BeneficiaryCustomerAccNo"
-                            xlWorksheet1.Range("AA1").Value = "BeneficiaryCustomerNameAddress"
-                            xlWorksheet1.Range("AB1").Value = "DetailsOfCharges"
-                            xlWorksheet1.Range("AC1").Value = "RemittanceInformation"
-                            xlWorksheet1.Range("AD1").Value = "SenderToReceiverInformation"
-                            xlWorksheet1.Range("AE1").Value = "PayStartTime"
-                            xlWorksheet1.Range("AF1").Value = "DebitTransactionsSigns"
-                            xlWorksheet1.Range("AG1").Value = "ProcessingQueue"
-
-                            xlWorksheet1.Range("AI1").Value = "ACK_State"
-                            xlWorksheet1.Range("AJ1").Value = "ProcessedBy"
-                            xlWorksheet1.Range("AK1").Value = "PrivateFlag"
 
                             xlWorksheet1.Name = "OUTGOING_PAYMENTS"
 
@@ -3732,13 +3936,13 @@ Public Class ManualImport
                                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<GMPS_PAY_FILE>", GMPS_PAY_FILE)
                                     cmd.CommandText = SqlCommandText1
                                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                                         Me.BgwGMPSPayDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                                         cmd.ExecuteNonQuery()
                                     End If
                                 Next
                             Else
-                                SplashScreenManager.CloseForm(False)
+                                'SplashScreenManager.CloseForm(False)
                                 Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!")
                                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                                 Return
@@ -3746,22 +3950,22 @@ Public Class ManualImport
                             End If
 
 
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
+                            'SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
                             Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
                             File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT OUTGOING finished")
+                            'SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT OUTGOING finished")
                             Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT OUTGOING finished")
                             'Save the last imported Payment File
                             Me.MANUAL_IMPORTSBindingSource.EndEdit()
                             Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                         Else
-                            SplashScreenManager.CloseForm(False)
+                            'SplashScreenManager.CloseForm(False)
                             Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to Import GMPS PAYMENT FILE! Fileformat is wrong!")
                             MessageBox.Show("Unable to Import GMPS PAYMENT FILE! Fileformat is wrong!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                             Exit Sub
                         End If
                     Else
-                        SplashScreenManager.CloseForm(False)
+                        'SplashScreenManager.CloseForm(False)
                         Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to Import GMPS PAYMENT FILE! File does not exist!")
                         MessageBox.Show("Unable to Import GMPS PAYMENT FILE! File does not exist!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                         Exit Sub
@@ -3785,13 +3989,13 @@ Public Class ManualImport
                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<GMPS_PAY_FILE>", GMPS_PAY_FILE)
                     cmd.CommandText = SqlCommandText1
                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                         Me.BgwGMPSPayDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!")
                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_GMPS_PAYMENTS! Parameter Status is Invalid!!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Return
@@ -3800,30 +4004,25 @@ Public Class ManualImport
 
 
             'FINISH
-            SplashScreenManager.Default.SetWaitFormCaption("GMPS Payments Import finished!")
+            'SplashScreenManager.Default.SetWaitFormCaption("GMPS Payments Import finished!")
             Me.BgwGMPSPayDirectory.ReportProgress(35, "GMPS Payments Import finished!")
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwGMPSPayDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
         End Try
 
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
 
 
     End Sub
 
     Private Sub BgwGMPSPayDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwGMPSPayDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','GMPS PAYMENTS IMPORT','MANUAL IMPORTS')"
@@ -3847,6 +4046,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwGMPSPayDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwGMPSPayDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -3861,7 +4063,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwGMPSPayDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -3877,12 +4079,10 @@ Public Class ManualImport
         Dim ECB_RATES_XML_FILE As String = Me.ECB_RATES_FileDirectoryImport
 
         Try
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            OpenSqlConnections()
 
             Dim xmlreader As New Xml.XmlTextReader(ECB_RATES_XML_FILE)
-            SplashScreenManager.Default.SetWaitFormCaption("Start downloading ECB Rates from : " & ECB_RATES_XML_FILE)
+            'SplashScreenManager.Default.SetWaitFormCaption("Start downloading ECB Rates from : " & ECB_RATES_XML_FILE)
             Me.BgwEcbRatesDirectory.ReportProgress(40, "Start downloading ECB Rates from : " & ECB_RATES_XML_FILE)
 
             With xmlreader
@@ -3899,10 +4099,9 @@ Public Class ManualImport
                                     .MoveToAttribute("time")
                                     rd = DateTime.Parse(.Value).ToShortDateString
                                     rdsql = rd.ToString("yyyMMdd")
-                                    SplashScreenManager.Default.SetWaitFormCaption("ECB Rates Date: " & rd)
+                                    'SplashScreenManager.Default.SetWaitFormCaption("ECB Rates Date: " & rd)
                                     Me.BgwEcbRatesDirectory.ReportProgress(40, "ECB Rates Date : " & rd)
                                     cmd.CommandText = "DELETE FROM [EXCHANGE RATES ECB] where [EXCHANGE RATE DATE]='" & rdsql & "'"
-                                    cmd.Connection.Open()
                                     cmd.ExecuteNonQuery()
 
                                 End If
@@ -3916,16 +4115,16 @@ Public Class ManualImport
                                     currVstr = .Value.Replace(".", ",")
                                     rate = currVstr
                                     Console.WriteLine(currStr & "  " & rate)
-                                    SplashScreenManager.Default.SetWaitFormCaption(currStr & "  " & rate)
+                                    'SplashScreenManager.Default.SetWaitFormCaption(currStr & "  " & rate)
                                     Me.BgwEcbRatesDirectory.ReportProgress(40, currStr & "  " & rate)
 
-                                    SplashScreenManager.Default.SetWaitFormCaption("Import ECB Exchange Rates in Table")
+                                    'SplashScreenManager.Default.SetWaitFormCaption("Import ECB Exchange Rates in Table")
                                     Me.BgwEcbRatesDirectory.ReportProgress(40, "Import ECB Exchange Rates in Table")
                                     cmd.CommandText = "INSERT INTO [EXCHANGE RATES ECB]([CURRENCY CODE],[CURRENCY RATE],[EXCHANGE RATE DATE]) Values('" & currStr & "'," & Str(rate) & ",'" & rdsql & "')"
                                     cmd.ExecuteNonQuery()
 
                                     'RATE NAME DEFINE
-                                    SplashScreenManager.Default.SetWaitFormCaption("Define Currency Names in Table")
+                                    'SplashScreenManager.Default.SetWaitFormCaption("Define Currency Names in Table")
                                     Me.BgwEcbRatesDirectory.ReportProgress(40, "Define Currency Names in Table")
                                     cmd.CommandText = "UPDATE A SET A.[CURRENCY NAME]=B.[CURRENCY NAME] from [EXCHANGE RATES ECB] A INNER JOIN [CURRENCIES] B on A.[CURRENCY CODE]=B.[CURRENCY CODE] where A.[CURRENCY NAME] is NULL"
                                     cmd.ExecuteNonQuery()
@@ -3940,18 +4139,14 @@ Public Class ManualImport
                 End While
             End With
 
-            SplashScreenManager.Default.SetWaitFormCaption("ECB Rates import finished")
+            'SplashScreenManager.Default.SetWaitFormCaption("ECB Rates import finished")
             Me.BgwEcbRatesDirectory.ReportProgress(40, "ECB Rates import finished")
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwEcbRatesDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -3960,6 +4155,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwEcbRatesDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwEcbRatesDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','ECB RATES IMPORT','MANUAL IMPORTS')"
@@ -3983,6 +4179,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwEcbRatesDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwEcbRatesDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -3997,7 +4196,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwEcbRatesDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -4006,7 +4205,7 @@ Public Class ManualImport
     Private Sub BgwMultibankKonverterKontoinhaberDirectoty_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwMultibankKonverterKontoinhaberDirectoty.DoWork
         Try
             If File.Exists(MULTIBANK_KONVERTER_KONTOINHABER_FILE) = True Then
-                SplashScreenManager.Default.SetWaitFormCaption("Start reformating the related Excel File")
+                'SplashScreenManager.Default.SetWaitFormCaption("Start reformating the related Excel File")
                 EXCELL = CreateObject("Excel.Application")
                 xlWorkBook = EXCELL.Workbooks.Open(MULTIBANK_KONVERTER_KONTOINHABER_FILE)
                 xlWorksheet1 = xlWorkBook.Worksheets("Sheet1")
@@ -4036,17 +4235,14 @@ Public Class ManualImport
                     procs(i1).Kill()
                 Next i1
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                OpenSqlConnections()
 
-                SplashScreenManager.Default.SetWaitFormCaption("Delete current Data in EAEG_KontenPersonen")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete current Data in EAEG_KontenPersonen")
                 Me.BgwMultibankKonverterKontoinhaberDirectoty.ReportProgress(30, "Delete current Data in EAEG_KontenPersonen")
                 cmd.CommandText = "DELETE  FROM [EAEG_KontenPersonen]"
-                cmd.Connection.Open()
                 cmd.ExecuteNonQuery()
 
-                SplashScreenManager.Default.SetWaitFormCaption("Start import Data from the related Excel File")
+                'SplashScreenManager.Default.SetWaitFormCaption("Start import Data from the related Excel File")
                 Me.BgwMultibankKonverterKontoinhaberDirectoty.ReportProgress(30, "Start import Data from the related Excel File")
                 'Ausführen SSI
                 'SplashScreenManager.Default.SetWaitFormCaption("Start SSI ImportKontoinhaber")
@@ -4056,11 +4252,11 @@ Public Class ManualImport
                 cmd.CommandText = "INSERT INTO [EAEG_KontenPersonen]([KontoNr],[LfdNr],[Art],[GueltBeginn],[GueltEnde],[Geloescht],[Nachname],[Vorname],[Geburtsdatum],[Anschrift],[BaFin melden],[Angelegt von],[Angelegt am],[Geändert von],[Geändert am],[Altbestand übernommen])  SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & MULTIBANK_KONVERTER_KONTOINHABER_FILE & ";','SELECT [KontoNr],[LfdNr],[Art],[GueltBeginn],[GueltEnde],[Geloescht],[Nachname],[Vorname],[Geburtsdatum],[Anschrift],[BaFin melden],[Angelegt von],[Angelegt am],[Geändert von],[Geändert am],[Altbestand übernommen] FROM [Sheet1$]')"
                 cmd.ExecuteNonQuery()
 
-                SplashScreenManager.Default.SetWaitFormCaption("Delete leading Zeros in C2_Kontonummer")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete leading Zeros in C2_Kontonummer")
                 Me.BgwMultibankKonverterKontoinhaberDirectoty.ReportProgress(30, "Delete leading Zeros in C2_Kontonummer")
                 cmd.CommandText = "UPDATE [EAEG_KUNDEN_KONTEN] SET [C2_Kontonummer]=REPLACE(LTRIM(REPLACE([C2_Kontonummer], '0', ' ')), ' ', '0') where [C2_Kontonummer] like '0%'"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Update C5_ANZAHL_KONTOINHABER in [EAEG_KUNDEN_KONTEN]")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update C5_ANZAHL_KONTOINHABER in [EAEG_KUNDEN_KONTEN]")
                 Me.BgwMultibankKonverterKontoinhaberDirectoty.ReportProgress(30, "Update C5_ANZAHL_KONTOINHABER in [EAEG_KUNDEN_KONTEN]")
                 QueryText = "SELECT [KontoNr],Count([Art]) as AnzahlKontoinhaber FROM [EAEG_KontenPersonen] where [Art]='Inhaber' and [Geloescht]='Nein' and [GueltEnde]='99991231' GROUP BY [KontoNr]"
                 da = New SqlDataAdapter(QueryText.Trim(), conn)
@@ -4076,25 +4272,22 @@ Public Class ManualImport
                 cmd.CommandText = "UPDATE [EAEG_KUNDEN_KONTEN] SET [C5_AnzahlKontoinhaber]=1" 'where [C5_AnzahlKontoinhaber] is NULL"
                 cmd.ExecuteNonQuery()
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Excel File: " & MULTIBANK_KONVERTER_KONTOINHABER_FILE)
+                CloseSqlConnections()
+
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Excel File: " & MULTIBANK_KONVERTER_KONTOINHABER_FILE)
                 Me.BgwMultibankKonverterKontoinhaberDirectoty.ReportProgress(30, "Delete Excel File: " & MULTIBANK_KONVERTER_KONTOINHABER_FILE)
                 File.Delete(MULTIBANK_KONVERTER_KONTOINHABER_FILE)
-                SplashScreenManager.Default.SetWaitFormCaption("MULTIBANK KONVERTER KONTOINHABER IMPORT finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("MULTIBANK KONVERTER KONTOINHABER IMPORT finished")
                 Me.BgwMultibankKonverterKontoinhaberDirectoty.ReportProgress(30, "MULTIBANK KONVERTER KONTOINHABER IMPORT finished")
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwMultibankKonverterKontoinhaberDirectoty.ReportProgress(30, "Unable to Import MULTIBANK KONVERTER KONTOINHABER! File does not exist!")
                 MessageBox.Show("Unable to Import MULTIBANK KONVERTER KONTOINHABER! File does not exist!", "MULTIBANK KONVERTER KONTOINHABER IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwMultibankKonverterKontoinhaberDirectoty.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -4102,6 +4295,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwMultibankKonverterKontoinhaberDirectoty_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwMultibankKonverterKontoinhaberDirectoty.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','MULTIBANK KONVERTER KONTOINHABER IMPORT','MANUAL IMPORTS')"
@@ -4125,6 +4319,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwMultibankKonverterKontoinhaberDirectoty_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwMultibankKonverterKontoinhaberDirectoty.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4139,18 +4336,14 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwMultibankKonverterKontoinhaberDirectoty, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 #End Region
 
 #Region "IMPORT TARGET2 DIRECTORY"
     Private Sub BgwT2Directory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwT2Directory.DoWork
         Try
-            conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-            cmd.Connection = conn
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('T2_DIRECTORY_NEW_TXT_FILE') and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
             Dim T2_DIRECTORY_NEW_TXT_FILE As String = cmd.ExecuteScalar
 
@@ -4180,7 +4373,7 @@ Public Class ManualImport
             'Dim Arr() As String
 
 
-            SplashScreenManager.Default.SetWaitFormCaption("Creating file: " & T2_DIRECTORY_NEW_TXT_FILE)
+            'SplashScreenManager.Default.SetWaitFormCaption("Creating file: " & T2_DIRECTORY_NEW_TXT_FILE)
             Me.BgwT2Directory.ReportProgress(30, "Creating file: " & T2_DIRECTORY_NEW_TXT_FILE)
             Do While Not sr.EndOfStream
                 Zeileninhalt = sr.ReadLine().Replace(",", " ")
@@ -4208,13 +4401,14 @@ Public Class ManualImport
             sr.Close()
             sr1.Close()
 
+
             '*********************************************************************************************************
             '***********IMPORT T2 DIRECTORY TO SQL SERVER CCB-DB*****************************************************
             '*********************************************************************************************************
-            SplashScreenManager.Default.SetWaitFormCaption("File:" & T2_DIRECTORY_NEW_TXT_FILE & " has being created")
+            'SplashScreenManager.Default.SetWaitFormCaption("File:" & T2_DIRECTORY_NEW_TXT_FILE & " has being created")
             Me.BgwT2Directory.ReportProgress(40, "File:" & T2_DIRECTORY_NEW_TXT_FILE & " has being created")
-           
-            SplashScreenManager.Default.SetWaitFormCaption("IMPORT NEW TARGET2 DIRECTORY from file: " & T2_DIRECTORY_NEW_TXT_FILE)
+
+            'SplashScreenManager.Default.SetWaitFormCaption("IMPORT NEW TARGET2 DIRECTORY from file: " & T2_DIRECTORY_NEW_TXT_FILE)
             Me.BgwT2Directory.ReportProgress(40, "IMPORT NEW TARGET2 DIRECTORY from file: " & T2_DIRECTORY_NEW_TXT_FILE)
 
             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_TARGET2_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
@@ -4228,13 +4422,13 @@ Public Class ManualImport
                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<T2_DIRECTORY_NEW_TXT_FILE>", T2_DIRECTORY_NEW_TXT_FILE)
                     cmd.CommandText = SqlCommandText1
                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                         Me.BgwT2Directory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwT2Directory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_TARGET2_DIRECTORY! Parameter Status is Invalid!!")
                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_TARGET2_DIRECTORY! Parameter Status is Invalid!!", "TARGET2 DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Return
@@ -4243,22 +4437,19 @@ Public Class ManualImport
 
 
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
+
             '*********************************************************************************************************
-            SplashScreenManager.Default.SetWaitFormCaption("Delete file: " & T2_DIRECTORY_NEW_TXT_FILE)
+            'SplashScreenManager.Default.SetWaitFormCaption("Delete file: " & T2_DIRECTORY_NEW_TXT_FILE)
             Me.BgwT2Directory.ReportProgress(40, "Delete file: " & T2_DIRECTORY_NEW_TXT_FILE)
             File.Delete(T2_DIRECTORY_NEW_TXT_FILE)
 
             Me.BgwT2Directory.ReportProgress(100, "T2 DIRECTORY IMPORT FINISHED")
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
 
         Catch ex As Exception
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwT2Directory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -4267,6 +4458,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwT2Directory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwT2Directory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','TARGET2 DIRECTORY IMPORT','MANUAL IMPORTS')"
@@ -4290,6 +4482,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwT2Directory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwT2Directory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4304,7 +4499,103 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwT2Directory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
+    End Sub
+
+#End Region
+
+#Region "IMPORT TARGET2 XML DIRECTORY"
+    Private Sub BgwT2_XML_Directory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwT2_XML_Directory.DoWork
+        Try
+            If File.Exists(T2_XML_DIR_FILE) = True Then
+                OpenSqlConnections()
+
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_TARGET2_XML_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
+                Dim ParameterStatus As String = cmd.ExecuteScalar
+                If ParameterStatus = "Y" Then
+                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_TARGET2_XML_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    dt = New System.Data.DataTable()
+                    da.Fill(dt)
+                    For i1 = 0 To dt.Rows.Count - 1
+                        SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<T2_DIRECTORY_XML_FILE>", T2_XML_DIR_FILE)
+                        cmd.CommandText = SqlCommandText1
+                        If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                            Me.BgwT2_XML_Directory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
+                            cmd.ExecuteNonQuery()
+                        End If
+                    Next
+                Else
+                    'SplashScreenManager.CloseForm(False)
+                    Me.BgwT2_XML_Directory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_TARGET2_XML_DIRECTORY! Parameter Status is Invalid!!")
+                    MessageBox.Show("Unable to execute Import Procedure:IMPORT_TARGET2_XML_DIRECTORY! Parameter Status is Invalid!!", "TARGET2 XML DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Return
+
+                End If
+
+
+                CloseSqlConnections()
+
+                '*********************************************************************************************************
+                'File.Delete(BIC_PLUS_DIR_FILE)
+
+                Me.BgwT2_XML_Directory.ReportProgress(100, "TARGET2 XML DIRECTORY IMPORT FINISHED")
+                'SplashScreenManager.CloseForm(False)
+            End If
+        Catch ex As Exception
+            CloseSqlConnections()
+            'SplashScreenManager.CloseForm(False)
+            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Me.BgwT2_XML_Directory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
+            Exit Sub
+
+        End Try
+    End Sub
+
+    Private Sub BgwT2_XML_Directory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwT2_XML_Directory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+        cmdEVENT.Connection.Open()
+        Try
+            cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','TARGET2 XML DIRECTORY IMPORT','MANUAL IMPORTS')"
+            cmdEVENT.ExecuteNonQuery()
+            TextImportFileRow = Now & "  " & "TARGET2 XML DIRECTORY IMPORT" & "  " & e.UserState & "  " & "MANUAL IMPORTS"
+            System.IO.File.AppendAllText(ImportEventsDirectory, TextImportFileRow & vbCrLf)
+        Catch ex As System.Exception
+            cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('ERROR +++ " & ex.Message.ToString.Replace("'", " ") & "','TARGET2 XML DIRECTORY IMPORT','MANUAL IMPORTS')"
+            cmdEVENT.ExecuteNonQuery()
+            TextImportFileRow = Now & "  " & "TARGET2 XML DIRECTORY IMPORT" & "  " & e.UserState & "  " & "MANUAL IMPORTS"
+            System.IO.File.AppendAllText(ImportEventsDirectory, TextImportFileRow & vbCrLf)
+            Exit Try
+        End Try
+        'Get Max Date
+        cmdEVENT.CommandText = "SELECT MAX([ProcDate]) FROM [IMPORT EVENTS]"
+        Dim MaxNewProcDate As Date = cmdEVENT.ExecuteScalar
+        cmdEVENT.Connection.Close()
+        'See events
+        Me.IMPORT_EVENTSTableAdapter.FillByManualImportDate(Me.EDPDataSet.IMPORT_EVENTS, MaxNewProcDate)
+        Me.GridControl2.Update()
+    End Sub
+
+    Private Sub BgwT2_XML_Directory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwT2_XML_Directory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
+        Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
+        Me.MANUAL_IMPORTSBindingSource.EndEdit()
+        Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
+        Dim view As GridView = ManualImportProcedures_BasicView
+        Dim focusedRow As Integer = view.FocusedRowHandle
+        Me.GridControl1.BeginUpdate()
+        Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
+        view.RefreshData()
+        Me.GridControl1.EndUpdate()
+        view.FocusedRowHandle = focusedRow
+        Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
+        Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
+        Workers_Complete(BgwT2_XML_Directory, e)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -4313,11 +4604,7 @@ Public Class ManualImport
     Private Sub BgwBicPlusDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwBicPlusDirectory.DoWork
         Try
             If File.Exists(BIC_PLUS_DIR_FILE) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-
-                End If
-                cmd.CommandTimeout = 5000
+                OpenSqlConnections()
 
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_BIC_PLUS_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
@@ -4330,13 +4617,13 @@ Public Class ManualImport
                         SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<BIC_PLUS_DIR_FILE>", BIC_PLUS_DIR_FILE)
                         cmd.CommandText = SqlCommandText1
                         If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                            SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                             Me.BgwBicPlusDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwBicPlusDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_BIC_PLUS_DIRECTORY! Parameter Status is Invalid!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_BIC_PLUS_DIRECTORY! Parameter Status is Invalid!!", "BIC PLUS DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
@@ -4344,20 +4631,17 @@ Public Class ManualImport
                 End If
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
+
                 '*********************************************************************************************************
                 'File.Delete(BIC_PLUS_DIR_FILE)
 
                 Me.BgwBicPlusDirectory.ReportProgress(100, "BIC PLUS DIRECTORY IMPORT FINISHED")
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
             End If
         Catch ex As Exception
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwBicPlusDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -4366,6 +4650,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBicPlusDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwBicPlusDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','BIC PLUS DIRECTORY IMPORT','MANUAL IMPORTS')"
@@ -4389,6 +4674,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBicPlusDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBicPlusDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4403,7 +4691,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwBicPlusDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -4412,11 +4700,7 @@ Public Class ManualImport
     Private Sub BgwBankDirectoryPlus_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwBankDirectoryPlus.DoWork
         Try
             If File.Exists(BANK_DIR_PLUS_FILE) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-
-                End If
-                cmd.CommandTimeout = 5000
+                OpenSqlConnections()
 
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_BANK_DIRECTORY_PLUS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
@@ -4429,13 +4713,13 @@ Public Class ManualImport
                         SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<BANK_DIR_PLUS_FILE>", BANK_DIR_PLUS_FILE)
                         cmd.CommandText = SqlCommandText1
                         If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                            SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                             Me.BgwBankDirectoryPlus.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwBankDirectoryPlus.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_BANK_DIRECTORY_PLUS! Parameter Status is Invalid!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_BANK_DIRECTORY_PLUS! Parameter Status is Invalid!!", "BANK DIRECTORY PLUS IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
@@ -4443,20 +4727,17 @@ Public Class ManualImport
                 End If
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
+
                 '*********************************************************************************************************
                 'File.Delete(BIC_PLUS_DIR_FILE)
 
                 Me.BgwBankDirectoryPlus.ReportProgress(100, "BANK DIRECTORY PLUS IMPORT FINISHED")
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
             End If
         Catch ex As Exception
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwBankDirectoryPlus.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -4465,6 +4746,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBankDirectoryPlus_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwBankDirectoryPlus.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','BANK DIRECTORY PLUS IMPORT','MANUAL IMPORTS')"
@@ -4488,6 +4770,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBankDirectoryPlus_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBankDirectoryPlus.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4502,7 +4787,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwBankDirectoryPlus, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -4511,10 +4796,7 @@ Public Class ManualImport
     Private Sub BgwIbanFullDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwIbanFullDirectory.DoWork
         Try
             If File.Exists(IBAN_PLUS_FULL_DIR) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
-                cmd.CommandTimeout = 5000
+                OpenSqlConnections()
 
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_IBAN_PLUS_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
@@ -4527,33 +4809,30 @@ Public Class ManualImport
                         SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<IBAN_PLUS_FULL_DIR>", IBAN_PLUS_FULL_DIR)
                         cmd.CommandText = SqlCommandText1
                         If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                            SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                             Me.BgwIbanFullDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwIbanFullDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_IBAN_PLUS_DIRECTORY! Parameter Status is Invalid!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_IBAN_PLUS_DIRECTORY! Parameter Status is Invalid!!", "IBAN PLUS DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
 
                 End If
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
+
                 '*********************************************************************************************************
                 'File.Delete(BIC_PLUS_DIR_FILE)
 
                 Me.BgwIbanFullDirectory.ReportProgress(100, "IBAN DIRECTORY PLUS IMPORT FINISHED")
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
             End If
         Catch ex As Exception
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwIbanFullDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -4562,6 +4841,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwIbanFullDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwIbanFullDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','IBAN DIRECTORY PLUS IMPORT','MANUAL IMPORTS')"
@@ -4585,6 +4865,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwIbanFullDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwIbanFullDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4599,7 +4882,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwIbanFullDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -4608,10 +4891,7 @@ Public Class ManualImport
     Private Sub BgwIbanStructureFullDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwIbanStructureFullDirectory.DoWork
         Try
             If File.Exists(IBAN_STRUCTURE_FULL_DIR) = True Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
-                cmd.CommandTimeout = 5000
+                OpenSqlConnections()
 
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_IBAN_STRUCTURE_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
@@ -4624,33 +4904,29 @@ Public Class ManualImport
                         SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<IBAN_STRUCTURE_FULL_DIR>", IBAN_STRUCTURE_FULL_DIR)
                         cmd.CommandText = SqlCommandText1
                         If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                            SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                            'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                             Me.BgwIbanStructureFullDirectory.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     Me.BgwIbanStructureFullDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_IBAN_STRUCTURE_DIRECTORY! Parameter Status is Invalid!!")
                     MessageBox.Show("Unable to execute Import Procedure:IMPORT_IBAN_STRUCTURE_DIRECTORY! Parameter Status is Invalid!!", "IBAN STRUCTURE DIRECTORY IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
 
                 End If
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 '*********************************************************************************************************
                 'File.Delete(BIC_PLUS_DIR_FILE)
 
                 Me.BgwIbanStructureFullDirectory.ReportProgress(100, "IBAN STRUCTURE DIRECTORY IMPORT FINISHED")
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
             End If
         Catch ex As Exception
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwIbanStructureFullDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -4659,6 +4935,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwIbanStructureFullDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwIbanStructureFullDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','IBAN STRUCTURE DIRECTORY IMPORT','MANUAL IMPORTS')"
@@ -4682,6 +4959,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwIbanStructureFullDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwIbanStructureFullDirectory.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4696,7 +4976,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwIbanStructureFullDirectory, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -4705,9 +4985,8 @@ Public Class ManualImport
 
     Private Sub BgwHolidayData_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwHolidayData.DoWork
         Try
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
+
             cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('HOLIDAY_DIRECTORY_NEW_TXT_FILE') and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
             Dim HOLIDAY_DIRECTORY_NEW_TXT_FILE As String = cmd.ExecuteScalar
 
@@ -4727,13 +5006,13 @@ Public Class ManualImport
                     SqlCommandText1 = dt.Rows.Item(i1).Item("SQL_Command_1").ToString.Replace("<HOLIDAY_DIRECTORY_NEW_TXT_FILE>", HOLIDAY_DIRECTORY_NEW_TXT_FILE)
                     cmd.CommandText = SqlCommandText1
                     If dt.Rows.Item(i1).Item("SQL_Name_1") <> "" Then
-                        SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
+                        'SplashScreenManager.Default.SetWaitFormCaption(dt.Rows.Item(i1).Item("SQL_Name_1"))
                         Me.BgwHolidayData.ReportProgress(i1, dt.Rows.Item(i1).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
             Else
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 Me.BgwIbanStructureFullDirectory.ReportProgress(30, "Unable to execute Import Procedure:IMPORT_HOLIDAYS! Parameter Status is Invalid!!")
                 MessageBox.Show("Unable to execute Import Procedure:IMPORT_HOLIDAYS! Parameter Status is Invalid!!", "HOLIDAYS IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Return
@@ -4742,13 +5021,12 @@ Public Class ManualImport
 
 
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & HOLIDAY_DIRECTORY_NEW_TXT_FILE)
+            CloseSqlConnections()
+
+            'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & HOLIDAY_DIRECTORY_NEW_TXT_FILE)
             Me.BgwHolidayData.ReportProgress(30, "Delete File: " & HOLIDAY_DIRECTORY_NEW_TXT_FILE)
             File.Delete(HOLIDAY_DIRECTORY_NEW_TXT_FILE)
-            SplashScreenManager.Default.SetWaitFormCaption("HOLIDAYS IMPORT finished")
+            'SplashScreenManager.Default.SetWaitFormCaption("HOLIDAYS IMPORT finished")
             Me.BgwHolidayData.ReportProgress(30, "HOLIDAYS IMPORT finished")
             'Else
             'SplashScreenManager.CloseForm(False)
@@ -4757,10 +5035,8 @@ Public Class ManualImport
             'Exit Sub
             'End If
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwHolidayData.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -4768,6 +5044,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwHolidayData_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwHolidayData.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','HOLIDAY DATA IMPORT','MANUAL IMPORTS')"
@@ -4791,6 +5068,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwHolidayData_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwHolidayData.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4805,7 +5085,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwHolidayData, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -4813,24 +5093,22 @@ Public Class ManualImport
 #Region "UPDATE OWN FX DEALS"
     Private Sub BgwOwnFxDealsUpdate_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwOwnFxDealsUpdate.DoWork
         Try
-            SplashScreenManager.Default.SetWaitFormCaption("Start updating own FX Deals")
+            'SplashScreenManager.Default.SetWaitFormCaption("Start updating own FX Deals")
+            OpenSqlConnections()
             Me.BgwOwnFxDealsUpdate.ReportProgress(1, "Start updating own FX Deals")
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+
             'cmd.CommandText = "UPDATE A SET A.[OwnDeal] = 'Y' FROM [FX DAILY REVALUATION] A INNER JOIN OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=" & OWN_FX_DEALS_DIR & ";', 'SELECT BusinessDate, ContractNo FROM [Sheet1$]') B ON A.[ContractNr] = B.ContractNo AND A.[RiskDate] = B.BusinessDate and A.[DealStatus]='U'"
             cmd.CommandText = "UPDATE A SET A.[OwnDeal] = 'Y' FROM [FX DAILY REVALUATION] A INNER JOIN OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=" & OWN_FX_DEALS_DIR & ";', 'SELECT ContractNo FROM [Sheet1$]') B ON A.[ContractNr] = B.ContractNo AND A.[DealStatus]='U' and A.[OwnDeal] = 'N'"
             cmd.ExecuteNonQuery()
             cmd.CommandText = "SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & OWN_FX_DEALS_DIR & ";','SELECT Count(*) FROM [Sheet1$]')"
-            SplashScreenManager.Default.SetWaitFormCaption(cmd.ExecuteScalar & " FX Deals updated")
+            'SplashScreenManager.Default.SetWaitFormCaption(cmd.ExecuteScalar & " FX Deals updated")
             Me.BgwOwnFxDealsUpdate.ReportProgress(1, cmd.ExecuteScalar & " FX Deals updated")
-            cmd.Connection.Close()
+            CloseSqlConnections()
+
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwOwnFxDealsUpdate.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
         End Try
@@ -4839,6 +5117,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwOwnFxDealsUpdate_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwOwnFxDealsUpdate.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','OWN FX DEALS UPDATE','MANUAL IMPORTS')"
@@ -4862,6 +5141,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwOwnFxDealsUpdate_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwOwnFxDealsUpdate.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4876,7 +5158,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwOwnFxDealsUpdate, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -4889,43 +5171,39 @@ Public Class ManualImport
                 Case Is = "GSTIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS GSTIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS GSTIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS GSTIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_GSTIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_GSTIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_GSTIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_GSTIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_GSTIFF_Temp]([GSTIFF_MDANT] [nvarchar](50) NULL,[GSTIFF_FILNR] [nvarchar](50) NULL,[GSTIFF_MODUL] [nvarchar](50) NULL,[GSTIFF_KDNRH] [nvarchar](50) NULL,[GSTIFF_KTONR] [nvarchar](50) NULL,[GSTIFF_GSREF] [nvarchar](50) NULL,[GSTIFF_BEZNG] [nvarchar](50) NULL,[GSTIFF_KOART] [nvarchar](50) NULL,[GSTIFF_BILKT] [nvarchar](50) NULL,[GSTIFF_GSKLA] [nvarchar](50) NULL,[GSTIFF_SUKLA] [nvarchar](50) NULL,[GSTIFF_GSART] [nvarchar](50) NULL,[GSTIFF_ULFZT] [nvarchar](50) NULL,[GSTIFF_WHISO] [nvarchar](50) NULL,[GSTIFF_VERKZ] [nvarchar](50) NULL,[GSTIFF_SLDKZ] [nvarchar](50) NULL,[GSTIFF_KZREV] [nvarchar](50) NULL,[GSTIFF_WPKNZ] [nvarchar](50) NULL,[GSTIFF_WPBFN] [nvarchar](50) NULL,[GSTIFF_HBKZN] [nvarchar](50) NULL,[GSTIFF_ZWRIS] [nvarchar](50) NULL,[GSTIFF_KZLST] [nvarchar](50) NULL,[GSTIFF_HAFIN] [nvarchar](50) NULL,[GSTIFF_WESTA] [nvarchar](50) NULL,[GSTIFF_BEZNR] [nvarchar](50) NULL,[GSTIFF_DXVND] [nvarchar](50) NULL,[GSTIFF_DXBSD] [nvarchar](50) NULL,[GSTIFF_MRLFZ] [nvarchar](50) NULL,[GSTIFF_AUSFL] [nvarchar](50) NULL,[GSTIFF_DXAUD] [nvarchar](50) NULL,[GSTIFF_RANGF] [nvarchar](50) NULL,[GSTIFF_KZUEV] [nvarchar](50) NULL,[GSTIFF_KFRIS] [nvarchar](50) NULL,[GSTIFF_DXZAP] [nvarchar](50) NULL,[GSTIFF_KZVSG] [nvarchar](50) NULL,[GSTIFF_KZKRU] [nvarchar](50) NULL,[GSTIFF_KONSB] [nvarchar](50) NULL,[GSTIFF_RISGR] [nvarchar](50) NULL,[GSTIFF_KONSK] [nvarchar](50) NULL,[GSTIFF_WPKNR] [nvarchar](50) NULL,[GSTIFF_GSARE] [nvarchar](50) NULL,[GSTIFF_PRDKT] [nvarchar](50) NULL,[GSTIFF_WHIFX] [nvarchar](50) NULL,[GSTIFF_HFZGP] [nvarchar](50) NULL,[GSTIFF_AFREF] [nvarchar](50) NULL,[GSTIFF_KZAKL] [nvarchar](50) NULL,[GSTIFF_KONSR] [nvarchar](50) NULL,[GSTIFF_FREI1] [nvarchar](50) NULL,[GSTIFF_FREI2] [nvarchar](50) NULL,[GSTIFF_FREI3] [nvarchar](50) NULL,[GSTIFF_FREI4] [nvarchar](50) NULL,[GSTIFF_FREI5] [nvarchar](50) NULL,[GSTIFF_LOEKZ] [nvarchar](50) NULL,[GSTIFF_IFNAM] [nvarchar](50) NULL,[GSTIFF_DXIFD] [datetime] NULL) ELSE DELETE FROM [#Temp_BAIS_GSTIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import GSTIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import GSTIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import GSTIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_GSTIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_GSTIFF with the same Date in Column:GSTIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_GSTIFF with the same Date in Column:GSTIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_GSTIFF with the same Date in Column:GSTIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_GSTIFF] where [GSTIFF_DXIFD] in (Select distinct [GSTIFF_DXIFD] from [#Temp_BAIS_GSTIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GSTIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GSTIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GSTIFF")
                         cmd.CommandText = "INSERT INTO [BAIS_GSTIFF]([GSTIFF_MDANT],[GSTIFF_FILNR],[GSTIFF_MODUL],[GSTIFF_KDNRH],[GSTIFF_KTONR],[GSTIFF_GSREF],[GSTIFF_BEZNG],[GSTIFF_KOART],[GSTIFF_BILKT],[GSTIFF_GSKLA],[GSTIFF_SUKLA],[GSTIFF_GSART],[GSTIFF_ULFZT],[GSTIFF_WHISO],[GSTIFF_VERKZ],[GSTIFF_SLDKZ],[GSTIFF_KZREV],[GSTIFF_WPKNZ],[GSTIFF_WPBFN],[GSTIFF_HBKZN],[GSTIFF_ZWRIS],[GSTIFF_KZLST],[GSTIFF_HAFIN],[GSTIFF_WESTA],[GSTIFF_BEZNR],[GSTIFF_DXVND],[GSTIFF_DXBSD],[GSTIFF_MRLFZ],[GSTIFF_AUSFL],[GSTIFF_DXAUD],[GSTIFF_RANGF],[GSTIFF_KZUEV],[GSTIFF_KFRIS],[GSTIFF_DXZAP],[GSTIFF_KZVSG],[GSTIFF_KZKRU],[GSTIFF_KONSB],[GSTIFF_RISGR],[GSTIFF_KONSK],[GSTIFF_WPKNR],[GSTIFF_GSARE],[GSTIFF_PRDKT],[GSTIFF_WHIFX],[GSTIFF_HFZGP],[GSTIFF_AFREF],[GSTIFF_KZAKL],[GSTIFF_KONSR],[GSTIFF_FREI1],[GSTIFF_FREI2],[GSTIFF_FREI3],[GSTIFF_FREI4],[GSTIFF_FREI5],[GSTIFF_LOEKZ],[GSTIFF_IFNAM],[GSTIFF_DXIFD]) Select * from [#Temp_BAIS_GSTIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_GSTIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS GSTIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS GSTIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS GSTIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -4933,47 +5211,43 @@ Public Class ManualImport
                 Case Is = "GSTSLF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS GSTSLF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS GSTSLF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS GSTSLF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_GSTSLF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_GSTSLF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_GSTSLF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_GSTSLF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_GSTSLF_Temp]([GSTSLF_MDANT] [nvarchar](50) NULL,[GSTSLF_MODUL] [nvarchar](50) NULL,[GSTSLF_KDNRH] [nvarchar](50) NULL,[GSTSLF_KTONR] [nvarchar](50) NULL,[GSTSLF_GSREF] [nvarchar](50) NULL,[GSTSLF_SLDUB] [float] NULL,[GSTSLF_DISPO] [nvarchar](50) NULL,[GSTSLF_DXDVD] [nvarchar](50) NULL,[GSTSLF_DXDBD] [nvarchar](50) NULL,[GSTSLF_ABGBT] [float] NULL,[GSTSLF_GKBTR] [nvarchar](50) NULL,[GSTSLF_FAIRV] [nvarchar](50) NULL,[GSTSLF_IFNAM] [nvarchar](50) NULL,[GSTSLF_DXIFD] [nvarchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_GSTSLF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import GSTSLF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import GSTSLF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import GSTSLF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_GSTSLF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN GSTSLF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN GSTSLF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN GSTSLF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_GSTSLF_Temp] ALTER COLUMN [GSTSLF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_GSTSLF with the same Date in Column:GSTSLF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_GSTSLF with the same Date in Column:GSTSLF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_GSTSLF with the same Date in Column:GSTSLF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_GSTSLF] where [GSTSLF_DXIFD] in (Select distinct [GSTSLF_DXIFD] from [#Temp_BAIS_GSTSLF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GSTSLF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GSTSLF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GSTSLF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_GSTSLF]([GSTSLF_MDANT],[GSTSLF_MODUL],[GSTSLF_KDNRH],[GSTSLF_KTONR],[GSTSLF_GSREF],[GSTSLF_SLDUB],[GSTSLF_DISPO],[GSTSLF_DXDVD],[GSTSLF_DXDBD],[GSTSLF_ABGBT],[GSTSLF_GKBTR],[GSTSLF_FAIRV],[GSTSLF_IFNAM],[GSTSLF_DXIFD]) Select * from [#Temp_BAIS_GSTSLF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_GSTSLF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS GSTSLF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS GSTSLF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS GSTSLF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -4981,51 +5255,47 @@ Public Class ManualImport
                 Case Is = "KGCIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS KGCIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS KGCIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS KGCIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:BAIS_GKCIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:BAIS_GKCIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_KGCIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_KGCIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_KGCIFF_Temp]([KGCIFF_MDANT] [varchar](50) NULL,[KGCIFF_MODUL] [varchar](50) NULL,[KGCIFF_KDNRH] [varchar](50) NULL,[KGCIFF_KTONR] [varchar](50) NULL,[KGCIFF_GSREF] [varchar](50) NULL,[KGCIFF_ACCNR] [varchar](50) NULL,[KGCIFF_PTYPI] [varchar](50) NULL,[KGCIFF_CURCD] [varchar](50) NULL,[KGCIFF_DXBEW] [varchar](50) NULL,[KGCIFF_ERART] [varchar](50) NULL,[KGCIFF_HOEHE] [varchar](50) NULL,[KGCIFF_SALDO] [varchar](50) NULL,[KGCIFF_TILGA] [varchar](50) NULL,[KGCIFF_ZINSA] [varchar](50) NULL,[KGCIFF_WHISO] [varchar](50) NULL,[KGCIFF_IFNAM] [varchar](50) NULL,[KGCIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_KGCIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import KGCIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import KGCIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import KGCIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_KGCIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KGCIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KGCIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN KGCIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KGCIFF_Temp] ALTER COLUMN [KGCIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KGCIFF_DXBEW to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KGCIFF_DXBEW to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN KGCIFF_DXBEW to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KGCIFF_Temp] ALTER COLUMN [KGCIFF_DXBEW] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_KGCIFF with the same Date in Column:KGCIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_KGCIFF with the same Date in Column:KGCIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_KGCIFF with the same Date in Column:KGCIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_KGCIFF] where [KGCIFF_DXIFD] in (Select distinct [KGCIFF_DXIFD] from [#Temp_BAIS_KGCIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GSTSLF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GSTSLF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GSTSLF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_KGCIFF]([KGCIFF_MDANT],[KGCIFF_MODUL],[KGCIFF_KDNRH],[KGCIFF_KTONR],[KGCIFF_GSREF],[KGCIFF_ACCNR],[KGCIFF_PTYPI],[KGCIFF_CURCD],[KGCIFF_DXBEW],[KGCIFF_ERART],[KGCIFF_HOEHE],[KGCIFF_SALDO],[KGCIFF_TILGA],[KGCIFF_ZINSA],[KGCIFF_WHISO],[KGCIFF_IFNAM],[KGCIFF_DXIFD]) Select * from [#Temp_BAIS_KGCIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_KGCIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS KGCIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS KGCIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS KGCIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5033,47 +5303,43 @@ Public Class ManualImport
                 Case Is = "KNEIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS KNEIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS KNEIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS KNEIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_KNEIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_KNEIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_KNEIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_KNEIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_KNEIFF_Temp]([KNEIFF_MDANT] [varchar](50) NULL,[KNEIFF_FILNR] [varchar](50) NULL,[KNEIFF_KDNRH] [varchar](50) NULL,[KNEIFF_KURZN] [varchar](50) NULL,[KNEIFF_NAME1] [varchar](50) NULL,[KNEIFF_NAME2] [varchar](50) NULL,[KNEIFF_NAME3] [varchar](50) NULL,[KNEIFF_PLZOR] [varchar](50) NULL,[KNEIFF_PLZNR] [varchar](50) NULL,[KNEIFF_STRAS] [varchar](50) NULL,[KNEIFF_DXGEB] [varchar](50) NULL,[KNEIFF_WSGSI] [varchar](50) NULL,[KNEIFF_BRNCH] [varchar](50) NULL,[KNEIFF_WSBIS] [varchar](50) NULL,[KNEIFF_BRNZU] [varchar](50) NULL,[KNEIFF_SLDSL] [varchar](50) NULL,[KNEIFF_RLDSL] [varchar](50) NULL,[KNEIFF_LDRIS] [varchar](50) NULL,[KNEIFF_BONIT] [varchar](50) NULL,[KNEIFF_GRPKZ] [varchar](50) NULL,[KNEIFF_KZLST] [varchar](50) NULL,[KNEIFF_KZPER] [varchar](50) NULL,[KNEIFF_UMMIO] [varchar](50) NULL,[KNEIFF_AUSFL] [varchar](50) NULL,[KNEIFF_DXAUD] [varchar](50) NULL,[KNEIFF_ORGSL] [varchar](50) NULL,[KNEIFF_RISGR] [varchar](50) NULL,[KNEIFF_KGBID] [varchar](50) NULL,[KNEIFF_ANRKZ] [varchar](50) NULL,[KNEIFF_ESAKZ] [varchar](50) NULL,[KNEIFF_NACES] [varchar](50) NULL,[KNEIFF_LENID] [varchar](50) NULL,[KNEIFF_WSCRR] [varchar](50) NULL,[KNEIFF_AVCKZ] [varchar](50) NULL,[KNEIFF_FREI1] [varchar](50) NULL,[KNEIFF_FREI2] [varchar](50) NULL,[KNEIFF_FREI3] [varchar](50) NULL,[KNEIFF_FREI4] [varchar](50) NULL,[KNEIFF_FREI5] [varchar](50) NULL,[KNEIFF_LOEKZ] [varchar](50) NULL,[KNEIFF_IFNAM] [varchar](50) NULL,[KNEIFF_DXIFD] [varchar](50) NULL)  ELSE DELETE FROM [#Temp_BAIS_KNEIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import KNEIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import KNEIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import KNEIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_KNEIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KNEIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KNEIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN KNEIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KNEIFF_Temp] ALTER COLUMN [KNEIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_KNEIFF with the same Date in Column:KNEIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_KNEIFF with the same Date in Column:KNEIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_KNEIFF with the same Date in Column:KNEIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_KNEIFF] where [KNEIFF_DXIFD] in (Select distinct [KNEIFF_DXIFD] from [#Temp_BAIS_KNEIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_KNEIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_KNEIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_KNEIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_KNEIFF]([KNEIFF_MDANT],[KNEIFF_FILNR],[KNEIFF_KDNRH],[KNEIFF_KURZN],[KNEIFF_NAME1],[KNEIFF_NAME2],[KNEIFF_NAME3],[KNEIFF_PLZOR],[KNEIFF_PLZNR],[KNEIFF_STRAS],[KNEIFF_DXGEB],[KNEIFF_WSGSI],[KNEIFF_BRNCH],[KNEIFF_WSBIS],[KNEIFF_BRNZU],[KNEIFF_SLDSL],[KNEIFF_RLDSL],[KNEIFF_LDRIS],[KNEIFF_BONIT],[KNEIFF_GRPKZ],[KNEIFF_KZLST],[KNEIFF_KZPER],[KNEIFF_UMMIO],[KNEIFF_AUSFL],[KNEIFF_DXAUD],[KNEIFF_ORGSL],[KNEIFF_RISGR],[KNEIFF_KGBID],[KNEIFF_ANRKZ],[KNEIFF_ESAKZ],[KNEIFF_NACES],[KNEIFF_LENID],[KNEIFF_WSCRR],[KNEIFF_AVCKZ],[KNEIFF_FREI1],[KNEIFF_FREI2],[KNEIFF_FREI3],[KNEIFF_FREI4],[KNEIFF_FREI5],[KNEIFF_LOEKZ],[KNEIFF_IFNAM],[KNEIFF_DXIFD]) Select * from [#Temp_BAIS_KNEIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_KNEIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS KNEIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS KNEIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS KNEIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5081,47 +5347,43 @@ Public Class ManualImport
                 Case Is = "KNVIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS KNVIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS KNVIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS KNVIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_KNVIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_KNVIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_KNVIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_KNVIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_KNVIFF_Temp]([KNVIFF_MDANK] [varchar](50) NULL,[KNVIFF_MDANT] [varchar](50) NULL,[KNVIFF_KNZNR] [varchar](50) NULL,[KNVIFF_MDAN2] [varchar](50) NULL,[KNVIFF_KDNRH] [varchar](50) NULL,[KNVIFF_KNEKZ] [varchar](50) NULL,[KNVIFF_GRDZF] [varchar](50) NULL,[KNVIFF_ZUSKZ] [varchar](50) NULL,[KNVIFF_GBRKZ] [varchar](50) NULL,[KNVIFF_MEANT] [varchar](50) NULL,[KNVIFF_HFBES] [varchar](50) NULL,[KNVIFF_ANERL] [varchar](50) NULL,[KNVIFF_BETXT] [varchar](50) NULL,[KNVIFF_FREI1] [varchar](50) NULL,[KNVIFF_FREI2] [varchar](50) NULL,[KNVIFF_FREI3] [varchar](50) NULL,[KNVIFF_LOEKZ] [varchar](50) NULL,[KNVIFF_IFNAM] [varchar](50) NULL,[KNVIFF_DXIFD] [varchar](50) NULL)  ELSE DELETE FROM [#Temp_BAIS_KNVIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import KNVIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import KNVIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import KNVIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_KNVIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KNVIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KNVIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN KNVIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KNVIFF_Temp] ALTER COLUMN [KNVIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_KNVIFF with the same Date in Column:KNVIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_KNVIFF with the same Date in Column:KNVIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_KNVIFF with the same Date in Column:KNVIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_KNVIFF] where [KNVIFF_DXIFD] in (Select distinct [KNVIFF_DXIFD] from [#Temp_BAIS_KNVIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_KNVIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_KNVIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_KNVIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_KNVIFF]([KNVIFF_MDANK],[KNVIFF_MDANT],[KNVIFF_KNZNR],[KNVIFF_MDAN2],[KNVIFF_KDNRH],[KNVIFF_KNEKZ],[KNVIFF_GRDZF],[KNVIFF_ZUSKZ],[KNVIFF_GBRKZ],[KNVIFF_MEANT],[KNVIFF_HFBES],[KNVIFF_ANERL],[KNVIFF_BETXT],[KNVIFF_FREI1],[KNVIFF_FREI2],[KNVIFF_FREI3],[KNVIFF_LOEKZ],[KNVIFF_IFNAM],[KNVIFF_DXIFD]) Select * from [#Temp_BAIS_KNVIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_KNVIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS KNVIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS KNVIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS KNVIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5131,15 +5393,13 @@ Public Class ManualImport
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5148,51 +5408,47 @@ Public Class ManualImport
                 Case Is = "KSRIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS KSRIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS KSRIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS KSRIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_KSRIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_KSRIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_KSRIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_KSRIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_KSRIFF_Temp]([KSRIFF_RKLIF] [varchar](50) NULL,[KSRIFF_RAGEN] [varchar](50) NULL,[KSRIFF_RATYP] [varchar](50) NULL,[KSRIFF_KZHFW] [varchar](50) NULL,[KSRIFF_RATEX] [varchar](50) NULL,[KSRIFF_DXRAT] [varchar](50) NULL,[KSRIFF_LDISO] [varchar](50) NULL,[KSRIFF_IFNAM] [varchar](50) NULL,[KSRIFF_DXIFD] [varchar](50) NULL)  ELSE DELETE FROM [#Temp_BAIS_KSRIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import KSRIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import KSRIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import KSRIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_KSRIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KSRIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KSRIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN KSRIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KSRIFF_Temp] ALTER COLUMN [KSRIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KSRIFF_DXRAT to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN KSRIFF_DXRAT to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN KSRIFF_DXRAT to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KSRIFF_Temp] ALTER COLUMN [KSRIFF_DXRAT] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_KSRIFF with the same Date in Column:KSRIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_KSRIFF with the same Date in Column:KSRIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_KSRIFF with the same Date in Column:KSRIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_KSRIFF] where [KSRIFF_DXIFD] in (Select distinct [KSRIFF_DXIFD] from [#Temp_BAIS_KSRIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_KNVIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_KNVIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_KNVIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_KSRIFF]([KSRIFF_RKLIF],[KSRIFF_RAGEN],[KSRIFF_RATYP],[KSRIFF_KZHFW],[KSRIFF_RATEX],[KSRIFF_DXRAT],[KSRIFF_LDISO],[KSRIFF_IFNAM],[KSRIFF_DXIFD]) Select * from [#Temp_BAIS_KSRIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_KSRIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS KSRIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS KSRIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS KSRIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5200,47 +5456,43 @@ Public Class ManualImport
                 Case Is = "LQGIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS LQGIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS LQGIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS LQGIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_LQGIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_LQGIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_LQGIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_LQGIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_LQGIFF_Temp]([LQGIFF_MDANT] [varchar](50) NULL,[LQGIFF_MODUL] [varchar](50) NULL,[LQGIFF_KDNRH] [varchar](50) NULL,[LQGIFF_KTONR] [varchar](50) NULL,[LQGIFF_GSREF] [varchar](50) NULL,[LQGIFF_EINLS] [varchar](50) NULL,[LQGIFF_KUNDG] [varchar](50) NULL,[LQGIFF_KUNBT] [varchar](50) NULL,[LQGIFF_EINTY] [varchar](50) NULL,[LQGIFF_BESFI] [varchar](50) NULL,[LQGIFF_RSFFK] [varchar](50) NULL,[LQGIFF_DXBES] [varchar](50) NULL,[LQGIFF_MWSIC] [varchar](50) NULL,[LQGIFF_WHMWS] [varchar](50) NULL,[LQGIFF_ANZKI] [varchar](50) NULL,[LQGIFF_KZABL] [varchar](50) NULL,[LQGIFF_DXBEL] [varchar](50) NULL,[LQGIFF_HOEBL] [varchar](50) NULL,[LQGIFF_WHGBL] [varchar](50) NULL,[LQGIFF_NOMBT] [varchar](50) NULL,[LQGIFF_HAWHG] [varchar](50) NULL,[LQGIFF_KUDIV] [varchar](50) NULL,[LQGIFF_QKRLA] [varchar](50) NULL,[LQGIFF_LIQQU] [varchar](50) NULL,[LQGIFF_KZLCI] [varchar](50) NULL,[LQGIFF_KZFAZ] [varchar](50) NULL,[LQGIFF_LCRK1] [varchar](50) NULL,[LQGIFF_LCRK2] [varchar](50) NULL,[LQGIFF_NSFRK] [varchar](50) NULL,[LQGIFF_CAPIF] [varchar](50) NULL,[LQGIFF_IFNAM] [varchar](50) NULL,[LQGIFF_DXIFD] [varchar](50) NULL)   ELSE DELETE FROM [#Temp_BAIS_LQGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import LQGIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import LQGIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import LQGIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_LQGIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN LQGIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN LQGIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN LQGIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_LQGIFF_Temp] ALTER COLUMN [LQGIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_LQGIFF with the same Date in Column:LQGIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_LQGIFF with the same Date in Column:LQGIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_LQGIFF with the same Date in Column:LQGIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_LQGIFF] where [LQGIFF_DXIFD] in (Select distinct [LQGIFF_DXIFD] from [#Temp_BAIS_LQGIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_KNVIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_KNVIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_KNVIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_LQGIFF]([LQGIFF_MDANT],[LQGIFF_MODUL],[LQGIFF_KDNRH],[LQGIFF_KTONR],[LQGIFF_GSREF],[LQGIFF_EINLS],[LQGIFF_KUNDG],[LQGIFF_KUNBT],[LQGIFF_EINTY],[LQGIFF_BESFI],[LQGIFF_RSFFK],[LQGIFF_DXBES],[LQGIFF_MWSIC],[LQGIFF_WHMWS],[LQGIFF_ANZKI],[LQGIFF_KZABL],[LQGIFF_DXBEL],[LQGIFF_HOEBL],[LQGIFF_WHGBL],[LQGIFF_NOMBT],[LQGIFF_HAWHG],[LQGIFF_KUDIV],[LQGIFF_QKRLA],[LQGIFF_LIQQU],[LQGIFF_KZLCI],[LQGIFF_KZFAZ],[LQGIFF_LCRK1],[LQGIFF_LCRK2],[LQGIFF_NSFRK],[LQGIFF_CAPIF],[LQGIFF_IFNAM],[LQGIFF_DXIFD]) Select * from [#Temp_BAIS_LQGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_LQGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS LQGIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS LQGIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS LQGIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5248,47 +5500,43 @@ Public Class ManualImport
                 Case Is = "MKUIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS MKUIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS MKUIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS MKUIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_MKUIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_MKUIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_MKUIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_MKUIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_MKUIFF_Temp]([MKUIFF_MDANT] [varchar](50) NULL,[MKUIFF_WPKNR] [varchar](50) NULL,[MKUIFF_HAWHG] [varchar](50) NULL,[MKUIFF_PREIS] [varchar](50) NULL,[MKUIFF_PREI2] [varchar](50) NULL,[MKUIFF_BEWAB] [varchar](50) NULL,[MKUIFF_BWALA] [varchar](50) NULL,[MKUIFF_CLEAN] [varchar](50) NULL,[MKUIFF_IFNAM] [varchar](50) NULL,[MKUIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_MKUIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import MKUIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import MKUIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import MKUIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_MKUIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN MKUIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN MKUIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN MKUIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_MKUIFF_Temp] ALTER COLUMN [MKUIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_MKUIFF with the same Date in Column:MKUIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_MKUIFF with the same Date in Column:MKUIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_MKUIFF with the same Date in Column:MKUIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_MKUIFF] where [MKUIFF_DXIFD] in (Select distinct [MKUIFF_DXIFD] from [#Temp_BAIS_MKUIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_MKUIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_MKUIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_MKUIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_MKUIFF]([MKUIFF_MDANT],[MKUIFF_WPKNR],[MKUIFF_HAWHG],[MKUIFF_PREIS],[MKUIFF_PREI2],[MKUIFF_BEWAB],[MKUIFF_BWALA],[MKUIFF_CLEAN],[MKUIFF_IFNAM],[MKUIFF_DXIFD]) Select * from [#Temp_BAIS_MKUIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_MKUIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS MKUIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS MKUIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS MKUIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5296,59 +5544,55 @@ Public Class ManualImport
                 Case Is = "ZUSIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS ZUSIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS ZUSIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS ZUSIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_ZUSIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_ZUSIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_ZUSIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_ZUSIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_ZUSIFF_Temp]([ZUSIFF_MDANT] [varchar](50) NULL,[ZUSIFF_FILNR] [varchar](50) NULL,[ZUSIFF_KDNRH] [varchar](50) NULL,[ZUSIFF_ZUREF] [varchar](50) NULL,[ZUSIFF_ZUART] [varchar](50) NULL,[ZUSIFF_KRART] [varchar](50) NULL,[ZUSIFF_MODUL] [varchar](50) NULL,[ZUSIFF_KTONR] [varchar](50) NULL,[ZUSIFF_GSREF] [varchar](50) NULL,[ZUSIFF_ZUEXU] [varchar](50) NULL,[ZUSIFF_WHRGE] [varchar](50) NULL,[ZUSIFF_DXZGA] [varchar](50) NULL,[ZUSIFF_DXVNE] [varchar](50) NULL,[ZUSIFF_DXBSE] [varchar](50) NULL,[ZUSIFF_KZREV] [varchar](50) NULL,[ZUSIFF_KZUNW] [varchar](50) NULL,[ZUSIFF_KZABR] [varchar](50) NULL,[ZUSIFF_WLKKZ] [varchar](50) NULL,[ZUSIFF_KNZZU] [varchar](50) NULL,[ZUSIFF_ZOEKZ] [varchar](50) NULL,[ZUSIFF_KGZUO] [varchar](50) NULL,[ZUSIFF_ZUTYP] [varchar](50) NULL,[ZUSIFF_AUSFL] [varchar](50) NULL,[ZUSIFF_DXAUD] [varchar](50) NULL,[ZUSIFF_KOART] [varchar](50) NULL,[ZUSIFF_GSART] [varchar](50) NULL,[ZUSIFF_RISGR] [varchar](50) NULL,[ZUSIFF_KZUKU] [varchar](50) NULL,[ZUSIFF_ERHGE] [varchar](50) NULL,[ZUSIFF_GSARE] [varchar](50) NULL,[ZUSIFF_HAFIN] [varchar](50) NULL,[ZUSIFF_PRDKT] [varchar](50) NULL,[ZUSIFF_INABU] [varchar](50) NULL,[ZUSIFF_KZAKL] [varchar](50) NULL,[ZUSIFF_FREI1] [varchar](50) NULL,[ZUSIFF_FREI2] [varchar](50) NULL,[ZUSIFF_FREI3] [varchar](50) NULL,[ZUSIFF_FREI4] [varchar](50) NULL,[ZUSIFF_FREI5] [varchar](50) NULL,[ZUSIFF_LOEKZ] [varchar](50) NULL,[ZUSIFF_IFNAM] [varchar](50) NULL,[ZUSIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_ZUSIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import ZUSIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import ZUSIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import ZUSIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_ZUSIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN ZUSIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN ZUSIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN ZUSIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_ZUSIFF_Temp] ALTER COLUMN [ZUSIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN ZUSIFF_DXZGA to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN ZUSIFF_DXZGA to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN ZUSIFF_DXZGA to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_ZUSIFF_Temp] ALTER COLUMN [ZUSIFF_DXZGA] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN ZUSIFF_DXVNE to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN ZUSIFF_DXVNE to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN ZUSIFF_DXVNE to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_ZUSIFF_Temp] ALTER COLUMN [ZUSIFF_DXVNE] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN ZUSIFF_DXBSE to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN ZUSIFF_DXBSE to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN ZUSIFF_DXBSE to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_ZUSIFF_Temp] ALTER COLUMN [ZUSIFF_DXBSE] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_ZUSIFF with the same Date in Column:ZUSIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_ZUSIFF with the same Date in Column:ZUSIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_ZUSIFF with the same Date in Column:ZUSIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_ZUSIFF] where [ZUSIFF_DXIFD] in (Select distinct [ZUSIFF_DXIFD] from [#Temp_BAIS_ZUSIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_ZUSIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_ZUSIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_ZUSIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_ZUSIFF]([ZUSIFF_MDANT],[ZUSIFF_FILNR],[ZUSIFF_KDNRH],[ZUSIFF_ZUREF],[ZUSIFF_ZUART],[ZUSIFF_KRART],[ZUSIFF_MODUL],[ZUSIFF_KTONR],[ZUSIFF_GSREF],[ZUSIFF_ZUEXU],[ZUSIFF_WHRGE],[ZUSIFF_DXZGA],[ZUSIFF_DXVNE],[ZUSIFF_DXBSE],[ZUSIFF_KZREV],[ZUSIFF_KZUNW],[ZUSIFF_KZABR],[ZUSIFF_WLKKZ],[ZUSIFF_KNZZU],[ZUSIFF_ZOEKZ],[ZUSIFF_KGZUO],[ZUSIFF_ZUTYP],[ZUSIFF_AUSFL],[ZUSIFF_DXAUD],[ZUSIFF_KOART],[ZUSIFF_GSART],[ZUSIFF_RISGR],[ZUSIFF_KZUKU],[ZUSIFF_ERHGE],[ZUSIFF_GSARE],[ZUSIFF_HAFIN],[ZUSIFF_PRDKT],[ZUSIFF_INABU],[ZUSIFF_KZAKL],[ZUSIFF_FREI1],[ZUSIFF_FREI2],[ZUSIFF_FREI3],[ZUSIFF_FREI4],[ZUSIFF_FREI5],[ZUSIFF_LOEKZ],[ZUSIFF_IFNAM],[ZUSIFF_DXIFD]) Select * from [#Temp_BAIS_ZUSIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_ZUSIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS ZUSIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS ZUSIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS ZUSIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5356,47 +5600,43 @@ Public Class ManualImport
                 Case Is = "GAKIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS GAKIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS GAKIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS GAKIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_GAKIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_GAKIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_GAKIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_GAKIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_GAKIFF_Temp]([GAKIFF_MDANT] [varchar](50) NULL,[GAKIFF_GARFN] [varchar](50) NULL,[GAKIFF_FILNR] [varchar](50) NULL,[GAKIFF_GARTG] [varchar](50) NULL,[GAKIFF_GARTI] [varchar](50) NULL,[GAKIFF_HBKZN] [varchar](50) NULL,[GAKIFF_DXVND] [varchar](50) NULL,[GAKIFF_DXBSD] [varchar](50) NULL,[GAKIFF_GABTR] [varchar](50) NULL,[GAKIFF_VWTER] [varchar](50) NULL,[GAKIFF_WHISO] [varchar](50) NULL,[GAKIFF_GSPRZ] [varchar](50) NULL,[GAKIFF_MODUL] [varchar](50) NULL,[GAKIFF_KDNRG] [varchar](50) NULL,[GAKIFF_KTONR] [varchar](50) NULL,[GAKIFF_GSREF] [varchar](50) NULL,[GAKIFF_DEPNR] [varchar](50) NULL,[GAKIFF_KZBVK] [varchar](50) NULL,[GAKIFF_BEBTR] [varchar](50) NULL,[GAKIFF_VEBTR] [varchar](50) NULL,[GAKIFF_VORBT] [varchar](50) NULL,[GAKIFF_OLDSL] [varchar](50) NULL,[GAKIFF_SIGAR] [varchar](50) NULL,[GAKIFF_KRRFN] [varchar](50) NULL,[GAKIFF_HCMPV] [varchar](50) NULL,[GAKIFF_HCWHG] [varchar](50) NULL,[GAKIFF_LIQUD] [varchar](50) NULL,[GAKIFF_RSKFZ] [varchar](50) NULL,[GAKIFF_KZANR] [varchar](50) NULL,[GAKIFF_KZSUB] [varchar](50) NULL,[GAKIFF_KZZWB] [varchar](50) NULL,[GAKIFF_FREI1] [varchar](50) NULL,[GAKIFF_FREI2] [varchar](50) NULL,[GAKIFF_FREI3] [varchar](50) NULL,[GAKIFF_FREI4] [varchar](50) NULL,[GAKIFF_FREI5] [varchar](50) NULL,[GAKIFF_LOEKZ] [varchar](50) NULL,[GAKIFF_IFNAM] [varchar](50) NULL,[GAKIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_GAKIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import GAKIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import GAKIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import GAKIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_GAKIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN GAKIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN GAKIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN GAKIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_GAKIFF_Temp] ALTER COLUMN [GAKIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_GAKIFF with the same Date in Column:GAKIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_GAKIFF with the same Date in Column:GAKIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_GAKIFF with the same Date in Column:GAKIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_GAKIFF] where [GAKIFF_DXIFD] in (Select distinct [GAKIFF_DXIFD] from [#Temp_BAIS_GAKIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GAKIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GAKIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GAKIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_GAKIFF]([GAKIFF_MDANT],[GAKIFF_GARFN],[GAKIFF_FILNR],[GAKIFF_GARTG],[GAKIFF_GARTI],[GAKIFF_HBKZN],[GAKIFF_DXVND],[GAKIFF_DXBSD],[GAKIFF_GABTR],[GAKIFF_VWTER],[GAKIFF_WHISO],[GAKIFF_GSPRZ],[GAKIFF_MODUL],[GAKIFF_KDNRG],[GAKIFF_KTONR],[GAKIFF_GSREF],[GAKIFF_DEPNR],[GAKIFF_KZBVK],[GAKIFF_BEBTR],[GAKIFF_VEBTR],[GAKIFF_VORBT],[GAKIFF_OLDSL],[GAKIFF_SIGAR],[GAKIFF_KRRFN],[GAKIFF_HCMPV],[GAKIFF_HCWHG],[GAKIFF_LIQUD],[GAKIFF_RSKFZ],[GAKIFF_KZANR],[GAKIFF_KZSUB],[GAKIFF_KZZWB],[GAKIFF_FREI1],[GAKIFF_FREI2],[GAKIFF_FREI3],[GAKIFF_FREI4],[GAKIFF_FREI5],[GAKIFF_LOEKZ],[GAKIFF_IFNAM],[GAKIFF_DXIFD]) Select * from [#Temp_BAIS_GAKIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_GAKIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS GAKIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS GAKIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS GAKIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5404,52 +5644,48 @@ Public Class ManualImport
                 Case Is = "GAGIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS GAGIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS GAGIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS GAGIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_GAGIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_GAGIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_GAGIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_GAGIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_GAGIFF_Temp]([GAGIFF_MDANT] [varchar](50) NULL,[GAGIFF_GARFN] [varchar](50) NULL,[GAGIFF_MODUL] [varchar](50) NULL,[GAGIFF_KDNRH] [varchar](50) NULL,[GAGIFF_GKRKT] [varchar](50) NULL,[GAGIFF_GSREF] [varchar](50) NULL,[GAGIFF_GLFDN] [varchar](50) NULL,[GAGIFF_HCKRA] [varchar](50) NULL,[GAGIFF_KZSUB] [varchar](50) NULL,[GAGIFF_KZZWB] [varchar](50) NULL,[GAGIFF_FREI1] [varchar](50) NULL,[GAGIFF_FREI2] [varchar](50) NULL,[GAGIFF_FREI3] [varchar](50) NULL,[GAGIFF_LOEKZ] [varchar](50) NULL,[GAGIFF_IFNAM] [varchar](50) NULL,[GAGIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_GAGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import GAGIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import GAGIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import GAGIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_GAGIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN GAGIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN GAGIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN GAGIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_GAGIFF_Temp] ALTER COLUMN [GAGIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
                         'Set Correct Value in Field GAGIFF_IFNAM 
-                        SplashScreenManager.Default.SetWaitFormCaption("Set Correct Value in Field GAGIFF_IFNAM")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Set Correct Value in Field GAGIFF_IFNAM")
                         Me.BgwBaisFiles.ReportProgress(40, "Set Correct Value in Field GAGIFF_IFNAM")
                         cmd.CommandText = "UPDATE [#Temp_BAIS_GAGIFF_Temp] SET [GAGIFF_IFNAM]='GAGIFF'"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_GAGIFF with the same Date in Column:GAGIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_GAGIFF with the same Date in Column:GAGIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_GAGIFF with the same Date in Column:GAGIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_GAGIFF] where [GAGIFF_DXIFD] in (Select distinct [GAGIFF_DXIFD] from [#Temp_BAIS_GAGIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GAGIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_GAGIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GAGIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_GAGIFF]([GAGIFF_MDANT],[GAGIFF_GARFN],[GAGIFF_MODUL],[GAGIFF_KDNRH],[GAGIFF_GKRKT],[GAGIFF_GSREF],[GAGIFF_GLFDN],[GAGIFF_HCKRA],[GAGIFF_KZSUB],[GAGIFF_KZZWB],[GAGIFF_FREI1],[GAGIFF_FREI2],[GAGIFF_FREI3],[GAGIFF_LOEKZ],[GAGIFF_IFNAM],[GAGIFF_DXIFD]) Select * from [#Temp_BAIS_GAGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_GAGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS GAGIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS GAGIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS GAGIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5457,47 +5693,43 @@ Public Class ManualImport
                 Case Is = "LQKIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS LQKIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS LQKIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS LQKIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_LQKIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_LQKIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_LQKIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_LQKIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_LQKIFF_Temp]([LQKIFF_MDANT] [varchar](50) NULL,[LQKIFF_KDNRH] [varchar](50) NULL,[LQKIFF_LQSEK] [varchar](50) NULL,[LQKIFF_OBBTG] [varchar](50) NULL,[LQKIFF_KZGBZ] [varchar](50) NULL,[LQKIFF_IFNAM] [varchar](50) NULL,[LQKIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_LQKIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import LQKIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import LQKIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import LQKIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_LQKIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN LQKIFF_DXIFD to Datetime")
+                        'SplashScreenManager.Default.SetWaitFormCaption("ALTER COLUMN LQKIFF_DXIFD to Datetime")
                         Me.BgwBaisFiles.ReportProgress(40, "ALTER COLUMN LQKIFF_DXIFD to Datetime")
                         cmd.CommandText = "ALTER TABLE [#Temp_BAIS_LQKIFF_Temp] ALTER COLUMN [LQKIFF_DXIFD] datetime"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_LQKIFF with the same Date in Column:LQKIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_LQKIFF with the same Date in Column:LQKIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_LQKIFF with the same Date in Column:LQKIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_LQKIFF] where [LQKIFF_DXIFD] in (Select distinct [LQKIFF_DXIFD] from [#Temp_BAIS_LQKIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_LQKIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_LQKIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_LQKIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_LQKIFF]([LQKIFF_MDANT],[LQKIFF_KDNRH],[LQKIFF_LQSEK],[LQKIFF_OBBTG],[LQKIFF_KZGBZ],[LQKIFF_IFNAM],[LQKIFF_DXIFD]) Select * from [#Temp_BAIS_LQKIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_LQKIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS LQKIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS LQKIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS LQKIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5505,43 +5737,39 @@ Public Class ManualImport
                 Case Is = "WHGIFF_CCB.csv"
                     BAIS_FILE_DIR = BaisFilesImport & BaisFileName
                     Try
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS WHGIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Start Import: BAIS WHGIFF")
                         Me.BgwBaisFiles.ReportProgress(10, "Start Import: BAIS WHGIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_WHGIFF_Temp")
+                        OpenSqlConnections()
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:#Temp_BAIS_WHGIFF_Temp")
                         Me.BgwBaisFiles.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_WHGIFF_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_WHGIFF_Temp' AND xtype='U') CREATE TABLE [dbo].[#Temp_BAIS_WHGIFF_Temp]([WHGIFF_MDANT] [varchar](50) NULL,[WHGIFF_WHISO] [varchar](50) NULL,[WHGIFF_WNAME] [varchar](50) NULL,[WHGIFF_WSLZB] [varchar](50) NULL,[WHGIFF_WEINH] [varchar](50) NULL,[WHGIFF_WKLEH] [varchar](50) NULL,[WHGIFF_WNKST] [varchar](50) NULL,[WHGIFF_WSTAT] [varchar](50) NULL,[WHGIFF_MKURS] [float] NULL,[WHGIFF_DXEGK] [datetime] NULL,[WHGIFF_IFNAM] [varchar](50) NULL,[WHGIFF_DXIFD] [datetime] NULL) ELSE DELETE FROM [#Temp_BAIS_WHGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Import WHGIFF File to Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import WHGIFF File to Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(30, "Import WHGIFF File to Temporary Table")
                         cmd.CommandText = "BULK INSERT  [#Temp_BAIS_WHGIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_WHGIFF with the same Date in Column:WHGIFF_DXIFD")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete all data from BAIS_WHGIFF with the same Date in Column:WHGIFF_DXIFD")
                         Me.BgwBaisFiles.ReportProgress(40, "Delete all data from BAIS_WHGIFF with the same Date in Column:WHGIFF_DXIFD")
                         cmd.CommandText = "DELETE from [BAIS_WHGIFF] where [WHGIFF_DXIFD] in (Select distinct [WHGIFF_DXIFD] from [#Temp_BAIS_WHGIFF_Temp])"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_LQKIFF")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Insert Data from Temporary Table to BAIS_LQKIFF")
                         Me.BgwBaisFiles.ReportProgress(50, "Insert Data from Temporary Table to BAIS_LQKIFF")
                         cmd.CommandText = "INSERT INTO [dbo].[BAIS_WHGIFF]([WHGIFF_MDANT],[WHGIFF_WHISO],[WHGIFF_WNAME],[WHGIFF_WSLZB],[WHGIFF_WEINH],[WHGIFF_WKLEH],[WHGIFF_WNKST],[WHGIFF_WSTAT],[WHGIFF_MKURS],[WHGIFF_DXEGK],[WHGIFF_IFNAM],[WHGIFF_DXIFD]) SELECT * from [#Temp_BAIS_WHGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Drop Temporary Table")
                         Me.BgwBaisFiles.ReportProgress(60, "Drop Temporary Table")
                         cmd.CommandText = "DROP Table [#Temp_BAIS_WHGIFF_Temp]"
                         cmd.ExecuteNonQuery()
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & BAIS_FILE_DIR)
                         Me.BgwBaisFiles.ReportProgress(70, "Delete File: " & BAIS_FILE_DIR)
                         File.Delete(BAIS_FILE_DIR)
-                        SplashScreenManager.Default.SetWaitFormCaption("BAIS WHGIFF IMPORT finished")
+                        'SplashScreenManager.Default.SetWaitFormCaption("BAIS WHGIFF IMPORT finished")
                         Me.BgwBaisFiles.ReportProgress(80, "BAIS WHGIFF IMPORT finished")
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwBaisFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5553,6 +5781,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBaisFiles_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwBaisFiles.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','" & BaisFileName & "','MANUAL IMPORTS')"
@@ -5576,6 +5805,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwBaisFiles_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBaisFiles.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -5590,7 +5822,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwBaisFiles, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -5605,9 +5837,8 @@ Public Class ManualImport
 
                     Try
 
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
+
                         cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('OPICS_CUST_DIRECTORY_NEW_TXT_FILE') and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
                         Dim OPICS_CUST_DIRECTORY_NEW_TXT_FILE As String = cmd.ExecuteScalar
 
@@ -5646,29 +5877,25 @@ Public Class ManualImport
                         sr1.Close()
 
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:OPICS_CUST_Temp")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:OPICS_CUST_Temp")
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Create Temporary Table:OPICS_CUST_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='OPICS_CUST_Temp' AND xtype='U') CREATE TABLE [dbo].[OPICS_CUST_Temp]([OpicsCustomerNr] [nvarchar](50) NULL,[OpicsCustomerCode] [nvarchar](50) NULL,[OpicsCustomerBIC] [nvarchar](50) NULL) ELSE DELETE FROM [OPICS_CUST_Temp]"
                         cmd.ExecuteNonQuery()
                         'Import Data to Temp Table
-                        SplashScreenManager.Default.SetWaitFormCaption("Import Data to Temp Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import Data to Temp Table")
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Import Data to Temp Table")
                         cmd.CommandText = "BULK INSERT  [dbo].[OPICS_CUST_Temp] FROM '" & OPICS_CUST_DIRECTORY_NEW_TXT_FILE & "' with (fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & OPICS_CUST_DIRECTORY_NEW_TXT_FILE)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & OPICS_CUST_DIRECTORY_NEW_TXT_FILE)
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Delete File: " & OPICS_CUST_DIRECTORY_NEW_TXT_FILE)
                         File.Delete(OPICS_CUST_DIRECTORY_NEW_TXT_FILE)
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5679,9 +5906,8 @@ Public Class ManualImport
                 If OpicsCustUpdateFileName.StartsWith("OPICS_TO_ODAS_CUSI_").ToString = True Then
 
                     Try
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
+
                         cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('OPICS_CUSI_DIRECTORY_NEW_TXT_FILE') and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
                         Dim OPICS_CUSI_DIRECTORY_NEW_TXT_FILE As String = cmd.ExecuteScalar
 
@@ -5701,7 +5927,7 @@ Public Class ManualImport
                         Dim Zeileninhalt As String = ""
                         'Dim Arr() As String
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Creating file: " & OPICS_CUSI_DIRECTORY_NEW_TXT_FILE)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Creating file: " & OPICS_CUSI_DIRECTORY_NEW_TXT_FILE)
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(30, "Creating file: " & OPICS_CUSI_DIRECTORY_NEW_TXT_FILE)
                         Do While Not sr.EndOfStream
                             Zeileninhalt = sr.ReadLine().Replace("|@|", " ")
@@ -5720,29 +5946,25 @@ Public Class ManualImport
                         sr1.Close()
 
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:OPICS_CUSI_Temp")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:OPICS_CUSI_Temp")
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Create Temporary Table:OPICS_CUSI_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='OPICS_CUSI_Temp' AND xtype='U') CREATE TABLE [dbo].[OPICS_CUSI_Temp]([OpicsCustomerNr] [nvarchar](50) NULL,[OpicsBranchCode] [nvarchar](50) NULL,[OcbsCustomerNr] [nvarchar](50) NULL) ELSE DELETE FROM [OPICS_CUSI_Temp]"
                         cmd.ExecuteNonQuery()
                         'Import Data to Temp Table
-                        SplashScreenManager.Default.SetWaitFormCaption("Import Data to Temp Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import Data to Temp Table")
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Import Data to Temp Table")
                         cmd.CommandText = "BULK INSERT  [dbo].[OPICS_CUSI_Temp] FROM '" & OPICS_CUSI_DIRECTORY_NEW_TXT_FILE & "' with (fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & OPICS_CUSI_DIRECTORY_NEW_TXT_FILE)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & OPICS_CUSI_DIRECTORY_NEW_TXT_FILE)
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Delete File: " & OPICS_CUSI_DIRECTORY_NEW_TXT_FILE)
                         File.Delete(OPICS_CUSI_DIRECTORY_NEW_TXT_FILE)
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5753,9 +5975,7 @@ Public Class ManualImport
                 If OpicsCustUpdateFileName.StartsWith("OPICS_TO_ODAS_FXDH_").ToString = True Then
 
                     Try
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
+                        OpenSqlConnections()
                         cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1] in ('OPICS_FXDH_DIRECTORY_NEW_TXT_FILE') and [PARAMETER STATUS] in ('Y') and [IdABTEILUNGSPARAMETER]='MANUAL_IMPORT' and [IdABTEILUNGSCODE_NAME]='EDP'"
                         Dim OPICS_FXDH_DIRECTORY_NEW_TXT_FILE As String = cmd.ExecuteScalar
 
@@ -5777,7 +5997,7 @@ Public Class ManualImport
                         Dim Zeileninhalt As String = ""
                         'Dim Arr() As String
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Creating file: " & OPICS_FXDH_DIRECTORY_NEW_TXT_FILE)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Creating file: " & OPICS_FXDH_DIRECTORY_NEW_TXT_FILE)
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(30, "Creating file: " & OPICS_FXDH_DIRECTORY_NEW_TXT_FILE)
                         Do While Not sr.EndOfStream
                             Zeileninhalt = sr.ReadLine().Replace("|@|", " ")
@@ -5800,31 +6020,27 @@ Public Class ManualImport
                         sr1.Close()
 
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:OPICS_FXDH_Temp")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:OPICS_FXDH_Temp")
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Create Temporary Table:OPICS_FXDH_Temp")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='OPICS_FXDH_Temp' AND xtype='U') CREATE TABLE [dbo].[OPICS_FXDH_Temp]([BRANCH_NR] [nvarchar](50) NULL,[FX_DEAL_NR] [nvarchar](50) NULL,[OWN_SWAP_MARK] [nvarchar](50) NULL) ELSE DELETE FROM [OPICS_FXDH_Temp]"
                         cmd.ExecuteNonQuery()
                         'Import Data to Temp Table
-                        SplashScreenManager.Default.SetWaitFormCaption("Import Data to Temp Table")
+                        'SplashScreenManager.Default.SetWaitFormCaption("Import Data to Temp Table")
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Import Data to Temp Table")
                         cmd.CommandText = "BULK INSERT  [dbo].[OPICS_FXDH_Temp] FROM '" & OPICS_FXDH_DIRECTORY_NEW_TXT_FILE & "' with (fieldterminator = '|')"
                         cmd.ExecuteNonQuery()
                         cmd.CommandText = "UPDATE [OPICS_FXDH_Temp] SET [FX_DEAL_NR]=LTRIM(RTRIM([FX_DEAL_NR])),[OWN_SWAP_MARK]=LTRIM(RTRIM(SUBSTRING([OWN_SWAP_MARK],1,15)))"
                         cmd.ExecuteNonQuery()
 
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
 
-                        SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & OPICS_FXDH_DIRECTORY_NEW_TXT_FILE)
+                        'SplashScreenManager.Default.SetWaitFormCaption("Delete File: " & OPICS_FXDH_DIRECTORY_NEW_TXT_FILE)
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Delete File: " & OPICS_FXDH_DIRECTORY_NEW_TXT_FILE)
                         File.Delete(OPICS_FXDH_DIRECTORY_NEW_TXT_FILE)
 
                     Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        'SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
                         MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Me.BgwOpicsCustUpdateFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
                     End Try
@@ -5832,20 +6048,18 @@ Public Class ManualImport
                 End If
 
                 'UPDATE RELATED DATA IN CUSTOMER_INFO
-                SplashScreenManager.Default.SetWaitFormCaption("Update related Data to Table:CUSTOMER_INFO")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update related Data to Table:CUSTOMER_INFO")
                 Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Update related Data to Table:CUSTOMER_INFO")
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
                 cmd.CommandText = "IF EXISTS (SELECT * FROM sysobjects WHERE name='OPICS_CUST_Temp' AND xtype='U') and EXISTS (SELECT * FROM sysobjects WHERE name='OPICS_CUSI_Temp' AND xtype='U') UPDATE A set A.[OpicsCustomerNr]=B.[OpicsCustomerNr],A.[OpicsCustomerCode]=C.[OpicsCustomerCode]from CUSTOMER_INFO A INNER JOIN [OPICS_CUSI_Temp] B on A.ClientNo=B.[OcbsCustomerNr] INNER JOIN [OPICS_CUST_Temp] C on B.[OpicsCustomerNr]=C.[OpicsCustomerNr] where B.[OpicsBranchCode] in ('OCBS21')"
                 cmd.ExecuteNonQuery()
                 cmd.CommandText = "IF EXISTS (SELECT * FROM sysobjects WHERE name='OPICS_CUST_Temp' AND xtype='U') and EXISTS (SELECT * FROM sysobjects WHERE name='OPICS_CUSI_Temp' AND xtype='U') UPDATE A set A.[BIC11]=C.[OpicsCustomerBIC] from CUSTOMER_INFO A INNER JOIN [OPICS_CUSI_Temp] B on A.ClientNo=B.[OcbsCustomerNr] INNER JOIN [OPICS_CUST_Temp] C on B.[OpicsCustomerNr]=C.[OpicsCustomerNr] where B.[OpicsBranchCode] in ('OCBS21') and A.[BIC11] is NULL"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Mark OWN DEALS to Table:FX DAILY REVALUATION")
+                'SplashScreenManager.Default.SetWaitFormCaption("Mark OWN DEALS to Table:FX DAILY REVALUATION")
                 Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Mark OWN DEALS to Table:FX DAILY REVALUATION")
                 cmd.CommandText = "IF EXISTS (SELECT * FROM sysobjects WHERE name='OPICS_FXDH_Temp' AND xtype='U') UPDATE A SET A.OwnDeal='Y' from [FX DAILY REVALUATION] A INNER JOIN [OPICS_FXDH_Temp] B on A.ContractNr=B.[FX_DEAL_NR] where A.DealStatus in ('U') and B.[OWN_SWAP_MARK] in ('BFTSWPFUD')"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Temporary Tables OPICS_CUST_Temp,OPICS_CUSI_Temp and OPICS_FXDH_Temp")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Temporary Tables OPICS_CUST_Temp,OPICS_CUSI_Temp and OPICS_FXDH_Temp")
                 Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "Delete Temporary Tables OPICS_CUST_Temp,OPICS_CUSI_Temp and OPICS_FXDH_Temp")
                 cmd.CommandText = "DISABLE TRIGGER [TR_ProtectCriticalTables] ON DATABASE"
                 cmd.ExecuteNonQuery()
@@ -5857,12 +6071,14 @@ Public Class ManualImport
                 cmd.ExecuteNonQuery()
                 cmd.CommandText = "ENABLE TRIGGER [TR_ProtectCriticalTables] ON DATABASE"
                 cmd.ExecuteNonQuery()
-                SplashScreenManager.Default.SetWaitFormCaption("CUSTOMER UPDATE OPICS finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("CUSTOMER UPDATE OPICS finished")
                 Me.BgwOpicsCustUpdateFiles.ReportProgress(40, "CUSTOMER UPDATE OPICS finished")
+                CloseSqlConnections()
             Next
 
         Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
+            CloseSqlConnections()
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Me.BgwOpicsCustUpdateFiles.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
             Exit Sub
@@ -5871,6 +6087,7 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwOpicsCustUpdateFiles_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwOpicsCustUpdateFiles.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','" & OpicsCustUpdateFileName & "','MANUAL IMPORTS')"
@@ -5894,6 +6111,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwOpicsCustUpdateFiles_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwOpicsCustUpdateFiles.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -5908,7 +6128,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwOpicsCustUpdateFiles, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -5916,9 +6136,7 @@ Public Class ManualImport
 #Region "IMPORT DAILY BALANCE SHEET"
     Private Sub BgwDailyBalanceSheet_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwDailyBalanceSheet.DoWork
         Try
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             Dim ExcelFileName As String = DAILY_BALANCE_SHEET_DIR
             If File.Exists(ExcelFileName) = True Then
                 'Excel Datei Öffnen und Datenformat ändern
@@ -5951,7 +6169,7 @@ Public Class ManualImport
 
                 'Datum einfügen wo daten vorhanden sind
                 Me.BgwDailyBalanceSheet.ReportProgress(3, "Insert Report Date if Column 1 is not NULL")
-                SplashScreenManager.Default.SetWaitFormCaption("Insert Report Date if Column 1 is not NULL")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert Report Date if Column 1 is not NULL")
                 For i = 2 To 500
                     If xlWorksheet1.Cells(i, 1).value <> "" Then 'Wenn Type nicht leer ist!
                         xlWorksheet1.Cells(i, 4).Value = rd
@@ -5961,9 +6179,8 @@ Public Class ManualImport
 
                 'Nicht relevante Daten löschen
                 Me.BgwDailyBalanceSheet.ReportProgress(4, "Delete Rows if Column 2=AI-D-313")
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Rows if Column 2=AI-D-313")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Rows if Column 2=AI-D-313")
                 For i = 2 To 5000
-
                     If xlWorksheet1.Cells(i, 2).value = "AI-D-313" Then 'Wenn Type nicht leer ist!
                         xlWorksheet1.Rows(i).Delete()
                     End If
@@ -5972,7 +6189,7 @@ Public Class ManualImport
 
                 'Nicht relevante Daten löschen
                 Me.BgwDailyBalanceSheet.ReportProgress(5, "Delete Rows if Column 2 is NULL")
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Rows if Column 2 is NULL")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Rows if Column 2 is NULL")
                 For i = 2 To 5000
                     If xlWorksheet1.Cells(i, 2).value = "" Then 'Wenn Type nicht leer ist!
                         xlWorksheet1.Rows(i).Delete()
@@ -5995,14 +6212,14 @@ Public Class ManualImport
                 Next i11
 
                 Me.BgwDailyBalanceSheet.ReportProgress(6, "Excel File: " & DAILY_BALANCE_SHEET_DIR & " reformated sucesfully")
-                SplashScreenManager.Default.SetWaitFormCaption("Excel File: " & DAILY_BALANCE_SHEET_DIR & " reformated sucesfully")
+                'SplashScreenManager.Default.SetWaitFormCaption("Excel File: " & DAILY_BALANCE_SHEET_DIR & " reformated sucesfully")
 
                 'Prüfen ob daten vorhanden sind DETAILS TABELLE
                 cmd.CommandText = "DELETE FROM [DailyBalanceSheets] Where [BSDate]='" & rdsql & "'"
                 cmd.ExecuteNonQuery()
 
                 Me.BgwDailyBalanceSheet.ReportProgress(7, "Insert Data to Table: DAILY BALANCE SHEETS ")
-                SplashScreenManager.Default.SetWaitFormCaption("Insert Data to Table: DAILY BALANCE SHEETS ")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert Data to Table: DAILY BALANCE SHEETS ")
                 cmd.CommandText = "INSERT INTO [DailyBalanceSheets]([GL_Item],[GL_Item_Name],[BalanceEUREqu],[BSDate],[RepDate]) SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & ExcelFileName & ";','SELECT [GL_Item],[GL_Item_Name],[BalanceEUREqu],[BSDate],[RepDate] FROM [Sheet1$]')"
                 cmd.ExecuteNonQuery()
                 'Count Imported Rows
@@ -6011,7 +6228,7 @@ Public Class ManualImport
 
 
                 Me.BgwDailyBalanceSheet.ReportProgress(8, "Update Field:GL_ITEM_NR in DailyBalanceSheet")
-                SplashScreenManager.Default.SetWaitFormCaption("Update Field:GL_ITEM_NR in DailyBalanceSheet")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update Field:GL_ITEM_NR in DailyBalanceSheet")
                 cmd.CommandText = "UPDATE [DailyBalanceSheets] SET [GL_Item_Number]=REPLACE([GL_Item],'I','') where [BSDate]='" & rdsql & "'"
                 cmd.ExecuteNonQuery()
 
@@ -6021,39 +6238,37 @@ Public Class ManualImport
                 'RILIBI CODES MATCHING
                 '######################################################################################
                 Me.BgwDailyBalanceSheet.ReportProgress(8, "Matching Rilibi Codes")
-                SplashScreenManager.Default.SetWaitFormCaption("Matching Rilibi Codes")
+                'SplashScreenManager.Default.SetWaitFormCaption("Matching Rilibi Codes")
                 cmd.CommandText = "UPDATE A set A.[RilibiCode]=B.S from   [DailyBalanceSheets] A INNER JOIN (Select [PARAMETER1],[PARAMETER2] as S from [PARAMETER] where [IdABTEILUNGSPARAMETER]='RILIBI_MATCHING' and [PARAMETER STATUS] ='Y')B ON A.[GL_Item_Number]=B.[PARAMETER1]  where A.[BSDate]='" & rdsql & "'"
                 cmd.ExecuteNonQuery()
                 Me.BgwDailyBalanceSheet.ReportProgress(8, "Matching Rilibi Names")
-                SplashScreenManager.Default.SetWaitFormCaption("Matching Rilibi Names")
+                'SplashScreenManager.Default.SetWaitFormCaption("Matching Rilibi Names")
                 cmd.CommandText = "UPDATE A set A.[RilibiName]=B.S from   [DailyBalanceSheets] A INNER JOIN (Select [PARAMETER1],[PARAMETER2] as S from [PARAMETER] where [IdABTEILUNGSPARAMETER]='RILIBI_CODES' and [PARAMETER STATUS] ='Y')B ON A.[RilibiCode]=B.[PARAMETER1] where A.[BSDate]='" & rdsql & "'"
                 cmd.ExecuteNonQuery()
 
 
                 Me.BgwDailyBalanceSheet.ReportProgress(100, "Import procedure: DAILY BALANCE SHEET finished sucesfully")
-                SplashScreenManager.Default.SetWaitFormCaption("Import procedure: DAILY BALANCE SHEET finished sucesfully")
+                'SplashScreenManager.Default.SetWaitFormCaption("Import procedure: DAILY BALANCE SHEET finished sucesfully")
 
                 File.Delete(DAILY_BALANCE_SHEET_DIR)
             Else
                 Me.BgwDailyBalanceSheet.ReportProgress(0, "ERROR+++ File does not exist in Import Directory - File Name:" & ExcelFileName)
 
             End If
-           
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+
+            CloseSqlConnections()
+
         Catch ex As Exception
             Me.BgwDailyBalanceSheet.ReportProgress(100, "ERROR+++" & ex.Message.Replace("'", ""))
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Exit Sub
 
         End Try
     End Sub
 
     Private Sub BgwDailyBalanceSheet_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwDailyBalanceSheet.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','DAILY BALANCE SHEET IMPORT','MANUAL IMPORTS')"
@@ -6077,6 +6292,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwDailyBalanceSheet_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwDailyBalanceSheet.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6091,16 +6309,14 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwDailyBalanceSheet, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 #End Region
 
 #Region "IMPORT DAILY BALANCE SHEET DETAILS"
     Private Sub BgwDailyBalanceSheetDetail_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwDailyBalanceSheetDetail.DoWork
         Try
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             Dim ExcelFileName As String = DAILY_BALANCE_SHEET__DETAIL_DIR
             If File.Exists(ExcelFileName) = True Then
                 'Excel Datei Öffnen und Datenformat ändern
@@ -6139,7 +6355,7 @@ Public Class ManualImport
 
                 'Datum einfügen wo daten vorhanden sind
                 Me.BgwDailyBalanceSheetDetail.ReportProgress(3, "Insert Report Date if Column 5 is not NULL")
-                SplashScreenManager.Default.SetWaitFormCaption("Insert Report Date if Column 5 is not NULL")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert Report Date if Column 5 is not NULL")
 
                 For i = 2 To 5000
                     If xlWorksheet1.Cells(i, 5).value <> "" Then 'Wenn Type nicht leer ist!
@@ -6150,7 +6366,7 @@ Public Class ManualImport
 
                 'Nicht relevante Daten löschen
                 Me.BgwDailyBalanceSheetDetail.ReportProgress(4, "Delete Rows if Column 2=AI-D-312")
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Rows if Column 2=AI-D-312")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Rows if Column 2=AI-D-312")
                 For i = 2 To 5000
                     If xlWorksheet1.Cells(i, 2).value = "AI-D-312" Then 'Wenn Type nicht leer ist!
                         xlWorksheet1.Rows(i).Delete()
@@ -6159,7 +6375,7 @@ Public Class ManualImport
 
                 'Nicht relevante Daten löschen
                 Me.BgwDailyBalanceSheetDetail.ReportProgress(5, "Delete Rows if Column 5 is NULL")
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Rows if Column 5 is NULL")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Rows if Column 5 is NULL")
                 For i = 2 To 5000
                     If xlWorksheet1.Cells(i, 5).value = "" Then 'Wenn Type nicht leer ist!
                         xlWorksheet1.Rows(i).Delete()
@@ -6189,7 +6405,7 @@ Public Class ManualImport
                 cmd.ExecuteNonQuery()
 
                 Me.BgwDailyBalanceSheetDetail.ReportProgress(7, "Insert Data to Table: DAILY BALANCE DETAIL SHEETS ")
-                SplashScreenManager.Default.SetWaitFormCaption("Insert Data to Table: DAILY BALANCE DETAIL SHEETS ")
+                'SplashScreenManager.Default.SetWaitFormCaption("Insert Data to Table: DAILY BALANCE DETAIL SHEETS ")
                 cmd.CommandText = "INSERT INTO [DailyBalanceDetailsSheets]([GL_Item],[ReleatedAccountNr],[GL_Account_Nr],[GL_Account_Name],[Orig_CUR],[Orig_Balance],[Balance_EUR_CR],[Balance_EUR_DR],[Total_Balance],[BSDate],[RepDate]) SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & ExcelFileName & ";','SELECT [GL_Item],[ReleatedAccountNr],LTRIM(RTRIM([GL_Account_Nr])),[GL_Account_Name],[Orig_CUR],[Orig_Balance],[Balance_EUR_CR],[Balance_EUR_DR],[Total_Balance],[BSDate],[RepDate] FROM [Sheet1$] where [GL_Account_Nr] is not NULL ')"
                 cmd.ExecuteNonQuery()
                 'Count Imported Rows
@@ -6199,7 +6415,7 @@ Public Class ManualImport
 
 
                 Me.BgwDailyBalanceSheetDetail.ReportProgress(8, "Update Field:GL_Item_Number in Table Daily Balance Details Sheets")
-                SplashScreenManager.Default.SetWaitFormCaption("Update Field:GL_Item_Number in Table Daily Balance Details Sheets")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update Field:GL_Item_Number in Table Daily Balance Details Sheets")
                 cmd.CommandText = "Update [DailyBalanceDetailsSheets] set [GL_Item_Number]=REPLACE([GL_Item],'I','') where [BSDate]='" & rdsql & "'"
                 cmd.ExecuteNonQuery()
 
@@ -6211,17 +6427,17 @@ Public Class ManualImport
                 cmd.ExecuteNonQuery()
 
                 Me.BgwDailyBalanceSheetDetail.ReportProgress(8, "Update Field:IdBalanceSheets,RilibiCode,RilibiName based on GL_ITEM in Table Daily Balance Sheets")
-                SplashScreenManager.Default.SetWaitFormCaption("Update Field:IdBalanceSheets,RilibiCode,RilibiName based on GL_ITEM in Table Daily Balance Sheets")
+                'SplashScreenManager.Default.SetWaitFormCaption("Update Field:IdBalanceSheets,RilibiCode,RilibiName based on GL_ITEM in Table Daily Balance Sheets")
                 cmd.CommandText = "UPDATE A set A.[IdBalanceSheets]=B.[ID],A.[RilibiCode]=B.[RilibiCode],A.[RilibiName]=B.[RilibiName] from [DailyBalanceDetailsSheets] A INNER JOIN [DailyBalanceSheets] B ON A.[GL_Item]=B.[GL_Item] where A.[BSDate]=B.[BSDate] and A.[BSDate]='" & rdsql & "'"
                 cmd.ExecuteNonQuery()
 
                 Me.BgwDailyBalanceSheetDetail.ReportProgress(8, "Delete all data if GL Account Nr is NULL")
-                SplashScreenManager.Default.SetWaitFormCaption("Delete all data if GL Account Nr is NULL")
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete all data if GL Account Nr is NULL")
                 cmd.CommandText = "DELETE FROM [DailyBalanceDetailsSheets] where [IdBalanceSheets] is NULL"
                 cmd.ExecuteNonQuery()
 
                 Me.BgwDailyBalanceSheetDetail.ReportProgress(100, "Import procedure: DAILY BALANCE DETAIL SHEET finished sucesfully")
-                SplashScreenManager.Default.SetWaitFormCaption("Import procedure: DAILY BALANCE DETAIL SHEET finished sucesfully")
+                'SplashScreenManager.Default.SetWaitFormCaption("Import procedure: DAILY BALANCE DETAIL SHEET finished sucesfully")
 
                 File.Delete(DAILY_BALANCE_SHEET__DETAIL_DIR)
             Else
@@ -6229,21 +6445,19 @@ Public Class ManualImport
                 MessageBox.Show("File does not exist in Import Directory - File Name:" & ExcelFileName, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
+
         Catch ex As Exception
             Me.BgwDailyBalanceSheetDetail.ReportProgress(100, "ERROR+++" & ex.Message.Replace("'", ""))
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Exit Sub
 
         End Try
     End Sub
 
     Private Sub BgwDailyBalanceSheetDetail_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwDailyBalanceSheetDetail.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','DAILY BALANCE SHEET DETAILS IMPORT','MANUAL IMPORTS')"
@@ -6267,6 +6481,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwDailyBalanceSheetDetail_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwDailyBalanceSheetDetail.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6281,7 +6498,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwDailyBalanceSheetDetail, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 #End Region
 
@@ -6290,9 +6507,7 @@ Public Class ManualImport
         Try
             Dim rd As Date
             Dim rdsql As String = Nothing
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             Dim ExcelFileName As String = TRIAL_BALANCE_AVERAGE_222_DIR
             If File.Exists(ExcelFileName) = True Then
                 'Excel Datei Öffnen und Datenformat ändern
@@ -6301,13 +6516,13 @@ Public Class ManualImport
                 xlWorksheet1 = xlWorkBook.Worksheets(1) 'Worksheet 1 - Definition Report Datum
                 EXCELL.Visible = False
                 Me.BgwTriallBalanceAverage222.ReportProgress(30, "Define Report Date from Worksheet:Trial Balance_rate-1")
-                SplashScreenManager.Default.SetWaitFormCaption("Define Report Date from Worksheet:Trial Balance_rate-1")
+                'SplashScreenManager.Default.SetWaitFormCaption("Define Report Date from Worksheet:Trial Balance_rate-1")
 
                 xlWorksheet1.Range("B5").NumberFormat = "yyyyMMdd"
                 rd = xlWorksheet1.Range("B5").Value
                 rdsql = rd.ToString("yyyyMMdd")
                 Me.BgwTriallBalanceAverage222.ReportProgress(40, "Reformating Worksheet Nr.3")
-                SplashScreenManager.Default.SetWaitFormCaption("Reformating Worksheet Nr.3")
+                'SplashScreenManager.Default.SetWaitFormCaption("Reformating Worksheet Nr.3")
                 xlWorksheet1 = xlWorkBook.Worksheets(3) 'Worksheet 3 - Report Data
                 xlWorksheet1.Range("A2").Value = "AccountNo"
                 xlWorksheet1.Range("B2").Value = "AccountName"
@@ -6336,12 +6551,12 @@ Public Class ManualImport
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
                 Me.BgwTriallBalanceAverage222.ReportProgress(70, "Delete Data in Table TRIAL_BALANCE_222 with RepDate: " & rd)
-                SplashScreenManager.Default.SetWaitFormCaption("Delete Data in Table TRIAL_BALANCE_222 with RepDate: " & rd)
+                'SplashScreenManager.Default.SetWaitFormCaption("Delete Data in Table TRIAL_BALANCE_222 with RepDate: " & rd)
                 cmd.CommandText = "DELETE FROM [TRIAL_BALANCE_222] Where [RepDate]='" & rdsql & "'"
                 cmd.ExecuteNonQuery()
                 'Daten importieren 
                 Me.BgwTriallBalanceAverage222.ReportProgress(80, "Start Import Data to table")
-                SplashScreenManager.Default.SetWaitFormCaption("Start Import Data to table")
+                'SplashScreenManager.Default.SetWaitFormCaption("Start Import Data to table")
                 cmd.CommandText = "INSERT INTO [TRIAL_BALANCE_222]([AccountNo],[AccountName],[EUR],[USDequEUR],[OtherCurrequEUR],[Totals],[RepDate]) SELECT [AccountNo],[AccountName],[EUR],[USDequEUR],[OtherCurrequEUR],[Totals],'" & rdsql & "' FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & ExcelFileName & ";','SELECT * FROM [页面2-3$]')"
                 cmd.ExecuteNonQuery()
                 'Count Imported Rows
@@ -6353,31 +6568,29 @@ Public Class ManualImport
                 cmd.CommandText = "DELETE FROM [TRIAL_BALANCE_222] where [AccountName] is NULL and [RepDate]='" & rdsql & "' "
                 cmd.ExecuteNonQuery()
                 Me.BgwTriallBalanceAverage222.ReportProgress(10, "The Excel File: " & ExcelFileName & " has being imported to Table:TRIAL_BALANCE_222")
-                SplashScreenManager.Default.SetWaitFormCaption("The Excel File: " & ExcelFileName & " has being imported to Table:TRIAL_BALANCE_222")
+                'SplashScreenManager.Default.SetWaitFormCaption("The Excel File: " & ExcelFileName & " has being imported to Table:TRIAL_BALANCE_222")
                 'File Delete
                 File.Delete(TRIAL_BALANCE_AVERAGE_222_DIR)
             Else
                 Me.BgwTriallBalanceAverage222.ReportProgress(0, "ERROR+++ File does not exist in Import Directory - File Name:" & ExcelFileName)
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 MessageBox.Show("File does not exist in Import Directory - File Name:" & ExcelFileName, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
+
         Catch ex As Exception
             Me.BgwTriallBalanceAverage222.ReportProgress(100, "ERROR+++" & ex.Message.Replace("'", ""))
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Exit Sub
         End Try
     End Sub
 
     Private Sub BgwTriallBalanceAverage222_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwTriallBalanceAverage222.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','TRIAL BALANCE AVERAGE 222 IMPORT','MANUAL IMPORTS')"
@@ -6401,6 +6614,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwTriallBalanceAverage222_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwTriallBalanceAverage222.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6415,7 +6631,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwTriallBalanceAverage222, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -6427,9 +6643,7 @@ Public Class ManualImport
             Dim rdsql As String = Nothing
             Dim rd1 As Date
             Dim rdsql1 As String
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             Dim ExcelFileName As String = ACCRUED_INTEREST_ANALYSIS_DIR
             If File.Exists(ExcelFileName) = True Then
                 'Excel Datei Öffnen und Datenformat ändern
@@ -6439,7 +6653,7 @@ Public Class ManualImport
                 EXCELL.Visible = False
 
                 Me.BgwAccruedInterestAnalysis.ReportProgress(40, "Reformating Worksheet")
-                SplashScreenManager.Default.SetWaitFormCaption("Reformating Worksheet")
+                'SplashScreenManager.Default.SetWaitFormCaption("Reformating Worksheet")
 
                 xlWorksheet1.Range("B6").Value = "ContractType"
                 xlWorksheet1.Range("C6").Value = "ProductType"
@@ -6470,7 +6684,7 @@ Public Class ManualImport
                 xlWorksheet1.Columns("X:X").numberformat = "yyyymmdd"
 
                 Me.BgwAccruedInterestAnalysis.ReportProgress(30, "Define Report Date from Worksheet")
-                SplashScreenManager.Default.SetWaitFormCaption("Define Report Date from Worksheet")
+                'SplashScreenManager.Default.SetWaitFormCaption("Define Report Date from Worksheet")
 
                 'Dim newmakdate As String = Replace(Trim(Replace(xlWorksheet1.Range("B3").Value, "As of  ", "")), "-", "")
                 'newmakdate = RTrim(LTrim(Replace(newmakdate, " ", "")))
@@ -6681,26 +6895,23 @@ Public Class ManualImport
                 File.Delete(ACCRUED_INTEREST_ANALYSIS_DIR)
             Else
                 Me.BgwAccruedInterestAnalysis.ReportProgress(0, "ERROR+++ File does not exist in Import Directory - File Name:" & ExcelFileName)
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 MessageBox.Show("File does not exist in Import Directory - File Name:" & ExcelFileName, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
+            CloseSqlConnections()
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
         Catch ex As Exception
             Me.BgwAccruedInterestAnalysis.ReportProgress(100, "ERROR+++" & ex.Message.Replace("'", ""))
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Exit Sub
         End Try
     End Sub
 
     Private Sub BgwAccruedInterestAnalysis_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwAccruedInterestAnalysis.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','ACCRUED INTEREST ANALYSIS IMPORT','MANUAL IMPORTS')"
@@ -6724,6 +6935,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwAccruedInterestAnalysis_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwAccruedInterestAnalysis.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6738,7 +6952,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwAccruedInterestAnalysis, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -6748,14 +6962,12 @@ Public Class ManualImport
         Try
 
             If dir_UserPermissionsFiles.Count > 0 Then
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
                 cmd.CommandTimeout = 60000
 
                 'Create Temporary Tables
                 Me.BgwUserPermissions.ReportProgress(40, "Create Temporary Tables in SQL Server")
-                SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Tables in SQL Server")
+                'SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Tables in SQL Server")
 
                 cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_ActiveDirectoryUsersBankSystems_Temp' AND xtype='U') CREATE TABLE [#Temp_ActiveDirectoryUsersBankSystems_Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[System] [nvarchar](100) NULL,[UserID] [nvarchar](200) NULL,[UserName] [nvarchar](100) NULL,[UserLoginName] [nvarchar](100) NULL,[UserLevel] [nvarchar](100) NULL,[UserTypeCode] [nvarchar](100) NULL,[UserStatus] [nvarchar](100) NULL) ELSE DELETE FROM [#Temp_ActiveDirectoryUsersBankSystems_Temp]"
                 cmd.ExecuteNonQuery()
@@ -6775,7 +6987,7 @@ Public Class ManualImport
 
                     If File.Exists(ExcelFileName) = True AndAlso ExcelFileNameOnly.ToString = "ALLADGroupsUsers.csv" = True Then
                         Me.BgwUserPermissions.ReportProgress(40, "File: ALLADGroupsUsers.csv exists - Import Active Directory Users and Groups")
-                        SplashScreenManager.Default.SetWaitFormCaption("File: ALLADGroupsUsers.csv exists - Import Active Directory Users and Groups")
+                        'SplashScreenManager.Default.SetWaitFormCaption("File: ALLADGroupsUsers.csv exists - Import Active Directory Users and Groups")
                         cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_ActiveDirectoryUsers_Temp' AND xtype='U') CREATE TABLE [#Temp_ActiveDirectoryUsers_Temp]([AD_Group_Name] [nvarchar](50) NULL,[Member_Name] [nvarchar](50) NULL,[AccountStatus] [nvarchar](50) NULL) ELSE DELETE FROM [#Temp_ActiveDirectoryUsers_Temp]"
                         cmd.ExecuteNonQuery()
                         cmd.CommandText = "BULK INSERT  [#Temp_ActiveDirectoryUsers_Temp] FROM '" & USER_PERMISSIONS_DIR & "' with (FIRSTROW = 2,fieldterminator = ';')"
@@ -6879,11 +7091,11 @@ Public Class ManualImport
                         worksheet.Cells("T1").Value = "RolesInComponent"
                         workbook.SaveDocument(ExcelFileName, DocumentFormat.Xls)
                         Me.BgwUserPermissions.ReportProgress(40, "File: NGS_User.xls exists - Import NGS Users")
-                        SplashScreenManager.Default.SetWaitFormCaption("File: NGS_User.xls exists - Import NGS Users")
+                        'SplashScreenManager.Default.SetWaitFormCaption("File: NGS_User.xls exists - Import NGS Users")
                         cmd.CommandText = "INSERT INTO [#Temp_ActiveDirectoryUsersBankSystems_Temp]([System],[UserID],[UserName],[UserLoginName],[UserLevel],[UserTypeCode],[UserStatus])SELECT 'NGS' as 'System',[UserNumber], dbo.GetStringPartByDelimeter([UserName],'_',1) as 'User Name', dbo.GetStringPartByDelimeter([UserName],'_',1) as 'User Login Name','USER' as 'UserLevel',[UserType] as 'UserTypeCode',[UserStatus] FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & ExcelFileName & ";','SELECT * FROM [1$]') where LEN([InstitutionEnglishName])<>0 and [UserNumber] not in ('75207921') and 'NGS'+[UserNumber] not in (Select system+UserID from #Temp_ActiveDirectoryUsersBankSystems_Temp where system in ('NGS')) GROUP BY [UserNumber],[UserName],[UserType],[UserStatus]"
                         cmd.ExecuteNonQuery()
                         Me.BgwUserPermissions.ReportProgress(40, "File: NGS_User.xls exists - Import NGS User Permissions")
-                        SplashScreenManager.Default.SetWaitFormCaption("File: NGS_User.xls exists - Import NGS User Permissions")
+                        'SplashScreenManager.Default.SetWaitFormCaption("File: NGS_User.xls exists - Import NGS User Permissions")
                         cmd.CommandText = "INSERT INTO [#Temp_ActiveDirectoryUsersBankSystemsPermissions_Temp]([System],[UserID],[FunctionOperationType],[FunctionRoleCode],[EffectiveDate],[ExpiryDate]) SELECT 'NGS',UserNumber,PostNumber + ' - ' + PostEnglishName,RoleNumber + ' - ' + RoleEnglishName, convert(datetime,PostEffectiveDate,112),NULL FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & ExcelFileName & ";','SELECT * FROM [1$]') where LEN([InstitutionEnglishName])<>0 and [UserNumber] not in ('75207921') and 'NGS'+UserNumber+PostNumber + ' - ' + PostEnglishName+RoleNumber + ' - ' + RoleEnglishName not in (Select [System]+[UserID]+[FunctionOperationType]+[FunctionRoleCode] from [#Temp_ActiveDirectoryUsersBankSystemsPermissions_Temp] where System in ('NGS'))"
                         cmd.ExecuteNonQuery()
                         File.Delete(USER_PERMISSIONS_DIR)
@@ -6891,13 +7103,13 @@ Public Class ManualImport
                         'GMPS
                     ElseIf File.Exists(ExcelFileName) = True AndAlso ExcelFileNameOnly.ToString.StartsWith("GMPS_Users") = True Then
                         Me.BgwUserPermissions.ReportProgress(40, "File: GMPS_Users.xls exists - Import GMPS_Users")
-                        SplashScreenManager.Default.SetWaitFormCaption("File: GMPS_Users.xls exists - Import GMPS_Users")
+                        'SplashScreenManager.Default.SetWaitFormCaption("File: GMPS_Users.xls exists - Import GMPS_Users")
                         cmd.CommandText = "INSERT INTO [#Temp_ActiveDirectoryUsersBankSystems_Temp]([System],[UserID],[UserName],[UserLoginName],[UserLevel],[UserTypeCode],[UserStatus]) SELECT 'GMPS' as 'System',LTRIM(RTRIM(A.[Userid])) as 'UserID',A.[User Name] as 'UserName',A.[User Nickname] as 'UserLoginName',A.[User Rating] as 'UserLevel',A.[Department Code] as 'UserTypeCode',A.[Active Flag] as 'UserStatus' FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & ExcelFileName & ";','SELECT * FROM [Sheet1$]')A  where [Processed by] like 'DEFF%'"
                         cmd.ExecuteNonQuery()
                         File.Delete(USER_PERMISSIONS_DIR)
                     ElseIf File.Exists(ExcelFileName) = True AndAlso ExcelFileNameOnly.ToString.StartsWith("GMPS_User_Permissions") = True Then
                         Me.BgwUserPermissions.ReportProgress(40, "File: GMPS_User_Permissions.xls exists - Import GMPS_User_Permissions.xls")
-                        SplashScreenManager.Default.SetWaitFormCaption("File: GMPS_User_Permissions.xls exists - Import GMPS_User_Permissions.xls")
+                        'SplashScreenManager.Default.SetWaitFormCaption("File: GMPS_User_Permissions.xls exists - Import GMPS_User_Permissions.xls")
                         cmd.CommandText = "INSERT INTO [#Temp_ActiveDirectoryUsersBankSystemsPermissions_Temp]([System],[UserID],[FunctionOperationType],[FunctionRoleCode],[EffectiveDate],[ExpiryDate])SELECT 'GMPS' as 'System',LTRIM(RTRIM(F1)) as 'UserID',F2 as 'FunctionOperationType',F3 as 'FunctionRoleCode',NULL as 'EffectiveDate',NULL as 'ExpiryDate' FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=NO;Database=" & ExcelFileName & ";','SELECT * FROM [Sheet1$]') where [F1] like '%DEFF%' and [F1] not like '%DEFFR%'"
                         cmd.ExecuteNonQuery()
                         File.Delete(USER_PERMISSIONS_DIR)
@@ -6997,41 +7209,39 @@ Public Class ManualImport
                     Else
 
                         Me.BgwUserPermissions.ReportProgress(0, "ERROR+++ File does not exist in Import Directory - File Name:" & ExcelFileName)
-                        SplashScreenManager.CloseForm(False)
+                        'SplashScreenManager.CloseForm(False)
                         MessageBox.Show("File does not exist in Import Directory - File Name:" & ExcelFileName, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
                     End If
 
                 Next
                 Me.BgwUserPermissions.ReportProgress(40, "Execute SQL Stored Procedure:USER_SYSTEMS_PERMISSIONS" & vbNewLine & " Imports BAIS,MULTIBANK and SIRON Users and Permissions")
-                SplashScreenManager.Default.SetWaitFormCaption("Execute SQL Stored Procedure:USER_SYSTEMS_PERMISSIONS" & vbNewLine & " Imports BAIS,MULTIBANK and SIRON Users and Permissions")
+                'SplashScreenManager.Default.SetWaitFormCaption("Execute SQL Stored Procedure:USER_SYSTEMS_PERMISSIONS" & vbNewLine & " Imports BAIS,MULTIBANK and SIRON Users and Permissions")
                 cmd.CommandText = "exec [USER_SYSTEMS_PERMISSIONS] "
                 cmd.ExecuteNonQuery()
 
 
                 Me.BgwUserPermissions.ReportProgress(40, "USER PERMISSIONS IMPORT finished")
-                SplashScreenManager.Default.SetWaitFormCaption("USER PERMISSIONS IMPORT finished")
+                'SplashScreenManager.Default.SetWaitFormCaption("USER PERMISSIONS IMPORT finished")
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
+
             End If
 
 
 
         Catch ex As Exception
             Me.BgwUserPermissions.ReportProgress(100, "ERROR+++" & ex.Message.Replace("'", ""))
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Exit Sub
         End Try
 
     End Sub
 
     Private Sub BgwUserPermissions_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwUserPermissions.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','USER PERMISSIONS IMPORT','MANUAL IMPORTS')"
@@ -7055,6 +7265,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwUserPermissions_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwUserPermissions.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -7069,7 +7282,7 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwUserPermissions, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
@@ -7078,13 +7291,10 @@ Public Class ManualImport
 
     Private Sub BgwInventarExcel_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwInventarExcel.DoWork
         Try
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
-            cmd.CommandTimeout = 500
+            OpenSqlConnections()
             Dim ExcelFileName As String = INVENTAR_EXCEL_IMPORT_DIR
             If File.Exists(ExcelFileName) = True Then
-                SplashScreenManager.Default.SetWaitFormCaption("Starting new Inventory Import from Excel File")
+                'SplashScreenManager.Default.SetWaitFormCaption("Starting new Inventory Import from Excel File")
                 Me.BgwInventarExcel.ReportProgress(30, "Starting new Inventory Import from Excel File")
 
                 cmd.CommandText = "SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & ExcelFileName & ";','SELECT Count(*) FROM [Sheet1$] where ([InventarNr] is not NULL or [Bezeichnung] is not NULL)')"
@@ -7115,7 +7325,7 @@ Public Class ManualImport
                         For i = 0 To dt.Rows.Count - 1
                             KONTEN += dt.Rows.Item(i).Item("Kontonummer") & vbNewLine
                         Next
-                        SplashScreenManager.CloseForm(False)
+                        'SplashScreenManager.CloseForm(False)
                         MessageBox.Show("Die folgenden Konten sind in der Datenbank nicht vorhanden:" & vbNewLine & KONTEN & vbNewLine & vbNewLine & "Bitte überprüfen Sie Ihre eingaben bzw. fügen Sie die o.a. Konten in die Datenbank ein!", "KONTEN NICHT VORHANDEN", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
 
                     End If
@@ -7129,7 +7339,7 @@ Public Class ManualImport
                         For i = 0 To dt.Rows.Count - 1
                             KONTEN += dt.Rows.Item(i).Item("Kontonummer") & vbNewLine
                         Next
-                        SplashScreenManager.CloseForm(False)
+                        'SplashScreenManager.CloseForm(False)
                         MessageBox.Show("Die folgenden MWSt Konten sind in der Datenbank nicht vorhanden:" & vbNewLine & KONTEN & vbNewLine & vbNewLine & "Bitte überprüfen Sie Ihre eingaben bzw. fügen Sie die o.a. Konten in die Datenbank ein!", "MWST KONTEN NICHT VORHANDEN", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
 
                     End If
@@ -7143,7 +7353,7 @@ Public Class ManualImport
                         For i = 0 To dt.Rows.Count - 1
                             KONTEN += dt.Rows.Item(i).Item("Kontonummer") & vbNewLine
                         Next
-                        SplashScreenManager.CloseForm(False)
+                        'SplashScreenManager.CloseForm(False)
                         MessageBox.Show("Die folgenden Vorsteuer Konten sind in der Datenbank nicht vorhanden:" & vbNewLine & KONTEN & vbNewLine & vbNewLine & "Bitte überprüfen Sie Ihre eingaben bzw. fügen Sie die o.a. Konten in die Datenbank ein!", "VORSTEUER KONTEN NICHT VORHANDEN", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
 
                     End If
@@ -7167,37 +7377,35 @@ Public Class ManualImport
                     cmd.ExecuteNonQuery()
 
                     Me.BgwInventarExcel.ReportProgress(10, "The Excel File: " & ExcelFileName & " has being imported to Table:INVENTAR_ALL_ITEMS")
-                    SplashScreenManager.Default.SetWaitFormCaption("The Excel File: " & ExcelFileName & " has being imported to Table:INVENTAR_ALL_ITEMS")
+                    'SplashScreenManager.Default.SetWaitFormCaption("The Excel File: " & ExcelFileName & " has being imported to Table:INVENTAR_ALL_ITEMS")
                     'File Delete
                     File.Delete(INVENTAR_EXCEL_IMPORT_DIR)
 
                 Else
-                    SplashScreenManager.CloseForm(False)
+                    'SplashScreenManager.CloseForm(False)
                     MessageBox.Show("The Excel Sheet has no Input!!" & vbNewLine & "Please input new Data to Excel Sheet!", "EXCEL SHEET HAS NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
                     Return
                 End If
 
             Else
                 Me.BgwInventarExcel.ReportProgress(0, "ERROR+++ File does not exist in Import Directory - File Name:" & ExcelFileName)
-                SplashScreenManager.CloseForm(False)
+                'SplashScreenManager.CloseForm(False)
                 MessageBox.Show("File does not exist in Import Directory - File Name:" & ExcelFileName, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
+
         Catch ex As Exception
             Me.BgwInventarExcel.ReportProgress(100, "ERROR+++" & ex.Message.Replace("'", ""))
-            SplashScreenManager.CloseForm(False)
+            'SplashScreenManager.CloseForm(False)
             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Exit Sub
         End Try
     End Sub
 
     Private Sub BgwInventarExcel_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwInventarExcel.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
         cmdEVENT.Connection.Open()
         Try
             cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & e.UserState & "','NEW INVENTORY','MANUAL IMPORTS')"
@@ -7221,6 +7429,9 @@ Public Class ManualImport
     End Sub
 
     Private Sub BgwInventarExcel_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwInventarExcel.RunWorkerCompleted
+        Me.GridControl1.Enabled = True
+        Me.LayoutControlItem_ProgressPanel.Text = ""
+        Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -7235,1170 +7446,13 @@ Public Class ManualImport
         Me.ManualImportProcedures_BasicView.OptionsBehavior.ReadOnly = False
         Me.ManualImportProcedures_BasicView.OptionsBehavior.Editable = True
         Workers_Complete(BgwInventarExcel, e)
-        SplashScreenManager.CloseForm(False)
+        'SplashScreenManager.CloseForm(False)
     End Sub
 
 #End Region
 
 
 
-
-
-
-
-    'Old Scripts
-    Private Sub IMPORT_GMPS_PAYMENTS_NEW_SCRIPT()
-        Try
-            If dir.Count > 0 Then
-                For i = 0 To dir.Count - 1
-                    GMPS_PAY_FILE = dir.Item(i).ToString
-
-                    If File.Exists(GMPS_PAY_FILE) = True Then
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import with File: " & GMPS_PAY_FILE)
-                        Me.BgwGMPSPayDirectory.ReportProgress(40, "Start Import with File: " & GMPS_PAY_FILE)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-
-                        Dim workbook As Workbook = New DevExpress.Spreadsheet.Workbook()
-                        workbook.SaveDocument(GMPS_PAY_FILE, DocumentFormat.Xls)
-                        workbook.LoadDocument(GMPS_PAY_FILE, DocumentFormat.Xls)
-                        Dim sheet As Worksheet = workbook.Worksheets(0)
-
-
-
-                        Dim checkCellValue As String = sheet.Cells("A1").Value.TextValue
-                        MsgBox(checkCellValue)
-
-                        'IMPORT INCOMING PAYMENTS-CUSTOMER or BANK TRANSFER
-                        If sheet.Cells("A1").Value.TextValue = "Bank Transfer" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & sheet.Cells("A1").Value.TextValue)
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define GMPS PAYMENT INCOMING as :" & sheet.Cells("A1").Value.TextValue)
-                            'Rows delete
-                            sheet.Rows.Remove(0, 2)
-
-
-                            sheet.Cells("A1").Value = "IncomingDate"
-                            sheet.Cells("B1").Value = "ValueDate"
-                            sheet.Cells("C1").Value = "OurReference"
-                            sheet.Cells("D1").Value = "MessageSender"
-                            sheet.Cells("E1").Value = "ReferenceNo"
-                            sheet.Cells("F1").Value = "Currency"
-                            sheet.Cells("G1").Value = "Amount"
-                            sheet.Cells("H1").Value = "OriginalOrderingCustomer"
-                            sheet.Cells("I1").Value = "OriginalOrderingInstitution"
-                            sheet.Cells("J1").Value = "AccountOfInstitution"
-                            sheet.Cells("K1").Value = "BeneficiaryBank"
-                            sheet.Cells("L1").Value = "ReceiverBICofConstructMessage"
-                            sheet.Cells("M1").Value = "PAYMENT_CODE"
-                            sheet.Cells("N1").Value = "SenderToReceiverInformation"
-                            sheet.Cells("O1").Value = "ProcessedBy"
-
-                            workbook.SaveDocument(GMPS_PAY_FILE, DocumentFormat.Xls)
-
-                            SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='GMPS PAYMENTS IN Temp' AND xtype='U')  CREATE TABLE [GMPS PAYMENTS IN Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[IncomingDate] [nvarchar](255) NULL,[ValueDate] [nvarchar](255) NULL,[OurReference] [nvarchar](255) NULL,[MessageSender] [nvarchar](255) NULL,[ReferenceNo] [nvarchar](255) NULL,[Currency] [nvarchar](255) NULL,[Amount ] [float] NULL,[OriginalOrderingCustomer] [nvarchar](255) NULL,[OriginalOrderingInstitution] [nvarchar](255) NULL,[AccountOfInstitution] [nvarchar](255) NULL,[BeneficiaryBank] [nvarchar](255) NULL,[ReceiverBICofConstructMessage] [nvarchar](255) NULL,[PAYMENT_CODE] [nvarchar](255) NULL,[SenderToReceiverInformation] [nvarchar](255) NULL,[ProcessedBy] [nvarchar](255) NULL,[MTTYPE] [nvarchar](50) NULL) ELSE DELETE FROM [GMPS PAYMENTS IN Temp]"
-                            cmd.Connection.Open()
-                            cmd.ExecuteNonQuery()
-                            'Import data in temporary Table
-                            SplashScreenManager.Default.SetWaitFormCaption("Import Data in:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Import Data in:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS IN Temp]([IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryBank],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[SenderToReceiverInformation],[ProcessedBy])  SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & GMPS_PAY_FILE & ";','Select [IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryBank],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[SenderToReceiverInformation],[ProcessedBy] FROM [TestCreateExcel$]')"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set correct Data in Field OriginalOrderingCustomer")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set correct Data in Field OriginalOrderingCustomer")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [OriginalOrderingCustomer]=NULL where Len([OriginalOrderingCustomer])=0"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [AccountOfInstitution]=NULL where Len([AccountOfInstitution])=0"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [ReceiverBICofConstructMessage]=NULL where Len([ReceiverBICofConstructMessage])=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define MessagyType in Temporary Table")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define MessagyType in Temporary Table")
-                            cmd.CommandText = "Select [OriginalOrderingCustomer] from [GMPS PAYMENTS IN Temp] BEGIN UPDATE [GMPS PAYMENTS IN Temp] set [MTTYPE]='202' where [OriginalOrderingCustomer] is NULL end BEGIN UPDATE [GMPS PAYMENTS IN Temp] set [MTTYPE]='103' where [OriginalOrderingCustomer] is not NULL end"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Alter columns Incoming and Value date in Temporary Table")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Alter columns Incoming and Value date in Temporary Table")
-                            cmd.CommandText = "ALTER TABLE [GMPS PAYMENTS IN Temp] ALTER COLUMN [IncomingDate] datetime"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "ALTER TABLE [GMPS PAYMENTS IN Temp] ALTER COLUMN [ValueDate] datetime"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Insert Data to GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Insert Data to GMPS PAYMENTS IN")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS IN]([IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryBank],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[SenderToReceiverInformation],[ProcessedBy],[MTTYPE])  SELECT [IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryBank],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[SenderToReceiverInformation],[ProcessedBy],[MTTYPE] from [GMPS PAYMENTS IN Temp] "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Drop Table GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Drop Table GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "DROP TABLE [GMPS PAYMENTS IN Temp]"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete Duplicates in GMPS PAYMENTS IN based on OurReference")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete Duplicates in GMPS PAYMENTS IN based on OurReference")
-                            cmd.CommandText = "DELETE  FROM [GMPS PAYMENTS IN] where [ID] not in (Select Min([ID]) from [GMPS PAYMENTS IN] group by [OurReference])"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set Exchange rates in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set Exchange rates in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [ExchangeRate]= 1 WHERE [Currency]='EUR' and [ExchangeRate]=0 "
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS IN] A INNER JOIN [EXCHANGE RATES OCBS] B ON A.[ValueDate]=B.[EXCHANGE RATE DATE] WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Get Max Exchange Rate if Value Date not working Date")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Get Max Exchange Rate if Value Date not working Date")
-                            cmd.CommandText = "SELECT MAX([EXCHANGE RATE DATE]) FROM [EXCHANGE RATES OCBS]"
-                            Dim MaxExchangeRateDatePaymentsIn As Date = FormatDateTime(cmd.ExecuteScalar, DateFormat.ShortDate)
-                            Dim MaxExchangeRateDatePaymentsInSql = MaxExchangeRateDatePaymentsIn.ToString("yyyyMMdd")
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS IN] A INNER JOIN [EXCHANGE RATES OCBS] B ON B.[EXCHANGE RATE DATE]='" & MaxExchangeRateDatePaymentsInSql & "' WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Calculate Payment Amount in EUR in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Calculate Payment Amount in EUR in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [AmountEuro]= [Amount]/[ExchangeRate] where [AmountEuro]=0 and [ExchangeRate]<>0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Sender Country and Message Beneficiary Country in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Sender Country and Message Beneficiary Country in GMPS PAYMENTS IN")
-                            'Message Sender Country-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]=SUBSTRING([MessageSender],5,2) where Len([MessageSender])>0 and [MsgSenderCountry] is NULL and [MessageSender] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'MsgBenefCountry-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]=SUBSTRING([BeneficiaryBank],5,2) where Len([BeneficiaryBank])>0 and [MsgBenefCountry] is NULL and [BeneficiaryBank] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'DEFINE MESSAGE SENDER COUNTRY IF SENDER IS BLZ
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Sender Country if Sender is BLZ")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Sender Country if Sender is BLZ")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]='DE' where [MessageSender] like '[0-9]%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Bank Names in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Bank Names in GMPS PAYMENTS IN")
-                            'BLZ
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=UPPER(B.[Bezeichnung]),A.[MessageSenderCity]=UPPER(B.[Ort]) from [GMPS PAYMENTS IN] A INNER JOIN [BLZ] B ON A.[MessageSender]=B.[Bankleitzahl] where [MessageSender] like '[0-9]%' and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'BICS
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=11 and A.[MessageSenderName] is NULL end BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=8 and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [AccountOfInstitution] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[AccountOfInstitutionName]=B.[INSTITUTION NAME],A.[AccountOfInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[AccountOfInstitution]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountOfInstitution])=11 and A.[AccountOfInstitutionName] is NULL end BEGIN UPDATE A SET A.[AccountOfInstitutionName]=B.[INSTITUTION NAME],A.[AccountOfInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountOfInstitution])=8 and A.[AccountOfInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [OriginalOrderingInstitution] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[OriginalOrderingInstitutionName]=B.[INSTITUTION NAME],A.[OriginalOrderingInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[OriginalOrderingInstitution]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[OriginalOrderingInstitution])=11 and A.[OriginalOrderingInstitutionName] is NULL end BEGIN UPDATE A SET A.[OriginalOrderingInstitutionName]=B.[INSTITUTION NAME],A.[OriginalOrderingInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[OriginalOrderingInstitution]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[OriginalOrderingInstitution])=8 and A.[OriginalOrderingInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [ReceiverBICofConstructMessage] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[ReceiverBICofConstructMessageName]=B.[INSTITUTION NAME],A.[ReceiverBICofConstructMessageCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceiverBICofConstructMessage]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceiverBICofConstructMessage])=11 and A.[ReceiverBICofConstructMessageName] is NULL end BEGIN UPDATE A SET A.[ReceiverBICofConstructMessageName]=B.[INSTITUTION NAME],A.[ReceiverBICofConstructMessageCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceiverBICofConstructMessage]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceiverBICofConstructMessage])=8 and A.[ReceiverBICofConstructMessageName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [BeneficiaryBank] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBank]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBank])=11 and A.[BeneficiaryBankName] is NULL end BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBank]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBank])=8 and A.[BeneficiaryBankName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Aktualisieren MessageSender u.a. (wenn BIC nicht gefunden wurde) aus Feld Original Ordering Institution
-                            cmd.CommandText = "UPDATE   [GMPS PAYMENTS IN] SET [MessageSender]=[OriginalOrderingInstitution] where [MessageSenderName] is NULL"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=11 and A.[MessageSenderName] is NULL end BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=8 and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Message Sender Country-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]=SUBSTRING([MessageSender],5,2) where Len([MessageSender])>0 and [MsgSenderCountry] is NULL and [MessageSender] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'MsgBenefCountry-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]=SUBSTRING([BeneficiaryBank],5,2) where Len([BeneficiaryBank])>0 and [MsgBenefCountry] is NULL and [BeneficiaryBank] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define all Message Types in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define all Message Types in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-DD-SC' where [MTTYPE]='103' and [BeneficiaryCustomer] like 'SCHECK%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-DD-SEPA' where [MTTYPE]='103' and [ReferenceNo] like '%SEPAD%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-CT-SEPA' where [MTTYPE]='103' and [ReferenceNo] like '%SEPAC%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-EMZ' where [MTTYPE]='103' and [ReferenceNo] like '%DTA%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("SET Payment Year for each Payment Order")
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "SET Payment Year for each Payment Order")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [PaymentYear]=DATEPART(yyyy,[IncomingDate]) where [PaymentYear] is NULL"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
-                            File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT INCOMING finished")
-                            Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT INCOMING finished")
-                            'Save the last imported Payment File
-                            Me.MANUAL_IMPORTSBindingSource.EndEdit()
-                            Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-
-                        ElseIf sheet.Cells("A1").Value.TextValue = "Customer Transfer" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & sheet.Cells("A1").Value.TextValue)
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define GMPS PAYMENT INCOMING as :" & sheet.Cells("A1").Value.TextValue)
-                            'Rows delete
-                            sheet.Rows.Remove(0, 2)
-
-                            sheet.Cells("A1").Value = "IncomingDate"
-                            sheet.Cells("B1").Value = "ValueDate"
-                            sheet.Cells("C1").Value = "OurReference"
-                            sheet.Cells("D1").Value = "MessageSender"
-                            sheet.Cells("E1").Value = "ReferenceNo"
-                            sheet.Cells("F1").Value = "Currency"
-                            sheet.Cells("G1").Value = "Amount"
-                            sheet.Cells("H1").Value = "OriginalOrderingCustomer"
-                            sheet.Cells("I1").Value = "OriginalOrderingInstitution"
-                            sheet.Cells("J1").Value = "AccountOfInstitution"
-                            sheet.Cells("K1").Value = "BeneficiaryCustomer" '
-                            sheet.Cells("L1").Value = "DetailsOfCharges" '
-                            sheet.Cells("M1").Value = "Commission"
-                            sheet.Cells("N1").Value = "ReceiverBICofConstructMessage" '
-                            sheet.Cells("O1").Value = "PAYMENT_CODE" '
-                            sheet.Cells("P1").Value = "ProcessedBy"
-
-
-                            workbook.SaveDocument(GMPS_PAY_FILE, DocumentFormat.Xls)
-
-
-                            SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='GMPS PAYMENTS IN Temp' AND xtype='U')  CREATE TABLE [GMPS PAYMENTS IN Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[IncomingDate] [nvarchar](255) NULL,[ValueDate] [nvarchar](255) NULL,[OurReference] [nvarchar](255) NULL,[MessageSender] [nvarchar](255) NULL,[ReferenceNo] [nvarchar](255) NULL,[Currency] [nvarchar](255) NULL,[Amount ] [float] NULL,[OriginalOrderingCustomer] [nvarchar](255) NULL,[OriginalOrderingInstitution] [nvarchar](255) NULL,[AccountOfInstitution] [nvarchar](255) NULL,[BeneficiaryCustomer] [nvarchar](255) NULL,[DetailsOfCharges] [nvarchar](3) NULL,[Commission] [float] NULL,[ReceiverBICofConstructMessage] [nvarchar](255) NULL,[PAYMENT_CODE] [nvarchar](255) NULL,[ProcessedBy] [nvarchar](255) NULL,[MTTYPE] [nvarchar](50) NULL) ELSE DELETE FROM [GMPS PAYMENTS IN Temp]"
-                            cmd.Connection.Open()
-                            cmd.ExecuteNonQuery()
-                            'Import data in temporary Table
-                            SplashScreenManager.Default.SetWaitFormCaption("Import Data in:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Import Data in:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS IN Temp]([IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryCustomer],[DetailsOfCharges],[Commission],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[ProcessedBy])  SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & GMPS_PAY_FILE & ";','Select [IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryCustomer],[DetailsOfCharges],[Commission],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[ProcessedBy] FROM [TestCreateExcel$]')"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set correct Data in Field OriginalOrderingCustomer")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set correct Data in Field OriginalOrderingCustomer")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [OriginalOrderingCustomer]=NULL where Len([OriginalOrderingCustomer])=0"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [AccountOfInstitution]=NULL where Len([AccountOfInstitution])=0"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [ReceiverBICofConstructMessage]=NULL where Len([ReceiverBICofConstructMessage])=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define MessagyType in Temporary Table")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define MessagyType in Temporary Table")
-                            cmd.CommandText = "Select [OriginalOrderingCustomer] from [GMPS PAYMENTS IN Temp] BEGIN UPDATE [GMPS PAYMENTS IN Temp] set [MTTYPE]='202' where [OriginalOrderingCustomer] is NULL end BEGIN UPDATE [GMPS PAYMENTS IN Temp] set [MTTYPE]='103' where [OriginalOrderingCustomer] is not NULL end"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Alter columns Incoming and Value date in Temporary Table")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Alter columns Incoming and Value date in Temporary Table")
-                            cmd.CommandText = "ALTER TABLE [GMPS PAYMENTS IN Temp] ALTER COLUMN [IncomingDate] datetime"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "ALTER TABLE [GMPS PAYMENTS IN Temp] ALTER COLUMN [ValueDate] datetime"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Insert Data to GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Insert Data to GMPS PAYMENTS IN")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS IN]([IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryCustomer],[DetailsOfCharges],[Commission],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[ProcessedBy],[MTTYPE])  SELECT [IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryCustomer],[DetailsOfCharges],[Commission],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[ProcessedBy],[MTTYPE] from [GMPS PAYMENTS IN Temp] "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Drop Table GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Drop Table GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "DROP TABLE [GMPS PAYMENTS IN Temp]"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete Duplicates in GMPS PAYMENTS IN based on OurReference")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete Duplicates in GMPS PAYMENTS IN based on OurReference")
-                            cmd.CommandText = "DELETE  FROM [GMPS PAYMENTS IN] where [ID] not in (Select Min([ID]) from [GMPS PAYMENTS IN] group by [OurReference])"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set Exchange rates in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set Exchange rates in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [ExchangeRate]= 1 WHERE [Currency]='EUR' and [ExchangeRate]=0 "
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS IN] A INNER JOIN [EXCHANGE RATES OCBS] B ON A.[ValueDate]=B.[EXCHANGE RATE DATE] WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Get Max Exchange Rate if Value Date not working Date")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Get Max Exchange Rate if Value Date not working Date")
-                            cmd.CommandText = "SELECT MAX([EXCHANGE RATE DATE]) FROM [EXCHANGE RATES OCBS]"
-                            Dim MaxExchangeRateDatePaymentsIn As Date = FormatDateTime(cmd.ExecuteScalar, DateFormat.ShortDate)
-                            Dim MaxExchangeRateDatePaymentsInSql = MaxExchangeRateDatePaymentsIn.ToString("yyyyMMdd")
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS IN] A INNER JOIN [EXCHANGE RATES OCBS] B ON B.[EXCHANGE RATE DATE]='" & MaxExchangeRateDatePaymentsInSql & "' WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Calculate Payment Amount in EUR in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Calculate Payment Amount in EUR in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [AmountEuro]= [Amount]/[ExchangeRate] where [AmountEuro]=0 and [ExchangeRate]<>0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Sender Country and Message Beneficiary Country in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Sender Country and Message Beneficiary Country in GMPS PAYMENTS IN")
-                            'Message Sender Country-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]=SUBSTRING([MessageSender],5,2) where Len([MessageSender])>0 and [MsgSenderCountry] is NULL and [MessageSender] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'MsgBenefCountry-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]=SUBSTRING([ReceiverBICofConstructMessage],5,2) where Len([ReceiverBICofConstructMessage])>0 and [MsgBenefCountry] is NULL and [ReceiverBICofConstructMessage] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'DEFINE MESSAGE SENDER COUNTRY IF SENDER IS BLZ
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Sender Country if Sender is BLZ")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Sender Country if Sender is BLZ")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]='DE' where [MessageSender] like '[0-9]%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Bank Names in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Bank Names in GMPS PAYMENTS IN")
-                            'BLZ
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=UPPER(B.[Bezeichnung]),A.[MessageSenderCity]=UPPER(B.[Ort]) from [GMPS PAYMENTS IN] A INNER JOIN [BLZ] B ON A.[MessageSender]=B.[Bankleitzahl] where [MessageSender] like '[0-9]%' and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'BICS
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=11 and A.[MessageSenderName] is NULL end BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=8 and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [AccountOfInstitution] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[AccountOfInstitutionName]=B.[INSTITUTION NAME],A.[AccountOfInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[AccountOfInstitution]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountOfInstitution])=11 and A.[AccountOfInstitutionName] is NULL end BEGIN UPDATE A SET A.[AccountOfInstitutionName]=B.[INSTITUTION NAME],A.[AccountOfInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountOfInstitution])=8 and A.[AccountOfInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [OriginalOrderingInstitution] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[OriginalOrderingInstitutionName]=B.[INSTITUTION NAME],A.[OriginalOrderingInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[OriginalOrderingInstitution]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[OriginalOrderingInstitution])=11 and A.[OriginalOrderingInstitutionName] is NULL end BEGIN UPDATE A SET A.[OriginalOrderingInstitutionName]=B.[INSTITUTION NAME],A.[OriginalOrderingInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[OriginalOrderingInstitution]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[OriginalOrderingInstitution])=8 and A.[OriginalOrderingInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [ReceiverBICofConstructMessage] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[ReceiverBICofConstructMessageName]=B.[INSTITUTION NAME],A.[ReceiverBICofConstructMessageCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceiverBICofConstructMessage]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceiverBICofConstructMessage])=11 and A.[ReceiverBICofConstructMessageName] is NULL end BEGIN UPDATE A SET A.[ReceiverBICofConstructMessageName]=B.[INSTITUTION NAME],A.[ReceiverBICofConstructMessageCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceiverBICofConstructMessage]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceiverBICofConstructMessage])=8 and A.[ReceiverBICofConstructMessageName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [BeneficiaryBank] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBank]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBank])=11 and A.[BeneficiaryBankName] is NULL end BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBank]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBank])=8 and A.[BeneficiaryBankName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Aktualisieren MessageSender u.a. (wenn BIC nicht gefunden wurde) aus Feld Original Ordering Institution
-                            cmd.CommandText = "UPDATE   [GMPS PAYMENTS IN] SET [MessageSender]=[OriginalOrderingInstitution] where [MessageSenderName] is NULL"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=11 and A.[MessageSenderName] is NULL end BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=8 and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Message Sender Country-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]=SUBSTRING([MessageSender],5,2) where Len([MessageSender])>0 and [MsgSenderCountry] is NULL and [MessageSender] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'MsgBenefCountry-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]=SUBSTRING([ReceiverBICofConstructMessage],5,2) where Len([ReceiverBICofConstructMessage])>0 and [MsgBenefCountry] is NULL and [ReceiverBICofConstructMessage] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]='DE' where [MsgBenefCountry] is NULL"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define all Message Types in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define all Message Types in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-DD-SC' where [MTTYPE]='103' and [BeneficiaryCustomer] like 'SCHECK%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-DD-SEPA' where [MTTYPE]='103' and [ReferenceNo] like '%SEPAD%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-CT-SEPA' where [MTTYPE]='103' and [ReferenceNo] like '%SEPAC%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-EMZ' where [MTTYPE]='103' and [ReferenceNo] like '%DTA%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("SET Payment Year for each Payment Order")
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "SET Payment Year for each Payment Order")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [PaymentYear]=DATEPART(yyyy,[IncomingDate]) where [PaymentYear] is NULL"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
-                            File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT INCOMING finished")
-                            Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT INCOMING finished")
-                            'Save the last imported Payment File
-                            Me.MANUAL_IMPORTSBindingSource.EndEdit()
-                            Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-
-                            'ElseIf sheet.Cells("A1").Value.ToString.StartsWith("Outward Remittance Report") = True Then
-                        ElseIf checkCellValue.StartsWith("Outward Remittance Report") = True Then
-                            MsgBox("ok")
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT OUTGOING as :" & sheet.Cells("A1").Value.TextValue)
-                            'Rows delete
-                            sheet.Rows.Remove(0, 1)
-
-                            sheet.Cells("A1").Value = "MTTYPE"
-                            sheet.Cells("B1").Value = "RegisterDate"
-                            sheet.Cells("C1").Value = "SenderReference"
-                            sheet.Cells("D1").Value = "OurReference"
-
-                            sheet.Cells("G1").Value = "ValueDate"
-                            sheet.Cells("H1").Value = "SenderBIC"
-                            sheet.Cells("I1").Value = "ReceivingBankBIC"
-                            sheet.Cells("J1").Value = "ReceivingBankCountryCode"
-                            sheet.Cells("K1").Value = "TransactionType"
-                            sheet.Cells("L1").Value = "OrderingCustomersAccountServicingInstitution"
-                            sheet.Cells("M1").Value = "OrderingCustomersAccNo"
-                            sheet.Cells("N1").Value = "OrderingCustomer"
-                            sheet.Cells("O1").Value = "IntermediaryInstitutionBIC"
-                            sheet.Cells("P1").Value = "IntermediaryInstitutionAccNo"
-                            sheet.Cells("Q1").Value = "IntermediaryInstitutionName"
-                            sheet.Cells("R1").Value = "AccountPayeeBIC"
-                            sheet.Cells("S1").Value = "AccountOfInstitutionAccNo"
-                            sheet.Cells("T1").Value = "AccountPayeeNameAddress"
-                            sheet.Cells("U1").Value = "BeneficiaryBankBIC"
-                            sheet.Cells("V1").Value = "BeneficiaryBankAccNo"
-                            sheet.Cells("W1").Value = "BeneficiaryBankName"
-                            sheet.Cells("X1").Value = "BeneficiaryCustomerBIC"
-                            sheet.Cells("Y1").Value = "BeneficiaryCustomerAccNo"
-                            sheet.Cells("Z1").Value = "BeneficiaryCustomerNameAddress"
-                            sheet.Cells("AA1").Value = "DetailsOfCharges"
-                            sheet.Cells("AB1").Value = "SenderToReceiverInformation"
-                            sheet.Cells("AC1").Value = "PayStartTime"
-                            sheet.Cells("AD1").Value = "DebitTransactionsSigns"
-                            sheet.Cells("AE1").Value = "ProcessingQueue"
-
-                            sheet.Cells("AG1").Value = "ACK_State"
-                            sheet.Cells("AH1").Value = "ProcessedBy"
-
-
-                            sheet(0).Name = "OUTGOING_PAYMENTS"
-                            'sheet.Name = "OUTGOING_PAYMENTS"
-
-                            workbook.SaveDocument(GMPS_PAY_FILE, DocumentFormat.Xls)
-
-                            SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='GMPS PAYMENTS OUT Temp' AND xtype='U')  CREATE TABLE [GMPS PAYMENTS OUT Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[MTTYPE] [nvarchar](255) NULL,[RegisterDate] float NULL,[SenderReference] [nvarchar](255) NULL,[OurReference] [nvarchar](255) NULL,[Currency] [nvarchar](255) NULL,[Amount] float NULL,[ValueDate] float NULL,[SenderBIC] [nvarchar](255) NULL,[ReceivingBankBIC] [nvarchar](255) NULL,[ReceivingBankCountryCode] [nvarchar](255) NULL,[TransactionType] [nvarchar](255) NULL,[OrderingCustomersAccountServicingInstitution] [nvarchar](255) NULL,[OrderingCustomersAccNo] [nvarchar](255) NULL,[OrderingCustomer] [nvarchar](255) NULL,[IntermediaryInstitutionBIC] [nvarchar](255) NULL,[IntermediaryInstitutionAccNo] [nvarchar](255) NULL,[IntermediaryInstitutionName] [nvarchar](255) NULL,[AccountPayeeBIC] [nvarchar](255) NULL,[AccountOfInstitutionAccNo] [nvarchar](255) NULL,[AccountPayeeNameAddress] [nvarchar](255) NULL,[BeneficiaryBankBIC] [nvarchar](255) NULL,[BeneficiaryBankAccNo] [nvarchar](255) NULL,[BeneficiaryBankName] [nvarchar](255) NULL,[BeneficiaryCustomerBIC] [nvarchar](255) NULL,[BeneficiaryCustomerAccNo] [nvarchar](255) NULL,[BeneficiaryCustomerNameAddress] [nvarchar](255) NULL,[DetailsOfCharges] [nvarchar](255) NULL,[SenderToReceiverInformation] [nvarchar](255) NULL,[PayStartTime] float NULL,[DebitTransactionsSigns] [nvarchar](255) NULL,[ProcessingQueue] [nvarchar](255) NULL,[Status] [nvarchar](255) NULL,[ACK_State] [nvarchar](255) NULL,[ProcessedBy] [nvarchar](255) NULL)ELSE DELETE FROM [GMPS PAYMENTS OUT Temp]"
-                            cmd.Connection.Open()
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Import Data in:GMPS PAYMENTS OUT Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Import Data in:GMPS PAYMENTS OUT Temp")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS OUT Temp]([MTTYPE],[RegisterDate],[SenderReference],[OurReference],[Currency],[Amount],[ValueDate],[SenderBIC],[ReceivingBankBIC],[ReceivingBankCountryCode],[TransactionType],[OrderingCustomersAccountServicingInstitution],[OrderingCustomersAccNo],[OrderingCustomer],[IntermediaryInstitutionBIC],[IntermediaryInstitutionAccNo],[IntermediaryInstitutionName],[AccountPayeeBIC],[AccountOfInstitutionAccNo],[AccountPayeeNameAddress],[BeneficiaryBankBIC],[BeneficiaryBankAccNo],[BeneficiaryBankName],[BeneficiaryCustomerBIC],[BeneficiaryCustomerAccNo],[BeneficiaryCustomerNameAddress],[DetailsOfCharges],[SenderToReceiverInformation],[PayStartTime],[DebitTransactionsSigns],[ProcessingQueue],[Status],[ACK_State],[ProcessedBy])  SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & GMPS_PAY_FILE & ";','Select [MTTYPE],[RegisterDate],[SenderReference],[OurReference],[Currency],[Amount],[ValueDate],[SenderBIC],[ReceivingBankBIC],[ReceivingBankCountryCode],[TransactionType],[OrderingCustomersAccountServicingInstitution],[OrderingCustomersAccNo],[OrderingCustomer],[IntermediaryInstitutionBIC],[IntermediaryInstitutionAccNo],[IntermediaryInstitutionName],[AccountPayeeBIC],[AccountOfInstitutionAccNo],[AccountPayeeNameAddress],[BeneficiaryBankBIC],[BeneficiaryBankAccNo],[BeneficiaryBankName],[BeneficiaryCustomerBIC],[BeneficiaryCustomerAccNo],[BeneficiaryCustomerNameAddress],[DetailsOfCharges],[SenderToReceiverInformation],[PayStartTime],[DebitTransactionsSigns],[ProcessingQueue],[Status],[ACK_State],[ProcessedBy] FROM [OUTGOING_PAYMENTS$]')"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete blanks in each column")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete blanks in each column")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]=SUBSTRING([MTTYPE],3,100),[SenderReference]=SUBSTRING([SenderReference],3,100),[OurReference]=SUBSTRING([OurReference],3,100),[Currency]=SUBSTRING([Currency],3,100),[SenderBIC]=SUBSTRING([SenderBIC],3,100),[ReceivingBankBIC]=SUBSTRING([ReceivingBankBIC],3,100),[ReceivingBankCountryCode]=SUBSTRING([ReceivingBankCountryCode],3,100),[TransactionType]=SUBSTRING([TransactionType],3,100),[OrderingCustomersAccountServicingInstitution]=SUBSTRING([OrderingCustomersAccountServicingInstitution],3,100),[OrderingCustomersAccNo]=SUBSTRING([OrderingCustomersAccNo],3,100),[OrderingCustomer]=SUBSTRING([OrderingCustomer],3,255),[IntermediaryInstitutionBIC]=SUBSTRING([IntermediaryInstitutionBIC],3,100),[IntermediaryInstitutionAccNo]=SUBSTRING([IntermediaryInstitutionAccNo],3,100),[IntermediaryInstitutionName]=SUBSTRING([IntermediaryInstitutionName],3,100),[AccountPayeeBIC]=SUBSTRING([AccountPayeeBIC],3,100),[AccountOfInstitutionAccNo]=SUBSTRING([AccountOfInstitutionAccNo],3,100),[AccountPayeeNameAddress]=SUBSTRING([AccountPayeeNameAddress],3,100),[BeneficiaryBankBIC]=SUBSTRING([BeneficiaryBankBIC],3,100),[BeneficiaryBankAccNo]=SUBSTRING([BeneficiaryBankAccNo],3,100),[BeneficiaryBankName]=SUBSTRING([BeneficiaryBankName],3,255),[BeneficiaryCustomerBIC]=SUBSTRING([BeneficiaryCustomerBIC],3,100),[BeneficiaryCustomerAccNo]=SUBSTRING([BeneficiaryCustomerAccNo],3,100),[BeneficiaryCustomerNameAddress]=SUBSTRING([BeneficiaryCustomerNameAddress],3,255),[DetailsOfCharges]=SUBSTRING([DetailsOfCharges],3,100),[SenderToReceiverInformation]=SUBSTRING([SenderToReceiverInformation],3,255),[DebitTransactionsSigns]=SUBSTRING([DebitTransactionsSigns],3,100),[ProcessingQueue]=SUBSTRING([ProcessingQueue],3,100),[Status]=SUBSTRING([Status],3,100),[ACK_State]=SUBSTRING([ACK_State],3,100),[ProcessedBy]=SUBSTRING([ProcessedBy],3,100)"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]=RTRIM(LTRIM([MTTYPE])),[SenderReference]=RTRIM(LTRIM([SenderReference])),[OurReference]=RTRIM(LTRIM([OurReference])),[Currency]=RTRIM(LTRIM([Currency])),[SenderBIC]=RTRIM(LTRIM([SenderBIC])),[ReceivingBankBIC]=RTRIM(LTRIM([ReceivingBankBIC])),[ReceivingBankCountryCode]=RTRIM(LTRIM([ReceivingBankCountryCode])),[TransactionType]=RTRIM(LTRIM([TransactionType])),[OrderingCustomersAccountServicingInstitution]=RTRIM(LTRIM([OrderingCustomersAccountServicingInstitution])),[OrderingCustomersAccNo]=RTRIM(LTRIM([OrderingCustomersAccNo])),[OrderingCustomer]=RTRIM(LTRIM([OrderingCustomer])),[IntermediaryInstitutionBIC]=RTRIM(LTRIM([IntermediaryInstitutionBIC])),[IntermediaryInstitutionAccNo]=RTRIM(LTRIM([IntermediaryInstitutionAccNo])),[IntermediaryInstitutionName]=RTRIM(LTRIM([IntermediaryInstitutionName])),[AccountPayeeBIC]=RTRIM(LTRIM([AccountPayeeBIC])),[AccountOfInstitutionAccNo]=RTRIM(LTRIM([AccountOfInstitutionAccNo])),[AccountPayeeNameAddress]=RTRIM(LTRIM([AccountPayeeNameAddress])),[BeneficiaryBankBIC]=RTRIM(LTRIM([BeneficiaryBankBIC])),[BeneficiaryBankAccNo]=RTRIM(LTRIM([BeneficiaryBankAccNo])),[BeneficiaryBankName]=RTRIM(LTRIM([BeneficiaryBankName])),[BeneficiaryCustomerBIC]=RTRIM(LTRIM([BeneficiaryCustomerBIC])),[BeneficiaryCustomerAccNo]=RTRIM(LTRIM([BeneficiaryCustomerAccNo])),[BeneficiaryCustomerNameAddress]=RTRIM(LTRIM([BeneficiaryCustomerNameAddress])),[DetailsOfCharges]=RTRIM(LTRIM([DetailsOfCharges])),[SenderToReceiverInformation]=RTRIM(LTRIM([SenderToReceiverInformation])),[DebitTransactionsSigns]=RTRIM(LTRIM([DebitTransactionsSigns])),[ProcessingQueue]=RTRIM(LTRIM([ProcessingQueue])),[Status]=RTRIM(LTRIM([Status])),[ACK_State]=RTRIM(LTRIM([ACK_State])),[ProcessedBy]=RTRIM(LTRIM([ProcessedBy]))"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete Data if Status:Written Off")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete Data if Status:Written Off")
-                            cmd.CommandText = "DELETE FROM [GMPS PAYMENTS OUT Temp] where [Status] in ('Written Off')"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Types")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Types")
-                            cmd.CommandText = "Select [OrderingCustomersAccNo] from [GMPS PAYMENTS OUT Temp] BEGIN UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]='103' where [OrderingCustomersAccNo] is not NULL and [MTTYPE] is NULL end BEGIN UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]='202' where [OrderingCustomersAccNo] is NULL and [MTTYPE] is NULL end "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define SEPA Message Types")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define SEPA Message Types")
-                            cmd.CommandText = "Select [SenderToReceiverInformation] from [GMPS PAYMENTS OUT Temp] BEGIN UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]='103-CT-SEPA' where [SenderToReceiverInformation] like '/BNF/End%' end BEGIN UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]='103-DD-SEPA' where [SenderToReceiverInformation] like '%/SQTP/%' end "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Fill Senders Reference if is NULL")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Fill Senders Reference if is NULL")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [SenderReference]=[OurReference] where [SenderReference] is NULL "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Fill Senders BIC if is NULL")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Fill Senders BIC if is NULL")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [SenderBIC]='PCBCDEFFXXX' where [SenderBIC] is NULL "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Fill OrderingCustomersAccountServicingInstitution if is NULL")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Fill OrderingCustomersAccountServicingInstitution if is NULL")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [OrderingCustomersAccountServicingInstitution]=[SenderBIC] where [OrderingCustomersAccountServicingInstitution] is NULL "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set UPPER CASE to Ordering and Beneficiary Customers Name")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set UPPER CASE to Ordering and Beneficiary Customers Name")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [OrderingCustomer]=UPPER([OrderingCustomer]),[BeneficiaryCustomerNameAddress]=UPPER([BeneficiaryCustomerNameAddress])"
-                            cmd.ExecuteNonQuery()
-                            MsgBox("ok")
-                            SplashScreenManager.Default.SetWaitFormCaption("Insert Data to GMPS PAYMENTS OUT")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Insert Data to GMPS PAYMENTS OUT")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS OUT]([MTTYPE],[RegisterDate],[SenderReference],[OurReference],[Currency],[Amount],[ValueDate],[SenderBIC],[ReceivingBankBIC],[ReceivingBankCountryCode],[TransactionType],[OrderingCustomersAccountServicingInstitution],[OrderingCustomersAccNo],[OrderingCustomer],[IntermediaryInstitutionBIC],[IntermediaryInstitutionAccNo],[IntermediaryInstitutionName],[AccountPayeeBIC],[AccountOfInstitutionAccNo],[AccountPayeeNameAddress],[BeneficiaryBankBIC],[BeneficiaryBankAccNo],[BeneficiaryBankName],[BeneficiaryCustomerBIC],[BeneficiaryCustomerAccNo],[BeneficiaryCustomerNameAddress],[DetailsOfCharges],[SenderToReceiverInformation],[PayStartTime],[DebitTransactionsSigns],[ProcessingQueue],[Status],[ACK_State],[ProcessedBy])  SELECT [MTTYPE],cast(cast(cast([RegisterDate] as int) as varchar(8)) as datetime),[SenderReference],[OurReference],[Currency],[Amount],cast(cast(cast([ValueDate] as int) as varchar(8)) as datetime),[SenderBIC],[ReceivingBankBIC],[ReceivingBankCountryCode],[TransactionType],[OrderingCustomersAccountServicingInstitution],[OrderingCustomersAccNo],[OrderingCustomer],[IntermediaryInstitutionBIC],[IntermediaryInstitutionAccNo],[IntermediaryInstitutionName],[AccountPayeeBIC],[AccountOfInstitutionAccNo],[AccountPayeeNameAddress],[BeneficiaryBankBIC],[BeneficiaryBankAccNo],[BeneficiaryBankName],[BeneficiaryCustomerBIC],[BeneficiaryCustomerAccNo],[BeneficiaryCustomerNameAddress],[DetailsOfCharges],[SenderToReceiverInformation],[PayStartTime],[DebitTransactionsSigns],[ProcessingQueue],[Status],[ACK_State],[ProcessedBy] from [GMPS PAYMENTS OUT Temp] "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Drop Table GMPS PAYMENTS OUT Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Drop Table GMPS PAYMENTS OUT Temp")
-                            cmd.CommandText = "DROP TABLE [GMPS PAYMENTS OUT Temp]"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete Duplicates in GMPS PAYMENTS OUT based on OurReference")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete Duplicates in GMPS PAYMENTS OUT based on OurReference")
-                            cmd.CommandText = "DELETE  FROM [GMPS PAYMENTS OUT] where [ID] not in (Select Min([ID]) from [GMPS PAYMENTS OUT] group by [OurReference])"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set Exchange rates in GMPS PAYMENTS OUT")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set Exchange rates in GMPS PAYMENTS OUT")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT] SET [ExchangeRate]= 1 WHERE [Currency]='EUR' and [ExchangeRate]=0 "
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS OUT] A INNER JOIN [EXCHANGE RATES OCBS] B ON A.[ValueDate]=B.[EXCHANGE RATE DATE] WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Get Max Exchange Rate if Value Date not working Date")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Get Max Exchange Rate if Value Date not working Date")
-                            cmd.CommandText = "SELECT MAX([EXCHANGE RATE DATE]) FROM [EXCHANGE RATES OCBS]"
-                            Dim MaxExchangeRateDatePaymentsOut As Date = FormatDateTime(cmd.ExecuteScalar, DateFormat.ShortDate)
-                            Dim MaxExchangeRateDatePaymentsOutSql = MaxExchangeRateDatePaymentsOut.ToString("yyyyMMdd")
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS OUT] A INNER JOIN [EXCHANGE RATES OCBS] B ON B.[EXCHANGE RATE DATE]='" & MaxExchangeRateDatePaymentsOutSql & "' WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Calculate Payment Amount in EUR in GMPS PAYMENTS OUT")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Calculate Payment Amount in EUR in GMPS PAYMENTS OUT")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT] SET [AmountEuro]= [Amount]/[ExchangeRate] where [AmountEuro]=0 and [ExchangeRate]<>0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Bank Names in GMPS PAYMENTS OUT")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Bank Names in GMPS PAYMENTS OUT")
-                            'BICS
-                            cmd.CommandText = "SELECT [SenderBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[SenderName]=B.[INSTITUTION NAME],A.[SenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[SenderBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[SenderBIC])=11 and A.[SenderName] is NULL end BEGIN UPDATE A SET A.[SenderName]=B.[INSTITUTION NAME],A.[SenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[SenderBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[SenderBIC])=8 and A.[SenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [ReceivingBankBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[ReceivingBankName]=B.[INSTITUTION NAME],A.[ReceivingBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceivingBankBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceivingBankBIC])=11 and A.[ReceivingBankName] is NULL end BEGIN UPDATE A SET A.[ReceivingBankName]=B.[INSTITUTION NAME],A.[ReceivingBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceivingBankBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceivingBankBIC])=8 and A.[ReceivingBankName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [IntermediaryInstitutionBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[IntermediaryInstitutionName]=B.[INSTITUTION NAME],A.[IntermediaryInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[IntermediaryInstitutionBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[IntermediaryInstitutionBIC])=11 and A.[IntermediaryInstitutionName] is NULL end BEGIN UPDATE A SET A.[IntermediaryInstitutionName]=B.[INSTITUTION NAME],A.[IntermediaryInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[IntermediaryInstitutionBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[IntermediaryInstitutionBIC])=8 and A.[IntermediaryInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [AccountPayeeBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[AccountPayeeNameAddress]=B.[INSTITUTION NAME],A.[AccountPayeeCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[AccountPayeeBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountPayeeBIC])=11 and A.[AccountPayeeNameAddress] is NULL end BEGIN UPDATE A SET A.[AccountPayeeNameAddress]=B.[INSTITUTION NAME],A.[AccountPayeeCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[AccountPayeeBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountPayeeBIC])=8 and A.[AccountPayeeNameAddress] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [BeneficiaryBankBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBankBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBankBIC])=11 and A.[BeneficiaryBankName] is NULL end BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBankBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBankBIC])=8 and A.[BeneficiaryBankName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Aktualieseieren Sender BIC (u.a. wenn nicht gefunden wurde) von Feld AccountPayeeBIC
-                            cmd.CommandText = "UPDATE  [GMPS PAYMENTS OUT] SET [SenderBIC]=[AccountPayeeBIC]  where [SenderName] is NULL"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [SenderBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[SenderName]=B.[INSTITUTION NAME],A.[SenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[SenderBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[SenderBIC])=11 and A.[SenderName] is NULL end BEGIN UPDATE A SET A.[SenderName]=B.[INSTITUTION NAME],A.[SenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[SenderBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[SenderBIC])=8 and A.[SenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("SET Payment Year for each Payment Order")
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "SET Payment Year for each Payment Order")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT] SET [PaymentYear]=DATEPART(yyyy,[RegisterDate]) where [PaymentYear] is NULL"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
-                            File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT OUTGOING finished")
-                            Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT OUTGOING finished")
-                            'Save the last imported Payment File
-                            Me.MANUAL_IMPORTSBindingSource.EndEdit()
-                            Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                        Else
-                            SplashScreenManager.CloseForm(False)
-                            Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to Import GMPS PAYMENT FILE! Fileformat is wrong!")
-                            MessageBox.Show("Unable to Import GMPS PAYMENT FILE! Fileformat is wrong!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                            Exit Sub
-                        End If
-                    Else
-                        SplashScreenManager.CloseForm(False)
-                        Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to Import GMPS PAYMENT FILE! File does not exist!")
-                        MessageBox.Show("Unable to Import GMPS PAYMENT FILE! File does not exist!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        Exit Sub
-
-                    End If
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
-
-                Next
-
-            End If
-            'INTERCHANGE DATA BETWEEN GMPS PAYMENTS + ODAS REMMITANCES + ANTIMONEYLAUNDERING
-            Me.BgwGMPSPayDirectory.ReportProgress(35, "Start Interchange Data between GMPS and ODAS Datatables")
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            cmd.Connection.Open()
-            Me.BgwGMPSPayDirectory.ReportProgress(40, "Update ACWITHINSTID,ACWITHINSTNA in ANTIMONEY_LAUND_PAYMENTS_AMOUNTS")
-            cmd.CommandText = "UPDATE A SET A.[ACWITHINSTID]=B.[AccountPayeeBIC],A.[ACWITHINSTNA]=B.[AccountPayeeNameAddress] from [ANTIMONEY_LAUND_PAYMENTS_AMOUNTS] A  INNER JOIN [GMPS PAYMENTS OUT] B ON A.[EM00KEY0]=B.[OurReference] where A.[ACWITHINSTNA]='null'"
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(45, "Update ACWITHINSTID,ACWITHINSTNA in ANTIMONEY_LAUND_PAYMENTS_ITEMS")
-            cmd.CommandText = "UPDATE A SET A.[ACWITHINSTID]=B.[AccountPayeeBIC],A.[ACWITHINSTNA]=B.[AccountPayeeNameAddress] from [ANTIMONEY_LAUND_PAYMENTS_ITEMS] A  INNER JOIN [GMPS PAYMENTS OUT] B ON A.[EM00KEY0]=B.[OurReference] where A.[ACWITHINSTNA]='null'"
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(45, "Update ACWITHINSTID,ACWITHINSTNA in ODAS REMMITANCES")
-            cmd.CommandText = "UPDATE A SET A.[ACWITHINSTID]=B.[AccountPayeeBIC],A.[ACWITHINSTNA]=B.[AccountPayeeNameAddress] from [ODAS REMMITANCES] A  INNER JOIN [GMPS PAYMENTS OUT] B ON A.[EM00KEY0]=B.[OurReference] where A.[ACWITHINSTNA]='null'"
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(50, "Update OrderingCustomersAccNo and Beneficiaries Account in GMPS PAYMENTS OUT")
-            cmd.CommandText = "UPDATE A SET A.[OrderingCustomersAccNo]=RTRIM(LTRIM(B.[Client Account])),A.[BeneficiaryCustomerAccNo]=RTRIM(LTRIM(B.[BENEFACNO])) from [GMPS PAYMENTS OUT] A  INNER JOIN [ODAS REMMITANCES] B ON A.[OurReference]=B.[EM00KEY0] where A.[OrderingCustomersAccNo] is NULL"
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(50, "Update Senders Reference in GMPS PAYMENTS OUT")
-            cmd.CommandText = "UPDATE A SET A.[SenderReference]=RTRIM(LTRIM(SUBSTRING(B.[EM00KEY1],3,20))) from [GMPS PAYMENTS OUT] A  INNER JOIN [ODAS REMMITANCES] B ON A.[OurReference]=B.[EM00KEY0] where B.[EM00KEY1] like '//%' "
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(35, "Interchange Data between GMPS and ODAS Datatables finished")
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-        Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Me.BgwGMPSPayDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-            Exit Sub
-        End Try
-    End Sub
-
-    Private Sub IMPORT_GMPS_PAYMENTS_OLD_SCRIPT()
-        Try
-            If dir.Count > 0 Then
-                For i = 0 To dir.Count - 1
-                    GMPS_PAY_FILE = dir.Item(i).ToString
-
-                    If File.Exists(GMPS_PAY_FILE) = True Then
-                        SplashScreenManager.Default.SetWaitFormCaption("Start Import with File: " & GMPS_PAY_FILE)
-                        Me.BgwGMPSPayDirectory.ReportProgress(40, "Start Import with File: " & GMPS_PAY_FILE)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        EXCELL = CreateObject("Excel.Application")
-                        xlWorkBook = EXCELL.Workbooks.Open(GMPS_PAY_FILE)
-                        xlWorksheet1 = xlWorkBook.Worksheets(1)
-                        EXCELL.Visible = False
-
-                        'IMPORT INCOMING PAYMENTS-CUSTOMER or BANK TRANSFER
-                        If xlWorksheet1.Range("A1").Value = "Bank Transfer" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
-                            'Rows delete
-                            xlWorksheet1.Rows("1:2").delete()
-
-                            xlWorksheet1.Range("A1").Value = "IncomingDate"
-                            xlWorksheet1.Range("B1").Value = "ValueDate"
-                            xlWorksheet1.Range("C1").Value = "OurReference"
-                            xlWorksheet1.Range("D1").Value = "MessageSender"
-                            xlWorksheet1.Range("E1").Value = "ReferenceNo"
-                            xlWorksheet1.Range("F1").Value = "Currency"
-                            xlWorksheet1.Range("G1").Value = "Amount"
-                            xlWorksheet1.Range("H1").Value = "OriginalOrderingCustomer"
-                            xlWorksheet1.Range("I1").Value = "OriginalOrderingInstitution"
-                            xlWorksheet1.Range("J1").Value = "AccountOfInstitution"
-                            xlWorksheet1.Range("K1").Value = "BeneficiaryBank"
-                            xlWorksheet1.Range("L1").Value = "ReceiverBICofConstructMessage"
-                            xlWorksheet1.Range("M1").Value = "PAYMENT_CODE"
-                            xlWorksheet1.Range("N1").Value = "SenderToReceiverInformation"
-                            xlWorksheet1.Range("O1").Value = "ProcessedBy"
-
-
-
-                            EXCELL.DisplayAlerts = False
-                            xlWorkBook.SaveAs(GMPS_PAY_FILE, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal)
-                            EXCELL.DisplayAlerts = True
-                            xlWorkBook.Close()
-
-                            EXCELL.Quit()
-                            EXCELL = Nothing
-                            'Excel Instanz beenden
-                            Dim procs() As Process = Process.GetProcessesByName("EXCEL")
-                            Dim i1 As Short
-                            i1 = 0
-                            For i1 = 0 To (procs.Length - 1)
-                                procs(i1).Kill()
-                            Next i1
-
-
-                            SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='GMPS PAYMENTS IN Temp' AND xtype='U')  CREATE TABLE [GMPS PAYMENTS IN Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[IncomingDate] [nvarchar](255) NULL,[ValueDate] [nvarchar](255) NULL,[OurReference] [nvarchar](255) NULL,[MessageSender] [nvarchar](255) NULL,[ReferenceNo] [nvarchar](255) NULL,[Currency] [nvarchar](255) NULL,[Amount ] [float] NULL,[OriginalOrderingCustomer] [nvarchar](255) NULL,[OriginalOrderingInstitution] [nvarchar](255) NULL,[AccountOfInstitution] [nvarchar](255) NULL,[BeneficiaryBank] [nvarchar](255) NULL,[ReceiverBICofConstructMessage] [nvarchar](255) NULL,[PAYMENT_CODE] [nvarchar](255) NULL,[SenderToReceiverInformation] [nvarchar](255) NULL,[ProcessedBy] [nvarchar](255) NULL,[MTTYPE] [nvarchar](50) NULL) ELSE DELETE FROM [GMPS PAYMENTS IN Temp]"
-                            cmd.Connection.Open()
-                            cmd.ExecuteNonQuery()
-                            'Import data in temporary Table
-                            SplashScreenManager.Default.SetWaitFormCaption("Import Data in:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Import Data in:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS IN Temp]([IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryBank],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[SenderToReceiverInformation],[ProcessedBy])  SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & GMPS_PAY_FILE & ";','Select [IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryBank],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[SenderToReceiverInformation],[ProcessedBy] FROM [TestCreateExcel$]')"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set correct Data in Field OriginalOrderingCustomer")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set correct Data in Field OriginalOrderingCustomer")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [OriginalOrderingCustomer]=NULL where Len([OriginalOrderingCustomer])=0"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [AccountOfInstitution]=NULL where Len([AccountOfInstitution])=0"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [ReceiverBICofConstructMessage]=NULL where Len([ReceiverBICofConstructMessage])=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define MessagyType in Temporary Table")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define MessagyType in Temporary Table")
-                            cmd.CommandText = "Select [OriginalOrderingCustomer] from [GMPS PAYMENTS IN Temp] BEGIN UPDATE [GMPS PAYMENTS IN Temp] set [MTTYPE]='202' where [OriginalOrderingCustomer] is NULL end BEGIN UPDATE [GMPS PAYMENTS IN Temp] set [MTTYPE]='103' where [OriginalOrderingCustomer] is not NULL end"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Alter columns Incoming and Value date in Temporary Table")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Alter columns Incoming and Value date in Temporary Table")
-                            cmd.CommandText = "ALTER TABLE [GMPS PAYMENTS IN Temp] ALTER COLUMN [IncomingDate] datetime"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "ALTER TABLE [GMPS PAYMENTS IN Temp] ALTER COLUMN [ValueDate] datetime"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Insert Data to GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Insert Data to GMPS PAYMENTS IN")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS IN]([IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryBank],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[SenderToReceiverInformation],[ProcessedBy],[MTTYPE])  SELECT [IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryBank],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[SenderToReceiverInformation],[ProcessedBy],[MTTYPE] from [GMPS PAYMENTS IN Temp] "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Drop Table GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Drop Table GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "DROP TABLE [GMPS PAYMENTS IN Temp]"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete Duplicates in GMPS PAYMENTS IN based on OurReference")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete Duplicates in GMPS PAYMENTS IN based on OurReference")
-                            cmd.CommandText = "DELETE  FROM [GMPS PAYMENTS IN] where [ID] not in (Select Min([ID]) from [GMPS PAYMENTS IN] group by [OurReference])"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set Exchange rates in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set Exchange rates in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [ExchangeRate]= 1 WHERE [Currency]='EUR' and [ExchangeRate]=0 "
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS IN] A INNER JOIN [EXCHANGE RATES OCBS] B ON A.[ValueDate]=B.[EXCHANGE RATE DATE] WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Get Max Exchange Rate if Value Date not working Date")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Get Max Exchange Rate if Value Date not working Date")
-                            cmd.CommandText = "SELECT MAX([EXCHANGE RATE DATE]) FROM [EXCHANGE RATES OCBS]"
-                            Dim MaxExchangeRateDatePaymentsIn As Date = FormatDateTime(cmd.ExecuteScalar, DateFormat.ShortDate)
-                            Dim MaxExchangeRateDatePaymentsInSql = MaxExchangeRateDatePaymentsIn.ToString("yyyyMMdd")
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS IN] A INNER JOIN [EXCHANGE RATES OCBS] B ON B.[EXCHANGE RATE DATE]='" & MaxExchangeRateDatePaymentsInSql & "' WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Calculate Payment Amount in EUR in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Calculate Payment Amount in EUR in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [AmountEuro]= [Amount]/[ExchangeRate] where [AmountEuro]=0 and [ExchangeRate]<>0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Sender Country and Message Beneficiary Country in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Sender Country and Message Beneficiary Country in GMPS PAYMENTS IN")
-                            'Message Sender Country-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]=SUBSTRING([MessageSender],5,2) where Len([MessageSender])>0 and [MsgSenderCountry] is NULL and [MessageSender] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'MsgBenefCountry-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]=SUBSTRING([BeneficiaryBank],5,2) where Len([BeneficiaryBank])>0 and [MsgBenefCountry] is NULL and [BeneficiaryBank] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'DEFINE MESSAGE SENDER COUNTRY IF SENDER IS BLZ
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Sender Country if Sender is BLZ")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Sender Country if Sender is BLZ")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]='DE' where [MessageSender] like '[0-9]%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Bank Names in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Bank Names in GMPS PAYMENTS IN")
-                            'BLZ
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=UPPER(B.[Bezeichnung]),A.[MessageSenderCity]=UPPER(B.[Ort]) from [GMPS PAYMENTS IN] A INNER JOIN [BLZ] B ON A.[MessageSender]=B.[Bankleitzahl] where [MessageSender] like '[0-9]%' and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'BICS
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=11 and A.[MessageSenderName] is NULL end BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=8 and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [AccountOfInstitution] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[AccountOfInstitutionName]=B.[INSTITUTION NAME],A.[AccountOfInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[AccountOfInstitution]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountOfInstitution])=11 and A.[AccountOfInstitutionName] is NULL end BEGIN UPDATE A SET A.[AccountOfInstitutionName]=B.[INSTITUTION NAME],A.[AccountOfInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountOfInstitution])=8 and A.[AccountOfInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [OriginalOrderingInstitution] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[OriginalOrderingInstitutionName]=B.[INSTITUTION NAME],A.[OriginalOrderingInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[OriginalOrderingInstitution]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[OriginalOrderingInstitution])=11 and A.[OriginalOrderingInstitutionName] is NULL end BEGIN UPDATE A SET A.[OriginalOrderingInstitutionName]=B.[INSTITUTION NAME],A.[OriginalOrderingInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[OriginalOrderingInstitution]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[OriginalOrderingInstitution])=8 and A.[OriginalOrderingInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [ReceiverBICofConstructMessage] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[ReceiverBICofConstructMessageName]=B.[INSTITUTION NAME],A.[ReceiverBICofConstructMessageCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceiverBICofConstructMessage]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceiverBICofConstructMessage])=11 and A.[ReceiverBICofConstructMessageName] is NULL end BEGIN UPDATE A SET A.[ReceiverBICofConstructMessageName]=B.[INSTITUTION NAME],A.[ReceiverBICofConstructMessageCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceiverBICofConstructMessage]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceiverBICofConstructMessage])=8 and A.[ReceiverBICofConstructMessageName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [BeneficiaryBank] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBank]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBank])=11 and A.[BeneficiaryBankName] is NULL end BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBank]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBank])=8 and A.[BeneficiaryBankName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Aktualisieren MessageSender u.a. (wenn BIC nicht gefunden wurde) aus Feld Original Ordering Institution
-                            cmd.CommandText = "UPDATE   [GMPS PAYMENTS IN] SET [MessageSender]=[OriginalOrderingInstitution] where [MessageSenderName] is NULL"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=11 and A.[MessageSenderName] is NULL end BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=8 and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Message Sender Country-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]=SUBSTRING([MessageSender],5,2) where Len([MessageSender])>0 and [MsgSenderCountry] is NULL and [MessageSender] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'MsgBenefCountry-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]=SUBSTRING([BeneficiaryBank],5,2) where Len([BeneficiaryBank])>0 and [MsgBenefCountry] is NULL and [BeneficiaryBank] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define all Message Types in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define all Message Types in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-DD-SC' where [MTTYPE]='103' and [BeneficiaryCustomer] like 'SCHECK%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-DD-SEPA' where [MTTYPE]='103' and [ReferenceNo] like '%SEPAD%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-CT-SEPA' where [MTTYPE]='103' and [ReferenceNo] like '%SEPAC%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-EMZ' where [MTTYPE]='103' and [ReferenceNo] like '%DTA%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("SET Payment Year for each Payment Order")
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "SET Payment Year for each Payment Order")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [PaymentYear]=DATEPART(yyyy,[IncomingDate]) where [PaymentYear] is NULL"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
-                            File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT INCOMING finished")
-                            Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT INCOMING finished")
-                            'Save the last imported Payment File
-                            Me.MANUAL_IMPORTSBindingSource.EndEdit()
-                            Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-
-                        ElseIf xlWorksheet1.Range("A1").Value = "Customer Transfer" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define GMPS PAYMENT INCOMING as :" & xlWorksheet1.Range("A1").Value)
-                            'Rows delete
-                            xlWorksheet1.Rows("1:2").delete()
-
-                            xlWorksheet1.Range("A1").Value = "IncomingDate"
-                            xlWorksheet1.Range("B1").Value = "ValueDate"
-                            xlWorksheet1.Range("C1").Value = "OurReference"
-                            xlWorksheet1.Range("D1").Value = "MessageSender"
-                            xlWorksheet1.Range("E1").Value = "ReferenceNo"
-                            xlWorksheet1.Range("F1").Value = "Currency"
-                            xlWorksheet1.Range("G1").Value = "Amount"
-                            xlWorksheet1.Range("H1").Value = "OriginalOrderingCustomer"
-                            xlWorksheet1.Range("I1").Value = "OriginalOrderingInstitution"
-                            xlWorksheet1.Range("J1").Value = "AccountOfInstitution"
-                            xlWorksheet1.Range("K1").Value = "BeneficiaryCustomer" '
-                            xlWorksheet1.Range("L1").Value = "DetailsOfCharges" '
-                            xlWorksheet1.Range("M1").Value = "Commission"
-                            xlWorksheet1.Range("N1").Value = "ReceiverBICofConstructMessage" '
-                            xlWorksheet1.Range("O1").Value = "PAYMENT_CODE" '
-                            xlWorksheet1.Range("P1").Value = "ProcessedBy"
-
-
-                            EXCELL.DisplayAlerts = False
-                            xlWorkBook.SaveAs(GMPS_PAY_FILE, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal)
-                            EXCELL.DisplayAlerts = True
-                            xlWorkBook.Close()
-
-                            EXCELL.Quit()
-                            EXCELL = Nothing
-                            'Excel Instanz beenden
-                            Dim procs() As Process = Process.GetProcessesByName("EXCEL")
-                            Dim i1 As Short
-                            i1 = 0
-                            For i1 = 0 To (procs.Length - 1)
-                                procs(i1).Kill()
-                            Next i1
-
-
-                            SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='GMPS PAYMENTS IN Temp' AND xtype='U')  CREATE TABLE [GMPS PAYMENTS IN Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[IncomingDate] [nvarchar](255) NULL,[ValueDate] [nvarchar](255) NULL,[OurReference] [nvarchar](255) NULL,[MessageSender] [nvarchar](255) NULL,[ReferenceNo] [nvarchar](255) NULL,[Currency] [nvarchar](255) NULL,[Amount ] [float] NULL,[OriginalOrderingCustomer] [nvarchar](255) NULL,[OriginalOrderingInstitution] [nvarchar](255) NULL,[AccountOfInstitution] [nvarchar](255) NULL,[BeneficiaryCustomer] [nvarchar](255) NULL,[DetailsOfCharges] [nvarchar](3) NULL,[Commission] [float] NULL,[ReceiverBICofConstructMessage] [nvarchar](255) NULL,[PAYMENT_CODE] [nvarchar](255) NULL,[ProcessedBy] [nvarchar](255) NULL,[MTTYPE] [nvarchar](50) NULL) ELSE DELETE FROM [GMPS PAYMENTS IN Temp]"
-                            cmd.Connection.Open()
-                            cmd.ExecuteNonQuery()
-                            'Import data in temporary Table
-                            SplashScreenManager.Default.SetWaitFormCaption("Import Data in:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Import Data in:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS IN Temp]([IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryCustomer],[DetailsOfCharges],[Commission],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[ProcessedBy])  SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & GMPS_PAY_FILE & ";','Select [IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryCustomer],[DetailsOfCharges],[Commission],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[ProcessedBy] FROM [TestCreateExcel$]')"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set correct Data in Field OriginalOrderingCustomer")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set correct Data in Field OriginalOrderingCustomer")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [OriginalOrderingCustomer]=NULL where Len([OriginalOrderingCustomer])=0"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [AccountOfInstitution]=NULL where Len([AccountOfInstitution])=0"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN Temp] set [ReceiverBICofConstructMessage]=NULL where Len([ReceiverBICofConstructMessage])=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define MessagyType in Temporary Table")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define MessagyType in Temporary Table")
-                            cmd.CommandText = "Select [OriginalOrderingCustomer] from [GMPS PAYMENTS IN Temp] BEGIN UPDATE [GMPS PAYMENTS IN Temp] set [MTTYPE]='202' where [OriginalOrderingCustomer] is NULL end BEGIN UPDATE [GMPS PAYMENTS IN Temp] set [MTTYPE]='103' where [OriginalOrderingCustomer] is not NULL end"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Alter columns Incoming and Value date in Temporary Table")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Alter columns Incoming and Value date in Temporary Table")
-                            cmd.CommandText = "ALTER TABLE [GMPS PAYMENTS IN Temp] ALTER COLUMN [IncomingDate] datetime"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "ALTER TABLE [GMPS PAYMENTS IN Temp] ALTER COLUMN [ValueDate] datetime"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Insert Data to GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Insert Data to GMPS PAYMENTS IN")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS IN]([IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryCustomer],[DetailsOfCharges],[Commission],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[ProcessedBy],[MTTYPE])  SELECT [IncomingDate],[ValueDate],[OurReference],[MessageSender],[ReferenceNo],[Currency],[Amount ],[OriginalOrderingCustomer],[OriginalOrderingInstitution],[AccountOfInstitution],[BeneficiaryCustomer],[DetailsOfCharges],[Commission],[ReceiverBICofConstructMessage],[PAYMENT_CODE],[ProcessedBy],[MTTYPE] from [GMPS PAYMENTS IN Temp] "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Drop Table GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Drop Table GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "DROP TABLE [GMPS PAYMENTS IN Temp]"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete Duplicates in GMPS PAYMENTS IN based on OurReference")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete Duplicates in GMPS PAYMENTS IN based on OurReference")
-                            cmd.CommandText = "DELETE  FROM [GMPS PAYMENTS IN] where [ID] not in (Select Min([ID]) from [GMPS PAYMENTS IN] group by [OurReference])"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set Exchange rates in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set Exchange rates in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [ExchangeRate]= 1 WHERE [Currency]='EUR' and [ExchangeRate]=0 "
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS IN] A INNER JOIN [EXCHANGE RATES OCBS] B ON A.[ValueDate]=B.[EXCHANGE RATE DATE] WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Get Max Exchange Rate if Value Date not working Date")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Get Max Exchange Rate if Value Date not working Date")
-                            cmd.CommandText = "SELECT MAX([EXCHANGE RATE DATE]) FROM [EXCHANGE RATES OCBS]"
-                            Dim MaxExchangeRateDatePaymentsIn As Date = FormatDateTime(cmd.ExecuteScalar, DateFormat.ShortDate)
-                            Dim MaxExchangeRateDatePaymentsInSql = MaxExchangeRateDatePaymentsIn.ToString("yyyyMMdd")
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS IN] A INNER JOIN [EXCHANGE RATES OCBS] B ON B.[EXCHANGE RATE DATE]='" & MaxExchangeRateDatePaymentsInSql & "' WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Calculate Payment Amount in EUR in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Calculate Payment Amount in EUR in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [AmountEuro]= [Amount]/[ExchangeRate] where [AmountEuro]=0 and [ExchangeRate]<>0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Sender Country and Message Beneficiary Country in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Sender Country and Message Beneficiary Country in GMPS PAYMENTS IN")
-                            'Message Sender Country-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]=SUBSTRING([MessageSender],5,2) where Len([MessageSender])>0 and [MsgSenderCountry] is NULL and [MessageSender] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'MsgBenefCountry-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]=SUBSTRING([ReceiverBICofConstructMessage],5,2) where Len([ReceiverBICofConstructMessage])>0 and [MsgBenefCountry] is NULL and [ReceiverBICofConstructMessage] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'DEFINE MESSAGE SENDER COUNTRY IF SENDER IS BLZ
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Sender Country if Sender is BLZ")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Sender Country if Sender is BLZ")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]='DE' where [MessageSender] like '[0-9]%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Bank Names in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Bank Names in GMPS PAYMENTS IN")
-                            'BLZ
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=UPPER(B.[Bezeichnung]),A.[MessageSenderCity]=UPPER(B.[Ort]) from [GMPS PAYMENTS IN] A INNER JOIN [BLZ] B ON A.[MessageSender]=B.[Bankleitzahl] where [MessageSender] like '[0-9]%' and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'BICS
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=11 and A.[MessageSenderName] is NULL end BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=8 and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [AccountOfInstitution] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[AccountOfInstitutionName]=B.[INSTITUTION NAME],A.[AccountOfInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[AccountOfInstitution]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountOfInstitution])=11 and A.[AccountOfInstitutionName] is NULL end BEGIN UPDATE A SET A.[AccountOfInstitutionName]=B.[INSTITUTION NAME],A.[AccountOfInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountOfInstitution])=8 and A.[AccountOfInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [OriginalOrderingInstitution] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[OriginalOrderingInstitutionName]=B.[INSTITUTION NAME],A.[OriginalOrderingInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[OriginalOrderingInstitution]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[OriginalOrderingInstitution])=11 and A.[OriginalOrderingInstitutionName] is NULL end BEGIN UPDATE A SET A.[OriginalOrderingInstitutionName]=B.[INSTITUTION NAME],A.[OriginalOrderingInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[OriginalOrderingInstitution]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[OriginalOrderingInstitution])=8 and A.[OriginalOrderingInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [ReceiverBICofConstructMessage] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[ReceiverBICofConstructMessageName]=B.[INSTITUTION NAME],A.[ReceiverBICofConstructMessageCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceiverBICofConstructMessage]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceiverBICofConstructMessage])=11 and A.[ReceiverBICofConstructMessageName] is NULL end BEGIN UPDATE A SET A.[ReceiverBICofConstructMessageName]=B.[INSTITUTION NAME],A.[ReceiverBICofConstructMessageCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceiverBICofConstructMessage]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceiverBICofConstructMessage])=8 and A.[ReceiverBICofConstructMessageName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [BeneficiaryBank] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBank]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBank])=11 and A.[BeneficiaryBankName] is NULL end BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBank]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBank])=8 and A.[BeneficiaryBankName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Aktualisieren MessageSender u.a. (wenn BIC nicht gefunden wurde) aus Feld Original Ordering Institution
-                            cmd.CommandText = "UPDATE   [GMPS PAYMENTS IN] SET [MessageSender]=[OriginalOrderingInstitution] where [MessageSenderName] is NULL"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [MessageSender] from [GMPS PAYMENTS IN] BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=11 and A.[MessageSenderName] is NULL end BEGIN UPDATE A SET A.[MessageSenderName]=B.[INSTITUTION NAME],A.[MessageSenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS IN] A INNER JOIN [BIC DIRECTORY] B ON A.[MessageSender]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[MessageSender])=8 and A.[MessageSenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Message Sender Country-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgSenderCountry]=SUBSTRING([MessageSender],5,2) where Len([MessageSender])>0 and [MsgSenderCountry] is NULL and [MessageSender] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            'MsgBenefCountry-BIC11
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]=SUBSTRING([ReceiverBICofConstructMessage],5,2) where Len([ReceiverBICofConstructMessage])>0 and [MsgBenefCountry] is NULL and [ReceiverBICofConstructMessage] like '[A-Z]%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MsgBenefCountry]='DE' where [MsgBenefCountry] is NULL"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define all Message Types in GMPS PAYMENTS IN")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define all Message Types in GMPS PAYMENTS IN")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-DD-SC' where [MTTYPE]='103' and [BeneficiaryCustomer] like 'SCHECK%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-DD-SEPA' where [MTTYPE]='103' and [ReferenceNo] like '%SEPAD%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-CT-SEPA' where [MTTYPE]='103' and [ReferenceNo] like '%SEPAC%'"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [MTTYPE]= '103-EMZ' where [MTTYPE]='103' and [ReferenceNo] like '%DTA%'"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("SET Payment Year for each Payment Order")
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "SET Payment Year for each Payment Order")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [PaymentYear]=DATEPART(yyyy,[IncomingDate]) where [PaymentYear] is NULL"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
-                            File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT INCOMING finished")
-                            Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT INCOMING finished")
-                            'Save the last imported Payment File
-                            Me.MANUAL_IMPORTSBindingSource.EndEdit()
-                            Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-
-                        ElseIf xlWorksheet1.Range("A1").Value.ToString.StartsWith("Outward Remittance Report") = True Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Define GMPS PAYMENT OUTGOING as :" & xlWorksheet1.Range("A1").Value)
-                            'Rows delete
-                            xlWorksheet1.Rows("1:1").delete()
-
-                            xlWorksheet1.Range("A1").Value = "MTTYPE"
-                            xlWorksheet1.Range("B1").Value = "RegisterDate"
-                            xlWorksheet1.Range("C1").Value = "SenderReference"
-                            xlWorksheet1.Range("D1").Value = "OurReference"
-
-                            xlWorksheet1.Range("G1").Value = "ValueDate"
-                            xlWorksheet1.Range("H1").Value = "SenderBIC"
-                            xlWorksheet1.Range("I1").Value = "ReceivingBankBIC"
-                            xlWorksheet1.Range("J1").Value = "ReceivingBankCountryCode"
-                            xlWorksheet1.Range("K1").Value = "TransactionType"
-                            xlWorksheet1.Range("L1").Value = "OrderingCustomersAccountServicingInstitution"
-                            xlWorksheet1.Range("M1").Value = "OrderingCustomersAccNo"
-                            xlWorksheet1.Range("N1").Value = "OrderingCustomer"
-                            xlWorksheet1.Range("O1").Value = "IntermediaryInstitutionBIC"
-                            xlWorksheet1.Range("P1").Value = "IntermediaryInstitutionAccNo"
-                            xlWorksheet1.Range("Q1").Value = "IntermediaryInstitutionName"
-                            xlWorksheet1.Range("R1").Value = "AccountPayeeBIC"
-                            xlWorksheet1.Range("S1").Value = "AccountOfInstitutionAccNo"
-                            xlWorksheet1.Range("T1").Value = "AccountPayeeNameAddress"
-                            xlWorksheet1.Range("U1").Value = "BeneficiaryBankBIC"
-                            xlWorksheet1.Range("V1").Value = "BeneficiaryBankAccNo"
-                            xlWorksheet1.Range("W1").Value = "BeneficiaryBankName"
-                            xlWorksheet1.Range("X1").Value = "BeneficiaryCustomerBIC"
-                            xlWorksheet1.Range("Y1").Value = "BeneficiaryCustomerAccNo"
-                            xlWorksheet1.Range("Z1").Value = "BeneficiaryCustomerNameAddress"
-                            xlWorksheet1.Range("AA1").Value = "DetailsOfCharges"
-                            xlWorksheet1.Range("AB1").Value = "SenderToReceiverInformation"
-                            xlWorksheet1.Range("AC1").Value = "PayStartTime"
-                            xlWorksheet1.Range("AD1").Value = "DebitTransactionsSigns"
-                            xlWorksheet1.Range("AE1").Value = "ProcessingQueue"
-
-                            xlWorksheet1.Range("AG1").Value = "ACK_State"
-                            xlWorksheet1.Range("AH1").Value = "ProcessedBy"
-
-                            xlWorksheet1.Name = "OUTGOING_PAYMENTS"
-
-                            'Text Align RIGHT for all columns
-                            'xlWorksheet1.Range("A1:AH1").Style.HorizontalAlignment = Alignment.RightAlign
-
-                            'Start formating
-                            xlWorksheet1.Columns("F:F").numberformat = "@"
-
-
-
-                            For y = 2 To 15000
-                                If Len(xlWorksheet1.Cells(y, 6).value) > 0 Then
-                                    SplashScreenManager.Default.SetWaitFormCaption("Reformate Row :" & y.ToString)
-                                    xlWorksheet1.Cells(y, 1).value = Mid(xlWorksheet1.Cells(y, 1).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 2).value = Mid(xlWorksheet1.Cells(y, 2).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 3).value = Mid(xlWorksheet1.Cells(y, 3).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 4).value = Mid(xlWorksheet1.Cells(y, 4).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 5).value = Mid(xlWorksheet1.Cells(y, 5).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 6).value = Mid(xlWorksheet1.Cells(y, 6).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 7).value = Mid(xlWorksheet1.Cells(y, 7).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 8).value = Mid(xlWorksheet1.Cells(y, 8).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 9).value = Mid(xlWorksheet1.Cells(y, 9).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 10).value = Mid(xlWorksheet1.Cells(y, 10).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 11).value = Mid(xlWorksheet1.Cells(y, 11).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 12).value = Mid(xlWorksheet1.Cells(y, 12).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 13).value = Mid(xlWorksheet1.Cells(y, 13).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 14).value = Mid(xlWorksheet1.Cells(y, 14).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 15).value = Mid(xlWorksheet1.Cells(y, 15).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 16).value = Mid(xlWorksheet1.Cells(y, 16).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 17).value = Mid(xlWorksheet1.Cells(y, 17).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 18).value = Mid(xlWorksheet1.Cells(y, 18).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 19).value = Mid(xlWorksheet1.Cells(y, 19).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 20).value = Mid(xlWorksheet1.Cells(y, 20).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 21).value = Mid(xlWorksheet1.Cells(y, 21).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 22).value = Mid(xlWorksheet1.Cells(y, 22).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 23).value = Mid(xlWorksheet1.Cells(y, 23).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 24).value = Mid(xlWorksheet1.Cells(y, 24).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 25).value = Mid(xlWorksheet1.Cells(y, 25).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 26).value = Mid(xlWorksheet1.Cells(y, 26).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 27).value = Mid(xlWorksheet1.Cells(y, 27).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 28).value = Mid(xlWorksheet1.Cells(y, 28).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 29).value = Mid(xlWorksheet1.Cells(y, 29).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 30).value = Mid(xlWorksheet1.Cells(y, 30).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 31).value = Mid(xlWorksheet1.Cells(y, 31).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 32).value = Mid(xlWorksheet1.Cells(y, 32).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 33).value = Mid(xlWorksheet1.Cells(y, 33).value, 3, 200)
-                                    xlWorksheet1.Cells(y, 34).value = Mid(xlWorksheet1.Cells(y, 34).value, 3, 200)
-
-                                    Dim na As String = ""
-                                    Dim nm As Double = 0
-
-                                    na = Replace(xlWorksheet1.Cells(y, 6).value, ".", ",")
-                                    nm = na * 1
-                                    xlWorksheet1.Cells(y, 6).value = nm
-                                End If
-                            Next y
-
-                            'Register Date, value Date
-                            For x = 2 To 15000
-                                If Len(Trim(xlWorksheet1.Cells(x, 2).value)) = 8 Then 'Wenn Type nicht leer ist!
-                                    SplashScreenManager.Default.SetWaitFormCaption("Reformate Register Date and Value Date for row :" & x.ToString)
-                                    Dim id As Date = DateSerial(Microsoft.VisualBasic.Left(xlWorksheet1.Cells(x, 2).value, 4), Mid(xlWorksheet1.Cells(x, 2).value, 5, 2), Microsoft.VisualBasic.Right(xlWorksheet1.Cells(x, 2).value, 2))
-                                    Dim vd As Date = DateSerial(Microsoft.VisualBasic.Left(xlWorksheet1.Cells(x, 7).value, 4), Mid(xlWorksheet1.Cells(x, 7).value, 5, 2), Microsoft.VisualBasic.Right(xlWorksheet1.Cells(x, 7).value, 2))
-
-                                    xlWorksheet1.Cells(x, 2).Value = id
-                                    xlWorksheet1.Cells(x, 7).Value = vd
-
-                                End If
-                            Next x
-
-                            'Final reformations
-                            xlWorksheet1.Columns("A:A").numberformat = "@"
-                            xlWorksheet1.Columns("B:B").numberformat = "yyyyMMdd"
-                            xlWorksheet1.Columns("G:G").numberformat = "yyyyMMdd"
-                            xlWorksheet1.Columns("F:F").numberformat = "#,##0.00"
-                            xlWorksheet1.Columns("AC:AC").numberformat = "#,##0.00"
-
-                            EXCELL.DisplayAlerts = False
-                            xlWorkBook.SaveAs(GMPS_PAY_FILE, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal)
-                            EXCELL.DisplayAlerts = True
-                            xlWorkBook.Close()
-
-                            EXCELL.Quit()
-                            EXCELL = Nothing
-                            'Excel Instanz beenden
-                            Dim procs() As Process = Process.GetProcessesByName("EXCEL")
-                            Dim i1 As Short
-                            i1 = 0
-                            For i1 = 0 To (procs.Length - 1)
-                                procs(i1).Kill()
-                            Next i1
-
-
-
-                            SplashScreenManager.Default.SetWaitFormCaption("Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Create Temporary Table:GMPS PAYMENTS IN Temp")
-                            cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='GMPS PAYMENTS OUT Temp' AND xtype='U')  CREATE TABLE [GMPS PAYMENTS OUT Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[MTTYPE] [nvarchar](255) NULL,[RegisterDate] Datetime NULL,[SenderReference] [nvarchar](255) NULL,[OurReference] [nvarchar](255) NULL,[Currency] [nvarchar](255) NULL,[Amount] float NULL,[ValueDate] Datetime NULL,[SenderBIC] [nvarchar](255) NULL,[ReceivingBankBIC] [nvarchar](255) NULL,[ReceivingBankCountryCode] [nvarchar](255) NULL,[TransactionType] [nvarchar](255) NULL,[OrderingCustomersAccountServicingInstitution] [nvarchar](255) NULL,[OrderingCustomersAccNo] [nvarchar](255) NULL,[OrderingCustomer] [nvarchar](255) NULL,[IntermediaryInstitutionBIC] [nvarchar](255) NULL,[IntermediaryInstitutionAccNo] [nvarchar](255) NULL,[IntermediaryInstitutionName] [nvarchar](255) NULL,[AccountPayeeBIC] [nvarchar](255) NULL,[AccountOfInstitutionAccNo] [nvarchar](255) NULL,[AccountPayeeNameAddress] [nvarchar](255) NULL,[BeneficiaryBankBIC] [nvarchar](255) NULL,[BeneficiaryBankAccNo] [nvarchar](255) NULL,[BeneficiaryBankName] [nvarchar](255) NULL,[BeneficiaryCustomerBIC] [nvarchar](255) NULL,[BeneficiaryCustomerAccNo] [nvarchar](255) NULL,[BeneficiaryCustomerNameAddress] [nvarchar](255) NULL,[DetailsOfCharges] [nvarchar](255) NULL,[SenderToReceiverInformation] [nvarchar](255) NULL,[PayStartTime] float NULL,[DebitTransactionsSigns] [nvarchar](255) NULL,[ProcessingQueue] [nvarchar](255) NULL,[Status] [nvarchar](255) NULL,[ACK_State] [nvarchar](255) NULL,[ProcessedBy] [nvarchar](255) NULL)ELSE DELETE FROM [GMPS PAYMENTS OUT Temp]"
-                            cmd.Connection.Open()
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Import Data in:GMPS PAYMENTS OUT Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Import Data in:GMPS PAYMENTS OUT Temp")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS OUT Temp]([MTTYPE],[RegisterDate],[SenderReference],[OurReference],[Currency],[Amount],[ValueDate],[SenderBIC],[ReceivingBankBIC],[ReceivingBankCountryCode],[TransactionType],[OrderingCustomersAccountServicingInstitution],[OrderingCustomersAccNo],[OrderingCustomer],[IntermediaryInstitutionBIC],[IntermediaryInstitutionAccNo],[IntermediaryInstitutionName],[AccountPayeeBIC],[AccountOfInstitutionAccNo],[AccountPayeeNameAddress],[BeneficiaryBankBIC],[BeneficiaryBankAccNo],[BeneficiaryBankName],[BeneficiaryCustomerBIC],[BeneficiaryCustomerAccNo],[BeneficiaryCustomerNameAddress],[DetailsOfCharges],[SenderToReceiverInformation],[PayStartTime],[DebitTransactionsSigns],[ProcessingQueue],[Status],[ACK_State],[ProcessedBy])  SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & GMPS_PAY_FILE & ";','Select [MTTYPE],[RegisterDate],[SenderReference],[OurReference],[Currency],[Amount],[ValueDate],[SenderBIC],[ReceivingBankBIC],[ReceivingBankCountryCode],[TransactionType],[OrderingCustomersAccountServicingInstitution],[OrderingCustomersAccNo],[OrderingCustomer],[IntermediaryInstitutionBIC],[IntermediaryInstitutionAccNo],[IntermediaryInstitutionName],[AccountPayeeBIC],[AccountOfInstitutionAccNo],[AccountPayeeNameAddress],[BeneficiaryBankBIC],[BeneficiaryBankAccNo],[BeneficiaryBankName],[BeneficiaryCustomerBIC],[BeneficiaryCustomerAccNo],[BeneficiaryCustomerNameAddress],[DetailsOfCharges],[SenderToReceiverInformation],[PayStartTime],[DebitTransactionsSigns],[ProcessingQueue],[Status],[ACK_State],[ProcessedBy] FROM [OUTGOING_PAYMENTS$]')"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete blanks in each column")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete blanks in each column")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]=RTRIM(LTRIM([MTTYPE])),[RegisterDate]=RTRIM(LTRIM([RegisterDate])),[SenderReference]=RTRIM(LTRIM([SenderReference])),[OurReference]=RTRIM(LTRIM([OurReference])),[Currency]=RTRIM(LTRIM([Currency])),[SenderBIC]=RTRIM(LTRIM([SenderBIC])),[ReceivingBankBIC]=RTRIM(LTRIM([ReceivingBankBIC])),[ReceivingBankCountryCode]=RTRIM(LTRIM([ReceivingBankCountryCode])),[TransactionType]=RTRIM(LTRIM([TransactionType])),[OrderingCustomersAccountServicingInstitution]=RTRIM(LTRIM([OrderingCustomersAccountServicingInstitution])),[OrderingCustomersAccNo]=RTRIM(LTRIM([OrderingCustomersAccNo])),[OrderingCustomer]=RTRIM(LTRIM([OrderingCustomer])),[IntermediaryInstitutionBIC]=RTRIM(LTRIM([IntermediaryInstitutionBIC])),[IntermediaryInstitutionAccNo]=RTRIM(LTRIM([IntermediaryInstitutionAccNo])),[IntermediaryInstitutionName]=RTRIM(LTRIM([IntermediaryInstitutionName])),[AccountPayeeBIC]=RTRIM(LTRIM([AccountPayeeBIC])),[AccountOfInstitutionAccNo]=RTRIM(LTRIM([AccountOfInstitutionAccNo])),[AccountPayeeNameAddress]=RTRIM(LTRIM([AccountPayeeNameAddress])),[BeneficiaryBankBIC]=RTRIM(LTRIM([BeneficiaryBankBIC])),[BeneficiaryBankAccNo]=RTRIM(LTRIM([BeneficiaryBankAccNo])),[BeneficiaryBankName]=RTRIM(LTRIM([BeneficiaryBankName])),[BeneficiaryCustomerBIC]=RTRIM(LTRIM([BeneficiaryCustomerBIC])),[BeneficiaryCustomerAccNo]=RTRIM(LTRIM([BeneficiaryCustomerAccNo])),[BeneficiaryCustomerNameAddress]=RTRIM(LTRIM([BeneficiaryCustomerNameAddress])),[DetailsOfCharges]=RTRIM(LTRIM([DetailsOfCharges])),[SenderToReceiverInformation]=RTRIM(LTRIM([SenderToReceiverInformation])),[DebitTransactionsSigns]=RTRIM(LTRIM([DebitTransactionsSigns])),[ProcessingQueue]=RTRIM(LTRIM([ProcessingQueue])),[Status]=RTRIM(LTRIM([Status])),[ACK_State]=RTRIM(LTRIM([ACK_State])),[ProcessedBy]=RTRIM(LTRIM([ProcessedBy]))"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete Data if Status:Written Off")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete Data if Status:Written Off")
-                            cmd.CommandText = "DELETE FROM [GMPS PAYMENTS OUT Temp] where [Status] in ('Written Off')"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Message Types")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Message Types")
-                            cmd.CommandText = "Select [OrderingCustomersAccNo] from [GMPS PAYMENTS OUT Temp] BEGIN UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]='103' where [OrderingCustomersAccNo] is not NULL and [MTTYPE] is NULL end BEGIN UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]='202' where [OrderingCustomersAccNo] is NULL and [MTTYPE] is NULL end "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define SEPA Message Types")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define SEPA Message Types")
-                            cmd.CommandText = "Select [SenderToReceiverInformation] from [GMPS PAYMENTS OUT Temp] BEGIN UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]='103-CT-SEPA' where [SenderToReceiverInformation] like '/BNF/End%' end BEGIN UPDATE [GMPS PAYMENTS OUT Temp] SET [MTTYPE]='103-DD-SEPA' where [SenderToReceiverInformation] like '%/SQTP/%' end "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Fill Senders Reference if is NULL")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Fill Senders Reference if is NULL")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [SenderReference]=[OurReference] where [SenderReference] is NULL "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Fill Senders BIC if is NULL")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Fill Senders BIC if is NULL")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [SenderBIC]='PCBCDEFFXXX' where [SenderBIC] is NULL "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Fill OrderingCustomersAccountServicingInstitution if is NULL")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Fill OrderingCustomersAccountServicingInstitution if is NULL")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [OrderingCustomersAccountServicingInstitution]=[SenderBIC] where [OrderingCustomersAccountServicingInstitution] is NULL "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set UPPER CASE to Ordering and Beneficiary Customers Name")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set UPPER CASE to Ordering and Beneficiary Customers Name")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT Temp] SET [OrderingCustomer]=UPPER([OrderingCustomer]),[BeneficiaryCustomerNameAddress]=UPPER([BeneficiaryCustomerNameAddress])"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Insert Data to GMPS PAYMENTS OUT")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Insert Data to GMPS PAYMENTS OUT")
-                            cmd.CommandText = "INSERT INTO [GMPS PAYMENTS OUT]([MTTYPE],[RegisterDate],[SenderReference],[OurReference],[Currency],[Amount],[ValueDate],[SenderBIC],[ReceivingBankBIC],[ReceivingBankCountryCode],[TransactionType],[OrderingCustomersAccountServicingInstitution],[OrderingCustomersAccNo],[OrderingCustomer],[IntermediaryInstitutionBIC],[IntermediaryInstitutionAccNo],[IntermediaryInstitutionName],[AccountPayeeBIC],[AccountOfInstitutionAccNo],[AccountPayeeNameAddress],[BeneficiaryBankBIC],[BeneficiaryBankAccNo],[BeneficiaryBankName],[BeneficiaryCustomerBIC],[BeneficiaryCustomerAccNo],[BeneficiaryCustomerNameAddress],[DetailsOfCharges],[SenderToReceiverInformation],[PayStartTime],[DebitTransactionsSigns],[ProcessingQueue],[Status],[ACK_State],[ProcessedBy])  SELECT [MTTYPE],[RegisterDate],[SenderReference],[OurReference],[Currency],[Amount],[ValueDate],[SenderBIC],[ReceivingBankBIC],[ReceivingBankCountryCode],[TransactionType],[OrderingCustomersAccountServicingInstitution],[OrderingCustomersAccNo],[OrderingCustomer],[IntermediaryInstitutionBIC],[IntermediaryInstitutionAccNo],[IntermediaryInstitutionName],[AccountPayeeBIC],[AccountOfInstitutionAccNo],[AccountPayeeNameAddress],[BeneficiaryBankBIC],[BeneficiaryBankAccNo],[BeneficiaryBankName],[BeneficiaryCustomerBIC],[BeneficiaryCustomerAccNo],[BeneficiaryCustomerNameAddress],[DetailsOfCharges],[SenderToReceiverInformation],[PayStartTime],[DebitTransactionsSigns],[ProcessingQueue],[Status],[ACK_State],[ProcessedBy] from [GMPS PAYMENTS OUT Temp] "
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Drop Table GMPS PAYMENTS OUT Temp")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Drop Table GMPS PAYMENTS OUT Temp")
-                            cmd.CommandText = "DROP TABLE [GMPS PAYMENTS OUT Temp]"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete Duplicates in GMPS PAYMENTS OUT based on OurReference")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Delete Duplicates in GMPS PAYMENTS OUT based on OurReference")
-                            cmd.CommandText = "DELETE  FROM [GMPS PAYMENTS OUT] where [ID] not in (Select Min([ID]) from [GMPS PAYMENTS OUT] group by [OurReference])"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Set Exchange rates in GMPS PAYMENTS OUT")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Set Exchange rates in GMPS PAYMENTS OUT")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT] SET [ExchangeRate]= 1 WHERE [Currency]='EUR' and [ExchangeRate]=0 "
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS OUT] A INNER JOIN [EXCHANGE RATES OCBS] B ON A.[ValueDate]=B.[EXCHANGE RATE DATE] WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Get Max Exchange Rate if Value Date not working Date")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Get Max Exchange Rate if Value Date not working Date")
-                            cmd.CommandText = "SELECT MAX([EXCHANGE RATE DATE]) FROM [EXCHANGE RATES OCBS]"
-                            Dim MaxExchangeRateDatePaymentsOut As Date = FormatDateTime(cmd.ExecuteScalar, DateFormat.ShortDate)
-                            Dim MaxExchangeRateDatePaymentsOutSql = MaxExchangeRateDatePaymentsOut.ToString("yyyyMMdd")
-                            cmd.CommandText = "UPDATE A set A.[ExchangeRate]=B.[MIDDLE RATE] from [GMPS PAYMENTS OUT] A INNER JOIN [EXCHANGE RATES OCBS] B ON B.[EXCHANGE RATE DATE]='" & MaxExchangeRateDatePaymentsOutSql & "' WHERE A.[Currency]=B.[CURRENCY CODE] and A.[ExchangeRate]=0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Calculate Payment Amount in EUR in GMPS PAYMENTS OUT")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Calculate Payment Amount in EUR in GMPS PAYMENTS OUT")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT] SET [AmountEuro]= [Amount]/[ExchangeRate] where [AmountEuro]=0 and [ExchangeRate]<>0"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Define Bank Names in GMPS PAYMENTS OUT")
-                            Me.BgwGMPSPayDirectory.ReportProgress(40, "Define Bank Names in GMPS PAYMENTS OUT")
-                            'BICS
-                            cmd.CommandText = "SELECT [SenderBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[SenderName]=B.[INSTITUTION NAME],A.[SenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[SenderBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[SenderBIC])=11 and A.[SenderName] is NULL end BEGIN UPDATE A SET A.[SenderName]=B.[INSTITUTION NAME],A.[SenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[SenderBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[SenderBIC])=8 and A.[SenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [ReceivingBankBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[ReceivingBankName]=B.[INSTITUTION NAME],A.[ReceivingBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceivingBankBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceivingBankBIC])=11 and A.[ReceivingBankName] is NULL end BEGIN UPDATE A SET A.[ReceivingBankName]=B.[INSTITUTION NAME],A.[ReceivingBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[ReceivingBankBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[ReceivingBankBIC])=8 and A.[ReceivingBankName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [IntermediaryInstitutionBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[IntermediaryInstitutionName]=B.[INSTITUTION NAME],A.[IntermediaryInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[IntermediaryInstitutionBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[IntermediaryInstitutionBIC])=11 and A.[IntermediaryInstitutionName] is NULL end BEGIN UPDATE A SET A.[IntermediaryInstitutionName]=B.[INSTITUTION NAME],A.[IntermediaryInstitutionCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[IntermediaryInstitutionBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[IntermediaryInstitutionBIC])=8 and A.[IntermediaryInstitutionName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [AccountPayeeBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[AccountPayeeNameAddress]=B.[INSTITUTION NAME],A.[AccountPayeeCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[AccountPayeeBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountPayeeBIC])=11 and A.[AccountPayeeNameAddress] is NULL end BEGIN UPDATE A SET A.[AccountPayeeNameAddress]=B.[INSTITUTION NAME],A.[AccountPayeeCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[AccountPayeeBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[AccountPayeeBIC])=8 and A.[AccountPayeeNameAddress] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [BeneficiaryBankBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBankBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBankBIC])=11 and A.[BeneficiaryBankName] is NULL end BEGIN UPDATE A SET A.[BeneficiaryBankName]=B.[INSTITUTION NAME],A.[BeneficiaryBankCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[BeneficiaryBankBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[BeneficiaryBankBIC])=8 and A.[BeneficiaryBankName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            'Aktualieseieren Sender BIC (u.a. wenn nicht gefunden wurde) von Feld AccountPayeeBIC
-                            cmd.CommandText = "UPDATE  [GMPS PAYMENTS OUT] SET [SenderBIC]=[AccountPayeeBIC]  where [SenderName] is NULL"
-                            cmd.ExecuteNonQuery()
-                            cmd.CommandText = "SELECT [SenderBIC] from [GMPS PAYMENTS OUT] BEGIN UPDATE A SET A.[SenderName]=B.[INSTITUTION NAME],A.[SenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[SenderBIC]=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[SenderBIC])=11 and A.[SenderName] is NULL end BEGIN UPDATE A SET A.[SenderName]=B.[INSTITUTION NAME],A.[SenderCity]=B.[CITY HEADING] from [GMPS PAYMENTS OUT] A INNER JOIN [BIC DIRECTORY] B ON A.[SenderBIC]+'XXX'=B.[BIC CODE]+B.[BRANCH CODE] where Len(A.[SenderBIC])=8 and A.[SenderName] is NULL end"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("SET Payment Year for each Payment Order")
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "SET Payment Year for each Payment Order")
-                            cmd.CommandText = "UPDATE [GMPS PAYMENTS OUT] SET [PaymentYear]=DATEPART(yyyy,[RegisterDate]) where [PaymentYear] is NULL"
-                            cmd.ExecuteNonQuery()
-                            SplashScreenManager.Default.SetWaitFormCaption("Delete GMPS File: " & GMPS_PAY_FILE)
-                            Me.BgwGMPSPayDirectory.ReportProgress(80, "Delete GMPS File: " & GMPS_PAY_FILE)
-                            File.Delete(GMPS_PAY_FILE)
-                            SplashScreenManager.Default.SetWaitFormCaption("GMPS PAYMENTS IMPORT OUTGOING finished")
-                            Me.BgwGMPSPayDirectory.ReportProgress(90, "GMPS PAYMENTS IMPORT OUTGOING finished")
-                            'Save the last imported Payment File
-                            Me.MANUAL_IMPORTSBindingSource.EndEdit()
-                            Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
-                        Else
-                            SplashScreenManager.CloseForm(False)
-                            Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to Import GMPS PAYMENT FILE! Fileformat is wrong!")
-                            MessageBox.Show("Unable to Import GMPS PAYMENT FILE! Fileformat is wrong!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                            Exit Sub
-                        End If
-                    Else
-                        SplashScreenManager.CloseForm(False)
-                        Me.BgwGMPSPayDirectory.ReportProgress(30, "Unable to Import GMPS PAYMENT FILE! File does not exist!")
-                        MessageBox.Show("Unable to Import GMPS PAYMENT FILE! File does not exist!", "GMPS PAYMENT IMPORT FAILLED", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        Exit Sub
-
-                    End If
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
-
-                Next
-
-            End If
-            'INTERCHANGE DATA BETWEEN GMPS PAYMENTS + ODAS REMMITANCES + ANTIMONEYLAUNDERING
-            Me.BgwGMPSPayDirectory.ReportProgress(35, "Start Interchange Data between GMPS and ODAS Datatables")
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            cmd.Connection.Open()
-            Me.BgwGMPSPayDirectory.ReportProgress(40, "Update ACWITHINSTID,ACWITHINSTNA in ANTIMONEY_LAUND_PAYMENTS_AMOUNTS")
-            cmd.CommandText = "UPDATE A SET A.[ACWITHINSTID]=B.[AccountPayeeBIC],A.[ACWITHINSTNA]=B.[AccountPayeeNameAddress] from [ANTIMONEY_LAUND_PAYMENTS_AMOUNTS] A  INNER JOIN [GMPS PAYMENTS OUT] B ON A.[EM00KEY0]=B.[OurReference] where A.[ACWITHINSTNA]='null'"
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(45, "Update ACWITHINSTID,ACWITHINSTNA in ANTIMONEY_LAUND_PAYMENTS_ITEMS")
-            cmd.CommandText = "UPDATE A SET A.[ACWITHINSTID]=B.[AccountPayeeBIC],A.[ACWITHINSTNA]=B.[AccountPayeeNameAddress] from [ANTIMONEY_LAUND_PAYMENTS_ITEMS] A  INNER JOIN [GMPS PAYMENTS OUT] B ON A.[EM00KEY0]=B.[OurReference] where A.[ACWITHINSTNA]='null'"
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(45, "Update ACWITHINSTID,ACWITHINSTNA in ODAS REMMITANCES")
-            cmd.CommandText = "UPDATE A SET A.[ACWITHINSTID]=B.[AccountPayeeBIC],A.[ACWITHINSTNA]=B.[AccountPayeeNameAddress] from [ODAS REMMITANCES] A  INNER JOIN [GMPS PAYMENTS OUT] B ON A.[EM00KEY0]=B.[OurReference] where A.[ACWITHINSTNA]='null'"
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(50, "Update OrderingCustomersAccNo and Beneficiaries Account in GMPS PAYMENTS OUT")
-            cmd.CommandText = "UPDATE A SET A.[OrderingCustomersAccNo]=RTRIM(LTRIM(B.[Client Account])),A.[BeneficiaryCustomerAccNo]=RTRIM(LTRIM(B.[BENEFACNO])) from [GMPS PAYMENTS OUT] A  INNER JOIN [ODAS REMMITANCES] B ON A.[OurReference]=B.[EM00KEY0] where A.[OrderingCustomersAccNo] is NULL"
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(50, "Update Senders Reference in GMPS PAYMENTS OUT")
-            cmd.CommandText = "UPDATE A SET A.[SenderReference]=RTRIM(LTRIM(SUBSTRING(B.[EM00KEY1],3,20))) from [GMPS PAYMENTS OUT] A  INNER JOIN [ODAS REMMITANCES] B ON A.[OurReference]=B.[EM00KEY0] where B.[EM00KEY1] like '//%' "
-            cmd.ExecuteNonQuery()
-            Me.BgwGMPSPayDirectory.ReportProgress(35, "Interchange Data between GMPS and ODAS Datatables finished")
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-        Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
-            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Me.BgwGMPSPayDirectory.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-            Exit Sub
-        End Try
-    End Sub
 
 
 

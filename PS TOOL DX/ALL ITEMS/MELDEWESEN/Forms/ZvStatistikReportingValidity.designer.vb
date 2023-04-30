@@ -269,7 +269,7 @@ Partial Class ZvStatistikReportingValidity
         Me.ProcessStatus_BarStaticItem.ImageOptions.Image = CType(resources.GetObject("ProcessStatus_BarStaticItem.ImageOptions.Image"), System.Drawing.Image)
         Me.ProcessStatus_BarStaticItem.ImageOptions.LargeImage = CType(resources.GetObject("ProcessStatus_BarStaticItem.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.ProcessStatus_BarStaticItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ProcessStatus_BarStaticItem.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Navy
+        Me.ProcessStatus_BarStaticItem.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Aqua
         Me.ProcessStatus_BarStaticItem.ItemAppearance.Normal.Options.UseFont = True
         Me.ProcessStatus_BarStaticItem.ItemAppearance.Normal.Options.UseForeColor = True
         Me.ProcessStatus_BarStaticItem.Name = "ProcessStatus_BarStaticItem"

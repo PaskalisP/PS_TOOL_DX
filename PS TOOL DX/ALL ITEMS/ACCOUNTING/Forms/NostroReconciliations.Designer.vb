@@ -21,60 +21,10 @@ Partial Class NostroReconciliations
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NostroReconciliations))
-        Dim GridFormatRule18 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue18 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule19 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue19 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule20 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue20 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule21 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue21 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule22 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue22 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule23 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue23 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule24 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue24 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule25 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue25 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule26 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue26 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule27 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue27 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule28 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue28 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule29 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue29 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule30 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue30 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule31 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue31 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule32 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue32 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim EditorButtonImageOptions7 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject25 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject26 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject27 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject28 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue2 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim EditorButtonImageOptions8 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject29 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject30 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject31 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject32 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions16 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject61 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject62 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject63 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject64 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem2 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim GridFormatRule3 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue3 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule4 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
@@ -95,45 +45,103 @@ Partial Class NostroReconciliations
         Dim FormatConditionRuleValue11 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule12 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue12 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim EditorButtonImageOptions9 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject33 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject34 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject35 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject36 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GridFormatRule13 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue13 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule14 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue14 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule15 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue15 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GridFormatRule16 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue16 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule17 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue17 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem1 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim GridFormatRule18 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue18 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule19 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue19 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule20 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue20 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule21 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue21 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule22 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue22 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule23 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue23 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule24 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue24 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule25 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue25 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule26 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue26 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule27 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue27 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions5 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject17 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject18 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject19 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject20 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim EditorButtonImageOptions6 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject21 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject22 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject23 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject24 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SuperToolTip3 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem3 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim EditorButtonImageOptions14 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject53 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject54 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject55 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject56 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions7 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject25 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject26 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject27 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject28 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SuperToolTip4 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem5 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim EditorButtonImageOptions17 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject65 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject66 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject67 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject68 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SuperToolTip6 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim EditorButtonImageOptions8 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject29 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject30 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject31 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject32 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip5 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem6 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem6 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim EditorButtonImageOptions12 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject45 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject46 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject47 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject48 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions15 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject57 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject58 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject59 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject60 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim ToolTipItem5 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim EditorButtonImageOptions9 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject33 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject34 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject35 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject36 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions10 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject37 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject38 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject39 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject40 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.colUB_Amount = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemPopupContainerEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit()
         Me.PopupContainerControl1 = New DevExpress.XtraEditors.PopupContainerControl()
@@ -642,191 +650,191 @@ Partial Class NostroReconciliations
         Me.CreateDummyBooking_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CreateInternalDummyBooking_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        CType(Me.RepositoryItemPopupContainerEdit3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PopupContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.PopupContainerControl1.SuspendLayout
-        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupControl2.SuspendLayout
-        CType(Me.PostingType_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.UserMemo_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.BOOKING_ROUTE_ALL_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ID_NOSTRO_REC_Textedit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Description_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Bookingdate_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Valuedate_IB_TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.CCY_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Amount_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.AccountsReconciliationsDataSet, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemMemoExEdit2, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridControl_OutstandingBookings, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NostroOutstandingBookings_GridView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemMemoExEdit5, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ReconcilePopupContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.ReconcilePopupContainerControl1.SuspendLayout
-        CType(Me.ClientType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.FitchRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.MoodysRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.MainlandRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ER45_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Rating_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ER25_txtEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PD_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.StandardPoors_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.CoreDefinition_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Rating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.CustomerName_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NOSTRO_REC_FILL_ProcedureBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PassivaDetailView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridControl_External, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.External_BaseView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridControl_Internal, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.InternalBaseView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Reconciled_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ZipCodeRepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.OtherRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ReconciliationTag_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ReconcileRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ReconciliationRepositoryItemPopupContainerEdit, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NOSTRO_ACC_RECONCILIATIONSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridControl_ReconciliationDetails, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NostroReconciliationDetails_GridView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Amount_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.LayoutControl1.SuspendLayout
-        CType(Me.OCBS_BookingDate_Till.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.OCBS_BookingDate_Till.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.OCBS_BookingDate_From.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.OCBS_BookingDate_From.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.OCBS_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NostroRecDetailsSearch_GridView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupControl3.SuspendLayout
-        CType(Me.CreateMissingRecon_FromDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NostrosForMissingRecon_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NostrosMissingRecon_GridView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.GroupControl1.SuspendLayout
-        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.LayoutControl2.SuspendLayout
-        CType(Me.TotalsDifference_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ExternalBookedBalanceAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.InternalValueBalanceAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ExternalBookedBalanceDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.InternalValueBalanceDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemImageComboBox7, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemTextEdit9, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemTextEdit10, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemImageComboBox5, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemTextEdit7, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemTextEdit8, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemImageComboBox6, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemPopupContainerEdit2, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemMemoExEdit4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.All_Nostro_Last_Reconciliations_GridView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.ReconciliationDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.InternalExternalDifferenceTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NostroAcc_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NostroAcc_SearchLookUpEditView, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.NostroInfo_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.SimpleSeparator2, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.SplitterItem3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem10, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem14, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.FromDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem17, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.EmptySpaceItem18, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.ContextMenuStrip1.SuspendLayout
-        CType(Me.NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.ContextMenuStrip2.SuspendLayout
-        Me.ContextMenuStrip3.SuspendLayout
-        Me.SuspendLayout
+        CType(Me.RepositoryItemPopupContainerEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PopupContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PopupContainerControl1.SuspendLayout()
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl2.SuspendLayout()
+        CType(Me.PostingType_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.UserMemo_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BOOKING_ROUTE_ALL_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ID_NOSTRO_REC_Textedit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Description_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Bookingdate_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Valuedate_IB_TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CCY_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Amount_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AccountsReconciliationsDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMemoExEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl_OutstandingBookings, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NostroOutstandingBookings_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMemoExEdit5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReconcilePopupContainerControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ReconcilePopupContainerControl1.SuspendLayout()
+        CType(Me.ClientType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FitchRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MoodysRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MainlandRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ER45_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Rating_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ER25_txtEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PD_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.StandardPoors_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CoreDefinition_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Rating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CustomerName_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NOSTRO_REC_FILL_ProcedureBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PassivaDetailView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl_External, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.External_BaseView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl_Internal, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InternalBaseView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Reconciled_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ZipCodeRepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OtherRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReconciliationTag_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReconcileRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReconciliationRepositoryItemPopupContainerEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NOSTRO_ACC_RECONCILIATIONSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl_ReconciliationDetails, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NostroReconciliationDetails_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Amount_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.LayoutControl1.SuspendLayout()
+        CType(Me.OCBS_BookingDate_Till.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OCBS_BookingDate_Till.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OCBS_BookingDate_From.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OCBS_BookingDate_From.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OCBS_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NostroRecDetailsSearch_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl3.SuspendLayout()
+        CType(Me.CreateMissingRecon_FromDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NostrosForMissingRecon_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NostrosMissingRecon_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl1.SuspendLayout()
+        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.LayoutControl2.SuspendLayout()
+        CType(Me.TotalsDifference_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ExternalBookedBalanceAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InternalValueBalanceAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ExternalBookedBalanceDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InternalValueBalanceDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemImageComboBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemImageComboBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemTextEdit8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemImageComboBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemPopupContainerEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMemoExEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.All_Nostro_Last_Reconciliations_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReconciliationDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InternalExternalDifferenceTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NostroAcc_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NostroAcc_SearchLookUpEditView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NostroInfo_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SimpleSeparator2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SplitterItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem14, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FromDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem17, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem18, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
+        CType(Me.NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip2.SuspendLayout()
+        Me.ContextMenuStrip3.SuspendLayout()
+        Me.SuspendLayout()
         '
         'colUB_Amount
         '
@@ -1610,66 +1618,66 @@ Partial Class NostroReconciliations
         Me.NostroOutstandingBookings_GridView.Appearance.SelectedRow.Options.UseForeColor = True
         Me.NostroOutstandingBookings_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID1, Me.colBookingRoute_IB1, Me.colID_IB1, Me.colAccountNr_Internal1, Me.colAccountName_Internal1, Me.colBookingDate_IB1, Me.colValueDate_IB1, Me.colCCY_IB1, Me.colAmount_IB1, Me.colDescription_IB1, Me.colReference_AccountOwner_IB_First1, Me.colReference_AccountOwner_IB_Second1, Me.colBookingRoute_EB1, Me.colID_EB1, Me.colAccountNr_External1, Me.colBookingDate_EB1, Me.colValueDate_EB1, Me.colCCY_EB1, Me.colAmount_EB1, Me.colTransactionTypeID_EB1, Me.colReference_AccountOwner_EB1, Me.colReferenceServiInstitution_EB1, Me.colSupplementaryDetails_EB1, Me.colReconciled1, Me.colReconciled_Tag1, Me.colUB_BookingRoute, Me.col_UB_ID_IB_EB, Me.colUB_Description, Me.colUB_BookingDate, Me.colUB_ValueDate, Me.colUB_CCY, Me.colUB_Amount, Me.colUserMemo, Me.colUB_AbsoluteAmount, Me.colPostingType})
         Me.NostroOutstandingBookings_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule18.Column = Me.colUB_Amount
-        GridFormatRule18.Name = "Format0"
-        FormatConditionRuleValue18.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue18.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue18.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue18.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue18.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue18.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue18.Value1 = 0R
-        GridFormatRule18.Rule = FormatConditionRuleValue18
-        GridFormatRule19.Column = Me.colUB_Amount
-        GridFormatRule19.Name = "Format1"
-        FormatConditionRuleValue19.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue19.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue19.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue19.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue19.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue19.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue19.Value1 = 0R
-        GridFormatRule19.Rule = FormatConditionRuleValue19
-        GridFormatRule20.Column = Me.colUB_BookingRoute
-        GridFormatRule20.Name = "Format2"
-        FormatConditionRuleValue20.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue20.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue20.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue20.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue20.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue20.Appearance.Options.UseFont = True
-        FormatConditionRuleValue20.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue20.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue20.Value1 = "INTERNAL"
-        GridFormatRule20.Rule = FormatConditionRuleValue20
-        GridFormatRule21.Column = Me.colUB_BookingRoute
-        GridFormatRule21.Name = "Format3"
-        FormatConditionRuleValue21.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue21.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue21.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue21.Appearance.ForeColor = System.Drawing.Color.Red
-        FormatConditionRuleValue21.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue21.Appearance.Options.UseFont = True
-        FormatConditionRuleValue21.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue21.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue21.Value1 = "EXTERNAL"
-        GridFormatRule21.Rule = FormatConditionRuleValue21
-        GridFormatRule22.Column = Me.colUB_AbsoluteAmount
-        GridFormatRule22.ColumnApplyTo = Me.colUB_AbsoluteAmount
-        GridFormatRule22.Name = "Format4"
-        FormatConditionRuleValue22.Appearance.BackColor = System.Drawing.Color.White
-        FormatConditionRuleValue22.Appearance.BackColor2 = System.Drawing.Color.White
-        FormatConditionRuleValue22.Appearance.ForeColor = System.Drawing.Color.Navy
-        FormatConditionRuleValue22.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue22.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue22.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
-        FormatConditionRuleValue22.Value1 = 0R
-        GridFormatRule22.Rule = FormatConditionRuleValue22
-        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule18)
-        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule19)
-        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule20)
-        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule21)
-        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule22)
+        GridFormatRule1.Column = Me.colUB_Amount
+        GridFormatRule1.Name = "Format0"
+        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Less
+        FormatConditionRuleValue1.Value1 = 0R
+        GridFormatRule1.Rule = FormatConditionRuleValue1
+        GridFormatRule2.Column = Me.colUB_Amount
+        GridFormatRule2.Name = "Format1"
+        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Greater
+        FormatConditionRuleValue2.Value1 = 0R
+        GridFormatRule2.Rule = FormatConditionRuleValue2
+        GridFormatRule3.Column = Me.colUB_BookingRoute
+        GridFormatRule3.Name = "Format2"
+        FormatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue3.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue3.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue3.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue3.Appearance.Options.UseFont = True
+        FormatConditionRuleValue3.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue3.Value1 = "INTERNAL"
+        GridFormatRule3.Rule = FormatConditionRuleValue3
+        GridFormatRule4.Column = Me.colUB_BookingRoute
+        GridFormatRule4.Name = "Format3"
+        FormatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue4.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.Red
+        FormatConditionRuleValue4.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue4.Appearance.Options.UseFont = True
+        FormatConditionRuleValue4.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue4.Value1 = "EXTERNAL"
+        GridFormatRule4.Rule = FormatConditionRuleValue4
+        GridFormatRule5.Column = Me.colUB_AbsoluteAmount
+        GridFormatRule5.ColumnApplyTo = Me.colUB_AbsoluteAmount
+        GridFormatRule5.Name = "Format4"
+        FormatConditionRuleValue5.Appearance.BackColor = System.Drawing.Color.White
+        FormatConditionRuleValue5.Appearance.BackColor2 = System.Drawing.Color.White
+        FormatConditionRuleValue5.Appearance.ForeColor = System.Drawing.Color.Navy
+        FormatConditionRuleValue5.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue5.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
+        FormatConditionRuleValue5.Value1 = 0R
+        GridFormatRule5.Rule = FormatConditionRuleValue5
+        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule1)
+        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule2)
+        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule3)
+        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule4)
+        Me.NostroOutstandingBookings_GridView.FormatRules.Add(GridFormatRule5)
         Me.NostroOutstandingBookings_GridView.GridControl = Me.GridControl_OutstandingBookings
         Me.NostroOutstandingBookings_GridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount_IB", Nothing, "Sum Amount={0:n2}")})
         Me.NostroOutstandingBookings_GridView.Name = "NostroOutstandingBookings_GridView"
@@ -1895,13 +1903,16 @@ Partial Class NostroReconciliations
         '
         'colUB_BookingDate
         '
+        Me.colUB_BookingDate.AppearanceCell.Options.UseTextOptions = True
+        Me.colUB_BookingDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colUB_BookingDate.Caption = "Booking Date"
         Me.colUB_BookingDate.ColumnEdit = Me.RepositoryItemPopupContainerEdit3
-        Me.colUB_BookingDate.DisplayFormat.FormatString = "d"
-        Me.colUB_BookingDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colUB_BookingDate.DisplayFormat.FormatString = "dd.MM.yyyy"
+        Me.colUB_BookingDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.colUB_BookingDate.FieldName = "colUB_BookingDate"
         Me.colUB_BookingDate.Name = "colUB_BookingDate"
-        Me.colUB_BookingDate.UnboundExpression = "Iif([BookingDate_IB] <> null, [BookingDate_IB], [BookingDate_EB])"
+        Me.colUB_BookingDate.UnboundExpression = "Iif([BookingDate_IB] <> null, GetDate([BookingDate_IB]), GetDate([BookingDate_EB]" &
+    "))"
         Me.colUB_BookingDate.UnboundType = DevExpress.Data.UnboundColumnType.DateTime
         Me.colUB_BookingDate.Visible = True
         Me.colUB_BookingDate.VisibleIndex = 3
@@ -1909,13 +1920,15 @@ Partial Class NostroReconciliations
         '
         'colUB_ValueDate
         '
+        Me.colUB_ValueDate.AppearanceCell.Options.UseTextOptions = True
+        Me.colUB_ValueDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colUB_ValueDate.Caption = "Value Date"
         Me.colUB_ValueDate.ColumnEdit = Me.RepositoryItemPopupContainerEdit3
-        Me.colUB_ValueDate.DisplayFormat.FormatString = "d"
-        Me.colUB_ValueDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colUB_ValueDate.DisplayFormat.FormatString = "dd.MM.yyyy"
+        Me.colUB_ValueDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
         Me.colUB_ValueDate.FieldName = "colUB_ValueDate"
         Me.colUB_ValueDate.Name = "colUB_ValueDate"
-        Me.colUB_ValueDate.UnboundExpression = "Iif([ValueDate_IB] <> null, [ValueDate_IB], [ValueDate_EB])"
+        Me.colUB_ValueDate.UnboundExpression = "Iif([ValueDate_IB] <> null, GetDate([ValueDate_IB]), GetDate([ValueDate_EB]))"
         Me.colUB_ValueDate.UnboundType = DevExpress.Data.UnboundColumnType.DateTime
         Me.colUB_ValueDate.Visible = True
         Me.colUB_ValueDate.VisibleIndex = 4
@@ -2548,66 +2561,66 @@ Partial Class NostroReconciliations
         Me.External_BaseView.Appearance.SelectedRow.Options.UseForeColor = True
         Me.External_BaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn43, Me.GridColumn44, Me.GridColumn45, Me.GridColumn46, Me.GridColumn47, Me.GridColumn219, Me.GridColumn220, Me.GridColumn221, Me.GridColumn222, Me.GridColumn223, Me.GridColumn224, Me.GridColumn225, Me.GridColumn226, Me.GridColumn227, Me.GridColumn228, Me.GridColumn229, Me.GridColumn230, Me.GridColumn231, Me.GridColumn232, Me.GridColumn233, Me.GridColumn234, Me.GridColumn235, Me.GridColumn236, Me.GridColumn237, Me.GridColumn238, Me.GridColumn239, Me.GridColumn240, Me.GridColumn241, Me.GridColumn242, Me.GridColumn243, Me.GridColumn244, Me.GridColumn245, Me.GridColumn246, Me.GridColumn247, Me.GridColumn248})
         Me.External_BaseView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule23.Column = Me.GridColumn245
-        GridFormatRule23.Name = "Format0"
-        FormatConditionRuleValue23.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue23.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue23.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue23.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue23.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue23.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue23.Value1 = 0R
-        GridFormatRule23.Rule = FormatConditionRuleValue23
-        GridFormatRule24.Column = Me.GridColumn245
-        GridFormatRule24.Name = "Format1"
-        FormatConditionRuleValue24.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue24.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue24.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue24.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue24.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue24.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue24.Value1 = 0R
-        GridFormatRule24.Rule = FormatConditionRuleValue24
-        GridFormatRule25.Column = Me.GridColumn239
-        GridFormatRule25.Name = "Format2"
-        FormatConditionRuleValue25.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue25.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue25.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue25.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue25.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue25.Appearance.Options.UseFont = True
-        FormatConditionRuleValue25.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue25.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue25.Value1 = "INTERNAL"
-        GridFormatRule25.Rule = FormatConditionRuleValue25
-        GridFormatRule26.Column = Me.GridColumn239
-        GridFormatRule26.Name = "Format3"
-        FormatConditionRuleValue26.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue26.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue26.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue26.Appearance.ForeColor = System.Drawing.Color.Red
-        FormatConditionRuleValue26.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue26.Appearance.Options.UseFont = True
-        FormatConditionRuleValue26.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue26.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue26.Value1 = "EXTERNAL"
-        GridFormatRule26.Rule = FormatConditionRuleValue26
-        GridFormatRule27.Column = Me.GridColumn247
-        GridFormatRule27.ColumnApplyTo = Me.GridColumn247
-        GridFormatRule27.Name = "Format4"
-        FormatConditionRuleValue27.Appearance.BackColor = System.Drawing.Color.White
-        FormatConditionRuleValue27.Appearance.BackColor2 = System.Drawing.Color.White
-        FormatConditionRuleValue27.Appearance.ForeColor = System.Drawing.Color.Navy
-        FormatConditionRuleValue27.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue27.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue27.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
-        FormatConditionRuleValue27.Value1 = 0R
-        GridFormatRule27.Rule = FormatConditionRuleValue27
-        Me.External_BaseView.FormatRules.Add(GridFormatRule23)
-        Me.External_BaseView.FormatRules.Add(GridFormatRule24)
-        Me.External_BaseView.FormatRules.Add(GridFormatRule25)
-        Me.External_BaseView.FormatRules.Add(GridFormatRule26)
-        Me.External_BaseView.FormatRules.Add(GridFormatRule27)
+        GridFormatRule6.Column = Me.GridColumn245
+        GridFormatRule6.Name = "Format0"
+        FormatConditionRuleValue6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue6.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue6.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue6.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue6.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Less
+        FormatConditionRuleValue6.Value1 = 0R
+        GridFormatRule6.Rule = FormatConditionRuleValue6
+        GridFormatRule7.Column = Me.GridColumn245
+        GridFormatRule7.Name = "Format1"
+        FormatConditionRuleValue7.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue7.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue7.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue7.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue7.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue7.Condition = DevExpress.XtraEditors.FormatCondition.Greater
+        FormatConditionRuleValue7.Value1 = 0R
+        GridFormatRule7.Rule = FormatConditionRuleValue7
+        GridFormatRule8.Column = Me.GridColumn239
+        GridFormatRule8.Name = "Format2"
+        FormatConditionRuleValue8.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue8.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue8.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue8.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue8.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue8.Appearance.Options.UseFont = True
+        FormatConditionRuleValue8.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue8.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue8.Value1 = "INTERNAL"
+        GridFormatRule8.Rule = FormatConditionRuleValue8
+        GridFormatRule9.Column = Me.GridColumn239
+        GridFormatRule9.Name = "Format3"
+        FormatConditionRuleValue9.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue9.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue9.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue9.Appearance.ForeColor = System.Drawing.Color.Red
+        FormatConditionRuleValue9.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue9.Appearance.Options.UseFont = True
+        FormatConditionRuleValue9.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue9.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue9.Value1 = "EXTERNAL"
+        GridFormatRule9.Rule = FormatConditionRuleValue9
+        GridFormatRule10.Column = Me.GridColumn247
+        GridFormatRule10.ColumnApplyTo = Me.GridColumn247
+        GridFormatRule10.Name = "Format4"
+        FormatConditionRuleValue10.Appearance.BackColor = System.Drawing.Color.White
+        FormatConditionRuleValue10.Appearance.BackColor2 = System.Drawing.Color.White
+        FormatConditionRuleValue10.Appearance.ForeColor = System.Drawing.Color.Navy
+        FormatConditionRuleValue10.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue10.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue10.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
+        FormatConditionRuleValue10.Value1 = 0R
+        GridFormatRule10.Rule = FormatConditionRuleValue10
+        Me.External_BaseView.FormatRules.Add(GridFormatRule6)
+        Me.External_BaseView.FormatRules.Add(GridFormatRule7)
+        Me.External_BaseView.FormatRules.Add(GridFormatRule8)
+        Me.External_BaseView.FormatRules.Add(GridFormatRule9)
+        Me.External_BaseView.FormatRules.Add(GridFormatRule10)
         Me.External_BaseView.GridControl = Me.GridControl_External
         Me.External_BaseView.Name = "External_BaseView"
         Me.External_BaseView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
@@ -2625,7 +2638,6 @@ Partial Class NostroReconciliations
         Me.External_BaseView.OptionsView.ColumnAutoWidth = False
         Me.External_BaseView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
         Me.External_BaseView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
-        Me.External_BaseView.OptionsView.ShowAutoFilterRow = True
         Me.External_BaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
         Me.External_BaseView.OptionsView.ShowFooter = True
         Me.External_BaseView.OptionsView.ShowGroupPanel = False
@@ -2981,66 +2993,66 @@ Partial Class NostroReconciliations
         Me.InternalBaseView.Appearance.SelectedRow.Options.UseForeColor = True
         Me.InternalBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn184, Me.GridColumn185, Me.GridColumn186, Me.GridColumn187, Me.GridColumn188, Me.GridColumn189, Me.GridColumn190, Me.GridColumn191, Me.GridColumn192, Me.GridColumn193, Me.GridColumn194, Me.GridColumn195, Me.GridColumn196, Me.GridColumn197, Me.GridColumn198, Me.GridColumn199, Me.GridColumn200, Me.GridColumn201, Me.GridColumn202, Me.GridColumn203, Me.GridColumn204, Me.GridColumn205, Me.GridColumn206, Me.GridColumn207, Me.GridColumn208, Me.GridColumn209, Me.GridColumn210, Me.GridColumn211, Me.GridColumn212, Me.GridColumn213, Me.GridColumn214, Me.GridColumn215, Me.GridColumn216, Me.GridColumn217, Me.GridColumn218})
         Me.InternalBaseView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule28.Column = Me.GridColumn215
-        GridFormatRule28.Name = "Format0"
-        FormatConditionRuleValue28.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue28.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue28.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue28.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue28.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue28.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue28.Value1 = 0R
-        GridFormatRule28.Rule = FormatConditionRuleValue28
-        GridFormatRule29.Column = Me.GridColumn215
-        GridFormatRule29.Name = "Format1"
-        FormatConditionRuleValue29.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue29.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue29.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue29.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue29.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue29.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue29.Value1 = 0R
-        GridFormatRule29.Rule = FormatConditionRuleValue29
-        GridFormatRule30.Column = Me.GridColumn209
-        GridFormatRule30.Name = "Format2"
-        FormatConditionRuleValue30.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue30.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue30.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue30.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue30.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue30.Appearance.Options.UseFont = True
-        FormatConditionRuleValue30.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue30.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue30.Value1 = "INTERNAL"
-        GridFormatRule30.Rule = FormatConditionRuleValue30
-        GridFormatRule31.Column = Me.GridColumn209
-        GridFormatRule31.Name = "Format3"
-        FormatConditionRuleValue31.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue31.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue31.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue31.Appearance.ForeColor = System.Drawing.Color.Red
-        FormatConditionRuleValue31.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue31.Appearance.Options.UseFont = True
-        FormatConditionRuleValue31.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue31.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue31.Value1 = "EXTERNAL"
-        GridFormatRule31.Rule = FormatConditionRuleValue31
-        GridFormatRule32.Column = Me.GridColumn217
-        GridFormatRule32.ColumnApplyTo = Me.GridColumn217
-        GridFormatRule32.Name = "Format4"
-        FormatConditionRuleValue32.Appearance.BackColor = System.Drawing.Color.White
-        FormatConditionRuleValue32.Appearance.BackColor2 = System.Drawing.Color.White
-        FormatConditionRuleValue32.Appearance.ForeColor = System.Drawing.Color.Navy
-        FormatConditionRuleValue32.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue32.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue32.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
-        FormatConditionRuleValue32.Value1 = 0R
-        GridFormatRule32.Rule = FormatConditionRuleValue32
-        Me.InternalBaseView.FormatRules.Add(GridFormatRule28)
-        Me.InternalBaseView.FormatRules.Add(GridFormatRule29)
-        Me.InternalBaseView.FormatRules.Add(GridFormatRule30)
-        Me.InternalBaseView.FormatRules.Add(GridFormatRule31)
-        Me.InternalBaseView.FormatRules.Add(GridFormatRule32)
+        GridFormatRule11.Column = Me.GridColumn215
+        GridFormatRule11.Name = "Format0"
+        FormatConditionRuleValue11.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue11.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue11.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue11.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue11.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue11.Condition = DevExpress.XtraEditors.FormatCondition.Less
+        FormatConditionRuleValue11.Value1 = 0R
+        GridFormatRule11.Rule = FormatConditionRuleValue11
+        GridFormatRule12.Column = Me.GridColumn215
+        GridFormatRule12.Name = "Format1"
+        FormatConditionRuleValue12.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue12.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue12.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue12.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue12.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue12.Condition = DevExpress.XtraEditors.FormatCondition.Greater
+        FormatConditionRuleValue12.Value1 = 0R
+        GridFormatRule12.Rule = FormatConditionRuleValue12
+        GridFormatRule13.Column = Me.GridColumn209
+        GridFormatRule13.Name = "Format2"
+        FormatConditionRuleValue13.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue13.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue13.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue13.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue13.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue13.Appearance.Options.UseFont = True
+        FormatConditionRuleValue13.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue13.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue13.Value1 = "INTERNAL"
+        GridFormatRule13.Rule = FormatConditionRuleValue13
+        GridFormatRule14.Column = Me.GridColumn209
+        GridFormatRule14.Name = "Format3"
+        FormatConditionRuleValue14.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue14.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue14.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue14.Appearance.ForeColor = System.Drawing.Color.Red
+        FormatConditionRuleValue14.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue14.Appearance.Options.UseFont = True
+        FormatConditionRuleValue14.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue14.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue14.Value1 = "EXTERNAL"
+        GridFormatRule14.Rule = FormatConditionRuleValue14
+        GridFormatRule15.Column = Me.GridColumn217
+        GridFormatRule15.ColumnApplyTo = Me.GridColumn217
+        GridFormatRule15.Name = "Format4"
+        FormatConditionRuleValue15.Appearance.BackColor = System.Drawing.Color.White
+        FormatConditionRuleValue15.Appearance.BackColor2 = System.Drawing.Color.White
+        FormatConditionRuleValue15.Appearance.ForeColor = System.Drawing.Color.Navy
+        FormatConditionRuleValue15.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue15.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue15.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
+        FormatConditionRuleValue15.Value1 = 0R
+        GridFormatRule15.Rule = FormatConditionRuleValue15
+        Me.InternalBaseView.FormatRules.Add(GridFormatRule11)
+        Me.InternalBaseView.FormatRules.Add(GridFormatRule12)
+        Me.InternalBaseView.FormatRules.Add(GridFormatRule13)
+        Me.InternalBaseView.FormatRules.Add(GridFormatRule14)
+        Me.InternalBaseView.FormatRules.Add(GridFormatRule15)
         Me.InternalBaseView.GridControl = Me.GridControl_Internal
         Me.InternalBaseView.Name = "InternalBaseView"
         Me.InternalBaseView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
@@ -3056,7 +3068,6 @@ Partial Class NostroReconciliations
         Me.InternalBaseView.OptionsView.ColumnAutoWidth = False
         Me.InternalBaseView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
         Me.InternalBaseView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
-        Me.InternalBaseView.OptionsView.ShowAutoFilterRow = True
         Me.InternalBaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
         Me.InternalBaseView.OptionsView.ShowFooter = True
         Me.InternalBaseView.OptionsView.ShowGroupPanel = False
@@ -3394,18 +3405,18 @@ Partial Class NostroReconciliations
         '
         Me.ReconcileRepositoryItemButtonEdit.AutoHeight = False
         Me.ReconcileRepositoryItemButtonEdit.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
-        EditorButtonImageOptions7.Image = CType(resources.GetObject("EditorButtonImageOptions7.Image"), System.Drawing.Image)
-        SerializableAppearanceObject26.BackColor = System.Drawing.Color.Yellow
-        SerializableAppearanceObject26.BackColor2 = System.Drawing.Color.Yellow
-        SerializableAppearanceObject26.ForeColor = System.Drawing.Color.Black
-        SerializableAppearanceObject26.Options.UseBackColor = True
-        SerializableAppearanceObject26.Options.UseForeColor = True
-        SerializableAppearanceObject27.BackColor = System.Drawing.Color.Yellow
-        SerializableAppearanceObject27.BackColor2 = System.Drawing.Color.Yellow
-        SerializableAppearanceObject27.ForeColor = System.Drawing.Color.Black
-        SerializableAppearanceObject27.Options.UseBackColor = True
-        SerializableAppearanceObject27.Options.UseForeColor = True
-        Me.ReconcileRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions7, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject25, SerializableAppearanceObject26, SerializableAppearanceObject27, SerializableAppearanceObject28, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
+        SerializableAppearanceObject2.BackColor = System.Drawing.Color.Yellow
+        SerializableAppearanceObject2.BackColor2 = System.Drawing.Color.Yellow
+        SerializableAppearanceObject2.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject2.Options.UseBackColor = True
+        SerializableAppearanceObject2.Options.UseForeColor = True
+        SerializableAppearanceObject3.BackColor = System.Drawing.Color.Yellow
+        SerializableAppearanceObject3.BackColor2 = System.Drawing.Color.Yellow
+        SerializableAppearanceObject3.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject3.Options.UseBackColor = True
+        SerializableAppearanceObject3.Options.UseForeColor = True
+        Me.ReconcileRepositoryItemButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.ReconcileRepositoryItemButtonEdit.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
         Me.ReconcileRepositoryItemButtonEdit.Name = "ReconcileRepositoryItemButtonEdit"
         Me.ReconcileRepositoryItemButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -3482,30 +3493,30 @@ Partial Class NostroReconciliations
         Me.NostroReconciliationDetails_GridView.Appearance.SelectedRow.Options.UseForeColor = True
         Me.NostroReconciliationDetails_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn27, Me.GridColumn28, Me.GridColumn29, Me.GridColumn30, Me.GridColumn31, Me.GridColumn32, Me.GridColumn33, Me.GridColumn34, Me.GridColumn35, Me.GridColumn36, Me.GridColumn37, Me.GridColumn38, Me.GridColumn39, Me.GridColumn41, Me.GridColumn42, Me.GridColumn48, Me.GridColumn49, Me.GridColumn50, Me.GridColumn51, Me.GridColumn52, Me.GridColumn55, Me.GridColumn56, Me.GridColumn57, Me.GridColumn58, Me.GridColumn59, Me.GridColumn80, Me.GridColumn60, Me.GridColumn61, Me.GridColumn62, Me.GridColumn63, Me.GridColumn64, Me.GridColumn65, Me.GridColumn66, Me.GridColumn79, Me.GridColumn1, Me.GridColumn2})
         Me.NostroReconciliationDetails_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule1.ApplyToRow = True
-        GridFormatRule1.Column = Me.GridColumn58
-        GridFormatRule1.Name = "Format0"
-        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue1.Value1 = "Y"
-        GridFormatRule1.Rule = FormatConditionRuleValue1
-        GridFormatRule2.ApplyToRow = True
-        GridFormatRule2.Column = Me.GridColumn58
-        GridFormatRule2.Name = "Format1"
-        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue2.Value1 = "N"
-        GridFormatRule2.Rule = FormatConditionRuleValue2
-        Me.NostroReconciliationDetails_GridView.FormatRules.Add(GridFormatRule1)
-        Me.NostroReconciliationDetails_GridView.FormatRules.Add(GridFormatRule2)
+        GridFormatRule16.ApplyToRow = True
+        GridFormatRule16.Column = Me.GridColumn58
+        GridFormatRule16.Name = "Format0"
+        FormatConditionRuleValue16.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue16.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue16.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue16.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue16.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue16.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue16.Value1 = "Y"
+        GridFormatRule16.Rule = FormatConditionRuleValue16
+        GridFormatRule17.ApplyToRow = True
+        GridFormatRule17.Column = Me.GridColumn58
+        GridFormatRule17.Name = "Format1"
+        FormatConditionRuleValue17.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue17.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue17.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue17.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue17.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue17.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue17.Value1 = "N"
+        GridFormatRule17.Rule = FormatConditionRuleValue17
+        Me.NostroReconciliationDetails_GridView.FormatRules.Add(GridFormatRule16)
+        Me.NostroReconciliationDetails_GridView.FormatRules.Add(GridFormatRule17)
         Me.NostroReconciliationDetails_GridView.GridControl = Me.GridControl_ReconciliationDetails
         Me.NostroReconciliationDetails_GridView.GroupCount = 2
         Me.NostroReconciliationDetails_GridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "colUB_Amount", Me.GridColumn66, "SUM={0:n2}")})
@@ -3540,21 +3551,25 @@ Partial Class NostroReconciliations
         '
         'GridColumn28
         '
+        Me.GridColumn28.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn28.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn28.FieldName = "BookingRoute_IB"
         Me.GridColumn28.Name = "GridColumn28"
         Me.GridColumn28.OptionsColumn.AllowEdit = False
         Me.GridColumn28.OptionsColumn.ReadOnly = True
-        Me.GridColumn28.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn28.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn29
         '
+        Me.GridColumn29.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn29.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn29.Caption = "Booking ID"
         Me.GridColumn29.FieldName = "ID_IB"
         Me.GridColumn29.Name = "GridColumn29"
         Me.GridColumn29.OptionsColumn.AllowEdit = False
         Me.GridColumn29.OptionsColumn.ReadOnly = True
-        Me.GridColumn29.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn29.OptionsColumn.ShowInExpressionEditor = False
+        Me.GridColumn29.Visible = True
+        Me.GridColumn29.VisibleIndex = 1
+        Me.GridColumn29.Width = 108
         '
         'GridColumn30
         '
@@ -3563,8 +3578,6 @@ Partial Class NostroReconciliations
         Me.GridColumn30.Name = "GridColumn30"
         Me.GridColumn30.OptionsColumn.AllowEdit = False
         Me.GridColumn30.OptionsColumn.ReadOnly = True
-        Me.GridColumn30.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn30.OptionsColumn.ShowInExpressionEditor = False
         Me.GridColumn30.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
         '
         'GridColumn31
@@ -3573,44 +3586,42 @@ Partial Class NostroReconciliations
         Me.GridColumn31.Name = "GridColumn31"
         Me.GridColumn31.OptionsColumn.AllowEdit = False
         Me.GridColumn31.OptionsColumn.ReadOnly = True
-        Me.GridColumn31.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn31.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn32
         '
+        Me.GridColumn32.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn32.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn32.FieldName = "BookingDate_IB"
         Me.GridColumn32.Name = "GridColumn32"
         Me.GridColumn32.OptionsColumn.AllowEdit = False
         Me.GridColumn32.OptionsColumn.ReadOnly = True
-        Me.GridColumn32.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn32.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn33
         '
+        Me.GridColumn33.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn33.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn33.FieldName = "ValueDate_IB"
         Me.GridColumn33.Name = "GridColumn33"
         Me.GridColumn33.OptionsColumn.AllowEdit = False
         Me.GridColumn33.OptionsColumn.ReadOnly = True
-        Me.GridColumn33.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn33.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn34
         '
+        Me.GridColumn34.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn34.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn34.FieldName = "CCY_IB"
         Me.GridColumn34.Name = "GridColumn34"
         Me.GridColumn34.OptionsColumn.AllowEdit = False
         Me.GridColumn34.OptionsColumn.ReadOnly = True
-        Me.GridColumn34.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn34.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn35
         '
+        Me.GridColumn35.DisplayFormat.FormatString = "n2"
+        Me.GridColumn35.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn35.FieldName = "Amount_IB"
         Me.GridColumn35.Name = "GridColumn35"
         Me.GridColumn35.OptionsColumn.AllowEdit = False
         Me.GridColumn35.OptionsColumn.ReadOnly = True
-        Me.GridColumn35.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn35.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn36
         '
@@ -3618,8 +3629,6 @@ Partial Class NostroReconciliations
         Me.GridColumn36.Name = "GridColumn36"
         Me.GridColumn36.OptionsColumn.AllowEdit = False
         Me.GridColumn36.OptionsColumn.ReadOnly = True
-        Me.GridColumn36.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn36.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn37
         '
@@ -3627,8 +3636,6 @@ Partial Class NostroReconciliations
         Me.GridColumn37.Name = "GridColumn37"
         Me.GridColumn37.OptionsColumn.AllowEdit = False
         Me.GridColumn37.OptionsColumn.ReadOnly = True
-        Me.GridColumn37.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn37.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn38
         '
@@ -3636,8 +3643,6 @@ Partial Class NostroReconciliations
         Me.GridColumn38.Name = "GridColumn38"
         Me.GridColumn38.OptionsColumn.AllowEdit = False
         Me.GridColumn38.OptionsColumn.ReadOnly = True
-        Me.GridColumn38.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn38.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn39
         '
@@ -3645,8 +3650,6 @@ Partial Class NostroReconciliations
         Me.GridColumn39.Name = "GridColumn39"
         Me.GridColumn39.OptionsColumn.AllowEdit = False
         Me.GridColumn39.OptionsColumn.ReadOnly = True
-        Me.GridColumn39.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn39.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn41
         '
@@ -3654,8 +3657,6 @@ Partial Class NostroReconciliations
         Me.GridColumn41.Name = "GridColumn41"
         Me.GridColumn41.OptionsColumn.AllowEdit = False
         Me.GridColumn41.OptionsColumn.ReadOnly = True
-        Me.GridColumn41.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn41.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn42
         '
@@ -3663,26 +3664,24 @@ Partial Class NostroReconciliations
         Me.GridColumn42.Name = "GridColumn42"
         Me.GridColumn42.OptionsColumn.AllowEdit = False
         Me.GridColumn42.OptionsColumn.ReadOnly = True
-        Me.GridColumn42.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn42.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn48
         '
+        Me.GridColumn48.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn48.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn48.FieldName = "BookingDate_EB"
         Me.GridColumn48.Name = "GridColumn48"
         Me.GridColumn48.OptionsColumn.AllowEdit = False
         Me.GridColumn48.OptionsColumn.ReadOnly = True
-        Me.GridColumn48.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn48.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn49
         '
+        Me.GridColumn49.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn49.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.GridColumn49.FieldName = "ValueDate_EB"
         Me.GridColumn49.Name = "GridColumn49"
         Me.GridColumn49.OptionsColumn.AllowEdit = False
         Me.GridColumn49.OptionsColumn.ReadOnly = True
-        Me.GridColumn49.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn49.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn50
         '
@@ -3690,17 +3689,15 @@ Partial Class NostroReconciliations
         Me.GridColumn50.Name = "GridColumn50"
         Me.GridColumn50.OptionsColumn.AllowEdit = False
         Me.GridColumn50.OptionsColumn.ReadOnly = True
-        Me.GridColumn50.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn50.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn51
         '
+        Me.GridColumn51.DisplayFormat.FormatString = "n2"
+        Me.GridColumn51.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn51.FieldName = "Amount_EB"
         Me.GridColumn51.Name = "GridColumn51"
         Me.GridColumn51.OptionsColumn.AllowEdit = False
         Me.GridColumn51.OptionsColumn.ReadOnly = True
-        Me.GridColumn51.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn51.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn52
         '
@@ -3708,8 +3705,6 @@ Partial Class NostroReconciliations
         Me.GridColumn52.Name = "GridColumn52"
         Me.GridColumn52.OptionsColumn.AllowEdit = False
         Me.GridColumn52.OptionsColumn.ReadOnly = True
-        Me.GridColumn52.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn52.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn55
         '
@@ -3717,8 +3712,6 @@ Partial Class NostroReconciliations
         Me.GridColumn55.Name = "GridColumn55"
         Me.GridColumn55.OptionsColumn.AllowEdit = False
         Me.GridColumn55.OptionsColumn.ReadOnly = True
-        Me.GridColumn55.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn55.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn56
         '
@@ -3726,8 +3719,6 @@ Partial Class NostroReconciliations
         Me.GridColumn56.Name = "GridColumn56"
         Me.GridColumn56.OptionsColumn.AllowEdit = False
         Me.GridColumn56.OptionsColumn.ReadOnly = True
-        Me.GridColumn56.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn56.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn57
         '
@@ -3735,8 +3726,6 @@ Partial Class NostroReconciliations
         Me.GridColumn57.Name = "GridColumn57"
         Me.GridColumn57.OptionsColumn.AllowEdit = False
         Me.GridColumn57.OptionsColumn.ReadOnly = True
-        Me.GridColumn57.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn57.OptionsColumn.ShowInExpressionEditor = False
         '
         'GridColumn59
         '
@@ -3746,7 +3735,7 @@ Partial Class NostroReconciliations
         Me.GridColumn59.Name = "GridColumn59"
         Me.GridColumn59.OptionsColumn.ReadOnly = True
         Me.GridColumn59.Visible = True
-        Me.GridColumn59.VisibleIndex = 3
+        Me.GridColumn59.VisibleIndex = 4
         Me.GridColumn59.Width = 87
         '
         'RepositoryItemImageComboBox4
@@ -3772,7 +3761,7 @@ Partial Class NostroReconciliations
         Me.GridColumn80.OptionsColumn.AllowEdit = False
         Me.GridColumn80.OptionsColumn.ReadOnly = True
         Me.GridColumn80.Visible = True
-        Me.GridColumn80.VisibleIndex = 1
+        Me.GridColumn80.VisibleIndex = 2
         Me.GridColumn80.Width = 92
         '
         'GridColumn60
@@ -3786,7 +3775,7 @@ Partial Class NostroReconciliations
         Me.GridColumn60.UnboundExpression = "Iif([BookingRoute_IB] = 'INTERNAL', 'INTERNAL', 'EXTERNAL')"
         Me.GridColumn60.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         Me.GridColumn60.Visible = True
-        Me.GridColumn60.VisibleIndex = 4
+        Me.GridColumn60.VisibleIndex = 5
         Me.GridColumn60.Width = 112
         '
         'GridColumn61
@@ -3796,8 +3785,6 @@ Partial Class NostroReconciliations
         Me.GridColumn61.Name = "GridColumn61"
         Me.GridColumn61.OptionsColumn.AllowEdit = False
         Me.GridColumn61.OptionsColumn.ReadOnly = True
-        Me.GridColumn61.OptionsColumn.ShowInCustomizationForm = False
-        Me.GridColumn61.OptionsColumn.ShowInExpressionEditor = False
         Me.GridColumn61.UnboundExpression = "Iif([ID_IB] <> null, [ID_IB], [ID_EB])"
         Me.GridColumn61.UnboundType = DevExpress.Data.UnboundColumnType.[Integer]
         '
@@ -3813,7 +3800,7 @@ Partial Class NostroReconciliations
     "' + [SupplementaryDetails_EB] + '  ' + [SupplementaryDetails_EB])"
         Me.GridColumn62.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         Me.GridColumn62.Visible = True
-        Me.GridColumn62.VisibleIndex = 5
+        Me.GridColumn62.VisibleIndex = 6
         Me.GridColumn62.Width = 492
         '
         'RepositoryItemMemoEdit1
@@ -3840,7 +3827,7 @@ Partial Class NostroReconciliations
         Me.GridColumn63.UnboundExpression = "Iif([BookingDate_IB] <> null, [BookingDate_IB], [BookingDate_EB])"
         Me.GridColumn63.UnboundType = DevExpress.Data.UnboundColumnType.DateTime
         Me.GridColumn63.Visible = True
-        Me.GridColumn63.VisibleIndex = 6
+        Me.GridColumn63.VisibleIndex = 7
         Me.GridColumn63.Width = 104
         '
         'GridColumn64
@@ -3857,7 +3844,7 @@ Partial Class NostroReconciliations
         Me.GridColumn64.UnboundExpression = "Iif([ValueDate_IB] <> null, [ValueDate_IB], [ValueDate_EB])"
         Me.GridColumn64.UnboundType = DevExpress.Data.UnboundColumnType.DateTime
         Me.GridColumn64.Visible = True
-        Me.GridColumn64.VisibleIndex = 7
+        Me.GridColumn64.VisibleIndex = 8
         Me.GridColumn64.Width = 99
         '
         'GridColumn65
@@ -3872,7 +3859,7 @@ Partial Class NostroReconciliations
         Me.GridColumn65.UnboundExpression = "Iif([CCY_IB] <> null, [CCY_IB], [CCY_EB])"
         Me.GridColumn65.UnboundType = DevExpress.Data.UnboundColumnType.[String]
         Me.GridColumn65.Visible = True
-        Me.GridColumn65.VisibleIndex = 8
+        Me.GridColumn65.VisibleIndex = 9
         Me.GridColumn65.Width = 61
         '
         'GridColumn66
@@ -3891,7 +3878,7 @@ Partial Class NostroReconciliations
         Me.GridColumn66.UnboundExpression = "Iif([Amount_IB] <> 0, [Amount_IB], [Amount_EB])"
         Me.GridColumn66.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
         Me.GridColumn66.Visible = True
-        Me.GridColumn66.VisibleIndex = 9
+        Me.GridColumn66.VisibleIndex = 10
         Me.GridColumn66.Width = 173
         '
         'Amount_RepositoryItemTextEdit
@@ -3911,7 +3898,7 @@ Partial Class NostroReconciliations
         Me.GridColumn79.Name = "GridColumn79"
         Me.GridColumn79.OptionsColumn.ReadOnly = True
         Me.GridColumn79.Visible = True
-        Me.GridColumn79.VisibleIndex = 11
+        Me.GridColumn79.VisibleIndex = 12
         '
         'RepositoryItemMemoExEdit3
         '
@@ -3936,7 +3923,7 @@ Partial Class NostroReconciliations
         Me.GridColumn1.OptionsColumn.AllowEdit = False
         Me.GridColumn1.OptionsColumn.ReadOnly = True
         Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 2
+        Me.GridColumn1.VisibleIndex = 3
         Me.GridColumn1.Width = 101
         '
         'GridColumn2
@@ -3947,7 +3934,7 @@ Partial Class NostroReconciliations
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.OptionsColumn.ReadOnly = True
         Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 10
+        Me.GridColumn2.VisibleIndex = 11
         Me.GridColumn2.Width = 360
         '
         'RepositoryItemTextEdit3
@@ -4215,9 +4202,9 @@ Partial Class NostroReconciliations
         Me.CreateMissingRecon_FromDateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.CreateMissingRecon_FromDateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.CreateMissingRecon_FromDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions16.Image = CType(resources.GetObject("EditorButtonImageOptions16.Image"), System.Drawing.Image)
-        EditorButtonImageOptions16.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.CreateMissingRecon_FromDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, False, False, EditorButtonImageOptions8, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject29, SerializableAppearanceObject30, SerializableAppearanceObject31, SerializableAppearanceObject32, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Start Reconciliation", -1, True, False, False, EditorButtonImageOptions16, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject61, SerializableAppearanceObject62, SerializableAppearanceObject63, SerializableAppearanceObject64, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        EditorButtonImageOptions3.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.CreateMissingRecon_FromDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, False, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Start Reconciliation", -1, True, False, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.CreateMissingRecon_FromDateEdit.Properties.DisplayFormat.FormatString = "d"
         Me.CreateMissingRecon_FromDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.CreateMissingRecon_FromDateEdit.Properties.EditFormat.FormatString = "d"
@@ -4446,24 +4433,24 @@ Partial Class NostroReconciliations
         Me.TotalsDifference_TextEdit.Properties.ReadOnly = True
         Me.TotalsDifference_TextEdit.Size = New System.Drawing.Size(131, 22)
         Me.TotalsDifference_TextEdit.StyleController = Me.LayoutControl2
-        ToolTipTitleItem2.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.Appearance.Options.UseImage = True
+        ToolTipTitleItem1.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.Text = "Reconciliation Difference"
+        ToolTipItem1.LeftIndent = 6
+        ToolTipItem1.Text = resources.GetString("ToolTipItem1.Text")
+        ToolTipTitleItem2.Appearance.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
         ToolTipTitleItem2.Appearance.Options.UseImage = True
-        ToolTipTitleItem2.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem2.Text = "Reconciliation Difference"
-        ToolTipItem2.LeftIndent = 6
-        ToolTipItem2.Text = resources.GetString("ToolTipItem2.Text")
-        ToolTipTitleItem3.Appearance.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
-        ToolTipTitleItem3.Appearance.Options.UseImage = True
-        ToolTipTitleItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
-        ToolTipTitleItem3.LeftIndent = 6
-        ToolTipTitleItem3.Text = "If the Amount is not equal to 0, there are missing Internal or External postings " &
+        ToolTipTitleItem2.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        ToolTipTitleItem2.LeftIndent = 6
+        ToolTipTitleItem2.Text = "If the Amount is not equal to 0, there are missing Internal or External postings " &
     "in the current Reconciliation Date." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "++ Press the ""Restart"" button in order to" &
     " get the missing postings ++"
-        SuperToolTip2.Items.Add(ToolTipTitleItem2)
-        SuperToolTip2.Items.Add(ToolTipItem2)
-        SuperToolTip2.Items.Add(ToolTipSeparatorItem2)
-        SuperToolTip2.Items.Add(ToolTipTitleItem3)
-        Me.TotalsDifference_TextEdit.SuperTip = SuperToolTip2
+        SuperToolTip1.Items.Add(ToolTipTitleItem1)
+        SuperToolTip1.Items.Add(ToolTipItem1)
+        SuperToolTip1.Items.Add(ToolTipSeparatorItem1)
+        SuperToolTip1.Items.Add(ToolTipTitleItem2)
+        Me.TotalsDifference_TextEdit.SuperTip = SuperToolTip1
         Me.TotalsDifference_TextEdit.TabIndex = 15
         Me.TotalsDifference_TextEdit.TabStop = False
         Me.TotalsDifference_TextEdit.ToolTipController = Me.ToolTipController1
@@ -4572,66 +4559,66 @@ Partial Class NostroReconciliations
         Me.GridView5.Appearance.SelectedRow.Options.UseForeColor = True
         Me.GridView5.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn144, Me.GridColumn145, Me.GridColumn146, Me.GridColumn147, Me.GridColumn148, Me.GridColumn149, Me.GridColumn150, Me.GridColumn151, Me.GridColumn152, Me.GridColumn153, Me.GridColumn154, Me.GridColumn155, Me.GridColumn156, Me.GridColumn157, Me.GridColumn158, Me.GridColumn159, Me.GridColumn160, Me.GridColumn161, Me.GridColumn162, Me.GridColumn163, Me.GridColumn164, Me.GridColumn165, Me.GridColumn166, Me.GridColumn167, Me.GridColumn168, Me.GridColumn169, Me.GridColumn170, Me.GridColumn255, Me.GridColumn256, Me.GridColumn257, Me.GridColumn258, Me.GridColumn259, Me.GridColumn260, Me.GridColumn261, Me.GridColumn262})
         Me.GridView5.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule3.Column = Me.GridColumn259
-        GridFormatRule3.Name = "Format0"
-        FormatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue3.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue3.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue3.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue3.Value1 = 0R
-        GridFormatRule3.Rule = FormatConditionRuleValue3
-        GridFormatRule4.Column = Me.GridColumn259
-        GridFormatRule4.Name = "Format1"
-        FormatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue4.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue4.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue4.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue4.Value1 = 0R
-        GridFormatRule4.Rule = FormatConditionRuleValue4
-        GridFormatRule5.Column = Me.GridColumn169
-        GridFormatRule5.Name = "Format2"
-        FormatConditionRuleValue5.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue5.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue5.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue5.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue5.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue5.Appearance.Options.UseFont = True
-        FormatConditionRuleValue5.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue5.Value1 = "INTERNAL"
-        GridFormatRule5.Rule = FormatConditionRuleValue5
-        GridFormatRule6.Column = Me.GridColumn169
-        GridFormatRule6.Name = "Format3"
-        FormatConditionRuleValue6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue6.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue6.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue6.Appearance.ForeColor = System.Drawing.Color.Red
-        FormatConditionRuleValue6.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue6.Appearance.Options.UseFont = True
-        FormatConditionRuleValue6.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue6.Value1 = "EXTERNAL"
-        GridFormatRule6.Rule = FormatConditionRuleValue6
-        GridFormatRule7.Column = Me.GridColumn261
-        GridFormatRule7.ColumnApplyTo = Me.GridColumn261
-        GridFormatRule7.Name = "Format4"
-        FormatConditionRuleValue7.Appearance.BackColor = System.Drawing.Color.White
-        FormatConditionRuleValue7.Appearance.BackColor2 = System.Drawing.Color.White
-        FormatConditionRuleValue7.Appearance.ForeColor = System.Drawing.Color.Navy
-        FormatConditionRuleValue7.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue7.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue7.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
-        FormatConditionRuleValue7.Value1 = 0R
-        GridFormatRule7.Rule = FormatConditionRuleValue7
-        Me.GridView5.FormatRules.Add(GridFormatRule3)
-        Me.GridView5.FormatRules.Add(GridFormatRule4)
-        Me.GridView5.FormatRules.Add(GridFormatRule5)
-        Me.GridView5.FormatRules.Add(GridFormatRule6)
-        Me.GridView5.FormatRules.Add(GridFormatRule7)
+        GridFormatRule18.Column = Me.GridColumn259
+        GridFormatRule18.Name = "Format0"
+        FormatConditionRuleValue18.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue18.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue18.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue18.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue18.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue18.Condition = DevExpress.XtraEditors.FormatCondition.Less
+        FormatConditionRuleValue18.Value1 = 0R
+        GridFormatRule18.Rule = FormatConditionRuleValue18
+        GridFormatRule19.Column = Me.GridColumn259
+        GridFormatRule19.Name = "Format1"
+        FormatConditionRuleValue19.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue19.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue19.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue19.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue19.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue19.Condition = DevExpress.XtraEditors.FormatCondition.Greater
+        FormatConditionRuleValue19.Value1 = 0R
+        GridFormatRule19.Rule = FormatConditionRuleValue19
+        GridFormatRule20.Column = Me.GridColumn169
+        GridFormatRule20.Name = "Format2"
+        FormatConditionRuleValue20.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue20.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue20.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue20.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue20.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue20.Appearance.Options.UseFont = True
+        FormatConditionRuleValue20.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue20.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue20.Value1 = "INTERNAL"
+        GridFormatRule20.Rule = FormatConditionRuleValue20
+        GridFormatRule21.Column = Me.GridColumn169
+        GridFormatRule21.Name = "Format3"
+        FormatConditionRuleValue21.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue21.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue21.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue21.Appearance.ForeColor = System.Drawing.Color.Red
+        FormatConditionRuleValue21.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue21.Appearance.Options.UseFont = True
+        FormatConditionRuleValue21.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue21.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue21.Value1 = "EXTERNAL"
+        GridFormatRule21.Rule = FormatConditionRuleValue21
+        GridFormatRule22.Column = Me.GridColumn261
+        GridFormatRule22.ColumnApplyTo = Me.GridColumn261
+        GridFormatRule22.Name = "Format4"
+        FormatConditionRuleValue22.Appearance.BackColor = System.Drawing.Color.White
+        FormatConditionRuleValue22.Appearance.BackColor2 = System.Drawing.Color.White
+        FormatConditionRuleValue22.Appearance.ForeColor = System.Drawing.Color.Navy
+        FormatConditionRuleValue22.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue22.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue22.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
+        FormatConditionRuleValue22.Value1 = 0R
+        GridFormatRule22.Rule = FormatConditionRuleValue22
+        Me.GridView5.FormatRules.Add(GridFormatRule18)
+        Me.GridView5.FormatRules.Add(GridFormatRule19)
+        Me.GridView5.FormatRules.Add(GridFormatRule20)
+        Me.GridView5.FormatRules.Add(GridFormatRule21)
+        Me.GridView5.FormatRules.Add(GridFormatRule22)
         Me.GridView5.GridControl = Me.GridControl4
         Me.GridView5.Name = "GridView5"
         Me.GridView5.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
@@ -4649,7 +4636,6 @@ Partial Class NostroReconciliations
         Me.GridView5.OptionsView.ColumnAutoWidth = False
         Me.GridView5.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
         Me.GridView5.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
-        Me.GridView5.OptionsView.ShowAutoFilterRow = True
         Me.GridView5.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
         Me.GridView5.OptionsView.ShowFooter = True
         Me.GridView5.OptionsView.ShowGroupPanel = False
@@ -5175,66 +5161,66 @@ Partial Class NostroReconciliations
         Me.GridView3.Appearance.SelectedRow.Options.UseForeColor = True
         Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn115, Me.GridColumn116, Me.GridColumn117, Me.GridColumn118, Me.GridColumn119, Me.GridColumn120, Me.GridColumn121, Me.GridColumn122, Me.GridColumn123, Me.GridColumn124, Me.GridColumn125, Me.GridColumn126, Me.GridColumn127, Me.GridColumn128, Me.GridColumn129, Me.GridColumn130, Me.GridColumn131, Me.GridColumn132, Me.GridColumn133, Me.GridColumn134, Me.GridColumn135, Me.GridColumn136, Me.GridColumn137, Me.GridColumn138, Me.GridColumn139, Me.GridColumn140, Me.GridColumn141, Me.GridColumn142, Me.GridColumn143, Me.GridColumn249, Me.GridColumn250, Me.GridColumn251, Me.GridColumn252, Me.GridColumn253, Me.GridColumn254})
         Me.GridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule8.Column = Me.GridColumn251
-        GridFormatRule8.Name = "Format0"
-        FormatConditionRuleValue8.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue8.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue8.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue8.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue8.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue8.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue8.Value1 = 0R
-        GridFormatRule8.Rule = FormatConditionRuleValue8
-        GridFormatRule9.Column = Me.GridColumn251
-        GridFormatRule9.Name = "Format1"
-        FormatConditionRuleValue9.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue9.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue9.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue9.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue9.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue9.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue9.Value1 = 0R
-        GridFormatRule9.Rule = FormatConditionRuleValue9
-        GridFormatRule10.Column = Me.GridColumn140
-        GridFormatRule10.Name = "Format2"
-        FormatConditionRuleValue10.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue10.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue10.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue10.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue10.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue10.Appearance.Options.UseFont = True
-        FormatConditionRuleValue10.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue10.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue10.Value1 = "INTERNAL"
-        GridFormatRule10.Rule = FormatConditionRuleValue10
-        GridFormatRule11.Column = Me.GridColumn140
-        GridFormatRule11.Name = "Format3"
-        FormatConditionRuleValue11.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue11.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue11.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue11.Appearance.ForeColor = System.Drawing.Color.Red
-        FormatConditionRuleValue11.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue11.Appearance.Options.UseFont = True
-        FormatConditionRuleValue11.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue11.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue11.Value1 = "EXTERNAL"
-        GridFormatRule11.Rule = FormatConditionRuleValue11
-        GridFormatRule12.Column = Me.GridColumn253
-        GridFormatRule12.ColumnApplyTo = Me.GridColumn253
-        GridFormatRule12.Name = "Format4"
-        FormatConditionRuleValue12.Appearance.BackColor = System.Drawing.Color.White
-        FormatConditionRuleValue12.Appearance.BackColor2 = System.Drawing.Color.White
-        FormatConditionRuleValue12.Appearance.ForeColor = System.Drawing.Color.Navy
-        FormatConditionRuleValue12.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue12.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue12.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
-        FormatConditionRuleValue12.Value1 = 0R
-        GridFormatRule12.Rule = FormatConditionRuleValue12
-        Me.GridView3.FormatRules.Add(GridFormatRule8)
-        Me.GridView3.FormatRules.Add(GridFormatRule9)
-        Me.GridView3.FormatRules.Add(GridFormatRule10)
-        Me.GridView3.FormatRules.Add(GridFormatRule11)
-        Me.GridView3.FormatRules.Add(GridFormatRule12)
+        GridFormatRule23.Column = Me.GridColumn251
+        GridFormatRule23.Name = "Format0"
+        FormatConditionRuleValue23.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue23.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue23.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue23.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue23.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue23.Condition = DevExpress.XtraEditors.FormatCondition.Less
+        FormatConditionRuleValue23.Value1 = 0R
+        GridFormatRule23.Rule = FormatConditionRuleValue23
+        GridFormatRule24.Column = Me.GridColumn251
+        GridFormatRule24.Name = "Format1"
+        FormatConditionRuleValue24.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue24.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue24.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue24.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue24.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue24.Condition = DevExpress.XtraEditors.FormatCondition.Greater
+        FormatConditionRuleValue24.Value1 = 0R
+        GridFormatRule24.Rule = FormatConditionRuleValue24
+        GridFormatRule25.Column = Me.GridColumn140
+        GridFormatRule25.Name = "Format2"
+        FormatConditionRuleValue25.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue25.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue25.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue25.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue25.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue25.Appearance.Options.UseFont = True
+        FormatConditionRuleValue25.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue25.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue25.Value1 = "INTERNAL"
+        GridFormatRule25.Rule = FormatConditionRuleValue25
+        GridFormatRule26.Column = Me.GridColumn140
+        GridFormatRule26.Name = "Format3"
+        FormatConditionRuleValue26.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue26.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue26.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue26.Appearance.ForeColor = System.Drawing.Color.Red
+        FormatConditionRuleValue26.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue26.Appearance.Options.UseFont = True
+        FormatConditionRuleValue26.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue26.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue26.Value1 = "EXTERNAL"
+        GridFormatRule26.Rule = FormatConditionRuleValue26
+        GridFormatRule27.Column = Me.GridColumn253
+        GridFormatRule27.ColumnApplyTo = Me.GridColumn253
+        GridFormatRule27.Name = "Format4"
+        FormatConditionRuleValue27.Appearance.BackColor = System.Drawing.Color.White
+        FormatConditionRuleValue27.Appearance.BackColor2 = System.Drawing.Color.White
+        FormatConditionRuleValue27.Appearance.ForeColor = System.Drawing.Color.Navy
+        FormatConditionRuleValue27.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue27.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue27.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
+        FormatConditionRuleValue27.Value1 = 0R
+        GridFormatRule27.Rule = FormatConditionRuleValue27
+        Me.GridView3.FormatRules.Add(GridFormatRule23)
+        Me.GridView3.FormatRules.Add(GridFormatRule24)
+        Me.GridView3.FormatRules.Add(GridFormatRule25)
+        Me.GridView3.FormatRules.Add(GridFormatRule26)
+        Me.GridView3.FormatRules.Add(GridFormatRule27)
         Me.GridView3.GridControl = Me.GridControl3
         Me.GridView3.Name = "GridView3"
         Me.GridView3.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
@@ -5250,7 +5236,6 @@ Partial Class NostroReconciliations
         Me.GridView3.OptionsView.ColumnAutoWidth = False
         Me.GridView3.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
         Me.GridView3.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
-        Me.GridView3.OptionsView.ShowAutoFilterRow = True
         Me.GridView3.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
         Me.GridView3.OptionsView.ShowFooter = True
         Me.GridView3.OptionsView.ShowGroupPanel = False
@@ -5590,18 +5575,18 @@ Partial Class NostroReconciliations
         '
         Me.RepositoryItemButtonEdit1.AutoHeight = False
         Me.RepositoryItemButtonEdit1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
-        EditorButtonImageOptions9.Image = CType(resources.GetObject("EditorButtonImageOptions9.Image"), System.Drawing.Image)
-        SerializableAppearanceObject34.BackColor = System.Drawing.Color.Yellow
-        SerializableAppearanceObject34.BackColor2 = System.Drawing.Color.Yellow
-        SerializableAppearanceObject34.ForeColor = System.Drawing.Color.Black
-        SerializableAppearanceObject34.Options.UseBackColor = True
-        SerializableAppearanceObject34.Options.UseForeColor = True
-        SerializableAppearanceObject35.BackColor = System.Drawing.Color.Yellow
-        SerializableAppearanceObject35.BackColor2 = System.Drawing.Color.Yellow
-        SerializableAppearanceObject35.ForeColor = System.Drawing.Color.Black
-        SerializableAppearanceObject35.Options.UseBackColor = True
-        SerializableAppearanceObject35.Options.UseForeColor = True
-        Me.RepositoryItemButtonEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions9, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject33, SerializableAppearanceObject34, SerializableAppearanceObject35, SerializableAppearanceObject36, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions4.Image = CType(resources.GetObject("EditorButtonImageOptions4.Image"), System.Drawing.Image)
+        SerializableAppearanceObject14.BackColor = System.Drawing.Color.Yellow
+        SerializableAppearanceObject14.BackColor2 = System.Drawing.Color.Yellow
+        SerializableAppearanceObject14.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject14.Options.UseBackColor = True
+        SerializableAppearanceObject14.Options.UseForeColor = True
+        SerializableAppearanceObject15.BackColor = System.Drawing.Color.Yellow
+        SerializableAppearanceObject15.BackColor2 = System.Drawing.Color.Yellow
+        SerializableAppearanceObject15.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject15.Options.UseBackColor = True
+        SerializableAppearanceObject15.Options.UseForeColor = True
+        Me.RepositoryItemButtonEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemButtonEdit1.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
         Me.RepositoryItemButtonEdit1.Name = "RepositoryItemButtonEdit1"
         Me.RepositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor
@@ -5678,9 +5663,9 @@ Partial Class NostroReconciliations
         '
         Me.RepositoryItemGridLookUpEdit2.AutoHeight = False
         Me.RepositoryItemGridLookUpEdit2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
-        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
-        EditorButtonImageOptions3.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.RepositoryItemGridLookUpEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Load", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions5.Image = CType(resources.GetObject("EditorButtonImageOptions5.Image"), System.Drawing.Image)
+        EditorButtonImageOptions5.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.RepositoryItemGridLookUpEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Load", -1, True, True, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.RepositoryItemGridLookUpEdit2.Name = "RepositoryItemGridLookUpEdit2"
         Me.RepositoryItemGridLookUpEdit2.NullText = "[Select Nostro Account]"
         Me.RepositoryItemGridLookUpEdit2.PopupFormSize = New System.Drawing.Size(900, 500)
@@ -5918,16 +5903,16 @@ Partial Class NostroReconciliations
         Me.InternalExternalDifferenceTextEdit.Properties.ReadOnly = True
         Me.InternalExternalDifferenceTextEdit.Size = New System.Drawing.Size(109, 22)
         Me.InternalExternalDifferenceTextEdit.StyleController = Me.LayoutControl2
-        ToolTipTitleItem4.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem4.Appearance.Options.UseImage = True
-        ToolTipTitleItem4.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem4.Text = "Difference (Internal + External)"
-        ToolTipItem3.LeftIndent = 6
-        ToolTipItem3.Text = "The calculated difference between then" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Internal Value Balance" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "External" &
+        ToolTipTitleItem3.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem3.Appearance.Options.UseImage = True
+        ToolTipTitleItem3.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem3.Text = "Difference (Internal + External)"
+        ToolTipItem2.LeftIndent = 6
+        ToolTipItem2.Text = "The calculated difference between then" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Internal Value Balance" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and the" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "External" &
     " Booked Balance" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "for the displayed Dates"
-        SuperToolTip3.Items.Add(ToolTipTitleItem4)
-        SuperToolTip3.Items.Add(ToolTipItem3)
-        Me.InternalExternalDifferenceTextEdit.SuperTip = SuperToolTip3
+        SuperToolTip2.Items.Add(ToolTipTitleItem3)
+        SuperToolTip2.Items.Add(ToolTipItem2)
+        Me.InternalExternalDifferenceTextEdit.SuperTip = SuperToolTip2
         Me.InternalExternalDifferenceTextEdit.TabIndex = 7
         Me.InternalExternalDifferenceTextEdit.TabStop = False
         Me.InternalExternalDifferenceTextEdit.ToolTipController = Me.ToolTipController1
@@ -5948,28 +5933,49 @@ Partial Class NostroReconciliations
         Me.NostroAcc_SearchLookUpEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.NostroAcc_SearchLookUpEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.NostroAcc_SearchLookUpEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions14.Image = CType(resources.GetObject("EditorButtonImageOptions14.Image"), System.Drawing.Image)
-        EditorButtonImageOptions14.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        ToolTipTitleItem5.Appearance.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
-        ToolTipTitleItem5.Appearance.Options.UseImage = True
-        ToolTipTitleItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
-        ToolTipTitleItem5.Text = "Reload"
-        ToolTipItem4.LeftIndent = 6
-        ToolTipItem4.Text = "Reloading all Reconciliations for all Nostro Accounts based on their Reconciliati" &
+        EditorButtonImageOptions6.Image = CType(resources.GetObject("EditorButtonImageOptions6.Image"), System.Drawing.Image)
+        EditorButtonImageOptions6.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        SerializableAppearanceObject22.BackColor = System.Drawing.SystemColors.Control
+        SerializableAppearanceObject22.ForeColor = System.Drawing.Color.Aqua
+        SerializableAppearanceObject22.Options.UseBackColor = True
+        SerializableAppearanceObject22.Options.UseForeColor = True
+        ToolTipTitleItem4.Appearance.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
+        ToolTipTitleItem4.Appearance.Options.UseImage = True
+        ToolTipTitleItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
+        ToolTipTitleItem4.Text = "Reload"
+        ToolTipItem3.LeftIndent = 6
+        ToolTipItem3.Text = "Reloading all Reconciliations for all Nostro Accounts based on their Reconciliati" &
     "on date"
+        SuperToolTip3.Items.Add(ToolTipTitleItem4)
+        SuperToolTip3.Items.Add(ToolTipItem3)
+        EditorButtonImageOptions7.Image = CType(resources.GetObject("EditorButtonImageOptions7.Image"), System.Drawing.Image)
+        EditorButtonImageOptions7.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        SerializableAppearanceObject26.BackColor = System.Drawing.SystemColors.Control
+        SerializableAppearanceObject26.ForeColor = System.Drawing.Color.Aqua
+        SerializableAppearanceObject26.Options.UseBackColor = True
+        SerializableAppearanceObject26.Options.UseForeColor = True
+        ToolTipTitleItem5.Appearance.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
+        ToolTipTitleItem5.Appearance.Options.UseImage = True
+        ToolTipTitleItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
+        ToolTipTitleItem5.Text = "Restart Reconciliation"
+        ToolTipItem4.LeftIndent = 6
+        ToolTipItem4.Text = "Restarts the automatic reconciliation for the outstanding Bookings"
         SuperToolTip4.Items.Add(ToolTipTitleItem5)
         SuperToolTip4.Items.Add(ToolTipItem4)
-        EditorButtonImageOptions17.Image = CType(resources.GetObject("EditorButtonImageOptions17.Image"), System.Drawing.Image)
-        EditorButtonImageOptions17.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        ToolTipTitleItem6.Appearance.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
-        ToolTipTitleItem6.Appearance.Options.UseImage = True
-        ToolTipTitleItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
-        ToolTipTitleItem6.Text = "Restart Reconciliation"
-        ToolTipItem6.LeftIndent = 6
-        ToolTipItem6.Text = "Restarts the automatic reconciliation for the outstanding Bookings"
-        SuperToolTip6.Items.Add(ToolTipTitleItem6)
-        SuperToolTip6.Items.Add(ToolTipItem6)
-        Me.NostroAcc_SearchLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Reload", -1, True, True, False, EditorButtonImageOptions14, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject53, SerializableAppearanceObject54, SerializableAppearanceObject55, SerializableAppearanceObject56, "", Nothing, SuperToolTip4, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Restart", -1, True, True, False, EditorButtonImageOptions17, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject65, SerializableAppearanceObject66, SerializableAppearanceObject67, SerializableAppearanceObject68, "", Nothing, SuperToolTip6, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions8.Image = CType(resources.GetObject("EditorButtonImageOptions8.Image"), System.Drawing.Image)
+        EditorButtonImageOptions8.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        SerializableAppearanceObject30.BackColor = System.Drawing.SystemColors.Control
+        SerializableAppearanceObject30.ForeColor = System.Drawing.Color.Aqua
+        SerializableAppearanceObject30.Options.UseBackColor = True
+        SerializableAppearanceObject30.Options.UseForeColor = True
+        ToolTipTitleItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
+        ToolTipTitleItem6.Text = "Missing Postings"
+        ToolTipItem5.LeftIndent = 6
+        ToolTipItem5.Text = "Checks for missing postings for the selected Nostro account and reconciliation da" &
+    "te"
+        SuperToolTip5.Items.Add(ToolTipTitleItem6)
+        SuperToolTip5.Items.Add(ToolTipItem5)
+        Me.NostroAcc_SearchLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Reload", -1, True, True, False, EditorButtonImageOptions6, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject21, SerializableAppearanceObject22, SerializableAppearanceObject23, SerializableAppearanceObject24, "", Nothing, SuperToolTip3, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Restart", -1, True, True, False, EditorButtonImageOptions7, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject25, SerializableAppearanceObject26, SerializableAppearanceObject27, SerializableAppearanceObject28, "", Nothing, SuperToolTip4, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Missing Postings", -1, True, True, False, EditorButtonImageOptions8, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject29, SerializableAppearanceObject30, SerializableAppearanceObject31, SerializableAppearanceObject32, "", Nothing, SuperToolTip5, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.NostroAcc_SearchLookUpEdit.Properties.DisplayMember = "AccountNr_Internal"
         Me.NostroAcc_SearchLookUpEdit.Properties.NullText = ""
         Me.NostroAcc_SearchLookUpEdit.Properties.PopupFormSize = New System.Drawing.Size(800, 500)
@@ -5977,7 +5983,7 @@ Partial Class NostroReconciliations
         Me.NostroAcc_SearchLookUpEdit.Properties.PopupView = Me.NostroAcc_SearchLookUpEditView
         Me.NostroAcc_SearchLookUpEdit.Properties.ValueMember = "AccountNr_Internal"
         Me.NostroAcc_SearchLookUpEdit.Properties.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
-        Me.NostroAcc_SearchLookUpEdit.Size = New System.Drawing.Size(245, 24)
+        Me.NostroAcc_SearchLookUpEdit.Size = New System.Drawing.Size(396, 24)
         Me.NostroAcc_SearchLookUpEdit.StyleController = Me.LayoutControl2
         Me.NostroAcc_SearchLookUpEdit.TabIndex = 4
         '
@@ -6112,7 +6118,7 @@ Partial Class NostroReconciliations
         Me.LayoutControlItem11.CustomizationFormText = "Nostro Account"
         Me.LayoutControlItem11.Location = New System.Drawing.Point(461, 91)
         Me.LayoutControlItem11.Name = "LayoutControlItem5"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(407, 28)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(558, 28)
         Me.LayoutControlItem11.Text = "Nostro Account"
         Me.LayoutControlItem11.TextLocation = DevExpress.Utils.Locations.Left
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(146, 16)
@@ -6419,9 +6425,9 @@ Partial Class NostroReconciliations
         'EmptySpaceItem14
         '
         Me.EmptySpaceItem14.AllowHotTrack = False
-        Me.EmptySpaceItem14.Location = New System.Drawing.Point(868, 91)
+        Me.EmptySpaceItem14.Location = New System.Drawing.Point(1019, 91)
         Me.EmptySpaceItem14.Name = "EmptySpaceItem14"
-        Me.EmptySpaceItem14.Size = New System.Drawing.Size(170, 28)
+        Me.EmptySpaceItem14.Size = New System.Drawing.Size(19, 28)
         Me.EmptySpaceItem14.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlGroup6
@@ -6468,9 +6474,9 @@ Partial Class NostroReconciliations
         Me.FromDateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.FromDateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.FromDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions15.Image = CType(resources.GetObject("EditorButtonImageOptions15.Image"), System.Drawing.Image)
-        EditorButtonImageOptions15.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.FromDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, False, False, EditorButtonImageOptions12, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject45, SerializableAppearanceObject46, SerializableAppearanceObject47, SerializableAppearanceObject48, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Start Reconciliation", -1, True, False, False, EditorButtonImageOptions15, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject57, SerializableAppearanceObject58, SerializableAppearanceObject59, SerializableAppearanceObject60, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions10.Image = CType(resources.GetObject("EditorButtonImageOptions10.Image"), System.Drawing.Image)
+        EditorButtonImageOptions10.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.FromDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, False, False, EditorButtonImageOptions9, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject33, SerializableAppearanceObject34, SerializableAppearanceObject35, SerializableAppearanceObject36, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Start Reconciliation", -1, True, False, False, EditorButtonImageOptions10, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject37, SerializableAppearanceObject38, SerializableAppearanceObject39, SerializableAppearanceObject40, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.FromDateEdit.Properties.DisplayFormat.FormatString = "d"
         Me.FromDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.FromDateEdit.Properties.EditFormat.FormatString = "d"
@@ -6860,194 +6866,194 @@ Partial Class NostroReconciliations
         Me.Name = "NostroReconciliations"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Nostro Accounts - Reconciliations"
-        CType(Me.RepositoryItemPopupContainerEdit3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PopupContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemPopupContainerEdit3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PopupContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PopupContainerControl1.ResumeLayout(False)
-        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
-        Me.GroupControl2.PerformLayout
-        CType(Me.PostingType_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.UserMemo_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.BOOKING_ROUTE_ALL_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ID_NOSTRO_REC_Textedit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Description_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Bookingdate_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Valuedate_IB_TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CCY_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Amount_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.AccountsReconciliationsDataSet, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemMemoExEdit2, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridControl_OutstandingBookings, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NostroOutstandingBookings_GridView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemMemoExEdit5, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ReconcilePopupContainerControl1, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupControl2.PerformLayout()
+        CType(Me.PostingType_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.UserMemo_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BOOKING_ROUTE_ALL_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ID_NOSTRO_REC_Textedit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Description_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Bookingdate_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Valuedate_IB_TextEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CCY_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Amount_IB_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NOSTRO_ACC_RECONCILIATIONS_OPENBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AccountsReconciliationsDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMemoExEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl_OutstandingBookings, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NostroOutstandingBookings_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMemoExEdit5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReconcilePopupContainerControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ReconcilePopupContainerControl1.ResumeLayout(False)
-        Me.ReconcilePopupContainerControl1.PerformLayout
-        CType(Me.ClientType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.FitchRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.MoodysRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.MainlandRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ER45_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Rating_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ER25_txtEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PD_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.StandardPoors_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CoreDefinition_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Rating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CustomerName_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NOSTRO_REC_FILL_ProcedureBindingSource, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PassivaDetailView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridControl_External, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.External_BaseView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridControl_Internal, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.InternalBaseView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Reconciled_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ZipCodeRepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.OtherRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ReconciliationTag_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ReconcileRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ReconciliationRepositoryItemPopupContainerEdit, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NOSTRO_ACC_RECONCILIATIONSBindingSource, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridControl_ReconciliationDetails, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NostroReconciliationDetails_GridView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Amount_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit
+        Me.ReconcilePopupContainerControl1.PerformLayout()
+        CType(Me.ClientType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FitchRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MoodysRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MainlandRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ER45_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Rating_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ER25_txtEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PD_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.StandardPoors_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CoreDefinition_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Rating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CustomerName_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NOSTRO_REC_FILL_ProcedureBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PassivaDetailView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl_External, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.External_BaseView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl_Internal, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InternalBaseView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Reconciled_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ZipCodeRepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OtherRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReconciliationTag_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReconcileRepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReconciliationRepositoryItemPopupContainerEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NOSTRO_ACC_RECONCILIATIONSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl_ReconciliationDetails, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NostroReconciliationDetails_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Amount_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.OCBS_BookingDate_Till.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.OCBS_BookingDate_Till.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.OCBS_BookingDate_From.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.OCBS_BookingDate_From.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.OCBS_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NostroRecDetailsSearch_GridView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.OCBS_BookingDate_Till.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OCBS_BookingDate_Till.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OCBS_BookingDate_From.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OCBS_BookingDate_From.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OCBS_LookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NostroRecDetailsSearch_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl3.ResumeLayout(False)
-        CType(Me.CreateMissingRecon_FromDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NostrosForMissingRecon_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NostrosMissingRecon_GridView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CreateMissingRecon_FromDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NostrosForMissingRecon_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NostrosMissingRecon_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl1.ResumeLayout(False)
-        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
-        CType(Me.TotalsDifference_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ExternalBookedBalanceAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.InternalValueBalanceAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ExternalBookedBalanceDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.InternalValueBalanceDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemImageComboBox7, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemTextEdit9, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemTextEdit10, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemImageComboBox5, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemTextEdit7, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemTextEdit8, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemImageComboBox6, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemPopupContainerEdit2, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemMemoExEdit4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.All_Nostro_Last_Reconciliations_GridView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.ReconciliationDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.InternalExternalDifferenceTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NostroAcc_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NostroAcc_SearchLookUpEditView, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.NostroInfo_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SimpleSeparator2, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SplitterItem3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem10, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem14, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.FromDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem17, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem18, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TotalsDifference_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ExternalBookedBalanceAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InternalValueBalanceAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ExternalBookedBalanceDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InternalValueBalanceDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemImageComboBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemImageComboBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemTextEdit8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemImageComboBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemButtonEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemPopupContainerEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMemoExEdit4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.All_Nostro_Last_Reconciliations_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemGridLookUpEdit1View, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReconciliationDate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InternalExternalDifferenceTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NostroAcc_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NostroAcc_SearchLookUpEditView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NostroInfo_MemoEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SimpleSeparator2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SplitterItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem24, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem25, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FromDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem23, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem26, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem27, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem28, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem30, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem29, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem31, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem16, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem17, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem18, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
-        CType(Me.NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.NOSTRO_ACC_RECONCILIATIONS_OPEN_HISTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip2.ResumeLayout(False)
         Me.ContextMenuStrip3.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection

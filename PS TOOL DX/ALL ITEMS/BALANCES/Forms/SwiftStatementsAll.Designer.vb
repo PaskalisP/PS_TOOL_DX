@@ -34,30 +34,84 @@ Partial Class SwiftStatementsAll
         Dim FormatConditionRuleValue2 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Me.Nostro_Balances_DetailView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.colSwiftFileName1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colSwiftFileName2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colSenderBIC1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colSenderBIC2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colID1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colID2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colMessageType1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colMessageType2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colReceivedDate1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colReceivedDate2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colOSN1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colOSN2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colOSN_ReceivedDate1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colOSN_ReceivedDate2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colRef201 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colRef202 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colAccountIdentification1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colAccountIdentification2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colInternalAccount2 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colInternalAccount1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colStatementNr1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colStatementNr2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colPageNr1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colPageNr2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colSwiftTag1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colSwiftTag2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colSwiftTagName1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colSwiftTagName2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colDebitCreditMark1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colDebitCreditMark2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colFundsCode1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colFundsCode2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colBookingDate1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colBookingDate2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colValueDate1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colValueDate2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colCUR1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colCUR2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colAmount1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colAmount2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colTransactionTypeID1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colTransactionTypeID2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colReferenceAccountOwner1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colReferenceAccountOwner2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colReferenceServiInstitution1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colReferenceServiInstitution2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colSupplementaryDetails1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colSupplementaryDetails2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.colNostro_Name2 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_colNostro_Name1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colReconciled1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.ValidRepositoryItemImageComboBox = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.layoutViewField_LayoutViewColumn1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colReconciled_IB1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colEntryStatus1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colUETR1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_3 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedParty_DebtorAcc1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_4 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedParty_CreditorAcc1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_5 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedParty_DebtorName1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_6 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedParty_DebtorBIC1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_7 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedParty_CreditorName1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_8 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedParty_CreditorBIC1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_9 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedAgent_InstructingAgent1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_10 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedAgent_InstructedAgent1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_11 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colLocalInstrument1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_12 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
+        Me.colRelatedDetails_InterbankSettlementDate1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
+        Me.layoutViewField_LayoutViewColumn1_13 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.SWIFT_ACC_STATEMENTSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.BalancesDataset = New PS_TOOL_DX.BalancesDataset()
@@ -87,12 +141,30 @@ Partial Class SwiftStatementsAll
         Me.colReferenceAccountOwner = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colReferenceServiInstitution = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSupplementaryDetails = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colReconciled = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colReconciled_IB = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colEntryStatus = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colUETR = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedParty_DebtorAcc = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedParty_DebtorName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedParty_DebtorBIC = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedParty_CreditorAcc = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedParty_CreditorName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedParty_CreditorBIC = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedAgent_InstructingAgent = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedAgent_InstructedAgent = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLocalInstrument = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colRelatedDetails_InterbankSettlementDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.OdasImportProcedureRepositoryItemTextEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.RepositoryItemTextEditBIC8 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.RepositoryItemTextEditBIC3 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.RepositoryItemMemoExEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit()
-        Me.ValidRepositoryItemImageComboBox = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
+        Me.item1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.item3 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.item4 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.item5 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
@@ -124,79 +196,47 @@ Partial Class SwiftStatementsAll
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.colReconciled = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colReconciled_IB = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colEntryStatus = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colUETR = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedParty_DebtorAcc = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedParty_DebtorName = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedParty_DebtorBIC = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedParty_CreditorAcc = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedParty_CreditorName = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedParty_CreditorBIC = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedAgent_InstructingAgent = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedAgent_InstructedAgent = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLocalInstrument = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colRelatedDetails_InterbankSettlementDate = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colReconciled1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colReconciled_IB1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colEntryStatus1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colUETR1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedParty_DebtorAcc1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedParty_CreditorAcc1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedParty_DebtorName1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedParty_DebtorBIC1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedParty_CreditorName1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedParty_CreditorBIC1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedAgent_InstructingAgent1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedAgent_InstructedAgent1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colLocalInstrument1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.colRelatedDetails_InterbankSettlementDate1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
-        Me.layoutViewField_colSwiftFileName2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colSenderBIC2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colReceivedDate2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colRef202 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colAccountIdentification2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colStatementNr2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colSwiftTag2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colDebitCreditMark2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colBookingDate2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colCUR2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colTransactionTypeID2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colReferenceAccountOwner2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colReferenceServiInstitution2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colSupplementaryDetails2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colNostro_Name1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colMessageType2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colOSN2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.item1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.layoutViewField_colInternalAccount1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colPageNr2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colSwiftTagName2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colFundsCode2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.item3 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.layoutViewField_colValueDate2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colAmount2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.item4 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.item5 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.layoutViewField_LayoutViewColumn1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_4 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_5 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_10 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_12 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_3 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_6 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_7 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_8 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_9 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_11 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_LayoutViewColumn1_13 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colID2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.layoutViewField_colOSN_ReceivedDate2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         CType(Me.Nostro_Balances_DetailView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colSwiftFileName2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colSenderBIC2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colID2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colMessageType2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colReceivedDate2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colOSN2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colOSN_ReceivedDate2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colRef202, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colAccountIdentification2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colInternalAccount1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colStatementNr2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colPageNr2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colSwiftTag2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colSwiftTagName2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colDebitCreditMark2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colFundsCode2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colBookingDate2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colValueDate2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colCUR2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colAmount2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colTransactionTypeID2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colReferenceAccountOwner2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colReferenceServiInstitution2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colSupplementaryDetails2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_colNostro_Name1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ValidRepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_10, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_11, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_12, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_13, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SWIFT_ACC_STATEMENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BalancesDataset, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -206,7 +246,11 @@ Partial Class SwiftStatementsAll
         CType(Me.RepositoryItemTextEditBIC8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEditBIC3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemMemoExEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ValidRepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.item5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -226,50 +270,6 @@ Partial Class SwiftStatementsAll
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colSwiftFileName2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colSenderBIC2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colReceivedDate2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colRef202, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colAccountIdentification2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colStatementNr2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colSwiftTag2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colDebitCreditMark2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBookingDate2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colCUR2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colTransactionTypeID2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colReferenceAccountOwner2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colReferenceServiInstitution2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colSupplementaryDetails2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colNostro_Name1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colMessageType2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colOSN2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.item1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colInternalAccount1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPageNr2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colSwiftTagName2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colFundsCode2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.item3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colValueDate2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colAmount2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.item4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.item5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colID2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colOSN_ReceivedDate2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Nostro_Balances_DetailView
@@ -331,6 +331,14 @@ Partial Class SwiftStatementsAll
         Me.colSwiftFileName1.Name = "colSwiftFileName1"
         Me.colSwiftFileName1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colSwiftFileName2
+        '
+        Me.layoutViewField_colSwiftFileName2.EditorPreferredWidth = 216
+        Me.layoutViewField_colSwiftFileName2.Location = New System.Drawing.Point(0, 0)
+        Me.layoutViewField_colSwiftFileName2.Name = "layoutViewField_colSwiftFileName2"
+        Me.layoutViewField_colSwiftFileName2.Size = New System.Drawing.Size(437, 24)
+        Me.layoutViewField_colSwiftFileName2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colSenderBIC1
         '
         Me.colSenderBIC1.AppearanceCell.Options.UseTextOptions = True
@@ -340,6 +348,14 @@ Partial Class SwiftStatementsAll
         Me.colSenderBIC1.LayoutViewField = Me.layoutViewField_colSenderBIC2
         Me.colSenderBIC1.Name = "colSenderBIC1"
         Me.colSenderBIC1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colSenderBIC2
+        '
+        Me.layoutViewField_colSenderBIC2.EditorPreferredWidth = 216
+        Me.layoutViewField_colSenderBIC2.Location = New System.Drawing.Point(0, 24)
+        Me.layoutViewField_colSenderBIC2.Name = "layoutViewField_colSenderBIC2"
+        Me.layoutViewField_colSenderBIC2.Size = New System.Drawing.Size(437, 24)
+        Me.layoutViewField_colSenderBIC2.TextSize = New System.Drawing.Size(211, 13)
         '
         'colID1
         '
@@ -351,6 +367,14 @@ Partial Class SwiftStatementsAll
         Me.colID1.Name = "colID1"
         Me.colID1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colID2
+        '
+        Me.layoutViewField_colID2.EditorPreferredWidth = 20
+        Me.layoutViewField_colID2.Location = New System.Drawing.Point(0, 0)
+        Me.layoutViewField_colID2.Name = "layoutViewField_colID2"
+        Me.layoutViewField_colID2.Size = New System.Drawing.Size(1024, 480)
+        Me.layoutViewField_colID2.TextSize = New System.Drawing.Size(133, 13)
+        '
         'colMessageType1
         '
         Me.colMessageType1.AppearanceCell.Options.UseTextOptions = True
@@ -360,6 +384,16 @@ Partial Class SwiftStatementsAll
         Me.colMessageType1.LayoutViewField = Me.layoutViewField_colMessageType2
         Me.colMessageType1.Name = "colMessageType1"
         Me.colMessageType1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colMessageType2
+        '
+        Me.layoutViewField_colMessageType2.EditorPreferredWidth = 226
+        Me.layoutViewField_colMessageType2.Location = New System.Drawing.Point(437, 0)
+        Me.layoutViewField_colMessageType2.Name = "layoutViewField_colMessageType2"
+        Me.layoutViewField_colMessageType2.Size = New System.Drawing.Size(309, 24)
+        Me.layoutViewField_colMessageType2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_colMessageType2.TextSize = New System.Drawing.Size(73, 13)
+        Me.layoutViewField_colMessageType2.TextToControlDistance = 5
         '
         'colReceivedDate1
         '
@@ -371,6 +405,14 @@ Partial Class SwiftStatementsAll
         Me.colReceivedDate1.Name = "colReceivedDate1"
         Me.colReceivedDate1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colReceivedDate2
+        '
+        Me.layoutViewField_colReceivedDate2.EditorPreferredWidth = 201
+        Me.layoutViewField_colReceivedDate2.Location = New System.Drawing.Point(0, 48)
+        Me.layoutViewField_colReceivedDate2.Name = "layoutViewField_colReceivedDate2"
+        Me.layoutViewField_colReceivedDate2.Size = New System.Drawing.Size(422, 24)
+        Me.layoutViewField_colReceivedDate2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colOSN1
         '
         Me.colOSN1.AppearanceCell.Options.UseTextOptions = True
@@ -380,6 +422,16 @@ Partial Class SwiftStatementsAll
         Me.colOSN1.LayoutViewField = Me.layoutViewField_colOSN2
         Me.colOSN1.Name = "colOSN1"
         Me.colOSN1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colOSN2
+        '
+        Me.layoutViewField_colOSN2.EditorPreferredWidth = 554
+        Me.layoutViewField_colOSN2.Location = New System.Drawing.Point(437, 24)
+        Me.layoutViewField_colOSN2.Name = "layoutViewField_colOSN2"
+        Me.layoutViewField_colOSN2.Size = New System.Drawing.Size(589, 24)
+        Me.layoutViewField_colOSN2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_colOSN2.TextSize = New System.Drawing.Size(25, 13)
+        Me.layoutViewField_colOSN2.TextToControlDistance = 5
         '
         'colOSN_ReceivedDate1
         '
@@ -391,6 +443,14 @@ Partial Class SwiftStatementsAll
         Me.colOSN_ReceivedDate1.Name = "colOSN_ReceivedDate1"
         Me.colOSN_ReceivedDate1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colOSN_ReceivedDate2
+        '
+        Me.layoutViewField_colOSN_ReceivedDate2.EditorPreferredWidth = 20
+        Me.layoutViewField_colOSN_ReceivedDate2.Location = New System.Drawing.Point(0, 0)
+        Me.layoutViewField_colOSN_ReceivedDate2.Name = "layoutViewField_colOSN_ReceivedDate2"
+        Me.layoutViewField_colOSN_ReceivedDate2.Size = New System.Drawing.Size(1024, 480)
+        Me.layoutViewField_colOSN_ReceivedDate2.TextSize = New System.Drawing.Size(148, 13)
+        '
         'colRef201
         '
         Me.colRef201.AppearanceCell.Options.UseTextOptions = True
@@ -400,6 +460,14 @@ Partial Class SwiftStatementsAll
         Me.colRef201.LayoutViewField = Me.layoutViewField_colRef202
         Me.colRef201.Name = "colRef201"
         Me.colRef201.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colRef202
+        '
+        Me.layoutViewField_colRef202.EditorPreferredWidth = 804
+        Me.layoutViewField_colRef202.Location = New System.Drawing.Point(0, 72)
+        Me.layoutViewField_colRef202.Name = "layoutViewField_colRef202"
+        Me.layoutViewField_colRef202.Size = New System.Drawing.Size(1026, 24)
+        Me.layoutViewField_colRef202.TextSize = New System.Drawing.Size(211, 13)
         '
         'colAccountIdentification1
         '
@@ -411,6 +479,14 @@ Partial Class SwiftStatementsAll
         Me.colAccountIdentification1.Name = "colAccountIdentification1"
         Me.colAccountIdentification1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colAccountIdentification2
+        '
+        Me.layoutViewField_colAccountIdentification2.EditorPreferredWidth = 283
+        Me.layoutViewField_colAccountIdentification2.Location = New System.Drawing.Point(0, 96)
+        Me.layoutViewField_colAccountIdentification2.Name = "layoutViewField_colAccountIdentification2"
+        Me.layoutViewField_colAccountIdentification2.Size = New System.Drawing.Size(504, 24)
+        Me.layoutViewField_colAccountIdentification2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colInternalAccount2
         '
         Me.colInternalAccount2.AppearanceCell.Options.UseTextOptions = True
@@ -420,6 +496,16 @@ Partial Class SwiftStatementsAll
         Me.colInternalAccount2.LayoutViewField = Me.layoutViewField_colInternalAccount1
         Me.colInternalAccount2.Name = "colInternalAccount2"
         Me.colInternalAccount2.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colInternalAccount1
+        '
+        Me.layoutViewField_colInternalAccount1.EditorPreferredWidth = 428
+        Me.layoutViewField_colInternalAccount1.Location = New System.Drawing.Point(504, 96)
+        Me.layoutViewField_colInternalAccount1.Name = "layoutViewField_colInternalAccount1"
+        Me.layoutViewField_colInternalAccount1.Size = New System.Drawing.Size(522, 24)
+        Me.layoutViewField_colInternalAccount1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_colInternalAccount1.TextSize = New System.Drawing.Size(84, 13)
+        Me.layoutViewField_colInternalAccount1.TextToControlDistance = 5
         '
         'colStatementNr1
         '
@@ -431,6 +517,14 @@ Partial Class SwiftStatementsAll
         Me.colStatementNr1.Name = "colStatementNr1"
         Me.colStatementNr1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colStatementNr2
+        '
+        Me.layoutViewField_colStatementNr2.EditorPreferredWidth = 283
+        Me.layoutViewField_colStatementNr2.Location = New System.Drawing.Point(0, 120)
+        Me.layoutViewField_colStatementNr2.Name = "layoutViewField_colStatementNr2"
+        Me.layoutViewField_colStatementNr2.Size = New System.Drawing.Size(504, 24)
+        Me.layoutViewField_colStatementNr2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colPageNr1
         '
         Me.colPageNr1.AppearanceCell.Options.UseTextOptions = True
@@ -440,6 +534,16 @@ Partial Class SwiftStatementsAll
         Me.colPageNr1.LayoutViewField = Me.layoutViewField_colPageNr2
         Me.colPageNr1.Name = "colPageNr1"
         Me.colPageNr1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colPageNr2
+        '
+        Me.layoutViewField_colPageNr2.EditorPreferredWidth = 470
+        Me.layoutViewField_colPageNr2.Location = New System.Drawing.Point(504, 120)
+        Me.layoutViewField_colPageNr2.Name = "layoutViewField_colPageNr2"
+        Me.layoutViewField_colPageNr2.Size = New System.Drawing.Size(522, 24)
+        Me.layoutViewField_colPageNr2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_colPageNr2.TextSize = New System.Drawing.Size(42, 13)
+        Me.layoutViewField_colPageNr2.TextToControlDistance = 5
         '
         'colSwiftTag1
         '
@@ -451,6 +555,14 @@ Partial Class SwiftStatementsAll
         Me.colSwiftTag1.Name = "colSwiftTag1"
         Me.colSwiftTag1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colSwiftTag2
+        '
+        Me.layoutViewField_colSwiftTag2.EditorPreferredWidth = 105
+        Me.layoutViewField_colSwiftTag2.Location = New System.Drawing.Point(0, 144)
+        Me.layoutViewField_colSwiftTag2.Name = "layoutViewField_colSwiftTag2"
+        Me.layoutViewField_colSwiftTag2.Size = New System.Drawing.Size(326, 24)
+        Me.layoutViewField_colSwiftTag2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colSwiftTagName1
         '
         Me.colSwiftTagName1.AppearanceCell.Options.UseTextOptions = True
@@ -460,6 +572,16 @@ Partial Class SwiftStatementsAll
         Me.colSwiftTagName1.LayoutViewField = Me.layoutViewField_colSwiftTagName2
         Me.colSwiftTagName1.Name = "colSwiftTagName1"
         Me.colSwiftTagName1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colSwiftTagName2
+        '
+        Me.layoutViewField_colSwiftTagName2.EditorPreferredWidth = 611
+        Me.layoutViewField_colSwiftTagName2.Location = New System.Drawing.Point(326, 144)
+        Me.layoutViewField_colSwiftTagName2.Name = "layoutViewField_colSwiftTagName2"
+        Me.layoutViewField_colSwiftTagName2.Size = New System.Drawing.Size(700, 24)
+        Me.layoutViewField_colSwiftTagName2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_colSwiftTagName2.TextSize = New System.Drawing.Size(79, 13)
+        Me.layoutViewField_colSwiftTagName2.TextToControlDistance = 5
         '
         'colDebitCreditMark1
         '
@@ -471,6 +593,14 @@ Partial Class SwiftStatementsAll
         Me.colDebitCreditMark1.Name = "colDebitCreditMark1"
         Me.colDebitCreditMark1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colDebitCreditMark2
+        '
+        Me.layoutViewField_colDebitCreditMark2.EditorPreferredWidth = 105
+        Me.layoutViewField_colDebitCreditMark2.Location = New System.Drawing.Point(0, 168)
+        Me.layoutViewField_colDebitCreditMark2.Name = "layoutViewField_colDebitCreditMark2"
+        Me.layoutViewField_colDebitCreditMark2.Size = New System.Drawing.Size(326, 24)
+        Me.layoutViewField_colDebitCreditMark2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colFundsCode1
         '
         Me.colFundsCode1.AppearanceCell.Options.UseTextOptions = True
@@ -480,6 +610,16 @@ Partial Class SwiftStatementsAll
         Me.colFundsCode1.LayoutViewField = Me.layoutViewField_colFundsCode2
         Me.colFundsCode1.Name = "colFundsCode1"
         Me.colFundsCode1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colFundsCode2
+        '
+        Me.layoutViewField_colFundsCode2.EditorPreferredWidth = 194
+        Me.layoutViewField_colFundsCode2.Location = New System.Drawing.Point(326, 168)
+        Me.layoutViewField_colFundsCode2.Name = "layoutViewField_colFundsCode2"
+        Me.layoutViewField_colFundsCode2.Size = New System.Drawing.Size(264, 24)
+        Me.layoutViewField_colFundsCode2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_colFundsCode2.TextSize = New System.Drawing.Size(61, 13)
+        Me.layoutViewField_colFundsCode2.TextToControlDistance = 5
         '
         'colBookingDate1
         '
@@ -493,6 +633,14 @@ Partial Class SwiftStatementsAll
         Me.colBookingDate1.Name = "colBookingDate1"
         Me.colBookingDate1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colBookingDate2
+        '
+        Me.layoutViewField_colBookingDate2.EditorPreferredWidth = 105
+        Me.layoutViewField_colBookingDate2.Location = New System.Drawing.Point(0, 192)
+        Me.layoutViewField_colBookingDate2.Name = "layoutViewField_colBookingDate2"
+        Me.layoutViewField_colBookingDate2.Size = New System.Drawing.Size(326, 24)
+        Me.layoutViewField_colBookingDate2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colValueDate1
         '
         Me.colValueDate1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
@@ -505,6 +653,16 @@ Partial Class SwiftStatementsAll
         Me.colValueDate1.Name = "colValueDate1"
         Me.colValueDate1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colValueDate2
+        '
+        Me.layoutViewField_colValueDate2.EditorPreferredWidth = 199
+        Me.layoutViewField_colValueDate2.Location = New System.Drawing.Point(326, 192)
+        Me.layoutViewField_colValueDate2.Name = "layoutViewField_colValueDate2"
+        Me.layoutViewField_colValueDate2.Size = New System.Drawing.Size(264, 24)
+        Me.layoutViewField_colValueDate2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_colValueDate2.TextSize = New System.Drawing.Size(56, 13)
+        Me.layoutViewField_colValueDate2.TextToControlDistance = 5
+        '
         'colCUR1
         '
         Me.colCUR1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
@@ -516,6 +674,14 @@ Partial Class SwiftStatementsAll
         Me.colCUR1.LayoutViewField = Me.layoutViewField_colCUR2
         Me.colCUR1.Name = "colCUR1"
         Me.colCUR1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colCUR2
+        '
+        Me.layoutViewField_colCUR2.EditorPreferredWidth = 105
+        Me.layoutViewField_colCUR2.Location = New System.Drawing.Point(0, 216)
+        Me.layoutViewField_colCUR2.Name = "layoutViewField_colCUR2"
+        Me.layoutViewField_colCUR2.Size = New System.Drawing.Size(326, 24)
+        Me.layoutViewField_colCUR2.TextSize = New System.Drawing.Size(211, 13)
         '
         'colAmount1
         '
@@ -531,6 +697,16 @@ Partial Class SwiftStatementsAll
         Me.colAmount1.Name = "colAmount1"
         Me.colAmount1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colAmount2
+        '
+        Me.layoutViewField_colAmount2.EditorPreferredWidth = 336
+        Me.layoutViewField_colAmount2.Location = New System.Drawing.Point(326, 216)
+        Me.layoutViewField_colAmount2.Name = "layoutViewField_colAmount2"
+        Me.layoutViewField_colAmount2.Size = New System.Drawing.Size(387, 24)
+        Me.layoutViewField_colAmount2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_colAmount2.TextSize = New System.Drawing.Size(41, 13)
+        Me.layoutViewField_colAmount2.TextToControlDistance = 5
+        '
         'colTransactionTypeID1
         '
         Me.colTransactionTypeID1.AppearanceCell.Options.UseTextOptions = True
@@ -541,6 +717,14 @@ Partial Class SwiftStatementsAll
         Me.colTransactionTypeID1.LayoutViewField = Me.layoutViewField_colTransactionTypeID2
         Me.colTransactionTypeID1.Name = "colTransactionTypeID1"
         Me.colTransactionTypeID1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colTransactionTypeID2
+        '
+        Me.layoutViewField_colTransactionTypeID2.EditorPreferredWidth = 804
+        Me.layoutViewField_colTransactionTypeID2.Location = New System.Drawing.Point(0, 240)
+        Me.layoutViewField_colTransactionTypeID2.Name = "layoutViewField_colTransactionTypeID2"
+        Me.layoutViewField_colTransactionTypeID2.Size = New System.Drawing.Size(1026, 24)
+        Me.layoutViewField_colTransactionTypeID2.TextSize = New System.Drawing.Size(211, 13)
         '
         'colReferenceAccountOwner1
         '
@@ -553,6 +737,14 @@ Partial Class SwiftStatementsAll
         Me.colReferenceAccountOwner1.Name = "colReferenceAccountOwner1"
         Me.colReferenceAccountOwner1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colReferenceAccountOwner2
+        '
+        Me.layoutViewField_colReferenceAccountOwner2.EditorPreferredWidth = 804
+        Me.layoutViewField_colReferenceAccountOwner2.Location = New System.Drawing.Point(0, 264)
+        Me.layoutViewField_colReferenceAccountOwner2.Name = "layoutViewField_colReferenceAccountOwner2"
+        Me.layoutViewField_colReferenceAccountOwner2.Size = New System.Drawing.Size(1026, 24)
+        Me.layoutViewField_colReferenceAccountOwner2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colReferenceServiInstitution1
         '
         Me.colReferenceServiInstitution1.AppearanceCell.Options.UseTextOptions = True
@@ -564,6 +756,14 @@ Partial Class SwiftStatementsAll
         Me.colReferenceServiInstitution1.Name = "colReferenceServiInstitution1"
         Me.colReferenceServiInstitution1.OptionsColumn.ReadOnly = True
         '
+        'layoutViewField_colReferenceServiInstitution2
+        '
+        Me.layoutViewField_colReferenceServiInstitution2.EditorPreferredWidth = 804
+        Me.layoutViewField_colReferenceServiInstitution2.Location = New System.Drawing.Point(0, 288)
+        Me.layoutViewField_colReferenceServiInstitution2.Name = "layoutViewField_colReferenceServiInstitution2"
+        Me.layoutViewField_colReferenceServiInstitution2.Size = New System.Drawing.Size(1026, 24)
+        Me.layoutViewField_colReferenceServiInstitution2.TextSize = New System.Drawing.Size(211, 13)
+        '
         'colSupplementaryDetails1
         '
         Me.colSupplementaryDetails1.AppearanceCell.Options.UseTextOptions = True
@@ -574,6 +774,14 @@ Partial Class SwiftStatementsAll
         Me.colSupplementaryDetails1.LayoutViewField = Me.layoutViewField_colSupplementaryDetails2
         Me.colSupplementaryDetails1.Name = "colSupplementaryDetails1"
         Me.colSupplementaryDetails1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colSupplementaryDetails2
+        '
+        Me.layoutViewField_colSupplementaryDetails2.EditorPreferredWidth = 804
+        Me.layoutViewField_colSupplementaryDetails2.Location = New System.Drawing.Point(0, 312)
+        Me.layoutViewField_colSupplementaryDetails2.Name = "layoutViewField_colSupplementaryDetails2"
+        Me.layoutViewField_colSupplementaryDetails2.Size = New System.Drawing.Size(1026, 24)
+        Me.layoutViewField_colSupplementaryDetails2.TextSize = New System.Drawing.Size(211, 13)
         '
         'colNostro_Name2
         '
@@ -587,6 +795,277 @@ Partial Class SwiftStatementsAll
         Me.colNostro_Name2.LayoutViewField = Me.layoutViewField_colNostro_Name1
         Me.colNostro_Name2.Name = "colNostro_Name2"
         Me.colNostro_Name2.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_colNostro_Name1
+        '
+        Me.layoutViewField_colNostro_Name1.EditorPreferredWidth = 804
+        Me.layoutViewField_colNostro_Name1.Location = New System.Drawing.Point(0, 336)
+        Me.layoutViewField_colNostro_Name1.Name = "layoutViewField_colNostro_Name1"
+        Me.layoutViewField_colNostro_Name1.Size = New System.Drawing.Size(1026, 24)
+        Me.layoutViewField_colNostro_Name1.TextSize = New System.Drawing.Size(211, 13)
+        '
+        'colReconciled1
+        '
+        Me.colReconciled1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.colReconciled1.AppearanceCell.Options.UseFont = True
+        Me.colReconciled1.AppearanceCell.Options.UseTextOptions = True
+        Me.colReconciled1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.colReconciled1.Caption = "Reconciled"
+        Me.colReconciled1.ColumnEdit = Me.ValidRepositoryItemImageComboBox
+        Me.colReconciled1.FieldName = "Reconciled"
+        Me.colReconciled1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1
+        Me.colReconciled1.Name = "colReconciled1"
+        Me.colReconciled1.OptionsColumn.ReadOnly = True
+        '
+        'ValidRepositoryItemImageComboBox
+        '
+        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.Options.UseBackColor = True
+        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.Options.UseForeColor = True
+        Me.ValidRepositoryItemImageComboBox.AutoHeight = False
+        Me.ValidRepositoryItemImageComboBox.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ValidRepositoryItemImageComboBox.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("VALID", "Y", 4), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("CANCELLED", "N", 3)})
+        Me.ValidRepositoryItemImageComboBox.Name = "ValidRepositoryItemImageComboBox"
+        '
+        'layoutViewField_LayoutViewColumn1
+        '
+        Me.layoutViewField_LayoutViewColumn1.EditorPreferredWidth = 200
+        Me.layoutViewField_LayoutViewColumn1.Location = New System.Drawing.Point(422, 48)
+        Me.layoutViewField_LayoutViewColumn1.Name = "layoutViewField_LayoutViewColumn1"
+        Me.layoutViewField_LayoutViewColumn1.Size = New System.Drawing.Size(264, 24)
+        Me.layoutViewField_LayoutViewColumn1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_LayoutViewColumn1.TextSize = New System.Drawing.Size(55, 13)
+        Me.layoutViewField_LayoutViewColumn1.TextToControlDistance = 5
+        '
+        'colReconciled_IB1
+        '
+        Me.colReconciled_IB1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.colReconciled_IB1.AppearanceCell.Options.UseFont = True
+        Me.colReconciled_IB1.AppearanceCell.Options.UseTextOptions = True
+        Me.colReconciled_IB1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
+        Me.colReconciled_IB1.Caption = "Reconciled IB"
+        Me.colReconciled_IB1.FieldName = "Reconciled_IB"
+        Me.colReconciled_IB1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_1
+        Me.colReconciled_IB1.Name = "colReconciled_IB1"
+        Me.colReconciled_IB1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_1
+        '
+        Me.layoutViewField_LayoutViewColumn1_1.EditorPreferredWidth = 262
+        Me.layoutViewField_LayoutViewColumn1_1.Location = New System.Drawing.Point(686, 48)
+        Me.layoutViewField_LayoutViewColumn1_1.Name = "layoutViewField_LayoutViewColumn1_1"
+        Me.layoutViewField_LayoutViewColumn1_1.Size = New System.Drawing.Size(340, 24)
+        Me.layoutViewField_LayoutViewColumn1_1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_LayoutViewColumn1_1.TextSize = New System.Drawing.Size(68, 13)
+        Me.layoutViewField_LayoutViewColumn1_1.TextToControlDistance = 5
+        '
+        'colEntryStatus1
+        '
+        Me.colEntryStatus1.Caption = "Entry Status"
+        Me.colEntryStatus1.FieldName = "EntryStatus"
+        Me.colEntryStatus1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_2
+        Me.colEntryStatus1.Name = "colEntryStatus1"
+        Me.colEntryStatus1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_2
+        '
+        Me.layoutViewField_LayoutViewColumn1_2.EditorPreferredWidth = 216
+        Me.layoutViewField_LayoutViewColumn1_2.Location = New System.Drawing.Point(0, 360)
+        Me.layoutViewField_LayoutViewColumn1_2.Name = "layoutViewField_LayoutViewColumn1_2"
+        Me.layoutViewField_LayoutViewColumn1_2.Size = New System.Drawing.Size(437, 24)
+        Me.layoutViewField_LayoutViewColumn1_2.TextSize = New System.Drawing.Size(211, 13)
+        '
+        'colUETR1
+        '
+        Me.colUETR1.Caption = "UETR"
+        Me.colUETR1.FieldName = "UETR"
+        Me.colUETR1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_3
+        Me.colUETR1.Name = "colUETR1"
+        Me.colUETR1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_3
+        '
+        Me.layoutViewField_LayoutViewColumn1_3.EditorPreferredWidth = 549
+        Me.layoutViewField_LayoutViewColumn1_3.Location = New System.Drawing.Point(437, 360)
+        Me.layoutViewField_LayoutViewColumn1_3.Name = "layoutViewField_LayoutViewColumn1_3"
+        Me.layoutViewField_LayoutViewColumn1_3.Size = New System.Drawing.Size(589, 24)
+        Me.layoutViewField_LayoutViewColumn1_3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_LayoutViewColumn1_3.TextSize = New System.Drawing.Size(30, 13)
+        Me.layoutViewField_LayoutViewColumn1_3.TextToControlDistance = 5
+        '
+        'colRelatedParty_DebtorAcc1
+        '
+        Me.colRelatedParty_DebtorAcc1.Caption = "Related Party -Debtor Acc."
+        Me.colRelatedParty_DebtorAcc1.FieldName = "RelatedParty_DebtorAcc"
+        Me.colRelatedParty_DebtorAcc1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_4
+        Me.colRelatedParty_DebtorAcc1.Name = "colRelatedParty_DebtorAcc1"
+        Me.colRelatedParty_DebtorAcc1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_4
+        '
+        Me.layoutViewField_LayoutViewColumn1_4.EditorPreferredWidth = 215
+        Me.layoutViewField_LayoutViewColumn1_4.Location = New System.Drawing.Point(0, 384)
+        Me.layoutViewField_LayoutViewColumn1_4.Name = "layoutViewField_LayoutViewColumn1_4"
+        Me.layoutViewField_LayoutViewColumn1_4.Size = New System.Drawing.Size(436, 24)
+        Me.layoutViewField_LayoutViewColumn1_4.TextSize = New System.Drawing.Size(211, 13)
+        '
+        'colRelatedParty_CreditorAcc1
+        '
+        Me.colRelatedParty_CreditorAcc1.Caption = "Related Party - Creditor Acc."
+        Me.colRelatedParty_CreditorAcc1.FieldName = "RelatedParty_CreditorAcc"
+        Me.colRelatedParty_CreditorAcc1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_5
+        Me.colRelatedParty_CreditorAcc1.Name = "colRelatedParty_CreditorAcc1"
+        Me.colRelatedParty_CreditorAcc1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_5
+        '
+        Me.layoutViewField_LayoutViewColumn1_5.EditorPreferredWidth = 216
+        Me.layoutViewField_LayoutViewColumn1_5.Location = New System.Drawing.Point(0, 408)
+        Me.layoutViewField_LayoutViewColumn1_5.Name = "layoutViewField_LayoutViewColumn1_5"
+        Me.layoutViewField_LayoutViewColumn1_5.Size = New System.Drawing.Size(437, 24)
+        Me.layoutViewField_LayoutViewColumn1_5.TextSize = New System.Drawing.Size(211, 13)
+        '
+        'colRelatedParty_DebtorName1
+        '
+        Me.colRelatedParty_DebtorName1.Caption = "Related Party - Debtor Name"
+        Me.colRelatedParty_DebtorName1.FieldName = "RelatedParty_DebtorName"
+        Me.colRelatedParty_DebtorName1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_6
+        Me.colRelatedParty_DebtorName1.Name = "colRelatedParty_DebtorName1"
+        Me.colRelatedParty_DebtorName1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_6
+        '
+        Me.layoutViewField_LayoutViewColumn1_6.EditorPreferredWidth = 154
+        Me.layoutViewField_LayoutViewColumn1_6.Location = New System.Drawing.Point(436, 384)
+        Me.layoutViewField_LayoutViewColumn1_6.Name = "layoutViewField_LayoutViewColumn1_6"
+        Me.layoutViewField_LayoutViewColumn1_6.Size = New System.Drawing.Size(307, 24)
+        Me.layoutViewField_LayoutViewColumn1_6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_LayoutViewColumn1_6.TextSize = New System.Drawing.Size(143, 13)
+        Me.layoutViewField_LayoutViewColumn1_6.TextToControlDistance = 5
+        '
+        'colRelatedParty_DebtorBIC1
+        '
+        Me.colRelatedParty_DebtorBIC1.Caption = "Related Party - Debtor BIC"
+        Me.colRelatedParty_DebtorBIC1.FieldName = "RelatedParty_DebtorBIC"
+        Me.colRelatedParty_DebtorBIC1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_7
+        Me.colRelatedParty_DebtorBIC1.Name = "colRelatedParty_DebtorBIC1"
+        Me.colRelatedParty_DebtorBIC1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_7
+        '
+        Me.layoutViewField_LayoutViewColumn1_7.EditorPreferredWidth = 141
+        Me.layoutViewField_LayoutViewColumn1_7.Location = New System.Drawing.Point(743, 384)
+        Me.layoutViewField_LayoutViewColumn1_7.Name = "layoutViewField_LayoutViewColumn1_7"
+        Me.layoutViewField_LayoutViewColumn1_7.Size = New System.Drawing.Size(283, 24)
+        Me.layoutViewField_LayoutViewColumn1_7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_LayoutViewColumn1_7.TextSize = New System.Drawing.Size(133, 13)
+        Me.layoutViewField_LayoutViewColumn1_7.TextToControlDistance = 5
+        '
+        'colRelatedParty_CreditorName1
+        '
+        Me.colRelatedParty_CreditorName1.Caption = "Related Party - Creditor Name"
+        Me.colRelatedParty_CreditorName1.FieldName = "RelatedParty_CreditorName"
+        Me.colRelatedParty_CreditorName1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_8
+        Me.colRelatedParty_CreditorName1.Name = "colRelatedParty_CreditorName1"
+        Me.colRelatedParty_CreditorName1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_8
+        '
+        Me.layoutViewField_LayoutViewColumn1_8.EditorPreferredWidth = 150
+        Me.layoutViewField_LayoutViewColumn1_8.Location = New System.Drawing.Point(437, 408)
+        Me.layoutViewField_LayoutViewColumn1_8.Name = "layoutViewField_LayoutViewColumn1_8"
+        Me.layoutViewField_LayoutViewColumn1_8.Size = New System.Drawing.Size(309, 24)
+        Me.layoutViewField_LayoutViewColumn1_8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_LayoutViewColumn1_8.TextSize = New System.Drawing.Size(149, 13)
+        Me.layoutViewField_LayoutViewColumn1_8.TextToControlDistance = 5
+        '
+        'colRelatedParty_CreditorBIC1
+        '
+        Me.colRelatedParty_CreditorBIC1.Caption = "Related Party - Creditor BIC"
+        Me.colRelatedParty_CreditorBIC1.FieldName = "RelatedParty_CreditorBIC"
+        Me.colRelatedParty_CreditorBIC1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_9
+        Me.colRelatedParty_CreditorBIC1.Name = "colRelatedParty_CreditorBIC1"
+        Me.colRelatedParty_CreditorBIC1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_9
+        '
+        Me.layoutViewField_LayoutViewColumn1_9.EditorPreferredWidth = 132
+        Me.layoutViewField_LayoutViewColumn1_9.Location = New System.Drawing.Point(746, 408)
+        Me.layoutViewField_LayoutViewColumn1_9.Name = "layoutViewField_LayoutViewColumn1_9"
+        Me.layoutViewField_LayoutViewColumn1_9.Size = New System.Drawing.Size(280, 24)
+        Me.layoutViewField_LayoutViewColumn1_9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_LayoutViewColumn1_9.TextSize = New System.Drawing.Size(139, 13)
+        Me.layoutViewField_LayoutViewColumn1_9.TextToControlDistance = 5
+        '
+        'colRelatedAgent_InstructingAgent1
+        '
+        Me.colRelatedAgent_InstructingAgent1.Caption = "Related Agent - Instructing Agent"
+        Me.colRelatedAgent_InstructingAgent1.FieldName = "RelatedAgent_InstructingAgent"
+        Me.colRelatedAgent_InstructingAgent1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_10
+        Me.colRelatedAgent_InstructingAgent1.Name = "colRelatedAgent_InstructingAgent1"
+        Me.colRelatedAgent_InstructingAgent1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_10
+        '
+        Me.layoutViewField_LayoutViewColumn1_10.EditorPreferredWidth = 370
+        Me.layoutViewField_LayoutViewColumn1_10.Location = New System.Drawing.Point(0, 432)
+        Me.layoutViewField_LayoutViewColumn1_10.Name = "layoutViewField_LayoutViewColumn1_10"
+        Me.layoutViewField_LayoutViewColumn1_10.Size = New System.Drawing.Size(591, 24)
+        Me.layoutViewField_LayoutViewColumn1_10.TextSize = New System.Drawing.Size(211, 13)
+        '
+        'colRelatedAgent_InstructedAgent1
+        '
+        Me.colRelatedAgent_InstructedAgent1.Caption = "Related Agent - Instructed Agent"
+        Me.colRelatedAgent_InstructedAgent1.FieldName = "RelatedAgent_InstructedAgent"
+        Me.colRelatedAgent_InstructedAgent1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_11
+        Me.colRelatedAgent_InstructedAgent1.Name = "colRelatedAgent_InstructedAgent1"
+        Me.colRelatedAgent_InstructedAgent1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_11
+        '
+        Me.layoutViewField_LayoutViewColumn1_11.EditorPreferredWidth = 260
+        Me.layoutViewField_LayoutViewColumn1_11.Location = New System.Drawing.Point(591, 432)
+        Me.layoutViewField_LayoutViewColumn1_11.Name = "layoutViewField_LayoutViewColumn1_11"
+        Me.layoutViewField_LayoutViewColumn1_11.Size = New System.Drawing.Size(435, 24)
+        Me.layoutViewField_LayoutViewColumn1_11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
+        Me.layoutViewField_LayoutViewColumn1_11.TextSize = New System.Drawing.Size(165, 13)
+        Me.layoutViewField_LayoutViewColumn1_11.TextToControlDistance = 5
+        '
+        'colLocalInstrument1
+        '
+        Me.colLocalInstrument1.Caption = "Local Instrument"
+        Me.colLocalInstrument1.FieldName = "LocalInstrument"
+        Me.colLocalInstrument1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_12
+        Me.colLocalInstrument1.Name = "colLocalInstrument1"
+        Me.colLocalInstrument1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_12
+        '
+        Me.layoutViewField_LayoutViewColumn1_12.EditorPreferredWidth = 291
+        Me.layoutViewField_LayoutViewColumn1_12.Location = New System.Drawing.Point(0, 456)
+        Me.layoutViewField_LayoutViewColumn1_12.Name = "layoutViewField_LayoutViewColumn1_12"
+        Me.layoutViewField_LayoutViewColumn1_12.Size = New System.Drawing.Size(512, 24)
+        Me.layoutViewField_LayoutViewColumn1_12.TextSize = New System.Drawing.Size(211, 13)
+        '
+        'colRelatedDetails_InterbankSettlementDate1
+        '
+        Me.colRelatedDetails_InterbankSettlementDate1.Caption = "Related Details -Interbank Settlement Date"
+        Me.colRelatedDetails_InterbankSettlementDate1.DisplayFormat.FormatString = "d"
+        Me.colRelatedDetails_InterbankSettlementDate1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colRelatedDetails_InterbankSettlementDate1.FieldName = "RelatedDetails_InterbankSettlementDate"
+        Me.colRelatedDetails_InterbankSettlementDate1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_13
+        Me.colRelatedDetails_InterbankSettlementDate1.Name = "colRelatedDetails_InterbankSettlementDate1"
+        Me.colRelatedDetails_InterbankSettlementDate1.OptionsColumn.ReadOnly = True
+        '
+        'layoutViewField_LayoutViewColumn1_13
+        '
+        Me.layoutViewField_LayoutViewColumn1_13.EditorPreferredWidth = 293
+        Me.layoutViewField_LayoutViewColumn1_13.Location = New System.Drawing.Point(512, 456)
+        Me.layoutViewField_LayoutViewColumn1_13.Name = "layoutViewField_LayoutViewColumn1_13"
+        Me.layoutViewField_LayoutViewColumn1_13.Size = New System.Drawing.Size(514, 24)
+        Me.layoutViewField_LayoutViewColumn1_13.TextSize = New System.Drawing.Size(211, 13)
         '
         'GridControl1
         '
@@ -950,6 +1429,112 @@ Partial Class SwiftStatementsAll
         Me.colSupplementaryDetails.VisibleIndex = 15
         Me.colSupplementaryDetails.Width = 326
         '
+        'colReconciled
+        '
+        Me.colReconciled.Caption = "Reconciled"
+        Me.colReconciled.ColumnEdit = Me.ValidRepositoryItemImageComboBox
+        Me.colReconciled.FieldName = "Reconciled"
+        Me.colReconciled.Name = "colReconciled"
+        Me.colReconciled.OptionsColumn.ReadOnly = True
+        Me.colReconciled.Visible = True
+        Me.colReconciled.VisibleIndex = 16
+        Me.colReconciled.Width = 93
+        '
+        'colReconciled_IB
+        '
+        Me.colReconciled_IB.Caption = "Reconciled ID"
+        Me.colReconciled_IB.FieldName = "Reconciled_IB"
+        Me.colReconciled_IB.Name = "colReconciled_IB"
+        Me.colReconciled_IB.OptionsColumn.AllowEdit = False
+        Me.colReconciled_IB.OptionsColumn.ReadOnly = True
+        Me.colReconciled_IB.Visible = True
+        Me.colReconciled_IB.VisibleIndex = 17
+        Me.colReconciled_IB.Width = 96
+        '
+        'colEntryStatus
+        '
+        Me.colEntryStatus.AppearanceCell.Options.UseTextOptions = True
+        Me.colEntryStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colEntryStatus.AppearanceHeader.Options.UseTextOptions = True
+        Me.colEntryStatus.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colEntryStatus.Caption = "Entry Status"
+        Me.colEntryStatus.FieldName = "EntryStatus"
+        Me.colEntryStatus.Name = "colEntryStatus"
+        '
+        'colUETR
+        '
+        Me.colUETR.Caption = "UETR"
+        Me.colUETR.FieldName = "UETR"
+        Me.colUETR.Name = "colUETR"
+        '
+        'colRelatedParty_DebtorAcc
+        '
+        Me.colRelatedParty_DebtorAcc.Caption = "Related Party - Debtor Acc."
+        Me.colRelatedParty_DebtorAcc.FieldName = "RelatedParty_DebtorAcc"
+        Me.colRelatedParty_DebtorAcc.Name = "colRelatedParty_DebtorAcc"
+        '
+        'colRelatedParty_DebtorName
+        '
+        Me.colRelatedParty_DebtorName.Caption = "Related Party - Debtor Name"
+        Me.colRelatedParty_DebtorName.FieldName = "RelatedParty_DebtorName"
+        Me.colRelatedParty_DebtorName.Name = "colRelatedParty_DebtorName"
+        '
+        'colRelatedParty_DebtorBIC
+        '
+        Me.colRelatedParty_DebtorBIC.Caption = "Related Party - Debtor BIC"
+        Me.colRelatedParty_DebtorBIC.FieldName = "RelatedParty_DebtorBIC"
+        Me.colRelatedParty_DebtorBIC.Name = "colRelatedParty_DebtorBIC"
+        '
+        'colRelatedParty_CreditorAcc
+        '
+        Me.colRelatedParty_CreditorAcc.Caption = "Related Party - Creditor Acc."
+        Me.colRelatedParty_CreditorAcc.FieldName = "RelatedParty_CreditorAcc"
+        Me.colRelatedParty_CreditorAcc.Name = "colRelatedParty_CreditorAcc"
+        '
+        'colRelatedParty_CreditorName
+        '
+        Me.colRelatedParty_CreditorName.Caption = "Related Party - Creditor Name"
+        Me.colRelatedParty_CreditorName.FieldName = "RelatedParty_CreditorName"
+        Me.colRelatedParty_CreditorName.Name = "colRelatedParty_CreditorName"
+        '
+        'colRelatedParty_CreditorBIC
+        '
+        Me.colRelatedParty_CreditorBIC.Caption = "Related Party - Creditor BIC"
+        Me.colRelatedParty_CreditorBIC.FieldName = "RelatedParty_CreditorBIC"
+        Me.colRelatedParty_CreditorBIC.Name = "colRelatedParty_CreditorBIC"
+        '
+        'colRelatedAgent_InstructingAgent
+        '
+        Me.colRelatedAgent_InstructingAgent.Caption = "Related Agent - Instructing Agent"
+        Me.colRelatedAgent_InstructingAgent.FieldName = "RelatedAgent_InstructingAgent"
+        Me.colRelatedAgent_InstructingAgent.Name = "colRelatedAgent_InstructingAgent"
+        '
+        'colRelatedAgent_InstructedAgent
+        '
+        Me.colRelatedAgent_InstructedAgent.Caption = "Related Agent - Instructed Agent"
+        Me.colRelatedAgent_InstructedAgent.FieldName = "RelatedAgent_InstructedAgent"
+        Me.colRelatedAgent_InstructedAgent.Name = "colRelatedAgent_InstructedAgent"
+        '
+        'colLocalInstrument
+        '
+        Me.colLocalInstrument.Caption = "Local Instrument"
+        Me.colLocalInstrument.FieldName = "LocalInstrument"
+        Me.colLocalInstrument.Name = "colLocalInstrument"
+        Me.colLocalInstrument.Visible = True
+        Me.colLocalInstrument.VisibleIndex = 18
+        '
+        'colRelatedDetails_InterbankSettlementDate
+        '
+        Me.colRelatedDetails_InterbankSettlementDate.AppearanceCell.Options.UseTextOptions = True
+        Me.colRelatedDetails_InterbankSettlementDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colRelatedDetails_InterbankSettlementDate.AppearanceHeader.Options.UseTextOptions = True
+        Me.colRelatedDetails_InterbankSettlementDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colRelatedDetails_InterbankSettlementDate.Caption = "Relaited Details - Interbank Settlement Date"
+        Me.colRelatedDetails_InterbankSettlementDate.DisplayFormat.FormatString = "d"
+        Me.colRelatedDetails_InterbankSettlementDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colRelatedDetails_InterbankSettlementDate.FieldName = "RelatedDetails_InterbankSettlementDate"
+        Me.colRelatedDetails_InterbankSettlementDate.Name = "colRelatedDetails_InterbankSettlementDate"
+        '
         'RepositoryItemComboBox1
         '
         Me.RepositoryItemComboBox1.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
@@ -1060,17 +1645,50 @@ Partial Class SwiftStatementsAll
         Me.RepositoryItemMemoExEdit2.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.RepositoryItemMemoExEdit2.ShowIcon = False
         '
-        'ValidRepositoryItemImageComboBox
+        'LayoutViewCard1
         '
-        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.Options.UseBackColor = True
-        Me.ValidRepositoryItemImageComboBox.AppearanceFocused.Options.UseForeColor = True
-        Me.ValidRepositoryItemImageComboBox.AutoHeight = False
-        Me.ValidRepositoryItemImageComboBox.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.ValidRepositoryItemImageComboBox.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("VALID", "Y", 4), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("CANCELLED", "N", 3)})
-        Me.ValidRepositoryItemImageComboBox.Name = "ValidRepositoryItemImageComboBox"
+        Me.LayoutViewCard1.CustomizationFormText = "TemplateCard"
+        Me.LayoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
+        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colSwiftFileName2, Me.layoutViewField_colSenderBIC2, Me.layoutViewField_colReceivedDate2, Me.layoutViewField_colRef202, Me.layoutViewField_colAccountIdentification2, Me.layoutViewField_colStatementNr2, Me.layoutViewField_colSwiftTag2, Me.layoutViewField_colDebitCreditMark2, Me.layoutViewField_colBookingDate2, Me.layoutViewField_colCUR2, Me.layoutViewField_colTransactionTypeID2, Me.layoutViewField_colReferenceAccountOwner2, Me.layoutViewField_colReferenceServiInstitution2, Me.layoutViewField_colSupplementaryDetails2, Me.layoutViewField_colNostro_Name1, Me.layoutViewField_colMessageType2, Me.layoutViewField_colOSN2, Me.item1, Me.layoutViewField_colInternalAccount1, Me.layoutViewField_colPageNr2, Me.layoutViewField_colSwiftTagName2, Me.layoutViewField_colFundsCode2, Me.item3, Me.layoutViewField_colValueDate2, Me.layoutViewField_colAmount2, Me.item4, Me.item5, Me.layoutViewField_LayoutViewColumn1, Me.layoutViewField_LayoutViewColumn1_1, Me.layoutViewField_LayoutViewColumn1_2, Me.layoutViewField_LayoutViewColumn1_4, Me.layoutViewField_LayoutViewColumn1_5, Me.layoutViewField_LayoutViewColumn1_10, Me.layoutViewField_LayoutViewColumn1_12, Me.layoutViewField_LayoutViewColumn1_3, Me.layoutViewField_LayoutViewColumn1_6, Me.layoutViewField_LayoutViewColumn1_7, Me.layoutViewField_LayoutViewColumn1_8, Me.layoutViewField_LayoutViewColumn1_9, Me.layoutViewField_LayoutViewColumn1_11, Me.layoutViewField_LayoutViewColumn1_13})
+        Me.LayoutViewCard1.Name = "layoutViewTemplateCard"
+        Me.LayoutViewCard1.OptionsItemText.TextToControlDistance = 5
+        Me.LayoutViewCard1.Text = "TemplateCard"
+        '
+        'item1
+        '
+        Me.item1.AllowHotTrack = False
+        Me.item1.CustomizationFormText = "item1"
+        Me.item1.Location = New System.Drawing.Point(746, 0)
+        Me.item1.Name = "item1"
+        Me.item1.Size = New System.Drawing.Size(280, 24)
+        Me.item1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'item3
+        '
+        Me.item3.AllowHotTrack = False
+        Me.item3.CustomizationFormText = "item3"
+        Me.item3.Location = New System.Drawing.Point(590, 168)
+        Me.item3.Name = "item3"
+        Me.item3.Size = New System.Drawing.Size(436, 24)
+        Me.item3.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'item4
+        '
+        Me.item4.AllowHotTrack = False
+        Me.item4.CustomizationFormText = "item4"
+        Me.item4.Location = New System.Drawing.Point(590, 192)
+        Me.item4.Name = "item4"
+        Me.item4.Size = New System.Drawing.Size(436, 24)
+        Me.item4.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'item5
+        '
+        Me.item5.AllowHotTrack = False
+        Me.item5.CustomizationFormText = "item5"
+        Me.item5.Location = New System.Drawing.Point(713, 216)
+        Me.item5.Name = "item5"
+        Me.item5.Size = New System.Drawing.Size(313, 24)
+        Me.item5.TextSize = New System.Drawing.Size(0, 0)
         '
         'ImageCollection1
         '
@@ -1132,7 +1750,7 @@ Partial Class SwiftStatementsAll
         Me.GroupControl2.Name = "GroupControl2"
         Me.GroupControl2.Size = New System.Drawing.Size(440, 134)
         Me.GroupControl2.TabIndex = 7
-        Me.GroupControl2.Text = "Search Statements MT940/950 by External Nostro Accounts"
+        Me.GroupControl2.Text = "Search Statements MT940/950/camt.053 by External Nostro Accounts"
         '
         'NostroAccountNamelbl
         '
@@ -1441,624 +2059,6 @@ Partial Class SwiftStatementsAll
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
-        'colReconciled
-        '
-        Me.colReconciled.Caption = "Reconciled"
-        Me.colReconciled.ColumnEdit = Me.ValidRepositoryItemImageComboBox
-        Me.colReconciled.FieldName = "Reconciled"
-        Me.colReconciled.Name = "colReconciled"
-        Me.colReconciled.OptionsColumn.ReadOnly = True
-        Me.colReconciled.Visible = True
-        Me.colReconciled.VisibleIndex = 16
-        Me.colReconciled.Width = 93
-        '
-        'colReconciled_IB
-        '
-        Me.colReconciled_IB.Caption = "Reconciled ID"
-        Me.colReconciled_IB.FieldName = "Reconciled_IB"
-        Me.colReconciled_IB.Name = "colReconciled_IB"
-        Me.colReconciled_IB.OptionsColumn.AllowEdit = False
-        Me.colReconciled_IB.OptionsColumn.ReadOnly = True
-        Me.colReconciled_IB.Visible = True
-        Me.colReconciled_IB.VisibleIndex = 17
-        Me.colReconciled_IB.Width = 96
-        '
-        'colEntryStatus
-        '
-        Me.colEntryStatus.AppearanceCell.Options.UseTextOptions = True
-        Me.colEntryStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colEntryStatus.AppearanceHeader.Options.UseTextOptions = True
-        Me.colEntryStatus.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colEntryStatus.Caption = "Entry Status"
-        Me.colEntryStatus.FieldName = "EntryStatus"
-        Me.colEntryStatus.Name = "colEntryStatus"
-        '
-        'colUETR
-        '
-        Me.colUETR.Caption = "UETR"
-        Me.colUETR.FieldName = "UETR"
-        Me.colUETR.Name = "colUETR"
-        '
-        'colRelatedParty_DebtorAcc
-        '
-        Me.colRelatedParty_DebtorAcc.Caption = "Related Party - Debtor Acc."
-        Me.colRelatedParty_DebtorAcc.FieldName = "RelatedParty_DebtorAcc"
-        Me.colRelatedParty_DebtorAcc.Name = "colRelatedParty_DebtorAcc"
-        '
-        'colRelatedParty_DebtorName
-        '
-        Me.colRelatedParty_DebtorName.Caption = "Related Party - Debtor Name"
-        Me.colRelatedParty_DebtorName.FieldName = "RelatedParty_DebtorName"
-        Me.colRelatedParty_DebtorName.Name = "colRelatedParty_DebtorName"
-        '
-        'colRelatedParty_DebtorBIC
-        '
-        Me.colRelatedParty_DebtorBIC.Caption = "Related Party - Debtor BIC"
-        Me.colRelatedParty_DebtorBIC.FieldName = "RelatedParty_DebtorBIC"
-        Me.colRelatedParty_DebtorBIC.Name = "colRelatedParty_DebtorBIC"
-        '
-        'colRelatedParty_CreditorAcc
-        '
-        Me.colRelatedParty_CreditorAcc.Caption = "Related Party - Creditor Acc."
-        Me.colRelatedParty_CreditorAcc.FieldName = "RelatedParty_CreditorAcc"
-        Me.colRelatedParty_CreditorAcc.Name = "colRelatedParty_CreditorAcc"
-        '
-        'colRelatedParty_CreditorName
-        '
-        Me.colRelatedParty_CreditorName.Caption = "Related Party - Creditor Name"
-        Me.colRelatedParty_CreditorName.FieldName = "RelatedParty_CreditorName"
-        Me.colRelatedParty_CreditorName.Name = "colRelatedParty_CreditorName"
-        '
-        'colRelatedParty_CreditorBIC
-        '
-        Me.colRelatedParty_CreditorBIC.Caption = "Related Party - Creditor BIC"
-        Me.colRelatedParty_CreditorBIC.FieldName = "RelatedParty_CreditorBIC"
-        Me.colRelatedParty_CreditorBIC.Name = "colRelatedParty_CreditorBIC"
-        '
-        'colRelatedAgent_InstructingAgent
-        '
-        Me.colRelatedAgent_InstructingAgent.Caption = "Related Agent - Instructing Agent"
-        Me.colRelatedAgent_InstructingAgent.FieldName = "RelatedAgent_InstructingAgent"
-        Me.colRelatedAgent_InstructingAgent.Name = "colRelatedAgent_InstructingAgent"
-        '
-        'colRelatedAgent_InstructedAgent
-        '
-        Me.colRelatedAgent_InstructedAgent.Caption = "Related Agent - Instructed Agent"
-        Me.colRelatedAgent_InstructedAgent.FieldName = "RelatedAgent_InstructedAgent"
-        Me.colRelatedAgent_InstructedAgent.Name = "colRelatedAgent_InstructedAgent"
-        '
-        'colLocalInstrument
-        '
-        Me.colLocalInstrument.Caption = "Local Instrument"
-        Me.colLocalInstrument.FieldName = "LocalInstrument"
-        Me.colLocalInstrument.Name = "colLocalInstrument"
-        Me.colLocalInstrument.Visible = True
-        Me.colLocalInstrument.VisibleIndex = 18
-        '
-        'colRelatedDetails_InterbankSettlementDate
-        '
-        Me.colRelatedDetails_InterbankSettlementDate.AppearanceCell.Options.UseTextOptions = True
-        Me.colRelatedDetails_InterbankSettlementDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colRelatedDetails_InterbankSettlementDate.AppearanceHeader.Options.UseTextOptions = True
-        Me.colRelatedDetails_InterbankSettlementDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colRelatedDetails_InterbankSettlementDate.Caption = "Relaited Details - Interbank Settlement Date"
-        Me.colRelatedDetails_InterbankSettlementDate.DisplayFormat.FormatString = "d"
-        Me.colRelatedDetails_InterbankSettlementDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.colRelatedDetails_InterbankSettlementDate.FieldName = "RelatedDetails_InterbankSettlementDate"
-        Me.colRelatedDetails_InterbankSettlementDate.Name = "colRelatedDetails_InterbankSettlementDate"
-        '
-        'colReconciled1
-        '
-        Me.colReconciled1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.colReconciled1.AppearanceCell.Options.UseFont = True
-        Me.colReconciled1.AppearanceCell.Options.UseTextOptions = True
-        Me.colReconciled1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.colReconciled1.Caption = "Reconciled"
-        Me.colReconciled1.ColumnEdit = Me.ValidRepositoryItemImageComboBox
-        Me.colReconciled1.FieldName = "Reconciled"
-        Me.colReconciled1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1
-        Me.colReconciled1.Name = "colReconciled1"
-        Me.colReconciled1.OptionsColumn.ReadOnly = True
-        '
-        'colReconciled_IB1
-        '
-        Me.colReconciled_IB1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.colReconciled_IB1.AppearanceCell.Options.UseFont = True
-        Me.colReconciled_IB1.AppearanceCell.Options.UseTextOptions = True
-        Me.colReconciled_IB1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near
-        Me.colReconciled_IB1.Caption = "Reconciled IB"
-        Me.colReconciled_IB1.FieldName = "Reconciled_IB"
-        Me.colReconciled_IB1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_1
-        Me.colReconciled_IB1.Name = "colReconciled_IB1"
-        Me.colReconciled_IB1.OptionsColumn.ReadOnly = True
-        '
-        'colEntryStatus1
-        '
-        Me.colEntryStatus1.Caption = "Entry Status"
-        Me.colEntryStatus1.FieldName = "EntryStatus"
-        Me.colEntryStatus1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_2
-        Me.colEntryStatus1.Name = "colEntryStatus1"
-        Me.colEntryStatus1.OptionsColumn.ReadOnly = True
-        '
-        'colUETR1
-        '
-        Me.colUETR1.Caption = "UETR"
-        Me.colUETR1.FieldName = "UETR"
-        Me.colUETR1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_3
-        Me.colUETR1.Name = "colUETR1"
-        Me.colUETR1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedParty_DebtorAcc1
-        '
-        Me.colRelatedParty_DebtorAcc1.Caption = "Related Party -Debtor Acc."
-        Me.colRelatedParty_DebtorAcc1.FieldName = "RelatedParty_DebtorAcc"
-        Me.colRelatedParty_DebtorAcc1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_4
-        Me.colRelatedParty_DebtorAcc1.Name = "colRelatedParty_DebtorAcc1"
-        Me.colRelatedParty_DebtorAcc1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedParty_CreditorAcc1
-        '
-        Me.colRelatedParty_CreditorAcc1.Caption = "Related Party - Creditor Acc."
-        Me.colRelatedParty_CreditorAcc1.FieldName = "RelatedParty_CreditorAcc"
-        Me.colRelatedParty_CreditorAcc1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_5
-        Me.colRelatedParty_CreditorAcc1.Name = "colRelatedParty_CreditorAcc1"
-        Me.colRelatedParty_CreditorAcc1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedParty_DebtorName1
-        '
-        Me.colRelatedParty_DebtorName1.Caption = "Related Party - Debtor Name"
-        Me.colRelatedParty_DebtorName1.FieldName = "RelatedParty_DebtorName"
-        Me.colRelatedParty_DebtorName1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_6
-        Me.colRelatedParty_DebtorName1.Name = "colRelatedParty_DebtorName1"
-        Me.colRelatedParty_DebtorName1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedParty_DebtorBIC1
-        '
-        Me.colRelatedParty_DebtorBIC1.Caption = "Related Party - Debtor BIC"
-        Me.colRelatedParty_DebtorBIC1.FieldName = "RelatedParty_DebtorBIC"
-        Me.colRelatedParty_DebtorBIC1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_7
-        Me.colRelatedParty_DebtorBIC1.Name = "colRelatedParty_DebtorBIC1"
-        Me.colRelatedParty_DebtorBIC1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedParty_CreditorName1
-        '
-        Me.colRelatedParty_CreditorName1.Caption = "Related Party - Creditor Name"
-        Me.colRelatedParty_CreditorName1.FieldName = "RelatedParty_CreditorName"
-        Me.colRelatedParty_CreditorName1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_8
-        Me.colRelatedParty_CreditorName1.Name = "colRelatedParty_CreditorName1"
-        Me.colRelatedParty_CreditorName1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedParty_CreditorBIC1
-        '
-        Me.colRelatedParty_CreditorBIC1.Caption = "Related Party - Creditor BIC"
-        Me.colRelatedParty_CreditorBIC1.FieldName = "RelatedParty_CreditorBIC"
-        Me.colRelatedParty_CreditorBIC1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_9
-        Me.colRelatedParty_CreditorBIC1.Name = "colRelatedParty_CreditorBIC1"
-        Me.colRelatedParty_CreditorBIC1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedAgent_InstructingAgent1
-        '
-        Me.colRelatedAgent_InstructingAgent1.Caption = "Related Agent - Instructing Agent"
-        Me.colRelatedAgent_InstructingAgent1.FieldName = "RelatedAgent_InstructingAgent"
-        Me.colRelatedAgent_InstructingAgent1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_10
-        Me.colRelatedAgent_InstructingAgent1.Name = "colRelatedAgent_InstructingAgent1"
-        Me.colRelatedAgent_InstructingAgent1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedAgent_InstructedAgent1
-        '
-        Me.colRelatedAgent_InstructedAgent1.Caption = "Related Agent - Instructed Agent"
-        Me.colRelatedAgent_InstructedAgent1.FieldName = "RelatedAgent_InstructedAgent"
-        Me.colRelatedAgent_InstructedAgent1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_11
-        Me.colRelatedAgent_InstructedAgent1.Name = "colRelatedAgent_InstructedAgent1"
-        Me.colRelatedAgent_InstructedAgent1.OptionsColumn.ReadOnly = True
-        '
-        'colLocalInstrument1
-        '
-        Me.colLocalInstrument1.Caption = "Local Instrument"
-        Me.colLocalInstrument1.FieldName = "LocalInstrument"
-        Me.colLocalInstrument1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_12
-        Me.colLocalInstrument1.Name = "colLocalInstrument1"
-        Me.colLocalInstrument1.OptionsColumn.ReadOnly = True
-        '
-        'colRelatedDetails_InterbankSettlementDate1
-        '
-        Me.colRelatedDetails_InterbankSettlementDate1.Caption = "Related Details -Interbank Settlement Date"
-        Me.colRelatedDetails_InterbankSettlementDate1.DisplayFormat.FormatString = "d"
-        Me.colRelatedDetails_InterbankSettlementDate1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.colRelatedDetails_InterbankSettlementDate1.FieldName = "RelatedDetails_InterbankSettlementDate"
-        Me.colRelatedDetails_InterbankSettlementDate1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1_13
-        Me.colRelatedDetails_InterbankSettlementDate1.Name = "colRelatedDetails_InterbankSettlementDate1"
-        Me.colRelatedDetails_InterbankSettlementDate1.OptionsColumn.ReadOnly = True
-        '
-        'LayoutViewCard1
-        '
-        Me.LayoutViewCard1.CustomizationFormText = "TemplateCard"
-        Me.LayoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colSwiftFileName2, Me.layoutViewField_colSenderBIC2, Me.layoutViewField_colReceivedDate2, Me.layoutViewField_colRef202, Me.layoutViewField_colAccountIdentification2, Me.layoutViewField_colStatementNr2, Me.layoutViewField_colSwiftTag2, Me.layoutViewField_colDebitCreditMark2, Me.layoutViewField_colBookingDate2, Me.layoutViewField_colCUR2, Me.layoutViewField_colTransactionTypeID2, Me.layoutViewField_colReferenceAccountOwner2, Me.layoutViewField_colReferenceServiInstitution2, Me.layoutViewField_colSupplementaryDetails2, Me.layoutViewField_colNostro_Name1, Me.layoutViewField_colMessageType2, Me.layoutViewField_colOSN2, Me.item1, Me.layoutViewField_colInternalAccount1, Me.layoutViewField_colPageNr2, Me.layoutViewField_colSwiftTagName2, Me.layoutViewField_colFundsCode2, Me.item3, Me.layoutViewField_colValueDate2, Me.layoutViewField_colAmount2, Me.item4, Me.item5, Me.layoutViewField_LayoutViewColumn1, Me.layoutViewField_LayoutViewColumn1_1, Me.layoutViewField_LayoutViewColumn1_2, Me.layoutViewField_LayoutViewColumn1_4, Me.layoutViewField_LayoutViewColumn1_5, Me.layoutViewField_LayoutViewColumn1_10, Me.layoutViewField_LayoutViewColumn1_12, Me.layoutViewField_LayoutViewColumn1_3, Me.layoutViewField_LayoutViewColumn1_6, Me.layoutViewField_LayoutViewColumn1_7, Me.layoutViewField_LayoutViewColumn1_8, Me.layoutViewField_LayoutViewColumn1_9, Me.layoutViewField_LayoutViewColumn1_11, Me.layoutViewField_LayoutViewColumn1_13})
-        Me.LayoutViewCard1.Name = "layoutViewTemplateCard"
-        Me.LayoutViewCard1.OptionsItemText.TextToControlDistance = 5
-        Me.LayoutViewCard1.Text = "TemplateCard"
-        '
-        'layoutViewField_colSwiftFileName2
-        '
-        Me.layoutViewField_colSwiftFileName2.EditorPreferredWidth = 216
-        Me.layoutViewField_colSwiftFileName2.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colSwiftFileName2.Name = "layoutViewField_colSwiftFileName2"
-        Me.layoutViewField_colSwiftFileName2.Size = New System.Drawing.Size(437, 24)
-        Me.layoutViewField_colSwiftFileName2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colSenderBIC2
-        '
-        Me.layoutViewField_colSenderBIC2.EditorPreferredWidth = 216
-        Me.layoutViewField_colSenderBIC2.Location = New System.Drawing.Point(0, 24)
-        Me.layoutViewField_colSenderBIC2.Name = "layoutViewField_colSenderBIC2"
-        Me.layoutViewField_colSenderBIC2.Size = New System.Drawing.Size(437, 24)
-        Me.layoutViewField_colSenderBIC2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colReceivedDate2
-        '
-        Me.layoutViewField_colReceivedDate2.EditorPreferredWidth = 201
-        Me.layoutViewField_colReceivedDate2.Location = New System.Drawing.Point(0, 48)
-        Me.layoutViewField_colReceivedDate2.Name = "layoutViewField_colReceivedDate2"
-        Me.layoutViewField_colReceivedDate2.Size = New System.Drawing.Size(422, 24)
-        Me.layoutViewField_colReceivedDate2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colRef202
-        '
-        Me.layoutViewField_colRef202.EditorPreferredWidth = 804
-        Me.layoutViewField_colRef202.Location = New System.Drawing.Point(0, 72)
-        Me.layoutViewField_colRef202.Name = "layoutViewField_colRef202"
-        Me.layoutViewField_colRef202.Size = New System.Drawing.Size(1026, 24)
-        Me.layoutViewField_colRef202.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colAccountIdentification2
-        '
-        Me.layoutViewField_colAccountIdentification2.EditorPreferredWidth = 283
-        Me.layoutViewField_colAccountIdentification2.Location = New System.Drawing.Point(0, 96)
-        Me.layoutViewField_colAccountIdentification2.Name = "layoutViewField_colAccountIdentification2"
-        Me.layoutViewField_colAccountIdentification2.Size = New System.Drawing.Size(504, 24)
-        Me.layoutViewField_colAccountIdentification2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colStatementNr2
-        '
-        Me.layoutViewField_colStatementNr2.EditorPreferredWidth = 283
-        Me.layoutViewField_colStatementNr2.Location = New System.Drawing.Point(0, 120)
-        Me.layoutViewField_colStatementNr2.Name = "layoutViewField_colStatementNr2"
-        Me.layoutViewField_colStatementNr2.Size = New System.Drawing.Size(504, 24)
-        Me.layoutViewField_colStatementNr2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colSwiftTag2
-        '
-        Me.layoutViewField_colSwiftTag2.EditorPreferredWidth = 105
-        Me.layoutViewField_colSwiftTag2.Location = New System.Drawing.Point(0, 144)
-        Me.layoutViewField_colSwiftTag2.Name = "layoutViewField_colSwiftTag2"
-        Me.layoutViewField_colSwiftTag2.Size = New System.Drawing.Size(326, 24)
-        Me.layoutViewField_colSwiftTag2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colDebitCreditMark2
-        '
-        Me.layoutViewField_colDebitCreditMark2.EditorPreferredWidth = 105
-        Me.layoutViewField_colDebitCreditMark2.Location = New System.Drawing.Point(0, 168)
-        Me.layoutViewField_colDebitCreditMark2.Name = "layoutViewField_colDebitCreditMark2"
-        Me.layoutViewField_colDebitCreditMark2.Size = New System.Drawing.Size(326, 24)
-        Me.layoutViewField_colDebitCreditMark2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colBookingDate2
-        '
-        Me.layoutViewField_colBookingDate2.EditorPreferredWidth = 105
-        Me.layoutViewField_colBookingDate2.Location = New System.Drawing.Point(0, 192)
-        Me.layoutViewField_colBookingDate2.Name = "layoutViewField_colBookingDate2"
-        Me.layoutViewField_colBookingDate2.Size = New System.Drawing.Size(326, 24)
-        Me.layoutViewField_colBookingDate2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colCUR2
-        '
-        Me.layoutViewField_colCUR2.EditorPreferredWidth = 105
-        Me.layoutViewField_colCUR2.Location = New System.Drawing.Point(0, 216)
-        Me.layoutViewField_colCUR2.Name = "layoutViewField_colCUR2"
-        Me.layoutViewField_colCUR2.Size = New System.Drawing.Size(326, 24)
-        Me.layoutViewField_colCUR2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colTransactionTypeID2
-        '
-        Me.layoutViewField_colTransactionTypeID2.EditorPreferredWidth = 804
-        Me.layoutViewField_colTransactionTypeID2.Location = New System.Drawing.Point(0, 240)
-        Me.layoutViewField_colTransactionTypeID2.Name = "layoutViewField_colTransactionTypeID2"
-        Me.layoutViewField_colTransactionTypeID2.Size = New System.Drawing.Size(1026, 24)
-        Me.layoutViewField_colTransactionTypeID2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colReferenceAccountOwner2
-        '
-        Me.layoutViewField_colReferenceAccountOwner2.EditorPreferredWidth = 804
-        Me.layoutViewField_colReferenceAccountOwner2.Location = New System.Drawing.Point(0, 264)
-        Me.layoutViewField_colReferenceAccountOwner2.Name = "layoutViewField_colReferenceAccountOwner2"
-        Me.layoutViewField_colReferenceAccountOwner2.Size = New System.Drawing.Size(1026, 24)
-        Me.layoutViewField_colReferenceAccountOwner2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colReferenceServiInstitution2
-        '
-        Me.layoutViewField_colReferenceServiInstitution2.EditorPreferredWidth = 804
-        Me.layoutViewField_colReferenceServiInstitution2.Location = New System.Drawing.Point(0, 288)
-        Me.layoutViewField_colReferenceServiInstitution2.Name = "layoutViewField_colReferenceServiInstitution2"
-        Me.layoutViewField_colReferenceServiInstitution2.Size = New System.Drawing.Size(1026, 24)
-        Me.layoutViewField_colReferenceServiInstitution2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colSupplementaryDetails2
-        '
-        Me.layoutViewField_colSupplementaryDetails2.EditorPreferredWidth = 804
-        Me.layoutViewField_colSupplementaryDetails2.Location = New System.Drawing.Point(0, 312)
-        Me.layoutViewField_colSupplementaryDetails2.Name = "layoutViewField_colSupplementaryDetails2"
-        Me.layoutViewField_colSupplementaryDetails2.Size = New System.Drawing.Size(1026, 24)
-        Me.layoutViewField_colSupplementaryDetails2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colNostro_Name1
-        '
-        Me.layoutViewField_colNostro_Name1.EditorPreferredWidth = 804
-        Me.layoutViewField_colNostro_Name1.Location = New System.Drawing.Point(0, 336)
-        Me.layoutViewField_colNostro_Name1.Name = "layoutViewField_colNostro_Name1"
-        Me.layoutViewField_colNostro_Name1.Size = New System.Drawing.Size(1026, 24)
-        Me.layoutViewField_colNostro_Name1.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colMessageType2
-        '
-        Me.layoutViewField_colMessageType2.EditorPreferredWidth = 226
-        Me.layoutViewField_colMessageType2.Location = New System.Drawing.Point(437, 0)
-        Me.layoutViewField_colMessageType2.Name = "layoutViewField_colMessageType2"
-        Me.layoutViewField_colMessageType2.Size = New System.Drawing.Size(309, 24)
-        Me.layoutViewField_colMessageType2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_colMessageType2.TextSize = New System.Drawing.Size(73, 13)
-        Me.layoutViewField_colMessageType2.TextToControlDistance = 5
-        '
-        'layoutViewField_colOSN2
-        '
-        Me.layoutViewField_colOSN2.EditorPreferredWidth = 554
-        Me.layoutViewField_colOSN2.Location = New System.Drawing.Point(437, 24)
-        Me.layoutViewField_colOSN2.Name = "layoutViewField_colOSN2"
-        Me.layoutViewField_colOSN2.Size = New System.Drawing.Size(589, 24)
-        Me.layoutViewField_colOSN2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_colOSN2.TextSize = New System.Drawing.Size(25, 13)
-        Me.layoutViewField_colOSN2.TextToControlDistance = 5
-        '
-        'item1
-        '
-        Me.item1.AllowHotTrack = False
-        Me.item1.CustomizationFormText = "item1"
-        Me.item1.Location = New System.Drawing.Point(746, 0)
-        Me.item1.Name = "item1"
-        Me.item1.Size = New System.Drawing.Size(280, 24)
-        Me.item1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'layoutViewField_colInternalAccount1
-        '
-        Me.layoutViewField_colInternalAccount1.EditorPreferredWidth = 428
-        Me.layoutViewField_colInternalAccount1.Location = New System.Drawing.Point(504, 96)
-        Me.layoutViewField_colInternalAccount1.Name = "layoutViewField_colInternalAccount1"
-        Me.layoutViewField_colInternalAccount1.Size = New System.Drawing.Size(522, 24)
-        Me.layoutViewField_colInternalAccount1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_colInternalAccount1.TextSize = New System.Drawing.Size(84, 13)
-        Me.layoutViewField_colInternalAccount1.TextToControlDistance = 5
-        '
-        'layoutViewField_colPageNr2
-        '
-        Me.layoutViewField_colPageNr2.EditorPreferredWidth = 470
-        Me.layoutViewField_colPageNr2.Location = New System.Drawing.Point(504, 120)
-        Me.layoutViewField_colPageNr2.Name = "layoutViewField_colPageNr2"
-        Me.layoutViewField_colPageNr2.Size = New System.Drawing.Size(522, 24)
-        Me.layoutViewField_colPageNr2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_colPageNr2.TextSize = New System.Drawing.Size(42, 13)
-        Me.layoutViewField_colPageNr2.TextToControlDistance = 5
-        '
-        'layoutViewField_colSwiftTagName2
-        '
-        Me.layoutViewField_colSwiftTagName2.EditorPreferredWidth = 611
-        Me.layoutViewField_colSwiftTagName2.Location = New System.Drawing.Point(326, 144)
-        Me.layoutViewField_colSwiftTagName2.Name = "layoutViewField_colSwiftTagName2"
-        Me.layoutViewField_colSwiftTagName2.Size = New System.Drawing.Size(700, 24)
-        Me.layoutViewField_colSwiftTagName2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_colSwiftTagName2.TextSize = New System.Drawing.Size(79, 13)
-        Me.layoutViewField_colSwiftTagName2.TextToControlDistance = 5
-        '
-        'layoutViewField_colFundsCode2
-        '
-        Me.layoutViewField_colFundsCode2.EditorPreferredWidth = 194
-        Me.layoutViewField_colFundsCode2.Location = New System.Drawing.Point(326, 168)
-        Me.layoutViewField_colFundsCode2.Name = "layoutViewField_colFundsCode2"
-        Me.layoutViewField_colFundsCode2.Size = New System.Drawing.Size(264, 24)
-        Me.layoutViewField_colFundsCode2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_colFundsCode2.TextSize = New System.Drawing.Size(61, 13)
-        Me.layoutViewField_colFundsCode2.TextToControlDistance = 5
-        '
-        'item3
-        '
-        Me.item3.AllowHotTrack = False
-        Me.item3.CustomizationFormText = "item3"
-        Me.item3.Location = New System.Drawing.Point(590, 168)
-        Me.item3.Name = "item3"
-        Me.item3.Size = New System.Drawing.Size(436, 24)
-        Me.item3.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'layoutViewField_colValueDate2
-        '
-        Me.layoutViewField_colValueDate2.EditorPreferredWidth = 199
-        Me.layoutViewField_colValueDate2.Location = New System.Drawing.Point(326, 192)
-        Me.layoutViewField_colValueDate2.Name = "layoutViewField_colValueDate2"
-        Me.layoutViewField_colValueDate2.Size = New System.Drawing.Size(264, 24)
-        Me.layoutViewField_colValueDate2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_colValueDate2.TextSize = New System.Drawing.Size(56, 13)
-        Me.layoutViewField_colValueDate2.TextToControlDistance = 5
-        '
-        'layoutViewField_colAmount2
-        '
-        Me.layoutViewField_colAmount2.EditorPreferredWidth = 336
-        Me.layoutViewField_colAmount2.Location = New System.Drawing.Point(326, 216)
-        Me.layoutViewField_colAmount2.Name = "layoutViewField_colAmount2"
-        Me.layoutViewField_colAmount2.Size = New System.Drawing.Size(387, 24)
-        Me.layoutViewField_colAmount2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_colAmount2.TextSize = New System.Drawing.Size(41, 13)
-        Me.layoutViewField_colAmount2.TextToControlDistance = 5
-        '
-        'item4
-        '
-        Me.item4.AllowHotTrack = False
-        Me.item4.CustomizationFormText = "item4"
-        Me.item4.Location = New System.Drawing.Point(590, 192)
-        Me.item4.Name = "item4"
-        Me.item4.Size = New System.Drawing.Size(436, 24)
-        Me.item4.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'item5
-        '
-        Me.item5.AllowHotTrack = False
-        Me.item5.CustomizationFormText = "item5"
-        Me.item5.Location = New System.Drawing.Point(713, 216)
-        Me.item5.Name = "item5"
-        Me.item5.Size = New System.Drawing.Size(313, 24)
-        Me.item5.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'layoutViewField_LayoutViewColumn1
-        '
-        Me.layoutViewField_LayoutViewColumn1.EditorPreferredWidth = 200
-        Me.layoutViewField_LayoutViewColumn1.Location = New System.Drawing.Point(422, 48)
-        Me.layoutViewField_LayoutViewColumn1.Name = "layoutViewField_LayoutViewColumn1"
-        Me.layoutViewField_LayoutViewColumn1.Size = New System.Drawing.Size(264, 24)
-        Me.layoutViewField_LayoutViewColumn1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_LayoutViewColumn1.TextSize = New System.Drawing.Size(55, 13)
-        Me.layoutViewField_LayoutViewColumn1.TextToControlDistance = 5
-        '
-        'layoutViewField_LayoutViewColumn1_1
-        '
-        Me.layoutViewField_LayoutViewColumn1_1.EditorPreferredWidth = 262
-        Me.layoutViewField_LayoutViewColumn1_1.Location = New System.Drawing.Point(686, 48)
-        Me.layoutViewField_LayoutViewColumn1_1.Name = "layoutViewField_LayoutViewColumn1_1"
-        Me.layoutViewField_LayoutViewColumn1_1.Size = New System.Drawing.Size(340, 24)
-        Me.layoutViewField_LayoutViewColumn1_1.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_LayoutViewColumn1_1.TextSize = New System.Drawing.Size(68, 13)
-        Me.layoutViewField_LayoutViewColumn1_1.TextToControlDistance = 5
-        '
-        'layoutViewField_LayoutViewColumn1_2
-        '
-        Me.layoutViewField_LayoutViewColumn1_2.EditorPreferredWidth = 216
-        Me.layoutViewField_LayoutViewColumn1_2.Location = New System.Drawing.Point(0, 360)
-        Me.layoutViewField_LayoutViewColumn1_2.Name = "layoutViewField_LayoutViewColumn1_2"
-        Me.layoutViewField_LayoutViewColumn1_2.Size = New System.Drawing.Size(437, 24)
-        Me.layoutViewField_LayoutViewColumn1_2.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_LayoutViewColumn1_4
-        '
-        Me.layoutViewField_LayoutViewColumn1_4.EditorPreferredWidth = 215
-        Me.layoutViewField_LayoutViewColumn1_4.Location = New System.Drawing.Point(0, 384)
-        Me.layoutViewField_LayoutViewColumn1_4.Name = "layoutViewField_LayoutViewColumn1_4"
-        Me.layoutViewField_LayoutViewColumn1_4.Size = New System.Drawing.Size(436, 24)
-        Me.layoutViewField_LayoutViewColumn1_4.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_LayoutViewColumn1_5
-        '
-        Me.layoutViewField_LayoutViewColumn1_5.EditorPreferredWidth = 216
-        Me.layoutViewField_LayoutViewColumn1_5.Location = New System.Drawing.Point(0, 408)
-        Me.layoutViewField_LayoutViewColumn1_5.Name = "layoutViewField_LayoutViewColumn1_5"
-        Me.layoutViewField_LayoutViewColumn1_5.Size = New System.Drawing.Size(437, 24)
-        Me.layoutViewField_LayoutViewColumn1_5.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_LayoutViewColumn1_10
-        '
-        Me.layoutViewField_LayoutViewColumn1_10.EditorPreferredWidth = 370
-        Me.layoutViewField_LayoutViewColumn1_10.Location = New System.Drawing.Point(0, 432)
-        Me.layoutViewField_LayoutViewColumn1_10.Name = "layoutViewField_LayoutViewColumn1_10"
-        Me.layoutViewField_LayoutViewColumn1_10.Size = New System.Drawing.Size(591, 24)
-        Me.layoutViewField_LayoutViewColumn1_10.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_LayoutViewColumn1_12
-        '
-        Me.layoutViewField_LayoutViewColumn1_12.EditorPreferredWidth = 291
-        Me.layoutViewField_LayoutViewColumn1_12.Location = New System.Drawing.Point(0, 456)
-        Me.layoutViewField_LayoutViewColumn1_12.Name = "layoutViewField_LayoutViewColumn1_12"
-        Me.layoutViewField_LayoutViewColumn1_12.Size = New System.Drawing.Size(512, 24)
-        Me.layoutViewField_LayoutViewColumn1_12.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_LayoutViewColumn1_3
-        '
-        Me.layoutViewField_LayoutViewColumn1_3.EditorPreferredWidth = 549
-        Me.layoutViewField_LayoutViewColumn1_3.Location = New System.Drawing.Point(437, 360)
-        Me.layoutViewField_LayoutViewColumn1_3.Name = "layoutViewField_LayoutViewColumn1_3"
-        Me.layoutViewField_LayoutViewColumn1_3.Size = New System.Drawing.Size(589, 24)
-        Me.layoutViewField_LayoutViewColumn1_3.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_LayoutViewColumn1_3.TextSize = New System.Drawing.Size(30, 13)
-        Me.layoutViewField_LayoutViewColumn1_3.TextToControlDistance = 5
-        '
-        'layoutViewField_LayoutViewColumn1_6
-        '
-        Me.layoutViewField_LayoutViewColumn1_6.EditorPreferredWidth = 154
-        Me.layoutViewField_LayoutViewColumn1_6.Location = New System.Drawing.Point(436, 384)
-        Me.layoutViewField_LayoutViewColumn1_6.Name = "layoutViewField_LayoutViewColumn1_6"
-        Me.layoutViewField_LayoutViewColumn1_6.Size = New System.Drawing.Size(307, 24)
-        Me.layoutViewField_LayoutViewColumn1_6.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_LayoutViewColumn1_6.TextSize = New System.Drawing.Size(143, 13)
-        Me.layoutViewField_LayoutViewColumn1_6.TextToControlDistance = 5
-        '
-        'layoutViewField_LayoutViewColumn1_7
-        '
-        Me.layoutViewField_LayoutViewColumn1_7.EditorPreferredWidth = 141
-        Me.layoutViewField_LayoutViewColumn1_7.Location = New System.Drawing.Point(743, 384)
-        Me.layoutViewField_LayoutViewColumn1_7.Name = "layoutViewField_LayoutViewColumn1_7"
-        Me.layoutViewField_LayoutViewColumn1_7.Size = New System.Drawing.Size(283, 24)
-        Me.layoutViewField_LayoutViewColumn1_7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_LayoutViewColumn1_7.TextSize = New System.Drawing.Size(133, 13)
-        Me.layoutViewField_LayoutViewColumn1_7.TextToControlDistance = 5
-        '
-        'layoutViewField_LayoutViewColumn1_8
-        '
-        Me.layoutViewField_LayoutViewColumn1_8.EditorPreferredWidth = 150
-        Me.layoutViewField_LayoutViewColumn1_8.Location = New System.Drawing.Point(437, 408)
-        Me.layoutViewField_LayoutViewColumn1_8.Name = "layoutViewField_LayoutViewColumn1_8"
-        Me.layoutViewField_LayoutViewColumn1_8.Size = New System.Drawing.Size(309, 24)
-        Me.layoutViewField_LayoutViewColumn1_8.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_LayoutViewColumn1_8.TextSize = New System.Drawing.Size(149, 13)
-        Me.layoutViewField_LayoutViewColumn1_8.TextToControlDistance = 5
-        '
-        'layoutViewField_LayoutViewColumn1_9
-        '
-        Me.layoutViewField_LayoutViewColumn1_9.EditorPreferredWidth = 132
-        Me.layoutViewField_LayoutViewColumn1_9.Location = New System.Drawing.Point(746, 408)
-        Me.layoutViewField_LayoutViewColumn1_9.Name = "layoutViewField_LayoutViewColumn1_9"
-        Me.layoutViewField_LayoutViewColumn1_9.Size = New System.Drawing.Size(280, 24)
-        Me.layoutViewField_LayoutViewColumn1_9.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_LayoutViewColumn1_9.TextSize = New System.Drawing.Size(139, 13)
-        Me.layoutViewField_LayoutViewColumn1_9.TextToControlDistance = 5
-        '
-        'layoutViewField_LayoutViewColumn1_11
-        '
-        Me.layoutViewField_LayoutViewColumn1_11.EditorPreferredWidth = 260
-        Me.layoutViewField_LayoutViewColumn1_11.Location = New System.Drawing.Point(591, 432)
-        Me.layoutViewField_LayoutViewColumn1_11.Name = "layoutViewField_LayoutViewColumn1_11"
-        Me.layoutViewField_LayoutViewColumn1_11.Size = New System.Drawing.Size(435, 24)
-        Me.layoutViewField_LayoutViewColumn1_11.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.layoutViewField_LayoutViewColumn1_11.TextSize = New System.Drawing.Size(165, 13)
-        Me.layoutViewField_LayoutViewColumn1_11.TextToControlDistance = 5
-        '
-        'layoutViewField_LayoutViewColumn1_13
-        '
-        Me.layoutViewField_LayoutViewColumn1_13.EditorPreferredWidth = 293
-        Me.layoutViewField_LayoutViewColumn1_13.Location = New System.Drawing.Point(512, 456)
-        Me.layoutViewField_LayoutViewColumn1_13.Name = "layoutViewField_LayoutViewColumn1_13"
-        Me.layoutViewField_LayoutViewColumn1_13.Size = New System.Drawing.Size(514, 24)
-        Me.layoutViewField_LayoutViewColumn1_13.TextSize = New System.Drawing.Size(211, 13)
-        '
-        'layoutViewField_colID2
-        '
-        Me.layoutViewField_colID2.EditorPreferredWidth = 20
-        Me.layoutViewField_colID2.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colID2.Name = "layoutViewField_colID2"
-        Me.layoutViewField_colID2.Size = New System.Drawing.Size(1024, 480)
-        Me.layoutViewField_colID2.TextSize = New System.Drawing.Size(133, 13)
-        '
-        'layoutViewField_colOSN_ReceivedDate2
-        '
-        Me.layoutViewField_colOSN_ReceivedDate2.EditorPreferredWidth = 20
-        Me.layoutViewField_colOSN_ReceivedDate2.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colOSN_ReceivedDate2.Name = "layoutViewField_colOSN_ReceivedDate2"
-        Me.layoutViewField_colOSN_ReceivedDate2.Size = New System.Drawing.Size(1024, 480)
-        Me.layoutViewField_colOSN_ReceivedDate2.TextSize = New System.Drawing.Size(148, 13)
-        '
         'SwiftStatementsAll
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2071,6 +2071,46 @@ Partial Class SwiftStatementsAll
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Swift Account Statemenst (All external Nostro Accounts)"
         CType(Me.Nostro_Balances_DetailView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colSwiftFileName2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colSenderBIC2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colID2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colMessageType2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colReceivedDate2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colOSN2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colOSN_ReceivedDate2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colRef202, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colAccountIdentification2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colInternalAccount1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colStatementNr2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colPageNr2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colSwiftTag2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colSwiftTagName2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colDebitCreditMark2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colFundsCode2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colBookingDate2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colValueDate2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colCUR2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colAmount2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colTransactionTypeID2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colReferenceAccountOwner2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colReferenceServiInstitution2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colSupplementaryDetails2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_colNostro_Name1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ValidRepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_10, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_11, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_12, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.layoutViewField_LayoutViewColumn1_13, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SWIFT_ACC_STATEMENTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BalancesDataset, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2080,7 +2120,11 @@ Partial Class SwiftStatementsAll
         CType(Me.RepositoryItemTextEditBIC8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEditBIC3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemMemoExEdit2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ValidRepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.item5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2100,50 +2144,6 @@ Partial Class SwiftStatementsAll
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colSwiftFileName2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colSenderBIC2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colReceivedDate2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colRef202, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colAccountIdentification2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colStatementNr2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colSwiftTag2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colDebitCreditMark2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBookingDate2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colCUR2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colTransactionTypeID2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colReferenceAccountOwner2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colReferenceServiInstitution2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colSupplementaryDetails2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colNostro_Name1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colMessageType2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colOSN2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.item1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colInternalAccount1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPageNr2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colSwiftTagName2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colFundsCode2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.item3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colValueDate2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colAmount2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.item4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.item5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1_13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colID2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colOSN_ReceivedDate2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

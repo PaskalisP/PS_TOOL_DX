@@ -154,6 +154,7 @@ Partial Class SwiftStatements
         Me.colRelatedParty_CreditorBIC = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRelatedAgent_InstructingAgent = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRelatedAgent_InstructedAgent = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLocalInstrument = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRelatedDetails_InterbankSettlementDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.OdasImportProcedureRepositoryItemTextEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
@@ -209,7 +210,6 @@ Partial Class SwiftStatements
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.colLocalInstrument = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.Nostro_Balances_DetailView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colSwiftFileName1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colSenderBIC1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1523,6 +1523,14 @@ Partial Class SwiftStatements
         Me.colRelatedAgent_InstructedAgent.FieldName = "RelatedAgent_InstructedAgent"
         Me.colRelatedAgent_InstructedAgent.Name = "colRelatedAgent_InstructedAgent"
         '
+        'colLocalInstrument
+        '
+        Me.colLocalInstrument.Caption = "Local Instrument"
+        Me.colLocalInstrument.FieldName = "LocalInstrument"
+        Me.colLocalInstrument.Name = "colLocalInstrument"
+        Me.colLocalInstrument.Visible = True
+        Me.colLocalInstrument.VisibleIndex = 18
+        '
         'colRelatedDetails_InterbankSettlementDate
         '
         Me.colRelatedDetails_InterbankSettlementDate.AppearanceCell.Options.UseTextOptions = True
@@ -1974,7 +1982,7 @@ Partial Class SwiftStatements
         '
         'colAccountIdentifierStatement
         '
-        Me.colAccountIdentifierStatement.Caption = "Acc. Identifier (MT940/950)"
+        Me.colAccountIdentifierStatement.Caption = "Acc. Identifier (MT940/950/camt.053)"
         Me.colAccountIdentifierStatement.FieldName = "AccountIdentifierStatement"
         Me.colAccountIdentifierStatement.Name = "colAccountIdentifierStatement"
         Me.colAccountIdentifierStatement.OptionsColumn.AllowEdit = False
@@ -2181,14 +2189,6 @@ Partial Class SwiftStatements
         Me.LayoutControlItem3.Size = New System.Drawing.Size(1407, 20)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
-        '
-        'colLocalInstrument
-        '
-        Me.colLocalInstrument.Caption = "Local Instrument"
-        Me.colLocalInstrument.FieldName = "LocalInstrument"
-        Me.colLocalInstrument.Name = "colLocalInstrument"
-        Me.colLocalInstrument.Visible = True
-        Me.colLocalInstrument.VisibleIndex = 18
         '
         'SwiftStatements
         '

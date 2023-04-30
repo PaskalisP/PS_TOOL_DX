@@ -21,8 +21,8 @@ Partial Class Configuration
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Configuration))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.DepartmentsParameterView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colABTEILUNGSPARAMETERNAME = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -35,6 +35,7 @@ Partial Class Configuration
         Me.colIdABTEILUNGSCODE = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLastAction1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLastUpdateDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.DateTime_RepositoryItemDateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.colLastUpdateUser1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.ABTEILUNGENBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -129,6 +130,7 @@ Partial Class Configuration
         Me.colIdABTEILUNGSCODE_NAME = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLastAction3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLastUpdateDate3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.DateTime_RepositoryItemDateEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.colLastUpdateUser3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -198,13 +200,13 @@ Partial Class Configuration
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.DateTime_RepositoryItemDateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
-        Me.DateTime_RepositoryItemDateEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         CType(Me.DepartmentsParameterView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DEPARTMENT_CODERepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VALIDRepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTime_RepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ABTEILUNGENBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -240,6 +242,8 @@ Partial Class Configuration
         CType(Me.Number_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit2.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTime_RepositoryItemDateEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -269,10 +273,6 @@ Partial Class Configuration
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateTime_RepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateTime_RepositoryItemDateEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DepartmentsParameterView
@@ -445,6 +445,22 @@ Partial Class Configuration
         Me.colLastUpdateDate1.OptionsColumn.ReadOnly = True
         Me.colLastUpdateDate1.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
         '
+        'DateTime_RepositoryItemDateEdit
+        '
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.DateTime_RepositoryItemDateEdit.AutoHeight = False
+        Me.DateTime_RepositoryItemDateEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTime_RepositoryItemDateEdit.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.DateTime_RepositoryItemDateEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateTime_RepositoryItemDateEdit.EditFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.DateTime_RepositoryItemDateEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateTime_RepositoryItemDateEdit.Name = "DateTime_RepositoryItemDateEdit"
+        '
         'colLastUpdateUser1
         '
         Me.colLastUpdateUser1.FieldName = "LastUpdateUser"
@@ -468,12 +484,12 @@ Partial Class Configuration
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.ImageIndex = 7
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
         Me.GridControl1.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 2, True, False, "Print", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, False, "ExportToExcel", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 11, True, False, "ImportFromExcel", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 7, True, False, "Delete", Nothing)})
-        GridLevelNode1.LevelTemplate = Me.DepartmentsParameterView
-        GridLevelNode2.LevelTemplate = Me.ParameterView
-        GridLevelNode2.RelationName = "PARAMETER_FK00"
-        GridLevelNode1.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
-        GridLevelNode1.RelationName = "FK_ABTEILUNGSPARAMETER_ABTEILUNGEN"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode3.LevelTemplate = Me.DepartmentsParameterView
+        GridLevelNode4.LevelTemplate = Me.ParameterView
+        GridLevelNode4.RelationName = "PARAMETER_FK00"
+        GridLevelNode3.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode4})
+        GridLevelNode3.RelationName = "FK_ABTEILUNGSPARAMETER_ABTEILUNGEN"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
         Me.GridControl1.Location = New System.Drawing.Point(24, 45)
         Me.GridControl1.MainView = Me.DepartmentsView
         Me.GridControl1.Name = "GridControl1"
@@ -1506,6 +1522,22 @@ Partial Class Configuration
         Me.colLastUpdateDate3.VisibleIndex = 12
         Me.colLastUpdateDate3.Width = 145
         '
+        'DateTime_RepositoryItemDateEdit3
+        '
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.Options.UseBackColor = True
+        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.Options.UseForeColor = True
+        Me.DateTime_RepositoryItemDateEdit3.AutoHeight = False
+        Me.DateTime_RepositoryItemDateEdit3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTime_RepositoryItemDateEdit3.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.DateTime_RepositoryItemDateEdit3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateTime_RepositoryItemDateEdit3.EditFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.DateTime_RepositoryItemDateEdit3.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.DateTime_RepositoryItemDateEdit3.Name = "DateTime_RepositoryItemDateEdit3"
+        '
         'colLastUpdateUser3
         '
         Me.colLastUpdateUser3.FieldName = "LastUpdateUser"
@@ -1933,6 +1965,10 @@ Partial Class Configuration
         '
         'TabbedControlGroup1
         '
+        Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Aqua
+        Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Options.UseFont = True
+        Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
         Me.TabbedControlGroup1.CustomizationFormText = "TabbedControlGroup1"
         Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
@@ -1943,9 +1979,7 @@ Partial Class Configuration
         'LayoutControlGroup2
         '
         Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Yellow
         Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.Options.UseFont = True
-        Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
         Me.LayoutControlGroup2.CustomizationFormText = "Parameter Configuration"
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
@@ -1966,9 +2000,7 @@ Partial Class Configuration
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Yellow
         Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.Options.UseFont = True
-        Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
         Me.LayoutControlGroup3.CustomizationFormText = "All Parameters"
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
@@ -2084,38 +2116,6 @@ Partial Class Configuration
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "RibbonPage2"
         '
-        'DateTime_RepositoryItemDateEdit
-        '
-        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.Options.UseBackColor = True
-        Me.DateTime_RepositoryItemDateEdit.AppearanceFocused.Options.UseForeColor = True
-        Me.DateTime_RepositoryItemDateEdit.AutoHeight = False
-        Me.DateTime_RepositoryItemDateEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateTime_RepositoryItemDateEdit.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
-        Me.DateTime_RepositoryItemDateEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.DateTime_RepositoryItemDateEdit.EditFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
-        Me.DateTime_RepositoryItemDateEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.DateTime_RepositoryItemDateEdit.Name = "DateTime_RepositoryItemDateEdit"
-        '
-        'DateTime_RepositoryItemDateEdit3
-        '
-        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.Options.UseBackColor = True
-        Me.DateTime_RepositoryItemDateEdit3.AppearanceFocused.Options.UseForeColor = True
-        Me.DateTime_RepositoryItemDateEdit3.AutoHeight = False
-        Me.DateTime_RepositoryItemDateEdit3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.DateTime_RepositoryItemDateEdit3.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
-        Me.DateTime_RepositoryItemDateEdit3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.DateTime_RepositoryItemDateEdit3.EditFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
-        Me.DateTime_RepositoryItemDateEdit3.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.DateTime_RepositoryItemDateEdit3.Name = "DateTime_RepositoryItemDateEdit3"
-        '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2137,6 +2137,8 @@ Partial Class Configuration
         CType(Me.VALIDRepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTime_RepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ABTEILUNGENBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2172,6 +2174,8 @@ Partial Class Configuration
         CType(Me.Number_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit2.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTime_RepositoryItemDateEdit3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2201,10 +2205,6 @@ Partial Class Configuration
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateTime_RepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateTime_RepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateTime_RepositoryItemDateEdit3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

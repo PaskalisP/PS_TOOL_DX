@@ -30,6 +30,11 @@ Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraEditors.Controls
 Imports DevExpress.Spreadsheet
 Imports DevExpress.XtraLayout
+Imports DevExpress.XtraGrid.Helpers
+Imports System.Drawing
+Imports System.Data
+
+
 
 Public Class Configuration
 
@@ -38,6 +43,7 @@ Public Class Configuration
     Dim ID_Nr_RowValue_All_Parameters As Integer
     Dim DepartmentsDetailView As DevExpress.XtraGrid.Views.Grid.GridView ' DetailView of the Departments - MasterView
     Dim DepartmentsParameterDetailView As DevExpress.XtraGrid.Views.Grid.GridView 'DetailView of the Departments Parameter - SecondView
+    Dim ParameterDetailView As DevExpress.XtraGrid.Views.Grid.GridView 'DetailView of the Departments Parameter - ThirdView
 
     Dim DepartmentsDetailViewCaption As String = Nothing
     Dim DepartmentsParameterDetailViewCaption As String = Nothing
@@ -45,6 +51,8 @@ Public Class Configuration
     Dim row As System.Data.DataRow
     Dim row1 As System.Data.DataRow
     Dim QueryText As DevExpress.XtraEditors.TextEdit
+
+
 
     Sub New()
         InitSkins()
@@ -136,16 +144,16 @@ Public Class Configuration
                 Try
                     Me.Validate()
                     Me.ABTEILUNGENBindingSource.EndEdit()
-                    If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
-                        Me.TableAdapterManager.UpdateAll(Me.PSTOOLDataset)
-                        Me.GridControl1.BeginUpdate()
-                        FILL_ALL_DATA()
-                        view.RefreshData()
-                        Me.GridControl1.EndUpdate()
-                        view.FocusedRowHandle = focusedRow
-                    Else
-                        Me.ABTEILUNGENBindingSource.CancelEdit()
-                    End If
+                    'If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.TableAdapterManager.UpdateAll(Me.PSTOOLDataset)
+                    'Me.GridControl1.BeginUpdate()
+                    'FILL_ALL_DATA()
+                    'view.RefreshData()
+                    'Me.GridControl1.EndUpdate()
+                    'view.FocusedRowHandle = focusedRow
+                    'Else
+                    '    Me.ABTEILUNGENBindingSource.CancelEdit()
+                    'End If
                 Catch ex As Exception
                     XtraMessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -154,17 +162,17 @@ Public Class Configuration
                 Try
                     Me.Validate()
                     Me.ABTEILUNGSPARAMETERBindingSource.EndEdit()
-                    If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
-                        Me.TableAdapterManager.UpdateAll(Me.PSTOOLDataset)
-                        Me.GridControl1.BeginUpdate()
-                        Me.ABTEILUNGSPARAMETERTableAdapter.Fill(Me.PSTOOLDataset.ABTEILUNGSPARAMETER)
-                        view.RefreshData()
-                        Me.GridControl1.EndUpdate()
-                        view.FocusedRowHandle = focusedRow
-                    Else
-                        Me.ABTEILUNGSPARAMETERBindingSource.CancelEdit()
+                    'If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.TableAdapterManager.UpdateAll(Me.PSTOOLDataset)
+                    'Me.GridControl1.BeginUpdate()
+                    'Me.ABTEILUNGSPARAMETERTableAdapter.Fill(Me.PSTOOLDataset.ABTEILUNGSPARAMETER)
+                    'view.RefreshData()
+                    'Me.GridControl1.EndUpdate()
+                    'view.FocusedRowHandle = focusedRow
+                    'Else
+                    '    Me.ABTEILUNGSPARAMETERBindingSource.CancelEdit()
 
-                    End If
+                    'End If
                 Catch ex As Exception
                     XtraMessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -173,18 +181,18 @@ Public Class Configuration
                 Try
                     Me.Validate()
                     Me.PARAMETERBindingSource.EndEdit()
-                    If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
-                        Me.TableAdapterManager.UpdateAll(Me.PSTOOLDataset)
-                        Me.GridControl1.BeginUpdate()
-                        Me.PARAMETER_All_TableAdapter.Fill(Me.PSTOOLDataset.PARAMETER_All)
-                        Me.PARAMETERTableAdapter.Fill(Me.PSTOOLDataset.PARAMETER)
-                        view.RefreshData()
-                        Me.GridControl1.EndUpdate()
-                        view.FocusedRowHandle = focusedRow
-                    Else
-                        Me.PARAMETERBindingSource.CancelEdit()
+                    'If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.TableAdapterManager.UpdateAll(Me.PSTOOLDataset)
+                    'Me.GridControl1.BeginUpdate()
+                    'Me.PARAMETER_All_TableAdapter.Fill(Me.PSTOOLDataset.PARAMETER_All)
+                    'Me.PARAMETERTableAdapter.Fill(Me.PSTOOLDataset.PARAMETER)
+                    'view.RefreshData()
+                    'Me.GridControl1.EndUpdate()
+                    'view.FocusedRowHandle = focusedRow
+                    'Else
+                    '    Me.PARAMETERBindingSource.CancelEdit()
 
-                    End If
+                    'End If
                 Catch ex As Exception
                     XtraMessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -198,23 +206,20 @@ Public Class Configuration
         End If
 
 
-        Dim view1 As GridView = Me.GridControl2.FocusedView
-        Dim focusedRow1 As Integer = view1.FocusedRowHandle
+
         If Me.TabbedControlGroup1.SelectedTabPage.Text = "All Parameters" Then
             If Me.GridControl2.FocusedView.Name = "Parameter_All_GridView" Then
                 Try
                     Me.Validate()
                     Me.PARAMETER_AllBindingSource.EndEdit()
-                    If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
-                        Me.TableAdapterManager.UpdateAll(Me.PSTOOLDataset)
-                        Me.GridControl2.BeginUpdate()
-                        FILL_ALL_DATA()
-                        view1.RefreshData()
-                        Me.GridControl2.EndUpdate()
-                        view1.FocusedRowHandle = focusedRow1
-                    Else
-                        Me.PARAMETER_AllBindingSource.CancelEdit()
-                    End If
+                    'If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.TableAdapterManager.UpdateAll(Me.PSTOOLDataset)
+                    'FILL_ALL_DATA()
+
+
+                    'Else
+                    '    Me.PARAMETER_AllBindingSource.CancelEdit()
+                    'End If
                 Catch ex As Exception
                     XtraMessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -313,6 +318,8 @@ Public Class Configuration
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
         bbiSave.PerformClick()
+        DepartmentsView.RefreshData()
+
     End Sub
 
     Private Sub DepartmentsParameterView_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles DepartmentsParameterView.RowUpdated
@@ -321,25 +328,44 @@ Public Class Configuration
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
         bbiSave.PerformClick()
-
+        DepartmentsParameterView.RefreshData()
+        OpenSqlConnections()
+        cmd.CommandText = "UPDATE [ABTEILUNGSPARAMETER] SET [LastAction]='Modification',[LastUpdateUser]='" & CurrentUserWindowsID & "',[LastUpdateDate]=GETDATE() where [ID]='" & IDNrRowValue & "'"
+        cmd.ExecuteNonQuery()
+        CloseSqlConnections()
+        DepartmentsParameterView.RefreshData()
     End Sub
 
     Private Sub ParameterView_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles ParameterView.RowUpdated
-        Dim View As GridView = CType(sender, GridView)
+        'Dim View As GridView = CType(sender, GridView)
+        Dim View As GridView = CType(Me.GridControl1.DefaultView, GridView)
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastAction"), "Modification")
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
-        MsgBox(View.GetRowCellValue(View.FocusedRowHandle, View.Columns("LastAction")))
         bbiSave.PerformClick()
+        ParameterView.RefreshData()
+        OpenSqlConnections()
+        cmd.CommandText = "UPDATE [PARAMETER] SET [LastAction]='Modification',[LastUpdateUser]='" & CurrentUserWindowsID & "',[LastUpdateDate]=GETDATE() where [ID]='" & IDNrRowValue & "'"
+        cmd.ExecuteNonQuery()
+        CloseSqlConnections()
+        ParameterView.RefreshData()
+        Parameter_All_GridView.RefreshData()
+
 
     End Sub
 
     Private Sub Parameter_All_GridView_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles Parameter_All_GridView.RowUpdated
         Dim View As GridView = CType(sender, GridView)
+        Dim focusedView As GridView = CType(GridControl2.FocusedView, GridView)
+        Dim focusedRow As Integer = View.FocusedRowHandle
+        Dim objId As Integer = Convert.ToInt32(View.GetFocusedRowCellValue("ID"))
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastAction"), "Modification")
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
         View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
         bbiSave.PerformClick()
+        Parameter_All_GridView.RefreshData()
+        ParameterView.RefreshData()
+        View.FocusedRowHandle = View.LocateByValue("ID", objId)
     End Sub
 
     Private Sub bbiPrintPreview_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiPrintPreview.ItemClick
@@ -819,6 +845,12 @@ Public Class Configuration
             Dim view As GridView = DirectCast(sender, GridView)
             DepartmentsParameterDetailViewCaption = DepartmentsDetailViewCaption & " - PARAMETER DETAILS for : " & view.GetFocusedRowCellValue("ABTEILUNGSPARAMETER NAME").ToString
             Me.ParameterView.ViewCaption = DepartmentsParameterDetailViewCaption
+
+            'Dim masterView As GridView = TryCast(sender, GridView)
+            'Dim visibleDetailRelationIndex As Integer = masterView.GetVisibleDetailRelationIndex(e.RowHandle)
+            'ParameterDetailView = TryCast(masterView.GetDetailView(e.RowHandle, visibleDetailRelationIndex), GridView)
+
+
         End If
     End Sub
 
@@ -919,7 +951,7 @@ Public Class Configuration
             dtColumns.Columns.Add("ColumnCaption", Type.GetType("System.String"))
 
             For Each column As DevExpress.XtraGrid.Columns.GridColumn In focusedView.Columns
-                If column.Visible = True Then
+                If column.Visible = True And column.OptionsColumn.ReadOnly = False And column.OptionsColumn.AllowEdit = True Then
                     Dim dr As DataRow = dtColumns.NewRow
                     dr("ColumnName") = column.Name.ToString
                     If column.Caption.ToString <> "" Then
@@ -992,7 +1024,7 @@ Public Class Configuration
             dtColumns.Columns.Add("ColumnName", Type.GetType("System.String"))
             dtColumns.Columns.Add("ColumnCaption", Type.GetType("System.String"))
             For Each column As DevExpress.XtraGrid.Columns.GridColumn In Parameter_All_GridView.Columns
-                If column.Visible = True Then
+                If column.Visible = True And column.OptionsColumn.ReadOnly = False And column.OptionsColumn.AllowEdit = True Then
                     Dim dr As DataRow = dtColumns.NewRow
                     dr("ColumnName") = column.Name.ToString
                     If column.Caption.ToString <> "" Then
@@ -1072,5 +1104,25 @@ Public Class Configuration
         '    editingValue = views.EditingValue.ToString()
         '    MsgBox(editingValue)
         'End If
+    End Sub
+
+    Private Sub RepositoryItemTextEdit2_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemTextEdit2.EditValueChanged
+        Me.GridControl1.FocusedView.PostEditor()
+    End Sub
+
+    Private Sub RepositoryItemImageComboBox1_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemImageComboBox1.EditValueChanged
+        Me.GridControl1.FocusedView.PostEditor()
+    End Sub
+
+    Private Sub RepositoryItemMemoExEdit2_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemMemoExEdit2.EditValueChanged
+        Me.GridControl1.FocusedView.PostEditor()
+    End Sub
+
+    Private Sub Number_RepositoryItemSpinEdit_EditValueChanged(sender As Object, e As EventArgs) Handles Number_RepositoryItemSpinEdit.EditValueChanged
+        Me.GridControl1.FocusedView.PostEditor()
+    End Sub
+
+    Private Sub RepositoryItemDateEdit2_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemDateEdit2.EditValueChanged
+        Me.GridControl1.FocusedView.PostEditor()
     End Sub
 End Class

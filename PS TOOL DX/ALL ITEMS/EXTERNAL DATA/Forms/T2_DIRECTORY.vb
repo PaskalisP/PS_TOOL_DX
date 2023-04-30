@@ -31,8 +31,6 @@ Imports DevExpress.XtraGrid.Columns
 
 
 Public Class T2_DIRECTORY
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
 
     Private QueryText As String = ""
     Private QueryText1 As String = ""
@@ -84,6 +82,12 @@ Public Class T2_DIRECTORY
     Dim Participant_ValidTill_SQL As String = Nothing
     Dim Participant_Reserve As String = Nothing
 
+    Friend WithEvents BgwValidateT2Directory As BackgroundWorker
+    Friend WithEvents BgwCreateFullT2Directory As BackgroundWorker
+    Friend WithEvents BgwCreateModifiedT2Directory As BackgroundWorker
+
+    Private bgws As New List(Of BackgroundWorker)()
+
     Dim T2_DirectoryCreationFolder As String = Nothing
 
 
@@ -98,6 +102,13 @@ Public Class T2_DIRECTORY
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
     Private Sub T2_DIRECTORYBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.T2_DIRECTORYBindingSource.EndEdit()
@@ -108,28 +119,22 @@ Public Class T2_DIRECTORY
     Private Sub T2_DIRECTORY_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
+        OpenSqlConnections()
 
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='T2_Directory_Export_Folder' and  [IdABTEILUNGSPARAMETER]='T2_DIRECTORY_EXPORT' and [PARAMETER STATUS]='Y' "
         T2_DirectoryCreationFolder = cmd.ExecuteScalar
         'Get Last Update
-        cmd.CommandText = "SELECT [LastImportTime] from [MANUAL IMPORTS] where [ProcName]='TARGET2 DIRECTORY'"
+        cmd.CommandText = "SELECT [LastImportTime] from [MANUAL IMPORTS] where [ProcName]='TARGET2 XML DIRECTORY'"
         Dim d As DateTime = cmd.ExecuteScalar
         Me.LastUpdate_txt.Text = d
 
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
 
         'TODO: This line of code loads data into the 'EXTERNALDataset.T2_DIRECTORY' table. You can move, or remove it, as needed.
         Me.T2_DIRECTORYTableAdapter.FillByT2_FILL(Me.EXTERNALDataset.T2_DIRECTORY)
 
 
-        Me.ValidFrom_DateEdit.Text = d
+        Me.ValidFrom_DateEdit.Text = d.ToString("dd.MM.yyyy")
         Me.ValidTill_DateEdit.Text = tilld
 
         'Gridcontrol2 - CUSTOMERS
@@ -156,6 +161,15 @@ Public Class T2_DIRECTORY
             Me.T2DetailView.OptionsBehavior.Editable = False
         End If
 
+    End Sub
+
+    Private Sub T2_DIRECTORY_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+
+        End If
     End Sub
 
     Private Sub GridControl2_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
@@ -203,14 +217,10 @@ Public Class T2_DIRECTORY
                         Me.T2_DIRECTORYBindingSource.EndEdit()
                         Me.TableAdapterManager.UpdateAll(Me.EXTERNALDataset)
                         If XtraMessageBox.Show("Should the Changes for Participant BIC:" & ParticipantBIC11 & " inserted also in " & ParticipantBIC8 & " ?", "SAVE CHANGES in ALL BIC8", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-                            If cmd.Connection.State = ConnectionState.Closed Then
-                                cmd.Connection.Open()
-                            End If
+                            OpenSqlConnections()
                             cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [ADDRESSEE]='" & AddresseeBIC_Value & "',[ADDRESSEE_NAME]='" & AddresseeBIC_Name_Value & "',[ACCOUNT_HOLDER]='" & AccountHolderBIC_Value & "',[ACCOUNT_HOLDER_NAME]='" & AccountHolderBIC_Name_Value & "',[TYPE_OF_CHANGE]='" & TypeOfChange & "',[VALID_FROM]='" & Participant_ValidFrom_SQL & "',[VALID_TILL]='" & Participant_ValidTill_SQL & "',[RESERVE]='" & Participant_Reserve & "' where LEFT([BIC11],8)='" & ParticipantBIC8 & "' and [BIC11] not in ('" & ParticipantBIC11 & "' )"
                             cmd.ExecuteNonQuery()
-                            If cmd.Connection.State = ConnectionState.Open Then
-                                cmd.Connection.Close()
-                            End If
+                            CloseSqlConnections()
                         End If
                         Me.T2_DIRECTORYTableAdapter.FillByT2_FILL(Me.EXTERNALDataset.T2_DIRECTORY)
                         SplashScreenManager.CloseForm(False)
@@ -498,14 +508,18 @@ Public Class T2_DIRECTORY
                     Dim dsql As String = d.ToString("yyyyMMdd")
                     Dim dtillSql As String = tilld.ToString("yyyyMMdd")
                     Me.Validate()
-                    cmd.Connection.Open()
-                    cmd.CommandText = "INSERT INTO  [T2 DIRECTORY] ([BIC11],[INSTITUTION_NAME],[CITY_HEADING],[SORTCODE],[ADDRESSEE],[ADDRESSEE_NAME],[ACCOUNT_HOLDER],[ACCOUNT_HOLDER_NAME],[MAIN_BIC_FLAG],[TYPE_OF_CHANGE],[VALID_FROM],[VALID_TILL],[PARTICIPATION_TYPE],[PARTICIPATION_TYPE_NAME],[RESERVE])VALUES('" & Me.ParticipantBIC_ButtonEdit.Text & "','" & PARTICIPANT_NAME & "'+'          ','" & CITY_HEADING & "' + '     ','                         ','" & Me.AddresseeBIC_ButtonEdit.Text & "','" & ADDRESSEE_NAME & "','" & Me.AccountHolderBIC_ButtonEdit.Text & "','" & ACCOUNT_HOLDER_NAME & "','Y','A','" & dsql & "','" & dtillSql & "','05','addressable BIC - Correspondent (including CB Customer)','Manual input')"
+                    OpenSqlConnections()
+                    cmd.CommandText = "INSERT INTO  [T2 DIRECTORY] ([BIC11],[INSTITUTION_NAME],[CITY_HEADING],[SORTCODE],[ADDRESSEE],[ADDRESSEE_NAME]
+                                      ,[ACCOUNT_HOLDER],[ACCOUNT_HOLDER_NAME],[MAIN_BIC_FLAG],[TYPE_OF_CHANGE],[VALID_FROM],[VALID_TILL],[PARTICIPATION_TYPE]
+                                      ,[PARTICIPATION_TYPE_NAME],[RESERVE])
+                                       VALUES('" & Me.ParticipantBIC_ButtonEdit.Text & "','" & PARTICIPANT_NAME & "'+'          ','" & CITY_HEADING & "' + '     ','                         ','" & Me.AddresseeBIC_ButtonEdit.Text & "','" & ADDRESSEE_NAME & "','" & Me.AccountHolderBIC_ButtonEdit.Text & "','" & ACCOUNT_HOLDER_NAME & "','Y','A','" & dsql & "','" & dtillSql & "','05','addressable BIC - Correspondent (including CB Customer)','Manual input')"
                     cmd.ExecuteNonQuery()
-                    cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [INSTITUTION_NAME]=LTRIM([INSTITUTION_NAME]),[CITY_HEADING]=LTRIM([CITY_HEADING]),[ADDRESSEE_NAME]=LTRIM([ADDRESSEE_NAME]),[ACCOUNT_HOLDER_NAME]=LTRIM([ACCOUNT_HOLDER_NAME]) where [BIC11]='" & Me.ParticipantBIC_ButtonEdit.Text & "'"
+                    cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [INSTITUTION_NAME]=LTRIM([INSTITUTION_NAME]),[CITY_HEADING]=LTRIM([CITY_HEADING]),[ADDRESSEE_NAME]=LTRIM([ADDRESSEE_NAME]),[ACCOUNT_HOLDER_NAME]=LTRIM([ACCOUNT_HOLDER_NAME]) 
+                                       where [BIC11]='" & Me.ParticipantBIC_ButtonEdit.Text & "'"
                     cmd.ExecuteNonQuery()
                     cmd.CommandText = "Update [T2 DIRECTORY] set [PARTICIPATION_TYPE]='0' + [PARTICIPATION_TYPE] where LEN([PARTICIPATION_TYPE])=1"
                     cmd.ExecuteNonQuery()
-                    cmd.Connection.Close()
+                    CloseSqlConnections()
                     'Me.SSISTableAdapter.Fill(Me.PSTOOLDataset.SSIS)
                     XtraMessageBox.Show("The Participant has being added to the T2 Directory", "NEW T2 PARTICIPANT INSERTED", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                     Me.ParticipantBIC_ButtonEdit.Text = ""
@@ -518,9 +532,7 @@ Public Class T2_DIRECTORY
 
                 Catch ex As Exception
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     Exit Sub
                 End Try
             Else
@@ -909,14 +921,14 @@ Public Class T2_DIRECTORY
     Private Sub Reload_T2_Dir_btn_Click(sender As Object, e As EventArgs) Handles Reload_T2_Dir_btn.Click
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Check BIC validity for Manual inputs based on the BIC DIRECTORY")
-        cmd.Connection.Open()
+        OpenSqlConnections()
         cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [TYPE_OF_CHANGE]='D' where  [BIC11] not in (Select [BIC11] from [BIC DIRECTORY]) and [RESERVE] in ('Manual input')"
         cmd.ExecuteNonQuery()
         cmd.CommandText = "Update [T2 DIRECTORY] set [PARTICIPATION_TYPE]='0' + [PARTICIPATION_TYPE] where LEN([PARTICIPATION_TYPE])=1"
         cmd.ExecuteNonQuery()
         cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [TYPE_OF_CHANGE]='D' where [VALID_TILL]<GETDATE() and [TYPE_OF_CHANGE] not in ('D')"
         cmd.ExecuteNonQuery()
-        cmd.Connection.Close()
+        CloseSqlConnections()
         SplashScreenManager.Default.SetWaitFormCaption("Reload T2 Directory")
         Me.T2_DIRECTORYTableAdapter.FillByT2_FILL(Me.EXTERNALDataset.T2_DIRECTORY)
         SplashScreenManager.CloseForm(False)
@@ -940,7 +952,7 @@ Public Class T2_DIRECTORY
                         Dim da As New SqlDataAdapter(cmd.CommandText, conn)
                         Dim dt As New DataTable
                         da.Fill(dt)
-                        cmd.Connection.Open()
+                        OpenSqlConnections()
                         If dt.Rows.Count > 0 Then
                             For i = 0 To dt.Rows.Count - 1
                                 BIC11_BRANCH = dt.Rows.Item(i).Item("BIC11")
@@ -956,7 +968,7 @@ Public Class T2_DIRECTORY
                         End If
                         cmd.CommandText = "Update [T2 DIRECTORY] set [PARTICIPATION_TYPE]='0' + [PARTICIPATION_TYPE] where LEN([PARTICIPATION_TYPE])=1"
                         cmd.ExecuteNonQuery()
-                        cmd.Connection.Close()
+                        CloseSqlConnections()
                         SplashScreenManager.CloseForm(False)
 
                         'Me.SSISTableAdapter.Fill(Me.PSTOOLDataset.SSIS)
@@ -974,9 +986,7 @@ Public Class T2_DIRECTORY
                     Catch ex As Exception
                         SplashScreenManager.CloseForm(False)
                         XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
+                        CloseSqlConnections()
                         Exit Sub
                     End Try
                 Else
@@ -1089,4 +1099,6 @@ Public Class T2_DIRECTORY
             Exit Sub
         End If
     End Sub
+
+
 End Class
