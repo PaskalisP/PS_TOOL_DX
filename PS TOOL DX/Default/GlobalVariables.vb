@@ -11,6 +11,7 @@ Imports System.Reflection
 Imports System
 Imports System.Data.SqlClient
 Imports System.ComponentModel
+Imports DevExpress.XtraEditors
 
 Module GlobalVariables
 
@@ -140,9 +141,11 @@ Module GlobalVariables
     'Global BAIS Version Nr
     Public BAIS_VERSION_NR As Double = 0
 
+    'Global EAEG
+    Public EAEG_FILE_DIR As String = Nothing
+
     'Layouts
     Public PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR As String = Nothing
-
 
 
     Public Function ReadLineWithNumberFrom(filePath As String, ByVal lineNumber As Integer) As String
@@ -322,5 +325,12 @@ Module GlobalVariables
     Public Interface IScript
         Function DoWork() As String
     End Interface
+
+    Public Sub XFormDialog_Shown(ByVal sender As Object, ByVal e As EventArgs)
+        'CType(sender, XtraDialogForm).ClientSize = New Size(1000, 1000)
+        CType(sender, XtraDialogForm).Size = New Size(1200, 700)
+        CType(sender, XtraDialogForm).StartPosition = FormStartPosition.CenterScreen
+        CType(sender, XtraDialogForm).FormBorderStyle = FormBorderStyle.Sizable
+    End Sub
 
 End Module

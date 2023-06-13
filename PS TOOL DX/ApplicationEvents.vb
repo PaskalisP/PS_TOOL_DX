@@ -113,6 +113,13 @@ Namespace My
                                                     ,[DOMAIN_NAME]) 
                                          SELECT * FROM information_schema.Columns"
                         cmd.ExecuteNonQuery()
+                        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
+                        CrystalRepDir = cmd.ExecuteScalar
+                        'Get EAEG File directory
+                        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='EAEG_File_Directory' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='EAEG_CREATION_PATH'"
+                        EAEG_FILE_DIR = cmd.ExecuteScalar
+
+
                     End If
                     CloseSqlConnections()
 

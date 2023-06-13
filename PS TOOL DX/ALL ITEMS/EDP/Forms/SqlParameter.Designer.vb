@@ -1872,6 +1872,7 @@ Partial Class SqlParameter
         Me.LayoutControlGroup3.Name = "item0"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(1366, 371)
         Me.LayoutControlGroup3.Text = "All SQL Parameters (Display)"
+        Me.LayoutControlGroup3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem1
         '

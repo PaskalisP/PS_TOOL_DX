@@ -31,7 +31,8 @@ Namespace RichEditSyntaxSample
                                        , "FIRSTROW", "CODEPAGE", "DATAFILETYPE", "FIELDTERMINATOR", "ROWTERMINATOR", "TABLOCK", "KEEPNULLS", "bulk", "Bulk", "BULK" _
                                        , "firstrow", "Firstrow", "codepage", "Codepage", "datafiletype", "Datafiletype", "fieldterminator", "Fieldterminator", "tablock", "Tablock", "keepnulls", "Keepnulls" _
                                        , "truncate", "Truncate", "TRUNCATE", "alter", "Alter", "ALTER", "add", "Add", "ADD", "case", "Case", "CASE", "when", "When", "WHEN", "then", "Then", "THEN" _
-                                       , "else", "Else", "ELSE", "GROUP BY", "Group By", "group by", "ORDER BY", "Order By", "order by", "OVER", "Over", "over", "OR", "Or", "or", "LIKE", "like", "Like", "TOP", "top", "Top"}
+                                       , "else", "Else", "ELSE", "GROUP BY", "Group By", "group by", "ORDER BY", "Order By", "order by", "OVER", "Over", "over", "OR", "Or", "or", "LIKE", "like", "Like", "TOP", "top", "Top" _
+                                       , "distinct", "Distinct", "DISTINCT", "rank", "Rank", "RANK", "partion by", "Partition By", "PARTITION BY"}
             Me._keywords = New Regex("\b(" & String.Join("|", keywords.Select(Function(w) Regex.Escape(w))) & ")\b")
             'SQL Functions
             Dim keywords_Functions() As String = {"convert", "Convert", "CONVERT", "replace", "Replace", "REPLACE", "len", "Len", "LEN", "update", "Update", "UPDATE", "max", "Max", "MAX" _
@@ -40,7 +41,8 @@ Namespace RichEditSyntaxSample
                                                   , "right", "Right", "RIGHT", "stuff", "Stuff", "STUFF", "sum", "Sum", "SUM", "count", "Count", "COUNT", "dateadd", "Dateadd", "DATEADD", "datediff", "Datediff", "DATEDIFF", "DATEFROMPARTS", "Datefromparts", "datefromparts" _
                                                   , "datename", "Datename", "DATENAME", "datepart", "Datepart", "DATEPART", "coalesce", "Coalesce", "COALESCE", "isdate", "Isdate", "ISDATE", "isnull", "Isnull", "ISNULL" _
                                                   , "isnumeric", "Isnumeric", "ISNUMERIC", "lower", "Lower", "LOWER", "upper", "Upper", "UPPER", "floor", "Floor", "FLOOR", "day", "Day", "DAY" _
-                                                  , "month", "Month", "MONTH", "year", "Year", "YEAR", "getdate", "Getdate", "GETDATE", "char", "Char", "CHAR", "COLLATE", "Collate", "collate", "ROW_NUMBER", "Row_Number", "row_number"}
+                                                  , "month", "Month", "MONTH", "year", "Year", "YEAR", "getdate", "Getdate", "GETDATE", "char", "Char", "CHAR", "COLLATE", "Collate", "collate", "ROW_NUMBER", "Row_Number", "row_number" _
+                                                  , "format", "Format", "FORMAT"}
             Me._keywords_Functions = New Regex("\b(" & String.Join("|", keywords_Functions.Select(Function(w) Regex.Escape(w))) & ")\b")
         End Sub
         Public Sub ForceExecute() Implements ISyntaxHighlightService.ForceExecute

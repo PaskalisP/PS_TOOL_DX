@@ -2387,6 +2387,23 @@ Public Class PSTOOL_MAIN_Form
                     c.WindowState = FormWindowState.Normal
                     SplashScreenManager.CloseForm(False)
 
+                Case = 136
+                    SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.36) - PRODUCTION")
+                    Dim c As New BaisExportAlphaV136
+                    For Each kf As Form In Me.MdiChildren
+                        If c.GetType Is kf.GetType Then
+                            kf.Activate()
+                            kf.WindowState = FormWindowState.Normal
+                            SplashScreenManager.CloseForm(False)
+                            Return
+                        End If
+                    Next
+                    c.MdiParent = Me
+
+                    c.Show()
+                    c.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+
             End Select
 
 
@@ -2492,6 +2509,24 @@ Public Class PSTOOL_MAIN_Form
                 Case = 135
                     SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.35) - PRODUCTION")
                     Dim c As New BaisExportAnaCreditV135
+
+                    For Each kf As Form In Me.MdiChildren
+                        If c.GetType Is kf.GetType Then
+                            kf.Activate()
+                            kf.WindowState = FormWindowState.Normal
+                            SplashScreenManager.CloseForm(False)
+                            Return
+                        End If
+                    Next
+                    c.MdiParent = Me
+
+                    c.Show()
+                    c.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+
+                Case = 136
+                    SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.36) - PRODUCTION")
+                    Dim c As New BaisExportAnaCreditV136
 
                     For Each kf As Form In Me.MdiChildren
                         If c.GetType Is kf.GetType Then
@@ -2719,6 +2754,32 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.Default.SetWaitFormCaption("SQL PARAMETER")
             ' Place code here
             Dim c As New SqlParameter
+
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+    Private Sub EDP_SQL_Parameters_Tree_Element_Click(sender As Object, e As EventArgs) Handles EDP_SQL_Parameters_Tree_Element.Click
+        If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("SQL PARAMETER TREE")
+            ' Place code here
+            Dim c As New SqlParameterTree
 
             For Each kf As Form In Me.MdiChildren
                 If c.GetType Is kf.GetType Then

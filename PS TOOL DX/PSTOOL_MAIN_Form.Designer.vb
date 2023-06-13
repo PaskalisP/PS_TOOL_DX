@@ -394,6 +394,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.AccordionControlSeparator29 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.EDP_SQL_Configurations_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_SQL_Parameters_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.EDP_SQL_Parameters_Tree_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_SQL_Queries_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator30 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.EDP_Audit_TOTAL_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -3063,6 +3064,7 @@ Partial Class PSTOOL_MAIN_Form
         'MELDW_ZV_STATISTIC_2022_GROUP_Element
         '
         Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.ZvStatistik_Reporting_AccordionControlElement, Me.ZvStatistik_Parameter_AccordionControlElement, Me.ZvStatistik_PayCard_Parameter_AccordionControlElement, Me.ZvStatistik_ValidityRules_AccordionControlElement})
+        Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.Expanded = True
         Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_ZV_STATISTIC_2022_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.Name = "MELDW_ZV_STATISTIC_2022_GROUP_Element"
         Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.Text = "ZV-Statistik (Zahlungsverkehrsstatistik) as from 2022"
@@ -3102,6 +3104,7 @@ Partial Class PSTOOL_MAIN_Form
         'MELDW_MM_STATISTIC_GROUP_Element
         '
         Me.MELDW_MM_STATISTIC_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.MELDW_OPICS_MM_FX_Deals_Element, Me.MELDW_MM_STATISTIC_Element})
+        Me.MELDW_MM_STATISTIC_GROUP_Element.Expanded = True
         Me.MELDW_MM_STATISTIC_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_MM_STATISTIC_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_MM_STATISTIC_GROUP_Element.Name = "MELDW_MM_STATISTIC_GROUP_Element"
         Me.MELDW_MM_STATISTIC_GROUP_Element.Text = "Geldmarktstatistik (Money Market Statistic)"
@@ -3661,7 +3664,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'EDP_SQL_Configurations_Element
         '
-        Me.EDP_SQL_Configurations_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EDP_SQL_Parameters_Element, Me.EDP_SQL_Queries_Element})
+        Me.EDP_SQL_Configurations_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EDP_SQL_Parameters_Element, Me.EDP_SQL_Parameters_Tree_Element, Me.EDP_SQL_Queries_Element})
         Me.EDP_SQL_Configurations_Element.Expanded = True
         Me.EDP_SQL_Configurations_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_Configurations_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.EDP_SQL_Configurations_Element.Name = "EDP_SQL_Configurations_Element"
@@ -3674,6 +3677,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_SQL_Parameters_Element.Name = "EDP_SQL_Parameters_Element"
         Me.EDP_SQL_Parameters_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.EDP_SQL_Parameters_Element.Text = "SQL Procedures Parameter"
+        '
+        'EDP_SQL_Parameters_Tree_Element
+        '
+        Me.EDP_SQL_Parameters_Tree_Element.Hint = "Display SQL Procedures Parameter Tree"
+        Me.EDP_SQL_Parameters_Tree_Element.ImageOptions.ImageIndex = 10
+        Me.EDP_SQL_Parameters_Tree_Element.Name = "EDP_SQL_Parameters_Tree_Element"
+        Me.EDP_SQL_Parameters_Tree_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.EDP_SQL_Parameters_Tree_Element.Text = "SQL Parameter Tree"
         '
         'EDP_SQL_Queries_Element
         '
@@ -5021,4 +5032,5 @@ Partial Class PSTOOL_MAIN_Form
     Friend WithEvents ZvStatistik_PayCard_Parameter_AccordionControlElement As Navigation.AccordionControlElement
     Friend WithEvents ZvStatistik_ValidityRules_AccordionControlElement As Navigation.AccordionControlElement
     Friend WithEvents AccordionControlSeparator42 As Navigation.AccordionControlSeparator
+    Friend WithEvents EDP_SQL_Parameters_Tree_Element As Navigation.AccordionControlElement
 End Class

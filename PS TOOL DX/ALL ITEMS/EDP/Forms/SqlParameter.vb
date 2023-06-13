@@ -128,7 +128,7 @@ Public Class SqlParameter
         Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
         Me.SQL_Parameter_Gridview.BestFitColumns()
 
-        LOAD_ALL_SQL_PARAMETER_DETAILS()
+        'LOAD_ALL_SQL_PARAMETER_DETAILS()
 
     End Sub
 
@@ -178,7 +178,7 @@ Public Class SqlParameter
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Reload SQL Parameters")
         FILL_ALL_DATA()
-        LOAD_ALL_SQL_PARAMETER_DETAILS()
+        'LOAD_ALL_SQL_PARAMETER_DETAILS()
         SplashScreenManager.CloseForm(False)
     End Sub
 
@@ -243,7 +243,7 @@ Public Class SqlParameter
         End Try
         CloseSqlConnections()
 
-        LOAD_ALL_SQL_PARAMETER_DETAILS()
+        'LOAD_ALL_SQL_PARAMETER_DETAILS()
         SplashScreenManager.CloseForm(False)
     End Sub
 
@@ -347,7 +347,7 @@ Public Class SqlParameter
         End If
         CloseSqlConnections()
 
-        LOAD_ALL_SQL_PARAMETER_DETAILS()
+        'LOAD_ALL_SQL_PARAMETER_DETAILS()
 
     End Sub
 
@@ -502,7 +502,7 @@ Public Class SqlParameter
             End Try
             CloseSqlConnections()
 
-            LOAD_ALL_SQL_PARAMETER_DETAILS()
+            'LOAD_ALL_SQL_PARAMETER_DETAILS()
         End If
 
 
@@ -616,7 +616,7 @@ Public Class SqlParameter
                 End If
                 CloseSqlConnections()
             End If
-            LOAD_ALL_SQL_PARAMETER_DETAILS()
+            'LOAD_ALL_SQL_PARAMETER_DETAILS()
         End If
 
     End Sub

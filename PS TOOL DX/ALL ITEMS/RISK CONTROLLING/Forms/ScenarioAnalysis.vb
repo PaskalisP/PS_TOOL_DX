@@ -818,7 +818,6 @@ Public Class ScenarioAnalysis
                 Dim RW_Calculated As Double = FirstPartFormulaRW * SecondPartFormulaRW
                 cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskCHINA_Totals] SET [RW_RiskWeightedExposure]=" & Str(RW_Calculated) & " where [ID]='" & ID & "' "
                 cmd.ExecuteNonQuery()
-
             ElseIf PD = 1 Then
                 cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskCHINA_Totals] SET [RW_RiskWeightedExposure]=0 where [ID]='" & ID & "' "
                 cmd.ExecuteNonQuery()
@@ -1135,6 +1134,7 @@ Public Class ScenarioAnalysis
                 Dim RW_Calculated As Double = FirstPartFormulaRW * SecondPartFormulaRW
                 cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskTBA_Totals] SET [RW_RiskWeightedExposure]=" & Str(RW_Calculated) & " where [ID]='" & ID & "' "
                 cmd.ExecuteNonQuery()
+
             ElseIf PD = 1 Then
                 cmd.CommandText = "UPDATE [ScenarioAnalyze_ConcentrationRiskTBA_Totals] SET [RW_RiskWeightedExposure]=0 where [ID]='" & ID & "' "
                 cmd.ExecuteNonQuery()

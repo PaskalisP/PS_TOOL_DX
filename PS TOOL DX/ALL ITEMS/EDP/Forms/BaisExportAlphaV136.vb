@@ -52,20 +52,17 @@ Imports DevExpress.XtraRichEdit.API.Native
 'Function:
 'Description:
 'Modify log:  
-'    1. Add by WYQ; Time:10.06.2022; Content: BAIS system version is updated to Version 1.35. Add the BaisExportAlphaV134 class for Bais Version 1.35
+'    1. Add by Papas; Time:24.05.2023; Content: BAIS system version is updated to Version 1.36. Add the BaisExportAlphaV136 class for Bais Version 1.36
 
 '******************************************
-Public Class BaisExportAlphaV135
+Public Class BaisExportAlphaV136
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private conndt As New SqlConnection
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
+    'Private QueryText As String = ""
+    'Private conndt As New SqlConnection
+    'Private da As New SqlDataAdapter
+    'Private dt As New DataTable
+    'Private da1 As New SqlDataAdapter
+    'Private dt1 As New DataTable
 
     Dim ParameterStatus As String = Nothing
     Dim HasDataResult As String = Nothing
@@ -112,7 +109,7 @@ Public Class BaisExportAlphaV135
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
-    Private Sub BaisExportAlphaV135_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub BaisExportAlphaV136_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If Me.BgwBaisFilesCreation.IsBusy = True Then
             e.Cancel = True
         Else
@@ -120,7 +117,7 @@ Public Class BaisExportAlphaV135
         End If
     End Sub
 
-    Private Sub BaisExportAlphaV135_Load(sender As Object, e As EventArgs) Handles Me.Load
+    Private Sub BaisExportAlphaV136_Load(sender As Object, e As EventArgs) Handles Me.Load
         conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
         cmd.Connection = conn
         If cmd.Connection.State = ConnectionState.Closed Then
@@ -142,8 +139,8 @@ Public Class BaisExportAlphaV135
         Me.BusinessDate_SearchLookUpEdit.EditValue = CType(BS_All_BusinessDates.Current, DataRowView).Item(0).ToString
         'Bind Combobox
         'Me.BusinessDate_Comboedit.Properties.Items.Clear()
-        'Me.QueryText = "Select CONVERT(VARCHAR(10),[RLDC Date],104) as 'RLDC Date' from [RISK LIMIT DAILY CONTROL] where [RLDC Date]>='20171209' and [PL Result] is not NULL ORDER BY [ID] desc"
-        'da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        'QueryText = "Select CONVERT(VARCHAR(10),[RLDC Date],104) as 'RLDC Date' from [RISK LIMIT DAILY CONTROL] where [RLDC Date]>='20171209' and [PL Result] is not NULL ORDER BY [ID] desc"
+        'da = New SqlDataAdapter(QueryText.Trim(), conn)
         'dt = New System.Data.DataTable()
         'da.Fill(dt)
         'For Each row As DataRow In dt.Rows
@@ -470,8 +467,8 @@ Public Class BaisExportAlphaV135
                     rd = Me.BusinessDate_SearchLookUpEdit.Text
                     rdsql = rd.ToString("yyyyMMdd")
                     'Check if latest BAIS Files Nr is equal with ODAS and OCBS
-                    Me.QueryText = "Select 'Result'=Case when (Select [FileName] from [FILES_IMPORT] where SYSTEM_NAME in ('ODAS'))=(Select [FileName] from [FILES_IMPORT] where SYSTEM_NAME in ('OCBS')) and (Select [FileName] from [FILES_IMPORT] where SYSTEM_NAME in ('OCBS'))=(Select [FileName] from [FILES_IMPORT] where SYSTEM_NAME in ('BAIS')) then 'OK' else 'NO' END"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select 'Result'=Case when (Select [FileName] from [FILES_IMPORT] where SYSTEM_NAME in ('ODAS'))=(Select [FileName] from [FILES_IMPORT] where SYSTEM_NAME in ('OCBS')) and (Select [FileName] from [FILES_IMPORT] where SYSTEM_NAME in ('OCBS'))=(Select [FileName] from [FILES_IMPORT] where SYSTEM_NAME in ('BAIS')) then 'OK' else 'NO' END"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Item(0).Item("Result").ToString = "OK" Then
@@ -747,13 +744,13 @@ Public Class BaisExportAlphaV135
                 For Each File In Directory.GetFiles(BaisFilesCreationPath, "*.CSV", SearchOption.TopDirectoryOnly)
                     zip.AddFile(File, "")
                 Next
-                zip.Save(BaisFilesCreationPath & "BAIS_Files_ALPHA_v1.35_from_PSTOOL_" & rdsql & ".rar")
+                zip.Save(BaisFilesCreationPath & "BAIS_Files_ALPHA_v1.36_from_PSTOOL_" & rdsql & ".rar")
                 Dim BaisFilesList As String() = Directory.GetFiles(BaisFilesCreationPath, "*.CSV")
                 For Each f In BaisFilesList
                     File.Delete(f)
                 Next
             End Using
-            Me.RichEditControl1.Text = Me.RichEditControl1.Text & vbNewLine & "File(s) zipped in " & "BAIS_Files_ALPHA_v1.35_from_PSTOOL_" & rdsql & ".rar"
+            Me.RichEditControl1.Text = Me.RichEditControl1.Text & vbNewLine & "File(s) zipped in " & "BAIS_Files_ALPHA_v1.36_from_PSTOOL_" & rdsql & ".rar"
         Catch ex As Exception
             XtraMessageBox.Show(ex.Message, "Unable to zip the created BAIS Files", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
             Exit Sub
@@ -773,9 +770,7 @@ Public Class BaisExportAlphaV135
     End Sub
 
     Private Sub DVTIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         Dim CountFxDeals As Double = 0
         Dim Count As Double = 0
         'Check if FX Deals present
@@ -888,18 +883,18 @@ Public Class BaisExportAlphaV135
                 Try
 
                     BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_DVTIFF File for: " & rd)
-                    cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                    cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                     ParameterStatus = cmd.ExecuteScalar
                     If ParameterStatus = "Y" Then
-                        Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_DVTIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_DVTIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New System.Data.DataTable()
                         da.Fill(dt)
                         For i = 0 To dt.Rows.Count - 1
                             SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                             cmd.CommandText = SqlCommandText
                             If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                                BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                                BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                                 cmd.ExecuteNonQuery()
                             End If
                         Next
@@ -915,8 +910,8 @@ Public Class BaisExportAlphaV135
                     'Create Header
                     System.IO.File.AppendAllText(BaisFilesCreationPath & "DVTIAF_CCB.csv", CSV_HEADER & vbCrLf)
                     '++++++++++++++
-                    Me.QueryText = "SELECT  * FROM  [BAIS_DVTIFF] where [DVTIFF_DXIFD]='" & rdsql & "'"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "SELECT  * FROM  [BAIS_DVTIFF] where [DVTIFF_DXIFD]='" & rdsql & "'"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
@@ -1027,25 +1022,19 @@ Public Class BaisExportAlphaV135
                     'cmd.CommandText = "DROP TABLE [DVTIFF_CCB]"
                     'cmd.ExecuteNonQuery()
 
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     'SplashScreenManager.CloseForm(False)
                     'XtraMessageBox.Show("The following File has being created C:\DVTIFF_CCB.csv with data from " & rd, "FILE CREATION RESULT", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                     Me.DVTIFF_Result = "Created"
 
                 Catch ex As System.Exception
                     'SplashScreenManager.CloseForm(False)
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
                 End Try
             Else
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 Me.DVTIFF_Result = "Not Created"
                 'Dim CSV_ROW As String = Nothing
                 If File.Exists(BaisFilesCreationPath & "DVTIAF_CCB.csv") = True Then
@@ -1058,22 +1047,16 @@ Public Class BaisExportAlphaV135
 
             End If
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.DVTIFF_Result = "Not Created"
             XtraMessageBox.Show("Unable to create File DVTIFF_CCB.csv for " & rd & vbNewLine & "There are no FX Deals in the Database for this Date", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 
     Private Sub GSTIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         cmd.CommandText = "Select Count([ID]) from [BAIS_GSTIFF] where [GSTIFF_DXIFD]='" & rdsql & "'"
         Dim Count As Double = cmd.ExecuteScalar
 
@@ -1153,18 +1136,19 @@ Public Class BaisExportAlphaV135
             "|GSTIAF_WLKKZ" &
             "|GSTIAF_PSINV" &
             "|GSTIAF_SPKRF" &
-            "|GSTIFF_KWAER" &
-            "|GSTIFF_CKEKZ" &
-            "|GSTIFF_AKEKZ" &
-            "|GSTIFF_NHTFI" &
-            "|GSTIFF_AGTRK" &
-            "|GSTIFF_AGPRK" &
-            "|GSTIFF_EELEV" &
-            "|GSTIFF_EESCO" &
-            "|GSTIFF_ONANT" &
-            "|GSTIFF_ONART" &
-            "|GSTIFF_I9WBS" &
-            "|GSTIFF_NUKGK" &
+            "|GSTIAF_KWAER" &
+            "|GSTIAF_CKEKZ" &
+            "|GSTIAF_AKEKZ" &
+            "|GSTIAF_NHTFI" &
+            "|GSTIAF_AGTRK" &
+            "|GSTIAF_AGPRK" &
+            "|GSTIAF_EELEV" &
+            "|GSTIAF_EESCO" &
+            "|GSTIAF_ONANT" &
+            "|GSTIAF_ONART" &
+            "|GSTIAF_I9WBS" &
+            "|GSTIAF_NUKGK" &
+            "|GSTIAF_DXNAV" &
             "|GSTIAF_RESE1" &
             "|GSTIAF_RESE2" &
             "|GSTIAF_RESE3" &
@@ -1268,6 +1252,7 @@ Public Class BaisExportAlphaV135
         Dim GSTIFF_ONART As String = Nothing 'New Version 1.35
         Dim GSTIFF_I9WBS As String = Nothing 'New Version 1.35
         Dim GSTIFF_NUKGK As String = Nothing 'New Version 1.35
+        Dim GSTIFF_DXNAV As String = Nothing 'New Version 1.36
         Dim GSTIFF_RESE1 As String = Nothing
         Dim GSTIFF_RESE2 As String = Nothing
         Dim GSTIFF_RESE3 As String = Nothing
@@ -1286,18 +1271,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_GSTIAF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GSTIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GSTIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -1318,8 +1303,8 @@ Public Class BaisExportAlphaV135
                 Dim ExcludeCount As Double = cmd.ExecuteScalar
                 BgwBaisFilesCreation.ReportProgress(2, "Excluded Datarows: " & ExcludeCount)
 
-                Me.QueryText = "SELECT * FROM  [BAIS_GSTIFF] where [GSTIFF_DXIFD]='" & rdsql & "' and [GSTIFF_DXVND]<= '" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_GSTIFF] where [GSTIFF_DXIFD]='" & rdsql & "' and [GSTIFF_DXVND]<= '" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -1444,6 +1429,12 @@ Public Class BaisExportAlphaV135
                     GSTIFF_ONART = dt.Rows.Item(i).Item("GSTIFF_ONART") & "|" 'New Version 1.35
                     GSTIFF_I9WBS = dt.Rows.Item(i).Item("GSTIFF_I9WBS") & "|" 'New Version 1.35
                     GSTIFF_NUKGK = dt.Rows.Item(i).Item("GSTIFF_NUKGK") & "|" 'New Version 1.35
+                    If IsDBNull(dt.Rows.Item(i).Item("GSTIFF_DXNAV")) = False Then 'New Version 1.36
+                        Dim DXNAV_Date As Date = dt.Rows.Item(i).Item("GSTIFF_DXNAV")
+                        GSTIFF_DXNAV = DXNAV_Date.ToString("yyyyMMdd") & "|"
+                    Else
+                        GSTIFF_DXNAV = "0" & "|"
+                    End If
                     GSTIFF_RESE1 = dt.Rows.Item(i).Item("GSTIFF_RESE1") & "|" 'New Version 1.27
                     GSTIFF_RESE2 = dt.Rows.Item(i).Item("GSTIFF_RESE2") & "|" 'New Version 1.27
                     GSTIFF_RESE3 = dt.Rows.Item(i).Item("GSTIFF_RESE3") & "|" 'New Version 1.27
@@ -1545,6 +1536,7 @@ Public Class BaisExportAlphaV135
                         GSTIFF_ONART &
                         GSTIFF_I9WBS &
                         GSTIFF_NUKGK &
+                        GSTIFF_DXNAV &
                         GSTIFF_RESE1 &
                         GSTIFF_RESE2 &
                         GSTIFF_RESE3 &
@@ -1564,17 +1556,13 @@ Public Class BaisExportAlphaV135
 
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 'SplashScreenManager.CloseForm(False)
                 'XtraMessageBox.Show("The following File has being created C:\GSTIFF_CCB.csv with data from " & rd, "FILE CREATION RESULT", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Me.GSTIFF_Result = "Created"
             Catch ex As System.Exception
                 'SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End Try
@@ -1591,15 +1579,11 @@ Public Class BaisExportAlphaV135
             Exit Sub
 
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 
     Private Sub GSTSLF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         cmd.CommandText = "Select Count([ID]) from [BAIS_GSTSLF] where [GSTSLF_DXIFD]='" & rdsql & "'"
         Dim Count As Double = cmd.ExecuteScalar
 
@@ -1627,6 +1611,7 @@ Public Class BaisExportAlphaV135
             "|GSTSAF_CO2ET" &
             "|GSTSAF_CO2S3" &
             "|GSTSAF_CO2RC" &
+            "|GSTSAF_BSBTR" &
             "|GSTSAF_IFNAM" &
             "|GSTSAF_DXIFD"
 
@@ -1654,6 +1639,7 @@ Public Class BaisExportAlphaV135
         Dim GSTSLF_CO2ET As String = Nothing 'New 1.35
         Dim GSTSLF_CO2S3 As String = Nothing 'New 1.35
         Dim GSTSLF_CO2RC As String = Nothing 'New 1.35
+        Dim GSTSLF_BSBTR As String = Nothing 'New 1.36
         Dim GSTSLF_IFNAM As String = Nothing
         Dim GSTSLF_DXIFD As String = Nothing
 
@@ -1661,18 +1647,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_GSTSLF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GSTSLF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GSTSLF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -1688,8 +1674,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "GSTSAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT  * FROM  [BAIS_GSTSLF] where [GSTSLF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  * FROM  [BAIS_GSTSLF] where [GSTSLF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -1721,6 +1707,7 @@ Public Class BaisExportAlphaV135
                     GSTSLF_CO2ET = dt.Rows.Item(i).Item("GSTSLF_CO2ET").ToString.Replace(",", ".") & "|" 'New Version 1.35
                     GSTSLF_CO2S3 = dt.Rows.Item(i).Item("GSTSLF_CO2S3").ToString.Replace(",", ".") & "|" 'New Version 1.35
                     GSTSLF_CO2RC = dt.Rows.Item(i).Item("GSTSLF_CO2RC") & "|" 'New Version 1.35
+                    GSTSLF_BSBTR = dt.Rows.Item(i).Item("GSTSLF_BSBTR").ToString.Replace(",", ".") & "|" 'New Version 1.36
                     GSTSLF_IFNAM = "GSTSAF" & "|"
                     GSTSLF_DXIFD = String.Format("{0:yyyyMMdd}", dt.Rows.Item(i).Item("GSTSLF_DXIFD"))
 
@@ -1747,6 +1734,7 @@ Public Class BaisExportAlphaV135
                         GSTSLF_CO2ET &
                         GSTSLF_CO2S3 &
                         GSTSLF_CO2RC &
+                        GSTSLF_BSBTR &
                         GSTSLF_IFNAM &
                         GSTSLF_DXIFD
 
@@ -1755,24 +1743,18 @@ Public Class BaisExportAlphaV135
 
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 'SplashScreenManager.CloseForm(False)
                 'XtraMessageBox.Show("The following File has being created C:\GSTSLF_CCB.csv with data from " & rd, "FILE CREATION RESULT", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Me.GSTSLF_Result = "Created"
             Catch ex As System.Exception
                 'SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.GSTSLF_Result = "Not Created"
             'Dim CSV_HEADER As String = "GSTSAF_MDANT|GSTSAF_MODUL|GSTSAF_KDREA|GSTSAF_KTONR|GSTSAF_GSREF|GSTSAF_SLDUB|GSTSAF_DISPO|GSTSAF_DXDVD|GSTSAF_DXDBD|GSTSAF_ABGBT|GSTSAF_GKBTR|GSTSAF_DXFGB|GSTSAF_FAIRV|GSTSAF_ERFBT|GSTSAF_BETNF|GSTSAF_DAGIO|GSTSAF_AOBSA|GSTSAF_CSPBV|GSTSAF_PRVBT|GSTSAF_IFNAM|GSTSAF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -1786,15 +1768,11 @@ Public Class BaisExportAlphaV135
             Exit Sub
 
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub 'OK
 
     Private Sub BILIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         cmd.CommandText = "Select Count([ID]) from [DailyBalanceSheets] where [BSDate]='" & rdsql & "'"
         Dim Count As Double = cmd.ExecuteScalar
 
@@ -1820,18 +1798,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_BILIFF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_BILIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_BILIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -1846,8 +1824,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "BILIFF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT  * FROM  [BILIFF_CCB] ORDER BY [BILIFF_BILKT] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  * FROM  [BILIFF_CCB] ORDER BY [BILIFF_BILKT] asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -1877,25 +1855,19 @@ Public Class BaisExportAlphaV135
                 cmd.CommandText = "ENABLE TRIGGER [TR_ProtectCriticalTables] ON DATABASE"
                 cmd.ExecuteNonQuery()
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 'SplashScreenManager.CloseForm(False)
                 'XtraMessageBox.Show("The following File has being created C:\DVTIFF_CCB.csv with data from " & rd, "FILE CREATION RESULT", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Me.BILIFF_Result = "Created"
 
             Catch ex As System.Exception
                 'SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.BILIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "BILIFF_MDANT|BILIFF_BILKT|BILIFF_BILBZ|BILIFF_SLDKZ|BILIFF_IFNAM|BILIFF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -1908,15 +1880,11 @@ Public Class BaisExportAlphaV135
             Exit Sub
 
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 
     Private Sub KGCIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -1965,18 +1933,18 @@ Public Class BaisExportAlphaV135
         Dim KGCIFF_DXIFD As String = Nothing
 
         BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_KGCIFF File for: " & rd)
-        cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+        cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
         ParameterStatus = cmd.ExecuteScalar
         If ParameterStatus = "Y" Then
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KGCIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KGCIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             For i = 0 To dt.Rows.Count - 1
                 SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                 cmd.CommandText = SqlCommandText
                 If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                    BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                    BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                     cmd.ExecuteNonQuery()
                 End If
             Next
@@ -1996,8 +1964,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "KGCIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT * FROM  [BAIS_KGCIFF] where [KGCIFF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_KGCIFF] where [KGCIFF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -2047,9 +2015,7 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.KGCIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 Me.KGCIFF_Result = "Not Created"
                 'Dim CSV_HEADER As String = "KGCIAF_MDANT|KGCIAF_MODUL|KGCIAF_KDREA|KGCIAF_KTONR|KGCIAF_GSREF|KGCIAF_ACCNR|KGCIAF_PTYPI|KGCIAF_CURCD|KGCIAF_DXBEW|KGCIAF_ERART|KGCIAF_HOEHE|KGCIAF_SALDO|KGCIAF_TILGA|KGCIAF_ZINSA|KGCIAF_WHISO|KGCIAF_KZABL|KGCIAF_POOLI|KGCIAF_CFTYP|KGCIAF_IFNAM|KGCIAF_DXIFD"
                 'Dim CSV_ROW As String = Nothing
@@ -2068,23 +2034,21 @@ Public Class BaisExportAlphaV135
     End Sub
 
     Private Sub KNEIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_KNEIAF File for: " & rd)
-        cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+        cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
         ParameterStatus = cmd.ExecuteScalar
         If ParameterStatus = "Y" Then
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KNEIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KNEIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             For i = 0 To dt.Rows.Count - 1
                 SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                 cmd.CommandText = SqlCommandText
                 If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                    BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                    BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                     cmd.ExecuteNonQuery()
                 End If
             Next
@@ -2146,6 +2110,8 @@ Public Class BaisExportAlphaV135
             "|KNEIAF_AUSPB" &
             "|KNEIAF_ONANT" &
             "|KNEIAF_ONART" &
+            "|KNEIAF_BSGRP" &
+            "|KNEIAF_ARIAD" &
             "|KNEIAF_FREI1" &
             "|KNEIAF_FREI2" &
             "|KNEIAF_FREI3" &
@@ -2211,6 +2177,8 @@ Public Class BaisExportAlphaV135
         Dim KNEIFF_AUSPB As String = Nothing 'new 1.35
         Dim KNEIFF_ONANT As String = Nothing 'new 1.35
         Dim KNEIFF_ONART As String = Nothing 'new 1.35
+        Dim KNEIFF_BSGRP As String = Nothing 'new 1.36
+        Dim KNEIFF_ARIAD As String = Nothing 'new 1.36
         Dim KNEIFF_FREI1 As String = Nothing
         Dim KNEIFF_FREI2 As String = Nothing
         Dim KNEIFF_FREI3 As String = Nothing
@@ -2235,8 +2203,8 @@ Public Class BaisExportAlphaV135
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "KNEIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
                 'Only Data with KDNRH<>0 and no duplicates
-                Me.QueryText = "SELECT * FROM  [BAIS_KNEIFF] where [KNEIFF_DXIFD]='" & rdsql & "' and [KNEIFF_KDNRH] not in ('0') and [ID] in (Select Min(ID) from [BAIS_KNEIFF] where [KNEIFF_DXIFD]='" & rdsql & "' GROUP BY [KNEIFF_KDNRH])"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_KNEIFF] where [KNEIFF_DXIFD]='" & rdsql & "' and [KNEIFF_KDNRH] not in ('0') and [ID] in (Select Min(ID) from [BAIS_KNEIFF] where [KNEIFF_DXIFD]='" & rdsql & "' GROUP BY [KNEIFF_KDNRH])"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -2313,6 +2281,8 @@ Public Class BaisExportAlphaV135
                     KNEIFF_AUSPB = dt.Rows.Item(i).Item("KNEIFF_AUSPB") & "|" 'new 1.35
                     KNEIFF_ONANT = dt.Rows.Item(i).Item("KNEIFF_ONANT").ToString.Replace(",", ".") & "|" 'new 1.35
                     KNEIFF_ONART = dt.Rows.Item(i).Item("KNEIFF_ONART") & "|" 'new 1.35
+                    KNEIFF_BSGRP = dt.Rows.Item(i).Item("KNEIFF_BSGRP") & "|" 'new 1.36
+                    KNEIFF_ARIAD = dt.Rows.Item(i).Item("KNEIFF_ARIAD") & "|" 'new 1.36
                     KNEIFF_FREI1 = dt.Rows.Item(i).Item("KNEIFF_FREI1") & "|"
                     KNEIFF_FREI2 = dt.Rows.Item(i).Item("KNEIFF_FREI2") & "|"
                     KNEIFF_FREI3 = dt.Rows.Item(i).Item("KNEIFF_FREI3") & "|"
@@ -2377,6 +2347,8 @@ Public Class BaisExportAlphaV135
                         KNEIFF_AUSPB &
                         KNEIFF_ONANT &
                         KNEIFF_ONART &
+                        KNEIFF_BSGRP &
+                        KNEIFF_ARIAD &
                         KNEIFF_FREI1 &
                         KNEIFF_FREI2 &
                         KNEIFF_FREI3 &
@@ -2389,9 +2361,7 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.KNEIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 Me.KNEIFF_Result = "Not Created"
                 'Dim CSV_HEADER As String = "KNEIAF_MDANT|KNEIAF_FILNR|KNEIAF_KDREA|KNEIAF_KURZN|KNEIAF_NAME1|KNEIAF_NAME2|KNEIAF_NAME3|KNEIAF_PLZOR|KNEIAF_PLZNR|KNEIAF_STRAS|KNEIAF_DXGEB|KNEIAF_WSGSI|KNEIAF_BRNCH|KNEIAF_WSBIS|KNEIAF_BRNZU|KNEIAF_SLDSL|KNEIAF_RLDSL|KNEIAF_LDRIS|KNEIAF_VSDSL|KNEIAF_BONIT|KNEIAF_GRPKZ|KNEIAF_KZLST|KNEIAF_KZPER|KNEIAF_UMMIO|KNEIAF_BILSU|KNEIAF_UNTGR|KNEIAF_DXNSI|KNEIAF_AUSFL|KNEIAF_DXAUD|KNEIAF_ORGSL|KNEIAF_RISGR|KNEIAF_KGBID|KNEIAF_ANRKZ|KNEIAF_ASLGR|KNEIAF_KDKLA|KNEIAF_KUKON|KNEIAF_NACES|KNEIAF_LENID|KNEIAF_WSCRR|KNEIAF_WSFIN|KNEIAF_AVCKZ|KNEIAF_RECHF|KNEIAF_KNBOG|KNEIAF_MITAR|KNEIAF_PDMEM|KNEIAF_LGDAV|KNEIAF_RSKAV|KNEIAF_DXNPE|KNEIAF_DXFBE|KNEIAF_EXPVA|KNEIAF_FREI1|KNEIAF_FREI2|KNEIAF_FREI3|KNEIAF_FREI4|KNEIAF_FREI5|KNEIAF_LOEKZ|KNEIAF_IFNAM|KNEIAF_DXIFD"
                 'Dim CSV_ROW As String = Nothing
@@ -2410,24 +2380,22 @@ Public Class BaisExportAlphaV135
     End Sub 'OK
 
     Private Sub KNVIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         Try
             BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_KNVIAF File for: " & rd)
-            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
             ParameterStatus = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KNVIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KNVIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
                     SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                     cmd.CommandText = SqlCommandText
                     If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
@@ -2486,8 +2454,8 @@ Public Class BaisExportAlphaV135
             'Create Header
             System.IO.File.AppendAllText(BaisFilesCreationPath & "KNVIAF_CCB.csv", CSV_HEADER & vbCrLf)
             '++++++++++++++
-            Me.QueryText = "SELECT * FROM  [BAIS_KNVIFF] where [KNVIFF_DXIFD]='" & rdsql & "'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "SELECT * FROM  [BAIS_KNVIFF] where [KNVIFF_DXIFD]='" & rdsql & "'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New DataTable()
             da.Fill(dt)
             For i = 0 To dt.Rows.Count - 1
@@ -2550,19 +2518,15 @@ Public Class BaisExportAlphaV135
             End If
 
         Catch ex As Exception
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.KNVIFF_Result = "Not Created"
             XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
+        CloseSqlConnections()
     End Sub
 
     Private Sub KRKIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -2594,18 +2558,18 @@ Public Class BaisExportAlphaV135
         If Count > 0 Then
 
             BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_KRKIAF File for: " & rd)
-            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
             ParameterStatus = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KRKIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KRKIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
                     SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                     cmd.CommandText = SqlCommandText
                     If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
@@ -2622,8 +2586,8 @@ Public Class BaisExportAlphaV135
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "KRKIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
 
-                Me.QueryText = "SELECT * FROM  [BAIS_KRKIFF] where [KRKIFF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_KRKIFF] where [KRKIFF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -2653,16 +2617,12 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.KRKIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.KRKIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "KRKIAF_MDANT|KRKIAF_KDREA|KRKIAF_RAGEN|KRKIAF_RKLIF|KRKIAF_FREI1|KRKIAF_FREI2|KRKIAF_FREI3|KRKIAF_IFNAM|KRKIAF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -2679,9 +2639,7 @@ Public Class BaisExportAlphaV135
     End Sub
 
     Private Sub KSRIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -2716,18 +2674,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_KSRIFF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KSRIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_KSRIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -2746,8 +2704,8 @@ Public Class BaisExportAlphaV135
 
 
 
-                Me.QueryText = "SELECT * FROM  [BAIS_KSRIFF] where [KSRIFF_DXIFD]='" & rdsql & "' and ([KSRIFF_RKLIF] not in ('0') or [KSRIFF_RKLIF] is not NULL)"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_KSRIFF] where [KSRIFF_DXIFD]='" & rdsql & "' and ([KSRIFF_RKLIF] not in ('0') or [KSRIFF_RKLIF] is not NULL)"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -2780,9 +2738,7 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.KSRIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 Me.KSRIFF_Result = "Not Created"
                 'Dim CSV_HEADER As String = "KSRIFF_MDANT|KSRIFF_RKLIF|KSRIFF_RAGEN|KSRIFF_RATYP|KSRIFF_KZHFW|KSRIFF_RATEX|KSRIFF_DXRAT|KSRIFF_LDISO|KSRIFF_IFNAM|KSRIFF_DXIFD"
                 'Dim CSV_ROW As String = Nothing
@@ -2801,9 +2757,7 @@ Public Class BaisExportAlphaV135
     End Sub
 
     Private Sub LQGIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -2941,18 +2895,18 @@ Public Class BaisExportAlphaV135
         If Count <> 0 Then
 
             BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_LQGIAF File for: " & rd)
-            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
             ParameterStatus = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_LQGIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_LQGIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
                     SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                     cmd.CommandText = SqlCommandText
                     If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
@@ -2968,8 +2922,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "LQGIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT * FROM  [BAIS_LQGIFF] where [LQGIFF_DXIFD]='" & rdsql & "' and ID  in (Select min(ID) from BAIS_LQGIFF where LQGIFF_DXIFD='" & rdsql & "' GROUP BY LQGIFF_GSREF)"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_LQGIFF] where [LQGIFF_DXIFD]='" & rdsql & "' and ID  in (Select min(ID) from BAIS_LQGIFF where LQGIFF_DXIFD='" & rdsql & "' GROUP BY LQGIFF_GSREF)"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -3110,16 +3064,12 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.LQGIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.LQGIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "LQGIAF_MDANT|LQGIAF_MODUL|LQGIAF_KDREA|LQGIAF_KTONR|LQGIAF_GSREF|LQGIAF_EINLS|LQGIAF_KUNDG|LQGIAF_KUNBT|LQGIAF_EINTY|LQGIAF_BESFI|LQGIAF_DXBES|LQGIAF_MWSIC|LQGIAF_WHMWS|LQGIAF_KZABL|LQGIAF_DXBEL|LQGIAF_HOEBL|LQGIAF_WHGBL|LQGIAF_NOMBT|LQGIAF_HAWHG|LQGIAF_KUDIV|LQGIAF_QKRLA|LQGIAF_LIQQU|LQGIAF_LQAST|LQGIAF_KZLCI|LQGIAF_UEBSI|LQGIAF_KZFAZ|LQGIAF_LCRK1|LQGIAF_LCRK2|LQGIAF_LCRK3|LQGIAF_LCRK4|LQGIAF_NSFRK|LQGIAF_NSFK2|LQGIAF_CTKAT|LQGIAF_CAPIF|LQGIAF_SPREA|LQGIAF_AMMPR|LQGIAF_RZFKI|LQGIAF_ZNKAP|LQGIAF_KFRTG|LQGIAF_C70BT|LQGIAF_DXOPR|LQGIAF_RGK6M|LQGIAF_RGK1J|LQGIAF_RGG1J|LQGIAF_AGK6M|LQGIAF_AGK1J|LQGIAF_AGG1J|LQGIAF_LZBNS|LQGIAF_INLIM|LQGIAF_EXLIM|LQGIAF_AZEZU|LQGIAF_RSCD1|LQGIAF_RSCD2|LQGIAF_RSTX1|LQGIAF_RSTX2|LQGIAF_RSDX1|LQGIAF_RSPR1|LQGIAF_RSBT1|LQGIAF_RSBT2|LQGIAF_IFNAM|LQGIAF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -3135,9 +3085,7 @@ Public Class BaisExportAlphaV135
     End Sub 'OK
 
     Private Sub MKUIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -3178,18 +3126,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_MKUIFF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_MKUIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_MKUIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -3206,8 +3154,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "MKUIFF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT * FROM  [BAIS_MKUIFF] where [MKUIFF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_MKUIFF] where [MKUIFF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -3246,9 +3194,7 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.MKUIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 Me.MKUIFF_Result = "Not Created"
                 'Dim CSV_HEADER As String = "MKUIFF_MDANT|MKUIFF_WPKNR|MKUIFF_HAWHG|MKUIFF_PREIS|MKUIFF_PREI2|MKUIFF_PREID|MKUIFF_STRKU|MKUIFF_BEWAB|MKUIFF_BWALA|MKUIFF_POOLF|MKUIFF_FREI1|MKUIFF_IFNAM|MKUIFF_DXIFD"
                 'Dim CSV_ROW As String = Nothing
@@ -3267,9 +3213,7 @@ Public Class BaisExportAlphaV135
     End Sub 'OK
 
     Private Sub ZUSIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -3395,18 +3339,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_ZUSIAF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_ZUSIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_ZUSIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -3421,8 +3365,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "ZUSIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT * FROM  [BAIS_ZUSIFF] where [ZUSIFF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_ZUSIFF] where [ZUSIFF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -3560,16 +3504,12 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.ZUSIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.ZUSIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "ZUSIAF_MDANT|ZUSIAF_FILNR|ZUSIAF_KDREA|ZUSIAF_ZUREF|ZUSIAF_ZUART|ZUSIAF_KRART|ZUSIAF_MODUL|ZUSIAF_KTONR|ZUSIAF_GSREF|ZUSIAF_ZUEXU|ZUSIAF_WHRGE|ZUSIAF_DXZGA|ZUSIAF_DXVNE|ZUSIAF_DXBSE|ZUSIAF_KZREV|ZUSIAF_KZUNW|ZUSIAF_KZABR|ZUSIAF_WLKKZ|ZUSIAF_KNZZU|ZUSIAF_ZOEKZ|ZUSIAF_KGZUO|ZUSIAF_BUEZU|ZUSIAF_BEREA|ZUSIAF_ZUTYP|ZUSIAF_AUSFL|ZUSIAF_DXAUD|ZUSIAF_KOART|ZUSIAF_GSART|ZUSIAF_RISGR|ZUSIAF_KZUKU|ZUSIAF_ERHGE|ZUSIAF_GSARE|ZUSIAF_HAFIN|ZUSIAF_PRDKT|ZUSIAF_INABU|ZUSIAF_KZAKL|ZUSIAF_POOLI|ZUSIAF_AEIDF|ZUSIAF_HFZGP|ZUSIAF_ZUSTS|ZUSIAF_DXNPE|ZUSIAF_DXFBE|ZUSIAF_PBDFA|ZUSIAF_DXPBD|ZUSIAF_IPRKZ|ZUSIAF_ARTSP|ZUSIAF_FREI1|ZUSIAF_FREI2|ZUSIAF_FREI3|ZUSIAF_FREI4|ZUSIAF_FREI5|ZUSIAF_LOEKZ|ZUSIAF_IFNAM|ZUSIAF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -3585,9 +3525,7 @@ Public Class BaisExportAlphaV135
     End Sub
 
     Private Sub GAKIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -3731,18 +3669,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_GAKIAF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GAKIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GAKIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -3759,8 +3697,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "GAKIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT * FROM  [BAIS_GAKIFF] where [GAKIFF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_GAKIFF] where [GAKIFF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -3903,16 +3841,12 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.GAKIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.GAKIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "GAKIAF_MDANT|GAKIAF_GARFN|GAKIAF_FILNR|GAKIAF_GARTG|GAKIAF_GARTI|GAKIAF_HBKZN|GAKIAF_DXVND|GAKIAF_DXBSD|GAKIAF_GABTR|GAKIAF_DXGBT|GAKIAF_APRVA|GAKIAF_ATOPV|GAKIAF_APROV|GAKIAF_DXPRO|GAKIAF_APVAP|GAKIAF_VWTER|GAKIAF_WHISO|GAKIAF_GSPRZ|GAKIAF_MODUL|GAKIAF_KDREA|GAKIAF_SICGA|GAKIAF_KTONR|GAKIAF_GSREF|GAKIAF_DEPNR|GAKIAF_KZBVK|GAKIAF_BEBTR|GAKIAF_WHBEB|GAKIAF_DXBWE|GAKIAF_VEBTR|GAKIAF_WHVEB|GAKIAF_DXVWE|GAKIAF_VORBT|GAKIAF_WHVOR|GAKIAF_OLDSL|GAKIAF_PLZNR|GAKIAF_SIGAR|GAKIAF_KRRFN|GAKIAF_HCMPV|GAKIAF_HCWHG|GAKIAF_LIQUD|GAKIAF_RSKFZ|GAKIAF_RGWKZ|GAKIAF_KZA14|GAKIAF_KZABI|GAKIAF_KZAFI|GAKIAF_KZAAC|GAKIAF_KZAAE|GAKIAF_KZALE|GAKIAF_KZACR|GAKIAF_KZAPB|GAKIAF_KZSUB|GAKIAF_KZZWB|GAKIAF_KZECA|GAKIAF_LFDGS|GAKIAF_FREI1|GAKIAF_FREI2|GAKIAF_FREI3|GAKIAF_FREI4|GAKIAF_FREI5|GAKIAF_LOEKZ|GAKIAF_IFNAM|GAKIAF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -3928,9 +3862,7 @@ Public Class BaisExportAlphaV135
     End Sub 'OK
 
     Private Sub GAGIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -3988,18 +3920,18 @@ Public Class BaisExportAlphaV135
         If Count <> 0 Then
             Try
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_GAGIAF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GAGIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GAGIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -4014,8 +3946,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "GAGIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT * FROM  [BAIS_GAGIFF] where [GAGIFF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_GAGIFF] where [GAGIFF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -4070,16 +4002,12 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.GAGIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.GAGIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "GAGIAF_MDANT|GAGIAF_GARFN|GAGIAF_MODUL|GAGIAF_KDREA|GAGIAF_GKRKT|GAGIAF_GSREF|GAGIAF_GLFDN|GAGIAF_GSPRZ|GAGIAF_SIMAX|GAGIAF_SIMWH|GAGIAF_HCKRA|GAGIAF_KZSUB|GAGIAF_KZZWB|GAGIAF_FREI1|GAGIAF_FREI2|GAGIAF_FREI3|GAGIAF_LOEKZ|GAGIAF_IFNAM|GAGIAF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -4095,9 +4023,7 @@ Public Class BaisExportAlphaV135
     End Sub 'OK
 
     Private Sub LQKIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -4127,18 +4053,18 @@ Public Class BaisExportAlphaV135
         If Count <> 0 Then
 
             BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_LQKIAF File for: " & rd)
-            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
             ParameterStatus = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_LQKIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_LQKIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
                     SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                     cmd.CommandText = SqlCommandText
                     If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
@@ -4156,8 +4082,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "LQKIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT * FROM  [BAIS_LQKIFF] where [LQKIFF_DXIFD]='" & rdsql & "' and [ID] in (Select Min([ID]) from [BAIS_LQKIFF] where [LQKIFF_DXIFD]='" & rdsql & "' GROUP BY [LQKIFF_KDNRH])"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT * FROM  [BAIS_LQKIFF] where [LQKIFF_DXIFD]='" & rdsql & "' and [ID] in (Select Min([ID]) from [BAIS_LQKIFF] where [LQKIFF_DXIFD]='" & rdsql & "' GROUP BY [LQKIFF_KDNRH])"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -4184,16 +4110,12 @@ Public Class BaisExportAlphaV135
                 Next
                 Me.LQKIFF_Result = "Created"
             Catch ex As Exception
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.LQKIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "LQKIAF_MDANT|LQKIAF_KDREA|LQKIAF_LQSEK|LQKIAF_OBBTG|LQKIAF_KZGBZ|LQKIAF_LQBRZ|LQKIAF_IFNAM|LQKIAF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -4209,9 +4131,7 @@ Public Class BaisExportAlphaV135
     End Sub
 
     Private Sub DESIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -4351,18 +4271,18 @@ Public Class BaisExportAlphaV135
         If Count > 0 Then
             Try
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_DESIAF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_DESIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_DESIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -4377,8 +4297,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "DESIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT  * FROM  [BAIS_DESIFF] where [DESIFF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  * FROM  [BAIS_DESIFF] where [DESIFF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -4523,25 +4443,20 @@ Public Class BaisExportAlphaV135
                 'cmd.CommandText = "DROP TABLE [DVTIFF_CCB]"
                 'cmd.ExecuteNonQuery()
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 'SplashScreenManager.CloseForm(False)
                 'XtraMessageBox.Show("The following File has being created C:\DVTIFF_CCB.csv with data from " & rd, "FILE CREATION RESULT", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Me.DESIFF_Result = "Created"
 
             Catch ex As System.Exception
                 'SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
+
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.DESIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "DESIAF_MDANT|DESIAF_FILNR|DESIAF_MODUL|DESIAF_DEART|DESIAF_GSREF|DESIAF_KDREA|DESIAF_GSKLA|DESIAF_SUKLA|DESIAF_KRART|DESIAF_WHISO|DESIAF_DXVND|DESIAF_DXBSD|DESIAF_DXVNU|DESIAF_DXBSU|DESIAF_ZWRIS|DESIAF_ZINSS|DESIAF_ZINS2|DESIAF_KZZS1|DESIAF_KZZS2|DESIAF_VZIN1|DESIAF_VZIN2|DESIAF_KZKON|DESIAF_KZBAN|DESIAF_EBTRG|DESIAF_GBTRG|DESIAF_GWISO|DESIAF_HBKZN|DESIAF_KZOTC|DESIAF_KBTRG|DESIAF_PTEIN|DESIAF_WHGKP|DESIAF_BCHSW|DESIAF_BWVNS|DESIAF_ABGBT|DESIAF_GABGB|DESIAF_WHGBU|DESIAF_URDEA|DESIAF_NETKR|DESIAF_KZCVA|DESIAF_GSARE|DESIAF_FAIRV|DESIAF_WHGFV|DESIAF_DXVKT|DESIAF_HFZGP|DESIAF_KZZGP|DESIAF_KZSEG|DESIAF_AFREF|DESIAF_POOLI|DESIAF_AEIDF|DESIAF_BESVB|DESIAF_GEBAB|DESIAF_WHGGA|DESIAF_DRKNZ|DESIAF_MARAG|DESIAF_DXNVB|DESIAF_RESE1|DESIAF_RESE2|DESIAF_FREI1|DESIAF_FREI2|DESIAF_FREI3|DESIAF_LOEKZ|DESIAF_IFNAM|DESIAF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -4555,15 +4470,11 @@ Public Class BaisExportAlphaV135
             Exit Sub
 
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub 'OK
 
     Private Sub WHGIFF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -4603,18 +4514,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_WHGIFF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_WHGIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_WHGIFF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -4629,8 +4540,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "WHGIFF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT  * FROM  [BAIS_WHGIFF] where [WHGIFF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  * FROM  [BAIS_WHGIFF] where [WHGIFF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -4669,25 +4580,19 @@ Public Class BaisExportAlphaV135
 
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 'SplashScreenManager.CloseForm(False)
                 'XtraMessageBox.Show("The following File has being created C:\DVTIFF_CCB.csv with data from " & rd, "FILE CREATION RESULT", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                 Me.WHGIFF_Result = "Created"
 
             Catch ex As System.Exception
                 'SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.WHGIFF_Result = "Not Created"
             'Dim CSV_HEADER As String = "WHGIFF_MDANT|WHGIFF_WHISO|WHGIFF_WNAME|WHGIFF_WSLZB|WHGIFF_WEINH|WHGIFF_WKLEH|WHGIFF_WNKST|WHGIFF_WSTAT|WHGIFF_MKURS|WHGIFF_DXEGK|WHGIFF_IFNAM|WHGIFF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -4700,16 +4605,12 @@ Public Class BaisExportAlphaV135
             Exit Sub
 
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
+
     End Sub
 
     Private Sub GSVGAF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
-
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -4762,18 +4663,18 @@ Public Class BaisExportAlphaV135
         Try
 
             BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_GSVGAF File for: " & rd)
-            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+            cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
             ParameterStatus = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GSVGAF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GSVGAF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
                     SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                     cmd.CommandText = SqlCommandText
                     If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                        BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                         cmd.ExecuteNonQuery()
                     End If
                 Next
@@ -4790,8 +4691,8 @@ Public Class BaisExportAlphaV135
             'Create Header
             System.IO.File.AppendAllText(BaisFilesCreationPath & "GSVGAF_CCB.csv", CSV_HEADER & vbCrLf)
 
-            Me.QueryText = "SELECT  * FROM  [BAIS_GSVGAF] where [GSVGAF_DXIFD]='" & rdsql & "'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "SELECT  * FROM  [BAIS_GSVGAF] where [GSVGAF_DXIFD]='" & rdsql & "'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New DataTable()
             da.Fill(dt)
             If dt.Rows.Count > 0 Then
@@ -4851,15 +4752,11 @@ Public Class BaisExportAlphaV135
                 Next
 
 
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
 
                 Me.GSVGAF_Result = "Created"
             Else
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 Me.GSVGAF_Result = "Not Created"
 
                 XtraMessageBox.Show("Unable to create File GSVGAF_CCB.csv for " & rd & vbNewLine & "There are no Data in the Table:GSVGAF for this Date" & vbNewLine & " Please check", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -4868,22 +4765,16 @@ Public Class BaisExportAlphaV135
 
         Catch ex As System.Exception
 
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End Try
 
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub 'OK
 
     Private Sub GSWBIF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -4975,18 +4866,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_GSWAIF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GSWBIF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_GSWBIF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -5001,8 +4892,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "GSWAIF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT  * FROM  [BAIS_GSWBIF] where [GSWBIF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  * FROM  [BAIS_GSWBIF] where [GSWBIF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 If dt.Rows.Count > 0 Then
@@ -5092,16 +4983,12 @@ Public Class BaisExportAlphaV135
 
 
 
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     'SplashScreenManager.CloseForm(False)
                     'XtraMessageBox.Show("The following File has being created C:\DVTIFF_CCB.csv with data from " & rd, "FILE CREATION RESULT", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
                     Me.GSWBIF_Result = "Created"
                 Else
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     Me.GSWBIF_Result = "Not Created"
                     XtraMessageBox.Show("Unable to create File GSWAIF_CCB.csv for " & rd & vbNewLine & "There are no relevant Data in the Table:CREDIT RISK for this Date" & vbNewLine & " Please Check!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -5109,16 +4996,12 @@ Public Class BaisExportAlphaV135
 
             Catch ex As System.Exception
                 'SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.GSWBIF_Result = "Not Created"
             'Dim CSV_HEADER As String = "GSWAIF_MDANT|GSWAIF_MODUL|GSWAIF_KDREA|GSWAIF_KTONR|GSWAIF_GSREF|GSWAIF_PWBBT|GSWAIF_PWBWH|GSWAIF_EWBBT|GSWAIF_EWBWH|GSWAIF_EWBBP|GSWAIF_EWBWP|GSWAIF_ABSBT|GSWAIF_ABSWH|GSWAIF_ABTYP|GSWAIF_EWBBS|GSWAIF_EWBWS|GSWAIF_PWBBS|GSWAIF_PWBWS|GSWAIF_EWBLR|GSWAIF_EWBWL|GSWAIF_STIRE|GSWAIF_STIRF|GSWAIF_R340G|GSWAIF_R340F|GSWAIF_STIWH|GSWAIF_RSTBT|GSWAIF_RSTWH|GSWAIF_PBZWB|GSWAIF_PBZWH|GSWAIF_HDGAD|GSWAIF_HGDWH|GSWAIF_IFNAM|GSWAIF_DXIFD"
             'Dim CSV_ROW As String = Nothing
@@ -5131,15 +5014,11 @@ Public Class BaisExportAlphaV135
             Exit Sub
 
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub 'OK
 
     Private Sub SCNTIF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
 
         'New Code
         Dim CSV_HEADER As String =
@@ -5220,18 +5099,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating SCNTIF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_SCNTIF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_SCNTIF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -5246,8 +5125,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "SCNIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT  * FROM  [BAIS_SCNTIF] where [SCNTIF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  * FROM  [BAIS_SCNTIF] where [SCNTIF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 If dt.Rows.Count > 0 Then
@@ -5323,15 +5202,11 @@ Public Class BaisExportAlphaV135
 
 
 
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
 
                     Me.SCNTIF_Result = "Created"
                 Else
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     Me.SCNTIF_Result = "Created"
                     If File.Exists(BaisFilesCreationPath & "SCNIAF_CCB.csv") = True Then
                         File.Delete(BaisFilesCreationPath & "SCNIAF_CCB.csv")
@@ -5343,16 +5218,12 @@ Public Class BaisExportAlphaV135
 
             Catch ex As System.Exception
                 'SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.SCNTIF_Result = "Not Created"
             If File.Exists(BaisFilesCreationPath & "SCNIAF_CCB.csv") = True Then
                 File.Delete(BaisFilesCreationPath & "SCNIAF_CCB.csv")
@@ -5363,15 +5234,12 @@ Public Class BaisExportAlphaV135
             Exit Sub
 
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 
     Private Sub SCDRIF_CREATION()
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
+
 
         'New Code
         Dim CSV_HEADER As String =
@@ -5510,18 +5378,18 @@ Public Class BaisExportAlphaV135
             Try
 
                 BgwBaisFilesCreation.ReportProgress(2, "Start creating BAIS_SCDIAF File for: " & rd)
-                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35') and [Id_SQL_Parameters] in ('BAIS')"
+                cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36') and [Id_SQL_Parameters] in ('BAIS')"
                 ParameterStatus = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_SCDRIF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.35'))) and Status in ('Y') order by SQL_Float_1 asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('BAIS_SCDRIF') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('BAIS_COMMON_INTERFACE_FILES_V1.36'))) and Status in ('Y') order by SQL_Float_1 asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
                         SqlCommandText = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
                         cmd.CommandText = SqlCommandText
                         If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.35/" & dt.Rows.Item(i).Item("SQL_Name_1"))
+                            BgwBaisFilesCreation.ReportProgress(2, "Execute SQL Commands in BAIS_COMMON_INTERFACE_FILES_V1.36/" & dt.Rows.Item(i).Item("SQL_Name_1"))
                             cmd.ExecuteNonQuery()
                         End If
                     Next
@@ -5536,8 +5404,8 @@ Public Class BaisExportAlphaV135
                 'Create Header
                 System.IO.File.AppendAllText(BaisFilesCreationPath & "SCDIAF_CCB.csv", CSV_HEADER & vbCrLf)
                 '++++++++++++++
-                Me.QueryText = "SELECT  * FROM  [BAIS_SCDRIF] where [SCDRIF_DXIFD]='" & rdsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  * FROM  [BAIS_SCDRIF] where [SCDRIF_DXIFD]='" & rdsql & "'"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 If dt.Rows.Count > 0 Then
@@ -5701,15 +5569,13 @@ Public Class BaisExportAlphaV135
 
 
 
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
+
 
                     Me.SCDRIF_Result = "Created"
                 Else
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
+
                     Me.SCDRIF_Result = "Not Created"
                     If File.Exists(BaisFilesCreationPath & "SCDIAF_CCB.csv") = True Then
                         File.Delete(BaisFilesCreationPath & "SCDIAF_CCB.csv")
@@ -5721,16 +5587,12 @@ Public Class BaisExportAlphaV135
 
             Catch ex As System.Exception
                 'SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
             End Try
         Else
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
             Me.SCDRIF_Result = "Created"
             If File.Exists(BaisFilesCreationPath & "SCDIAF_CCB.csv") = True Then
                 File.Delete(BaisFilesCreationPath & "SCDIAF_CCB.csv")
@@ -5741,9 +5603,7 @@ Public Class BaisExportAlphaV135
             Exit Sub
 
         End If
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
     End Sub
 
 

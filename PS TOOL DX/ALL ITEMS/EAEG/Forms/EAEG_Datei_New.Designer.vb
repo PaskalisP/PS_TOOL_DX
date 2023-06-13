@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class EAEG_Datei_New
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -20,35 +20,43 @@ Partial Class EAEG_Datei_New
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode17 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridFormatRule7 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue7 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule8 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue8 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EAEG_Datei_New))
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode18 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode19 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode20 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode21 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode22 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode23 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode24 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode25 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode26 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode27 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode28 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode29 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode30 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode31 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue2 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EAEG_Datei_New))
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode5 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode6 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode7 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode8 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode9 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode10 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode11 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode12 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode13 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode14 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode15 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode16 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridFormatRule3 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue3 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule4 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue4 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule5 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue5 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue6 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule9 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue9 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule10 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue10 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim EditorButtonImageOptions7 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject25 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject26 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject27 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject28 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip21 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem22 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem21 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -78,69 +86,61 @@ Partial Class EAEG_Datei_New
         Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions8 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject29 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject30 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject31 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject32 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SuperToolTip4 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim EditorButtonImageOptions5 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject17 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject18 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject19 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject20 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions6 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject21 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject22 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject23 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject24 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip22 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem23 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem22 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem2 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem24 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim SuperToolTip5 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem5 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem5 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip6 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem6 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem6 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem1 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem7 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim SuperToolTip7 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem8 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem7 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem7 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip8 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem9 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem8 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem8 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip9 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem10 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem9 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem9 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip10 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem11 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem10 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem10 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip11 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem12 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem11 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem11 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip12 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem13 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem12 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem12 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip13 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem14 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem13 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem13 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip14 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem15 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem14 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem14 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip15 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem16 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem15 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem15 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip16 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem17 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem16 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem16 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip17 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem18 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem17 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem17 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip18 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem19 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipTitleItem18 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem18 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip19 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem20 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem19 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip20 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem21 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem20 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Me.C_Satz_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colB2_OrdnungskennzeichenId = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -756,30 +756,43 @@ Partial Class EAEG_Datei_New
         Me.LayoutViewColumn96 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.LayoutViewField48 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.LayoutViewCard2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
-        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
-        Me.Bar1 = New DevExpress.XtraBars.Bar()
-        Me.Bar2 = New DevExpress.XtraBars.Bar()
-        Me.Bar3 = New DevExpress.XtraBars.Bar()
-        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         Me.DailyRiskTable_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.LoanStructureTable_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.InterestRateRiskHUMPBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.RecalculateCreditRiskCurrentDateBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.RecalculateCreditRiskSpecificPeriodBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.EAEG_Datei_Gesamt_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.PopupMenu1 = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.EAEG_Daten_Kunden_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.Gesetzliche_Einlagensicherung_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.EAEG_Bilanz_Differences_BarbuttonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonControl2 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.EAEG_EinreicherDatei_Erstellung_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.EAEG_Meldedatei_Erstellung_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.EAEG_EinreicherDateiErstellung_BASIS_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.EAEG_MeldeDateiErstellung_BASIS_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.EAEG_Laden_BASIS_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.EAEG_Laden_ERWEITERT_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.Stichtag_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.BusinessDate_SearchLookUpEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit()
+        Me.Stichtage_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colStichtag = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.BarSubItem1 = New DevExpress.XtraBars.BarSubItem()
+        Me.EAEG_Daten_Laden_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.EAEG_Datei_Erstellung_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.EAEG_Datei_Reports_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.GridView_Print_Export_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.Reload_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.NewStichtag_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.EAEG_ALL_Print_Export_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.ViewDetails_SwitchItem = New DevExpress.XtraBars.BarToggleSwitchItem()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
+        Me.EAEG_Dateien_Ordner_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage3 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonStatusBar2 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.EAEG_A_E_Satz_Version4TableAdapter = New PS_TOOL_DX.EAEGDataSetTableAdapters.EAEG_A_E_Satz_Version4TableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EAEGDataSetTableAdapters.TableAdapterManager()
         Me.EAEG_B_D_Satz_Version4TableAdapter = New PS_TOOL_DX.EAEGDataSetTableAdapters.EAEG_B_D_Satz_Version4TableAdapter()
@@ -828,189 +841,159 @@ Partial Class EAEG_Datei_New
         Me.LabelControl8 = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl7 = New DevExpress.XtraEditors.LabelControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.EAEG_Daten_Laden_DropDownButton = New DevExpress.XtraEditors.DropDownButton()
-        Me.PopupMenu4 = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton = New DevExpress.XtraEditors.DropDownButton()
-        Me.PopupMenu3 = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.EAEG_DateiErstellung_DropDownButton = New DevExpress.XtraEditors.DropDownButton()
-        Me.PopupMenu2 = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.EAEG_Datei_ReportsDropDownButton = New DevExpress.XtraEditors.DropDownButton()
         Me.TillDateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.EAEG_ViewTotals_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.GridView_Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.EAEG_Stichtag_DateEdit = New DevExpress.XtraEditors.TextEdit()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup4 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
-        Me.EmptySpaceItem9 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.TabbedControlGroup1 = New DevExpress.XtraLayout.TabbedControlGroup()
         Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.SplitterItem1 = New DevExpress.XtraLayout.SplitterItem()
+        Me.PopupMenu4 = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.PopupMenu3 = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.PopupMenu2 = New DevExpress.XtraBars.PopupMenu(Me.components)
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
-        Me.EAEG_ALL_Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.View_Details_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlGroup5 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlGroup6 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem12 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup8 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EAEG_A_E_Satz_Version4_ALL_TableAdapter = New PS_TOOL_DX.EAEGDataSetTableAdapters.EAEG_A_E_Satz_Version4_ALL_TableAdapter()
-        Me.EAEG_Bilanz_Differences_BarbuttonItem = New DevExpress.XtraBars.BarButtonItem()
-        CType(Me.C_Satz_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEG_B_D_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEG_A_E_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEGDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.B_D_Satz_BaseView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEG_C_Satz_VersionALLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEG_ALL_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEG_A_E_Satz_Version4_ALLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEG_Dates_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField15, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField16, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField19, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField21, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField22, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField48, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEG_C_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl2.SuspendLayout()
-        CType(Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.A2_Institut_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl3.SuspendLayout()
-        CType(Me.E15_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E14_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E13_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E12_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E11_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E10_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E9_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E8_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E7_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E6_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E5_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E4_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E3_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl1.SuspendLayout()
-        CType(Me.PopupMenu4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PopupMenu3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PopupMenu2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TillDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EAEG_Stichtag_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl2.SuspendLayout()
-        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        CType(Me.C_Satz_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EAEG_B_D_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EAEG_A_E_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EAEGDataSet, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.B_D_Satz_BaseView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EAEG_C_Satz_VersionALLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EAEG_ALL_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EAEG_A_E_Satz_Version4_ALLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EAEG_Dates_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField15, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField16, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField17, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField18, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField19, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField20, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField21, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField22, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField48, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RibbonControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.BusinessDate_SearchLookUpEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Stichtage_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EAEG_C_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl2.SuspendLayout
+        CType(Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.A2_Institut_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl3.SuspendLayout
+        CType(Me.E15_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E14_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E13_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E12_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E11_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E10_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E9_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E8_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E7_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E6_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E5_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E4_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.E3_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl1.SuspendLayout
+        CType(Me.TillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.TillDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PopupMenu4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PopupMenu3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PopupMenu2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl2.SuspendLayout
+        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'C_Satz_GridView
         '
@@ -1052,7 +1035,7 @@ Partial Class EAEG_Datei_New
         Me.colB2_OrdnungskennzeichenId.OptionsColumn.ReadOnly = True
         Me.colB2_OrdnungskennzeichenId.Visible = True
         Me.colB2_OrdnungskennzeichenId.VisibleIndex = 0
-        Me.colB2_OrdnungskennzeichenId.Width = 149
+        Me.colB2_OrdnungskennzeichenId.Width = 172
         '
         'colC1_Satzidentifikator
         '
@@ -1065,7 +1048,7 @@ Partial Class EAEG_Datei_New
         Me.colC1_Satzidentifikator.OptionsColumn.ReadOnly = True
         Me.colC1_Satzidentifikator.Visible = True
         Me.colC1_Satzidentifikator.VisibleIndex = 1
-        Me.colC1_Satzidentifikator.Width = 106
+        Me.colC1_Satzidentifikator.Width = 171
         '
         'colC2_Kontonummer
         '
@@ -1198,7 +1181,7 @@ Partial Class EAEG_Datei_New
         Me.colC11_KapitalsaldoInEuro.Summary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "C11_KapitalsaldoInEuro", "Sum={0:n2}")})
         Me.colC11_KapitalsaldoInEuro.Visible = True
         Me.colC11_KapitalsaldoInEuro.VisibleIndex = 12
-        Me.colC11_KapitalsaldoInEuro.Width = 127
+        Me.colC11_KapitalsaldoInEuro.Width = 166
         '
         'colC12_Zinssatz
         '
@@ -1211,6 +1194,7 @@ Partial Class EAEG_Datei_New
         Me.colC12_Zinssatz.OptionsColumn.ReadOnly = True
         Me.colC12_Zinssatz.Visible = True
         Me.colC12_Zinssatz.VisibleIndex = 13
+        Me.colC12_Zinssatz.Width = 99
         '
         'colC13_LetzteZinsfaelligkeit
         '
@@ -2063,14 +2047,14 @@ Partial Class EAEG_Datei_New
         Me.GridControl2.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        GridLevelNode1.LevelTemplate = Me.C_Satz_GridView
-        GridLevelNode1.RelationName = "FK_EAEG_C_Satz_Version4_EAEG_B_D_Satz"
-        Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(24, 82)
+        GridLevelNode17.LevelTemplate = Me.C_Satz_GridView
+        GridLevelNode17.RelationName = "FK_EAEG_C_Satz_Version4_EAEG_B_D_Satz"
+        Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode17})
+        Me.GridControl2.Location = New System.Drawing.Point(24, 170)
         Me.GridControl2.MainView = Me.B_D_Satz_BaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.RepositoryItemImageComboBox2})
-        Me.GridControl2.Size = New System.Drawing.Size(1455, 429)
+        Me.GridControl2.Size = New System.Drawing.Size(1406, 282)
         Me.GridControl2.TabIndex = 11
         Me.GridControl2.ToolTipController = Me.ToolTipController1
         Me.GridControl2.UseEmbeddedNavigator = True
@@ -2100,32 +2084,32 @@ Partial Class EAEG_Datei_New
         Me.B_D_Satz_BaseView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.B_D_Satz_BaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colB1_Satzidentifikator, Me.colB2_Ordnungskennzeichen, Me.colB3_Nachname, Me.colB4_Vorname, Me.colB5_Namenszusatz, Me.colB6_Anrede, Me.colB7_SrasseUndHausnummer, Me.colB8_ZusatzStrasse, Me.colB9_Postleitzahl, Me.colB10_Ort, Me.colB11_Land, Me.colB12_Geburtsdatum, Me.colB13_Branche, Me.colB14_Ausschlusskennzeichen_Pos1, Me.colB14_Ausschlusskennzeichen_Pos2, Me.colB14_Ausschlusskennzeichen_Pos3, Me.colB14_Ausschlusskennzeichen_Pos4, Me.colB14_Ausschlusskennzeichen_Pos5, Me.colB14_Ausschlusskennzeichen_Pos6, Me.colB14_Ausschlusskennzeichen_Pos7, Me.colB14_Ausschlusskennzeichen_Pos8, Me.colB14_Ausschlusskennzeichen_Pos9, Me.colB14_Ausschlusskennzeichen_Pos10, Me.colB14_Ausschlusskennzeichen_Pos11, Me.colB14_Ausschlusskennzeichen_Pos12, Me.colB14_Ausschlusskennzeichen_Pos13, Me.colB14_Ausschlusskennzeichen_Pos14, Me.colB14_Ausschlusskennzeichen_Pos15, Me.colB14_Ausschlusskennzeichen_Pos16, Me.colB14_Ausschlusskennzeichen_Pos17, Me.colB14_Ausschlusskennzeichen_Pos18, Me.colB14_Ausschlusskennzeichen_Pos19, Me.colB14_Ausschlusskennzeichen_Pos20, Me.colB14_Ausschlusskennzeichen_Pos21, Me.colB14_Ausschlusskennzeichen_Pos22, Me.colB14_Ausschlusskennzeichen_Pos23, Me.colB14_Ausschlusskennzeichen_Pos24, Me.colB14_Ausschlusskennzeichen_Pos25, Me.colB14_Ausschlusskennzeichen_Pos26, Me.colB14_Ausschlusskennzeichen_Pos27, Me.colB14_Ausschlusskennzeichen_Pos28, Me.colB14_Ausschlusskennzeichen_Pos29, Me.colB14_Ausschlusskennzeichen_Pos30, Me.colB14_Ausschlusskennzeichen_Pos31, Me.colB14_Ausschlusskennzeichen_Pos32, Me.colB14_Ausschlusskennzeichen_Pos33, Me.colB14_Ausschlusskennzeichen_Pos34, Me.colB14_Ausschlusskennzeichen_Pos35, Me.colB14_Ausschlusskennzeichen_Pos36, Me.colB14_Ausschlusskennzeichen_Pos37, Me.colB14_Ausschlusskennzeichen_Pos38, Me.colB14_Ausschlusskennzeichen_Pos39, Me.colB14_Ausschlusskennzeichen_Pos40, Me.colB14_Ausschlusskennzeichen_Pos41, Me.colB14_Ausschlusskennzeichen_Pos42, Me.colB14_Ausschlusskennzeichen_Pos43, Me.colB14_Ausschlusskennzeichen_Pos44, Me.colB14_Ausschlusskennzeichen_Pos45, Me.colB14_Ausschlusskennzeichen_Pos46, Me.colB14_Ausschlusskennzeichen_Pos47, Me.colB14_Ausschlusskennzeichen_Pos48, Me.colB14_Ausschlusskennzeichen_Pos49, Me.colB14_Ausschlusskennzeichen_Pos50, Me.colB15_Kundenkontakt, Me.colD1_Satzidentifikator, Me.colD2_Ordnungskennzeichen, Me.colD3_GesamtsaldoEinlagen, Me.colD4_GesamtsaldoGesetzlicheAusschluesse, Me.colD5_GesamtsaldoGesetzlichErstattungsfaehigerEinlagen, Me.colD6_GesamtsaldoGesetzlichGedeckterEinlagen_OBERGRENZE, Me.colD7_GesamtsaldoGesetzlichGedeckterEinlagen_UNTERGRENZE, Me.colD8_GesamtsaldoGesetzlichGedeckterEinlagenKG_OBERGRENZE, Me.colD9_GesamtsaldoGesetzlichGedeckterEinlagenKG_UNTERGRENZE, Me.colD10_GesamtsaldoGesetzlichGedeckterEinlagenEU_Herkunftsstaat_OBERGRENZE, Me.colD11_GesamtsaldoGesetzlichGedeckterEinlagenEU_Herkunftsstaat_UNTERGRENZE, Me.colD12_GesamtsaldoZusatzabsicherung, Me.colD13_GesamtsaldoZusatzabsicherungAnteil_ALTFALLREGELUNG, Me.colD14_GesamtsaldoForderungenAnKunden, Me.colD15_GeaamtsaldoNichtEWRNiederlassungen, Me.colA_E_Satz_ID, Me.colB14_GESAMT})
         Me.B_D_Satz_BaseView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule1.Column = Me.colB14_GESAMT
-        GridFormatRule1.Name = "Format0"
-        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        FormatConditionRuleValue1.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue1.Appearance.Options.UseFont = True
-        FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue1.Value1 = "N"
-        GridFormatRule1.Rule = FormatConditionRuleValue1
-        GridFormatRule2.Column = Me.colB14_GESAMT
-        GridFormatRule2.Name = "Format1"
-        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        FormatConditionRuleValue2.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue2.Appearance.Options.UseFont = True
-        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue2.Value1 = "Y"
-        GridFormatRule2.Rule = FormatConditionRuleValue2
-        Me.B_D_Satz_BaseView.FormatRules.Add(GridFormatRule1)
-        Me.B_D_Satz_BaseView.FormatRules.Add(GridFormatRule2)
+        GridFormatRule7.Column = Me.colB14_GESAMT
+        GridFormatRule7.Name = "Format0"
+        FormatConditionRuleValue7.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue7.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        FormatConditionRuleValue7.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue7.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue7.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue7.Appearance.Options.UseFont = True
+        FormatConditionRuleValue7.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue7.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue7.Value1 = "N"
+        GridFormatRule7.Rule = FormatConditionRuleValue7
+        GridFormatRule8.Column = Me.colB14_GESAMT
+        GridFormatRule8.Name = "Format1"
+        FormatConditionRuleValue8.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue8.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        FormatConditionRuleValue8.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue8.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue8.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue8.Appearance.Options.UseFont = True
+        FormatConditionRuleValue8.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue8.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue8.Value1 = "Y"
+        GridFormatRule8.Rule = FormatConditionRuleValue8
+        Me.B_D_Satz_BaseView.FormatRules.Add(GridFormatRule7)
+        Me.B_D_Satz_BaseView.FormatRules.Add(GridFormatRule8)
         Me.B_D_Satz_BaseView.GridControl = Me.GridControl2
         Me.B_D_Satz_BaseView.Name = "B_D_Satz_BaseView"
         Me.B_D_Satz_BaseView.OptionsCustomization.AllowRowSizing = True
@@ -2141,6 +2125,7 @@ Partial Class EAEG_Datei_New
         Me.B_D_Satz_BaseView.OptionsView.ShowAutoFilterRow = True
         Me.B_D_Satz_BaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.B_D_Satz_BaseView.OptionsView.ShowFooter = True
+        Me.B_D_Satz_BaseView.OptionsView.ShowGroupPanel = False
         Me.B_D_Satz_BaseView.ViewCaption = "EAEG Datei (B-Sätze)"
         '
         'colID
@@ -4341,33 +4326,33 @@ Partial Class EAEG_Datei_New
         Me.GridControl3.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl3.EmbeddedNavigator.Buttons.Remove.Visible = False
-        GridLevelNode3.RelationName = "FK_EAEG_B_D_Satz_EAEG_A_E_Satz"
-        GridLevelNode2.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
-        GridLevelNode2.RelationName = "EAEG_A_E_Satz"
-        GridLevelNode5.RelationName = "FK_EAEG_B_D_Satz_Version4_EAEG_A_E_Satz"
-        GridLevelNode4.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode5})
-        GridLevelNode4.RelationName = "EAEG_A_E_Satz_Version4"
-        GridLevelNode7.RelationName = "FK_EAEG_C_Satz_EAEG_B_D_Satz"
-        GridLevelNode6.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode7})
-        GridLevelNode6.RelationName = "EAEG_B_D_Satz"
-        GridLevelNode9.RelationName = "FK_EAEG_C_Satz_Version4_EAEG_B_D_Satz"
-        GridLevelNode8.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode9})
-        GridLevelNode8.RelationName = "EAEG_B_D_Satz_Version4"
-        GridLevelNode10.RelationName = "EAEG_C_Satz"
-        GridLevelNode11.RelationName = "EAEG_C_Satz_Version4"
-        GridLevelNode12.RelationName = "EAEG_KUNDEN_KONTEN"
-        GridLevelNode14.RelationName = "EAEG_KUNDEN_STAMM_KONTEN"
-        GridLevelNode15.RelationName = "EAEG_KUNDEN_STAMM_KONTEN1"
-        GridLevelNode13.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode14, GridLevelNode15})
-        GridLevelNode13.RelationName = "EAEG_KUNDEN_STAMM"
-        GridLevelNode16.RelationName = "EAEG_KUNDEN_KONTEN_ALL"
-        Me.GridControl3.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2, GridLevelNode4, GridLevelNode6, GridLevelNode8, GridLevelNode10, GridLevelNode11, GridLevelNode12, GridLevelNode13, GridLevelNode16})
-        Me.GridControl3.Location = New System.Drawing.Point(24, 82)
+        GridLevelNode18.RelationName = "FK_EAEG_B_D_Satz_EAEG_A_E_Satz"
+        GridLevelNode1.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode18})
+        GridLevelNode1.RelationName = "EAEG_A_E_Satz"
+        GridLevelNode20.RelationName = "FK_EAEG_B_D_Satz_Version4_EAEG_A_E_Satz"
+        GridLevelNode19.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode20})
+        GridLevelNode19.RelationName = "EAEG_A_E_Satz_Version4"
+        GridLevelNode22.RelationName = "FK_EAEG_C_Satz_EAEG_B_D_Satz"
+        GridLevelNode21.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode22})
+        GridLevelNode21.RelationName = "EAEG_B_D_Satz"
+        GridLevelNode24.RelationName = "FK_EAEG_C_Satz_Version4_EAEG_B_D_Satz"
+        GridLevelNode23.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode24})
+        GridLevelNode23.RelationName = "EAEG_B_D_Satz_Version4"
+        GridLevelNode25.RelationName = "EAEG_C_Satz"
+        GridLevelNode26.RelationName = "EAEG_C_Satz_Version4"
+        GridLevelNode27.RelationName = "EAEG_KUNDEN_KONTEN"
+        GridLevelNode29.RelationName = "EAEG_KUNDEN_STAMM_KONTEN"
+        GridLevelNode30.RelationName = "EAEG_KUNDEN_STAMM_KONTEN1"
+        GridLevelNode28.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode29, GridLevelNode30})
+        GridLevelNode28.RelationName = "EAEG_KUNDEN_STAMM"
+        GridLevelNode31.RelationName = "EAEG_KUNDEN_KONTEN_ALL"
+        Me.GridControl3.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1, GridLevelNode19, GridLevelNode21, GridLevelNode23, GridLevelNode25, GridLevelNode26, GridLevelNode27, GridLevelNode28, GridLevelNode31})
+        Me.GridControl3.Location = New System.Drawing.Point(24, 170)
         Me.GridControl3.MainView = Me.GridView3
         Me.GridControl3.Name = "GridControl3"
         Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox3, Me.RepositoryItemImageComboBox4})
         Me.GridControl3.ShowOnlyPredefinedDetails = True
-        Me.GridControl3.Size = New System.Drawing.Size(1455, 429)
+        Me.GridControl3.Size = New System.Drawing.Size(1406, 282)
         Me.GridControl3.TabIndex = 15
         Me.GridControl3.ToolTipController = Me.ToolTipController1
         Me.GridControl3.UseEmbeddedNavigator = True
@@ -4387,58 +4372,58 @@ Partial Class EAEG_Datei_New
         Me.GridView3.Appearance.FocusedRow.Options.UseForeColor = True
         Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colB2_OrdnungskennzeichenId1, Me.colC1_Satzidentifikator1, Me.colC2_Kontonummer1, Me.colC3_Kontozusatzbezeichnung1, Me.colC4_AbweichendWirtschftlichBerechtigter1, Me.colC5_AnzahlKontoinhaber1, Me.colC6_Kontoerröfnung1, Me.colC7_Kontoart1, Me.colProductType1, Me.colC8_Währung1, Me.colC9_KapitalsaldoInKontowährung1, Me.colC10_Umrechnungskurs1, Me.colC11_KapitalsaldoInEuro1, Me.colC12_Zinssatz1, Me.colC13_LetzteZinsfaelligkeit1, Me.colC14_Endfaelligkeit1, Me.colZinstage, Me.colC15_Faelligkeitsmerkmal1, Me.colC16_Zinsmethode1, Me.colC17_ZinssaldoInKontowährung1, Me.colC18_ZinssaldoInEuro1, Me.colC19_KontosaldoInEuro1, Me.colNotes1, Me.colC20_Ausschlusskennzeichen_GESAMT, Me.colC20_Ausschlusskennzeichen_Pos110, Me.colC20_Ausschlusskennzeichen_Pos210, Me.colC20_Ausschlusskennzeichen_Pos310, Me.colC20_Ausschlusskennzeichen_Pos410, Me.colC20_Ausschlusskennzeichen_Pos51, Me.colC20_Ausschlusskennzeichen_Pos61, Me.colC20_Ausschlusskennzeichen_Pos71, Me.colC20_Ausschlusskennzeichen_Pos81, Me.colC20_Ausschlusskennzeichen_Pos91, Me.colC20_Ausschlusskennzeichen_Pos101, Me.colC20_Ausschlusskennzeichen_Pos111, Me.colC20_Ausschlusskennzeichen_Pos121, Me.colC20_Ausschlusskennzeichen_Pos131, Me.colC20_Ausschlusskennzeichen_Pos141, Me.colC20_Ausschlusskennzeichen_Pos151, Me.colC20_Ausschlusskennzeichen_Pos161, Me.colC20_Ausschlusskennzeichen_Pos171, Me.colC20_Ausschlusskennzeichen_Pos181, Me.colC20_Ausschlusskennzeichen_Pos191, Me.colC20_Ausschlusskennzeichen_Pos201, Me.colC20_Ausschlusskennzeichen_Pos211, Me.colC20_Ausschlusskennzeichen_Pos221, Me.colC20_Ausschlusskennzeichen_Pos231, Me.colC20_Ausschlusskennzeichen_Pos241, Me.colC20_Ausschlusskennzeichen_Pos251, Me.colC20_Ausschlusskennzeichen_Pos261, Me.colC20_Ausschlusskennzeichen_Pos271, Me.colC20_Ausschlusskennzeichen_Pos281, Me.colC20_Ausschlusskennzeichen_Pos291, Me.colC20_Ausschlusskennzeichen_Pos301, Me.colC20_Ausschlusskennzeichen_Pos311, Me.colC20_Ausschlusskennzeichen_Pos321, Me.colC20_Ausschlusskennzeichen_Pos331, Me.colC20_Ausschlusskennzeichen_Pos341, Me.colC20_Ausschlusskennzeichen_Pos351, Me.colC20_Ausschlusskennzeichen_Pos361, Me.colC20_Ausschlusskennzeichen_Pos371, Me.colC20_Ausschlusskennzeichen_Pos381, Me.colC20_Ausschlusskennzeichen_Pos391, Me.colC20_Ausschlusskennzeichen_Pos401, Me.colC20_Ausschlusskennzeichen_Pos411, Me.colC20_Ausschlusskennzeichen_Pos421, Me.colC20_Ausschlusskennzeichen_Pos431, Me.colC20_Ausschlusskennzeichen_Pos441, Me.colC20_Ausschlusskennzeichen_Pos451, Me.colC20_Ausschlusskennzeichen_Pos461, Me.colC20_Ausschlusskennzeichen_Pos471, Me.colC20_Ausschlusskennzeichen_Pos481, Me.colC20_Ausschlusskennzeichen_Pos491, Me.colC20_Ausschlusskennzeichen_Pos501, Me.colC21_WeitereZustandsverschluesselungen_GESAMT, Me.colC21_WeitereZustandsverschluesselungen_Pos110, Me.colC21_WeitereZustandsverschluesselungen_Pos210, Me.colC21_WeitereZustandsverschluesselungen_Pos310, Me.colC21_WeitereZustandsverschluesselungen_Pos410, Me.colC21_WeitereZustandsverschluesselungen_Pos51, Me.colC21_WeitereZustandsverschluesselungen_Pos61, Me.colC21_WeitereZustandsverschluesselungen_Pos71, Me.colC21_WeitereZustandsverschluesselungen_Pos81, Me.colC21_WeitereZustandsverschluesselungen_Pos91, Me.colC21_WeitereZustandsverschluesselungen_Pos101, Me.colC21_WeitereZustandsverschluesselungen_Pos111, Me.colC21_WeitereZustandsverschluesselungen_Pos121, Me.colC21_WeitereZustandsverschluesselungen_Pos131, Me.colC21_WeitereZustandsverschluesselungen_Pos141, Me.colC21_WeitereZustandsverschluesselungen_Pos151, Me.colC21_WeitereZustandsverschluesselungen_Pos161, Me.colC21_WeitereZustandsverschluesselungen_Pos171, Me.colC21_WeitereZustandsverschluesselungen_Pos181, Me.colC21_WeitereZustandsverschluesselungen_Pos191, Me.colC21_WeitereZustandsverschluesselungen_Pos201, Me.colC21_WeitereZustandsverschluesselungen_Pos211, Me.colC21_WeitereZustandsverschluesselungen_Pos221, Me.colC21_WeitereZustandsverschluesselungen_Pos231, Me.colC21_WeitereZustandsverschluesselungen_Pos241, Me.colC21_WeitereZustandsverschluesselungen_Pos251, Me.colC21_WeitereZustandsverschluesselungen_Pos261, Me.colC21_WeitereZustandsverschluesselungen_Pos271, Me.colC21_WeitereZustandsverschluesselungen_Pos281, Me.colC21_WeitereZustandsverschluesselungen_Pos291, Me.colC21_WeitereZustandsverschluesselungen_Pos301, Me.colC21_WeitereZustandsverschluesselungen_Pos311, Me.colC21_WeitereZustandsverschluesselungen_Pos321, Me.colC21_WeitereZustandsverschluesselungen_Pos331, Me.colC21_WeitereZustandsverschluesselungen_Pos341, Me.colC21_WeitereZustandsverschluesselungen_Pos351, Me.colC21_WeitereZustandsverschluesselungen_Pos361, Me.colC21_WeitereZustandsverschluesselungen_Pos371, Me.colC21_WeitereZustandsverschluesselungen_Pos381, Me.colC21_WeitereZustandsverschluesselungen_Pos391, Me.colC21_WeitereZustandsverschluesselungen_Pos401, Me.colC21_WeitereZustandsverschluesselungen_Pos411, Me.colC21_WeitereZustandsverschluesselungen_Pos421, Me.colC21_WeitereZustandsverschluesselungen_Pos431, Me.colC21_WeitereZustandsverschluesselungen_Pos441, Me.colC21_WeitereZustandsverschluesselungen_Pos451, Me.colC21_WeitereZustandsverschluesselungen_Pos461, Me.colC21_WeitereZustandsverschluesselungen_Pos471, Me.colC21_WeitereZustandsverschluesselungen_Pos481, Me.colC21_WeitereZustandsverschluesselungen_Pos491, Me.colC21_WeitereZustandsverschluesselungen_Pos501, Me.colC22_KenzEWR_Niederl, Me.colC23_KenzNichtEWR_Niederl, Me.colB_D_Satz_ID1, Me.colKontoname})
         Me.GridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule3.Column = Me.colC20_Ausschlusskennzeichen_GESAMT
-        GridFormatRule3.Name = "Format0"
-        FormatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue3.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        FormatConditionRuleValue3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        FormatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue3.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue3.Appearance.Options.UseFont = True
-        FormatConditionRuleValue3.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue3.Value1 = "N"
-        GridFormatRule3.Rule = FormatConditionRuleValue3
-        GridFormatRule4.Column = Me.colC20_Ausschlusskennzeichen_GESAMT
-        GridFormatRule4.Name = "Format1"
-        FormatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue4.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        FormatConditionRuleValue4.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        FormatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue4.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue4.Appearance.Options.UseFont = True
-        FormatConditionRuleValue4.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue4.Value1 = "Y"
-        GridFormatRule4.Rule = FormatConditionRuleValue4
-        GridFormatRule5.Column = Me.colC21_WeitereZustandsverschluesselungen_GESAMT
-        GridFormatRule5.Name = "Format2"
-        FormatConditionRuleValue5.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue5.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        FormatConditionRuleValue5.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        FormatConditionRuleValue5.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue5.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue5.Appearance.Options.UseFont = True
-        FormatConditionRuleValue5.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue5.Value1 = "N"
-        GridFormatRule5.Rule = FormatConditionRuleValue5
-        GridFormatRule6.Column = Me.colC21_WeitereZustandsverschluesselungen_GESAMT
-        GridFormatRule6.Name = "Format3"
-        FormatConditionRuleValue6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue6.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
-        FormatConditionRuleValue6.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        FormatConditionRuleValue6.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue6.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue6.Appearance.Options.UseFont = True
-        FormatConditionRuleValue6.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue6.Value1 = "Y"
-        GridFormatRule6.Rule = FormatConditionRuleValue6
-        Me.GridView3.FormatRules.Add(GridFormatRule3)
-        Me.GridView3.FormatRules.Add(GridFormatRule4)
-        Me.GridView3.FormatRules.Add(GridFormatRule5)
-        Me.GridView3.FormatRules.Add(GridFormatRule6)
+        GridFormatRule1.Column = Me.colC20_Ausschlusskennzeichen_GESAMT
+        GridFormatRule1.Name = "Format0"
+        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        FormatConditionRuleValue1.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        FormatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue1.Appearance.Options.UseFont = True
+        FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue1.Value1 = "N"
+        GridFormatRule1.Rule = FormatConditionRuleValue1
+        GridFormatRule2.Column = Me.colC20_Ausschlusskennzeichen_GESAMT
+        GridFormatRule2.Name = "Format1"
+        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        FormatConditionRuleValue2.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue2.Appearance.Options.UseFont = True
+        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue2.Value1 = "Y"
+        GridFormatRule2.Rule = FormatConditionRuleValue2
+        GridFormatRule9.Column = Me.colC21_WeitereZustandsverschluesselungen_GESAMT
+        GridFormatRule9.Name = "Format2"
+        FormatConditionRuleValue9.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue9.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        FormatConditionRuleValue9.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        FormatConditionRuleValue9.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue9.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue9.Appearance.Options.UseFont = True
+        FormatConditionRuleValue9.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue9.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue9.Value1 = "N"
+        GridFormatRule9.Rule = FormatConditionRuleValue9
+        GridFormatRule10.Column = Me.colC21_WeitereZustandsverschluesselungen_GESAMT
+        GridFormatRule10.Name = "Format3"
+        FormatConditionRuleValue10.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue10.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        FormatConditionRuleValue10.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        FormatConditionRuleValue10.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue10.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue10.Appearance.Options.UseFont = True
+        FormatConditionRuleValue10.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue10.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue10.Value1 = "Y"
+        GridFormatRule10.Rule = FormatConditionRuleValue10
+        Me.GridView3.FormatRules.Add(GridFormatRule1)
+        Me.GridView3.FormatRules.Add(GridFormatRule2)
+        Me.GridView3.FormatRules.Add(GridFormatRule9)
+        Me.GridView3.FormatRules.Add(GridFormatRule10)
         Me.GridView3.GridControl = Me.GridControl3
         Me.GridView3.Name = "GridView3"
         Me.GridView3.OptionsCustomization.AllowRowSizing = True
@@ -4454,6 +4439,7 @@ Partial Class EAEG_Datei_New
         Me.GridView3.OptionsView.ShowAutoFilterRow = True
         Me.GridView3.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.GridView3.OptionsView.ShowFooter = True
+        Me.GridView3.OptionsView.ShowGroupPanel = False
         Me.GridView3.ViewCaption = "EAEG Datei (C-Sätze)"
         '
         'colID2
@@ -6037,13 +6023,12 @@ Partial Class EAEG_Datei_New
         Me.EAEG_ALL_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.EAEG_ALL_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
         Me.EAEG_ALL_GridControl.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 16, True, True, "Neue EAEG Stichtag erstellung", "NeuStichtag")})
-        Me.EAEG_ALL_GridControl.Location = New System.Drawing.Point(24, 74)
+        Me.EAEG_ALL_GridControl.Location = New System.Drawing.Point(24, 24)
         Me.EAEG_ALL_GridControl.MainView = Me.EAEG_Dates_GridView
         Me.EAEG_ALL_GridControl.Name = "EAEG_ALL_GridControl"
         Me.EAEG_ALL_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox2, Me.RepositoryItemTextEdit2, Me.RepositoryItemTextEdit3, Me.RepositoryItemTextEdit4, Me.RepositoryItemMemoExEdit1})
-        Me.EAEG_ALL_GridControl.Size = New System.Drawing.Size(1467, 672)
+        Me.EAEG_ALL_GridControl.Size = New System.Drawing.Size(1406, 438)
         Me.EAEG_ALL_GridControl.TabIndex = 6
-        Me.EAEG_ALL_GridControl.UseEmbeddedNavigator = True
         Me.EAEG_ALL_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.EAEG_Dates_GridView, Me.LayoutView1})
         '
         'EAEG_A_E_Satz_Version4_ALLBindingSource
@@ -6081,6 +6066,7 @@ Partial Class EAEG_Datei_New
         Me.EAEG_Dates_GridView.OptionsView.ShowAutoFilterRow = True
         Me.EAEG_Dates_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.EAEG_Dates_GridView.OptionsView.ShowFooter = True
+        Me.EAEG_Dates_GridView.OptionsView.ShowGroupPanel = False
         '
         'colID3
         '
@@ -7427,84 +7413,6 @@ Partial Class EAEG_Datei_New
         Me.LayoutViewCard2.OptionsItemText.TextToControlDistance = 5
         Me.LayoutViewCard2.Text = "TemplateCard"
         '
-        'BarManager1
-        '
-        Me.BarManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar2, Me.Bar3})
-        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
-        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
-        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
-        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
-        Me.BarManager1.Form = Me
-        Me.BarManager1.Images = Me.ImageCollection1
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.DailyRiskTable_BarButtonItem, Me.LoanStructureTable_BarButtonItem, Me.InterestRateRiskHUMPBarButtonItem, Me.RecalculateCreditRiskCurrentDateBarButtonItem, Me.RecalculateCreditRiskSpecificPeriodBarButtonItem, Me.BarButtonItem3, Me.EAEG_Datei_Gesamt_BarButtonItem, Me.EAEG_Daten_Kunden_BarButtonItem, Me.EAEG_EinreicherDatei_Erstellung_BarButtonItem, Me.EAEG_Meldedatei_Erstellung_BarButtonItem, Me.Gesetzliche_Einlagensicherung_BarButtonItem, Me.EAEG_EinreicherDateiErstellung_BASIS_BarButtonItem, Me.EAEG_MeldeDateiErstellung_BASIS_BarButtonItem, Me.EAEG_Laden_BASIS_BarButtonItem, Me.EAEG_Laden_ERWEITERT_BarButtonItem, Me.EAEG_Bilanz_Differences_BarbuttonItem})
-        Me.BarManager1.MainMenu = Me.Bar2
-        Me.BarManager1.MaxItemId = 16
-        Me.BarManager1.StatusBar = Me.Bar3
-        '
-        'Bar1
-        '
-        Me.Bar1.BarName = "Tools"
-        Me.Bar1.DockCol = 0
-        Me.Bar1.DockRow = 1
-        Me.Bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar1.Text = "Tools"
-        Me.Bar1.Visible = False
-        '
-        'Bar2
-        '
-        Me.Bar2.BarName = "Main menu"
-        Me.Bar2.DockCol = 0
-        Me.Bar2.DockRow = 0
-        Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar2.OptionsBar.MultiLine = True
-        Me.Bar2.OptionsBar.UseWholeRow = True
-        Me.Bar2.Text = "Main menu"
-        Me.Bar2.Visible = False
-        '
-        'Bar3
-        '
-        Me.Bar3.BarName = "Status bar"
-        Me.Bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom
-        Me.Bar3.DockCol = 0
-        Me.Bar3.DockRow = 0
-        Me.Bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.Bar3.OptionsBar.AllowQuickCustomization = False
-        Me.Bar3.OptionsBar.DrawDragBorder = False
-        Me.Bar3.OptionsBar.UseWholeRow = True
-        Me.Bar3.Text = "Status bar"
-        '
-        'barDockControlTop
-        '
-        Me.barDockControlTop.CausesValidation = False
-        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1515, 49)
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = False
-        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 752)
-        Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1515, 23)
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = False
-        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
-        Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 703)
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = False
-        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1515, 49)
-        Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 703)
-        '
         'DailyRiskTable_BarButtonItem
         '
         Me.DailyRiskTable_BarButtonItem.Caption = "DAILY RISK TABLE"
@@ -7541,12 +7449,6 @@ Partial Class EAEG_Datei_New
         Me.RecalculateCreditRiskSpecificPeriodBarButtonItem.ImageOptions.ImageIndex = 8
         Me.RecalculateCreditRiskSpecificPeriodBarButtonItem.Name = "RecalculateCreditRiskSpecificPeriodBarButtonItem"
         '
-        'BarButtonItem3
-        '
-        Me.BarButtonItem3.Caption = "BarButtonItem3"
-        Me.BarButtonItem3.Id = 5
-        Me.BarButtonItem3.Name = "BarButtonItem3"
-        '
         'EAEG_Datei_Gesamt_BarButtonItem
         '
         Me.EAEG_Datei_Gesamt_BarButtonItem.Caption = "EAEG Dateidaten (Gesamt)"
@@ -7557,9 +7459,12 @@ Partial Class EAEG_Datei_New
         '
         'PopupMenu1
         '
-        Me.PopupMenu1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Datei_Gesamt_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Daten_Kunden_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.Gesetzliche_Einlagensicherung_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Bilanz_Differences_BarbuttonItem, True)})
-        Me.PopupMenu1.Manager = Me.BarManager1
+        Me.PopupMenu1.ItemLinks.Add(Me.EAEG_Datei_Gesamt_BarButtonItem)
+        Me.PopupMenu1.ItemLinks.Add(Me.EAEG_Daten_Kunden_BarButtonItem, True)
+        Me.PopupMenu1.ItemLinks.Add(Me.Gesetzliche_Einlagensicherung_BarButtonItem, True)
+        Me.PopupMenu1.ItemLinks.Add(Me.EAEG_Bilanz_Differences_BarbuttonItem, True)
         Me.PopupMenu1.Name = "PopupMenu1"
+        Me.PopupMenu1.Ribbon = Me.RibbonControl2
         '
         'EAEG_Daten_Kunden_BarButtonItem
         '
@@ -7574,6 +7479,28 @@ Partial Class EAEG_Datei_New
         Me.Gesetzliche_Einlagensicherung_BarButtonItem.Id = 10
         Me.Gesetzliche_Einlagensicherung_BarButtonItem.ImageOptions.ImageIndex = 11
         Me.Gesetzliche_Einlagensicherung_BarButtonItem.Name = "Gesetzliche_Einlagensicherung_BarButtonItem"
+        '
+        'EAEG_Bilanz_Differences_BarbuttonItem
+        '
+        Me.EAEG_Bilanz_Differences_BarbuttonItem.Caption = "EAEG (EinSiG) - Bilanz Differenzen"
+        Me.EAEG_Bilanz_Differences_BarbuttonItem.Id = 15
+        Me.EAEG_Bilanz_Differences_BarbuttonItem.ImageOptions.ImageIndex = 18
+        Me.EAEG_Bilanz_Differences_BarbuttonItem.Name = "EAEG_Bilanz_Differences_BarbuttonItem"
+        '
+        'RibbonControl2
+        '
+        Me.RibbonControl2.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl2.ExpandCollapseItem.Id = 0
+        Me.RibbonControl2.Images = Me.ImageCollection1
+        Me.RibbonControl2.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl2.ExpandCollapseItem, Me.RibbonControl2.SearchEditItem, Me.DailyRiskTable_BarButtonItem, Me.LoanStructureTable_BarButtonItem, Me.InterestRateRiskHUMPBarButtonItem, Me.RecalculateCreditRiskCurrentDateBarButtonItem, Me.RecalculateCreditRiskSpecificPeriodBarButtonItem, Me.EAEG_Datei_Gesamt_BarButtonItem, Me.EAEG_Daten_Kunden_BarButtonItem, Me.EAEG_EinreicherDatei_Erstellung_BarButtonItem, Me.EAEG_Meldedatei_Erstellung_BarButtonItem, Me.Gesetzliche_Einlagensicherung_BarButtonItem, Me.EAEG_EinreicherDateiErstellung_BASIS_BarButtonItem, Me.EAEG_MeldeDateiErstellung_BASIS_BarButtonItem, Me.EAEG_Laden_BASIS_BarButtonItem, Me.EAEG_Laden_ERWEITERT_BarButtonItem, Me.EAEG_Bilanz_Differences_BarbuttonItem, Me.Stichtag_BarEditItem, Me.BarSubItem1, Me.EAEG_Daten_Laden_BarSubItem, Me.EAEG_Datei_Erstellung_BarSubItem, Me.EAEG_Datei_Reports_BarSubItem, Me.GridView_Print_Export_bbi, Me.Reload_bbi, Me.NewStichtag_bbi, Me.EAEG_ALL_Print_Export_bbi, Me.ViewDetails_SwitchItem, Me.bbi_Close, Me.EAEG_Dateien_Ordner_bbi})
+        Me.RibbonControl2.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl2.MaxItemId = 30
+        Me.RibbonControl2.Name = "RibbonControl2"
+        Me.RibbonControl2.PageHeaderItemLinks.Add(Me.ViewDetails_SwitchItem)
+        Me.RibbonControl2.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage3})
+        Me.RibbonControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.BusinessDate_SearchLookUpEdit})
+        Me.RibbonControl2.Size = New System.Drawing.Size(1454, 94)
+        Me.RibbonControl2.StatusBar = Me.RibbonStatusBar2
         '
         'EAEG_EinreicherDatei_Erstellung_BarButtonItem
         '
@@ -7605,7 +7532,7 @@ Partial Class EAEG_Datei_New
         '
         'EAEG_Laden_BASIS_BarButtonItem
         '
-        Me.EAEG_Laden_BASIS_BarButtonItem.Caption = "EAEG Daten Laden (BASIS)"
+        Me.EAEG_Laden_BASIS_BarButtonItem.Caption = "EAEG Daten erneut laden (BASIS)"
         Me.EAEG_Laden_BASIS_BarButtonItem.Id = 13
         Me.EAEG_Laden_BASIS_BarButtonItem.ImageOptions.ImageIndex = 10
         Me.EAEG_Laden_BASIS_BarButtonItem.Name = "EAEG_Laden_BASIS_BarButtonItem"
@@ -7617,6 +7544,199 @@ Partial Class EAEG_Datei_New
         Me.EAEG_Laden_ERWEITERT_BarButtonItem.ImageOptions.ImageIndex = 10
         Me.EAEG_Laden_ERWEITERT_BarButtonItem.Name = "EAEG_Laden_ERWEITERT_BarButtonItem"
         Me.EAEG_Laden_ERWEITERT_BarButtonItem.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'Stichtag_BarEditItem
+        '
+        Me.Stichtag_BarEditItem.Caption = "Stichtag"
+        Me.Stichtag_BarEditItem.CaptionToEditorIndent = 10
+        Me.Stichtag_BarEditItem.Edit = Me.BusinessDate_SearchLookUpEdit
+        Me.Stichtag_BarEditItem.EditWidth = 150
+        Me.Stichtag_BarEditItem.Id = 6
+        Me.Stichtag_BarEditItem.ImageOptions.Image = CType(resources.GetObject("Stichtag_BarEditItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.Stichtag_BarEditItem.ImageOptions.LargeImage = CType(resources.GetObject("Stichtag_BarEditItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Stichtag_BarEditItem.Name = "Stichtag_BarEditItem"
+        '
+        'BusinessDate_SearchLookUpEdit
+        '
+        Me.BusinessDate_SearchLookUpEdit.Appearance.Options.UseTextOptions = True
+        Me.BusinessDate_SearchLookUpEdit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.BusinessDate_SearchLookUpEdit.AutoHeight = False
+        Me.BusinessDate_SearchLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.BusinessDate_SearchLookUpEdit.Name = "BusinessDate_SearchLookUpEdit"
+        Me.BusinessDate_SearchLookUpEdit.PopupView = Me.Stichtage_GridView
+        Me.BusinessDate_SearchLookUpEdit.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
+        '
+        'Stichtage_GridView
+        '
+        Me.Stichtage_GridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
+        Me.Stichtage_GridView.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
+        Me.Stichtage_GridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
+        Me.Stichtage_GridView.Appearance.FocusedRow.Options.UseBackColor = True
+        Me.Stichtage_GridView.Appearance.FocusedRow.Options.UseForeColor = True
+        Me.Stichtage_GridView.Appearance.SelectedRow.BackColor = System.Drawing.Color.Yellow
+        Me.Stichtage_GridView.Appearance.SelectedRow.BackColor2 = System.Drawing.Color.Yellow
+        Me.Stichtage_GridView.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black
+        Me.Stichtage_GridView.Appearance.SelectedRow.Options.UseBackColor = True
+        Me.Stichtage_GridView.Appearance.SelectedRow.Options.UseForeColor = True
+        Me.Stichtage_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colStichtag})
+        Me.Stichtage_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.Stichtage_GridView.Name = "Stichtage_GridView"
+        Me.Stichtage_GridView.OptionsFind.AlwaysVisible = True
+        Me.Stichtage_GridView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.Stichtage_GridView.OptionsView.ColumnAutoWidth = False
+        Me.Stichtage_GridView.OptionsView.ShowAutoFilterRow = True
+        Me.Stichtage_GridView.OptionsView.ShowGroupPanel = False
+        '
+        'colStichtag
+        '
+        Me.colStichtag.AppearanceCell.Options.UseTextOptions = True
+        Me.colStichtag.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colStichtag.Caption = "Stichtag"
+        Me.colStichtag.DisplayFormat.FormatString = "d"
+        Me.colStichtag.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.colStichtag.FieldName = "Stichtag"
+        Me.colStichtag.Name = "colStichtag"
+        Me.colStichtag.OptionsColumn.ReadOnly = True
+        Me.colStichtag.Visible = True
+        Me.colStichtag.VisibleIndex = 0
+        Me.colStichtag.Width = 133
+        '
+        'BarSubItem1
+        '
+        Me.BarSubItem1.Caption = "EAEG DATEI REPORTS"
+        Me.BarSubItem1.Id = 7
+        Me.BarSubItem1.ImageOptions.ImageIndex = 11
+        Me.BarSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Datei_Gesamt_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Daten_Kunden_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.Gesetzliche_Einlagensicherung_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Bilanz_Differences_BarbuttonItem)})
+        Me.BarSubItem1.Name = "BarSubItem1"
+        '
+        'EAEG_Daten_Laden_BarSubItem
+        '
+        Me.EAEG_Daten_Laden_BarSubItem.Caption = "EAEG Daten Laden"
+        Me.EAEG_Daten_Laden_BarSubItem.Id = 10
+        Me.EAEG_Daten_Laden_BarSubItem.ImageOptions.Image = CType(resources.GetObject("EAEG_Daten_Laden_BarSubItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.EAEG_Daten_Laden_BarSubItem.ImageOptions.LargeImage = CType(resources.GetObject("EAEG_Daten_Laden_BarSubItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.EAEG_Daten_Laden_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Laden_BASIS_BarButtonItem)})
+        Me.EAEG_Daten_Laden_BarSubItem.Name = "EAEG_Daten_Laden_BarSubItem"
+        '
+        'EAEG_Datei_Erstellung_BarSubItem
+        '
+        Me.EAEG_Datei_Erstellung_BarSubItem.Caption = "EAEG DATEI ERSTELLUNG (BASIS)"
+        Me.EAEG_Datei_Erstellung_BarSubItem.Id = 11
+        Me.EAEG_Datei_Erstellung_BarSubItem.ImageOptions.ImageIndex = 17
+        Me.EAEG_Datei_Erstellung_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_EinreicherDateiErstellung_BASIS_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_MeldeDateiErstellung_BASIS_BarButtonItem, True)})
+        Me.EAEG_Datei_Erstellung_BarSubItem.Name = "EAEG_Datei_Erstellung_BarSubItem"
+        '
+        'EAEG_Datei_Reports_BarSubItem
+        '
+        Me.EAEG_Datei_Reports_BarSubItem.Caption = "EAEG DATEI REPORTS"
+        Me.EAEG_Datei_Reports_BarSubItem.Id = 12
+        Me.EAEG_Datei_Reports_BarSubItem.ImageOptions.ImageIndex = 11
+        Me.EAEG_Datei_Reports_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Datei_Gesamt_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Daten_Kunden_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.Gesetzliche_Einlagensicherung_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Bilanz_Differences_BarbuttonItem, True)})
+        Me.EAEG_Datei_Reports_BarSubItem.Name = "EAEG_Datei_Reports_BarSubItem"
+        '
+        'GridView_Print_Export_bbi
+        '
+        Me.GridView_Print_Export_bbi.Caption = "Print or Export"
+        Me.GridView_Print_Export_bbi.Id = 13
+        Me.GridView_Print_Export_bbi.ImageOptions.Image = CType(resources.GetObject("GridView_Print_Export_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.GridView_Print_Export_bbi.ImageOptions.LargeImage = CType(resources.GetObject("GridView_Print_Export_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.GridView_Print_Export_bbi.Name = "GridView_Print_Export_bbi"
+        '
+        'Reload_bbi
+        '
+        Me.Reload_bbi.Caption = "Laden aller Stichtage"
+        Me.Reload_bbi.Id = 15
+        Me.Reload_bbi.ImageOptions.Image = CType(resources.GetObject("Reload_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.Reload_bbi.ImageOptions.LargeImage = CType(resources.GetObject("Reload_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Reload_bbi.Name = "Reload_bbi"
+        '
+        'NewStichtag_bbi
+        '
+        Me.NewStichtag_bbi.Caption = "Neuer Stichtag"
+        Me.NewStichtag_bbi.Id = 16
+        Me.NewStichtag_bbi.ImageOptions.Image = CType(resources.GetObject("NewStichtag_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.NewStichtag_bbi.ImageOptions.LargeImage = CType(resources.GetObject("NewStichtag_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.NewStichtag_bbi.Name = "NewStichtag_bbi"
+        '
+        'EAEG_ALL_Print_Export_bbi
+        '
+        Me.EAEG_ALL_Print_Export_bbi.Caption = "Print or Export"
+        Me.EAEG_ALL_Print_Export_bbi.Id = 17
+        Me.EAEG_ALL_Print_Export_bbi.ImageOptions.Image = CType(resources.GetObject("EAEG_ALL_Print_Export_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.EAEG_ALL_Print_Export_bbi.ImageOptions.LargeImage = CType(resources.GetObject("EAEG_ALL_Print_Export_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.EAEG_ALL_Print_Export_bbi.Name = "EAEG_ALL_Print_Export_bbi"
+        '
+        'ViewDetails_SwitchItem
+        '
+        Me.ViewDetails_SwitchItem.Caption = "View Details"
+        Me.ViewDetails_SwitchItem.Id = 18
+        Me.ViewDetails_SwitchItem.ImageOptions.Image = CType(resources.GetObject("ViewDetails_SwitchItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.ViewDetails_SwitchItem.ImageOptions.LargeImage = CType(resources.GetObject("ViewDetails_SwitchItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.ViewDetails_SwitchItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ViewDetails_SwitchItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.ViewDetails_SwitchItem.Name = "ViewDetails_SwitchItem"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 20
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.Name = "bbi_Close"
+        '
+        'EAEG_Dateien_Ordner_bbi
+        '
+        Me.EAEG_Dateien_Ordner_bbi.Caption = "EAEG Dateien Ordner"
+        Me.EAEG_Dateien_Ordner_bbi.Id = 26
+        Me.EAEG_Dateien_Ordner_bbi.ImageOptions.Image = CType(resources.GetObject("EAEG_Dateien_Ordner_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.EAEG_Dateien_Ordner_bbi.ImageOptions.LargeImage = CType(resources.GetObject("EAEG_Dateien_Ordner_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.EAEG_Dateien_Ordner_bbi.Name = "EAEG_Dateien_Ordner_bbi"
+        '
+        'RibbonPage3
+        '
+        Me.RibbonPage3.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup3, Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage3.Name = "RibbonPage3"
+        Me.RibbonPage3.Text = "Home"
+        '
+        'RibbonPageGroup3
+        '
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.Stichtag_BarEditItem)
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.NewStichtag_bbi)
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.EAEG_Daten_Laden_BarSubItem, True)
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.EAEG_Datei_Erstellung_BarSubItem, True)
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.EAEG_Datei_Reports_BarSubItem, True)
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.GridView_Print_Export_bbi)
+        Me.RibbonPageGroup3.ItemLinks.Add(Me.EAEG_Dateien_Ordner_bbi)
+        Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
+        Me.RibbonPageGroup3.Text = "Tools"
+        Me.RibbonPageGroup3.Visible = False
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.Reload_bbi)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.NewStichtag_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.EAEG_ALL_Print_Export_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.EAEG_Dateien_Ordner_bbi, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.bbi_Close)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        '
+        'RibbonStatusBar2
+        '
+        Me.RibbonStatusBar2.Location = New System.Drawing.Point(0, 580)
+        Me.RibbonStatusBar2.Name = "RibbonStatusBar2"
+        Me.RibbonStatusBar2.Ribbon = Me.RibbonControl2
+        Me.RibbonStatusBar2.Size = New System.Drawing.Size(1454, 22)
         '
         'EAEG_A_E_Satz_Version4TableAdapter
         '
@@ -7650,6 +7770,8 @@ Partial Class EAEG_Datei_New
         '
         'GroupControl2
         '
+        Me.GroupControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupControl2.Controls.Add(Me.EAEG_Version_lbl)
         Me.GroupControl2.Controls.Add(Me.LabelControl20)
         Me.GroupControl2.Controls.Add(Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit)
@@ -7664,9 +7786,9 @@ Partial Class EAEG_Datei_New
         Me.GroupControl2.Controls.Add(Me.LabelControl2)
         Me.GroupControl2.Controls.Add(Me.A2_Institut_TextEdit)
         Me.GroupControl2.Controls.Add(Me.LabelControl1)
-        Me.GroupControl2.Location = New System.Drawing.Point(12, 14)
+        Me.GroupControl2.Location = New System.Drawing.Point(12, 12)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(466, 199)
+        Me.GroupControl2.Size = New System.Drawing.Size(470, 121)
         Me.GroupControl2.TabIndex = 4
         Me.GroupControl2.Text = "EAEG - A Satz"
         '
@@ -7711,22 +7833,22 @@ Partial Class EAEG_Datei_New
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
-        Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "A7", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "Set as Default Value", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions7.Image = CType(resources.GetObject("EditorButtonImageOptions7.Image"), System.Drawing.Image)
+        Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "A7", -1, True, True, False, EditorButtonImageOptions7, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject25, SerializableAppearanceObject26, SerializableAppearanceObject27, SerializableAppearanceObject28, "Set as Default Value", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.EditFormat.FormatString = "n2"
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.Mask.EditMask = "n2"
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Size = New System.Drawing.Size(137, 22)
-        ToolTipTitleItem1.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem1.Appearance.Options.UseImage = True
-        ToolTipTitleItem1.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem1.Text = "Erläuterung"
-        ToolTipItem1.LeftIndent = 6
-        ToolTipItem1.Text = resources.GetString("ToolTipItem1.Text")
-        SuperToolTip1.Items.Add(ToolTipTitleItem1)
-        SuperToolTip1.Items.Add(ToolTipItem1)
-        Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.SuperTip = SuperToolTip1
+        Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Size = New System.Drawing.Size(137, 24)
+        ToolTipTitleItem22.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem22.Appearance.Options.UseImage = True
+        ToolTipTitleItem22.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem22.Text = "Erläuterung"
+        ToolTipItem21.LeftIndent = 6
+        ToolTipItem21.Text = resources.GetString("ToolTipItem21.Text")
+        SuperToolTip21.Items.Add(ToolTipTitleItem22)
+        SuperToolTip21.Items.Add(ToolTipItem21)
+        Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.SuperTip = SuperToolTip21
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.TabIndex = 12
         Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.ToolTip = "Für Institute mit Wert ""10"" oder ""20"" in A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Angabe der ""alten Sicherungsgrenze""" &
     " in Euro" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "gemäß § 5 Punkt 4 des Statuts des Einlagensicherungsfonds" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "des Bundesv" &
@@ -7751,23 +7873,23 @@ Partial Class EAEG_Datei_New
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
-        Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "A6", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "Set as Default Value", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
+        Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "A6", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "Set as Default Value", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.EditFormat.FormatString = "n2"
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.Mask.EditMask = "n2"
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Size = New System.Drawing.Size(137, 22)
-        ToolTipTitleItem2.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem2.Appearance.Options.UseImage = True
-        ToolTipTitleItem2.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem2.Text = "Erläuterung"
-        ToolTipItem2.LeftIndent = 6
-        ToolTipItem2.Text = "Für Institute mit Wert ""10"" oder ""20"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Zum Stichtag gültige Sicherung" &
+        Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Size = New System.Drawing.Size(137, 24)
+        ToolTipTitleItem1.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.Appearance.Options.UseImage = True
+        ToolTipTitleItem1.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.Text = "Erläuterung"
+        ToolTipItem1.LeftIndent = 6
+        ToolTipItem1.Text = "Für Institute mit Wert ""10"" oder ""20"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Zum Stichtag gültige Sicherung" &
     "sgrenze der" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "freiwilligen Zusatzsicherung in Euro."
-        SuperToolTip2.Items.Add(ToolTipTitleItem2)
-        SuperToolTip2.Items.Add(ToolTipItem2)
-        Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.SuperTip = SuperToolTip2
+        SuperToolTip1.Items.Add(ToolTipTitleItem1)
+        SuperToolTip1.Items.Add(ToolTipItem1)
+        Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.SuperTip = SuperToolTip1
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.TabIndex = 11
         Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.ToolTip = "Für Institute mit Wert ""10"" oder ""20"" in" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Zum Stichtag gültige Sicherun" &
     "gsgrenze der" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "freiwilligen Zusatzsicherung in Euro."
@@ -7791,22 +7913,22 @@ Partial Class EAEG_Datei_New
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
-        Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "A5", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "Set as Default Value", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
+        Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "A5", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "Set as Default Value", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.EditFormat.FormatString = "n2"
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.Mask.EditMask = "n2"
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.EntschaedigungsObergrenzeEU_ButtonEdit.Size = New System.Drawing.Size(137, 22)
-        ToolTipTitleItem3.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem3.Appearance.Options.UseImage = True
-        ToolTipTitleItem3.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem3.Text = "Erläuterung"
-        ToolTipItem3.LeftIndent = 6
-        ToolTipItem3.Text = resources.GetString("ToolTipItem3.Text")
-        SuperToolTip3.Items.Add(ToolTipTitleItem3)
-        SuperToolTip3.Items.Add(ToolTipItem3)
-        Me.EntschaedigungsObergrenzeEU_ButtonEdit.SuperTip = SuperToolTip3
+        Me.EntschaedigungsObergrenzeEU_ButtonEdit.Size = New System.Drawing.Size(137, 24)
+        ToolTipTitleItem2.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem2.Appearance.Options.UseImage = True
+        ToolTipTitleItem2.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem2.Text = "Erläuterung"
+        ToolTipItem2.LeftIndent = 6
+        ToolTipItem2.Text = resources.GetString("ToolTipItem2.Text")
+        SuperToolTip2.Items.Add(ToolTipTitleItem2)
+        SuperToolTip2.Items.Add(ToolTipItem2)
+        Me.EntschaedigungsObergrenzeEU_ButtonEdit.SuperTip = SuperToolTip2
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.TabIndex = 10
         Me.EntschaedigungsObergrenzeEU_ButtonEdit.ToolTip = "Für Institute mit Wert ""20"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Zum Stichtag gültige Entschädigungsoberg" &
     "renze" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "der gesetzlichen Entschädigungseinrichtung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "des EU-Herkunftsstaates in Eu" &
@@ -7831,23 +7953,23 @@ Partial Class EAEG_Datei_New
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions4.Image = CType(resources.GetObject("EditorButtonImageOptions4.Image"), System.Drawing.Image)
-        Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "A4", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "Set as Default Value", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "A4", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "Set as Default Value", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.EditFormat.FormatString = "n2"
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.Mask.EditMask = "n2"
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
-        Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Size = New System.Drawing.Size(137, 22)
-        ToolTipTitleItem4.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem4.Appearance.Options.UseImage = True
-        ToolTipTitleItem4.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem4.Text = "Erläuterung"
-        ToolTipItem4.LeftIndent = 6
-        ToolTipItem4.Text = "Für Institute mit Wert ""01"" oder ""10"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Zum Stichtag gültige Entschädi" &
+        Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Size = New System.Drawing.Size(137, 24)
+        ToolTipTitleItem3.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem3.Appearance.Options.UseImage = True
+        ToolTipTitleItem3.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem3.Text = "Erläuterung"
+        ToolTipItem3.LeftIndent = 6
+        ToolTipItem3.Text = "Für Institute mit Wert ""01"" oder ""10"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Zum Stichtag gültige Entschädi" &
     "gungsobergrenze" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "gemäß § 8 Absatz 1 EinSiG."
-        SuperToolTip4.Items.Add(ToolTipTitleItem4)
-        SuperToolTip4.Items.Add(ToolTipItem4)
-        Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.SuperTip = SuperToolTip4
+        SuperToolTip3.Items.Add(ToolTipTitleItem3)
+        SuperToolTip3.Items.Add(ToolTipItem3)
+        Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.SuperTip = SuperToolTip3
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.TabIndex = 9
         Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.ToolTip = "Für Institute mit Wert ""01"" oder ""10"" in" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Zum Stichtag gültige Entschäd" &
     "igungsobergrenze" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "gemäß EAEG."
@@ -7900,40 +8022,40 @@ Partial Class EAEG_Datei_New
         Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        SerializableAppearanceObject17.Options.UseTextOptions = True
-        SerializableAppearanceObject17.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        SerializableAppearanceObject18.Options.UseTextOptions = True
-        SerializableAppearanceObject18.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        SerializableAppearanceObject19.Options.UseTextOptions = True
-        SerializableAppearanceObject19.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        SerializableAppearanceObject20.Options.UseTextOptions = True
-        SerializableAppearanceObject20.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        EditorButtonImageOptions6.Image = CType(resources.GetObject("EditorButtonImageOptions6.Image"), System.Drawing.Image)
-        ToolTipTitleItem5.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem5.Appearance.Options.UseImage = True
-        ToolTipTitleItem5.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem5.Text = "Info"
-        ToolTipItem5.LeftIndent = 6
-        ToolTipItem5.Text = "Setting the default value for this Field"
-        SuperToolTip5.Items.Add(ToolTipTitleItem5)
-        SuperToolTip5.Items.Add(ToolTipItem5)
-        Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, True, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions6, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject21, SerializableAppearanceObject22, SerializableAppearanceObject23, SerializableAppearanceObject24, "", "SaveDefault", SuperToolTip5, DevExpress.Utils.ToolTipAnchor.[Default])})
+        SerializableAppearanceObject13.Options.UseTextOptions = True
+        SerializableAppearanceObject13.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        SerializableAppearanceObject14.Options.UseTextOptions = True
+        SerializableAppearanceObject14.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        SerializableAppearanceObject15.Options.UseTextOptions = True
+        SerializableAppearanceObject15.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        SerializableAppearanceObject16.Options.UseTextOptions = True
+        SerializableAppearanceObject16.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        EditorButtonImageOptions8.Image = CType(resources.GetObject("EditorButtonImageOptions8.Image"), System.Drawing.Image)
+        ToolTipTitleItem4.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem4.Appearance.Options.UseImage = True
+        ToolTipTitleItem4.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem4.Text = "Info"
+        ToolTipItem4.LeftIndent = 6
+        ToolTipItem4.Text = "Setting the default value for this Field"
+        SuperToolTip4.Items.Add(ToolTipTitleItem4)
+        SuperToolTip4.Items.Add(ToolTipItem4)
+        Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions8, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject29, SerializableAppearanceObject30, SerializableAppearanceObject31, SerializableAppearanceObject32, "", "SaveDefault", SuperToolTip4, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("Ausschließlich EdB", "01", -1), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("Edb und BdB", "10", -1), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("BdB und EUHS", "20", -1)})
-        Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Size = New System.Drawing.Size(157, 22)
-        SuperToolTip6.AllowHtmlText = DevExpress.Utils.DefaultBoolean.[True]
-        ToolTipTitleItem6.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem6.Appearance.Options.UseImage = True
-        ToolTipTitleItem6.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem6.Text = "Erläuterung"
-        ToolTipItem6.LeftIndent = 6
-        ToolTipTitleItem7.LeftIndent = 6
-        ToolTipTitleItem7.Text = "Schlüssel Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "01   Ausschließlich EdB" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "10   EdB und BdB" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "20   BdB und EU" &
+        Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Size = New System.Drawing.Size(157, 24)
+        SuperToolTip22.AllowHtmlText = DevExpress.Utils.DefaultBoolean.[True]
+        ToolTipTitleItem23.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem23.Appearance.Options.UseImage = True
+        ToolTipTitleItem23.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem23.Text = "Erläuterung"
+        ToolTipItem22.LeftIndent = 6
+        ToolTipTitleItem24.LeftIndent = 6
+        ToolTipTitleItem24.Text = "Schlüssel Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "01   Ausschließlich EdB" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "10   EdB und BdB" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "20   BdB und EU" &
     "HS"
-        SuperToolTip6.Items.Add(ToolTipTitleItem6)
-        SuperToolTip6.Items.Add(ToolTipItem6)
-        SuperToolTip6.Items.Add(ToolTipSeparatorItem1)
-        SuperToolTip6.Items.Add(ToolTipTitleItem7)
-        Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.SuperTip = SuperToolTip6
+        SuperToolTip22.Items.Add(ToolTipTitleItem23)
+        SuperToolTip22.Items.Add(ToolTipItem22)
+        SuperToolTip22.Items.Add(ToolTipSeparatorItem2)
+        SuperToolTip22.Items.Add(ToolTipTitleItem24)
+        Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.SuperTip = SuperToolTip22
         Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.TabIndex = 4
         Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.ToolTip = resources.GetString("ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.ToolTip")
         Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.ToolTipController = Me.ToolTipController1
@@ -7964,15 +8086,15 @@ Partial Class EAEG_Datei_New
         Me.A2_Institut_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.A2_Institut_TextEdit.Properties.ReadOnly = True
         Me.A2_Institut_TextEdit.Size = New System.Drawing.Size(65, 20)
-        ToolTipTitleItem8.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem8.Appearance.Options.UseImage = True
-        ToolTipTitleItem8.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem8.Text = "Erläuterung"
-        ToolTipItem7.LeftIndent = 6
-        ToolTipItem7.Text = "China Construction Bank Corporation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Niederlassung Frankfurt/Main" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Wert:317"
-        SuperToolTip7.Items.Add(ToolTipTitleItem8)
-        SuperToolTip7.Items.Add(ToolTipItem7)
-        Me.A2_Institut_TextEdit.SuperTip = SuperToolTip7
+        ToolTipTitleItem5.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem5.Appearance.Options.UseImage = True
+        ToolTipTitleItem5.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem5.Text = "Erläuterung"
+        ToolTipItem5.LeftIndent = 6
+        ToolTipItem5.Text = "China Construction Bank Corporation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Niederlassung Frankfurt/Main" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Wert:317"
+        SuperToolTip5.Items.Add(ToolTipTitleItem5)
+        SuperToolTip5.Items.Add(ToolTipItem5)
+        Me.A2_Institut_TextEdit.SuperTip = SuperToolTip5
         Me.A2_Institut_TextEdit.TabIndex = 1
         Me.A2_Institut_TextEdit.ToolTipController = Me.ToolTipController1
         '
@@ -7986,7 +8108,8 @@ Partial Class EAEG_Datei_New
         '
         'GroupControl3
         '
-        Me.GroupControl3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupControl3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupControl3.Controls.Add(Me.E15_TextEdit)
         Me.GroupControl3.Controls.Add(Me.LabelControl19)
         Me.GroupControl3.Controls.Add(Me.E14_TextEdit)
@@ -8013,9 +8136,9 @@ Partial Class EAEG_Datei_New
         Me.GroupControl3.Controls.Add(Me.LabelControl9)
         Me.GroupControl3.Controls.Add(Me.LabelControl8)
         Me.GroupControl3.Controls.Add(Me.LabelControl7)
-        Me.GroupControl3.Location = New System.Drawing.Point(501, 14)
+        Me.GroupControl3.Location = New System.Drawing.Point(486, 12)
         Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(1002, 199)
+        Me.GroupControl3.Size = New System.Drawing.Size(956, 121)
         Me.GroupControl3.TabIndex = 5
         Me.GroupControl3.Text = "EAEG - E Satz"
         '
@@ -8037,16 +8160,16 @@ Partial Class EAEG_Datei_New
         Me.E15_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E15_TextEdit.Properties.ReadOnly = True
         Me.E15_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem9.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem9.Appearance.Options.UseImage = True
-        ToolTipTitleItem9.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem9.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D15:"
-        ToolTipItem8.LeftIndent = 6
-        ToolTipItem8.Text = "Summe kreditorischer Kontosalden aus Feld C19," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wenn Feld C23 einen Eintrag enthä" &
+        ToolTipTitleItem6.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem6.Appearance.Options.UseImage = True
+        ToolTipTitleItem6.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem6.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D15:"
+        ToolTipItem6.LeftIndent = 6
+        ToolTipItem6.Text = "Summe kreditorischer Kontosalden aus Feld C19," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wenn Feld C23 einen Eintrag enthä" &
     "lt."
-        SuperToolTip8.Items.Add(ToolTipTitleItem9)
-        SuperToolTip8.Items.Add(ToolTipItem8)
-        Me.E15_TextEdit.SuperTip = SuperToolTip8
+        SuperToolTip6.Items.Add(ToolTipTitleItem6)
+        SuperToolTip6.Items.Add(ToolTipItem6)
+        Me.E15_TextEdit.SuperTip = SuperToolTip6
         Me.E15_TextEdit.TabIndex = 26
         Me.E15_TextEdit.ToolTip = resources.GetString("E15_TextEdit.ToolTip")
         Me.E15_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8080,16 +8203,16 @@ Partial Class EAEG_Datei_New
         Me.E14_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E14_TextEdit.Properties.ReadOnly = True
         Me.E14_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem10.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem10.Appearance.Options.UseImage = True
-        ToolTipTitleItem10.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem10.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D14:"
-        ToolTipItem9.LeftIndent = 6
-        ToolTipItem9.Text = "Für Institute mit Wert ""10"" oder ""20"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe der debitorischen Kontos" &
+        ToolTipTitleItem7.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem7.Appearance.Options.UseImage = True
+        ToolTipTitleItem7.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem7.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D14:"
+        ToolTipItem7.LeftIndent = 6
+        ToolTipItem7.Text = "Für Institute mit Wert ""10"" oder ""20"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe der debitorischen Kontos" &
     "alden aus" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Feld C19."
-        SuperToolTip9.Items.Add(ToolTipTitleItem10)
-        SuperToolTip9.Items.Add(ToolTipItem9)
-        Me.E14_TextEdit.SuperTip = SuperToolTip9
+        SuperToolTip7.Items.Add(ToolTipTitleItem7)
+        SuperToolTip7.Items.Add(ToolTipItem7)
+        Me.E14_TextEdit.SuperTip = SuperToolTip7
         Me.E14_TextEdit.TabIndex = 24
         Me.E14_TextEdit.ToolTip = resources.GetString("E14_TextEdit.ToolTip")
         Me.E14_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8123,15 +8246,15 @@ Partial Class EAEG_Datei_New
         Me.E13_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E13_TextEdit.Properties.ReadOnly = True
         Me.E13_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem11.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem11.Appearance.Options.UseImage = True
-        ToolTipTitleItem11.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem11.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D13:"
-        ToolTipItem10.LeftIndent = 6
-        ToolTipItem10.Text = resources.GetString("ToolTipItem10.Text")
-        SuperToolTip10.Items.Add(ToolTipTitleItem11)
-        SuperToolTip10.Items.Add(ToolTipItem10)
-        Me.E13_TextEdit.SuperTip = SuperToolTip10
+        ToolTipTitleItem8.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem8.Appearance.Options.UseImage = True
+        ToolTipTitleItem8.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem8.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D13:"
+        ToolTipItem8.LeftIndent = 6
+        ToolTipItem8.Text = resources.GetString("ToolTipItem8.Text")
+        SuperToolTip8.Items.Add(ToolTipTitleItem8)
+        SuperToolTip8.Items.Add(ToolTipItem8)
+        Me.E13_TextEdit.SuperTip = SuperToolTip8
         Me.E13_TextEdit.TabIndex = 22
         Me.E13_TextEdit.ToolTip = resources.GetString("E13_TextEdit.ToolTip")
         Me.E13_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8165,15 +8288,15 @@ Partial Class EAEG_Datei_New
         Me.E12_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E12_TextEdit.Properties.ReadOnly = True
         Me.E12_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem12.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem12.Appearance.Options.UseImage = True
-        ToolTipTitleItem12.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem12.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D12:"
-        ToolTipItem11.LeftIndent = 6
-        ToolTipItem11.Text = resources.GetString("ToolTipItem11.Text")
-        SuperToolTip11.Items.Add(ToolTipTitleItem12)
-        SuperToolTip11.Items.Add(ToolTipItem11)
-        Me.E12_TextEdit.SuperTip = SuperToolTip11
+        ToolTipTitleItem9.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem9.Appearance.Options.UseImage = True
+        ToolTipTitleItem9.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem9.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D12:"
+        ToolTipItem9.LeftIndent = 6
+        ToolTipItem9.Text = resources.GetString("ToolTipItem9.Text")
+        SuperToolTip9.Items.Add(ToolTipTitleItem9)
+        SuperToolTip9.Items.Add(ToolTipItem9)
+        Me.E12_TextEdit.SuperTip = SuperToolTip9
         Me.E12_TextEdit.TabIndex = 20
         Me.E12_TextEdit.ToolTip = resources.GetString("E12_TextEdit.ToolTip")
         Me.E12_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8197,15 +8320,15 @@ Partial Class EAEG_Datei_New
         Me.E11_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E11_TextEdit.Properties.ReadOnly = True
         Me.E11_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem13.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem13.Appearance.Options.UseImage = True
-        ToolTipTitleItem13.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem13.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D11:"
-        ToolTipItem12.LeftIndent = 6
-        ToolTipItem12.Text = resources.GetString("ToolTipItem12.Text")
-        SuperToolTip12.Items.Add(ToolTipTitleItem13)
-        SuperToolTip12.Items.Add(ToolTipItem12)
-        Me.E11_TextEdit.SuperTip = SuperToolTip12
+        ToolTipTitleItem10.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem10.Appearance.Options.UseImage = True
+        ToolTipTitleItem10.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem10.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D11:"
+        ToolTipItem10.LeftIndent = 6
+        ToolTipItem10.Text = resources.GetString("ToolTipItem10.Text")
+        SuperToolTip10.Items.Add(ToolTipTitleItem10)
+        SuperToolTip10.Items.Add(ToolTipItem10)
+        Me.E11_TextEdit.SuperTip = SuperToolTip10
         Me.E11_TextEdit.TabIndex = 19
         Me.E11_TextEdit.ToolTip = resources.GetString("E11_TextEdit.ToolTip")
         Me.E11_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8229,15 +8352,15 @@ Partial Class EAEG_Datei_New
         Me.E10_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E10_TextEdit.Properties.ReadOnly = True
         Me.E10_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem14.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem14.Appearance.Options.UseImage = True
-        ToolTipTitleItem14.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem14.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D10:"
-        ToolTipItem13.LeftIndent = 6
-        ToolTipItem13.Text = resources.GetString("ToolTipItem13.Text")
-        SuperToolTip13.Items.Add(ToolTipTitleItem14)
-        SuperToolTip13.Items.Add(ToolTipItem13)
-        Me.E10_TextEdit.SuperTip = SuperToolTip13
+        ToolTipTitleItem11.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem11.Appearance.Options.UseImage = True
+        ToolTipTitleItem11.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem11.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D10:"
+        ToolTipItem11.LeftIndent = 6
+        ToolTipItem11.Text = resources.GetString("ToolTipItem11.Text")
+        SuperToolTip11.Items.Add(ToolTipTitleItem11)
+        SuperToolTip11.Items.Add(ToolTipItem11)
+        Me.E10_TextEdit.SuperTip = SuperToolTip11
         Me.E10_TextEdit.TabIndex = 18
         Me.E10_TextEdit.ToolTip = resources.GetString("E10_TextEdit.ToolTip")
         Me.E10_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8261,17 +8384,17 @@ Partial Class EAEG_Datei_New
         Me.E9_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E9_TextEdit.Properties.ReadOnly = True
         Me.E9_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem15.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem15.Appearance.Options.UseImage = True
-        ToolTipTitleItem15.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem15.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D9:"
-        ToolTipItem14.LeftIndent = 6
-        ToolTipItem14.Text = "Für Institute mit Wert ""20"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D3 maximal bis zur Höh" &
+        ToolTipTitleItem12.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem12.Appearance.Options.UseImage = True
+        ToolTipTitleItem12.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem12.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D9:"
+        ToolTipItem12.LeftIndent = 6
+        ToolTipItem12.Text = "Für Institute mit Wert ""20"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D3 maximal bis zur Höh" &
     "e des" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnisses aus Feld A5 * Feld C5." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Von den übrigen Instituten ist der We" &
     "rt ""0,00""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "einzustellen."
-        SuperToolTip14.Items.Add(ToolTipTitleItem15)
-        SuperToolTip14.Items.Add(ToolTipItem14)
-        Me.E9_TextEdit.SuperTip = SuperToolTip14
+        SuperToolTip12.Items.Add(ToolTipTitleItem12)
+        SuperToolTip12.Items.Add(ToolTipItem12)
+        Me.E9_TextEdit.SuperTip = SuperToolTip12
         Me.E9_TextEdit.TabIndex = 17
         Me.E9_TextEdit.ToolTip = resources.GetString("E9_TextEdit.ToolTip")
         Me.E9_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8295,16 +8418,16 @@ Partial Class EAEG_Datei_New
         Me.E8_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E8_TextEdit.Properties.ReadOnly = True
         Me.E8_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem16.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem16.Appearance.Options.UseImage = True
-        ToolTipTitleItem16.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem16.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D8:"
-        ToolTipItem15.LeftIndent = 6
-        ToolTipItem15.Text = "Summe kreditorischer Kontosalden aus Feld C19," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wenn Feld C22 einen Eintrag enthä" &
+        ToolTipTitleItem13.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem13.Appearance.Options.UseImage = True
+        ToolTipTitleItem13.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem13.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D8:"
+        ToolTipItem13.LeftIndent = 6
+        ToolTipItem13.Text = "Summe kreditorischer Kontosalden aus Feld C19," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "wenn Feld C22 einen Eintrag enthä" &
     "lt."
-        SuperToolTip15.Items.Add(ToolTipTitleItem16)
-        SuperToolTip15.Items.Add(ToolTipItem15)
-        Me.E8_TextEdit.SuperTip = SuperToolTip15
+        SuperToolTip13.Items.Add(ToolTipTitleItem13)
+        SuperToolTip13.Items.Add(ToolTipItem13)
+        Me.E8_TextEdit.SuperTip = SuperToolTip13
         Me.E8_TextEdit.TabIndex = 16
         Me.E8_TextEdit.ToolTip = resources.GetString("E8_TextEdit.ToolTip")
         Me.E8_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8368,16 +8491,16 @@ Partial Class EAEG_Datei_New
         Me.E7_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E7_TextEdit.Properties.ReadOnly = True
         Me.E7_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem17.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem17.Appearance.Options.UseImage = True
-        ToolTipTitleItem17.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem17.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D7:"
-        ToolTipItem16.LeftIndent = 6
-        ToolTipItem16.Text = "Für Institute mit Wert ""01"" oder ""10"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D5 ./. Feld " &
+        ToolTipTitleItem14.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem14.Appearance.Options.UseImage = True
+        ToolTipTitleItem14.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem14.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D7:"
+        ToolTipItem14.LeftIndent = 6
+        ToolTipItem14.Text = "Für Institute mit Wert ""01"" oder ""10"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D5 ./. Feld " &
     "D6."
-        SuperToolTip16.Items.Add(ToolTipTitleItem17)
-        SuperToolTip16.Items.Add(ToolTipItem16)
-        Me.E7_TextEdit.SuperTip = SuperToolTip16
+        SuperToolTip14.Items.Add(ToolTipTitleItem14)
+        SuperToolTip14.Items.Add(ToolTipItem14)
+        Me.E7_TextEdit.SuperTip = SuperToolTip14
         Me.E7_TextEdit.TabIndex = 11
         Me.E7_TextEdit.ToolTip = resources.GetString("E7_TextEdit.ToolTip")
         Me.E7_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8401,17 +8524,17 @@ Partial Class EAEG_Datei_New
         Me.E6_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E6_TextEdit.Properties.ReadOnly = True
         Me.E6_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem18.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem18.Appearance.Options.UseImage = True
-        ToolTipTitleItem18.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem18.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D6:"
-        ToolTipItem17.LeftIndent = 6
-        ToolTipItem17.Text = "Für Institute mit Wert ""01"" oder ""10"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D5 maximal b" &
+        ToolTipTitleItem15.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem15.Appearance.Options.UseImage = True
+        ToolTipTitleItem15.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem15.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D6:"
+        ToolTipItem15.LeftIndent = 6
+        ToolTipItem15.Text = "Für Institute mit Wert ""01"" oder ""10"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D5 maximal b" &
     "is zur Höhe des" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnisses aus Feld A4 * Feld C5." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Von den übrigen Instituten " &
     "ist der Wert ""0,00""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "einzustellen."
-        SuperToolTip17.Items.Add(ToolTipTitleItem18)
-        SuperToolTip17.Items.Add(ToolTipItem17)
-        Me.E6_TextEdit.SuperTip = SuperToolTip17
+        SuperToolTip15.Items.Add(ToolTipTitleItem15)
+        SuperToolTip15.Items.Add(ToolTipItem15)
+        Me.E6_TextEdit.SuperTip = SuperToolTip15
         Me.E6_TextEdit.TabIndex = 10
         Me.E6_TextEdit.ToolTip = resources.GetString("E6_TextEdit.ToolTip")
         Me.E6_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8435,16 +8558,16 @@ Partial Class EAEG_Datei_New
         Me.E5_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E5_TextEdit.Properties.ReadOnly = True
         Me.E5_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem19.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem19.Appearance.Options.UseImage = True
-        ToolTipTitleItem19.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem19.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D5:"
-        ToolTipItem18.LeftIndent = 6
-        ToolTipItem18.Text = "Für Institute mit Wert ""01"" oder ""10"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D3 ./. Feld " &
+        ToolTipTitleItem16.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem16.Appearance.Options.UseImage = True
+        ToolTipTitleItem16.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem16.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D5:"
+        ToolTipItem16.LeftIndent = 6
+        ToolTipItem16.Text = "Für Institute mit Wert ""01"" oder ""10"" in Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D3 ./. Feld " &
     "D4." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Von den übrigen Instituten ist der Wert ""0,00""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "einzustellen."
-        SuperToolTip18.Items.Add(ToolTipTitleItem19)
-        SuperToolTip18.Items.Add(ToolTipItem18)
-        Me.E5_TextEdit.SuperTip = SuperToolTip18
+        SuperToolTip16.Items.Add(ToolTipTitleItem16)
+        SuperToolTip16.Items.Add(ToolTipItem16)
+        Me.E5_TextEdit.SuperTip = SuperToolTip16
         Me.E5_TextEdit.TabIndex = 9
         Me.E5_TextEdit.ToolTip = "Summe der Werte aus Feld D5=" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Für Institute mit Wert ""01"" oder ""10"" in" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Feld A3:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Ergebnis aus Feld D3 ./. Feld D4." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Von den übrigen Instituten ist der Wert ""0,0" &
     "0""" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "einzustellen."
@@ -8469,15 +8592,15 @@ Partial Class EAEG_Datei_New
         Me.E4_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E4_TextEdit.Properties.ReadOnly = True
         Me.E4_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem20.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem20.Appearance.Options.UseImage = True
-        ToolTipTitleItem20.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem20.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D4:"
-        ToolTipItem19.LeftIndent = 6
-        ToolTipItem19.Text = resources.GetString("ToolTipItem19.Text")
-        SuperToolTip19.Items.Add(ToolTipTitleItem20)
-        SuperToolTip19.Items.Add(ToolTipItem19)
-        Me.E4_TextEdit.SuperTip = SuperToolTip19
+        ToolTipTitleItem17.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem17.Appearance.Options.UseImage = True
+        ToolTipTitleItem17.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem17.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D4:"
+        ToolTipItem17.LeftIndent = 6
+        ToolTipItem17.Text = resources.GetString("ToolTipItem17.Text")
+        SuperToolTip17.Items.Add(ToolTipTitleItem17)
+        SuperToolTip17.Items.Add(ToolTipItem17)
+        Me.E4_TextEdit.SuperTip = SuperToolTip17
         Me.E4_TextEdit.TabIndex = 8
         Me.E4_TextEdit.ToolTip = resources.GetString("E4_TextEdit.ToolTip")
         Me.E4_TextEdit.ToolTipController = Me.ToolTipController1
@@ -8501,15 +8624,15 @@ Partial Class EAEG_Datei_New
         Me.E3_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.E3_TextEdit.Properties.ReadOnly = True
         Me.E3_TextEdit.Size = New System.Drawing.Size(157, 20)
-        ToolTipTitleItem21.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem21.Appearance.Options.UseImage = True
-        ToolTipTitleItem21.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem21.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D3:"
-        ToolTipItem20.LeftIndent = 6
-        ToolTipItem20.Text = "Summe kreditorischer Kontosalden aus Feld C19" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        SuperToolTip20.Items.Add(ToolTipTitleItem21)
-        SuperToolTip20.Items.Add(ToolTipItem20)
-        Me.E3_TextEdit.SuperTip = SuperToolTip20
+        ToolTipTitleItem18.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem18.Appearance.Options.UseImage = True
+        ToolTipTitleItem18.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem18.Text = "Erläuterung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Summe vom Feld D3:"
+        ToolTipItem18.LeftIndent = 6
+        ToolTipItem18.Text = "Summe kreditorischer Kontosalden aus Feld C19" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        SuperToolTip18.Items.Add(ToolTipTitleItem18)
+        SuperToolTip18.Items.Add(ToolTipItem18)
+        Me.E3_TextEdit.SuperTip = SuperToolTip18
         Me.E3_TextEdit.TabIndex = 7
         Me.E3_TextEdit.ToolTipController = Me.ToolTipController1
         Me.E3_TextEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
@@ -8576,98 +8699,21 @@ Partial Class EAEG_Datei_New
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LayoutControl1.Controls.Add(Me.EAEG_Daten_Laden_DropDownButton)
-        Me.LayoutControl1.Controls.Add(Me.EAEG_DateiErstellung_BASIS_DropDownButton)
-        Me.LayoutControl1.Controls.Add(Me.EAEG_DateiErstellung_DropDownButton)
-        Me.LayoutControl1.Controls.Add(Me.GridControl3)
-        Me.LayoutControl1.Controls.Add(Me.EAEG_Datei_ReportsDropDownButton)
+        Me.LayoutControl1.Controls.Add(Me.GroupControl3)
+        Me.LayoutControl1.Controls.Add(Me.GroupControl2)
         Me.LayoutControl1.Controls.Add(Me.TillDateEdit)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
+        Me.LayoutControl1.Controls.Add(Me.GridControl3)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
-        Me.LayoutControl1.Controls.Add(Me.EAEG_ViewTotals_btn)
-        Me.LayoutControl1.Controls.Add(Me.GridView_Print_Export_btn)
-        Me.LayoutControl1.Controls.Add(Me.EAEG_Stichtag_DateEdit)
+        Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.LayoutControlItem6, Me.LayoutControlGroup4})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 217)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(417, 149, 730, 628)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1503, 535)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1454, 486)
         Me.LayoutControl1.TabIndex = 10
         Me.LayoutControl1.Text = "LayoutControl1"
-        '
-        'EAEG_Daten_Laden_DropDownButton
-        '
-        Me.EAEG_Daten_Laden_DropDownButton.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show
-        Me.EAEG_Daten_Laden_DropDownButton.DropDownControl = Me.PopupMenu4
-        Me.EAEG_Daten_Laden_DropDownButton.ImageOptions.ImageIndex = 10
-        Me.EAEG_Daten_Laden_DropDownButton.ImageOptions.ImageList = Me.ImageCollection1
-        Me.EAEG_Daten_Laden_DropDownButton.Location = New System.Drawing.Point(819, 12)
-        Me.EAEG_Daten_Laden_DropDownButton.Name = "EAEG_Daten_Laden_DropDownButton"
-        Me.EAEG_Daten_Laden_DropDownButton.Size = New System.Drawing.Size(179, 22)
-        Me.EAEG_Daten_Laden_DropDownButton.StyleController = Me.LayoutControl1
-        Me.EAEG_Daten_Laden_DropDownButton.TabIndex = 35
-        Me.EAEG_Daten_Laden_DropDownButton.Text = "EAEG Daten Laden"
-        '
-        'PopupMenu4
-        '
-        Me.PopupMenu4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Laden_BASIS_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Laden_ERWEITERT_BarButtonItem, True)})
-        Me.PopupMenu4.Manager = Me.BarManager1
-        Me.PopupMenu4.Name = "PopupMenu4"
-        '
-        'EAEG_DateiErstellung_BASIS_DropDownButton
-        '
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.DropDownControl = Me.PopupMenu3
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.ImageOptions.ImageIndex = 17
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.ImageOptions.ImageList = Me.ImageCollection1
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.Location = New System.Drawing.Point(348, 12)
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.Name = "EAEG_DateiErstellung_BASIS_DropDownButton"
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.Size = New System.Drawing.Size(275, 22)
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.StyleController = Me.LayoutControl1
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.TabIndex = 34
-        Me.EAEG_DateiErstellung_BASIS_DropDownButton.Text = "EAEG DATEI ERSTELLUNG (BASIS)"
-        '
-        'PopupMenu3
-        '
-        Me.PopupMenu3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_EinreicherDateiErstellung_BASIS_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_MeldeDateiErstellung_BASIS_BarButtonItem)})
-        Me.PopupMenu3.Manager = Me.BarManager1
-        Me.PopupMenu3.Name = "PopupMenu3"
-        '
-        'EAEG_DateiErstellung_DropDownButton
-        '
-        Me.EAEG_DateiErstellung_DropDownButton.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show
-        Me.EAEG_DateiErstellung_DropDownButton.DropDownControl = Me.PopupMenu2
-        Me.EAEG_DateiErstellung_DropDownButton.ImageOptions.ImageIndex = 17
-        Me.EAEG_DateiErstellung_DropDownButton.ImageOptions.ImageList = Me.ImageCollection1
-        Me.EAEG_DateiErstellung_DropDownButton.Location = New System.Drawing.Point(1002, 12)
-        Me.EAEG_DateiErstellung_DropDownButton.Name = "EAEG_DateiErstellung_DropDownButton"
-        Me.EAEG_DateiErstellung_DropDownButton.Size = New System.Drawing.Size(231, 22)
-        Me.EAEG_DateiErstellung_DropDownButton.StyleController = Me.LayoutControl1
-        Me.EAEG_DateiErstellung_DropDownButton.TabIndex = 33
-        Me.EAEG_DateiErstellung_DropDownButton.Text = "EAEG DATEI ERSTELLUNG (ERWEITERT)"
-        '
-        'PopupMenu2
-        '
-        Me.PopupMenu2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_EinreicherDatei_Erstellung_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.EAEG_Meldedatei_Erstellung_BarButtonItem, True)})
-        Me.PopupMenu2.Manager = Me.BarManager1
-        Me.PopupMenu2.Name = "PopupMenu2"
-        '
-        'EAEG_Datei_ReportsDropDownButton
-        '
-        Me.EAEG_Datei_ReportsDropDownButton.DropDownArrowStyle = DevExpress.XtraEditors.DropDownArrowStyle.Show
-        Me.EAEG_Datei_ReportsDropDownButton.DropDownControl = Me.PopupMenu1
-        Me.EAEG_Datei_ReportsDropDownButton.ImageOptions.ImageIndex = 11
-        Me.EAEG_Datei_ReportsDropDownButton.ImageOptions.ImageList = Me.ImageCollection1
-        Me.EAEG_Datei_ReportsDropDownButton.Location = New System.Drawing.Point(128, 12)
-        Me.EAEG_Datei_ReportsDropDownButton.Name = "EAEG_Datei_ReportsDropDownButton"
-        Me.EAEG_Datei_ReportsDropDownButton.Size = New System.Drawing.Size(216, 22)
-        Me.EAEG_Datei_ReportsDropDownButton.StyleController = Me.LayoutControl1
-        Me.EAEG_Datei_ReportsDropDownButton.TabIndex = 14
-        Me.EAEG_Datei_ReportsDropDownButton.Text = "EAEG DATEI REPORTS"
         '
         'TillDateEdit
         '
@@ -8698,64 +8744,6 @@ Partial Class EAEG_Datei_New
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
-        '
-        'EAEG_ViewTotals_btn
-        '
-        Me.EAEG_ViewTotals_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.EAEG_ViewTotals_btn.ImageOptions.ImageIndex = 14
-        Me.EAEG_ViewTotals_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.EAEG_ViewTotals_btn.Location = New System.Drawing.Point(1347, 12)
-        Me.EAEG_ViewTotals_btn.Name = "EAEG_ViewTotals_btn"
-        Me.EAEG_ViewTotals_btn.Size = New System.Drawing.Size(144, 22)
-        Me.EAEG_ViewTotals_btn.StyleController = Me.LayoutControl1
-        Me.EAEG_ViewTotals_btn.TabIndex = 7
-        Me.EAEG_ViewTotals_btn.Text = "Show List"
-        '
-        'GridView_Print_Export_btn
-        '
-        Me.GridView_Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.GridView_Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.GridView_Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.GridView_Print_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.GridView_Print_Export_btn.Name = "GridView_Print_Export_btn"
-        Me.GridView_Print_Export_btn.Size = New System.Drawing.Size(112, 22)
-        Me.GridView_Print_Export_btn.StyleController = Me.LayoutControl1
-        Me.GridView_Print_Export_btn.TabIndex = 9
-        Me.GridView_Print_Export_btn.Text = "Print or Export"
-        '
-        'EAEG_Stichtag_DateEdit
-        '
-        Me.EAEG_Stichtag_DateEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.EAEG_A_E_Satz_Version4BindingSource, "EAEG_Stichtag", True))
-        Me.EAEG_Stichtag_DateEdit.Location = New System.Drawing.Point(677, 12)
-        Me.EAEG_Stichtag_DateEdit.Name = "EAEG_Stichtag_DateEdit"
-        Me.EAEG_Stichtag_DateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[True]
-        Me.EAEG_Stichtag_DateEdit.Properties.Appearance.BackColor = System.Drawing.Color.White
-        Me.EAEG_Stichtag_DateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.EAEG_Stichtag_DateEdit.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.EAEG_Stichtag_DateEdit.Properties.Appearance.Options.UseBackColor = True
-        Me.EAEG_Stichtag_DateEdit.Properties.Appearance.Options.UseFont = True
-        Me.EAEG_Stichtag_DateEdit.Properties.Appearance.Options.UseForeColor = True
-        Me.EAEG_Stichtag_DateEdit.Properties.Appearance.Options.UseTextOptions = True
-        Me.EAEG_Stichtag_DateEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.White
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceReadOnly.Options.UseBackColor = True
-        Me.EAEG_Stichtag_DateEdit.Properties.AppearanceReadOnly.Options.UseForeColor = True
-        Me.EAEG_Stichtag_DateEdit.Properties.DisplayFormat.FormatString = "d"
-        Me.EAEG_Stichtag_DateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.EAEG_Stichtag_DateEdit.Properties.EditFormat.FormatString = "d"
-        Me.EAEG_Stichtag_DateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.EAEG_Stichtag_DateEdit.Properties.ReadOnly = True
-        Me.EAEG_Stichtag_DateEdit.Size = New System.Drawing.Size(138, 22)
-        Me.EAEG_Stichtag_DateEdit.StyleController = Me.LayoutControl1
-        Me.EAEG_Stichtag_DateEdit.TabIndex = 12
         '
         'LayoutControlItem2
         '
@@ -8796,80 +8784,18 @@ Partial Class EAEG_Datei_New
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.EmptySpaceItem9, Me.LayoutControlItem8, Me.TabbedControlGroup1, Me.LayoutControlItem14, Me.LayoutControlItem9, Me.LayoutControlItem5, Me.LayoutControlItem10})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup1, Me.LayoutControlItem7, Me.LayoutControlItem16, Me.SplitterItem1})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1503, 535)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1454, 486)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(1225, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(108, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.GridView_Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.EAEG_ViewTotals_btn
-        Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1335, 0)
-        Me.LayoutControlItem3.MaxSize = New System.Drawing.Size(148, 26)
-        Me.LayoutControlItem3.MinSize = New System.Drawing.Size(148, 26)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(148, 26)
-        Me.LayoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
-        '
-        'SimpleSeparator1
-        '
-        Me.SimpleSeparator1.AllowHotTrack = False
-        Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1333, 0)
-        Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
-        '
-        'EmptySpaceItem9
-        '
-        Me.EmptySpaceItem9.AllowHotTrack = False
-        Me.EmptySpaceItem9.CustomizationFormText = "EmptySpaceItem9"
-        Me.EmptySpaceItem9.Location = New System.Drawing.Point(0, 26)
-        Me.EmptySpaceItem9.Name = "EmptySpaceItem9"
-        Me.EmptySpaceItem9.Size = New System.Drawing.Size(1483, 10)
-        Me.EmptySpaceItem9.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem8
-        '
-        Me.LayoutControlItem8.Control = Me.EAEG_Datei_ReportsDropDownButton
-        Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem8"
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(116, 0)
-        Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(220, 26)
-        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem8.TextVisible = False
         '
         'TabbedControlGroup1
         '
         Me.TabbedControlGroup1.CustomizationFormText = "TabbedControlGroup1"
-        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 36)
+        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 125)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
         Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup2
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1483, 479)
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1434, 331)
         Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup2, Me.LayoutControlGroup3})
         '
         'LayoutControlGroup2
@@ -8882,7 +8808,7 @@ Partial Class EAEG_Datei_New
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1459, 433)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1410, 286)
         Me.LayoutControlGroup2.Text = "B-D-C Sätze"
         '
         'LayoutControlItem4
@@ -8891,7 +8817,7 @@ Partial Class EAEG_Datei_New
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1459, 433)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1410, 286)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -8905,7 +8831,7 @@ Partial Class EAEG_Datei_New
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem11})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1459, 433)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1410, 286)
         Me.LayoutControlGroup3.Text = "Alle C-Sätze"
         '
         'LayoutControlItem11
@@ -8914,141 +8840,76 @@ Partial Class EAEG_Datei_New
         Me.LayoutControlItem11.CustomizationFormText = "LayoutControlItem11"
         Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(1459, 433)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(1410, 286)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem11.TextVisible = False
         '
-        'LayoutControlItem14
+        'LayoutControlItem7
         '
-        Me.LayoutControlItem14.Control = Me.EAEG_DateiErstellung_DropDownButton
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(990, 0)
-        Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(235, 26)
-        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem14.TextVisible = False
-        Me.LayoutControlItem14.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        Me.LayoutControlItem7.Control = Me.GroupControl2
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem7.Name = "LayoutControlItem7"
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(474, 125)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem7.TextVisible = False
         '
-        'LayoutControlItem9
+        'LayoutControlItem16
         '
-        Me.LayoutControlItem9.Control = Me.EAEG_DateiErstellung_BASIS_DropDownButton
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(336, 0)
-        Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(279, 26)
-        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem9.TextVisible = False
+        Me.LayoutControlItem16.Control = Me.GroupControl3
+        Me.LayoutControlItem16.Location = New System.Drawing.Point(474, 0)
+        Me.LayoutControlItem16.Name = "LayoutControlItem16"
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(960, 125)
+        Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem16.TextVisible = False
         '
-        'LayoutControlItem5
+        'SplitterItem1
         '
-        Me.LayoutControlItem5.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LayoutControlItem5.AppearanceItemCaption.Options.UseFont = True
-        Me.LayoutControlItem5.AppearanceItemCaption.Options.UseTextOptions = True
-        Me.LayoutControlItem5.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.LayoutControlItem5.Control = Me.EAEG_Stichtag_DateEdit
-        Me.LayoutControlItem5.CustomizationFormText = "Date from"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(615, 0)
-        Me.LayoutControlItem5.MinSize = New System.Drawing.Size(50, 25)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(192, 26)
-        Me.LayoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem5.Text = "Stichtag"
-        Me.LayoutControlItem5.TextLocation = DevExpress.Utils.Locations.Left
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(47, 13)
+        Me.SplitterItem1.AllowHotTrack = True
+        Me.SplitterItem1.Location = New System.Drawing.Point(0, 456)
+        Me.SplitterItem1.Name = "SplitterItem1"
+        Me.SplitterItem1.Size = New System.Drawing.Size(1434, 10)
         '
-        'LayoutControlItem10
+        'PopupMenu4
         '
-        Me.LayoutControlItem10.Control = Me.EAEG_Daten_Laden_DropDownButton
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(807, 0)
-        Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(183, 26)
-        Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem10.TextVisible = False
+        Me.PopupMenu4.ItemLinks.Add(Me.EAEG_Laden_BASIS_BarButtonItem, True)
+        Me.PopupMenu4.ItemLinks.Add(Me.EAEG_Laden_ERWEITERT_BarButtonItem, True)
+        Me.PopupMenu4.Name = "PopupMenu4"
+        Me.PopupMenu4.Ribbon = Me.RibbonControl2
+        '
+        'PopupMenu3
+        '
+        Me.PopupMenu3.ItemLinks.Add(Me.EAEG_EinreicherDateiErstellung_BASIS_BarButtonItem)
+        Me.PopupMenu3.ItemLinks.Add(Me.EAEG_MeldeDateiErstellung_BASIS_BarButtonItem)
+        Me.PopupMenu3.Name = "PopupMenu3"
+        Me.PopupMenu3.Ribbon = Me.RibbonControl2
+        '
+        'PopupMenu2
+        '
+        Me.PopupMenu2.ItemLinks.Add(Me.EAEG_EinreicherDatei_Erstellung_BarButtonItem)
+        Me.PopupMenu2.ItemLinks.Add(Me.EAEG_Meldedatei_Erstellung_BarButtonItem, True)
+        Me.PopupMenu2.Name = "PopupMenu2"
+        Me.PopupMenu2.Ribbon = Me.RibbonControl2
         '
         'LayoutControl2
         '
-        Me.LayoutControl2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LayoutControl2.Controls.Add(Me.EAEG_ALL_GridControl)
-        Me.LayoutControl2.Controls.Add(Me.EAEG_ALL_Print_Export_btn)
-        Me.LayoutControl2.Controls.Add(Me.View_Details_btn)
-        Me.LayoutControl2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LayoutControl2.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(383, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup5
-        Me.LayoutControl2.Size = New System.Drawing.Size(1515, 770)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1454, 486)
         Me.LayoutControl2.TabIndex = 28
         Me.LayoutControl2.Text = "LayoutControl2"
-        '
-        'EAEG_ALL_Print_Export_btn
-        '
-        Me.EAEG_ALL_Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.EAEG_ALL_Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.EAEG_ALL_Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.EAEG_ALL_Print_Export_btn.Location = New System.Drawing.Point(24, 24)
-        Me.EAEG_ALL_Print_Export_btn.Name = "EAEG_ALL_Print_Export_btn"
-        Me.EAEG_ALL_Print_Export_btn.Size = New System.Drawing.Size(172, 22)
-        Me.EAEG_ALL_Print_Export_btn.StyleController = Me.LayoutControl2
-        Me.EAEG_ALL_Print_Export_btn.TabIndex = 3
-        Me.EAEG_ALL_Print_Export_btn.Text = "Print or Export"
-        '
-        'View_Details_btn
-        '
-        Me.View_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.View_Details_btn.ImageOptions.ImageIndex = 15
-        Me.View_Details_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.View_Details_btn.Location = New System.Drawing.Point(1384, 24)
-        Me.View_Details_btn.Name = "View_Details_btn"
-        Me.View_Details_btn.Size = New System.Drawing.Size(107, 22)
-        Me.View_Details_btn.StyleController = Me.LayoutControl2
-        Me.View_Details_btn.TabIndex = 4
-        Me.View_Details_btn.Text = "View Details"
         '
         'LayoutControlGroup5
         '
         Me.LayoutControlGroup5.CustomizationFormText = "Root"
         Me.LayoutControlGroup5.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup5.GroupBordersVisible = False
-        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup6, Me.LayoutControlGroup8})
+        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup8})
         Me.LayoutControlGroup5.Name = "Root"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1515, 770)
-        '
-        'LayoutControlGroup6
-        '
-        Me.LayoutControlGroup6.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem12, Me.EmptySpaceItem3, Me.LayoutControlItem13})
-        Me.LayoutControlGroup6.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlGroup6.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1495, 50)
-        Me.LayoutControlGroup6.TextVisible = False
-        '
-        'LayoutControlItem12
-        '
-        Me.LayoutControlItem12.Control = Me.View_Details_btn
-        Me.LayoutControlItem12.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(1360, 0)
-        Me.LayoutControlItem12.Name = "LayoutControlItem2"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(111, 26)
-        Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem12.TextVisible = False
-        '
-        'EmptySpaceItem3
-        '
-        Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(176, 0)
-        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1184, 26)
-        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem13
-        '
-        Me.LayoutControlItem13.Control = Me.EAEG_ALL_Print_Export_btn
-        Me.LayoutControlItem13.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem13.Name = "LayoutControlItem4"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(176, 26)
-        Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem13.TextVisible = False
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1454, 486)
         '
         'LayoutControlGroup8
         '
@@ -9057,9 +8918,9 @@ Partial Class EAEG_Datei_New
         Me.LayoutControlGroup8.AppearanceTabPage.HeaderActive.Options.UseFont = True
         Me.LayoutControlGroup8.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
         Me.LayoutControlGroup8.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem15})
-        Me.LayoutControlGroup8.Location = New System.Drawing.Point(0, 50)
+        Me.LayoutControlGroup8.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup8.Name = "LayoutControlGroup8"
-        Me.LayoutControlGroup8.Size = New System.Drawing.Size(1495, 700)
+        Me.LayoutControlGroup8.Size = New System.Drawing.Size(1434, 466)
         Me.LayoutControlGroup8.Text = "FX PAIRS"
         Me.LayoutControlGroup8.TextVisible = False
         '
@@ -9068,7 +8929,7 @@ Partial Class EAEG_Datei_New
         Me.LayoutControlItem15.Control = Me.EAEG_ALL_GridControl
         Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(1471, 676)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(1410, 442)
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem15.TextVisible = False
         '
@@ -9076,186 +8937,163 @@ Partial Class EAEG_Datei_New
         '
         Me.EAEG_A_E_Satz_Version4_ALL_TableAdapter.ClearBeforeFill = True
         '
-        'EAEG_Bilanz_Differences_BarbuttonItem
+        'RibbonPage2
         '
-        Me.EAEG_Bilanz_Differences_BarbuttonItem.Caption = "EAEG (EinSiG) - Bilanz Differenzen"
-        Me.EAEG_Bilanz_Differences_BarbuttonItem.Id = 15
-        Me.EAEG_Bilanz_Differences_BarbuttonItem.ImageOptions.ImageIndex = 18
-        Me.EAEG_Bilanz_Differences_BarbuttonItem.Name = "EAEG_Bilanz_Differences_BarbuttonItem"
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
         '
         'EAEG_Datei_New
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1515, 775)
+        Me.ClientSize = New System.Drawing.Size(1454, 602)
         Me.Controls.Add(Me.LayoutControl2)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Controls.Add(Me.GroupControl2)
-        Me.Controls.Add(Me.GroupControl3)
-        Me.Controls.Add(Me.barDockControlLeft)
-        Me.Controls.Add(Me.barDockControlRight)
-        Me.Controls.Add(Me.barDockControlBottom)
-        Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonStatusBar2)
+        Me.Controls.Add(Me.RibbonControl2)
+        Me.IconOptions.Icon = CType(resources.GetObject("EAEG_Datei_New.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "EAEG_Datei_New"
+        Me.Ribbon = Me.RibbonControl2
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "EAEG (EinSiG) Datei - Version 4.1"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.C_Satz_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEG_B_D_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEG_A_E_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEGDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.B_D_Satz_BaseView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEG_C_Satz_VersionALLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEG_ALL_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEG_A_E_Satz_Version4_ALLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEG_Dates_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField15, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField16, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField19, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField21, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField22, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField48, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEG_C_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C_Satz_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EAEG_B_D_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EAEG_A_E_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EAEGDataSet, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.B_D_Satz_BaseView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EAEG_C_Satz_VersionALLBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EAEG_ALL_GridControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EAEG_A_E_Satz_Version4_ALLBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EAEG_Dates_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField15, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField16, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField17, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField18, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField19, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField20, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField21, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField22, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField48, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RibbonControl2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.BusinessDate_SearchLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Stichtage_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EAEG_C_Satz_Version4BindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl2.ResumeLayout(False)
-        Me.GroupControl2.PerformLayout()
-        CType(Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.A2_Institut_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl2.PerformLayout
+        CType(Me.SicherungsgrenzeZusatzsicherungAltfall_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SicherungsgrenzeZusatzsicherung_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EntschaedigungsObergrenzeEU_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EntschaedigungsObergrenzeEAEG_ButtonEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ZugehoerigkeitEntschaedigungseinrichtung_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.A2_Institut_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl3.ResumeLayout(False)
-        Me.GroupControl3.PerformLayout()
-        CType(Me.E15_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E14_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E13_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E12_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E11_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E10_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E9_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E8_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E7_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E6_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E5_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E4_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E3_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl3.PerformLayout
+        CType(Me.E15_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E14_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E13_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E12_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E11_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E10_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E9_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E8_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E7_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E6_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E5_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E4_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.E3_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.PopupMenu4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PopupMenu3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PopupMenu2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TillDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EAEG_Stichtag_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControl2,System.ComponentModel.ISupportInitialize).EndInit
-        Me.LayoutControl2.ResumeLayout(false)
-        CType(Me.LayoutControlGroup5,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup6,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem12,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem3,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem13,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup8,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem15,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        CType(Me.TillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TillDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PopupMenu4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PopupMenu3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PopupMenu2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit
+        Me.LayoutControl2.ResumeLayout(False)
+        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(False)
         Me.PerformLayout
 
 End Sub
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
-    Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
-    Friend WithEvents Bar1 As DevExpress.XtraBars.Bar
-    Friend WithEvents Bar2 As DevExpress.XtraBars.Bar
-    Friend WithEvents Bar3 As DevExpress.XtraBars.Bar
-    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
     Friend WithEvents EAEG_A_E_Satz_Version4BindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents EAEGDataSet As PS_TOOL_DX.EAEGDataSet
     Friend WithEvents DailyRiskTable_BarButtonItem As DevExpress.XtraBars.BarButtonItem
@@ -9263,7 +9101,6 @@ End Sub
     Friend WithEvents InterestRateRiskHUMPBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RecalculateCreditRiskCurrentDateBarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RecalculateCreditRiskSpecificPeriodBarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents BarButtonItem3 As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents EAEG_Datei_Gesamt_BarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents PopupMenu1 As DevExpress.XtraBars.PopupMenu
     Friend WithEvents EAEG_Daten_Kunden_BarButtonItem As DevExpress.XtraBars.BarButtonItem
@@ -9311,7 +9148,6 @@ End Sub
     Friend WithEvents LabelControl8 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents EAEG_Datei_ReportsDropDownButton As DevExpress.XtraEditors.DropDownButton
     Friend WithEvents TillDateEdit As DevExpress.XtraEditors.DateEdit
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents C_Satz_GridView As DevExpress.XtraGrid.Views.Grid.GridView
@@ -9320,18 +9156,9 @@ End Sub
     Friend WithEvents RepositoryItemImageComboBox2 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents EAEG_ViewTotals_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents GridView_Print_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
-    Friend WithEvents EmptySpaceItem9 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents E15_TextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl19 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents E14_TextEdit As DevExpress.XtraEditors.TextEdit
@@ -9944,37 +9771,49 @@ End Sub
     Friend WithEvents LayoutViewColumn96 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewField48 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents LayoutViewCard2 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
-    Friend WithEvents EAEG_ALL_Print_Export_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents View_Details_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlGroup5 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlGroup6 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem12 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem13 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup8 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem15 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EAEG_A_E_Satz_Version4_ALLBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents EAEG_A_E_Satz_Version4_ALL_TableAdapter As PS_TOOL_DX.EAEGDataSetTableAdapters.EAEG_A_E_Satz_Version4_ALL_TableAdapter
     Friend WithEvents PrintableComponentLink3 As DevExpress.XtraPrinting.PrintableComponentLink
-    Friend WithEvents EAEG_Stichtag_DateEdit As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents EAEG_DateiErstellung_DropDownButton As DevExpress.XtraEditors.DropDownButton
     Friend WithEvents PopupMenu2 As DevExpress.XtraBars.PopupMenu
-    Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EAEG_EinreicherDatei_Erstellung_BarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents EAEG_Meldedatei_Erstellung_BarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents Gesetzliche_Einlagensicherung_BarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents EAEG_DateiErstellung_BASIS_DropDownButton As DevExpress.XtraEditors.DropDownButton
-    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EAEG_EinreicherDateiErstellung_BASIS_BarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents EAEG_MeldeDateiErstellung_BASIS_BarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents PopupMenu3 As DevExpress.XtraBars.PopupMenu
     Friend WithEvents EAEG_Version_lbl As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl20 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents PopupMenu4 As DevExpress.XtraBars.PopupMenu
-    Friend WithEvents EAEG_Daten_Laden_DropDownButton As DevExpress.XtraEditors.DropDownButton
     Friend WithEvents EAEG_Laden_BASIS_BarButtonItem As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents EAEG_Laden_ERWEITERT_BarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents LayoutControlItem10 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents colEAEG_Version As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents EAEG_Bilanz_Differences_BarbuttonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem16 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RibbonControl2 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage3 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup3 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonStatusBar2 As DevExpress.XtraBars.Ribbon.RibbonStatusBar
+    Friend WithEvents Stichtag_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents BusinessDate_SearchLookUpEdit As DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit
+    Friend WithEvents BarSubItem1 As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents EAEG_Daten_Laden_BarSubItem As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents EAEG_Datei_Erstellung_BarSubItem As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents EAEG_Datei_Reports_BarSubItem As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents GridView_Print_Export_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Stichtage_GridView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colStichtag As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents Reload_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents NewStichtag_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents EAEG_ALL_Print_Export_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ViewDetails_SwitchItem As DevExpress.XtraBars.BarToggleSwitchItem
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents SplitterItem1 As DevExpress.XtraLayout.SplitterItem
+    Friend WithEvents EAEG_Dateien_Ordner_bbi As DevExpress.XtraBars.BarButtonItem
 End Class

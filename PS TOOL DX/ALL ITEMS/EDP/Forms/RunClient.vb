@@ -1356,6 +1356,8 @@ Public Class RunClient
                     Dim RW_Calculated As Double = FirstPartFormulaRW * SecondPartFormulaRW
                     cmd.CommandText = "UPDATE [UNEXPECTED_LOSS] SET [RW_RiskWeightedExposure]=" & Str(RW_Calculated) & " where [ID]='" & ID & "' "
                     cmd.ExecuteNonQuery()
+                    cmd.CommandText = "UPDATE [UNEXPECTED_LOSS] SET [RW_RiskWeightedExposure]=0 where [RW_RiskWeightedExposure]<0 and [ID]='" & ID & "' "
+                    cmd.ExecuteNonQuery()
                     cmd.CommandText = "UPDATE [UNEXPECTED_LOSS] SET [UL_UnexpectedLoss]=Round([RW_RiskWeightedExposure]*[FinalEadTotalSum]*0.08,2) where [ID]='" & ID & "' "
                     cmd.ExecuteNonQuery()
                 Next

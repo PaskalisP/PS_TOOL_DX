@@ -707,6 +707,12 @@
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV135.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV136.designer.vb">
+      <DependentUpon>BaisExportAlphaV136.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV136.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV127.Designer.vb">
       <DependentUpon>BaisExportAnaCreditV127.vb</DependentUpon>
     </Compile>
@@ -753,6 +759,12 @@
       <DependentUpon>BaisExportAnaCreditV135.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV135.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV136.designer.vb">
+      <DependentUpon>BaisExportAnaCreditV136.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV136.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisImport.Designer.vb">
@@ -819,6 +831,12 @@
       <DependentUpon>SqlParameter.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\SqlParameter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\SqlParameterTree.designer.vb">
+      <DependentUpon>SqlParameterTree.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\SqlParameterTree.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\SqlServerQueries.Designer.vb">
@@ -1664,6 +1682,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Default\API.vb" />
+    <Compile Include="Default\CheckResults.Designer.vb">
+      <DependentUpon>CheckResults.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\CheckResults.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Default\ClassUnzip.vb" />
     <Compile Include="Default\Crypto.vb" />
     <Compile Include="Default\CrystalReportsForm.Designer.vb">
@@ -1806,6 +1830,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Default\UpperCaseUTF8Encoding.vb" />
+    <Compile Include="Default\VbSyntaxHighlightService.vb" />
     <Compile Include="Default\WaitForm1.Designer.vb">
       <DependentUpon>WaitForm1.vb</DependentUpon>
     </Compile>
@@ -2007,6 +2032,9 @@
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV135.resx">
       <DependentUpon>BaisExportAlphaV135.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV136.resx">
+      <DependentUpon>BaisExportAlphaV136.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV127.resx">
       <DependentUpon>BaisExportAnaCreditV127.vb</DependentUpon>
     </EmbeddedResource>
@@ -2030,6 +2058,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV135.resx">
       <DependentUpon>BaisExportAnaCreditV135.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV136.resx">
+      <DependentUpon>BaisExportAnaCreditV136.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisImport.resx">
       <DependentUpon>BaisImport.vb</DependentUpon>
@@ -2063,6 +2094,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\SqlParameter.resx">
       <DependentUpon>SqlParameter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\SqlParameterTree.resx">
+      <DependentUpon>SqlParameterTree.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\SqlServerQueries.resx">
       <DependentUpon>SqlServerQueries.vb</DependentUpon>
@@ -2417,6 +2451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Default\AccDatesForm.resx">
       <DependentUpon>AccDatesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\CheckResults.resx">
+      <DependentUpon>CheckResults.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Default\CrystalReportsForm.resx">
       <DependentUpon>CrystalReportsForm.vb</DependentUpon>
