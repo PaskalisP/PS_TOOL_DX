@@ -61,7 +61,7 @@ Namespace VbSyntaxHighlightApp
         End Sub
 
         Private Sub HighlightCategorizedToken(ByVal token As CategorizedToken, ByVal syntaxTokens As List(Of SyntaxHighlightToken))
-            Dim backColor As Color = syntaxEditor.ActiveView.BackColor
+            Dim backColor As Color = Color.White 'syntaxEditor.ActiveView.BackColor
             Dim category As TokenCategory = token.Category
             Select Case category
                 Case TokenCategory.Comment
@@ -156,19 +156,23 @@ Namespace VbSyntaxHighlightApp
 
         Public ReadOnly Property KeywordColor As Color
             Get
+
                 Return GetCommonColorByName(CommonSkins.SkinQuestionColor, DefaultKeywordColor)
+
             End Get
         End Property
 
         Public ReadOnly Property TextColor As Color
             Get
                 Return GetCommonColorByName(CommonColors.WindowText, DefaultTextColor)
+
             End Get
         End Property
 
         Public ReadOnly Property XmlCommentColor As Color
             Get
                 Return GetCommonColorByName(CommonColors.DisabledText, DefaultXmlCommentColor)
+
             End Get
         End Property
 
@@ -183,9 +187,10 @@ Namespace VbSyntaxHighlightApp
         End Sub
 
         Private Function GetCommonColorByName(ByVal colorName As String, ByVal defaultColor As Color) As Color
-            Dim skin As Skin = CommonSkins.GetSkin(lookAndFeel)
-            If skin Is Nothing Then Return defaultColor
-            Return skin.Colors(colorName)
+            'Dim skin As Skin = CommonSkins.GetSkin(lookAndFeel)
+            'If skin Is Nothing Then Return defaultColor
+            'Return skin.Colors(colorName)
+            Return defaultColor
         End Function
     End Class
 

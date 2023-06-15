@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class ManualImport
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -21,20 +21,20 @@ Partial Class ManualImport
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ManualImport))
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim StyleFormatCondition1 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition2 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition3 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition4 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim StyleFormatCondition5 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim StyleFormatCondition6 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim StyleFormatCondition7 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim StyleFormatCondition8 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
         Me.colEvent = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemMemoExEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit()
         Me.EDPDataSet = New PS_TOOL_DX.EDPDataSet()
@@ -46,10 +46,8 @@ Partial Class ManualImport
         Me.MANUAL_Procedures_XtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.Edit_BICDIR_Details_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
+        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.ManualImportProcedures_BasicView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colProcNr = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -148,11 +146,7 @@ Partial Class ManualImport
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem_ProgressPanel = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.ImportEvents_XtraTabPage = New DevExpress.XtraTab.XtraTabPage()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
         Me.Print_Export_ImportEvents_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -340,6 +334,17 @@ Partial Class ManualImport
         Me.XtraOpenFileDialog1 = New DevExpress.XtraEditors.XtraOpenFileDialog(Me.components)
         Me.XtraSaveFileDialog1 = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
         Me.XtraFolderBrowserDialog1 = New DevExpress.XtraEditors.XtraFolderBrowserDialog(Me.components)
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.bbiReload = New DevExpress.XtraBars.BarButtonItem()
+        Me.Add_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.Save_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.Delete_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.Preview_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.Close_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDPDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MANUAL_IMPORTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -348,8 +353,8 @@ Partial Class ManualImport
         Me.MANUAL_Procedures_XtraTabPage.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ManualImportProcedures_BasicView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ManualImportProcedureRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -391,11 +396,7 @@ Partial Class ManualImport
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem_ProgressPanel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ImportEvents_XtraTabPage.SuspendLayout()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
@@ -493,6 +494,7 @@ Partial Class ManualImport
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'colEvent
@@ -573,10 +575,10 @@ Partial Class ManualImport
             Or DevExpress.XtraTab.TabButtons.Close) _
             Or DevExpress.XtraTab.TabButtons.[Default]), DevExpress.XtraTab.TabButtons)
         Me.XtraTabControl1.HeaderButtonsShowMode = DevExpress.XtraTab.TabButtonShowMode.Always
-        Me.XtraTabControl1.Location = New System.Drawing.Point(0, 0)
+        Me.XtraTabControl1.Location = New System.Drawing.Point(0, 94)
         Me.XtraTabControl1.Name = "XtraTabControl1"
         Me.XtraTabControl1.SelectedTabPage = Me.MANUAL_Procedures_XtraTabPage
-        Me.XtraTabControl1.Size = New System.Drawing.Size(1411, 581)
+        Me.XtraTabControl1.Size = New System.Drawing.Size(1411, 465)
         Me.XtraTabControl1.TabIndex = 22
         Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.MANUAL_Procedures_XtraTabPage, Me.ImportEvents_XtraTabPage})
         '
@@ -589,21 +591,19 @@ Partial Class ManualImport
         Me.MANUAL_Procedures_XtraTabPage.Controls.Add(Me.LayoutControl1)
         Me.MANUAL_Procedures_XtraTabPage.Name = "MANUAL_Procedures_XtraTabPage"
         Me.MANUAL_Procedures_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.MANUAL_Procedures_XtraTabPage.Size = New System.Drawing.Size(1409, 558)
-        Me.MANUAL_Procedures_XtraTabPage.Text = "MANUAL IMPORTS"
+        Me.MANUAL_Procedures_XtraTabPage.Size = New System.Drawing.Size(1409, 442)
+        Me.MANUAL_Procedures_XtraTabPage.Text = "MANUAL IMPORT PROCEDURES"
         '
         'LayoutControl1
         '
         Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
-        Me.LayoutControl1.Controls.Add(Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn)
-        Me.LayoutControl1.Controls.Add(Me.Edit_BICDIR_Details_btn)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1409, 558)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1409, 442)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -621,24 +621,36 @@ Partial Class ManualImport
         Me.ProgressPanel1.AutoWidth = True
         Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
         Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
-        Me.ProgressPanel1.Location = New System.Drawing.Point(406, 24)
+        Me.ProgressPanel1.Location = New System.Drawing.Point(223, 24)
         Me.ProgressPanel1.Name = "ProgressPanel1"
         Me.ProgressPanel1.Size = New System.Drawing.Size(116, 18)
         Me.ProgressPanel1.StyleController = Me.LayoutControl1
         Me.ProgressPanel1.TabIndex = 23
         Me.ProgressPanel1.Text = "ProgressPanel1"
         '
-        'Print_Export_MANUAL_ImportProcedures_Gridview_btn
+        'GridControl1
         '
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.ImageOptions.ImageIndex = 2
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Location = New System.Drawing.Point(24, 24)
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Name = "Print_Export_MANUAL_ImportProcedures_Gridview_btn"
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Size = New System.Drawing.Size(159, 22)
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.StyleController = Me.LayoutControl1
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.TabIndex = 6
-        Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn.Text = "Print or Export"
+        Me.GridControl1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.GridControl1.DataSource = Me.MANUAL_IMPORTSBindingSource
+        Me.GridControl1.EmbeddedNavigator.Buttons.Append.ImageIndex = 9
+        Me.GridControl1.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.GridControl1.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.GridControl1.EmbeddedNavigator.Buttons.Edit.ImageIndex = 11
+        Me.GridControl1.EmbeddedNavigator.Buttons.Edit.Visible = False
+        Me.GridControl1.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 12
+        Me.GridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+        Me.GridControl1.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
+        Me.GridControl1.EmbeddedNavigator.Buttons.Remove.ImageIndex = 10
+        Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
+        Me.GridControl1.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 10, True, False, "Remove", "Remove")})
+        Me.GridControl1.Location = New System.Drawing.Point(12, 58)
+        Me.GridControl1.MainView = Me.ManualImportProcedures_BasicView
+        Me.GridControl1.Name = "GridControl1"
+        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.ManualImportProcedureRepositoryItemTextEdit, Me.RepositoryItemTextEditBIC8, Me.RepositoryItemTextEditBIC3, Me.RepositoryItemMemoExEdit2, Me.ValidRepositoryItemImageComboBox, Me.StartImportButtonEdit, Me.SelectFileButtonEdit, Me.RepositoryItemSpinEdit1})
+        Me.GridControl1.Size = New System.Drawing.Size(1385, 372)
+        Me.GridControl1.TabIndex = 0
+        Me.GridControl1.UseEmbeddedNavigator = True
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ManualImportProcedures_BasicView, Me.BT_CP_Details_GridView, Me.LayoutView1})
         '
         'ImageCollection1
         '
@@ -662,37 +674,6 @@ Partial Class ManualImport
         Me.ImageCollection1.Images.SetKeyName(12, "save_16x16.png")
         Me.ImageCollection1.InsertGalleryImage("info_16x16.png", "images/support/info_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/support/info_16x16.png"), 13)
         Me.ImageCollection1.Images.SetKeyName(13, "info_16x16.png")
-        '
-        'Edit_BICDIR_Details_btn
-        '
-        Me.Edit_BICDIR_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Edit_BICDIR_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1307, 24)
-        Me.Edit_BICDIR_Details_btn.Name = "Edit_BICDIR_Details_btn"
-        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(78, 22)
-        Me.Edit_BICDIR_Details_btn.StyleController = Me.LayoutControl1
-        Me.Edit_BICDIR_Details_btn.TabIndex = 4
-        Me.Edit_BICDIR_Details_btn.Text = "Edit Details"
-        '
-        'GridControl1
-        '
-        Me.GridControl1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.GridControl1.DataSource = Me.MANUAL_IMPORTSBindingSource
-        Me.GridControl1.EmbeddedNavigator.Buttons.Append.ImageIndex = 9
-        Me.GridControl1.EmbeddedNavigator.Buttons.Edit.ImageIndex = 11
-        Me.GridControl1.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 12
-        Me.GridControl1.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
-        Me.GridControl1.EmbeddedNavigator.Buttons.Remove.ImageIndex = 10
-        Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl1.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 10, True, True, "Remove", "Remove")})
-        Me.GridControl1.Location = New System.Drawing.Point(12, 62)
-        Me.GridControl1.MainView = Me.ManualImportProcedures_BasicView
-        Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.ManualImportProcedureRepositoryItemTextEdit, Me.RepositoryItemTextEditBIC8, Me.RepositoryItemTextEditBIC3, Me.RepositoryItemMemoExEdit2, Me.ValidRepositoryItemImageComboBox, Me.StartImportButtonEdit, Me.SelectFileButtonEdit, Me.RepositoryItemSpinEdit1})
-        Me.GridControl1.Size = New System.Drawing.Size(1385, 484)
-        Me.GridControl1.TabIndex = 0
-        Me.GridControl1.UseEmbeddedNavigator = True
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ManualImportProcedures_BasicView, Me.BT_CP_Details_GridView, Me.LayoutView1})
         '
         'ManualImportProcedures_BasicView
         '
@@ -823,9 +804,9 @@ Partial Class ManualImport
         'SelectFileButtonEdit
         '
         Me.SelectFileButtonEdit.AutoHeight = False
-        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
-        EditorButtonImageOptions1.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight
-        Me.SelectFileButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", 50, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        EditorButtonImageOptions3.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight
+        Me.SelectFileButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", 50, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.SelectFileButtonEdit.Name = "SelectFileButtonEdit"
         Me.SelectFileButtonEdit.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
         '
@@ -908,15 +889,15 @@ Partial Class ManualImport
         Me.StartImportButtonEdit.AppearanceFocused.Options.UseBackColor = True
         Me.StartImportButtonEdit.AppearanceFocused.Options.UseForeColor = True
         Me.StartImportButtonEdit.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
-        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
-        EditorButtonImageOptions2.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        SerializableAppearanceObject5.ForeColor = System.Drawing.Color.Gold
-        SerializableAppearanceObject5.Options.UseForeColor = True
-        SerializableAppearanceObject6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        SerializableAppearanceObject6.Options.UseForeColor = True
-        SerializableAppearanceObject7.ForeColor = System.Drawing.Color.Red
-        SerializableAppearanceObject7.Options.UseForeColor = True
-        Me.StartImportButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Start Import", 30, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions4.Image = CType(resources.GetObject("EditorButtonImageOptions4.Image"), System.Drawing.Image)
+        EditorButtonImageOptions4.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        SerializableAppearanceObject13.ForeColor = System.Drawing.Color.Gold
+        SerializableAppearanceObject13.Options.UseForeColor = True
+        SerializableAppearanceObject14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        SerializableAppearanceObject14.Options.UseForeColor = True
+        SerializableAppearanceObject15.ForeColor = System.Drawing.Color.Red
+        SerializableAppearanceObject15.Options.UseForeColor = True
+        Me.StartImportButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Start Import", 30, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.StartImportButtonEdit.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
         Me.StartImportButtonEdit.LookAndFeel.SkinName = "Office 2019 Colorful"
         Me.StartImportButtonEdit.LookAndFeel.UseDefaultLookAndFeel = False
@@ -1757,16 +1738,16 @@ Partial Class ManualImport
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlGroup3})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1409, 558)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1409, 442)
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.GridControl1
         Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 50)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 46)
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1389, 488)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1389, 376)
         Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
@@ -1774,61 +1755,24 @@ Partial Class ManualImport
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem_ProgressPanel, Me.EmptySpaceItem2})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem_ProgressPanel})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1389, 50)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1389, 46)
         Me.LayoutControlGroup3.TextVisible = False
-        '
-        'LayoutControlItem2
-        '
-        Me.LayoutControlItem2.Control = Me.Edit_BICDIR_Details_btn
-        Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1283, 0)
-        Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(82, 26)
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem2.TextVisible = False
-        Me.LayoutControlItem2.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'EmptySpaceItem3
-        '
-        Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(1254, 0)
-        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(29, 26)
-        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem4
-        '
-        Me.LayoutControlItem4.Control = Me.Print_Export_MANUAL_ImportProcedures_Gridview_btn
-        Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(163, 26)
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem4.TextVisible = False
+        Me.LayoutControlGroup3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem_ProgressPanel
         '
         Me.LayoutControlItem_ProgressPanel.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LayoutControlItem_ProgressPanel.AppearanceItemCaption.Options.UseFont = True
         Me.LayoutControlItem_ProgressPanel.Control = Me.ProgressPanel1
-        Me.LayoutControlItem_ProgressPanel.Location = New System.Drawing.Point(183, 0)
+        Me.LayoutControlItem_ProgressPanel.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem_ProgressPanel.Name = "LayoutControlItem_ProgressPanel"
-        Me.LayoutControlItem_ProgressPanel.Size = New System.Drawing.Size(1071, 26)
+        Me.LayoutControlItem_ProgressPanel.Size = New System.Drawing.Size(1365, 22)
         Me.LayoutControlItem_ProgressPanel.Text = "Executing Import Procedure:"
         Me.LayoutControlItem_ProgressPanel.TextSize = New System.Drawing.Size(187, 18)
         Me.LayoutControlItem_ProgressPanel.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(163, 0)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(20, 26)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'ImportEvents_XtraTabPage
         '
@@ -1838,8 +1782,9 @@ Partial Class ManualImport
         Me.ImportEvents_XtraTabPage.Appearance.HeaderActive.Options.UseForeColor = True
         Me.ImportEvents_XtraTabPage.Controls.Add(Me.LayoutControl2)
         Me.ImportEvents_XtraTabPage.Name = "ImportEvents_XtraTabPage"
+        Me.ImportEvents_XtraTabPage.PageVisible = False
         Me.ImportEvents_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.ImportEvents_XtraTabPage.Size = New System.Drawing.Size(1409, 558)
+        Me.ImportEvents_XtraTabPage.Size = New System.Drawing.Size(1409, 442)
         Me.ImportEvents_XtraTabPage.Text = "IMPORT EVENTS"
         '
         'LayoutControl2
@@ -1852,7 +1797,7 @@ Partial Class ManualImport
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(550, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup4
-        Me.LayoutControl2.Size = New System.Drawing.Size(1409, 558)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1409, 442)
         Me.LayoutControl2.TabIndex = 2
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -1891,7 +1836,7 @@ Partial Class ManualImport
         Me.GridControl2.MainView = Me.MANUALImportEvents_BasicView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox2, Me.RepositoryItemTextEdit4, Me.RepositoryItemMemoExEdit1})
-        Me.GridControl2.Size = New System.Drawing.Size(1385, 484)
+        Me.GridControl2.Size = New System.Drawing.Size(1385, 368)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.MANUALImportEvents_BasicView, Me.LayoutView4, Me.LayoutView3, Me.LayoutView2})
@@ -1910,33 +1855,33 @@ Partial Class ManualImport
         Me.MANUALImportEvents_BasicView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.MANUALImportEvents_BasicView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colProcDate, Me.colProcTime, Me.colEvent, Me.GridColumn1, Me.colSystemName})
         Me.MANUALImportEvents_BasicView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        StyleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Red
-        StyleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.White
-        StyleFormatCondition1.Appearance.Options.UseBackColor = True
-        StyleFormatCondition1.Appearance.Options.UseForeColor = True
-        StyleFormatCondition1.ApplyToRow = True
-        StyleFormatCondition1.Column = Me.colEvent
-        StyleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition1.Expression = "StartsWith([Event], 'ERROR')"
-        StyleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition2.Appearance.Options.UseBackColor = True
-        StyleFormatCondition2.Appearance.Options.UseForeColor = True
-        StyleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition2.Expression = "[Client No] != ?"
-        StyleFormatCondition3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition3.Appearance.Options.UseBackColor = True
-        StyleFormatCondition3.Appearance.Options.UseForeColor = True
-        StyleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition3.Expression = "[Counterparty/Issuer/Collateral Name] != ?"
-        StyleFormatCondition4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition4.Appearance.Options.UseBackColor = True
-        StyleFormatCondition4.Appearance.Options.UseForeColor = True
-        StyleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition4.Expression = "[Contract Collateral ID] != ?"
-        Me.MANUALImportEvents_BasicView.FormatConditions.AddRange(New DevExpress.XtraGrid.StyleFormatCondition() {StyleFormatCondition1, StyleFormatCondition2, StyleFormatCondition3, StyleFormatCondition4})
+        StyleFormatCondition5.Appearance.BackColor = System.Drawing.Color.Red
+        StyleFormatCondition5.Appearance.ForeColor = System.Drawing.Color.White
+        StyleFormatCondition5.Appearance.Options.UseBackColor = True
+        StyleFormatCondition5.Appearance.Options.UseForeColor = True
+        StyleFormatCondition5.ApplyToRow = True
+        StyleFormatCondition5.Column = Me.colEvent
+        StyleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
+        StyleFormatCondition5.Expression = "StartsWith([Event], 'ERROR')"
+        StyleFormatCondition6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        StyleFormatCondition6.Appearance.ForeColor = System.Drawing.Color.Black
+        StyleFormatCondition6.Appearance.Options.UseBackColor = True
+        StyleFormatCondition6.Appearance.Options.UseForeColor = True
+        StyleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
+        StyleFormatCondition6.Expression = "[Client No] != ?"
+        StyleFormatCondition7.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        StyleFormatCondition7.Appearance.ForeColor = System.Drawing.Color.Black
+        StyleFormatCondition7.Appearance.Options.UseBackColor = True
+        StyleFormatCondition7.Appearance.Options.UseForeColor = True
+        StyleFormatCondition7.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
+        StyleFormatCondition7.Expression = "[Counterparty/Issuer/Collateral Name] != ?"
+        StyleFormatCondition8.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        StyleFormatCondition8.Appearance.ForeColor = System.Drawing.Color.Black
+        StyleFormatCondition8.Appearance.Options.UseBackColor = True
+        StyleFormatCondition8.Appearance.Options.UseForeColor = True
+        StyleFormatCondition8.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
+        StyleFormatCondition8.Expression = "[Contract Collateral ID] != ?"
+        Me.MANUALImportEvents_BasicView.FormatConditions.AddRange(New DevExpress.XtraGrid.StyleFormatCondition() {StyleFormatCondition5, StyleFormatCondition6, StyleFormatCondition7, StyleFormatCondition8})
         Me.MANUALImportEvents_BasicView.GridControl = Me.GridControl2
         Me.MANUALImportEvents_BasicView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit Outstanding (EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditOutstandingAmountEUR", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit Risk Amount(EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCredit Risk Amount(EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CreditRiskAmountEUREquER45", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditRiskAmountEUREquER45", Nothing, "{0:n2}")})
         Me.MANUALImportEvents_BasicView.Name = "MANUALImportEvents_BasicView"
@@ -3608,7 +3553,7 @@ Partial Class ManualImport
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.LayoutControlGroup5})
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1409, 558)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1409, 442)
         '
         'LayoutControlItem5
         '
@@ -3617,7 +3562,7 @@ Partial Class ManualImport
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem5.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem5.Name = "LayoutControlItem1"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1389, 488)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1389, 372)
         Me.LayoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
@@ -3696,15 +3641,110 @@ Partial Class ManualImport
         '
         Me.XtraFolderBrowserDialog1.SelectedPath = "XtraFolderBrowserDialog1"
         '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbiReload, Me.Add_bbi, Me.Save_bbi, Me.Delete_bbi, Me.Preview_bbi, Me.Close_bbi})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 8
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1411, 94)
+        Me.RibbonControl1.StatusBar = Me.RibbonStatusBar1
+        '
+        'bbiReload
+        '
+        Me.bbiReload.Caption = "Reload"
+        Me.bbiReload.Id = 1
+        Me.bbiReload.ImageOptions.Image = CType(resources.GetObject("bbiReload.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiReload.ImageOptions.LargeImage = CType(resources.GetObject("bbiReload.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiReload.Name = "bbiReload"
+        '
+        'Add_bbi
+        '
+        Me.Add_bbi.Caption = "Add new Import Procedure"
+        Me.Add_bbi.Id = 2
+        Me.Add_bbi.ImageOptions.Image = CType(resources.GetObject("Add_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.Add_bbi.ImageOptions.LargeImage = CType(resources.GetObject("Add_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Add_bbi.Name = "Add_bbi"
+        '
+        'Save_bbi
+        '
+        Me.Save_bbi.Caption = "Save"
+        Me.Save_bbi.Id = 3
+        Me.Save_bbi.ImageOptions.Image = CType(resources.GetObject("Save_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.Save_bbi.ImageOptions.LargeImage = CType(resources.GetObject("Save_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Save_bbi.Name = "Save_bbi"
+        '
+        'Delete_bbi
+        '
+        Me.Delete_bbi.Caption = "Delete"
+        Me.Delete_bbi.Id = 4
+        Me.Delete_bbi.ImageOptions.Image = CType(resources.GetObject("Delete_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.Delete_bbi.ImageOptions.LargeImage = CType(resources.GetObject("Delete_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Delete_bbi.Name = "Delete_bbi"
+        '
+        'Preview_bbi
+        '
+        Me.Preview_bbi.Caption = "Print Preview"
+        Me.Preview_bbi.Id = 5
+        Me.Preview_bbi.ImageOptions.Image = CType(resources.GetObject("Preview_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.Preview_bbi.ImageOptions.LargeImage = CType(resources.GetObject("Preview_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Preview_bbi.Name = "Preview_bbi"
+        '
+        'Close_bbi
+        '
+        Me.Close_bbi.Caption = "Close"
+        Me.Close_bbi.Id = 7
+        Me.Close_bbi.ImageOptions.Image = CType(resources.GetObject("Close_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.Close_bbi.ImageOptions.LargeImage = CType(resources.GetObject("Close_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Close_bbi.Name = "Close_bbi"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiReload)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.Add_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.Save_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.Delete_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.Preview_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.Close_bbi, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonStatusBar1
+        '
+        Me.RibbonStatusBar1.Location = New System.Drawing.Point(0, 559)
+        Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
+        Me.RibbonStatusBar1.Ribbon = Me.RibbonControl1
+        Me.RibbonStatusBar1.Size = New System.Drawing.Size(1411, 22)
+        Me.RibbonStatusBar1.Visible = False
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
         'ManualImport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1411, 581)
         Me.Controls.Add(Me.XtraTabControl1)
+        Me.Controls.Add(Me.RibbonStatusBar1)
+        Me.Controls.Add(Me.RibbonControl1)
         Me.IconOptions.Icon = CType(resources.GetObject("ManualImport.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "ManualImport"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StatusBar = Me.RibbonStatusBar1
         Me.Text = "Manual Imports"
         CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EDPDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3714,8 +3754,8 @@ Partial Class ManualImport
         Me.MANUAL_Procedures_XtraTabPage.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ManualImportProcedures_BasicView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ManualImportProcedureRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3757,11 +3797,7 @@ Partial Class ManualImport
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem_ProgressPanel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ImportEvents_XtraTabPage.ResumeLayout(False)
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
@@ -3859,7 +3895,9 @@ Partial Class ManualImport
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents EDPDataSet As PS_TOOL_DX.EDPDataSet
@@ -3870,8 +3908,6 @@ Partial Class ManualImport
     Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents MANUAL_Procedures_XtraTabPage As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents Print_Export_MANUAL_ImportProcedures_Gridview_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents Edit_BICDIR_Details_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents ManualImportProcedures_BasicView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents ManualImportProcedureRepositoryItemTextEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
@@ -3958,9 +3994,6 @@ Partial Class ManualImport
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents ImportEvents_XtraTabPage As DevExpress.XtraTab.XtraTabPage
     Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents Print_Export_ImportEvents_Gridview_btn As DevExpress.XtraEditors.SimpleButton
@@ -4166,5 +4199,15 @@ Partial Class ManualImport
     Friend WithEvents XtraFolderBrowserDialog1 As DevExpress.XtraEditors.XtraFolderBrowserDialog
     Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
     Friend WithEvents LayoutControlItem_ProgressPanel As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonStatusBar1 As DevExpress.XtraBars.Ribbon.RibbonStatusBar
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents bbiReload As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Add_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Save_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Delete_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Preview_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Close_bbi As DevExpress.XtraBars.BarButtonItem
 End Class

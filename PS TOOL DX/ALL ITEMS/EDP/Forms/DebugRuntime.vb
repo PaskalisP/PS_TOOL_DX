@@ -47,167 +47,108 @@ Imports System.Drawing
 Imports DevExpress.CodeParser
 Imports DevExpress.Office
 Imports Document = DevExpress.XtraRichEdit.API.Native.Document
+Imports PS_TOOL_DX.VbSyntaxHighlightApp
 
 
 Public Class DebugRuntime
 
-        Dim conn As New SqlConnection
-        Dim cmd As New SqlCommand
-        Dim vArgs() As Object
+    Dim vArgs() As Object
+    Dim ProgrammierungRequest As String = Nothing
+    Dim ImplemenationDate As Date
 
-        Private QueryText As String = ""
-        Private da As New SqlDataAdapter
-        Private dt As New DataTable
+    Sub New()
+        InitSkins()
+        InitializeComponent()
+        SkinManager.EnableMdiFormSkins()
+    End Sub
+    Sub InitSkins()
+        DevExpress.Skins.SkinManager.EnableFormSkins()
+        DevExpress.UserSkins.BonusSkins.Register()
+        UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
+    End Sub
 
-        Dim ProgrammierungRequest As String = Nothing
-        Dim ImplemenationDate As Date
+    Private Sub DebugRuntime_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Sub New()
-            InitSkins()
-            InitializeComponent()
-            SkinManager.EnableMdiFormSkins()
-        End Sub
-        Sub InitSkins()
-            DevExpress.Skins.SkinManager.EnableFormSkins()
-            DevExpress.UserSkins.BonusSkins.Register()
-            UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
-        End Sub
+        DevExpress.XtraRichEdit.RichEditControlCompatibility.UseThemeFonts = False
+        DevExpress.XtraRichEdit.RichEditControlCompatibility.DefaultFontSize = 11
+        DevExpress.XtraRichEdit.RichEditControlCompatibility.DefaultFontName = "Consolas"
 
-        Private Sub DebugRuntime_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RichEditControl1.Options.Behavior.FontSource = RichEditBaseValueSource.Document
+        RichEditControl1.Document.DefaultCharacterProperties.FontName = "Consolas"
+        RichEditControl1.Document.DefaultCharacterProperties.FontSize = 11
 
-            AddHandler GridControl1.EmbeddedNavigator.ButtonClick, AddressOf GridControl1_EmbeddedNavigator_ButtonClick
+        AddHandler GridControl1.EmbeddedNavigator.ButtonClick, AddressOf GridControl1_EmbeddedNavigator_ButtonClick
 
-            Me.CURRENT_USERSTableAdapter.Fill(Me.EDPDataSet.CURRENT_USERS)
-            Me.BuildsTableAdapter.Fill(Me.AuditDataSet.Builds)
+        Me.CURRENT_USERSTableAdapter.Fill(Me.EDPDataSet.CURRENT_USERS)
+        Me.BuildsTableAdapter.Fill(Me.AuditDataSet.Builds)
 
-            conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-            cmd.Connection = conn
 
-            'Fill combobox with Import events files
+        'Fill combobox with Import events files
 
-            For Each file As String In System.IO.Directory.GetFiles(ImportEventsDirectoryFolder)
-                If System.IO.Path.GetFileName(file).ToString.StartsWith("PSTOOL_ImportEvents_") = True Then
-                    Me.ImportEventsFiles_ComboBoxEdit.Properties.Items.Add(System.IO.Path.GetFileName(file))
-                End If
-            Next
-
-            RichEditControl1.ReadOnly = True
-            ' Use service substitution to register a custom service that implements highlighting.
-            RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New MySyntaxHighlightService(RichEditControl1))
-
-        End Sub
-
-        Private Sub GridControl1_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
-            'Save Changes
-            If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.EndEdit Then
-                Try
-                    Me.Validate()
-                    Me.BuildsBindingSource.EndEdit()
-
-                    If MessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
-                        Me.BuildsTableAdapter.Update(Me.AuditDataSet.Builds)
-                        Me.BuildsTableAdapter.Fill(Me.AuditDataSet.Builds)
-                    Else
-                        Me.BuildsBindingSource.CancelEdit()
-                        Me.BuildsTableAdapter.Fill(Me.AuditDataSet.Builds)
-                        e.Handled = True
-                    End If
-
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End Try
+        For Each file As String In System.IO.Directory.GetFiles(ImportEventsDirectoryFolder)
+            If System.IO.Path.GetFileName(file).ToString.StartsWith("PSTOOL_ImportEvents_") = True Then
+                Me.ImportEventsFiles_ComboBoxEdit.Properties.Items.Add(System.IO.Path.GetFileName(file))
             End If
+        Next
 
-            'Delete Row
-            If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.Remove Then
-                Try
-                    Dim row As System.Data.DataRow = Builds_GridView.GetDataRow(Builds_GridView.FocusedRowHandle)
-                    Dim ID As String = row(0)
+        RichEditControl1.ReadOnly = True
+        ' Use service substitution to register a custom service that implements highlighting.
+        Me.RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New VbSyntaxHighlightService(Me.RichEditControl1, Me.RichEditControl1.Document))
 
-                    If MessageBox.Show("Should the Build Description with ID: " & ID & " be deleted?", "DELETE BUILD ID", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-                        cmd.CommandText = "DELETE FROM [Builds] where [ID]='" & ID & "'"
-                        cmd.ExecuteNonQuery()
-                        cmd.Connection.Close()
-                        Me.BuildsTableAdapter.Fill(Me.AuditDataSet.Builds)
-                    Else
-                        e.Handled = True
-                    End If
+    End Sub
 
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                End Try
-            End If
-        End Sub
-
-        Private Sub RunCode_btn_Click(sender As Object, e As EventArgs) Handles RunCode_btn.Click
+    Private Sub GridControl1_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
+        'Save Changes
+        If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.EndEdit Then
             Try
-                If Me.RichEditControl1.Text.Trim <> "" Then
-                    CompileAndRunCode(Me.RichEditControl1.Text)
+                Me.Validate()
+                Me.BuildsBindingSource.EndEdit()
+
+                If MessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.BuildsTableAdapter.Update(Me.AuditDataSet.Builds)
+                    Me.BuildsTableAdapter.Fill(Me.AuditDataSet.Builds)
                 Else
-                    MsgBox("Write VB.Net code to compile")
-                End If
-            Catch err As Exception
-                MsgBox(err.Message & " " & err.StackTrace)
-            End Try
-
-        End Sub
-
-        Public Function CompileAndRunCode(ByVal VBCodeToExecute As String) As Object
-
-            Dim sReturn_DataType As String
-            Dim sReturn_Value As String = ""
-            Try
-
-                ' Instance our CodeDom wrapper
-                Dim ep As New cVBEvalProvider
-
-                ' Compile and run
-                Dim objResult As Object = ep.Eval(VBCodeToExecute)
-                If ep.CompilerErrors.Count <> 0 Then
-                    Diagnostics.Debug.WriteLine("CompileAndRunCode: Compile Error Count = " & ep.CompilerErrors.Count)
-                    Diagnostics.Debug.WriteLine(ep.CompilerErrors.Item(0))
-                    Return "ERROR" ' Forget it
-                End If
-                Dim t As Type = objResult.GetType()
-                If t.ToString() = "System.String" Then
-                    sReturn_DataType = t.ToString
-                    sReturn_Value = Convert.ToString(objResult)
-                Else
-                    ' Some other type of data - not really handled at 
-                    ' this point. rwd
-                    'ToDo: Add handlers for other data return types, if needed
-
-                    ' Here is an example to handle a dataset...
-                    'Dim ds As DataSet = DirectCast(objResult, DataSet)
-                    'DataGrid1.Visible = True
-                    'TextBox2.Visible = False
-                    'DataGrid1.DataSource = ds.Tables(0)
+                    Me.BuildsBindingSource.CancelEdit()
+                    Me.BuildsTableAdapter.Fill(Me.AuditDataSet.Builds)
+                    e.Handled = True
                 End If
 
             Catch ex As Exception
-                Dim sErrMsg As String
-                sErrMsg = String.Format("{0}", ex.Message)
-                ' Do Nothing - This is just a negative case
-                ' This outcome is expected in late interpreting
-                ' I suppose what I am saying is: Don't stop my program because the script writer can't write
-                ' script very well.  To be fair, we could log this somewhere and notify somebody.
+                MessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
             End Try
+        End If
 
-            Return sReturn_Value
+        'Delete Row
+        If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.Remove Then
+            Try
+                Dim row As System.Data.DataRow = Builds_GridView.GetDataRow(Builds_GridView.FocusedRowHandle)
+                Dim ID As String = row(0)
 
-        End Function
+                If MessageBox.Show("Should the Build Description with ID: " & ID & " be deleted?", "DELETE BUILD ID", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    OpenSqlConnections()
+                    cmd.CommandText = "DELETE FROM [Builds] where [ID]='" & ID & "'"
+                    cmd.ExecuteNonQuery()
+                    CloseSqlConnections()
+                    Me.BuildsTableAdapter.Fill(Me.AuditDataSet.Builds)
+                Else
+                    e.Handled = True
+                End If
 
-        Private Sub RunTextClear_btn_Click(sender As Object, e As EventArgs) Handles RunTextClear_btn.Click
-            Me.RichEditControl1.Text = Nothing
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End Try
+        End If
+    End Sub
 
-        End Sub
 
-        Private Sub LoadCode_btn_Click(sender As Object, e As EventArgs) Handles LoadCode_btn.Click
+    Private Sub RunTextClear_btn_Click(sender As Object, e As EventArgs) Handles RunTextClear_btn.Click
+        Me.RichEditControl1.Text = Nothing
+
+    End Sub
+
+    Private Sub LoadCode_btn_Click(sender As Object, e As EventArgs) Handles LoadCode_btn.Click
             With OpenFileDialog1
                 .Filter = "All Files(*.*)|*.*"
                 .FilterIndex = 1
@@ -222,599 +163,432 @@ Public Class DebugRuntime
             End With
         End Sub
 
-        Private Sub PrintCode_btn_Click(sender As Object, e As EventArgs) Handles PrintCode_btn.Click
-            Dim l As New Link(New PrintingSystem())
-            AddHandler l.CreateDetailArea, AddressOf l_CreateDetailArea
-            l.ShowPreviewDialog()
+    Private Sub PrintCode_btn_Click(sender As Object, e As EventArgs) Handles PrintCode_btn.Click
+        Dim l As New Link(New PrintingSystem())
+        AddHandler l.CreateDetailArea, AddressOf l_CreateDetailArea
+        l.ShowPreviewDialog()
 
-        End Sub
-        Private Sub l_CreateDetailArea(ByVal sender As Object, ByVal e As CreateAreaEventArgs)
-            Dim g As Graphics = Graphics.FromHwnd(IntPtr.Zero)
-            Dim sz As SizeF = g.MeasureString(Me.RichEditControl1.Text, Me.RichEditControl1.Font, 600)
-            Dim tb As New TextBrick(DevExpress.XtraPrinting.BorderSide.All, 0, Color.Red, Color.White, Color.Black)
-            tb.Rect = New RectangleF(New PointF(0, 0), sz)
-            tb.Font = Me.RichEditControl1.Font
-            tb.Text = Me.RichEditControl1.Text
-            e.Graph.DrawBrick(tb)
-        End Sub
-
-
-        Private Sub LoadImportEvents_btn_Click(sender As Object, e As EventArgs) Handles LoadImportEvents_btn.Click
-            Me.RichEditControl1.Text = My.Computer.FileSystem.ReadAllText(ImportEventsDirectory)
-
-        End Sub
-
-        Private Sub LoadImportEventsTextFile_btn_Click(sender As Object, e As EventArgs) Handles LoadImportEventsTextFile_btn.Click
-            Try
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Load Import Events")
-                Me.ListBoxControl1.Items.AddRange(IO.File.ReadAllLines(ImportEventsDirectory))
-                SplashScreenManager.CloseForm(False)
+    End Sub
+    Private Sub l_CreateDetailArea(ByVal sender As Object, ByVal e As CreateAreaEventArgs)
+        Dim g As Graphics = Graphics.FromHwnd(IntPtr.Zero)
+        Dim sz As SizeF = g.MeasureString(Me.RichEditControl1.Text, Me.RichEditControl1.Font, 600)
+        Dim tb As New TextBrick(DevExpress.XtraPrinting.BorderSide.All, 0, Color.Red, Color.White, Color.Black)
+        tb.Rect = New RectangleF(New PointF(0, 0), sz)
+        tb.Font = Me.RichEditControl1.Font
+        tb.Text = Me.RichEditControl1.Text
+        e.Graph.DrawBrick(tb)
+    End Sub
 
 
-            Catch ex As Exception
-                SplashScreenManager.CloseForm(False)
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Sub
+    Private Sub LoadImportEvents_btn_Click(sender As Object, e As EventArgs) Handles LoadImportEvents_btn.Click
+        Me.RichEditControl1.Text = My.Computer.FileSystem.ReadAllText(ImportEventsDirectory)
 
-            End Try
+    End Sub
 
-        End Sub
+    Private Sub LoadImportEventsTextFile_btn_Click(sender As Object, e As EventArgs) Handles LoadImportEventsTextFile_btn.Click
+        Try
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Load Import Events")
+            Me.ListBoxControl1.Items.AddRange(IO.File.ReadAllLines(ImportEventsDirectory))
+            SplashScreenManager.CloseForm(False)
 
-        Private Sub ImportEventsSwiftMessages_btn_Click(sender As Object, e As EventArgs) Handles ImportEventsSwiftMessages_btn.Click
 
-            Try
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Load Swift Messages Import Events")
-                cmd.Connection.Open()
-                cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER STATUS]='Y' and [IdABTEILUNGSPARAMETER]='SWIFT_IMPORT_EVENTS'"
-                Dim ImportEventsSwiftDirectory As String = cmd.ExecuteScalar
-                cmd.Connection.Close()
-                Me.ListBoxControl2.Items.AddRange(IO.File.ReadAllLines(ImportEventsSwiftDirectory))
-                SplashScreenManager.CloseForm(False)
-            Catch ex As Exception
-                SplashScreenManager.CloseForm(False)
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Sub
-            End Try
+        Catch ex As Exception
+            SplashScreenManager.CloseForm(False)
+            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
 
-        End Sub
+        End Try
 
-        Private Sub CURRENT_USERSBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-            Me.Validate()
+    End Sub
+
+    Private Sub ImportEventsSwiftMessages_btn_Click(sender As Object, e As EventArgs) Handles ImportEventsSwiftMessages_btn.Click
+
+        Try
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Load Swift Messages Import Events")
+            OpenSqlConnections()
+            cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER STATUS]='Y' and [IdABTEILUNGSPARAMETER]='SWIFT_IMPORT_EVENTS'"
+            Dim ImportEventsSwiftDirectory As String = cmd.ExecuteScalar
+            CloseSqlConnections()
+            Me.ListBoxControl2.Items.AddRange(IO.File.ReadAllLines(ImportEventsSwiftDirectory))
+            SplashScreenManager.CloseForm(False)
+        Catch ex As Exception
+            SplashScreenManager.CloseForm(False)
+            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End Try
+
+    End Sub
+
+    Private Sub CURRENT_USERSBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
+        Me.Validate()
+        Me.CURRENT_USERSBindingSource.EndEdit()
+        Me.TableAdapterManager.UpdateAll(Me.EDPDataSet)
+
+    End Sub
+
+    Private Sub LoadCurrentUsers_btn_Click(sender As Object, e As EventArgs) Handles LoadCurrentUsers_btn.Click
+        Me.CURRENT_USERSTableAdapter.Fill(Me.EDPDataSet.CURRENT_USERS)
+    End Sub
+
+    Private Sub ListBoxControl1_DrawItem(sender As Object, e As ListBoxDrawItemEventArgs) Handles ListBoxControl1.DrawItem
+        If e.Index = ListBoxControl1.SelectedIndex Then
+            e.Appearance.ForeColor = Color.Yellow
+            e.Appearance.Font = New Font(e.Appearance.Font, FontStyle.Bold)
+        End If
+
+        If e.Item.ToString.Contains("ERROR") = True Then
+            e.Appearance.ForeColor = Color.Orange
+        End If
+
+    End Sub
+
+    Private Sub ListBoxControl2_Click(sender As Object, e As EventArgs) Handles ListBoxControl2.Click
+
+
+    End Sub
+
+    Private Sub ListBoxControl2_DrawItem(sender As Object, e As ListBoxDrawItemEventArgs) Handles ListBoxControl2.DrawItem
+        If e.Index = ListBoxControl2.SelectedIndex Then
+            e.Appearance.ForeColor = Color.Yellow
+            e.Appearance.Font = New Font(e.Appearance.Font, FontStyle.Bold)
+        End If
+
+        If e.Item.ToString.Contains("ERROR") = True Then
+            e.Appearance.ForeColor = Color.Orange
+        End If
+    End Sub
+
+    Private Sub ListBoxControl2_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBoxControl2.KeyDown
+        If e.Control AndAlso e.KeyCode = Keys.C Then
+            Dim copy_buffer As New System.Text.StringBuilder
+            For Each item As Object In ListBoxControl2.SelectedItems
+                copy_buffer.AppendLine(item.ToString)
+            Next
+            If copy_buffer.Length > 0 Then
+                Clipboard.SetText(copy_buffer.ToString)
+            End If
+        End If
+    End Sub
+
+
+
+    Private Sub ListBoxControl2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxControl2.SelectedIndexChanged
+        Dim i As Integer
+        For Each index As Integer In ListBoxControl2.SelectedIndices
+            'do something
+            Dim selectedItem As Object = ListBoxControl2.Items(i)
+
+            'MsgBox(selectedItem)
+
+        Next
+
+    End Sub
+
+    Private Sub ListBoxControl1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBoxControl1.KeyDown
+        If e.Control AndAlso e.KeyCode = Keys.C Then
+            Dim copy_buffer As New System.Text.StringBuilder
+            For Each item As Object In ListBoxControl1.SelectedItems
+                copy_buffer.AppendLine(item.ToString)
+            Next
+            If copy_buffer.Length > 0 Then
+                Clipboard.SetText(copy_buffer.ToString)
+            End If
+        End If
+
+    End Sub
+
+    Private Sub CurrentUsers_GridView_CellValueChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles CurrentUsers_GridView.CellValueChanged
+
+
+    End Sub
+
+    Private Sub RepositoryItemImageComboBox17_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemImageComboBox17.EditValueChanged
+        Try
+            CurrentUsers_GridView.PostEditor()
             Me.CURRENT_USERSBindingSource.EndEdit()
-            Me.TableAdapterManager.UpdateAll(Me.EDPDataSet)
-
-        End Sub
-
-        Private Sub LoadCurrentUsers_btn_Click(sender As Object, e As EventArgs) Handles LoadCurrentUsers_btn.Click
+            Me.CURRENT_USERSTableAdapter.Update(Me.EDPDataSet.CURRENT_USERS)
             Me.CURRENT_USERSTableAdapter.Fill(Me.EDPDataSet.CURRENT_USERS)
-        End Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
 
-        Private Sub ListBoxControl1_DrawItem(sender As Object, e As ListBoxDrawItemEventArgs) Handles ListBoxControl1.DrawItem
-            If e.Index = ListBoxControl1.SelectedIndex Then
-                e.Appearance.ForeColor = Color.Yellow
-                e.Appearance.Font = New Font(e.Appearance.Font, FontStyle.Bold)
-            End If
-
-            If e.Item.ToString.Contains("ERROR") = True Then
-                e.Appearance.ForeColor = Color.Orange
-            End If
-
-        End Sub
-
-        Private Sub ListBoxControl2_Click(sender As Object, e As EventArgs) Handles ListBoxControl2.Click
+        End Try
 
 
-        End Sub
+    End Sub
 
-        Private Sub ListBoxControl2_DrawItem(sender As Object, e As ListBoxDrawItemEventArgs) Handles ListBoxControl2.DrawItem
-            If e.Index = ListBoxControl2.SelectedIndex Then
-                e.Appearance.ForeColor = Color.Yellow
-                e.Appearance.Font = New Font(e.Appearance.Font, FontStyle.Bold)
-            End If
+    Private Sub Builds_GridView_CustomRowCellEditForEditing(sender As Object, e As CustomRowCellEditEventArgs) Handles Builds_GridView.CustomRowCellEditForEditing
+        If e.Column.FieldName = "Description" Then
+            e.RepositoryItem = RepositoryItemMemoExEdit1
+        End If
 
-            If e.Item.ToString.Contains("ERROR") = True Then
-                e.Appearance.ForeColor = Color.Orange
-            End If
-        End Sub
+    End Sub
 
-        Private Sub ListBoxControl2_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBoxControl2.KeyDown
-            If e.Control AndAlso e.KeyCode = Keys.C Then
-                Dim copy_buffer As New System.Text.StringBuilder
-                For Each item As Object In ListBoxControl2.SelectedItems
-                    copy_buffer.AppendLine(item.ToString)
-                Next
-                If copy_buffer.Length > 0 Then
-                    Clipboard.SetText(copy_buffer.ToString)
+
+
+    Private Sub Builds_GridView_InvalidValueException(sender As Object, e As InvalidValueExceptionEventArgs) Handles Builds_GridView.InvalidValueException
+        'Display Error in column
+        e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.DisplayError
+        'Show the message with the error text specified 
+        MessageBox.Show(e.ErrorText, "Field Validation failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    End Sub
+
+    Private Sub Builds_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles Builds_GridView.PopupMenuShowing
+        Dim View As GridView = CType(sender, GridView)
+
+        Dim HitInfo As GridHitInfo = View.CalcHitInfo(e.Point)
+        If HitInfo.InRow Then
+            View.FocusedRowHandle = HitInfo.RowHandle
+            Me.ContextMenuStrip1.Show(View.GridControl, e.Point)
+        End If
+    End Sub
+
+    Private Sub Builds_GridView_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles Builds_GridView.RowCellClick
+        Dim view As GridView = CType(sender, GridView)
+        ProgrammierungRequest = view.GetRowCellValue(e.RowHandle, colDescription).ToString
+
+        Dim IMPLEMENTATION_DATE As GridColumn = view.Columns("ImplementationDate")
+        Dim ImplementationDateString As String = view.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
+
+        If ImplementationDateString <> "" Then
+            ImplemenationDate = view.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
+        Else
+            ImplemenationDate = Today
+
+        End If
+
+
+    End Sub
+
+    Private Sub Builds_GridView_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles Builds_GridView.RowClick
+        Dim view As GridView = CType(sender, GridView)
+        ProgrammierungRequest = view.GetRowCellValue(e.RowHandle, colDescription).ToString
+
+        Dim IMPLEMENTATION_DATE As GridColumn = view.Columns("ImplementationDate")
+        Dim ImplementationDateString As String = view.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
+
+        If ImplementationDateString <> "" Then
+            ImplemenationDate = view.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
+        Else
+            ImplemenationDate = Today
+
+        End If
+
+    End Sub
+
+    Private Sub Builds_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Builds_GridView.RowStyle
+        'Set Backcolor to Filter row
+        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+        End If
+    End Sub
+
+    Private Sub Builds_GridView_ShownEditor(sender As Object, e As EventArgs) Handles Builds_GridView.ShownEditor
+        Dim view As GridView = CType(sender, GridView)
+        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub Builds_GridView_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles Builds_GridView.ValidateRow
+        Dim View As GridView = CType(sender, GridView)
+        Dim VersionNr As GridColumn = View.Columns("VerionNr")
+        Dim BuildNr As GridColumn = View.Columns("BuildNr")
+        Dim Revision As GridColumn = View.Columns("Revision")
+        Dim App_Module As GridColumn = View.Columns("Module")
+        Dim TableForm As GridColumn = View.Columns("Table_Form")
+        Dim Description As GridColumn = View.Columns("Description") '
+        Dim ImplemenationDate As GridColumn = View.Columns("ImplementationDate")
+
+
+        Dim VERSION_NR As String = View.GetRowCellValue(e.RowHandle, colVerionNr).ToString
+        Dim BUILD_NR As String = View.GetRowCellValue(e.RowHandle, colBuildNr).ToString
+        Dim REVISION_TXT As String = View.GetRowCellValue(e.RowHandle, colRevision).ToString
+        Dim MODULE_TXT As String = View.GetRowCellValue(e.RowHandle, colModule).ToString
+        Dim TABLE_FORM As String = View.GetRowCellValue(e.RowHandle, colTable_Form).ToString
+        Dim DESCRIPTION_TXT As String = View.GetRowCellValue(e.RowHandle, colDescription).ToString
+        Dim IMPLEMENTATION_DATE As String = View.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
+
+        If VERSION_NR = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(VersionNr, "The Version Nr must not be empty")
+            e.ErrorText = "The Version Nr must not be empty"
+        End If
+        If BUILD_NR = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(BuildNr, "The Build Nr not be empty")
+            e.ErrorText = "The Build Nr must not be empty"
+        End If
+        If REVISION_TXT = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(Revision, "The Revision Nr not be empty")
+            e.ErrorText = "The Revision Nr must not be empty"
+        End If
+        If MODULE_TXT = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(App_Module, "The Module Name must not be empty")
+            e.ErrorText = "The Module Name must not be empty"
+        End If
+        If TABLE_FORM = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(TableForm, "The Table/Form Name must not be empty")
+            e.ErrorText = "The Table/Form Name must not be empty"
+        End If
+        If DESCRIPTION_TXT = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(Description, "The Description must not be empty")
+            e.ErrorText = "The Description must not be empty"
+        End If
+        If IMPLEMENTATION_DATE = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(ImplemenationDate, "The Implementation Date must not be empty")
+            e.ErrorText = "The Implementation Date must not be empty"
+        End If
+    End Sub
+
+    Private Sub Print_Export_BuildGridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_BuildGridview_btn.Click
+        If Not GridControl1.IsPrintingAvailable Then
+            MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
+            Return
+        End If
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        PrintableComponentLink1.CreateDocument()
+        PrintableComponentLink1.ShowPreview()
+        SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
+        Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
+        Try
+            iSize = e.Graph.MeasureString(String.Format("Printed: {0:F}M", DateTime.Now)).ToSize
+            r = New RectangleF(New PointF(e.Graph.ClientPageSize.Width - iSize.Width, 0), iSize)
+            pinfoBrick = e.Graph.DrawPageInfo(PageInfo.DateTime, "Printed: {0:F}", e.Graph.ForeColor, r, DevExpress.XtraPrinting.BorderSide.None)
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
+        Dim reportfooter As String = "PS TOOL Builds - Descriptions" & "  " & "Printed on: " & Now
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+    End Sub
+
+    Private Sub Fill_IDV_Form_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Fill_IDV_Form_ToolStripMenuItem.Click
+        Try
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Select related data for the Form creation")
+            Dim IDV_REQUEST_FORM As String = Nothing
+
+            'Directory of the Word Form
+            QueryText = "SELECT * FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='BUILDS_FORMS'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
+            dt = New DataTable()
+            da.Fill(dt)
+            For i = 0 To dt.Rows.Count - 1
+                If dt.Rows.Item(i).Item("PARAMETER1") = "IDV_Form_Directory" Then
+                    IDV_REQUEST_FORM = dt.Rows.Item(i).Item("PARAMETER2")
                 End If
-            End If
-        End Sub
-
-
-
-        Private Sub ListBoxControl2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxControl2.SelectedIndexChanged
-            Dim i As Integer
-            For Each index As Integer In ListBoxControl2.SelectedIndices
-                'do something
-                Dim selectedItem As Object = ListBoxControl2.Items(i)
-
-                'MsgBox(selectedItem)
-
             Next
 
-        End Sub
 
-        Private Sub ListBoxControl1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBoxControl1.KeyDown
-            If e.Control AndAlso e.KeyCode = Keys.C Then
-                Dim copy_buffer As New System.Text.StringBuilder
-                For Each item As Object In ListBoxControl1.SelectedItems
-                    copy_buffer.AppendLine(item.ToString)
-                Next
-                If copy_buffer.Length > 0 Then
-                    Clipboard.SetText(copy_buffer.ToString)
-                End If
-            End If
-
-        End Sub
-
-        Private Sub CurrentUsers_GridView_CellValueChanged(sender As Object, e As DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs) Handles CurrentUsers_GridView.CellValueChanged
-
-
-        End Sub
-
-        Private Sub RepositoryItemImageComboBox17_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemImageComboBox17.EditValueChanged
-            Try
-                CurrentUsers_GridView.PostEditor()
-                Me.CURRENT_USERSBindingSource.EndEdit()
-                Me.CURRENT_USERSTableAdapter.Update(Me.EDPDataSet.CURRENT_USERS)
-                Me.CURRENT_USERSTableAdapter.Fill(Me.EDPDataSet.CURRENT_USERS)
-            Catch ex As Exception
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Sub
-
-            End Try
+            SplashScreenManager.Default.SetWaitFormCaption("Create Form: IDV")
+            'Generate Word Form
+            Dim c As New WordForm
+            c.MdiParent = Me.MdiParent
+            c.Show()
+            c.Text = "IDV Request Form"
+            c.RichEditControl1.LoadDocument(IDV_REQUEST_FORM)
+            c.RichEditControl1.ReadOnly = False
+            'c.RibbonControl1.Pages(1).Visible = False
+            c.RichEditControl1.Options.Behavior.Save = DocumentCapability.Hidden
+            c.RichEditControl1.Options.Behavior.SaveAs = DocumentCapability.Hidden
+            Dim IT_ProgrammierungPos As DocumentPosition = c.RichEditControl1.Document.Bookmarks("IT_Programmierung").Range.End
+            c.RichEditControl1.Document.InsertText(IT_ProgrammierungPos, ProgrammierungRequest)
+            Dim ExpertApprovalDatePos As DocumentPosition = c.RichEditControl1.Document.Bookmarks("ExpertApprovalDate").Range.End
+            c.RichEditControl1.Document.InsertText(ExpertApprovalDatePos, ImplemenationDate)
 
 
-        End Sub
-
-        Private Sub Builds_GridView_CustomRowCellEditForEditing(sender As Object, e As CustomRowCellEditEventArgs) Handles Builds_GridView.CustomRowCellEditForEditing
-            If e.Column.FieldName = "Description" Then
-                e.RepositoryItem = RepositoryItemMemoExEdit1
-            End If
-
-        End Sub
-
-
-
-        Private Sub Builds_GridView_InvalidValueException(sender As Object, e As InvalidValueExceptionEventArgs) Handles Builds_GridView.InvalidValueException
-            'Display Error in column
-            e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.DisplayError
-            'Show the message with the error text specified 
-            MessageBox.Show(e.ErrorText, "Field Validation failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Sub
-
-        Private Sub Builds_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles Builds_GridView.PopupMenuShowing
-            Dim View As GridView = CType(sender, GridView)
-
-            Dim HitInfo As GridHitInfo = View.CalcHitInfo(e.Point)
-            If HitInfo.InRow Then
-                View.FocusedRowHandle = HitInfo.RowHandle
-                Me.ContextMenuStrip1.Show(View.GridControl, e.Point)
-            End If
-        End Sub
-
-        Private Sub Builds_GridView_RowCellClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs) Handles Builds_GridView.RowCellClick
-            Dim view As GridView = CType(sender, GridView)
-            ProgrammierungRequest = view.GetRowCellValue(e.RowHandle, colDescription).ToString
-
-            Dim IMPLEMENTATION_DATE As GridColumn = view.Columns("ImplementationDate")
-            Dim ImplementationDateString As String = view.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
-
-            If ImplementationDateString <> "" Then
-                ImplemenationDate = view.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
-            Else
-                ImplemenationDate = Today
-
-            End If
-
-
-        End Sub
-
-        Private Sub Builds_GridView_RowClick(sender As Object, e As DevExpress.XtraGrid.Views.Grid.RowClickEventArgs) Handles Builds_GridView.RowClick
-            Dim view As GridView = CType(sender, GridView)
-            ProgrammierungRequest = view.GetRowCellValue(e.RowHandle, colDescription).ToString
-
-            Dim IMPLEMENTATION_DATE As GridColumn = view.Columns("ImplementationDate")
-            Dim ImplementationDateString As String = view.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
-
-            If ImplementationDateString <> "" Then
-                ImplemenationDate = view.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
-            Else
-                ImplemenationDate = Today
-
-            End If
-
-        End Sub
-
-        Private Sub Builds_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Builds_GridView.RowStyle
-            'Set Backcolor to Filter row
-            If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-                e.Appearance.BackColor = SystemColors.InactiveCaptionText
-
-            End If
-        End Sub
-
-        Private Sub Builds_GridView_ShownEditor(sender As Object, e As EventArgs) Handles Builds_GridView.ShownEditor
-            Dim view As GridView = CType(sender, GridView)
-            If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-                view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-            End If
-        End Sub
-
-        Private Sub Builds_GridView_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles Builds_GridView.ValidateRow
-            Dim View As GridView = CType(sender, GridView)
-            Dim VersionNr As GridColumn = View.Columns("VerionNr")
-            Dim BuildNr As GridColumn = View.Columns("BuildNr")
-            Dim Revision As GridColumn = View.Columns("Revision")
-            Dim App_Module As GridColumn = View.Columns("Module")
-            Dim TableForm As GridColumn = View.Columns("Table_Form")
-            Dim Description As GridColumn = View.Columns("Description") '
-            Dim ImplemenationDate As GridColumn = View.Columns("ImplementationDate")
-
-
-            Dim VERSION_NR As String = View.GetRowCellValue(e.RowHandle, colVerionNr).ToString
-            Dim BUILD_NR As String = View.GetRowCellValue(e.RowHandle, colBuildNr).ToString
-            Dim REVISION_TXT As String = View.GetRowCellValue(e.RowHandle, colRevision).ToString
-            Dim MODULE_TXT As String = View.GetRowCellValue(e.RowHandle, colModule).ToString
-            Dim TABLE_FORM As String = View.GetRowCellValue(e.RowHandle, colTable_Form).ToString
-            Dim DESCRIPTION_TXT As String = View.GetRowCellValue(e.RowHandle, colDescription).ToString
-            Dim IMPLEMENTATION_DATE As String = View.GetRowCellValue(e.RowHandle, colImplementationDate).ToString
-
-            If VERSION_NR = "" Then
-                e.Valid = False
-                'Set errors with specific descriptions for the columns
-                View.SetColumnError(VersionNr, "The Version Nr must not be empty")
-                e.ErrorText = "The Version Nr must not be empty"
-            End If
-            If BUILD_NR = "" Then
-                e.Valid = False
-                'Set errors with specific descriptions for the columns
-                View.SetColumnError(BuildNr, "The Build Nr not be empty")
-                e.ErrorText = "The Build Nr must not be empty"
-            End If
-            If REVISION_TXT = "" Then
-                e.Valid = False
-                'Set errors with specific descriptions for the columns
-                View.SetColumnError(Revision, "The Revision Nr not be empty")
-                e.ErrorText = "The Revision Nr must not be empty"
-            End If
-            If MODULE_TXT = "" Then
-                e.Valid = False
-                'Set errors with specific descriptions for the columns
-                View.SetColumnError(App_Module, "The Module Name must not be empty")
-                e.ErrorText = "The Module Name must not be empty"
-            End If
-            If TABLE_FORM = "" Then
-                e.Valid = False
-                'Set errors with specific descriptions for the columns
-                View.SetColumnError(TableForm, "The Table/Form Name must not be empty")
-                e.ErrorText = "The Table/Form Name must not be empty"
-            End If
-            If DESCRIPTION_TXT = "" Then
-                e.Valid = False
-                'Set errors with specific descriptions for the columns
-                View.SetColumnError(Description, "The Description must not be empty")
-                e.ErrorText = "The Description must not be empty"
-            End If
-            If IMPLEMENTATION_DATE = "" Then
-                e.Valid = False
-                'Set errors with specific descriptions for the columns
-                View.SetColumnError(ImplemenationDate, "The Implementation Date must not be empty")
-                e.ErrorText = "The Implementation Date must not be empty"
-            End If
-        End Sub
-
-        Private Sub Print_Export_BuildGridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_BuildGridview_btn.Click
-            If Not GridControl1.IsPrintingAvailable Then
-                MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
-                Return
-            End If
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            PrintableComponentLink1.CreateDocument()
-            PrintableComponentLink1.ShowPreview()
             SplashScreenManager.CloseForm(False)
-        End Sub
+        Catch ex As Exception
+            SplashScreenManager.CloseForm(False)
+            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
 
-        Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
-            Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
-            Try
-                iSize = e.Graph.MeasureString(String.Format("Printed: {0:F}M", DateTime.Now)).ToSize
-                r = New RectangleF(New PointF(e.Graph.ClientPageSize.Width - iSize.Width, 0), iSize)
-                pinfoBrick = e.Graph.DrawPageInfo(PageInfo.DateTime, "Printed: {0:F}", e.Graph.ForeColor, r, DevExpress.XtraPrinting.BorderSide.None)
+    End Sub
 
-            Catch ex As Exception
+    Private Sub ImportEventsFiles_ComboBoxEdit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ImportEventsFiles_ComboBoxEdit.SelectedIndexChanged
 
-            End Try
-        End Sub
+        Try
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Load Import Events File: " & Me.ImportEventsFiles_ComboBoxEdit.Text)
+            Me.ListBoxControl1.Items.AddRange(IO.File.ReadAllLines(ImportEventsDirectoryFolder & Me.ImportEventsFiles_ComboBoxEdit.Text))
+            SplashScreenManager.CloseForm(False)
+        Catch ex As Exception
+            SplashScreenManager.CloseForm(False)
+            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
 
-        Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
-            Dim reportfooter As String = "PS TOOL Builds - Descriptions" & "  " & "Printed on: " & Now
-            e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
-        End Sub
+        End Try
+    End Sub
 
-        Private Sub Fill_IDV_Form_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Fill_IDV_Form_ToolStripMenuItem.Click
-            Try
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Select related data for the Form creation")
-                Dim IDV_REQUEST_FORM As String = Nothing
+    Private Sub ImportEventsSwiftStatements_btn_Click(sender As Object, e As EventArgs) Handles ImportEventsSwiftStatements_btn.Click
+        Try
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Load Swift Statements Import Events")
+            OpenSqlConnections()
+            cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='Swift_Statement_ImportEvents_Dir' and [PARAMETER STATUS]='Y' and [IdABTEILUNGSPARAMETER]='SWIFT_STATEMENTS_DIRECTORIES'"
+            Dim ImportEventsSwiftDirectory As String = cmd.ExecuteScalar
+            CloseSqlConnections()
+            Me.ListBoxControl3.Items.AddRange(IO.File.ReadAllLines(ImportEventsSwiftDirectory))
+            SplashScreenManager.CloseForm(False)
+        Catch ex As Exception
+            SplashScreenManager.CloseForm(False)
+            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End Try
+    End Sub
 
-                'Directory of the Word Form
-                Me.QueryText = "SELECT * FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='BUILDS_FORMS'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New DataTable()
-                da.Fill(dt)
-                For i = 0 To dt.Rows.Count - 1
-                    If dt.Rows.Item(i).Item("PARAMETER1") = "IDV_Form_Directory" Then
-                        IDV_REQUEST_FORM = dt.Rows.Item(i).Item("PARAMETER2")
-                    End If
-                Next
+    Private Sub ListBoxControl3_DrawItem(sender As Object, e As ListBoxDrawItemEventArgs) Handles ListBoxControl3.DrawItem
+        If e.Index = ListBoxControl3.SelectedIndex Then
+            e.Appearance.ForeColor = Color.Yellow
+            e.Appearance.Font = New Font(e.Appearance.Font, FontStyle.Bold)
+        End If
 
+        If e.Item.ToString.Contains("ERROR") = True Then
+            e.Appearance.ForeColor = Color.Orange
+        End If
+    End Sub
 
-                SplashScreenManager.Default.SetWaitFormCaption("Create Form: IDV")
-                'Generate Word Form
-                Dim c As New WordForm
-                c.MdiParent = Me.MdiParent
-                c.Show()
-                c.Text = "IDV Request Form"
-                c.RichEditControl1.LoadDocument(IDV_REQUEST_FORM)
-                c.RichEditControl1.ReadOnly = False
-                'c.RibbonControl1.Pages(1).Visible = False
-                c.RichEditControl1.Options.Behavior.Save = DocumentCapability.Hidden
-                c.RichEditControl1.Options.Behavior.SaveAs = DocumentCapability.Hidden
-                Dim IT_ProgrammierungPos As DocumentPosition = c.RichEditControl1.Document.Bookmarks("IT_Programmierung").Range.End
-                c.RichEditControl1.Document.InsertText(IT_ProgrammierungPos, ProgrammierungRequest)
-                Dim ExpertApprovalDatePos As DocumentPosition = c.RichEditControl1.Document.Bookmarks("ExpertApprovalDate").Range.End
-                c.RichEditControl1.Document.InsertText(ExpertApprovalDatePos, ImplemenationDate)
-
-
-                SplashScreenManager.CloseForm(False)
-            Catch ex As Exception
-                SplashScreenManager.CloseForm(False)
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
-            End Try
-
-        End Sub
-
-        Private Sub ImportEventsFiles_ComboBoxEdit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ImportEventsFiles_ComboBoxEdit.SelectedIndexChanged
-
-            Try
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Load Import Events File: " & Me.ImportEventsFiles_ComboBoxEdit.Text)
-                Me.ListBoxControl1.Items.AddRange(IO.File.ReadAllLines(ImportEventsDirectoryFolder & Me.ImportEventsFiles_ComboBoxEdit.Text))
-                SplashScreenManager.CloseForm(False)
-            Catch ex As Exception
-                SplashScreenManager.CloseForm(False)
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Sub
-
-            End Try
-        End Sub
-
-        Private Sub ImportEventsSwiftStatements_btn_Click(sender As Object, e As EventArgs) Handles ImportEventsSwiftStatements_btn.Click
-            Try
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Load Swift Statements Import Events")
-                cmd.Connection.Open()
-                cmd.CommandText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='Swift_Statement_ImportEvents_Dir' and [PARAMETER STATUS]='Y' and [IdABTEILUNGSPARAMETER]='SWIFT_STATEMENTS_DIRECTORIES'"
-                Dim ImportEventsSwiftDirectory As String = cmd.ExecuteScalar
-                cmd.Connection.Close()
-                Me.ListBoxControl3.Items.AddRange(IO.File.ReadAllLines(ImportEventsSwiftDirectory))
-                SplashScreenManager.CloseForm(False)
-            Catch ex As Exception
-                SplashScreenManager.CloseForm(False)
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Sub
-            End Try
-        End Sub
-
-        Private Sub ListBoxControl3_DrawItem(sender As Object, e As ListBoxDrawItemEventArgs) Handles ListBoxControl3.DrawItem
-            If e.Index = ListBoxControl3.SelectedIndex Then
-                e.Appearance.ForeColor = Color.Yellow
-                e.Appearance.Font = New Font(e.Appearance.Font, FontStyle.Bold)
+    Private Sub ListBoxControl3_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBoxControl3.KeyDown
+        If e.Control AndAlso e.KeyCode = Keys.C Then
+            Dim copy_buffer As New System.Text.StringBuilder
+            For Each item As Object In ListBoxControl3.SelectedItems
+                copy_buffer.AppendLine(item.ToString)
+            Next
+            If copy_buffer.Length > 0 Then
+                Clipboard.SetText(copy_buffer.ToString)
             End If
+        End If
+    End Sub
 
-            If e.Item.ToString.Contains("ERROR") = True Then
-                e.Appearance.ForeColor = Color.Orange
-            End If
-        End Sub
+    Private Sub RichEditControl1_TextChanged(sender As Object, e As EventArgs) Handles RichEditControl1.TextChanged
+        If Me.RichEditControl1.Text <> Nothing Then
+            Me.RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New VbSyntaxHighlightService(Me.RichEditControl1, Me.RichEditControl1.Document))
+        End If
+    End Sub
+End Class
 
-        Private Sub ListBoxControl3_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBoxControl3.KeyDown
-            If e.Control AndAlso e.KeyCode = Keys.C Then
-                Dim copy_buffer As New System.Text.StringBuilder
-                For Each item As Object In ListBoxControl3.SelectedItems
-                    copy_buffer.AppendLine(item.ToString)
-                Next
-                If copy_buffer.Length > 0 Then
-                    Clipboard.SetText(copy_buffer.ToString)
-                End If
-            End If
-        End Sub
 
-        Private Sub RichEditControl1_TextChanged(sender As Object, e As EventArgs) Handles RichEditControl1.TextChanged
-            If Me.RichEditControl1.Text <> Nothing Then
-                Me.RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New MySyntaxHighlightService(Me.RichEditControl1))
-            End If
-        End Sub
-    End Class
-
-''' <summary>
-'''  This class implements the Execute method of the ISyntaxHighlightService interface to parse and colorize the text.
-''' </summary>
-Public Class MySyntaxHighlightService
-        Implements ISyntaxHighlightService
-        Private ReadOnly syntaxEditor As RichEditControl
-        Private syntaxColors As SyntaxColors
-        Private commentProperties As SyntaxHighlightProperties
-        Private keywordProperties As SyntaxHighlightProperties
-        Private stringProperties As SyntaxHighlightProperties
-        Private xmlCommentProperties As SyntaxHighlightProperties
-        Private textProperties As SyntaxHighlightProperties
-
-        Public Sub New(ByVal syntaxEditor As RichEditControl)
-            Me.syntaxEditor = syntaxEditor
-            syntaxColors = New SyntaxColors(UserLookAndFeel.Default)
-        End Sub
-
-        Private Sub HighlightSyntax(ByVal tokens As TokenCollection)
-            commentProperties = New SyntaxHighlightProperties()
-            commentProperties.ForeColor = syntaxColors.CommentColor
-
-            keywordProperties = New SyntaxHighlightProperties()
-            keywordProperties.ForeColor = syntaxColors.KeywordColor
-
-            stringProperties = New SyntaxHighlightProperties()
-            stringProperties.ForeColor = syntaxColors.StringColor
-
-            xmlCommentProperties = New SyntaxHighlightProperties()
-            xmlCommentProperties.ForeColor = syntaxColors.XmlCommentColor
-
-            textProperties = New SyntaxHighlightProperties()
-            textProperties.ForeColor = syntaxColors.TextColor
-
-            If tokens Is Nothing OrElse tokens.Count = 0 Then
-                Return
-            End If
-
-            Dim document As Document = syntaxEditor.Document
-            'CharacterProperties cp = document.BeginUpdateCharacters(0, 1);
-            Dim syntaxTokens As New List(Of SyntaxHighlightToken)(tokens.Count)
-            For Each token As Token In tokens
-                HighlightCategorizedToken(CType(token, CategorizedToken), syntaxTokens)
-            Next token
-            document.ApplySyntaxHighlight(syntaxTokens)
-            'document.EndUpdateCharacters(cp);
-        End Sub
-        Private Sub HighlightCategorizedToken(ByVal token As CategorizedToken, ByVal syntaxTokens As List(Of SyntaxHighlightToken))
-            Dim backColor As Color = syntaxEditor.ActiveView.BackColor
-            Dim category As TokenCategory = token.Category
-            If category = TokenCategory.Comment Then
-                syntaxTokens.Add(SetTokenColor(token, commentProperties, backColor))
-            ElseIf category = TokenCategory.Keyword Then
-                syntaxTokens.Add(SetTokenColor(token, keywordProperties, backColor))
-            ElseIf category = TokenCategory.String Then
-                syntaxTokens.Add(SetTokenColor(token, stringProperties, backColor))
-            ElseIf category = TokenCategory.XmlComment Then
-                syntaxTokens.Add(SetTokenColor(token, xmlCommentProperties, backColor))
-            Else
-                syntaxTokens.Add(SetTokenColor(token, textProperties, backColor))
-            End If
-        End Sub
-        Private Function SetTokenColor(ByVal token As Token, ByVal foreColor As SyntaxHighlightProperties, ByVal backColor As Color) As SyntaxHighlightToken
-            If syntaxEditor.Document.Paragraphs.Count < token.Range.Start.Line Then
-                Return Nothing
-            End If
-            Dim paragraphStart As Integer = DocumentHelper.GetParagraphStart(syntaxEditor.Document.Paragraphs(token.Range.Start.Line - 1))
-            Dim tokenStart As Integer = paragraphStart + token.Range.Start.Offset - 1
-            If token.Range.End.Line <> token.Range.Start.Line Then
-                paragraphStart = DocumentHelper.GetParagraphStart(syntaxEditor.Document.Paragraphs(token.Range.End.Line - 1))
-            End If
-
-            Dim tokenEnd As Integer = paragraphStart + token.Range.End.Offset - 1
-            Debug.Assert(tokenEnd > tokenStart)
-            Return New SyntaxHighlightToken(tokenStart, tokenEnd - tokenStart, foreColor)
-        End Function
-
-#Region "#ISyntaxHighlightServiceMembers"
-        Public Sub Execute() Implements ISyntaxHighlightService.Execute
-            Dim newText As String = syntaxEditor.Text
-            ' Determine language by file extension.
-            Dim ext As String = System.IO.Path.GetExtension(syntaxEditor.Options.DocumentSaveOptions.CurrentFileName)
-            Dim lang_ID As ParserLanguageID = ParserLanguage.FromFileExtension(ext)
-            ' Do not parse HTML or XML.
-            If lang_ID = ParserLanguageID.Html OrElse lang_ID = ParserLanguageID.Xml OrElse lang_ID = ParserLanguageID.None Then
-                Return
-            End If
-            ' Use DevExpress.CodeParser to parse text into tokens.
-            Dim tokenHelper As ITokenCategoryHelper = TokenCategoryHelperFactory.CreateHelper(lang_ID)
-            Dim highlightTokens As TokenCollection
-            highlightTokens = tokenHelper.GetTokens(newText)
-            HighlightSyntax(highlightTokens)
-        End Sub
-
-        Public Sub ForceExecute() Implements ISyntaxHighlightService.ForceExecute
-            Execute()
-        End Sub
-#End Region ' #ISyntaxHighlightServiceMembers
-    End Class
-    ''' <summary>
-    '''  This class provides colors to highlight the tokens.
-    ''' </summary>
-    Public Class SyntaxColors
-        Private Shared ReadOnly Property DefaultCommentColor() As Color
-            Get
-                Return Color.Green
-            End Get
-        End Property
-        Private Shared ReadOnly Property DefaultKeywordColor() As Color
-            Get
-                Return Color.Blue
-            End Get
-        End Property
-        Private Shared ReadOnly Property DefaultStringColor() As Color
-            Get
-                Return Color.Brown
-            End Get
-        End Property
-        Private Shared ReadOnly Property DefaultXmlCommentColor() As Color
-            Get
-                Return Color.Gray
-            End Get
-        End Property
-        Private Shared ReadOnly Property DefaultTextColor() As Color
-            Get
-                Return Color.Black
-            End Get
-        End Property
-        Private lookAndFeel As UserLookAndFeel
-
-        Public ReadOnly Property CommentColor() As Color
-            Get
-                Return GetCommonColorByName(CommonSkins.SkinInformationColor, DefaultCommentColor)
-            End Get
-        End Property
-        Public ReadOnly Property KeywordColor() As Color
-            Get
-                Return GetCommonColorByName(CommonSkins.SkinQuestionColor, DefaultKeywordColor)
-            End Get
-        End Property
-        Public ReadOnly Property TextColor() As Color
-            Get
-                Return GetCommonColorByName(CommonColors.WindowText, DefaultTextColor)
-            End Get
-        End Property
-        Public ReadOnly Property XmlCommentColor() As Color
-            Get
-                Return GetCommonColorByName(CommonColors.DisabledText, DefaultXmlCommentColor)
-            End Get
-        End Property
-        Public ReadOnly Property StringColor() As Color
-            Get
-                Return GetCommonColorByName(CommonSkins.SkinWarningColor, DefaultStringColor)
-            End Get
-        End Property
-
-        Public Sub New(ByVal lookAndFeel As UserLookAndFeel)
-            Me.lookAndFeel = lookAndFeel
-        End Sub
-
-        Private Function GetCommonColorByName(ByVal colorName As String, ByVal defaultColor As Color) As Color
-            Dim skin As Skin = CommonSkins.GetSkin(lookAndFeel)
-            If skin Is Nothing Then
-                Return defaultColor
-            End If
-            Return skin.Colors(colorName)
-        End Function
-    End Class
 

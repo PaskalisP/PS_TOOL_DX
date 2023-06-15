@@ -120,6 +120,9 @@ Public Class SqlParameterTree
 					SQL_Command_1,
 					SQL_Command_2,
 					SQL_Float_1,
+					LastAction,
+					LastUpdateUser,
+					LastUpdateDate,
 					SQL_Status,
                     Table_Level)
                     SELECT 
@@ -129,6 +132,9 @@ Public Class SqlParameterTree
 					SQL_Command_General,
 					SQL_Parameter_Info,
 					SQL_Float,
+					LastAction,
+					LastUpdateUser,
+					LastUpdateDate,
 					SQL_Parameter_Status,
                     'A'
                     FROM [SQL_PARAMETER]
@@ -152,6 +158,13 @@ Public Class SqlParameterTree
 					SQL_Date1,
 					SQL_Date2,
 					SQL_Status,
+					LastAction,
+					LastUpdateUser,
+					LastUpdateDate,
+					SQL_ScriptType_1,
+					SQL_ScriptType_2,
+					SQL_ScriptType_3,
+					SQL_ScriptType_4,
                     Table_Level)
                     SELECT 
                     B.ID,
@@ -171,6 +184,13 @@ Public Class SqlParameterTree
 					A.SQL_Date1,
 					A.SQL_Date2,
 					A.Status,
+					A.LastAction,
+					A.LastUpdateUser,
+					A.LastUpdateDate,
+					A.SQL_ScriptType_1,
+					A.SQL_ScriptType_2,
+					A.SQL_ScriptType_3,
+					A.SQL_ScriptType_4,
                     'B'
                     FROM [SQL_PARAMETER_DETAILS] A INNER JOIN @SQL_TREE_LIST B 
 					on A.Id_SQL_Parameters= B.SQL_Name_1
@@ -194,6 +214,13 @@ Public Class SqlParameterTree
 					SQL_Date1,
 					SQL_Date2,
 					SQL_Status,
+					LastAction,
+					LastUpdateUser,
+					LastUpdateDate,
+					SQL_ScriptType_1,
+					SQL_ScriptType_2,
+					SQL_ScriptType_3,
+					SQL_ScriptType_4,
                     Table_Level)
                     SELECT 
                     B.ID,
@@ -213,6 +240,13 @@ Public Class SqlParameterTree
 					A.SQL_Date1,
 					A.SQL_Date2,
 					A.Status,
+					A.LastAction,
+					A.LastUpdateUser,
+					A.LastUpdateDate,
+					A.SQL_ScriptType_1,
+					A.SQL_ScriptType_2,
+					A.SQL_ScriptType_3,
+					A.SQL_ScriptType_4,
                     'C'
                     FROM [SQL_PARAMETER_DETAILS_SECOND] A INNER JOIN @SQL_TREE_LIST B on A.Id_SQL_Parameters_Details=B.ORIGID
 					ORDER BY A.SQL_Float_1 asc
@@ -235,6 +269,13 @@ Public Class SqlParameterTree
 					SQL_Date1,
 					SQL_Date2,
 					SQL_Status,
+					LastAction,
+					LastUpdateUser,
+					LastUpdateDate,
+					SQL_ScriptType_1,
+					SQL_ScriptType_2,
+					SQL_ScriptType_3,
+					SQL_ScriptType_4,
                     Table_Level)
                     SELECT 
                     B.ID,
@@ -254,6 +295,13 @@ Public Class SqlParameterTree
 					A.SQL_Date1,
 					A.SQL_Date2,
 					A.Status,
+					A.LastAction,
+					A.LastUpdateUser,
+					A.LastUpdateDate,
+					A.SQL_ScriptType_1,
+					A.SQL_ScriptType_2,
+					A.SQL_ScriptType_3,
+					A.SQL_ScriptType_4,
                     'D'
                     FROM [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN @SQL_TREE_LIST B on A.Id_SQL_Parameters_Details=B.ORIGID
 					ORDER BY A.SQL_Float_1 asc

@@ -629,6 +629,7 @@ Public Class EAEG_Datei_New
 
     Private Sub BgwNeuEAEG_Daten_ErstellungBASIS_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwNeuEAEG_Daten_ErstellungBASIS.RunWorkerCompleted
         Workers_Complete(BgwNeuEAEG_Daten_ErstellungBASIS, e)
+        Me.ViewDetails_SwitchItem.Checked = True
         Me.LayoutControl2.Visible = False
         Me.EAEG_C_Satz_Version4TableAdapter.FillByStichtag(Me.EAEGDataSet.EAEG_C_Satz_Version4, rd)
         Me.EAEG_B_D_Satz_Version4TableAdapter.FillByStichtag(Me.EAEGDataSet.EAEG_B_D_Satz_Version4, rd)

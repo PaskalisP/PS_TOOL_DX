@@ -396,6 +396,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_SQL_Parameters_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_SQL_Parameters_Tree_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_SQL_Queries_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.EDP_VB_Script_Execute_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator30 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.EDP_Audit_TOTAL_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_Audit_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -478,6 +479,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.AlertControl_NewUser_ActiveDirectory = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.AlertControl_General_Info = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.LogoImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.EDP_SQL_FilesCompare_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -3664,7 +3666,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'EDP_SQL_Configurations_Element
         '
-        Me.EDP_SQL_Configurations_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EDP_SQL_Parameters_Element, Me.EDP_SQL_Parameters_Tree_Element, Me.EDP_SQL_Queries_Element})
+        Me.EDP_SQL_Configurations_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EDP_SQL_Parameters_Element, Me.EDP_SQL_Parameters_Tree_Element, Me.EDP_SQL_Queries_Element, Me.EDP_VB_Script_Execute_Element, Me.EDP_SQL_FilesCompare_Element})
         Me.EDP_SQL_Configurations_Element.Expanded = True
         Me.EDP_SQL_Configurations_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_Configurations_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.EDP_SQL_Configurations_Element.Name = "EDP_SQL_Configurations_Element"
@@ -3693,6 +3695,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_SQL_Queries_Element.Name = "EDP_SQL_Queries_Element"
         Me.EDP_SQL_Queries_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.EDP_SQL_Queries_Element.Text = "SQL Server Queries"
+        '
+        'EDP_VB_Script_Execute_Element
+        '
+        Me.EDP_VB_Script_Execute_Element.Hint = "Executes VB.NET Script"
+        Me.EDP_VB_Script_Execute_Element.ImageOptions.Image = CType(resources.GetObject("EDP_VB_Script_Execute_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.EDP_VB_Script_Execute_Element.Name = "EDP_VB_Script_Execute_Element"
+        Me.EDP_VB_Script_Execute_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.EDP_VB_Script_Execute_Element.Text = "Execute VB.NET Script"
         '
         'AccordionControlSeparator30
         '
@@ -4579,6 +4589,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.LogoImageCollection.Images.SetKeyName(5, "login-logo-Prod.png")
         Me.LogoImageCollection.Images.SetKeyName(6, "login-logo-Prod_ALL.png")
         '
+        'EDP_SQL_FilesCompare_Element
+        '
+        Me.EDP_SQL_FilesCompare_Element.Hint = "Excel/csv Files comparing"
+        Me.EDP_SQL_FilesCompare_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_FilesCompare_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.EDP_SQL_FilesCompare_Element.Name = "EDP_SQL_FilesCompare_Element"
+        Me.EDP_SQL_FilesCompare_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.EDP_SQL_FilesCompare_Element.Text = "Files comparing"
+        '
         'PSTOOL_MAIN_Form
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[False]
@@ -5033,4 +5051,6 @@ Partial Class PSTOOL_MAIN_Form
     Friend WithEvents ZvStatistik_ValidityRules_AccordionControlElement As Navigation.AccordionControlElement
     Friend WithEvents AccordionControlSeparator42 As Navigation.AccordionControlSeparator
     Friend WithEvents EDP_SQL_Parameters_Tree_Element As Navigation.AccordionControlElement
+    Friend WithEvents EDP_VB_Script_Execute_Element As Navigation.AccordionControlElement
+    Friend WithEvents EDP_SQL_FilesCompare_Element As Navigation.AccordionControlElement
 End Class

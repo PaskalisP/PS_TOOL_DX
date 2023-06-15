@@ -3006,6 +3006,12 @@ Partial Public Class EDPDataSet
         
         Private columnSQL_Float As Global.System.Data.DataColumn
         
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -3090,6 +3096,30 @@ Partial Public Class EDPDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3126,9 +3156,9 @@ Partial Public Class EDPDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddSQL_PARAMETERRow(ByVal SQL_Parameter_Name As String, ByVal SQL_Parameter_Info As String, ByVal SQL_Parameter_Status As String, ByVal SQL_Command_General As String, ByVal SQL_Float As Double) As SQL_PARAMETERRow
+        Public Overloads Function AddSQL_PARAMETERRow(ByVal SQL_Parameter_Name As String, ByVal SQL_Parameter_Info As String, ByVal SQL_Parameter_Status As String, ByVal SQL_Command_General As String, ByVal SQL_Float As Double, ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Date) As SQL_PARAMETERRow
             Dim rowSQL_PARAMETERRow As SQL_PARAMETERRow = CType(Me.NewRow,SQL_PARAMETERRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, SQL_Parameter_Name, SQL_Parameter_Info, SQL_Parameter_Status, SQL_Command_General, SQL_Float}
+            Dim columnValuesArray() As Object = New Object() {Nothing, SQL_Parameter_Name, SQL_Parameter_Info, SQL_Parameter_Status, SQL_Command_General, SQL_Float, LastAction, LastUpdateUser, LastUpdateDate}
             rowSQL_PARAMETERRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSQL_PARAMETERRow)
             Return rowSQL_PARAMETERRow
@@ -3163,6 +3193,9 @@ Partial Public Class EDPDataSet
             Me.columnSQL_Parameter_Status = MyBase.Columns("SQL_Parameter_Status")
             Me.columnSQL_Command_General = MyBase.Columns("SQL_Command_General")
             Me.columnSQL_Float = MyBase.Columns("SQL_Float")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3180,6 +3213,12 @@ Partial Public Class EDPDataSet
             MyBase.Columns.Add(Me.columnSQL_Command_General)
             Me.columnSQL_Float = New Global.System.Data.DataColumn("SQL_Float", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSQL_Float)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnSQL_Parameter_Name}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -3192,6 +3231,8 @@ Partial Public Class EDPDataSet
             Me.columnSQL_Parameter_Info.MaxLength = 1073741823
             Me.columnSQL_Parameter_Status.MaxLength = 1
             Me.columnSQL_Command_General.MaxLength = 1073741823
+            Me.columnLastAction.MaxLength = 4000
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3362,6 +3403,20 @@ Partial Public Class EDPDataSet
         Private columnSQL_Date1 As Global.System.Data.DataColumn
         
         Private columnSQL_Date2 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_1 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_2 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_3 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_4 As Global.System.Data.DataColumn
+        
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -3535,6 +3590,62 @@ Partial Public Class EDPDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3587,9 +3698,16 @@ Partial Public Class EDPDataSet
                     ByVal parentSQL_PARAMETERRowByFK_SQL_PARAMETER_DETAILS_SQL_PARAMETER As SQL_PARAMETERRow,  _
                     ByVal Status As String,  _
                     ByVal SQL_Date1 As Date,  _
-                    ByVal SQL_Date2 As Date) As SQL_PARAMETER_DETAILSRow
+                    ByVal SQL_Date2 As Date,  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Date) As SQL_PARAMETER_DETAILSRow
             Dim rowSQL_PARAMETER_DETAILSRow As SQL_PARAMETER_DETAILSRow = CType(Me.NewRow,SQL_PARAMETER_DETAILSRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQL_Float_2, SQL_Float_3, SQL_Float_4, SQL_Command_1, SQL_Command_2, SQL_Command_3, SQL_Command_4, Nothing, Status, SQL_Date1, SQL_Date2}
+            Dim columnValuesArray() As Object = New Object() {Nothing, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQL_Float_2, SQL_Float_3, SQL_Float_4, SQL_Command_1, SQL_Command_2, SQL_Command_3, SQL_Command_4, Nothing, Status, SQL_Date1, SQL_Date2, SQL_ScriptType_1, SQL_ScriptType_2, SQL_ScriptType_3, SQL_ScriptType_4, LastAction, LastUpdateUser, LastUpdateDate}
             If (Not (parentSQL_PARAMETERRowByFK_SQL_PARAMETER_DETAILS_SQL_PARAMETER) Is Nothing) Then
                 columnValuesArray(13) = parentSQL_PARAMETERRowByFK_SQL_PARAMETER_DETAILS_SQL_PARAMETER(1)
             End If
@@ -3638,6 +3756,13 @@ Partial Public Class EDPDataSet
             Me.columnStatus = MyBase.Columns("Status")
             Me.columnSQL_Date1 = MyBase.Columns("SQL_Date1")
             Me.columnSQL_Date2 = MyBase.Columns("SQL_Date2")
+            Me.columnSQL_ScriptType_1 = MyBase.Columns("SQL_ScriptType_1")
+            Me.columnSQL_ScriptType_2 = MyBase.Columns("SQL_ScriptType_2")
+            Me.columnSQL_ScriptType_3 = MyBase.Columns("SQL_ScriptType_3")
+            Me.columnSQL_ScriptType_4 = MyBase.Columns("SQL_ScriptType_4")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3677,6 +3802,20 @@ Partial Public Class EDPDataSet
             MyBase.Columns.Add(Me.columnSQL_Date1)
             Me.columnSQL_Date2 = New Global.System.Data.DataColumn("SQL_Date2", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSQL_Date2)
+            Me.columnSQL_ScriptType_1 = New Global.System.Data.DataColumn("SQL_ScriptType_1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_1)
+            Me.columnSQL_ScriptType_2 = New Global.System.Data.DataColumn("SQL_ScriptType_2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_2)
+            Me.columnSQL_ScriptType_3 = New Global.System.Data.DataColumn("SQL_ScriptType_3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_3)
+            Me.columnSQL_ScriptType_4 = New Global.System.Data.DataColumn("SQL_ScriptType_4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_4)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -3694,6 +3833,12 @@ Partial Public Class EDPDataSet
             Me.columnSQL_Command_4.MaxLength = 2147483647
             Me.columnId_SQL_Parameters.MaxLength = 255
             Me.columnStatus.MaxLength = 50
+            Me.columnSQL_ScriptType_1.MaxLength = 50
+            Me.columnSQL_ScriptType_2.MaxLength = 50
+            Me.columnSQL_ScriptType_3.MaxLength = 50
+            Me.columnSQL_ScriptType_4.MaxLength = 50
+            Me.columnLastAction.MaxLength = 4000
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3864,6 +4009,20 @@ Partial Public Class EDPDataSet
         Private columnSQL_Date1 As Global.System.Data.DataColumn
         
         Private columnSQL_Date2 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_1 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_2 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_3 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_4 As Global.System.Data.DataColumn
+        
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -4037,6 +4196,62 @@ Partial Public Class EDPDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4089,9 +4304,16 @@ Partial Public Class EDPDataSet
                     ByVal parentSQL_PARAMETER_DETAILSRowByFK_SQL_PARAMETER_DETAILS_SECOND_SQL_PARAMETER_DETAILS As SQL_PARAMETER_DETAILSRow,  _
                     ByVal Status As String,  _
                     ByVal SQL_Date1 As Date,  _
-                    ByVal SQL_Date2 As Date) As SQL_PARAMETER_DETAILS_SECONDRow
+                    ByVal SQL_Date2 As Date,  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Date) As SQL_PARAMETER_DETAILS_SECONDRow
             Dim rowSQL_PARAMETER_DETAILS_SECONDRow As SQL_PARAMETER_DETAILS_SECONDRow = CType(Me.NewRow,SQL_PARAMETER_DETAILS_SECONDRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQL_Float_2, SQL_Float_3, SQL_Float_4, SQL_Command_1, SQL_Command_2, SQL_Command_3, SQL_Command_4, Nothing, Status, SQL_Date1, SQL_Date2}
+            Dim columnValuesArray() As Object = New Object() {Nothing, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQL_Float_2, SQL_Float_3, SQL_Float_4, SQL_Command_1, SQL_Command_2, SQL_Command_3, SQL_Command_4, Nothing, Status, SQL_Date1, SQL_Date2, SQL_ScriptType_1, SQL_ScriptType_2, SQL_ScriptType_3, SQL_ScriptType_4, LastAction, LastUpdateUser, LastUpdateDate}
             If (Not (parentSQL_PARAMETER_DETAILSRowByFK_SQL_PARAMETER_DETAILS_SECOND_SQL_PARAMETER_DETAILS) Is Nothing) Then
                 columnValuesArray(13) = parentSQL_PARAMETER_DETAILSRowByFK_SQL_PARAMETER_DETAILS_SECOND_SQL_PARAMETER_DETAILS(0)
             End If
@@ -4140,6 +4362,13 @@ Partial Public Class EDPDataSet
             Me.columnStatus = MyBase.Columns("Status")
             Me.columnSQL_Date1 = MyBase.Columns("SQL_Date1")
             Me.columnSQL_Date2 = MyBase.Columns("SQL_Date2")
+            Me.columnSQL_ScriptType_1 = MyBase.Columns("SQL_ScriptType_1")
+            Me.columnSQL_ScriptType_2 = MyBase.Columns("SQL_ScriptType_2")
+            Me.columnSQL_ScriptType_3 = MyBase.Columns("SQL_ScriptType_3")
+            Me.columnSQL_ScriptType_4 = MyBase.Columns("SQL_ScriptType_4")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4179,6 +4408,20 @@ Partial Public Class EDPDataSet
             MyBase.Columns.Add(Me.columnSQL_Date1)
             Me.columnSQL_Date2 = New Global.System.Data.DataColumn("SQL_Date2", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSQL_Date2)
+            Me.columnSQL_ScriptType_1 = New Global.System.Data.DataColumn("SQL_ScriptType_1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_1)
+            Me.columnSQL_ScriptType_2 = New Global.System.Data.DataColumn("SQL_ScriptType_2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_2)
+            Me.columnSQL_ScriptType_3 = New Global.System.Data.DataColumn("SQL_ScriptType_3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_3)
+            Me.columnSQL_ScriptType_4 = New Global.System.Data.DataColumn("SQL_ScriptType_4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_4)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -4195,6 +4438,12 @@ Partial Public Class EDPDataSet
             Me.columnSQL_Command_3.MaxLength = 2147483647
             Me.columnSQL_Command_4.MaxLength = 2147483647
             Me.columnStatus.MaxLength = 50
+            Me.columnSQL_ScriptType_1.MaxLength = 50
+            Me.columnSQL_ScriptType_2.MaxLength = 50
+            Me.columnSQL_ScriptType_3.MaxLength = 50
+            Me.columnSQL_ScriptType_4.MaxLength = 50
+            Me.columnLastAction.MaxLength = 4000
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5005,6 +5254,20 @@ Partial Public Class EDPDataSet
         
         Private columnId_SQL_Parameters_Details As Global.System.Data.DataColumn
         
+        Private columnSQL_ScriptType_1 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_2 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_3 As Global.System.Data.DataColumn
+        
+        Private columnSQL_ScriptType_4 As Global.System.Data.DataColumn
+        
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -5177,6 +5440,62 @@ Partial Public Class EDPDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SQL_ScriptType_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSQL_ScriptType_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5229,9 +5548,16 @@ Partial Public Class EDPDataSet
                     ByVal SQL_Date1 As Date,  _
                     ByVal SQL_Date2 As Date,  _
                     ByVal Status As String,  _
-                    ByVal parentSQL_PARAMETER_DETAILS_SECONDRowByFK_SQL_PARAMETER_DETAILS_THIRD_SQL_PARAMETER_DETAILS_SECOND As SQL_PARAMETER_DETAILS_SECONDRow) As SQL_PARAMETER_DETAILS_THIRDRow
+                    ByVal parentSQL_PARAMETER_DETAILS_SECONDRowByFK_SQL_PARAMETER_DETAILS_THIRD_SQL_PARAMETER_DETAILS_SECOND As SQL_PARAMETER_DETAILS_SECONDRow,  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Date) As SQL_PARAMETER_DETAILS_THIRDRow
             Dim rowSQL_PARAMETER_DETAILS_THIRDRow As SQL_PARAMETER_DETAILS_THIRDRow = CType(Me.NewRow,SQL_PARAMETER_DETAILS_THIRDRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQL_Float_2, SQL_Float_3, SQL_Command_1, SQL_Float_4, SQL_Command_2, SQL_Command_3, SQL_Command_4, SQL_Date1, SQL_Date2, Status, Nothing}
+            Dim columnValuesArray() As Object = New Object() {Nothing, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQL_Float_2, SQL_Float_3, SQL_Command_1, SQL_Float_4, SQL_Command_2, SQL_Command_3, SQL_Command_4, SQL_Date1, SQL_Date2, Status, Nothing, SQL_ScriptType_1, SQL_ScriptType_2, SQL_ScriptType_3, SQL_ScriptType_4, LastAction, LastUpdateUser, LastUpdateDate}
             If (Not (parentSQL_PARAMETER_DETAILS_SECONDRowByFK_SQL_PARAMETER_DETAILS_THIRD_SQL_PARAMETER_DETAILS_SECOND) Is Nothing) Then
                 columnValuesArray(16) = parentSQL_PARAMETER_DETAILS_SECONDRowByFK_SQL_PARAMETER_DETAILS_THIRD_SQL_PARAMETER_DETAILS_SECOND(0)
             End If
@@ -5280,6 +5606,13 @@ Partial Public Class EDPDataSet
             Me.columnSQL_Date2 = MyBase.Columns("SQL_Date2")
             Me.columnStatus = MyBase.Columns("Status")
             Me.columnId_SQL_Parameters_Details = MyBase.Columns("Id_SQL_Parameters_Details")
+            Me.columnSQL_ScriptType_1 = MyBase.Columns("SQL_ScriptType_1")
+            Me.columnSQL_ScriptType_2 = MyBase.Columns("SQL_ScriptType_2")
+            Me.columnSQL_ScriptType_3 = MyBase.Columns("SQL_ScriptType_3")
+            Me.columnSQL_ScriptType_4 = MyBase.Columns("SQL_ScriptType_4")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5319,6 +5652,20 @@ Partial Public Class EDPDataSet
             MyBase.Columns.Add(Me.columnStatus)
             Me.columnId_SQL_Parameters_Details = New Global.System.Data.DataColumn("Id_SQL_Parameters_Details", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnId_SQL_Parameters_Details)
+            Me.columnSQL_ScriptType_1 = New Global.System.Data.DataColumn("SQL_ScriptType_1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_1)
+            Me.columnSQL_ScriptType_2 = New Global.System.Data.DataColumn("SQL_ScriptType_2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_2)
+            Me.columnSQL_ScriptType_3 = New Global.System.Data.DataColumn("SQL_ScriptType_3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_3)
+            Me.columnSQL_ScriptType_4 = New Global.System.Data.DataColumn("SQL_ScriptType_4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSQL_ScriptType_4)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -5335,6 +5682,12 @@ Partial Public Class EDPDataSet
             Me.columnSQL_Command_3.MaxLength = 2147483647
             Me.columnSQL_Command_4.MaxLength = 2147483647
             Me.columnStatus.MaxLength = 50
+            Me.columnSQL_ScriptType_1.MaxLength = 50
+            Me.columnSQL_ScriptType_2.MaxLength = 50
+            Me.columnSQL_ScriptType_3.MaxLength = 50
+            Me.columnSQL_ScriptType_4.MaxLength = 50
+            Me.columnLastAction.MaxLength = 4000
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7020,6 +7373,51 @@ Partial Public Class EDPDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'SQL_PARAMETER' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'SQL_PARAMETER' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'SQL_PARAMETER' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsSQL_Parameter_InfoNull() As Boolean
             Return Me.IsNull(Me.tableSQL_PARAMETER.SQL_Parameter_InfoColumn)
         End Function
@@ -7064,6 +7462,42 @@ Partial Public Class EDPDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetSQL_FloatNull()
             Me(Me.tableSQL_PARAMETER.SQL_FloatColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableSQL_PARAMETER.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableSQL_PARAMETER.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableSQL_PARAMETER.LastUpdateDateColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7346,6 +7780,117 @@ Partial Public Class EDPDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_1' in table 'SQL_PARAMETER_DETAILS' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_2' in table 'SQL_PARAMETER_DETAILS' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_3' in table 'SQL_PARAMETER_DETAILS' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_4() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_4Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_4' in table 'SQL_PARAMETER_DETAILS' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'SQL_PARAMETER_DETAILS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'SQL_PARAMETER_DETAILS' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'SQL_PARAMETER_DETAILS' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property SQL_PARAMETERRow() As SQL_PARAMETERRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_SQL_PARAMETER_DETAILS_SQL_PARAMETER")),SQL_PARAMETERRow)
@@ -7545,6 +8090,90 @@ Partial Public Class EDPDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetSQL_Date2Null()
             Me(Me.tableSQL_PARAMETER_DETAILS.SQL_Date2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_1Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_1Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_2Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_2Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_3Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_3Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_4Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_4Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS.SQL_ScriptType_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS.LastUpdateDateColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7841,6 +8470,118 @@ Partial Public Class EDPDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_1' in table 'SQL_PARAMETER_DETAILS_SECOND' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_2' in table 'SQL_PARAMETER_DETAILS_SECOND' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_3' in table 'SQL_PARAMETER_DETAILS_SECOND' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_4() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_4Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_4' in table 'SQL_PARAMETER_DETAILS_SECOND' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'SQL_PARAMETER_DETAILS_SECOND' is DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'SQL_PARAMETER_DETAILS_SECOND' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'SQL_PARAMETER_DETAILS_SECOND' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property SQL_PARAMETER_DETAILSRow() As SQL_PARAMETER_DETAILSRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_SQL_PARAMETER_DETAILS_SECOND_SQL_PARAMETER_DETAILS")),SQL_PARAMETER_DETAILSRow)
@@ -8040,6 +8781,90 @@ Partial Public Class EDPDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetSQL_Date2Null()
             Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_Date2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_1Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_1Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_2Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_2Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_3Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_3Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_4Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_4Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.SQL_ScriptType_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS_SECOND.LastUpdateDateColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8606,6 +9431,118 @@ Partial Public Class EDPDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_1' in table 'SQL_PARAMETER_DETAILS_THIRD' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_2() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_2Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_2' in table 'SQL_PARAMETER_DETAILS_THIRD' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_3() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_3Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_3' in table 'SQL_PARAMETER_DETAILS_THIRD' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SQL_ScriptType_4() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_4Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SQL_ScriptType_4' in table 'SQL_PARAMETER_DETAILS_THIRD' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'SQL_PARAMETER_DETAILS_THIRD' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'SQL_PARAMETER_DETAILS_THIRD' is D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'SQL_PARAMETER_DETAILS_THIRD' is D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property SQL_PARAMETER_DETAILS_SECONDRow() As SQL_PARAMETER_DETAILS_SECONDRow
             Get
                 Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_SQL_PARAMETER_DETAILS_THIRD_SQL_PARAMETER_DETAILS_SECOND")),SQL_PARAMETER_DETAILS_SECONDRow)
@@ -8805,6 +9742,90 @@ Partial Public Class EDPDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetId_SQL_Parameters_DetailsNull()
             Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.Id_SQL_Parameters_DetailsColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_1Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_1Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_2Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_2Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_3Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_3Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSQL_ScriptType_4Null() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSQL_ScriptType_4Null()
+            Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.SQL_ScriptType_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableSQL_PARAMETER_DETAILS_THIRD.LastUpdateDateColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -12909,6 +13930,9 @@ Namespace EDPDataSetTableAdapters
             tableMapping.ColumnMappings.Add("SQL_Parameter_Status", "SQL_Parameter_Status")
             tableMapping.ColumnMappings.Add("SQL_Command_General", "SQL_Command_General")
             tableMapping.ColumnMappings.Add("SQL_Float", "SQL_Float")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -12919,26 +13943,35 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [SQL_PARAMETER] ([SQL_Parameter_Name], [SQL_Parameter_Info], [SQL_Par"& _ 
-                "ameter_Status], [SQL_Command_General], [SQL_Float]) VALUES (@SQL_Parameter_Name,"& _ 
-                " @SQL_Parameter_Info, @SQL_Parameter_Status, @SQL_Command_General, @SQL_Float)"
+                "ameter_Status], [SQL_Command_General], [SQL_Float], [LastAction], [LastUpdateUse"& _ 
+                "r], [LastUpdateDate]) VALUES (@SQL_Parameter_Name, @SQL_Parameter_Info, @SQL_Par"& _ 
+                "ameter_Status, @SQL_Command_General, @SQL_Float, @LastAction, @LastUpdateUser, @"& _ 
+                "LastUpdateDate)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Parameter_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Parameter_Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Parameter_Info", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Parameter_Info", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Parameter_Status", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Parameter_Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Command_General", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Command_General", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Float", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Float", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [SQL_PARAMETER] SET [SQL_Parameter_Name] = @SQL_Parameter_Name, [SQL_Param"& _ 
                 "eter_Info] = @SQL_Parameter_Info, [SQL_Parameter_Status] = @SQL_Parameter_Status"& _ 
-                ", [SQL_Command_General] = @SQL_Command_General, [SQL_Float] = @SQL_Float WHERE ("& _ 
-                "([SQL_Parameter_Name] = @Original_SQL_Parameter_Name))"
+                ", [SQL_Command_General] = @SQL_Command_General, [SQL_Float] = @SQL_Float, [LastA"& _ 
+                "ction] = @LastAction, [LastUpdateUser] = @LastUpdateUser, [LastUpdateDate] = @La"& _ 
+                "stUpdateDate WHERE (([SQL_Parameter_Name] = @Original_SQL_Parameter_Name))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Parameter_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Parameter_Name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Parameter_Info", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Parameter_Info", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Parameter_Status", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Parameter_Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Command_General", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Command_General", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Float", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Float", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_Parameter_Name", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Parameter_Name", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -12956,8 +13989,8 @@ Namespace EDPDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, SQL_Parameter_Name, SQL_Parameter_Info, SQL_Parameter_Status, S"& _ 
-                "QL_Command_General, SQL_Float"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SQL_PARAMETER"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY SQL_Float"& _ 
-                ""
+                "QL_Command_General, SQL_Float, LastAction, LastUpdateUser, LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM "& _ 
+                "           SQL_PARAMETER"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY SQL_Float"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -13042,7 +14075,7 @@ Namespace EDPDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal SQL_Parameter_Name As String, ByVal SQL_Parameter_Info As String, ByVal SQL_Parameter_Status As String, ByVal SQL_Command_General As String, ByVal SQL_Float As Global.System.Nullable(Of Double)) As Integer
+        Public Overloads Overridable Function Insert(ByVal SQL_Parameter_Name As String, ByVal SQL_Parameter_Info As String, ByVal SQL_Parameter_Status As String, ByVal SQL_Command_General As String, ByVal SQL_Float As Global.System.Nullable(Of Double), ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (SQL_Parameter_Name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("SQL_Parameter_Name")
             Else
@@ -13068,6 +14101,21 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -13087,7 +14135,7 @@ Namespace EDPDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal SQL_Parameter_Name As String, ByVal SQL_Parameter_Info As String, ByVal SQL_Parameter_Status As String, ByVal SQL_Command_General As String, ByVal SQL_Float As Global.System.Nullable(Of Double), ByVal Original_SQL_Parameter_Name As String) As Integer
+        Public Overloads Overridable Function Update(ByVal SQL_Parameter_Name As String, ByVal SQL_Parameter_Info As String, ByVal SQL_Parameter_Status As String, ByVal SQL_Command_General As String, ByVal SQL_Float As Global.System.Nullable(Of Double), ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date), ByVal Original_SQL_Parameter_Name As String) As Integer
             If (SQL_Parameter_Name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("SQL_Parameter_Name")
             Else
@@ -13113,10 +14161,25 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
             If (Original_SQL_Parameter_Name Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_SQL_Parameter_Name")
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_SQL_Parameter_Name,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_SQL_Parameter_Name,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -13137,8 +14200,8 @@ Namespace EDPDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal SQL_Parameter_Info As String, ByVal SQL_Parameter_Status As String, ByVal SQL_Command_General As String, ByVal SQL_Float As Global.System.Nullable(Of Double), ByVal Original_SQL_Parameter_Name As String) As Integer
-            Return Me.Update(Original_SQL_Parameter_Name, SQL_Parameter_Info, SQL_Parameter_Status, SQL_Command_General, SQL_Float, Original_SQL_Parameter_Name)
+        Public Overloads Overridable Function Update(ByVal SQL_Parameter_Info As String, ByVal SQL_Parameter_Status As String, ByVal SQL_Command_General As String, ByVal SQL_Float As Global.System.Nullable(Of Double), ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date), ByVal Original_SQL_Parameter_Name As String) As Integer
+            Return Me.Update(Original_SQL_Parameter_Name, SQL_Parameter_Info, SQL_Parameter_Status, SQL_Command_General, SQL_Float, LastAction, LastUpdateUser, LastUpdateDate, Original_SQL_Parameter_Name)
         End Function
     End Class
     
@@ -13286,6 +14349,13 @@ Namespace EDPDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Status", "Status")
             tableMapping.ColumnMappings.Add("SQL_Date1", "SQL_Date1")
             tableMapping.ColumnMappings.Add("SQL_Date2", "SQL_Date2")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_1", "SQL_ScriptType_1")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_2", "SQL_ScriptType_2")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_3", "SQL_ScriptType_3")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_4", "SQL_ScriptType_4")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -13297,10 +14367,13 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [SQL_PARAMETER_DETAILS] ([SQL_Name_1], [SQL_Name_2], [SQL_Name_3], [S"& _ 
                 "QL_Name_4], [SQL_Float_1], [SQL_Float_2], [SQL_Float_3], [SQL_Float_4], [SQL_Com"& _ 
                 "mand_1], [SQL_Command_2], [SQL_Command_3], [SQL_Command_4], [Id_SQL_Parameters],"& _ 
-                " [Status], [SQL_Date1], [SQL_Date2]) VALUES (@SQL_Name_1, @SQL_Name_2, @SQL_Name"& _ 
-                "_3, @SQL_Name_4, @SQL_Float_1, @SQL_Float_2, @SQL_Float_3, @SQL_Float_4, @SQL_Co"& _ 
-                "mmand_1, @SQL_Command_2, @SQL_Command_3, @SQL_Command_4, @Id_SQL_Parameters, @St"& _ 
-                "atus, @SQL_Date1, @SQL_Date2)"
+                " [Status], [SQL_Date1], [SQL_Date2], [SQL_ScriptType_1], [SQL_ScriptType_2], [SQ"& _ 
+                "L_ScriptType_3], [SQL_ScriptType_4], [LastAction], [LastUpdateUser], [LastUpdate"& _ 
+                "Date]) VALUES (@SQL_Name_1, @SQL_Name_2, @SQL_Name_3, @SQL_Name_4, @SQL_Float_1,"& _ 
+                " @SQL_Float_2, @SQL_Float_3, @SQL_Float_4, @SQL_Command_1, @SQL_Command_2, @SQL_"& _ 
+                "Command_3, @SQL_Command_4, @Id_SQL_Parameters, @Status, @SQL_Date1, @SQL_Date2, "& _ 
+                "@SQL_ScriptType_1, @SQL_ScriptType_2, @SQL_ScriptType_3, @SQL_ScriptType_4, @Las"& _ 
+                "tAction, @LastUpdateUser, @LastUpdateDate)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -13318,6 +14391,13 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [SQL_PARAMETER_DETAILS] SET [SQL_Name_1] = @SQL_Name_1, [SQL_Name_2] = @SQ"& _ 
@@ -13326,7 +14406,11 @@ Namespace EDPDataSetTableAdapters
                 "_Float_4] = @SQL_Float_4, [SQL_Command_1] = @SQL_Command_1, [SQL_Command_2] = @S"& _ 
                 "QL_Command_2, [SQL_Command_3] = @SQL_Command_3, [SQL_Command_4] = @SQL_Command_4"& _ 
                 ", [Id_SQL_Parameters] = @Id_SQL_Parameters, [Status] = @Status, [SQL_Date1] = @S"& _ 
-                "QL_Date1, [SQL_Date2] = @SQL_Date2 WHERE (([ID] = @Original_ID))"
+                "QL_Date1, [SQL_Date2] = @SQL_Date2, [SQL_ScriptType_1] = @SQL_ScriptType_1, [SQL"& _ 
+                "_ScriptType_2] = @SQL_ScriptType_2, [SQL_ScriptType_3] = @SQL_ScriptType_3, [SQL"& _ 
+                "_ScriptType_4] = @SQL_ScriptType_4, [LastAction] = @LastAction, [LastUpdateUser]"& _ 
+                " = @LastUpdateUser, [LastUpdateDate] = @LastUpdateDate WHERE (([ID] = @Original_"& _ 
+                "ID))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -13344,6 +14428,13 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -13363,8 +14454,10 @@ Namespace EDPDataSetTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        ID, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQ"& _ 
                 "L_Float_2, SQL_Float_3, SQL_Float_4, SQL_Command_1, SQL_Command_2, SQL_Command_3"& _ 
                 ", SQL_Command_4, Id_SQL_Parameters, Status, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         SQL_Date1"& _ 
-                ", SQL_Date2"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SQL_PARAMETER_DETAILS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CASE WHEN SQL_Float"& _ 
-                "_1 IS NOT NULL THEN SQL_Float_1 END, CASE WHEN SQL_Float_1 IS NULL THEN ID END"
+                ", SQL_Date2, SQL_ScriptType_1, SQL_ScriptType_2, SQL_ScriptType_3, SQL_ScriptTyp"& _ 
+                "e_4, LastAction, LastUpdateUser, LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SQL_PARAMETER_D"& _ 
+                "ETAILS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CASE WHEN SQL_Float_1 IS NOT NULL THEN SQL_Float_1 END, CASE WH"& _ 
+                "EN SQL_Float_1 IS NULL THEN ID END"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -13461,7 +14554,14 @@ Namespace EDPDataSetTableAdapters
                     ByVal Id_SQL_Parameters As String,  _
                     ByVal Status As String,  _
                     ByVal SQL_Date1 As Global.System.Nullable(Of Date),  _
-                    ByVal SQL_Date2 As Global.System.Nullable(Of Date)) As Integer
+                    ByVal SQL_Date2 As Global.System.Nullable(Of Date),  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (SQL_Name_1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -13542,6 +14642,41 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
+            If (SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(SQL_ScriptType_1,String)
+            End If
+            If (SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(SQL_ScriptType_2,String)
+            End If
+            If (SQL_ScriptType_3 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(SQL_ScriptType_3,String)
+            End If
+            If (SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(SQL_ScriptType_4,String)
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -13578,6 +14713,13 @@ Namespace EDPDataSetTableAdapters
                     ByVal Status As String,  _
                     ByVal SQL_Date1 As Global.System.Nullable(Of Date),  _
                     ByVal SQL_Date2 As Global.System.Nullable(Of Date),  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_ID As Integer) As Integer
             If (SQL_Name_1 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -13659,7 +14801,42 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_ID,Integer)
+            If (SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(SQL_ScriptType_1,String)
+            End If
+            If (SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(SQL_ScriptType_2,String)
+            End If
+            If (SQL_ScriptType_3 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(SQL_ScriptType_3,String)
+            End If
+            If (SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(SQL_ScriptType_4,String)
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -13820,6 +14997,13 @@ Namespace EDPDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Status", "Status")
             tableMapping.ColumnMappings.Add("SQL_Date1", "SQL_Date1")
             tableMapping.ColumnMappings.Add("SQL_Date2", "SQL_Date2")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_1", "SQL_ScriptType_1")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_2", "SQL_ScriptType_2")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_3", "SQL_ScriptType_3")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_4", "SQL_ScriptType_4")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -13839,7 +15023,17 @@ Namespace EDPDataSetTableAdapters
                 " = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND ((@IsNull_SQL_D"& _ 
                 "ate1 = 1 AND [SQL_Date1] IS NULL) OR ([SQL_Date1] = @Original_SQL_Date1)) AND (("& _ 
                 "@IsNull_SQL_Date2 = 1 AND [SQL_Date2] IS NULL) OR ([SQL_Date2] = @Original_SQL_D"& _ 
-                "ate2)))"
+                "ate2)) AND ((@IsNull_SQL_ScriptType_1 = 1 AND [SQL_ScriptType_1] IS NULL) OR ([S"& _ 
+                "QL_ScriptType_1] = @Original_SQL_ScriptType_1)) AND ((@IsNull_SQL_ScriptType_2 ="& _ 
+                " 1 AND [SQL_ScriptType_2] IS NULL) OR ([SQL_ScriptType_2] = @Original_SQL_Script"& _ 
+                "Type_2)) AND ((@IsNull_SQL_ScriptType_3 = 1 AND [SQL_ScriptType_3] IS NULL) OR ("& _ 
+                "[SQL_ScriptType_3] = @Original_SQL_ScriptType_3)) AND ((@IsNull_SQL_ScriptType_4"& _ 
+                " = 1 AND [SQL_ScriptType_4] IS NULL) OR ([SQL_ScriptType_4] = @Original_SQL_Scri"& _ 
+                "ptType_4)) AND ((@IsNull_LastAction = 1 AND [LastAction] IS NULL) OR ([LastActio"& _ 
+                "n] = @Original_LastAction)) AND ((@IsNull_LastUpdateUser = 1 AND [LastUpdateUser"& _ 
+                "] IS NULL) OR ([LastUpdateUser] = @Original_LastUpdateUser)) AND ((@IsNull_LastU"& _ 
+                "pdateDate = 1 AND [LastUpdateDate] IS NULL) OR ([LastUpdateDate] = @Original_Las"& _ 
+                "tUpdateDate)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_Name_1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -13866,15 +15060,32 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_Date1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_Date2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_Date2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastAction", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateUser", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [SQL_PARAMETER_DETAILS_SECOND] ([SQL_Name_1], [SQL_Name_2], [SQL_Name"& _ 
                 "_3], [SQL_Name_4], [SQL_Float_1], [SQL_Float_2], [SQL_Float_3], [SQL_Float_4], ["& _ 
                 "SQL_Command_1], [SQL_Command_2], [SQL_Command_3], [SQL_Command_4], [Id_SQL_Param"& _ 
-                "eters_Details], [Status], [SQL_Date1], [SQL_Date2]) VALUES (@SQL_Name_1, @SQL_Na"& _ 
-                "me_2, @SQL_Name_3, @SQL_Name_4, @SQL_Float_1, @SQL_Float_2, @SQL_Float_3, @SQL_F"& _ 
-                "loat_4, @SQL_Command_1, @SQL_Command_2, @SQL_Command_3, @SQL_Command_4, @Id_SQL_"& _ 
-                "Parameters_Details, @Status, @SQL_Date1, @SQL_Date2)"
+                "eters_Details], [Status], [SQL_Date1], [SQL_Date2], [SQL_ScriptType_1], [SQL_Scr"& _ 
+                "iptType_2], [SQL_ScriptType_3], [SQL_ScriptType_4], [LastAction], [LastUpdateUse"& _ 
+                "r], [LastUpdateDate]) VALUES (@SQL_Name_1, @SQL_Name_2, @SQL_Name_3, @SQL_Name_4"& _ 
+                ", @SQL_Float_1, @SQL_Float_2, @SQL_Float_3, @SQL_Float_4, @SQL_Command_1, @SQL_C"& _ 
+                "ommand_2, @SQL_Command_3, @SQL_Command_4, @Id_SQL_Parameters_Details, @Status, @"& _ 
+                "SQL_Date1, @SQL_Date2, @SQL_ScriptType_1, @SQL_ScriptType_2, @SQL_ScriptType_3, "& _ 
+                "@SQL_ScriptType_4, @LastAction, @LastUpdateUser, @LastUpdateDate)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -13892,6 +15103,13 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [SQL_PARAMETER_DETAILS_SECOND] SET [SQL_Name_1] = @SQL_Name_1, [SQL_Name_2"& _ 
@@ -13900,23 +15118,36 @@ Namespace EDPDataSetTableAdapters
                 "3, [SQL_Float_4] = @SQL_Float_4, [SQL_Command_1] = @SQL_Command_1, [SQL_Command_"& _ 
                 "2] = @SQL_Command_2, [SQL_Command_3] = @SQL_Command_3, [SQL_Command_4] = @SQL_Co"& _ 
                 "mmand_4, [Id_SQL_Parameters_Details] = @Id_SQL_Parameters_Details, [Status] = @S"& _ 
-                "tatus, [SQL_Date1] = @SQL_Date1, [SQL_Date2] = @SQL_Date2 WHERE (([ID] = @Origin"& _ 
-                "al_ID) AND ((@IsNull_SQL_Name_1 = 1 AND [SQL_Name_1] IS NULL) OR ([SQL_Name_1] ="& _ 
-                " @Original_SQL_Name_1)) AND ((@IsNull_SQL_Name_2 = 1 AND [SQL_Name_2] IS NULL) O"& _ 
-                "R ([SQL_Name_2] = @Original_SQL_Name_2)) AND ((@IsNull_SQL_Name_3 = 1 AND [SQL_N"& _ 
-                "ame_3] IS NULL) OR ([SQL_Name_3] = @Original_SQL_Name_3)) AND ((@IsNull_SQL_Name"& _ 
-                "_4 = 1 AND [SQL_Name_4] IS NULL) OR ([SQL_Name_4] = @Original_SQL_Name_4)) AND ("& _ 
-                "(@IsNull_SQL_Float_1 = 1 AND [SQL_Float_1] IS NULL) OR ([SQL_Float_1] = @Origina"& _ 
-                "l_SQL_Float_1)) AND ((@IsNull_SQL_Float_2 = 1 AND [SQL_Float_2] IS NULL) OR ([SQ"& _ 
-                "L_Float_2] = @Original_SQL_Float_2)) AND ((@IsNull_SQL_Float_3 = 1 AND [SQL_Floa"& _ 
-                "t_3] IS NULL) OR ([SQL_Float_3] = @Original_SQL_Float_3)) AND ((@IsNull_SQL_Floa"& _ 
-                "t_4 = 1 AND [SQL_Float_4] IS NULL) OR ([SQL_Float_4] = @Original_SQL_Float_4)) A"& _ 
-                "ND ((@IsNull_Id_SQL_Parameters_Details = 1 AND [Id_SQL_Parameters_Details] IS NU"& _ 
-                "LL) OR ([Id_SQL_Parameters_Details] = @Original_Id_SQL_Parameters_Details)) AND "& _ 
-                "((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)) AND"& _ 
-                " ((@IsNull_SQL_Date1 = 1 AND [SQL_Date1] IS NULL) OR ([SQL_Date1] = @Original_SQ"& _ 
-                "L_Date1)) AND ((@IsNull_SQL_Date2 = 1 AND [SQL_Date2] IS NULL) OR ([SQL_Date2] ="& _ 
-                " @Original_SQL_Date2)))"
+                "tatus, [SQL_Date1] = @SQL_Date1, [SQL_Date2] = @SQL_Date2, [SQL_ScriptType_1] = "& _ 
+                "@SQL_ScriptType_1, [SQL_ScriptType_2] = @SQL_ScriptType_2, [SQL_ScriptType_3] = "& _ 
+                "@SQL_ScriptType_3, [SQL_ScriptType_4] = @SQL_ScriptType_4, [LastAction] = @LastA"& _ 
+                "ction, [LastUpdateUser] = @LastUpdateUser, [LastUpdateDate] = @LastUpdateDate WH"& _ 
+                "ERE (([ID] = @Original_ID) AND ((@IsNull_SQL_Name_1 = 1 AND [SQL_Name_1] IS NULL"& _ 
+                ") OR ([SQL_Name_1] = @Original_SQL_Name_1)) AND ((@IsNull_SQL_Name_2 = 1 AND [SQ"& _ 
+                "L_Name_2] IS NULL) OR ([SQL_Name_2] = @Original_SQL_Name_2)) AND ((@IsNull_SQL_N"& _ 
+                "ame_3 = 1 AND [SQL_Name_3] IS NULL) OR ([SQL_Name_3] = @Original_SQL_Name_3)) AN"& _ 
+                "D ((@IsNull_SQL_Name_4 = 1 AND [SQL_Name_4] IS NULL) OR ([SQL_Name_4] = @Origina"& _ 
+                "l_SQL_Name_4)) AND ((@IsNull_SQL_Float_1 = 1 AND [SQL_Float_1] IS NULL) OR ([SQL"& _ 
+                "_Float_1] = @Original_SQL_Float_1)) AND ((@IsNull_SQL_Float_2 = 1 AND [SQL_Float"& _ 
+                "_2] IS NULL) OR ([SQL_Float_2] = @Original_SQL_Float_2)) AND ((@IsNull_SQL_Float"& _ 
+                "_3 = 1 AND [SQL_Float_3] IS NULL) OR ([SQL_Float_3] = @Original_SQL_Float_3)) AN"& _ 
+                "D ((@IsNull_SQL_Float_4 = 1 AND [SQL_Float_4] IS NULL) OR ([SQL_Float_4] = @Orig"& _ 
+                "inal_SQL_Float_4)) AND ((@IsNull_Id_SQL_Parameters_Details = 1 AND [Id_SQL_Param"& _ 
+                "eters_Details] IS NULL) OR ([Id_SQL_Parameters_Details] = @Original_Id_SQL_Param"& _ 
+                "eters_Details)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @O"& _ 
+                "riginal_Status)) AND ((@IsNull_SQL_Date1 = 1 AND [SQL_Date1] IS NULL) OR ([SQL_D"& _ 
+                "ate1] = @Original_SQL_Date1)) AND ((@IsNull_SQL_Date2 = 1 AND [SQL_Date2] IS NUL"& _ 
+                "L) OR ([SQL_Date2] = @Original_SQL_Date2)) AND ((@IsNull_SQL_ScriptType_1 = 1 AN"& _ 
+                "D [SQL_ScriptType_1] IS NULL) OR ([SQL_ScriptType_1] = @Original_SQL_ScriptType_"& _ 
+                "1)) AND ((@IsNull_SQL_ScriptType_2 = 1 AND [SQL_ScriptType_2] IS NULL) OR ([SQL_"& _ 
+                "ScriptType_2] = @Original_SQL_ScriptType_2)) AND ((@IsNull_SQL_ScriptType_3 = 1 "& _ 
+                "AND [SQL_ScriptType_3] IS NULL) OR ([SQL_ScriptType_3] = @Original_SQL_ScriptTyp"& _ 
+                "e_3)) AND ((@IsNull_SQL_ScriptType_4 = 1 AND [SQL_ScriptType_4] IS NULL) OR ([SQ"& _ 
+                "L_ScriptType_4] = @Original_SQL_ScriptType_4)) AND ((@IsNull_LastAction = 1 AND "& _ 
+                "[LastAction] IS NULL) OR ([LastAction] = @Original_LastAction)) AND ((@IsNull_La"& _ 
+                "stUpdateUser = 1 AND [LastUpdateUser] IS NULL) OR ([LastUpdateUser] = @Original_"& _ 
+                "LastUpdateUser)) AND ((@IsNull_LastUpdateDate = 1 AND [LastUpdateDate] IS NULL) "& _ 
+                "OR ([LastUpdateDate] = @Original_LastUpdateDate)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -13934,6 +15165,13 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_Name_1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_Name_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -13959,6 +15197,20 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_Date1", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_Date2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_Date2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastAction", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateUser", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -13977,9 +15229,10 @@ Namespace EDPDataSetTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        ID, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQ"& _ 
                 "L_Float_2, SQL_Float_3, SQL_Float_4, SQL_Command_1, SQL_Command_2, SQL_Command_3"& _ 
                 ", SQL_Command_4, Id_SQL_Parameters_Details, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Status, S"& _ 
-                "QL_Date1, SQL_Date2"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SQL_PARAMETER_DETAILS_SECOND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CASE"& _ 
-                " WHEN SQL_Float_1 IS NOT NULL THEN SQL_Float_1 END, CASE WHEN SQL_Float_1 IS NUL"& _ 
-                "L THEN ID END"
+                "QL_Date1, SQL_Date2, SQL_ScriptType_1, SQL_ScriptType_2, SQL_ScriptType_3, SQL_S"& _ 
+                "criptType_4, LastAction, LastUpdateUser, LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SQL_PAR"& _ 
+                "AMETER_DETAILS_SECOND"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CASE WHEN SQL_Float_1 IS NOT NULL THEN SQL_Float"& _ 
+                "_1 END, CASE WHEN SQL_Float_1 IS NULL THEN ID END"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -14039,7 +15292,27 @@ Namespace EDPDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_SQL_Name_1 As String, ByVal Original_SQL_Name_2 As String, ByVal Original_SQL_Name_3 As String, ByVal Original_SQL_Name_4 As String, ByVal Original_SQL_Float_1 As Global.System.Nullable(Of Double), ByVal Original_SQL_Float_2 As Global.System.Nullable(Of Double), ByVal Original_SQL_Float_3 As Global.System.Nullable(Of Double), ByVal Original_SQL_Float_4 As Global.System.Nullable(Of Double), ByVal Original_Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer), ByVal Original_Status As String, ByVal Original_SQL_Date1 As Global.System.Nullable(Of Date), ByVal Original_SQL_Date2 As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_ID As Integer,  _
+                    ByVal Original_SQL_Name_1 As String,  _
+                    ByVal Original_SQL_Name_2 As String,  _
+                    ByVal Original_SQL_Name_3 As String,  _
+                    ByVal Original_SQL_Name_4 As String,  _
+                    ByVal Original_SQL_Float_1 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_SQL_Float_2 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_SQL_Float_3 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_SQL_Float_4 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_Status As String,  _
+                    ByVal Original_SQL_Date1 As Global.System.Nullable(Of Date),  _
+                    ByVal Original_SQL_Date2 As Global.System.Nullable(Of Date),  _
+                    ByVal Original_SQL_ScriptType_1 As String,  _
+                    ByVal Original_SQL_ScriptType_2 As String,  _
+                    ByVal Original_SQL_ScriptType_3 As String,  _
+                    ByVal Original_SQL_ScriptType_4 As String,  _
+                    ByVal Original_LastAction As String,  _
+                    ByVal Original_LastUpdateUser As String,  _
+                    ByVal Original_LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_SQL_Name_1 Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -14125,6 +15398,55 @@ Namespace EDPDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
             End If
+            If (Original_SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_SQL_ScriptType_1,String)
+            End If
+            If (Original_SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_SQL_ScriptType_2,String)
+            End If
+            If (Original_SQL_ScriptType_3 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_SQL_ScriptType_3,String)
+            End If
+            If (Original_SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_SQL_ScriptType_4,String)
+            End If
+            If (Original_LastAction Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_LastAction,String)
+            End If
+            If (Original_LastUpdateUser Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_LastUpdateUser,String)
+            End If
+            If (Original_LastUpdateDate.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -14160,7 +15482,14 @@ Namespace EDPDataSetTableAdapters
                     ByVal Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer),  _
                     ByVal Status As String,  _
                     ByVal SQL_Date1 As Global.System.Nullable(Of Date),  _
-                    ByVal SQL_Date2 As Global.System.Nullable(Of Date)) As Integer
+                    ByVal SQL_Date2 As Global.System.Nullable(Of Date),  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (SQL_Name_1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -14241,6 +15570,41 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
+            If (SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(SQL_ScriptType_1,String)
+            End If
+            If (SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(SQL_ScriptType_2,String)
+            End If
+            If (SQL_ScriptType_3 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(SQL_ScriptType_3,String)
+            End If
+            If (SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(SQL_ScriptType_4,String)
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -14277,6 +15641,13 @@ Namespace EDPDataSetTableAdapters
                     ByVal Status As String,  _
                     ByVal SQL_Date1 As Global.System.Nullable(Of Date),  _
                     ByVal SQL_Date2 As Global.System.Nullable(Of Date),  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_ID As Integer,  _
                     ByVal Original_SQL_Name_1 As String,  _
                     ByVal Original_SQL_Name_2 As String,  _
@@ -14289,7 +15660,14 @@ Namespace EDPDataSetTableAdapters
                     ByVal Original_Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer),  _
                     ByVal Original_Status As String,  _
                     ByVal Original_SQL_Date1 As Global.System.Nullable(Of Date),  _
-                    ByVal Original_SQL_Date2 As Global.System.Nullable(Of Date)) As Integer
+                    ByVal Original_SQL_Date2 As Global.System.Nullable(Of Date),  _
+                    ByVal Original_SQL_ScriptType_1 As String,  _
+                    ByVal Original_SQL_ScriptType_2 As String,  _
+                    ByVal Original_SQL_ScriptType_3 As String,  _
+                    ByVal Original_SQL_ScriptType_4 As String,  _
+                    ByVal Original_LastAction As String,  _
+                    ByVal Original_LastUpdateUser As String,  _
+                    ByVal Original_LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (SQL_Name_1 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -14370,90 +15748,174 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_ID,Integer)
-            If (Original_SQL_Name_1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+            If (SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(SQL_ScriptType_1,String)
+            End If
+            If (SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(SQL_ScriptType_2,String)
+            End If
+            If (SQL_ScriptType_3 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_SQL_Name_1,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(SQL_ScriptType_3,String)
             End If
-            If (Original_SQL_Name_2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+            If (SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(SQL_ScriptType_4,String)
+            End If
+            If (LastAction Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_SQL_Name_2,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_ID,Integer)
+            If (Original_SQL_Name_1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_SQL_Name_1,String)
+            End If
+            If (Original_SQL_Name_2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_SQL_Name_2,String)
             End If
             If (Original_SQL_Name_3 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_SQL_Name_3,String)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_SQL_Name_3,String)
             End If
             If (Original_SQL_Name_4 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_SQL_Name_4,String)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_SQL_Name_4,String)
             End If
             If (Original_SQL_Float_1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_SQL_Float_1.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_SQL_Float_1.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Float_2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_SQL_Float_2.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_SQL_Float_2.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Float_3.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_SQL_Float_3.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_SQL_Float_3.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Float_4.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_SQL_Float_4.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_SQL_Float_4.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             End If
             If (Original_Id_SQL_Parameters_Details.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Id_SQL_Parameters_Details.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_Id_SQL_Parameters_Details.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             End If
             If (Original_Status Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_Status,String)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_Status,String)
             End If
             If (Original_SQL_Date1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_SQL_Date1.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_SQL_Date1.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Date2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_SQL_Date2.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_SQL_Date2.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+            End If
+            If (Original_SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_SQL_ScriptType_1,String)
+            End If
+            If (Original_SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_SQL_ScriptType_2,String)
+            End If
+            If (Original_SQL_ScriptType_3 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_SQL_ScriptType_3,String)
+            End If
+            If (Original_SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_SQL_ScriptType_4,String)
+            End If
+            If (Original_LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_LastAction,String)
+            End If
+            If (Original_LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_LastUpdateUser,String)
+            End If
+            If (Original_LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -15650,6 +17112,13 @@ Namespace EDPDataSetTableAdapters
             tableMapping.ColumnMappings.Add("SQL_Date2", "SQL_Date2")
             tableMapping.ColumnMappings.Add("Status", "Status")
             tableMapping.ColumnMappings.Add("Id_SQL_Parameters_Details", "Id_SQL_Parameters_Details")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_1", "SQL_ScriptType_1")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_2", "SQL_ScriptType_2")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_3", "SQL_ScriptType_3")
+            tableMapping.ColumnMappings.Add("SQL_ScriptType_4", "SQL_ScriptType_4")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -15669,7 +17138,17 @@ Namespace EDPDataSetTableAdapters
                 "Date2)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Original_"& _ 
                 "Status)) AND ((@IsNull_Id_SQL_Parameters_Details = 1 AND [Id_SQL_Parameters_Deta"& _ 
                 "ils] IS NULL) OR ([Id_SQL_Parameters_Details] = @Original_Id_SQL_Parameters_Deta"& _ 
-                "ils)))"
+                "ils)) AND ((@IsNull_SQL_ScriptType_1 = 1 AND [SQL_ScriptType_1] IS NULL) OR ([SQ"& _ 
+                "L_ScriptType_1] = @Original_SQL_ScriptType_1)) AND ((@IsNull_SQL_ScriptType_2 = "& _ 
+                "1 AND [SQL_ScriptType_2] IS NULL) OR ([SQL_ScriptType_2] = @Original_SQL_ScriptT"& _ 
+                "ype_2)) AND ((@IsNull_SQL_ScriptType_3 = 1 AND [SQL_ScriptType_3] IS NULL) OR (["& _ 
+                "SQL_ScriptType_3] = @Original_SQL_ScriptType_3)) AND ((@IsNull_SQL_ScriptType_4 "& _ 
+                "= 1 AND [SQL_ScriptType_4] IS NULL) OR ([SQL_ScriptType_4] = @Original_SQL_Scrip"& _ 
+                "tType_4)) AND ((@IsNull_LastAction = 1 AND [LastAction] IS NULL) OR ([LastAction"& _ 
+                "] = @Original_LastAction)) AND ((@IsNull_LastUpdateUser = 1 AND [LastUpdateUser]"& _ 
+                " IS NULL) OR ([LastUpdateUser] = @Original_LastUpdateUser)) AND ((@IsNull_LastUp"& _ 
+                "dateDate = 1 AND [LastUpdateDate] IS NULL) OR ([LastUpdateDate] = @Original_Last"& _ 
+                "UpdateDate)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_Name_1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -15696,15 +17175,32 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Id_SQL_Parameters_Details", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id_SQL_Parameters_Details", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_SQL_Parameters_Details", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id_SQL_Parameters_Details", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastAction", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateUser", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [SQL_PARAMETER_DETAILS_THIRD] ([SQL_Name_1], [SQL_Name_2], [SQL_Name_"& _ 
                 "3], [SQL_Name_4], [SQL_Float_1], [SQL_Float_2], [SQL_Float_3], [SQL_Command_1], "& _ 
                 "[SQL_Float_4], [SQL_Command_2], [SQL_Command_3], [SQL_Command_4], [SQL_Date1], ["& _ 
-                "SQL_Date2], [Status], [Id_SQL_Parameters_Details]) VALUES (@SQL_Name_1, @SQL_Nam"& _ 
-                "e_2, @SQL_Name_3, @SQL_Name_4, @SQL_Float_1, @SQL_Float_2, @SQL_Float_3, @SQL_Co"& _ 
-                "mmand_1, @SQL_Float_4, @SQL_Command_2, @SQL_Command_3, @SQL_Command_4, @SQL_Date"& _ 
-                "1, @SQL_Date2, @Status, @Id_SQL_Parameters_Details)"
+                "SQL_Date2], [Status], [Id_SQL_Parameters_Details], [SQL_ScriptType_1], [SQL_Scri"& _ 
+                "ptType_2], [SQL_ScriptType_3], [SQL_ScriptType_4], [LastAction], [LastUpdateUser"& _ 
+                "], [LastUpdateDate]) VALUES (@SQL_Name_1, @SQL_Name_2, @SQL_Name_3, @SQL_Name_4,"& _ 
+                " @SQL_Float_1, @SQL_Float_2, @SQL_Float_3, @SQL_Command_1, @SQL_Float_4, @SQL_Co"& _ 
+                "mmand_2, @SQL_Command_3, @SQL_Command_4, @SQL_Date1, @SQL_Date2, @Status, @Id_SQ"& _ 
+                "L_Parameters_Details, @SQL_ScriptType_1, @SQL_ScriptType_2, @SQL_ScriptType_3, @"& _ 
+                "SQL_ScriptType_4, @LastAction, @LastUpdateUser, @LastUpdateDate)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15722,6 +17218,13 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_SQL_Parameters_Details", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id_SQL_Parameters_Details", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [SQL_PARAMETER_DETAILS_THIRD] SET [SQL_Name_1] = @SQL_Name_1, [SQL_Name_2]"& _ 
@@ -15730,23 +17233,36 @@ Namespace EDPDataSetTableAdapters
                 ", [SQL_Command_1] = @SQL_Command_1, [SQL_Float_4] = @SQL_Float_4, [SQL_Command_2"& _ 
                 "] = @SQL_Command_2, [SQL_Command_3] = @SQL_Command_3, [SQL_Command_4] = @SQL_Com"& _ 
                 "mand_4, [SQL_Date1] = @SQL_Date1, [SQL_Date2] = @SQL_Date2, [Status] = @Status, "& _ 
-                "[Id_SQL_Parameters_Details] = @Id_SQL_Parameters_Details WHERE (([ID] = @Origina"& _ 
-                "l_ID) AND ((@IsNull_SQL_Name_1 = 1 AND [SQL_Name_1] IS NULL) OR ([SQL_Name_1] = "& _ 
-                "@Original_SQL_Name_1)) AND ((@IsNull_SQL_Name_2 = 1 AND [SQL_Name_2] IS NULL) OR"& _ 
-                " ([SQL_Name_2] = @Original_SQL_Name_2)) AND ((@IsNull_SQL_Name_3 = 1 AND [SQL_Na"& _ 
-                "me_3] IS NULL) OR ([SQL_Name_3] = @Original_SQL_Name_3)) AND ((@IsNull_SQL_Name_"& _ 
-                "4 = 1 AND [SQL_Name_4] IS NULL) OR ([SQL_Name_4] = @Original_SQL_Name_4)) AND (("& _ 
-                "@IsNull_SQL_Float_1 = 1 AND [SQL_Float_1] IS NULL) OR ([SQL_Float_1] = @Original"& _ 
-                "_SQL_Float_1)) AND ((@IsNull_SQL_Float_2 = 1 AND [SQL_Float_2] IS NULL) OR ([SQL"& _ 
-                "_Float_2] = @Original_SQL_Float_2)) AND ((@IsNull_SQL_Float_3 = 1 AND [SQL_Float"& _ 
-                "_3] IS NULL) OR ([SQL_Float_3] = @Original_SQL_Float_3)) AND ((@IsNull_SQL_Float"& _ 
-                "_4 = 1 AND [SQL_Float_4] IS NULL) OR ([SQL_Float_4] = @Original_SQL_Float_4)) AN"& _ 
-                "D ((@IsNull_SQL_Date1 = 1 AND [SQL_Date1] IS NULL) OR ([SQL_Date1] = @Original_S"& _ 
-                "QL_Date1)) AND ((@IsNull_SQL_Date2 = 1 AND [SQL_Date2] IS NULL) OR ([SQL_Date2] "& _ 
-                "= @Original_SQL_Date2)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Stat"& _ 
-                "us] = @Original_Status)) AND ((@IsNull_Id_SQL_Parameters_Details = 1 AND [Id_SQL"& _ 
-                "_Parameters_Details] IS NULL) OR ([Id_SQL_Parameters_Details] = @Original_Id_SQL"& _ 
-                "_Parameters_Details)))"
+                "[Id_SQL_Parameters_Details] = @Id_SQL_Parameters_Details, [SQL_ScriptType_1] = @"& _ 
+                "SQL_ScriptType_1, [SQL_ScriptType_2] = @SQL_ScriptType_2, [SQL_ScriptType_3] = @"& _ 
+                "SQL_ScriptType_3, [SQL_ScriptType_4] = @SQL_ScriptType_4, [LastAction] = @LastAc"& _ 
+                "tion, [LastUpdateUser] = @LastUpdateUser, [LastUpdateDate] = @LastUpdateDate WHE"& _ 
+                "RE (([ID] = @Original_ID) AND ((@IsNull_SQL_Name_1 = 1 AND [SQL_Name_1] IS NULL)"& _ 
+                " OR ([SQL_Name_1] = @Original_SQL_Name_1)) AND ((@IsNull_SQL_Name_2 = 1 AND [SQL"& _ 
+                "_Name_2] IS NULL) OR ([SQL_Name_2] = @Original_SQL_Name_2)) AND ((@IsNull_SQL_Na"& _ 
+                "me_3 = 1 AND [SQL_Name_3] IS NULL) OR ([SQL_Name_3] = @Original_SQL_Name_3)) AND"& _ 
+                " ((@IsNull_SQL_Name_4 = 1 AND [SQL_Name_4] IS NULL) OR ([SQL_Name_4] = @Original"& _ 
+                "_SQL_Name_4)) AND ((@IsNull_SQL_Float_1 = 1 AND [SQL_Float_1] IS NULL) OR ([SQL_"& _ 
+                "Float_1] = @Original_SQL_Float_1)) AND ((@IsNull_SQL_Float_2 = 1 AND [SQL_Float_"& _ 
+                "2] IS NULL) OR ([SQL_Float_2] = @Original_SQL_Float_2)) AND ((@IsNull_SQL_Float_"& _ 
+                "3 = 1 AND [SQL_Float_3] IS NULL) OR ([SQL_Float_3] = @Original_SQL_Float_3)) AND"& _ 
+                " ((@IsNull_SQL_Float_4 = 1 AND [SQL_Float_4] IS NULL) OR ([SQL_Float_4] = @Origi"& _ 
+                "nal_SQL_Float_4)) AND ((@IsNull_SQL_Date1 = 1 AND [SQL_Date1] IS NULL) OR ([SQL_"& _ 
+                "Date1] = @Original_SQL_Date1)) AND ((@IsNull_SQL_Date2 = 1 AND [SQL_Date2] IS NU"& _ 
+                "LL) OR ([SQL_Date2] = @Original_SQL_Date2)) AND ((@IsNull_Status = 1 AND [Status"& _ 
+                "] IS NULL) OR ([Status] = @Original_Status)) AND ((@IsNull_Id_SQL_Parameters_Det"& _ 
+                "ails = 1 AND [Id_SQL_Parameters_Details] IS NULL) OR ([Id_SQL_Parameters_Details"& _ 
+                "] = @Original_Id_SQL_Parameters_Details)) AND ((@IsNull_SQL_ScriptType_1 = 1 AND"& _ 
+                " [SQL_ScriptType_1] IS NULL) OR ([SQL_ScriptType_1] = @Original_SQL_ScriptType_1"& _ 
+                ")) AND ((@IsNull_SQL_ScriptType_2 = 1 AND [SQL_ScriptType_2] IS NULL) OR ([SQL_S"& _ 
+                "criptType_2] = @Original_SQL_ScriptType_2)) AND ((@IsNull_SQL_ScriptType_3 = 1 A"& _ 
+                "ND [SQL_ScriptType_3] IS NULL) OR ([SQL_ScriptType_3] = @Original_SQL_ScriptType"& _ 
+                "_3)) AND ((@IsNull_SQL_ScriptType_4 = 1 AND [SQL_ScriptType_4] IS NULL) OR ([SQL"& _ 
+                "_ScriptType_4] = @Original_SQL_ScriptType_4)) AND ((@IsNull_LastAction = 1 AND ["& _ 
+                "LastAction] IS NULL) OR ([LastAction] = @Original_LastAction)) AND ((@IsNull_Las"& _ 
+                "tUpdateUser = 1 AND [LastUpdateUser] IS NULL) OR ([LastUpdateUser] = @Original_L"& _ 
+                "astUpdateUser)) AND ((@IsNull_LastUpdateDate = 1 AND [LastUpdateDate] IS NULL) O"& _ 
+                "R ([LastUpdateDate] = @Original_LastUpdateDate)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Name_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15764,6 +17280,13 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_Date2", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Date2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Status", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Id_SQL_Parameters_Details", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id_SQL_Parameters_Details", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_Name_1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_Name_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_Name_1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -15789,6 +17312,20 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Status", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Status", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Id_SQL_Parameters_Details", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id_SQL_Parameters_Details", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Id_SQL_Parameters_Details", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Id_SQL_Parameters_Details", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_1", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_1", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_1", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_2", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_2", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_2", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_3", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_3", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_3", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_SQL_ScriptType_4", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SQL_ScriptType_4", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SQL_ScriptType_4", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastAction", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateUser", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15807,9 +17344,10 @@ Namespace EDPDataSetTableAdapters
             Me._commandCollection(0).CommandText = "SELECT        ID, SQL_Name_1, SQL_Name_2, SQL_Name_3, SQL_Name_4, SQL_Float_1, SQ"& _ 
                 "L_Float_2, SQL_Float_3, SQL_Command_1, SQL_Float_4, SQL_Command_2, SQL_Command_3"& _ 
                 ", SQL_Command_4, SQL_Date1, SQL_Date2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Status, Id_SQL"& _ 
-                "_Parameters_Details"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SQL_PARAMETER_DETAILS_THIRD"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CASE "& _ 
-                "WHEN SQL_Float_1 IS NOT NULL THEN SQL_Float_1 END, CASE WHEN SQL_Float_1 IS NULL"& _ 
-                " THEN ID END"
+                "_Parameters_Details, SQL_ScriptType_1, SQL_ScriptType_2, SQL_ScriptType_3, SQL_S"& _ 
+                "criptType_4, LastAction, LastUpdateUser, LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            SQL_PAR"& _ 
+                "AMETER_DETAILS_THIRD"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CASE WHEN SQL_Float_1 IS NOT NULL THEN SQL_Float_"& _ 
+                "1 END, CASE WHEN SQL_Float_1 IS NULL THEN ID END"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -15869,7 +17407,27 @@ Namespace EDPDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_SQL_Name_1 As String, ByVal Original_SQL_Name_2 As String, ByVal Original_SQL_Name_3 As String, ByVal Original_SQL_Name_4 As String, ByVal Original_SQL_Float_1 As Global.System.Nullable(Of Double), ByVal Original_SQL_Float_2 As Global.System.Nullable(Of Double), ByVal Original_SQL_Float_3 As Global.System.Nullable(Of Double), ByVal Original_SQL_Float_4 As Global.System.Nullable(Of Double), ByVal Original_SQL_Date1 As Global.System.Nullable(Of Date), ByVal Original_SQL_Date2 As Global.System.Nullable(Of Date), ByVal Original_Status As String, ByVal Original_Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Delete( _
+                    ByVal Original_ID As Integer,  _
+                    ByVal Original_SQL_Name_1 As String,  _
+                    ByVal Original_SQL_Name_2 As String,  _
+                    ByVal Original_SQL_Name_3 As String,  _
+                    ByVal Original_SQL_Name_4 As String,  _
+                    ByVal Original_SQL_Float_1 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_SQL_Float_2 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_SQL_Float_3 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_SQL_Float_4 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_SQL_Date1 As Global.System.Nullable(Of Date),  _
+                    ByVal Original_SQL_Date2 As Global.System.Nullable(Of Date),  _
+                    ByVal Original_Status As String,  _
+                    ByVal Original_Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_SQL_ScriptType_1 As String,  _
+                    ByVal Original_SQL_ScriptType_2 As String,  _
+                    ByVal Original_SQL_ScriptType_3 As String,  _
+                    ByVal Original_SQL_ScriptType_4 As String,  _
+                    ByVal Original_LastAction As String,  _
+                    ByVal Original_LastUpdateUser As String,  _
+                    ByVal Original_LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_SQL_Name_1 Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -15955,6 +17513,55 @@ Namespace EDPDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
             End If
+            If (Original_SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_SQL_ScriptType_1,String)
+            End If
+            If (Original_SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_SQL_ScriptType_2,String)
+            End If
+            If (Original_SQL_ScriptType_3 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_SQL_ScriptType_3,String)
+            End If
+            If (Original_SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_SQL_ScriptType_4,String)
+            End If
+            If (Original_LastAction Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_LastAction,String)
+            End If
+            If (Original_LastUpdateUser Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_LastUpdateUser,String)
+            End If
+            If (Original_LastUpdateDate.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -15990,7 +17597,14 @@ Namespace EDPDataSetTableAdapters
                     ByVal SQL_Date1 As Global.System.Nullable(Of Date),  _
                     ByVal SQL_Date2 As Global.System.Nullable(Of Date),  _
                     ByVal Status As String,  _
-                    ByVal Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer)) As Integer
+                    ByVal Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer),  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (SQL_Name_1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -16071,6 +17685,41 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
+            If (SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(SQL_ScriptType_1,String)
+            End If
+            If (SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(SQL_ScriptType_2,String)
+            End If
+            If (SQL_ScriptType_3 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(SQL_ScriptType_3,String)
+            End If
+            If (SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(SQL_ScriptType_4,String)
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -16107,6 +17756,13 @@ Namespace EDPDataSetTableAdapters
                     ByVal SQL_Date2 As Global.System.Nullable(Of Date),  _
                     ByVal Status As String,  _
                     ByVal Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer),  _
+                    ByVal SQL_ScriptType_1 As String,  _
+                    ByVal SQL_ScriptType_2 As String,  _
+                    ByVal SQL_ScriptType_3 As String,  _
+                    ByVal SQL_ScriptType_4 As String,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_ID As Integer,  _
                     ByVal Original_SQL_Name_1 As String,  _
                     ByVal Original_SQL_Name_2 As String,  _
@@ -16119,7 +17775,14 @@ Namespace EDPDataSetTableAdapters
                     ByVal Original_SQL_Date1 As Global.System.Nullable(Of Date),  _
                     ByVal Original_SQL_Date2 As Global.System.Nullable(Of Date),  _
                     ByVal Original_Status As String,  _
-                    ByVal Original_Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer)) As Integer
+                    ByVal Original_Id_SQL_Parameters_Details As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_SQL_ScriptType_1 As String,  _
+                    ByVal Original_SQL_ScriptType_2 As String,  _
+                    ByVal Original_SQL_ScriptType_3 As String,  _
+                    ByVal Original_SQL_ScriptType_4 As String,  _
+                    ByVal Original_LastAction As String,  _
+                    ByVal Original_LastUpdateUser As String,  _
+                    ByVal Original_LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (SQL_Name_1 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -16200,90 +17863,174 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_ID,Integer)
-            If (Original_SQL_Name_1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+            If (SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(SQL_ScriptType_1,String)
+            End If
+            If (SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(SQL_ScriptType_2,String)
+            End If
+            If (SQL_ScriptType_3 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_SQL_Name_1,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(SQL_ScriptType_3,String)
             End If
-            If (Original_SQL_Name_2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+            If (SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(SQL_ScriptType_4,String)
+            End If
+            If (LastAction Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_SQL_Name_2,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_ID,Integer)
+            If (Original_SQL_Name_1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_SQL_Name_1,String)
+            End If
+            If (Original_SQL_Name_2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_SQL_Name_2,String)
             End If
             If (Original_SQL_Name_3 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_SQL_Name_3,String)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_SQL_Name_3,String)
             End If
             If (Original_SQL_Name_4 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_SQL_Name_4,String)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_SQL_Name_4,String)
             End If
             If (Original_SQL_Float_1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_SQL_Float_1.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_SQL_Float_1.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Float_2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_SQL_Float_2.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_SQL_Float_2.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Float_3.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_SQL_Float_3.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_SQL_Float_3.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Float_4.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_SQL_Float_4.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_SQL_Float_4.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Date1.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_SQL_Date1.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_SQL_Date1.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             End If
             If (Original_SQL_Date2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_SQL_Date2.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_SQL_Date2.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             End If
             If (Original_Status Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Status,String)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Status,String)
             End If
             If (Original_Id_SQL_Parameters_Details.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_Id_SQL_Parameters_Details.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_Id_SQL_Parameters_Details.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+            End If
+            If (Original_SQL_ScriptType_1 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_SQL_ScriptType_1,String)
+            End If
+            If (Original_SQL_ScriptType_2 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_SQL_ScriptType_2,String)
+            End If
+            If (Original_SQL_ScriptType_3 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_SQL_ScriptType_3,String)
+            End If
+            If (Original_SQL_ScriptType_4 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_SQL_ScriptType_4,String)
+            End If
+            If (Original_LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_LastAction,String)
+            End If
+            If (Original_LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_LastUpdateUser,String)
+            End If
+            If (Original_LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

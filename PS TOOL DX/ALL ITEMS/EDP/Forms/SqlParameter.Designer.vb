@@ -46,6 +46,12 @@ Partial Class SqlParameter
         Me.colStatus = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.colSQL_ScriptType_1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ScriptType_RepositoryItemImageComboBox = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.Script_ImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.colSQL_ScriptType_2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colId_SQL_Parameters = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl3 = New DevExpress.XtraGrid.GridControl()
         Me.SQL_PARAMETERBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -88,6 +94,10 @@ Partial Class SqlParameter
         Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn32 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn33 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_11 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_21 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_31 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_41 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colId_SQL_Parameters_Details_3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.SQL_Parameter_Details_Third_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -106,6 +116,10 @@ Partial Class SqlParameter
         Me.GridColumn28 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn29 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn30 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_12 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_22 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_32 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colSQL_ScriptType_42 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colId_SQL_Parameters_Details_4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.SQL_PARAMETERTableAdapter = New PS_TOOL_DX.EDPDataSetTableAdapters.SQL_PARAMETERTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EDPDataSetTableAdapters.TableAdapterManager()
@@ -203,6 +217,18 @@ Partial Class SqlParameter
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.colLastAction = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate3 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.SQL_Parameter_Details_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -210,6 +236,8 @@ Partial Class SqlParameter
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ScriptType_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Script_ImageCollection, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SQL_PARAMETERBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDPDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -255,11 +283,11 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.SQL_Parameter_Details_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.SQL_Parameter_Details_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.SQL_Parameter_Details_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colSQL_Name_1, Me.colSQL_Name_2, Me.colSQL_Name_3, Me.colSQL_Name_4, Me.colSQL_Float_1, Me.colSQL_Float_2, Me.colSQL_Float_3, Me.colSQL_Float_4, Me.colSQL_Command_1, Me.colSQL_Command_2, Me.colSQL_Command_3, Me.colSQL_Command_4, Me.colSQL_Date1, Me.colSQL_Date2, Me.colStatus, Me.colId_SQL_Parameters})
+        Me.SQL_Parameter_Details_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colSQL_Name_1, Me.colSQL_Name_2, Me.colSQL_Name_3, Me.colSQL_Name_4, Me.colSQL_Float_1, Me.colSQL_Float_2, Me.colSQL_Float_3, Me.colSQL_Float_4, Me.colSQL_Command_1, Me.colSQL_Command_2, Me.colSQL_Command_3, Me.colSQL_Command_4, Me.colSQL_Date1, Me.colSQL_Date2, Me.colStatus, Me.colSQL_ScriptType_1, Me.colSQL_ScriptType_2, Me.colSQL_ScriptType_3, Me.colSQL_ScriptType_4, Me.colLastAction1, Me.colLastUpdateUser1, Me.colLastUpdateDate1, Me.colId_SQL_Parameters})
         Me.SQL_Parameter_Details_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.SQL_Parameter_Details_GridView.GridControl = Me.GridControl3
         Me.SQL_Parameter_Details_GridView.Name = "SQL_Parameter_Details_GridView"
-        Me.SQL_Parameter_Details_GridView.NewItemRowText = "Add new SQL Parameter Command"
+        Me.SQL_Parameter_Details_GridView.NewItemRowText = "Add new SQL/VB.NET Parameter Command"
         Me.SQL_Parameter_Details_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.SQL_Parameter_Details_GridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.SQL_Parameter_Details_GridView.OptionsCustomization.CustomizationFormSearchBoxVisible = True
@@ -267,7 +295,9 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_GridView.OptionsDetail.AutoZoomDetail = True
         Me.SQL_Parameter_Details_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.SQL_Parameter_Details_GridView.OptionsFind.AlwaysVisible = True
+        Me.SQL_Parameter_Details_GridView.OptionsFind.SearchInPreview = True
         Me.SQL_Parameter_Details_GridView.OptionsSelection.MultiSelect = True
+        Me.SQL_Parameter_Details_GridView.OptionsView.AutoCalcPreviewLineCount = True
         Me.SQL_Parameter_Details_GridView.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Full
         Me.SQL_Parameter_Details_GridView.OptionsView.ColumnAutoWidth = False
         Me.SQL_Parameter_Details_GridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
@@ -275,6 +305,8 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_GridView.OptionsView.ShowAutoFilterRow = True
         Me.SQL_Parameter_Details_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.SQL_Parameter_Details_GridView.OptionsView.ShowGroupPanel = False
+        Me.SQL_Parameter_Details_GridView.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.[True]
+        Me.SQL_Parameter_Details_GridView.PreviewFieldName = "SQL_Command_1"
         Me.SQL_Parameter_Details_GridView.ViewCaption = "SQL Parameter Details"
         '
         'colID
@@ -366,7 +398,7 @@ Partial Class SqlParameter
         Me.colSQL_Command_1.FieldName = "SQL_Command_1"
         Me.colSQL_Command_1.Name = "colSQL_Command_1"
         Me.colSQL_Command_1.Visible = True
-        Me.colSQL_Command_1.VisibleIndex = 2
+        Me.colSQL_Command_1.VisibleIndex = 3
         Me.colSQL_Command_1.Width = 97
         '
         'RepositoryItemMemoExEdit3
@@ -424,7 +456,7 @@ Partial Class SqlParameter
         Me.colSQL_Date1.FieldName = "SQL_Date1"
         Me.colSQL_Date1.Name = "colSQL_Date1"
         Me.colSQL_Date1.Visible = True
-        Me.colSQL_Date1.VisibleIndex = 4
+        Me.colSQL_Date1.VisibleIndex = 5
         Me.colSQL_Date1.Width = 101
         '
         'RepositoryItemDateEdit1
@@ -448,7 +480,7 @@ Partial Class SqlParameter
         Me.colSQL_Date2.FieldName = "SQL_Date2"
         Me.colSQL_Date2.Name = "colSQL_Date2"
         Me.colSQL_Date2.Visible = True
-        Me.colSQL_Date2.VisibleIndex = 5
+        Me.colSQL_Date2.VisibleIndex = 6
         Me.colSQL_Date2.Width = 99
         '
         'colStatus
@@ -457,7 +489,7 @@ Partial Class SqlParameter
         Me.colStatus.FieldName = "Status"
         Me.colStatus.Name = "colStatus"
         Me.colStatus.Visible = True
-        Me.colStatus.VisibleIndex = 3
+        Me.colStatus.VisibleIndex = 4
         Me.colStatus.Width = 115
         '
         'RepositoryItemImageComboBox1
@@ -493,6 +525,57 @@ Partial Class SqlParameter
         Me.ImageCollection1.Images.SetKeyName(9, "table_16x16.png")
         Me.ImageCollection1.Images.SetKeyName(10, "columnstwo_16x16.png")
         '
+        'colSQL_ScriptType_1
+        '
+        Me.colSQL_ScriptType_1.Caption = "SQL Script Type 1"
+        Me.colSQL_ScriptType_1.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_1.FieldName = "SQL_ScriptType_1"
+        Me.colSQL_ScriptType_1.Name = "colSQL_ScriptType_1"
+        Me.colSQL_ScriptType_1.Visible = True
+        Me.colSQL_ScriptType_1.VisibleIndex = 2
+        Me.colSQL_ScriptType_1.Width = 100
+        '
+        'ScriptType_RepositoryItemImageComboBox
+        '
+        Me.ScriptType_RepositoryItemImageComboBox.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.ScriptType_RepositoryItemImageComboBox.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.ScriptType_RepositoryItemImageComboBox.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.ScriptType_RepositoryItemImageComboBox.AppearanceFocused.Options.UseBackColor = True
+        Me.ScriptType_RepositoryItemImageComboBox.AppearanceFocused.Options.UseForeColor = True
+        Me.ScriptType_RepositoryItemImageComboBox.AutoHeight = False
+        Me.ScriptType_RepositoryItemImageComboBox.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ScriptType_RepositoryItemImageComboBox.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("SQL", "SQL", 0), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("VB.NET", "VB", 1), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("NO SCRIPT", "N", 2)})
+        Me.ScriptType_RepositoryItemImageComboBox.Name = "ScriptType_RepositoryItemImageComboBox"
+        Me.ScriptType_RepositoryItemImageComboBox.SmallImages = Me.Script_ImageCollection
+        '
+        'Script_ImageCollection
+        '
+        Me.Script_ImageCollection.ImageStream = CType(resources.GetObject("Script_ImageCollection.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
+        Me.Script_ImageCollection.Images.SetKeyName(0, "sql-server.png")
+        Me.Script_ImageCollection.Images.SetKeyName(1, "vb_16x16.png")
+        Me.Script_ImageCollection.Images.SetKeyName(2, "index_16x16.png")
+        '
+        'colSQL_ScriptType_2
+        '
+        Me.colSQL_ScriptType_2.Caption = "SQL Script Type 2"
+        Me.colSQL_ScriptType_2.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_2.FieldName = "SQL_ScriptType_2"
+        Me.colSQL_ScriptType_2.Name = "colSQL_ScriptType_2"
+        '
+        'colSQL_ScriptType_3
+        '
+        Me.colSQL_ScriptType_3.Caption = "SQL Script Type 3"
+        Me.colSQL_ScriptType_3.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_3.FieldName = "SQL_ScriptType_3"
+        Me.colSQL_ScriptType_3.Name = "colSQL_ScriptType_3"
+        '
+        'colSQL_ScriptType_4
+        '
+        Me.colSQL_ScriptType_4.Caption = "SQL Script Type 4"
+        Me.colSQL_ScriptType_4.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_4.FieldName = "SQL_ScriptType_4"
+        Me.colSQL_ScriptType_4.Name = "colSQL_ScriptType_4"
+        '
         'colId_SQL_Parameters
         '
         Me.colId_SQL_Parameters.FieldName = "Id_SQL_Parameters"
@@ -526,7 +609,7 @@ Partial Class SqlParameter
         Me.GridControl3.Location = New System.Drawing.Point(36, 57)
         Me.GridControl3.MainView = Me.SQL_Parameter_Gridview
         Me.GridControl3.Name = "GridControl3"
-        Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox3, Me.RepositoryItemTextEdit2, Me.RepositoryItemMemoExEdit3, Me.RepositoryItemSpinEdit1, Me.RepositoryItemImageComboBox1, Me.RepositoryItemDateEdit1, Me.PopupContainerEdit2})
+        Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox3, Me.RepositoryItemTextEdit2, Me.RepositoryItemMemoExEdit3, Me.RepositoryItemSpinEdit1, Me.RepositoryItemImageComboBox1, Me.RepositoryItemDateEdit1, Me.PopupContainerEdit2, Me.ScriptType_RepositoryItemImageComboBox})
         Me.GridControl3.Size = New System.Drawing.Size(1362, 367)
         Me.GridControl3.TabIndex = 25
         Me.GridControl3.UseEmbeddedNavigator = True
@@ -551,7 +634,7 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Gridview.Appearance.FocusedRow.Options.UseForeColor = True
         Me.SQL_Parameter_Gridview.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.SQL_Parameter_Gridview.Appearance.GroupRow.Options.UseForeColor = True
-        Me.SQL_Parameter_Gridview.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID1, Me.colSQL_Float, Me.colSQL_Parameter_Name, Me.colSQL_Parameter_Info, Me.colSQL_Parameter_Status})
+        Me.SQL_Parameter_Gridview.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID1, Me.colSQL_Float, Me.colSQL_Parameter_Name, Me.colSQL_Parameter_Info, Me.colSQL_Parameter_Status, Me.colLastAction, Me.colLastUpdateUser, Me.colLastUpdateDate})
         Me.SQL_Parameter_Gridview.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.SQL_Parameter_Gridview.GridControl = Me.GridControl3
         Me.SQL_Parameter_Gridview.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CRSA_Position_Amount", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit Risk Amount(EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCredit Risk Amount(EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditOutstandingAmountEUR", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditRiskAmountEUREquER45", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "BusinessTypeName", Nothing, "Count={0:n0}")})
@@ -775,11 +858,11 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_Second_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.SQL_Parameter_Details_Second_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.SQL_Parameter_Details_Second_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.SQL_Parameter_Details_Second_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn32, Me.GridColumn33, Me.colId_SQL_Parameters_Details_3})
+        Me.SQL_Parameter_Details_Second_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn32, Me.GridColumn33, Me.colSQL_ScriptType_11, Me.colSQL_ScriptType_21, Me.colSQL_ScriptType_31, Me.colSQL_ScriptType_41, Me.colLastAction2, Me.colLastUpdateUser2, Me.colLastUpdateDate2, Me.colId_SQL_Parameters_Details_3})
         Me.SQL_Parameter_Details_Second_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.SQL_Parameter_Details_Second_GridView.GridControl = Me.GridControl3
         Me.SQL_Parameter_Details_Second_GridView.Name = "SQL_Parameter_Details_Second_GridView"
-        Me.SQL_Parameter_Details_Second_GridView.NewItemRowText = "Add new SQL Parameter Command"
+        Me.SQL_Parameter_Details_Second_GridView.NewItemRowText = "Add new SQL/VB.NET Parameter Command"
         Me.SQL_Parameter_Details_Second_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.SQL_Parameter_Details_Second_GridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.SQL_Parameter_Details_Second_GridView.OptionsCustomization.CustomizationFormSearchBoxVisible = True
@@ -787,7 +870,9 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_Second_GridView.OptionsDetail.AutoZoomDetail = True
         Me.SQL_Parameter_Details_Second_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.SQL_Parameter_Details_Second_GridView.OptionsFind.AlwaysVisible = True
+        Me.SQL_Parameter_Details_Second_GridView.OptionsFind.SearchInPreview = True
         Me.SQL_Parameter_Details_Second_GridView.OptionsSelection.MultiSelect = True
+        Me.SQL_Parameter_Details_Second_GridView.OptionsView.AutoCalcPreviewLineCount = True
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Full
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.ColumnAutoWidth = False
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
@@ -795,6 +880,8 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.ShowAutoFilterRow = True
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.SQL_Parameter_Details_Second_GridView.OptionsView.ShowGroupPanel = False
+        Me.SQL_Parameter_Details_Second_GridView.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.[True]
+        Me.SQL_Parameter_Details_Second_GridView.PreviewFieldName = "SQL_Command_1"
         Me.SQL_Parameter_Details_Second_GridView.ViewCaption = "SQL Parameter Details"
         '
         'GridColumn1
@@ -874,7 +961,7 @@ Partial Class SqlParameter
         Me.GridColumn10.FieldName = "SQL_Command_1"
         Me.GridColumn10.Name = "GridColumn10"
         Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 2
+        Me.GridColumn10.VisibleIndex = 3
         Me.GridColumn10.Width = 97
         '
         'GridColumn11
@@ -910,7 +997,7 @@ Partial Class SqlParameter
         Me.GridColumn14.FieldName = "SQL_Date1"
         Me.GridColumn14.Name = "GridColumn14"
         Me.GridColumn14.Visible = True
-        Me.GridColumn14.VisibleIndex = 4
+        Me.GridColumn14.VisibleIndex = 5
         Me.GridColumn14.Width = 101
         '
         'GridColumn32
@@ -922,7 +1009,7 @@ Partial Class SqlParameter
         Me.GridColumn32.FieldName = "SQL_Date2"
         Me.GridColumn32.Name = "GridColumn32"
         Me.GridColumn32.Visible = True
-        Me.GridColumn32.VisibleIndex = 5
+        Me.GridColumn32.VisibleIndex = 6
         Me.GridColumn32.Width = 99
         '
         'GridColumn33
@@ -931,8 +1018,39 @@ Partial Class SqlParameter
         Me.GridColumn33.FieldName = "Status"
         Me.GridColumn33.Name = "GridColumn33"
         Me.GridColumn33.Visible = True
-        Me.GridColumn33.VisibleIndex = 3
+        Me.GridColumn33.VisibleIndex = 4
         Me.GridColumn33.Width = 115
+        '
+        'colSQL_ScriptType_11
+        '
+        Me.colSQL_ScriptType_11.Caption = "SQL Script Type 1"
+        Me.colSQL_ScriptType_11.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_11.FieldName = "SQL_ScriptType_1"
+        Me.colSQL_ScriptType_11.Name = "colSQL_ScriptType_11"
+        Me.colSQL_ScriptType_11.Visible = True
+        Me.colSQL_ScriptType_11.VisibleIndex = 2
+        Me.colSQL_ScriptType_11.Width = 102
+        '
+        'colSQL_ScriptType_21
+        '
+        Me.colSQL_ScriptType_21.Caption = "SQL Script Type 2"
+        Me.colSQL_ScriptType_21.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_21.FieldName = "SQL_ScriptType_2"
+        Me.colSQL_ScriptType_21.Name = "colSQL_ScriptType_21"
+        '
+        'colSQL_ScriptType_31
+        '
+        Me.colSQL_ScriptType_31.Caption = "SQL Script Type 3"
+        Me.colSQL_ScriptType_31.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_31.FieldName = "SQL_ScriptType_3"
+        Me.colSQL_ScriptType_31.Name = "colSQL_ScriptType_31"
+        '
+        'colSQL_ScriptType_41
+        '
+        Me.colSQL_ScriptType_41.Caption = "SQL Script Type 4"
+        Me.colSQL_ScriptType_41.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_41.FieldName = "SQL_ScriptType_4"
+        Me.colSQL_ScriptType_41.Name = "colSQL_ScriptType_41"
         '
         'colId_SQL_Parameters_Details_3
         '
@@ -951,11 +1069,11 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_Third_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.SQL_Parameter_Details_Third_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.SQL_Parameter_Details_Third_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.SQL_Parameter_Details_Third_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn15, Me.GridColumn16, Me.GridColumn17, Me.GridColumn18, Me.GridColumn19, Me.GridColumn20, Me.GridColumn21, Me.GridColumn22, Me.GridColumn23, Me.GridColumn24, Me.GridColumn25, Me.GridColumn26, Me.GridColumn27, Me.GridColumn28, Me.GridColumn29, Me.GridColumn30, Me.colId_SQL_Parameters_Details_4})
+        Me.SQL_Parameter_Details_Third_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn15, Me.GridColumn16, Me.GridColumn17, Me.GridColumn18, Me.GridColumn19, Me.GridColumn20, Me.GridColumn21, Me.GridColumn22, Me.GridColumn23, Me.GridColumn24, Me.GridColumn25, Me.GridColumn26, Me.GridColumn27, Me.GridColumn28, Me.GridColumn29, Me.GridColumn30, Me.colSQL_ScriptType_12, Me.colSQL_ScriptType_22, Me.colSQL_ScriptType_32, Me.colSQL_ScriptType_42, Me.colLastAction3, Me.colLastUpdateUser3, Me.colLastUpdateDate3, Me.colId_SQL_Parameters_Details_4})
         Me.SQL_Parameter_Details_Third_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.SQL_Parameter_Details_Third_GridView.GridControl = Me.GridControl3
         Me.SQL_Parameter_Details_Third_GridView.Name = "SQL_Parameter_Details_Third_GridView"
-        Me.SQL_Parameter_Details_Third_GridView.NewItemRowText = "Add new SQL Parameter Command"
+        Me.SQL_Parameter_Details_Third_GridView.NewItemRowText = "Add new SQL/VB.NET Parameter Command"
         Me.SQL_Parameter_Details_Third_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.SQL_Parameter_Details_Third_GridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.SQL_Parameter_Details_Third_GridView.OptionsCustomization.CustomizationFormSearchBoxVisible = True
@@ -963,7 +1081,9 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_Third_GridView.OptionsDetail.AutoZoomDetail = True
         Me.SQL_Parameter_Details_Third_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.SQL_Parameter_Details_Third_GridView.OptionsFind.AlwaysVisible = True
+        Me.SQL_Parameter_Details_Third_GridView.OptionsFind.SearchInPreview = True
         Me.SQL_Parameter_Details_Third_GridView.OptionsSelection.MultiSelect = True
+        Me.SQL_Parameter_Details_Third_GridView.OptionsView.AutoCalcPreviewLineCount = True
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.BestFitMode = DevExpress.XtraGrid.Views.Grid.GridBestFitMode.Full
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.ColumnAutoWidth = False
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
@@ -971,6 +1091,8 @@ Partial Class SqlParameter
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.ShowAutoFilterRow = True
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.SQL_Parameter_Details_Third_GridView.OptionsView.ShowGroupPanel = False
+        Me.SQL_Parameter_Details_Third_GridView.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.[True]
+        Me.SQL_Parameter_Details_Third_GridView.PreviewFieldName = "SQL_Command_1"
         Me.SQL_Parameter_Details_Third_GridView.ViewCaption = "SQL Parameter Details"
         '
         'GridColumn15
@@ -1050,7 +1172,7 @@ Partial Class SqlParameter
         Me.GridColumn24.FieldName = "SQL_Command_1"
         Me.GridColumn24.Name = "GridColumn24"
         Me.GridColumn24.Visible = True
-        Me.GridColumn24.VisibleIndex = 2
+        Me.GridColumn24.VisibleIndex = 3
         Me.GridColumn24.Width = 97
         '
         'GridColumn25
@@ -1086,7 +1208,7 @@ Partial Class SqlParameter
         Me.GridColumn28.FieldName = "SQL_Date1"
         Me.GridColumn28.Name = "GridColumn28"
         Me.GridColumn28.Visible = True
-        Me.GridColumn28.VisibleIndex = 4
+        Me.GridColumn28.VisibleIndex = 5
         Me.GridColumn28.Width = 101
         '
         'GridColumn29
@@ -1098,7 +1220,7 @@ Partial Class SqlParameter
         Me.GridColumn29.FieldName = "SQL_Date2"
         Me.GridColumn29.Name = "GridColumn29"
         Me.GridColumn29.Visible = True
-        Me.GridColumn29.VisibleIndex = 5
+        Me.GridColumn29.VisibleIndex = 6
         Me.GridColumn29.Width = 99
         '
         'GridColumn30
@@ -1107,8 +1229,39 @@ Partial Class SqlParameter
         Me.GridColumn30.FieldName = "Status"
         Me.GridColumn30.Name = "GridColumn30"
         Me.GridColumn30.Visible = True
-        Me.GridColumn30.VisibleIndex = 3
+        Me.GridColumn30.VisibleIndex = 4
         Me.GridColumn30.Width = 115
+        '
+        'colSQL_ScriptType_12
+        '
+        Me.colSQL_ScriptType_12.Caption = "SQL Script Type 1"
+        Me.colSQL_ScriptType_12.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_12.FieldName = "SQL_ScriptType_1"
+        Me.colSQL_ScriptType_12.Name = "colSQL_ScriptType_12"
+        Me.colSQL_ScriptType_12.Visible = True
+        Me.colSQL_ScriptType_12.VisibleIndex = 2
+        Me.colSQL_ScriptType_12.Width = 118
+        '
+        'colSQL_ScriptType_22
+        '
+        Me.colSQL_ScriptType_22.Caption = "SQL Script Type 2"
+        Me.colSQL_ScriptType_22.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_22.FieldName = "SQL_ScriptType_2"
+        Me.colSQL_ScriptType_22.Name = "colSQL_ScriptType_22"
+        '
+        'colSQL_ScriptType_32
+        '
+        Me.colSQL_ScriptType_32.Caption = "SQL Script Type 3"
+        Me.colSQL_ScriptType_32.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_32.FieldName = "SQL_ScriptType_3"
+        Me.colSQL_ScriptType_32.Name = "colSQL_ScriptType_32"
+        '
+        'colSQL_ScriptType_42
+        '
+        Me.colSQL_ScriptType_42.Caption = "SQL Script Type 4"
+        Me.colSQL_ScriptType_42.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
+        Me.colSQL_ScriptType_42.FieldName = "SQL_ScriptType_4"
+        Me.colSQL_ScriptType_42.Name = "colSQL_ScriptType_42"
         '
         'colId_SQL_Parameters_Details_4
         '
@@ -2002,6 +2155,78 @@ Partial Class SqlParameter
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "RibbonPage2"
         '
+        'colLastAction
+        '
+        Me.colLastAction.FieldName = "LastAction"
+        Me.colLastAction.Name = "colLastAction"
+        Me.colLastAction.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser
+        '
+        Me.colLastUpdateUser.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser.Name = "colLastUpdateUser"
+        Me.colLastUpdateUser.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate
+        '
+        Me.colLastUpdateDate.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate.Name = "colLastUpdateDate"
+        Me.colLastUpdateDate.OptionsColumn.ReadOnly = True
+        '
+        'colLastAction1
+        '
+        Me.colLastAction1.FieldName = "LastAction"
+        Me.colLastAction1.Name = "colLastAction1"
+        Me.colLastAction1.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser1
+        '
+        Me.colLastUpdateUser1.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser1.Name = "colLastUpdateUser1"
+        Me.colLastUpdateUser1.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate1
+        '
+        Me.colLastUpdateDate1.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate1.Name = "colLastUpdateDate1"
+        Me.colLastUpdateDate1.OptionsColumn.ReadOnly = True
+        '
+        'colLastAction2
+        '
+        Me.colLastAction2.FieldName = "LastAction"
+        Me.colLastAction2.Name = "colLastAction2"
+        Me.colLastAction2.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate2
+        '
+        Me.colLastUpdateDate2.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate2.Name = "colLastUpdateDate2"
+        Me.colLastUpdateDate2.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser2
+        '
+        Me.colLastUpdateUser2.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser2.Name = "colLastUpdateUser2"
+        Me.colLastUpdateUser2.OptionsColumn.ReadOnly = True
+        '
+        'colLastAction3
+        '
+        Me.colLastAction3.FieldName = "LastAction"
+        Me.colLastAction3.Name = "colLastAction3"
+        Me.colLastAction3.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser3
+        '
+        Me.colLastUpdateUser3.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser3.Name = "colLastUpdateUser3"
+        Me.colLastUpdateUser3.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate3
+        '
+        Me.colLastUpdateDate3.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate3.Name = "colLastUpdateDate3"
+        Me.colLastUpdateDate3.OptionsColumn.ReadOnly = True
+        '
         'SqlParameter
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2031,6 +2256,8 @@ Partial Class SqlParameter
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ScriptType_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Script_ImageCollection, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SQL_PARAMETERBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EDPDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2248,4 +2475,30 @@ Partial Class SqlParameter
     Friend WithEvents GridColumn89 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents bbiExportCurrentSqlParameter As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents ImportSqlFromExcelFile_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents colSQL_ScriptType_1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ScriptType_RepositoryItemImageComboBox As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
+    Friend WithEvents Script_ImageCollection As DevExpress.Utils.ImageCollection
+    Friend WithEvents colSQL_ScriptType_2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_11 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_21 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_31 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_41 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_12 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_22 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_32 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colSQL_ScriptType_42 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate As DevExpress.XtraGrid.Columns.GridColumn
 End Class

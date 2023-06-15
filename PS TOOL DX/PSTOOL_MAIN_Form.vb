@@ -61,33 +61,11 @@ Imports System.Reflection
 
 Public Class PSTOOL_MAIN_Form
 
-  
-
     Dim Cryptokey As String = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     Public CRForm As CrystalReportsForm
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-    Dim connSYSTEM As New SqlConnection
-    Dim cmdSYSTEM As New SqlCommand
 
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-    Private da2 As New SqlDataAdapter
-    Private dt2 As New DataTable
-    Private da3 As New SqlDataAdapter
-    Private dt3 As New DataTable
-    Private da4 As New SqlDataAdapter
-    Private dt4 As New DataTable
-    Private daInfo As New SqlDataAdapter
-    Private dtInfo As New DataTable
-    Dim SqlCommandText As String = Nothing
     Dim n As Double = 0
-
-
 
     'Risk Controlling
     Dim DF_IRR_daily As New DatesForm 'Interest Rate risk
@@ -352,18 +330,10 @@ Public Class PSTOOL_MAIN_Form
         AddHandler GroupCountriesNummeric_TextEdit.TextChanged, AddressOf HandleTextChanged_GroupCountriesNummeric_TextEdit
         'AddHandler GeneralInfo_TextEdit.TextChanged, AddressOf HandleTextChanged_GeneralInfo_TextEdit
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-        cmd.CommandTimeout = 60000
-        connSYSTEM.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmdSYSTEM.Connection = connSYSTEM
-        cmdSYSTEM.CommandTimeout = 60000
 
         'Get Server Name and showing in Window Text
-        Dim connection As SqlConnection = New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-        Dim server As String = connection.DataSource
         CurrentUserWindowsID = SystemInformation.UserName
-        Me.Text = "PS TOOL DX - SQL Server 2008: " & server
+        Me.Text = My.Application.Info.Title & " - Server Instance: " & TOOL_SQL_SERVER & " - Database: " & TOOL_SQL_DATABASE
 
 
         '*********GET VERSION INFO*********
@@ -392,9 +362,7 @@ Public Class PSTOOL_MAIN_Form
         '    XtraMessageBox.Show("PS TOOL Application already running", "New instance of PS TOOL is not allowed", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
         '    End
         'ElseIf objMutex.WaitOne(0, False) = True Then
-        If cmd.Connection.State = ConnectionState.Closed Then
-            cmd.Connection.Open()
-        End If
+        OpenSqlConnections()
         'cmd.CommandText = "DELETE FROM [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "' and [SessionID]='" & PSTOOL_SessionID & "'"
         'cmd.ExecuteNonQuery()
         'cmd.CommandText = "INSERT INTO [CURRENT USERS] ([UserName],[Logged on]) Values ('" & SystemInformation.UserName & "', Getdate()) "
@@ -411,9 +379,7 @@ Public Class PSTOOL_MAIN_Form
         cmd.CommandText = "Select [LastImportDate] from [MANUAL IMPORTS] where [ProcName]='ODAS FX DEALS'"
         FX_ALL_LAST_UPDATE_Date = cmd.ExecuteScalar
 
-        If cmd.Connection.State = ConnectionState.Open Then
-            cmd.Connection.Close()
-        End If
+        CloseSqlConnections()
         'End If
         '****************************************************************************
 
@@ -428,7 +394,7 @@ Public Class PSTOOL_MAIN_Form
 
             '*********GET VERSION INFO with User Session ID*********
             '**********************************
-            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2019 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
+            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2023 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
                                        My.Application.Info.Version.Major,
                                        My.Application.Info.Version.Minor,
                                        My.Application.Info.Version.Build,
@@ -446,7 +412,7 @@ Public Class PSTOOL_MAIN_Form
 
             '*********GET VERSION INFO with User Session ID*********
             '**********************************
-            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2019 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
+            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2023 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
                                        My.Application.Info.Version.Major,
                                        My.Application.Info.Version.Minor,
                                        My.Application.Info.Version.Build,
@@ -2814,6 +2780,40 @@ Public Class PSTOOL_MAIN_Form
         End If
     End Sub
 
+    Private Sub EDP_VB_Script_Execute_Element_Click(sender As Object, e As EventArgs) Handles EDP_VB_Script_Execute_Element.Click
+        If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("VB.NET Script execution")
+            ' Place code here
+            Dim c As New ExecuteVbCode
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+    Private Sub EDP_SQL_FilesCompare_Element_Click(sender As Object, e As EventArgs) Handles EDP_SQL_FilesCompare_Element.Click
+        If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("EXCEL/CSV Files compare")
+            ' Place code here
+            Dim c As New SqlFilesCompare
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
     Private Sub EDP_Users_Permissions_Element_Click(sender As Object, e As EventArgs) Handles EDP_Users_Permissions_Element.Click
         If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
             XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -3013,8 +3013,8 @@ Public Class PSTOOL_MAIN_Form
             DF_Wertpapierstatistik.Text = "MONATLICHE WERTPAPIERSTATISTIK MELDUNNG AN BUNDESBANK"
             DF_Wertpapierstatistik.LabelControl1.Text = "Bitte wählen Sie das Datum für die Monatsmeldung"
 
-            Me.QueryText = "Select CONVERT(VARCHAR(10),A.LDate,104) as 'LiquidityDate' from (SELECT  [LiquidityDate] as 'LDate' FROM [SECURITIES_LIQUIDITYRESERVE] GROUP BY [LiquidityDate])A order by A.LDate desc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select CONVERT(VARCHAR(10),A.LDate,104) as 'LiquidityDate' from (SELECT  [LiquidityDate] as 'LDate' FROM [SECURITIES_LIQUIDITYRESERVE] GROUP BY [LiquidityDate])A order by A.LDate desc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New DataTable()
             da.Fill(dt)
             For Each row As DataRow In dt.Rows
@@ -3073,8 +3073,8 @@ Public Class PSTOOL_MAIN_Form
                     Dim BANKPLZ As String = Nothing
                     Dim BANKORT As String = Nothing
 
-                    Me.QueryText = "Select * from [BANK]"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [BANK]"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
@@ -3096,8 +3096,8 @@ Public Class PSTOOL_MAIN_Form
                     Dim ABSENDEREMAIL As String = Nothing
                     Dim ABSENDEREXTRANETID As String = Nothing
 
-                    Me.QueryText = "Select * from [PARAMETER] where [PARAMETER STATUS]='Y' and [IdABTEILUNGSPARAMETER]='WPB_STAT'"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [PARAMETER] where [PARAMETER STATUS]='Y' and [IdABTEILUNGSPARAMETER]='WPB_STAT'"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
@@ -3218,13 +3218,13 @@ Public Class PSTOOL_MAIN_Form
 
                         'WERTPAPIERE+++++++++++++++++++++
                         .WriteStartElement("WERTPAPIERE")
-                        Me.QueryText = "Select ISIN_Code
+                        QueryText = "Select ISIN_Code
                                         ,Ccy
                                         ,SektorCountry
                                         ,Sum(PrincipalOrigAmt) as PrincipalOrigAmt
                                         ,Sum(OCBS_Booked_Later) as OCBS_Booked_Later 
                                         from SECURITIES_LIQUIDITYRESERVE where [LiquidityDate]='" & rdsql & "'  GROUP BY ISIN_Code,Ccy,SektorCountry"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New DataTable()
                         da.Fill(dt)
                         If dt.Rows.Count > 0 Then
@@ -3426,8 +3426,8 @@ Public Class PSTOOL_MAIN_Form
                     Blatt1.Cells("K16").Value = MelderTelefon
                     Blatt1.Cells("D18").Value = MelderEmail
 
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt1' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt1' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3447,8 +3447,8 @@ Public Class PSTOOL_MAIN_Form
                     End If
 
                     'Blatt2 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt2' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt2' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3468,8 +3468,8 @@ Public Class PSTOOL_MAIN_Form
                     End If
 
                     'Blatt3 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt3' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt3' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3489,8 +3489,8 @@ Public Class PSTOOL_MAIN_Form
                     End If
 
                     'Blatt4 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt4' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt4' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3510,8 +3510,8 @@ Public Class PSTOOL_MAIN_Form
                     End If
 
                     'Blatt5 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt5' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt5' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3531,8 +3531,8 @@ Public Class PSTOOL_MAIN_Form
                     End If
 
                     'Blatt6 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt6' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt6' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3711,8 +3711,8 @@ Public Class PSTOOL_MAIN_Form
                     Blatt1.Cells("K16").Value = MelderTelefon
                     Blatt1.Cells("D18").Value = MelderEmail
 
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt1' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt1' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3732,8 +3732,8 @@ Public Class PSTOOL_MAIN_Form
                     End If
 
                     'Blatt2 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt2' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt2' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3756,8 +3756,8 @@ Public Class PSTOOL_MAIN_Form
 
 
                     'Blatt3 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt3' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt3' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3777,8 +3777,8 @@ Public Class PSTOOL_MAIN_Form
                     End If
 
                     'Blatt4 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt4' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt4' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3798,8 +3798,8 @@ Public Class PSTOOL_MAIN_Form
                     End If
 
                     'Blatt5 Füllen
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt5' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [SQL_Name_1]='Blatt5' and [Id_SQL_Parameters] in ('DEVISENHANDELUMSAETZE_OTC_DERIVATE_2019')) and [SQL_Command_1] is not NULL and Status in ('Y')"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -3891,8 +3891,8 @@ Public Class PSTOOL_MAIN_Form
             DF_Einlagensicherung.Text = "EINLAGENSICHERUNG (FREIWILIG) - MONATLICHE MELDUNNG"
             DF_Einlagensicherung.LabelControl1.Text = "Bitte wählen Sie das Datum für die Monatsmeldung"
 
-            Me.QueryText = "Select CONVERT(VARCHAR(10),A.BLDate,104) as 'BSDate' from (SELECT  [BSDate] as 'BLDate' FROM [DailyBalanceSheets] GROUP BY [BSDate])A order by A.BLDate desc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select CONVERT(VARCHAR(10),A.BLDate,104) as 'BSDate' from (SELECT  [BSDate] as 'BLDate' FROM [DailyBalanceSheets] GROUP BY [BSDate])A order by A.BLDate desc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New DataTable()
             da.Fill(dt)
             For Each row As DataRow In dt.Rows
@@ -3918,8 +3918,8 @@ Public Class PSTOOL_MAIN_Form
                 cmd.Connection.Open()
             End If
             SplashScreenManager.Default.SetWaitFormCaption("Execute SQL Calculations - Use SQL_Command_1")
-            Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EINLAGENSICHERUNG_REP_FREIWILLIG')) and [SQL_Name_1] not in ('SICHERUNGSGRENZE') and [SQL_Command_1] is not NULL and [Status] in ('Y') ORDER BY [SQL_Float_1] asc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EINLAGENSICHERUNG_REP_FREIWILLIG')) and [SQL_Name_1] not in ('SICHERUNGSGRENZE') and [SQL_Command_1] is not NULL and [Status] in ('Y') ORDER BY [SQL_Float_1] asc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             For i = 0 To dt.Rows.Count - 1
@@ -4027,8 +4027,8 @@ Public Class PSTOOL_MAIN_Form
             DF_EinlagensicherungGesetzlich.Text = "EINLAGENSICHERUNG (GESETZLICH) - MONATLICHE MELDUNNG"
             DF_EinlagensicherungGesetzlich.LabelControl1.Text = "Bitte wählen Sie das Datum für die Monatsmeldung"
 
-            Me.QueryText = "Select CONVERT(VARCHAR(10),A.BLDate,104) as 'BSDate' from (SELECT  [EAEG_Stichtag] as 'BLDate' FROM [EAEG_A_E_Satz_Version4] GROUP BY [EAEG_Stichtag])A order by A.BLDate desc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select CONVERT(VARCHAR(10),A.BLDate,104) as 'BSDate' from (SELECT  [EAEG_Stichtag] as 'BLDate' FROM [EAEG_A_E_Satz_Version4] GROUP BY [EAEG_Stichtag])A order by A.BLDate desc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New DataTable()
             da.Fill(dt)
             For Each row As DataRow In dt.Rows
@@ -4054,8 +4054,8 @@ Public Class PSTOOL_MAIN_Form
                 cmd.Connection.Open()
             End If
             SplashScreenManager.Default.SetWaitFormCaption("Execute SQL Calculations - Use SQL_Command_1")
-            Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EINLAGENSICHERUNG_REP_GESETZLICH')) and [SQL_Name_1] not in ('SICHERUNGSGRENZE') and [SQL_Command_1] is not NULL and [Status] in ('Y') ORDER BY [SQL_Float_1] asc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EINLAGENSICHERUNG_REP_GESETZLICH')) and [SQL_Name_1] not in ('SICHERUNGSGRENZE') and [SQL_Command_1] is not NULL and [Status] in ('Y') ORDER BY [SQL_Float_1] asc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             For i = 0 To dt.Rows.Count - 1
@@ -5267,8 +5267,8 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("Starting new PS TOOL Session (Test Environment)...")
             Thread.Sleep(2000)
-            Me.QueryText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER STATUS] in ('Y') and IdABTEILUNGSPARAMETER in ('PS_TOOL_TEST_ENVIRONMENT_DIR') and IdABTEILUNGSCODE_NAME in ('EDP')"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER STATUS] in ('Y') and IdABTEILUNGSPARAMETER in ('PS_TOOL_TEST_ENVIRONMENT_DIR') and IdABTEILUNGSCODE_NAME in ('EDP')"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             Dim PS_TOOL_Test_Directory As String = dt.Rows.Item(0).Item("PARAMETER2")
@@ -7983,8 +7983,8 @@ Public Class PSTOOL_MAIN_Form
                             DF_KapiSteuerMMKundenMonat.Text = "KAPITALERTRAGSTEUER-BESCHEINIGUNG für MM KUNDEN-Monatlich"
                             DF_KapiSteuerMMKundenMonat.LabelControl1.Text = "Bitte wählen Sie den Zinsertragsmonat für die Bescheinigung"
 
-                            Me.QueryText = "select distinct([IdZinsertragsMonat]) from [ZINSERTRAG KDDETAIL] "
-                            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            QueryText = "select distinct([IdZinsertragsMonat]) from [ZINSERTRAG KDDETAIL] "
+                            da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New DataTable()
                             da.Fill(dt)
                             For Each row As DataRow In dt.Rows
@@ -8031,8 +8031,8 @@ Public Class PSTOOL_MAIN_Form
                             DF_KapiSteuerKundeAlle.LabelControl1.Text = "Bitte wählen Sie das Zinsertragsjahr für die Bescheinigung"
                             DF_KapiSteuerKundeAlle.LabelControl2.Text = "Sollen die Zeilen der Anlage KAP auch ausgedruckt werden"
 
-                            Me.QueryText = "select distinct([IdErtragJahr]) from [ZINSERTRAG KDDETAIL] ORDER BY [IdErtragJahr] desc  "
-                            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            QueryText = "select distinct([IdErtragJahr]) from [ZINSERTRAG KDDETAIL] ORDER BY [IdErtragJahr] desc  "
+                            da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New DataTable()
                             da.Fill(dt)
                             For Each row As DataRow In dt.Rows
@@ -8085,8 +8085,8 @@ Public Class PSTOOL_MAIN_Form
                             DF_KapiSteuerKundeEinzeln.LabelControl2.Text = "Bitte wählen Sie die Stamm Nr. des Kunden"
                             DF_KapiSteuerKundeEinzeln.LabelControl3.Text = "Sollen die Zeilen der Anlage KAP auch ausgedruckt werden"
 
-                            Me.QueryText = "select distinct([IdErtragJahr]) from [ZINSERTRAG KDDETAIL] ORDER BY [IdErtragJahr] desc  "
-                            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            QueryText = "select distinct([IdErtragJahr]) from [ZINSERTRAG KDDETAIL] ORDER BY [IdErtragJahr] desc  "
+                            da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New DataTable()
                             da.Fill(dt)
                             For Each row As DataRow In dt.Rows
@@ -8094,8 +8094,8 @@ Public Class PSTOOL_MAIN_Form
                             Next
                             DF_KapiSteuerKundeEinzeln.ComboBoxEdit1.Text = dt.Rows.Item(0).Item("IdErtragJahr")
 
-                            Me.QueryText = "select distinct([IdKDSTAMM]),[CustomerName] from [ZINSERTRAG KDDETAIL] where [KAPISTPFLICHTIG]='Y'"
-                            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            QueryText = "select distinct([IdKDSTAMM]),[CustomerName] from [ZINSERTRAG KDDETAIL] where [KAPISTPFLICHTIG]='Y'"
+                            da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New DataTable()
                             da.Fill(dt)
                             For Each row As DataRow In dt.Rows
@@ -8481,9 +8481,9 @@ Public Class PSTOOL_MAIN_Form
                             DF_KapiSoliMonatDetails.LabelControl1.Text = "Bitte wählen Sie den Zinsertragsmonat für die Meldung"
 
 
-                            'Me.QueryText = "SELECT a.[IdZinsertragsMonat],a.[ValDate] FROM [ZINSERTRAG KUNDEN DETAILS] a JOIN (SELECT [IdZinsertragsMonat], min(ID) as id FROM [ZINSERTRAG KUNDEN DETAILS] GROUP BY [IdZinsertragsMonat]) b ON ( a.id = b.id ) GROUP BY a.[IdZinsertragsMonat],a.[ValDate] order by a.[ValDate] desc"
-                            Me.QueryText = "SELECT Zinsertragsmonat FROM [ZINSERTRAG KUNDEN MONAT] order by ZinsertragsmonatDATE desc"
-                            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            'QueryText = "SELECT a.[IdZinsertragsMonat],a.[ValDate] FROM [ZINSERTRAG KUNDEN DETAILS] a JOIN (SELECT [IdZinsertragsMonat], min(ID) as id FROM [ZINSERTRAG KUNDEN DETAILS] GROUP BY [IdZinsertragsMonat]) b ON ( a.id = b.id ) GROUP BY a.[IdZinsertragsMonat],a.[ValDate] order by a.[ValDate] desc"
+                            QueryText = "SELECT Zinsertragsmonat FROM [ZINSERTRAG KUNDEN MONAT] order by ZinsertragsmonatDATE desc"
+                            da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New DataTable()
                             da.Fill(dt)
                             For Each row As DataRow In dt.Rows
@@ -8531,9 +8531,9 @@ Public Class PSTOOL_MAIN_Form
                             DF_KapiSoliMonatMeldung.LabelControl1.Text = "Bitte wählen Sie den Zinsertragsmonat für die Meldung"
 
 
-                            'Me.QueryText = "SELECT a.[IdZinsertragsMonat],a.[ValDate] FROM [ZINSERTRAG KUNDEN DETAILS] a JOIN (SELECT [IdZinsertragsMonat], min(ID) as id FROM [ZINSERTRAG KUNDEN DETAILS] GROUP BY [IdZinsertragsMonat]) b ON ( a.id = b.id ) GROUP BY a.[IdZinsertragsMonat],a.[ValDate] order by a.[ValDate] desc"
-                            Me.QueryText = "SELECT Zinsertragsmonat FROM [ZINSERTRAG KUNDEN MONAT] order by ZinsertragsmonatDATE desc"
-                            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            'QueryText = "SELECT a.[IdZinsertragsMonat],a.[ValDate] FROM [ZINSERTRAG KUNDEN DETAILS] a JOIN (SELECT [IdZinsertragsMonat], min(ID) as id FROM [ZINSERTRAG KUNDEN DETAILS] GROUP BY [IdZinsertragsMonat]) b ON ( a.id = b.id ) GROUP BY a.[IdZinsertragsMonat],a.[ValDate] order by a.[ValDate] desc"
+                            QueryText = "SELECT Zinsertragsmonat FROM [ZINSERTRAG KUNDEN MONAT] order by ZinsertragsmonatDATE desc"
+                            da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New DataTable()
                             da.Fill(dt)
                             For Each row As DataRow In dt.Rows
@@ -8578,8 +8578,8 @@ Public Class PSTOOL_MAIN_Form
                     DATESFORM_EMPL_AVG.Text = "Erstellung des Durchschnittlichen Mitarbeiterstandes"
                     DATESFORM_EMPL_AVG.LabelControl1.Text = "Bitte wählen Sie das Jahr aus für den Report"
 
-                    Me.QueryText = "select [JahrLfd] from [EMPLOYES YEAR AVERAGE] ORDER BY [JahrLfd] desc "
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "select [JahrLfd] from [EMPLOYES YEAR AVERAGE] ORDER BY [JahrLfd] desc "
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New DataTable()
                     da.Fill(dt)
                     For Each row As DataRow In dt.Rows
@@ -10368,8 +10368,8 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.Default.SetWaitFormCaption("Creating CCB Vostro vs BubBa Nostro Balances Report from " & d1 & " till " & d2)
             SplashScreenManager.Default.SetWaitFormCaption("Creating CCB Vostro vs BubBa Nostro Balances Report" & vbNewLine & "Start loading Data to Excel File from " & d1 & " till " & d2)
             '+++++Get Excel File
-            Me.QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='CCB_Vostro_Balances_Excel_File' and [IdABTEILUNGSPARAMETER]='EXCEL_FILES_DIRECTORY' and [PARAMETER STATUS]='Y'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='CCB_Vostro_Balances_Excel_File' and [IdABTEILUNGSPARAMETER]='EXCEL_FILES_DIRECTORY' and [PARAMETER STATUS]='Y'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             Dim CCB_Vostro_Buba_Balances_ExcelFileName As String = dt.Rows(0).Item("PARAMETER2").ToString
@@ -10378,28 +10378,28 @@ Public Class PSTOOL_MAIN_Form
             '**********DATA LOAD***********
             '******************************
             'Balances Totals
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('CCB_Vostro_Buba_Balances_Selection') and Status in ('Y')"
-            da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('CCB_Vostro_Buba_Balances_Selection') and Status in ('Y')"
+            da1 = New SqlDataAdapter(QueryText.Trim(), conn)
             dt1 = New System.Data.DataTable()
             da1.Fill(dt1)
             If dt1.Rows.Count > 0 Then
                 SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
                 Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
-                Me.QueryText = SqlCommandTextNew
-                da2 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = SqlCommandTextNew
+                da2 = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt2 = New System.Data.DataTable()
                 da2.Fill(dt2)
             End If
             'Balances Details
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('CCB_Vostro_Buba_Balances_Selection') and Status in ('Y')"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('CCB_Vostro_Buba_Balances_Selection') and Status in ('Y')"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             If dt.Rows.Count > 0 Then
                 SqlCommandText = dt.Rows.Item(0).Item("SQL_Command_2").ToString.Replace("<FromDate>", rdsql1)
                 Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
-                Me.QueryText = SqlCommandTextNew
-                da3 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = SqlCommandTextNew
+                da3 = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt3 = New System.Data.DataTable()
                 da3.Fill(dt3)
             End If
@@ -10795,8 +10795,8 @@ Public Class PSTOOL_MAIN_Form
 
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Check if Date till is present")
-        Me.QueryText = "Select Max([RLDC Date]) as 'MaxDate' from [RISK LIMIT DAILY CONTROL] where [PLdifferenceOCBS_IDW_INTERN] <>0 and Client_Lock=0"
-        da4 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "Select Max([RLDC Date]) as 'MaxDate' from [RISK LIMIT DAILY CONTROL] where [PLdifferenceOCBS_IDW_INTERN] <>0 and Client_Lock=0"
+        da4 = New SqlDataAdapter(QueryText.Trim(), conn)
         dt4 = New System.Data.DataTable()
         da4.Fill(dt4)
         Dim MaxDate As Date = dt4.Rows(0).Item("MaxDate").ToString
@@ -10812,8 +10812,8 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.Default.SetWaitFormCaption("Creating Profit/Loss Excel Sheet (IDW-Bundebank Interests) from " & d1 & " till " & d2)
             SplashScreenManager.Default.SetWaitFormCaption("Start loading Data to Excel File from " & d1 & " till " & d2)
             '+++++Get Excel File
-            Me.QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='PL_Revaluation_Methods_Directory' and [IdABTEILUNGSPARAMETER]='IDW_OCBS_REVALUATION_DIFF' and [PARAMETER STATUS]='Y'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='PL_Revaluation_Methods_Directory' and [IdABTEILUNGSPARAMETER]='IDW_OCBS_REVALUATION_DIFF' and [PARAMETER STATUS]='Y'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             Dim PL_ExcelFileName As String = dt.Rows(0).Item("PARAMETER2").ToString
@@ -10821,8 +10821,8 @@ Public Class PSTOOL_MAIN_Form
 
             '**********DATA LOAD***********
             '******************************
-            Me.QueryText = "SELECT [RLDC Date],[PL Result],[BUBA_InterestAmount],0 as 'Profit_after_NagativeInterest',[PLdifferenceOCBS_IDW],0 as 'Profit_after_IDW',[PLdifferenceOCBS_IDW_INTERN] FROM [RISK LIMIT DAILY CONTROL] where [PLdifferenceOCBS_IDW_INTERN] <>0 and [RLDC Date]>='" & rdsql1 & "'and [RLDC Date]<='" & rdsql2 & "' and Client_Lock=0 order by [RLDC Date] desc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "SELECT [RLDC Date],[PL Result],[BUBA_InterestAmount],0 as 'Profit_after_NagativeInterest',[PLdifferenceOCBS_IDW],0 as 'Profit_after_IDW',[PLdifferenceOCBS_IDW_INTERN] FROM [RISK LIMIT DAILY CONTROL] where [PLdifferenceOCBS_IDW_INTERN] <>0 and [RLDC Date]>='" & rdsql1 & "'and [RLDC Date]<='" & rdsql2 & "' and Client_Lock=0 order by [RLDC Date] desc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
 
@@ -11232,8 +11232,8 @@ Public Class PSTOOL_MAIN_Form
         Dim BANKPLZ As String = ""
         Dim BANKORT As String = ""
 
-        Me.QueryText = "select * from [BANK]"
-        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "select * from [BANK]"
+        da = New SqlDataAdapter(QueryText.Trim(), conn)
         dt = New DataTable()
         da.Fill(dt)
         STEUERNUMMER = dt.Rows.Item(0).Item("SteuerNr")
@@ -11250,8 +11250,8 @@ Public Class PSTOOL_MAIN_Form
         Dim PDF_TEMPLATE As String = ""
         Dim PDF_NEW_FILE As String = ""
 
-        Me.QueryText = "SELECT * FROM [PARAMETER] where  [IdABTEILUNGSPARAMETER]='KAPISTEUERMLD' and [PARAMETER STATUS]='Y' "
-        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "SELECT * FROM [PARAMETER] where  [IdABTEILUNGSPARAMETER]='KAPISTEUERMLD' and [PARAMETER STATUS]='Y' "
+        da = New SqlDataAdapter(QueryText.Trim(), conn)
         dt = New DataTable()
         da.Fill(dt)
         For i = 0 To dt.Rows.Count - 1
@@ -11333,8 +11333,8 @@ Public Class PSTOOL_MAIN_Form
         pdfFormFields.SetField("topmostSubform[0].Page1[0].SOLI[0]", Format(SOLI, "#,##0.00"))
 
         'Kapitalertragssteuer an Bundesländer
-        Me.QueryText = "Select Sum([KapertstG]) as Kapi_Sum,BUNDESLAND from  [ZINSERTRAG KUNDEN DETAILS] where IdZinsertragsMonat='" & Zinsertragsmonatmeldung & "' and [KAPISTPFLICHTIG]='Y' and [KapertstG] is not NULL GROUP BY [BUNDESLAND]"
-        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "Select Sum([KapertstG]) as Kapi_Sum,BUNDESLAND from  [ZINSERTRAG KUNDEN DETAILS] where IdZinsertragsMonat='" & Zinsertragsmonatmeldung & "' and [KAPISTPFLICHTIG]='Y' and [KapertstG] is not NULL GROUP BY [BUNDESLAND]"
+        da = New SqlDataAdapter(QueryText.Trim(), conn)
         dt = New DataTable()
         da.Fill(dt)
         For i = 0 To dt.Rows.Count - 1
@@ -11474,8 +11474,8 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.Default.SetWaitFormCaption("Creating Vostro Transactions Fees from " & d1 & " till " & d2)
             SplashScreenManager.Default.SetWaitFormCaption("Creating Vostro Transactions Fees" & vbNewLine & "Start loading Data to Excel File from " & d1 & " till " & d2)
             '+++++Get Excel File
-            Me.QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='VostroFeesExcelFile' and [IdABTEILUNGSPARAMETER]='VOSTRO' and [PARAMETER STATUS]='Y'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='VostroFeesExcelFile' and [IdABTEILUNGSPARAMETER]='VOSTRO' and [PARAMETER STATUS]='Y'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             Dim VostroTransactionFees_ExcelFileName As String = dt.Rows(0).Item("PARAMETER2").ToString
@@ -11484,38 +11484,38 @@ Public Class PSTOOL_MAIN_Form
             '**********DATA LOAD***********
             '******************************
             'Transactions
-            'Me.QueryText = "SELECT DISTINCT accountno, [other system key] FROM ALL_VOLUMES WHERE [product type] in ('00133166','00133168','00133170') and GL_REP_Date >= '" & rdsql1 & "'  and  GL_REP_Date <='" & rdsql2 & "' and [TRN Accounting Centre]=710334005 and CCY in ('EUR')  and accountno not in ('710334005978314101006500001') ORDER BY accountno asc"
-            'da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            'QueryText = "SELECT DISTINCT accountno, [other system key] FROM ALL_VOLUMES WHERE [product type] in ('00133166','00133168','00133170') and GL_REP_Date >= '" & rdsql1 & "'  and  GL_REP_Date <='" & rdsql2 & "' and [TRN Accounting Centre]=710334005 and CCY in ('EUR')  and accountno not in ('710334005978314101006500001') ORDER BY accountno asc"
+            'da1 = New SqlDataAdapter(QueryText.Trim(), conn)
             'dt1 = New System.Data.DataTable()
             'da1.Fill(dt1)
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('Vostro_Transactions') and Status in ('Y')"
-            da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('Vostro_Transactions') and Status in ('Y')"
+            da1 = New SqlDataAdapter(QueryText.Trim(), conn)
             dt1 = New System.Data.DataTable()
             da1.Fill(dt1)
             If dt1.Rows.Count > 0 Then
                 SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
                 Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
-                Me.QueryText = SqlCommandTextNew
-                da2 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = SqlCommandTextNew
+                da2 = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt2 = New System.Data.DataTable()
                 da2.Fill(dt2)
             End If
 
 
             'Totals
-            'Me.QueryText = "SELECT A.AccountNo,B.[English Name] FROM ALL_VOLUMES A INNER JOIN CUSTOMER_ACCOUNTS B on A.AccountNo=B.[Client Account] WHERE [product type] in ('00133166','00133168','00133170') and GL_REP_Date >= '" & rdsql1 & "'  and  GL_REP_Date <='" & rdsql2 & "' and [TRN Accounting Centre]=710334005 and CCY in ('EUR')  and accountno not in ('710334005978314101006500001') GROUP BY AccountNo,[English Name]  ORDER BY accountno asc"
-            'da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            'QueryText = "SELECT A.AccountNo,B.[English Name] FROM ALL_VOLUMES A INNER JOIN CUSTOMER_ACCOUNTS B on A.AccountNo=B.[Client Account] WHERE [product type] in ('00133166','00133168','00133170') and GL_REP_Date >= '" & rdsql1 & "'  and  GL_REP_Date <='" & rdsql2 & "' and [TRN Accounting Centre]=710334005 and CCY in ('EUR')  and accountno not in ('710334005978314101006500001') GROUP BY AccountNo,[English Name]  ORDER BY accountno asc"
+            'da = New SqlDataAdapter(QueryText.Trim(), conn)
             'dt = New System.Data.DataTable()
             'da.Fill(dt)
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('Vostro_Charges') and Status in ('Y')"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('Vostro_Charges') and Status in ('Y')"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             If dt.Rows.Count > 0 Then
                 SqlCommandText = dt.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
                 Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
-                Me.QueryText = SqlCommandTextNew
-                da3 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = SqlCommandTextNew
+                da3 = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt3 = New System.Data.DataTable()
                 da3.Fill(dt3)
             End If
@@ -11597,8 +11597,8 @@ Public Class PSTOOL_MAIN_Form
 
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Check if Payments present till " & d2)
-        Me.QueryText = "select Max(RegisterDate) as 'MaxDate' from [GMPS PAYMENTS OUT]"
-        da4 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "select Max(RegisterDate) as 'MaxDate' from [GMPS PAYMENTS OUT]"
+        da4 = New SqlDataAdapter(QueryText.Trim(), conn)
         dt4 = New System.Data.DataTable()
         da4.Fill(dt4)
         Dim MaxDate As Date = dt4.Rows(0).Item("MaxDate").ToString
@@ -11613,8 +11613,8 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.Default.SetWaitFormCaption("Creating ZVDL Report from " & d1 & " till " & d2)
             SplashScreenManager.Default.SetWaitFormCaption("Creating ZVDL Report" & vbNewLine & "Start loading Data to Excel File from " & d1 & " till " & d2)
             '+++++Get Excel File
-            Me.QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='ZVDL_Report_ExcelFile' and [IdABTEILUNGSPARAMETER]='ZVDL' and [PARAMETER STATUS]='Y'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='ZVDL_Report_ExcelFile' and [IdABTEILUNGSPARAMETER]='ZVDL' and [PARAMETER STATUS]='Y'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             Dim ZVDL_Report_ExcelFileName As String = dt.Rows(0).Item("PARAMETER2").ToString
@@ -11623,28 +11623,28 @@ Public Class PSTOOL_MAIN_Form
             '**********DATA LOAD***********
             '******************************
             'Transactions
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('ZVDL_Transactions') and Status in ('Y')"
-            da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('ZVDL_Transactions') and Status in ('Y')"
+            da1 = New SqlDataAdapter(QueryText.Trim(), conn)
             dt1 = New System.Data.DataTable()
             da1.Fill(dt1)
             If dt1.Rows.Count > 0 Then
                 SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
                 Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
-                Me.QueryText = SqlCommandTextNew
-                da2 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = SqlCommandTextNew
+                da2 = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt2 = New System.Data.DataTable()
                 da2.Fill(dt2)
             End If
             'Totals
-            Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('ZVDL_Totals') and Status in ('Y')"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('ZVDL_Totals') and Status in ('Y')"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
             If dt.Rows.Count > 0 Then
                 SqlCommandText = dt.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
                 Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
-                Me.QueryText = SqlCommandTextNew
-                da3 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = SqlCommandTextNew
+                da3 = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt3 = New System.Data.DataTable()
                 da3.Fill(dt3)
             End If
@@ -11915,7 +11915,7 @@ Public Class PSTOOL_MAIN_Form
                 AlertControl_PLZ_Bundesland.Show(Me, info)
             End If
         Else
-             For Each Form As AlertForm In AlertControl_PLZ_Bundesland.AlertFormList
+            For Each Form As AlertForm In AlertControl_PLZ_Bundesland.AlertFormList
                 Form.Close()
             Next
         End If
@@ -11988,7 +11988,7 @@ Public Class PSTOOL_MAIN_Form
                 AlertControl_OnlineBanking.Show(Me, info)
             End If
         Else
-             For Each Form As AlertForm In AlertControl_OnlineBanking.AlertFormList
+            For Each Form As AlertForm In AlertControl_OnlineBanking.AlertFormList
                 Form.Close()
             Next
         End If
@@ -12063,7 +12063,7 @@ Public Class PSTOOL_MAIN_Form
                 AlertControl_NewUser_ActiveDirectory.Show(Me, info)
             End If
         Else
-             For Each Form As AlertForm In AlertControl_NewUser_ActiveDirectory.AlertFormList
+            For Each Form As AlertForm In AlertControl_NewUser_ActiveDirectory.AlertFormList
                 Form.Close()
             Next
         End If
@@ -12113,29 +12113,29 @@ Public Class PSTOOL_MAIN_Form
             dtInfo.Columns.Add(dcName)
             dtInfo.Columns.Add(dcAmount)
             'Sum Activa
-            Me.QueryText = "Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "' and [GL_Item_Number]=2999"
-            daInfo = New SqlDataAdapter(Me.QueryText.Trim(), connSYSTEM)
+            QueryText = "Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "' and [GL_Item_Number]=2999"
+            daInfo = New SqlDataAdapter(QueryText.Trim(), connSYSTEM)
             daInfo.Fill(dtInfo)
             dtInfo.Rows.Add(1, "Sum Activa", dtInfo.Rows.Item(0).Item("SA"))
             'Sum Passiva
-            Me.QueryText = "Select Sum([BalanceEUREqu]) as SP from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "' and [GL_Item_Number]=4999"
+            QueryText = "Select Sum([BalanceEUREqu]) as SP from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "' and [GL_Item_Number]=4999"
             Dim dainfo1 As SqlDataAdapter
             Dim dtInfo1 = New DataTable()
-            dainfo1 = New SqlDataAdapter(Me.QueryText.Trim(), connSYSTEM)
+            dainfo1 = New SqlDataAdapter(QueryText.Trim(), connSYSTEM)
             dainfo1.Fill(dtInfo1)
             dtInfo.Rows.Add(2, "Sum Passiva", dtInfo1.Rows.Item(0).Item("SP"))
             'Difference
-            Me.QueryText = "Select Round(Sum(A.SA),2) as SP from (Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "'  and [GL_Item_Number]=2999 Union all Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "' and [GL_Item_Number]=4999)A"
+            QueryText = "Select Round(Sum(A.SA),2) as SP from (Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "'  and [GL_Item_Number]=2999 Union all Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "' and [GL_Item_Number]=4999)A"
             Dim dainfo2 As SqlDataAdapter
             Dim dtInfo2 = New DataTable()
-            dainfo2 = New SqlDataAdapter(Me.QueryText.Trim(), connSYSTEM)
+            dainfo2 = New SqlDataAdapter(QueryText.Trim(), connSYSTEM)
             dainfo2.Fill(dtInfo2)
             dtInfo.Rows.Add(3, "Difference Activa/Passiva", dtInfo2.Rows.Item(0).Item("SP"))
             'Profit-Loss
-            Me.QueryText = "Select Round(Sum(A.SA),2) as SP from (Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "'  and [GL_Item_Number]>=5000 and [GL_Item_Number]<6998 Union all Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "' and [GL_Item_Number]>=7000 and [GL_Item_Number]<7998)A"
+            QueryText = "Select Round(Sum(A.SA),2) as SP from (Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "'  and [GL_Item_Number]>=5000 and [GL_Item_Number]<6998 Union all Select Sum([BalanceEUREqu]) as SA from DailyBalanceSheets where [BSDate]='" & LastOdasFileNumber & "' and [GL_Item_Number]>=7000 and [GL_Item_Number]<7998)A"
             Dim dainfo3 As SqlDataAdapter
             Dim dtInfo3 = New DataTable()
-            dainfo3 = New SqlDataAdapter(Me.QueryText.Trim(), connSYSTEM)
+            dainfo3 = New SqlDataAdapter(QueryText.Trim(), connSYSTEM)
             dainfo3.Fill(dtInfo3)
             dtInfo.Rows.Add(4, "Profit-Loss", dtInfo3.Rows.Item(0).Item("SP"))
 
@@ -12183,8 +12183,8 @@ Public Class PSTOOL_MAIN_Form
 #Region "ALERT CONTROL _ NOSTRO ACCOUNT WITHOUT STATEMENT INDICATION"
     Private Sub HandleTextChanged_NostroAccount_TextEdit(sender As Object, e As EventArgs)
         If NostroAccount_TextEdit.Text <> "0" AndAlso NOSTRO_ACC_WITHOUT_STATEMENT_INDICATION_ALERT = "Y" Then
-            Me.QueryText = "Select * from [SSIS] where ([AccountIdentifierStatement] is  NULL or AccountIdentifierStatement='') and [VALID]='Y'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+            QueryText = "Select * from [SSIS] where ([AccountIdentifierStatement] is  NULL or AccountIdentifierStatement='') and [VALID]='Y'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
             dt = New System.Data.DataTable()
             da.Fill(dt)
 
@@ -12263,7 +12263,7 @@ Public Class PSTOOL_MAIN_Form
 
         Else
 
-           For Each Form As AlertForm In Alert_MindestReserveBUBA.AlertFormList
+            For Each Form As AlertForm In Alert_MindestReserveBUBA.AlertFormList
                 Form.Close()
             Next
         End If
@@ -12378,7 +12378,7 @@ Public Class PSTOOL_MAIN_Form
             End If
         Else
 
-             For Each Form As AlertForm In Alert_UPDATE_FX_Deals_ALL.AlertFormList
+            For Each Form As AlertForm In Alert_UPDATE_FX_Deals_ALL.AlertFormList
                 Form.Close()
             Next
         End If
@@ -12488,8 +12488,8 @@ Public Class PSTOOL_MAIN_Form
                 Dim InfoText As String = ""
                 Dim info As AlertInfo = New AlertInfo("", InfoText)
 
-                Me.QueryText = "SELECT A.[CURRENCY CODE],B.[CURRENCY NAME] FROM [SSIS] A INNER JOIN CURRENCIES B on A.[CURRENCY CODE]=B.[CURRENCY CODE] where A.[CURRENCY CODE] not in (Select [CURRENCY CODE] from OWN_CURRENCIES)"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), connSYSTEM)
+                QueryText = "SELECT A.[CURRENCY CODE],B.[CURRENCY NAME] FROM [SSIS] A INNER JOIN CURRENCIES B on A.[CURRENCY CODE]=B.[CURRENCY CODE] where A.[CURRENCY CODE] not in (Select [CURRENCY CODE] from OWN_CURRENCIES)"
+                da = New SqlDataAdapter(QueryText.Trim(), connSYSTEM)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
 
@@ -12563,8 +12563,8 @@ Public Class PSTOOL_MAIN_Form
                 Dim InfoText As String = ""
                 Dim info As AlertInfo = New AlertInfo("", InfoText)
 
-                Me.QueryText = "Select [Amount1] from [GeneralDataInfo] where [Description1] in ('BS_Difference') and [RiskDate] in (Select Max(RiskDate) from GeneralDataInfo)"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), connSYSTEM)
+                QueryText = "Select [Amount1] from [GeneralDataInfo] where [Description1] in ('BS_Difference') and [RiskDate] in (Select Max(RiskDate) from GeneralDataInfo)"
+                da = New SqlDataAdapter(QueryText.Trim(), connSYSTEM)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 Dim BS_DIFFERENCE As Double = dt.Rows.Item(0).Item("Amount1")

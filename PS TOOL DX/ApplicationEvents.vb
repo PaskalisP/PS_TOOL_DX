@@ -83,6 +83,12 @@ Namespace My
                         XtraMessageBox.Show("Current User is not registered User in the PS TOOL Database or " & vbNewLine & "has not permissions!" & vbNewLine & vbNewLine & "Please contact your Network Administrator!!", "NO REGISTERED USER/NO PERMISSIONS", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                         Environment.Exit(2)
                     Else
+                        'Get Application SQL Server
+                        cmd.CommandText = "Select dbo.GetStringPartByDelimeter(@@version,'(',1)"
+                        TOOL_SQL_SERVER_VERSION = CStr(cmd.ExecuteScalar)
+                        TOOL_SQL_SERVER = conn.DataSource & " - " & TOOL_SQL_SERVER_VERSION
+                        TOOL_SQL_SERVER_ONLY = conn.DataSource
+                        TOOL_SQL_DATABASE = conn.Database
                         'Get all Tables and Columns
                         cmd.CommandText = "DELETE FROM [ALL_TABLE_COLUMNS]
                                        TRUNCATE TABLE [ALL_TABLE_COLUMNS]

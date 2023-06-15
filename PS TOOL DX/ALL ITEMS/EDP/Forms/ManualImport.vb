@@ -71,10 +71,7 @@ Public Class ManualImport
     Dim BAISDirectory As String = "" 'OCBS FILE DIRECTORY
     Dim BAISFileNewDirectory As String = "" 'NEW DIRECTORY FOR OCBS FILE
 
-    'Dim conn As New SqlConnection
-    'Dim cmd As New SqlCommand
-    Dim connEVENT As New SqlConnection
-    Dim cmdEVENT As New SqlCommand
+
     'Oledb Connection for OCBS
     Dim connBAIS As New SqlConnection
     Dim cmdBAIS As New SqlCommand
@@ -107,15 +104,7 @@ Public Class ManualImport
 
     Delegate Sub ChangeText()
 
-    Private QueryText As String = ""
-    Private conndt As New SqlConnection
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-    Dim SqlCommandText1 As String = Nothing
-    Dim SqlCommandText2 As String = Nothing
-    Dim SqlCommandText3 As String = Nothing
+
 
     Dim ex As Integer
     Dim BaisAutomatedImport_btn_clicked As Boolean = False 'Button for Automated Import
@@ -259,6 +248,90 @@ Public Class ManualImport
         Me.TableAdapterManager.UpdateAll(Me.EDPDataSet)
 
     End Sub
+
+    Private Sub ManualImport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AddHandler GridControl1.EmbeddedNavigator.ButtonClick, AddressOf GridControl1_EmbeddedNavigator_ButtonClick
+
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+
+        'Get Max Date
+        cmd.CommandText = "SELECT MAX([ProcDate]) FROM [IMPORT EVENTS]"
+        OpenSqlConnections()
+        MaxProcDate = cmd.ExecuteScalar
+        'Get SSIS Directory
+        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='SSIS_Directory' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='SSIS_DIRECTORY'"
+        SSISDirectory = cmd.ExecuteScalar()
+        'Special Case - Get OPICS new Directory
+        CloseSqlConnections()
+
+        'Me.IMPORT_EVENTSTableAdapter.FillByManualImportDate(Me.EDPDataSet.IMPORT_EVENTS, MaxProcDate)
+        Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
+
+    End Sub
+
+    Private Sub bbiReload_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiReload.ItemClick
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        SplashScreenManager.Default.SetWaitFormCaption("MANUAL IMPORT PROCEDURES")
+        Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
+        SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub Add_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Add_bbi.ItemClick
+        Me.MANUAL_IMPORTSBindingSource.EndEdit()
+        ManualImportProcedures_BasicView.AddNewRow()
+
+    End Sub
+
+    Private Sub Save_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Save_bbi.ItemClick
+        Try
+            If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                Me.Validate()
+                Me.MANUAL_IMPORTSBindingSource.EndEdit()
+                Me.TableAdapterManager.UpdateAll(Me.EDPDataSet)
+                Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+    End Sub
+
+    Private Sub Delete_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Delete_bbi.ItemClick
+        Try
+            Me.MANUAL_IMPORTSBindingSource.EndEdit()
+            Dim row As System.Data.DataRow = ManualImportProcedures_BasicView.GetDataRow(ManualImportProcedures_BasicView.FocusedRowHandle)
+            Dim ProcName As String = row(1)
+            Dim ID_ProcName As String = row(0)
+            If XtraMessageBox.Show("Should the manual Import Procedure: " & ProcName & " be deleted?", "DELETE MANUAL IMPORT PROCEDURE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                'Get Max Date
+                cmd.CommandText = "DELETE FROM [MANUAL IMPORTS] where [ID]='" & ID_ProcName & "'"
+                OpenSqlConnections()
+                cmd.ExecuteNonQuery()
+                CloseSqlConnections()
+                Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+    End Sub
+
+    Private Sub Preview_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Preview_bbi.ItemClick
+        If Not GridControl1.IsPrintingAvailable Then
+            MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
+            Return
+        End If
+
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        PrintableComponentLink1.CreateDocument()
+        PrintableComponentLink1.ShowPreview()
+        SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub Close_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Close_bbi.ItemClick
+        Me.Close()
+    End Sub
+
 
 #Region "SPECIAL FUNTIONS"
     ' Gesamten Inhalt eines Ordners kopieren
@@ -466,21 +539,10 @@ Public Class ManualImport
             e.Valid = False
             'Set errors with specific descriptions for the columns
             View.SetColumnError(FILE_DIR_IMPORT, "The File Directory Import must not be empty")
-            e.ErrorText = "The File Directory Import not be empty"
+            e.ErrorText = "The File Directory Import must not be empty"
         End If
     End Sub
 
-    Private Sub Print_Export_MANUAL_ImportProcedures_Gridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_MANUAL_ImportProcedures_Gridview_btn.Click
-        If Not GridControl1.IsPrintingAvailable Then
-            MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
-            Return
-        End If
-
-        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-        PrintableComponentLink1.CreateDocument()
-        PrintableComponentLink1.ShowPreview()
-        SplashScreenManager.CloseForm(False)
-    End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
         Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
@@ -543,41 +605,11 @@ Public Class ManualImport
 
 
     Private Sub ManualImport_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-
         If bgws.Count > 0 Then
             e.Cancel = True
         Else
             e.Cancel = False
-
         End If
-
-    End Sub
-
-
-    Private Sub ManualImport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AddHandler GridControl1.EmbeddedNavigator.ButtonClick, AddressOf GridControl1_EmbeddedNavigator_ButtonClick
-
-        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
-        'conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        'cmd.Connection = conn
-        cmd.CommandTimeout = 120
-
-        connEVENT.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmdEVENT.Connection = connEVENT
-
-        'Get Max Date
-        cmd.CommandText = "SELECT MAX([ProcDate]) FROM [IMPORT EVENTS]"
-        OpenSqlConnections()
-        MaxProcDate = cmd.ExecuteScalar
-        'Get SSIS Directory
-        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='SSIS_Directory' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='SSIS_DIRECTORY'"
-        SSISDirectory = cmd.ExecuteScalar()
-        'Special Case - Get OPICS new Directory
-        CloseSqlConnections()
-
-        Me.IMPORT_EVENTSTableAdapter.FillByManualImportDate(Me.EDPDataSet.IMPORT_EVENTS, MaxProcDate)
-        Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
-
     End Sub
 
 
@@ -709,6 +741,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -729,6 +763,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -749,6 +785,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -769,6 +807,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -789,6 +829,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -809,6 +851,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -829,6 +873,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -849,6 +895,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -869,6 +917,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -889,6 +939,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -909,6 +961,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -929,6 +983,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -949,6 +1005,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -970,6 +1028,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -991,6 +1051,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1011,6 +1073,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1031,6 +1095,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1051,6 +1117,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1071,6 +1139,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1098,6 +1168,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1129,6 +1201,8 @@ Public Class ManualImport
                     Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                     'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                     Me.GridControl1.Enabled = False
+                    Me.RibbonPageGroup1.Enabled = False
+                    Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                     Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                     Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                     Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1155,6 +1229,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1177,6 +1253,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1197,6 +1275,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1217,6 +1297,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1237,6 +1319,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1257,6 +1341,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1277,6 +1363,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1297,6 +1385,8 @@ Public Class ManualImport
                 Me.MANUAL_IMPORTSTableAdapter.Update(Me.EDPDataSet.MANUAL_IMPORTS)
                 'SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                 Me.GridControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.LayoutControlGroup3.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Always
                 Me.LayoutControlItem_ProgressPanel.Text = "Executing import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
                 Me.ProgressPanel1.Caption = "Start import procedure: " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName).ToString
@@ -1316,7 +1406,7 @@ Public Class ManualImport
     Private Sub SelectFileButtonEdit_Click(sender As Object, e As EventArgs) Handles SelectFileButtonEdit.Click
         'IMPORT BIC DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "BIC DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 BicFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1327,15 +1417,15 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    BIC_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    BIC_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
         'IMPORT SEPA DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "SEPA DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 SepaFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Csv Files (*.csv;*.CSV)|*.csv;*.CSV"
                 .DefaultExt = "csv"
@@ -1346,15 +1436,15 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    SEPA_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    SEPA_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
         'IMPORT SEPA FULL DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "SEPA FULL DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 SepaFullFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "XML Files (*.xml;*.XML)|*.xml;*.XML"
                 .DefaultExt = "xml"
@@ -1365,16 +1455,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    SEPA_FULL_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    SEPA_FULL_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT BLZ DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "BLZ DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 BlzFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1385,15 +1475,15 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    BLZ_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    BLZ_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
         'IMPORT CUSTOMER INFO
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "CUSTOMER INFO" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 CustInfoFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1404,15 +1494,15 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    CUST_INFO_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    CUST_INFO_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
         'IMPORT CUSTOMER ACC INFO
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "CUSTOMER ACC INFO" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 CustAccInfoFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1423,15 +1513,15 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    CUST_ACC_INFO_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    CUST_ACC_INFO_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
         'IMPORT ODAS REMMITANCE
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "ODAS REMMITANCE" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 OdasRemmitanceFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1442,15 +1532,15 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    ODAS_REMMITANCE_PAY_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    ODAS_REMMITANCE_PAY_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
         'IMPORT GMPS PAYMENTS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "GMPS PAYMENTS" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 GMPSFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1463,11 +1553,11 @@ Public Class ManualImport
 
                 dir.Clear()
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    For Each f As String In OpenFileDialog1.FileNames
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    For Each f As String In XtraOpenFileDialog1.FileNames
                         dir.Add(f)
-                        Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                        GMPS_PAY_FILE = Me.OpenFileDialog1.FileName
+                        Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                        GMPS_PAY_FILE = Me.XtraOpenFileDialog1.FileName
                     Next
                 End If
 
@@ -1479,7 +1569,7 @@ Public Class ManualImport
 
         'MULTIBANK KONVERTER KONTOINHABER
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "MULTIBANK KONVERTER KONTOINHABER" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 MULTIBANK_KONVERTER_Kontoinhaber_FileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1490,16 +1580,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    MULTIBANK_KONVERTER_KONTOINHABER_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    MULTIBANK_KONVERTER_KONTOINHABER_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT TARGET2 DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "TARGET2 DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 T2FileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "ORIG Files (*.orig;*.ORIG)|*.orig;*.ORIG"
                 .DefaultExt = "ORIG"
@@ -1510,16 +1600,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    T2_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    T2_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT TARGET2 XML DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "TARGET2 XML DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 T2FileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "XML Files (*.xml;*.XML)|*.xml;*.XML"
                 .DefaultExt = "xml"
@@ -1530,16 +1620,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    T2_XML_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    T2_XML_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT ODAS FX DEALS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "ODAS FX DEALS" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 FXFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xlsx"
@@ -1550,16 +1640,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    FX_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    FX_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT BIC PLUS DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "BIC PLUS DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 BicPlusFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1570,16 +1660,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    BIC_PLUS_DIR_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    BIC_PLUS_DIR_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT BANK DIRECTORY PLUS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "BANK DIRECTORY PLUS" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 BankDirPlusFileDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1590,16 +1680,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    BANK_DIR_PLUS_FILE = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    BANK_DIR_PLUS_FILE = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT IBAN FULL DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "IBAN PLUS DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 IbanPlusFullDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1610,16 +1700,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    IBAN_PLUS_FULL_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    IBAN_PLUS_FULL_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT IBAN STRUCTURE DIRECTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "IBAN STRUCTURE DIRECTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 IbanStructureFullDirectoryImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1630,16 +1720,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    IBAN_STRUCTURE_FULL_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    IBAN_STRUCTURE_FULL_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT HOLIDAYS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "HOLIDAYS" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 HolidaysDataImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Text Files (*.txt)|*.txt"
                 .DefaultExt = "txt"
@@ -1650,16 +1740,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    HOLIDAYS_DATA_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    HOLIDAYS_DATA_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'UPDATE OWN FX DEALS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "OWN FX DEALS" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 OwnFxDealsUpdate = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1670,9 +1760,9 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    OWN_FX_DEALS_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    OWN_FX_DEALS_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
@@ -1701,7 +1791,7 @@ Public Class ManualImport
 
         'OPICS MM DEALS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "OPICS MM-FX DEALS" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 OpicsMMDealsImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1714,12 +1804,12 @@ Public Class ManualImport
 
                 dir_MM_OpicsFiles.Clear()
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    For Each f As String In OpenFileDialog1.FileNames
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    For Each f As String In XtraOpenFileDialog1.FileNames
                         dir_MM_OpicsFiles.Add(f)
-                        Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                        MM_Tradedate = System.IO.Path.GetFileName(Me.OpenFileDialog1.FileName)
-                        OPICS_MM_DEALS_DIR = Me.OpenFileDialog1.FileName
+                        Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                        MM_Tradedate = System.IO.Path.GetFileName(Me.XtraOpenFileDialog1.FileName)
+                        OPICS_MM_DEALS_DIR = Me.XtraOpenFileDialog1.FileName
                     Next
                 End If
             End With
@@ -1729,7 +1819,7 @@ Public Class ManualImport
 
         'IMPORT DAILY BALANCE SHEET
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "DAILY BALANCE SHEET" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 DailyBalanceSheetImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1740,16 +1830,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    DAILY_BALANCE_SHEET_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    DAILY_BALANCE_SHEET_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT DAILY BALANCE SHEET
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "DAILY BALANCE SHEET DETAILS" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 DailyBalanceSheetDetailImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1760,16 +1850,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    DAILY_BALANCE_SHEET__DETAIL_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    DAILY_BALANCE_SHEET__DETAIL_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT TRIAL BALANCE AVERAGE 222
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "TRIAL BALANCE AVERAGE 222" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 TrialBalanceAverage222Import = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1780,16 +1870,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    TRIAL_BALANCE_AVERAGE_222_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    TRIAL_BALANCE_AVERAGE_222_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT ACCRUED INTEREST ANALYSIS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "ACCRUED INTEREST ANALYSIS" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 AccruedInterestAnalysisImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1800,16 +1890,16 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    ACCRUED_INTEREST_ANALYSIS_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    ACCRUED_INTEREST_ANALYSIS_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
 
         'IMPORT USER PERMISIONS
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "USER PERMISSIONS IMPORT" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 UserPermissionsImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx;*.csv"
                 .DefaultExt = "xls"
@@ -1822,11 +1912,11 @@ Public Class ManualImport
 
                 dir_UserPermissionsFiles.Clear()
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    For Each f As String In OpenFileDialog1.FileNames
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    For Each f As String In XtraOpenFileDialog1.FileNames
                         dir_UserPermissionsFiles.Add(f)
-                        Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                        USER_PERMISSIONS_DIR = Me.OpenFileDialog1.FileName
+                        Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                        USER_PERMISSIONS_DIR = Me.XtraOpenFileDialog1.FileName
                     Next
                 End If
             End With
@@ -1834,7 +1924,7 @@ Public Class ManualImport
 
         'IMPORT NEW INVENTORY
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "NEW INVENTORY" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 InventarExcelImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1845,15 +1935,15 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    INVENTAR_EXCEL_IMPORT_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    INVENTAR_EXCEL_IMPORT_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
         'IMPORT MIFIR
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) = "MIFIR IMPORT" Then
-            With OpenFileDialog1
+            With XtraOpenFileDialog1
                 MifirImport = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colFileDirImport)
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx"
                 .DefaultExt = "xls"
@@ -1864,9 +1954,9 @@ Public Class ManualImport
                 .RestoreDirectory = True
                 .Multiselect = False
 
-                If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.OpenFileDialog1.FileName)
-                    MIFIR_IMPORT_DIR = Me.OpenFileDialog1.FileName
+                If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
+                    Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colCurrentFileName, Me.XtraOpenFileDialog1.FileName)
+                    MIFIR_IMPORT_DIR = Me.XtraOpenFileDialog1.FileName
                 End If
             End With
         End If
@@ -1946,8 +2036,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_CUSTOMER_INFO') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_CUSTOMER_INFO')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_CUSTOMER_INFO')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
@@ -2016,8 +2106,10 @@ Public Class ManualImport
 
     Private Sub BgwCustInfoDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwCustInfoDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2092,8 +2184,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_ODAS_FX_DEALS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_ODAS_FX_DEALS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_ODAS_FX_DEALS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i = 0 To dt.Rows.Count - 1
@@ -2162,8 +2254,10 @@ Public Class ManualImport
 
     Private Sub BgwFxDeals_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwFxDeals.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2204,8 +2298,8 @@ Public Class ManualImport
                         cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_OPICS_MM_DEALS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                         Dim ParameterStatus As String = cmd.ExecuteScalar
                         If ParameterStatus = "Y" Then
-                            Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_OPICS_MM_DEALS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_OPICS_MM_DEALS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                            da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New System.Data.DataTable()
                             da.Fill(dt)
                             For i1 = 0 To dt.Rows.Count - 1
@@ -2241,8 +2335,8 @@ Public Class ManualImport
                         cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_OPICS_FX_DEALS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                         Dim ParameterStatus As String = cmd.ExecuteScalar
                         If ParameterStatus = "Y" Then
-                            Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_OPICS_FX_DEALS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_OPICS_FX_DEALS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                            da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New System.Data.DataTable()
                             da.Fill(dt)
                             For i1 = 0 To dt.Rows.Count - 1
@@ -2316,8 +2410,10 @@ Public Class ManualImport
 
     Private Sub BgwOpicsMMDeals_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwOpicsMMDeals.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2408,8 +2504,8 @@ Public Class ManualImport
                     cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_MIFIR') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                     Dim ParameterStatus As String = cmd.ExecuteScalar
                     If ParameterStatus = "Y" Then
-                        Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_MIFIR')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_MIFIR')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New System.Data.DataTable()
                         da.Fill(dt)
                         For i1 = 0 To dt.Rows.Count - 1
@@ -2485,8 +2581,10 @@ Public Class ManualImport
 
     Private Sub BgwMifir_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwMifir.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2587,8 +2685,8 @@ Public Class ManualImport
             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_BIC_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
             Dim ParameterStatus As String = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_BIC_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_BIC_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i1 = 0 To dt.Rows.Count - 1
@@ -2653,8 +2751,10 @@ Public Class ManualImport
 
     Private Sub BgwBicDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBicDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2682,8 +2782,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_SEPA_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_SEPA_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_SEPA_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i1 = 0 To dt.Rows.Count - 1
@@ -2749,8 +2849,10 @@ Public Class ManualImport
 
     Private Sub BgwSepaDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwSepaDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2778,8 +2880,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_SEPA_FULL_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_SEPA_FULL_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_SEPA_FULL_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i1 = 0 To dt.Rows.Count - 1
@@ -2844,8 +2946,10 @@ Public Class ManualImport
 
     Private Sub BgwSepaFullDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwSepaFullDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -2942,8 +3046,8 @@ Public Class ManualImport
             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_BLZ_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
             Dim ParameterStatus As String = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_BLZ_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_BLZ_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i1 = 0 To dt.Rows.Count - 1
@@ -3012,8 +3116,10 @@ Public Class ManualImport
 
     Private Sub BgwBlzDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBlzDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -3118,8 +3224,8 @@ Public Class ManualImport
                 'CREATE FOLDERS AND SUBFOLDERS FOR NEW CUSTOMERS
                 'SplashScreenManager.Default.SetWaitFormCaption("Create Document Folders and Subfolders for new Clients")
                 Me.BgwCustAccInfoDirectory.ReportProgress(75, "Create Document Folders and Subfolders for new Clients")
-                Me.QueryText = "Select [ClientNo] from [CUSTOMER_INFO] where [ClientType] in ('C - COMPANY') and [ClientNo] in (Select [ClientNo] from [CUSTOMER_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02')) and [ClientNo] not in (Select [ClientNo] from [CLIENTS])"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select [ClientNo] from [CUSTOMER_INFO] where [ClientType] in ('C - COMPANY') and [ClientNo] in (Select [ClientNo] from [CUSTOMER_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02')) and [ClientNo] not in (Select [ClientNo] from [CLIENTS])"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -3151,8 +3257,8 @@ Public Class ManualImport
 
                 'SplashScreenManager.Default.SetWaitFormCaption("Insert AML Classification Parameters for new Clients")
                 Me.BgwCustAccInfoDirectory.ReportProgress(75, "Insert AML Classification Parameters for new Clients")
-                Me.QueryText = "Select [ClientNo] from [CUSTOMER_INFO] where [ClientType] in ('C - COMPANY') and [ClientNo] in (Select [ClientNo] from [CUSTOMER_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02')) and [ClientNo] not in (Select distinct [Id_ClientNo] from [CLIENTS_AML_CLASSIFIC])"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select [ClientNo] from [CUSTOMER_INFO] where [ClientType] in ('C - COMPANY') and [ClientNo] in (Select [ClientNo] from [CUSTOMER_ACCOUNTS] where [ProductCode] in ('DDPCUR01','DDPCUR02')) and [ClientNo] not in (Select distinct [Id_ClientNo] from [CLIENTS_AML_CLASSIFIC])"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
@@ -3306,8 +3412,10 @@ Public Class ManualImport
 
     Private Sub BgwCustAccInfoDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwCustAccInfoDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -3445,15 +3553,15 @@ Public Class ManualImport
                 '++++++++++AUSWAHL DER ZAHLUNGEN (MINDESTENS 5 STÜCK pro Tag pro Kunde)++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS ITEMS")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS ITEMS")
-                Me.QueryText = "SELECT  [TRANSACTIONDATE],  [ORDERCUSTID]  from   [#Temp_ODAS_REMMITANCE_Temp] GROUP BY [TRANSACTIONDATE],  [ORDERCUSTID]"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  [TRANSACTIONDATE],  [ORDERCUSTID]  from   [#Temp_ODAS_REMMITANCE_Temp] GROUP BY [TRANSACTIONDATE],  [ORDERCUSTID]"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
                     Dim rd As Date = dt.Rows.Item(i).Item("TRANSACTIONDATE").ToString
                     Dim rdsql As String = rd.ToString("yyyy-MM-dd")
-                    Me.QueryText = "Select * from [#Temp_ODAS_REMMITANCE_Temp] where [ORDERCUSTID] in (Select [ORDERCUSTID] from   [#Temp_ODAS_REMMITANCE_Temp] where   [TRANSACTIONDATE]='" & rdsql & "' and [ORDERCUSTID]='" & dt.Rows.Item(i).Item("ORDERCUSTID") & "' GROUP BY [ORDERCUSTID] HAVING Count([ID])>=5) and [TRANSACTIONDATE]='" & rdsql & "' and [ORDERCUSTID]='" & dt.Rows.Item(i).Item("ORDERCUSTID") & "'"
-                    da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [#Temp_ODAS_REMMITANCE_Temp] where [ORDERCUSTID] in (Select [ORDERCUSTID] from   [#Temp_ODAS_REMMITANCE_Temp] where   [TRANSACTIONDATE]='" & rdsql & "' and [ORDERCUSTID]='" & dt.Rows.Item(i).Item("ORDERCUSTID") & "' GROUP BY [ORDERCUSTID] HAVING Count([ID])>=5) and [TRANSACTIONDATE]='" & rdsql & "' and [ORDERCUSTID]='" & dt.Rows.Item(i).Item("ORDERCUSTID") & "'"
+                    da1 = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt1 = New DataTable()
                     da1.Fill(dt1)
                     For y = 0 To dt1.Rows.Count - 1
@@ -3469,15 +3577,15 @@ Public Class ManualImport
                 '++++++++++AUSWAHL DER ZAHLUNGEN (Insgesamt AB 10000 EURO pro Tag und Pro Kunde)++++++++++++
                 'SplashScreenManager.Default.SetWaitFormCaption("ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS AMOUNTS")
                 Me.BgwOdasRemmitancePayDirectory.ReportProgress(75, "ANTIMONEY LAUNDERING PAYMENTS-INSERT TO TABLE: PAYMENTS AMOUNTS")
-                Me.QueryText = "SELECT  [TRANSACTIONDATE],  [ORDERCUSTID]  from   [#Temp_ODAS_REMMITANCE_Temp] GROUP BY [TRANSACTIONDATE],  [ORDERCUSTID]"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "SELECT  [TRANSACTIONDATE],  [ORDERCUSTID]  from   [#Temp_ODAS_REMMITANCE_Temp] GROUP BY [TRANSACTIONDATE],  [ORDERCUSTID]"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 For i = 0 To dt.Rows.Count - 1
                     Dim rd As Date = dt.Rows.Item(i).Item("TRANSACTIONDATE").ToString
                     Dim rdsql As String = rd.ToString("yyyy-MM-dd")
-                    Me.QueryText = "Select * from [#Temp_ODAS_REMMITANCE_Temp] where [ORDERCUSTID] in (Select [ORDERCUSTID] from   [#Temp_ODAS_REMMITANCE_Temp] where   [TRANSACTIONDATE]='" & rdsql & "' and [ORDERCUSTID]='" & dt.Rows.Item(i).Item("ORDERCUSTID") & "' GROUP BY [ORDERCUSTID] HAVING Sum([Deal Amount Euro])>=10000) and [TRANSACTIONDATE]='" & rdsql & "' and [ORDERCUSTID]='" & dt.Rows.Item(i).Item("ORDERCUSTID") & "'"
-                    da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [#Temp_ODAS_REMMITANCE_Temp] where [ORDERCUSTID] in (Select [ORDERCUSTID] from   [#Temp_ODAS_REMMITANCE_Temp] where   [TRANSACTIONDATE]='" & rdsql & "' and [ORDERCUSTID]='" & dt.Rows.Item(i).Item("ORDERCUSTID") & "' GROUP BY [ORDERCUSTID] HAVING Sum([Deal Amount Euro])>=10000) and [TRANSACTIONDATE]='" & rdsql & "' and [ORDERCUSTID]='" & dt.Rows.Item(i).Item("ORDERCUSTID") & "'"
+                    da1 = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt1 = New DataTable()
                     da1.Fill(dt1)
                     For y = 0 To dt1.Rows.Count - 1
@@ -3546,8 +3654,10 @@ Public Class ManualImport
 
     Private Sub BgwOdasRemmitancePayDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwOdasRemmitancePayDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -3630,8 +3740,8 @@ Public Class ManualImport
                             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                             Dim ParameterStatus1 As String = cmd.ExecuteScalar
                             If ParameterStatus1 = "Y" Then
-                                Me.QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Incoming_Bank_Transfer') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
-                                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                                QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Incoming_Bank_Transfer') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
+                                da = New SqlDataAdapter(QueryText.Trim(), conn)
                                 dt = New System.Data.DataTable()
                                 da.Fill(dt)
                                 For i1 = 0 To dt.Rows.Count - 1
@@ -3705,8 +3815,8 @@ Public Class ManualImport
                             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                             Dim ParameterStatus2 As String = cmd.ExecuteScalar
                             If ParameterStatus2 = "Y" Then
-                                Me.QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Incoming_Customer_Transfer') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
-                                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                                QueryText = "Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Incoming_Customer_Transfer') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
+                                da = New SqlDataAdapter(QueryText.Trim(), conn)
                                 dt = New System.Data.DataTable()
                                 da.Fill(dt)
                                 For i1 = 0 To dt.Rows.Count - 1
@@ -3788,8 +3898,8 @@ Public Class ManualImport
                             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                             Dim ParameterStatus3 As String = cmd.ExecuteScalar
                             If ParameterStatus3 = "Y" Then
-                                Me.QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Inward_Remittance') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
-                                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                                QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Inward_Remittance') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
+                                da = New SqlDataAdapter(QueryText.Trim(), conn)
                                 dt = New System.Data.DataTable()
                                 da.Fill(dt)
                                 For i1 = 0 To dt.Rows.Count - 1
@@ -3928,8 +4038,8 @@ Public Class ManualImport
                             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                             Dim ParameterStatus4 As String = cmd.ExecuteScalar
                             If ParameterStatus4 = "Y" Then
-                                Me.QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Outward_Remittance') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
-                                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                                QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Outward_Remittance') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
+                                da = New SqlDataAdapter(QueryText.Trim(), conn)
                                 dt = New System.Data.DataTable()
                                 da.Fill(dt)
                                 For i1 = 0 To dt.Rows.Count - 1
@@ -3981,8 +4091,8 @@ Public Class ManualImport
             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
             Dim ParameterStatus As String = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Update_Payment_Tables') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "  Select * from SQL_PARAMETER_DETAILS_THIRD where Id_SQL_Parameters_Details in (Select ID from [SQL_PARAMETER_DETAILS_SECOND] where  [SQL_Name_1] in ('Update_Payment_Tables') and [Id_SQL_Parameters_Details] in (SELECT [ID] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_GMPS_PAYMENTS'))) and Status in ('Y') order by SQL_Float_1 asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i1 = 0 To dt.Rows.Count - 1
@@ -4047,8 +4157,10 @@ Public Class ManualImport
 
     Private Sub BgwGMPSPayDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwGMPSPayDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4180,8 +4292,10 @@ Public Class ManualImport
 
     Private Sub BgwEcbRatesDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwEcbRatesDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4320,8 +4434,10 @@ Public Class ManualImport
 
     Private Sub BgwMultibankKonverterKontoinhaberDirectoty_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwMultibankKonverterKontoinhaberDirectoty.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4414,8 +4530,8 @@ Public Class ManualImport
             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_TARGET2_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
             Dim ParameterStatus As String = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_TARGET2_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_TARGET2_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i1 = 0 To dt.Rows.Count - 1
@@ -4483,8 +4599,10 @@ Public Class ManualImport
 
     Private Sub BgwT2Directory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwT2Directory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4513,8 +4631,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_TARGET2_XML_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_TARGET2_XML_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_TARGET2_XML_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i1 = 0 To dt.Rows.Count - 1
@@ -4579,8 +4697,10 @@ Public Class ManualImport
 
     Private Sub BgwT2_XML_Directory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwT2_XML_Directory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4609,8 +4729,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_BIC_PLUS_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_BIC_PLUS_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_BIC_PLUS_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i1 = 0 To dt.Rows.Count - 1
@@ -4675,8 +4795,10 @@ Public Class ManualImport
 
     Private Sub BgwBicPlusDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBicPlusDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4705,8 +4827,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_BANK_DIRECTORY_PLUS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_BANK_DIRECTORY_PLUS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_BANK_DIRECTORY_PLUS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i1 = 0 To dt.Rows.Count - 1
@@ -4771,8 +4893,10 @@ Public Class ManualImport
 
     Private Sub BgwBankDirectoryPlus_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBankDirectoryPlus.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4801,8 +4925,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_IBAN_PLUS_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_IBAN_PLUS_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_IBAN_PLUS_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i1 = 0 To dt.Rows.Count - 1
@@ -4866,8 +4990,10 @@ Public Class ManualImport
 
     Private Sub BgwIbanFullDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwIbanFullDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4896,8 +5022,8 @@ Public Class ManualImport
                 cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_IBAN_STRUCTURE_DIRECTORY') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
                 Dim ParameterStatus As String = cmd.ExecuteScalar
                 If ParameterStatus = "Y" Then
-                    Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_IBAN_STRUCTURE_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_IBAN_STRUCTURE_DIRECTORY')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     For i1 = 0 To dt.Rows.Count - 1
@@ -4960,8 +5086,10 @@ Public Class ManualImport
 
     Private Sub BgwIbanStructureFullDirectory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwIbanStructureFullDirectory.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -4998,8 +5126,8 @@ Public Class ManualImport
             cmd.CommandText = "SELECT [Status] FROM [SQL_PARAMETER_DETAILS] where  [SQL_Name_1] in ('IMPORT_HOLIDAYS') and [Id_SQL_Parameters] in ('MANUAL_IMPORTS')"
             Dim ParameterStatus As String = cmd.ExecuteScalar
             If ParameterStatus = "Y" Then
-                Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_HOLIDAYS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('IMPORT_HOLIDAYS')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
                 For i1 = 0 To dt.Rows.Count - 1
@@ -5069,8 +5197,10 @@ Public Class ManualImport
 
     Private Sub BgwHolidayData_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwHolidayData.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -5142,8 +5272,10 @@ Public Class ManualImport
 
     Private Sub BgwOwnFxDealsUpdate_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwOwnFxDealsUpdate.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -5806,8 +5938,10 @@ Public Class ManualImport
 
     Private Sub BgwBaisFiles_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBaisFiles.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6112,8 +6246,10 @@ Public Class ManualImport
 
     Private Sub BgwOpicsCustUpdateFiles_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwOpicsCustUpdateFiles.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6293,8 +6429,10 @@ Public Class ManualImport
 
     Private Sub BgwDailyBalanceSheet_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwDailyBalanceSheet.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6482,8 +6620,10 @@ Public Class ManualImport
 
     Private Sub BgwDailyBalanceSheetDetail_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwDailyBalanceSheetDetail.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6615,8 +6755,10 @@ Public Class ManualImport
 
     Private Sub BgwTriallBalanceAverage222_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwTriallBalanceAverage222.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -6849,7 +6991,7 @@ Public Class ManualImport
                         cmd.ExecuteNonQuery()
                         cmd.CommandText = "UPDATE [AWVz14] set [CountrySumAmount]=0 where [CountrySumAmount] is NULL and [IdZ14Z15Meldemonat]='" & MeldeMonatSql & "'"
                         cmd.ExecuteNonQuery()
-                       
+
                         '######################################################################################################
                         'Füllen der Z15
                         'Länder und Währungen
@@ -6862,7 +7004,7 @@ Public Class ManualImport
                         cmd.ExecuteNonQuery()
                         cmd.CommandText = "UPDATE [AWVz15] set [CountrySumAmount]=0 where [CountrySumAmount] is NULL and [IdZ14Z15Meldemonat]='" & MeldeMonatSql & "'"
                         cmd.ExecuteNonQuery()
-                        
+
 
                     Else
                         'Summen für AZW Z14 und Z15 auf NULL Stellen
@@ -6881,7 +7023,7 @@ Public Class ManualImport
                         cmd.ExecuteNonQuery()
                         cmd.CommandText = "UPDATE [AWVz15] set [CountrySumAmount]=0 where [CountrySumAmount] is NULL and [IdZ14Z15Meldemonat]='" & MeldeMonatSql & "'"
                         cmd.ExecuteNonQuery()
-                       
+
                     End If
 
                 End If
@@ -6936,8 +7078,10 @@ Public Class ManualImport
 
     Private Sub BgwAccruedInterestAnalysis_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwAccruedInterestAnalysis.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -7005,8 +7149,8 @@ Public Class ManualImport
                         cmd.CommandText = "DROP TABLE [#Temp_ActiveDirectoryUsers_Temp]"
                         cmd.ExecuteNonQuery()
 
-                        Me.QueryText = "Select * from [ActiveDirectoryUsers] where [ID] not in (Select [Id_ActiveDirectoryUser] from [ActiveDirectoryUsersBankSystems])"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "Select * from [ActiveDirectoryUsers] where [ID] not in (Select [Id_ActiveDirectoryUser] from [ActiveDirectoryUsersBankSystems])"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New System.Data.DataTable()
                         da.Fill(dt)
                         For i = 0 To dt.Rows.Count - 1
@@ -7015,15 +7159,15 @@ Public Class ManualImport
                             cmd.ExecuteNonQuery()
                         Next
 
-                        Me.QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='BankSystem' and [PARAMETER STATUS]='Y' and [IdABTEILUNGSPARAMETER]='BANK_SYSTEMS' and [PARAMETER2] not in (Select [System] from [ActiveDirectoryUsersBankSystems])"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        QueryText = "Select [PARAMETER2] from [PARAMETER] where [PARAMETER1]='BankSystem' and [PARAMETER STATUS]='Y' and [IdABTEILUNGSPARAMETER]='BANK_SYSTEMS' and [PARAMETER2] not in (Select [System] from [ActiveDirectoryUsersBankSystems])"
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New System.Data.DataTable()
                         da.Fill(dt)
                         For i = 0 To dt.Rows.Count - 1
                             Dim System As String = dt.Rows.Item(i).Item("PARAMETER2")
 
-                            Me.QueryText = "Select [Id_ActiveDirectoryUser] from [ActiveDirectoryUsersBankSystems] where [System] not in ('" & System & "') GROUP BY [Id_ActiveDirectoryUser]"
-                            da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                            QueryText = "Select [Id_ActiveDirectoryUser] from [ActiveDirectoryUsersBankSystems] where [System] not in ('" & System & "') GROUP BY [Id_ActiveDirectoryUser]"
+                            da1 = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt1 = New System.Data.DataTable()
                             da1.Fill(dt1)
                             For x = 0 To dt1.Rows.Count - 1
@@ -7266,8 +7410,10 @@ Public Class ManualImport
 
     Private Sub BgwUserPermissions_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwUserPermissions.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -7316,8 +7462,8 @@ Public Class ManualImport
                     cmd.CommandText = "INSERT INTO [#Temp_INVENTAR_ALL_ITEMS_Temp] ([Inventarnummer],[Bezeichnung],[Seriennummer],[Anschaffungsdatum],[Nettowert],[Monate],[MWST_Satz],[Kontonummer],[Kontonummer_MWST],[Kontonummer_Vorsteuer],[Kostenstelle],[Bemerkung]) SELECT InventarNr,[Bezeichnung],[SerienNr],Anschafungsdatum,[NettoWert_EURO],AfA_Monate,MWSt_Satz,Kontonummer,Kontonummer_MWST,KontonummerVorsteuer,Kostenstelle,Bemerkung FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & ExcelFileName & ";','SELECT * FROM [Sheet1$] where [InventarNr] is not NULL')"
                     cmd.ExecuteNonQuery()
                     'Check Accounts
-                    Me.QueryText = "Select Distinct([Kontonummer]) as 'Kontonummer' from [#Temp_INVENTAR_ALL_ITEMS_Temp] where [Kontonummer] not in (Select [Konto] from [INVENTAR_KONTEN_MWST])"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select Distinct([Kontonummer]) as 'Kontonummer' from [#Temp_INVENTAR_ALL_ITEMS_Temp] where [Kontonummer] not in (Select [Konto] from [INVENTAR_KONTEN_MWST])"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -7330,8 +7476,8 @@ Public Class ManualImport
 
                     End If
                     '+++++
-                    Me.QueryText = "Select Distinct([Kontonummer_MWST]) as 'Kontonummer' from [#Temp_INVENTAR_ALL_ITEMS_Temp] where [Kontonummer_MWST] not in (Select [Konto_MWSt] from [INVENTAR_KONTEN_MWST])"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select Distinct([Kontonummer_MWST]) as 'Kontonummer' from [#Temp_INVENTAR_ALL_ITEMS_Temp] where [Kontonummer_MWST] not in (Select [Konto_MWSt] from [INVENTAR_KONTEN_MWST])"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -7344,8 +7490,8 @@ Public Class ManualImport
 
                     End If
                     '++++++
-                    Me.QueryText = "Select Distinct([Kontonummer_Vorsteuer]) as 'Kontonummer' from [#Temp_INVENTAR_ALL_ITEMS_Temp] where [Kontonummer_Vorsteuer] not in (Select [Konto_Vorsteuer] from [INVENTAR_KONTEN_MWST])"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    QueryText = "Select Distinct([Kontonummer_Vorsteuer]) as 'Kontonummer' from [#Temp_INVENTAR_ALL_ITEMS_Temp] where [Kontonummer_Vorsteuer] not in (Select [Konto_Vorsteuer] from [INVENTAR_KONTEN_MWST])"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New System.Data.DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -7430,8 +7576,10 @@ Public Class ManualImport
 
     Private Sub BgwInventarExcel_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwInventarExcel.RunWorkerCompleted
         Me.GridControl1.Enabled = True
+        Me.RibbonPageGroup1.Enabled = True
         Me.LayoutControlItem_ProgressPanel.Text = ""
         Me.LayoutControlItem_ProgressPanel.Visibility = LayoutVisibility.Never
+        Me.LayoutControlGroup3.Visibility = LayoutVisibility.Never
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportDate, Today)
         Me.ManualImportProcedures_BasicView.SetFocusedRowCellValue(colLastImportTime, Now.ToShortTimeString)
         Me.MANUAL_IMPORTSBindingSource.EndEdit()
@@ -7448,6 +7596,14 @@ Public Class ManualImport
         Workers_Complete(BgwInventarExcel, e)
         'SplashScreenManager.CloseForm(False)
     End Sub
+
+
+
+
+
+
+
+
 
 #End Region
 

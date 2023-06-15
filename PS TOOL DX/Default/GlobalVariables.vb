@@ -45,6 +45,8 @@ Module GlobalVariables
     Public dt4 As System.Data.DataTable
     Public da5 As SqlDataAdapter
     Public dt5 As System.Data.DataTable
+    Public daInfo As New SqlDataAdapter
+    Public dtInfo As New DataTable
 
     Public daSqlQueries As SqlDataAdapter
     Public dtSqlQueries As System.Data.DataTable
@@ -73,6 +75,17 @@ Module GlobalVariables
     Public CurrentUserSqlID As String = Nothing
     Public CurrentUserWindowsID As String = Nothing
     Public SessionNr As Double = 0
+
+    Public CurrentProcedureName As String = Nothing
+    Public CurrentSystemName As String = Nothing
+
+    'Application Database
+    Public DEFAULT_DOMAIN As String = Nothing
+    Public DATABASE_ENVIRONMENT As String = Nothing
+    Public TOOL_SQL_SERVER As String = Nothing
+    Public TOOL_SQL_SERVER_ONLY As String = Nothing
+    Public TOOL_SQL_SERVER_VERSION As String = Nothing
+    Public TOOL_SQL_DATABASE As String = Nothing
 
     Public DeactivatedUserStatus_TextEdit As New DevExpress.XtraEditors.TextEdit
     Public ExecutingSQLThreadSleep As Integer = 0
@@ -220,42 +233,6 @@ Module GlobalVariables
 
     End Function
 
-    'Public Function RunScript(ByVal scriptText As String) As String
-
-    '    ' create Powershell runspace 
-    '    Dim MyRunSpace As Runspace = RunspaceFactory.CreateRunspace()
-
-    '    ' open it 
-    '    MyRunSpace.Open()
-
-    '    ' create a pipeline and feed it the script text 
-    '    Dim MyPipeline As Pipeline = MyRunSpace.CreatePipeline()
-
-    '    MyPipeline.Commands.AddScript(scriptText)
-
-    '    ' add an extra command to transform the script output objects into nicely formatted strings 
-    '    ' remove this line to get the actual objects that the script returns. For example, the script 
-    '    ' "Get-Process" returns a collection of System.Diagnostics.Process instances. 
-    '    MyPipeline.Commands.Add("Out-String")
-
-    '    ' execute the script 
-    '    Dim results As Collection(Of PSObject) = MyPipeline.Invoke()
-
-    '    ' close the runspace 
-    '    MyRunSpace.Close()
-
-    '    ' convert the script result into a single string 
-    '    Dim MyStringBuilder As New StringBuilder()
-
-    '    For Each obj As PSObject In results
-    '        MyStringBuilder.AppendLine(obj.ToString())
-    '    Next
-
-    '    ' return the results of the script that has 
-    '    ' now been converted to text 
-    '    Return MyStringBuilder.ToString()
-
-    'End Function
 
     Public Sub SetReportDb(ByVal ConnectionString As String, ByRef CrystalReportViewer As CrystalDecisions.Windows.Forms.CrystalReportViewer, ByVal reportDocument As ReportDocument)
         'Get SQL Server Details
@@ -304,27 +281,7 @@ Module GlobalVariables
         CrystalReportViewer.Refresh()
     End Sub
 
-    Public Function GenerateScript(code As String) As IScript
-        Using provider As New VBCodeProvider()
-            Dim parameters As New CompilerParameters()
-            parameters.GenerateInMemory = True
-            parameters.ReferencedAssemblies.Add(Assembly.GetExecutingAssembly().Location)
-            parameters.ReferencedAssemblies.Add("System.Data.dll")
-            parameters.ReferencedAssemblies.Add("System.Xml.dll")
-            Dim interfaceNamespace As String = GetType(IScript).Namespace
-            Dim codeArray() As String = New String() {"Imports " & interfaceNamespace & Environment.NewLine & code}
-            Dim results As CompilerResults = provider.CompileAssemblyFromSource(parameters, codeArray)
-            If results.Errors.HasErrors Then
-                Throw New Exception("Failed to compile script")
-            Else
-                Return CType(results.CompiledAssembly.CreateInstance("Script"), IScript)
-            End If
-        End Using
-    End Function
 
-    Public Interface IScript
-        Function DoWork() As String
-    End Interface
 
     Public Sub XFormDialog_Shown(ByVal sender As Object, ByVal e As EventArgs)
         'CType(sender, XtraDialogForm).ClientSize = New Size(1000, 1000)

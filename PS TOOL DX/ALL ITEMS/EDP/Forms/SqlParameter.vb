@@ -34,6 +34,7 @@ Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.XtraRichEdit.Services
 Imports PS_TOOL_DX.RichEditSyntaxSample
+Imports PS_TOOL_DX.VbSyntaxHighlightApp
 Imports DevExpress.XtraGrid.Views.Printing
 Imports DevExpress.XtraLayout
 Imports DevExpress.Spreadsheet
@@ -50,12 +51,7 @@ Public Class SqlParameter
     Dim ID_3_SQL_Parameters_Details As Integer = 0
     Dim ID_4_SQL_Parameters_Details As Integer = 0
 
-    Dim CrystalRepDir As String = ""
-
-    Private QueryText As String = ""
-
-    Dim rd As Date
-    Dim rdsql As String = Nothing
+    Dim Sql_ScriptType_General_1 As String = Nothing
 
     Dim SqlParameterDetailViewCaption As String = Nothing
     Dim SqlParameterSecondDetailViewCaption As String = Nothing
@@ -111,16 +107,6 @@ Public Class SqlParameter
 
         Me.PopupContainerEdit2.PopupFormMinSize = New Size(650, 500)
         Me.ALL_PopupContainerEdit.PopupFormMinSize = New Size(650, 500)
-
-        '***********************************************************************
-        '*******CRYSTAL REPORTS DIRECTORY************
-        '+++++++++++++++++++++++++++++++++++++++++++++++++++
-        OpenSqlConnections()
-        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
-        CrystalRepDir = cmd.ExecuteScalar
-        '***********************************************************************
-        CloseSqlConnections()
-
 
         Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
         Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
@@ -625,8 +611,12 @@ Public Class SqlParameter
         If Me.GridControl3.FocusedView.Name = "SQL_Parameter_Gridview" Then
 
             Dim view As GridView = DirectCast(sender, GridView)
-            SqlParameterDetailViewCaption = "SQL Parameter details for : " & view.GetFocusedRowCellValue("SQL_Parameter_Name").ToString
-            Me.SQL_Parameter_Details_GridView.ViewCaption = SqlParameterDetailViewCaption
+            Dim RowHandle As Integer = view.FocusedRowHandle
+            If view.IsNewItemRow(RowHandle) = False AndAlso view.IsFilterRow(RowHandle) = False Then
+                SqlParameterDetailViewCaption = "SQL Parameter details for : " & view.GetFocusedRowCellValue("SQL_Parameter_Name").ToString
+                Me.SQL_Parameter_Details_GridView.ViewCaption = SqlParameterDetailViewCaption
+            End If
+
         End If
     End Sub
 
@@ -652,9 +642,13 @@ Public Class SqlParameter
         If Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_GridView" Then
 
             Dim view As GridView = DirectCast(sender, GridView)
-            SqlParameterSecondDetailViewCaption = SqlParameterDetailViewCaption & " - " & view.GetFocusedRowCellValue("SQL_Name_1").ToString
-            Me.SQL_Parameter_Details_Second_GridView.ViewCaption = SqlParameterSecondDetailViewCaption
+            Dim rowhandle As Integer = view.FocusedRowHandle
+            If view.IsNewItemRow(RowHandle) = False AndAlso view.IsFilterRow(RowHandle) = False Then
+                SqlParameterSecondDetailViewCaption = SqlParameterDetailViewCaption & " - " & view.GetFocusedRowCellValue("SQL_Name_1").ToString
+                Me.SQL_Parameter_Details_Second_GridView.ViewCaption = SqlParameterSecondDetailViewCaption
+            End If
         End If
+
     End Sub
 
     Private Sub SQL_Parameter_Details_GridView_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles SQL_Parameter_Details_GridView.MasterRowExpanded
@@ -704,7 +698,7 @@ Public Class SqlParameter
     End Sub
 
     Private Sub SQL_Parameter_Details_GridView_RowClick(sender As Object, e As RowClickEventArgs) Handles SQL_Parameter_Details_GridView.RowClick
-        If SQL_Parameter_Details_GridView.IsNewItemRow(e.RowHandle) = False Then
+        If SQL_Parameter_Details_GridView.IsNewItemRow(e.RowHandle) = False AndAlso SQL_Parameter_Details_GridView.IsFilterRow(e.RowHandle) = False Then
             Dim view As GridView = DirectCast(sender, GridView)
             row1 = view.GetDataRow(view.FocusedRowHandle)
             IdRowValue = row1(0)
@@ -780,7 +774,7 @@ Public Class SqlParameter
     End Sub
 
     Private Sub SQL_Parameter_Details_Second_GridView_RowClick(sender As Object, e As RowClickEventArgs) Handles SQL_Parameter_Details_Second_GridView.RowClick
-        If SQL_Parameter_Details_Second_GridView.IsNewItemRow(e.RowHandle) = False Then
+        If SQL_Parameter_Details_Second_GridView.IsNewItemRow(e.RowHandle) = False AndAlso SQL_Parameter_Details_Second_GridView.IsFilterRow(e.RowHandle) = False Then
             Dim view As GridView = DirectCast(sender, GridView)
             row1 = view.GetDataRow(view.FocusedRowHandle)
             IdRowValueSecond = row1(0)
@@ -804,7 +798,7 @@ Public Class SqlParameter
     End Sub
 
     Private Sub SQL_Parameter_Details_Third_GridView_RowClick(sender As Object, e As RowClickEventArgs) Handles SQL_Parameter_Details_Third_GridView.RowClick
-        If SQL_Parameter_Details_Second_GridView.IsNewItemRow(e.RowHandle) = False Then
+        If SQL_Parameter_Details_Second_GridView.IsNewItemRow(e.RowHandle) = False AndAlso SQL_Parameter_Details_Second_GridView.IsFilterRow(e.RowHandle) = False Then
             Dim view As GridView = DirectCast(sender, GridView)
             row1 = view.GetDataRow(view.FocusedRowHandle)
             IdRowValueThird = row1(0)
@@ -828,7 +822,11 @@ Public Class SqlParameter
     End Sub
 
     Private Sub PopupContainerEdit2_QueryPopUp(sender As Object, e As CancelEventArgs) Handles PopupContainerEdit2.QueryPopUp
-        RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
+        If Sql_ScriptType_General_1 = "VB" Then
+            RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New VbSyntaxHighlightService(RichEditControl1, RichEditControl1.Document))
+        Else
+            RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
+        End If
         Dim editor As BaseEdit = DirectCast(sender, BaseEdit)
         RichEditControl1.Document.Text = editor.EditValue.ToString()
         Me.RichEditControl1.Document.DefaultCharacterProperties.FontName = "Consolas"
@@ -843,12 +841,20 @@ Public Class SqlParameter
 
     Private Sub RichEditControl1_TextChanged(sender As Object, e As EventArgs)
         If Me.RichEditControl1.Text <> "" Then
-            RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
+            If Sql_ScriptType_General_1 = "VB" Then
+                RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New VbSyntaxHighlightService(RichEditControl1, RichEditControl1.Document))
+            Else
+                RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
+            End If
         End If
     End Sub
 
     Private Sub RichEditControl1_GotFocus(sender As Object, e As EventArgs)
-        RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
+        If Sql_ScriptType_General_1 = "VB" Then
+            RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New VbSyntaxHighlightService(RichEditControl1, RichEditControl1.Document))
+        Else
+            RichEditControl1.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl1.Document))
+        End If
         Me.RichEditControl1.Document.DefaultCharacterProperties.FontName = "Consolas"
         Me.RichEditControl1.Document.DefaultCharacterProperties.FontSize = 9
     End Sub
@@ -889,13 +895,20 @@ Public Class SqlParameter
 
             Dim menuItem_DisplayAll As New DevExpress.Utils.Menu.DXMenuItem("DISPLAY ALL COLUMNS", New EventHandler(AddressOf MyMenuItem_DisplayAll_B), ImageCollection1.Images.Item(9))
             Dim menuItem_DisplayDefault As New DevExpress.Utils.Menu.DXMenuItem("DISPLAY DEFAULT COLUMNS", New EventHandler(AddressOf MyMenuItem_DisplayDefault_B), ImageCollection1.Images.Item(10))
+            Dim menuItem_EnablePreview As New DevExpress.Utils.Menu.DXMenuItem("ENABLE PREVIEW", New EventHandler(AddressOf MyMenuItem_EnablePreview_B), ImageCollection1.Images(5))
+            Dim menuItem_DisablePreview As New DevExpress.Utils.Menu.DXMenuItem("DISABLE PREVIEW", New EventHandler(AddressOf MyMenuItem_DisablePreview_B), ImageCollection1.Images(6))
 
             menuItem_DisplayAll.Tag = e.Menu
+            menuItem_DisplayAll.BeginGroup = True
             menuItem_DisplayDefault.Tag = e.Menu
+            menuItem_EnablePreview.Tag = e.Menu
+            menuItem_EnablePreview.BeginGroup = True
+            menuItem_DisablePreview.Tag = e.Menu
 
             ColumnMenu.Items.Add(menuItem_DisplayAll)
             ColumnMenu.Items.Add(menuItem_DisplayDefault)
-
+            ColumnMenu.Items.Add(menuItem_EnablePreview)
+            ColumnMenu.Items.Add(menuItem_DisablePreview)
         End If
 
         Dim view As GridView = TryCast(sender, GridView)
@@ -925,8 +938,12 @@ Public Class SqlParameter
         SQL_Parameter_Details_GridView.Columns("SQL_Float_2").VisibleIndex = 10
         SQL_Parameter_Details_GridView.Columns("SQL_Float_3").VisibleIndex = 11
         SQL_Parameter_Details_GridView.Columns("SQL_Float_4").VisibleIndex = 12
-        SQL_Parameter_Details_GridView.Columns("SQL_Date1").VisibleIndex = 13
-        SQL_Parameter_Details_GridView.Columns("SQL_Date2").VisibleIndex = 14
+        SQL_Parameter_Details_GridView.Columns("SQL_ScriptType_1").VisibleIndex = 13
+        SQL_Parameter_Details_GridView.Columns("SQL_ScriptType_2").VisibleIndex = 14
+        SQL_Parameter_Details_GridView.Columns("SQL_ScriptType_3").VisibleIndex = 15
+        SQL_Parameter_Details_GridView.Columns("SQL_ScriptType_4").VisibleIndex = 16
+        SQL_Parameter_Details_GridView.Columns("SQL_Date1").VisibleIndex = 17
+        SQL_Parameter_Details_GridView.Columns("SQL_Date2").VisibleIndex = 18
         SQL_Parameter_Details_GridView.BestFitColumns()
 
     End Sub
@@ -939,6 +956,7 @@ Public Class SqlParameter
         Next
         SQL_Parameter_Details_GridView.Columns("SQL_Float_1").VisibleIndex = 0
         SQL_Parameter_Details_GridView.Columns("SQL_Name_1").VisibleIndex = 1
+        SQL_Parameter_Details_GridView.Columns("SQL_ScriptType_1").VisibleIndex = 2
         SQL_Parameter_Details_GridView.Columns("SQL_Command_1").VisibleIndex = 3
         SQL_Parameter_Details_GridView.Columns("Status").VisibleIndex = 4
         SQL_Parameter_Details_GridView.Columns("SQL_Date1").VisibleIndex = 5
@@ -947,6 +965,13 @@ Public Class SqlParameter
 
     End Sub
 
+    Private Sub MyMenuItem_EnablePreview_B(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        SQL_Parameter_Details_GridView.OptionsView.ShowPreview = True
+    End Sub
+
+    Private Sub MyMenuItem_DisablePreview_B(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        SQL_Parameter_Details_GridView.OptionsView.ShowPreview = False
+    End Sub
 
     Private Sub SQL_Parameter_Details_Second_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_Second_GridView.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
@@ -954,12 +979,20 @@ Public Class SqlParameter
 
             Dim menuItem_DisplayAll As New DevExpress.Utils.Menu.DXMenuItem("DISPLAY ALL COLUMNS", New EventHandler(AddressOf MyMenuItem_DisplayAll_C), ImageCollection1.Images.Item(9))
             Dim menuItem_DisplayDefault As New DevExpress.Utils.Menu.DXMenuItem("DISPLAY DEFAULT COLUMNS", New EventHandler(AddressOf MyMenuItem_DisplayDefault_C), ImageCollection1.Images.Item(10))
+            Dim menuItem_EnablePreview As New DevExpress.Utils.Menu.DXMenuItem("ENABLE PREVIEW", New EventHandler(AddressOf MyMenuItem_EnablePreview_C), ImageCollection1.Images(5))
+            Dim menuItem_DisablePreview As New DevExpress.Utils.Menu.DXMenuItem("DISABLE PREVIEW", New EventHandler(AddressOf MyMenuItem_DisablePreview_C), ImageCollection1.Images(6))
 
             menuItem_DisplayAll.Tag = e.Menu
+            menuItem_DisplayAll.BeginGroup = True
             menuItem_DisplayDefault.Tag = e.Menu
+            menuItem_EnablePreview.Tag = e.Menu
+            menuItem_EnablePreview.BeginGroup = True
+            menuItem_DisablePreview.Tag = e.Menu
 
             ColumnMenu.Items.Add(menuItem_DisplayAll)
             ColumnMenu.Items.Add(menuItem_DisplayDefault)
+            ColumnMenu.Items.Add(menuItem_EnablePreview)
+            ColumnMenu.Items.Add(menuItem_DisablePreview)
 
         End If
 
@@ -990,8 +1023,12 @@ Public Class SqlParameter
         SQL_Parameter_Details_Second_GridView.Columns("SQL_Float_2").VisibleIndex = 10
         SQL_Parameter_Details_Second_GridView.Columns("SQL_Float_3").VisibleIndex = 11
         SQL_Parameter_Details_Second_GridView.Columns("SQL_Float_4").VisibleIndex = 12
-        SQL_Parameter_Details_Second_GridView.Columns("SQL_Date1").VisibleIndex = 13
-        SQL_Parameter_Details_Second_GridView.Columns("SQL_Date2").VisibleIndex = 14
+        SQL_Parameter_Details_Second_GridView.Columns("SQL_ScriptType_1").VisibleIndex = 13
+        SQL_Parameter_Details_Second_GridView.Columns("SQL_ScriptType_2").VisibleIndex = 14
+        SQL_Parameter_Details_Second_GridView.Columns("SQL_ScriptType_3").VisibleIndex = 15
+        SQL_Parameter_Details_Second_GridView.Columns("SQL_ScriptType_4").VisibleIndex = 16
+        SQL_Parameter_Details_Second_GridView.Columns("SQL_Date1").VisibleIndex = 17
+        SQL_Parameter_Details_Second_GridView.Columns("SQL_Date2").VisibleIndex = 18
 
 
     End Sub
@@ -1003,6 +1040,7 @@ Public Class SqlParameter
         Next
         SQL_Parameter_Details_Second_GridView.Columns("SQL_Float_1").VisibleIndex = 0
         SQL_Parameter_Details_Second_GridView.Columns("SQL_Name_1").VisibleIndex = 1
+        SQL_Parameter_Details_Second_GridView.Columns("SQL_ScriptType_1").VisibleIndex = 2
         SQL_Parameter_Details_Second_GridView.Columns("SQL_Command_1").VisibleIndex = 3
         SQL_Parameter_Details_Second_GridView.Columns("Status").VisibleIndex = 4
         SQL_Parameter_Details_Second_GridView.Columns("SQL_Date1").VisibleIndex = 5
@@ -1011,18 +1049,35 @@ Public Class SqlParameter
 
     End Sub
 
+    Private Sub MyMenuItem_EnablePreview_C(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        SQL_Parameter_Details_Second_GridView.OptionsView.ShowPreview = True
+    End Sub
+
+    Private Sub MyMenuItem_DisablePreview_C(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        SQL_Parameter_Details_Second_GridView.OptionsView.ShowPreview = False
+    End Sub
+
     Private Sub SQL_Parameter_Details_Third_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles SQL_Parameter_Details_Third_GridView.PopupMenuShowing
         If e.MenuType = GridMenuType.Column Then
             Dim ColumnMenu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = CType(e.Menu, DevExpress.XtraGrid.Menu.GridViewColumnMenu)
 
             Dim menuItem_DisplayAll As New DevExpress.Utils.Menu.DXMenuItem("DISPLAY ALL COLUMNS", New EventHandler(AddressOf MyMenuItem_DisplayAll_D), ImageCollection1.Images.Item(9))
             Dim menuItem_DisplayDefault As New DevExpress.Utils.Menu.DXMenuItem("DISPLAY DEFAULT COLUMNS", New EventHandler(AddressOf MyMenuItem_DisplayDefault_D), ImageCollection1.Images.Item(10))
+            Dim menuItem_EnablePreview As New DevExpress.Utils.Menu.DXMenuItem("ENABLE PREVIEW", New EventHandler(AddressOf MyMenuItem_EnablePreview_D), ImageCollection1.Images(5))
+            Dim menuItem_DisablePreview As New DevExpress.Utils.Menu.DXMenuItem("DISABLE PREVIEW", New EventHandler(AddressOf MyMenuItem_DisablePreview_D), ImageCollection1.Images(6))
+
 
             menuItem_DisplayAll.Tag = e.Menu
+            menuItem_DisplayAll.BeginGroup = True
             menuItem_DisplayDefault.Tag = e.Menu
+            menuItem_EnablePreview.Tag = e.Menu
+            menuItem_EnablePreview.BeginGroup = True
+            menuItem_DisablePreview.Tag = e.Menu
 
             ColumnMenu.Items.Add(menuItem_DisplayAll)
             ColumnMenu.Items.Add(menuItem_DisplayDefault)
+            ColumnMenu.Items.Add(menuItem_EnablePreview)
+            ColumnMenu.Items.Add(menuItem_DisablePreview)
 
         End If
 
@@ -1053,8 +1108,12 @@ Public Class SqlParameter
         SQL_Parameter_Details_Third_GridView.Columns("SQL_Float_2").VisibleIndex = 10
         SQL_Parameter_Details_Third_GridView.Columns("SQL_Float_3").VisibleIndex = 11
         SQL_Parameter_Details_Third_GridView.Columns("SQL_Float_4").VisibleIndex = 12
-        SQL_Parameter_Details_Third_GridView.Columns("SQL_Date1").VisibleIndex = 13
-        SQL_Parameter_Details_Third_GridView.Columns("SQL_Date2").VisibleIndex = 14
+        SQL_Parameter_Details_Third_GridView.Columns("SQL_ScriptType_1").VisibleIndex = 13
+        SQL_Parameter_Details_Third_GridView.Columns("SQL_ScriptType_2").VisibleIndex = 14
+        SQL_Parameter_Details_Third_GridView.Columns("SQL_ScriptType_3").VisibleIndex = 15
+        SQL_Parameter_Details_Third_GridView.Columns("SQL_ScriptType_4").VisibleIndex = 16
+        SQL_Parameter_Details_Third_GridView.Columns("SQL_Date1").VisibleIndex = 17
+        SQL_Parameter_Details_Third_GridView.Columns("SQL_Date2").VisibleIndex = 18
 
 
     End Sub
@@ -1066,6 +1125,7 @@ Public Class SqlParameter
         Next
         SQL_Parameter_Details_Third_GridView.Columns("SQL_Float_1").VisibleIndex = 0
         SQL_Parameter_Details_Third_GridView.Columns("SQL_Name_1").VisibleIndex = 1
+        SQL_Parameter_Details_Third_GridView.Columns("SQL_ScriptType_1").VisibleIndex = 2
         SQL_Parameter_Details_Third_GridView.Columns("SQL_Command_1").VisibleIndex = 3
         SQL_Parameter_Details_Third_GridView.Columns("Status").VisibleIndex = 4
         SQL_Parameter_Details_Third_GridView.Columns("SQL_Date1").VisibleIndex = 5
@@ -1074,13 +1134,19 @@ Public Class SqlParameter
 
     End Sub
 
+    Private Sub MyMenuItem_EnablePreview_D(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        SQL_Parameter_Details_Third_GridView.OptionsView.ShowPreview = True
+    End Sub
 
+    Private Sub MyMenuItem_DisablePreview_D(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        SQL_Parameter_Details_Third_GridView.OptionsView.ShowPreview = False
+    End Sub
 
     Private Sub SQL_Parameter_Gridview_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles SQL_Parameter_Gridview.RowCellClick
         ID_1 = 0
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_1 = CInt(view.GetRowCellValue(rowHandle, colID))
         End If
     End Sub
@@ -1089,7 +1155,7 @@ Public Class SqlParameter
         ID_1 = 0
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle OrElse view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_1 = CInt(view.GetRowCellValue(rowHandle, colID))
         End If
     End Sub
@@ -1097,11 +1163,13 @@ Public Class SqlParameter
     Private Sub SQL_Parameter_Details_GridView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles SQL_Parameter_Details_GridView.RowCellClick
         ID_2 = 0
         ID_2_SQL_Parameters_Details = Nothing
+        Sql_ScriptType_General_1 = Nothing
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_2 = CInt(view.GetRowCellValue(rowHandle, colID))
             ID_2_SQL_Parameters_Details = CStr(view.GetRowCellValue(rowHandle, colId_SQL_Parameters))
+            Sql_ScriptType_General_1 = CStr(view.GetRowCellValue(rowHandle, colSQL_ScriptType_1))
         End If
 
     End Sub
@@ -1109,55 +1177,65 @@ Public Class SqlParameter
     Private Sub SQL_Parameter_Details_GridView_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles SQL_Parameter_Details_GridView.FocusedRowChanged
         ID_2 = 0
         ID_2_SQL_Parameters_Details = Nothing
+        Sql_ScriptType_General_1 = Nothing
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_2 = CInt(view.GetRowCellValue(rowHandle, colID))
             ID_2_SQL_Parameters_Details = CStr(view.GetRowCellValue(rowHandle, colId_SQL_Parameters))
+            Sql_ScriptType_General_1 = CStr(view.GetRowCellValue(rowHandle, colSQL_ScriptType_1))
         End If
     End Sub
 
     Private Sub SQL_Parameter_Details_Second_GridView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles SQL_Parameter_Details_Second_GridView.RowCellClick
         ID_3 = 0
         ID_3_SQL_Parameters_Details = 0
+        Sql_ScriptType_General_1 = Nothing
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_3 = CInt(view.GetRowCellValue(rowHandle, colID))
             ID_3_SQL_Parameters_Details = CInt(view.GetRowCellValue(rowHandle, colId_SQL_Parameters_Details_3))
+            Sql_ScriptType_General_1 = CStr(view.GetRowCellValue(rowHandle, colSQL_ScriptType_11))
         End If
     End Sub
 
     Private Sub SQL_Parameter_Details_Second_GridView_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles SQL_Parameter_Details_Second_GridView.FocusedRowChanged
         ID_3 = 0
         ID_3_SQL_Parameters_Details = 0
+        Sql_ScriptType_General_1 = Nothing
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_3 = CInt(view.GetRowCellValue(rowHandle, colID))
             ID_3_SQL_Parameters_Details = CInt(view.GetRowCellValue(rowHandle, colId_SQL_Parameters_Details_3))
+            Sql_ScriptType_General_1 = CStr(view.GetRowCellValue(rowHandle, colSQL_ScriptType_11))
         End If
     End Sub
 
     Private Sub SQL_Parameter_Details_Third_GridView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles SQL_Parameter_Details_Third_GridView.RowCellClick
         ID_4 = 0
         ID_4_SQL_Parameters_Details = 0
+        Sql_ScriptType_General_1 = Nothing
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_4 = CInt(view.GetRowCellValue(rowHandle, colID))
             ID_4_SQL_Parameters_Details = CInt(view.GetRowCellValue(rowHandle, colId_SQL_Parameters_Details_4))
+            Sql_ScriptType_General_1 = CStr(view.GetRowCellValue(rowHandle, colSQL_ScriptType_12))
         End If
     End Sub
 
     Private Sub SQL_Parameter_Details_Third_GridView_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles SQL_Parameter_Details_Third_GridView.FocusedRowChanged
         ID_4 = 0
         ID_4_SQL_Parameters_Details = 0
+        Sql_ScriptType_General_1 = Nothing
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_4 = CInt(view.GetRowCellValue(rowHandle, colID))
             ID_4_SQL_Parameters_Details = CInt(view.GetRowCellValue(rowHandle, colId_SQL_Parameters_Details_4))
+            Sql_ScriptType_General_1 = CStr(view.GetRowCellValue(rowHandle, colSQL_ScriptType_12))
         End If
     End Sub
 
@@ -1183,9 +1261,15 @@ Public Class SqlParameter
     End Sub
 
     Private Sub ALL_PopupContainerEdit_QueryPopUp(sender As Object, e As CancelEventArgs) Handles ALL_PopupContainerEdit.QueryPopUp
-        RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+        If Sql_ScriptType_General_1 = "VB" Then
+            RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New VbSyntaxHighlightService(RichEditControl2, RichEditControl2.Document))
+        Else
+            RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+        End If
+
         Dim editor As BaseEdit = DirectCast(sender, BaseEdit)
         RichEditControl2.Document.Text = editor.EditValue.ToString()
+
         Me.RichEditControl2.Document.DefaultCharacterProperties.FontName = "Consolas"
         Me.RichEditControl2.Document.DefaultCharacterProperties.FontSize = 9
     End Sub
@@ -1196,12 +1280,20 @@ Public Class SqlParameter
 
     Private Sub RichEditControl2_TextChanged(sender As Object, e As EventArgs)
         If Me.RichEditControl2.Text <> "" Then
-            RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+            If Sql_ScriptType_General_1 = "VB" Then
+                RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New VbSyntaxHighlightService(RichEditControl2, RichEditControl2.Document))
+            Else
+                RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+            End If
         End If
     End Sub
 
     Private Sub RichEditControl2_GotFocus(sender As Object, e As EventArgs)
-        RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+        If Sql_ScriptType_General_1 = "VB" Then
+            RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New VbSyntaxHighlightService(RichEditControl2, RichEditControl2.Document))
+        Else
+            RichEditControl2.ReplaceService(Of ISyntaxHighlightService)(New CustomSyntaxHighlightService(RichEditControl2.Document))
+        End If
         Me.RichEditControl2.Document.DefaultCharacterProperties.FontName = "Consolas"
         Me.RichEditControl2.Document.DefaultCharacterProperties.FontSize = 9
     End Sub
@@ -1255,6 +1347,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1271,6 +1367,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1303,6 +1403,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1319,6 +1423,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1364,6 +1472,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1380,6 +1492,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1451,6 +1567,10 @@ Public Class SqlParameter
                                                    ,[SQL_Command_2]
                                                    ,[SQL_Command_3]
                                                    ,[SQL_Command_4]
+                                                   ,[SQL_ScriptType_1]
+                                                   ,[SQL_ScriptType_2]
+                                                   ,[SQL_ScriptType_3]
+                                                   ,[SQL_ScriptType_4]
                                                    ,[SQL_Date1]
                                                    ,[SQL_Date2]
                                                    ,[Status]
@@ -1467,6 +1587,10 @@ Public Class SqlParameter
                                                    ,[SQL_Command_2]
                                                    ,[SQL_Command_3]
                                                    ,[SQL_Command_4]
+                                                   ,[SQL_ScriptType_1]
+                                                   ,[SQL_ScriptType_2]
+                                                   ,[SQL_ScriptType_3]
+                                                   ,[SQL_ScriptType_4]
                                                    ,[SQL_Date1]
                                                    ,[SQL_Date2]
                                                    ,[Status]
@@ -1500,6 +1624,10 @@ Public Class SqlParameter
                                                    ,[SQL_Command_2]
                                                    ,[SQL_Command_3]
                                                    ,[SQL_Command_4]
+                                                   ,[SQL_ScriptType_1]
+                                                   ,[SQL_ScriptType_2]
+                                                   ,[SQL_ScriptType_3]
+                                                   ,[SQL_ScriptType_4]
                                                    ,[SQL_Date1]
                                                    ,[SQL_Date2]
                                                    ,[Status]
@@ -1516,6 +1644,10 @@ Public Class SqlParameter
                                                    ,[SQL_Command_2]
                                                    ,[SQL_Command_3]
                                                    ,[SQL_Command_4]
+                                                   ,[SQL_ScriptType_1]
+                                                   ,[SQL_ScriptType_2]
+                                                   ,[SQL_ScriptType_3]
+                                                   ,[SQL_ScriptType_4]
                                                    ,[SQL_Date1]
                                                    ,[SQL_Date2]
                                                    ,[Status]
@@ -1587,6 +1719,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1603,6 +1739,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1909,6 +2049,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1925,6 +2069,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1957,6 +2105,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -1973,6 +2125,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2018,6 +2174,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2034,6 +2194,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2140,6 +2304,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2156,6 +2324,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2189,6 +2361,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2205,6 +2381,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2250,6 +2430,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2266,6 +2450,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2371,6 +2559,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2387,6 +2579,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2497,6 +2693,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2513,6 +2713,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2545,6 +2749,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2561,6 +2769,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2606,6 +2818,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2622,6 +2838,10 @@ Public Class SqlParameter
                                                        ,[SQL_Command_2]
                                                        ,[SQL_Command_3]
                                                        ,[SQL_Command_4]
+                                                       ,[SQL_ScriptType_1]
+                                                       ,[SQL_ScriptType_2]
+                                                       ,[SQL_ScriptType_3]
+                                                       ,[SQL_ScriptType_4]
                                                        ,[SQL_Date1]
                                                        ,[SQL_Date2]
                                                        ,[Status]
@@ -2728,6 +2948,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2744,6 +2968,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2777,6 +3005,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2793,6 +3025,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2838,6 +3074,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2854,6 +3094,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2959,6 +3203,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -2975,6 +3223,10 @@ Public Class SqlParameter
                                                            ,[SQL_Command_2]
                                                            ,[SQL_Command_3]
                                                            ,[SQL_Command_4]
+                                                           ,[SQL_ScriptType_1]
+                                                           ,[SQL_ScriptType_2]
+                                                           ,[SQL_ScriptType_3]
+                                                           ,[SQL_ScriptType_4]
                                                            ,[SQL_Date1]
                                                            ,[SQL_Date2]
                                                            ,[Status]
@@ -3447,6 +3699,10 @@ Public Class SqlParameter
                                                     ,A.[SQL_Command_2]=B.[SQL_Command_2]
                                                     ,A.[SQL_Command_3]=B.[SQL_Command_3]
                                                     ,A.[SQL_Command_4]=B.[SQL_Command_4]
+                                                    ,A.[SQL_ScriptType_1]=B.[SQL_ScriptType_1]
+                                                    ,A.[SQL_ScriptType_2]=B.[SQL_ScriptType_2]
+                                                    ,A.[SQL_ScriptType_3]=B.[SQL_ScriptType_3]
+                                                    ,A.[SQL_ScriptType_4]=B.[SQL_ScriptType_4]
                                                     ,A.[SQL_Date1]=B.[SQL_Date1]
                                                     ,A.[SQL_Date2]=B.[SQL_Date2]
                                                     ,A.[Status]=B.[Status]
@@ -3466,6 +3722,10 @@ Public Class SqlParameter
                                                     ,A.[SQL_Command_2]=B.[SQL_Command_2]
                                                     ,A.[SQL_Command_3]=B.[SQL_Command_3]
                                                     ,A.[SQL_Command_4]=B.[SQL_Command_4]
+                                                    ,A.[SQL_ScriptType_1]=B.[SQL_ScriptType_1]
+                                                    ,A.[SQL_ScriptType_2]=B.[SQL_ScriptType_2]
+                                                    ,A.[SQL_ScriptType_3]=B.[SQL_ScriptType_3]
+                                                    ,A.[SQL_ScriptType_4]=B.[SQL_ScriptType_4]
                                                     ,A.[SQL_Date1]=B.[SQL_Date1]
                                                     ,A.[SQL_Date2]=B.[SQL_Date2]
                                                     ,A.[Status]=B.[Status]
@@ -3485,6 +3745,10 @@ Public Class SqlParameter
                                                     ,A.[SQL_Command_2]=B.[SQL_Command_2]
                                                     ,A.[SQL_Command_3]=B.[SQL_Command_3]
                                                     ,A.[SQL_Command_4]=B.[SQL_Command_4]
+                                                    ,A.[SQL_ScriptType_1]=B.[SQL_ScriptType_1]
+                                                    ,A.[SQL_ScriptType_2]=B.[SQL_ScriptType_2]
+                                                    ,A.[SQL_ScriptType_3]=B.[SQL_ScriptType_3]
+                                                    ,A.[SQL_ScriptType_4]=B.[SQL_ScriptType_4]
                                                     ,A.[SQL_Date1]=B.[SQL_Date1]
                                                     ,A.[SQL_Date2]=B.[SQL_Date2]
                                                     ,A.[Status]=B.[Status]
@@ -3513,6 +3777,10 @@ Public Class SqlParameter
                                                    ,[SQL_Command_2]
                                                    ,[SQL_Command_3]
                                                    ,[SQL_Command_4]
+                                                   ,[SQL_ScriptType_1]
+                                                   ,[SQL_ScriptType_2]
+                                                   ,[SQL_ScriptType_3]
+                                                   ,[SQL_ScriptType_4]
                                                    ,[SQL_Date1]
                                                    ,[SQL_Date2]
                                                    ,[Status]
@@ -3529,6 +3797,10 @@ Public Class SqlParameter
                                                    ,[SQL_Command_2]
                                                    ,[SQL_Command_3]
                                                    ,[SQL_Command_4]
+                                                   ,[SQL_ScriptType_1]
+                                                   ,[SQL_ScriptType_2]
+                                                   ,[SQL_ScriptType_3]
+                                                   ,[SQL_ScriptType_4]
                                                    ,[SQL_Date1]
                                                    ,[SQL_Date2]
                                                    ,[Status]
@@ -3554,6 +3826,10 @@ Public Class SqlParameter
                                                    ,[SQL_Command_2]
                                                    ,[SQL_Command_3]
                                                    ,[SQL_Command_4]
+                                                   ,[SQL_ScriptType_1]
+                                                   ,[SQL_ScriptType_2]
+                                                   ,[SQL_ScriptType_3]
+                                                   ,[SQL_ScriptType_4]
                                                    ,[SQL_Date1]
                                                    ,[SQL_Date2]
                                                    ,[Status]
@@ -3570,6 +3846,10 @@ Public Class SqlParameter
                                                    ,[SQL_Command_2]
                                                    ,[SQL_Command_3]
                                                    ,[SQL_Command_4]
+                                                   ,[SQL_ScriptType_1]
+                                                   ,[SQL_ScriptType_2]
+                                                   ,[SQL_ScriptType_3]
+                                                   ,[SQL_ScriptType_4]
                                                    ,[SQL_Date1]
                                                    ,[SQL_Date2]
                                                    ,[Status]
@@ -3598,5 +3878,69 @@ Public Class SqlParameter
 
         End If
 
+    End Sub
+
+    Private Sub SQL_Parameter_Gridview_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles SQL_Parameter_Gridview.ValidateRow
+        Dim View As GridView = CType(sender, GridView)
+        If View.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastAction"), "Modification")
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
+        End If
+    End Sub
+
+    Private Sub SQL_Parameter_Details_GridView_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles SQL_Parameter_Details_GridView.ValidateRow
+        Dim View As GridView = CType(sender, GridView)
+        If View.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastAction"), "Modification")
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
+        End If
+    End Sub
+
+    Private Sub SQL_Parameter_Details_Second_GridView_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles SQL_Parameter_Details_Second_GridView.ValidateRow
+        Dim View As GridView = CType(sender, GridView)
+        If View.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastAction"), "Modification")
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
+        End If
+    End Sub
+
+    Private Sub SQL_Parameter_Details_Third_GridView_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles SQL_Parameter_Details_Third_GridView.ValidateRow
+        Dim View As GridView = CType(sender, GridView)
+        If View.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastAction"), "Modification")
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
+            View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
+        End If
+    End Sub
+
+    Private Sub SQL_Parameter_Gridview_InitNewRow(sender As Object, e As InitNewRowEventArgs) Handles SQL_Parameter_Gridview.InitNewRow
+        Dim view As GridView = CType(sender, GridView)
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastAction"), "Added")
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastUpdateUser"), CurrentUserWindowsID)
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastUpdateDate"), Now)
+    End Sub
+
+    Private Sub SQL_Parameter_Details_GridView_InitNewRow(sender As Object, e As InitNewRowEventArgs) Handles SQL_Parameter_Details_GridView.InitNewRow
+        Dim view As GridView = CType(sender, GridView)
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastAction"), "Added")
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastUpdateUser"), CurrentUserWindowsID)
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastUpdateDate"), Now)
+    End Sub
+
+    Private Sub SQL_Parameter_Details_Second_GridView_InitNewRow(sender As Object, e As InitNewRowEventArgs) Handles SQL_Parameter_Details_Second_GridView.InitNewRow
+        Dim view As GridView = CType(sender, GridView)
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastAction"), "Added")
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastUpdateUser"), CurrentUserWindowsID)
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastUpdateDate"), Now)
+    End Sub
+
+    Private Sub SQL_Parameter_Details_Third_GridView_InitNewRow(sender As Object, e As InitNewRowEventArgs) Handles SQL_Parameter_Details_Third_GridView.InitNewRow
+        Dim view As GridView = CType(sender, GridView)
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastAction"), "Added")
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastUpdateUser"), CurrentUserWindowsID)
+        view.SetRowCellValue(e.RowHandle, view.Columns("LastUpdateDate"), Now)
     End Sub
 End Class

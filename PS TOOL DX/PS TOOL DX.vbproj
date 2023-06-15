@@ -304,6 +304,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Import Include="DevExpress.Compression" />
+    <Import Include="DevExpress.Compression.Internal" />
     <Import Include="GemBox" />
     <Import Include="Microsoft.SqlServer" />
     <Import Include="Microsoft.VisualBasic" />
@@ -791,6 +793,12 @@
     <Compile Include="ALL ITEMS\EDP\Forms\DebugRuntime.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\ExecuteVbCode.designer.vb">
+      <DependentUpon>ExecuteVbCode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\ExecuteVbCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\ImportEvents.Designer.vb">
       <DependentUpon>ImportEvents.vb</DependentUpon>
     </Compile>
@@ -825,6 +833,12 @@
       <DependentUpon>RunClient.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\RunClient.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\SqlFilesCompare.designer.vb">
+      <DependentUpon>SqlFilesCompare.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\SqlFilesCompare.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\SqlParameter.Designer.vb">
@@ -1689,6 +1703,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Default\ClassUnzip.vb" />
+    <Compile Include="Default\CompileEngine.vb" />
     <Compile Include="Default\Crypto.vb" />
     <Compile Include="Default\CrystalReportsForm.Designer.vb">
       <DependentUpon>CrystalReportsForm.vb</DependentUpon>
@@ -1697,14 +1712,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Default\CustomSyntaxHighlightService.vb" />
-    <Compile Include="Default\cVBEvalProvider.vb" />
     <Compile Include="Default\DatesForm.Designer.vb">
       <DependentUpon>DatesForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Default\DatesForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Default\EvalMethod.vb" />
     <Compile Include="Default\ExcelForm.Designer.vb">
       <DependentUpon>ExcelForm.vb</DependentUpon>
     </Compile>
@@ -2074,6 +2087,9 @@
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\DebugRuntime.resx">
       <DependentUpon>DebugRuntime.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\ExecuteVbCode.resx">
+      <DependentUpon>ExecuteVbCode.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\ImportEvents.resx">
       <DependentUpon>ImportEvents.vb</DependentUpon>
     </EmbeddedResource>
@@ -2091,6 +2107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\RunClient.resx">
       <DependentUpon>RunClient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\SqlFilesCompare.resx">
+      <DependentUpon>SqlFilesCompare.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\SqlParameter.resx">
       <DependentUpon>SqlParameter.vb</DependentUpon>

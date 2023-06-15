@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("PS TOOL DX - SQL Server 2008")> 
+<Assembly: AssemblyTitle("PS TOOL DX")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("CCB Frankfurt")> 
 <Assembly: AssemblyProduct("PS TOOL DX")>
-<Assembly: AssemblyCopyright("Copyright © Paskalis 2013-2019")>
+<Assembly: AssemblyCopyright("Copyright © Paskalis 2013-2023")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.1.1.445")>
-<Assembly: AssemblyFileVersion("1.1.1.445")>
+<Assembly: AssemblyVersion("1.1.1.446")>
+<Assembly: AssemblyFileVersion("1.1.1.446")>
