@@ -397,6 +397,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_SQL_Parameters_Tree_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_SQL_Queries_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_VB_Script_Execute_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.EDP_SQL_FilesCompare_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator30 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.EDP_Audit_TOTAL_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_Audit_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -479,7 +480,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.AlertControl_NewUser_ActiveDirectory = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.AlertControl_General_Info = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.LogoImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.EDP_SQL_FilesCompare_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -3546,6 +3546,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_ODAS_Imports_Element.Name = "EDP_ODAS_Imports_Element"
         Me.EDP_ODAS_Imports_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.EDP_ODAS_Imports_Element.Text = "ODAS Imports"
+        Me.EDP_ODAS_Imports_Element.Visible = False
         '
         'EDP_OCBS_Imports_Element
         '
@@ -3703,6 +3704,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_VB_Script_Execute_Element.Name = "EDP_VB_Script_Execute_Element"
         Me.EDP_VB_Script_Execute_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.EDP_VB_Script_Execute_Element.Text = "Execute VB.NET Script"
+        '
+        'EDP_SQL_FilesCompare_Element
+        '
+        Me.EDP_SQL_FilesCompare_Element.Hint = "Excel/csv Files comparing"
+        Me.EDP_SQL_FilesCompare_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_FilesCompare_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.EDP_SQL_FilesCompare_Element.Name = "EDP_SQL_FilesCompare_Element"
+        Me.EDP_SQL_FilesCompare_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.EDP_SQL_FilesCompare_Element.Text = "Files comparing"
         '
         'AccordionControlSeparator30
         '
@@ -4588,14 +4597,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.LogoImageCollection.Images.SetKeyName(4, "login-logo-Test.png")
         Me.LogoImageCollection.Images.SetKeyName(5, "login-logo-Prod.png")
         Me.LogoImageCollection.Images.SetKeyName(6, "login-logo-Prod_ALL.png")
-        '
-        'EDP_SQL_FilesCompare_Element
-        '
-        Me.EDP_SQL_FilesCompare_Element.Hint = "Excel/csv Files comparing"
-        Me.EDP_SQL_FilesCompare_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_FilesCompare_Element.ImageOptions.Image"), System.Drawing.Image)
-        Me.EDP_SQL_FilesCompare_Element.Name = "EDP_SQL_FilesCompare_Element"
-        Me.EDP_SQL_FilesCompare_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.EDP_SQL_FilesCompare_Element.Text = "Files comparing"
         '
         'PSTOOL_MAIN_Form
         '

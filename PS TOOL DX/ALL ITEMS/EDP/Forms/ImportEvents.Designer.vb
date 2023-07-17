@@ -21,10 +21,14 @@ Partial Class ImportEvents
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ImportEvents))
-        Dim StyleFormatCondition1 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition2 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition3 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition4 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim GridFormatRule5 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression5 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression6 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule7 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression7 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule8 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression8 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
         Me.colEvent = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemMemoExEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit()
         Me.RepositoryItemMemoEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit()
@@ -52,58 +56,6 @@ Partial Class ImportEvents
         Me.RepositoryItemTextEditBIC8 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.RepositoryItemTextEditBIC3 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.RepositoryItemPopupContainerEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit()
-        Me.LayoutView1 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
-        Me.LayoutViewColumn1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colIdnr = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn2 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colTAG = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn3 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colMODIFICATIONFLAG = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn4 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colINSTITUTIONNAME = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn5 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colBRANCHINFORMATION = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn6 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colCITYHEADING = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn7 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colSUBTYPEINDICATION = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn8 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colVALUEADDEDSERVICES = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn9 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colEXTRAINFO = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn10 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPHYSICALADDRESS1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn11 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPHYSICALADDRESS2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn12 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPHYSICALADDRESS3 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn13 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPHYSICALADDRESS4 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn14 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colLOCATION = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn15 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colCOUNTRYNAME = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn16 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPOBNUMBER = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn17 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPOBLOCATION = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn18 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPOBCOUNTRYNAME = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn19 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colUSER2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn20 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colVALID = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn21 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField48 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn22 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colBIC112 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn23 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colBICCODE = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn24 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colBRANCHCODE = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn25 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colCOUNTRY = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -130,33 +82,6 @@ Partial Class ImportEvents
         CType(Me.RepositoryItemTextEditBIC8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEditBIC3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colIdnr, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colTAG, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colMODIFICATIONFLAG, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colINSTITUTIONNAME, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBRANCHINFORMATION, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colCITYHEADING, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colSUBTYPEINDICATION, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colVALUEADDEDSERVICES, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colEXTRAINFO, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPHYSICALADDRESS1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPHYSICALADDRESS2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPHYSICALADDRESS3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPHYSICALADDRESS4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colLOCATION, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colCOUNTRYNAME, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPOBNUMBER, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPOBLOCATION, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPOBCOUNTRYNAME, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colUSER2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colVALID, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField48, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBIC112, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBICCODE, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBRANCHCODE, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colCOUNTRY, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -218,13 +143,18 @@ Partial Class ImportEvents
         '
         Me.TableAdapterManager.ALL_TABLE_COLUMNSTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.BAIS_IMPORT_PROCEDURESTableAdapter = Nothing
+        Me.TableAdapterManager.BAISFORMS_IMPORT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.CLIENT_EVENTSTableAdapter = Nothing
         Me.TableAdapterManager.CURRENT_USERSTableAdapter = Nothing
+        Me.TableAdapterManager.FILES_IMPORTTableAdapter = Nothing
         Me.TableAdapterManager.IMPORT_EVENTSTableAdapter = Me.IMPORT_EVENTSTableAdapter
         Me.TableAdapterManager.MANUAL_IMPORTSTableAdapter = Nothing
         Me.TableAdapterManager.OCBS_IMPORT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.ODAS_IMPORT_PROCEDURESTableAdapter = Nothing
+        Me.TableAdapterManager.PSTOOL_CLIENT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.SQL_PARAMETER_DETAILS_SECONDTableAdapter = Nothing
+        Me.TableAdapterManager.SQL_PARAMETER_DETAILS_THIRDTableAdapter = Nothing
         Me.TableAdapterManager.SQL_PARAMETER_DETAILSTableAdapter = Nothing
         Me.TableAdapterManager.SQL_PARAMETERTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EDPDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
@@ -243,8 +173,8 @@ Partial Class ImportEvents
         'LoadImportEvents_btn
         '
         Me.LoadImportEvents_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LoadImportEvents_btn.ImageIndex = 6
-        Me.LoadImportEvents_btn.ImageList = Me.ImageCollection1
+        Me.LoadImportEvents_btn.ImageOptions.ImageIndex = 6
+        Me.LoadImportEvents_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadImportEvents_btn.Location = New System.Drawing.Point(142, 25)
         Me.LoadImportEvents_btn.Name = "LoadImportEvents_btn"
         Me.LoadImportEvents_btn.Size = New System.Drawing.Size(97, 22)
@@ -263,6 +193,9 @@ Partial Class ImportEvents
         Me.ImageCollection1.Images.SetKeyName(5, "Report.ico")
         Me.ImageCollection1.Images.SetKeyName(6, "Load.ico")
         Me.ImageCollection1.Images.SetKeyName(7, "CrystalReport.jpg")
+        Me.ImageCollection1.Images.SetKeyName(8, "apply_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(9, "error_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(10, "warning_16x16.png")
         '
         'ImportEventsDateEdit
         '
@@ -304,7 +237,7 @@ Partial Class ImportEvents
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1481, 728)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1442, 566)
         Me.LayoutControl1.TabIndex = 23
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -320,11 +253,11 @@ Partial Class ImportEvents
         'Print_Export_ImportEvents_GridView_btn
         '
         Me.Print_Export_ImportEvents_GridView_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_ImportEvents_GridView_btn.ImageIndex = 2
-        Me.Print_Export_ImportEvents_GridView_btn.ImageList = Me.ImageCollection1
+        Me.Print_Export_ImportEvents_GridView_btn.ImageOptions.ImageIndex = 2
+        Me.Print_Export_ImportEvents_GridView_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_ImportEvents_GridView_btn.Location = New System.Drawing.Point(24, 24)
         Me.Print_Export_ImportEvents_GridView_btn.Name = "Print_Export_ImportEvents_GridView_btn"
-        Me.Print_Export_ImportEvents_GridView_btn.Size = New System.Drawing.Size(164, 22)
+        Me.Print_Export_ImportEvents_GridView_btn.Size = New System.Drawing.Size(159, 22)
         Me.Print_Export_ImportEvents_GridView_btn.StyleController = Me.LayoutControl1
         Me.Print_Export_ImportEvents_GridView_btn.TabIndex = 6
         Me.Print_Export_ImportEvents_GridView_btn.Text = "Print or Export"
@@ -332,14 +265,14 @@ Partial Class ImportEvents
         'LoadEvents_btn
         '
         Me.LoadEvents_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LoadEvents_btn.ImageIndex = 6
-        Me.LoadEvents_btn.ImageList = Me.ImageCollection1
-        Me.LoadEvents_btn.Location = New System.Drawing.Point(1245, 24)
+        Me.LoadEvents_btn.ImageOptions.ImageIndex = 6
+        Me.LoadEvents_btn.ImageOptions.ImageList = Me.ImageCollection1
+        Me.LoadEvents_btn.Location = New System.Drawing.Point(1212, 24)
         Me.LoadEvents_btn.Name = "LoadEvents_btn"
-        Me.LoadEvents_btn.Size = New System.Drawing.Size(212, 22)
+        Me.LoadEvents_btn.Size = New System.Drawing.Size(206, 22)
         Me.LoadEvents_btn.StyleController = Me.LayoutControl1
         Me.LoadEvents_btn.TabIndex = 4
-        Me.LoadEvents_btn.Text = "Load Events"
+        Me.LoadEvents_btn.Text = "Load Events (F5)"
         '
         'GridControl1
         '
@@ -354,10 +287,10 @@ Partial Class ImportEvents
         Me.GridControl1.MainView = Me.ImportEvents_BasicView
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEditBIC8, Me.RepositoryItemTextEditBIC3, Me.RepositoryItemPopupContainerEdit1, Me.RepositoryItemMemoEdit1, Me.RepositoryItemMemoExEdit1})
-        Me.GridControl1.Size = New System.Drawing.Size(1457, 654)
+        Me.GridControl1.Size = New System.Drawing.Size(1418, 492)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.UseEmbeddedNavigator = True
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ImportEvents_BasicView, Me.LayoutView1})
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ImportEvents_BasicView})
         '
         'ImportEvents_BasicView
         '
@@ -368,33 +301,42 @@ Partial Class ImportEvents
         Me.ImportEvents_BasicView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.ImportEvents_BasicView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colProcDate, Me.colProcTime, Me.colEvent, Me.colProcName, Me.colSystemName})
         Me.ImportEvents_BasicView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        StyleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Red
-        StyleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.White
-        StyleFormatCondition1.Appearance.Options.UseBackColor = True
-        StyleFormatCondition1.Appearance.Options.UseForeColor = True
-        StyleFormatCondition1.ApplyToRow = True
-        StyleFormatCondition1.Column = Me.colEvent
-        StyleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition1.Expression = "StartsWith([Event], 'ERROR')"
-        StyleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition2.Appearance.Options.UseBackColor = True
-        StyleFormatCondition2.Appearance.Options.UseForeColor = True
-        StyleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition2.Expression = "[Client No] != ?"
-        StyleFormatCondition3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition3.Appearance.Options.UseBackColor = True
-        StyleFormatCondition3.Appearance.Options.UseForeColor = True
-        StyleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition3.Expression = "[Counterparty/Issuer/Collateral Name] != ?"
-        StyleFormatCondition4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition4.Appearance.Options.UseBackColor = True
-        StyleFormatCondition4.Appearance.Options.UseForeColor = True
-        StyleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition4.Expression = "[Contract Collateral ID] != ?"
-        Me.ImportEvents_BasicView.FormatConditions.AddRange(New DevExpress.XtraGrid.StyleFormatCondition() {StyleFormatCondition1, StyleFormatCondition2, StyleFormatCondition3, StyleFormatCondition4})
+        GridFormatRule5.ApplyToRow = True
+        GridFormatRule5.Column = Me.colEvent
+        GridFormatRule5.Name = "Format0"
+        FormatConditionRuleExpression5.Appearance.BackColor = System.Drawing.Color.Red
+        FormatConditionRuleExpression5.Appearance.ForeColor = System.Drawing.Color.White
+        FormatConditionRuleExpression5.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression5.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression5.Expression = "StartsWith([Event], 'ERROR')"
+        GridFormatRule5.Rule = FormatConditionRuleExpression5
+        GridFormatRule6.ApplyToRow = True
+        GridFormatRule6.Column = Me.colEvent
+        GridFormatRule6.Name = "Format1"
+        FormatConditionRuleExpression6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleExpression6.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleExpression6.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression6.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression6.Expression = "StartsWith([Event], 'WARNING')"
+        GridFormatRule6.Rule = FormatConditionRuleExpression6
+        GridFormatRule7.Name = "Format2"
+        FormatConditionRuleExpression7.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleExpression7.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleExpression7.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression7.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression7.Expression = "[Counterparty/Issuer/Collateral Name] != ?"
+        GridFormatRule7.Rule = FormatConditionRuleExpression7
+        GridFormatRule8.Name = "Format3"
+        FormatConditionRuleExpression8.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleExpression8.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleExpression8.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression8.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression8.Expression = "[Contract Collateral ID] != ?"
+        GridFormatRule8.Rule = FormatConditionRuleExpression8
+        Me.ImportEvents_BasicView.FormatRules.Add(GridFormatRule5)
+        Me.ImportEvents_BasicView.FormatRules.Add(GridFormatRule6)
+        Me.ImportEvents_BasicView.FormatRules.Add(GridFormatRule7)
+        Me.ImportEvents_BasicView.FormatRules.Add(GridFormatRule8)
         Me.ImportEvents_BasicView.GridControl = Me.GridControl1
         Me.ImportEvents_BasicView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit Outstanding (EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditOutstandingAmountEUR", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit Risk Amount(EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCredit Risk Amount(EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CreditRiskAmountEUREquER45", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditRiskAmountEUREquER45", Nothing, "{0:n2}")})
         Me.ImportEvents_BasicView.Name = "ImportEvents_BasicView"
@@ -409,6 +351,7 @@ Partial Class ImportEvents
         Me.ImportEvents_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.ImportEvents_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.ImportEvents_BasicView.OptionsView.ShowFooter = True
+        Me.ImportEvents_BasicView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -557,482 +500,6 @@ Partial Class ImportEvents
         Me.RepositoryItemPopupContainerEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemPopupContainerEdit1.Name = "RepositoryItemPopupContainerEdit1"
         '
-        'LayoutView1
-        '
-        Me.LayoutView1.CardMinSize = New System.Drawing.Size(547, 549)
-        Me.LayoutView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.LayoutViewColumn1, Me.LayoutViewColumn2, Me.LayoutViewColumn3, Me.LayoutViewColumn4, Me.LayoutViewColumn5, Me.LayoutViewColumn6, Me.LayoutViewColumn7, Me.LayoutViewColumn8, Me.LayoutViewColumn9, Me.LayoutViewColumn10, Me.LayoutViewColumn11, Me.LayoutViewColumn12, Me.LayoutViewColumn13, Me.LayoutViewColumn14, Me.LayoutViewColumn15, Me.LayoutViewColumn16, Me.LayoutViewColumn17, Me.LayoutViewColumn18, Me.LayoutViewColumn19, Me.LayoutViewColumn20, Me.LayoutViewColumn21, Me.LayoutViewColumn22, Me.LayoutViewColumn23, Me.LayoutViewColumn24, Me.LayoutViewColumn25})
-        Me.LayoutView1.GridControl = Me.GridControl1
-        Me.LayoutView1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colBIC112, Me.LayoutViewField48, Me.layoutViewField_colUSER2})
-        Me.LayoutView1.Name = "LayoutView1"
-        Me.LayoutView1.OptionsBehavior.AllowRuntimeCustomization = False
-        Me.LayoutView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused
-        Me.LayoutView1.OptionsBehavior.ScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never
-        Me.LayoutView1.OptionsCarouselMode.StretchCardToViewHeight = True
-        Me.LayoutView1.OptionsCarouselMode.StretchCardToViewWidth = True
-        Me.LayoutView1.OptionsCustomization.AllowFilter = False
-        Me.LayoutView1.OptionsCustomization.AllowSort = False
-        Me.LayoutView1.OptionsCustomization.ShowGroupLayoutTreeView = False
-        Me.LayoutView1.OptionsCustomization.ShowGroupView = False
-        Me.LayoutView1.OptionsCustomization.ShowResetShrinkButtons = False
-        Me.LayoutView1.OptionsCustomization.ShowSaveLoadLayoutButtons = False
-        Me.LayoutView1.OptionsFilter.AllowColumnMRUFilterList = False
-        Me.LayoutView1.OptionsHeaderPanel.EnableCarouselModeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.EnableCustomizeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.EnableMultiColumnModeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.EnableMultiRowModeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.ShowCarouselModeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.ShowColumnModeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.ShowCustomizeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.ShowMultiColumnModeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.ShowMultiRowModeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.ShowRowModeButton = False
-        Me.LayoutView1.OptionsHeaderPanel.ShowSingleModeButton = False
-        Me.LayoutView1.OptionsMultiRecordMode.StretchCardToViewHeight = True
-        Me.LayoutView1.OptionsMultiRecordMode.StretchCardToViewWidth = True
-        Me.LayoutView1.OptionsPrint.PrintSelectedCardsOnly = True
-        Me.LayoutView1.OptionsSingleRecordMode.StretchCardToViewHeight = True
-        Me.LayoutView1.OptionsSingleRecordMode.StretchCardToViewWidth = True
-        Me.LayoutView1.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
-        Me.LayoutView1.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.LayoutViewColumn1, DevExpress.Data.ColumnSortOrder.Ascending)})
-        Me.LayoutView1.TemplateCard = Me.LayoutViewCard1
-        '
-        'LayoutViewColumn1
-        '
-        Me.LayoutViewColumn1.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn1.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn1.FieldName = "Idnr"
-        Me.LayoutViewColumn1.LayoutViewField = Me.layoutViewField_colIdnr
-        Me.LayoutViewColumn1.Name = "LayoutViewColumn1"
-        Me.LayoutViewColumn1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colIdnr
-        '
-        Me.layoutViewField_colIdnr.EditorPreferredWidth = 86
-        Me.layoutViewField_colIdnr.Location = New System.Drawing.Point(0, 80)
-        Me.layoutViewField_colIdnr.Name = "layoutViewField_colIdnr"
-        Me.layoutViewField_colIdnr.Size = New System.Drawing.Size(206, 63)
-        Me.layoutViewField_colIdnr.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn2
-        '
-        Me.LayoutViewColumn2.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn2.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn2.FieldName = "TAG"
-        Me.LayoutViewColumn2.LayoutViewField = Me.layoutViewField_colTAG
-        Me.LayoutViewColumn2.Name = "LayoutViewColumn2"
-        '
-        'layoutViewField_colTAG
-        '
-        Me.layoutViewField_colTAG.EditorPreferredWidth = 383
-        Me.layoutViewField_colTAG.Location = New System.Drawing.Point(0, 40)
-        Me.layoutViewField_colTAG.Name = "layoutViewField_colTAG"
-        Me.layoutViewField_colTAG.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colTAG.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn3
-        '
-        Me.LayoutViewColumn3.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn3.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn3.FieldName = "MODIFICATION FLAG"
-        Me.LayoutViewColumn3.LayoutViewField = Me.layoutViewField_colMODIFICATIONFLAG
-        Me.LayoutViewColumn3.Name = "LayoutViewColumn3"
-        '
-        'layoutViewField_colMODIFICATIONFLAG
-        '
-        Me.layoutViewField_colMODIFICATIONFLAG.EditorPreferredWidth = 383
-        Me.layoutViewField_colMODIFICATIONFLAG.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colMODIFICATIONFLAG.Name = "layoutViewField_colMODIFICATIONFLAG"
-        Me.layoutViewField_colMODIFICATIONFLAG.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colMODIFICATIONFLAG.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn4
-        '
-        Me.LayoutViewColumn4.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn4.AppearanceCell.ForeColor = System.Drawing.Color.Blue
-        Me.LayoutViewColumn4.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn4.AppearanceCell.Options.UseForeColor = True
-        Me.LayoutViewColumn4.ColumnEdit = Me.RepositoryItemTextEdit1
-        Me.LayoutViewColumn4.FieldName = "INSTITUTION NAME"
-        Me.LayoutViewColumn4.LayoutViewField = Me.layoutViewField_colINSTITUTIONNAME
-        Me.LayoutViewColumn4.Name = "LayoutViewColumn4"
-        '
-        'layoutViewField_colINSTITUTIONNAME
-        '
-        Me.layoutViewField_colINSTITUTIONNAME.EditorPreferredWidth = 371
-        Me.layoutViewField_colINSTITUTIONNAME.Location = New System.Drawing.Point(0, 40)
-        Me.layoutViewField_colINSTITUTIONNAME.Name = "layoutViewField_colINSTITUTIONNAME"
-        Me.layoutViewField_colINSTITUTIONNAME.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colINSTITUTIONNAME.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn5
-        '
-        Me.LayoutViewColumn5.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn5.AppearanceCell.ForeColor = System.Drawing.Color.Blue
-        Me.LayoutViewColumn5.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn5.AppearanceCell.Options.UseForeColor = True
-        Me.LayoutViewColumn5.FieldName = "BRANCH INFORMATION"
-        Me.LayoutViewColumn5.LayoutViewField = Me.layoutViewField_colBRANCHINFORMATION
-        Me.LayoutViewColumn5.Name = "LayoutViewColumn5"
-        '
-        'layoutViewField_colBRANCHINFORMATION
-        '
-        Me.layoutViewField_colBRANCHINFORMATION.EditorPreferredWidth = 371
-        Me.layoutViewField_colBRANCHINFORMATION.Location = New System.Drawing.Point(0, 60)
-        Me.layoutViewField_colBRANCHINFORMATION.Name = "layoutViewField_colBRANCHINFORMATION"
-        Me.layoutViewField_colBRANCHINFORMATION.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colBRANCHINFORMATION.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn6
-        '
-        Me.LayoutViewColumn6.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn6.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn6.FieldName = "CITY HEADING"
-        Me.LayoutViewColumn6.LayoutViewField = Me.layoutViewField_colCITYHEADING
-        Me.LayoutViewColumn6.Name = "LayoutViewColumn6"
-        '
-        'layoutViewField_colCITYHEADING
-        '
-        Me.layoutViewField_colCITYHEADING.EditorPreferredWidth = 371
-        Me.layoutViewField_colCITYHEADING.Location = New System.Drawing.Point(0, 80)
-        Me.layoutViewField_colCITYHEADING.Name = "layoutViewField_colCITYHEADING"
-        Me.layoutViewField_colCITYHEADING.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colCITYHEADING.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn7
-        '
-        Me.LayoutViewColumn7.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn7.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn7.FieldName = "SUBTYPE INDICATION"
-        Me.LayoutViewColumn7.LayoutViewField = Me.layoutViewField_colSUBTYPEINDICATION
-        Me.LayoutViewColumn7.Name = "LayoutViewColumn7"
-        '
-        'layoutViewField_colSUBTYPEINDICATION
-        '
-        Me.layoutViewField_colSUBTYPEINDICATION.EditorPreferredWidth = 86
-        Me.layoutViewField_colSUBTYPEINDICATION.Location = New System.Drawing.Point(0, 60)
-        Me.layoutViewField_colSUBTYPEINDICATION.Name = "layoutViewField_colSUBTYPEINDICATION"
-        Me.layoutViewField_colSUBTYPEINDICATION.Size = New System.Drawing.Size(206, 20)
-        Me.layoutViewField_colSUBTYPEINDICATION.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn8
-        '
-        Me.LayoutViewColumn8.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn8.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn8.FieldName = "VALUE ADDED SERVICES"
-        Me.LayoutViewColumn8.LayoutViewField = Me.layoutViewField_colVALUEADDEDSERVICES
-        Me.LayoutViewColumn8.Name = "LayoutViewColumn8"
-        '
-        'layoutViewField_colVALUEADDEDSERVICES
-        '
-        Me.layoutViewField_colVALUEADDEDSERVICES.EditorPreferredWidth = 371
-        Me.layoutViewField_colVALUEADDEDSERVICES.Location = New System.Drawing.Point(0, 120)
-        Me.layoutViewField_colVALUEADDEDSERVICES.Name = "layoutViewField_colVALUEADDEDSERVICES"
-        Me.layoutViewField_colVALUEADDEDSERVICES.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colVALUEADDEDSERVICES.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn9
-        '
-        Me.LayoutViewColumn9.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn9.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn9.FieldName = "EXTRA INFO"
-        Me.LayoutViewColumn9.LayoutViewField = Me.layoutViewField_colEXTRAINFO
-        Me.LayoutViewColumn9.Name = "LayoutViewColumn9"
-        '
-        'layoutViewField_colEXTRAINFO
-        '
-        Me.layoutViewField_colEXTRAINFO.EditorPreferredWidth = 383
-        Me.layoutViewField_colEXTRAINFO.Location = New System.Drawing.Point(0, 20)
-        Me.layoutViewField_colEXTRAINFO.Name = "layoutViewField_colEXTRAINFO"
-        Me.layoutViewField_colEXTRAINFO.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colEXTRAINFO.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn10
-        '
-        Me.LayoutViewColumn10.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn10.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn10.FieldName = "PHYSICAL ADDRESS 1"
-        Me.LayoutViewColumn10.LayoutViewField = Me.layoutViewField_colPHYSICALADDRESS1
-        Me.LayoutViewColumn10.Name = "LayoutViewColumn10"
-        '
-        'layoutViewField_colPHYSICALADDRESS1
-        '
-        Me.layoutViewField_colPHYSICALADDRESS1.EditorPreferredWidth = 384
-        Me.layoutViewField_colPHYSICALADDRESS1.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colPHYSICALADDRESS1.Name = "layoutViewField_colPHYSICALADDRESS1"
-        Me.layoutViewField_colPHYSICALADDRESS1.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colPHYSICALADDRESS1.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn11
-        '
-        Me.LayoutViewColumn11.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn11.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn11.FieldName = "PHYSICAL ADDRESS 2"
-        Me.LayoutViewColumn11.LayoutViewField = Me.layoutViewField_colPHYSICALADDRESS2
-        Me.LayoutViewColumn11.Name = "LayoutViewColumn11"
-        '
-        'layoutViewField_colPHYSICALADDRESS2
-        '
-        Me.layoutViewField_colPHYSICALADDRESS2.EditorPreferredWidth = 384
-        Me.layoutViewField_colPHYSICALADDRESS2.Location = New System.Drawing.Point(0, 20)
-        Me.layoutViewField_colPHYSICALADDRESS2.Name = "layoutViewField_colPHYSICALADDRESS2"
-        Me.layoutViewField_colPHYSICALADDRESS2.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colPHYSICALADDRESS2.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn12
-        '
-        Me.LayoutViewColumn12.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn12.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn12.FieldName = "PHYSICAL ADDRESS 3"
-        Me.LayoutViewColumn12.LayoutViewField = Me.layoutViewField_colPHYSICALADDRESS3
-        Me.LayoutViewColumn12.Name = "LayoutViewColumn12"
-        '
-        'layoutViewField_colPHYSICALADDRESS3
-        '
-        Me.layoutViewField_colPHYSICALADDRESS3.EditorPreferredWidth = 384
-        Me.layoutViewField_colPHYSICALADDRESS3.Location = New System.Drawing.Point(0, 40)
-        Me.layoutViewField_colPHYSICALADDRESS3.Name = "layoutViewField_colPHYSICALADDRESS3"
-        Me.layoutViewField_colPHYSICALADDRESS3.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colPHYSICALADDRESS3.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn13
-        '
-        Me.LayoutViewColumn13.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn13.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn13.FieldName = "PHYSICAL ADDRESS 4"
-        Me.LayoutViewColumn13.LayoutViewField = Me.layoutViewField_colPHYSICALADDRESS4
-        Me.LayoutViewColumn13.Name = "LayoutViewColumn13"
-        '
-        'layoutViewField_colPHYSICALADDRESS4
-        '
-        Me.layoutViewField_colPHYSICALADDRESS4.EditorPreferredWidth = 384
-        Me.layoutViewField_colPHYSICALADDRESS4.Location = New System.Drawing.Point(0, 60)
-        Me.layoutViewField_colPHYSICALADDRESS4.Name = "layoutViewField_colPHYSICALADDRESS4"
-        Me.layoutViewField_colPHYSICALADDRESS4.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colPHYSICALADDRESS4.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn14
-        '
-        Me.LayoutViewColumn14.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn14.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn14.FieldName = "LOCATION"
-        Me.LayoutViewColumn14.LayoutViewField = Me.layoutViewField_colLOCATION
-        Me.LayoutViewColumn14.Name = "LayoutViewColumn14"
-        '
-        'layoutViewField_colLOCATION
-        '
-        Me.layoutViewField_colLOCATION.EditorPreferredWidth = 384
-        Me.layoutViewField_colLOCATION.Location = New System.Drawing.Point(0, 120)
-        Me.layoutViewField_colLOCATION.Name = "layoutViewField_colLOCATION"
-        Me.layoutViewField_colLOCATION.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colLOCATION.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn15
-        '
-        Me.LayoutViewColumn15.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn15.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn15.FieldName = "COUNTRY NAME"
-        Me.LayoutViewColumn15.LayoutViewField = Me.layoutViewField_colCOUNTRYNAME
-        Me.LayoutViewColumn15.Name = "LayoutViewColumn15"
-        '
-        'layoutViewField_colCOUNTRYNAME
-        '
-        Me.layoutViewField_colCOUNTRYNAME.EditorPreferredWidth = 384
-        Me.layoutViewField_colCOUNTRYNAME.Location = New System.Drawing.Point(0, 80)
-        Me.layoutViewField_colCOUNTRYNAME.Name = "layoutViewField_colCOUNTRYNAME"
-        Me.layoutViewField_colCOUNTRYNAME.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colCOUNTRYNAME.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn16
-        '
-        Me.LayoutViewColumn16.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn16.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn16.FieldName = "POB NUMBER"
-        Me.LayoutViewColumn16.LayoutViewField = Me.layoutViewField_colPOBNUMBER
-        Me.LayoutViewColumn16.Name = "LayoutViewColumn16"
-        '
-        'layoutViewField_colPOBNUMBER
-        '
-        Me.layoutViewField_colPOBNUMBER.EditorPreferredWidth = 384
-        Me.layoutViewField_colPOBNUMBER.Location = New System.Drawing.Point(0, 140)
-        Me.layoutViewField_colPOBNUMBER.Name = "layoutViewField_colPOBNUMBER"
-        Me.layoutViewField_colPOBNUMBER.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colPOBNUMBER.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn17
-        '
-        Me.LayoutViewColumn17.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn17.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn17.FieldName = "POB LOCATION"
-        Me.LayoutViewColumn17.LayoutViewField = Me.layoutViewField_colPOBLOCATION
-        Me.LayoutViewColumn17.Name = "LayoutViewColumn17"
-        '
-        'layoutViewField_colPOBLOCATION
-        '
-        Me.layoutViewField_colPOBLOCATION.EditorPreferredWidth = 384
-        Me.layoutViewField_colPOBLOCATION.Location = New System.Drawing.Point(0, 160)
-        Me.layoutViewField_colPOBLOCATION.Name = "layoutViewField_colPOBLOCATION"
-        Me.layoutViewField_colPOBLOCATION.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colPOBLOCATION.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn18
-        '
-        Me.LayoutViewColumn18.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn18.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn18.FieldName = "POB COUNTRY NAME"
-        Me.LayoutViewColumn18.LayoutViewField = Me.layoutViewField_colPOBCOUNTRYNAME
-        Me.LayoutViewColumn18.Name = "LayoutViewColumn18"
-        '
-        'layoutViewField_colPOBCOUNTRYNAME
-        '
-        Me.layoutViewField_colPOBCOUNTRYNAME.EditorPreferredWidth = 384
-        Me.layoutViewField_colPOBCOUNTRYNAME.Location = New System.Drawing.Point(0, 180)
-        Me.layoutViewField_colPOBCOUNTRYNAME.Name = "layoutViewField_colPOBCOUNTRYNAME"
-        Me.layoutViewField_colPOBCOUNTRYNAME.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colPOBCOUNTRYNAME.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn19
-        '
-        Me.LayoutViewColumn19.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn19.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn19.CustomizationCaption = "USER"
-        Me.LayoutViewColumn19.FieldName = "USER"
-        Me.LayoutViewColumn19.LayoutViewField = Me.layoutViewField_colUSER2
-        Me.LayoutViewColumn19.Name = "LayoutViewColumn19"
-        Me.LayoutViewColumn19.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colUSER2
-        '
-        Me.layoutViewField_colUSER2.EditorPreferredWidth = 20
-        Me.layoutViewField_colUSER2.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colUSER2.Name = "layoutViewField_colUSER2"
-        Me.layoutViewField_colUSER2.Size = New System.Drawing.Size(527, 612)
-        Me.layoutViewField_colUSER2.TextSize = New System.Drawing.Size(133, 20)
-        '
-        'LayoutViewColumn20
-        '
-        Me.LayoutViewColumn20.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn20.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn20.ColumnEdit = Me.RepositoryItemComboBox1
-        Me.LayoutViewColumn20.FieldName = "VALID"
-        Me.LayoutViewColumn20.LayoutViewField = Me.layoutViewField_colVALID
-        Me.LayoutViewColumn20.Name = "LayoutViewColumn20"
-        '
-        'layoutViewField_colVALID
-        '
-        Me.layoutViewField_colVALID.EditorPreferredWidth = 30
-        Me.layoutViewField_colVALID.Location = New System.Drawing.Point(0, 100)
-        Me.layoutViewField_colVALID.Name = "layoutViewField_colVALID"
-        Me.layoutViewField_colVALID.Size = New System.Drawing.Size(162, 20)
-        Me.layoutViewField_colVALID.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn21
-        '
-        Me.LayoutViewColumn21.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn21.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn21.CustomizationCaption = "UNTER BEARBEITUNG VON"
-        Me.LayoutViewColumn21.FieldName = "UNTER BEARBEITUNG VON"
-        Me.LayoutViewColumn21.LayoutViewField = Me.LayoutViewField48
-        Me.LayoutViewColumn21.Name = "LayoutViewColumn21"
-        Me.LayoutViewColumn21.OptionsColumn.ReadOnly = True
-        '
-        'LayoutViewField48
-        '
-        Me.LayoutViewField48.EditorPreferredWidth = 20
-        Me.LayoutViewField48.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutViewField48.Name = "LayoutViewField48"
-        Me.LayoutViewField48.Size = New System.Drawing.Size(527, 612)
-        Me.LayoutViewField48.TextSize = New System.Drawing.Size(133, 20)
-        '
-        'LayoutViewColumn22
-        '
-        Me.LayoutViewColumn22.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn22.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn22.CustomizationCaption = "BIC11"
-        Me.LayoutViewColumn22.FieldName = "BIC11"
-        Me.LayoutViewColumn22.LayoutViewField = Me.layoutViewField_colBIC112
-        Me.LayoutViewColumn22.Name = "LayoutViewColumn22"
-        Me.LayoutViewColumn22.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colBIC112
-        '
-        Me.layoutViewField_colBIC112.EditorPreferredWidth = 20
-        Me.layoutViewField_colBIC112.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colBIC112.Name = "layoutViewField_colBIC112"
-        Me.layoutViewField_colBIC112.Size = New System.Drawing.Size(527, 612)
-        Me.layoutViewField_colBIC112.TextSize = New System.Drawing.Size(133, 20)
-        '
-        'LayoutViewColumn23
-        '
-        Me.LayoutViewColumn23.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn23.AppearanceCell.ForeColor = System.Drawing.Color.Blue
-        Me.LayoutViewColumn23.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn23.AppearanceCell.Options.UseForeColor = True
-        Me.LayoutViewColumn23.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn23.AppearanceHeader.Options.UseFont = True
-        Me.LayoutViewColumn23.ColumnEdit = Me.RepositoryItemTextEditBIC8
-        Me.LayoutViewColumn23.FieldName = "BIC CODE"
-        Me.LayoutViewColumn23.ImageIndex = 0
-        Me.LayoutViewColumn23.LayoutViewField = Me.layoutViewField_colBICCODE
-        Me.LayoutViewColumn23.Name = "LayoutViewColumn23"
-        '
-        'layoutViewField_colBICCODE
-        '
-        Me.layoutViewField_colBICCODE.EditorPreferredWidth = 93
-        Me.layoutViewField_colBICCODE.ImageIndex = 0
-        Me.layoutViewField_colBICCODE.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colBICCODE.Name = "layoutViewField_colBICCODE"
-        Me.layoutViewField_colBICCODE.Size = New System.Drawing.Size(225, 20)
-        Me.layoutViewField_colBICCODE.TextSize = New System.Drawing.Size(123, 16)
-        '
-        'LayoutViewColumn24
-        '
-        Me.LayoutViewColumn24.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn24.AppearanceCell.ForeColor = System.Drawing.Color.Blue
-        Me.LayoutViewColumn24.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn24.AppearanceCell.Options.UseForeColor = True
-        Me.LayoutViewColumn24.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn24.AppearanceHeader.Options.UseFont = True
-        Me.LayoutViewColumn24.ColumnEdit = Me.RepositoryItemTextEditBIC3
-        Me.LayoutViewColumn24.FieldName = "BRANCH CODE"
-        Me.LayoutViewColumn24.LayoutViewField = Me.layoutViewField_colBRANCHCODE
-        Me.LayoutViewColumn24.Name = "LayoutViewColumn24"
-        '
-        'layoutViewField_colBRANCHCODE
-        '
-        Me.layoutViewField_colBRANCHCODE.EditorPreferredWidth = 51
-        Me.layoutViewField_colBRANCHCODE.Location = New System.Drawing.Point(0, 20)
-        Me.layoutViewField_colBRANCHCODE.Name = "layoutViewField_colBRANCHCODE"
-        Me.layoutViewField_colBRANCHCODE.Size = New System.Drawing.Size(183, 20)
-        Me.layoutViewField_colBRANCHCODE.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn25
-        '
-        Me.LayoutViewColumn25.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn25.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn25.Caption = "COUNTRY CODE"
-        Me.LayoutViewColumn25.FieldName = "COUNTRY"
-        Me.LayoutViewColumn25.LayoutViewField = Me.layoutViewField_colCOUNTRY
-        Me.LayoutViewColumn25.Name = "LayoutViewColumn25"
-        Me.LayoutViewColumn25.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colCOUNTRY
-        '
-        Me.layoutViewField_colCOUNTRY.EditorPreferredWidth = 384
-        Me.layoutViewField_colCOUNTRY.Location = New System.Drawing.Point(0, 100)
-        Me.layoutViewField_colCOUNTRY.Name = "layoutViewField_colCOUNTRY"
-        Me.layoutViewField_colCOUNTRY.Size = New System.Drawing.Size(503, 20)
-        Me.layoutViewField_colCOUNTRY.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewCard1
-        '
-        Me.LayoutViewCard1.CaptionImageLocation = DevExpress.Utils.GroupElementLocation.BeforeText
-        Me.LayoutViewCard1.CustomizationFormText = "TemplateCard"
-        Me.LayoutViewCard1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[False]
-        Me.LayoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard1.Name = "LayoutViewCard1"
-        Me.LayoutViewCard1.OptionsItemText.TextToControlDistance = 5
-        Me.LayoutViewCard1.Text = "TemplateCard"
-        '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.PopupContainerEdit1
@@ -1048,9 +515,8 @@ Partial Class ImportEvents
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlGroup3})
-        Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1481, 728)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1442, 566)
         '
         'LayoutControlItem1
         '
@@ -1059,7 +525,7 @@ Partial Class ImportEvents
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1461, 658)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1422, 496)
         Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
@@ -1070,16 +536,16 @@ Partial Class ImportEvents
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1461, 50)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1422, 50)
         Me.LayoutControlGroup3.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.LoadEvents_btn
         Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1221, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1188, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(216, 26)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(210, 26)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
@@ -1087,9 +553,9 @@ Partial Class ImportEvents
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(168, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(163, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1053, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1025, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -1098,7 +564,7 @@ Partial Class ImportEvents
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(168, 26)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(163, 26)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -1117,12 +583,13 @@ Partial Class ImportEvents
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1481, 728)
+        Me.ClientSize = New System.Drawing.Size(1442, 566)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.LabelControl1)
         Me.Controls.Add(Me.LoadImportEvents_btn)
         Me.Controls.Add(Me.ImportEventsDateEdit)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("ImportEvents.IconOptions.Icon"), System.Drawing.Icon)
+        Me.KeyPreview = True
         Me.Name = "ImportEvents"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Import Events"
@@ -1143,33 +610,6 @@ Partial Class ImportEvents
         CType(Me.RepositoryItemTextEditBIC8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEditBIC3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemPopupContainerEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colIdnr, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colTAG, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colMODIFICATIONFLAG, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colINSTITUTIONNAME, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBRANCHINFORMATION, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colCITYHEADING, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colSUBTYPEINDICATION, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colVALUEADDEDSERVICES, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colEXTRAINFO, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPHYSICALADDRESS1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPHYSICALADDRESS2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPHYSICALADDRESS3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPHYSICALADDRESS4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colLOCATION, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colCOUNTRYNAME, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPOBNUMBER, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPOBLOCATION, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPOBCOUNTRYNAME, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colUSER2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colVALID, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField48, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBIC112, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBICCODE, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBRANCHCODE, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colCOUNTRY, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1200,58 +640,6 @@ Partial Class ImportEvents
     Friend WithEvents RepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents RepositoryItemTextEditBIC8 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents RepositoryItemTextEditBIC3 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents LayoutView1 As DevExpress.XtraGrid.Views.Layout.LayoutView
-    Friend WithEvents LayoutViewColumn1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colIdnr As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn2 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colTAG As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn3 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colMODIFICATIONFLAG As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn4 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colINSTITUTIONNAME As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn5 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colBRANCHINFORMATION As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn6 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colCITYHEADING As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn7 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colSUBTYPEINDICATION As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn8 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colVALUEADDEDSERVICES As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn9 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colEXTRAINFO As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn10 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPHYSICALADDRESS1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn11 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPHYSICALADDRESS2 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn12 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPHYSICALADDRESS3 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn13 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPHYSICALADDRESS4 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn14 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colLOCATION As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn15 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colCOUNTRYNAME As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn16 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPOBNUMBER As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn17 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPOBLOCATION As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn18 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPOBCOUNTRYNAME As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn19 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colUSER2 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn20 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colVALID As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn21 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField48 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn22 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colBIC112 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn23 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colBICCODE As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn24 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colBRANCHCODE As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn25 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colCOUNTRY As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewCard1 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem

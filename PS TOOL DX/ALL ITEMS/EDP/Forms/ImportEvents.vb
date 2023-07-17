@@ -33,12 +33,7 @@ Imports DevExpress.XtraReports.Parameters
 Imports CrystalDecisions.Shared
 Public Class ImportEvents
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
 
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
 
     Sub New()
         InitSkins()
@@ -59,19 +54,15 @@ Public Class ImportEvents
     End Sub
 
     Private Sub ImportEvents_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
-        'Get Max Date
-        'cmd.CommandText = "SELECT MAX([ProcDate]) FROM [IMPORT EVENTS]"
-        'cmd.Connection.Open()
-        'Dim MaxProcDate As Date = cmd.ExecuteScalar
-        'cmd.Connection.Close()
-        'Me.ImportEventsDateEdit.Text = MaxProcDate
-        'Me.IMPORT_EVENTSTableAdapter.FillByProcDate(Me.EDPDataSet.IMPORT_EVENTS, MaxProcDate)
 
         Me.IMPORT_EVENTSTableAdapter.Fill(Me.EDPDataSet.IMPORT_EVENTS)
 
+    End Sub
+
+    Private Sub ImportEvents_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.F5 Then
+            Me.IMPORT_EVENTSTableAdapter.Fill(Me.EDPDataSet.IMPORT_EVENTS)
+        End If
     End Sub
 
     Private Sub ImportEventsDateEdit_Click(sender As Object, e As EventArgs) Handles ImportEventsDateEdit.Click
@@ -157,5 +148,32 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
     Private Sub LoadEvents_btn_Click(sender As Object, e As EventArgs) Handles LoadEvents_btn.Click
         Me.IMPORT_EVENTSTableAdapter.Fill(Me.EDPDataSet.IMPORT_EVENTS)
     End Sub
-   
+
+    Private Sub ImportEvents_BasicView_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles ImportEvents_BasicView.CustomDrawCell
+        Dim AlertImage As Image = Me.ImageCollection1.Images.Item(10)
+        Dim OkImage As Image = Me.ImageCollection1.Images.Item(8)
+        Dim ErrorImage As Image = Me.ImageCollection1.Images.Item(9)
+        If e.Column.FieldName = "Event" And e.RowHandle >= 0 Then
+            'e.Cache.DrawImage(If(Convert.ToString(e.CellValue).StartsWith("ERROR") = True, Image1, Image2), e.Bounds.Location)
+            'e.Handled = True
+
+            e.DefaultDraw()
+
+            Dim xPos As Integer = (((e.Bounds.Location.X + e.Bounds.Width) - AlertImage.Width) - 2)
+            Dim yPos As Integer = (e.Bounds.Location.Y + 1)
+            Dim imagePoint As Point = New Point(xPos, yPos)
+
+            If Convert.ToString(e.CellValue).StartsWith("Unable") Then
+                e.Cache.DrawImage(AlertImage, imagePoint)
+            ElseIf Convert.ToString(e.CellValue).StartsWith("WARNING") Then
+                e.Cache.DrawImage(AlertImage, imagePoint)
+            ElseIf Convert.ToString(e.CellValue).StartsWith("ERROR") Then
+                e.Cache.DrawImage(ErrorImage, imagePoint)
+            Else
+                e.Cache.DrawImage(OkImage, imagePoint)
+            End If
+        End If
+    End Sub
+
+
 End Class

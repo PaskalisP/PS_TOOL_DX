@@ -1,6 +1,7 @@
 ﻿Imports System
 Imports System.IO
 Imports System.Text
+Imports System.Math
 Imports System.Collections
 Imports System.Collections.Specialized
 Imports System.ComponentModel
@@ -108,8 +109,12 @@ Namespace DynamicCompileAndRun
                                                         "Imports System.Windows.Forms",
                                                         "Imports System.Data",
                                                         "Imports System.Data.SqlClient",
+                                                        "Imports System.Math",
                                                         "Imports System.Xml",
                                                         "Imports System.Collections",
+                                                        "Imports CrystalDecisions.Shared",
+                                                        "Imports CrystalDecisions.CrystalReports.Engine",
+                                                        "Imports Microsoft.Office.Interop",
                                                         "Imports DevExpress.XtraEditors",
                                                         "Imports DevExpress.XtraLayout",
                                                         "Imports DevExpress.XtraLayout.Helpers",
@@ -213,9 +218,15 @@ Namespace DynamicCompileAndRun
             compilerParams.ReferencedAssemblies.Add("mscorlib.dll")
             compilerParams.ReferencedAssemblies.Add("System.dll")
             compilerParams.ReferencedAssemblies.Add("System.Data.dll")
+            compilerParams.ReferencedAssemblies.Add("System.Numerics.dll")
             compilerParams.ReferencedAssemblies.Add("System.Drawing.dll")
             compilerParams.ReferencedAssemblies.Add("System.Xml.dll")
             compilerParams.ReferencedAssemblies.Add("System.Windows.Forms.dll")
+            compilerParams.ReferencedAssemblies.Add("Microsoft.Office.Interop.Outlook.dll")
+            compilerParams.ReferencedAssemblies.Add("CrystalDecisions.CrystalReports.Engine.dll")
+            compilerParams.ReferencedAssemblies.Add("CrystalDecisions.ReportSource.dll")
+            compilerParams.ReferencedAssemblies.Add("CrystalDecisions.Shared.dll")
+            compilerParams.ReferencedAssemblies.Add("CrystalDecisions.Windows.Forms.dll")
             compilerParams.ReferencedAssemblies.Add("DevExpress.Dialogs.v19.2.Core.dll")
             compilerParams.ReferencedAssemblies.Add("DevExpress.XtraEditors.v19.2.dll")
             compilerParams.ReferencedAssemblies.Add("DevExpress.BonusSkins.v19.2.dll")
@@ -341,15 +352,43 @@ Namespace DynamicCompileAndRun
                     CurrentProcedureName = "VB_SCRIPT_EXECUTION"
                     CurrentSystemName = "VB_SCRIPT_EXECUTION"
                 End If
-                OpenSqlConnections()
-                cmd1.CommandText = "INSERT INTO [Events_Journal] ([ProcDate],[Event],[ProcName],[SystemName],[SystemUser]) Values(GETDATE(),@Event,@ProcName,@SystemName,@CurrentUserWindowsId)"
-                cmd1.Parameters.Add("@Event", SqlDbType.NVarChar).Value = errMsg.ToString()
-                cmd1.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
-                cmd1.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemName
-                cmd1.Parameters.Add("@CurrentUserWindowsId", SqlDbType.NVarChar).Value = CurrentUserWindowsID
-                cmd1.ExecuteNonQuery()
-                cmd1.Parameters.Clear()
-                CloseSqlConnections()
+                OpenVbScript_SqlConnection()
+                cmdVbScript.CommandText = "INSERT INTO [Events_Journal] ([ProcDate],[Event],[ProcName],[SystemName],[SystemUser]) Values(GETDATE(),@Event,@ProcName,@SystemName,@CurrentUserWindowsId)"
+                cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = errMsg.ToString()
+                cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
+                cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemName
+                cmdVbScript.Parameters.Add("@CurrentUserWindowsId", SqlDbType.NVarChar).Value = CurrentUserWindowsID
+                cmdVbScript.ExecuteNonQuery()
+                cmdVbScript.Parameters.Clear()
+                CloseVbScript_SqlConnection()
+
+                If CurrentSystemExecuting <> Nothing Then
+                    Select Case CurrentSystemExecuting
+                        Case = "PS TOOL CLIENT"
+                            OpenVbScript_SqlConnection()
+                            cmdVbScript.CommandText = "INSERT INTO [CLIENT EVENTS] ([ProcDate],[Event],[ProcName],[SystemName]) 
+                                               Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@Event,@ProcName,@SystemName)"
+                            cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
+                            cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
+                            cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemExecuting
+                            cmdVbScript.ExecuteNonQuery()
+                            cmdVbScript.Parameters.Clear()
+                            CloseVbScript_SqlConnection()
+                        Case Else
+                            OpenVbScript_SqlConnection()
+                            cmdVbScript.CommandText = "INSERT INTO [IMPORT EVENTS] ([ProcDate],[Event],[ProcName],[SystemName]) 
+                                               Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@Event,@ProcName,@SystemName)"
+                            cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
+                            cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
+                            cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemExecuting
+                            cmdVbScript.ExecuteNonQuery()
+                            cmdVbScript.Parameters.Clear()
+                            CloseVbScript_SqlConnection()
+
+                    End Select
+
+
+                End If
 
             End If
         End Sub

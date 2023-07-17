@@ -69,6 +69,21 @@ Module GlobalFunctions
         Return connEVENT
     End Function
 
+    Public Function OpenVbScript_SqlConnection() As SqlConnection
+        cmdVbScript.CommandTimeout = 60000
+        If cmdVbScript.Connection.State = ConnectionState.Closed Then
+            cmdVbScript.Connection.Open()
+        End If
+        Return connVbScript
+    End Function
+
+    Public Function CloseVbScript_SqlConnection() As SqlConnection
+        If cmdVbScript.Connection.State = ConnectionState.Open Then
+            cmdVbScript.Connection.Close()
+        End If
+        Return connVbScript
+    End Function
+
     Public Function Fileinfo_To_DataTable(ByVal directory As String) As DataTable
         Try
             'Create a new data table

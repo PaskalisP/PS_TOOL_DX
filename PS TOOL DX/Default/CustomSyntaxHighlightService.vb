@@ -32,7 +32,7 @@ Namespace RichEditSyntaxSample
                                        , "firstrow", "Firstrow", "codepage", "Codepage", "datafiletype", "Datafiletype", "fieldterminator", "Fieldterminator", "tablock", "Tablock", "keepnulls", "Keepnulls" _
                                        , "truncate", "Truncate", "TRUNCATE", "alter", "Alter", "ALTER", "add", "Add", "ADD", "case", "Case", "CASE", "when", "When", "WHEN", "then", "Then", "THEN" _
                                        , "else", "Else", "ELSE", "GROUP BY", "Group By", "group by", "ORDER BY", "Order By", "order by", "OVER", "Over", "over", "OR", "Or", "or", "LIKE", "like", "Like", "TOP", "top", "Top" _
-                                       , "distinct", "Distinct", "DISTINCT", "rank", "Rank", "RANK", "partion by", "Partition By", "PARTITION BY"}
+                                       , "distinct", "Distinct", "DISTINCT", "rank", "Rank", "RANK", "partion by", "Partition By", "PARTITION BY", "exec", "EXEC", "Exec"}
             Me._keywords = New Regex("\b(" & String.Join("|", keywords.Select(Function(w) Regex.Escape(w))) & ")\b")
             'SQL Functions
             Dim keywords_Functions() As String = {"convert", "Convert", "CONVERT", "replace", "Replace", "REPLACE", "len", "Len", "LEN", "update", "Update", "UPDATE", "max", "Max", "MAX" _

@@ -20,18 +20,21 @@ Module GlobalVariables
     Public conn2 As SqlConnection = New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
     Public connSYSTEM As SqlConnection = New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
     Public connEVENT As SqlConnection = New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+    Public connVbScript As SqlConnection = New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
 
     Public cmd As SqlCommand = New SqlCommand(Nothing, conn)
     Public cmd1 As SqlCommand = New SqlCommand(Nothing, conn1)
     Public cmd2 As SqlCommand = New SqlCommand(Nothing, conn2)
     Public cmdSYSTEM As SqlCommand = New SqlCommand(Nothing, connSYSTEM)
     Public cmdEVENT As SqlCommand = New SqlCommand(Nothing, connEVENT)
+    Public cmdVbScript As SqlCommand = New SqlCommand(Nothing, connVbScript)
 
     Public QueryText As String = Nothing
     Public QueryText1 As String = Nothing
     Public SqlCommandText As String = Nothing
     Public SqlCommandText1 As String = Nothing
     Public SqlCommandText2 As String = Nothing
+    Public ScriptType As String = Nothing
 
     Public da As SqlDataAdapter
     Public dt As System.Data.DataTable
@@ -78,6 +81,7 @@ Module GlobalVariables
 
     Public CurrentProcedureName As String = Nothing
     Public CurrentSystemName As String = Nothing
+    Public CurrentSystemExecuting As String = Nothing
 
     'Application Database
     Public DEFAULT_DOMAIN As String = Nothing

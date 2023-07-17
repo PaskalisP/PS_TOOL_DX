@@ -338,7 +338,7 @@ Public Class PSTOOL_MAIN_Form
 
         '*********GET VERSION INFO*********
         '**********************************
-        siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2019 build {2} rev {3} Current User: {4}  - Session ID: {5}",
+        siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2023 build {2} rev {3} Current User: {4}  - Session ID: {5}",
                                     My.Application.Info.Version.Major,
                                     My.Application.Info.Version.Minor,
                                     My.Application.Info.Version.Build,

@@ -41,8 +41,7 @@ Imports Ionic.Zip
 Imports ICSharpCode.SharpZipLib.Zip
 Imports ICSharpCode.SharpZipLib.GZip
 Imports ICSharpCode.SharpZipLib.Tar
-
-
+Imports ICSharpCode.SharpZipLib.Core
 
 Public Class BaisInterfaceImport
 
@@ -51,19 +50,10 @@ Public Class BaisInterfaceImport
     Dim BAIS_Temp_Directory As String = ""
     Dim pathToZipArchive As String = Nothing
     Dim dir_BaisFiles As New List(Of String)
-   
+
     Dim BAISDirectory As String = "" 'BAIS FILE DIRECTORY
     Dim BAISFileNewDirectory As String = "" 'NEW DIRECTORY FOR BAIS FILE
     Dim BAISInterfaceFileTemplate As String = Nothing
-
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-    Dim connEVENT As New SqlConnection
-    Dim cmdEVENT As New SqlCommand
-    'Oledb Connection for OCBS
-    Dim connBAIS As New SqlConnection
-    Dim cmdBAIS As New SqlCommand
-
 
     Dim ReportExpFile As String = "" 'Directory for the report creation REFINANCING_MATURITY_LIST
     Dim ReportExpRefiFile As String = ""
@@ -91,23 +81,24 @@ Public Class BaisInterfaceImport
 
     Delegate Sub ChangeText()
 
-    Private QueryText As String = ""
-    Private conndt As New SqlConnection
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
+
     Dim ex As Integer
     Dim BaisAutomatedImport_btn_clicked As Boolean = False 'Button for Automated Import
     Dim BaisSelectedFileImport_btn_clicked As Boolean = False 'Button for single File import
     Dim BaisImportFromTill_btn_clicked As Boolean = False
+    Dim BaisImportManual_btn_clicked As Boolean = False
     Dim CURRENT_LAST_IMPORTED_BAIS_FILE As Double = Nothing
 
     Dim MaxProcDate As Date
     Dim BAIS_Date As Date
     Dim SqlBAISDate As String = ""
 
-
+    'Heutiges Datum ermitteln und in Zahl unformatieren
+    Dim CurDate As Date = Today
+    Dim CurDateSql As String = CurDate.ToString("yyyyMMdd")
+    Dim ID_Selected As Integer = 0
+    Dim GetFocusedRow As Integer = 0
+    Private ConvertWorkbook As IWorkbook
 
 
     Sub New()
@@ -121,7 +112,158 @@ Public Class BaisInterfaceImport
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
-    
+    Private Sub BaisInterfaceImportImport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        AddHandler GridControl1.EmbeddedNavigator.ButtonClick, AddressOf GridControl1_EmbeddedNavigator_ButtonClick
+
+        'Get Max Date
+        OpenSqlConnections()
+        cmd.CommandText = "SELECT MAX([ProcDate]) FROM [IMPORT EVENTS]"
+        MaxProcDate = cmd.ExecuteScalar
+        CloseSqlConnections()
+
+        Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+        Me.IMPORT_EVENTSTableAdapter.FillByBAIS_INTERFACE(Me.EDPDataSet.IMPORT_EVENTS, MaxProcDate)
+        Me.FILES_IMPORTTableAdapter.FillByBAIS(Me.EDPDataSet.FILES_IMPORT)
+
+    End Sub
+
+    Private Sub GridControl1_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
+        Dim focusedView As GridView = CType(GridControl1.FocusedView, GridView)
+        'Add new Procedure
+        If e.Button.Tag = "AddProc" Then
+            Try
+                Me.BAISIMPORTPROCEDURESBindingSource.EndEdit()
+                Me.OcbsImportProcedures_BasicView.AddNewRow()
+                Me.OcbsImportProcedures_BasicView.ShowEditForm()
+            Catch ex As Exception
+                XtraMessageBox.Show(ex.Message, "Error on add new Procedure", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End Try
+        End If
+
+        'Add delete Procedure
+        If e.Button.Tag = "DeleteProc" Then
+            If XtraMessageBox.Show(CType("Should the Procedure: " & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & " be deleted? ", String), "DELETE PROCEDURE", buttons:=MessageBoxButtons.YesNo, icon:=MessageBoxIcon.Question, defaultButton:=MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                Try
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    SplashScreenManager.Default.SetWaitFormCaption("Delete Procedure")
+                    OpenSqlConnections()
+                    cmd.CommandText = "DELETE FROM [BAIS_IMPORT_PROCEDURES] where ID=" & ID_Selected & ""
+                    cmd.ExecuteNonQuery()
+                    'Reset LfdNr
+                    cmd.CommandText = "UPDATE A SET A.LfdNr=B.rn from [BAIS_IMPORT_PROCEDURES] A INNER JOIN 
+                                       (SELECT row_number() over (order by LfdNr asc) as rn,ID
+                                       from  [BAIS_IMPORT_PROCEDURES])B On A.ID=B.ID"
+                    cmd.ExecuteNonQuery()
+                    CloseSqlConnections()
+                    Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                    SplashScreenManager.CloseForm(False)
+                Catch ex As Exception
+                    CloseSqlConnections()
+                    SplashScreenManager.CloseForm(False)
+                    XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Return
+                End Try
+
+            End If
+        End If
+
+        'Add delete Procedure
+        If e.Button.Tag = "Reload" Then
+
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Reload procedures")
+                Me.FILES_IMPORTTableAdapter.FillByBAIS(Me.EDPDataSet.FILES_IMPORT)
+                Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                SplashScreenManager.CloseForm(False)
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
+            End Try
+
+        End If
+
+
+        'Save Changes
+        If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.EndEdit Then
+            Try
+                Me.Validate()
+                Me.BAISIMPORTPROCEDURESBindingSource.EndEdit()
+                If Me.EDPDataSet.HasChanges = True Then
+                    If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                        Me.TableAdapterManager.UpdateAll(Me.EDPDataSet)
+                        Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                    Else
+                        e.Handled = True
+                    End If
+                End If
+            Catch ex As Exception
+                XtraMessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Me.BAISIMPORTPROCEDURESBindingSource.CancelEdit()
+                Me.EDPDataSet.RejectChanges()
+                Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                Exit Sub
+            End Try
+        End If
+
+        'Activate all Procedures
+        If e.Button.Tag = "ActivateProcs" Then
+            Try
+                If XtraMessageBox.Show("Should all current mandatory Procedures be activated", "ACTIVATE CURRENT MANDATORY PROCEDURES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    OpenSqlConnections()
+                    cmd.CommandText = "UPDATE [BAIS_IMPORT_PROCEDURES] SET [Valid]='Y' where [Importance] in ('MANDATORY')"
+                    cmd.ExecuteNonQuery()
+                    CloseSqlConnections()
+                    Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                Else
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                XtraMessageBox.Show(ex.Message, "Error on Activate current Procedures", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Me.BAISIMPORTPROCEDURESBindingSource.CancelEdit()
+                Me.EDPDataSet.RejectChanges()
+                Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                Exit Sub
+            End Try
+        End If
+
+        'Deactivate all Procedures
+        If e.Button.Tag = "DeactivateProcs" Then
+            Try
+                If XtraMessageBox.Show("Should all current Procedures be Deactivated", "DEACTIVATE CURRENT PROCEDURES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    OpenSqlConnections()
+                    cmd.CommandText = "UPDATE [BAIS_IMPORT_PROCEDURES] SET [Valid]='N'"
+                    cmd.ExecuteNonQuery()
+                    CloseSqlConnections()
+                    Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                Else
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                XtraMessageBox.Show(ex.Message, "Error on Deactivate current Procedures", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Me.BAISIMPORTPROCEDURESBindingSource.CancelEdit()
+                Me.EDPDataSet.RejectChanges()
+                Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                Exit Sub
+            End Try
+        End If
+        'Terminate OCBS Backgroundworker
+        If e.Button.Tag = "Terminate" Then
+            If Me.BgwBAISimport.IsBusy = True Then
+                If XtraMessageBox.Show("Should the executed BAIS import procedures be terminated?", "TERMINATE BAIS IMPORTS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.BgwBAISimport.CancelAsync()
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    SplashScreenManager.Default.SetWaitFormCaption("BAIS Imports termination is requested..." & vbNewLine & "Please wait until the current BAIS Import operations are finished!")
+                End If
+            End If
+        End If
+
+    End Sub
+
+
 
 #Region "SPECIAL_FUNCTIONS"
 
@@ -204,11 +346,11 @@ Public Class BaisInterfaceImport
         End If
     End Sub
 
-    Public Function ReadLine(ByVal filename As String, _
+    Public Function ReadLine(ByVal filename As String,
      ByVal line As Integer) As String
 
         Try
-            Dim lines As String() = My.Computer.FileSystem.ReadAllText( _
+            Dim lines As String() = My.Computer.FileSystem.ReadAllText(
               filename, System.Text.Encoding.Default).Split(vbCrLf)
 
             If line > 0 Then
@@ -261,15 +403,40 @@ Public Class BaisInterfaceImport
     End Sub
 
     Private Sub Print_Export_ImportEvents_Gridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_ImportEvents_Gridview_btn.Click
-        If Not GridControl2.IsPrintingAvailable Then
-            MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
-            Return
+        If Me.TabbedControlGroup1.SelectedTabPageIndex = 0 Then
+            ' Check whether the GridControl can be previewed. 
+            If Not Me.GridControl1.IsPrintingAvailable Then
+                XtraMessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error")
+                Return
+            End If
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                PrintableComponentLink1.CreateDocument()
+                PrintableComponentLink1.ShowPreview()
+                SplashScreenManager.CloseForm(False)
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
+            End Try
         End If
-
-        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-        PrintableComponentLink1.CreateDocument()
-        PrintableComponentLink1.ShowPreview()
-        SplashScreenManager.CloseForm(False)
+        If Me.TabbedControlGroup1.SelectedTabPageIndex = 1 Then
+            ' Check whether the GridControl can be previewed. 
+            If Not Me.GridControl2.IsPrintingAvailable Then
+                XtraMessageBox.Show("The 'DevExpress.XtraPrinting' library is not found", "Error")
+                Return
+            End If
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                PrintableComponentLink2.CreateDocument()
+                PrintableComponentLink2.ShowPreview()
+                SplashScreenManager.CloseForm(False)
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
+            End Try
+        End If
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
@@ -284,10 +451,28 @@ Public Class BaisInterfaceImport
         End Try
     End Sub
 
+    Private Sub PrintableComponentLink2_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink2.CreateMarginalHeaderArea
+        Dim reportfooter As String = "BAIS IMPORT PROCEDURES"
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+    End Sub
+
+    Private Sub PrintableComponentLink2_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink2.CreateMarginalFooterArea
+        Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
+        Try
+            iSize = e.Graph.MeasureString(String.Format("Printed: {0:F}M", DateTime.Now)).ToSize
+            r = New RectangleF(New PointF(e.Graph.ClientPageSize.Width - iSize.Width, 0), iSize)
+            pinfoBrick = e.Graph.DrawPageInfo(PageInfo.DateTime, "Printed: {0:F}", e.Graph.ForeColor, r, DevExpress.XtraPrinting.BorderSide.None)
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
         Dim reportfooter As String = "BAIS IMPORT EVENTS"
-e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
+
 #End Region
 
 #Region "ENABLE_DISABLE_CONTROLS_BY_IMPORT"
@@ -321,7 +506,7 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
 #Region "BUTTONS_AND_EDITORS_EVENTS"
     Private Sub LastBaisImportFile_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles LastBaisImportFile.ButtonClick
         If IsNumeric(LastBaisImportFile.Text) = True And Len(LastBaisImportFile.Text) = 8 Then
-            If MessageBox.Show("Should the BAIS Interface File Nr. " & LastBaisImportFile.Text & " be saved as Last Imported BAIS Interface file", "CHANGE THE LAST IMPORTED BAIS INTERFACE FILE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            If XtraMessageBox.Show("Should the BAIS Interface File Nr. " & LastBaisImportFile.Text & " be saved as Last Imported BAIS Interface file", "CHANGE THE LAST IMPORTED BAIS INTERFACE FILE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 Dim LastBAISINTERFACEImportFile As Double = Me.LastBaisImportFile.Text
                 Me.FILES_IMPORTBindingSource.EndEdit()
                 Me.FILES_IMPORTTableAdapter.UpdateBAIS_LastImportFile(LastBAISINTERFACEImportFile)
@@ -331,7 +516,7 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
                 Exit Sub
             End If
         Else
-            MessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS Interface FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+            XtraMessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS Interface FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
             Me.FILES_IMPORTBindingSource.CancelEdit()
             Exit Sub
 
@@ -340,7 +525,7 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
 
     Private Sub LastBaisImportFile_Leave(sender As Object, e As EventArgs) Handles LastBaisImportFile.Leave
         If IsNumeric(LastBaisImportFile.Text) = False OrElse Len(LastBaisImportFile.Text) <> 8 Then
-            MessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS INTERFACE FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+            XtraMessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS INTERFACE FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
             Me.FILES_IMPORTBindingSource.CancelEdit()
             Exit Sub
         End If
@@ -348,7 +533,7 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
     Private Sub SelectedBaisImportFile_Leave(sender As Object, e As EventArgs) Handles SelectedBaisImportFile.Leave
         If Me.SelectedBaisImportFile.Text <> "" Then
             If IsNumeric(SelectedBaisImportFile.Text) = False OrElse Len(SelectedBaisImportFile.Text) <> 8 Then
-                MessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS INTERFACE FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS INTERFACE FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 Me.SelectedBaisImportFile.Text = ""
                 Exit Sub
             End If
@@ -359,7 +544,7 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
     Private Sub OcbsImportFileFrom_Leave(sender As Object, e As EventArgs) Handles BaisImportFileFrom.Leave
         If Me.BaisImportFileFrom.Text <> "" Then
             If IsNumeric(BaisImportFileFrom.Text) = False OrElse Len(BaisImportFileFrom.Text) <> 8 Then
-                MessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS INTERFACE FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS INTERFACE FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 Me.BaisImportFileFrom.Text = ""
                 Exit Sub
             End If
@@ -370,7 +555,7 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
     Private Sub BaisImportFileTill_Leave(sender As Object, e As EventArgs) Handles BaisImportFileTill.Leave
         If Me.BaisImportFileTill.Text <> "" Then
             If IsNumeric(BaisImportFileTill.Text) = False OrElse Len(BaisImportFileTill.Text) <> 8 Then
-                MessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS INTERFACE FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show("The indicated BAIS Interface Filename is not correct!", "BAIS INTERFACE FILENAME NOT CORRECT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 Me.BaisImportFileTill.Text = ""
                 Exit Sub
             End If
@@ -383,8 +568,9 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
         BaisAutomatedImport_btn_clicked = True
         BaisSelectedFileImport_btn_clicked = False
         BaisImportFromTill_btn_clicked = False
+        BaisImportManual_btn_clicked = False
         If Me.LastBaisImportFile.Text <> "" Then
-            If MessageBox.Show("Should the automated BAIS Interface Fileimport be executed?", "AUTOMATED IMPORT BAIS INTERFACE FILES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            If XtraMessageBox.Show("Should the automated BAIS Interface Fileimport be executed?", "AUTOMATED IMPORT BAIS INTERFACE FILES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 DISABLE_START_IMPORT()
                 If Me.BgwBAISimport.IsBusy = False Then
                     Me.BgwBAISimport.RunWorkerAsync()
@@ -397,8 +583,9 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
         BaisSelectedFileImport_btn_clicked = True
         BaisAutomatedImport_btn_clicked = False
         BaisImportFromTill_btn_clicked = False
+        BaisImportManual_btn_clicked = False
         If Me.SelectedBaisImportFile.Text <> "" Then
-            If MessageBox.Show("Should the BAIS Interface Filename " & SelectedBaisImportFile.Text & " be imported?", "IMPORT BAIS INTERFACE FILE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            If XtraMessageBox.Show("Should the BAIS Interface Filename " & SelectedBaisImportFile.Text & " be imported?", "IMPORT BAIS INTERFACE FILE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                 DISABLE_START_IMPORT()
                 If Me.BgwBAISimport.IsBusy = False Then
                     Me.BgwBAISimport.RunWorkerAsync()
@@ -411,12 +598,12 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
         BaisImportFromTill_btn_clicked = True
         BaisAutomatedImport_btn_clicked = False
         BaisSelectedFileImport_btn_clicked = False
-
+        BaisImportManual_btn_clicked = False
         If Me.BaisImportFileFrom.Text <> "" AndAlso Me.BaisImportFileTill.Text <> "" Then
             Dim n1 As Double = Me.BaisImportFileFrom.Text
             Dim n2 As Double = Me.BaisImportFileTill.Text
             If n2 >= n1 Then
-                If MessageBox.Show("Should the BAIS Interface Import start with Filename " & n1 & " and finish with Filename " & n2, "IMPORT BAIS INTERFACE FILE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                If XtraMessageBox.Show("Should the BAIS Interface Import start with Filename " & n1 & " and finish with Filename " & n2, "IMPORT BAIS INTERFACE FILE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                     DISABLE_START_IMPORT()
                     If Me.BgwBAISimport.IsBusy = False Then
                         CURRENT_LAST_IMPORTED_BAIS_FILE = Me.LastBaisImportFile.Text
@@ -424,7 +611,7 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
                     End If
                 End If
             Else
-                MessageBox.Show("The last Filename is earlier than the first Filename!", "WRONG FILENAMES IMPORT ORDER", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show("The last Filename is earlier than the first Filename!", "WRONG FILENAMES IMPORT ORDER", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
 
@@ -455,7 +642,7 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
         Next
     End Sub
 
-
+    'Extracts all files from a Tar File
     Public Sub ExtractTGZ(ByVal gzArchiveName As String, ByVal destFolder As String)
 
         Dim inStream As Stream = File.OpenRead(gzArchiveName)
@@ -470,96 +657,96 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
     End Sub
 
 
+
 #Region "BAIS_IMPORT_BACKGROUNDWORKER"
     Private Sub BgwBAISimport_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwBAISimport.DoWork
+        CurrentSystemExecuting = "BAIS INTERFACE"
+        Me.BgwBAISimport.ReportProgress(10, "Locate the BAIS Current and Temp Directory")
+        OpenSqlConnections()
+        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_CUR_DIR' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
+        BAISDirectory = cmd.ExecuteScalar()
+        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_TEMP_DIR' AND[PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
+        BAISFileNewDirectory = cmd.ExecuteScalar()
+        CloseSqlConnections()
+
 
         '***********AUTOMATED BAIS IMPORT****************
         If BaisAutomatedImport_btn_clicked = True Then
 
             Try
-                Me.BgwBAISimport.ReportProgress(10, "Locate the BAIS Current and Temp Directory")
-
-                'Heutiges Datum ermitteln und in Zahl unformatieren
-                Dim CurDate As Date = Today
-                Dim CurDateSql As String = CurDate.ToString("yyyyMMdd")
-
-                If cmdBAIS.Connection.State = ConnectionState.Closed Then
-                    cmdBAIS.Connection.Open()
-                End If
-
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_CUR_DIR' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                BAISDirectory = cmdBAIS.ExecuteScalar()
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_TEMP_DIR' AND[PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                BAISFileNewDirectory = cmdBAIS.ExecuteScalar()
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_FILE_TEMPLATE' AND[PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                BAISInterfaceFileTemplate = cmdBAIS.ExecuteScalar()
+                'CURRENT_PROC = Nothing
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Clear_CURRENT_PROC))
+                CURRENT_PROC = "BAIS_IMPORT_ACTIONS"
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Change_CURRENT_PROC))
 
                 'Ermitteln der OCBS Ordner und einfügen der einzelnen Datei Namen in die Datenbank
                 Me.BgwBAISimport.ReportProgress(20, "BAIS Interface Directory - Current: " & BAISDirectory & " - Temporary: " & BAISFileNewDirectory)
 
-                Me.BgwBAISimport.ReportProgress(25, "Create Temporary Table: BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='BAIS_INTERFACE_FILES' AND xtype='U') CREATE TABLE [BAIS_INTERFACE_FILES]([ID] [int] IDENTITY(1,1) NOT NULL,[FileNameNumber] [float] NULL,[FileNameText] [nvarchar](255) NULL,[FileFullName] [nvarchar](255) NULL) ELSE DELETE FROM [BAIS_INTERFACE_FILES] "
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(25, "Create Temporary Table: #Temp_BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_INTERFACE_FILES' AND xtype='U') CREATE TABLE [#Temp_BAIS_INTERFACE_FILES]([ID] [int] IDENTITY(1,1) NOT NULL,[subdirectory] [nvarchar](255) NULL,[depth] float,[file] float NULL) ELSE DELETE FROM [#Temp_BAIS_INTERFACE_FILES] "
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(30, "Insert BAIS Files in Table: #Temp_BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "INSERT [#Temp_BAIS_INTERFACE_FILES] ([subdirectory],[depth],[file]) EXEC master..xp_dirtree '" & BAISDirectory & "',10,1"
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(30, "Insert BAIS Files in Table: BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "INSERT INTO [BAIS_INTERFACE_FILES] (FileNameText) Select [subdirectory] from #Temp_BAIS_INTERFACE_FILES"
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(30, "DROP Table: #Temp_BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "DROP TABLE #Temp_BAIS_INTERFACE_FILES"
-                cmdBAIS.ExecuteNonQuery()
-                
-                Me.BgwBAISimport.ReportProgress(33, "Update FileNameNumber and FileFullName in BAIS FILES")
-                cmdBAIS.CommandText = "UPDATE [BAIS_INTERFACE_FILES] SET [FileNameNumber]= CASE WHEN ISNUMERIC(SUBSTRING([FileNameText],20,8))=1 THEN CAST(SUBSTRING([FileNameText],20,8) as float) else 0 end,[FileFullName]='" & BAISDirectory & "' + [FileNameText]"
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(40, "Delete from BAIS FILES where FileNameNumber=0")
-                cmdBAIS.CommandText = "DELETE from [BAIS_INTERFACE_FILES] where [FileNameNumber]=0"
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(45, "Delete from Table: BAIS FILES where FileNameNumber < Last BAIS Import File: " & Me.LastBaisImportFile.Text)
-                cmdBAIS.CommandText = "DELETE FROM [BAIS_INTERFACE_FILES] where [FileNameNumber]<'" & Me.LastBaisImportFile.Text & "'"
-                cmdBAIS.ExecuteNonQuery()
+                Dim dt_NGS_Folders As New DataTable
+                dt_NGS_Folders.Rows.Clear()
+                Dim dt_NGS_Row As DataRow
+                dt_NGS_Folders.Columns.Add("FileName", GetType(String))
 
+                If Directory.Exists(BAISDirectory) Then
+                    Dim dir As New DirectoryInfo(BAISDirectory)
+                    Dim Files As FileInfo() = dir.GetFiles()
+                    For Each File As FileInfo In dir.GetFiles()
+                        dt_NGS_Row = dt_NGS_Folders.NewRow
+                        dt_NGS_Row("FileName") = File.Name
+                        dt_NGS_Folders.Rows.Add(dt_NGS_Row)
+                    Next
+                End If
 
-                Me.QueryText = "SELECT [FileNameNumber],[FileFullName]  FROM [BAIS_INTERFACE_FILES]"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                OpenSqlConnections()
+                Me.BgwBAISimport.ReportProgress(25, "Create Temporary Table: #Temp_DataFiles")
+                cmd.CommandText = "IF OBJECT_ID('tempdb..#Temp_DataFiles') IS NOT NULL DROP TABLE #Temp_DataFiles 
+                                   CREATE TABLE #Temp_DataFiles (ID int IDENTITY(1,1),FileName nvarchar(255) NULL)"
+                cmd.ExecuteNonQuery()
+                Me.BgwBAISimport.ReportProgress(30, "Insert BAIS File Names in Table: #Temp_DataFiles")
+                For Each dr As DataRow In dt_NGS_Folders.Rows
+                    Dim sc As New SqlCommand("INSERT INTO #Temp_DataFiles ([FileName])" &
+                                            " VALUES (@column1)", conn)
+                    sc.Parameters.AddWithValue("@column1", dr.Item(0))
+                    sc.ExecuteNonQuery()
+                Next
+                Me.BgwBAISimport.ReportProgress(30, "Set FileName as numbers in table: #Temp_DataFiles")
+                cmd.CommandText = "UPDATE #Temp_DataFiles SET FileName=[dbo].[RemoveAllSpaces]([dbo].[fn_StripCharacters](RIGHT(FileName,15), '^0-9'))"
+                cmd.ExecuteNonQuery()
+
+                'clear datatable
+                dt_NGS_Folders.Clear()
+                dt_NGS_Folders.Rows.Clear()
+
+                Me.BgwBAISimport.ReportProgress(45, "Delete from Table: #Temp_DataFiles where FileName <= Last NGS Import File: " & Me.LastBaisImportFile.Text)
+                cmd.CommandText = "DELETE FROM #Temp_DataFiles where [FileName]<='" & Me.LastBaisImportFile.Text & "'"
+                cmd.ExecuteNonQuery()
+                Me.BgwBAISimport.ReportProgress(50, "Delete from Table: #Temp_DataFiles where FileName >= Current Date: " & CurDateSql)
+                cmd.CommandText = "DELETE FROM #Temp_DataFiles where [FileName]>='" & CurDateSql & "'"
+                cmd.ExecuteNonQuery()
+
+                Me.BgwBAISimport.ReportProgress(50, "Select all File Names for Import")
+                QueryText = "SELECT [FileName] FROM [#Temp_DataFiles] ORDER BY [FileName] asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 Me.BgwBAISimport.ReportProgress(50, "Determine the next BAIS File for Import...Please wait...")
-
-                For m = 0 To dt.Rows.Count - 1
-                    Me.QueryText = "Select  [FileNameNumber] as NextFileNameforimport,[FileFullName] as NextFileFullName,[FileNameText] as 'OriginalFileName' from [BAIS_INTERFACE_FILES] where [FileNameNumber] in (SELECT min([FileNameNumber])FROM [BAIS_INTERFACE_FILES] where [FileNameNumber]>(Select [FileName] from [FILES_IMPORT] where [SYSTEM_NAME] in ('BAIS')))"
-                    da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                    dt1 = New DataTable()
-                    da1.Fill(dt1)
-                    If dt1.Rows.Count > 0 Then
-
-                        CBAIF = dt1.Rows.Item(0).Item("NextFileNameforimport")
-                        BAIS_Date = DateSerial(Microsoft.VisualBasic.Left(CBAIF, 4), Mid(CBAIF, 5, 2), Microsoft.VisualBasic.Right(CBAIF, 2))
-                        SqlBAISDate = BAIS_Date.ToString("yyyyMMdd")
+                If dt.Rows.Count > 0 Then
+                    For m = 0 To dt.Rows.Count - 1
+                        CBAIF = 0
+                        CBAIF = dt.Rows.Item(m).Item("FileName")
+                        rd = DateSerial(Microsoft.VisualBasic.Left(CBAIF, 4), Mid(CBAIF, 5, 2), Microsoft.VisualBasic.Right(CBAIF, 2))
+                        rdsql = rd.ToString("yyyyMMdd")
                         If Me.BgwBAISimport.CancellationPending = False Then
                             Me.CurrentBaisImportFile.BeginInvoke(New ChangeText(AddressOf Change_CBAIF))
                             '*******************************************************************************
                             Dim LCBAIF As String = CBAIF
-                            Dim BAISFileFullName As String = dt1.Rows.Item(0).Item("NextFileFullName")
-                            Dim BAISFileCopyNewDirectory As String = dt1.Rows.Item(0).Item("OriginalFileName")
 
-                            'Löschen der Daten in BAIS Files
-                            Me.BgwBAISimport.ReportProgress(60, "Delete from BAIS FILES the File: " & CBAIF)
-                            cmdBAIS.CommandText = "DELETE  FROM [BAIS_INTERFACE_FILES] where [FileNameNumber]='" & CBAIF & "'"
-                            cmdBAIS.ExecuteNonQuery()
-                           
-                            If Directory.Exists(BAISFileNewDirectory) Then
+                            If Not Directory.Exists(BAISFileNewDirectory) Then
+                                Directory.CreateDirectory(BAISFileNewDirectory)
+                            ElseIf Directory.Exists(BAISFileNewDirectory) Then
                                 Directory.Delete(BAISFileNewDirectory, True)
+                                Directory.CreateDirectory(BAISFileNewDirectory)
                             End If
-                            Directory.CreateDirectory(BAISFileNewDirectory)
-
-                            Dim zipPath As String = BAISFileFullName 'Original Directory
-                            Dim extractPath As String = BAISFileNewDirectory 'New Folder
-                            ExtractTGZ(zipPath, extractPath)
 
                             '+++++++++++++++++++++++++++++++++++++++
                             Me.BgwBAISimport.ReportProgress(60, "BAIS Interface File for Import: " & "  " & CBAIF & " is ready")
@@ -568,14 +755,18 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
 
                             BAIS_INTERFACE_IMPORT_PROCEDURES()
 
+                            CURRENT_PROC = "BAIS_IMPORT_ACTIONS"
 
                             'Erstellten Ordner wieder löschen
                             Me.BgwBAISimport.ReportProgress(85, "Delete Directory: " & "  " & BAISFileNewDirectory)
-                            Directory.Delete(BAISFileNewDirectory, True)
+                            If Directory.Exists(BAISFileNewDirectory) Then
+                                Directory.Delete(BAISFileNewDirectory, True)
+                            End If
+
                             'Ordner als Bearbeitet einsetzen (LOBIF)
                             Me.BgwBAISimport.ReportProgress(90, "Set as Last imported BAIS File Name: " & "  " & CBAIF)
-                            cmdBAIS.CommandText = "UPDATE [FILES_IMPORT] SET [FileName]='" & CBAIF & "' WHERE [SYSTEM_NAME] in ('BAIS')"
-                            cmdBAIS.ExecuteNonQuery()
+                            cmd.CommandText = "UPDATE [FILES_IMPORT] SET [FileName]='" & CBAIF & "' WHERE [SYSTEM_NAME] in ('BAIS')"
+                            cmd.ExecuteNonQuery()
 
                             LBAIF = CBAIF
                             Me.LastBaisImportFile.BeginInvoke(New ChangeText(AddressOf Change_LBAIF))
@@ -583,46 +774,27 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
                             Me.CurrentBaisImportFile.BeginInvoke(New ChangeText(AddressOf Clear_CBAIF))
 
                             'Füllen des Table adapters
-
                             Me.FILES_IMPORTTableAdapter.FillByBAIS(Me.EDPDataSet.FILES_IMPORT)
 
                             Me.BgwBAISimport.ReportProgress(95, "BAIS Interface File Import: " & " " & LCBAIF & " " & "is finished ...")
                             Me.BgwBAISimport.ReportProgress(100, "BAIS Interface Import finished ...")
+                            CURRENT_PROC = Nothing
+
                         ElseIf Me.BgwBAISimport.CancellationPending = True Then
                             Me.BgwBAISimport.ReportProgress(100, "BAIS Interface Imports are terminated after user request!")
                             e.Cancel = True
 
                         End If
 
-                    End If
-                Next m
-                'Löschen der Temporären Tabelen für den BAIS Import
-                cmdBAIS.CommandText = "DISABLE TRIGGER [TR_ProtectCriticalTables] ON DATABASE"
-                cmdBAIS.ExecuteNonQuery()
-                cmdBAIS.CommandText = "DROP TABLE [BAIS_INTERFACE_FILES]"
-                cmdBAIS.ExecuteNonQuery()
-                cmdBAIS.CommandText = "ENABLE TRIGGER [TR_ProtectCriticalTables] ON DATABASE"
-                cmdBAIS.ExecuteNonQuery()
-                'Me.BgwBAISimport.ReportProgress(100, "Execute Stored Procedure:BAIS_UPDATES_CLIENT_DATA")
-                'cmdBAIS.CommandText = "exec [BAIS_UPDATES_CLIENT_DATA]"
-                'cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(3, "Execute BAIS_UPDATES_CLIENT_DATA commands in SQL Procedures Parameter/BAIS ")
-                Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('BAIS_UPDATES_CLIENT_DATA')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New System.Data.DataTable()
-                da.Fill(dt)
-                For i = 0 To dt.Rows.Count - 1
-                    Dim SqlCommandText As String = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", SqlBAISDate)
-                    cmdBAIS.CommandText = SqlCommandText
-                    If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                        BgwBAISimport.ReportProgress(3, "Execute: " & dt.Rows.Item(i).Item("SQL_Name_1"))
-                        cmdBAIS.ExecuteNonQuery()
-                    End If
-                Next
-
-                If cmdBAIS.Connection.State = ConnectionState.Open Then
-                    cmdBAIS.Connection.Close()
+                    Next m
                 End If
+
+                'Löschen der Temporären Tabelen für den NGS Import
+                Me.BgwBAISimport.ReportProgress(100, "Delete Temporary Table: #Temp_DataFiles")
+                cmd.CommandText = "IF OBJECT_ID('tempdb..#Temp_DataFiles') IS NOT NULL DROP TABLE #Temp_DataFiles"
+                cmd.ExecuteNonQuery()
+
+                CloseSqlConnections()
 
             Catch ex As System.Exception
                 Me.BgwBAISimport.ReportProgress(0, "ERROR +++Import Procedure for BAIS Interface file: " & " " & Me.CurrentBaisImportFile.Text & " " & "is canceled ..." & " " & ex.Message.ToString.Replace("'", " "))
@@ -632,13 +804,6 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
                 If Directory.Exists(BAISFileNewDirectory) = True Then
                     Directory.Delete(BAISFileNewDirectory, True)
                 End If
-                'Excel Instanz beenden
-                'Dim procs() As Process = Process.GetProcessesByName("EXCEL")
-                'Dim i1 As Short
-                'i1 = 0
-                'For i1 = 0 To (procs.Length - 1)
-                'procs(i1).Kill()
-                'Next i1
             End Try
             '*****************************************************************************
         End If
@@ -647,81 +812,53 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
         '****************SELECTED BAIS FILE IMPORT************************************
         If BaisSelectedFileImport_btn_clicked = True Then
             Try
-                Me.BgwBAISimport.ReportProgress(10, "Locate the BAIS Current and Temp Directory")
-
-                'Heutiges Datum ermitteln und in Zahl unformatieren
-                Dim CurDate As Date = Today
-                Dim CurDateSql As String = CurDate.ToString("yyyyMMdd")
-
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_CUR_DIR' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                cmdBAIS.Connection.Open()
-                BAISDirectory = cmdBAIS.ExecuteScalar()
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_TEMP_DIR' AND[PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                BAISFileNewDirectory = cmdBAIS.ExecuteScalar()
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_FILE_TEMPLATE' AND[PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                BAISInterfaceFileTemplate = cmdBAIS.ExecuteScalar()
 
                 'Ermitteln der OCBS Ordner und einfügen der einzelnen Datei Namen in die Datenbank
                 Me.BgwBAISimport.ReportProgress(20, "BAIS Interface Directory - Current: " & BAISDirectory & " - Temporary: " & BAISFileNewDirectory)
 
-                Dim BaisFileFullName As String = BAISDirectory & BAISInterfaceFileTemplate.Replace("<Riskdate>", Me.SelectedBaisImportFile.Text) 'Full File Directory
-                Dim BaisFileName As String = Me.SelectedBaisImportFile.Text 'File for Import
+                OpenSqlConnections()
+                If Directory.Exists(BAISDirectory) Then
+                    Dim BaisFileName As String = Me.SelectedBaisImportFile.Text 'File for Import
+                    CBAIF = 0
+                    CBAIF = CDbl(BaisFileName)
+                    'Define Business Date based on the BAIS File Name
+                    rd = DateSerial(Microsoft.VisualBasic.Left(CBAIF, 4), Mid(CBAIF, 5, 2), Microsoft.VisualBasic.Right(CBAIF, 2))
+                    rdsql = rd.ToString("yyyyMMdd")
 
-
-                If File.Exists(BaisFileFullName) = True Then
-                    BAIS_Date = DateSerial(Microsoft.VisualBasic.Left(BaisFileName, 4), Mid(BaisFileName, 5, 2), Microsoft.VisualBasic.Right(BaisFileName, 2))
-                    SqlBAISDate = BAIS_Date.ToString("yyyyMMdd")
-                    Dim BaisDateNr As Double = BAIS_Date.ToString("yyyyMMdd")
-                    CBAIF = BaisDateNr
-
-                    If Directory.Exists(BAISFileNewDirectory) Then
+                    If Not Directory.Exists(BAISFileNewDirectory) Then
+                        Directory.CreateDirectory(BAISFileNewDirectory)
+                    ElseIf Directory.Exists(BAISFileNewDirectory) Then
                         Directory.Delete(BAISFileNewDirectory, True)
+                        Directory.CreateDirectory(BAISFileNewDirectory)
                     End If
-                    Directory.CreateDirectory(BAISFileNewDirectory)
 
-                    Dim zipPath As String = BaisFileFullName 'Original Directory
-                    Dim extractPath As String = BAISFileNewDirectory 'New Folder
-                    ExtractTGZ(zipPath, extractPath)
                     '+++++++++++++++++++++++++++++++++++++++
-                    Me.BgwBAISimport.ReportProgress(60, "BAIS Interface File for Import: " & "  " & BaisFileName & " is ready")
-                    Me.BgwBAISimport.ReportProgress(70, "Starting the BAIS Import procedures...")
+                    Me.BgwBAISimport.ReportProgress(60, "BAIS Interface File for Import: " & "  " & CBAIF & " is ready")
+                    Me.BgwBAISimport.ReportProgress(70, "Starting the BAIS Interface Import procedures...")
 
 
                     'PROCEDUREN
                     BAIS_INTERFACE_IMPORT_PROCEDURES()
 
+                    CURRENT_PROC = "BAIS_IMPORT_ACTIONS"
+
                     '++++++++++++++++++++++++++++++++++++++++++++++
                     'Erstellten Ordner wieder löschen
                     Me.BgwBAISimport.ReportProgress(85, "Delete Directory: " & "  " & BAISFileNewDirectory)
-                    Directory.Delete(BAISFileNewDirectory, True)
+                    If Directory.Exists(BAISFileNewDirectory) Then
+                        Directory.Delete(BAISFileNewDirectory, True)
+                    End If
 
                     Me.BgwBAISimport.ReportProgress(95, "BAIS Interface File Import: " & " " & BaisFileName & " " & "is finished ...")
                     Me.BgwBAISimport.ReportProgress(100, "BAIS Interface Import finished ...")
+                    CURRENT_PROC = Nothing
 
                 Else
                     MessageBox.Show("BAIS Interface File: " & SelectedBaisImportFile.Text & " does not exists!", "BAIS INTERFACE FILE NOT FUND", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 End If
 
-                'Me.BgwBAISimport.ReportProgress(100, "Execute Stored Procedure:BAIS_UPDATES_CLIENT_DATA")
-                'cmdBAIS.CommandText = "exec [BAIS_UPDATES_CLIENT_DATA]"
-                'cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(3, "Execute BAIS_UPDATES_CLIENT_DATA commands in SQL Procedures Parameter/BAIS ")
-                Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('BAIS_UPDATES_CLIENT_DATA')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New System.Data.DataTable()
-                da.Fill(dt)
-                For i = 0 To dt.Rows.Count - 1
-                    Dim SqlCommandText As String = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", SqlBAISDate)
-                    cmdBAIS.CommandText = SqlCommandText
-                    If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                        BgwBAISimport.ReportProgress(3, "Execute: " & dt.Rows.Item(i).Item("SQL_Name_1"))
-                        cmdBAIS.ExecuteNonQuery()
-                    End If
-                Next
+                CloseSqlConnections()
 
-                If cmdBAIS.Connection.State = ConnectionState.Open Then
-                    cmdBAIS.Connection.Close()
-                End If
 
             Catch ex As Exception
 
@@ -735,14 +872,6 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
                     Directory.Delete(BAISFileNewDirectory, True)
                 End If
 
-                'Excel Instanz beenden
-                'Dim procs() As Process = Process.GetProcessesByName("EXCEL")
-                'Dim i1 As Short
-                'i1 = 0
-                'For i1 = 0 To (procs.Length - 1)
-                'procs(i1).Kill()
-                'Next i1
-
             End Try
         End If
         '***********************************************************************************************
@@ -750,91 +879,77 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
         '***********************BAIS IMPORT FROM...TILL*************************
         If BaisImportFromTill_btn_clicked = True Then
             Try
-                Me.BgwBAISimport.ReportProgress(10, "Locate the BAIS Current and Temp Directory")
-
-                'Heutiges Datum ermitteln und in Zahl unformatieren
-                Dim CurDate As Date = Today
-                Dim CurDateSql As String = CurDate.ToString("yyyyMMdd")
-
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_CUR_DIR' AND [PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                cmdBAIS.Connection.Open()
-                BAISDirectory = cmdBAIS.ExecuteScalar()
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_TEMP_DIR' AND[PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                BAISFileNewDirectory = cmdBAIS.ExecuteScalar()
-                cmdBAIS.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_FILE_TEMPLATE' AND[PARAMETER STATUS]='Y' AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
-                BAISInterfaceFileTemplate = cmdBAIS.ExecuteScalar()
+                'CURRENT_PROC = Nothing
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Clear_CURRENT_PROC))
+                CURRENT_PROC = "BAIS_IMPORT_ACTIONS"
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Change_CURRENT_PROC))
 
                 'Ermitteln der OCBS Ordner und einfügen der einzelnen Datei Namen in die Datenbank
                 Me.BgwBAISimport.ReportProgress(20, "BAIS Interface Directory - Current: " & BAISDirectory & " - Temporary: " & BAISFileNewDirectory)
 
-                Me.BgwBAISimport.ReportProgress(25, "Create Temporary Table: BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='BAIS_INTERFACE_FILES' AND xtype='U') CREATE TABLE [BAIS_INTERFACE_FILES]([ID] [int] IDENTITY(1,1) NOT NULL,[FileNameNumber] [float] NULL,[FileNameText] [nvarchar](255) NULL,[FileFullName] [nvarchar](255) NULL) ELSE DELETE FROM [BAIS_INTERFACE_FILES] "
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(25, "Create Temporary Table: #Temp_BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_INTERFACE_FILES' AND xtype='U') CREATE TABLE [#Temp_BAIS_INTERFACE_FILES]([ID] [int] IDENTITY(1,1) NOT NULL,[subdirectory] [nvarchar](255) NULL,[depth] float,[file] float NULL) ELSE DELETE FROM [#Temp_BAIS_INTERFACE_FILES] "
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(30, "Insert BAIS Files in Table: #Temp_BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "INSERT [#Temp_BAIS_INTERFACE_FILES] ([subdirectory],[depth],[file]) EXEC master..xp_dirtree '" & BAISDirectory & "',10,1"
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(30, "Insert BAIS Files in Table: BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "INSERT INTO [BAIS_INTERFACE_FILES] (FileNameText) Select [subdirectory] from #Temp_BAIS_INTERFACE_FILES"
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(30, "DROP Table: #Temp_BAIS_INTERFACE_FILES")
-                cmdBAIS.CommandText = "DROP TABLE #Temp_BAIS_INTERFACE_FILES"
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(33, "Update FileNameNumber and FileFullName in BAIS FILES")
-                cmdBAIS.CommandText = "UPDATE [BAIS_INTERFACE_FILES] SET [FileNameNumber]= CASE WHEN ISNUMERIC(SUBSTRING([FileNameText],20,8))=1 THEN CAST(SUBSTRING([FileNameText],20,8) as float) else 0 end,[FileFullName]='" & BAISDirectory & "' + [FileNameText]"
-                cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(40, "Delete from BAIS FILES where FileNameNumber=0")
-                cmdBAIS.CommandText = "DELETE from [BAIS_INTERFACE_FILES] where [FileNameNumber]=0"
-                cmdBAIS.ExecuteNonQuery()
+                Dim dt_NGS_Folders As New DataTable
+                dt_NGS_Folders.Rows.Clear()
+                Dim dt_NGS_Row As DataRow
+                dt_NGS_Folders.Columns.Add("FileName", GetType(String))
+
+                If Directory.Exists(BAISDirectory) Then
+                    Dim dir As New DirectoryInfo(BAISDirectory)
+                    Dim Files As FileInfo() = dir.GetFiles()
+                    For Each File As FileInfo In dir.GetFiles()
+                        dt_NGS_Row = dt_NGS_Folders.NewRow
+                        dt_NGS_Row("FileName") = File.Name
+                        dt_NGS_Folders.Rows.Add(dt_NGS_Row)
+                    Next
+                End If
+
+                OpenSqlConnections()
+                Me.BgwBAISimport.ReportProgress(25, "Create Temporary Table: #Temp_DataFiles")
+                cmd.CommandText = "IF OBJECT_ID('tempdb..#Temp_DataFiles') IS NOT NULL DROP TABLE #Temp_DataFiles 
+                                   CREATE TABLE #Temp_DataFiles (ID int IDENTITY(1,1),FileName nvarchar(255) NULL)"
+                cmd.ExecuteNonQuery()
+                Me.BgwBAISimport.ReportProgress(30, "Insert BAIS File Names in Table: #Temp_DataFiles")
+                For Each dr As DataRow In dt_NGS_Folders.Rows
+                    Dim sc As New SqlCommand("INSERT INTO #Temp_DataFiles ([FileName])" &
+                                        " VALUES (@column1)", conn)
+                    sc.Parameters.AddWithValue("@column1", dr.Item(0))
+                    sc.ExecuteNonQuery()
+                Next
+                Me.BgwBAISimport.ReportProgress(30, "Set FileName as numbers in table: #Temp_DataFiles")
+                cmd.CommandText = "UPDATE #Temp_DataFiles SET FileName=[dbo].[RemoveAllSpaces]([dbo].[fn_StripCharacters](RIGHT(FileName,15), '^0-9'))"
+                cmd.ExecuteNonQuery()
+
+                'clear datatable
+                dt_NGS_Folders.Clear()
+                dt_NGS_Folders.Rows.Clear()
+
+                Me.BgwBAISimport.ReportProgress(45, "Delete from Table: #Temp_DataFiles where FileName <= Last NGS Import File: " & Me.LastBaisImportFile.Text)
+                cmd.CommandText = "DELETE FROM #Temp_DataFiles where [FileName] NOT BETWEEN '" & Me.BaisImportFileFrom.Text & "' and '" & Me.BaisImportFileTill.Text & "'"
+                cmd.ExecuteNonQuery()
 
 
-                Me.BgwBAISimport.ReportProgress(45, "Delete from Table: BAIS FILES where FileName NOT BETWEEN " & Me.BaisImportFileFrom.Text & " and " & Me.BaisImportFileTill.Text)
-                cmdBAIS.CommandText = "DELETE FROM [BAIS_INTERFACE_FILES] where [FileNameNumber] NOT BETWEEN '" & Me.BaisImportFileFrom.Text & "' and '" & Me.BaisImportFileTill.Text & "'"
-                cmdBAIS.ExecuteNonQuery()
-                'set temporary LastImportedBAISfile and load
-                Me.BgwBAISimport.ReportProgress(46, "Set as Temporary Last Imported BAIS File Name:20010101")
-                cmdBAIS.CommandText = "UPDATE [FILES_IMPORT] SET [FileName]='" & 20010101 & "' WHERE [SYSTEM_NAME] in ('BAIS')"
-                cmdBAIS.ExecuteNonQuery()
-
-                Me.QueryText = "SELECT [FileNameNumber],[FileFullName]  FROM [BAIS_INTERFACE_FILES]"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                Me.BgwBAISimport.ReportProgress(50, "Select all File Names for Import")
+                QueryText = "SELECT [FileName] FROM [#Temp_DataFiles] ORDER BY [FileName] asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 Me.BgwBAISimport.ReportProgress(50, "Determine the next BAIS File for Import...Please wait...")
-
-                For m = 0 To dt.Rows.Count - 1
-                    Me.QueryText = "Select  [FileNameNumber] as NextFileNameforimport,[FileFullName] as NextFileFullName,[FileNameText] as 'OriginalFileName' from [BAIS_INTERFACE_FILES] where [FileNameNumber] in (SELECT min([FileNameNumber])FROM [BAIS_INTERFACE_FILES] where [FileNameNumber]>(Select [FileName] from [FILES_IMPORT] where [SYSTEM_NAME] in ('BAIS')))"
-                    da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                    dt1 = New DataTable()
-                    da1.Fill(dt1)
-                    If dt1.Rows.Count > 0 Then
-                        CBAIF = dt1.Rows.Item(0).Item("NextFileNameforimport")
-                        BAIS_Date = DateSerial(Microsoft.VisualBasic.Left(CBAIF, 4), Mid(CBAIF, 5, 2), Microsoft.VisualBasic.Right(CBAIF, 2))
-                        SqlBAISDate = BAIS_Date.ToString("yyyyMMdd")
-
+                If dt.Rows.Count > 0 Then
+                    For m = 0 To dt.Rows.Count - 1
+                        CBAIF = 0
+                        CBAIF = dt.Rows.Item(m).Item("FileName")
+                        rd = DateSerial(Microsoft.VisualBasic.Left(CBAIF, 4), Mid(CBAIF, 5, 2), Microsoft.VisualBasic.Right(CBAIF, 2))
+                        rdsql = rd.ToString("yyyyMMdd")
                         If Me.BgwBAISimport.CancellationPending = False Then
-
                             Me.CurrentBaisImportFile.BeginInvoke(New ChangeText(AddressOf Change_CBAIF))
                             '*******************************************************************************
                             Dim LCBAIF As String = CBAIF
-                            Dim BAISFileFullName As String = dt1.Rows.Item(0).Item("NextFileFullName")
-                            Dim BAISFileCopyNewDirectory As String = dt1.Rows.Item(0).Item("OriginalFileName")
 
-                            'Löschen der Daten in BAIS Files
-                            Me.BgwBAISimport.ReportProgress(60, "Delete from BAIS FILES the File: " & CBAIF)
-                            cmdBAIS.CommandText = "DELETE  FROM [BAIS_INTERFACE_FILES] where [FileNameNumber]='" & CBAIF & "'"
-                            cmdBAIS.ExecuteNonQuery()
-
-                            If Directory.Exists(BAISFileNewDirectory) Then
+                            If Not Directory.Exists(BAISFileNewDirectory) Then
+                                Directory.CreateDirectory(BAISFileNewDirectory)
+                            ElseIf Directory.Exists(BAISFileNewDirectory) Then
                                 Directory.Delete(BAISFileNewDirectory, True)
+                                Directory.CreateDirectory(BAISFileNewDirectory)
                             End If
-                            Directory.CreateDirectory(BAISFileNewDirectory)
-
-                            Dim zipPath As String = BAISFileFullName 'Original Directory
-                            Dim extractPath As String = BAISFileNewDirectory 'New Folder
-                            ExtractTGZ(zipPath, extractPath)
 
                             '+++++++++++++++++++++++++++++++++++++++
                             Me.BgwBAISimport.ReportProgress(60, "BAIS Interface File for Import: " & "  " & CBAIF & " is ready")
@@ -843,14 +958,14 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
 
                             BAIS_INTERFACE_IMPORT_PROCEDURES()
 
+                            CURRENT_PROC = "BAIS_IMPORT_ACTIONS"
 
                             'Erstellten Ordner wieder löschen
                             Me.BgwBAISimport.ReportProgress(85, "Delete Directory: " & "  " & BAISFileNewDirectory)
-                            Directory.Delete(BAISFileNewDirectory, True)
-                            'Ordner als Bearbeitet einsetzen (LOBIF)
-                            Me.BgwBAISimport.ReportProgress(90, "Set as Last imported BAIS File Name: " & "  " & CBAIF)
-                            cmdBAIS.CommandText = "UPDATE [FILES_IMPORT] SET [FileName]='" & CBAIF & "' WHERE [SYSTEM_NAME] in ('BAIS')"
-                            cmdBAIS.ExecuteNonQuery()
+                            If Directory.Exists(BAISFileNewDirectory) Then
+                                Directory.Delete(BAISFileNewDirectory, True)
+                            End If
+
 
                             LBAIF = CBAIF
                             Me.LastBaisImportFile.BeginInvoke(New ChangeText(AddressOf Change_LBAIF))
@@ -858,50 +973,27 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
                             Me.CurrentBaisImportFile.BeginInvoke(New ChangeText(AddressOf Clear_CBAIF))
 
                             'Füllen des Table adapters
-
                             Me.FILES_IMPORTTableAdapter.FillByBAIS(Me.EDPDataSet.FILES_IMPORT)
 
                             Me.BgwBAISimport.ReportProgress(95, "BAIS Interface File Import: " & " " & LCBAIF & " " & "is finished ...")
                             Me.BgwBAISimport.ReportProgress(100, "BAIS Interface Import finished ...")
+                            CURRENT_PROC = Nothing
+
                         ElseIf Me.BgwBAISimport.CancellationPending = True Then
                             Me.BgwBAISimport.ReportProgress(100, "BAIS Interface Imports are terminated after user request!")
                             e.Cancel = True
 
                         End If
 
-                    End If
-
-                Next m
-                'Löschen der Temporären Tabelen für den BAIS Import
-                cmdBAIS.CommandText = "DISABLE TRIGGER [TR_ProtectCriticalTables] ON DATABASE"
-                cmdBAIS.ExecuteNonQuery()
-                cmdBAIS.CommandText = "DROP TABLE [BAIS_INTERFACE_FILES]"
-                cmdBAIS.ExecuteNonQuery()
-                cmdBAIS.CommandText = "ENABLE TRIGGER [TR_ProtectCriticalTables] ON DATABASE"
-                cmdBAIS.ExecuteNonQuery()
-                'Set as last BAIS imported file Name the first BAIS file name
-                cmdBAIS.CommandText = "UPDATE [FILES_IMPORT] SET [FileName]='" & CURRENT_LAST_IMPORTED_BAIS_FILE & "' WHERE [SYSTEM_NAME] in ('BAIS')"
-                cmdBAIS.ExecuteNonQuery()
-                'Me.BgwBAISimport.ReportProgress(100, "Execute Stored Procedure:BAIS_UPDATES_CLIENT_DATA")
-                'cmdBAIS.CommandText = "exec [BAIS_UPDATES_CLIENT_DATA]"
-                'cmdBAIS.ExecuteNonQuery()
-                Me.BgwBAISimport.ReportProgress(3, "Execute BAIS_UPDATES_CLIENT_DATA commands in SQL Procedures Parameter/BAIS ")
-                Me.QueryText = "Select * from [SQL_PARAMETER_DETAILS_SECOND]  where [Id_SQL_Parameters_Details] in (Select [ID] from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('BAIS_UPDATES_CLIENT_DATA')) and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New System.Data.DataTable()
-                da.Fill(dt)
-                For i = 0 To dt.Rows.Count - 1
-                    Dim SqlCommandText As String = dt.Rows.Item(i).Item("SQL_Command_1").ToString.Replace("<RiskDate>", SqlBAISDate)
-                    cmdBAIS.CommandText = SqlCommandText
-                    If dt.Rows.Item(i).Item("SQL_Name_1") <> "" Then
-                        BgwBAISimport.ReportProgress(3, "Execute: " & dt.Rows.Item(i).Item("SQL_Name_1"))
-                        cmdBAIS.ExecuteNonQuery()
-                    End If
-                Next
-
-                If cmdBAIS.Connection.State = ConnectionState.Open Then
-                    cmdBAIS.Connection.Close()
+                    Next m
                 End If
+
+                'Löschen der Temporären Tabelen für den NGS Import
+                Me.BgwBAISimport.ReportProgress(100, "Delete Temporary Table: #Temp_DataFiles")
+                cmd.CommandText = "IF OBJECT_ID('tempdb..#Temp_DataFiles') IS NOT NULL DROP TABLE #Temp_DataFiles"
+                cmd.ExecuteNonQuery()
+
+                CloseSqlConnections()
 
             Catch ex As System.Exception
                 Me.BgwBAISimport.ReportProgress(0, "ERROR +++Import Procedure for BAIS Interface file: " & " " & Me.CurrentBaisImportFile.Text & " " & "is canceled ..." & " " & ex.Message.ToString.Replace("'", " "))
@@ -911,42 +1003,104 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
                 If Directory.Exists(BAISFileNewDirectory) = True Then
                     Directory.Delete(BAISFileNewDirectory, True)
                 End If
-                'Excel Instanz beenden
-                'Dim procs() As Process = Process.GetProcessesByName("EXCEL")
-                'Dim i1 As Short
-                'i1 = 0
-                'For i1 = 0 To (procs.Length - 1)
-                'procs(i1).Kill()
-                'Next i1
             End Try
-            '*****************************************************************************
+
         End If
+        '*****************************************************************************
+
+        '+++++++++++++++++++++++++++++BAIS IMPORT MANUAL from BUTTON+++++++++++++++++++++++++
+        If BaisImportManual_btn_clicked = True Then
+            Try
+                CURRENT_PROC = "BAIS_IMPORT_ACTIONS_MANUAL"
+                'Ermitteln der OCBS Ordner und einfügen der einzelnen Datei Namen in die Datenbank
+                Me.BgwBAISimport.ReportProgress(20, "BAIS Interface Directory - Current: " & BAISDirectory & " - Temporary: " & BAISFileNewDirectory)
+
+                OpenSqlConnections()
+                If Directory.Exists(BAISDirectory) Then
+                    'Define Business Date based on the BAIS File Name
+                    rd = rd_Entered
+                    rdsql = rd.ToString("yyyyMMdd")
+
+                    If Not Directory.Exists(BAISFileNewDirectory) Then
+                        Directory.CreateDirectory(BAISFileNewDirectory)
+                    ElseIf Directory.Exists(BAISFileNewDirectory) Then
+                        Directory.Delete(BAISFileNewDirectory, True)
+                        Directory.CreateDirectory(BAISFileNewDirectory)
+                    End If
+
+                    '+++++++++++++++++++++++++++++++++++++++
+                    Me.BgwBAISimport.ReportProgress(60, "BAIS Interface File for Import: " & "  " & CBAIF & " is ready")
+                    Me.BgwBAISimport.ReportProgress(70, "Starting the BAIS Interface Import procedures...")
+
+
+                    'PROCEDUREN
+                    BAIS_INTERFACE_IMPORT_PROCEDURES_MANUAL()
+
+                    CURRENT_PROC = "BAIS_IMPORT_ACTIONS_MANUAL"
+
+                    '++++++++++++++++++++++++++++++++++++++++++++++
+                    'Erstellten Ordner wieder löschen
+                    Me.BgwBAISimport.ReportProgress(85, "Delete Directory: " & "  " & BAISFileNewDirectory)
+                    If Directory.Exists(BAISFileNewDirectory) Then
+                        Directory.Delete(BAISFileNewDirectory, True)
+                    End If
+
+                    Me.BgwBAISimport.ReportProgress(95, "BAIS Interface File Import: " & " " & CBAIF.ToString & " " & "is finished ...")
+                    Me.BgwBAISimport.ReportProgress(100, "BAIS Interface Import finished ...")
+                    CURRENT_PROC = Nothing
+
+                Else
+                    MessageBox.Show("BAIS Interface File: " & CBAIF & " does not exists!", "BAIS INTERFACE FILE NOT FUND", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                End If
+
+                CloseSqlConnections()
+
+
+            Catch ex As Exception
+
+                Me.BgwBAISimport.ReportProgress(0, "ERROR +++Import Procedure for BAIS INTERFACE File: " & " " & CBAIF.ToString & " " & "is canceled ..." & " " & ex.Message.ToString.Replace("'", " "))
+                Exit Sub
+
+            Finally
+                Me.BgwBAISimport.CancelAsync()
+                'Directory Löschen
+                If Directory.Exists(BAISFileNewDirectory) = True Then
+                    Directory.Delete(BAISFileNewDirectory, True)
+                End If
+
+            End Try
+        End If
+
     End Sub
 
     Private Sub BgwBAISimport_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwBAISimport.ProgressChanged
         Me.EVENTSloadtext.Text = e.UserState
         Me.BAISProgressBar.Value = e.ProgressPercentage
+        Me.CURRENT_PROCEDURE_Text.Text = CURRENT_PROC
 
-        cmdEVENT.Connection.Open()
+        OpenEVENT_SqlConnection()
         Try
-            cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('" & Me.EVENTSloadtext.Text & "','" & Me.CURRENT_PROCEDURE_Text.Text & "','BAIS INTERFACE')"
+            cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcDate],[ProcName],[SystemName])  
+                                    Values('" & Me.EVENTSloadtext.Text & "',(SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),'" & CURRENT_PROC & "','BAIS INTERFACE')"
             cmdEVENT.ExecuteNonQuery()
 
-            TextImportFileRow = Now & "  " & "BAIS INTERFACE" & "  " & Me.EVENTSloadtext.Text & "  " & Me.CURRENT_PROCEDURE_Text.Text
+            TextImportFileRow = Now & "  " & "BAIS INTERFACE" & "  " & Me.EVENTSloadtext.Text & "  " & CURRENT_PROC
             System.IO.File.AppendAllText(ImportEventsDirectory, TextImportFileRow & vbCrLf)
 
         Catch ex As System.Exception
-            cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcName],[SystemName]) Values('ERROR +++ " & ex.Message.ToString.Replace("'", " ") & "','" & Me.CURRENT_PROCEDURE_Text.Text & "','BAIS INTERFACE')"
+            cmdEVENT.CommandText = "INSERT INTO [IMPORT EVENTS] ([EVENT],[ProcDate],[ProcName],[SystemName]) 
+                                    Values('ERROR +++ " & ex.Message.ToString.Replace("'", " ") & "',(SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),'" & CURRENT_PROC & "','BAIS INTERFACE')"
             cmdEVENT.ExecuteNonQuery()
 
-            TextImportFileRow = Now & "  " & "BAIS INTERFACE" & "  " & Me.EVENTSloadtext.Text & "  " & Me.CURRENT_PROCEDURE_Text.Text
+            TextImportFileRow = Now & "  " & "BAIS INTERFACE" & "  " & Me.EVENTSloadtext.Text & "  " & CURRENT_PROC
             System.IO.File.AppendAllText(ImportEventsDirectory, TextImportFileRow & vbCrLf)
             Exit Try
         End Try
         'Get Max Date
         cmdEVENT.CommandText = "SELECT MAX([ProcDate]) FROM [IMPORT EVENTS]"
         Dim MaxNewProcDate As Date = cmdEVENT.ExecuteScalar
-        cmdEVENT.Connection.Close()
+        CloseEVENT_SqlConnection()
+
         'See events
         Me.IMPORT_EVENTSTableAdapter.FillByBAIS_INTERFACE(Me.EDPDataSet.IMPORT_EVENTS, MaxNewProcDate)
         Me.GridControl2.Update()
@@ -955,7 +1109,9 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
 
     Private Sub BgwBAISimport_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwBAISimport.RunWorkerCompleted
         ENABLE_FINISH_IMPORT()
-        Me.FILES_IMPORTTableAdapter.FillByBAIS_Forms(Me.EDPDataSet.FILES_IMPORT)
+        CurrentSystemExecuting = Nothing
+        Me.LayoutControlGroup2.Visibility = LayoutVisibility.Always
+        Me.FILES_IMPORTTableAdapter.FillByBAIS(Me.EDPDataSet.FILES_IMPORT)
         Me.SelectedBaisImportFile.Text = ""
         Me.BaisImportFileFrom.Text = ""
         Me.BaisImportFileTill.Text = ""
@@ -963,19 +1119,93 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
         BaisAutomatedImport_btn_clicked = False
         BaisSelectedFileImport_btn_clicked = False
         BaisImportFromTill_btn_clicked = False
+        BaisImportManual_btn_clicked = False
 
-        If cmdBAIS.Connection.State = ConnectionState.Open Then
-            cmdBAIS.Connection.Close()
-        End If
+        CloseSqlConnections()
 
         Dim f As New GlobalClass
         f.NewImportEventsFolder()
+
 
     End Sub
 
 #End Region
 
 
+#Region "MANUAL IMPORTS FROM BUTTON"
+
+    Private Sub Args_Showing(ByVal sender As Object, ByVal e As XtraMessageShowingArgs)
+        e.Form.Icon = Me.Icon
+        'e.Form.CancelButton.DialogResult = DialogResult.None
+        e.Form.CloseBox = False
+        If e.Form.DialogResult = DialogResult.Cancel Then
+            Exit Sub
+        End If
+        If e.Form.DialogResult = DialogResult.OK Then
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub StartImport_RepositoryItemButtonEdit_Click(sender As Object, e As EventArgs) Handles StartImport_RepositoryItemButtonEdit.Click
+
+        If OcbsImportProcedures_BasicView.GetFocusedRowCellValue(colValid) = "Y" Then
+            If OcbsImportProcedures_BasicView.GetFocusedRowCellValue(colRequestBusinessDate) = "Y" Then
+                ' initialize a new XtraInputBoxArgs instance
+                Dim args As New XtraInputBoxArgs()
+                ' set required Input Box options
+                args.Caption = "Enter the Business Date for the procedure execution"
+                args.Prompt = "Business Date"
+                args.DefaultButtonIndex = 0
+                AddHandler args.Showing, AddressOf Args_Showing
+                ' initialize a DateEdit editor with custom settings
+                Dim editor As New DateEdit()
+                editor.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.Classic
+                editor.Properties.Mask.EditMask = "yyyyMMdd"
+                args.Editor = editor
+                ' a default DateEdit value
+                args.DefaultResponse = Today 'Date.Now.Date.AddDays(0)
+                ' display an Input Box with the custom editor
+
+                Dim obj = XtraInputBox.Show(args)
+                If obj Is Nothing Then
+                    Exit Sub
+                End If
+                If IsDate(obj) = True Then
+                    rd_Entered = CDate(obj)
+                    rdsql_Entered = rd_Entered.ToString("yyyyMMdd")
+                    CBAIF = CDbl(rdsql_Entered)
+
+                    If XtraMessageBox.Show("Should the BAIS Import Procedure: " & OcbsImportProcedures_BasicView.GetFocusedRowCellValue(colProcName) & " be executed for Business Date: " & rd_Entered & " ?", "Start BAIS manual Import", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                        BaisAutomatedImport_btn_clicked = False
+                        BaisSelectedFileImport_btn_clicked = False
+                        BaisImportFromTill_btn_clicked = False
+                        BaisImportManual_btn_clicked = True
+
+                        Me.LayoutControlGroup2.Visibility = LayoutVisibility.Never
+                        DISABLE_START_IMPORT()
+                        If Me.BgwBAISimport.IsBusy = False Then
+                            Me.BgwBAISimport.RunWorkerAsync()
+                        End If
+                    End If
+
+
+                End If
+            Else
+                Return
+            End If
+
+        Else
+            XtraMessageBox.Show("The selected procedure is not valid!" & vbNewLine & "Please change the Status of this procedure!", "PROCEDURE NOT VALID", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Return
+
+        End If ' Request Business Date
+
+
+
+    End Sub
+
+
+#End Region
 
     Private Sub BaisImport_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If Me.BgwBAISimport.IsBusy = True Then
@@ -985,745 +1215,837 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
         End If
     End Sub
 
-    Private Sub BaisInterfaceImportImport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
-
-        AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
-
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
-        connEVENT.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmdEVENT.Connection = connEVENT
-
-        connBAIS.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmdBAIS.Connection = connBAIS
-
-        'Get Max Date
-        cmd.CommandText = "SELECT MAX([ProcDate]) FROM [IMPORT EVENTS]"
-        cmd.Connection.Open()
-        MaxProcDate = cmd.ExecuteScalar
-        cmd.Connection.Close()
-
-        Me.IMPORT_EVENTSTableAdapter.FillByBAIS_INTERFACE(Me.EDPDataSet.IMPORT_EVENTS, MaxProcDate)
-        Me.FILES_IMPORTTableAdapter.FillByBAIS(Me.EDPDataSet.FILES_IMPORT)
-
-    End Sub
-
-    Private Sub GridControl2_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
-        'Terminate OCBS Backgroundworker
-        If e.Button.Tag = "Terminate" Then
-            If Me.BgwBAISimport.IsBusy = True Then
-                If MessageBox.Show("Should the BAIS Interface import be terminated?", "TERMINATE BAIS INTERFACE IMPORTS", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-                    Me.BgwBAISimport.CancelAsync()
-                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS Imports termination is requested..." & vbNewLine & "Please wait until the current BAIS Import operations are finished!")
-                End If
-            End If
-        End If
-    End Sub
-
     Private Sub BAIS_INTERFACE_IMPORT_PROCEDURES()
-        Dim fileEntries As String() = Directory.GetFiles(BAISFileNewDirectory & "\", "*.csv")
-        ' Process the list of .txt files found in the directory. '
-        Dim fileName As String
 
-        For Each fileName In fileEntries
-            dir_BaisFiles.Add(fileName)
+        Me.BgwBAISimport.ReportProgress(50, "Select all valid procedures")
+        QueryText = "SELECT * FROM [BAIS_IMPORT_PROCEDURES] where [Valid] in ('Y') ORDER BY [LfdNr] asc"
+        da1 = New SqlDataAdapter(QueryText.Trim(), conn)
+        dt1 = New DataTable()
+        da1.Fill(dt1)
+        If dt1.Rows.Count > 0 Then
+            For p = 0 To dt1.Rows.Count - 1
+                Dim ProcedureName As String = dt1.Rows.Item(p).Item("ProcName")
+                'CURRENT_PROC = Nothing
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Clear_CURRENT_PROC))
+                CURRENT_PROC = ProcedureName & " for file " & CBAIF.ToString
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Change_CURRENT_PROC))
 
-        Next
+                Dim ExectutionType As String = dt1.Rows.Item(p).Item("ExectutionType")
+                Dim FileExtraction As String = dt1.Rows.Item(p).Item("FileExtraction")
+                Dim RequestBusinessDate As String = dt1.Rows.Item(p).Item("RequestBusinessDate")
+                Dim FileConvertion As String = dt1.Rows.Item(p).Item("FileConvertion")
 
-        Dim BAIS_FILE_DIR As String = Nothing
-        For i = 0 To dir_BaisFiles.Count - 1
-            Dim BaisFileName As String = dir_BaisFiles(i).ToString
-            BAIS_FILE_DIR = BaisFileName
 
-            Select Case Microsoft.VisualBasic.Right(BaisFileName, 14)
+                Me.BgwBAISimport.ReportProgress(50, "Check if procedure exists and is valid in SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT")
+                QueryText = "SELECT * FROM [SQL_PARAMETER_DETAILS_SECOND] where [Status] in ('Y') and LTRIM(RTRIM(SQL_Name_1))='" & ProcedureName.Trim & "'
+                             and [Id_SQL_Parameters_Details]
+                             in (SELECT ID from [SQL_PARAMETER_DETAILS] where [SQL_Name_1] in ('BAIS_ORIGINAL_INTERFACE_FILES_IMPORT') 
+                             and [Id_SQL_Parameters] in ('BAIS'))"
+                da2 = New SqlDataAdapter(QueryText.Trim(), conn)
+                dt2 = New DataTable()
+                da2.Fill(dt2)
+                If dt2.Rows.Count > 0 Then
+                    Me.BgwBAISimport.ReportProgress(50, "Procedure: " & ProcedureName & " exists and is valid in SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT")
 
-                Case Is = "DVTIFF_CCB.csv"
-                    Try
+                    Dim ParameterName_ID As Integer = dt2.Rows.Item(0).Item("ID")
 
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS DVTIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
+                    'Check ExecutionType
+                    If ExectutionType = "IMPORT" Then
+                        Dim FolderNameImport As String = dt1.Rows.Item(p).Item("FolderNameImport")
+                        Dim FileNameImport As String = dt1.Rows.Item(p).Item("FileNameImport")
+                        'Replace folder and fileName with COBIF
+                        FolderNameImport = FolderNameImport.Replace("<YYYYMMDD>", CBAIF.ToString)
+                        FileNameImport = FileNameImport.Replace("<YYYYMMDD>", CBAIF.ToString)
+                        Me.BgwBAISimport.ReportProgress(50, "Folder/File for import:" & FolderNameImport & "-" & FileNameImport)
+                        Me.BgwBAISimport.ReportProgress(50, "For procedure: " & ProcedureName & " the execution type is: " & ExectutionType)
+                        'Check if file is zip/rar for extraction
+                        If FileExtraction = "Y" Then
+                            Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " marked for extraction")
+                            If FolderNameImport.ToUpper.EndsWith(".ZIP") = True OrElse FolderNameImport.ToUpper.EndsWith(".RAR") = True Then
+                                Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " is an zip/rar archive file")
+                                'Check if File exists
+                                If File.Exists(FolderNameImport) Then
+                                    Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " exists")
+                                    Using archive As ZipArchive = ZipArchive.Read(FolderNameImport)
+                                        For Each item As ZipItem In archive
+                                            If String.Compare(item.Name.Trim, FileNameImport.Trim) = 0 Then
+                                                item.Extract(BAISFileNewDirectory, True)
+                                                Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " extracted in Directory:" & BAISFileNewDirectory)
+                                            End If
+                                        Next item
+                                    End Using
+                                Else
+                                    Me.BgwBAISimport.ReportProgress(50, "ERROR +++ Folder/File:" & FolderNameImport & "-" & FileNameImport & " not exists")
+                                    Exit Sub
+                                End If
+                            ElseIf FolderNameImport.ToUpper.EndsWith(".TAR.GZ") = True Then
+                                Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " is an tar.gz archive file")
+                                'Check if File exists
+                                If File.Exists(FolderNameImport) Then
+                                    Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " exists")
+                                    ExtractTGZ(FolderNameImport, BAISFileNewDirectory)
+                                    Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " extracted in Directory:" & BAISFileNewDirectory)
+                                Else
+                                    Me.BgwBAISimport.ReportProgress(50, "ERROR +++ Folder/File:" & FolderNameImport & "-" & FileNameImport & " not exists")
+                                    Exit Sub
+                                End If
+                            Else
+                                Me.BgwBAISimport.ReportProgress(50, "ERROR +++ Folder/File:" & FolderNameImport & "-" & FileNameImport & " is not recognited as archive file")
+                                Exit Sub
+                            End If
+                        ElseIf FileExtraction = "N" Then
+                            'Set correct directory format for the imported files
+                            BAISFileNewDirectory = Nothing
+                            cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_TEMP_DIR' AND[PARAMETER STATUS]='Y' 
+                                               AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
+                            BAISFileNewDirectory = cmd.ExecuteScalar()
+                            Me.BgwBAISimport.ReportProgress(50, "Set Import directory to:" & BAISFileNewDirectory & "\")
+                            Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " will copied to directory:" & BAISFileNewDirectory & "\")
+                            File.Copy(Path.Combine(FolderNameImport, FileNameImport), Path.Combine(BAISFileNewDirectory & "\", FileNameImport), True)
+
                         End If
 
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_DVTIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_DVTIFF_Temp' AND xtype='U') CREATE TABLE [dbo].[#Temp_BAIS_DVTIFF_Temp]([DVTIFF_MDANT] [nvarchar](50) NULL,[DVTIFF_GSREF] [nvarchar](50) NULL,[DVTIFF_FILNR] [nvarchar](50) NULL,[DVTIFF_KDNRH] [nvarchar](50) NULL,[DVTIFF_DXABD] [datetime] NULL,[DVTIFF_GSKLA] [nvarchar](50) NULL,[DVTIFF_SUKLA] [nvarchar](50) NULL,[DVTIFF_DVART] [nvarchar](50) NULL,[DVTIFF_DXVAL] [datetime] NULL,[DVTIFF_DANWC] [nvarchar](50) NULL,[DVTIFF_DANBT] [float] NULL,[DVTIFF_DVKWC] [nvarchar](50) NULL,[DVTIFF_DVKBT] [float] NULL,[DVTIFF_HBKZN] [nvarchar](50) NULL,[DVTIFF_ZWRIS] [nvarchar](50) NULL,[DVTIFF_KBTRG] [nvarchar](50) NULL,[DVTIFF_PTEIN] [nvarchar](50) NULL,[DVTIFF_WHGKP] [nvarchar](50) NULL,[DVTIFF_BCHSW] [nvarchar](50) NULL,[DVTIFF_WHGBU] [nvarchar](50) NULL,[DVTIFF_URDEA] [nvarchar](50) NULL,[DVTIFF_NETKR] [nvarchar](50) NULL,[DVTIFF_KZCVA] [nvarchar](50) NULL,[DVTIFF_GSARE] [nvarchar](50) NULL,[DVTIFF_FAIRV] [nvarchar](50) NULL,[DVTIFF_DXVKT] [nvarchar](50) NULL,[DVTIFF_HFZGP] [nvarchar](50) NULL,[DVTIFF_AFREF] [nvarchar](50) NULL,[DVTIFF_RESE1] [nvarchar](50) NULL,[DVTIFF_RESE2] [nvarchar](50) NULL,[DVTIFF_FREI1] [datetime] NULL,[DVTIFF_FREI2] [nvarchar](50) NULL,[DVTIFF_FREI3] [nvarchar](50) NULL,[DVTIFF_LOEKZ] [nvarchar](50) NULL,[DVTIFF_IFNAM] [nvarchar](50) NULL,[DVTIFF_DXIFD] [datetime] NULL)  ELSE DELETE FROM [#Temp_BAIS_DVTIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import DVTIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_DVTIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_GSTIFF with the same Date in Column:GSTIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_DVTIFF] where [DVTIFF_DXIFD] in (Select distinct [DVTIFF_DXIFD] from [#Temp_BAIS_DVTIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_DVTIFF")
-                        cmd.CommandText = "INSERT INTO [BAIS_DVTIFF]([DVTIFF_MDANT],[DVTIFF_GSREF],[DVTIFF_FILNR],[DVTIFF_KDNRH],[DVTIFF_DXABD],[DVTIFF_GSKLA],[DVTIFF_SUKLA],[DVTIFF_DVART] ,[DVTIFF_DXVAL],[DVTIFF_DANWC],[DVTIFF_DANBT],[DVTIFF_DVKWC],[DVTIFF_DVKBT],[DVTIFF_HBKZN],[DVTIFF_ZWRIS],[DVTIFF_KBTRG],[DVTIFF_PTEIN],[DVTIFF_WHGKP],[DVTIFF_BCHSW],[DVTIFF_WHGBU],[DVTIFF_URDEA],[DVTIFF_NETKR],[DVTIFF_KZCVA],[DVTIFF_GSARE],[DVTIFF_FAIRV],[DVTIFF_DXVKT],[DVTIFF_HFZGP],[DVTIFF_AFREF],[DVTIFF_RESE1],[DVTIFF_RESE2],[DVTIFF_FREI1],[DVTIFF_FREI2],[DVTIFF_FREI3],[DVTIFF_LOEKZ],[DVTIFF_IFNAM],[DVTIFF_DXIFD]) Select * from [#Temp_BAIS_DVTIFF_Temp]"
-                        cmd.ExecuteNonQuery()
+                        'Set correct directory format for the imported files
+                        BAISFileNewDirectory = Nothing
+                        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_TEMP_DIR' AND[PARAMETER STATUS]='Y' 
+                                               AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
+                        BAISFileNewDirectory = cmd.ExecuteScalar()
+                        Me.BgwBAISimport.ReportProgress(50, "Set Import directory to:" & BAISFileNewDirectory & "\")
+                        BAISFileNewDirectory = BAISFileNewDirectory & "\"
 
 
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_DVTIFF_Temp]"
-                        cmd.ExecuteNonQuery()
+                        'FileConvertion
+                        If FileConvertion <> "N" Then
+                            Select Case FileConvertion
+                                Case = "XLS_TO_XLSX"
+                                    Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " marked for convertion: " & FileConvertion)
+                                    If FileNameImport.ToUpper.Trim.EndsWith(".XLS") = True Then
+                                        Me.BgwBAISimport.ReportProgress(50, "Start converting File:" & FileNameImport & " from: " & FileConvertion)
+                                        If ConvertWorkbook Is Nothing Then
+                                            ConvertWorkbook = New Workbook()
+                                        End If
+                                        ConvertWorkbook.LoadDocument(BAISFileNewDirectory & FileNameImport)
+                                        Dim FileNameForConvertion As String = Path.GetFileNameWithoutExtension(BAISFileNewDirectory & FileNameImport)
+                                        Dim pathString As String = Path.Combine(BAISFileNewDirectory, FileNameForConvertion)
+                                        Dim resultFilePath As String = String.Empty
 
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS DVTIFF IMPORT finished")
-                        cmd.Connection.Close()
+                                        resultFilePath = pathString & ".xlsx"
+                                        If File.Exists(resultFilePath) Then
+                                            File.Delete(resultFilePath)
+                                        End If
+                                        ConvertWorkbook.SaveDocument(resultFilePath, DocumentFormat.OpenXml)
+                                        ConvertWorkbook = Nothing
+                                        FileNameImport = FileNameImport.Replace(".xls", ".xlsx").ToString.Replace(".XLS", ".xlsx")
+                                        Me.BgwBAISimport.ReportProgress(50, "File converted to:" & FileNameImport)
+                                    End If
+                                Case = "CSV_TO_XLSX"
+                                    Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " marked for convertion: " & FileConvertion)
+                                    If FileNameImport.ToUpper.Trim.EndsWith(".CSV") = True Then
+                                        Me.BgwBAISimport.ReportProgress(50, "Start converting File:" & FileNameImport & " from: " & FileConvertion)
+                                        If ConvertWorkbook Is Nothing Then
+                                            ConvertWorkbook = New Workbook()
+                                        End If
+                                        ConvertWorkbook.LoadDocument(BAISFileNewDirectory & FileNameImport)
+                                        ConvertWorkbook.Worksheets(0).PrintOptions.FitToPage = True
+                                        Dim FileNameForConvertion As String = Path.GetFileNameWithoutExtension(BAISFileNewDirectory & FileNameImport)
+                                        Dim pathString As String = Path.Combine(BAISFileNewDirectory, FileNameForConvertion)
+                                        Dim resultFilePath As String = String.Empty
 
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "GSTIFF_CCB.csv"
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS GSTIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_GSTIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_GSTIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_GSTIFF_Temp]([GSTIFF_MDANT] [nvarchar](50) NULL,[GSTIFF_FILNR] [nvarchar](50) NULL,[GSTIFF_MODUL] [nvarchar](50) NULL,[GSTIFF_KDNRH] [nvarchar](50) NULL,[GSTIFF_KTONR] [nvarchar](50) NULL,[GSTIFF_GSREF] [nvarchar](50) NULL,[GSTIFF_BEZNG] [nvarchar](50) NULL,[GSTIFF_KOART] [nvarchar](50) NULL,[GSTIFF_BILKT] [nvarchar](50) NULL,[GSTIFF_GSKLA] [nvarchar](50) NULL,[GSTIFF_SUKLA] [nvarchar](50) NULL,[GSTIFF_GSART] [nvarchar](50) NULL,[GSTIFF_ULFZT] [nvarchar](50) NULL,[GSTIFF_WHISO] [nvarchar](50) NULL,[GSTIFF_VERKZ] [nvarchar](50) NULL,[GSTIFF_SLDKZ] [nvarchar](50) NULL,[GSTIFF_KZREV] [nvarchar](50) NULL,[GSTIFF_WPKNZ] [nvarchar](50) NULL,[GSTIFF_WPBFN] [nvarchar](50) NULL,[GSTIFF_HBKZN] [nvarchar](50) NULL,[GSTIFF_ZWRIS] [nvarchar](50) NULL,[GSTIFF_KZLST] [nvarchar](50) NULL,[GSTIFF_HAFIN] [nvarchar](50) NULL,[GSTIFF_WESTA] [nvarchar](50) NULL,[GSTIFF_BEZNR] [nvarchar](50) NULL,[GSTIFF_DXVND] [nvarchar](50) NULL,[GSTIFF_DXBSD] [nvarchar](50) NULL,[GSTIFF_MRLFZ] [nvarchar](50) NULL,[GSTIFF_AUSFL] [nvarchar](50) NULL,[GSTIFF_DXAUD] [nvarchar](50) NULL,[GSTIFF_RANGF] [nvarchar](50) NULL,[GSTIFF_KZUEV] [nvarchar](50) NULL,[GSTIFF_KFRIS] [nvarchar](50) NULL,[GSTIFF_DXZAP] [nvarchar](50) NULL,[GSTIFF_KZVSG] [nvarchar](50) NULL,[GSTIFF_KZKRU] [nvarchar](50) NULL,[GSTIFF_KONSB] [nvarchar](50) NULL,[GSTIFF_RISGR] [nvarchar](50) NULL,[GSTIFF_KONSK] [nvarchar](50) NULL,[GSTIFF_WPKNR] [nvarchar](50) NULL,[GSTIFF_GSARE] [nvarchar](50) NULL,[GSTIFF_PRDKT] [nvarchar](50) NULL,[GSTIFF_WHIFX] [nvarchar](50) NULL,[GSTIFF_HFZGP] [nvarchar](50) NULL,[GSTIFF_AFREF] [nvarchar](50) NULL,[GSTIFF_KZAKL] [nvarchar](50) NULL,[GSTIFF_KONSR] [nvarchar](50) NULL,[GSTIFF_FREI1] [nvarchar](50) NULL,[GSTIFF_FREI2] [nvarchar](50) NULL,[GSTIFF_FREI3] [nvarchar](50) NULL,[GSTIFF_FREI4] [nvarchar](50) NULL,[GSTIFF_FREI5] [nvarchar](50) NULL,[GSTIFF_LOEKZ] [nvarchar](50) NULL,[GSTIFF_IFNAM] [nvarchar](50) NULL,[GSTIFF_DXIFD] [datetime] NULL) ELSE DELETE FROM [#Temp_BAIS_GSTIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import GSTIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_GSTIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_GSTIFF with the same Date in Column:GSTIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_GSTIFF] where [GSTIFF_DXIFD] in (Select distinct [GSTIFF_DXIFD] from [#Temp_BAIS_GSTIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GSTIFF")
-                        cmd.CommandText = "INSERT INTO [BAIS_GSTIFF]([GSTIFF_MDANT],[GSTIFF_FILNR],[GSTIFF_MODUL],[GSTIFF_KDNRH],[GSTIFF_KTONR],[GSTIFF_GSREF],[GSTIFF_BEZNG],[GSTIFF_KOART],[GSTIFF_BILKT],[GSTIFF_GSKLA],[GSTIFF_SUKLA],[GSTIFF_GSART],[GSTIFF_ULFZT],[GSTIFF_WHISO],[GSTIFF_VERKZ],[GSTIFF_SLDKZ],[GSTIFF_KZREV],[GSTIFF_WPKNZ],[GSTIFF_WPBFN],[GSTIFF_HBKZN],[GSTIFF_ZWRIS],[GSTIFF_KZLST],[GSTIFF_HAFIN],[GSTIFF_WESTA],[GSTIFF_BEZNR],[GSTIFF_DXVND],[GSTIFF_DXBSD],[GSTIFF_MRLFZ],[GSTIFF_AUSFL],[GSTIFF_DXAUD],[GSTIFF_RANGF],[GSTIFF_KZUEV],[GSTIFF_KFRIS],[GSTIFF_DXZAP],[GSTIFF_KZVSG],[GSTIFF_KZKRU],[GSTIFF_KONSB],[GSTIFF_RISGR],[GSTIFF_KONSK],[GSTIFF_WPKNR],[GSTIFF_GSARE],[GSTIFF_PRDKT],[GSTIFF_WHIFX],[GSTIFF_HFZGP],[GSTIFF_AFREF],[GSTIFF_KZAKL],[GSTIFF_KONSR],[GSTIFF_FREI1],[GSTIFF_FREI2],[GSTIFF_FREI3],[GSTIFF_FREI4],[GSTIFF_FREI5],[GSTIFF_LOEKZ],[GSTIFF_IFNAM],[GSTIFF_DXIFD]) Select * from [#Temp_BAIS_GSTIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        cmd.CommandText = "Update [BAIS_GSTIFF] set [ReferenceClear]=dbo.fn_StripCharacters([GSTIFF_GSREF],'^0-9') where [GSTIFF_MODUL] not in ('SK') and [GSTIFF_DXIFD]='" & SqlBAISDate & "'"
-                        cmd.ExecuteNonQuery()
-                        cmd.CommandText = "Update [BAIS_GSTIFF] set [ReferenceClear]=LEFT([GSTIFF_GSREF],6) where [GSTIFF_MODUL] in ('SK') and [GSTIFF_DXIFD]='" & SqlBAISDate & "'"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_GSTIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS GSTIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "GSTSLF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS GSTSLF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
+                                        resultFilePath = pathString & ".xlsx"
+                                        If File.Exists(resultFilePath) Then
+                                            File.Delete(resultFilePath)
+                                        End If
+                                        ConvertWorkbook.SaveDocument(resultFilePath, DocumentFormat.OpenXml)
+                                        ConvertWorkbook = Nothing
+                                        FileNameImport = FileNameImport.Replace(".csv", ".xlsx").ToString.Replace(".CSV", ".xlsx")
+                                        Me.BgwBAISimport.ReportProgress(50, "File converted to:" & FileNameImport)
+                                    End If
+                            End Select
                         End If
 
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_GSTSLF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_GSTSLF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_GSTSLF_Temp]([GSTSLF_MDANT] [nvarchar](50) NULL,[GSTSLF_MODUL] [nvarchar](50) NULL,[GSTSLF_KDNRH] [nvarchar](50) NULL,[GSTSLF_KTONR] [nvarchar](50) NULL,[GSTSLF_GSREF] [nvarchar](50) NULL,[GSTSLF_SLDUB] [float] NULL,[GSTSLF_DISPO] [nvarchar](50) NULL,[GSTSLF_DXDVD] [nvarchar](50) NULL,[GSTSLF_DXDBD] [nvarchar](50) NULL,[GSTSLF_ABGBT] [float] NULL,[GSTSLF_GKBTR] [nvarchar](50) NULL,[GSTSLF_FAIRV] [nvarchar](50) NULL,[GSTSLF_IFNAM] [nvarchar](50) NULL,[GSTSLF_DXIFD] [nvarchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_GSTSLF_Temp]"
-                        cmd.ExecuteNonQuery()
+                        'Start checking and executing SQL Parameters
+                        Me.BgwBAISimport.ReportProgress(50, "Load and execute parameters from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                        QueryText = "SELECT * FROM [SQL_PARAMETER_DETAILS_THIRD] where [Status] in ('Y') and ISNULL(SQL_Name_1,'')<>''
+                                     and ISNULL(SQL_Command_1,'')<>'' and [Id_SQL_Parameters_Details]=" & ParameterName_ID & "
+                                     ORDER BY [SQL_Float_1] asc"
+                        da3 = New SqlDataAdapter(QueryText.Trim(), conn)
+                        dt3 = New DataTable()
+                        da3.Fill(dt3)
+                        If dt3.Rows.Count > 0 Then
+                            Me.BgwBAISimport.ReportProgress(50, "Start executing parameters from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                            Dim CUR_FILE_DIR_IMPORT As String = BAISFileNewDirectory & FileNameImport
+                            For s = 0 To dt3.Rows.Count - 1
+                                ScriptType = dt3.Rows.Item(s).Item("SQL_ScriptType_1").ToString
+                                If ScriptType = "SQL" Then
+                                    SqlCommandText = dt3.Rows.Item(s).Item("SQL_Command_1").ToString.Replace("<IMPORT_DIR_FILE>", CUR_FILE_DIR_IMPORT).Replace("<RiskDate>", rdsql)
+                                    cmd.CommandText = SqlCommandText
+                                    Me.BgwBAISimport.ReportProgress(s, dt3.Rows.Item(s).Item("SQL_Name_1") & " - Procedure:" & ProcedureName & " - Nr.: " & dt3.Rows.Item(s).Item("SQL_Float_1").ToString)
+                                    cmd.ExecuteNonQuery()
+                                ElseIf ScriptType = "VB" Then
+                                    Dim code As String = dt3.Rows.Item(s).Item("SQL_Command_1").ToString.Replace("<IMPORT_DIR_FILE>", CUR_FILE_DIR_IMPORT).ToString.Replace("<rd>", rd).ToString.Replace("<rdsql>", rdsql).ToString.Replace("<SQL_SERVER>", TOOL_SQL_SERVER_ONLY).ToString.Replace("<SQL_DATABASE>", TOOL_SQL_DATABASE).Trim()
+                                    Dim language As DynamicCompileAndRun.LanguageType = DynamicCompileAndRun.LanguageType.VB
+                                    Dim entry As String = "VB_ScriptForExecution"
+                                    If code = "" Then Return
+                                    If entry = "" Then entry = "VB_ScriptForExecution"
+                                    Dim engine As DynamicCompileAndRun.CompileEngine = New DynamicCompileAndRun.CompileEngine(code, language, entry)
+                                    Me.BgwBAISimport.ReportProgress(s, dt3.Rows.Item(s).Item("SQL_Name_1") & " - Procedure:" & ProcedureName & " - Nr.: " & dt3.Rows.Item(s).Item("SQL_Float_1").ToString)
+                                    engine.Run()
+                                End If
 
-                        Me.BgwBAISimport.ReportProgress(30, "Import GSTSLF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_GSTSLF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN GSTSLF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_GSTSLF_Temp] ALTER COLUMN [GSTSLF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_GSTSLF with the same Date in Column:GSTSLF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_GSTSLF] where [GSTSLF_DXIFD] in (Select distinct [GSTSLF_DXIFD] from [#Temp_BAIS_GSTSLF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GSTSLF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_GSTSLF]([GSTSLF_MDANT],[GSTSLF_MODUL],[GSTSLF_KDNRH],[GSTSLF_KTONR],[GSTSLF_GSREF],[GSTSLF_SLDUB],[GSTSLF_DISPO],[GSTSLF_DXDVD],[GSTSLF_DXDBD],[GSTSLF_ABGBT],[GSTSLF_GKBTR],[GSTSLF_FAIRV],[GSTSLF_IFNAM],[GSTSLF_DXIFD]) Select * from [#Temp_BAIS_GSTSLF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        cmd.CommandText = "Update [BAIS_GSTSLF] set [ReferenceClear]=dbo.fn_StripCharacters([GSTSLF_GSREF],'^0-9') where [GSTSLF_MODUL] not in ('SK') and [GSTSLF_DXIFD]='" & SqlBAISDate & "'"
-                        cmd.ExecuteNonQuery()
-                        cmd.CommandText = "Update [BAIS_GSTSLF] set [ReferenceClear]=LEFT([GSTSLF_GSREF],6) where [GSTSLF_MODUL] in ('SK') and [GSTSLF_DXIFD]='" & SqlBAISDate & "'"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_GSTSLF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS GSTSLF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "KGCIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS KGCIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
+                            Next
+                        Else
+                            Me.BgwBAISimport.ReportProgress(50, "WARNING +++ No valid parameters found from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                            Exit Sub
                         End If
 
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_KGCIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_KGCIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_KGCIFF_Temp]([KGCIFF_MDANT] [varchar](50) NULL,[KGCIFF_MODUL] [varchar](50) NULL,[KGCIFF_KDNRH] [varchar](50) NULL,[KGCIFF_KTONR] [varchar](50) NULL,[KGCIFF_GSREF] [varchar](50) NULL,[KGCIFF_ACCNR] [varchar](50) NULL,[KGCIFF_PTYPI] [varchar](50) NULL,[KGCIFF_CURCD] [varchar](50) NULL,[KGCIFF_DXBEW] [varchar](50) NULL,[KGCIFF_ERART] [varchar](50) NULL,[KGCIFF_HOEHE] [varchar](50) NULL,[KGCIFF_SALDO] [varchar](50) NULL,[KGCIFF_TILGA] [varchar](50) NULL,[KGCIFF_ZINSA] [varchar](50) NULL,[KGCIFF_WHISO] [varchar](50) NULL,[KGCIFF_IFNAM] [varchar](50) NULL,[KGCIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_KGCIFF_Temp]"
-                        cmd.ExecuteNonQuery()
+                    ElseIf ExectutionType = "SCRIPT" Then
+                        Me.BgwBAISimport.ReportProgress(50, "For procedure: " & ProcedureName & " the execution type is: " & ExectutionType)
+                        Me.BgwBAISimport.ReportProgress(50, "Load and execute parameters from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                        QueryText = "SELECT * FROM [SQL_PARAMETER_DETAILS_THIRD] where [Status] in ('Y') and ISNULL(SQL_Name_1,'')<>''
+                                     and ISNULL(SQL_Command_1,'')<>'' and [Id_SQL_Parameters_Details]=" & ParameterName_ID & "
+                                     ORDER BY [SQL_Float_1] asc"
+                        da3 = New SqlDataAdapter(QueryText.Trim(), conn)
+                        dt3 = New DataTable()
+                        da3.Fill(dt3)
+                        If dt3.Rows.Count > 0 Then
+                            Me.BgwBAISimport.ReportProgress(50, "Start executing parameters from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                            For s = 0 To dt3.Rows.Count - 1
+                                ScriptType = dt3.Rows.Item(s).Item("SQL_ScriptType_1").ToString
+                                If ScriptType = "SQL" Then
+                                    SqlCommandText = dt3.Rows.Item(s).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
+                                    cmd.CommandText = SqlCommandText
+                                    Me.BgwBAISimport.ReportProgress(s, dt3.Rows.Item(s).Item("SQL_Name_1") & " - Procedure:" & ProcedureName & " - Nr.: " & dt3.Rows.Item(s).Item("SQL_Float_1").ToString)
+                                    cmd.ExecuteNonQuery()
+                                ElseIf ScriptType = "VB" Then
+                                    Dim code As String = dt3.Rows.Item(s).Item("SQL_Command_1").ToString.Replace("<rd>", rd).ToString.Replace("<rdsql>", rdsql).ToString.Replace("<SQL_SERVER>", TOOL_SQL_SERVER_ONLY).ToString.Replace("<SQL_DATABASE>", TOOL_SQL_DATABASE).Trim()
+                                    Dim language As DynamicCompileAndRun.LanguageType = DynamicCompileAndRun.LanguageType.VB
+                                    Dim entry As String = "VB_ScriptForExecution"
+                                    If code = "" Then Return
+                                    If entry = "" Then entry = "VB_ScriptForExecution"
+                                    Dim engine As DynamicCompileAndRun.CompileEngine = New DynamicCompileAndRun.CompileEngine(code, language, entry)
+                                    Me.BgwBAISimport.ReportProgress(s, dt3.Rows.Item(s).Item("SQL_Name_1") & " - Procedure:" & ProcedureName & " - Nr.: " & dt3.Rows.Item(s).Item("SQL_Float_1").ToString)
+                                    engine.Run()
+                                End If
 
-                        Me.BgwBAISimport.ReportProgress(30, "Import KGCIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_KGCIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN KGCIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KGCIFF_Temp] ALTER COLUMN [KGCIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN KGCIFF_DXBEW to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KGCIFF_Temp] ALTER COLUMN [KGCIFF_DXBEW] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_KGCIFF with the same Date in Column:KGCIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_KGCIFF] where [KGCIFF_DXIFD] in (Select distinct [KGCIFF_DXIFD] from [#Temp_BAIS_KGCIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GSTSLF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_KGCIFF]([KGCIFF_MDANT],[KGCIFF_MODUL],[KGCIFF_KDNRH],[KGCIFF_KTONR],[KGCIFF_GSREF],[KGCIFF_ACCNR],[KGCIFF_PTYPI],[KGCIFF_CURCD],[KGCIFF_DXBEW],[KGCIFF_ERART],[KGCIFF_HOEHE],[KGCIFF_SALDO],[KGCIFF_TILGA],[KGCIFF_ZINSA],[KGCIFF_WHISO],[KGCIFF_IFNAM],[KGCIFF_DXIFD]) Select * from [#Temp_BAIS_KGCIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_KGCIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS KGCIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "KNEIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS KNEIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
+                            Next
+                        Else
+                            Me.BgwBAISimport.ReportProgress(50, "WARNING +++ No valid parameters found from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                            Exit Sub
                         End If
 
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_KNEIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_KNEIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_KNEIFF_Temp]([KNEIFF_MDANT] [varchar](50) NULL,[KNEIFF_FILNR] [varchar](50) NULL,[KNEIFF_KDNRH] [varchar](50) NULL,[KNEIFF_KURZN] [varchar](50) NULL,[KNEIFF_NAME1] [varchar](50) NULL,[KNEIFF_NAME2] [varchar](50) NULL,[KNEIFF_NAME3] [varchar](50) NULL,[KNEIFF_PLZOR] [varchar](50) NULL,[KNEIFF_PLZNR] [varchar](50) NULL,[KNEIFF_STRAS] [varchar](50) NULL,[KNEIFF_DXGEB] [varchar](50) NULL,[KNEIFF_WSGSI] [varchar](50) NULL,[KNEIFF_BRNCH] [varchar](50) NULL,[KNEIFF_WSBIS] [varchar](50) NULL,[KNEIFF_BRNZU] [varchar](50) NULL,[KNEIFF_SLDSL] [varchar](50) NULL,[KNEIFF_RLDSL] [varchar](50) NULL,[KNEIFF_LDRIS] [varchar](50) NULL,[KNEIFF_BONIT] [varchar](50) NULL,[KNEIFF_GRPKZ] [varchar](50) NULL,[KNEIFF_KZLST] [varchar](50) NULL,[KNEIFF_KZPER] [varchar](50) NULL,[KNEIFF_UMMIO] [varchar](50) NULL,[KNEIFF_AUSFL] [varchar](50) NULL,[KNEIFF_DXAUD] [varchar](50) NULL,[KNEIFF_ORGSL] [varchar](50) NULL,[KNEIFF_RISGR] [varchar](50) NULL,[KNEIFF_KGBID] [varchar](50) NULL,[KNEIFF_ANRKZ] [varchar](50) NULL,[KNEIFF_ESAKZ] [varchar](50) NULL,[KNEIFF_NACES] [varchar](50) NULL,[KNEIFF_LENID] [varchar](50) NULL,[KNEIFF_WSCRR] [varchar](50) NULL,[KNEIFF_AVCKZ] [varchar](50) NULL,[KNEIFF_FREI1] [varchar](50) NULL,[KNEIFF_FREI2] [varchar](50) NULL,[KNEIFF_FREI3] [varchar](50) NULL,[KNEIFF_FREI4] [varchar](50) NULL,[KNEIFF_FREI5] [varchar](50) NULL,[KNEIFF_LOEKZ] [varchar](50) NULL,[KNEIFF_IFNAM] [varchar](50) NULL,[KNEIFF_DXIFD] [varchar](50) NULL)  ELSE DELETE FROM [#Temp_BAIS_KNEIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import KNEIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_KNEIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN KNEIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KNEIFF_Temp] ALTER COLUMN [KNEIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_KNEIFF with the same Date in Column:KNEIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_KNEIFF] where [KNEIFF_DXIFD] in (Select distinct [KNEIFF_DXIFD] from [#Temp_BAIS_KNEIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_KNEIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_KNEIFF]([KNEIFF_MDANT],[KNEIFF_FILNR],[KNEIFF_KDNRH],[KNEIFF_KURZN],[KNEIFF_NAME1],[KNEIFF_NAME2],[KNEIFF_NAME3],[KNEIFF_PLZOR],[KNEIFF_PLZNR],[KNEIFF_STRAS],[KNEIFF_DXGEB],[KNEIFF_WSGSI],[KNEIFF_BRNCH],[KNEIFF_WSBIS],[KNEIFF_BRNZU],[KNEIFF_SLDSL],[KNEIFF_RLDSL],[KNEIFF_LDRIS],[KNEIFF_BONIT],[KNEIFF_GRPKZ],[KNEIFF_KZLST],[KNEIFF_KZPER],[KNEIFF_UMMIO],[KNEIFF_AUSFL],[KNEIFF_DXAUD],[KNEIFF_ORGSL],[KNEIFF_RISGR],[KNEIFF_KGBID],[KNEIFF_ANRKZ],[KNEIFF_ESAKZ],[KNEIFF_NACES],[KNEIFF_LENID],[KNEIFF_WSCRR],[KNEIFF_AVCKZ],[KNEIFF_FREI1],[KNEIFF_FREI2],[KNEIFF_FREI3],[KNEIFF_FREI4],[KNEIFF_FREI5],[KNEIFF_LOEKZ],[KNEIFF_IFNAM],[KNEIFF_DXIFD]) Select * from [#Temp_BAIS_KNEIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_KNEIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS KNEIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "KNVIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS KNVIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_KNVIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_KNVIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_KNVIFF_Temp]([KNVIFF_MDANK] [varchar](50) NULL,[KNVIFF_MDANT] [varchar](50) NULL,[KNVIFF_KNZNR] [varchar](50) NULL,[KNVIFF_MDAN2] [varchar](50) NULL,[KNVIFF_KDNRH] [varchar](50) NULL,[KNVIFF_KNEKZ] [varchar](50) NULL,[KNVIFF_GRDZF] [varchar](50) NULL,[KNVIFF_ZUSKZ] [varchar](50) NULL,[KNVIFF_GBRKZ] [varchar](50) NULL,[KNVIFF_MEANT] [varchar](50) NULL,[KNVIFF_HFBES] [varchar](50) NULL,[KNVIFF_ANERL] [varchar](50) NULL,[KNVIFF_BETXT] [varchar](50) NULL,[KNVIFF_FREI1] [varchar](50) NULL,[KNVIFF_FREI2] [varchar](50) NULL,[KNVIFF_FREI3] [varchar](50) NULL,[KNVIFF_LOEKZ] [varchar](50) NULL,[KNVIFF_IFNAM] [varchar](50) NULL,[KNVIFF_DXIFD] [varchar](50) NULL)  ELSE DELETE FROM [#Temp_BAIS_KNVIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import KNVIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_KNVIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN KNVIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KNVIFF_Temp] ALTER COLUMN [KNVIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_KNVIFF with the same Date in Column:KNVIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_KNVIFF] where [KNVIFF_DXIFD] in (Select distinct [KNVIFF_DXIFD] from [#Temp_BAIS_KNVIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_KNVIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_KNVIFF]([KNVIFF_MDANK],[KNVIFF_MDANT],[KNVIFF_KNZNR],[KNVIFF_MDAN2],[KNVIFF_KDNRH],[KNVIFF_KNEKZ],[KNVIFF_GRDZF],[KNVIFF_ZUSKZ],[KNVIFF_GBRKZ],[KNVIFF_MEANT],[KNVIFF_HFBES],[KNVIFF_ANERL],[KNVIFF_BETXT],[KNVIFF_FREI1],[KNVIFF_FREI2],[KNVIFF_FREI3],[KNVIFF_LOEKZ],[KNVIFF_IFNAM],[KNVIFF_DXIFD]) Select * from [#Temp_BAIS_KNVIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_KNVIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS KNVIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                    '++++++Only delete file -File is filed with data from PS TOOL
-                Case Is = "KRKIFF_CCB.csv"
-
-                    Try
-
-
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-                    '+++++++++++++++++++
-
-                Case Is = "KSRIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS KSRIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_KSRIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_KSRIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_KSRIFF_Temp]([KSRIFF_RKLIF] [varchar](50) NULL,[KSRIFF_RAGEN] [varchar](50) NULL,[KSRIFF_RATYP] [varchar](50) NULL,[KSRIFF_KZHFW] [varchar](50) NULL,[KSRIFF_RATEX] [varchar](50) NULL,[KSRIFF_DXRAT] [varchar](50) NULL,[KSRIFF_LDISO] [varchar](50) NULL,[KSRIFF_IFNAM] [varchar](50) NULL,[KSRIFF_DXIFD] [varchar](50) NULL)  ELSE DELETE FROM [#Temp_BAIS_KSRIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import KSRIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_KSRIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN KSRIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KSRIFF_Temp] ALTER COLUMN [KSRIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN KSRIFF_DXRAT to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_KSRIFF_Temp] ALTER COLUMN [KSRIFF_DXRAT] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_KSRIFF with the same Date in Column:KSRIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_KSRIFF] where [KSRIFF_DXIFD] in (Select distinct [KSRIFF_DXIFD] from [#Temp_BAIS_KSRIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_KNVIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_KSRIFF]([KSRIFF_RKLIF],[KSRIFF_RAGEN],[KSRIFF_RATYP],[KSRIFF_KZHFW],[KSRIFF_RATEX],[KSRIFF_DXRAT],[KSRIFF_LDISO],[KSRIFF_IFNAM],[KSRIFF_DXIFD]) Select * from [#Temp_BAIS_KSRIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_KSRIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS KSRIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "LQGIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS LQGIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_LQGIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_LQGIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_LQGIFF_Temp]([LQGIFF_MDANT] [varchar](50) NULL,[LQGIFF_MODUL] [varchar](50) NULL,[LQGIFF_KDNRH] [varchar](50) NULL,[LQGIFF_KTONR] [varchar](50) NULL,[LQGIFF_GSREF] [varchar](50) NULL,[LQGIFF_EINLS] [varchar](50) NULL,[LQGIFF_KUNDG] [varchar](50) NULL,[LQGIFF_KUNBT] [varchar](50) NULL,[LQGIFF_EINTY] [varchar](50) NULL,[LQGIFF_BESFI] [varchar](50) NULL,[LQGIFF_RSFFK] [varchar](50) NULL,[LQGIFF_DXBES] [varchar](50) NULL,[LQGIFF_MWSIC] [varchar](50) NULL,[LQGIFF_WHMWS] [varchar](50) NULL,[LQGIFF_ANZKI] [varchar](50) NULL,[LQGIFF_KZABL] [varchar](50) NULL,[LQGIFF_DXBEL] [varchar](50) NULL,[LQGIFF_HOEBL] [varchar](50) NULL,[LQGIFF_WHGBL] [varchar](50) NULL,[LQGIFF_NOMBT] [varchar](50) NULL,[LQGIFF_HAWHG] [varchar](50) NULL,[LQGIFF_KUDIV] [varchar](50) NULL,[LQGIFF_QKRLA] [varchar](50) NULL,[LQGIFF_LIQQU] [varchar](50) NULL,[LQGIFF_KZLCI] [varchar](50) NULL,[LQGIFF_KZFAZ] [varchar](50) NULL,[LQGIFF_LCRK1] [varchar](50) NULL,[LQGIFF_LCRK2] [varchar](50) NULL,[LQGIFF_NSFRK] [varchar](50) NULL,[LQGIFF_CAPIF] [varchar](50) NULL,[LQGIFF_IFNAM] [varchar](50) NULL,[LQGIFF_DXIFD] [varchar](50) NULL)   ELSE DELETE FROM [#Temp_BAIS_LQGIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import LQGIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_LQGIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN LQGIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_LQGIFF_Temp] ALTER COLUMN [LQGIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_LQGIFF with the same Date in Column:LQGIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_LQGIFF] where [LQGIFF_DXIFD] in (Select distinct [LQGIFF_DXIFD] from [#Temp_BAIS_LQGIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_LQGIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_LQGIFF]([LQGIFF_MDANT],[LQGIFF_MODUL],[LQGIFF_KDNRH],[LQGIFF_KTONR],[LQGIFF_GSREF],[LQGIFF_EINLS],[LQGIFF_KUNDG],[LQGIFF_KUNBT],[LQGIFF_EINTY],[LQGIFF_BESFI],[LQGIFF_RSFFK],[LQGIFF_DXBES],[LQGIFF_MWSIC],[LQGIFF_WHMWS],[LQGIFF_ANZKI],[LQGIFF_KZABL],[LQGIFF_DXBEL],[LQGIFF_HOEBL],[LQGIFF_WHGBL],[LQGIFF_NOMBT],[LQGIFF_HAWHG],[LQGIFF_KUDIV],[LQGIFF_QKRLA],[LQGIFF_LIQQU],[LQGIFF_KZLCI],[LQGIFF_KZFAZ],[LQGIFF_LCRK1],[LQGIFF_LCRK2],[LQGIFF_NSFRK],[LQGIFF_CAPIF],[LQGIFF_IFNAM],[LQGIFF_DXIFD]) Select * from [#Temp_BAIS_LQGIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_LQGIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS LQGIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "MKUIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS MKUIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_MKUIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_MKUIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_MKUIFF_Temp]([MKUIFF_MDANT] [varchar](50) NULL,[MKUIFF_WPKNR] [varchar](50) NULL,[MKUIFF_HAWHG] [varchar](50) NULL,[MKUIFF_PREIS] [varchar](50) NULL,[MKUIFF_PREI2] [varchar](50) NULL,[MKUIFF_BEWAB] [varchar](50) NULL,[MKUIFF_BWALA] [varchar](50) NULL,[MKUIFF_CLEAN] [varchar](50) NULL,[MKUIFF_IFNAM] [varchar](50) NULL,[MKUIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_MKUIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import MKUIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_MKUIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN MKUIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_MKUIFF_Temp] ALTER COLUMN [MKUIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_MKUIFF with the same Date in Column:MKUIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_MKUIFF] where [MKUIFF_DXIFD] in (Select distinct [MKUIFF_DXIFD] from [#Temp_BAIS_MKUIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_MKUIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_MKUIFF]([MKUIFF_MDANT],[MKUIFF_WPKNR],[MKUIFF_HAWHG],[MKUIFF_PREIS],[MKUIFF_PREI2],[MKUIFF_BEWAB],[MKUIFF_BWALA],[MKUIFF_CLEAN],[MKUIFF_IFNAM],[MKUIFF_DXIFD]) Select * from [#Temp_BAIS_MKUIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Check for new Securities-Run SQL Job:")
-                        cmd.CommandText = "EXEC msdb.dbo.sp_start_job 'NEW SECURITIES EMAIL'"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_MKUIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS MKUIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "ZUSIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS ZUSIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_ZUSIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_ZUSIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_ZUSIFF_Temp]([ZUSIFF_MDANT] [varchar](50) NULL,[ZUSIFF_FILNR] [varchar](50) NULL,[ZUSIFF_KDNRH] [varchar](50) NULL,[ZUSIFF_ZUREF] [varchar](50) NULL,[ZUSIFF_ZUART] [varchar](50) NULL,[ZUSIFF_KRART] [varchar](50) NULL,[ZUSIFF_MODUL] [varchar](50) NULL,[ZUSIFF_KTONR] [varchar](50) NULL,[ZUSIFF_GSREF] [varchar](50) NULL,[ZUSIFF_ZUEXU] [varchar](50) NULL,[ZUSIFF_WHRGE] [varchar](50) NULL,[ZUSIFF_DXZGA] [varchar](50) NULL,[ZUSIFF_DXVNE] [varchar](50) NULL,[ZUSIFF_DXBSE] [varchar](50) NULL,[ZUSIFF_KZREV] [varchar](50) NULL,[ZUSIFF_KZUNW] [varchar](50) NULL,[ZUSIFF_KZABR] [varchar](50) NULL,[ZUSIFF_WLKKZ] [varchar](50) NULL,[ZUSIFF_KNZZU] [varchar](50) NULL,[ZUSIFF_ZOEKZ] [varchar](50) NULL,[ZUSIFF_KGZUO] [varchar](50) NULL,[ZUSIFF_ZUTYP] [varchar](50) NULL,[ZUSIFF_AUSFL] [varchar](50) NULL,[ZUSIFF_DXAUD] [varchar](50) NULL,[ZUSIFF_KOART] [varchar](50) NULL,[ZUSIFF_GSART] [varchar](50) NULL,[ZUSIFF_RISGR] [varchar](50) NULL,[ZUSIFF_KZUKU] [varchar](50) NULL,[ZUSIFF_ERHGE] [varchar](50) NULL,[ZUSIFF_GSARE] [varchar](50) NULL,[ZUSIFF_HAFIN] [varchar](50) NULL,[ZUSIFF_PRDKT] [varchar](50) NULL,[ZUSIFF_INABU] [varchar](50) NULL,[ZUSIFF_KZAKL] [varchar](50) NULL,[ZUSIFF_FREI1] [varchar](50) NULL,[ZUSIFF_FREI2] [varchar](50) NULL,[ZUSIFF_FREI3] [varchar](50) NULL,[ZUSIFF_FREI4] [varchar](50) NULL,[ZUSIFF_FREI5] [varchar](50) NULL,[ZUSIFF_LOEKZ] [varchar](50) NULL,[ZUSIFF_IFNAM] [varchar](50) NULL,[ZUSIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_ZUSIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import ZUSIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_ZUSIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN ZUSIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_ZUSIFF_Temp] ALTER COLUMN [ZUSIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN ZUSIFF_DXZGA to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_ZUSIFF_Temp] ALTER COLUMN [ZUSIFF_DXZGA] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN ZUSIFF_DXVNE to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_ZUSIFF_Temp] ALTER COLUMN [ZUSIFF_DXVNE] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN ZUSIFF_DXBSE to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_ZUSIFF_Temp] ALTER COLUMN [ZUSIFF_DXBSE] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_ZUSIFF with the same Date in Column:ZUSIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_ZUSIFF] where [ZUSIFF_DXIFD] in (Select distinct [ZUSIFF_DXIFD] from [#Temp_BAIS_ZUSIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_ZUSIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_ZUSIFF]([ZUSIFF_MDANT],[ZUSIFF_FILNR],[ZUSIFF_KDNRH],[ZUSIFF_ZUREF],[ZUSIFF_ZUART],[ZUSIFF_KRART],[ZUSIFF_MODUL],[ZUSIFF_KTONR],[ZUSIFF_GSREF],[ZUSIFF_ZUEXU],[ZUSIFF_WHRGE],[ZUSIFF_DXZGA],[ZUSIFF_DXVNE],[ZUSIFF_DXBSE],[ZUSIFF_KZREV],[ZUSIFF_KZUNW],[ZUSIFF_KZABR],[ZUSIFF_WLKKZ],[ZUSIFF_KNZZU],[ZUSIFF_ZOEKZ],[ZUSIFF_KGZUO],[ZUSIFF_ZUTYP],[ZUSIFF_AUSFL],[ZUSIFF_DXAUD],[ZUSIFF_KOART],[ZUSIFF_GSART],[ZUSIFF_RISGR],[ZUSIFF_KZUKU],[ZUSIFF_ERHGE],[ZUSIFF_GSARE],[ZUSIFF_HAFIN],[ZUSIFF_PRDKT],[ZUSIFF_INABU],[ZUSIFF_KZAKL],[ZUSIFF_FREI1],[ZUSIFF_FREI2],[ZUSIFF_FREI3],[ZUSIFF_FREI4],[ZUSIFF_FREI5],[ZUSIFF_LOEKZ],[ZUSIFF_IFNAM],[ZUSIFF_DXIFD]) Select * from [#Temp_BAIS_ZUSIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_ZUSIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS ZUSIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "GAKIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS GAKIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_GAKIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_GAKIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_GAKIFF_Temp]([GAKIFF_MDANT] [varchar](50) NULL,[GAKIFF_GARFN] [varchar](50) NULL,[GAKIFF_FILNR] [varchar](50) NULL,[GAKIFF_GARTG] [varchar](50) NULL,[GAKIFF_GARTI] [varchar](50) NULL,[GAKIFF_HBKZN] [varchar](50) NULL,[GAKIFF_DXVND] [varchar](50) NULL,[GAKIFF_DXBSD] [varchar](50) NULL,[GAKIFF_GABTR] [varchar](50) NULL,[GAKIFF_VWTER] [varchar](50) NULL,[GAKIFF_WHISO] [varchar](50) NULL,[GAKIFF_GSPRZ] [varchar](50) NULL,[GAKIFF_MODUL] [varchar](50) NULL,[GAKIFF_KDNRG] [varchar](50) NULL,[GAKIFF_KTONR] [varchar](50) NULL,[GAKIFF_GSREF] [varchar](50) NULL,[GAKIFF_DEPNR] [varchar](50) NULL,[GAKIFF_KZBVK] [varchar](50) NULL,[GAKIFF_BEBTR] [varchar](50) NULL,[GAKIFF_VEBTR] [varchar](50) NULL,[GAKIFF_VORBT] [varchar](50) NULL,[GAKIFF_OLDSL] [varchar](50) NULL,[GAKIFF_SIGAR] [varchar](50) NULL,[GAKIFF_KRRFN] [varchar](50) NULL,[GAKIFF_HCMPV] [varchar](50) NULL,[GAKIFF_HCWHG] [varchar](50) NULL,[GAKIFF_LIQUD] [varchar](50) NULL,[GAKIFF_RSKFZ] [varchar](50) NULL,[GAKIFF_KZANR] [varchar](50) NULL,[GAKIFF_KZSUB] [varchar](50) NULL,[GAKIFF_KZZWB] [varchar](50) NULL,[GAKIFF_FREI1] [varchar](50) NULL,[GAKIFF_FREI2] [varchar](50) NULL,[GAKIFF_FREI3] [varchar](50) NULL,[GAKIFF_FREI4] [varchar](50) NULL,[GAKIFF_FREI5] [varchar](50) NULL,[GAKIFF_LOEKZ] [varchar](50) NULL,[GAKIFF_IFNAM] [varchar](50) NULL,[GAKIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_GAKIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import GAKIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_GAKIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN GAKIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_GAKIFF_Temp] ALTER COLUMN [GAKIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_GAKIFF with the same Date in Column:GAKIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_GAKIFF] where [GAKIFF_DXIFD] in (Select distinct [GAKIFF_DXIFD] from [#Temp_BAIS_GAKIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GAKIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_GAKIFF]([GAKIFF_MDANT],[GAKIFF_GARFN],[GAKIFF_FILNR],[GAKIFF_GARTG],[GAKIFF_GARTI],[GAKIFF_HBKZN],[GAKIFF_DXVND],[GAKIFF_DXBSD],[GAKIFF_GABTR],[GAKIFF_VWTER],[GAKIFF_WHISO],[GAKIFF_GSPRZ],[GAKIFF_MODUL],[GAKIFF_KDNRG],[GAKIFF_KTONR],[GAKIFF_GSREF],[GAKIFF_DEPNR],[GAKIFF_KZBVK],[GAKIFF_BEBTR],[GAKIFF_VEBTR],[GAKIFF_VORBT],[GAKIFF_OLDSL],[GAKIFF_SIGAR],[GAKIFF_KRRFN],[GAKIFF_HCMPV],[GAKIFF_HCWHG],[GAKIFF_LIQUD],[GAKIFF_RSKFZ],[GAKIFF_KZANR],[GAKIFF_KZSUB],[GAKIFF_KZZWB],[GAKIFF_FREI1],[GAKIFF_FREI2],[GAKIFF_FREI3],[GAKIFF_FREI4],[GAKIFF_FREI5],[GAKIFF_LOEKZ],[GAKIFF_IFNAM],[GAKIFF_DXIFD]) Select * from [#Temp_BAIS_GAKIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_GAKIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS GAKIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "GAGIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS GAGIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_GAGIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_GAGIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_GAGIFF_Temp]([GAGIFF_MDANT] [varchar](50) NULL,[GAGIFF_GARFN] [varchar](50) NULL,[GAGIFF_MODUL] [varchar](50) NULL,[GAGIFF_KDNRH] [varchar](50) NULL,[GAGIFF_GKRKT] [varchar](50) NULL,[GAGIFF_GSREF] [varchar](50) NULL,[GAGIFF_GLFDN] [varchar](50) NULL,[GAGIFF_HCKRA] [varchar](50) NULL,[GAGIFF_KZSUB] [varchar](50) NULL,[GAGIFF_KZZWB] [varchar](50) NULL,[GAGIFF_FREI1] [varchar](50) NULL,[GAGIFF_FREI2] [varchar](50) NULL,[GAGIFF_FREI3] [varchar](50) NULL,[GAGIFF_LOEKZ] [varchar](50) NULL,[GAGIFF_IFNAM] [varchar](50) NULL,[GAGIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_GAGIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import GAGIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_GAGIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN GAGIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_GAGIFF_Temp] ALTER COLUMN [GAGIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-                        'Set Correct Value in Field GAGIFF_IFNAM 
-
-                        Me.BgwBAISimport.ReportProgress(40, "Set Correct Value in Field GAGIFF_IFNAM")
-                        cmd.CommandText = "UPDATE [#Temp_BAIS_GAGIFF_Temp] SET [GAGIFF_IFNAM]='GAGIFF'"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_GAGIFF with the same Date in Column:GAGIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_GAGIFF] where [GAGIFF_DXIFD] in (Select distinct [GAGIFF_DXIFD] from [#Temp_BAIS_GAGIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_GAGIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_GAGIFF]([GAGIFF_MDANT],[GAGIFF_GARFN],[GAGIFF_MODUL],[GAGIFF_KDNRH],[GAGIFF_GKRKT],[GAGIFF_GSREF],[GAGIFF_GLFDN],[GAGIFF_HCKRA],[GAGIFF_KZSUB],[GAGIFF_KZZWB],[GAGIFF_FREI1],[GAGIFF_FREI2],[GAGIFF_FREI3],[GAGIFF_LOEKZ],[GAGIFF_IFNAM],[GAGIFF_DXIFD]) Select * from [#Temp_BAIS_GAGIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS GAGIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "LQKIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS LQKIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_LQKIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_LQKIFF_Temp' AND xtype='U') CREATE TABLE [#Temp_BAIS_LQKIFF_Temp]([LQKIFF_MDANT] [varchar](50) NULL,[LQKIFF_KDNRH] [varchar](50) NULL,[LQKIFF_LQSEK] [varchar](50) NULL,[LQKIFF_OBBTG] [varchar](50) NULL,[LQKIFF_KZGBZ] [varchar](50) NULL,[LQKIFF_IFNAM] [varchar](50) NULL,[LQKIFF_DXIFD] [varchar](50) NULL) ELSE DELETE FROM [#Temp_BAIS_LQKIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import LQKIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_LQKIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "ALTER COLUMN LQKIFF_DXIFD to Datetime")
-                        cmd.CommandText = "ALTER TABLE [#Temp_BAIS_LQKIFF_Temp] ALTER COLUMN [LQKIFF_DXIFD] datetime"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_LQKIFF with the same Date in Column:LQKIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_LQKIFF] where [LQKIFF_DXIFD] in (Select distinct [LQKIFF_DXIFD] from [#Temp_BAIS_LQKIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_LQKIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_LQKIFF]([LQKIFF_MDANT],[LQKIFF_KDNRH],[LQKIFF_LQSEK],[LQKIFF_OBBTG],[LQKIFF_KZGBZ],[LQKIFF_IFNAM],[LQKIFF_DXIFD]) Select * from [#Temp_BAIS_LQKIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_LQKIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS LQKIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-                Case Is = "WHGIFF_CCB.csv"
-
-                    Try
-
-                        Me.BgwBAISimport.ReportProgress(10, "Start Import: BAIS WHGIFF")
-                        If cmd.Connection.State = ConnectionState.Closed Then
-                            cmd.Connection.Open()
-                        End If
-
-                        Me.BgwBAISimport.ReportProgress(20, "Create Temporary Table:#Temp_BAIS_WHGIFF_Temp")
-                        cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='#Temp_BAIS_WHGIFF_Temp' AND xtype='U') CREATE TABLE [dbo].[#Temp_BAIS_WHGIFF_Temp]([WHGIFF_MDANT] [varchar](50) NULL,[WHGIFF_WHISO] [varchar](50) NULL,[WHGIFF_WNAME] [varchar](50) NULL,[WHGIFF_WSLZB] [varchar](50) NULL,[WHGIFF_WEINH] [varchar](50) NULL,[WHGIFF_WKLEH] [varchar](50) NULL,[WHGIFF_WNKST] [varchar](50) NULL,[WHGIFF_WSTAT] [varchar](50) NULL,[WHGIFF_MKURS] [float] NULL,[WHGIFF_DXEGK] [datetime] NULL,[WHGIFF_IFNAM] [varchar](50) NULL,[WHGIFF_DXIFD] [datetime] NULL) ELSE DELETE FROM [#Temp_BAIS_WHGIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(30, "Import WHGIFF File to Temporary Table")
-                        cmd.CommandText = "BULK INSERT  [#Temp_BAIS_WHGIFF_Temp] FROM '" & BAIS_FILE_DIR & "' with (FIRSTROW = 2,fieldterminator = '|')"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(40, "Delete all data from BAIS_WHGIFF with the same Date in Column:WHGIFF_DXIFD")
-                        cmd.CommandText = "DELETE from [BAIS_WHGIFF] where [WHGIFF_DXIFD] in (Select distinct [WHGIFF_DXIFD] from [#Temp_BAIS_WHGIFF_Temp])"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(50, "Insert Data from Temporary Table to BAIS_LQKIFF")
-                        cmd.CommandText = "INSERT INTO [dbo].[BAIS_WHGIFF]([WHGIFF_MDANT],[WHGIFF_WHISO],[WHGIFF_WNAME],[WHGIFF_WSLZB],[WHGIFF_WEINH],[WHGIFF_WKLEH],[WHGIFF_WNKST],[WHGIFF_WSTAT],[WHGIFF_MKURS],[WHGIFF_DXEGK],[WHGIFF_IFNAM],[WHGIFF_DXIFD]) SELECT * from [#Temp_BAIS_WHGIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-                        Me.BgwBAISimport.ReportProgress(60, "Drop Temporary Table")
-                        cmd.CommandText = "DROP Table [#Temp_BAIS_WHGIFF_Temp]"
-                        cmd.ExecuteNonQuery()
-
-
-                        Me.BgwBAISimport.ReportProgress(80, "BAIS WHGIFF IMPORT finished")
-                        cmd.Connection.Close()
-
-                    Catch ex As Exception
-
-                        If cmd.Connection.State = ConnectionState.Open Then
-                            cmd.Connection.Close()
-                        End If
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        Me.BgwBAISimport.ReportProgress(0, "ERROR+++" & ex.Message.Replace("'", ""))
-                    End Try
-
-            End Select
-        Next
+                    End If
+                Else
+                    Me.BgwBAISimport.ReportProgress(50, "WARNING +++ Procedure: " & ProcedureName & " not exists and/or is not valid in SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT")
+                    Exit Sub
+                End If
+
+                'CURRENT_PROC = Nothing
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Clear_CURRENT_PROC))
+                CURRENT_PROC = "BAIS_IMPORT_ACTIONS"
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Change_CURRENT_PROC))
+
+
+            Next
+        End If
 
     End Sub
 
-   
+    Private Sub BAIS_INTERFACE_IMPORT_PROCEDURES_MANUAL()
+
+        Me.BgwBAISimport.ReportProgress(50, "Select the relevant procedure")
+        QueryText = "SELECT * FROM [BAIS_IMPORT_PROCEDURES] where ID=" & ID_Selected & " and [Valid] in ('Y')"
+        da1 = New SqlDataAdapter(QueryText.Trim(), conn)
+        dt1 = New DataTable()
+        da1.Fill(dt1)
+        If dt1.Rows.Count > 0 Then
+            For p = 0 To dt1.Rows.Count - 1
+                Dim ProcedureName As String = dt1.Rows.Item(p).Item("ProcName")
+                'CURRENT_PROC = Nothing
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Clear_CURRENT_PROC))
+                CURRENT_PROC = ProcedureName & " for file " & CBAIF.ToString
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Change_CURRENT_PROC))
+
+                Dim ExectutionType As String = dt1.Rows.Item(p).Item("ExectutionType")
+                Dim FileExtraction As String = dt1.Rows.Item(p).Item("FileExtraction")
+                Dim RequestBusinessDate As String = dt1.Rows.Item(p).Item("RequestBusinessDate")
+                Dim FileConvertion As String = dt1.Rows.Item(p).Item("FileConvertion")
+
+
+                Me.BgwBAISimport.ReportProgress(50, "Check if procedure exists and is valid in SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT")
+                QueryText = "SELECT * FROM [SQL_PARAMETER_DETAILS_SECOND] where [Status] in ('Y') and LTRIM(RTRIM(SQL_Name_1))='" & ProcedureName.Trim & "'
+                             and [Id_SQL_Parameters_Details]
+                             in (SELECT ID from [SQL_PARAMETER_DETAILS] where [SQL_Name_1] in ('BAIS_ORIGINAL_INTERFACE_FILES_IMPORT') 
+                             and [Id_SQL_Parameters] in ('BAIS'))"
+                da2 = New SqlDataAdapter(QueryText.Trim(), conn)
+                dt2 = New DataTable()
+                da2.Fill(dt2)
+                If dt2.Rows.Count > 0 Then
+                    Me.BgwBAISimport.ReportProgress(50, "Procedure: " & ProcedureName & " exists and is valid in SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT")
+
+                    Dim ParameterName_ID As Integer = dt2.Rows.Item(0).Item("ID")
+
+                    'Check ExecutionType
+                    If ExectutionType = "IMPORT" Then
+                        Dim FolderNameImport As String = dt1.Rows.Item(p).Item("FolderNameImport")
+                        Dim FileNameImport As String = dt1.Rows.Item(p).Item("FileNameImport")
+                        'Replace folder and fileName with COBIF
+                        FolderNameImport = FolderNameImport.Replace("<YYYYMMDD>", CBAIF.ToString)
+                        FileNameImport = FileNameImport.Replace("<YYYYMMDD>", CBAIF.ToString)
+                        Me.BgwBAISimport.ReportProgress(50, "Folder/File for import:" & FolderNameImport & "-" & FileNameImport)
+                        Me.BgwBAISimport.ReportProgress(50, "For procedure: " & ProcedureName & " the execution type is: " & ExectutionType)
+                        'Check if file is zip/rar for extraction
+                        If FileExtraction = "Y" Then
+                            Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " marked for extraction")
+                            If FolderNameImport.ToUpper.EndsWith(".ZIP") = True OrElse FolderNameImport.ToUpper.EndsWith(".RAR") = True Then
+                                Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " is an zip/rar archive file")
+                                'Check if File exists
+                                If File.Exists(FolderNameImport) Then
+                                    Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " exists")
+                                    Using archive As ZipArchive = ZipArchive.Read(FolderNameImport)
+                                        For Each item As ZipItem In archive
+                                            If String.Compare(item.Name.Trim, FileNameImport.Trim) = 0 Then
+                                                item.Extract(BAISFileNewDirectory, True)
+                                                Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " extracted in Directory:" & BAISFileNewDirectory)
+                                            End If
+                                        Next item
+                                    End Using
+                                Else
+                                    Me.BgwBAISimport.ReportProgress(50, "ERROR +++ Folder/File:" & FolderNameImport & "-" & FileNameImport & " not exists")
+                                    Exit Sub
+                                End If
+                            ElseIf FolderNameImport.ToUpper.EndsWith(".TAR.GZ") = True Then
+                                Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " is an tar.gz archive file")
+                                'Check if File exists
+                                If File.Exists(FolderNameImport) Then
+                                    Me.BgwBAISimport.ReportProgress(50, "Folder/File:" & FolderNameImport & "-" & FileNameImport & " exists")
+                                    ExtractTGZ(FolderNameImport, BAISFileNewDirectory)
+                                    Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " extracted in Directory:" & BAISFileNewDirectory)
+                                Else
+                                    Me.BgwBAISimport.ReportProgress(50, "ERROR +++ Folder/File:" & FolderNameImport & "-" & FileNameImport & " not exists")
+                                    Exit Sub
+                                End If
+                            Else
+                                Me.BgwBAISimport.ReportProgress(50, "ERROR +++ Folder/File:" & FolderNameImport & "-" & FileNameImport & " is not recognited as archive file")
+                                Exit Sub
+                            End If
+                        ElseIf FileExtraction = "N" Then
+                            'Set correct directory format for the imported files
+                            BAISFileNewDirectory = Nothing
+                            cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_TEMP_DIR' AND[PARAMETER STATUS]='Y' 
+                                               AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
+                            BAISFileNewDirectory = cmd.ExecuteScalar()
+                            Me.BgwBAISimport.ReportProgress(50, "Set Import directory to:" & BAISFileNewDirectory & "\")
+                            Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " will copied to directory:" & BAISFileNewDirectory & "\")
+                            File.Copy(Path.Combine(FolderNameImport, FileNameImport), Path.Combine(BAISFileNewDirectory & "\", FileNameImport), True)
+
+                        End If
+
+                        'Set correct directory format for the imported files
+                        BAISFileNewDirectory = Nothing
+                        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] WHERE [PARAMETER1]='BAIS_INTERFACE_TEMP_DIR' AND[PARAMETER STATUS]='Y' 
+                                               AND [IdABTEILUNGSPARAMETER]='BAIS_INTERFACE_IMPORT'"
+                        BAISFileNewDirectory = cmd.ExecuteScalar()
+                        Me.BgwBAISimport.ReportProgress(50, "Set Import directory to:" & BAISFileNewDirectory & "\")
+                        BAISFileNewDirectory = BAISFileNewDirectory & "\"
+
+
+                        'FileConvertion
+                        If FileConvertion <> "N" Then
+                            Select Case FileConvertion
+                                Case = "XLS_TO_XLSX"
+                                    Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " marked for convertion: " & FileConvertion)
+                                    If FileNameImport.ToUpper.Trim.EndsWith(".XLS") = True Then
+                                        Me.BgwBAISimport.ReportProgress(50, "Start converting File:" & FileNameImport & " from: " & FileConvertion)
+                                        If ConvertWorkbook Is Nothing Then
+                                            ConvertWorkbook = New Workbook()
+                                        End If
+                                        ConvertWorkbook.LoadDocument(BAISFileNewDirectory & FileNameImport)
+                                        Dim FileNameForConvertion As String = Path.GetFileNameWithoutExtension(BAISFileNewDirectory & FileNameImport)
+                                        Dim pathString As String = Path.Combine(BAISFileNewDirectory, FileNameForConvertion)
+                                        Dim resultFilePath As String = String.Empty
+
+                                        resultFilePath = pathString & ".xlsx"
+                                        If File.Exists(resultFilePath) Then
+                                            File.Delete(resultFilePath)
+                                        End If
+                                        ConvertWorkbook.SaveDocument(resultFilePath, DocumentFormat.OpenXml)
+                                        ConvertWorkbook = Nothing
+                                        FileNameImport = FileNameImport.Replace(".xls", ".xlsx").ToString.Replace(".XLS", ".xlsx")
+                                        Me.BgwBAISimport.ReportProgress(50, "File converted to:" & FileNameImport)
+                                    End If
+                                Case = "CSV_TO_XLSX"
+                                    Me.BgwBAISimport.ReportProgress(50, "File:" & FileNameImport & " marked for convertion: " & FileConvertion)
+                                    If FileNameImport.ToUpper.Trim.EndsWith(".CSV") = True Then
+                                        Me.BgwBAISimport.ReportProgress(50, "Start converting File:" & FileNameImport & " from: " & FileConvertion)
+                                        If ConvertWorkbook Is Nothing Then
+                                            ConvertWorkbook = New Workbook()
+                                        End If
+                                        ConvertWorkbook.LoadDocument(BAISFileNewDirectory & FileNameImport)
+                                        ConvertWorkbook.Worksheets(0).PrintOptions.FitToPage = True
+                                        Dim FileNameForConvertion As String = Path.GetFileNameWithoutExtension(BAISFileNewDirectory & FileNameImport)
+                                        Dim pathString As String = Path.Combine(BAISFileNewDirectory, FileNameForConvertion)
+                                        Dim resultFilePath As String = String.Empty
+
+                                        resultFilePath = pathString & ".xlsx"
+                                        If File.Exists(resultFilePath) Then
+                                            File.Delete(resultFilePath)
+                                        End If
+                                        ConvertWorkbook.SaveDocument(resultFilePath, DocumentFormat.OpenXml)
+                                        ConvertWorkbook = Nothing
+                                        FileNameImport = FileNameImport.Replace(".csv", ".xlsx").ToString.Replace(".CSV", ".xlsx")
+                                        Me.BgwBAISimport.ReportProgress(50, "File converted to:" & FileNameImport)
+                                    End If
+                            End Select
+                        End If
+
+                        'Start checking and executing SQL Parameters
+                        Me.BgwBAISimport.ReportProgress(50, "Load and execute parameters from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                        QueryText = "SELECT * FROM [SQL_PARAMETER_DETAILS_THIRD] where [Status] in ('Y') and ISNULL(SQL_Name_1,'')<>''
+                                     and ISNULL(SQL_Command_1,'')<>'' and [Id_SQL_Parameters_Details]=" & ParameterName_ID & "
+                                     ORDER BY [SQL_Float_1] asc"
+                        da3 = New SqlDataAdapter(QueryText.Trim(), conn)
+                        dt3 = New DataTable()
+                        da3.Fill(dt3)
+                        If dt3.Rows.Count > 0 Then
+                            Me.BgwBAISimport.ReportProgress(50, "Start executing parameters from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                            Dim CUR_FILE_DIR_IMPORT As String = BAISFileNewDirectory & FileNameImport
+                            For s = 0 To dt3.Rows.Count - 1
+                                ScriptType = dt3.Rows.Item(s).Item("SQL_ScriptType_1").ToString
+                                If ScriptType = "SQL" Then
+                                    SqlCommandText = dt3.Rows.Item(s).Item("SQL_Command_1").ToString.Replace("<IMPORT_DIR_FILE>", CUR_FILE_DIR_IMPORT).Replace("<RiskDate>", rdsql)
+                                    cmd.CommandText = SqlCommandText
+                                    Me.BgwBAISimport.ReportProgress(s, dt3.Rows.Item(s).Item("SQL_Name_1") & " - Procedure:" & ProcedureName & " - Nr.: " & dt3.Rows.Item(s).Item("SQL_Float_1").ToString)
+                                    cmd.ExecuteNonQuery()
+                                ElseIf ScriptType = "VB" Then
+                                    Dim code As String = dt3.Rows.Item(s).Item("SQL_Command_1").ToString.Replace("<rd>", rd).ToString.Replace("<rdsql>", rdsql).ToString.Replace("<SQL_SERVER>", TOOL_SQL_SERVER_ONLY).ToString.Replace("<SQL_DATABASE>", TOOL_SQL_DATABASE).Trim()
+                                    Dim language As DynamicCompileAndRun.LanguageType = DynamicCompileAndRun.LanguageType.VB
+                                    Dim entry As String = "VB_ScriptForExecution"
+                                    If code = "" Then Return
+                                    If entry = "" Then entry = "VB_ScriptForExecution"
+                                    Dim engine As DynamicCompileAndRun.CompileEngine = New DynamicCompileAndRun.CompileEngine(code, language, entry)
+                                    Me.BgwBAISimport.ReportProgress(s, dt3.Rows.Item(s).Item("SQL_Name_1") & " - Procedure:" & ProcedureName & " - Nr.: " & dt3.Rows.Item(s).Item("SQL_Float_1").ToString)
+                                    engine.Run()
+                                End If
+
+                            Next
+                        Else
+                            Me.BgwBAISimport.ReportProgress(50, "WARNING +++ No valid parameters found from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                            Exit Sub
+                        End If
+
+                    ElseIf ExectutionType = "SCRIPT" Then
+                        Me.BgwBAISimport.ReportProgress(50, "For procedure: " & ProcedureName & " the execution type is: " & ExectutionType)
+                        Me.BgwBAISimport.ReportProgress(50, "Load and execute parameters from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                        QueryText = "SELECT * FROM [SQL_PARAMETER_DETAILS_THIRD] where [Status] in ('Y') and ISNULL(SQL_Name_1,'')<>''
+                                     and ISNULL(SQL_Command_1,'')<>'' and [Id_SQL_Parameters_Details]=" & ParameterName_ID & "
+                                     ORDER BY [SQL_Float_1] asc"
+                        da3 = New SqlDataAdapter(QueryText.Trim(), conn)
+                        dt3 = New DataTable()
+                        da3.Fill(dt3)
+                        If dt3.Rows.Count > 0 Then
+                            Me.BgwBAISimport.ReportProgress(50, "Start executing parameters from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                            For s = 0 To dt3.Rows.Count - 1
+                                ScriptType = dt3.Rows.Item(s).Item("SQL_ScriptType_1").ToString
+                                If ScriptType = "SQL" Then
+                                    SqlCommandText = dt3.Rows.Item(s).Item("SQL_Command_1").ToString.Replace("<RiskDate>", rdsql)
+                                    cmd.CommandText = SqlCommandText
+                                    Me.BgwBAISimport.ReportProgress(s, dt3.Rows.Item(s).Item("SQL_Name_1") & " - Procedure:" & ProcedureName & " - Nr.: " & dt3.Rows.Item(s).Item("SQL_Float_1").ToString)
+                                    cmd.ExecuteNonQuery()
+                                ElseIf ScriptType = "VB" Then
+                                    Dim code As String = dt3.Rows.Item(s).Item("SQL_Command_1").ToString.Replace("<rd>", rd).ToString.Replace("<rdsql>", rdsql).ToString.Replace("<SQL_SERVER>", TOOL_SQL_SERVER_ONLY).ToString.Replace("<SQL_DATABASE>", TOOL_SQL_DATABASE).Trim()
+                                    Dim language As DynamicCompileAndRun.LanguageType = DynamicCompileAndRun.LanguageType.VB
+                                    Dim entry As String = "VB_ScriptForExecution"
+                                    If code = "" Then Return
+                                    If entry = "" Then entry = "VB_ScriptForExecution"
+                                    Dim engine As DynamicCompileAndRun.CompileEngine = New DynamicCompileAndRun.CompileEngine(code, language, entry)
+                                    Me.BgwBAISimport.ReportProgress(s, dt3.Rows.Item(s).Item("SQL_Name_1") & " - Procedure:" & ProcedureName & " - Nr.: " & dt3.Rows.Item(s).Item("SQL_Float_1").ToString)
+                                    engine.Run()
+                                End If
+
+                            Next
+                        Else
+                            Me.BgwBAISimport.ReportProgress(50, "WARNING +++ No valid parameters found from SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT/" & ProcedureName)
+                            Exit Sub
+                        End If
+
+                    End If
+                Else
+                    Me.BgwBAISimport.ReportProgress(50, "WARNING +++ Procedure: " & ProcedureName & " not exists and/or is not valid in SQL PARAMETERS/BAIS/BAIS_ORIGINAL_INTERFACE_FILES_IMPORT")
+                    Exit Sub
+                End If
+
+                'CURRENT_PROC = Nothing
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Clear_CURRENT_PROC))
+                CURRENT_PROC = "BAIS_IMPORT_ACTIONS"
+                'Me.CURRENT_PROCEDURE_Text.BeginInvoke(New ChangeText(AddressOf Change_CURRENT_PROC))
+
+
+            Next
+        End If
+
+    End Sub
 
     Public Shared Function RemoveAttribute(ByVal attributes As FileAttributes, ByVal attributesToRemove As FileAttributes) As FileAttributes
         Return attributes And (Not attributesToRemove)
     End Function
+
+    Private Sub OcbsImportProcedures_BasicView_EditFormPrepared(sender As Object, e As EditFormPreparedEventArgs) Handles OcbsImportProcedures_BasicView.EditFormPrepared
+        'Dim view As GridView = TryCast(sender, GridView)
+        'CurrentImportProcedureTextEdit = TryCast(e.BindableControls(colProcName), TextEdit)
+
+        If e.BindableControls(OcbsImportProcedures_BasicView.FocusedColumn) IsNot Nothing Then
+            e.FocusField(OcbsImportProcedures_BasicView.FocusedColumn)
+        End If
+    End Sub
+
+    Private Sub OcbsImportProcedures_BasicView_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles OcbsImportProcedures_BasicView.RowUpdated
+        Dim View As GridView = CType(sender, GridView)
+        View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastAction"), "Modification")
+        View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateUser"), CurrentUserWindowsID)
+        View.SetRowCellValue(View.FocusedRowHandle, View.Columns("LastUpdateDate"), Now)
+        Me.GridControl1.EmbeddedNavigator.Buttons.DoClick(Me.GridControl1.EmbeddedNavigator.Buttons.EndEdit)
+    End Sub
+
+    Private Sub OcbsImportProcedures_BasicView_InitNewRow(sender As Object, e As InitNewRowEventArgs) Handles OcbsImportProcedures_BasicView.InitNewRow
+        Dim view As GridView = CType(sender, GridView)
+        view.SetRowCellValue(e.RowHandle, view.Columns("ExectutionType"), "IMPORT")
+        view.SetRowCellValue(e.RowHandle, view.Columns("FileExtraction"), "N")
+        view.SetRowCellValue(e.RowHandle, view.Columns("RequestBusinessDate"), "Y")
+        view.SetRowCellValue(e.RowHandle, view.Columns("FileConvertion"), "N")
+    End Sub
+
+    Private Sub OcbsImportProcedures_BasicView_ValidatingEditor(sender As Object, e As BaseContainerValidateEditorEventArgs) Handles OcbsImportProcedures_BasicView.ValidatingEditor
+        'Check for Duplicate Value
+        Dim view As GridView = TryCast(sender, GridView)
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+            Dim currentDataView As DataView = TryCast((TryCast(sender, GridView)).DataSource, DataView)
+            If view.FocusedColumn.FieldName = "LfdNr" Then
+                Dim currentCode As String = e.Value.ToString()
+                For i As Integer = 0 To OcbsImportProcedures_BasicView.DataRowCount - 1
+                    If i <> view.FocusedRowHandle Then
+                        If currentCode.Equals(view.GetRowCellValue(i, colLfdNr).ToString) = True Then
+                            e.ErrorText = "Duplicate Parameter Value detected in Field:LfdNr."
+                            e.Valid = False
+                            Exit For
+                        End If
+                    End If
+
+                Next
+            End If
+        End If
+    End Sub
+
+    Private Sub OcbsImportProcedures_BasicView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles OcbsImportProcedures_BasicView.RowCellClick
+        ID_Selected = 0
+        Dim view As GridView = TryCast(sender, GridView)
+        Dim rowHandle As Integer = view.FocusedRowHandle
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            ID_Selected = CInt(view.GetRowCellValue(rowHandle, colID))
+        End If
+        If e.Column.FieldName = "LfdNr" OrElse e.Column.FieldName = "Importance" Then
+            view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+        Else
+            view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace
+        End If
+    End Sub
+
+    Private Sub OcbsImportProcedures_BasicView_FocusedRowChanged(sender As Object, e As FocusedRowChangedEventArgs) Handles OcbsImportProcedures_BasicView.FocusedRowChanged
+        ID_Selected = 0
+        Dim view As GridView = TryCast(sender, GridView)
+        Dim rowHandle As Integer = view.FocusedRowHandle
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            ID_Selected = CInt(view.GetRowCellValue(rowHandle, colID))
+        End If
+        If view.FocusedColumn.FieldName = "LfdNr" OrElse view.FocusedColumn.FieldName = "Importance" Then
+            view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+        Else
+            view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace
+        End If
+    End Sub
+
+    Private Sub OcbsImportProcedures_BasicView_FocusedColumnChanged(sender As Object, e As FocusedColumnChangedEventArgs) Handles OcbsImportProcedures_BasicView.FocusedColumnChanged
+        Dim view As GridView = TryCast(sender, GridView)
+        Dim rowHandle As Integer = view.FocusedRowHandle
+        If view.FocusedColumn.FieldName = "LfdNr" OrElse view.FocusedColumn.FieldName = "Importance" Then
+            view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+        Else
+            view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplace
+        End If
+    End Sub
+
+    Private Sub OcbsImportProcedures_BasicView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles OcbsImportProcedures_BasicView.PopupMenuShowing
+        Dim view As GridView = TryCast(sender, GridView)
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            If e.HitInfo.HitTest = DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell Then
+                e.Allow = False
+                Me.ProceduresGridviewPopupMenu.ShowPopup(GridControl1.PointToScreen(e.Point))
+            End If
+        End If
+    End Sub
+
+
+    Private Sub ProcedureDuplicateNextPosition_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles ProcedureDuplicateNextPosition_bbi.ItemClick
+        Dim focusedView As GridView = CType(GridControl1.FocusedView, GridView)
+        Dim rowHandle As Integer = focusedView.FocusedRowHandle
+        GetFocusedRow = focusedView.FocusedRowHandle
+
+        If XtraMessageBox.Show("Should the current procedure: " & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & " be duplicated in the next row?", "DUPLICATE PROCEDURE - NEXT ROW", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Starting procedure duplication in the next row")
+
+                OpenSqlConnections()
+                cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
+                                   DECLARE @CURRENT_USER Nvarchar(50)='<CurrentUser>'
+                                                DECLARE @Procedure_Name_New nvarchar(100)='NEW_' + (Select ProcName from [BAIS_IMPORT_PROCEDURES] where ID=@ID_A)
+                                                DECLARE @DUBLICATE_NR float=0
+												DECLARE @DUBLICATE_ID int=0
+                                                DECLARE @NEW_RUNNING_NR float=0
+                                              
+                                                DECLARE @ID_3 table (ID int NULL,Number float)
+                                                DECLARE @ID_4 table (ID int NULL,Number float)
+
+                                                
+                                                INSERT INTO [BAIS_IMPORT_PROCEDURES]
+                                                           ([LfdNr]
+                                                           ,[ProcName]
+                                                           ,[Valid]
+                                                           ,[Importance]
+                                                           ,[InternalNotes]
+                                                           ,[FolderNameImport]
+                                                           ,[FileNameImport]
+                                                           ,[ExectutionType]
+                                                           ,[FileExtraction]
+                                                           ,[RequestBusinessDate]
+                                                           ,[FileConvertion]
+                                                           ,[LastAction]
+                                                           ,[LastUpdateUser]
+                                                           ,[LastUpdateDate])
+                                                SELECT		[LfdNr]+1
+														   ,@Procedure_Name_New
+                                                           ,[Valid]
+                                                           ,[Importance]
+                                                           ,[InternalNotes]
+                                                           ,[FolderNameImport]
+                                                           ,[FileNameImport]
+                                                           ,[ExectutionType]
+                                                           ,[FileExtraction]
+                                                           ,[RequestBusinessDate]
+                                                           ,[FileConvertion]
+                                                           ,'DUPLICATED'
+                                                           ,@CURRENT_USER
+                                                           ,GETDATE()
+                                                FROM [BAIS_IMPORT_PROCEDURES] where ID=@ID_A
+
+
+                                                SET @DUBLICATE_NR=(select [LfdNr] from [BAIS_IMPORT_PROCEDURES]
+                                                where ID not in (Select Min(ID) from [BAIS_IMPORT_PROCEDURES] 
+												group by [LfdNr]))
+
+												
+                                                IF @DUBLICATE_NR>0
+                                                BEGIN
+                                                SELECT @DUBLICATE_NR
+
+                                                --Find equal Nr to @DUPLICATE
+                                                INSERT INTO @ID_3
+                                                (ID,Number)
+                                                select ID,[LfdNr] from [BAIS_IMPORT_PROCEDURES] 
+                                                where ID in (Select Min(ID) from [BAIS_IMPORT_PROCEDURES] 
+												where [LfdNr]=@DUBLICATE_NR)
+
+                                                SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                                IF @NEW_RUNNING_NR=0
+                                                BEGIN
+                                                SET @NEW_RUNNING_NR=1
+                                                INSERT INTO @ID_4
+                                                (ID,Number)
+                                                Select ID,[LfdNr]+@NEW_RUNNING_NR from [BAIS_IMPORT_PROCEDURES]
+                                                where ID in (Select Min(ID) from [BAIS_IMPORT_PROCEDURES] 
+												where [LfdNr] >=@DUBLICATE_NR
+                                                group by [LfdNr]) order by ID asc
+                                                END
+                                                END
+
+                                                UPDATE A SET A.[LfdNr]=B.Number from [BAIS_IMPORT_PROCEDURES] A INNER JOIN @ID_4 B on A.ID=B.ID "
+                cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_Selected).Replace("<CurrentUser>", SystemInformation.UserName)
+                cmd.CommandText = cmd.CommandText
+                cmd.ExecuteNonQuery()
+                SplashScreenManager.CloseForm(False)
+
+                XtraMessageBox.Show("Procedure:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                CloseSqlConnections()
+                Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                focusedView.RefreshData()
+                focusedView.FocusedRowHandle = GetFocusedRow
+
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                CloseSqlConnections()
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub ProcedureDuplicateNewPosition_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles ProcedureDuplicateNewPosition_bbi.ItemClick
+        Dim focusedView As GridView = CType(GridControl1.FocusedView, GridView)
+        Dim rowHandle As Integer = focusedView.FocusedRowHandle
+        GetFocusedRow = focusedView.FocusedRowHandle
+
+        If XtraMessageBox.Show("Should the current procedure: " & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & " be duplicated in a new row?", "DUPLICATE PROCEDURE - NEW ROW", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Starting procedure duplication in a new row")
+
+                OpenSqlConnections()
+                cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
+                                   DECLARE @CURRENT_USER Nvarchar(50)='<CurrentUser>'
+                                                DECLARE @Procedure_Name_New nvarchar(100)='NEW_' + (Select ProcName from [BAIS_IMPORT_PROCEDURES] where ID=@ID_A)
+                                                DECLARE @MAX_LFD_NR float=(Select MAX(LfdNr) from [BAIS_IMPORT_PROCEDURES])
+												
+                                                INSERT INTO [BAIS_IMPORT_PROCEDURES]
+                                                           ([LfdNr]
+                                                           ,[ProcName]
+                                                           ,[Valid]
+                                                           ,[Importance]
+                                                           ,[InternalNotes]
+                                                           ,[FolderNameImport]
+                                                           ,[FileNameImport]
+                                                           ,[ExectutionType]
+                                                           ,[FileExtraction]
+                                                           ,[RequestBusinessDate]
+                                                           ,[FileConvertion]
+                                                           ,[LastAction]
+                                                           ,[LastUpdateUser]
+                                                           ,[LastUpdateDate])
+                                                SELECT		@MAX_LFD_NR+1
+														   ,@Procedure_Name_New
+                                                           ,[Valid]
+                                                           ,[Importance]
+                                                           ,[InternalNotes]
+                                                           ,[FolderNameImport]
+                                                           ,[FileNameImport]
+                                                           ,[ExectutionType]
+                                                           ,[FileExtraction]
+                                                           ,[RequestBusinessDate]
+                                                           ,[FileConvertion]
+                                                           ,'DUPLICATED'
+                                                           ,@CURRENT_USER
+                                                           ,GETDATE()
+                                                FROM [BAIS_IMPORT_PROCEDURES] where ID=@ID_A"
+                cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_Selected).Replace("<CurrentUser>", SystemInformation.UserName)
+                cmd.CommandText = cmd.CommandText
+                cmd.ExecuteNonQuery()
+                SplashScreenManager.CloseForm(False)
+
+                XtraMessageBox.Show("Procedure:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                CloseSqlConnections()
+                Me.BAIS_IMPORT_PROCEDURESTableAdapter.Fill(Me.EDPDataSet.BAIS_IMPORT_PROCEDURES)
+                focusedView.RefreshData()
+                focusedView.FocusedRowHandle = GetFocusedRow
+
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                CloseSqlConnections()
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Sub BAISImportEvents_BasicView_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles BAISImportEvents_BasicView.CustomDrawCell
+        Dim AlertImage As Image = Me.ImageCollection1.Images.Item(21)
+        Dim OkImage As Image = Me.ImageCollection1.Images.Item(14)
+        Dim ErrorImage As Image = Me.ImageCollection1.Images.Item(20)
+        If e.Column.FieldName = "Event" And e.RowHandle >= 0 Then
+            'e.Cache.DrawImage(If(Convert.ToString(e.CellValue).StartsWith("ERROR") = True, Image1, Image2), e.Bounds.Location)
+            'e.Handled = True
+
+            e.DefaultDraw()
+
+            Dim xPos As Integer = (((e.Bounds.Location.X + e.Bounds.Width) - AlertImage.Width) - 2)
+            Dim yPos As Integer = (e.Bounds.Location.Y + 1)
+            Dim imagePoint As Point = New Point(xPos, yPos)
+
+            If Convert.ToString(e.CellValue).StartsWith("Unable") Then
+                e.Cache.DrawImage(AlertImage, imagePoint)
+            ElseIf Convert.ToString(e.CellValue).StartsWith("WARNING") Then
+                e.Cache.DrawImage(AlertImage, imagePoint)
+            ElseIf Convert.ToString(e.CellValue).StartsWith("ERROR") Then
+                e.Cache.DrawImage(ErrorImage, imagePoint)
+            Else
+                e.Cache.DrawImage(OkImage, imagePoint)
+            End If
+        End If
+    End Sub
+
+    Private Sub OcbsImportProcedures_BasicView_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles OcbsImportProcedures_BasicView.ValidateRow
+        Dim View As GridView = CType(sender, GridView)
+        Dim LFD_NR As GridColumn = View.Columns("LfdNr")
+        Dim PROC_NAME As GridColumn = View.Columns("ProcName")
+        Dim FOLDER_NAME_IMPORT As GridColumn = View.Columns("FolderNameImport")
+        Dim FILE_NAME_IMPORT As GridColumn = View.Columns("FileNameImport")
+        Dim PROC_VALIDITY As GridColumn = View.Columns("Valid")
+        Dim IMPORTANCE_STATUS As GridColumn = View.Columns("Importance")
+        Dim EXECUTION_TYPE As GridColumn = View.Columns("ExectutionType")
+        Dim FILE_EXTRACTION As GridColumn = View.Columns("FileExtraction")
+        Dim REQUEST_BUSINESS_DATE As GridColumn = View.Columns("RequestBusinessDate")
+        Dim FILE_CONVERTION As GridColumn = View.Columns("FileConvertion")
+
+        Dim LfdNr As String = View.GetRowCellValue(e.RowHandle, colLfdNr).ToString
+        Dim ProcName As String = View.GetRowCellValue(e.RowHandle, colProcName).ToString
+        Dim FolderNameImport As String = View.GetRowCellValue(e.RowHandle, colFolderNameImport).ToString
+        Dim FileNameImport As String = View.GetRowCellValue(e.RowHandle, colFileNameImport).ToString
+        Dim ProcValidity As String = View.GetRowCellValue(e.RowHandle, colValid).ToString
+        Dim ImportanceStatus As String = View.GetRowCellValue(e.RowHandle, colImportance).ToString
+        Dim ExecutionType As String = View.GetRowCellValue(e.RowHandle, colExectutionType).ToString
+        Dim FileExtraction As String = View.GetRowCellValue(e.RowHandle, colFileExtraction).ToString
+        Dim RequestBusinessDate As String = View.GetRowCellValue(e.RowHandle, colRequestBusinessDate).ToString
+        Dim FileConvertion As String = View.GetRowCellValue(e.RowHandle, colFileConvertion).ToString
+
+        If LfdNr = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(LFD_NR, "The Procedure Nr. must not be empty")
+            e.ErrorText = "The Procedure Nr. must not be empty"
+        End If
+        If ProcName = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(PROC_NAME, "The Procedure Name must not be empty")
+            e.ErrorText = "The Procedure Name must not be empty"
+        End If
+        If ExecutionType = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(EXECUTION_TYPE, "The Execution Type must not be empty")
+            e.ErrorText = "The Execution Type must not be empty"
+        End If
+        If FolderNameImport = "" And ExecutionType = "IMPORT" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(FOLDER_NAME_IMPORT, "The Folder Name for import must not be empty if the Execution Type is IMPORT")
+            e.ErrorText = "The Folder Name for import must not be empty if the Execution Type is IMPORT"
+        End If
+        If FileNameImport = "" And ExecutionType = "IMPORT" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(FILE_NAME_IMPORT, "The File Name for import must not be empty if the Execution Type is IMPORT")
+            e.ErrorText = "The File Name for import must not be empty if the Execution Type is IMPORT"
+        End If
+        If ProcValidity = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(PROC_VALIDITY, "The Validity  must not be empty")
+            e.ErrorText = "The Validity  must not be empty"
+        End If
+        If ImportanceStatus = "" Then
+            e.Valid = False
+            'Set errors with specific descriptions for the columns
+            View.SetColumnError(IMPORTANCE_STATUS, "The Importance Status  must not be empty")
+            e.ErrorText = "The Importance Status  must not be empty"
+        End If
+    End Sub
+
 
 End Class
