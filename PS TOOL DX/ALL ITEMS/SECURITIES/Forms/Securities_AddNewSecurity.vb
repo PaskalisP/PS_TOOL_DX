@@ -31,19 +31,12 @@ Imports DevExpress.XtraEditors.Controls
 Imports System.Drawing
 Public Class Securities_AddNewSecurity
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-
     Private BS_SectorSecurity As BindingSource
     Private BS_SectorCountry As BindingSource
     Private BS_Currency As BindingSource
     Private BS_All_Customers As BindingSource
+    Private BS_Segment As BindingSource
+    Private BS_CurveType As BindingSource
 
     Sub New()
         InitSkins()
@@ -62,8 +55,7 @@ Public Class Securities_AddNewSecurity
     End Sub
 
     Private Sub Securities_AddNewSecurity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
+
         ALL_CUSTOMERS_initData()
         ALL_CUSTOMERS_InitLookUp()
         SECTOR_SECURITY_initData()
@@ -72,6 +64,10 @@ Public Class Securities_AddNewSecurity
         SECTOR_COUNTRY_InitLookUp()
         CURRENCIES_initData()
         CURRENCIES_InitLookUp()
+        SEGMENT_RISK_WEIGHT_initData()
+        SEGMENT_RISK_WEIGHT_InitLookUp()
+        CURVE_TYPE_initData()
+        CURVE_TYPE_InitLookUp()
 
     End Sub
 
@@ -93,7 +89,6 @@ Public Class Securities_AddNewSecurity
         End Try
         BS_SectorSecurity = New BindingSource(ds, "SECTOR_SECURITY") 'NOSTRO_ACC_RECONCILIATIONS
     End Sub
-
     Private Sub SECTOR_SECURITY_InitLookUp()
         Me.Sektor_SearchLookUpEdit.Properties.DataSource = BS_SectorSecurity
         Me.Sektor_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -118,7 +113,6 @@ Public Class Securities_AddNewSecurity
         End Try
         BS_SectorCountry = New BindingSource(ds, "COUNTRIES") 'NOSTRO_ACC_RECONCILIATIONS
     End Sub
-
     Private Sub SECTOR_COUNTRY_InitLookUp()
         Me.SektoCountry_SearchLookUpEdit.Properties.DataSource = BS_SectorCountry
         Me.SektoCountry_SearchLookUpEdit.Properties.DisplayMember = "COUNTRY CODE"
@@ -143,7 +137,6 @@ Public Class Securities_AddNewSecurity
         End Try
         BS_Currency = New BindingSource(ds, "OWN_CURRENCIES") 'NOSTRO_ACC_RECONCILIATIONS
     End Sub
-
     Private Sub CURRENCIES_InitLookUp()
         Me.Currency_SearchLookUpEdit.Properties.DataSource = BS_Currency
         Me.Currency_SearchLookUpEdit.Properties.DisplayMember = "CURRENCY CODE"
@@ -167,12 +160,60 @@ Public Class Securities_AddNewSecurity
         End Try
         BS_All_Customers = New BindingSource(ds, "ALL_CUSTOMERS")
     End Sub
-
     Private Sub ALL_CUSTOMERS_InitLookUp()
         Me.ClientSearch_GridLookUpEdit.Properties.DataSource = BS_All_Customers
         Me.ClientSearch_GridLookUpEdit.Properties.DisplayMember = "ClientNo"
         Me.ClientSearch_GridLookUpEdit.Properties.ValueMember = "ClientNo"
     End Sub
+
+    Private Sub SEGMENT_RISK_WEIGHT_initData()
+
+        Dim objCMD1 As SqlCommand = New SqlCommand("SELECT * FROM [Parameter_CreditSpreadRisk_References] where  [ParameterNameGeneral] in ('Risk_Weight_by_Issuer_Rating_Class_and_Sector') and [ParameterStatus] in ('Y') order by ParameterNr asc", conn)
+        objCMD1.CommandTimeout = 5000
+        Dim dbSegment As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+
+        Dim ds As DataSet = New DataSet()
+        'Dim dbLastReconciliations As SqlDataAdapter = New SqlDataAdapter("Select AccountNr_Internal as 'Nostro Account',CCY_IB as 'Currency',AccountName_Internal as 'Nostro Account Name',Max(ReconcileDate) as 'Last Reconcile Date' from NOSTRO_ACC_RECONCILIATIONS GROUP BY AccountNr_Internal,AccountName_Internal,CCY_IB order by  'Last Reconcile Date' desc", conn) '
+        Try
+
+            dbSegment.Fill(ds, "SEGMENT") 'NOSTRO_ACC_RECONCILIATIONS
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_Segment = New BindingSource(ds, "SEGMENT") 'NOSTRO_ACC_RECONCILIATIONS
+    End Sub
+    Private Sub SEGMENT_RISK_WEIGHT_InitLookUp()
+        Me.Segment_SearchLookUpEdit.Properties.DataSource = BS_Segment
+        Me.Segment_SearchLookUpEdit.Properties.DisplayMember = "ParameterValue1"
+        Me.Segment_SearchLookUpEdit.Properties.ValueMember = "ParameterValue1"
+    End Sub
+
+    Private Sub CURVE_TYPE_initData()
+
+        Dim objCMD1 As SqlCommand = New SqlCommand("SELECT * FROM [Parameter_CreditSpreadRisk_References] where  [ParameterNameGeneral] in ('Curve_Type') and [ParameterStatus] in ('Y') order by ParameterNr asc", conn)
+        objCMD1.CommandTimeout = 5000
+        Dim dbCurveType As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+
+        Dim ds As DataSet = New DataSet()
+        'Dim dbLastReconciliations As SqlDataAdapter = New SqlDataAdapter("Select AccountNr_Internal as 'Nostro Account',CCY_IB as 'Currency',AccountName_Internal as 'Nostro Account Name',Max(ReconcileDate) as 'Last Reconcile Date' from NOSTRO_ACC_RECONCILIATIONS GROUP BY AccountNr_Internal,AccountName_Internal,CCY_IB order by  'Last Reconcile Date' desc", conn) '
+        Try
+
+            dbCurveType.Fill(ds, "CURVE_TYPE")
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_CurveType = New BindingSource(ds, "CURVE_TYPE")
+    End Sub
+    Private Sub CURVE_TYPE_InitLookUp()
+        Me.CurveType_SearchLookUpEdit.Properties.DataSource = BS_CurveType
+        Me.CurveType_SearchLookUpEdit.Properties.DisplayMember = "ParameterName1"
+        Me.CurveType_SearchLookUpEdit.Properties.ValueMember = "ParameterName1"
+    End Sub
+
 
     Private Sub CALCULATE_PAID_AMOUNTS()
         Dim PrincipalAmountOrigCur As Double = 0
@@ -243,6 +284,37 @@ Public Class Securities_AddNewSecurity
         End If
     End Sub
 
+
+    Private Sub Segment_SearchLookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles Segment_SearchLookUpEdit.EditValueChanged
+        If Me.Segment_SearchLookUpEdit.EditValue.ToString <> "" Then
+
+            Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+            Dim SegmentRow As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Me.RatingClass_TextEdit.Text = SegmentRow("ParameterName1").ToString
+            Me.SectorRW_TextEdit.Text = SegmentRow("ParameterName2").ToString
+            Me.RiskWeightBP_TextEdit.Text = SegmentRow("ParameterValue2").ToString
+        Else
+            Me.RatingClass_TextEdit.Text = ""
+            Me.SectorRW_TextEdit.Text = ""
+            Me.RiskWeightBP_TextEdit.Text = ""
+        End If
+
+    End Sub
+
+    Private Sub CurveType_SearchLookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles CurveType_SearchLookUpEdit.EditValueChanged
+        If Me.CurveType_SearchLookUpEdit.EditValue.ToString <> "" Then
+
+            Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+            Dim CurveTypeRow As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Me.CurveType_Description_lbl.Text = CurveTypeRow("ParameterName2").ToString
+        Else
+            Me.CurveType_Description_lbl.Text = ""
+
+        End If
+
+    End Sub
+
+
     Private Sub PrincipalAmount_TextEdit_EditValueChanged(sender As Object, e As EventArgs) Handles PrincipalAmount_TextEdit.EditValueChanged
         CALCULATE_PAID_AMOUNTS()
     End Sub
@@ -256,6 +328,11 @@ Public Class Securities_AddNewSecurity
     End Sub
 
     Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
+        Me.DxValidationProvider1.ValidationMode = DXErrorProvider.ValidationMode.Manual
+        Dim controls As IList(Of Control) = DxValidationProvider1.GetInvalidControls()
+        While controls.Count > 0
+            DxValidationProvider1.RemoveControlError(controls(controls.Count - 1))
+        End While
         Me.Close()
     End Sub
 

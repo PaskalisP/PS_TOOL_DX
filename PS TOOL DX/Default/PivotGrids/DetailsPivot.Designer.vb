@@ -35,7 +35,6 @@ Partial Class DetailsPivot
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.FristenViewDetails_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -46,6 +45,7 @@ Partial Class DetailsPivot
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
+        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         CType(Me.PivotDetailView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PivotDetailsBaseView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,7 +59,6 @@ Partial Class DetailsPivot
         CType(Me.TillDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,6 +68,7 @@ Partial Class DetailsPivot
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PivotDetailView
@@ -247,7 +247,7 @@ Partial Class DetailsPivot
         'FristenViewDetails_btn
         '
         Me.FristenViewDetails_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.FristenViewDetails_btn.ImageIndex = 0
+        Me.FristenViewDetails_btn.ImageOptions.ImageIndex = 0
         Me.FristenViewDetails_btn.Location = New System.Drawing.Point(1226, 12)
         Me.FristenViewDetails_btn.Name = "FristenViewDetails_btn"
         Me.FristenViewDetails_btn.Size = New System.Drawing.Size(144, 22)
@@ -258,25 +258,13 @@ Partial Class DetailsPivot
         'Print_Export_btn
         '
         Me.Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_btn.ImageIndex = 2
-        Me.Print_Export_btn.ImageList = Me.ImageCollection1
+        Me.Print_Export_btn.ImageOptions.ImageIndex = 2
         Me.Print_Export_btn.Location = New System.Drawing.Point(12, 12)
         Me.Print_Export_btn.Name = "Print_Export_btn"
         Me.Print_Export_btn.Size = New System.Drawing.Size(112, 22)
         Me.Print_Export_btn.StyleController = Me.LayoutControl1
         Me.Print_Export_btn.TabIndex = 9
         Me.Print_Export_btn.Text = "Print or Export"
-        '
-        'ImageCollection1
-        '
-        Me.ImageCollection1.ImageStream = CType(resources.GetObject("ImageCollection1.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
-        Me.ImageCollection1.Images.SetKeyName(0, "DisplayDetail.ico")
-        Me.ImageCollection1.Images.SetKeyName(1, "DisplayAll.ico")
-        Me.ImageCollection1.Images.SetKeyName(2, "Print.ico")
-        Me.ImageCollection1.Images.SetKeyName(3, "NonValid.ico")
-        Me.ImageCollection1.Images.SetKeyName(4, "Valid.ico")
-        Me.ImageCollection1.Images.SetKeyName(5, "Report.ico")
-        Me.ImageCollection1.Images.SetKeyName(6, "Load.ico")
         '
         'LayoutControlItem2
         '
@@ -306,7 +294,6 @@ Partial Class DetailsPivot
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.LayoutControlItem4})
-        Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "Root"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(1382, 744)
         Me.LayoutControlGroup1.TextVisible = False
@@ -376,13 +363,20 @@ Partial Class DetailsPivot
         Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A3
         Me.PrintableComponentLink1.PrintingSystemBase = Me.PrintingSystem1
         '
+        'ImageCollection1
+        '
+        Me.ImageCollection1.ImageStream = CType(resources.GetObject("ImageCollection1.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
+        Me.ImageCollection1.Images.SetKeyName(0, "adateoccurring_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(1, "formatnumberdecreasedecimal_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(2, "formatnumberincreasedecimal_16x16.png")
+        '
         'DetailsPivot
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1382, 744)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("DetailsPivot.IconOptions.Icon"), System.Drawing.Icon)
         Me.LookAndFeel.SkinName = "Sharp"
         Me.LookAndFeel.UseDefaultLookAndFeel = False
         Me.MinimizeBox = False
@@ -402,7 +396,6 @@ Partial Class DetailsPivot
         CType(Me.TillDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -412,6 +405,7 @@ Partial Class DetailsPivot
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -436,7 +430,7 @@ Partial Class DetailsPivot
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
+    Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
 End Class

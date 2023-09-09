@@ -362,22 +362,34 @@ Namespace DynamicCompileAndRun
                 cmdVbScript.Parameters.Clear()
                 CloseVbScript_SqlConnection()
 
+                MsgBox(CurrentSystemExecuting)
+
                 If CurrentSystemExecuting <> Nothing Then
                     Select Case CurrentSystemExecuting
                         Case = "PS TOOL CLIENT"
                             OpenVbScript_SqlConnection()
                             cmdVbScript.CommandText = "INSERT INTO [CLIENT EVENTS] ([ProcDate],[Event],[ProcName],[SystemName]) 
-                                               Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@Event,@ProcName,@SystemName)"
+                                                       Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@Event,@ProcName,@SystemName)"
                             cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
                             cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
                             cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemExecuting
                             cmdVbScript.ExecuteNonQuery()
                             cmdVbScript.Parameters.Clear()
                             CloseVbScript_SqlConnection()
+                        Case = "MANUAL_IMPORTS"
+                            OpenVbScript_SqlConnection()
+                            cmdVbScript.CommandText = "INSERT INTO [IMPORT EVENTS] ([ProcDate],[Event],[ProcName],[SystemName])
+                                                       Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@EventManualImport,@ProcNameManualImport,@SystemNameManualImport)"
+                            cmdVbScript.Parameters.Add("@EventManualImport", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
+                            cmdVbScript.Parameters.Add("@ProcNameManualImport", SqlDbType.NVarChar).Value = CurrentProcedureName
+                            cmdVbScript.Parameters.Add("@SystemNameManualImport", SqlDbType.NVarChar).Value = CurrentSystemExecuting
+                            cmdVbScript.ExecuteNonQuery()
+                            cmdVbScript.Parameters.Clear()
+                            CloseVbScript_SqlConnection()
                         Case Else
                             OpenVbScript_SqlConnection()
                             cmdVbScript.CommandText = "INSERT INTO [IMPORT EVENTS] ([ProcDate],[Event],[ProcName],[SystemName]) 
-                                               Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@Event,@ProcName,@SystemName)"
+                                                       Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@Event,@ProcName,@SystemName)"
                             cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
                             cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
                             cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemExecuting

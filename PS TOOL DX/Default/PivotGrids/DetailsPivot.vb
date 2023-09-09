@@ -30,6 +30,8 @@ Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraEditors.Controls
 Public Class DetailsPivot
 
+    Dim SelectedColumn As String = Nothing
+
     Sub New()
         InitSkins()
         InitializeComponent()
@@ -41,7 +43,7 @@ Public Class DetailsPivot
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
-   
+
 
     Private Sub DetailsPivot_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -86,6 +88,109 @@ Public Class DetailsPivot
         Dim view As GridView = CType(sender, GridView)
         If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
             view.ActiveEditor.Properties.Appearance.ForeColor = Color.Navy
+        End If
+    End Sub
+
+    Private Sub PivotDetailsBaseView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles PivotDetailsBaseView.PopupMenuShowing
+        If e.MenuType = GridMenuType.Column Then
+            Dim ColumnMenu As DevExpress.XtraGrid.Menu.GridViewColumnMenu = CType(e.Menu, DevExpress.XtraGrid.Menu.GridViewColumnMenu)
+
+            Dim menuItem_DisplayDate As New DevExpress.Utils.Menu.DXMenuItem("DateFormat", New EventHandler(AddressOf MyMenuItem_DisplayDate), ImageCollection1.Images(0))
+            Dim menuItem_DisplayNumericN0 As New DevExpress.Utils.Menu.DXMenuItem("NumericFormat-N0", New EventHandler(AddressOf MyMenuItem_DisplayNumericN0), ImageCollection1.Images(1))
+            Dim menuItem_DisplayNumericN1 As New DevExpress.Utils.Menu.DXMenuItem("NumericFormat-N1", New EventHandler(AddressOf MyMenuItem_DisplayNumericN1), ImageCollection1.Images(2))
+            Dim menuItem_DisplayNumericN2 As New DevExpress.Utils.Menu.DXMenuItem("NumericFormat-N2", New EventHandler(AddressOf MyMenuItem_DisplayNumericN2), ImageCollection1.Images(2))
+            Dim menuItem_DisplayNumericN3 As New DevExpress.Utils.Menu.DXMenuItem("NumericFormat-N3", New EventHandler(AddressOf MyMenuItem_DisplayNumericN3), ImageCollection1.Images(2))
+            Dim menuItem_DisplayNumericN4 As New DevExpress.Utils.Menu.DXMenuItem("NumericFormat-N4", New EventHandler(AddressOf MyMenuItem_DisplayNumericN4), ImageCollection1.Images(2))
+            Dim menuItem_DisplayNumericN5 As New DevExpress.Utils.Menu.DXMenuItem("NumericFormat-N5", New EventHandler(AddressOf MyMenuItem_DisplayNumericN5), ImageCollection1.Images(2))
+
+
+            menuItem_DisplayDate.Tag = e.Menu
+            menuItem_DisplayNumericN0.Tag = e.Menu
+            menuItem_DisplayNumericN1.Tag = e.Menu
+            menuItem_DisplayNumericN2.Tag = e.Menu
+            menuItem_DisplayNumericN3.Tag = e.Menu
+            menuItem_DisplayNumericN4.Tag = e.Menu
+            menuItem_DisplayNumericN5.Tag = e.Menu
+
+            ColumnMenu.Items.Add(menuItem_DisplayDate)
+            ColumnMenu.Items.Add(menuItem_DisplayNumericN0)
+            ColumnMenu.Items.Add(menuItem_DisplayNumericN1)
+            ColumnMenu.Items.Add(menuItem_DisplayNumericN2)
+            ColumnMenu.Items.Add(menuItem_DisplayNumericN3)
+            ColumnMenu.Items.Add(menuItem_DisplayNumericN4)
+            ColumnMenu.Items.Add(menuItem_DisplayNumericN5)
+
+        End If
+    End Sub
+
+    Private Sub MyMenuItem_DisplayDate(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        For Each col As GridColumn In PivotDetailsBaseView.Columns
+            If col.Name.ToString = SelectedColumn Then
+                col.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+                col.DisplayFormat.FormatString = "d"
+            End If
+        Next
+
+    End Sub
+
+    Private Sub MyMenuItem_DisplayNumericN0(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        For Each col As GridColumn In PivotDetailsBaseView.Columns
+            If col.Name.ToString = SelectedColumn Then
+                col.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                col.DisplayFormat.FormatString = "n0"
+            End If
+        Next
+    End Sub
+    Private Sub MyMenuItem_DisplayNumericN1(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        For Each col As GridColumn In PivotDetailsBaseView.Columns
+            If col.Name.ToString = SelectedColumn Then
+                col.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                col.DisplayFormat.FormatString = "n1"
+            End If
+        Next
+    End Sub
+    Private Sub MyMenuItem_DisplayNumericN2(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        For Each col As GridColumn In PivotDetailsBaseView.Columns
+            If col.Name.ToString = SelectedColumn Then
+                col.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                col.DisplayFormat.FormatString = "n2"
+            End If
+        Next
+    End Sub
+    Private Sub MyMenuItem_DisplayNumericN3(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        For Each col As GridColumn In PivotDetailsBaseView.Columns
+            If col.Name.ToString = SelectedColumn Then
+                col.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                col.DisplayFormat.FormatString = "n3"
+            End If
+        Next
+    End Sub
+    Private Sub MyMenuItem_DisplayNumericN4(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        For Each col As GridColumn In PivotDetailsBaseView.Columns
+            If col.Name.ToString = SelectedColumn Then
+                col.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                col.DisplayFormat.FormatString = "n4"
+            End If
+        Next
+    End Sub
+    Private Sub MyMenuItem_DisplayNumericN5(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        For Each col As GridColumn In PivotDetailsBaseView.Columns
+            If col.Name.ToString = SelectedColumn Then
+                col.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+                col.DisplayFormat.FormatString = "n5"
+            End If
+        Next
+    End Sub
+
+    Private Sub PivotDetailsBaseView_MouseDown(sender As Object, e As MouseEventArgs) Handles PivotDetailsBaseView.MouseDown
+        Dim focusedView As GridView = CType(GridControl2.FocusedView, GridView)
+        If focusedView.RowCount > 0 Then
+            Dim ghi As GridHitInfo = focusedView.CalcHitInfo(e.Location)
+            If ghi.InColumn Then
+                SelectedColumn = ghi.Column.Name
+                'MessageBox.Show(SelectedColumn)
+            End If
+
         End If
     End Sub
 End Class

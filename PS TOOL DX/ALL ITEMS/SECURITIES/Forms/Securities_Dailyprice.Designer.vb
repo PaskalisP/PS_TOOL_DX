@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Securities_Dailyprice
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -84,26 +84,53 @@ Partial Class Securities_Dailyprice
         Dim SpreadsheetCommandGalleryItem53 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
         Dim SpreadsheetCommandGalleryItem54 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
         Dim SpreadsheetCommandGalleryItem55 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandGalleryItem()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions5 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject17 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject18 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject19 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject20 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Me.SECURITIESDataset = New PS_TOOL_DX.SECURITIESDataset()
         Me.SECURITIES_DailyPriceBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SECURITIES_DailyPriceTableAdapter = New PS_TOOL_DX.SECURITIESDatasetTableAdapters.SECURITIES_DailyPriceTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.SECURITIESDatasetTableAdapters.TableAdapterManager()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.SaveExcelFile_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.DailyPrice_import_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.SimpleButton1 = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
+        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.SecuritiesDailyPriceBaseView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colName = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colContractNrOCBS = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCcy = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colISIN_Code = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRIC = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colMarket_Price = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSwap_Price = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPurchase_price = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colModifiedDuration = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colindustry = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFixedratecoupon = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -113,23 +140,14 @@ Partial Class Securities_Dailyprice
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.Securities_DailyPrice_Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.TabbedControlGroup1 = New DevExpress.XtraLayout.TabbedControlGroup()
-        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
         Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
         Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
@@ -296,30 +314,30 @@ Partial Class Securities_Dailyprice
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SpreadsheetBarController1 = New DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController(Me.components)
-        Me.colContractNrOCBS = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.BusinessDates_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.BusinessDates_SearchLookUpEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit()
+        Me.BusinessDates_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.AddNewData_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.PrintExport_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.Close_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         CType(Me.SECURITIESDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SECURITIES_DailyPriceBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SecuritiesDailyPriceBaseView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemSpreadsheetFontSizeEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -332,6 +350,9 @@ Partial Class Securities_Dailyprice
         CType(Me.RepositoryItemSpreadsheetCellStyleEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SpreadsheetBarController1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BusinessDates_SearchLookUpEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BusinessDates_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SECURITIESDataset
@@ -361,32 +382,36 @@ Partial Class Securities_Dailyprice
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.SaveExcelFile_btn)
-        Me.LayoutControl1.Controls.Add(Me.DailyPrice_import_btn)
-        Me.LayoutControl1.Controls.Add(Me.SimpleButton1)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.Securities_DailyPrice_Print_Export_btn)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(513, 191, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1269, 731)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1434, 637)
         Me.LayoutControl1.TabIndex = 10
         Me.LayoutControl1.Text = "LayoutControl1"
         '
-        'SaveExcelFile_btn
+        'GridControl2
         '
-        Me.SaveExcelFile_btn.ImageOptions.ImageIndex = 7
-        Me.SaveExcelFile_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.SaveExcelFile_btn.Location = New System.Drawing.Point(24, 71)
-        Me.SaveExcelFile_btn.Name = "SaveExcelFile_btn"
-        Me.SaveExcelFile_btn.Size = New System.Drawing.Size(94, 22)
-        Me.SaveExcelFile_btn.StyleController = Me.LayoutControl1
-        Me.SaveExcelFile_btn.TabIndex = 13
-        Me.SaveExcelFile_btn.Text = "Save"
+        Me.GridControl2.Cursor = System.Windows.Forms.Cursors.Default
+        Me.GridControl2.DataSource = Me.SECURITIES_DailyPriceBindingSource
+        Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.GridControl2.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.GridControl2.EmbeddedNavigator.Buttons.Edit.Visible = False
+        Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+        Me.GridControl2.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
+        Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
+        Me.GridControl2.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, False, "Add new Daily Prices", "Add")})
+        Me.GridControl2.Location = New System.Drawing.Point(12, 12)
+        Me.GridControl2.MainView = Me.SecuritiesDailyPriceBaseView
+        Me.GridControl2.Name = "GridControl2"
+        Me.GridControl2.Size = New System.Drawing.Size(1410, 613)
+        Me.GridControl2.TabIndex = 11
+        Me.GridControl2.UseEmbeddedNavigator = True
+        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SecuritiesDailyPriceBaseView})
         '
         'ImageCollection1
         '
@@ -403,48 +428,6 @@ Partial Class Securities_Dailyprice
         Me.ImageCollection1.InsertGalleryImage("add_16x16.png", "images/actions/add_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/add_16x16.png"), 8)
         Me.ImageCollection1.Images.SetKeyName(8, "add_16x16.png")
         '
-        'DailyPrice_import_btn
-        '
-        Me.DailyPrice_import_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.DailyPrice_import_btn.ImageOptions.ImageIndex = 8
-        Me.DailyPrice_import_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.DailyPrice_import_btn.Location = New System.Drawing.Point(157, 12)
-        Me.DailyPrice_import_btn.Name = "DailyPrice_import_btn"
-        Me.DailyPrice_import_btn.Size = New System.Drawing.Size(166, 22)
-        Me.DailyPrice_import_btn.StyleController = Me.LayoutControl1
-        Me.DailyPrice_import_btn.TabIndex = 11
-        Me.DailyPrice_import_btn.Text = "Add new daily Price"
-        '
-        'SimpleButton1
-        '
-        Me.SimpleButton1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.SimpleButton1.ImageOptions.ImageIndex = 2
-        Me.SimpleButton1.Location = New System.Drawing.Point(1129, 12)
-        Me.SimpleButton1.Name = "SimpleButton1"
-        Me.SimpleButton1.Size = New System.Drawing.Size(127, 22)
-        Me.SimpleButton1.StyleController = Me.LayoutControl1
-        Me.SimpleButton1.TabIndex = 10
-        Me.SimpleButton1.Text = "Print or Export"
-        '
-        'GridControl2
-        '
-        Me.GridControl2.Cursor = System.Windows.Forms.Cursors.Default
-        Me.GridControl2.DataSource = Me.SECURITIES_DailyPriceBindingSource
-        Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.Edit.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
-        Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl2.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, False, "Add new Daily Prices", "Add")})
-        Me.GridControl2.Location = New System.Drawing.Point(24, 71)
-        Me.GridControl2.MainView = Me.SecuritiesDailyPriceBaseView
-        Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.Size = New System.Drawing.Size(1221, 636)
-        Me.GridControl2.TabIndex = 11
-        Me.GridControl2.UseEmbeddedNavigator = True
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SecuritiesDailyPriceBaseView})
-        '
         'SecuritiesDailyPriceBaseView
         '
         Me.SecuritiesDailyPriceBaseView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
@@ -454,10 +437,9 @@ Partial Class Securities_Dailyprice
         Me.SecuritiesDailyPriceBaseView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.SecuritiesDailyPriceBaseView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.SecuritiesDailyPriceBaseView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.SecuritiesDailyPriceBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colDate, Me.colName, Me.colContractNrOCBS, Me.colCcy, Me.colISIN_Code, Me.colRIC, Me.colMarket_Price, Me.colSwap_Price, Me.colPurchase_price, Me.colindustry, Me.colFixedratecoupon, Me.GridColumn1, Me.colpurchasingyield, Me.colbondtype, Me.colwithswapornot, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4})
+        Me.SecuritiesDailyPriceBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colDate, Me.colName, Me.colContractNrOCBS, Me.colCcy, Me.colISIN_Code, Me.colRIC, Me.colMarket_Price, Me.colSwap_Price, Me.colPurchase_price, Me.colModifiedDuration, Me.colindustry, Me.colFixedratecoupon, Me.GridColumn1, Me.colpurchasingyield, Me.colbondtype, Me.colwithswapornot, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.colLastAction, Me.colLastUpdateUser, Me.colLastUpdateDate})
         Me.SecuritiesDailyPriceBaseView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.SecuritiesDailyPriceBaseView.GridControl = Me.GridControl2
-        Me.SecuritiesDailyPriceBaseView.GroupCount = 1
         Me.SecuritiesDailyPriceBaseView.Name = "SecuritiesDailyPriceBaseView"
         Me.SecuritiesDailyPriceBaseView.NewItemRowText = "Add new Security Depreciation"
         Me.SecuritiesDailyPriceBaseView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
@@ -473,7 +455,6 @@ Partial Class Securities_Dailyprice
         Me.SecuritiesDailyPriceBaseView.OptionsView.ShowAutoFilterRow = True
         Me.SecuritiesDailyPriceBaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.SecuritiesDailyPriceBaseView.OptionsView.ShowFooter = True
-        Me.SecuritiesDailyPriceBaseView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.colDate, DevExpress.Data.ColumnSortOrder.Descending)})
         '
         'colID
         '
@@ -484,6 +465,7 @@ Partial Class Securities_Dailyprice
         '
         'colDate
         '
+        Me.colDate.Caption = "Business Date"
         Me.colDate.FieldName = "Date"
         Me.colDate.Name = "colDate"
         Me.colDate.OptionsColumn.AllowEdit = False
@@ -493,13 +475,25 @@ Partial Class Securities_Dailyprice
         '
         'colName
         '
+        Me.colName.Caption = "Issuer Client Name / Security Name"
         Me.colName.FieldName = "Name"
         Me.colName.Name = "colName"
         Me.colName.OptionsColumn.AllowEdit = False
         Me.colName.OptionsColumn.ReadOnly = True
         Me.colName.Visible = True
-        Me.colName.VisibleIndex = 0
+        Me.colName.VisibleIndex = 1
         Me.colName.Width = 395
+        '
+        'colContractNrOCBS
+        '
+        Me.colContractNrOCBS.Caption = "Contract-Nr."
+        Me.colContractNrOCBS.FieldName = "ContractNrOCBS"
+        Me.colContractNrOCBS.Name = "colContractNrOCBS"
+        Me.colContractNrOCBS.OptionsColumn.AllowEdit = False
+        Me.colContractNrOCBS.OptionsColumn.ReadOnly = True
+        Me.colContractNrOCBS.Visible = True
+        Me.colContractNrOCBS.VisibleIndex = 3
+        Me.colContractNrOCBS.Width = 105
         '
         'colCcy
         '
@@ -508,7 +502,7 @@ Partial Class Securities_Dailyprice
         Me.colCcy.OptionsColumn.AllowEdit = False
         Me.colCcy.OptionsColumn.ReadOnly = True
         Me.colCcy.Visible = True
-        Me.colCcy.VisibleIndex = 1
+        Me.colCcy.VisibleIndex = 2
         Me.colCcy.Width = 49
         '
         'colISIN_Code
@@ -519,7 +513,7 @@ Partial Class Securities_Dailyprice
         Me.colISIN_Code.OptionsColumn.AllowEdit = False
         Me.colISIN_Code.OptionsColumn.ReadOnly = True
         Me.colISIN_Code.Visible = True
-        Me.colISIN_Code.VisibleIndex = 3
+        Me.colISIN_Code.VisibleIndex = 4
         Me.colISIN_Code.Width = 134
         '
         'colRIC
@@ -547,7 +541,7 @@ Partial Class Securities_Dailyprice
         Me.colMarket_Price.OptionsColumn.AllowEdit = False
         Me.colMarket_Price.OptionsColumn.ReadOnly = True
         Me.colMarket_Price.Visible = True
-        Me.colMarket_Price.VisibleIndex = 4
+        Me.colMarket_Price.VisibleIndex = 5
         Me.colMarket_Price.Width = 125
         '
         'colSwap_Price
@@ -558,7 +552,7 @@ Partial Class Securities_Dailyprice
         Me.colSwap_Price.OptionsColumn.AllowEdit = False
         Me.colSwap_Price.OptionsColumn.ReadOnly = True
         Me.colSwap_Price.Visible = True
-        Me.colSwap_Price.VisibleIndex = 5
+        Me.colSwap_Price.VisibleIndex = 8
         Me.colSwap_Price.Width = 112
         '
         'colPurchase_price
@@ -579,6 +573,25 @@ Partial Class Securities_Dailyprice
         Me.colPurchase_price.VisibleIndex = 6
         Me.colPurchase_price.Width = 122
         '
+        'colModifiedDuration
+        '
+        Me.colModifiedDuration.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.colModifiedDuration.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.colModifiedDuration.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.colModifiedDuration.AppearanceCell.ForeColor = System.Drawing.Color.Black
+        Me.colModifiedDuration.AppearanceCell.Options.UseBackColor = True
+        Me.colModifiedDuration.AppearanceCell.Options.UseFont = True
+        Me.colModifiedDuration.AppearanceCell.Options.UseForeColor = True
+        Me.colModifiedDuration.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.colModifiedDuration.AppearanceHeader.Options.UseFont = True
+        Me.colModifiedDuration.DisplayFormat.FormatString = "n6"
+        Me.colModifiedDuration.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colModifiedDuration.FieldName = "ModifiedDuration"
+        Me.colModifiedDuration.Name = "colModifiedDuration"
+        Me.colModifiedDuration.Visible = True
+        Me.colModifiedDuration.VisibleIndex = 7
+        Me.colModifiedDuration.Width = 131
+        '
         'colindustry
         '
         Me.colindustry.FieldName = "industry"
@@ -586,7 +599,7 @@ Partial Class Securities_Dailyprice
         Me.colindustry.OptionsColumn.AllowEdit = False
         Me.colindustry.OptionsColumn.ReadOnly = True
         Me.colindustry.Visible = True
-        Me.colindustry.VisibleIndex = 7
+        Me.colindustry.VisibleIndex = 9
         Me.colindustry.Width = 121
         '
         'colFixedratecoupon
@@ -596,7 +609,7 @@ Partial Class Securities_Dailyprice
         Me.colFixedratecoupon.OptionsColumn.AllowEdit = False
         Me.colFixedratecoupon.OptionsColumn.ReadOnly = True
         Me.colFixedratecoupon.Visible = True
-        Me.colFixedratecoupon.VisibleIndex = 8
+        Me.colFixedratecoupon.VisibleIndex = 10
         Me.colFixedratecoupon.Width = 110
         '
         'GridColumn1
@@ -606,7 +619,7 @@ Partial Class Securities_Dailyprice
         Me.GridColumn1.OptionsColumn.AllowEdit = False
         Me.GridColumn1.OptionsColumn.ReadOnly = True
         Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 9
+        Me.GridColumn1.VisibleIndex = 11
         Me.GridColumn1.Width = 122
         '
         'colpurchasingyield
@@ -616,7 +629,7 @@ Partial Class Securities_Dailyprice
         Me.colpurchasingyield.OptionsColumn.AllowEdit = False
         Me.colpurchasingyield.OptionsColumn.ReadOnly = True
         Me.colpurchasingyield.Visible = True
-        Me.colpurchasingyield.VisibleIndex = 10
+        Me.colpurchasingyield.VisibleIndex = 12
         Me.colpurchasingyield.Width = 115
         '
         'colbondtype
@@ -626,7 +639,7 @@ Partial Class Securities_Dailyprice
         Me.colbondtype.OptionsColumn.AllowEdit = False
         Me.colbondtype.OptionsColumn.ReadOnly = True
         Me.colbondtype.Visible = True
-        Me.colbondtype.VisibleIndex = 11
+        Me.colbondtype.VisibleIndex = 13
         Me.colbondtype.Width = 97
         '
         'colwithswapornot
@@ -636,7 +649,7 @@ Partial Class Securities_Dailyprice
         Me.colwithswapornot.OptionsColumn.AllowEdit = False
         Me.colwithswapornot.OptionsColumn.ReadOnly = True
         Me.colwithswapornot.Visible = True
-        Me.colwithswapornot.VisibleIndex = 12
+        Me.colwithswapornot.VisibleIndex = 14
         Me.colwithswapornot.Width = 115
         '
         'GridColumn2
@@ -646,7 +659,7 @@ Partial Class Securities_Dailyprice
         Me.GridColumn2.OptionsColumn.AllowEdit = False
         Me.GridColumn2.OptionsColumn.ReadOnly = True
         Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 13
+        Me.GridColumn2.VisibleIndex = 15
         Me.GridColumn2.Width = 107
         '
         'GridColumn3
@@ -656,7 +669,7 @@ Partial Class Securities_Dailyprice
         Me.GridColumn3.OptionsColumn.AllowEdit = False
         Me.GridColumn3.OptionsColumn.ReadOnly = True
         Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 14
+        Me.GridColumn3.VisibleIndex = 16
         Me.GridColumn3.Width = 98
         '
         'GridColumn4
@@ -666,8 +679,28 @@ Partial Class Securities_Dailyprice
         Me.GridColumn4.OptionsColumn.AllowEdit = False
         Me.GridColumn4.OptionsColumn.ReadOnly = True
         Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 15
+        Me.GridColumn4.VisibleIndex = 17
         Me.GridColumn4.Width = 105
+        '
+        'colLastAction
+        '
+        Me.colLastAction.FieldName = "LastAction"
+        Me.colLastAction.Name = "colLastAction"
+        Me.colLastAction.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser
+        '
+        Me.colLastUpdateUser.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser.Name = "colLastUpdateUser"
+        Me.colLastUpdateUser.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate
+        '
+        Me.colLastUpdateDate.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.colLastUpdateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.colLastUpdateDate.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate.Name = "colLastUpdateDate"
+        Me.colLastUpdateDate.OptionsColumn.ReadOnly = True
         '
         'GridControl1
         '
@@ -683,18 +716,6 @@ Partial Class Securities_Dailyprice
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'Securities_DailyPrice_Print_Export_btn
-        '
-        Me.Securities_DailyPrice_Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Securities_DailyPrice_Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.Securities_DailyPrice_Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Securities_DailyPrice_Print_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.Securities_DailyPrice_Print_Export_btn.Name = "Securities_DailyPrice_Print_Export_btn"
-        Me.Securities_DailyPrice_Print_Export_btn.Size = New System.Drawing.Size(131, 22)
-        Me.Securities_DailyPrice_Print_Export_btn.StyleController = Me.LayoutControl1
-        Me.Securities_DailyPrice_Print_Export_btn.TabIndex = 9
-        Me.Securities_DailyPrice_Print_Export_btn.Text = "Print or Export"
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.GridControl1
@@ -709,87 +730,10 @@ Partial Class Securities_Dailyprice
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.SimpleSeparator1, Me.LayoutControlItem3, Me.LayoutControlItem5, Me.EmptySpaceItem4, Me.TabbedControlGroup1})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1269, 731)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1434, 637)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(315, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(802, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.Securities_DailyPrice_Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(135, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'SimpleSeparator1
-        '
-        Me.SimpleSeparator1.AllowHotTrack = False
-        Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1248, 0)
-        Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.SimpleButton1
-        Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1117, 0)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(131, 26)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
-        Me.LayoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.DailyPrice_import_btn
-        Me.LayoutControlItem5.CustomizationFormText = "LayoutControlItem5"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(145, 0)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(170, 26)
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem5.TextVisible = False
-        '
-        'EmptySpaceItem4
-        '
-        Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(135, 0)
-        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(10, 26)
-        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'TabbedControlGroup1
-        '
-        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 26)
-        Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
-        Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup2
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1249, 685)
-        Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup2, Me.LayoutControlGroup3})
-        '
-        'LayoutControlGroup2
-        '
-        Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Yellow
-        Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.Options.UseFont = True
-        Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
-        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4})
-        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1225, 640)
-        Me.LayoutControlGroup2.Text = "Securities Daily Prices"
         '
         'LayoutControlItem4
         '
@@ -797,39 +741,9 @@ Partial Class Securities_Dailyprice
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1225, 640)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1414, 617)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
-        '
-        'LayoutControlGroup3
-        '
-        Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Yellow
-        Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.Options.UseFont = True
-        Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem2, Me.LayoutControlItem7})
-        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1225, 640)
-        Me.LayoutControlGroup3.Text = "Daily Price (Excel Sheet)"
-        Me.LayoutControlGroup3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(98, 0)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1127, 640)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem7
-        '
-        Me.LayoutControlItem7.Control = Me.SaveExcelFile_btn
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(98, 640)
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem7.TextVisible = False
         '
         'BarManager1
         '
@@ -848,7 +762,7 @@ Partial Class Securities_Dailyprice
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1269, 0)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1434, 0)
         '
         'barDockControlBottom
         '
@@ -856,7 +770,7 @@ Partial Class Securities_Dailyprice
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.barDockControlBottom.Location = New System.Drawing.Point(0, 731)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1269, 0)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1434, 0)
         '
         'barDockControlLeft
         '
@@ -870,7 +784,7 @@ Partial Class Securities_Dailyprice
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1269, 0)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1434, 0)
         Me.barDockControlRight.Manager = Me.BarManager1
         Me.barDockControlRight.Size = New System.Drawing.Size(0, 731)
         '
@@ -1314,77 +1228,77 @@ Partial Class Securities_Dailyprice
         SpreadsheetCommandGalleryItem1.CaptionAsValue = True
         SpreadsheetCommandGalleryItem1.Checked = True
         SpreadsheetCommandGalleryItem1.CommandName = "FormatNumberGeneral"
-        SpreadsheetCommandGalleryItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem1.IsEmptyHint = True
         SpreadsheetCommandGalleryItem1.Value = "General"
         SpreadsheetCommandGalleryItem2.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem2.Caption = "Number"
         SpreadsheetCommandGalleryItem2.CaptionAsValue = True
         SpreadsheetCommandGalleryItem2.CommandName = "FormatNumberDecimal"
-        SpreadsheetCommandGalleryItem2.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem2.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem2.IsEmptyHint = True
         SpreadsheetCommandGalleryItem2.Value = "Number"
         SpreadsheetCommandGalleryItem3.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem3.Caption = "Currency"
         SpreadsheetCommandGalleryItem3.CaptionAsValue = True
         SpreadsheetCommandGalleryItem3.CommandName = "FormatNumberAccountingCurrency"
-        SpreadsheetCommandGalleryItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem3.IsEmptyHint = True
         SpreadsheetCommandGalleryItem3.Value = "Currency"
         SpreadsheetCommandGalleryItem4.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem4.Caption = "Accounting"
         SpreadsheetCommandGalleryItem4.CaptionAsValue = True
         SpreadsheetCommandGalleryItem4.CommandName = "FormatNumberAccountingRegular"
-        SpreadsheetCommandGalleryItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem4.IsEmptyHint = True
         SpreadsheetCommandGalleryItem4.Value = "Accounting"
         SpreadsheetCommandGalleryItem5.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem5.Caption = "Short Date"
         SpreadsheetCommandGalleryItem5.CaptionAsValue = True
         SpreadsheetCommandGalleryItem5.CommandName = "FormatNumberShortDate"
-        SpreadsheetCommandGalleryItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem5.IsEmptyHint = True
         SpreadsheetCommandGalleryItem5.Value = "Short Date"
         SpreadsheetCommandGalleryItem6.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem6.Caption = "Long Date"
         SpreadsheetCommandGalleryItem6.CaptionAsValue = True
         SpreadsheetCommandGalleryItem6.CommandName = "FormatNumberLongDate"
-        SpreadsheetCommandGalleryItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem6.IsEmptyHint = True
         SpreadsheetCommandGalleryItem6.Value = "Long Date"
         SpreadsheetCommandGalleryItem7.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem7.Caption = "Time"
         SpreadsheetCommandGalleryItem7.CaptionAsValue = True
         SpreadsheetCommandGalleryItem7.CommandName = "FormatNumberTime"
-        SpreadsheetCommandGalleryItem7.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem7.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem7.IsEmptyHint = True
         SpreadsheetCommandGalleryItem7.Value = "Time"
         SpreadsheetCommandGalleryItem8.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem8.Caption = "Percentage"
         SpreadsheetCommandGalleryItem8.CaptionAsValue = True
         SpreadsheetCommandGalleryItem8.CommandName = "FormatNumberPercentage"
-        SpreadsheetCommandGalleryItem8.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem8.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem8.IsEmptyHint = True
         SpreadsheetCommandGalleryItem8.Value = "Percentage"
         SpreadsheetCommandGalleryItem9.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem9.Caption = "Fraction"
         SpreadsheetCommandGalleryItem9.CaptionAsValue = True
         SpreadsheetCommandGalleryItem9.CommandName = "FormatNumberFraction"
-        SpreadsheetCommandGalleryItem9.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem9.ImageOptions.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem9.IsEmptyHint = True
         SpreadsheetCommandGalleryItem9.Value = "Fraction"
         SpreadsheetCommandGalleryItem10.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem10.Caption = "Scientific"
         SpreadsheetCommandGalleryItem10.CaptionAsValue = True
         SpreadsheetCommandGalleryItem10.CommandName = "FormatNumberScientific"
-        SpreadsheetCommandGalleryItem10.ImageOptions.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem10.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem10.IsEmptyHint = True
         SpreadsheetCommandGalleryItem10.Value = "Scientific"
         SpreadsheetCommandGalleryItem11.AlwaysUpdateDescription = True
         SpreadsheetCommandGalleryItem11.Caption = "Text"
         SpreadsheetCommandGalleryItem11.CaptionAsValue = True
         SpreadsheetCommandGalleryItem11.CommandName = "FormatNumberText"
-        SpreadsheetCommandGalleryItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image11"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem11.IsEmptyHint = True
         SpreadsheetCommandGalleryItem11.Value = "Text"
         GalleryItemGroup1.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem1, SpreadsheetCommandGalleryItem2, SpreadsheetCommandGalleryItem3, SpreadsheetCommandGalleryItem4, SpreadsheetCommandGalleryItem5, SpreadsheetCommandGalleryItem6, SpreadsheetCommandGalleryItem7, SpreadsheetCommandGalleryItem8, SpreadsheetCommandGalleryItem9, SpreadsheetCommandGalleryItem10, SpreadsheetCommandGalleryItem11})
@@ -1660,42 +1574,42 @@ Partial Class Securities_Dailyprice
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem12.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem12.ImageOptions.Image = CType(resources.GetObject("resource.Image11"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem12.ImageOptions.Image = CType(resources.GetObject("resource.Image12"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem13.Caption = "Green Data Bar (Gradient)"
         SpreadsheetCommandGalleryItem13.CommandName = "ConditionalFormattingDataBarGradientGreen"
         SpreadsheetCommandGalleryItem13.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem13.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem13.ImageOptions.Image = CType(resources.GetObject("resource.Image12"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem13.ImageOptions.Image = CType(resources.GetObject("resource.Image13"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem14.Caption = "Red Data Bar (Gradient)"
         SpreadsheetCommandGalleryItem14.CommandName = "ConditionalFormattingDataBarGradientRed"
         SpreadsheetCommandGalleryItem14.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem14.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem14.ImageOptions.Image = CType(resources.GetObject("resource.Image13"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem14.ImageOptions.Image = CType(resources.GetObject("resource.Image14"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem15.Caption = "Orange Data Bar (Gradient)"
         SpreadsheetCommandGalleryItem15.CommandName = "ConditionalFormattingDataBarGradientOrange"
         SpreadsheetCommandGalleryItem15.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem15.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem15.ImageOptions.Image = CType(resources.GetObject("resource.Image14"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem15.ImageOptions.Image = CType(resources.GetObject("resource.Image15"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem16.Caption = "Light Blue Data Bar (Gradient)"
         SpreadsheetCommandGalleryItem16.CommandName = "ConditionalFormattingDataBarGradientLightBlue"
         SpreadsheetCommandGalleryItem16.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem16.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem16.ImageOptions.Image = CType(resources.GetObject("resource.Image15"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem16.ImageOptions.Image = CType(resources.GetObject("resource.Image16"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem17.Caption = "Purple Data Bar (Gradient)"
         SpreadsheetCommandGalleryItem17.CommandName = "ConditionalFormattingDataBarGradientPurple"
         SpreadsheetCommandGalleryItem17.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem17.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem17.ImageOptions.Image = CType(resources.GetObject("resource.Image16"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem17.ImageOptions.Image = CType(resources.GetObject("resource.Image17"), System.Drawing.Image)
         SpreadsheetCommandGalleryItemGroup1.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem12, SpreadsheetCommandGalleryItem13, SpreadsheetCommandGalleryItem14, SpreadsheetCommandGalleryItem15, SpreadsheetCommandGalleryItem16, SpreadsheetCommandGalleryItem17})
         SpreadsheetCommandGalleryItemGroup2.Caption = "Solid Fill"
         SpreadsheetCommandGalleryItemGroup2.CommandName = "ConditionalFormattingDataBarsSolidFillCommandGroup"
@@ -1705,42 +1619,42 @@ Partial Class Securities_Dailyprice
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem18.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem18.ImageOptions.Image = CType(resources.GetObject("resource.Image17"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem18.ImageOptions.Image = CType(resources.GetObject("resource.Image18"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem19.Caption = "Green Data Bar (Solid)"
         SpreadsheetCommandGalleryItem19.CommandName = "ConditionalFormattingDataBarSolidGreen"
         SpreadsheetCommandGalleryItem19.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem19.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem19.ImageOptions.Image = CType(resources.GetObject("resource.Image18"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem19.ImageOptions.Image = CType(resources.GetObject("resource.Image19"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem20.Caption = "Red Data Bar (Solid)"
         SpreadsheetCommandGalleryItem20.CommandName = "ConditionalFormattingDataBarSolidRed"
         SpreadsheetCommandGalleryItem20.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem20.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem20.ImageOptions.Image = CType(resources.GetObject("resource.Image19"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem20.ImageOptions.Image = CType(resources.GetObject("resource.Image20"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem21.Caption = "Orange Data Bar (Solid)"
         SpreadsheetCommandGalleryItem21.CommandName = "ConditionalFormattingDataBarSolidOrange"
         SpreadsheetCommandGalleryItem21.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem21.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem21.ImageOptions.Image = CType(resources.GetObject("resource.Image20"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem21.ImageOptions.Image = CType(resources.GetObject("resource.Image21"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem22.Caption = "Light Blue Data Bar (Solid)"
         SpreadsheetCommandGalleryItem22.CommandName = "ConditionalFormattingDataBarSolidLightBlue"
         SpreadsheetCommandGalleryItem22.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem22.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem22.ImageOptions.Image = CType(resources.GetObject("resource.Image21"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem22.ImageOptions.Image = CType(resources.GetObject("resource.Image22"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem23.Caption = "Purple Data Bar (Solid)"
         SpreadsheetCommandGalleryItem23.CommandName = "ConditionalFormattingDataBarSolidPurple"
         SpreadsheetCommandGalleryItem23.Description = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
         SpreadsheetCommandGalleryItem23.Hint = "View a colored data bar in the cell. The length of the data bar represents the va" &
     "lue in the cell. A longer bar represents a higher value."
-        SpreadsheetCommandGalleryItem23.ImageOptions.Image = CType(resources.GetObject("resource.Image22"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem23.ImageOptions.Image = CType(resources.GetObject("resource.Image23"), System.Drawing.Image)
         SpreadsheetCommandGalleryItemGroup2.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem18, SpreadsheetCommandGalleryItem19, SpreadsheetCommandGalleryItem20, SpreadsheetCommandGalleryItem21, SpreadsheetCommandGalleryItem22, SpreadsheetCommandGalleryItem23})
         Me.CommandBarGalleryDropDown2.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {SpreadsheetCommandGalleryItemGroup1, SpreadsheetCommandGalleryItemGroup2})
         Me.CommandBarGalleryDropDown2.Gallery.ImageSize = New System.Drawing.Size(32, 32)
@@ -1772,84 +1686,84 @@ Partial Class Securities_Dailyprice
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem24.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem24.ImageOptions.Image = CType(resources.GetObject("resource.Image23"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem24.ImageOptions.Image = CType(resources.GetObject("resource.Image24"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem25.Caption = "Red - Yellow - Green Color Scale"
         SpreadsheetCommandGalleryItem25.CommandName = "ConditionalFormattingColorScaleRedYellowGreen"
         SpreadsheetCommandGalleryItem25.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem25.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem25.ImageOptions.Image = CType(resources.GetObject("resource.Image24"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem25.ImageOptions.Image = CType(resources.GetObject("resource.Image25"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem26.Caption = "Green - White - Red Color Scale"
         SpreadsheetCommandGalleryItem26.CommandName = "ConditionalFormattingColorScaleGreenWhiteRed"
         SpreadsheetCommandGalleryItem26.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem26.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem26.ImageOptions.Image = CType(resources.GetObject("resource.Image25"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem26.ImageOptions.Image = CType(resources.GetObject("resource.Image26"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem27.Caption = "Red - White - Green Color Scale"
         SpreadsheetCommandGalleryItem27.CommandName = "ConditionalFormattingColorScaleRedWhiteGreen"
         SpreadsheetCommandGalleryItem27.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem27.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem27.ImageOptions.Image = CType(resources.GetObject("resource.Image26"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem27.ImageOptions.Image = CType(resources.GetObject("resource.Image27"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem28.Caption = "Blue - White - Red Color Scale"
         SpreadsheetCommandGalleryItem28.CommandName = "ConditionalFormattingColorScaleBlueWhiteRed"
         SpreadsheetCommandGalleryItem28.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem28.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem28.ImageOptions.Image = CType(resources.GetObject("resource.Image27"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem28.ImageOptions.Image = CType(resources.GetObject("resource.Image28"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem29.Caption = "Red - White - Blue Color Scale"
         SpreadsheetCommandGalleryItem29.CommandName = "ConditionalFormattingColorScaleRedWhiteBlue"
         SpreadsheetCommandGalleryItem29.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem29.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem29.ImageOptions.Image = CType(resources.GetObject("resource.Image28"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem29.ImageOptions.Image = CType(resources.GetObject("resource.Image29"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem30.Caption = "White - Red Color Scale"
         SpreadsheetCommandGalleryItem30.CommandName = "ConditionalFormattingColorScaleWhiteRed"
         SpreadsheetCommandGalleryItem30.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem30.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem30.ImageOptions.Image = CType(resources.GetObject("resource.Image29"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem30.ImageOptions.Image = CType(resources.GetObject("resource.Image30"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem31.Caption = "Red - White Color Scale"
         SpreadsheetCommandGalleryItem31.CommandName = "ConditionalFormattingColorScaleRedWhite"
         SpreadsheetCommandGalleryItem31.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem31.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem31.ImageOptions.Image = CType(resources.GetObject("resource.Image30"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem31.ImageOptions.Image = CType(resources.GetObject("resource.Image31"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem32.Caption = "Green - White Color Scale"
         SpreadsheetCommandGalleryItem32.CommandName = "ConditionalFormattingColorScaleGreenWhite"
         SpreadsheetCommandGalleryItem32.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem32.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem32.ImageOptions.Image = CType(resources.GetObject("resource.Image31"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem32.ImageOptions.Image = CType(resources.GetObject("resource.Image32"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem33.Caption = "White - Green Color Scale"
         SpreadsheetCommandGalleryItem33.CommandName = "ConditionalFormattingColorScaleWhiteGreen"
         SpreadsheetCommandGalleryItem33.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem33.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem33.ImageOptions.Image = CType(resources.GetObject("resource.Image32"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem33.ImageOptions.Image = CType(resources.GetObject("resource.Image33"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem34.Caption = "Green - Yellow Color Scale"
         SpreadsheetCommandGalleryItem34.CommandName = "ConditionalFormattingColorScaleGreenYellow"
         SpreadsheetCommandGalleryItem34.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem34.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem34.ImageOptions.Image = CType(resources.GetObject("resource.Image33"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem34.ImageOptions.Image = CType(resources.GetObject("resource.Image34"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem35.Caption = "Yellow - Green Color Scale"
         SpreadsheetCommandGalleryItem35.CommandName = "ConditionalFormattingColorScaleYellowGreen"
         SpreadsheetCommandGalleryItem35.Description = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
         SpreadsheetCommandGalleryItem35.Hint = "Displays a two or three color gradient in a range of cells. The shade of the colo" &
     "r represents the value in the cell."
-        SpreadsheetCommandGalleryItem35.ImageOptions.Image = CType(resources.GetObject("resource.Image34"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem35.ImageOptions.Image = CType(resources.GetObject("resource.Image35"), System.Drawing.Image)
         SpreadsheetCommandGalleryItemGroup3.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem24, SpreadsheetCommandGalleryItem25, SpreadsheetCommandGalleryItem26, SpreadsheetCommandGalleryItem27, SpreadsheetCommandGalleryItem28, SpreadsheetCommandGalleryItem29, SpreadsheetCommandGalleryItem30, SpreadsheetCommandGalleryItem31, SpreadsheetCommandGalleryItem32, SpreadsheetCommandGalleryItem33, SpreadsheetCommandGalleryItem34, SpreadsheetCommandGalleryItem35})
         Me.CommandBarGalleryDropDown3.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {SpreadsheetCommandGalleryItemGroup3})
         Me.CommandBarGalleryDropDown3.Gallery.ImageSize = New System.Drawing.Size(32, 32)
@@ -1881,49 +1795,49 @@ Partial Class Securities_Dailyprice
     "e in the cell."
         SpreadsheetCommandGalleryItem36.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem36.ImageOptions.Image = CType(resources.GetObject("resource.Image35"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem36.ImageOptions.Image = CType(resources.GetObject("resource.Image36"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem37.Caption = "3 Arrows (Gray)"
         SpreadsheetCommandGalleryItem37.CommandName = "ConditionalFormattingIconSetArrows3Grayed"
         SpreadsheetCommandGalleryItem37.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem37.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem37.ImageOptions.Image = CType(resources.GetObject("resource.Image36"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem37.ImageOptions.Image = CType(resources.GetObject("resource.Image37"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem38.Caption = "4 Arrows (Colored)"
         SpreadsheetCommandGalleryItem38.CommandName = "ConditionalFormattingIconSetArrows4Colored"
         SpreadsheetCommandGalleryItem38.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem38.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem38.ImageOptions.Image = CType(resources.GetObject("resource.Image37"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem38.ImageOptions.Image = CType(resources.GetObject("resource.Image38"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem39.Caption = "4 Arrows (Gray)"
         SpreadsheetCommandGalleryItem39.CommandName = "ConditionalFormattingIconSetArrows4Grayed"
         SpreadsheetCommandGalleryItem39.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem39.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem39.ImageOptions.Image = CType(resources.GetObject("resource.Image38"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem39.ImageOptions.Image = CType(resources.GetObject("resource.Image39"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem40.Caption = "5 Arrows (Colored)"
         SpreadsheetCommandGalleryItem40.CommandName = "ConditionalFormattingIconSetArrows5Colored"
         SpreadsheetCommandGalleryItem40.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem40.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem40.ImageOptions.Image = CType(resources.GetObject("resource.Image39"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem40.ImageOptions.Image = CType(resources.GetObject("resource.Image40"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem41.Caption = "5 Arrows (Gray)"
         SpreadsheetCommandGalleryItem41.CommandName = "ConditionalFormattingIconSetArrows5Grayed"
         SpreadsheetCommandGalleryItem41.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem41.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem41.ImageOptions.Image = CType(resources.GetObject("resource.Image40"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem41.ImageOptions.Image = CType(resources.GetObject("resource.Image41"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem42.Caption = "3 Triangles"
         SpreadsheetCommandGalleryItem42.CommandName = "ConditionalFormattingIconSetTriangles3"
         SpreadsheetCommandGalleryItem42.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem42.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem42.ImageOptions.Image = CType(resources.GetObject("resource.Image41"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem42.ImageOptions.Image = CType(resources.GetObject("resource.Image42"), System.Drawing.Image)
         SpreadsheetCommandGalleryItemGroup4.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem36, SpreadsheetCommandGalleryItem37, SpreadsheetCommandGalleryItem38, SpreadsheetCommandGalleryItem39, SpreadsheetCommandGalleryItem40, SpreadsheetCommandGalleryItem41, SpreadsheetCommandGalleryItem42})
         SpreadsheetCommandGalleryItemGroup5.Caption = "Shapes"
         SpreadsheetCommandGalleryItemGroup5.CommandName = "ConditionalFormattingIconSetsShapesCommandGroup"
@@ -1933,35 +1847,35 @@ Partial Class Securities_Dailyprice
     "e in the cell."
         SpreadsheetCommandGalleryItem43.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem43.ImageOptions.Image = CType(resources.GetObject("resource.Image42"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem43.ImageOptions.Image = CType(resources.GetObject("resource.Image43"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem44.Caption = "3 Traffic Lights (Rimmed)"
         SpreadsheetCommandGalleryItem44.CommandName = "ConditionalFormattingIconSetTrafficLights3Rimmed"
         SpreadsheetCommandGalleryItem44.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem44.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem44.ImageOptions.Image = CType(resources.GetObject("resource.Image43"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem44.ImageOptions.Image = CType(resources.GetObject("resource.Image44"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem45.Caption = "4 Traffic Lights"
         SpreadsheetCommandGalleryItem45.CommandName = "ConditionalFormattingIconSetTrafficLights4"
         SpreadsheetCommandGalleryItem45.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem45.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem45.ImageOptions.Image = CType(resources.GetObject("resource.Image44"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem45.ImageOptions.Image = CType(resources.GetObject("resource.Image45"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem46.Caption = "3 Signs"
         SpreadsheetCommandGalleryItem46.CommandName = "ConditionalFormattingIconSetSigns3"
         SpreadsheetCommandGalleryItem46.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem46.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem46.ImageOptions.Image = CType(resources.GetObject("resource.Image45"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem46.ImageOptions.Image = CType(resources.GetObject("resource.Image46"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem47.Caption = "Red To Black"
         SpreadsheetCommandGalleryItem47.CommandName = "ConditionalFormattingIconSetRedToBlack"
         SpreadsheetCommandGalleryItem47.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem47.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem47.ImageOptions.Image = CType(resources.GetObject("resource.Image46"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem47.ImageOptions.Image = CType(resources.GetObject("resource.Image47"), System.Drawing.Image)
         SpreadsheetCommandGalleryItemGroup5.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem43, SpreadsheetCommandGalleryItem44, SpreadsheetCommandGalleryItem45, SpreadsheetCommandGalleryItem46, SpreadsheetCommandGalleryItem47})
         SpreadsheetCommandGalleryItemGroup6.Caption = "Indicators"
         SpreadsheetCommandGalleryItemGroup6.CommandName = "ConditionalFormattingIconSetsIndicatorsCommandGroup"
@@ -1971,21 +1885,21 @@ Partial Class Securities_Dailyprice
     "e in the cell."
         SpreadsheetCommandGalleryItem48.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem48.ImageOptions.Image = CType(resources.GetObject("resource.Image47"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem48.ImageOptions.Image = CType(resources.GetObject("resource.Image48"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem49.Caption = "3 Symbols (Uncircled)"
         SpreadsheetCommandGalleryItem49.CommandName = "ConditionalFormattingIconSetSymbols3"
         SpreadsheetCommandGalleryItem49.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem49.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem49.ImageOptions.Image = CType(resources.GetObject("resource.Image48"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem49.ImageOptions.Image = CType(resources.GetObject("resource.Image49"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem50.Caption = "3 Flags"
         SpreadsheetCommandGalleryItem50.CommandName = "ConditionalFormattingIconSetFlags3"
         SpreadsheetCommandGalleryItem50.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem50.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem50.ImageOptions.Image = CType(resources.GetObject("resource.Image49"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem50.ImageOptions.Image = CType(resources.GetObject("resource.Image50"), System.Drawing.Image)
         SpreadsheetCommandGalleryItemGroup6.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem48, SpreadsheetCommandGalleryItem49, SpreadsheetCommandGalleryItem50})
         SpreadsheetCommandGalleryItemGroup7.Caption = "Ratings"
         SpreadsheetCommandGalleryItemGroup7.CommandName = "ConditionalFormattingIconSetsRatingsCommandGroup"
@@ -1995,35 +1909,35 @@ Partial Class Securities_Dailyprice
     "e in the cell."
         SpreadsheetCommandGalleryItem51.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem51.ImageOptions.Image = CType(resources.GetObject("resource.Image50"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem51.ImageOptions.Image = CType(resources.GetObject("resource.Image51"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem52.Caption = "4 Ratings"
         SpreadsheetCommandGalleryItem52.CommandName = "ConditionalFormattingIconSetRatings4"
         SpreadsheetCommandGalleryItem52.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem52.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem52.ImageOptions.Image = CType(resources.GetObject("resource.Image51"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem52.ImageOptions.Image = CType(resources.GetObject("resource.Image52"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem53.Caption = "5 Ratings"
         SpreadsheetCommandGalleryItem53.CommandName = "ConditionalFormattingIconSetRatings5"
         SpreadsheetCommandGalleryItem53.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem53.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem53.ImageOptions.Image = CType(resources.GetObject("resource.Image52"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem53.ImageOptions.Image = CType(resources.GetObject("resource.Image53"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem54.Caption = "5 Quarters"
         SpreadsheetCommandGalleryItem54.CommandName = "ConditionalFormattingIconSetQuarters5"
         SpreadsheetCommandGalleryItem54.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem54.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem54.ImageOptions.Image = CType(resources.GetObject("resource.Image53"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem54.ImageOptions.Image = CType(resources.GetObject("resource.Image54"), System.Drawing.Image)
         SpreadsheetCommandGalleryItem55.Caption = "5 Boxes"
         SpreadsheetCommandGalleryItem55.CommandName = "ConditionalFormattingIconSetBoxes5"
         SpreadsheetCommandGalleryItem55.Description = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
         SpreadsheetCommandGalleryItem55.Hint = "Display an icon from the above icon set in each cell. Each icon represents a valu" &
     "e in the cell."
-        SpreadsheetCommandGalleryItem55.ImageOptions.Image = CType(resources.GetObject("resource.Image54"), System.Drawing.Image)
+        SpreadsheetCommandGalleryItem55.ImageOptions.Image = CType(resources.GetObject("resource.Image55"), System.Drawing.Image)
         SpreadsheetCommandGalleryItemGroup7.Items.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItem() {SpreadsheetCommandGalleryItem51, SpreadsheetCommandGalleryItem52, SpreadsheetCommandGalleryItem53, SpreadsheetCommandGalleryItem54, SpreadsheetCommandGalleryItem55})
         Me.CommandBarGalleryDropDown4.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {SpreadsheetCommandGalleryItemGroup4, SpreadsheetCommandGalleryItemGroup5, SpreadsheetCommandGalleryItemGroup6, SpreadsheetCommandGalleryItemGroup7})
         Me.CommandBarGalleryDropDown4.Gallery.ImageSize = New System.Drawing.Size(32, 32)
@@ -2823,68 +2737,172 @@ Partial Class Securities_Dailyprice
         Me.SpreadsheetBarController1.BarItems.Add(Me.SpreadsheetCommandBarButtonItem104)
         Me.SpreadsheetBarController1.BarItems.Add(Me.SpreadsheetCommandBarButtonItem105)
         '
-        'colContractNrOCBS
+        'RibbonControl1
         '
-        Me.colContractNrOCBS.Caption = "Contract-Nr."
-        Me.colContractNrOCBS.FieldName = "ContractNrOCBS"
-        Me.colContractNrOCBS.Name = "colContractNrOCBS"
-        Me.colContractNrOCBS.OptionsColumn.AllowEdit = False
-        Me.colContractNrOCBS.OptionsColumn.ReadOnly = True
-        Me.colContractNrOCBS.Visible = True
-        Me.colContractNrOCBS.VisibleIndex = 2
-        Me.colContractNrOCBS.Width = 105
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.BusinessDates_BarEditItem, Me.AddNewData_bbi, Me.PrintExport_bbi, Me.Close_bbi})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 5
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.BusinessDates_SearchLookUpEdit})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1434, 94)
+        '
+        'BusinessDates_BarEditItem
+        '
+        Me.BusinessDates_BarEditItem.Caption = "Business Dates"
+        Me.BusinessDates_BarEditItem.CaptionToEditorIndent = 5
+        Me.BusinessDates_BarEditItem.Edit = Me.BusinessDates_SearchLookUpEdit
+        Me.BusinessDates_BarEditItem.EditHeight = 50
+        Me.BusinessDates_BarEditItem.EditWidth = 450
+        Me.BusinessDates_BarEditItem.Id = 1
+        Me.BusinessDates_BarEditItem.ImageOptions.Image = CType(resources.GetObject("BusinessDates_BarEditItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.BusinessDates_BarEditItem.ImageOptions.LargeImage = CType(resources.GetObject("BusinessDates_BarEditItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.BusinessDates_BarEditItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BusinessDates_BarEditItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.BusinessDates_BarEditItem.Name = "BusinessDates_BarEditItem"
+        '
+        'BusinessDates_SearchLookUpEdit
+        '
+        Me.BusinessDates_SearchLookUpEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BusinessDates_SearchLookUpEdit.Appearance.Options.UseFont = True
+        Me.BusinessDates_SearchLookUpEdit.Appearance.Options.UseTextOptions = True
+        Me.BusinessDates_SearchLookUpEdit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.BusinessDates_SearchLookUpEdit.AutoHeight = False
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        EditorButtonImageOptions3.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        EditorButtonImageOptions5.Image = CType(resources.GetObject("EditorButtonImageOptions5.Image"), System.Drawing.Image)
+        EditorButtonImageOptions5.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        ToolTipTitleItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        ToolTipTitleItem1.Text = "Modified Duration for future dates"
+        ToolTipItem1.LeftIndent = 6
+        ToolTipItem1.Text = "Sets the current securities modified durations as default in all available future" &
+    " business dates"
+        SuperToolTip1.Items.Add(ToolTipTitleItem1)
+        SuperToolTip1.Items.Add(ToolTipItem1)
+        Me.BusinessDates_SearchLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", CType(0, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", CType(1, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Reload", 50, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", CType(2, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", CType(3, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Set current Mod.Duration for all future dates", 100, True, True, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "", CType(4, Short), SuperToolTip1, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.BusinessDates_SearchLookUpEdit.Name = "BusinessDates_SearchLookUpEdit"
+        Me.BusinessDates_SearchLookUpEdit.PopupView = Me.BusinessDates_GridView
+        Me.BusinessDates_SearchLookUpEdit.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
+        '
+        'BusinessDates_GridView
+        '
+        Me.BusinessDates_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn5})
+        Me.BusinessDates_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.BusinessDates_GridView.Name = "BusinessDates_GridView"
+        Me.BusinessDates_GridView.OptionsFind.AlwaysVisible = True
+        Me.BusinessDates_GridView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.BusinessDates_GridView.OptionsView.ColumnAutoWidth = False
+        Me.BusinessDates_GridView.OptionsView.ShowAutoFilterRow = True
+        Me.BusinessDates_GridView.OptionsView.ShowGroupPanel = False
+        '
+        'GridColumn5
+        '
+        Me.GridColumn5.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn5.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn5.Caption = "Business Dates"
+        Me.GridColumn5.FieldName = "REPORTING_DATE"
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 0
+        Me.GridColumn5.Width = 128
+        '
+        'AddNewData_bbi
+        '
+        Me.AddNewData_bbi.Caption = "Add new Business Date"
+        Me.AddNewData_bbi.Id = 2
+        Me.AddNewData_bbi.ImageOptions.Image = CType(resources.GetObject("AddNewData_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.AddNewData_bbi.ImageOptions.LargeImage = CType(resources.GetObject("AddNewData_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.AddNewData_bbi.Name = "AddNewData_bbi"
+        '
+        'PrintExport_bbi
+        '
+        Me.PrintExport_bbi.Caption = "Print or Export"
+        Me.PrintExport_bbi.Id = 3
+        Me.PrintExport_bbi.ImageOptions.ImageIndex = 2
+        Me.PrintExport_bbi.Name = "PrintExport_bbi"
+        '
+        'Close_bbi
+        '
+        Me.Close_bbi.Caption = "Close"
+        Me.Close_bbi.Id = 4
+        Me.Close_bbi.ImageOptions.Image = CType(resources.GetObject("Close_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.Close_bbi.ImageOptions.LargeImage = CType(resources.GetObject("Close_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Close_bbi.Name = "Close_bbi"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.BusinessDates_BarEditItem)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.AddNewData_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.PrintExport_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.Close_bbi, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
         '
         'Securities_Dailyprice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1269, 731)
+        Me.ClientSize = New System.Drawing.Size(1434, 731)
         Me.Controls.Add(Me.LayoutControl1)
+        Me.Controls.Add(Me.RibbonControl1)
         Me.Controls.Add(Me.barDockControlLeft)
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
         Me.IconOptions.Icon = CType(resources.GetObject("Securities_Dailyprice.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "Securities_Dailyprice"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Securities Dailyprice"
+        Me.Text = "Securities daily market prices - modified durations"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.SECURITIESDataset,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SECURITIES_DailyPriceBindingSource,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControl1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.LayoutControl1.ResumeLayout(false)
-        CType(Me.ImageCollection1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridControl2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SecuritiesDailyPriceBaseView,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridControl1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.GridView1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SimpleSeparator1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem3,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem5,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem4,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.TabbedControlGroup1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem4,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlGroup3,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.EmptySpaceItem2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.LayoutControlItem7,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.BarManager1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemFontEdit1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemSpreadsheetFontSizeEdit1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CommandBarGalleryDropDown1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemPopupGalleryEdit1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CommandBarGalleryDropDown2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CommandBarGalleryDropDown3,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CommandBarGalleryDropDown4,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.CommandBarGalleryDropDown5,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.RepositoryItemSpreadsheetCellStyleEdit1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PrintingSystem1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.SpreadsheetBarController1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        CType(Me.SECURITIESDataset, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SECURITIES_DailyPriceBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.LayoutControl1.ResumeLayout(False)
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SecuritiesDailyPriceBaseView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemSpreadsheetFontSizeEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CommandBarGalleryDropDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemPopupGalleryEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CommandBarGalleryDropDown2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CommandBarGalleryDropDown3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CommandBarGalleryDropDown4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CommandBarGalleryDropDown5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemSpreadsheetCellStyleEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpreadsheetBarController1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BusinessDates_SearchLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BusinessDates_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
         Me.PerformLayout
 
 End Sub
@@ -2893,19 +2911,12 @@ End Sub
     Friend WithEvents SECURITIES_DailyPriceTableAdapter As PS_TOOL_DX.SECURITIESDatasetTableAdapters.SECURITIES_DailyPriceTableAdapter
     Friend WithEvents TableAdapterManager As PS_TOOL_DX.SECURITIESDatasetTableAdapters.TableAdapterManager
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents SimpleButton1 As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents SecuritiesDailyPriceBaseView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents Securities_DailyPrice_Print_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
     Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
@@ -2926,15 +2937,8 @@ End Sub
     Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents DailyPrice_import_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
-    Friend WithEvents TabbedControlGroup1 As DevExpress.XtraLayout.TabbedControlGroup
-    Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SaveExcelFile_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
     Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
     Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
@@ -3097,8 +3101,23 @@ End Sub
     Friend WithEvents SpreadsheetCommandBarButtonItem103 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
     Friend WithEvents SpreadsheetCommandBarButtonItem104 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
     Friend WithEvents SpreadsheetCommandBarButtonItem105 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
-    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SpreadsheetBarController1 As DevExpress.XtraSpreadsheet.UI.SpreadsheetBarController
     Friend WithEvents colContractNrOCBS As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colModifiedDuration As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents BusinessDates_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents BusinessDates_SearchLookUpEdit As DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit
+    Friend WithEvents BusinessDates_GridView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents AddNewData_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents PrintExport_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Close_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents colLastAction As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate As DevExpress.XtraGrid.Columns.GridColumn
 End Class

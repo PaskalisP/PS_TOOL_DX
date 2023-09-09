@@ -1922,6 +1922,24 @@ Partial Public Class EDPDataSet
         
         Private columnProcNr As Global.System.Data.DataColumn
         
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastImportUser As Global.System.Data.DataColumn
+        
+        Private columnMultiselect As Global.System.Data.DataColumn
+        
+        Private columnDeleteFileAfterImport As Global.System.Data.DataColumn
+        
+        Private columnRequestBusinessDate As Global.System.Data.DataColumn
+        
+        Private columnFileConvertion As Global.System.Data.DataColumn
+        
+        Private columnExectutionType As Global.System.Data.DataColumn
+        
+        Private columnImportance As Global.System.Data.DataColumn
+        
+        Private columnFileExtraction As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -2030,6 +2048,78 @@ Partial Public Class EDPDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastImportUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastImportUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property MultiselectColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMultiselect
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DeleteFileAfterImportColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDeleteFileAfterImport
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property RequestBusinessDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRequestBusinessDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property FileConvertionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFileConvertion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ExectutionTypeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnExectutionType
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ImportanceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnImportance
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property FileExtractionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFileExtraction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2066,9 +2156,26 @@ Partial Public Class EDPDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddMANUAL_IMPORTSRow(ByVal ProcName As String, ByVal FileName As String, ByVal FileDirImport As String, ByVal CurrentFileName As String, ByVal LastImportDate As Date, ByVal LastImportTime As Date, ByVal InternalNotes As String, ByVal ProcNr As Double) As MANUAL_IMPORTSRow
+        Public Overloads Function AddMANUAL_IMPORTSRow( _
+                    ByVal ProcName As String,  _
+                    ByVal FileName As String,  _
+                    ByVal FileDirImport As String,  _
+                    ByVal CurrentFileName As String,  _
+                    ByVal LastImportDate As Date,  _
+                    ByVal LastImportTime As Date,  _
+                    ByVal InternalNotes As String,  _
+                    ByVal ProcNr As Double,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastImportUser As String,  _
+                    ByVal Multiselect As String,  _
+                    ByVal DeleteFileAfterImport As String,  _
+                    ByVal RequestBusinessDate As String,  _
+                    ByVal FileConvertion As String,  _
+                    ByVal ExectutionType As String,  _
+                    ByVal Importance As String,  _
+                    ByVal FileExtraction As String) As MANUAL_IMPORTSRow
             Dim rowMANUAL_IMPORTSRow As MANUAL_IMPORTSRow = CType(Me.NewRow,MANUAL_IMPORTSRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ProcName, FileName, FileDirImport, CurrentFileName, LastImportDate, LastImportTime, InternalNotes, ProcNr}
+            Dim columnValuesArray() As Object = New Object() {Nothing, ProcName, FileName, FileDirImport, CurrentFileName, LastImportDate, LastImportTime, InternalNotes, ProcNr, LastAction, LastImportUser, Multiselect, DeleteFileAfterImport, RequestBusinessDate, FileConvertion, ExectutionType, Importance, FileExtraction}
             rowMANUAL_IMPORTSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowMANUAL_IMPORTSRow)
             Return rowMANUAL_IMPORTSRow
@@ -2106,6 +2213,15 @@ Partial Public Class EDPDataSet
             Me.columnLastImportTime = MyBase.Columns("LastImportTime")
             Me.columnInternalNotes = MyBase.Columns("InternalNotes")
             Me.columnProcNr = MyBase.Columns("ProcNr")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastImportUser = MyBase.Columns("LastImportUser")
+            Me.columnMultiselect = MyBase.Columns("Multiselect")
+            Me.columnDeleteFileAfterImport = MyBase.Columns("DeleteFileAfterImport")
+            Me.columnRequestBusinessDate = MyBase.Columns("RequestBusinessDate")
+            Me.columnFileConvertion = MyBase.Columns("FileConvertion")
+            Me.columnExectutionType = MyBase.Columns("ExectutionType")
+            Me.columnImportance = MyBase.Columns("Importance")
+            Me.columnFileExtraction = MyBase.Columns("FileExtraction")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2129,6 +2245,24 @@ Partial Public Class EDPDataSet
             MyBase.Columns.Add(Me.columnInternalNotes)
             Me.columnProcNr = New Global.System.Data.DataColumn("ProcNr", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProcNr)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastImportUser = New Global.System.Data.DataColumn("LastImportUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastImportUser)
+            Me.columnMultiselect = New Global.System.Data.DataColumn("Multiselect", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMultiselect)
+            Me.columnDeleteFileAfterImport = New Global.System.Data.DataColumn("DeleteFileAfterImport", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDeleteFileAfterImport)
+            Me.columnRequestBusinessDate = New Global.System.Data.DataColumn("RequestBusinessDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRequestBusinessDate)
+            Me.columnFileConvertion = New Global.System.Data.DataColumn("FileConvertion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFileConvertion)
+            Me.columnExectutionType = New Global.System.Data.DataColumn("ExectutionType", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnExectutionType)
+            Me.columnImportance = New Global.System.Data.DataColumn("Importance", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnImportance)
+            Me.columnFileExtraction = New Global.System.Data.DataColumn("FileExtraction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFileExtraction)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -2141,6 +2275,15 @@ Partial Public Class EDPDataSet
             Me.columnFileDirImport.MaxLength = 255
             Me.columnCurrentFileName.MaxLength = 255
             Me.columnInternalNotes.MaxLength = 1073741823
+            Me.columnLastAction.MaxLength = 50
+            Me.columnLastImportUser.MaxLength = 50
+            Me.columnMultiselect.MaxLength = 1
+            Me.columnDeleteFileAfterImport.MaxLength = 1
+            Me.columnRequestBusinessDate.MaxLength = 1
+            Me.columnFileConvertion.MaxLength = 50
+            Me.columnExectutionType.MaxLength = 50
+            Me.columnImportance.MaxLength = 50
+            Me.columnFileExtraction.MaxLength = 1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8311,6 +8454,142 @@ Partial Public Class EDPDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'MANUAL IMPORTS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastImportUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.LastImportUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastImportUser' in table 'MANUAL IMPORTS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.LastImportUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Multiselect() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.MultiselectColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Multiselect' in table 'MANUAL IMPORTS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.MultiselectColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DeleteFileAfterImport() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.DeleteFileAfterImportColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DeleteFileAfterImport' in table 'MANUAL IMPORTS' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.DeleteFileAfterImportColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property RequestBusinessDate() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.RequestBusinessDateColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'RequestBusinessDate' in table 'MANUAL IMPORTS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.RequestBusinessDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property FileConvertion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.FileConvertionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FileConvertion' in table 'MANUAL IMPORTS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.FileConvertionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ExectutionType() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.ExectutionTypeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ExectutionType' in table 'MANUAL IMPORTS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.ExectutionTypeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Importance() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.ImportanceColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Importance' in table 'MANUAL IMPORTS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.ImportanceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property FileExtraction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMANUAL_IMPORTS.FileExtractionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FileExtraction' in table 'MANUAL IMPORTS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMANUAL_IMPORTS.FileExtractionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsProcNameNull() As Boolean
             Return Me.IsNull(Me.tableMANUAL_IMPORTS.ProcNameColumn)
         End Function
@@ -8403,6 +8682,114 @@ Partial Public Class EDPDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetProcNrNull()
             Me(Me.tableMANUAL_IMPORTS.ProcNrColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableMANUAL_IMPORTS.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastImportUserNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.LastImportUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastImportUserNull()
+            Me(Me.tableMANUAL_IMPORTS.LastImportUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsMultiselectNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.MultiselectColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetMultiselectNull()
+            Me(Me.tableMANUAL_IMPORTS.MultiselectColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDeleteFileAfterImportNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.DeleteFileAfterImportColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDeleteFileAfterImportNull()
+            Me(Me.tableMANUAL_IMPORTS.DeleteFileAfterImportColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsRequestBusinessDateNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.RequestBusinessDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetRequestBusinessDateNull()
+            Me(Me.tableMANUAL_IMPORTS.RequestBusinessDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsFileConvertionNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.FileConvertionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetFileConvertionNull()
+            Me(Me.tableMANUAL_IMPORTS.FileConvertionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsExectutionTypeNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.ExectutionTypeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetExectutionTypeNull()
+            Me(Me.tableMANUAL_IMPORTS.ExectutionTypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsImportanceNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.ImportanceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetImportanceNull()
+            Me(Me.tableMANUAL_IMPORTS.ImportanceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsFileExtractionNull() As Boolean
+            Return Me.IsNull(Me.tableMANUAL_IMPORTS.FileExtractionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetFileExtractionNull()
+            Me(Me.tableMANUAL_IMPORTS.FileExtractionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -15584,6 +15971,15 @@ Namespace EDPDataSetTableAdapters
             tableMapping.ColumnMappings.Add("LastImportTime", "LastImportTime")
             tableMapping.ColumnMappings.Add("InternalNotes", "InternalNotes")
             tableMapping.ColumnMappings.Add("ProcNr", "ProcNr")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastImportUser", "LastImportUser")
+            tableMapping.ColumnMappings.Add("Multiselect", "Multiselect")
+            tableMapping.ColumnMappings.Add("DeleteFileAfterImport", "DeleteFileAfterImport")
+            tableMapping.ColumnMappings.Add("RequestBusinessDate", "RequestBusinessDate")
+            tableMapping.ColumnMappings.Add("FileConvertion", "FileConvertion")
+            tableMapping.ColumnMappings.Add("ExectutionType", "ExectutionType")
+            tableMapping.ColumnMappings.Add("Importance", "Importance")
+            tableMapping.ColumnMappings.Add("FileExtraction", "FileExtraction")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -15593,9 +15989,13 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [MANUAL IMPORTS] ([ProcName], [FileName], [FileDirImport], [CurrentFi"& _ 
-                "leName], [LastImportDate], [LastImportTime], [InternalNotes], [ProcNr]) VALUES ("& _ 
-                "@ProcName, @FileName, @FileDirImport, @CurrentFileName, @LastImportDate, @LastIm"& _ 
-                "portTime, @InternalNotes, @ProcNr)"
+                "leName], [LastImportDate], [LastImportTime], [InternalNotes], [ProcNr], [LastAct"& _ 
+                "ion], [LastImportUser], [Multiselect], [DeleteFileAfterImport], [RequestBusiness"& _ 
+                "Date], [FileConvertion], [ExectutionType], [Importance], [FileExtraction]) VALUE"& _ 
+                "S (@ProcName, @FileName, @FileDirImport, @CurrentFileName, @LastImportDate, @Las"& _ 
+                "tImportTime, @InternalNotes, @ProcNr, @LastAction, @LastImportUser, @Multiselect"& _ 
+                ", @DeleteFileAfterImport, @RequestBusinessDate, @FileConvertion, @ExectutionType"& _ 
+                ", @Importance, @FileExtraction)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProcName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FileName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FileName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15605,12 +16005,25 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastImportTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastImportTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InternalNotes", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InternalNotes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProcNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcNr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastImportUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastImportUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Multiselect", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Multiselect", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteFileAfterImport", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteFileAfterImport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RequestBusinessDate", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RequestBusinessDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FileConvertion", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FileConvertion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExectutionType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExectutionType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Importance", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Importance", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FileExtraction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FileExtraction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [MANUAL IMPORTS] SET [ProcName] = @ProcName, [FileName] = @FileName, [File"& _ 
                 "DirImport] = @FileDirImport, [CurrentFileName] = @CurrentFileName, [LastImportDa"& _ 
                 "te] = @LastImportDate, [LastImportTime] = @LastImportTime, [InternalNotes] = @In"& _ 
-                "ternalNotes, [ProcNr] = @ProcNr WHERE (([ID] = @Original_ID))"
+                "ternalNotes, [ProcNr] = @ProcNr, [LastAction] = @LastAction, [LastImportUser] = "& _ 
+                "@LastImportUser, [Multiselect] = @Multiselect, [DeleteFileAfterImport] = @Delete"& _ 
+                "FileAfterImport, [RequestBusinessDate] = @RequestBusinessDate, [FileConvertion] "& _ 
+                "= @FileConvertion, [ExectutionType] = @ExectutionType, [Importance] = @Importanc"& _ 
+                "e, [FileExtraction] = @FileExtraction WHERE (([ID] = @Original_ID))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProcName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FileName", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FileName", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15620,6 +16033,15 @@ Namespace EDPDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastImportTime", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastImportTime", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InternalNotes", Global.System.Data.SqlDbType.NText, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InternalNotes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProcNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcNr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastImportUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastImportUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Multiselect", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Multiselect", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DeleteFileAfterImport", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DeleteFileAfterImport", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RequestBusinessDate", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RequestBusinessDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FileConvertion", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FileConvertion", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExectutionType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExectutionType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Importance", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Importance", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FileExtraction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FileExtraction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -15637,8 +16059,10 @@ Namespace EDPDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, ProcName, FileName, FileDirImport, CurrentFileName, LastImportD"& _ 
-                "ate, LastImportTime, InternalNotes, ProcNr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [MANUAL IMPORTS]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"OR"& _ 
-                "DER BY ProcNr"
+                "ate, LastImportTime, InternalNotes, ProcNr, LastAction, LastImportUser, Multisel"& _ 
+                "ect, DeleteFileAfterImport, RequestBusinessDate, FileConvertion, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
+                "            ExectutionType, Importance, FileExtraction"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [MANUAL "& _ 
+                "IMPORTS]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ProcNr"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -15719,7 +16143,24 @@ Namespace EDPDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal ProcName As String, ByVal FileName As String, ByVal FileDirImport As String, ByVal CurrentFileName As String, ByVal LastImportDate As Global.System.Nullable(Of Date), ByVal LastImportTime As Global.System.Nullable(Of Date), ByVal InternalNotes As String, ByVal ProcNr As Global.System.Nullable(Of Double)) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal ProcName As String,  _
+                    ByVal FileName As String,  _
+                    ByVal FileDirImport As String,  _
+                    ByVal CurrentFileName As String,  _
+                    ByVal LastImportDate As Global.System.Nullable(Of Date),  _
+                    ByVal LastImportTime As Global.System.Nullable(Of Date),  _
+                    ByVal InternalNotes As String,  _
+                    ByVal ProcNr As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastImportUser As String,  _
+                    ByVal Multiselect As String,  _
+                    ByVal DeleteFileAfterImport As String,  _
+                    ByVal RequestBusinessDate As String,  _
+                    ByVal FileConvertion As String,  _
+                    ByVal ExectutionType As String,  _
+                    ByVal Importance As String,  _
+                    ByVal FileExtraction As String) As Integer
             If (ProcName Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -15760,6 +16201,51 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(LastAction,String)
+            End If
+            If (LastImportUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(LastImportUser,String)
+            End If
+            If (Multiselect Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(Multiselect,String)
+            End If
+            If (DeleteFileAfterImport Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(DeleteFileAfterImport,String)
+            End If
+            If (RequestBusinessDate Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(RequestBusinessDate,String)
+            End If
+            If (FileConvertion Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(FileConvertion,String)
+            End If
+            If (ExectutionType Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(ExectutionType,String)
+            End If
+            If (Importance Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(Importance,String)
+            End If
+            If (FileExtraction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(FileExtraction,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -15779,7 +16265,25 @@ Namespace EDPDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ProcName As String, ByVal FileName As String, ByVal FileDirImport As String, ByVal CurrentFileName As String, ByVal LastImportDate As Global.System.Nullable(Of Date), ByVal LastImportTime As Global.System.Nullable(Of Date), ByVal InternalNotes As String, ByVal ProcNr As Global.System.Nullable(Of Double), ByVal Original_ID As Integer) As Integer
+        Public Overloads Overridable Function Update( _
+                    ByVal ProcName As String,  _
+                    ByVal FileName As String,  _
+                    ByVal FileDirImport As String,  _
+                    ByVal CurrentFileName As String,  _
+                    ByVal LastImportDate As Global.System.Nullable(Of Date),  _
+                    ByVal LastImportTime As Global.System.Nullable(Of Date),  _
+                    ByVal InternalNotes As String,  _
+                    ByVal ProcNr As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastImportUser As String,  _
+                    ByVal Multiselect As String,  _
+                    ByVal DeleteFileAfterImport As String,  _
+                    ByVal RequestBusinessDate As String,  _
+                    ByVal FileConvertion As String,  _
+                    ByVal ExectutionType As String,  _
+                    ByVal Importance As String,  _
+                    ByVal FileExtraction As String,  _
+                    ByVal Original_ID As Integer) As Integer
             If (ProcName Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -15820,7 +16324,52 @@ Namespace EDPDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_ID,Integer)
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(LastAction,String)
+            End If
+            If (LastImportUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(LastImportUser,String)
+            End If
+            If (Multiselect Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Multiselect,String)
+            End If
+            If (DeleteFileAfterImport Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(DeleteFileAfterImport,String)
+            End If
+            If (RequestBusinessDate Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(RequestBusinessDate,String)
+            End If
+            If (FileConvertion Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(FileConvertion,String)
+            End If
+            If (ExectutionType Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(ExectutionType,String)
+            End If
+            If (Importance Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Importance,String)
+            End If
+            If (FileExtraction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(FileExtraction,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

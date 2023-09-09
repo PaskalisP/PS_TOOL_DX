@@ -46,15 +46,11 @@ Imports CrystalDecisions.CrystalReports.Engine
 Imports DevExpress.XtraEditors.Repository
 Public Class ExcelForm
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
+
 
     Dim ExcelFileName As String = Nothing
     Private BS_BusinessDates As BindingSource
 
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
 
     Dim d As Date
     Dim workbook As IWorkbook
@@ -72,15 +68,13 @@ Public Class ExcelForm
     End Sub
 
     Private Sub ExcelForm_Load(sender As Object, e As EventArgs) Handles Me.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
 
-       
+
     End Sub
 
     Private Sub SaveAsNew_ItemClick(sender As Object, e As ItemClickEventArgs) Handles SaveAsNew.ItemClick
         Using myFileDialog As New SaveFileDialog()
-            myFileDialog.Filter = "Excel File (*.xlsx)|.xlsx" '"Text files (*.txt)|*.txt|All files (*.*)|*.*"
+            myFileDialog.Filter = "Excel File (*.xls;*.xlsx)|*.xls;*.xlsx" '"Text files (*.txt)|*.txt|All files (*.*)|*.*"
             myFileDialog.FilterIndex = 1
             myFileDialog.InitialDirectory = "C:\"
             myFileDialog.CheckFileExists = False
@@ -96,5 +90,10 @@ Public Class ExcelForm
 
             End If
         End Using
+    End Sub
+
+    Private Sub Close_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Close_bbi.ItemClick
+        Me.Close()
+
     End Sub
 End Class

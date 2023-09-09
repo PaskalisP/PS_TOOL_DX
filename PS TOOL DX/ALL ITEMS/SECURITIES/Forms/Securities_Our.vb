@@ -30,21 +30,15 @@ Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraEditors.Controls
 
 
-
 Public Class Securities_Our
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
 
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-
+    Private BS_SecuritiesStatus As BindingSource
     Private BS_SectorSecurity As BindingSource
     Private BS_SectorCountry As BindingSource
     Private BS_Currency As BindingSource
     Private BS_All_Customers As BindingSource
+    Private BS_Segment As BindingSource
+    Private BS_CurveType As BindingSource
 
     Dim NewSec As New Securities_AddNewSecurity()
 
@@ -88,25 +82,18 @@ Public Class Securities_Our
 
     Private Sub Securities_Our_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.Escape Then
-            Me.Cancel_Button.PerformClick()
-
+            Me.Cancel_bbi.PerformClick()
         End If
     End Sub
 
     Private Sub Securities_Our_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.LayoutControl1.Dock = DockStyle.Fill
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
 
-        AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
-
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
+        'AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
 
         Me.LayoutControl1.Dock = DockStyle.Fill
-
-        'Me.COUNTRIESTableAdapter.Fill(Me.EXTERNALDataset.COUNTRIES)
-        'Me.OWN_CURRENCIESTableAdapter.Fill(Me.PSTOOLDataset.OWN_CURRENCIES)
+        SECURITIES_STATUS_initData()
+        SECURITIES_STATUS_InitLookUp()
         ALL_CUSTOMERS_initData()
         ALL_CUSTOMERS_InitLookUp()
         SECTOR_SECURITY_initData()
@@ -115,10 +102,45 @@ Public Class Securities_Our
         SECTOR_COUNTRY_InitLookUp()
         CURRENCIES_initData()
         CURRENCIES_InitLookUp()
-        Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
+        SEGMENT_RISK_WEIGHT_initData()
+        SEGMENT_RISK_WEIGHT_InitLookUp()
+        CURVE_TYPE_initData()
+        CURVE_TYPE_InitLookUp()
 
+        Me.SecuritiesStatus_BarEditItem.EditValue = CType(BS_SecuritiesStatus.Current, DataRowView).Item(0)
 
+    End Sub
 
+    Private Sub SECURITIES_STATUS_initData()
+        Dim objCMD1 As SqlCommand = New SqlCommand("DECLARE @SELECTION_TABLE Table([ID] int IDENTITY(1,1) NOT NULL
+                                                    ,[STATUS] nvarchar(max) NULL)
+                                                    INSERT INTO @SELECTION_TABLE
+                                                    SELECT [STATUS]
+                                                    FROM [SECURITIES_OUR]
+                                                    WHERE STATUS is not NULL
+                                                    GROUP BY STATUS
+                                                    ORDER BY STATUS asc
+                                                    INSERT INTO @SELECTION_TABLE
+                                                    SELECT 'ALL' as 'STATUS'
+                                                    select STATUS from @SELECTION_TABLE order by ID asc", conn)
+        objCMD1.CommandTimeout = 50000
+        Dim dbSecuritiesStatus As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+
+        Dim ds As DataSet = New DataSet()
+        Try
+
+            dbSecuritiesStatus.Fill(ds, "SECURITIES_STATUS")
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_SecuritiesStatus = New BindingSource(ds, "SECURITIES_STATUS")
+    End Sub
+    Private Sub SECURITIES_STATUS_InitLookUp()
+        Me.SecurityStatus_SearchLookUpEdit.DataSource = BS_SecuritiesStatus
+        Me.SecurityStatus_SearchLookUpEdit.DisplayMember = "STATUS"
+        Me.SecurityStatus_SearchLookUpEdit.ValueMember = "STATUS"
     End Sub
 
     Private Sub SECTOR_SECURITY_initData()
@@ -139,7 +161,6 @@ Public Class Securities_Our
         End Try
         BS_SectorSecurity = New BindingSource(ds, "SECTOR_SECURITY") 'NOSTRO_ACC_RECONCILIATIONS
     End Sub
-
     Private Sub SECTOR_SECURITY_InitLookUp()
         Me.Sektor_SearchLookUpEdit.Properties.DataSource = BS_SectorSecurity
         Me.Sektor_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -164,7 +185,6 @@ Public Class Securities_Our
         End Try
         BS_SectorCountry = New BindingSource(ds, "COUNTRIES") 'NOSTRO_ACC_RECONCILIATIONS
     End Sub
-
     Private Sub SECTOR_COUNTRY_InitLookUp()
         Me.SektoCountry_SearchLookUpEdit.Properties.DataSource = BS_SectorCountry
         Me.SektoCountry_SearchLookUpEdit.Properties.DisplayMember = "COUNTRY CODE"
@@ -189,7 +209,6 @@ Public Class Securities_Our
         End Try
         BS_Currency = New BindingSource(ds, "OWN_CURRENCIES") 'NOSTRO_ACC_RECONCILIATIONS
     End Sub
-
     Private Sub CURRENCIES_InitLookUp()
         Me.Currency_SearchLookUpEdit.Properties.DataSource = BS_Currency
         Me.Currency_SearchLookUpEdit.Properties.DisplayMember = "CURRENCY CODE"
@@ -213,11 +232,58 @@ Public Class Securities_Our
         End Try
         BS_All_Customers = New BindingSource(ds, "ALL_CUSTOMERS")
     End Sub
-
     Private Sub ALL_CUSTOMERS_InitLookUp()
         Me.ClientSearch_GridLookUpEdit.Properties.DataSource = BS_All_Customers
         Me.ClientSearch_GridLookUpEdit.Properties.DisplayMember = "ClientNo"
         Me.ClientSearch_GridLookUpEdit.Properties.ValueMember = "ClientNo"
+    End Sub
+
+    Private Sub SEGMENT_RISK_WEIGHT_initData()
+
+        Dim objCMD1 As SqlCommand = New SqlCommand("SELECT * FROM [Parameter_CreditSpreadRisk_References] where  [ParameterNameGeneral] in ('Risk_Weight_by_Issuer_Rating_Class_and_Sector') and [ParameterStatus] in ('Y') order by ParameterNr asc", conn)
+        objCMD1.CommandTimeout = 5000
+        Dim dbSegment As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+
+        Dim ds As DataSet = New DataSet()
+        'Dim dbLastReconciliations As SqlDataAdapter = New SqlDataAdapter("Select AccountNr_Internal as 'Nostro Account',CCY_IB as 'Currency',AccountName_Internal as 'Nostro Account Name',Max(ReconcileDate) as 'Last Reconcile Date' from NOSTRO_ACC_RECONCILIATIONS GROUP BY AccountNr_Internal,AccountName_Internal,CCY_IB order by  'Last Reconcile Date' desc", conn) '
+        Try
+
+            dbSegment.Fill(ds, "SEGMENT") 'NOSTRO_ACC_RECONCILIATIONS
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_Segment = New BindingSource(ds, "SEGMENT") 'NOSTRO_ACC_RECONCILIATIONS
+    End Sub
+    Private Sub SEGMENT_RISK_WEIGHT_InitLookUp()
+        Me.Segment_SearchLookUpEdit.Properties.DataSource = BS_Segment
+        Me.Segment_SearchLookUpEdit.Properties.DisplayMember = "ParameterValue1"
+        Me.Segment_SearchLookUpEdit.Properties.ValueMember = "ParameterValue1"
+    End Sub
+
+    Private Sub CURVE_TYPE_initData()
+
+        Dim objCMD1 As SqlCommand = New SqlCommand("SELECT * FROM [Parameter_CreditSpreadRisk_References] where  [ParameterNameGeneral] in ('Curve_Type') and [ParameterStatus] in ('Y') order by ParameterNr asc", conn)
+        objCMD1.CommandTimeout = 5000
+        Dim dbCurveType As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+
+        Dim ds As DataSet = New DataSet()
+        'Dim dbLastReconciliations As SqlDataAdapter = New SqlDataAdapter("Select AccountNr_Internal as 'Nostro Account',CCY_IB as 'Currency',AccountName_Internal as 'Nostro Account Name',Max(ReconcileDate) as 'Last Reconcile Date' from NOSTRO_ACC_RECONCILIATIONS GROUP BY AccountNr_Internal,AccountName_Internal,CCY_IB order by  'Last Reconcile Date' desc", conn) '
+        Try
+
+            dbCurveType.Fill(ds, "CURVE_TYPE")
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_CurveType = New BindingSource(ds, "CURVE_TYPE")
+    End Sub
+    Private Sub CURVE_TYPE_InitLookUp()
+        Me.CurveType_SearchLookUpEdit.Properties.DataSource = BS_CurveType
+        Me.CurveType_SearchLookUpEdit.Properties.DisplayMember = "ParameterName1"
+        Me.CurveType_SearchLookUpEdit.Properties.ValueMember = "ParameterName1"
     End Sub
 
     Private Sub CALCULATE_PAID_AMOUNTS()
@@ -246,85 +312,64 @@ Public Class Securities_Our
 
     End Sub
 
-    Private Sub GridControl2_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
 
-        'Save
-        If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.EndEdit Then
-            Try
-                'If Me.SECURITIESDataset.HasChanges = True Then
-                If MessageBox.Show("Should the Changes in our Securities be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-                    Try
-                        Me.Validate()
-                        Me.SECURITIES_OURBindingSource.EndEdit()
-                        Me.TableAdapterManager.UpdateAll(Me.SECURITIESDataset)
-                        Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
-                    Catch ex As Exception
-                        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        Me.SECURITIES_OURBindingSource.CancelEdit()
-                        Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
-                    End Try
-                Else
-                    Me.SECURITIES_OURBindingSource.CancelEdit()
-                    Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
-                    Exit Sub
-                End If
-                'End If
-            Catch ex As System.Exception
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
-                Exit Sub
-            End Try
-
-        End If
-        'cancel edit
-        If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.CancelEdit Then
-            Me.SECURITIES_OURBindingSource.CancelEdit()
+    Private Sub SecuritiesStatus_BarEditItem_EditValueChanged(sender As Object, e As EventArgs) Handles SecuritiesStatus_BarEditItem.EditValueChanged
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        If Me.SecuritiesStatus_BarEditItem.EditValue.ToString = "ALL" Then
             Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
+            Me.SecuritiesBaseView.ClearColumnsFilter()
+        ElseIf Me.SecuritiesStatus_BarEditItem.EditValue.ToString <> "ALL" Then
+            Me.SECURITIES_OURTableAdapter.FillBySecurityStatus(Me.SECURITIESDataset.SECURITIES_OUR, Me.SecuritiesStatus_BarEditItem.EditValue.ToString)
+            Me.SecuritiesBaseView.ClearColumnsFilter()
         End If
+        SplashScreenManager.CloseForm(False)
+    End Sub
 
-        'Add New
-        If e.Button.ButtonType = NavigatorButtonType.Custom Then
-            If e.Button.Tag = "AddNewSecurity" Then
-                Try
-
-                    Dim dxOK_NewSec As New DevExpress.XtraEditors.SimpleButton
-                    With dxOK_NewSec
-                        .Text = "Add new Security"
-                        .Height = 22
-                        .Width = 192
-                        .ImageList = NewSec.ImageCollection1
-                        .ImageIndex = 8
-                        .Location = New System.Drawing.Point(12, 552)
-                    End With
-
-                    NewSec.Controls.Add(dxOK_NewSec)
-                    NewSec.AddNewSecurity_btn.Visible = False
-
-
-
-                    AddHandler dxOK_NewSec.Click, AddressOf dxOK_NewSec_click
-
-                    NewSec.ShowDialog()
-
-
-
-                    'Code example for LayoutControlItem
-                    'NewDP.LayoutControlItem3.BeginInit()
-                    'Dim tempC As Control = NewDP.LayoutControlItem3.Control
-                    'NewDP.LayoutControlItem3.Control = dxOK_NewDP
-                    'tempC.Parent = Nothing
-                    'NewDP.LayoutControlItem3.EndInit()
-
-
-
-
-                Catch ex As System.Exception
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    Return
-                End Try
+    Private Sub SecurityStatus_SearchLookUpEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles SecurityStatus_SearchLookUpEdit.ButtonClick
+        If e.Button.Tag = 2 Then
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            If Me.SecuritiesStatus_BarEditItem.EditValue.ToString = "ALL" Then
+                Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
+                Me.SecuritiesBaseView.ClearColumnsFilter()
+            ElseIf Me.SecuritiesStatus_BarEditItem.EditValue.ToString <> "ALL" Then
+                Me.SECURITIES_OURTableAdapter.FillBySecurityStatus(Me.SECURITIESDataset.SECURITIES_OUR, Me.SecuritiesStatus_BarEditItem.EditValue.ToString)
+                Me.SecuritiesBaseView.ClearColumnsFilter()
             End If
+            SplashScreenManager.CloseForm(False)
         End If
+    End Sub
 
+    Private Sub AddNewSecurity_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles AddNewSecurity_bbi.ItemClick
+        Try
+
+            Dim dxOK_NewSec As New DevExpress.XtraEditors.SimpleButton
+            With dxOK_NewSec
+                .Text = "Save new Security"
+                .Height = 22
+                .Width = 192
+                .ImageList = NewSec.ImageCollection1
+                .ImageIndex = 7
+                .Location = New System.Drawing.Point(16, 614)
+            End With
+
+            NewSec.Controls.Add(dxOK_NewSec)
+            NewSec.AddNewSecurity_btn.Visible = False
+
+            AddHandler dxOK_NewSec.Click, AddressOf dxOK_NewSec_click
+
+            NewSec.ShowDialog()
+
+            'Code example for LayoutControlItem
+            'NewDP.LayoutControlItem3.BeginInit()
+            'Dim tempC As Control = NewDP.LayoutControlItem3.Control
+            'NewDP.LayoutControlItem3.Control = dxOK_NewDP
+            'tempC.Parent = Nothing
+            'NewDP.LayoutControlItem3.EndInit()
+
+        Catch ex As System.Exception
+            XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Return
+        End Try
     End Sub
 
     Private Sub dxOK_NewSec_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -339,7 +384,7 @@ Public Class Securities_Our
                 Dim Result As Double = cmd.ExecuteScalar
 
                 If Result = 0 Then
-                    If MessageBox.Show("Should the Security be added to the Database?", "NEW SECURITY", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    If MessageBox.Show("Should the Security contract be added to the Database?", "NEW SECURITY CONTRACT", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
                         Dim TRADE_DATE As Date = NewSec.Trade_DateEdit.EditValue
                         Dim START_DATE As Date = NewSec.Start_DateEdit.EditValue
                         Dim MATURITY_DATE As Date = NewSec.Maturity_DateEdit.EditValue
@@ -355,8 +400,86 @@ Public Class Securities_Our
                         Dim SWAP_PRICE As Double = NewSec.SWAP_Price_TextEdit.Text
                         Dim FIXED_RATE_COUPON As Double = NewSec.FloatingRateCoupon_TextEdit.Text
                         Dim FLOATING_RATE_SPREAD As Double = NewSec.FloatingSpread_TextEdit.Text
+                        Dim SEGMENT As Double = NewSec.Segment_SearchLookUpEdit.Text
+                        Dim RISKWEIGHT_BP As Double = NewSec.RiskWeightBP_TextEdit.Text
 
-                        cmd.CommandText = "INSERT INTO [SECURITIES_OUR]([ISIN],[ClientNr],[SecurityName],[Currency],[PrincipalOrigAmt],[PrincipalEuroAmt],[Purchase_Price],[Amt_Paid],[Amt_Paid_Eur],ExchangeRate,[ContractNrOCBS],[AssetType],[TradeDate],[StartDate],[MaturityDate],[Sektor],[SektorDescription],[SektorCountry],[RIC],[Swap_Price],[industry],[Fixed rate coupon],[Floating(leg) spread ],[purchasing yield],[bond type],[with swap or not],[Moody-Rating],[S & P],[Fitch-Rating])VALUES(@ISIN,@ClientNr,@SecurityName, @Currency, @PrincipalOrigAmt,@PrincipalEuroAmt,@Purchase_Price,@Amt_Paid,@Amt_Paid_Eur,@ExchangeRate,@ContractNrOCBS,@AssetType,@TradeDate,@StartDate,@MaturityDate,@Sektor,@SektorDescription,@SektorCountry,@RIC,@Swap_Price,@Industry,@Fixed_rate_coupon,@Floating_spread,@purchasing_yield,@bond_type,@Swap_or_Not,@Moody_Rating,@SP,@Fitch_Rating)"
+                        cmd.CommandText = "INSERT INTO [SECURITIES_OUR]
+                                          ([ISIN]
+                                            ,[ClientNr]
+                                            ,[SecurityName]
+                                            ,[Currency]
+                                            ,[PrincipalOrigAmt]
+                                            ,[PrincipalEuroAmt]
+                                            ,[Purchase_Price]
+                                            ,[Amt_Paid]
+                                            ,[Amt_Paid_Eur]
+                                            ,ExchangeRate
+                                            ,[ContractNrOCBS]
+                                            ,[AssetType]
+                                            ,[TradeDate]
+                                            ,[StartDate]
+                                            ,[MaturityDate]
+                                            ,[Sektor]
+                                            ,[SektorDescription]
+                                            ,[SektorCountry]
+                                            ,[Segment]
+                                            ,[RatingClass]
+                                            ,[Sector_RatingClass]
+                                            ,[RiskWeight_BP]
+                                            ,[CurveType]
+                                            ,[CurveTypeDescription]
+                                            ,[RIC]
+                                            ,[Swap_Price]
+                                            ,[industry]
+                                            ,[Fixed rate coupon]
+                                            ,[Floating(leg) spread ]
+                                            ,[purchasing yield]
+                                            ,[bond type]
+                                            ,[with swap or not]
+                                            ,[Moody-Rating]
+                                            ,[S & P]
+                                            ,[Fitch-Rating]
+                                            ,[LastAction]
+                                            ,[LastUpdateUser]
+                                            ,[LastUpdateDate])
+                                           VALUES
+                                            (@ISIN
+                                            ,@ClientNr
+                                            ,@SecurityName
+                                            ,@Currency
+                                            ,@PrincipalOrigAmt
+                                            ,@PrincipalEuroAmt
+                                            ,@Purchase_Price
+                                            ,@Amt_Paid
+                                            ,@Amt_Paid_Eur
+                                            ,@ExchangeRate
+                                            ,@ContractNrOCBS
+                                            ,@AssetType
+                                            ,@TradeDate
+                                            ,@StartDate
+                                            ,@MaturityDate
+                                            ,@Sektor
+                                            ,@SektorDescription
+                                            ,@SektorCountry
+                                            ,@Segment
+                                            ,@RatingClass
+                                            ,@Sector_RatingClass
+                                            ,@RiskWeight_BP
+                                            ,@CurveType
+                                            ,@CurveTypeDescription
+                                            ,@RIC
+                                            ,@Swap_Price
+                                            ,@Industry
+                                            ,@Fixed_rate_coupon
+                                            ,@Floating_spread
+                                            ,@purchasing_yield
+                                            ,@bond_type
+                                            ,@Swap_or_Not
+                                            ,@Moody_Rating
+                                            ,@SP,@Fitch_Rating
+                                            ,@LastAction
+                                            ,@LastUpdateUser
+                                            ,@LastUpdateDate)"
                         cmd.Parameters.Add("@ISIN", SqlDbType.NVarChar).Value = NewSec.SecIsinCode_TextEdit.Text
                         cmd.Parameters.Add("@ClientNr", SqlDbType.NVarChar).Value = NewSec.ClientSearch_GridLookUpEdit.Text
                         cmd.Parameters.Add("@SecurityName", SqlDbType.NVarChar).Value = NewSec.ClientName_TextEdit.Text
@@ -375,6 +498,12 @@ Public Class Securities_Our
                         cmd.Parameters.Add("@Sektor", SqlDbType.Float).Value = SEKTOR
                         cmd.Parameters.Add("@SektorDescription", SqlDbType.NVarChar).Value = NewSec.Sektor_Description_lbl.Text
                         cmd.Parameters.Add("@SektorCountry", SqlDbType.NVarChar).Value = NewSec.SektoCountry_SearchLookUpEdit.Text
+                        cmd.Parameters.Add("@Segment", SqlDbType.Float).Value = SEGMENT
+                        cmd.Parameters.Add("@RatingClass", SqlDbType.NVarChar).Value = NewSec.RatingClass_TextEdit.Text
+                        cmd.Parameters.Add("@Sector_RatingClass", SqlDbType.NVarChar).Value = NewSec.RatingClass_TextEdit.Text
+                        cmd.Parameters.Add("@RiskWeight_BP", SqlDbType.Float).Value = RISKWEIGHT_BP
+                        cmd.Parameters.Add("@CurveType", SqlDbType.NVarChar).Value = NewSec.CurveType_SearchLookUpEdit.Text
+                        cmd.Parameters.Add("@CurveTypeDescription", SqlDbType.NVarChar).Value = NewSec.CurveType_Description_lbl.Text
                         cmd.Parameters.Add("@RIC", SqlDbType.NVarChar).Value = NewSec.RIC_TextEdit.Text
                         cmd.Parameters.Add("@Fixed_rate_coupon", SqlDbType.Float).Value = FIXED_RATE_COUPON
                         cmd.Parameters.Add("@Swap_Price", SqlDbType.Float).Value = SWAP_PRICE
@@ -386,18 +515,20 @@ Public Class Securities_Our
                         cmd.Parameters.Add("@Moody_Rating", SqlDbType.NVarChar).Value = NewSec.MoodysRating_TextEdit.Text
                         cmd.Parameters.Add("@SP", SqlDbType.NVarChar).Value = NewSec.SP_Rating_TextEdit.Text
                         cmd.Parameters.Add("@Fitch_Rating", SqlDbType.NVarChar).Value = NewSec.FitchRating_TextEdit.Text
-
+                        cmd.Parameters.Add("@LastAction", SqlDbType.NVarChar).Value = "ADD"
+                        cmd.Parameters.Add("@LastUpdateUser", SqlDbType.NVarChar).Value = CurrentUserWindowsID
+                        cmd.Parameters.Add("@LastUpdateDate", SqlDbType.DateTime).Value = Now
                         cmd.ExecuteNonQuery()
                         cmd.Parameters.Clear()
 
                         NewSec.Close()
-                        Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
+                        Me.SECURITIES_OURTableAdapter.FillBySecurityStatus(Me.SECURITIESDataset.SECURITIES_OUR, Me.SecuritiesStatus_BarEditItem.EditValue.ToString)
                     Else
                         Return
                     End If
 
                 Else
-                    MessageBox.Show("There is alleady an Security with the same Contract Nr. in the Database", "DUPLICATE CONTRACT NR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    XtraMessageBox.Show("There is alleady an Security with the same Contract Nr. in the Database", "DUPLICATE CONTRACT NR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Return
                 End If
                 If cmd.Connection.State = ConnectionState.Open Then
@@ -405,9 +536,50 @@ Public Class Securities_Our
 
                 End If
             Catch ex As Exception
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                 Return
             End Try
+        End If
+
+    End Sub
+
+    Private Sub SaveChanges_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles SaveChanges_bbi.ItemClick
+        Try
+            If Me.DxValidationProvider1.Validate() = True Then
+                Me.LastAction_lbl.Text = "UPDATE"
+                Me.LastUpdateUser_lbl.Text = CurrentUserWindowsID
+                Me.LastUpdateDate_lbl.Text = Now
+                Me.SECURITIES_OURBindingSource.EndEdit()
+                Me.TableAdapterManager.UpdateAll(Me.SECURITIESDataset)
+                Me.LayoutControl1.Visible = True
+                Me.RibbonPageGroup1.Visible = True
+                If Me.SecuritiesStatus_BarEditItem.EditValue.ToString = "ALL" Then
+                    Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
+                ElseIf Me.SecuritiesStatus_BarEditItem.EditValue.ToString <> "ALL" Then
+                    Me.SECURITIES_OURTableAdapter.FillBySecurityStatus(Me.SECURITIESDataset.SECURITIES_OUR, Me.SecuritiesStatus_BarEditItem.EditValue.ToString)
+                End If
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Return
+
+        End Try
+    End Sub
+
+    Private Sub Cancel_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Cancel_bbi.ItemClick
+        Me.SECURITIES_OURBindingSource.CancelEdit()
+        Me.SECURITIESDataset.RejectChanges()
+        Me.DxValidationProvider1.ValidationMode = DXErrorProvider.ValidationMode.Manual
+        Dim controls As IList(Of Control) = DxValidationProvider1.GetInvalidControls()
+        While controls.Count > 0
+            DxValidationProvider1.RemoveControlError(controls(controls.Count - 1))
+        End While
+        Me.LayoutControl1.Visible = True
+        Me.RibbonPageGroup1.Visible = True
+        If Me.SecuritiesStatus_BarEditItem.EditValue.ToString = "ALL" Then
+            Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
+        ElseIf Me.SecuritiesStatus_BarEditItem.EditValue.ToString <> "ALL" Then
+            Me.SECURITIES_OURTableAdapter.FillBySecurityStatus(Me.SECURITIESDataset.SECURITIES_OUR, Me.SecuritiesStatus_BarEditItem.EditValue.ToString)
         End If
 
     End Sub
@@ -417,9 +589,7 @@ Public Class Securities_Our
             Dim row As System.Data.DataRow = SecuritiesBaseView.GetDataRow(SecuritiesBaseView.FocusedRowHandle)
             Dim ClientNr As String = row(27)
             Dim ClientName As String = Nothing
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
+            OpenSqlConnections()
             cmd.CommandText = "SELECT [English Name] from [CUSTOMER_INFO] where [ClientNo]='" & ClientNr & "' and [CLOSE_DATE] is NULL"
             If IsNothing(cmd.ExecuteScalar) = False Then
                 ClientName = cmd.ExecuteScalar
@@ -428,15 +598,10 @@ Public Class Securities_Our
 
             Else
                 row(2) = ""
-                MessageBox.Show("Client Nr. " & row(27) & " not found or deleted", "CLIENT NOT FOUND", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                XtraMessageBox.Show("Client Nr. " & row(27) & " not found or deleted", "CLIENT NOT FOUND", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return
             End If
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
         End If
 
 
@@ -445,7 +610,7 @@ Public Class Securities_Our
             If IsNumeric(row(4)) = True And IsNumeric(row(5)) = True And IsNumeric(row(14)) = True Then
                 row(15) = Math.Round(row(4) * row(14) / 100, 2)
             Else
-                MessageBox.Show("Please input the purchase price of the Security", "NO PURCHASE PRICE ENTERED", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show("Please input the purchase price of the Security", "NO PURCHASE PRICE ENTERED", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1)
                 row(15) = ""
                 Return
 
@@ -470,8 +635,15 @@ Public Class Securities_Our
             SECTOR_COUNTRY_InitLookUp()
             CURRENCIES_initData()
             CURRENCIES_InitLookUp()
+            SEGMENT_RISK_WEIGHT_initData()
+            SEGMENT_RISK_WEIGHT_InitLookUp()
+            CURVE_TYPE_initData()
+            CURVE_TYPE_InitLookUp()
             Me.LayoutControl1.Visible = False
-
+            Me.DxValidationProvider1.ValidationMode = DXErrorProvider.ValidationMode.Auto
+            Me.RibbonPageGroup1.Visible = False
+            Me.SaveChanges_bbi.Visibility = BarItemVisibility.Always
+            Me.Cancel_bbi.Visibility = BarItemVisibility.Always
             'Me.ClientSearch_GridLookUpEdit.Text = ClientNr
             'Me.Sektor_SearchLookUpEdit.Text = Sektor
             'Me.SektoCountry_SearchLookUpEdit.Text = SektoCountry
@@ -632,20 +804,6 @@ Public Class Securities_Our
         End If
     End Sub
 
-    Private Sub Securities_Our_Print_Export_btn_Click(sender As Object, e As EventArgs) Handles Securities_Our_Print_Export_btn.Click
-        If Not GridControl2.IsPrintingAvailable Then
-            MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
-            Return
-        End If
-        ' Opens the Preview window. 
-        'GridControl1.ShowPrintPreview()
-
-        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-        PrintableComponentLink1.CreateDocument()
-        PrintableComponentLink1.ShowPreview()
-        SplashScreenManager.CloseForm(False)
-    End Sub
-
     Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
         Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
         Try
@@ -659,35 +817,17 @@ Public Class Securities_Our
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
-        Dim reportfooter As String = "CCB Frankfurt - SECURITIES" & "  " & "Printed on: " & Now
+        Dim reportfooter As String = "OUR SECURITIES - " & Me.SecuritiesStatus_BarEditItem.EditValue.ToString & " - " & "Printed on: " & Now
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 
-    Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
-        Me.SECURITIES_OURBindingSource.CancelEdit()
-        Me.LayoutControl1.Visible = True
-        Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
-    End Sub
-
-    Private Sub SaveChanges_btn_Click(sender As Object, e As EventArgs) Handles SaveChanges_btn.Click
-        Try
-            If Me.DxValidationProvider1.Validate() = True Then
-                Me.SECURITIES_OURBindingSource.EndEdit()
-                Me.TableAdapterManager.UpdateAll(Me.SECURITIESDataset)
-                Me.LayoutControl1.Visible = True
-                Me.SECURITIES_OURTableAdapter.Fill(Me.SECURITIESDataset.SECURITIES_OUR)
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-            Return
-
-        End Try
-    End Sub
 
     Private Sub LayoutControl1_VisibleChanged(sender As Object, e As EventArgs) Handles LayoutControl1.VisibleChanged
         If Me.LayoutControl1.Visible = False Then
-            
+            Me.SaveChanges_bbi.Visibility = BarItemVisibility.Always
+            Me.Cancel_bbi.Visibility = BarItemVisibility.Always
             If Me.Status_ImageComboBoxEdit.Text = "EXPIRED" Then
+                Me.DxValidationProvider1.ValidationMode = DXErrorProvider.ValidationMode.Manual
                 For Each c As Control In Me.GroupControl1.Controls
                     If c.GetType Is GetType(DevExpress.XtraEditors.TextEdit) Then
                         DirectCast(c, DevExpress.XtraEditors.TextEdit).Properties.ReadOnly = True
@@ -702,8 +842,15 @@ Public Class Securities_Our
                         DirectCast(c, DevExpress.XtraEditors.SearchLookUpEdit).Properties.ReadOnly = True
                     End If
                 Next
+                For Each c As Control In Me.GroupControl2.Controls
+                    If c.GetType Is GetType(DevExpress.XtraEditors.SearchLookUpEdit) Then
+                        DirectCast(c, DevExpress.XtraEditors.SearchLookUpEdit).Properties.ReadOnly = False
+                    End If
+                Next
                 'Me.GroupControl1.Enabled = False
             Else
+
+                Me.DxValidationProvider1.ValidationMode = DXErrorProvider.ValidationMode.Auto
                 For Each c As Control In Me.GroupControl1.Controls
                     If c.GetType Is GetType(DevExpress.XtraEditors.TextEdit) Then
                         DirectCast(c, DevExpress.XtraEditors.TextEdit).Properties.ReadOnly = False
@@ -718,8 +865,16 @@ Public Class Securities_Our
                         DirectCast(c, DevExpress.XtraEditors.SearchLookUpEdit).Properties.ReadOnly = False
                     End If
                 Next
+                For Each c As Control In Me.GroupControl2.Controls
+                    If c.GetType Is GetType(DevExpress.XtraEditors.SearchLookUpEdit) Then
+                        DirectCast(c, DevExpress.XtraEditors.SearchLookUpEdit).Properties.ReadOnly = False
+                    End If
+                Next
                 'Me.GroupControl1.Enabled = True
             End If
+        ElseIf Me.LayoutControl1.Visible = True Then
+            Me.SaveChanges_bbi.Visibility = BarItemVisibility.Never
+            Me.Cancel_bbi.Visibility = BarItemVisibility.Never
         End If
     End Sub
 
@@ -758,7 +913,37 @@ Public Class Securities_Our
 
     End Sub
 
-   
+    Private Sub Segment_SearchLookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles Segment_SearchLookUpEdit.EditValueChanged
+        If Me.LayoutControl1.Visible = False Then
+            If Me.Segment_SearchLookUpEdit.EditValue.ToString <> "" Then
+
+                Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+                Dim SegmentRow As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+                Me.RatingClass_TextEdit.Text = SegmentRow("ParameterName1").ToString
+                Me.SectorRW_TextEdit.Text = SegmentRow("ParameterName2").ToString
+                Me.RiskWeightBP_TextEdit.Text = SegmentRow("ParameterValue2").ToString
+            Else
+                Me.RatingClass_TextEdit.Text = ""
+                Me.SectorRW_TextEdit.Text = ""
+                Me.RiskWeightBP_TextEdit.Text = ""
+            End If
+        End If
+    End Sub
+
+    Private Sub CurveType_SearchLookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles CurveType_SearchLookUpEdit.EditValueChanged
+        If Me.LayoutControl1.Visible = False Then
+            If Me.CurveType_SearchLookUpEdit.EditValue.ToString <> "" Then
+
+                Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+                Dim CurveTypeRow As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+                Me.CurveType_Description_lbl.Text = CurveTypeRow("ParameterName2").ToString
+
+            Else
+                Me.CurveType_Description_lbl.Text = ""
+
+            End If
+        End If
+    End Sub
 
     Private Sub PrincipalAmount_TextEdit_EditValueChanged(sender As Object, e As EventArgs) Handles PrincipalAmount_TextEdit.EditValueChanged
         CALCULATE_PAID_AMOUNTS()
@@ -775,4 +960,47 @@ Public Class Securities_Our
     Private Sub ExchangeRate_TextEdit_EditValueChanged(sender As Object, e As EventArgs) Handles ExchangeRate_TextEdit.EditValueChanged
         CALCULATE_PAID_AMOUNTS()
     End Sub
+
+    Private Sub PrintExport_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles PrintExport_bbi.ItemClick
+        If Me.LayoutControl1.Visible = True Then
+            If Not GridControl2.IsPrintingAvailable Then
+                MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
+                Return
+            End If
+            ' Opens the Preview window. 
+            'GridControl1.ShowPrintPreview()
+
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            PrintableComponentLink1.CreateDocument()
+            PrintableComponentLink1.ShowPreview()
+            SplashScreenManager.CloseForm(False)
+        ElseIf Me.LayoutControl1.Visible = False Then
+            Dim AllSecuritiesDs As New SECURITIESDataset
+            Dim AllSecuritiesAdapter As New SECURITIESDatasetTableAdapters.SECURITIES_OURTableAdapter
+            AllSecuritiesAdapter.FillByContractNr(AllSecuritiesDs.SECURITIES_OUR, Me.ContractNr_TextEdit.Text)
+            Dim report As New SecurityContractSingle
+            report.DataSource = AllSecuritiesDs
+            report.DataMember = AllSecuritiesDs.SECURITIES_OUR.TableName
+            Dim c As New DevReportViewer
+            c.Text = "Security Contract: " & Me.ContractNr_TextEdit.Text
+            c.MdiParent = Me.MdiParent
+            c.DocumentViewer1.DocumentSource = report
+            c.Show()
+        End If
+
+    End Sub
+
+    Private Sub Close_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Close_bbi.ItemClick
+        Me.SECURITIES_OURBindingSource.CancelEdit()
+        Me.SECURITIESDataset.RejectChanges()
+        Me.DxValidationProvider1.ValidationMode = DXErrorProvider.ValidationMode.Manual
+        Dim controls As IList(Of Control) = DxValidationProvider1.GetInvalidControls()
+        While controls.Count > 0
+            DxValidationProvider1.RemoveControlError(controls(controls.Count - 1))
+        End While
+        Me.Close()
+
+    End Sub
+
+
 End Class

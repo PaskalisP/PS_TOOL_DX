@@ -656,48 +656,6 @@
     <Compile Include="ALL ITEMS\EDP\Forms\AuditDDL.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV127.Designer.vb">
-      <DependentUpon>BaisExportAlphaV127.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV127.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV128.designer.vb">
-      <DependentUpon>BaisExportAlphaV128.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV128.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV129.designer.vb">
-      <DependentUpon>BaisExportAlphaV129.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV129.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV130.designer.vb">
-      <DependentUpon>BaisExportAlphaV130.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV130.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV131.designer.vb">
-      <DependentUpon>BaisExportAlphaV131.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV131.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV132.designer.vb">
-      <DependentUpon>BaisExportAlphaV132.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV132.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV134.designer.vb">
-      <DependentUpon>BaisExportAlphaV134.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV134.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV135.designer.vb">
       <DependentUpon>BaisExportAlphaV135.vb</DependentUpon>
     </Compile>
@@ -708,48 +666,6 @@
       <DependentUpon>BaisExportAlphaV136.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV136.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV127.Designer.vb">
-      <DependentUpon>BaisExportAnaCreditV127.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV127.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV128.designer.vb">
-      <DependentUpon>BaisExportAnaCreditV128.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV128.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV129.designer.vb">
-      <DependentUpon>BaisExportAnaCreditV129.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV129.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV130.designer.vb">
-      <DependentUpon>BaisExportAnaCreditV130.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV130.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV131.designer.vb">
-      <DependentUpon>BaisExportAnaCreditV131.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV131.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV132.designer.vb">
-      <DependentUpon>BaisExportAnaCreditV132.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV132.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV134.designer.vb">
-      <DependentUpon>BaisExportAnaCreditV134.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV134.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV135.designer.vb">
@@ -1449,6 +1365,11 @@
     <Compile Include="ALL ITEMS\MELDEWESEN\Forms\ZvStatistik_PayCard_Parameter.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditSpreadRiskDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditSpreadRiskDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\CurrencyRiskCalcDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1509,6 +1430,24 @@
       <DependentUpon>CreditRiskMak.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRiskCalc.designer.vb">
+      <DependentUpon>CreditSpreadRiskCalc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRiskCalc.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRisk_Correlations.designer.vb">
+      <DependentUpon>CreditSpreadRisk_Correlations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRisk_Correlations.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRisk_Parameter_References.designer.vb">
+      <DependentUpon>CreditSpreadRisk_Parameter_References.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRisk_Parameter_References.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc.Designer.vb">
@@ -1666,6 +1605,12 @@
     <Compile Include="ALL ITEMS\SECURITIES\Reports\LiquidityReserveXtraReport.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Reports\SecurityContractSingle.Designer.vb">
+      <DependentUpon>SecurityContractSingle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\SECURITIES\Reports\SecurityContractSingle.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ALL ITEMS\TREASURY\Datasets\TreasuryDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1711,6 +1656,12 @@
       <DependentUpon>DatesForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Default\DatesForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Default\DevReportViewer.designer.vb">
+      <DependentUpon>DevReportViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\DevReportViewer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Default\ExcelForm.Designer.vb">
@@ -2016,53 +1967,11 @@
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\AuditDDL.resx">
       <DependentUpon>AuditDDL.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV127.resx">
-      <DependentUpon>BaisExportAlphaV127.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV128.resx">
-      <DependentUpon>BaisExportAlphaV128.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV129.resx">
-      <DependentUpon>BaisExportAlphaV129.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV130.resx">
-      <DependentUpon>BaisExportAlphaV130.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV131.resx">
-      <DependentUpon>BaisExportAlphaV131.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV132.resx">
-      <DependentUpon>BaisExportAlphaV132.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV134.resx">
-      <DependentUpon>BaisExportAlphaV134.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV135.resx">
       <DependentUpon>BaisExportAlphaV135.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV136.resx">
       <DependentUpon>BaisExportAlphaV136.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV127.resx">
-      <DependentUpon>BaisExportAnaCreditV127.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV128.resx">
-      <DependentUpon>BaisExportAnaCreditV128.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV129.resx">
-      <DependentUpon>BaisExportAnaCreditV129.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV130.resx">
-      <DependentUpon>BaisExportAnaCreditV130.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV131.resx">
-      <DependentUpon>BaisExportAnaCreditV131.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV132.resx">
-      <DependentUpon>BaisExportAnaCreditV132.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV134.resx">
-      <DependentUpon>BaisExportAnaCreditV134.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV135.resx">
       <DependentUpon>BaisExportAnaCreditV135.vb</DependentUpon>
@@ -2382,6 +2291,15 @@
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.resx">
       <DependentUpon>CreditRiskMak.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRiskCalc.resx">
+      <DependentUpon>CreditSpreadRiskCalc.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRisk_Correlations.resx">
+      <DependentUpon>CreditSpreadRisk_Correlations.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRisk_Parameter_References.resx">
+      <DependentUpon>CreditSpreadRisk_Parameter_References.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc.resx">
       <DependentUpon>CurrencyRiskCalc.vb</DependentUpon>
     </EmbeddedResource>
@@ -2457,6 +2375,9 @@
     <EmbeddedResource Include="ALL ITEMS\SECURITIES\Reports\LiquidityReserveXtraReport.resx">
       <DependentUpon>LiquidityReserveXtraReport.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\SECURITIES\Reports\SecurityContractSingle.resx">
+      <DependentUpon>SecurityContractSingle.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\TREASURY\Forms\FxCreditEquivalentCalculationRealTime.resx">
       <DependentUpon>FxCreditEquivalentCalculationRealTime.vb</DependentUpon>
     </EmbeddedResource>
@@ -2474,6 +2395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Default\DatesForm.resx">
       <DependentUpon>DatesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\DevReportViewer.resx">
+      <DependentUpon>DevReportViewer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Default\ExcelForm.resx">
       <DependentUpon>ExcelForm.vb</DependentUpon>
@@ -2867,6 +2791,17 @@
     </None>
     <None Include="ALL ITEMS\MELDEWESEN\Datasets\ZvStatistik_DataSet.xss">
       <DependentUpon>ZvStatistik_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditSpreadRiskDataSet.xsc">
+      <DependentUpon>CreditSpreadRiskDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditSpreadRiskDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CreditSpreadRiskDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditSpreadRiskDataSet.xss">
+      <DependentUpon>CreditSpreadRiskDataSet.xsd</DependentUpon>
     </None>
     <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CurrencyRiskCalcDataSet.xsc">
       <DependentUpon>CurrencyRiskCalcDataSet.xsd</DependentUpon>

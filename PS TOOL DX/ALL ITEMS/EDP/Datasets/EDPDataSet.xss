@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:IMPORT EVENTS" ZOrder="6" X="70" Y="70" Height="362" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:OCBS IMPORT PROCEDURES" ZOrder="18" X="426" Y="70" Height="305" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:ODAS IMPORT PROCEDURES" ZOrder="17" X="1112" Y="70" Height="172" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
-    <Shape ID="DesignTable:MANUAL IMPORTS" ZOrder="16" X="430" Y="402" Height="248" Width="257" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
+    <Shape ID="DesignTable:MANUAL IMPORTS" ZOrder="16" X="430" Y="402" Height="305" Width="257" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:ALL_TABLE_COLUMNS" ZOrder="15" X="1493" Y="71" Height="305" Width="274" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:CLIENT EVENTS" ZOrder="8" X="75" Y="475" Height="210" Width="272" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:SQL_PARAMETER" ZOrder="10" X="2751" Y="70" Height="248" Width="245" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />

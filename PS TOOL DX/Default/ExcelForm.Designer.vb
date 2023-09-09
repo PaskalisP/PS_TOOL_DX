@@ -533,6 +533,7 @@ Partial Class ExcelForm
         Me.SpreadsheetCommandBarCheckItem32 = New DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarCheckItem()
         Me.GalleryTableStylesItem1 = New DevExpress.XtraSpreadsheet.UI.GalleryTableStylesItem()
         Me.SaveAsNew = New DevExpress.XtraBars.BarButtonItem()
+        Me.Close_bbi = New DevExpress.XtraBars.BarButtonItem()
         Me.ChartToolsRibbonPageCategory1 = New DevExpress.XtraSpreadsheet.UI.ChartToolsRibbonPageCategory()
         Me.ChartsDesignRibbonPage1 = New DevExpress.XtraSpreadsheet.UI.ChartsDesignRibbonPage()
         Me.ChartsDesignTypeRibbonPageGroup1 = New DevExpress.XtraSpreadsheet.UI.ChartsDesignTypeRibbonPageGroup()
@@ -638,6 +639,7 @@ Partial Class ExcelForm
         '
         'StylesRibbonPageGroup1
         '
+        Me.StylesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.StylesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem4)
         Me.StylesRibbonPageGroup1.ItemLinks.Add(Me.GalleryFormatAsTableItem1)
         Me.StylesRibbonPageGroup1.ItemLinks.Add(Me.GalleryChangeStyleItem1)
@@ -807,15 +809,15 @@ Partial Class ExcelForm
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
         Me.RibbonControl1.Images = Me.ImageCollection1
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.SpreadsheetCommandBarButtonItem1, Me.SpreadsheetCommandBarButtonItem2, Me.SpreadsheetCommandBarButtonItem3, Me.SpreadsheetCommandBarButtonItem4, Me.SpreadsheetCommandBarButtonItem5, Me.SpreadsheetCommandBarButtonItem6, Me.SpreadsheetCommandBarButtonItem7, Me.SpreadsheetCommandBarButtonItem8, Me.SpreadsheetCommandBarButtonItem9, Me.SpreadsheetCommandBarButtonItem10, Me.SpreadsheetCommandBarButtonItem11, Me.SpreadsheetCommandBarButtonItem12, Me.SpreadsheetCommandBarButtonItem13, Me.BarButtonGroup1, Me.ChangeFontNameItem1, Me.ChangeFontSizeItem1, Me.SpreadsheetCommandBarButtonItem14, Me.SpreadsheetCommandBarButtonItem15, Me.BarButtonGroup2, Me.SpreadsheetCommandBarCheckItem1, Me.SpreadsheetCommandBarCheckItem2, Me.SpreadsheetCommandBarCheckItem3, Me.SpreadsheetCommandBarCheckItem4, Me.BarButtonGroup3, Me.SpreadsheetCommandBarSubItem1, Me.SpreadsheetCommandBarButtonItem16, Me.SpreadsheetCommandBarButtonItem17, Me.SpreadsheetCommandBarButtonItem18, Me.SpreadsheetCommandBarButtonItem19, Me.SpreadsheetCommandBarButtonItem20, Me.SpreadsheetCommandBarButtonItem21, Me.SpreadsheetCommandBarButtonItem22, Me.SpreadsheetCommandBarButtonItem23, Me.SpreadsheetCommandBarButtonItem24, Me.SpreadsheetCommandBarButtonItem25, Me.SpreadsheetCommandBarButtonItem26, Me.SpreadsheetCommandBarButtonItem27, Me.SpreadsheetCommandBarButtonItem28, Me.ChangeBorderLineColorItem1, Me.ChangeBorderLineStyleItem1, Me.BarButtonGroup4, Me.ChangeCellFillColorItem1, Me.ChangeFontColorItem1, Me.BarButtonGroup5, Me.SpreadsheetCommandBarCheckItem5, Me.SpreadsheetCommandBarCheckItem6, Me.SpreadsheetCommandBarCheckItem7, Me.BarButtonGroup6, Me.SpreadsheetCommandBarCheckItem8, Me.SpreadsheetCommandBarCheckItem9, Me.SpreadsheetCommandBarCheckItem10, Me.BarButtonGroup7, Me.SpreadsheetCommandBarButtonItem29, Me.SpreadsheetCommandBarButtonItem30, Me.SpreadsheetCommandBarCheckItem11, Me.SpreadsheetCommandBarSubItem2, Me.SpreadsheetCommandBarCheckItem12, Me.SpreadsheetCommandBarButtonItem31, Me.SpreadsheetCommandBarButtonItem32, Me.SpreadsheetCommandBarButtonItem33, Me.BarButtonGroup8, Me.ChangeNumberFormatItem1, Me.BarButtonGroup9, Me.SpreadsheetCommandBarSubItem3, Me.SpreadsheetCommandBarButtonItem34, Me.SpreadsheetCommandBarButtonItem35, Me.SpreadsheetCommandBarButtonItem36, Me.SpreadsheetCommandBarButtonItem37, Me.SpreadsheetCommandBarButtonItem38, Me.SpreadsheetCommandBarButtonItem39, Me.SpreadsheetCommandBarButtonItem40, Me.BarButtonGroup10, Me.SpreadsheetCommandBarButtonItem41, Me.SpreadsheetCommandBarButtonItem42, Me.SpreadsheetCommandBarSubItem4, Me.SpreadsheetCommandBarButtonItem43, Me.SpreadsheetCommandBarButtonItem44, Me.SpreadsheetCommandBarButtonItem45, Me.SpreadsheetCommandBarButtonItem46, Me.SpreadsheetCommandBarButtonItem47, Me.SpreadsheetCommandBarButtonItem48, Me.SpreadsheetCommandBarButtonItem49, Me.SpreadsheetCommandBarSubItem5, Me.SpreadsheetCommandBarButtonItem50, Me.SpreadsheetCommandBarButtonItem51, Me.SpreadsheetCommandBarButtonItem52, Me.SpreadsheetCommandBarButtonItem53, Me.SpreadsheetCommandBarButtonItem54, Me.SpreadsheetCommandBarButtonItem55, Me.SpreadsheetCommandBarSubItem6, Me.SpreadsheetCommandBarButtonGalleryDropDownItem1, Me.SpreadsheetCommandBarButtonGalleryDropDownItem2, Me.SpreadsheetCommandBarButtonGalleryDropDownItem3, Me.SpreadsheetCommandBarButtonItem56, Me.SpreadsheetCommandBarButtonItem57, Me.SpreadsheetCommandBarSubItem7, Me.GalleryFormatAsTableItem1, Me.GalleryChangeStyleItem1, Me.SpreadsheetCommandBarSubItem8, Me.SpreadsheetCommandBarButtonItem58, Me.SpreadsheetCommandBarButtonItem59, Me.SpreadsheetCommandBarButtonItem60, Me.SpreadsheetCommandBarSubItem9, Me.SpreadsheetCommandBarButtonItem61, Me.SpreadsheetCommandBarButtonItem62, Me.SpreadsheetCommandBarButtonItem63, Me.SpreadsheetCommandBarSubItem10, Me.SpreadsheetCommandBarButtonItem64, Me.SpreadsheetCommandBarButtonItem65, Me.SpreadsheetCommandBarButtonItem66, Me.SpreadsheetCommandBarButtonItem67, Me.SpreadsheetCommandBarButtonItem68, Me.SpreadsheetCommandBarButtonItem69, Me.SpreadsheetCommandBarButtonItem70, Me.SpreadsheetCommandBarButtonItem71, Me.SpreadsheetCommandBarButtonItem72, Me.SpreadsheetCommandBarButtonItem73, Me.SpreadsheetCommandBarButtonItem74, Me.SpreadsheetCommandBarSubItem11, Me.SpreadsheetCommandBarButtonItem75, Me.ChangeSheetTabColorItem1, Me.SpreadsheetCommandBarButtonItem76, Me.SpreadsheetCommandBarCheckItem13, Me.SpreadsheetCommandBarButtonItem77, Me.SpreadsheetCommandBarSubItem12, Me.SpreadsheetCommandBarButtonItem78, Me.SpreadsheetCommandBarButtonItem79, Me.SpreadsheetCommandBarButtonItem80, Me.SpreadsheetCommandBarButtonItem81, Me.SpreadsheetCommandBarButtonItem82, Me.SpreadsheetCommandBarSubItem13, Me.SpreadsheetCommandBarButtonItem83, Me.SpreadsheetCommandBarButtonItem84, Me.SpreadsheetCommandBarButtonItem85, Me.SpreadsheetCommandBarButtonItem86, Me.SpreadsheetCommandBarSubItem14, Me.SpreadsheetCommandBarButtonItem87, Me.SpreadsheetCommandBarButtonItem88, Me.SpreadsheetCommandBarButtonItem89, Me.SpreadsheetCommandBarButtonItem90, Me.SpreadsheetCommandBarButtonItem91, Me.SpreadsheetCommandBarButtonItem92, Me.SpreadsheetCommandBarSubItem15, Me.SpreadsheetCommandBarButtonItem93, Me.SpreadsheetCommandBarButtonItem94, Me.SpreadsheetCommandBarSubItem16, Me.SpreadsheetCommandBarButtonItem95, Me.SpreadsheetCommandBarButtonItem96, Me.SpreadsheetCommandBarButtonItem97, Me.SpreadsheetCommandBarButtonItem98, Me.SpreadsheetCommandBarButtonItem99, Me.SpreadsheetCommandBarButtonItem100, Me.SpreadsheetCommandBarButtonItem101, Me.SpreadsheetCommandBarButtonItem102, Me.SpreadsheetCommandBarButtonItem103, Me.SpreadsheetCommandBarButtonGalleryDropDownItem4, Me.SpreadsheetCommandBarButtonGalleryDropDownItem5, Me.SpreadsheetCommandBarButtonGalleryDropDownItem6, Me.SpreadsheetCommandBarButtonGalleryDropDownItem7, Me.SpreadsheetCommandBarButtonGalleryDropDownItem8, Me.SpreadsheetCommandBarButtonGalleryDropDownItem9, Me.SpreadsheetCommandBarButtonGalleryDropDownItem10, Me.SpreadsheetCommandBarButtonItem104, Me.SpreadsheetCommandBarButtonItem105, Me.SpreadsheetCommandBarSubItem17, Me.SpreadsheetCommandBarCheckItem14, Me.SpreadsheetCommandBarCheckItem15, Me.SpreadsheetCommandBarCheckItem16, Me.SpreadsheetCommandBarSubItem18, Me.SpreadsheetCommandBarCheckItem17, Me.SpreadsheetCommandBarCheckItem18, Me.PageSetupPaperKindItem1, Me.SpreadsheetCommandBarSubItem19, Me.SpreadsheetCommandBarButtonItem106, Me.SpreadsheetCommandBarButtonItem107, Me.SpreadsheetCommandBarButtonItem108, Me.SpreadsheetCommandBarCheckItem19, Me.SpreadsheetCommandBarCheckItem20, Me.SpreadsheetCommandBarCheckItem21, Me.SpreadsheetCommandBarCheckItem22, Me.SpreadsheetCommandBarSubItem20, Me.SpreadsheetCommandBarButtonItem109, Me.SpreadsheetCommandBarButtonItem110, Me.SpreadsheetCommandBarSubItem21, Me.SpreadsheetCommandBarButtonItem111, Me.SpreadsheetCommandBarButtonItem112, Me.SpreadsheetCommandBarSubItem22, Me.FunctionsFinancialItem1, Me.FunctionsLogicalItem1, Me.FunctionsTextItem1, Me.FunctionsDateAndTimeItem1, Me.FunctionsLookupAndReferenceItem1, Me.FunctionsMathAndTrigonometryItem1, Me.SpreadsheetCommandBarSubItem23, Me.FunctionsStatisticalItem1, Me.FunctionsEngineeringItem1, Me.FunctionsInformationItem1, Me.FunctionsCompatibilityItem1, Me.FunctionsWebItem1, Me.SpreadsheetCommandBarButtonItem118, Me.SpreadsheetCommandBarButtonItem119, Me.DefinedNameListItem1, Me.SpreadsheetCommandBarButtonItem120, Me.SpreadsheetCommandBarCheckItem23, Me.SpreadsheetCommandBarSubItem24, Me.SpreadsheetCommandBarCheckItem24, Me.SpreadsheetCommandBarCheckItem25, Me.SpreadsheetCommandBarButtonItem121, Me.SpreadsheetCommandBarButtonItem122, Me.SpreadsheetCommandBarButtonItem123, Me.SpreadsheetCommandBarButtonItem124, Me.SpreadsheetCommandBarButtonItem125, Me.SpreadsheetCommandBarButtonItem126, Me.SpreadsheetCommandBarButtonItem127, Me.SpreadsheetCommandBarButtonItem128, Me.SpreadsheetCommandBarButtonItem129, Me.SpreadsheetCommandBarSubItem25, Me.SpreadsheetCommandBarButtonItem130, Me.SpreadsheetCommandBarButtonItem131, Me.SpreadsheetCommandBarButtonItem132, Me.SpreadsheetCommandBarButtonItem133, Me.SpreadsheetCommandBarButtonItem134, Me.SpreadsheetCommandBarButtonItem135, Me.SpreadsheetCommandBarButtonItem136, Me.GalleryChartLayoutItem1, Me.GalleryChartStyleItem1, Me.SpreadsheetCommandBarButtonGalleryDropDownItem11, Me.SpreadsheetCommandBarSubItem26, Me.SpreadsheetCommandBarButtonGalleryDropDownItem12, Me.SpreadsheetCommandBarButtonGalleryDropDownItem13, Me.SpreadsheetCommandBarButtonGalleryDropDownItem14, Me.SpreadsheetCommandBarButtonGalleryDropDownItem15, Me.SpreadsheetCommandBarSubItem27, Me.SpreadsheetCommandBarButtonGalleryDropDownItem16, Me.SpreadsheetCommandBarButtonGalleryDropDownItem17, Me.SpreadsheetCommandBarSubItem28, Me.SpreadsheetCommandBarButtonGalleryDropDownItem18, Me.SpreadsheetCommandBarButtonGalleryDropDownItem19, Me.SpreadsheetCommandBarButtonGalleryDropDownItem20, Me.SpreadsheetCommandBarButtonGalleryDropDownItem21, Me.SpreadsheetCommandBarButtonGalleryDropDownItem22, Me.BarStaticItem1, Me.RenameTableItem1, Me.SpreadsheetCommandBarCheckItem26, Me.SpreadsheetCommandBarCheckItem27, Me.SpreadsheetCommandBarCheckItem28, Me.SpreadsheetCommandBarCheckItem29, Me.SpreadsheetCommandBarCheckItem30, Me.SpreadsheetCommandBarCheckItem31, Me.SpreadsheetCommandBarCheckItem32, Me.GalleryTableStylesItem1, Me.SaveAsNew, Me.RibbonControl1.SearchEditItem})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.SpreadsheetCommandBarButtonItem1, Me.SpreadsheetCommandBarButtonItem2, Me.SpreadsheetCommandBarButtonItem3, Me.SpreadsheetCommandBarButtonItem4, Me.SpreadsheetCommandBarButtonItem5, Me.SpreadsheetCommandBarButtonItem6, Me.SpreadsheetCommandBarButtonItem7, Me.SpreadsheetCommandBarButtonItem8, Me.SpreadsheetCommandBarButtonItem9, Me.SpreadsheetCommandBarButtonItem10, Me.SpreadsheetCommandBarButtonItem11, Me.SpreadsheetCommandBarButtonItem12, Me.SpreadsheetCommandBarButtonItem13, Me.BarButtonGroup1, Me.ChangeFontNameItem1, Me.ChangeFontSizeItem1, Me.SpreadsheetCommandBarButtonItem14, Me.SpreadsheetCommandBarButtonItem15, Me.BarButtonGroup2, Me.SpreadsheetCommandBarCheckItem1, Me.SpreadsheetCommandBarCheckItem2, Me.SpreadsheetCommandBarCheckItem3, Me.SpreadsheetCommandBarCheckItem4, Me.BarButtonGroup3, Me.SpreadsheetCommandBarSubItem1, Me.SpreadsheetCommandBarButtonItem16, Me.SpreadsheetCommandBarButtonItem17, Me.SpreadsheetCommandBarButtonItem18, Me.SpreadsheetCommandBarButtonItem19, Me.SpreadsheetCommandBarButtonItem20, Me.SpreadsheetCommandBarButtonItem21, Me.SpreadsheetCommandBarButtonItem22, Me.SpreadsheetCommandBarButtonItem23, Me.SpreadsheetCommandBarButtonItem24, Me.SpreadsheetCommandBarButtonItem25, Me.SpreadsheetCommandBarButtonItem26, Me.SpreadsheetCommandBarButtonItem27, Me.SpreadsheetCommandBarButtonItem28, Me.ChangeBorderLineColorItem1, Me.ChangeBorderLineStyleItem1, Me.BarButtonGroup4, Me.ChangeCellFillColorItem1, Me.ChangeFontColorItem1, Me.BarButtonGroup5, Me.SpreadsheetCommandBarCheckItem5, Me.SpreadsheetCommandBarCheckItem6, Me.SpreadsheetCommandBarCheckItem7, Me.BarButtonGroup6, Me.SpreadsheetCommandBarCheckItem8, Me.SpreadsheetCommandBarCheckItem9, Me.SpreadsheetCommandBarCheckItem10, Me.BarButtonGroup7, Me.SpreadsheetCommandBarButtonItem29, Me.SpreadsheetCommandBarButtonItem30, Me.SpreadsheetCommandBarCheckItem11, Me.SpreadsheetCommandBarSubItem2, Me.SpreadsheetCommandBarCheckItem12, Me.SpreadsheetCommandBarButtonItem31, Me.SpreadsheetCommandBarButtonItem32, Me.SpreadsheetCommandBarButtonItem33, Me.BarButtonGroup8, Me.ChangeNumberFormatItem1, Me.BarButtonGroup9, Me.SpreadsheetCommandBarSubItem3, Me.SpreadsheetCommandBarButtonItem34, Me.SpreadsheetCommandBarButtonItem35, Me.SpreadsheetCommandBarButtonItem36, Me.SpreadsheetCommandBarButtonItem37, Me.SpreadsheetCommandBarButtonItem38, Me.SpreadsheetCommandBarButtonItem39, Me.SpreadsheetCommandBarButtonItem40, Me.BarButtonGroup10, Me.SpreadsheetCommandBarButtonItem41, Me.SpreadsheetCommandBarButtonItem42, Me.SpreadsheetCommandBarSubItem4, Me.SpreadsheetCommandBarButtonItem43, Me.SpreadsheetCommandBarButtonItem44, Me.SpreadsheetCommandBarButtonItem45, Me.SpreadsheetCommandBarButtonItem46, Me.SpreadsheetCommandBarButtonItem47, Me.SpreadsheetCommandBarButtonItem48, Me.SpreadsheetCommandBarButtonItem49, Me.SpreadsheetCommandBarSubItem5, Me.SpreadsheetCommandBarButtonItem50, Me.SpreadsheetCommandBarButtonItem51, Me.SpreadsheetCommandBarButtonItem52, Me.SpreadsheetCommandBarButtonItem53, Me.SpreadsheetCommandBarButtonItem54, Me.SpreadsheetCommandBarButtonItem55, Me.SpreadsheetCommandBarSubItem6, Me.SpreadsheetCommandBarButtonGalleryDropDownItem1, Me.SpreadsheetCommandBarButtonGalleryDropDownItem2, Me.SpreadsheetCommandBarButtonGalleryDropDownItem3, Me.SpreadsheetCommandBarButtonItem56, Me.SpreadsheetCommandBarButtonItem57, Me.SpreadsheetCommandBarSubItem7, Me.GalleryFormatAsTableItem1, Me.GalleryChangeStyleItem1, Me.SpreadsheetCommandBarSubItem8, Me.SpreadsheetCommandBarButtonItem58, Me.SpreadsheetCommandBarButtonItem59, Me.SpreadsheetCommandBarButtonItem60, Me.SpreadsheetCommandBarSubItem9, Me.SpreadsheetCommandBarButtonItem61, Me.SpreadsheetCommandBarButtonItem62, Me.SpreadsheetCommandBarButtonItem63, Me.SpreadsheetCommandBarSubItem10, Me.SpreadsheetCommandBarButtonItem64, Me.SpreadsheetCommandBarButtonItem65, Me.SpreadsheetCommandBarButtonItem66, Me.SpreadsheetCommandBarButtonItem67, Me.SpreadsheetCommandBarButtonItem68, Me.SpreadsheetCommandBarButtonItem69, Me.SpreadsheetCommandBarButtonItem70, Me.SpreadsheetCommandBarButtonItem71, Me.SpreadsheetCommandBarButtonItem72, Me.SpreadsheetCommandBarButtonItem73, Me.SpreadsheetCommandBarButtonItem74, Me.SpreadsheetCommandBarSubItem11, Me.SpreadsheetCommandBarButtonItem75, Me.ChangeSheetTabColorItem1, Me.SpreadsheetCommandBarButtonItem76, Me.SpreadsheetCommandBarCheckItem13, Me.SpreadsheetCommandBarButtonItem77, Me.SpreadsheetCommandBarSubItem12, Me.SpreadsheetCommandBarButtonItem78, Me.SpreadsheetCommandBarButtonItem79, Me.SpreadsheetCommandBarButtonItem80, Me.SpreadsheetCommandBarButtonItem81, Me.SpreadsheetCommandBarButtonItem82, Me.SpreadsheetCommandBarSubItem13, Me.SpreadsheetCommandBarButtonItem83, Me.SpreadsheetCommandBarButtonItem84, Me.SpreadsheetCommandBarButtonItem85, Me.SpreadsheetCommandBarButtonItem86, Me.SpreadsheetCommandBarSubItem14, Me.SpreadsheetCommandBarButtonItem87, Me.SpreadsheetCommandBarButtonItem88, Me.SpreadsheetCommandBarButtonItem89, Me.SpreadsheetCommandBarButtonItem90, Me.SpreadsheetCommandBarButtonItem91, Me.SpreadsheetCommandBarButtonItem92, Me.SpreadsheetCommandBarSubItem15, Me.SpreadsheetCommandBarButtonItem93, Me.SpreadsheetCommandBarButtonItem94, Me.SpreadsheetCommandBarSubItem16, Me.SpreadsheetCommandBarButtonItem95, Me.SpreadsheetCommandBarButtonItem96, Me.SpreadsheetCommandBarButtonItem97, Me.SpreadsheetCommandBarButtonItem98, Me.SpreadsheetCommandBarButtonItem99, Me.SpreadsheetCommandBarButtonItem100, Me.SpreadsheetCommandBarButtonItem101, Me.SpreadsheetCommandBarButtonItem102, Me.SpreadsheetCommandBarButtonItem103, Me.SpreadsheetCommandBarButtonGalleryDropDownItem4, Me.SpreadsheetCommandBarButtonGalleryDropDownItem5, Me.SpreadsheetCommandBarButtonGalleryDropDownItem6, Me.SpreadsheetCommandBarButtonGalleryDropDownItem7, Me.SpreadsheetCommandBarButtonGalleryDropDownItem8, Me.SpreadsheetCommandBarButtonGalleryDropDownItem9, Me.SpreadsheetCommandBarButtonGalleryDropDownItem10, Me.SpreadsheetCommandBarButtonItem104, Me.SpreadsheetCommandBarButtonItem105, Me.SpreadsheetCommandBarSubItem17, Me.SpreadsheetCommandBarCheckItem14, Me.SpreadsheetCommandBarCheckItem15, Me.SpreadsheetCommandBarCheckItem16, Me.SpreadsheetCommandBarSubItem18, Me.SpreadsheetCommandBarCheckItem17, Me.SpreadsheetCommandBarCheckItem18, Me.PageSetupPaperKindItem1, Me.SpreadsheetCommandBarSubItem19, Me.SpreadsheetCommandBarButtonItem106, Me.SpreadsheetCommandBarButtonItem107, Me.SpreadsheetCommandBarButtonItem108, Me.SpreadsheetCommandBarCheckItem19, Me.SpreadsheetCommandBarCheckItem20, Me.SpreadsheetCommandBarCheckItem21, Me.SpreadsheetCommandBarCheckItem22, Me.SpreadsheetCommandBarSubItem20, Me.SpreadsheetCommandBarButtonItem109, Me.SpreadsheetCommandBarButtonItem110, Me.SpreadsheetCommandBarSubItem21, Me.SpreadsheetCommandBarButtonItem111, Me.SpreadsheetCommandBarButtonItem112, Me.SpreadsheetCommandBarSubItem22, Me.FunctionsFinancialItem1, Me.FunctionsLogicalItem1, Me.FunctionsTextItem1, Me.FunctionsDateAndTimeItem1, Me.FunctionsLookupAndReferenceItem1, Me.FunctionsMathAndTrigonometryItem1, Me.SpreadsheetCommandBarSubItem23, Me.FunctionsStatisticalItem1, Me.FunctionsEngineeringItem1, Me.FunctionsInformationItem1, Me.FunctionsCompatibilityItem1, Me.FunctionsWebItem1, Me.SpreadsheetCommandBarButtonItem118, Me.SpreadsheetCommandBarButtonItem119, Me.DefinedNameListItem1, Me.SpreadsheetCommandBarButtonItem120, Me.SpreadsheetCommandBarCheckItem23, Me.SpreadsheetCommandBarSubItem24, Me.SpreadsheetCommandBarCheckItem24, Me.SpreadsheetCommandBarCheckItem25, Me.SpreadsheetCommandBarButtonItem121, Me.SpreadsheetCommandBarButtonItem122, Me.SpreadsheetCommandBarButtonItem123, Me.SpreadsheetCommandBarButtonItem124, Me.SpreadsheetCommandBarButtonItem125, Me.SpreadsheetCommandBarButtonItem126, Me.SpreadsheetCommandBarButtonItem127, Me.SpreadsheetCommandBarButtonItem128, Me.SpreadsheetCommandBarButtonItem129, Me.SpreadsheetCommandBarSubItem25, Me.SpreadsheetCommandBarButtonItem130, Me.SpreadsheetCommandBarButtonItem131, Me.SpreadsheetCommandBarButtonItem132, Me.SpreadsheetCommandBarButtonItem133, Me.SpreadsheetCommandBarButtonItem134, Me.SpreadsheetCommandBarButtonItem135, Me.SpreadsheetCommandBarButtonItem136, Me.GalleryChartLayoutItem1, Me.GalleryChartStyleItem1, Me.SpreadsheetCommandBarButtonGalleryDropDownItem11, Me.SpreadsheetCommandBarSubItem26, Me.SpreadsheetCommandBarButtonGalleryDropDownItem12, Me.SpreadsheetCommandBarButtonGalleryDropDownItem13, Me.SpreadsheetCommandBarButtonGalleryDropDownItem14, Me.SpreadsheetCommandBarButtonGalleryDropDownItem15, Me.SpreadsheetCommandBarSubItem27, Me.SpreadsheetCommandBarButtonGalleryDropDownItem16, Me.SpreadsheetCommandBarButtonGalleryDropDownItem17, Me.SpreadsheetCommandBarSubItem28, Me.SpreadsheetCommandBarButtonGalleryDropDownItem18, Me.SpreadsheetCommandBarButtonGalleryDropDownItem19, Me.SpreadsheetCommandBarButtonGalleryDropDownItem20, Me.SpreadsheetCommandBarButtonGalleryDropDownItem21, Me.SpreadsheetCommandBarButtonGalleryDropDownItem22, Me.BarStaticItem1, Me.RenameTableItem1, Me.SpreadsheetCommandBarCheckItem26, Me.SpreadsheetCommandBarCheckItem27, Me.SpreadsheetCommandBarCheckItem28, Me.SpreadsheetCommandBarCheckItem29, Me.SpreadsheetCommandBarCheckItem30, Me.SpreadsheetCommandBarCheckItem31, Me.SpreadsheetCommandBarCheckItem32, Me.GalleryTableStylesItem1, Me.SaveAsNew, Me.Close_bbi})
         Me.RibbonControl1.LargeImages = Me.ImageCollection1
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 257
+        Me.RibbonControl1.MaxItemId = 261
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.PageCategories.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageCategory() {Me.ChartToolsRibbonPageCategory1, Me.TableToolsRibbonPageCategory1, Me.PictureToolsRibbonPageCategory1, Me.DrawingToolsRibbonPageCategory1})
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.FileRibbonPage1, Me.HomeRibbonPage1, Me.InsertRibbonPage1, Me.PageLayoutRibbonPage1, Me.FormulasRibbonPage1, Me.DataRibbonPage1, Me.ReviewRibbonPage1, Me.ViewRibbonPage1})
         Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemFontEdit1, Me.RepositoryItemSpreadsheetFontSizeEdit1, Me.RepositoryItemPopupGalleryEdit1, Me.RepositoryItemTextEdit1})
-        Me.RibbonControl1.Size = New System.Drawing.Size(1488, 141)
+        Me.RibbonControl1.Size = New System.Drawing.Size(1488, 146)
         '
         'ImageCollection1
         '
@@ -975,14 +977,12 @@ Partial Class ExcelForm
         'SpreadsheetControl1
         '
         Me.SpreadsheetControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SpreadsheetControl1.Location = New System.Drawing.Point(0, 170)
+        Me.SpreadsheetControl1.Location = New System.Drawing.Point(0, 180)
         Me.SpreadsheetControl1.LookAndFeel.SkinName = "Office 2013 Dark Gray"
         Me.SpreadsheetControl1.LookAndFeel.UseDefaultLookAndFeel = False
         Me.SpreadsheetControl1.MenuManager = Me.RibbonControl1
         Me.SpreadsheetControl1.Name = "SpreadsheetControl1"
-        Me.SpreadsheetControl1.Options.Import.Csv.Encoding = CType(resources.GetObject("SpreadsheetControl1.Options.Import.Csv.Encoding"), System.Text.Encoding)
-        Me.SpreadsheetControl1.Options.Import.Txt.Encoding = CType(resources.GetObject("SpreadsheetControl1.Options.Import.Txt.Encoding"), System.Text.Encoding)
-        Me.SpreadsheetControl1.Size = New System.Drawing.Size(1488, 558)
+        Me.SpreadsheetControl1.Size = New System.Drawing.Size(1488, 548)
         Me.SpreadsheetControl1.TabIndex = 0
         Me.SpreadsheetControl1.Text = "SpreadsheetControl1"
         '
@@ -3256,9 +3256,15 @@ Partial Class ExcelForm
         Me.SaveAsNew.Caption = "Save As"
         Me.SaveAsNew.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
         Me.SaveAsNew.Id = 253
-        Me.SaveAsNew.ImageOptions.ImageIndex = 23
-        Me.SaveAsNew.ImageOptions.LargeImageIndex = 23
+        Me.SaveAsNew.ImageOptions.SvgImage = CType(resources.GetObject("SaveAsNew.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
         Me.SaveAsNew.Name = "SaveAsNew"
+        '
+        'Close_bbi
+        '
+        Me.Close_bbi.Caption = "Close"
+        Me.Close_bbi.Id = 258
+        Me.Close_bbi.ImageOptions.SvgImage = CType(resources.GetObject("Close_bbi.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.Close_bbi.Name = "Close_bbi"
         '
         'ChartToolsRibbonPageCategory1
         '
@@ -3275,22 +3281,26 @@ Partial Class ExcelForm
         '
         'ChartsDesignTypeRibbonPageGroup1
         '
+        Me.ChartsDesignTypeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsDesignTypeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem134)
         Me.ChartsDesignTypeRibbonPageGroup1.Name = "ChartsDesignTypeRibbonPageGroup1"
         '
         'ChartsDesignDataRibbonPageGroup1
         '
+        Me.ChartsDesignDataRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsDesignDataRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem135)
         Me.ChartsDesignDataRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem136)
         Me.ChartsDesignDataRibbonPageGroup1.Name = "ChartsDesignDataRibbonPageGroup1"
         '
         'ChartsDesignLayoutsRibbonPageGroup1
         '
+        Me.ChartsDesignLayoutsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsDesignLayoutsRibbonPageGroup1.ItemLinks.Add(Me.GalleryChartLayoutItem1)
         Me.ChartsDesignLayoutsRibbonPageGroup1.Name = "ChartsDesignLayoutsRibbonPageGroup1"
         '
         'ChartsDesignStylesRibbonPageGroup1
         '
+        Me.ChartsDesignStylesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsDesignStylesRibbonPageGroup1.ItemLinks.Add(Me.GalleryChartStyleItem1)
         Me.ChartsDesignStylesRibbonPageGroup1.Name = "ChartsDesignStylesRibbonPageGroup1"
         '
@@ -3302,6 +3312,7 @@ Partial Class ExcelForm
         '
         'ChartsLayoutLabelsRibbonPageGroup1
         '
+        Me.ChartsLayoutLabelsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsLayoutLabelsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonGalleryDropDownItem11)
         Me.ChartsLayoutLabelsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem26)
         Me.ChartsLayoutLabelsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonGalleryDropDownItem14)
@@ -3310,12 +3321,14 @@ Partial Class ExcelForm
         '
         'ChartsLayoutAxesRibbonPageGroup1
         '
+        Me.ChartsLayoutAxesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsLayoutAxesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem27)
         Me.ChartsLayoutAxesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem28)
         Me.ChartsLayoutAxesRibbonPageGroup1.Name = "ChartsLayoutAxesRibbonPageGroup1"
         '
         'ChartsLayoutAnalysisRibbonPageGroup1
         '
+        Me.ChartsLayoutAnalysisRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsLayoutAnalysisRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonGalleryDropDownItem20)
         Me.ChartsLayoutAnalysisRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonGalleryDropDownItem21)
         Me.ChartsLayoutAnalysisRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonGalleryDropDownItem22)
@@ -3329,6 +3342,7 @@ Partial Class ExcelForm
         '
         'ChartsFormatArrangeRibbonPageGroup1
         '
+        Me.ChartsFormatArrangeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsFormatArrangeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem20)
         Me.ChartsFormatArrangeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem21)
         Me.ChartsFormatArrangeRibbonPageGroup1.Name = "ChartsFormatArrangeRibbonPageGroup1"
@@ -3348,17 +3362,20 @@ Partial Class ExcelForm
         '
         'TablePropertiesRibbonPageGroup1
         '
+        Me.TablePropertiesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.TablePropertiesRibbonPageGroup1.ItemLinks.Add(Me.BarStaticItem1)
         Me.TablePropertiesRibbonPageGroup1.ItemLinks.Add(Me.RenameTableItem1)
         Me.TablePropertiesRibbonPageGroup1.Name = "TablePropertiesRibbonPageGroup1"
         '
         'TableToolsRibbonPageGroup1
         '
+        Me.TableToolsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.TableToolsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem26)
         Me.TableToolsRibbonPageGroup1.Name = "TableToolsRibbonPageGroup1"
         '
         'TableStyleOptionsRibbonPageGroup1
         '
+        Me.TableStyleOptionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.TableStyleOptionsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem27)
         Me.TableStyleOptionsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem28)
         Me.TableStyleOptionsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem29)
@@ -3369,6 +3386,7 @@ Partial Class ExcelForm
         '
         'TableStylesRibbonPageGroup1
         '
+        Me.TableStylesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.TableStylesRibbonPageGroup1.ItemLinks.Add(Me.GalleryTableStylesItem1)
         Me.TableStylesRibbonPageGroup1.Name = "TableStylesRibbonPageGroup1"
         '
@@ -3387,6 +3405,7 @@ Partial Class ExcelForm
         '
         'PictureFormatArrangeRibbonPageGroup1
         '
+        Me.PictureFormatArrangeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.PictureFormatArrangeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem20)
         Me.PictureFormatArrangeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem21)
         Me.PictureFormatArrangeRibbonPageGroup1.Name = "PictureFormatArrangeRibbonPageGroup1"
@@ -3406,6 +3425,7 @@ Partial Class ExcelForm
         '
         'DrawingFormatArrangeRibbonPageGroup1
         '
+        Me.DrawingFormatArrangeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.DrawingFormatArrangeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem20)
         Me.DrawingFormatArrangeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem21)
         Me.DrawingFormatArrangeRibbonPageGroup1.Name = "DrawingFormatArrangeRibbonPageGroup1"
@@ -3417,12 +3437,14 @@ Partial Class ExcelForm
         '
         'CommonRibbonPageGroup1
         '
+        Me.CommonRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SaveAsNew)
-        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem5)
-        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem6)
-        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem7)
-        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem8)
+        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem5, True)
+        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem6, True)
+        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem7, True)
+        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem8, True)
         Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem9)
+        Me.CommonRibbonPageGroup1.ItemLinks.Add(Me.Close_bbi, True)
         Me.CommonRibbonPageGroup1.Name = "CommonRibbonPageGroup1"
         '
         'HomeRibbonPage1
@@ -3438,6 +3460,7 @@ Partial Class ExcelForm
         '
         'ClipboardRibbonPageGroup1
         '
+        Me.ClipboardRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ClipboardRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem10)
         Me.ClipboardRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem11)
         Me.ClipboardRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem12)
@@ -3446,6 +3469,7 @@ Partial Class ExcelForm
         '
         'FontRibbonPageGroup1
         '
+        Me.FontRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[True]
         Me.FontRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup1)
         Me.FontRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup2)
         Me.FontRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup3)
@@ -3454,6 +3478,7 @@ Partial Class ExcelForm
         '
         'AlignmentRibbonPageGroup1
         '
+        Me.AlignmentRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[True]
         Me.AlignmentRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup5)
         Me.AlignmentRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup6)
         Me.AlignmentRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup7)
@@ -3463,6 +3488,7 @@ Partial Class ExcelForm
         '
         'NumberRibbonPageGroup1
         '
+        Me.NumberRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[True]
         Me.NumberRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup8)
         Me.NumberRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup9)
         Me.NumberRibbonPageGroup1.ItemLinks.Add(Me.BarButtonGroup10)
@@ -3470,6 +3496,7 @@ Partial Class ExcelForm
         '
         'CellsRibbonPageGroup1
         '
+        Me.CellsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.CellsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem8)
         Me.CellsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem9)
         Me.CellsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem10)
@@ -3477,6 +3504,7 @@ Partial Class ExcelForm
         '
         'EditingRibbonPageGroup1
         '
+        Me.EditingRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.EditingRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem12)
         Me.EditingRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem13)
         Me.EditingRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem14)
@@ -3491,16 +3519,19 @@ Partial Class ExcelForm
         '
         'TablesRibbonPageGroup1
         '
+        Me.TablesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.TablesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem102)
         Me.TablesRibbonPageGroup1.Name = "TablesRibbonPageGroup1"
         '
         'IllustrationsRibbonPageGroup1
         '
+        Me.IllustrationsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.IllustrationsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem103)
         Me.IllustrationsRibbonPageGroup1.Name = "IllustrationsRibbonPageGroup1"
         '
         'ChartsRibbonPageGroup1
         '
+        Me.ChartsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChartsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonGalleryDropDownItem4)
         Me.ChartsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonGalleryDropDownItem5)
         Me.ChartsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonGalleryDropDownItem6)
@@ -3512,11 +3543,13 @@ Partial Class ExcelForm
         '
         'LinksRibbonPageGroup1
         '
+        Me.LinksRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.LinksRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem104)
         Me.LinksRibbonPageGroup1.Name = "LinksRibbonPageGroup1"
         '
         'SymbolsRibbonPageGroup1
         '
+        Me.SymbolsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.SymbolsRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem105)
         Me.SymbolsRibbonPageGroup1.Name = "SymbolsRibbonPageGroup1"
         '
@@ -3527,6 +3560,7 @@ Partial Class ExcelForm
         '
         'PageSetupRibbonPageGroup1
         '
+        Me.PageSetupRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[True]
         Me.PageSetupRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem17)
         Me.PageSetupRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem18)
         Me.PageSetupRibbonPageGroup1.ItemLinks.Add(Me.PageSetupPaperKindItem1)
@@ -3535,18 +3569,21 @@ Partial Class ExcelForm
         '
         'PageSetupShowRibbonPageGroup1
         '
+        Me.PageSetupShowRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.PageSetupShowRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem19)
         Me.PageSetupShowRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem20)
         Me.PageSetupShowRibbonPageGroup1.Name = "PageSetupShowRibbonPageGroup1"
         '
         'PageSetupPrintRibbonPageGroup1
         '
+        Me.PageSetupPrintRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[True]
         Me.PageSetupPrintRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem21)
         Me.PageSetupPrintRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem22)
         Me.PageSetupPrintRibbonPageGroup1.Name = "PageSetupPrintRibbonPageGroup1"
         '
         'ArrangeRibbonPageGroup1
         '
+        Me.ArrangeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ArrangeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem20)
         Me.ArrangeRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem21)
         Me.ArrangeRibbonPageGroup1.Name = "ArrangeRibbonPageGroup1"
@@ -3558,6 +3595,7 @@ Partial Class ExcelForm
         '
         'FunctionLibraryRibbonPageGroup1
         '
+        Me.FunctionLibraryRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.FunctionLibraryRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem22)
         Me.FunctionLibraryRibbonPageGroup1.ItemLinks.Add(Me.FunctionsFinancialItem1)
         Me.FunctionLibraryRibbonPageGroup1.ItemLinks.Add(Me.FunctionsLogicalItem1)
@@ -3570,6 +3608,7 @@ Partial Class ExcelForm
         '
         'FormulaDefinedNamesRibbonPageGroup1
         '
+        Me.FormulaDefinedNamesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.FormulaDefinedNamesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem118)
         Me.FormulaDefinedNamesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem119)
         Me.FormulaDefinedNamesRibbonPageGroup1.ItemLinks.Add(Me.DefinedNameListItem1)
@@ -3578,11 +3617,13 @@ Partial Class ExcelForm
         '
         'FormulaAuditingRibbonPageGroup1
         '
+        Me.FormulaAuditingRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.FormulaAuditingRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem23)
         Me.FormulaAuditingRibbonPageGroup1.Name = "FormulaAuditingRibbonPageGroup1"
         '
         'FormulaCalculationRibbonPageGroup1
         '
+        Me.FormulaCalculationRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.FormulaCalculationRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem24)
         Me.FormulaCalculationRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem121)
         Me.FormulaCalculationRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem122)
@@ -3595,6 +3636,7 @@ Partial Class ExcelForm
         '
         'SortAndFilterRibbonPageGroup1
         '
+        Me.SortAndFilterRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.SortAndFilterRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem93)
         Me.SortAndFilterRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem94)
         Me.SortAndFilterRibbonPageGroup1.Name = "SortAndFilterRibbonPageGroup1"
@@ -3606,6 +3648,7 @@ Partial Class ExcelForm
         '
         'ChangesRibbonPageGroup1
         '
+        Me.ChangesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ChangesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem76)
         Me.ChangesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem123)
         Me.ChangesRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem124)
@@ -3620,12 +3663,14 @@ Partial Class ExcelForm
         '
         'ShowRibbonPageGroup1
         '
+        Me.ShowRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ShowRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem19)
         Me.ShowRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarCheckItem20)
         Me.ShowRibbonPageGroup1.Name = "ShowRibbonPageGroup1"
         '
         'ZoomRibbonPageGroup1
         '
+        Me.ZoomRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.ZoomRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem127)
         Me.ZoomRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem128)
         Me.ZoomRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarButtonItem129)
@@ -3633,6 +3678,7 @@ Partial Class ExcelForm
         '
         'WindowRibbonPageGroup1
         '
+        Me.WindowRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.[False]
         Me.WindowRibbonPageGroup1.ItemLinks.Add(Me.SpreadsheetCommandBarSubItem25)
         Me.WindowRibbonPageGroup1.Name = "WindowRibbonPageGroup1"
         '
@@ -3642,7 +3688,7 @@ Partial Class ExcelForm
         Me.SpreadsheetFormulaBarControl1.Location = New System.Drawing.Point(0, 0)
         Me.SpreadsheetFormulaBarControl1.MinimumSize = New System.Drawing.Size(0, 20)
         Me.SpreadsheetFormulaBarControl1.Name = "SpreadsheetFormulaBarControl1"
-        Me.SpreadsheetFormulaBarControl1.Size = New System.Drawing.Size(1338, 24)
+        Me.SpreadsheetFormulaBarControl1.Size = New System.Drawing.Size(1333, 24)
         Me.SpreadsheetFormulaBarControl1.SpreadsheetControl = Me.SpreadsheetControl1
         Me.SpreadsheetFormulaBarControl1.TabIndex = 0
         '
@@ -3661,7 +3707,7 @@ Partial Class ExcelForm
         'SplitContainerControl1
         '
         Me.SplitContainerControl1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 141)
+        Me.SplitContainerControl1.Location = New System.Drawing.Point(0, 146)
         Me.SplitContainerControl1.MinimumSize = New System.Drawing.Size(0, 24)
         Me.SplitContainerControl1.Name = "SplitContainerControl1"
         Me.SplitContainerControl1.Panel1.Controls.Add(Me.SpreadsheetNameBoxControl1)
@@ -3673,10 +3719,10 @@ Partial Class ExcelForm
         'SplitterControl1
         '
         Me.SplitterControl1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.SplitterControl1.Location = New System.Drawing.Point(0, 165)
+        Me.SplitterControl1.Location = New System.Drawing.Point(0, 170)
         Me.SplitterControl1.MinSize = 20
         Me.SplitterControl1.Name = "SplitterControl1"
-        Me.SplitterControl1.Size = New System.Drawing.Size(1488, 5)
+        Me.SplitterControl1.Size = New System.Drawing.Size(1488, 10)
         Me.SplitterControl1.TabIndex = 1
         Me.SplitterControl1.TabStop = False
         '
@@ -3964,7 +4010,7 @@ Partial Class ExcelForm
         Me.Controls.Add(Me.SplitterControl1)
         Me.Controls.Add(Me.SplitContainerControl1)
         Me.Controls.Add(Me.RibbonControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("ExcelForm.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "ExcelForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "ExcelForm"
@@ -4357,4 +4403,5 @@ Partial Class ExcelForm
     Friend WithEvents SpreadsheetCommandBarButtonItem117 As DevExpress.XtraSpreadsheet.UI.SpreadsheetCommandBarButtonItem
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents SaveAsNew As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Close_bbi As DevExpress.XtraBars.BarButtonItem
 End Class

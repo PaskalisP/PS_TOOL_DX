@@ -32,25 +32,7 @@ Partial Class PSTOOL_MAIN_Form
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PSTOOL_MAIN_Form))
-        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip3 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem3 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip4 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip5 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem5 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem5 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim PushTransition1 As DevExpress.Utils.Animation.PushTransition = New DevExpress.Utils.Animation.PushTransition()
-        Dim SuperToolTip6 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem6 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem6 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip7 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem7 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem7 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
@@ -66,6 +48,24 @@ Partial Class PSTOOL_MAIN_Form
         Dim SuperToolTip11 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem11 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem11 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip3 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem3 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip4 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip5 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem5 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem5 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip6 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem6 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem6 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim AlertButton1 As DevExpress.XtraBars.Alerter.AlertButton = New DevExpress.XtraBars.Alerter.AlertButton()
         Dim DockingContainer1 As DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer()
         Me.DocumentGroup1 = New DevExpress.XtraBars.Docking2010.Views.Tabbed.DocumentGroup(Me.components)
@@ -81,109 +81,13 @@ Partial Class PSTOOL_MAIN_Form
         Me.Close_all_Forms_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.iExit = New DevExpress.XtraBars.BarButtonItem()
         Me.ribbonImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.Active_MDI_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.Cascade_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.Tile_Horizontal_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.Tile_Vertical_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarMdiChildrenListItem1 = New DevExpress.XtraBars.BarMdiChildrenListItem()
-        Me.FullWindowModeBarCheckItem = New DevExpress.XtraBars.BarCheckItem()
-        Me.SingleTabbedViewModeBarCheckItem = New DevExpress.XtraBars.BarCheckItem()
-        Me.CloseAndExit_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.iBasicBankData_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.iCustomers = New DevExpress.XtraBars.BarButtonItem()
-        Me.CustomerGroups_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.iCustomerAccounts = New DevExpress.XtraBars.BarButtonItem()
-        Me.iAllContractsAccounts_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.iSSI = New DevExpress.XtraBars.BarButtonItem()
-        Me.iGLAccounts = New DevExpress.XtraBars.BarButtonItem()
         Me.iInternalCurrencies = New DevExpress.XtraBars.BarButtonItem()
-        Me.iIndustrialValuesOCBS = New DevExpress.XtraBars.BarButtonItem()
-        Me.iContractTypesOCBS = New DevExpress.XtraBars.BarButtonItem()
-        Me.iProductTypesOCBS = New DevExpress.XtraBars.BarButtonItem()
-        Me.iOCBSExchangeRates = New DevExpress.XtraBars.BarButtonItem()
-        Me.iCurrencyConverterOCBS = New DevExpress.XtraBars.BarButtonItem()
-        Me.iBasicReports_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.BarSubItem1 = New DevExpress.XtraBars.BarSubItem()
-        Me.iDailyBalanceSheets = New DevExpress.XtraBars.BarButtonItem()
-        Me.iDailyBalanceSheetsDetails = New DevExpress.XtraBars.BarButtonItem()
-        Me.iDailyPLSheets = New DevExpress.XtraBars.BarButtonItem()
-        Me.iFristen = New DevExpress.XtraBars.BarButtonItem()
-        Me.CashFlows_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.iAccruedInterestAnalysis = New DevExpress.XtraBars.BarButtonItem()
-        Me.iTrialBalance218 = New DevExpress.XtraBars.BarButtonItem()
-        Me.iMakReport = New DevExpress.XtraBars.BarButtonItem()
-        Me.iCreditRisk = New DevExpress.XtraBars.BarButtonItem()
-        Me.iFinancialReconciliation = New DevExpress.XtraBars.BarButtonItem()
-        Me.ObligoLiabilities_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarStaticItem5 = New DevExpress.XtraBars.BarStaticItem()
-        Me.iLastOdasFile = New DevExpress.XtraBars.BarStaticItem()
-        Me.iLastOcbsFile = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarStaticItem4 = New DevExpress.XtraBars.BarStaticItem()
-        Me.iLastBaisInterfaceFile = New DevExpress.XtraBars.BarStaticItem()
-        Me.iLastBaisFile = New DevExpress.XtraBars.BarStaticItem()
-        Me.ClientMerge_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BasicExternalSate_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.BarSubItem2 = New DevExpress.XtraBars.BarSubItem()
-        Me.iBICDirectory = New DevExpress.XtraBars.BarButtonItem()
-        Me.iBICplusDirectory = New DevExpress.XtraBars.BarButtonItem()
-        Me.BIC_History_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.T2DirectoryBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.iSEPA = New DevExpress.XtraBars.BarButtonItem()
-        Me.iBLZ = New DevExpress.XtraBars.BarButtonItem()
-        Me.iCountries = New DevExpress.XtraBars.BarButtonItem()
-        Me.iHolidays = New DevExpress.XtraBars.BarButtonItem()
-        Me.iPLZ = New DevExpress.XtraBars.BarButtonItem()
-        Me.NUTS3_Codes_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.JustizID_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.iCurrencies = New DevExpress.XtraBars.BarButtonItem()
-        Me.iECBExchangeRates = New DevExpress.XtraBars.BarButtonItem()
-        Me.iCurrencyConverterECB = New DevExpress.XtraBars.BarButtonItem()
-        Me.PostingsBalances_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.BarSubItem4 = New DevExpress.XtraBars.BarSubItem()
-        Me.BarSubItem9 = New DevExpress.XtraBars.BarSubItem()
-        Me.BarSubItem10 = New DevExpress.XtraBars.BarSubItem()
-        Me.BarButtonItem18 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem19 = New DevExpress.XtraBars.BarButtonItem()
-        Me.NGS_Postings_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.BarButtonItem7 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem8 = New DevExpress.XtraBars.BarButtonItem()
-        Me.NEWGallPostingsBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.NGS_Postings_Search_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.OCBS_Postings_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.OCBSallPostingsBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.OCBS_Postings_Search_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarSubItem3 = New DevExpress.XtraBars.BarSubItem()
-        Me.BarButtonItem9 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem10 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem11 = New DevExpress.XtraBars.BarButtonItem()
-        Me.OCBSinternalNostroBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.OCBSExternalNostroBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.OCBSExternalNostroBalancesAllBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.OCBSsuspenceBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarSubItem5 = New DevExpress.XtraBars.BarSubItem()
-        Me.BarButtonItem12 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem13 = New DevExpress.XtraBars.BarButtonItem()
-        Me.OCBScustomerBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.CorporateCustomerBalancesNEWG_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarSubItem6 = New DevExpress.XtraBars.BarSubItem()
-        Me.BarButtonItem14 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem15 = New DevExpress.XtraBars.BarButtonItem()
-        Me.VostroBalancesNEWG_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.OCBSvostroBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.iClients = New DevExpress.XtraBars.BarButtonItem()
-        Me.PivotGrids_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.PivotGrid_BS_Details_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.PivotGrid_BS_Totals_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.Pivotgrid_FinRecon_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.PivotGrid_Liquidity_Overview_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.Pivotgrid_ObligoLiabilitySurplusBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.PivotGrid_HGB_Positions_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.PivotGrid_All_Postings_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.iOrgaChart = New DevExpress.XtraBars.BarButtonItem()
-        Me.iHelp_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.iCalendar = New DevExpress.XtraBars.BarButtonItem()
-        Me.iInterestCalculator = New DevExpress.XtraBars.BarButtonItem()
-        Me.iIBANCalculator = New DevExpress.XtraBars.BarButtonItem()
+        Me.iFind = New DevExpress.XtraBars.BarButtonItem()
+        Me.iSave = New DevExpress.XtraBars.BarButtonItem()
+        Me.iSaveAs = New DevExpress.XtraBars.BarButtonItem()
+        Me.iAbout = New DevExpress.XtraBars.BarButtonItem()
+        Me.siStatus = New DevExpress.XtraBars.BarStaticItem()
+        Me.siInfo = New DevExpress.XtraBars.BarStaticItem()
         Me.alignButtonGroup = New DevExpress.XtraBars.BarButtonGroup()
         Me.iBoldFontStyle = New DevExpress.XtraBars.BarButtonItem()
         Me.iItalicFontStyle = New DevExpress.XtraBars.BarButtonItem()
@@ -192,19 +96,112 @@ Partial Class PSTOOL_MAIN_Form
         Me.iLeftTextAlign = New DevExpress.XtraBars.BarButtonItem()
         Me.iCenterTextAlign = New DevExpress.XtraBars.BarButtonItem()
         Me.iRightTextAlign = New DevExpress.XtraBars.BarButtonItem()
+        Me.rgbiSkins = New DevExpress.XtraBars.RibbonGalleryBarItem()
+        Me.iSSI = New DevExpress.XtraBars.BarButtonItem()
+        Me.iOCBSExchangeRates = New DevExpress.XtraBars.BarButtonItem()
+        Me.iCalendar = New DevExpress.XtraBars.BarButtonItem()
+        Me.iCurrencyConverterOCBS = New DevExpress.XtraBars.BarButtonItem()
+        Me.iCustomers = New DevExpress.XtraBars.BarButtonItem()
+        Me.iCustomerAccounts = New DevExpress.XtraBars.BarButtonItem()
+        Me.iIBANCalculator = New DevExpress.XtraBars.BarButtonItem()
+        Me.iBICDirectory = New DevExpress.XtraBars.BarButtonItem()
+        Me.iECBExchangeRates = New DevExpress.XtraBars.BarButtonItem()
+        Me.iCountries = New DevExpress.XtraBars.BarButtonItem()
+        Me.iCurrencies = New DevExpress.XtraBars.BarButtonItem()
+        Me.iCurrencyConverterECB = New DevExpress.XtraBars.BarButtonItem()
+        Me.iIndustrialValuesOCBS = New DevExpress.XtraBars.BarButtonItem()
+        Me.iContractTypesOCBS = New DevExpress.XtraBars.BarButtonItem()
+        Me.iProductTypesOCBS = New DevExpress.XtraBars.BarButtonItem()
+        Me.iBLZ = New DevExpress.XtraBars.BarButtonItem()
+        Me.iSEPA = New DevExpress.XtraBars.BarButtonItem()
+        Me.iPLZ = New DevExpress.XtraBars.BarButtonItem()
+        Me.iDailyBalanceSheets = New DevExpress.XtraBars.BarButtonItem()
+        Me.iDailyPLSheets = New DevExpress.XtraBars.BarButtonItem()
+        Me.iFristen = New DevExpress.XtraBars.BarButtonItem()
+        Me.iTrialBalance218 = New DevExpress.XtraBars.BarButtonItem()
+        Me.iMakReport = New DevExpress.XtraBars.BarButtonItem()
+        Me.iCreditRisk = New DevExpress.XtraBars.BarButtonItem()
+        Me.iAccruedInterestAnalysis = New DevExpress.XtraBars.BarButtonItem()
+        Me.iGLAccounts = New DevExpress.XtraBars.BarButtonItem()
+        Me.iOrgaChart = New DevExpress.XtraBars.BarButtonItem()
+        Me.iLastOdasFile = New DevExpress.XtraBars.BarStaticItem()
+        Me.iLastOcbsFile = New DevExpress.XtraBars.BarStaticItem()
+        Me.iLastBaisFile = New DevExpress.XtraBars.BarStaticItem()
+        Me.Active_MDI_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.Cascade_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.Tile_Horizontal_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.Tile_Vertical_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarMdiChildrenListItem1 = New DevExpress.XtraBars.BarMdiChildrenListItem()
+        Me.OCBSallPostingsBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.OCBSprofitLossGLbalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.OCBSdiverseGLbalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.OCBSinternalNostroBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.OCBScustomerBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.OCBS_PL_MappingBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.OCBS_DIVERSE_MappingBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.OCBSvostroBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.T2DirectoryBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.iBICplusDirectory = New DevExpress.XtraBars.BarButtonItem()
+        Me.iInterestCalculator = New DevExpress.XtraBars.BarButtonItem()
         Me.iUnratedCustomers = New DevExpress.XtraBars.BarStaticItem()
-        Me.rgbiSkins = New DevExpress.XtraBars.RibbonGalleryBarItem()
-        Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarSubItem7 = New DevExpress.XtraBars.BarSubItem()
-        Me.BarSubItem8 = New DevExpress.XtraBars.BarSubItem()
-        Me.BarButtonItem5 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem6 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem16 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem17 = New DevExpress.XtraBars.BarButtonItem()
+        Me.iImportEventsErrorsCount = New DevExpress.XtraBars.BarStaticItem()
+        Me.iHolidays = New DevExpress.XtraBars.BarButtonItem()
+        Me.OCBSsuspenceBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.FullWindowModeBarCheckItem = New DevExpress.XtraBars.BarCheckItem()
+        Me.iClients = New DevExpress.XtraBars.BarButtonItem()
+        Me.iDailyBalanceSheetsDetails = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonGroup1 = New DevExpress.XtraBars.BarButtonGroup()
+        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
+        Me.OCBSExternalNostroBalancesBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.OCBSExternalNostroBalancesAllBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.SingleTabbedViewModeBarCheckItem = New DevExpress.XtraBars.BarCheckItem()
+        Me.BarWorkspaceMenuItem1 = New DevExpress.XtraBars.BarWorkspaceMenuItem()
+        Me.WorkspaceManager1 = New DevExpress.Utils.WorkspaceManager(Me.components)
+        Me.PivotGrids_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.PivotGrid_BS_Details_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.PivotGrid_BS_Totals_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.Pivotgrid_FinRecon_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.PivotGrid_Liquidity_Overview_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.Pivotgrid_ObligoLiabilitySurplusBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.PivotGrid_HGB_Positions_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.PivotGrid_All_Postings_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.iBasicBankData_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.CustomerGroups_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.iAllContractsAccounts_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.iBasicReports_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.BarSubItem1 = New DevExpress.XtraBars.BarSubItem()
+        Me.CashFlows_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.iFinancialReconciliation = New DevExpress.XtraBars.BarButtonItem()
+        Me.ObligoLiabilities_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.iHelp_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.CloseAndExit_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.BasicExternalSate_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.BarSubItem2 = New DevExpress.XtraBars.BarSubItem()
+        Me.BIC_History_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.NUTS3_Codes_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.JustizID_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.PostingsBalances_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.BarSubItem4 = New DevExpress.XtraBars.BarSubItem()
+        Me.NGS_Postings_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.NEWGallPostingsBarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.NGS_Postings_Search_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.OCBS_Postings_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.OCBS_Postings_Search_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarSubItem3 = New DevExpress.XtraBars.BarSubItem()
+        Me.BarSubItem5 = New DevExpress.XtraBars.BarSubItem()
+        Me.CorporateCustomerBalancesNEWG_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarSubItem6 = New DevExpress.XtraBars.BarSubItem()
+        Me.VostroBalancesNEWG_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
+        Me.iLastBaisInterfaceFile = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarStaticItem2 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarStaticItem3 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarHeaderItem1 = New DevExpress.XtraBars.BarHeaderItem()
+        Me.BarStaticItem4 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarStaticItem5 = New DevExpress.XtraBars.BarStaticItem()
+        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
+        Me.ClientMerge_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection(Me.components)
         Me.homeRibbonPage = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.SourceDataFiles_RibbonPageGroup = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -239,23 +236,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.RepositoryItemTextEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.ribbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
-        Me.siStatus = New DevExpress.XtraBars.BarStaticItem()
-        Me.siInfo = New DevExpress.XtraBars.BarStaticItem()
-        Me.iFind = New DevExpress.XtraBars.BarButtonItem()
-        Me.iSave = New DevExpress.XtraBars.BarButtonItem()
-        Me.iSaveAs = New DevExpress.XtraBars.BarButtonItem()
-        Me.iAbout = New DevExpress.XtraBars.BarButtonItem()
-        Me.iImportEventsErrorsCount = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarButtonGroup1 = New DevExpress.XtraBars.BarButtonGroup()
-        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem2 = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarWorkspaceMenuItem1 = New DevExpress.XtraBars.BarWorkspaceMenuItem()
-        Me.WorkspaceManager1 = New DevExpress.Utils.WorkspaceManager(Me.components)
-        Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarStaticItem2 = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarStaticItem3 = New DevExpress.XtraBars.BarStaticItem()
-        Me.BarHeaderItem1 = New DevExpress.XtraBars.BarHeaderItem()
-        Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.AccordionControl1 = New DevExpress.XtraBars.Navigation.AccordionControl()
         Me.SECUR_GROUP_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.SECUR_OurSecurities_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -289,6 +269,8 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_ObligorGratesRatting_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CustomerRating_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_WeightingFactors_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CashPledge_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator14 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.RISKCONTROL_IncidentsDatabase_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -384,8 +366,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_BAISFiles_Export_GROUP_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_BAISFiles_ALPHA_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_BAISFiles_AnaCredit_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
-        Me.EDP_BAISFiles_ALPHA_Test_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
-        Me.EDP_BAISFiles_AnaCredit_Test_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_BAIS_Imports_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator27 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.EDP_PSTOOL_Client_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -480,6 +460,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.AlertControl_NewUser_ActiveDirectory = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.AlertControl_General_Info = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.LogoImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -596,15 +577,15 @@ Partial Class PSTOOL_MAIN_Form
         Me.ribbonControl.ApplicationButtonText = Nothing
         Me.ribbonControl.ExpandCollapseItem.Id = 0
         Me.ribbonControl.Images = Me.ribbonImageCollection
-        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.ribbonControl.SearchEditItem, Me.Active_MDI_BarSubItem, Me.FullWindowModeBarCheckItem, Me.SingleTabbedViewModeBarCheckItem, Me.CloseAndExit_BarSubItem, Me.iConfiguration, Me.iBasicBankData_BarSubItem, Me.iBasicReports_BarSubItem, Me.iHelp, Me.Cascade_BarButtonItem, Me.Tile_Horizontal_BarButtonItem, Me.Tile_Vertical_BarButtonItem, Me.BarMdiChildrenListItem1, Me.Close_all_Forms_BarButtonItem, Me.iExit, Me.iBankData, Me.iCustomers, Me.CustomerGroups_BarButtonItem, Me.iCustomerAccounts, Me.iAllContractsAccounts_BarButtonItem, Me.iSSI, Me.iGLAccounts, Me.iInternalCurrencies, Me.iIndustrialValuesOCBS, Me.iContractTypesOCBS, Me.iProductTypesOCBS, Me.iOCBSExchangeRates, Me.iCurrencyConverterOCBS, Me.BarSubItem1, Me.iDailyPLSheets, Me.iFristen, Me.CashFlows_BarButtonItem, Me.iAccruedInterestAnalysis, Me.iTrialBalance218, Me.iMakReport, Me.iCreditRisk, Me.iFinancialReconciliation, Me.ObligoLiabilities_BarButtonItem, Me.iDailyBalanceSheets, Me.iDailyBalanceSheetsDetails, Me.BarStaticItem5, Me.iLastOdasFile, Me.iLastOcbsFile, Me.BarStaticItem4, Me.iLastBaisInterfaceFile, Me.iLastBaisFile, Me.ClientMerge_BarButtonItem, Me.BasicExternalSate_BarSubItem, Me.PostingsBalances_BarSubItem, Me.iClients, Me.PivotGrids_BarSubItem, Me.iOrgaChart, Me.iHelp_BarSubItem, Me.alignButtonGroup, Me.iBoldFontStyle, Me.iItalicFontStyle, Me.iUnderlinedFontStyle, Me.fontStyleButtonGroup, Me.iLeftTextAlign, Me.iCenterTextAlign, Me.iRightTextAlign, Me.OCBSprofitLossGLbalancesBarButtonItem, Me.OCBSdiverseGLbalancesBarButtonItem, Me.OCBS_PL_MappingBarButtonItem, Me.OCBS_DIVERSE_MappingBarButtonItem, Me.iUnratedCustomers, Me.rgbiSkins, Me.BarButtonItem4, Me.BarSubItem7, Me.BarSubItem8, Me.BarButtonItem5, Me.BarButtonItem6, Me.BarSubItem2, Me.iCountries, Me.iHolidays, Me.iPLZ, Me.NUTS3_Codes_BarButtonItem, Me.JustizID_BarButtonItem, Me.iCurrencies, Me.iECBExchangeRates, Me.iCurrencyConverterECB, Me.BarSubItem4, Me.BarSubItem3, Me.OCBSsuspenceBalancesBarButtonItem, Me.BarSubItem5, Me.BarSubItem6, Me.PivotGrid_BS_Details_BarButtonItem, Me.PivotGrid_BS_Totals_BarButtonItem, Me.Pivotgrid_FinRecon_BarButtonItem, Me.PivotGrid_Liquidity_Overview_BarButtonItem, Me.Pivotgrid_ObligoLiabilitySurplusBarButtonItem, Me.PivotGrid_HGB_Positions_BarButtonItem, Me.PivotGrid_All_Postings_BarButtonItem, Me.iCalendar, Me.iInterestCalculator, Me.iIBANCalculator, Me.BarSubItem9, Me.BarSubItem10, Me.BarButtonItem7, Me.BarButtonItem8, Me.BarButtonItem9, Me.BarButtonItem10, Me.BarButtonItem11, Me.BarButtonItem12, Me.BarButtonItem13, Me.BarButtonItem14, Me.BarButtonItem15, Me.BarButtonItem16, Me.BarButtonItem17, Me.BarButtonItem18, Me.BarButtonItem19, Me.iBICDirectory, Me.iBICplusDirectory, Me.BIC_History_BarButtonItem, Me.T2DirectoryBarButtonItem, Me.iSEPA, Me.iBLZ, Me.NGS_Postings_BarSubItem, Me.OCBS_Postings_BarSubItem, Me.OCBSinternalNostroBalancesBarButtonItem, Me.OCBSExternalNostroBalancesBarButtonItem, Me.OCBSExternalNostroBalancesAllBarButtonItem, Me.OCBScustomerBalancesBarButtonItem, Me.CorporateCustomerBalancesNEWG_BarButtonItem, Me.VostroBalancesNEWG_BarButtonItem, Me.OCBSvostroBalancesBarButtonItem, Me.NEWGallPostingsBarButtonItem, Me.NGS_Postings_Search_BarButtonItem, Me.OCBSallPostingsBarButtonItem, Me.OCBS_Postings_Search_BarButtonItem})
+        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.ribbonControl.SearchEditItem, Me.iConfiguration, Me.iBankData, Me.iInternalCurrencies, Me.iFind, Me.iSave, Me.iSaveAs, Me.iExit, Me.iHelp, Me.iAbout, Me.siStatus, Me.siInfo, Me.alignButtonGroup, Me.iBoldFontStyle, Me.iItalicFontStyle, Me.iUnderlinedFontStyle, Me.fontStyleButtonGroup, Me.iLeftTextAlign, Me.iCenterTextAlign, Me.iRightTextAlign, Me.rgbiSkins, Me.iSSI, Me.iOCBSExchangeRates, Me.iCalendar, Me.iCurrencyConverterOCBS, Me.iCustomers, Me.iCustomerAccounts, Me.iIBANCalculator, Me.iBICDirectory, Me.iECBExchangeRates, Me.iCountries, Me.iCurrencies, Me.iCurrencyConverterECB, Me.iIndustrialValuesOCBS, Me.iContractTypesOCBS, Me.iProductTypesOCBS, Me.iBLZ, Me.iSEPA, Me.iPLZ, Me.iDailyBalanceSheets, Me.iDailyPLSheets, Me.iFristen, Me.iTrialBalance218, Me.iMakReport, Me.iCreditRisk, Me.iAccruedInterestAnalysis, Me.iGLAccounts, Me.iOrgaChart, Me.iLastOdasFile, Me.iLastOcbsFile, Me.iLastBaisFile, Me.Active_MDI_BarSubItem, Me.Cascade_BarButtonItem, Me.Tile_Horizontal_BarButtonItem, Me.Tile_Vertical_BarButtonItem, Me.BarMdiChildrenListItem1, Me.Close_all_Forms_BarButtonItem, Me.OCBSallPostingsBarButtonItem, Me.OCBSprofitLossGLbalancesBarButtonItem, Me.OCBSdiverseGLbalancesBarButtonItem, Me.OCBSinternalNostroBalancesBarButtonItem, Me.OCBScustomerBalancesBarButtonItem, Me.OCBS_PL_MappingBarButtonItem, Me.OCBS_DIVERSE_MappingBarButtonItem, Me.OCBSvostroBalancesBarButtonItem, Me.T2DirectoryBarButtonItem, Me.iBICplusDirectory, Me.iInterestCalculator, Me.iUnratedCustomers, Me.iImportEventsErrorsCount, Me.iHolidays, Me.OCBSsuspenceBalancesBarButtonItem, Me.FullWindowModeBarCheckItem, Me.iClients, Me.iDailyBalanceSheetsDetails, Me.BarButtonGroup1, Me.BarButtonItem1, Me.BarButtonItem2, Me.OCBSExternalNostroBalancesBarButtonItem, Me.OCBSExternalNostroBalancesAllBarButtonItem, Me.SingleTabbedViewModeBarCheckItem, Me.BarWorkspaceMenuItem1, Me.PivotGrids_BarSubItem, Me.PivotGrid_BS_Details_BarButtonItem, Me.PivotGrid_BS_Totals_BarButtonItem, Me.PivotGrid_Liquidity_Overview_BarButtonItem, Me.PivotGrid_All_Postings_BarButtonItem, Me.iBasicBankData_BarSubItem, Me.iBasicReports_BarSubItem, Me.iHelp_BarSubItem, Me.BarSubItem1, Me.CloseAndExit_BarSubItem, Me.BasicExternalSate_BarSubItem, Me.BarSubItem2, Me.PostingsBalances_BarSubItem, Me.BarSubItem3, Me.iAllContractsAccounts_BarButtonItem, Me.BarStaticItem1, Me.iLastBaisInterfaceFile, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarHeaderItem1, Me.iFinancialReconciliation, Me.BarStaticItem4, Me.BarStaticItem5, Me.ObligoLiabilities_BarButtonItem, Me.Pivotgrid_ObligoLiabilitySurplusBarButtonItem, Me.PivotGrid_HGB_Positions_BarButtonItem, Me.CustomerGroups_BarButtonItem, Me.iNewPSTOOL_Session, Me.iNewPSTOOL_Test_Session, Me.NUTS3_Codes_BarButtonItem, Me.JustizID_BarButtonItem, Me.BarSubItem4, Me.NEWGallPostingsBarButtonItem, Me.CashFlows_BarButtonItem, Me.BarSubItem5, Me.CorporateCustomerBalancesNEWG_BarButtonItem, Me.BarSubItem6, Me.VostroBalancesNEWG_BarButtonItem, Me.Pivotgrid_FinRecon_BarButtonItem, Me.NGS_Postings_BarSubItem, Me.OCBS_Postings_BarSubItem, Me.BarButtonItem3, Me.NGS_Postings_Search_BarButtonItem, Me.OCBS_Postings_Search_BarButtonItem, Me.BIC_History_BarButtonItem, Me.ClientMerge_BarButtonItem})
         Me.ribbonControl.LargeImages = Me.ribbonImageCollectionLarge
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.ribbonControl.MaxItemId = 55
+        Me.ribbonControl.MaxItemId = 33
         Me.ribbonControl.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Never
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.PageHeaderItemLinks.Add(Me.Active_MDI_BarSubItem)
         Me.ribbonControl.PageHeaderItemLinks.Add(Me.FullWindowModeBarCheckItem)
-        Me.ribbonControl.PageHeaderItemLinks.Add(Me.SingleTabbedViewModeBarCheckItem, True)
+        Me.ribbonControl.PageHeaderItemLinks.Add(Me.SingleTabbedViewModeBarCheckItem)
         Me.ribbonControl.PageHeaderItemLinks.Add(Me.CloseAndExit_BarSubItem)
         Me.ribbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.homeRibbonPage, Me.OCBSPostingsBalancesRibbonPage, Me.ExternalRibbonPage, Me.SystemDataStatusRibbonPage, Me.helpRibbonPage})
         Me.ribbonControl.SetPopupContextMenu(Me.ribbonControl, Me.appMenu)
@@ -619,7 +600,8 @@ Partial Class PSTOOL_MAIN_Form
         Me.ribbonControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEdit2, Me.RepositoryItemTextEdit3})
         Me.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
         Me.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.[True]
-        Me.ribbonControl.Size = New System.Drawing.Size(1841, 159)
+        Me.ribbonControl.ShowSearchItem = True
+        Me.ribbonControl.Size = New System.Drawing.Size(1555, 159)
         Me.ribbonControl.StatusBar = Me.ribbonStatusBar
         '
         'ApplicationMenu1
@@ -825,6 +807,498 @@ Partial Class PSTOOL_MAIN_Form
         Me.ribbonImageCollection.Images.SetKeyName(93, "PS.jpg")
         Me.ribbonImageCollection.Images.SetKeyName(94, "PS_Test.ico")
         '
+        'iInternalCurrencies
+        '
+        Me.iInternalCurrencies.Caption = "Internal Currencies"
+        Me.iInternalCurrencies.Description = "Display/Modify Internal Currencies"
+        Me.iInternalCurrencies.Hint = "Display/Modify Internal Currencies"
+        Me.iInternalCurrencies.Id = 3
+        Me.iInternalCurrencies.ImageOptions.ImageIndex = 24
+        Me.iInternalCurrencies.ImageOptions.LargeImageIndex = 17
+        Me.iInternalCurrencies.Name = "iInternalCurrencies"
+        Me.iInternalCurrencies.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iFind
+        '
+        Me.iFind.Caption = "Find"
+        Me.iFind.Description = "Searches for the specified info."
+        Me.iFind.Hint = "Searches for the specified info"
+        Me.iFind.Id = 15
+        Me.iFind.ImageOptions.ImageIndex = 3
+        Me.iFind.ImageOptions.LargeImageIndex = 3
+        Me.iFind.Name = "iFind"
+        Me.iFind.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iSave
+        '
+        Me.iSave.Caption = "&Save"
+        Me.iSave.Description = "Saves the active document."
+        Me.iSave.Hint = "Saves the active document"
+        Me.iSave.Id = 16
+        Me.iSave.ImageOptions.ImageIndex = 4
+        Me.iSave.ImageOptions.LargeImageIndex = 4
+        Me.iSave.Name = "iSave"
+        '
+        'iSaveAs
+        '
+        Me.iSaveAs.Caption = "Save As"
+        Me.iSaveAs.Description = "Saves the active document in a different location."
+        Me.iSaveAs.Hint = "Saves the active document in a different location"
+        Me.iSaveAs.Id = 17
+        Me.iSaveAs.ImageOptions.ImageIndex = 5
+        Me.iSaveAs.ImageOptions.LargeImageIndex = 5
+        Me.iSaveAs.Name = "iSaveAs"
+        '
+        'iAbout
+        '
+        Me.iAbout.Caption = "About"
+        Me.iAbout.Description = "Displays general program information."
+        Me.iAbout.Hint = "Displays general program information"
+        Me.iAbout.Id = 24
+        Me.iAbout.ImageOptions.ImageIndex = 8
+        Me.iAbout.ImageOptions.LargeImageIndex = 8
+        Me.iAbout.Name = "iAbout"
+        '
+        'siStatus
+        '
+        Me.siStatus.Caption = "Some Status Info"
+        Me.siStatus.Id = 31
+        Me.siStatus.Name = "siStatus"
+        Me.siStatus.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'siInfo
+        '
+        Me.siInfo.Caption = "Some Info"
+        Me.siInfo.Description = "Version of the PS TOOL Application"
+        Me.siInfo.Hint = "Version of the PS TOOL Application"
+        Me.siInfo.Id = 32
+        Me.siInfo.ImageOptions.ImageIndex = 8
+        Me.siInfo.Name = "siInfo"
+        Me.siInfo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        '
+        'alignButtonGroup
+        '
+        Me.alignButtonGroup.Caption = "Align Commands"
+        Me.alignButtonGroup.Id = 52
+        Me.alignButtonGroup.ItemLinks.Add(Me.iBoldFontStyle)
+        Me.alignButtonGroup.ItemLinks.Add(Me.iItalicFontStyle)
+        Me.alignButtonGroup.ItemLinks.Add(Me.iUnderlinedFontStyle)
+        Me.alignButtonGroup.Name = "alignButtonGroup"
+        '
+        'iBoldFontStyle
+        '
+        Me.iBoldFontStyle.Caption = "Bold"
+        Me.iBoldFontStyle.Id = 53
+        Me.iBoldFontStyle.ImageOptions.ImageIndex = 9
+        Me.iBoldFontStyle.Name = "iBoldFontStyle"
+        '
+        'iItalicFontStyle
+        '
+        Me.iItalicFontStyle.Caption = "Italic"
+        Me.iItalicFontStyle.Id = 54
+        Me.iItalicFontStyle.ImageOptions.ImageIndex = 10
+        Me.iItalicFontStyle.Name = "iItalicFontStyle"
+        '
+        'iUnderlinedFontStyle
+        '
+        Me.iUnderlinedFontStyle.Caption = "Underlined"
+        Me.iUnderlinedFontStyle.Id = 55
+        Me.iUnderlinedFontStyle.ImageOptions.ImageIndex = 11
+        Me.iUnderlinedFontStyle.Name = "iUnderlinedFontStyle"
+        '
+        'fontStyleButtonGroup
+        '
+        Me.fontStyleButtonGroup.Caption = "Font Style"
+        Me.fontStyleButtonGroup.Id = 56
+        Me.fontStyleButtonGroup.ItemLinks.Add(Me.iLeftTextAlign)
+        Me.fontStyleButtonGroup.ItemLinks.Add(Me.iCenterTextAlign)
+        Me.fontStyleButtonGroup.ItemLinks.Add(Me.iRightTextAlign)
+        Me.fontStyleButtonGroup.Name = "fontStyleButtonGroup"
+        '
+        'iLeftTextAlign
+        '
+        Me.iLeftTextAlign.Caption = "Left"
+        Me.iLeftTextAlign.Id = 57
+        Me.iLeftTextAlign.ImageOptions.ImageIndex = 12
+        Me.iLeftTextAlign.Name = "iLeftTextAlign"
+        '
+        'iCenterTextAlign
+        '
+        Me.iCenterTextAlign.Caption = "Center"
+        Me.iCenterTextAlign.Id = 58
+        Me.iCenterTextAlign.ImageOptions.ImageIndex = 13
+        Me.iCenterTextAlign.Name = "iCenterTextAlign"
+        '
+        'iRightTextAlign
+        '
+        Me.iRightTextAlign.Caption = "Right"
+        Me.iRightTextAlign.Id = 59
+        Me.iRightTextAlign.ImageOptions.ImageIndex = 14
+        Me.iRightTextAlign.Name = "iRightTextAlign"
+        '
+        'rgbiSkins
+        '
+        Me.rgbiSkins.Caption = "Skins"
+        '
+        '
+        '
+        Me.rgbiSkins.Gallery.AllowHoverImages = True
+        Me.rgbiSkins.Gallery.Appearance.ItemCaptionAppearance.Normal.Options.UseFont = True
+        Me.rgbiSkins.Gallery.Appearance.ItemCaptionAppearance.Normal.Options.UseTextOptions = True
+        Me.rgbiSkins.Gallery.Appearance.ItemCaptionAppearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.rgbiSkins.Gallery.ColumnCount = 4
+        Me.rgbiSkins.Gallery.FixedHoverImageSize = False
+        Me.rgbiSkins.Gallery.ImageSize = New System.Drawing.Size(32, 17)
+        Me.rgbiSkins.Gallery.ItemImageLocation = DevExpress.Utils.Locations.Top
+        Me.rgbiSkins.Gallery.RowCount = 4
+        Me.rgbiSkins.Id = 60
+        Me.rgbiSkins.Name = "rgbiSkins"
+        '
+        'iSSI
+        '
+        Me.iSSI.Caption = "NOSTRO (Loro) Accounts"
+        Me.iSSI.Description = "Displays all Nostro (LORO) Accounts"
+        Me.iSSI.Hint = "Display's all Nostro (LORO) Accounts"
+        Me.iSSI.Id = 62
+        Me.iSSI.ImageOptions.ImageIndex = 25
+        Me.iSSI.ImageOptions.LargeImageIndex = 19
+        Me.iSSI.Name = "iSSI"
+        Me.iSSI.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iOCBSExchangeRates
+        '
+        Me.iOCBSExchangeRates.Caption = "Exchange Rates (Core System)"
+        Me.iOCBSExchangeRates.Description = "Displays the daily Core System Exchange Rates"
+        Me.iOCBSExchangeRates.Hint = "Displays the daily Core System Exchange Rates"
+        Me.iOCBSExchangeRates.Id = 63
+        Me.iOCBSExchangeRates.ImageOptions.ImageIndex = 79
+        Me.iOCBSExchangeRates.ImageOptions.LargeImageIndex = 50
+        Me.iOCBSExchangeRates.Name = "iOCBSExchangeRates"
+        Me.iOCBSExchangeRates.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iCalendar
+        '
+        Me.iCalendar.Caption = "Calendar"
+        Me.iCalendar.Id = 64
+        Me.iCalendar.ImageOptions.ImageIndex = 26
+        Me.iCalendar.ImageOptions.LargeImageIndex = 20
+        Me.iCalendar.Name = "iCalendar"
+        Me.iCalendar.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iCurrencyConverterOCBS
+        '
+        Me.iCurrencyConverterOCBS.Caption = "Currency Converter (Core System)"
+        Me.iCurrencyConverterOCBS.Description = "Converts Currencies based on Coere Systems Exchange Rates"
+        Me.iCurrencyConverterOCBS.Hint = "Converts Currencies based on Core System Exchange Rates"
+        Me.iCurrencyConverterOCBS.Id = 65
+        Me.iCurrencyConverterOCBS.ImageOptions.ImageIndex = 17
+        Me.iCurrencyConverterOCBS.ImageOptions.LargeImageIndex = 60
+        Me.iCurrencyConverterOCBS.Name = "iCurrencyConverterOCBS"
+        '
+        'iCustomers
+        '
+        Me.iCustomers.Caption = "Customers"
+        Me.iCustomers.Description = "Dispays Customer Basic Data"
+        Me.iCustomers.Hint = "Dispays Customer Basic Data from Core System"
+        Me.iCustomers.Id = 66
+        Me.iCustomers.ImageOptions.ImageIndex = 74
+        Me.iCustomers.ImageOptions.LargeImageIndex = 45
+        Me.iCustomers.Name = "iCustomers"
+        Me.iCustomers.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iCustomerAccounts
+        '
+        Me.iCustomerAccounts.Caption = "Demand Deposit Accounts"
+        Me.iCustomerAccounts.Description = "Displays all Demand Deposit Accounts (Customer, Vostro etc.)"
+        Me.iCustomerAccounts.Hint = "Displays all Demand Deposit Accounts (Current, Vostro etc.)"
+        Me.iCustomerAccounts.Id = 67
+        Me.iCustomerAccounts.ImageOptions.ImageIndex = 75
+        Me.iCustomerAccounts.ImageOptions.LargeImageIndex = 46
+        Me.iCustomerAccounts.Name = "iCustomerAccounts"
+        Me.iCustomerAccounts.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iIBANCalculator
+        '
+        Me.iIBANCalculator.Caption = "IBAN Calculator"
+        Me.iIBANCalculator.Description = "Calculates  IBAN's"
+        Me.iIBANCalculator.Hint = "Calculates IBAN's"
+        Me.iIBANCalculator.Id = 68
+        Me.iIBANCalculator.ImageOptions.ImageIndex = 67
+        Me.iIBANCalculator.ImageOptions.LargeImageIndex = 39
+        Me.iIBANCalculator.Name = "iIBANCalculator"
+        Me.iIBANCalculator.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iBICDirectory
+        '
+        Me.iBICDirectory.Caption = "BIC Directory"
+        Me.iBICDirectory.Description = "Displays the BIC Directory"
+        Me.iBICDirectory.Hint = "Displays the BIC Directory"
+        Me.iBICDirectory.Id = 70
+        Me.iBICDirectory.ImageOptions.ImageIndex = 28
+        Me.iBICDirectory.ImageOptions.LargeImageIndex = 64
+        Me.iBICDirectory.Name = "iBICDirectory"
+        Me.iBICDirectory.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iECBExchangeRates
+        '
+        Me.iECBExchangeRates.Caption = "ECB Exchange Rates"
+        Me.iECBExchangeRates.Description = "The daily reference Exchange Rates by ECB"
+        Me.iECBExchangeRates.Hint = "The daily reference Exchange Rates by ECB"
+        Me.iECBExchangeRates.Id = 71
+        Me.iECBExchangeRates.ImageOptions.ImageIndex = 18
+        Me.iECBExchangeRates.ImageOptions.LargeImageIndex = 12
+        Me.iECBExchangeRates.Name = "iECBExchangeRates"
+        Me.iECBExchangeRates.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iCountries
+        '
+        Me.iCountries.Caption = "Countries"
+        Me.iCountries.Description = "Countries Information"
+        Me.iCountries.Hint = "Countries Information"
+        Me.iCountries.Id = 72
+        Me.iCountries.ImageOptions.ImageIndex = 89
+        Me.iCountries.ImageOptions.LargeImageIndex = 67
+        Me.iCountries.Name = "iCountries"
+        Me.iCountries.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iCurrencies
+        '
+        Me.iCurrencies.Caption = "Currencies"
+        Me.iCurrencies.Description = "All available Currencies"
+        Me.iCurrencies.Hint = "All available Currencies"
+        Me.iCurrencies.Id = 73
+        Me.iCurrencies.ImageOptions.ImageIndex = 19
+        Me.iCurrencies.ImageOptions.LargeImageIndex = 13
+        Me.iCurrencies.Name = "iCurrencies"
+        Me.iCurrencies.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iCurrencyConverterECB
+        '
+        Me.iCurrencyConverterECB.Caption = "Currency Converter (ECB)"
+        Me.iCurrencyConverterECB.Description = "Converts currencies based on the ECB Rates"
+        Me.iCurrencyConverterECB.Hint = "Converts currencies based on the ECB Rates"
+        Me.iCurrencyConverterECB.Id = 74
+        Me.iCurrencyConverterECB.ImageOptions.ImageIndex = 17
+        Me.iCurrencyConverterECB.ImageOptions.LargeImageIndex = 11
+        Me.iCurrencyConverterECB.Name = "iCurrencyConverterECB"
+        Me.iCurrencyConverterECB.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iIndustrialValuesOCBS
+        '
+        Me.iIndustrialValuesOCBS.Caption = "Industrial Values and other Classifications " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Core System - Local)"
+        Me.iIndustrialValuesOCBS.Description = "Industrial Values and other classifications indicated in the Core System and Loca" &
+    "l"
+        Me.iIndustrialValuesOCBS.Hint = "The Industrial Values and other Classifications indicated in the Core System"
+        Me.iIndustrialValuesOCBS.Id = 76
+        Me.iIndustrialValuesOCBS.ImageOptions.ImageIndex = 77
+        Me.iIndustrialValuesOCBS.ImageOptions.LargeImageIndex = 48
+        Me.iIndustrialValuesOCBS.Name = "iIndustrialValuesOCBS"
+        Me.iIndustrialValuesOCBS.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iContractTypesOCBS
+        '
+        Me.iContractTypesOCBS.Caption = "Contract Types (Core System)"
+        Me.iContractTypesOCBS.Description = "The Contract Types indicated in Core System"
+        Me.iContractTypesOCBS.Hint = "The Contract Types indicated in the Core System"
+        Me.iContractTypesOCBS.Id = 77
+        Me.iContractTypesOCBS.ImageOptions.ImageIndex = 78
+        Me.iContractTypesOCBS.ImageOptions.LargeImageIndex = 49
+        Me.iContractTypesOCBS.Name = "iContractTypesOCBS"
+        Me.iContractTypesOCBS.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iProductTypesOCBS
+        '
+        Me.iProductTypesOCBS.Caption = "Product Types (Core System)"
+        Me.iProductTypesOCBS.Description = "The Product Types indicated in Core System"
+        Me.iProductTypesOCBS.Hint = "The Product Types indicated in the core System"
+        Me.iProductTypesOCBS.Id = 78
+        Me.iProductTypesOCBS.ImageOptions.ImageIndex = 78
+        Me.iProductTypesOCBS.ImageOptions.LargeImageIndex = 49
+        Me.iProductTypesOCBS.Name = "iProductTypesOCBS"
+        Me.iProductTypesOCBS.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iBLZ
+        '
+        Me.iBLZ.Caption = "BLZ Directory"
+        Me.iBLZ.Description = "The Directory of the German Bank ID's"
+        Me.iBLZ.Hint = "The Directory of the German Bank ID's"
+        Me.iBLZ.Id = 82
+        Me.iBLZ.ImageOptions.ImageIndex = 41
+        Me.iBLZ.ImageOptions.LargeImageIndex = 66
+        Me.iBLZ.Name = "iBLZ"
+        Me.iBLZ.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iSEPA
+        '
+        Me.iSEPA.Caption = "SEPA Directory"
+        Me.iSEPA.Description = "The SEPA Directory provided by the Deutsche Bundesbank"
+        Me.iSEPA.Hint = "The SEPA Directory provided by the Deutsche Bundesbank"
+        Me.iSEPA.Id = 83
+        Me.iSEPA.ImageOptions.ImageIndex = 42
+        Me.iSEPA.ImageOptions.LargeImageIndex = 65
+        Me.iSEPA.Name = "iSEPA"
+        Me.iSEPA.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iPLZ
+        '
+        Me.iPLZ.Caption = "German ZIP Codes"
+        Me.iPLZ.Description = "Display/Add/Change German Zip codes"
+        Me.iPLZ.Hint = "German ZIP Codes"
+        Me.iPLZ.Id = 84
+        Me.iPLZ.ImageOptions.ImageIndex = 90
+        Me.iPLZ.ImageOptions.LargeImageIndex = 68
+        Me.iPLZ.Name = "iPLZ"
+        Me.iPLZ.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iDailyBalanceSheets
+        '
+        Me.iDailyBalanceSheets.Caption = "Daily Balance Sheets (Totals)"
+        Me.iDailyBalanceSheets.Description = "Displays the daily Balance Sheets generated from OCBS"
+        Me.iDailyBalanceSheets.Hint = "Displays the daily Balance Sheets generated from Core System"
+        Me.iDailyBalanceSheets.Id = 86
+        Me.iDailyBalanceSheets.ImageOptions.ImageIndex = 45
+        Me.iDailyBalanceSheets.ImageOptions.LargeImageIndex = 53
+        Me.iDailyBalanceSheets.Name = "iDailyBalanceSheets"
+        Me.iDailyBalanceSheets.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iDailyPLSheets
+        '
+        Me.iDailyPLSheets.Caption = "Daily Profit + Loss Sheets"
+        Me.iDailyPLSheets.Description = "Displays the Daily Profit + Loss Sheets"
+        Me.iDailyPLSheets.Hint = "Displays the Daily Profit + Loss Sheets"
+        Me.iDailyPLSheets.Id = 87
+        Me.iDailyPLSheets.ImageOptions.ImageIndex = 46
+        Me.iDailyPLSheets.ImageOptions.LargeImageIndex = 54
+        Me.iDailyPLSheets.Name = "iDailyPLSheets"
+        Me.iDailyPLSheets.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iFristen
+        '
+        Me.iFristen.Caption = "Fristen (till 08.12.2017)"
+        Me.iFristen.Description = "Displays the daily Fristen Report"
+        Me.iFristen.Hint = "Displays the daily Fristen Report (OCBS)"
+        Me.iFristen.Id = 88
+        Me.iFristen.ImageOptions.ImageIndex = 82
+        Me.iFristen.ImageOptions.LargeImageIndex = 55
+        Me.iFristen.Name = "iFristen"
+        Me.iFristen.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iTrialBalance218
+        '
+        Me.iTrialBalance218.Caption = "Trial Balance"
+        Me.iTrialBalance218.Description = "Displays the Daily Trial Balance  Reports"
+        Me.iTrialBalance218.Hint = "Displays the Daily Trial Balance Reports"
+        Me.iTrialBalance218.Id = 89
+        Me.iTrialBalance218.ImageOptions.ImageIndex = 84
+        Me.iTrialBalance218.ImageOptions.LargeImageIndex = 57
+        Me.iTrialBalance218.Name = "iTrialBalance218"
+        Me.iTrialBalance218.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iMakReport
+        '
+        Me.iMakReport.Caption = "MAK Report (till 08.12.2017)"
+        Me.iMakReport.Description = "Displays the daily MAK Report (without FX Deals and LIMITS)"
+        Me.iMakReport.Hint = "Displays the daily MAK Report (Original ODAS Report)"
+        Me.iMakReport.Id = 91
+        Me.iMakReport.ImageOptions.ImageIndex = 85
+        Me.iMakReport.ImageOptions.LargeImageIndex = 58
+        Me.iMakReport.Name = "iMakReport"
+        Me.iMakReport.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iCreditRisk
+        '
+        Me.iCreditRisk.Caption = "Credit Risk Report (till 08.12.2017)"
+        Me.iCreditRisk.Description = "Displays the daily Credit Risk report (without FX Deals and LIMITS)"
+        Me.iCreditRisk.Hint = "Displays the daily Credit Risk report (Original ODAS Report)"
+        Me.iCreditRisk.Id = 92
+        Me.iCreditRisk.ImageOptions.ImageIndex = 85
+        Me.iCreditRisk.ImageOptions.LargeImageIndex = 58
+        Me.iCreditRisk.Name = "iCreditRisk"
+        Me.iCreditRisk.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iAccruedInterestAnalysis
+        '
+        Me.iAccruedInterestAnalysis.Caption = "Accrued Interest Analysis"
+        Me.iAccruedInterestAnalysis.Description = "Displays the Accrued Interest Analysis"
+        Me.iAccruedInterestAnalysis.Hint = "Displays the Accrued Interest Analysis"
+        Me.iAccruedInterestAnalysis.Id = 93
+        Me.iAccruedInterestAnalysis.ImageOptions.ImageIndex = 83
+        Me.iAccruedInterestAnalysis.ImageOptions.LargeImageIndex = 56
+        Me.iAccruedInterestAnalysis.Name = "iAccruedInterestAnalysis"
+        Me.iAccruedInterestAnalysis.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iGLAccounts
+        '
+        Me.iGLAccounts.Caption = "GL Accounts / GL Items"
+        Me.iGLAccounts.Description = "Displays all available General Ledger Accounts and Items"
+        Me.iGLAccounts.Hint = "Displays all available General Ledger Accounts"
+        Me.iGLAccounts.Id = 96
+        Me.iGLAccounts.ImageOptions.ImageIndex = 76
+        Me.iGLAccounts.ImageOptions.LargeImageIndex = 47
+        Me.iGLAccounts.Name = "iGLAccounts"
+        Me.iGLAccounts.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iOrgaChart
+        '
+        Me.iOrgaChart.Caption = "Organisation Chart "
+        Me.iOrgaChart.Description = "Displays the current Organisation Chart of CCB Frankfurt"
+        Me.iOrgaChart.Hint = "Displays the current Organisation Chart of CCB Frankfurt"
+        Me.iOrgaChart.Id = 98
+        Me.iOrgaChart.ImageOptions.ImageIndex = 51
+        Me.iOrgaChart.ImageOptions.LargeImageIndex = 30
+        Me.iOrgaChart.Name = "iOrgaChart"
+        Me.iOrgaChart.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'iLastOdasFile
+        '
+        Me.iLastOdasFile.Caption = "Last ODAS Reports File:"
+        Me.iLastOdasFile.Description = "The last Imported ODAS File in the PS TOOL Database"
+        Me.iLastOdasFile.Hint = "The last Imported ODAS File in the PS TOOL Database"
+        Me.iLastOdasFile.Id = 99
+        Me.iLastOdasFile.ImageOptions.ImageIndex = 52
+        Me.iLastOdasFile.ImageOptions.LargeImageIndex = 31
+        Me.iLastOdasFile.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.iLastOdasFile.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Gray
+        Me.iLastOdasFile.ItemAppearance.Normal.Options.UseFont = True
+        Me.iLastOdasFile.ItemAppearance.Normal.Options.UseForeColor = True
+        Me.iLastOdasFile.Name = "iLastOdasFile"
+        Me.iLastOdasFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.iLastOdasFile.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iLastOcbsFile
+        '
+        Me.iLastOcbsFile.Caption = "Last NGS Reports File:"
+        Me.iLastOcbsFile.Description = "The last Imported NGS File in the PS TOOL Database"
+        Me.iLastOcbsFile.Hint = "The last Imported NGS File in the PS TOOL Database"
+        Me.iLastOcbsFile.Id = 100
+        Me.iLastOcbsFile.ImageOptions.ImageIndex = 53
+        Me.iLastOcbsFile.ImageOptions.LargeImageIndex = 32
+        Me.iLastOcbsFile.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.iLastOcbsFile.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.iLastOcbsFile.ItemAppearance.Normal.Options.UseFont = True
+        Me.iLastOcbsFile.ItemAppearance.Normal.Options.UseForeColor = True
+        Me.iLastOcbsFile.Name = "iLastOcbsFile"
+        Me.iLastOcbsFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.iLastOcbsFile.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iLastBaisFile
+        '
+        Me.iLastBaisFile.Caption = "Last BAISForms File:"
+        Me.iLastBaisFile.Description = "The last Imported BAISForms File in the PS TOOL Database"
+        Me.iLastBaisFile.Hint = "The last Imported BAISForms File in the PS TOOL Database"
+        Me.iLastBaisFile.Id = 101
+        Me.iLastBaisFile.ImageOptions.ImageIndex = 54
+        Me.iLastBaisFile.ImageOptions.LargeImageIndex = 33
+        Me.iLastBaisFile.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.iLastBaisFile.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.iLastBaisFile.ItemAppearance.Normal.Options.UseFont = True
+        Me.iLastBaisFile.ItemAppearance.Normal.Options.UseForeColor = True
+        Me.iLastBaisFile.ItemAppearance.Normal.Options.UseTextOptions = True
+        Me.iLastBaisFile.ItemAppearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.iLastBaisFile.Name = "iLastBaisFile"
+        Me.iLastBaisFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.iLastBaisFile.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
         'Active_MDI_BarSubItem
         '
         Me.Active_MDI_BarSubItem.Caption = "Window List"
@@ -862,509 +1336,96 @@ Partial Class PSTOOL_MAIN_Form
         Me.BarMdiChildrenListItem1.Id = 108
         Me.BarMdiChildrenListItem1.Name = "BarMdiChildrenListItem1"
         '
-        'FullWindowModeBarCheckItem
+        'OCBSallPostingsBarButtonItem
         '
-        Me.FullWindowModeBarCheckItem.Caption = "Full-Window Mode"
-        Me.FullWindowModeBarCheckItem.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.FullWindowModeBarCheckItem.Id = 132
-        Me.FullWindowModeBarCheckItem.ImageOptions.ImageIndex = 65
-        Me.FullWindowModeBarCheckItem.ItemShortcut = New DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2)
-        Me.FullWindowModeBarCheckItem.Name = "FullWindowModeBarCheckItem"
-        Me.FullWindowModeBarCheckItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+        Me.OCBSallPostingsBarButtonItem.Caption = "All Postings + Balances in OCBS GL Accounts"
+        Me.OCBSallPostingsBarButtonItem.Description = "Display the daily bookings and Value Balances in all OCBS General Ledger Accounts" &
+    ""
+        Me.OCBSallPostingsBarButtonItem.Hint = "Display the daily bookings in all OCBS General Ledger Accounts"
+        Me.OCBSallPostingsBarButtonItem.Id = 110
+        Me.OCBSallPostingsBarButtonItem.ImageOptions.ImageIndex = 59
+        Me.OCBSallPostingsBarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.OCBSallPostingsBarButtonItem.Name = "OCBSallPostingsBarButtonItem"
+        Me.OCBSallPostingsBarButtonItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'OCBSprofitLossGLbalancesBarButtonItem
+        '
+        Me.OCBSprofitLossGLbalancesBarButtonItem.Caption = "Profit + Loss GL Items/Accounts Balances"
+        Me.OCBSprofitLossGLbalancesBarButtonItem.Description = "Displays the daily Profit + Loss General Ledger Balances"
+        Me.OCBSprofitLossGLbalancesBarButtonItem.Hint = "Displays the daily Profit + Loss General Ledger Balances"
+        Me.OCBSprofitLossGLbalancesBarButtonItem.Id = 111
+        Me.OCBSprofitLossGLbalancesBarButtonItem.ImageOptions.ImageIndex = 59
+        Me.OCBSprofitLossGLbalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.OCBSprofitLossGLbalancesBarButtonItem.Name = "OCBSprofitLossGLbalancesBarButtonItem"
+        Me.OCBSprofitLossGLbalancesBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.OCBSprofitLossGLbalancesBarButtonItem.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'OCBSdiverseGLbalancesBarButtonItem
+        '
+        Me.OCBSdiverseGLbalancesBarButtonItem.Caption = "Diverse GL Items/Accounts Balances"
+        Me.OCBSdiverseGLbalancesBarButtonItem.Description = "Displays the daily balances in Diverse General Ledger"
+        Me.OCBSdiverseGLbalancesBarButtonItem.Hint = "Displays the daily balances in Diverse General Ledger"
+        Me.OCBSdiverseGLbalancesBarButtonItem.Id = 112
+        Me.OCBSdiverseGLbalancesBarButtonItem.ImageOptions.ImageIndex = 59
+        Me.OCBSdiverseGLbalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.OCBSdiverseGLbalancesBarButtonItem.Name = "OCBSdiverseGLbalancesBarButtonItem"
+        Me.OCBSdiverseGLbalancesBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.OCBSdiverseGLbalancesBarButtonItem.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        '
+        'OCBSinternalNostroBalancesBarButtonItem
+        '
+        Me.OCBSinternalNostroBalancesBarButtonItem.Caption = "Internal Nostro Account Postings + Balances"
+        Me.OCBSinternalNostroBalancesBarButtonItem.Description = "Display's the daily internal nostro Account Balances"
+        Me.OCBSinternalNostroBalancesBarButtonItem.Hint = "Display's the daily internal nostro Account Balances"
+        Me.OCBSinternalNostroBalancesBarButtonItem.Id = 113
+        Me.OCBSinternalNostroBalancesBarButtonItem.ImageOptions.ImageIndex = 59
+        Me.OCBSinternalNostroBalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.OCBSinternalNostroBalancesBarButtonItem.Name = "OCBSinternalNostroBalancesBarButtonItem"
+        Me.OCBSinternalNostroBalancesBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'OCBScustomerBalancesBarButtonItem
+        '
+        Me.OCBScustomerBalancesBarButtonItem.Caption = "Corporate Customers Demand Deposits Accounts Postings + Balances (OCBS + NGS)"
+        Me.OCBScustomerBalancesBarButtonItem.Description = "Display's the Customer Account Balances and Postings"
+        Me.OCBScustomerBalancesBarButtonItem.Hint = "Display's the Customer Account Balances and Postings"
+        Me.OCBScustomerBalancesBarButtonItem.Id = 114
+        Me.OCBScustomerBalancesBarButtonItem.ImageOptions.ImageIndex = 59
+        Me.OCBScustomerBalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.OCBScustomerBalancesBarButtonItem.Name = "OCBScustomerBalancesBarButtonItem"
+        Me.OCBScustomerBalancesBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'OCBS_PL_MappingBarButtonItem
+        '
+        Me.OCBS_PL_MappingBarButtonItem.Caption = "Profit and Loss General Ledger Mapping"
+        Me.OCBS_PL_MappingBarButtonItem.Description = "Display/Add/Modify GL Account mapping for Profit and Loss GL Items"
+        Me.OCBS_PL_MappingBarButtonItem.Hint = "Display/Add/Modify GL Account mapping for Profit and Loss GL Items"
+        Me.OCBS_PL_MappingBarButtonItem.Id = 115
+        Me.OCBS_PL_MappingBarButtonItem.ImageOptions.ImageIndex = 60
+        Me.OCBS_PL_MappingBarButtonItem.ImageOptions.LargeImageIndex = 35
+        Me.OCBS_PL_MappingBarButtonItem.Name = "OCBS_PL_MappingBarButtonItem"
+        Me.OCBS_PL_MappingBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'OCBS_DIVERSE_MappingBarButtonItem
+        '
+        Me.OCBS_DIVERSE_MappingBarButtonItem.Caption = "Diverse General Ledger Mapping"
+        Me.OCBS_DIVERSE_MappingBarButtonItem.Description = "Display/Add/Modify GL Account mapping for Diverse GL Items"
+        Me.OCBS_DIVERSE_MappingBarButtonItem.Id = 116
+        Me.OCBS_DIVERSE_MappingBarButtonItem.ImageOptions.ImageIndex = 60
+        Me.OCBS_DIVERSE_MappingBarButtonItem.ImageOptions.LargeImageIndex = 35
+        Me.OCBS_DIVERSE_MappingBarButtonItem.Name = "OCBS_DIVERSE_MappingBarButtonItem"
+        Me.OCBS_DIVERSE_MappingBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'OCBSvostroBalancesBarButtonItem
+        '
+        Me.OCBSvostroBalancesBarButtonItem.Caption = "Vostro Accounts Postings +  Balances (OCBS)"
+        Me.OCBSvostroBalancesBarButtonItem.Description = "Display's the Vostro Account Balances and Postings"
+        Me.OCBSvostroBalancesBarButtonItem.Hint = "Display's the Vostro Account Balances and Postings"
+        Me.OCBSvostroBalancesBarButtonItem.Id = 117
+        Me.OCBSvostroBalancesBarButtonItem.ImageOptions.ImageIndex = 59
+        Me.OCBSvostroBalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.OCBSvostroBalancesBarButtonItem.Name = "OCBSvostroBalancesBarButtonItem"
+        Me.OCBSvostroBalancesBarButtonItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'SingleTabbedViewModeBarCheckItem
-        '
-        Me.SingleTabbedViewModeBarCheckItem.Caption = "Single Window  - Tabbed MDI View"
-        Me.SingleTabbedViewModeBarCheckItem.Hint = "Swiches between Single Window Mode and MDI Tabbed View Mode"
-        Me.SingleTabbedViewModeBarCheckItem.Id = 140
-        Me.SingleTabbedViewModeBarCheckItem.ImageOptions.ImageIndex = 68
-        Me.SingleTabbedViewModeBarCheckItem.ImageOptions.LargeImageIndex = 40
-        Me.SingleTabbedViewModeBarCheckItem.ItemShortcut = New DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F3)
-        Me.SingleTabbedViewModeBarCheckItem.Name = "SingleTabbedViewModeBarCheckItem"
-        Me.SingleTabbedViewModeBarCheckItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
-            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'CloseAndExit_BarSubItem
-        '
-        Me.CloseAndExit_BarSubItem.Caption = "Close and Exit"
-        Me.CloseAndExit_BarSubItem.Id = 152
-        Me.CloseAndExit_BarSubItem.ImageOptions.ImageIndex = 86
-        Me.CloseAndExit_BarSubItem.ImageOptions.LargeImageIndex = 61
-        Me.CloseAndExit_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.Close_all_Forms_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.iExit, True)})
-        Me.CloseAndExit_BarSubItem.MenuCaption = "Close and Exit"
-        Me.CloseAndExit_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.CloseAndExit_BarSubItem.Name = "CloseAndExit_BarSubItem"
-        Me.CloseAndExit_BarSubItem.ShowMenuCaption = True
-        '
-        'iBasicBankData_BarSubItem
-        '
-        Me.iBasicBankData_BarSubItem.Caption = "Basic Internal Data"
-        Me.iBasicBankData_BarSubItem.Hint = "Includes all basic Bank Data"
-        Me.iBasicBankData_BarSubItem.Id = 147
-        Me.iBasicBankData_BarSubItem.ImageOptions.ImageIndex = 16
-        Me.iBasicBankData_BarSubItem.ImageOptions.LargeImageIndex = 10
-        Me.iBasicBankData_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iBankData, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "BD", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iCustomers, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "CU", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.CustomerGroups_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iCustomerAccounts, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "CA", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.iAllContractsAccounts_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iSSI, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "NOSTRO", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iGLAccounts, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "GL", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iInternalCurrencies, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iIndustrialValuesOCBS, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "IV", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iContractTypesOCBS, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "CT", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iProductTypesOCBS, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "PT", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iOCBSExchangeRates, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "OER", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.iCurrencyConverterOCBS)})
-        Me.iBasicBankData_BarSubItem.MenuCaption = "Basic Bank Data"
-        Me.iBasicBankData_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.iBasicBankData_BarSubItem.Name = "iBasicBankData_BarSubItem"
-        Me.iBasicBankData_BarSubItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu
-        Me.iBasicBankData_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        Me.iBasicBankData_BarSubItem.ShowMenuCaption = True
-        ToolTipTitleItem1.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem1.Appearance.Options.UseImage = True
-        ToolTipTitleItem1.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem1.Text = "Basic Internal Data"
-        ToolTipItem1.LeftIndent = 6
-        ToolTipItem1.Text = "Includes Forms with basic internal data" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Internal Currencies, Products, Contract" &
-    "s etc.)"
-        SuperToolTip1.Items.Add(ToolTipTitleItem1)
-        SuperToolTip1.Items.Add(ToolTipItem1)
-        Me.iBasicBankData_BarSubItem.SuperTip = SuperToolTip1
-        '
-        'iCustomers
-        '
-        Me.iCustomers.Caption = "Customers"
-        Me.iCustomers.Description = "Dispays Customer Basic Data"
-        Me.iCustomers.Hint = "Dispays Customer Basic Data from Core System"
-        Me.iCustomers.Id = 66
-        Me.iCustomers.ImageOptions.ImageIndex = 74
-        Me.iCustomers.ImageOptions.LargeImageIndex = 45
-        Me.iCustomers.Name = "iCustomers"
-        Me.iCustomers.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'CustomerGroups_BarButtonItem
-        '
-        Me.CustomerGroups_BarButtonItem.Caption = "Customer Groups"
-        Me.CustomerGroups_BarButtonItem.Hint = "Displays the Client Groups (imported from the BAIS System)"
-        Me.CustomerGroups_BarButtonItem.Id = 13
-        Me.CustomerGroups_BarButtonItem.ImageOptions.ImageIndex = 92
-        Me.CustomerGroups_BarButtonItem.ImageOptions.LargeImageIndex = 70
-        Me.CustomerGroups_BarButtonItem.Name = "CustomerGroups_BarButtonItem"
-        '
-        'iCustomerAccounts
-        '
-        Me.iCustomerAccounts.Caption = "Demand Deposit Accounts"
-        Me.iCustomerAccounts.Description = "Displays all Demand Deposit Accounts (Customer, Vostro etc.)"
-        Me.iCustomerAccounts.Hint = "Displays all Demand Deposit Accounts (Current, Vostro etc.)"
-        Me.iCustomerAccounts.Id = 67
-        Me.iCustomerAccounts.ImageOptions.ImageIndex = 75
-        Me.iCustomerAccounts.ImageOptions.LargeImageIndex = 46
-        Me.iCustomerAccounts.Name = "iCustomerAccounts"
-        Me.iCustomerAccounts.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iAllContractsAccounts_BarButtonItem
-        '
-        Me.iAllContractsAccounts_BarButtonItem.Caption = "All Customers Contracts / Accounts"
-        Me.iAllContractsAccounts_BarButtonItem.Hint = "Display all Contracts/Accounts in the Core System"
-        Me.iAllContractsAccounts_BarButtonItem.Id = 1
-        Me.iAllContractsAccounts_BarButtonItem.ImageOptions.ImageIndex = 81
-        Me.iAllContractsAccounts_BarButtonItem.ImageOptions.LargeImageIndex = 51
-        Me.iAllContractsAccounts_BarButtonItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.iAllContractsAccounts_BarButtonItem.ItemAppearance.Normal.Options.UseFont = True
-        Me.iAllContractsAccounts_BarButtonItem.Name = "iAllContractsAccounts_BarButtonItem"
-        '
-        'iSSI
-        '
-        Me.iSSI.Caption = "NOSTRO (Loro) Accounts"
-        Me.iSSI.Description = "Displays all Nostro (LORO) Accounts"
-        Me.iSSI.Hint = "Display's all Nostro (LORO) Accounts"
-        Me.iSSI.Id = 62
-        Me.iSSI.ImageOptions.ImageIndex = 25
-        Me.iSSI.ImageOptions.LargeImageIndex = 19
-        Me.iSSI.Name = "iSSI"
-        Me.iSSI.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iGLAccounts
-        '
-        Me.iGLAccounts.Caption = "GL Accounts / GL Items"
-        Me.iGLAccounts.Description = "Displays all available General Ledger Accounts and Items"
-        Me.iGLAccounts.Hint = "Displays all available General Ledger Accounts"
-        Me.iGLAccounts.Id = 96
-        Me.iGLAccounts.ImageOptions.ImageIndex = 76
-        Me.iGLAccounts.ImageOptions.LargeImageIndex = 47
-        Me.iGLAccounts.Name = "iGLAccounts"
-        Me.iGLAccounts.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iInternalCurrencies
-        '
-        Me.iInternalCurrencies.Caption = "Internal Currencies"
-        Me.iInternalCurrencies.Description = "Display/Modify Internal Currencies"
-        Me.iInternalCurrencies.Hint = "Display/Modify Internal Currencies"
-        Me.iInternalCurrencies.Id = 3
-        Me.iInternalCurrencies.ImageOptions.ImageIndex = 24
-        Me.iInternalCurrencies.ImageOptions.LargeImageIndex = 17
-        Me.iInternalCurrencies.Name = "iInternalCurrencies"
-        Me.iInternalCurrencies.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iIndustrialValuesOCBS
-        '
-        Me.iIndustrialValuesOCBS.Caption = "Industrial Values and other Classifications " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Core System - Local)"
-        Me.iIndustrialValuesOCBS.Description = "Industrial Values and other classifications indicated in the Core System and Loca" &
-    "l"
-        Me.iIndustrialValuesOCBS.Hint = "The Industrial Values and other Classifications indicated in the Core System"
-        Me.iIndustrialValuesOCBS.Id = 76
-        Me.iIndustrialValuesOCBS.ImageOptions.ImageIndex = 77
-        Me.iIndustrialValuesOCBS.ImageOptions.LargeImageIndex = 48
-        Me.iIndustrialValuesOCBS.Name = "iIndustrialValuesOCBS"
-        Me.iIndustrialValuesOCBS.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iContractTypesOCBS
-        '
-        Me.iContractTypesOCBS.Caption = "Contract Types (Core System)"
-        Me.iContractTypesOCBS.Description = "The Contract Types indicated in Core System"
-        Me.iContractTypesOCBS.Hint = "The Contract Types indicated in the Core System"
-        Me.iContractTypesOCBS.Id = 77
-        Me.iContractTypesOCBS.ImageOptions.ImageIndex = 78
-        Me.iContractTypesOCBS.ImageOptions.LargeImageIndex = 49
-        Me.iContractTypesOCBS.Name = "iContractTypesOCBS"
-        Me.iContractTypesOCBS.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iProductTypesOCBS
-        '
-        Me.iProductTypesOCBS.Caption = "Product Types (Core System)"
-        Me.iProductTypesOCBS.Description = "The Product Types indicated in Core System"
-        Me.iProductTypesOCBS.Hint = "The Product Types indicated in the core System"
-        Me.iProductTypesOCBS.Id = 78
-        Me.iProductTypesOCBS.ImageOptions.ImageIndex = 78
-        Me.iProductTypesOCBS.ImageOptions.LargeImageIndex = 49
-        Me.iProductTypesOCBS.Name = "iProductTypesOCBS"
-        Me.iProductTypesOCBS.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iOCBSExchangeRates
-        '
-        Me.iOCBSExchangeRates.Caption = "Exchange Rates (Core System)"
-        Me.iOCBSExchangeRates.Description = "Displays the daily Core System Exchange Rates"
-        Me.iOCBSExchangeRates.Hint = "Displays the daily Core System Exchange Rates"
-        Me.iOCBSExchangeRates.Id = 63
-        Me.iOCBSExchangeRates.ImageOptions.ImageIndex = 79
-        Me.iOCBSExchangeRates.ImageOptions.LargeImageIndex = 50
-        Me.iOCBSExchangeRates.Name = "iOCBSExchangeRates"
-        Me.iOCBSExchangeRates.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iCurrencyConverterOCBS
-        '
-        Me.iCurrencyConverterOCBS.Caption = "Currency Converter (Core System)"
-        Me.iCurrencyConverterOCBS.Description = "Converts Currencies based on Coere Systems Exchange Rates"
-        Me.iCurrencyConverterOCBS.Hint = "Converts Currencies based on Core System Exchange Rates"
-        Me.iCurrencyConverterOCBS.Id = 65
-        Me.iCurrencyConverterOCBS.ImageOptions.ImageIndex = 17
-        Me.iCurrencyConverterOCBS.ImageOptions.LargeImageIndex = 60
-        Me.iCurrencyConverterOCBS.Name = "iCurrencyConverterOCBS"
-        '
-        'iBasicReports_BarSubItem
-        '
-        Me.iBasicReports_BarSubItem.Caption = "Basic Internal Reports"
-        Me.iBasicReports_BarSubItem.Id = 148
-        Me.iBasicReports_BarSubItem.ImageOptions.ImageIndex = 80
-        Me.iBasicReports_BarSubItem.ImageOptions.LargeImageIndex = 43
-        Me.iBasicReports_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem1), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iDailyPLSheets, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "DPL", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iFristen, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "FRISTEN", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.CashFlows_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iAccruedInterestAnalysis, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "AIA", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iTrialBalance218, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "TB", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iMakReport, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "MAK", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iCreditRisk, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "CR", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.iFinancialReconciliation, True), New DevExpress.XtraBars.LinkPersistInfo(Me.ObligoLiabilities_BarButtonItem)})
-        Me.iBasicReports_BarSubItem.MenuCaption = "Basic Reports"
-        Me.iBasicReports_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.iBasicReports_BarSubItem.Name = "iBasicReports_BarSubItem"
-        Me.iBasicReports_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        Me.iBasicReports_BarSubItem.ShowMenuCaption = True
-        ToolTipTitleItem2.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem2.Appearance.Options.UseImage = True
-        ToolTipTitleItem2.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem2.Text = "Basic Internal Reports"
-        ToolTipItem2.LeftIndent = 6
-        ToolTipItem2.Text = "Includes basic internal Reports" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Balance Sheet, Maturities, Accrued Interests et" &
-    "c.)"
-        SuperToolTip2.Items.Add(ToolTipTitleItem2)
-        SuperToolTip2.Items.Add(ToolTipItem2)
-        Me.iBasicReports_BarSubItem.SuperTip = SuperToolTip2
-        '
-        'BarSubItem1
-        '
-        Me.BarSubItem1.Caption = "Daily Balance Sheets"
-        Me.BarSubItem1.Id = 151
-        Me.BarSubItem1.ImageOptions.ImageIndex = 81
-        Me.BarSubItem1.ImageOptions.LargeImageIndex = 51
-        Me.BarSubItem1.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BarSubItem1.ItemAppearance.Normal.Options.UseFont = True
-        Me.BarSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iDailyBalanceSheets, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "DBST", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iDailyBalanceSheetsDetails, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "DBSD", "")})
-        Me.BarSubItem1.MenuCaption = "Daily Balance Sheets"
-        Me.BarSubItem1.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.BarSubItem1.Name = "BarSubItem1"
-        Me.BarSubItem1.ShowMenuCaption = True
-        '
-        'iDailyBalanceSheets
-        '
-        Me.iDailyBalanceSheets.Caption = "Daily Balance Sheets (Totals)"
-        Me.iDailyBalanceSheets.Description = "Displays the daily Balance Sheets generated from OCBS"
-        Me.iDailyBalanceSheets.Hint = "Displays the daily Balance Sheets generated from Core System"
-        Me.iDailyBalanceSheets.Id = 86
-        Me.iDailyBalanceSheets.ImageOptions.ImageIndex = 45
-        Me.iDailyBalanceSheets.ImageOptions.LargeImageIndex = 53
-        Me.iDailyBalanceSheets.Name = "iDailyBalanceSheets"
-        Me.iDailyBalanceSheets.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iDailyBalanceSheetsDetails
-        '
-        Me.iDailyBalanceSheetsDetails.Caption = "Daily Balance Sheets (Details)"
-        Me.iDailyBalanceSheetsDetails.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.iDailyBalanceSheetsDetails.Description = "Displays the daily Balance Sheet Details generated from OCBS"
-        Me.iDailyBalanceSheetsDetails.Hint = "Displays the daily Balance Sheet Details generated from Core System"
-        Me.iDailyBalanceSheetsDetails.Id = 134
-        Me.iDailyBalanceSheetsDetails.ImageOptions.ImageIndex = 45
-        Me.iDailyBalanceSheetsDetails.ImageOptions.LargeImageIndex = 52
-        Me.iDailyBalanceSheetsDetails.Name = "iDailyBalanceSheetsDetails"
-        Me.iDailyBalanceSheetsDetails.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iDailyPLSheets
-        '
-        Me.iDailyPLSheets.Caption = "Daily Profit + Loss Sheets"
-        Me.iDailyPLSheets.Description = "Displays the Daily Profit + Loss Sheets"
-        Me.iDailyPLSheets.Hint = "Displays the Daily Profit + Loss Sheets"
-        Me.iDailyPLSheets.Id = 87
-        Me.iDailyPLSheets.ImageOptions.ImageIndex = 46
-        Me.iDailyPLSheets.ImageOptions.LargeImageIndex = 54
-        Me.iDailyPLSheets.Name = "iDailyPLSheets"
-        Me.iDailyPLSheets.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iFristen
-        '
-        Me.iFristen.Caption = "Fristen (till 08.12.2017)"
-        Me.iFristen.Description = "Displays the daily Fristen Report"
-        Me.iFristen.Hint = "Displays the daily Fristen Report (OCBS)"
-        Me.iFristen.Id = 88
-        Me.iFristen.ImageOptions.ImageIndex = 82
-        Me.iFristen.ImageOptions.LargeImageIndex = 55
-        Me.iFristen.Name = "iFristen"
-        Me.iFristen.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'CashFlows_BarButtonItem
-        '
-        Me.CashFlows_BarButtonItem.Caption = "Cash Flows (from 08.12.2017)"
-        Me.CashFlows_BarButtonItem.Hint = "Displays the Cash Flows (generated from FINRECON Report)"
-        Me.CashFlows_BarButtonItem.Id = 20
-        Me.CashFlows_BarButtonItem.ImageOptions.ImageIndex = 82
-        Me.CashFlows_BarButtonItem.ImageOptions.LargeImageIndex = 55
-        Me.CashFlows_BarButtonItem.Name = "CashFlows_BarButtonItem"
-        '
-        'iAccruedInterestAnalysis
-        '
-        Me.iAccruedInterestAnalysis.Caption = "Accrued Interest Analysis"
-        Me.iAccruedInterestAnalysis.Description = "Displays the Accrued Interest Analysis"
-        Me.iAccruedInterestAnalysis.Hint = "Displays the Accrued Interest Analysis"
-        Me.iAccruedInterestAnalysis.Id = 93
-        Me.iAccruedInterestAnalysis.ImageOptions.ImageIndex = 83
-        Me.iAccruedInterestAnalysis.ImageOptions.LargeImageIndex = 56
-        Me.iAccruedInterestAnalysis.Name = "iAccruedInterestAnalysis"
-        Me.iAccruedInterestAnalysis.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iTrialBalance218
-        '
-        Me.iTrialBalance218.Caption = "Trial Balance"
-        Me.iTrialBalance218.Description = "Displays the Daily Trial Balance  Reports"
-        Me.iTrialBalance218.Hint = "Displays the Daily Trial Balance Reports"
-        Me.iTrialBalance218.Id = 89
-        Me.iTrialBalance218.ImageOptions.ImageIndex = 84
-        Me.iTrialBalance218.ImageOptions.LargeImageIndex = 57
-        Me.iTrialBalance218.Name = "iTrialBalance218"
-        Me.iTrialBalance218.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iMakReport
-        '
-        Me.iMakReport.Caption = "MAK Report (till 08.12.2017)"
-        Me.iMakReport.Description = "Displays the daily MAK Report (without FX Deals and LIMITS)"
-        Me.iMakReport.Hint = "Displays the daily MAK Report (Original ODAS Report)"
-        Me.iMakReport.Id = 91
-        Me.iMakReport.ImageOptions.ImageIndex = 85
-        Me.iMakReport.ImageOptions.LargeImageIndex = 58
-        Me.iMakReport.Name = "iMakReport"
-        Me.iMakReport.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iCreditRisk
-        '
-        Me.iCreditRisk.Caption = "Credit Risk Report (till 08.12.2017)"
-        Me.iCreditRisk.Description = "Displays the daily Credit Risk report (without FX Deals and LIMITS)"
-        Me.iCreditRisk.Hint = "Displays the daily Credit Risk report (Original ODAS Report)"
-        Me.iCreditRisk.Id = 92
-        Me.iCreditRisk.ImageOptions.ImageIndex = 85
-        Me.iCreditRisk.ImageOptions.LargeImageIndex = 58
-        Me.iCreditRisk.Name = "iCreditRisk"
-        Me.iCreditRisk.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iFinancialReconciliation
-        '
-        Me.iFinancialReconciliation.Caption = "Financial Reconciliation"
-        Me.iFinancialReconciliation.Id = 7
-        Me.iFinancialReconciliation.ImageOptions.LargeImageIndex = 25
-        Me.iFinancialReconciliation.Name = "iFinancialReconciliation"
-        '
-        'ObligoLiabilities_BarButtonItem
-        '
-        Me.ObligoLiabilities_BarButtonItem.Caption = "Obligo Liabilities Surplus"
-        Me.ObligoLiabilities_BarButtonItem.Id = 10
-        Me.ObligoLiabilities_BarButtonItem.ImageOptions.LargeImageIndex = 57
-        Me.ObligoLiabilities_BarButtonItem.Name = "ObligoLiabilities_BarButtonItem"
-        '
-        'BarStaticItem5
-        '
-        Me.BarStaticItem5.Caption = "-----Core System Files-----"
-        Me.BarStaticItem5.Id = 9
-        Me.BarStaticItem5.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BarStaticItem5.ItemAppearance.Normal.Options.UseFont = True
-        Me.BarStaticItem5.Name = "BarStaticItem5"
-        '
-        'iLastOdasFile
-        '
-        Me.iLastOdasFile.Caption = "Last ODAS Reports File:"
-        Me.iLastOdasFile.Description = "The last Imported ODAS File in the PS TOOL Database"
-        Me.iLastOdasFile.Hint = "The last Imported ODAS File in the PS TOOL Database"
-        Me.iLastOdasFile.Id = 99
-        Me.iLastOdasFile.ImageOptions.ImageIndex = 52
-        Me.iLastOdasFile.ImageOptions.LargeImageIndex = 31
-        Me.iLastOdasFile.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.iLastOdasFile.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.iLastOdasFile.ItemAppearance.Normal.Options.UseFont = True
-        Me.iLastOdasFile.ItemAppearance.Normal.Options.UseForeColor = True
-        Me.iLastOdasFile.Name = "iLastOdasFile"
-        Me.iLastOdasFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        Me.iLastOdasFile.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iLastOcbsFile
-        '
-        Me.iLastOcbsFile.Caption = "Last NGS Reports File:"
-        Me.iLastOcbsFile.Description = "The last Imported NGS File in the PS TOOL Database"
-        Me.iLastOcbsFile.Hint = "The last Imported NGS File in the PS TOOL Database"
-        Me.iLastOcbsFile.Id = 100
-        Me.iLastOcbsFile.ImageOptions.ImageIndex = 53
-        Me.iLastOcbsFile.ImageOptions.LargeImageIndex = 32
-        Me.iLastOcbsFile.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.iLastOcbsFile.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.iLastOcbsFile.ItemAppearance.Normal.Options.UseFont = True
-        Me.iLastOcbsFile.ItemAppearance.Normal.Options.UseForeColor = True
-        Me.iLastOcbsFile.Name = "iLastOcbsFile"
-        Me.iLastOcbsFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        Me.iLastOcbsFile.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'BarStaticItem4
-        '
-        Me.BarStaticItem4.Caption = "-----BAIS Application Files-----"
-        Me.BarStaticItem4.Id = 8
-        Me.BarStaticItem4.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BarStaticItem4.ItemAppearance.Normal.Options.UseFont = True
-        Me.BarStaticItem4.Name = "BarStaticItem4"
-        '
-        'iLastBaisInterfaceFile
-        '
-        Me.iLastBaisInterfaceFile.Caption = "Last BAIS Interface File:"
-        Me.iLastBaisInterfaceFile.Description = "The Last imported BAIS Interface File in PS TOOL"
-        Me.iLastBaisInterfaceFile.Hint = "The Last imported BAIS Interface File in PS TOOL"
-        Me.iLastBaisInterfaceFile.Id = 3
-        Me.iLastBaisInterfaceFile.ImageOptions.ImageIndex = 54
-        Me.iLastBaisInterfaceFile.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.iLastBaisInterfaceFile.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.iLastBaisInterfaceFile.ItemAppearance.Normal.Options.UseFont = True
-        Me.iLastBaisInterfaceFile.ItemAppearance.Normal.Options.UseForeColor = True
-        Me.iLastBaisInterfaceFile.Name = "iLastBaisInterfaceFile"
-        Me.iLastBaisInterfaceFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'iLastBaisFile
-        '
-        Me.iLastBaisFile.Caption = "Last BAISForms File:"
-        Me.iLastBaisFile.Description = "The last Imported BAISForms File in the PS TOOL Database"
-        Me.iLastBaisFile.Hint = "The last Imported BAISForms File in the PS TOOL Database"
-        Me.iLastBaisFile.Id = 101
-        Me.iLastBaisFile.ImageOptions.ImageIndex = 54
-        Me.iLastBaisFile.ImageOptions.LargeImageIndex = 33
-        Me.iLastBaisFile.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.iLastBaisFile.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.iLastBaisFile.ItemAppearance.Normal.Options.UseFont = True
-        Me.iLastBaisFile.ItemAppearance.Normal.Options.UseForeColor = True
-        Me.iLastBaisFile.ItemAppearance.Normal.Options.UseTextOptions = True
-        Me.iLastBaisFile.ItemAppearance.Normal.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
-        Me.iLastBaisFile.Name = "iLastBaisFile"
-        Me.iLastBaisFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        Me.iLastBaisFile.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'ClientMerge_BarButtonItem
-        '
-        Me.ClientMerge_BarButtonItem.Caption = "Client Merge"
-        Me.ClientMerge_BarButtonItem.Id = 32
-        Me.ClientMerge_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("ClientMerge_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
-        Me.ClientMerge_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("ClientMerge_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.ClientMerge_BarButtonItem.Name = "ClientMerge_BarButtonItem"
-        Me.ClientMerge_BarButtonItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
-            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        ToolTipTitleItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
-        ToolTipTitleItem3.Text = "Client Nr. Merge"
-        ToolTipItem3.LeftIndent = 6
-        ToolTipItem3.Text = "Internal Function for merging the Old Client Nr. to the New Client Nr."
-        SuperToolTip3.Items.Add(ToolTipTitleItem3)
-        SuperToolTip3.Items.Add(ToolTipItem3)
-        Me.ClientMerge_BarButtonItem.SuperTip = SuperToolTip3
-        '
-        'BasicExternalSate_BarSubItem
-        '
-        Me.BasicExternalSate_BarSubItem.Caption = "Basic External Data"
-        Me.BasicExternalSate_BarSubItem.Id = 153
-        Me.BasicExternalSate_BarSubItem.ImageOptions.ImageIndex = 87
-        Me.BasicExternalSate_BarSubItem.ImageOptions.LargeImageIndex = 62
-        Me.BasicExternalSate_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.iCountries, True), New DevExpress.XtraBars.LinkPersistInfo(Me.iHolidays), New DevExpress.XtraBars.LinkPersistInfo(Me.iPLZ), New DevExpress.XtraBars.LinkPersistInfo(Me.NUTS3_Codes_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.JustizID_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.iCurrencies, True), New DevExpress.XtraBars.LinkPersistInfo(Me.iECBExchangeRates, True), New DevExpress.XtraBars.LinkPersistInfo(Me.iCurrencyConverterECB)})
-        Me.BasicExternalSate_BarSubItem.MenuCaption = "Basic External Data"
-        Me.BasicExternalSate_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.BasicExternalSate_BarSubItem.Name = "BasicExternalSate_BarSubItem"
-        Me.BasicExternalSate_BarSubItem.ShowMenuCaption = True
-        ToolTipTitleItem4.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem4.Appearance.Options.UseImage = True
-        ToolTipTitleItem4.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem4.Text = "Basic External Data"
-        ToolTipItem4.LeftIndent = 6
-        ToolTipItem4.Text = "Includes basic external Data" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Bank Directories, Countries, Currencies etc.)"
-        SuperToolTip4.Items.Add(ToolTipTitleItem4)
-        SuperToolTip4.Items.Add(ToolTipItem4)
-        Me.BasicExternalSate_BarSubItem.SuperTip = SuperToolTip4
-        '
-        'BarSubItem2
-        '
-        Me.BarSubItem2.Caption = "Bank Directories"
-        Me.BarSubItem2.Id = 154
-        Me.BarSubItem2.ImageOptions.ImageIndex = 88
-        Me.BarSubItem2.ImageOptions.LargeImageIndex = 63
-        Me.BarSubItem2.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BarSubItem2.ItemAppearance.Normal.Options.UseFont = True
-        Me.BarSubItem2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.iBICDirectory), New DevExpress.XtraBars.LinkPersistInfo(Me.iBICplusDirectory), New DevExpress.XtraBars.LinkPersistInfo(Me.BIC_History_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.T2DirectoryBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.iSEPA), New DevExpress.XtraBars.LinkPersistInfo(Me.iBLZ)})
-        Me.BarSubItem2.MenuCaption = "Bank Directories"
-        Me.BarSubItem2.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.BarSubItem2.Name = "BarSubItem2"
-        Me.BarSubItem2.ShowMenuCaption = True
-        '
-        'iBICDirectory
-        '
-        Me.iBICDirectory.Caption = "BIC Directory"
-        Me.iBICDirectory.Description = "Displays the BIC Directory"
-        Me.iBICDirectory.Hint = "Displays the BIC Directory"
-        Me.iBICDirectory.Id = 70
-        Me.iBICDirectory.ImageOptions.ImageIndex = 28
-        Me.iBICDirectory.ImageOptions.LargeImageIndex = 64
-        Me.iBICDirectory.Name = "iBICDirectory"
-        Me.iBICDirectory.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iBICplusDirectory
-        '
-        Me.iBICplusDirectory.Caption = "BIC Plus Directory"
-        Me.iBICplusDirectory.Description = "Displays the BIC Plus Directory"
-        Me.iBICplusDirectory.Hint = "Displays the BIC Plus Directory"
-        Me.iBICplusDirectory.Id = 123
-        Me.iBICplusDirectory.ImageOptions.ImageIndex = 28
-        Me.iBICplusDirectory.ImageOptions.LargeImageIndex = 64
-        Me.iBICplusDirectory.Name = "iBICplusDirectory"
-        Me.iBICplusDirectory.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'BIC_History_BarButtonItem
-        '
-        Me.BIC_History_BarButtonItem.Caption = "BIC History"
-        Me.BIC_History_BarButtonItem.Description = "Displays the BIC History Directory"
-        Me.BIC_History_BarButtonItem.Hint = "Displays the BIC History Directory"
-        Me.BIC_History_BarButtonItem.Id = 31
-        Me.BIC_History_BarButtonItem.ImageOptions.ImageIndex = 28
-        Me.BIC_History_BarButtonItem.ImageOptions.LargeImageIndex = 64
-        Me.BIC_History_BarButtonItem.Name = "BIC_History_BarButtonItem"
-        Me.BIC_History_BarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
         'T2DirectoryBarButtonItem
         '
@@ -1377,38 +1438,51 @@ Partial Class PSTOOL_MAIN_Form
         Me.T2DirectoryBarButtonItem.Name = "T2DirectoryBarButtonItem"
         Me.T2DirectoryBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'iSEPA
+        'iBICplusDirectory
         '
-        Me.iSEPA.Caption = "SEPA Directory"
-        Me.iSEPA.Description = "The SEPA Directory provided by the Deutsche Bundesbank"
-        Me.iSEPA.Hint = "The SEPA Directory provided by the Deutsche Bundesbank"
-        Me.iSEPA.Id = 83
-        Me.iSEPA.ImageOptions.ImageIndex = 42
-        Me.iSEPA.ImageOptions.LargeImageIndex = 65
-        Me.iSEPA.Name = "iSEPA"
-        Me.iSEPA.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.iBICplusDirectory.Caption = "BIC Plus Directory"
+        Me.iBICplusDirectory.Description = "Displays the BIC Plus Directory"
+        Me.iBICplusDirectory.Hint = "Displays the BIC Plus Directory"
+        Me.iBICplusDirectory.Id = 123
+        Me.iBICplusDirectory.ImageOptions.ImageIndex = 28
+        Me.iBICplusDirectory.ImageOptions.LargeImageIndex = 64
+        Me.iBICplusDirectory.Name = "iBICplusDirectory"
+        Me.iBICplusDirectory.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'iBLZ
+        'iInterestCalculator
         '
-        Me.iBLZ.Caption = "BLZ Directory"
-        Me.iBLZ.Description = "The Directory of the German Bank ID's"
-        Me.iBLZ.Hint = "The Directory of the German Bank ID's"
-        Me.iBLZ.Id = 82
-        Me.iBLZ.ImageOptions.ImageIndex = 41
-        Me.iBLZ.ImageOptions.LargeImageIndex = 66
-        Me.iBLZ.Name = "iBLZ"
-        Me.iBLZ.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.iInterestCalculator.Caption = "Interest Calculator"
+        Me.iInterestCalculator.Description = "Calculates the Interest with all calculation methods"
+        Me.iInterestCalculator.Hint = "Calculates the Interest with all calculation methods"
+        Me.iInterestCalculator.Id = 124
+        Me.iInterestCalculator.ImageOptions.ImageIndex = 62
+        Me.iInterestCalculator.ImageOptions.LargeImageIndex = 59
+        Me.iInterestCalculator.Name = "iInterestCalculator"
+        Me.iInterestCalculator.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'iCountries
+        'iUnratedCustomers
         '
-        Me.iCountries.Caption = "Countries"
-        Me.iCountries.Description = "Countries Information"
-        Me.iCountries.Hint = "Countries Information"
-        Me.iCountries.Id = 72
-        Me.iCountries.ImageOptions.ImageIndex = 89
-        Me.iCountries.ImageOptions.LargeImageIndex = 67
-        Me.iCountries.Name = "iCountries"
-        Me.iCountries.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.iUnratedCustomers.Caption = "Unrated Customers:"
+        Me.iUnratedCustomers.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.iUnratedCustomers.Description = "Display's the Unrated Customers Count"
+        Me.iUnratedCustomers.Hint = "Display's the Unrated Customers Count"
+        Me.iUnratedCustomers.Id = 126
+        Me.iUnratedCustomers.ImageOptions.ImageIndex = 63
+        Me.iUnratedCustomers.Name = "iUnratedCustomers"
+        Me.iUnratedCustomers.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.iUnratedCustomers.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        '
+        'iImportEventsErrorsCount
+        '
+        Me.iImportEventsErrorsCount.Caption = "Errors in Data Imports:"
+        Me.iImportEventsErrorsCount.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.iImportEventsErrorsCount.Description = "Display's the Data Imports Errors Count"
+        Me.iImportEventsErrorsCount.Hint = "Display's the Data Imports Errors Count"
+        Me.iImportEventsErrorsCount.Id = 127
+        Me.iImportEventsErrorsCount.ImageOptions.ImageIndex = 8
+        Me.iImportEventsErrorsCount.Name = "iImportEventsErrorsCount"
+        Me.iImportEventsErrorsCount.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
+        Me.iImportEventsErrorsCount.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
         'iHolidays
         '
@@ -1422,259 +1496,78 @@ Partial Class PSTOOL_MAIN_Form
         Me.iHolidays.Name = "iHolidays"
         Me.iHolidays.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'iPLZ
+        'OCBSsuspenceBalancesBarButtonItem
         '
-        Me.iPLZ.Caption = "German ZIP Codes"
-        Me.iPLZ.Description = "Display/Add/Change German Zip codes"
-        Me.iPLZ.Hint = "German ZIP Codes"
-        Me.iPLZ.Id = 84
-        Me.iPLZ.ImageOptions.ImageIndex = 90
-        Me.iPLZ.ImageOptions.LargeImageIndex = 68
-        Me.iPLZ.Name = "iPLZ"
-        Me.iPLZ.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.OCBSsuspenceBalancesBarButtonItem.Caption = "Suspence Accounts Balances"
+        Me.OCBSsuspenceBalancesBarButtonItem.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.OCBSsuspenceBalancesBarButtonItem.Description = "Display's the Suspence Account Balances and Postings"
+        Me.OCBSsuspenceBalancesBarButtonItem.Hint = "Display's the Suspence Account Balances and Postings"
+        Me.OCBSsuspenceBalancesBarButtonItem.Id = 131
+        Me.OCBSsuspenceBalancesBarButtonItem.ImageOptions.ImageIndex = 59
+        Me.OCBSsuspenceBalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.OCBSsuspenceBalancesBarButtonItem.Name = "OCBSsuspenceBalancesBarButtonItem"
+        Me.OCBSsuspenceBalancesBarButtonItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'NUTS3_Codes_BarButtonItem
+        'FullWindowModeBarCheckItem
         '
-        Me.NUTS3_Codes_BarButtonItem.Caption = "NUTS 3 Codes"
-        Me.NUTS3_Codes_BarButtonItem.Hint = "Nomenclature des unités territoriales statistiques - County or similar administra" &
-    "tive division of counterparties resident in European Union Member States"
-        Me.NUTS3_Codes_BarButtonItem.Id = 16
-        Me.NUTS3_Codes_BarButtonItem.ImageOptions.ImageIndex = 43
-        Me.NUTS3_Codes_BarButtonItem.ImageOptions.LargeImageIndex = 23
-        Me.NUTS3_Codes_BarButtonItem.Name = "NUTS3_Codes_BarButtonItem"
+        Me.FullWindowModeBarCheckItem.Caption = "Full-Window Mode"
+        Me.FullWindowModeBarCheckItem.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.FullWindowModeBarCheckItem.Id = 132
+        Me.FullWindowModeBarCheckItem.ImageOptions.ImageIndex = 65
+        Me.FullWindowModeBarCheckItem.ItemShortcut = New DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2)
+        Me.FullWindowModeBarCheckItem.Name = "FullWindowModeBarCheckItem"
+        Me.FullWindowModeBarCheckItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'JustizID_BarButtonItem
+        'iClients
         '
-        Me.JustizID_BarButtonItem.Caption = "Justiz ID (Germany)"
-        Me.JustizID_BarButtonItem.Description = "Displays all German district courts ID"
-        Me.JustizID_BarButtonItem.Hint = "Displays all German district courts ID"
-        Me.JustizID_BarButtonItem.Id = 17
-        Me.JustizID_BarButtonItem.ImageOptions.LargeImageIndex = 73
-        Me.JustizID_BarButtonItem.Name = "JustizID_BarButtonItem"
+        Me.iClients.Caption = "CORPORATE CLIENTS"
+        Me.iClients.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.iClients.Description = "Display/Modify/Add related Data and Documents for all Corporate Clients"
+        Me.iClients.Id = 133
+        Me.iClients.ImageOptions.ImageIndex = 66
+        Me.iClients.ImageOptions.LargeImageIndex = 38
+        Me.iClients.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.iClients.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Navy
+        Me.iClients.ItemAppearance.Normal.Options.UseFont = True
+        Me.iClients.ItemAppearance.Normal.Options.UseForeColor = True
+        Me.iClients.Name = "iClients"
+        Me.iClients.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'iCurrencies
+        'iDailyBalanceSheetsDetails
         '
-        Me.iCurrencies.Caption = "Currencies"
-        Me.iCurrencies.Description = "All available Currencies"
-        Me.iCurrencies.Hint = "All available Currencies"
-        Me.iCurrencies.Id = 73
-        Me.iCurrencies.ImageOptions.ImageIndex = 19
-        Me.iCurrencies.ImageOptions.LargeImageIndex = 13
-        Me.iCurrencies.Name = "iCurrencies"
-        Me.iCurrencies.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.iDailyBalanceSheetsDetails.Caption = "Daily Balance Sheets (Details)"
+        Me.iDailyBalanceSheetsDetails.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.iDailyBalanceSheetsDetails.Description = "Displays the daily Balance Sheet Details generated from OCBS"
+        Me.iDailyBalanceSheetsDetails.Hint = "Displays the daily Balance Sheet Details generated from Core System"
+        Me.iDailyBalanceSheetsDetails.Id = 134
+        Me.iDailyBalanceSheetsDetails.ImageOptions.ImageIndex = 45
+        Me.iDailyBalanceSheetsDetails.ImageOptions.LargeImageIndex = 52
+        Me.iDailyBalanceSheetsDetails.Name = "iDailyBalanceSheetsDetails"
+        Me.iDailyBalanceSheetsDetails.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'iECBExchangeRates
+        'BarButtonGroup1
         '
-        Me.iECBExchangeRates.Caption = "ECB Exchange Rates"
-        Me.iECBExchangeRates.Description = "The daily reference Exchange Rates by ECB"
-        Me.iECBExchangeRates.Hint = "The daily reference Exchange Rates by ECB"
-        Me.iECBExchangeRates.Id = 71
-        Me.iECBExchangeRates.ImageOptions.ImageIndex = 18
-        Me.iECBExchangeRates.ImageOptions.LargeImageIndex = 12
-        Me.iECBExchangeRates.Name = "iECBExchangeRates"
-        Me.iECBExchangeRates.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.BarButtonGroup1.Caption = "BarButtonGroup1"
+        Me.BarButtonGroup1.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.BarButtonGroup1.Id = 135
+        Me.BarButtonGroup1.Name = "BarButtonGroup1"
         '
-        'iCurrencyConverterECB
+        'BarButtonItem1
         '
-        Me.iCurrencyConverterECB.Caption = "Currency Converter (ECB)"
-        Me.iCurrencyConverterECB.Description = "Converts currencies based on the ECB Rates"
-        Me.iCurrencyConverterECB.Hint = "Converts currencies based on the ECB Rates"
-        Me.iCurrencyConverterECB.Id = 74
-        Me.iCurrencyConverterECB.ImageOptions.ImageIndex = 17
-        Me.iCurrencyConverterECB.ImageOptions.LargeImageIndex = 11
-        Me.iCurrencyConverterECB.Name = "iCurrencyConverterECB"
-        Me.iCurrencyConverterECB.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.BarButtonItem1.Caption = "BarButtonItem1"
+        Me.BarButtonItem1.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.BarButtonItem1.Id = 136
+        Me.BarButtonItem1.Name = "BarButtonItem1"
         '
-        'PostingsBalances_BarSubItem
+        'BarButtonItem2
         '
-        Me.PostingsBalances_BarSubItem.Caption = "Postings and Balances"
-        Me.PostingsBalances_BarSubItem.Id = 155
-        Me.PostingsBalances_BarSubItem.ImageOptions.ImageIndex = 59
-        Me.PostingsBalances_BarSubItem.ImageOptions.LargeImageIndex = 34
-        Me.PostingsBalances_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem4), New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem3, True), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSsuspenceBalancesBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem5, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem6, True)})
-        Me.PostingsBalances_BarSubItem.MenuCaption = "Postings and Balances"
-        Me.PostingsBalances_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.PostingsBalances_BarSubItem.Name = "PostingsBalances_BarSubItem"
-        Me.PostingsBalances_BarSubItem.ShowMenuCaption = True
-        ToolTipTitleItem5.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem5.Appearance.Options.UseImage = True
-        ToolTipTitleItem5.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem5.Text = "Postings and Balances"
-        ToolTipItem5.LeftIndent = 6
-        ToolTipItem5.Text = "Includes Postings and Balances of the General Ledger Accounts, Nostro Accounts (I" &
-    "nternal and External), Suspence Accounts and all other clients Accounts"
-        SuperToolTip5.Items.Add(ToolTipTitleItem5)
-        SuperToolTip5.Items.Add(ToolTipItem5)
-        Me.PostingsBalances_BarSubItem.SuperTip = SuperToolTip5
-        '
-        'BarSubItem4
-        '
-        Me.BarSubItem4.Caption = "All Postings + Balances in General Ledger Accounts"
-        Me.BarSubItem4.Id = 18
-        Me.BarSubItem4.ImageOptions.ImageIndex = 59
-        Me.BarSubItem4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem10, True), New DevExpress.XtraBars.LinkPersistInfo(Me.NGS_Postings_BarSubItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBS_Postings_BarSubItem, True)})
-        Me.BarSubItem4.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.BarSubItem4.Name = "BarSubItem4"
-        '
-        'BarSubItem9
-        '
-        Me.BarSubItem9.Caption = "BarSubItem9"
-        Me.BarSubItem9.Id = 40
-        Me.BarSubItem9.ImageOptions.ImageIndex = 59
-        Me.BarSubItem9.ImageOptions.LargeImageIndex = 34
-        Me.BarSubItem9.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.BarSubItem9.Name = "BarSubItem9"
-        Me.BarSubItem9.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarSubItem10
-        '
-        Me.BarSubItem10.Caption = "BarSubItem10"
-        Me.BarSubItem10.Id = 41
-        Me.BarSubItem10.ImageOptions.ImageIndex = 59
-        Me.BarSubItem10.ImageOptions.LargeImageIndex = 34
-        Me.BarSubItem10.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, Me.BarButtonItem18, DevExpress.XtraBars.BarItemPaintStyle.Standard), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption, Me.BarButtonItem19, "BarButtonItem19", True)})
-        Me.BarSubItem10.Name = "BarSubItem10"
-        Me.BarSubItem10.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarButtonItem18
-        '
-        Me.BarButtonItem18.Caption = "BarButtonItem18"
-        Me.BarButtonItem18.Id = 53
-        Me.BarButtonItem18.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem18.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem18.Name = "BarButtonItem18"
-        Me.BarButtonItem18.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'BarButtonItem19
-        '
-        Me.BarButtonItem19.Caption = "BarButtonItem19"
-        Me.BarButtonItem19.Id = 54
-        Me.BarButtonItem19.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem19.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem19.Name = "BarButtonItem19"
-        '
-        'NGS_Postings_BarSubItem
-        '
-        Me.NGS_Postings_BarSubItem.Caption = "NGS (as from 09.12.2017)"
-        Me.NGS_Postings_BarSubItem.Id = 26
-        Me.NGS_Postings_BarSubItem.ImageOptions.ImageIndex = 59
-        Me.NGS_Postings_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem7), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem8, True), New DevExpress.XtraBars.LinkPersistInfo(Me.NEWGallPostingsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.NGS_Postings_Search_BarButtonItem, True)})
-        Me.NGS_Postings_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.NGS_Postings_BarSubItem.Name = "NGS_Postings_BarSubItem"
-        Me.NGS_Postings_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'BarButtonItem7
-        '
-        Me.BarButtonItem7.Caption = "BarButtonItem7"
-        Me.BarButtonItem7.Id = 42
-        Me.BarButtonItem7.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem7.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem7.Name = "BarButtonItem7"
-        Me.BarButtonItem7.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarButtonItem8
-        '
-        Me.BarButtonItem8.Caption = "BarButtonItem8"
-        Me.BarButtonItem8.Id = 43
-        Me.BarButtonItem8.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem8.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem8.Name = "BarButtonItem8"
-        Me.BarButtonItem8.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'NEWGallPostingsBarButtonItem
-        '
-        Me.NEWGallPostingsBarButtonItem.Caption = "All Postings + Balances in NGS GL Accounts"
-        Me.NEWGallPostingsBarButtonItem.Id = 19
-        Me.NEWGallPostingsBarButtonItem.ImageOptions.ImageIndex = 59
-        Me.NEWGallPostingsBarButtonItem.Name = "NEWGallPostingsBarButtonItem"
-        '
-        'NGS_Postings_Search_BarButtonItem
-        '
-        Me.NGS_Postings_Search_BarButtonItem.Caption = "All Postings in NGS GL Accounts (Specific Search Options)"
-        Me.NGS_Postings_Search_BarButtonItem.Id = 29
-        Me.NGS_Postings_Search_BarButtonItem.ImageOptions.ImageIndex = 59
-        Me.NGS_Postings_Search_BarButtonItem.Name = "NGS_Postings_Search_BarButtonItem"
-        '
-        'OCBS_Postings_BarSubItem
-        '
-        Me.OCBS_Postings_BarSubItem.Caption = "OCBS (till 08.12.2017)"
-        Me.OCBS_Postings_BarSubItem.Id = 27
-        Me.OCBS_Postings_BarSubItem.ImageOptions.ImageIndex = 59
-        Me.OCBS_Postings_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSallPostingsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBS_Postings_Search_BarButtonItem, True)})
-        Me.OCBS_Postings_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.OCBS_Postings_BarSubItem.Name = "OCBS_Postings_BarSubItem"
-        Me.OCBS_Postings_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'OCBSallPostingsBarButtonItem
-        '
-        Me.OCBSallPostingsBarButtonItem.Caption = "All Postings + Balances in OCBS GL Accounts"
-        Me.OCBSallPostingsBarButtonItem.Description = "Display the daily bookings and Value Balances in all OCBS General Ledger Accounts" &
-    ""
-        Me.OCBSallPostingsBarButtonItem.Hint = "Display the daily bookings in all OCBS General Ledger Accounts"
-        Me.OCBSallPostingsBarButtonItem.Id = 110
-        Me.OCBSallPostingsBarButtonItem.ImageOptions.ImageIndex = 59
-        Me.OCBSallPostingsBarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.OCBSallPostingsBarButtonItem.Name = "OCBSallPostingsBarButtonItem"
-        Me.OCBSallPostingsBarButtonItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
-        '
-        'OCBS_Postings_Search_BarButtonItem
-        '
-        Me.OCBS_Postings_Search_BarButtonItem.Caption = "All Postings in OCBS GL Accounts (Specific Search Options)"
-        Me.OCBS_Postings_Search_BarButtonItem.Id = 30
-        Me.OCBS_Postings_Search_BarButtonItem.ImageOptions.ImageIndex = 59
-        Me.OCBS_Postings_Search_BarButtonItem.Name = "OCBS_Postings_Search_BarButtonItem"
-        '
-        'BarSubItem3
-        '
-        Me.BarSubItem3.Caption = "Nostro (Loro) Accounts Postings + Balances"
-        Me.BarSubItem3.Id = 156
-        Me.BarSubItem3.ImageOptions.ImageIndex = 59
-        Me.BarSubItem3.ImageOptions.LargeImageIndex = 34
-        Me.BarSubItem3.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BarSubItem3.ItemAppearance.Normal.Options.UseFont = True
-        Me.BarSubItem3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem9), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem10, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem11, True), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSinternalNostroBalancesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSExternalNostroBalancesBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSExternalNostroBalancesAllBarButtonItem)})
-        Me.BarSubItem3.MenuCaption = "Nostro (Loro) Accounts Postings + Balances"
-        Me.BarSubItem3.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.BarSubItem3.Name = "BarSubItem3"
-        Me.BarSubItem3.ShowMenuCaption = True
-        '
-        'BarButtonItem9
-        '
-        Me.BarButtonItem9.Caption = "BarButtonItem9"
-        Me.BarButtonItem9.Id = 44
-        Me.BarButtonItem9.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem9.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem9.Name = "BarButtonItem9"
-        Me.BarButtonItem9.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarButtonItem10
-        '
-        Me.BarButtonItem10.Caption = "BarButtonItem10"
-        Me.BarButtonItem10.Id = 45
-        Me.BarButtonItem10.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem10.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem10.Name = "BarButtonItem10"
-        Me.BarButtonItem10.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarButtonItem11
-        '
-        Me.BarButtonItem11.Caption = "BarButtonItem11"
-        Me.BarButtonItem11.Id = 46
-        Me.BarButtonItem11.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem11.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem11.Name = "BarButtonItem11"
-        Me.BarButtonItem11.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'OCBSinternalNostroBalancesBarButtonItem
-        '
-        Me.OCBSinternalNostroBalancesBarButtonItem.Caption = "Internal Nostro Account Postings + Balances"
-        Me.OCBSinternalNostroBalancesBarButtonItem.Description = "Display's the daily internal nostro Account Balances"
-        Me.OCBSinternalNostroBalancesBarButtonItem.Hint = "Display's the daily internal nostro Account Balances"
-        Me.OCBSinternalNostroBalancesBarButtonItem.Id = 113
-        Me.OCBSinternalNostroBalancesBarButtonItem.ImageOptions.ImageIndex = 59
-        Me.OCBSinternalNostroBalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.OCBSinternalNostroBalancesBarButtonItem.Name = "OCBSinternalNostroBalancesBarButtonItem"
-        Me.OCBSinternalNostroBalancesBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.BarButtonItem2.Caption = "BarButtonItem2"
+        Me.BarButtonItem2.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
+        Me.BarButtonItem2.Id = 137
+        Me.BarButtonItem2.Name = "BarButtonItem2"
         '
         'OCBSExternalNostroBalancesBarButtonItem
         '
@@ -1700,128 +1593,36 @@ Partial Class PSTOOL_MAIN_Form
         Me.OCBSExternalNostroBalancesAllBarButtonItem.ImageOptions.LargeImageIndex = 34
         Me.OCBSExternalNostroBalancesAllBarButtonItem.Name = "OCBSExternalNostroBalancesAllBarButtonItem"
         '
-        'OCBSsuspenceBalancesBarButtonItem
+        'SingleTabbedViewModeBarCheckItem
         '
-        Me.OCBSsuspenceBalancesBarButtonItem.Caption = "Suspence Accounts Balances"
-        Me.OCBSsuspenceBalancesBarButtonItem.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.OCBSsuspenceBalancesBarButtonItem.Description = "Display's the Suspence Account Balances and Postings"
-        Me.OCBSsuspenceBalancesBarButtonItem.Hint = "Display's the Suspence Account Balances and Postings"
-        Me.OCBSsuspenceBalancesBarButtonItem.Id = 131
-        Me.OCBSsuspenceBalancesBarButtonItem.ImageOptions.ImageIndex = 59
-        Me.OCBSsuspenceBalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.OCBSsuspenceBalancesBarButtonItem.Name = "OCBSsuspenceBalancesBarButtonItem"
-        Me.OCBSsuspenceBalancesBarButtonItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+        Me.SingleTabbedViewModeBarCheckItem.Caption = "Single Window  - Tabbed MDI View"
+        Me.SingleTabbedViewModeBarCheckItem.Hint = "Swiches between Single Window Mode and MDI Tabbed View Mode"
+        Me.SingleTabbedViewModeBarCheckItem.Id = 140
+        Me.SingleTabbedViewModeBarCheckItem.ImageOptions.ImageIndex = 68
+        Me.SingleTabbedViewModeBarCheckItem.ImageOptions.LargeImageIndex = 40
+        Me.SingleTabbedViewModeBarCheckItem.ItemShortcut = New DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F3)
+        Me.SingleTabbedViewModeBarCheckItem.Name = "SingleTabbedViewModeBarCheckItem"
+        Me.SingleTabbedViewModeBarCheckItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'BarSubItem5
+        'BarWorkspaceMenuItem1
         '
-        Me.BarSubItem5.Caption = "Corporate Demand Deposits Accounts Balances"
-        Me.BarSubItem5.Id = 21
-        Me.BarSubItem5.ImageOptions.ImageIndex = 59
-        Me.BarSubItem5.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem12), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem13, True), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBScustomerBalancesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.CorporateCustomerBalancesNEWG_BarButtonItem, True)})
-        Me.BarSubItem5.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.BarSubItem5.Name = "BarSubItem5"
-        '
-        'BarButtonItem12
-        '
-        Me.BarButtonItem12.Caption = "BarButtonItem12"
-        Me.BarButtonItem12.Id = 47
-        Me.BarButtonItem12.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem12.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem12.Name = "BarButtonItem12"
-        Me.BarButtonItem12.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarButtonItem13
-        '
-        Me.BarButtonItem13.Caption = "BarButtonItem13"
-        Me.BarButtonItem13.Id = 48
-        Me.BarButtonItem13.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem13.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem13.Name = "BarButtonItem13"
-        Me.BarButtonItem13.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'OCBScustomerBalancesBarButtonItem
-        '
-        Me.OCBScustomerBalancesBarButtonItem.Caption = "Corporate Customers Demand Deposits Accounts Postings + Balances (OCBS + NGS)"
-        Me.OCBScustomerBalancesBarButtonItem.Description = "Display's the Customer Account Balances and Postings"
-        Me.OCBScustomerBalancesBarButtonItem.Hint = "Display's the Customer Account Balances and Postings"
-        Me.OCBScustomerBalancesBarButtonItem.Id = 114
-        Me.OCBScustomerBalancesBarButtonItem.ImageOptions.ImageIndex = 59
-        Me.OCBScustomerBalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.OCBScustomerBalancesBarButtonItem.Name = "OCBScustomerBalancesBarButtonItem"
-        Me.OCBScustomerBalancesBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'CorporateCustomerBalancesNEWG_BarButtonItem
-        '
-        Me.CorporateCustomerBalancesNEWG_BarButtonItem.Caption = "Corporate Customers Demand Deposits Balances (NGS)"
-        Me.CorporateCustomerBalancesNEWG_BarButtonItem.Id = 22
-        Me.CorporateCustomerBalancesNEWG_BarButtonItem.ImageOptions.ImageIndex = 59
-        Me.CorporateCustomerBalancesNEWG_BarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.CorporateCustomerBalancesNEWG_BarButtonItem.Name = "CorporateCustomerBalancesNEWG_BarButtonItem"
-        '
-        'BarSubItem6
-        '
-        Me.BarSubItem6.Caption = "Vostro Accounts Balances"
-        Me.BarSubItem6.Id = 23
-        Me.BarSubItem6.ImageOptions.ImageIndex = 59
-        Me.BarSubItem6.ImageOptions.LargeImageIndex = 34
-        Me.BarSubItem6.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem14), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem15, True), New DevExpress.XtraBars.LinkPersistInfo(Me.VostroBalancesNEWG_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSvostroBalancesBarButtonItem, True)})
-        Me.BarSubItem6.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
-        Me.BarSubItem6.Name = "BarSubItem6"
-        '
-        'BarButtonItem14
-        '
-        Me.BarButtonItem14.Caption = "BarButtonItem14"
-        Me.BarButtonItem14.Id = 49
-        Me.BarButtonItem14.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem14.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem14.Name = "BarButtonItem14"
-        Me.BarButtonItem14.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarButtonItem15
-        '
-        Me.BarButtonItem15.Caption = "BarButtonItem15"
-        Me.BarButtonItem15.Id = 50
-        Me.BarButtonItem15.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem15.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem15.Name = "BarButtonItem15"
-        Me.BarButtonItem15.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'VostroBalancesNEWG_BarButtonItem
-        '
-        Me.VostroBalancesNEWG_BarButtonItem.Caption = "Vostro Accounts Balances (NGS)"
-        Me.VostroBalancesNEWG_BarButtonItem.Id = 24
-        Me.VostroBalancesNEWG_BarButtonItem.ImageOptions.ImageIndex = 59
-        Me.VostroBalancesNEWG_BarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.VostroBalancesNEWG_BarButtonItem.Name = "VostroBalancesNEWG_BarButtonItem"
-        '
-        'OCBSvostroBalancesBarButtonItem
-        '
-        Me.OCBSvostroBalancesBarButtonItem.Caption = "Vostro Accounts Postings +  Balances (OCBS)"
-        Me.OCBSvostroBalancesBarButtonItem.Description = "Display's the Vostro Account Balances and Postings"
-        Me.OCBSvostroBalancesBarButtonItem.Hint = "Display's the Vostro Account Balances and Postings"
-        Me.OCBSvostroBalancesBarButtonItem.Id = 117
-        Me.OCBSvostroBalancesBarButtonItem.ImageOptions.ImageIndex = 59
-        Me.OCBSvostroBalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.OCBSvostroBalancesBarButtonItem.Name = "OCBSvostroBalancesBarButtonItem"
-        Me.OCBSvostroBalancesBarButtonItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+        Me.BarWorkspaceMenuItem1.Caption = "Workspaces"
+        Me.BarWorkspaceMenuItem1.Id = 141
+        Me.BarWorkspaceMenuItem1.ImageOptions.ImageIndex = 72
+        Me.BarWorkspaceMenuItem1.ImageOptions.LargeImageIndex = 41
+        Me.BarWorkspaceMenuItem1.Name = "BarWorkspaceMenuItem1"
+        Me.BarWorkspaceMenuItem1.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.BarWorkspaceMenuItem1.ShowMenuCaption = True
+        Me.BarWorkspaceMenuItem1.ShowSaveLoadCommands = True
+        Me.BarWorkspaceMenuItem1.WorkspaceManager = Me.WorkspaceManager1
+        Me.BarWorkspaceMenuItem1.WorkspacesSortMode = DevExpress.XtraBars.WorspacesSortMode.Alphabetical
         '
-        'iClients
+        'WorkspaceManager1
         '
-        Me.iClients.Caption = "CORPORATE CLIENTS"
-        Me.iClients.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.iClients.Description = "Display/Modify/Add related Data and Documents for all Corporate Clients"
-        Me.iClients.Id = 133
-        Me.iClients.ImageOptions.ImageIndex = 66
-        Me.iClients.ImageOptions.LargeImageIndex = 38
-        Me.iClients.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.iClients.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Navy
-        Me.iClients.ItemAppearance.Normal.Options.UseFont = True
-        Me.iClients.ItemAppearance.Normal.Options.UseForeColor = True
-        Me.iClients.Name = "iClients"
-        Me.iClients.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
-            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.WorkspaceManager1.TargetControl = Me
+        Me.WorkspaceManager1.TransitionType = PushTransition1
         '
         'PivotGrids_BarSubItem
         '
@@ -1891,16 +1692,110 @@ Partial Class PSTOOL_MAIN_Form
         Me.PivotGrid_All_Postings_BarButtonItem.ImageOptions.LargeImageIndex = 42
         Me.PivotGrid_All_Postings_BarButtonItem.Name = "PivotGrid_All_Postings_BarButtonItem"
         '
-        'iOrgaChart
+        'iBasicBankData_BarSubItem
         '
-        Me.iOrgaChart.Caption = "Organisation Chart "
-        Me.iOrgaChart.Description = "Displays the current Organisation Chart of CCB Frankfurt"
-        Me.iOrgaChart.Hint = "Displays the current Organisation Chart of CCB Frankfurt"
-        Me.iOrgaChart.Id = 98
-        Me.iOrgaChart.ImageOptions.ImageIndex = 51
-        Me.iOrgaChart.ImageOptions.LargeImageIndex = 30
-        Me.iOrgaChart.Name = "iOrgaChart"
-        Me.iOrgaChart.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        Me.iBasicBankData_BarSubItem.Caption = "Basic Internal Data"
+        Me.iBasicBankData_BarSubItem.Hint = "Includes all basic Bank Data"
+        Me.iBasicBankData_BarSubItem.Id = 147
+        Me.iBasicBankData_BarSubItem.ImageOptions.ImageIndex = 16
+        Me.iBasicBankData_BarSubItem.ImageOptions.LargeImageIndex = 10
+        Me.iBasicBankData_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iBankData, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "BD", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iCustomers, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "CU", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.CustomerGroups_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iCustomerAccounts, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "CA", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.iAllContractsAccounts_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iSSI, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "NOSTRO", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iGLAccounts, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "GL", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iInternalCurrencies, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iIndustrialValuesOCBS, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "IV", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iContractTypesOCBS, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "CT", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iProductTypesOCBS, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "PT", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iOCBSExchangeRates, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "OER", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.iCurrencyConverterOCBS)})
+        Me.iBasicBankData_BarSubItem.MenuCaption = "Basic Bank Data"
+        Me.iBasicBankData_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.iBasicBankData_BarSubItem.Name = "iBasicBankData_BarSubItem"
+        Me.iBasicBankData_BarSubItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu
+        Me.iBasicBankData_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        Me.iBasicBankData_BarSubItem.ShowMenuCaption = True
+        ToolTipTitleItem7.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem7.Appearance.Options.UseImage = True
+        ToolTipTitleItem7.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem7.Text = "Basic Internal Data"
+        ToolTipItem7.LeftIndent = 6
+        ToolTipItem7.Text = "Includes Forms with basic internal data" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Internal Currencies, Products, Contract" &
+    "s etc.)"
+        SuperToolTip7.Items.Add(ToolTipTitleItem7)
+        SuperToolTip7.Items.Add(ToolTipItem7)
+        Me.iBasicBankData_BarSubItem.SuperTip = SuperToolTip7
+        '
+        'CustomerGroups_BarButtonItem
+        '
+        Me.CustomerGroups_BarButtonItem.Caption = "Customer Groups"
+        Me.CustomerGroups_BarButtonItem.Hint = "Displays the Client Groups (imported from the BAIS System)"
+        Me.CustomerGroups_BarButtonItem.Id = 13
+        Me.CustomerGroups_BarButtonItem.ImageOptions.ImageIndex = 92
+        Me.CustomerGroups_BarButtonItem.ImageOptions.LargeImageIndex = 70
+        Me.CustomerGroups_BarButtonItem.Name = "CustomerGroups_BarButtonItem"
+        '
+        'iAllContractsAccounts_BarButtonItem
+        '
+        Me.iAllContractsAccounts_BarButtonItem.Caption = "All Customers Contracts / Accounts"
+        Me.iAllContractsAccounts_BarButtonItem.Hint = "Display all Contracts/Accounts in the Core System"
+        Me.iAllContractsAccounts_BarButtonItem.Id = 1
+        Me.iAllContractsAccounts_BarButtonItem.ImageOptions.ImageIndex = 81
+        Me.iAllContractsAccounts_BarButtonItem.ImageOptions.LargeImageIndex = 51
+        Me.iAllContractsAccounts_BarButtonItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.iAllContractsAccounts_BarButtonItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.iAllContractsAccounts_BarButtonItem.Name = "iAllContractsAccounts_BarButtonItem"
+        '
+        'iBasicReports_BarSubItem
+        '
+        Me.iBasicReports_BarSubItem.Caption = "Basic Internal Reports"
+        Me.iBasicReports_BarSubItem.Id = 148
+        Me.iBasicReports_BarSubItem.ImageOptions.ImageIndex = 80
+        Me.iBasicReports_BarSubItem.ImageOptions.LargeImageIndex = 43
+        Me.iBasicReports_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem1), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iDailyPLSheets, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "DPL", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iFristen, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "FRISTEN", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.CashFlows_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iAccruedInterestAnalysis, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "AIA", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iTrialBalance218, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "TB", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iMakReport, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "MAK", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iCreditRisk, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "CR", ""), New DevExpress.XtraBars.LinkPersistInfo(Me.iFinancialReconciliation, True), New DevExpress.XtraBars.LinkPersistInfo(Me.ObligoLiabilities_BarButtonItem)})
+        Me.iBasicReports_BarSubItem.MenuCaption = "Basic Reports"
+        Me.iBasicReports_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.iBasicReports_BarSubItem.Name = "iBasicReports_BarSubItem"
+        Me.iBasicReports_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        Me.iBasicReports_BarSubItem.ShowMenuCaption = True
+        ToolTipTitleItem8.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem8.Appearance.Options.UseImage = True
+        ToolTipTitleItem8.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem8.Text = "Basic Internal Reports"
+        ToolTipItem8.LeftIndent = 6
+        ToolTipItem8.Text = "Includes basic internal Reports" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Balance Sheet, Maturities, Accrued Interests et" &
+    "c.)"
+        SuperToolTip8.Items.Add(ToolTipTitleItem8)
+        SuperToolTip8.Items.Add(ToolTipItem8)
+        Me.iBasicReports_BarSubItem.SuperTip = SuperToolTip8
+        '
+        'BarSubItem1
+        '
+        Me.BarSubItem1.Caption = "Daily Balance Sheets"
+        Me.BarSubItem1.Id = 151
+        Me.BarSubItem1.ImageOptions.ImageIndex = 81
+        Me.BarSubItem1.ImageOptions.LargeImageIndex = 51
+        Me.BarSubItem1.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BarSubItem1.ItemAppearance.Normal.Options.UseFont = True
+        Me.BarSubItem1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iDailyBalanceSheets, "", False, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "DBST", ""), New DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, Me.iDailyBalanceSheetsDetails, "", True, True, True, 0, Nothing, DevExpress.XtraBars.BarItemPaintStyle.Standard, "DBSD", "")})
+        Me.BarSubItem1.MenuCaption = "Daily Balance Sheets"
+        Me.BarSubItem1.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.BarSubItem1.Name = "BarSubItem1"
+        Me.BarSubItem1.ShowMenuCaption = True
+        '
+        'CashFlows_BarButtonItem
+        '
+        Me.CashFlows_BarButtonItem.Caption = "Cash Flows (from 08.12.2017)"
+        Me.CashFlows_BarButtonItem.Hint = "Displays the Cash Flows (generated from FINRECON Report)"
+        Me.CashFlows_BarButtonItem.Id = 20
+        Me.CashFlows_BarButtonItem.ImageOptions.ImageIndex = 82
+        Me.CashFlows_BarButtonItem.ImageOptions.LargeImageIndex = 55
+        Me.CashFlows_BarButtonItem.Name = "CashFlows_BarButtonItem"
+        '
+        'iFinancialReconciliation
+        '
+        Me.iFinancialReconciliation.Caption = "Financial Reconciliation"
+        Me.iFinancialReconciliation.Id = 7
+        Me.iFinancialReconciliation.ImageOptions.LargeImageIndex = 25
+        Me.iFinancialReconciliation.Name = "iFinancialReconciliation"
+        '
+        'ObligoLiabilities_BarButtonItem
+        '
+        Me.ObligoLiabilities_BarButtonItem.Caption = "Obligo Liabilities Surplus"
+        Me.ObligoLiabilities_BarButtonItem.Id = 10
+        Me.ObligoLiabilities_BarButtonItem.ImageOptions.LargeImageIndex = 57
+        Me.ObligoLiabilities_BarButtonItem.Name = "ObligoLiabilities_BarButtonItem"
         '
         'iHelp_BarSubItem
         '
@@ -1913,217 +1808,282 @@ Partial Class PSTOOL_MAIN_Form
         Me.iHelp_BarSubItem.Name = "iHelp_BarSubItem"
         Me.iHelp_BarSubItem.ShowMenuCaption = True
         '
-        'iCalendar
+        'CloseAndExit_BarSubItem
         '
-        Me.iCalendar.Caption = "Calendar"
-        Me.iCalendar.Id = 64
-        Me.iCalendar.ImageOptions.ImageIndex = 26
-        Me.iCalendar.ImageOptions.LargeImageIndex = 20
-        Me.iCalendar.Name = "iCalendar"
-        Me.iCalendar.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.CloseAndExit_BarSubItem.Caption = "Close and Exit"
+        Me.CloseAndExit_BarSubItem.Id = 152
+        Me.CloseAndExit_BarSubItem.ImageOptions.ImageIndex = 86
+        Me.CloseAndExit_BarSubItem.ImageOptions.LargeImageIndex = 61
+        Me.CloseAndExit_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.Close_all_Forms_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.iExit, True)})
+        Me.CloseAndExit_BarSubItem.MenuCaption = "Close and Exit"
+        Me.CloseAndExit_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.CloseAndExit_BarSubItem.Name = "CloseAndExit_BarSubItem"
+        Me.CloseAndExit_BarSubItem.ShowMenuCaption = True
         '
-        'iInterestCalculator
+        'BasicExternalSate_BarSubItem
         '
-        Me.iInterestCalculator.Caption = "Interest Calculator"
-        Me.iInterestCalculator.Description = "Calculates the Interest with all calculation methods"
-        Me.iInterestCalculator.Hint = "Calculates the Interest with all calculation methods"
-        Me.iInterestCalculator.Id = 124
-        Me.iInterestCalculator.ImageOptions.ImageIndex = 62
-        Me.iInterestCalculator.ImageOptions.LargeImageIndex = 59
-        Me.iInterestCalculator.Name = "iInterestCalculator"
-        Me.iInterestCalculator.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.BasicExternalSate_BarSubItem.Caption = "Basic External Data"
+        Me.BasicExternalSate_BarSubItem.Id = 153
+        Me.BasicExternalSate_BarSubItem.ImageOptions.ImageIndex = 87
+        Me.BasicExternalSate_BarSubItem.ImageOptions.LargeImageIndex = 62
+        Me.BasicExternalSate_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem2), New DevExpress.XtraBars.LinkPersistInfo(Me.iCountries, True), New DevExpress.XtraBars.LinkPersistInfo(Me.iHolidays), New DevExpress.XtraBars.LinkPersistInfo(Me.iPLZ), New DevExpress.XtraBars.LinkPersistInfo(Me.NUTS3_Codes_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.JustizID_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.iCurrencies, True), New DevExpress.XtraBars.LinkPersistInfo(Me.iECBExchangeRates, True), New DevExpress.XtraBars.LinkPersistInfo(Me.iCurrencyConverterECB)})
+        Me.BasicExternalSate_BarSubItem.MenuCaption = "Basic External Data"
+        Me.BasicExternalSate_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.BasicExternalSate_BarSubItem.Name = "BasicExternalSate_BarSubItem"
+        Me.BasicExternalSate_BarSubItem.ShowMenuCaption = True
+        ToolTipTitleItem9.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem9.Appearance.Options.UseImage = True
+        ToolTipTitleItem9.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem9.Text = "Basic External Data"
+        ToolTipItem9.LeftIndent = 6
+        ToolTipItem9.Text = "Includes basic external Data" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Bank Directories, Countries, Currencies etc.)"
+        SuperToolTip9.Items.Add(ToolTipTitleItem9)
+        SuperToolTip9.Items.Add(ToolTipItem9)
+        Me.BasicExternalSate_BarSubItem.SuperTip = SuperToolTip9
         '
-        'iIBANCalculator
+        'BarSubItem2
         '
-        Me.iIBANCalculator.Caption = "IBAN Calculator"
-        Me.iIBANCalculator.Description = "Calculates  IBAN's"
-        Me.iIBANCalculator.Hint = "Calculates IBAN's"
-        Me.iIBANCalculator.Id = 68
-        Me.iIBANCalculator.ImageOptions.ImageIndex = 67
-        Me.iIBANCalculator.ImageOptions.LargeImageIndex = 39
-        Me.iIBANCalculator.Name = "iIBANCalculator"
-        Me.iIBANCalculator.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.BarSubItem2.Caption = "Bank Directories"
+        Me.BarSubItem2.Id = 154
+        Me.BarSubItem2.ImageOptions.ImageIndex = 88
+        Me.BarSubItem2.ImageOptions.LargeImageIndex = 63
+        Me.BarSubItem2.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BarSubItem2.ItemAppearance.Normal.Options.UseFont = True
+        Me.BarSubItem2.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.iBICDirectory), New DevExpress.XtraBars.LinkPersistInfo(Me.iBICplusDirectory), New DevExpress.XtraBars.LinkPersistInfo(Me.BIC_History_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.T2DirectoryBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.iSEPA), New DevExpress.XtraBars.LinkPersistInfo(Me.iBLZ)})
+        Me.BarSubItem2.MenuCaption = "Bank Directories"
+        Me.BarSubItem2.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.BarSubItem2.Name = "BarSubItem2"
+        Me.BarSubItem2.ShowMenuCaption = True
         '
-        'alignButtonGroup
+        'BIC_History_BarButtonItem
         '
-        Me.alignButtonGroup.Caption = "Align Commands"
-        Me.alignButtonGroup.Id = 52
-        Me.alignButtonGroup.ItemLinks.Add(Me.iBoldFontStyle)
-        Me.alignButtonGroup.ItemLinks.Add(Me.iItalicFontStyle)
-        Me.alignButtonGroup.ItemLinks.Add(Me.iUnderlinedFontStyle)
-        Me.alignButtonGroup.Name = "alignButtonGroup"
+        Me.BIC_History_BarButtonItem.Caption = "BIC History"
+        Me.BIC_History_BarButtonItem.Description = "Displays the BIC History Directory"
+        Me.BIC_History_BarButtonItem.Hint = "Displays the BIC History Directory"
+        Me.BIC_History_BarButtonItem.Id = 31
+        Me.BIC_History_BarButtonItem.ImageOptions.ImageIndex = 28
+        Me.BIC_History_BarButtonItem.ImageOptions.LargeImageIndex = 64
+        Me.BIC_History_BarButtonItem.Name = "BIC_History_BarButtonItem"
+        Me.BIC_History_BarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
-        'iBoldFontStyle
+        'NUTS3_Codes_BarButtonItem
         '
-        Me.iBoldFontStyle.Caption = "Bold"
-        Me.iBoldFontStyle.Id = 53
-        Me.iBoldFontStyle.ImageOptions.ImageIndex = 9
-        Me.iBoldFontStyle.Name = "iBoldFontStyle"
+        Me.NUTS3_Codes_BarButtonItem.Caption = "NUTS 3 Codes"
+        Me.NUTS3_Codes_BarButtonItem.Hint = "Nomenclature des unités territoriales statistiques - County or similar administra" &
+    "tive division of counterparties resident in European Union Member States"
+        Me.NUTS3_Codes_BarButtonItem.Id = 16
+        Me.NUTS3_Codes_BarButtonItem.ImageOptions.ImageIndex = 43
+        Me.NUTS3_Codes_BarButtonItem.ImageOptions.LargeImageIndex = 23
+        Me.NUTS3_Codes_BarButtonItem.Name = "NUTS3_Codes_BarButtonItem"
         '
-        'iItalicFontStyle
+        'JustizID_BarButtonItem
         '
-        Me.iItalicFontStyle.Caption = "Italic"
-        Me.iItalicFontStyle.Id = 54
-        Me.iItalicFontStyle.ImageOptions.ImageIndex = 10
-        Me.iItalicFontStyle.Name = "iItalicFontStyle"
+        Me.JustizID_BarButtonItem.Caption = "Justiz ID (Germany)"
+        Me.JustizID_BarButtonItem.Description = "Displays all German district courts ID"
+        Me.JustizID_BarButtonItem.Hint = "Displays all German district courts ID"
+        Me.JustizID_BarButtonItem.Id = 17
+        Me.JustizID_BarButtonItem.ImageOptions.LargeImageIndex = 73
+        Me.JustizID_BarButtonItem.Name = "JustizID_BarButtonItem"
         '
-        'iUnderlinedFontStyle
+        'PostingsBalances_BarSubItem
         '
-        Me.iUnderlinedFontStyle.Caption = "Underlined"
-        Me.iUnderlinedFontStyle.Id = 55
-        Me.iUnderlinedFontStyle.ImageOptions.ImageIndex = 11
-        Me.iUnderlinedFontStyle.Name = "iUnderlinedFontStyle"
+        Me.PostingsBalances_BarSubItem.Caption = "Postings and Balances"
+        Me.PostingsBalances_BarSubItem.Id = 155
+        Me.PostingsBalances_BarSubItem.ImageOptions.ImageIndex = 59
+        Me.PostingsBalances_BarSubItem.ImageOptions.LargeImageIndex = 34
+        Me.PostingsBalances_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem4), New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem3, True), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSsuspenceBalancesBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem5, True), New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem6)})
+        Me.PostingsBalances_BarSubItem.MenuCaption = "Postings and Balances"
+        Me.PostingsBalances_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.PostingsBalances_BarSubItem.Name = "PostingsBalances_BarSubItem"
+        Me.PostingsBalances_BarSubItem.ShowMenuCaption = True
+        ToolTipTitleItem10.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem10.Appearance.Options.UseImage = True
+        ToolTipTitleItem10.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem10.Text = "Postings and Balances"
+        ToolTipItem10.LeftIndent = 6
+        ToolTipItem10.Text = "Includes Postings and Balances of the General Ledger Accounts, Nostro Accounts (I" &
+    "nternal and External), Suspence Accounts and all other clients Accounts"
+        SuperToolTip10.Items.Add(ToolTipTitleItem10)
+        SuperToolTip10.Items.Add(ToolTipItem10)
+        Me.PostingsBalances_BarSubItem.SuperTip = SuperToolTip10
         '
-        'fontStyleButtonGroup
+        'BarSubItem4
         '
-        Me.fontStyleButtonGroup.Caption = "Font Style"
-        Me.fontStyleButtonGroup.Id = 56
-        Me.fontStyleButtonGroup.ItemLinks.Add(Me.iLeftTextAlign)
-        Me.fontStyleButtonGroup.ItemLinks.Add(Me.iCenterTextAlign)
-        Me.fontStyleButtonGroup.ItemLinks.Add(Me.iRightTextAlign)
-        Me.fontStyleButtonGroup.Name = "fontStyleButtonGroup"
+        Me.BarSubItem4.Caption = "All Postings + Balances in General Ledger Accounts"
+        Me.BarSubItem4.Id = 18
+        Me.BarSubItem4.ImageOptions.ImageIndex = 59
+        Me.BarSubItem4.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.NGS_Postings_BarSubItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBS_Postings_BarSubItem, True)})
+        Me.BarSubItem4.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.BarSubItem4.Name = "BarSubItem4"
         '
-        'iLeftTextAlign
+        'NGS_Postings_BarSubItem
         '
-        Me.iLeftTextAlign.Caption = "Left"
-        Me.iLeftTextAlign.Id = 57
-        Me.iLeftTextAlign.ImageOptions.ImageIndex = 12
-        Me.iLeftTextAlign.Name = "iLeftTextAlign"
+        Me.NGS_Postings_BarSubItem.Caption = "NGS (as from 09.12.2017)"
+        Me.NGS_Postings_BarSubItem.Id = 26
+        Me.NGS_Postings_BarSubItem.ImageOptions.ImageIndex = 59
+        Me.NGS_Postings_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.NEWGallPostingsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.NGS_Postings_Search_BarButtonItem, True)})
+        Me.NGS_Postings_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.NGS_Postings_BarSubItem.Name = "NGS_Postings_BarSubItem"
+        Me.NGS_Postings_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         '
-        'iCenterTextAlign
+        'NEWGallPostingsBarButtonItem
         '
-        Me.iCenterTextAlign.Caption = "Center"
-        Me.iCenterTextAlign.Id = 58
-        Me.iCenterTextAlign.ImageOptions.ImageIndex = 13
-        Me.iCenterTextAlign.Name = "iCenterTextAlign"
+        Me.NEWGallPostingsBarButtonItem.Caption = "All Postings + Balances in NGS GL Accounts"
+        Me.NEWGallPostingsBarButtonItem.Id = 19
+        Me.NEWGallPostingsBarButtonItem.ImageOptions.ImageIndex = 59
+        Me.NEWGallPostingsBarButtonItem.Name = "NEWGallPostingsBarButtonItem"
         '
-        'iRightTextAlign
+        'NGS_Postings_Search_BarButtonItem
         '
-        Me.iRightTextAlign.Caption = "Right"
-        Me.iRightTextAlign.Id = 59
-        Me.iRightTextAlign.ImageOptions.ImageIndex = 14
-        Me.iRightTextAlign.Name = "iRightTextAlign"
+        Me.NGS_Postings_Search_BarButtonItem.Caption = "All Postings in NGS GL Accounts (Specific Search Options)"
+        Me.NGS_Postings_Search_BarButtonItem.Id = 29
+        Me.NGS_Postings_Search_BarButtonItem.ImageOptions.ImageIndex = 59
+        Me.NGS_Postings_Search_BarButtonItem.Name = "NGS_Postings_Search_BarButtonItem"
         '
-        'OCBSprofitLossGLbalancesBarButtonItem
+        'OCBS_Postings_BarSubItem
         '
-        Me.OCBSprofitLossGLbalancesBarButtonItem.Caption = "Profit + Loss GL Items/Accounts Balances"
-        Me.OCBSprofitLossGLbalancesBarButtonItem.Description = "Displays the daily Profit + Loss General Ledger Balances"
-        Me.OCBSprofitLossGLbalancesBarButtonItem.Hint = "Displays the daily Profit + Loss General Ledger Balances"
-        Me.OCBSprofitLossGLbalancesBarButtonItem.Id = 111
-        Me.OCBSprofitLossGLbalancesBarButtonItem.ImageOptions.ImageIndex = 59
-        Me.OCBSprofitLossGLbalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.OCBSprofitLossGLbalancesBarButtonItem.Name = "OCBSprofitLossGLbalancesBarButtonItem"
-        Me.OCBSprofitLossGLbalancesBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        Me.OCBSprofitLossGLbalancesBarButtonItem.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        Me.OCBS_Postings_BarSubItem.Caption = "OCBS (till 08.12.2017)"
+        Me.OCBS_Postings_BarSubItem.Id = 27
+        Me.OCBS_Postings_BarSubItem.ImageOptions.ImageIndex = 59
+        Me.OCBS_Postings_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSallPostingsBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBS_Postings_Search_BarButtonItem, True)})
+        Me.OCBS_Postings_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.OCBS_Postings_BarSubItem.Name = "OCBS_Postings_BarSubItem"
         '
-        'OCBSdiverseGLbalancesBarButtonItem
+        'OCBS_Postings_Search_BarButtonItem
         '
-        Me.OCBSdiverseGLbalancesBarButtonItem.Caption = "Diverse GL Items/Accounts Balances"
-        Me.OCBSdiverseGLbalancesBarButtonItem.Description = "Displays the daily balances in Diverse General Ledger"
-        Me.OCBSdiverseGLbalancesBarButtonItem.Hint = "Displays the daily balances in Diverse General Ledger"
-        Me.OCBSdiverseGLbalancesBarButtonItem.Id = 112
-        Me.OCBSdiverseGLbalancesBarButtonItem.ImageOptions.ImageIndex = 59
-        Me.OCBSdiverseGLbalancesBarButtonItem.ImageOptions.LargeImageIndex = 34
-        Me.OCBSdiverseGLbalancesBarButtonItem.Name = "OCBSdiverseGLbalancesBarButtonItem"
-        Me.OCBSdiverseGLbalancesBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        Me.OCBSdiverseGLbalancesBarButtonItem.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
+        Me.OCBS_Postings_Search_BarButtonItem.Caption = "All Postings in OCBS GL Accounts (Specific Search Options)"
+        Me.OCBS_Postings_Search_BarButtonItem.Id = 30
+        Me.OCBS_Postings_Search_BarButtonItem.ImageOptions.ImageIndex = 59
+        Me.OCBS_Postings_Search_BarButtonItem.Name = "OCBS_Postings_Search_BarButtonItem"
         '
-        'OCBS_PL_MappingBarButtonItem
+        'BarSubItem3
         '
-        Me.OCBS_PL_MappingBarButtonItem.Caption = "Profit and Loss General Ledger Mapping"
-        Me.OCBS_PL_MappingBarButtonItem.Description = "Display/Add/Modify GL Account mapping for Profit and Loss GL Items"
-        Me.OCBS_PL_MappingBarButtonItem.Hint = "Display/Add/Modify GL Account mapping for Profit and Loss GL Items"
-        Me.OCBS_PL_MappingBarButtonItem.Id = 115
-        Me.OCBS_PL_MappingBarButtonItem.ImageOptions.ImageIndex = 60
-        Me.OCBS_PL_MappingBarButtonItem.ImageOptions.LargeImageIndex = 35
-        Me.OCBS_PL_MappingBarButtonItem.Name = "OCBS_PL_MappingBarButtonItem"
-        Me.OCBS_PL_MappingBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.BarSubItem3.Caption = "Nostro (Loro) Accounts Postings + Balances"
+        Me.BarSubItem3.Id = 156
+        Me.BarSubItem3.ImageOptions.ImageIndex = 59
+        Me.BarSubItem3.ImageOptions.LargeImageIndex = 34
+        Me.BarSubItem3.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BarSubItem3.ItemAppearance.Normal.Options.UseFont = True
+        Me.BarSubItem3.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSinternalNostroBalancesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSExternalNostroBalancesBarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSExternalNostroBalancesAllBarButtonItem)})
+        Me.BarSubItem3.MenuCaption = "Nostro (Loro) Accounts Postings + Balances"
+        Me.BarSubItem3.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.BarSubItem3.Name = "BarSubItem3"
+        Me.BarSubItem3.ShowMenuCaption = True
         '
-        'OCBS_DIVERSE_MappingBarButtonItem
+        'BarSubItem5
         '
-        Me.OCBS_DIVERSE_MappingBarButtonItem.Caption = "Diverse General Ledger Mapping"
-        Me.OCBS_DIVERSE_MappingBarButtonItem.Description = "Display/Add/Modify GL Account mapping for Diverse GL Items"
-        Me.OCBS_DIVERSE_MappingBarButtonItem.Id = 116
-        Me.OCBS_DIVERSE_MappingBarButtonItem.ImageOptions.ImageIndex = 60
-        Me.OCBS_DIVERSE_MappingBarButtonItem.ImageOptions.LargeImageIndex = 35
-        Me.OCBS_DIVERSE_MappingBarButtonItem.Name = "OCBS_DIVERSE_MappingBarButtonItem"
-        Me.OCBS_DIVERSE_MappingBarButtonItem.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.BarSubItem5.Caption = "Corporate Demand Deposits Accounts Balances"
+        Me.BarSubItem5.Id = 21
+        Me.BarSubItem5.ImageOptions.ImageIndex = 59
+        Me.BarSubItem5.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.OCBScustomerBalancesBarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.CorporateCustomerBalancesNEWG_BarButtonItem, True)})
+        Me.BarSubItem5.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.BarSubItem5.Name = "BarSubItem5"
         '
-        'iUnratedCustomers
+        'CorporateCustomerBalancesNEWG_BarButtonItem
         '
-        Me.iUnratedCustomers.Caption = "Unrated Customers:"
-        Me.iUnratedCustomers.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.iUnratedCustomers.Description = "Display's the Unrated Customers Count"
-        Me.iUnratedCustomers.Hint = "Display's the Unrated Customers Count"
-        Me.iUnratedCustomers.Id = 126
-        Me.iUnratedCustomers.ImageOptions.ImageIndex = 63
-        Me.iUnratedCustomers.Name = "iUnratedCustomers"
-        Me.iUnratedCustomers.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        Me.iUnratedCustomers.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.CorporateCustomerBalancesNEWG_BarButtonItem.Caption = "Corporate Customers Demand Deposits Balances (NGS)"
+        Me.CorporateCustomerBalancesNEWG_BarButtonItem.Id = 22
+        Me.CorporateCustomerBalancesNEWG_BarButtonItem.ImageOptions.ImageIndex = 59
+        Me.CorporateCustomerBalancesNEWG_BarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.CorporateCustomerBalancesNEWG_BarButtonItem.Name = "CorporateCustomerBalancesNEWG_BarButtonItem"
         '
-        'rgbiSkins
+        'BarSubItem6
         '
-        Me.rgbiSkins.Caption = "Skins"
+        Me.BarSubItem6.Caption = "Vostro Accounts Balances"
+        Me.BarSubItem6.Id = 23
+        Me.BarSubItem6.ImageOptions.ImageIndex = 59
+        Me.BarSubItem6.ImageOptions.LargeImageIndex = 34
+        Me.BarSubItem6.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.VostroBalancesNEWG_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.OCBSvostroBalancesBarButtonItem, True)})
+        Me.BarSubItem6.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
+        Me.BarSubItem6.Name = "BarSubItem6"
         '
+        'VostroBalancesNEWG_BarButtonItem
         '
+        Me.VostroBalancesNEWG_BarButtonItem.Caption = "Vostro Accounts Balances (NGS)"
+        Me.VostroBalancesNEWG_BarButtonItem.Id = 24
+        Me.VostroBalancesNEWG_BarButtonItem.ImageOptions.ImageIndex = 59
+        Me.VostroBalancesNEWG_BarButtonItem.ImageOptions.LargeImageIndex = 34
+        Me.VostroBalancesNEWG_BarButtonItem.Name = "VostroBalancesNEWG_BarButtonItem"
         '
-        Me.rgbiSkins.Gallery.AllowHoverImages = True
-        Me.rgbiSkins.Gallery.Appearance.ItemCaptionAppearance.Normal.Options.UseFont = True
-        Me.rgbiSkins.Gallery.Appearance.ItemCaptionAppearance.Normal.Options.UseTextOptions = True
-        Me.rgbiSkins.Gallery.Appearance.ItemCaptionAppearance.Normal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.rgbiSkins.Gallery.ColumnCount = 4
-        Me.rgbiSkins.Gallery.FixedHoverImageSize = False
-        Me.rgbiSkins.Gallery.ImageSize = New System.Drawing.Size(32, 17)
-        Me.rgbiSkins.Gallery.ItemImageLocation = DevExpress.Utils.Locations.Top
-        Me.rgbiSkins.Gallery.RowCount = 4
-        Me.rgbiSkins.Id = 60
-        Me.rgbiSkins.Name = "rgbiSkins"
+        'BarStaticItem1
         '
-        'BarButtonItem4
+        Me.BarStaticItem1.Caption = "BarStaticItem1"
+        Me.BarStaticItem1.Id = 2
+        Me.BarStaticItem1.Name = "BarStaticItem1"
         '
-        Me.BarButtonItem4.Caption = "BarButtonItem4"
-        Me.BarButtonItem4.Id = 33
-        Me.BarButtonItem4.Name = "BarButtonItem4"
+        'iLastBaisInterfaceFile
         '
-        'BarSubItem7
+        Me.iLastBaisInterfaceFile.Caption = "Last BAIS Interface File:"
+        Me.iLastBaisInterfaceFile.Description = "The Last imported BAIS Interface File in PS TOOL"
+        Me.iLastBaisInterfaceFile.Hint = "The Last imported BAIS Interface File in PS TOOL"
+        Me.iLastBaisInterfaceFile.Id = 3
+        Me.iLastBaisInterfaceFile.ImageOptions.ImageIndex = 54
+        Me.iLastBaisInterfaceFile.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.iLastBaisInterfaceFile.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.iLastBaisInterfaceFile.ItemAppearance.Normal.Options.UseFont = True
+        Me.iLastBaisInterfaceFile.ItemAppearance.Normal.Options.UseForeColor = True
+        Me.iLastBaisInterfaceFile.Name = "iLastBaisInterfaceFile"
+        Me.iLastBaisInterfaceFile.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
         '
-        Me.BarSubItem7.Caption = "BarSubItem7"
-        Me.BarSubItem7.Id = 34
-        Me.BarSubItem7.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarSubItem8)})
-        Me.BarSubItem7.Name = "BarSubItem7"
+        'BarStaticItem2
         '
-        'BarSubItem8
+        Me.BarStaticItem2.Caption = "BarStaticItem2"
+        Me.BarStaticItem2.Id = 4
+        Me.BarStaticItem2.Name = "BarStaticItem2"
+        Me.BarStaticItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
-        Me.BarSubItem8.Caption = "BarSubItem8"
-        Me.BarSubItem8.Id = 35
-        Me.BarSubItem8.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem5), New DevExpress.XtraBars.LinkPersistInfo(Me.BarButtonItem6)})
-        Me.BarSubItem8.Name = "BarSubItem8"
+        'BarStaticItem3
         '
-        'BarButtonItem5
+        Me.BarStaticItem3.Caption = "BarStaticItem3"
+        Me.BarStaticItem3.Id = 5
+        Me.BarStaticItem3.Name = "BarStaticItem3"
+        Me.BarStaticItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
-        Me.BarButtonItem5.Caption = "BarButtonItem5"
-        Me.BarButtonItem5.Id = 36
-        Me.BarButtonItem5.Name = "BarButtonItem5"
+        'BarHeaderItem1
         '
-        'BarButtonItem6
+        Me.BarHeaderItem1.Caption = "BarHeaderItem1"
+        Me.BarHeaderItem1.Id = 6
+        Me.BarHeaderItem1.Name = "BarHeaderItem1"
         '
-        Me.BarButtonItem6.Caption = "BarButtonItem6"
-        Me.BarButtonItem6.Id = 37
-        Me.BarButtonItem6.Name = "BarButtonItem6"
+        'BarStaticItem4
         '
-        'BarButtonItem16
+        Me.BarStaticItem4.Caption = "-----BAIS Application Files-----"
+        Me.BarStaticItem4.Id = 8
+        Me.BarStaticItem4.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BarStaticItem4.ItemAppearance.Normal.Options.UseFont = True
+        Me.BarStaticItem4.Name = "BarStaticItem4"
         '
-        Me.BarButtonItem16.Caption = "BarButtonItem16"
-        Me.BarButtonItem16.Id = 51
-        Me.BarButtonItem16.ImageOptions.ImageIndex = 59
-        Me.BarButtonItem16.ImageOptions.LargeImageIndex = 34
-        Me.BarButtonItem16.Name = "BarButtonItem16"
+        'BarStaticItem5
         '
-        'BarButtonItem17
+        Me.BarStaticItem5.Caption = "-----Core System Files-----"
+        Me.BarStaticItem5.Id = 9
+        Me.BarStaticItem5.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BarStaticItem5.ItemAppearance.Normal.Options.UseFont = True
+        Me.BarStaticItem5.Name = "BarStaticItem5"
         '
-        Me.BarButtonItem17.Caption = "BarButtonItem17"
-        Me.BarButtonItem17.Id = 52
-        Me.BarButtonItem17.Name = "BarButtonItem17"
+        'BarButtonItem3
+        '
+        Me.BarButtonItem3.Caption = "Test"
+        Me.BarButtonItem3.Id = 28
+        Me.BarButtonItem3.Name = "BarButtonItem3"
+        Me.BarButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        '
+        'ClientMerge_BarButtonItem
+        '
+        Me.ClientMerge_BarButtonItem.Caption = "Client Merge"
+        Me.ClientMerge_BarButtonItem.Id = 32
+        Me.ClientMerge_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("ClientMerge_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.ClientMerge_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("ClientMerge_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.ClientMerge_BarButtonItem.Name = "ClientMerge_BarButtonItem"
+        Me.ClientMerge_BarButtonItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
+            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        ToolTipTitleItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
+        ToolTipTitleItem11.Text = "Client Nr. Merge"
+        ToolTipItem11.LeftIndent = 6
+        ToolTipItem11.Text = "Internal Function for merging the Old Client Nr. to the New Client Nr."
+        SuperToolTip11.Items.Add(ToolTipTitleItem11)
+        SuperToolTip11.Items.Add(ToolTipItem11)
+        Me.ClientMerge_BarButtonItem.SuperTip = SuperToolTip11
         '
         'ribbonImageCollectionLarge
         '
@@ -2468,150 +2428,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.ribbonStatusBar.Location = New System.Drawing.Point(0, 725)
         Me.ribbonStatusBar.Name = "ribbonStatusBar"
         Me.ribbonStatusBar.Ribbon = Me.ribbonControl
-        Me.ribbonStatusBar.Size = New System.Drawing.Size(1841, 22)
-        '
-        'siStatus
-        '
-        Me.siStatus.Caption = "Some Status Info"
-        Me.siStatus.Id = 31
-        Me.siStatus.Name = "siStatus"
-        Me.siStatus.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'siInfo
-        '
-        Me.siInfo.Caption = "Some Info"
-        Me.siInfo.Description = "Version of the PS TOOL Application"
-        Me.siInfo.Hint = "Version of the PS TOOL Application"
-        Me.siInfo.Id = 32
-        Me.siInfo.ImageOptions.ImageIndex = 8
-        Me.siInfo.Name = "siInfo"
-        Me.siInfo.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        '
-        'iFind
-        '
-        Me.iFind.Caption = "Find"
-        Me.iFind.Description = "Searches for the specified info."
-        Me.iFind.Hint = "Searches for the specified info"
-        Me.iFind.Id = 15
-        Me.iFind.ImageOptions.ImageIndex = 3
-        Me.iFind.ImageOptions.LargeImageIndex = 3
-        Me.iFind.Name = "iFind"
-        Me.iFind.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'iSave
-        '
-        Me.iSave.Caption = "&Save"
-        Me.iSave.Description = "Saves the active document."
-        Me.iSave.Hint = "Saves the active document"
-        Me.iSave.Id = 16
-        Me.iSave.ImageOptions.ImageIndex = 4
-        Me.iSave.ImageOptions.LargeImageIndex = 4
-        Me.iSave.Name = "iSave"
-        '
-        'iSaveAs
-        '
-        Me.iSaveAs.Caption = "Save As"
-        Me.iSaveAs.Description = "Saves the active document in a different location."
-        Me.iSaveAs.Hint = "Saves the active document in a different location"
-        Me.iSaveAs.Id = 17
-        Me.iSaveAs.ImageOptions.ImageIndex = 5
-        Me.iSaveAs.ImageOptions.LargeImageIndex = 5
-        Me.iSaveAs.Name = "iSaveAs"
-        '
-        'iAbout
-        '
-        Me.iAbout.Caption = "About"
-        Me.iAbout.Description = "Displays general program information."
-        Me.iAbout.Hint = "Displays general program information"
-        Me.iAbout.Id = 24
-        Me.iAbout.ImageOptions.ImageIndex = 8
-        Me.iAbout.ImageOptions.LargeImageIndex = 8
-        Me.iAbout.Name = "iAbout"
-        '
-        'iImportEventsErrorsCount
-        '
-        Me.iImportEventsErrorsCount.Caption = "Errors in Data Imports:"
-        Me.iImportEventsErrorsCount.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.iImportEventsErrorsCount.Description = "Display's the Data Imports Errors Count"
-        Me.iImportEventsErrorsCount.Hint = "Display's the Data Imports Errors Count"
-        Me.iImportEventsErrorsCount.Id = 127
-        Me.iImportEventsErrorsCount.ImageOptions.ImageIndex = 8
-        Me.iImportEventsErrorsCount.Name = "iImportEventsErrorsCount"
-        Me.iImportEventsErrorsCount.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph
-        Me.iImportEventsErrorsCount.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        '
-        'BarButtonGroup1
-        '
-        Me.BarButtonGroup1.Caption = "BarButtonGroup1"
-        Me.BarButtonGroup1.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.BarButtonGroup1.Id = 135
-        Me.BarButtonGroup1.Name = "BarButtonGroup1"
-        '
-        'BarButtonItem1
-        '
-        Me.BarButtonItem1.Caption = "BarButtonItem1"
-        Me.BarButtonItem1.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.BarButtonItem1.Id = 136
-        Me.BarButtonItem1.Name = "BarButtonItem1"
-        '
-        'BarButtonItem2
-        '
-        Me.BarButtonItem2.Caption = "BarButtonItem2"
-        Me.BarButtonItem2.CategoryGuid = New System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537")
-        Me.BarButtonItem2.Id = 137
-        Me.BarButtonItem2.Name = "BarButtonItem2"
-        '
-        'BarWorkspaceMenuItem1
-        '
-        Me.BarWorkspaceMenuItem1.Caption = "Workspaces"
-        Me.BarWorkspaceMenuItem1.Id = 141
-        Me.BarWorkspaceMenuItem1.ImageOptions.ImageIndex = 72
-        Me.BarWorkspaceMenuItem1.ImageOptions.LargeImageIndex = 41
-        Me.BarWorkspaceMenuItem1.Name = "BarWorkspaceMenuItem1"
-        Me.BarWorkspaceMenuItem1.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
-            Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        Me.BarWorkspaceMenuItem1.ShowMenuCaption = True
-        Me.BarWorkspaceMenuItem1.ShowSaveLoadCommands = True
-        Me.BarWorkspaceMenuItem1.WorkspaceManager = Me.WorkspaceManager1
-        Me.BarWorkspaceMenuItem1.WorkspacesSortMode = DevExpress.XtraBars.WorspacesSortMode.Alphabetical
-        '
-        'WorkspaceManager1
-        '
-        Me.WorkspaceManager1.TargetControl = Me
-        Me.WorkspaceManager1.TransitionType = PushTransition1
-        '
-        'BarStaticItem1
-        '
-        Me.BarStaticItem1.Caption = "BarStaticItem1"
-        Me.BarStaticItem1.Id = 2
-        Me.BarStaticItem1.Name = "BarStaticItem1"
-        '
-        'BarStaticItem2
-        '
-        Me.BarStaticItem2.Caption = "BarStaticItem2"
-        Me.BarStaticItem2.Id = 4
-        Me.BarStaticItem2.Name = "BarStaticItem2"
-        Me.BarStaticItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarStaticItem3
-        '
-        Me.BarStaticItem3.Caption = "BarStaticItem3"
-        Me.BarStaticItem3.Id = 5
-        Me.BarStaticItem3.Name = "BarStaticItem3"
-        Me.BarStaticItem3.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
-        '
-        'BarHeaderItem1
-        '
-        Me.BarHeaderItem1.Caption = "BarHeaderItem1"
-        Me.BarHeaderItem1.Id = 6
-        Me.BarHeaderItem1.Name = "BarHeaderItem1"
-        '
-        'BarButtonItem3
-        '
-        Me.BarButtonItem3.Caption = "Test"
-        Me.BarButtonItem3.Id = 28
-        Me.BarButtonItem3.Name = "BarButtonItem3"
-        Me.BarButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
+        Me.ribbonStatusBar.Size = New System.Drawing.Size(1555, 22)
         '
         'AccordionControl1
         '
@@ -2657,11 +2474,11 @@ Partial Class PSTOOL_MAIN_Form
         '
         'SECUR_DailyPrice_Element
         '
-        Me.SECUR_DailyPrice_Element.Hint = "Display Securities Daily Price"
+        Me.SECUR_DailyPrice_Element.Hint = "Display/Add/Modify Securities Daily market prices and Modified Durations"
         Me.SECUR_DailyPrice_Element.ImageOptions.Image = CType(resources.GetObject("SECUR_DailyPrice_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.SECUR_DailyPrice_Element.Name = "SECUR_DailyPrice_Element"
         Me.SECUR_DailyPrice_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.SECUR_DailyPrice_Element.Text = "Daily Price"
+        Me.SECUR_DailyPrice_Element.Text = "Securities daily market prices/modified durations"
         '
         'SECUR_LiquidityReserve_Element
         '
@@ -2704,7 +2521,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_GROUP_Element
         '
-        Me.RISKCONTROL_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_INTERESTRISK_GROUP_Element, Me.AccordionControlSeparator6, Me.RISKCONTROL_BUSINESSTYPES_GROUP_Element, Me.AccordionControlSeparator7, Me.RISKCONTROL_CreditRiskMAK_Element, Me.RISKCONTROL_EL_UL_GA_Element, Me.RISKCONTROL_CAR_Calculation_Element, Me.RISKCONTROL_CurrencyRiskCalculation_Element, Me.RISKCONTROL_RLDC_Element, Me.RISKCONTROL_ScenarioAnalyzes_Element, Me.RISKCONTROL_RiskStrategyPlanningProcess_Element, Me.RISKCONTROL_StressTestHO_Element, Me.AccordionControlSeparator13, Me.RISKCONTROL_PARAMETERS_GROUP_Element, Me.AccordionControlSeparator14, Me.RISKCONTROL_IncidentsDatabase_Element})
+        Me.RISKCONTROL_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_INTERESTRISK_GROUP_Element, Me.AccordionControlSeparator6, Me.RISKCONTROL_BUSINESSTYPES_GROUP_Element, Me.AccordionControlSeparator7, Me.RISKCONTROL_CreditRiskMAK_Element, Me.RISKCONTROL_EL_UL_GA_Element, Me.RISKCONTROL_CAR_Calculation_Element, Me.RISKCONTROL_CreditSpreadRiskCalculation_Element, Me.RISKCONTROL_CurrencyRiskCalculation_Element, Me.RISKCONTROL_RLDC_Element, Me.RISKCONTROL_ScenarioAnalyzes_Element, Me.RISKCONTROL_RiskStrategyPlanningProcess_Element, Me.RISKCONTROL_StressTestHO_Element, Me.AccordionControlSeparator13, Me.RISKCONTROL_PARAMETERS_GROUP_Element, Me.AccordionControlSeparator14, Me.RISKCONTROL_IncidentsDatabase_Element})
         Me.RISKCONTROL_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_GROUP_Element.Name = "RISKCONTROL_GROUP_Element"
         Me.RISKCONTROL_GROUP_Element.Text = "RISK CONTROLLING"
@@ -2861,7 +2678,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_PARAMETERS_GROUP_Element
         '
-        Me.RISKCONTROL_PARAMETERS_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_ObligorGratesRatting_Element, Me.RISKCONTROL_CustomerRating_Element, Me.RISKCONTROL_WeightingFactors_Element, Me.RISKCONTROL_CashPledge_Element})
+        Me.RISKCONTROL_PARAMETERS_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_ObligorGratesRatting_Element, Me.RISKCONTROL_CustomerRating_Element, Me.RISKCONTROL_WeightingFactors_Element, Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element, Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element, Me.RISKCONTROL_CashPledge_Element})
         Me.RISKCONTROL_PARAMETERS_GROUP_Element.Expanded = True
         Me.RISKCONTROL_PARAMETERS_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_PARAMETERS_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_PARAMETERS_GROUP_Element.Name = "RISKCONTROL_PARAMETERS_GROUP_Element"
@@ -2890,6 +2707,22 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_WeightingFactors_Element.Name = "RISKCONTROL_WeightingFactors_Element"
         Me.RISKCONTROL_WeightingFactors_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.RISKCONTROL_WeightingFactors_Element.Text = "Weighting Factors/Yield Curves"
+        '
+        'RISKCONTROL_CreditSpreadRisk_Parameters_Element
+        '
+        Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element.Hint = "Display/Add/Modify Credit Spread Risk parameters"
+        Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_CreditSpreadRisk_Parameters_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element.Name = "RISKCONTROL_CreditSpreadRisk_Parameters_Element"
+        Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element.Text = "Credit Spread Risk - Parameters"
+        '
+        'RISKCONTROL_CreditSpreadRisk_Correlations_Element
+        '
+        Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element.Hint = "Display/Add/Modify Credit Spread Risk correlations"
+        Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_CreditSpreadRisk_Correlations_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element.Name = "RISKCONTROL_CreditSpreadRisk_Correlations_Element"
+        Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element.Text = "Credit Spread Risk - Segment correlations"
         '
         'RISKCONTROL_CashPledge_Element
         '
@@ -3041,7 +2874,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.MELDW_ZV_STATISTIC_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.MELDW_ZvstatisticTill2013_Element, Me.MELDW_ZvStatisticFrom2014_Element})
         Me.MELDW_ZV_STATISTIC_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_ZV_STATISTIC_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_ZV_STATISTIC_GROUP_Element.Name = "MELDW_ZV_STATISTIC_GROUP_Element"
-        Me.MELDW_ZV_STATISTIC_GROUP_Element.Text = "ZV-Statistik (Zahlungsverkehrsstatistik) till 2021"
+        Me.MELDW_ZV_STATISTIC_GROUP_Element.Text = "ZV-Statistik (Zahlungsverkehrsstatistik)"
         '
         'MELDW_ZvstatisticTill2013_Element
         '
@@ -3053,11 +2886,11 @@ Partial Class PSTOOL_MAIN_Form
         '
         'MELDW_ZvStatisticFrom2014_Element
         '
-        Me.MELDW_ZvStatisticFrom2014_Element.Hint = "Displays/Calculates the Payments Statistic as from 2014 till 2021"
+        Me.MELDW_ZvStatisticFrom2014_Element.Hint = "Displays/Calculates the Payments Statistic as from 2014"
         Me.MELDW_ZvStatisticFrom2014_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_ZvStatisticFrom2014_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_ZvStatisticFrom2014_Element.Name = "MELDW_ZvStatisticFrom2014_Element"
         Me.MELDW_ZvStatisticFrom2014_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.MELDW_ZvStatisticFrom2014_Element.Text = "ZV Statistic as from 2014 till 2021"
+        Me.MELDW_ZvStatisticFrom2014_Element.Text = "ZV Statistic as from 2014"
         '
         'AccordionControlSeparator22
         '
@@ -3067,34 +2900,33 @@ Partial Class PSTOOL_MAIN_Form
         '
         Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.ZvStatistik_Reporting_AccordionControlElement, Me.ZvStatistik_Parameter_AccordionControlElement, Me.ZvStatistik_PayCard_Parameter_AccordionControlElement, Me.ZvStatistik_ValidityRules_AccordionControlElement})
         Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.Expanded = True
-        Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_ZV_STATISTIC_2022_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.Name = "MELDW_ZV_STATISTIC_2022_GROUP_Element"
         Me.MELDW_ZV_STATISTIC_2022_GROUP_Element.Text = "ZV-Statistik (Zahlungsverkehrsstatistik) as from 2022"
         '
         'ZvStatistik_Reporting_AccordionControlElement
         '
-        Me.ZvStatistik_Reporting_AccordionControlElement.ImageOptions.Image = CType(resources.GetObject("ZvStatistik_Reporting_AccordionControlElement.ImageOptions.Image"), System.Drawing.Image)
+        Me.ZvStatistik_Reporting_AccordionControlElement.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
         Me.ZvStatistik_Reporting_AccordionControlElement.Name = "ZvStatistik_Reporting_AccordionControlElement"
         Me.ZvStatistik_Reporting_AccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.ZvStatistik_Reporting_AccordionControlElement.Text = "ZV Statistik - Reporting"
         '
         'ZvStatistik_Parameter_AccordionControlElement
         '
-        Me.ZvStatistik_Parameter_AccordionControlElement.ImageOptions.Image = CType(resources.GetObject("ZvStatistik_Parameter_AccordionControlElement.ImageOptions.Image"), System.Drawing.Image)
+        Me.ZvStatistik_Parameter_AccordionControlElement.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
         Me.ZvStatistik_Parameter_AccordionControlElement.Name = "ZvStatistik_Parameter_AccordionControlElement"
         Me.ZvStatistik_Parameter_AccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.ZvStatistik_Parameter_AccordionControlElement.Text = "ZV Statistik - Meldeschemas Parameter"
         '
         'ZvStatistik_PayCard_Parameter_AccordionControlElement
         '
-        Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.ImageOptions.Image = CType(resources.GetObject("ZvStatistik_PayCard_Parameter_AccordionControlElement.ImageOptions.Image"), System.Drawing.Image)
+        Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
         Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.Name = "ZvStatistik_PayCard_Parameter_AccordionControlElement"
         Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.Text = "ZV Statistik - Payments and Cards Parameter"
         '
         'ZvStatistik_ValidityRules_AccordionControlElement
         '
-        Me.ZvStatistik_ValidityRules_AccordionControlElement.ImageOptions.Image = CType(resources.GetObject("ZvStatistik_ValidityRules_AccordionControlElement.ImageOptions.Image"), System.Drawing.Image)
+        Me.ZvStatistik_ValidityRules_AccordionControlElement.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
         Me.ZvStatistik_ValidityRules_AccordionControlElement.Name = "ZvStatistik_ValidityRules_AccordionControlElement"
         Me.ZvStatistik_ValidityRules_AccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.ZvStatistik_ValidityRules_AccordionControlElement.Text = "ZV Statistik - Validity Rules Parameter"
@@ -3132,7 +2964,6 @@ Partial Class PSTOOL_MAIN_Form
         'MELDW_RRH_REPORTING_GROUP_Element
         '
         Me.MELDW_RRH_REPORTING_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.MELDW_MIFIR_Element})
-        Me.MELDW_RRH_REPORTING_GROUP_Element.Expanded = True
         Me.MELDW_RRH_REPORTING_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_RRH_REPORTING_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_RRH_REPORTING_GROUP_Element.Name = "MELDW_RRH_REPORTING_GROUP_Element"
         Me.MELDW_RRH_REPORTING_GROUP_Element.Text = "REGULATORY REPORTING"
@@ -3401,15 +3232,15 @@ Partial Class PSTOOL_MAIN_Form
         Me.ACCOUNT_FX_DailyRevaluationNew_Element.ImageOptions.ImageLayoutMode = DevExpress.XtraBars.Navigation.ImageLayoutMode.Squeeze
         Me.ACCOUNT_FX_DailyRevaluationNew_Element.Name = "ACCOUNT_FX_DailyRevaluationNew_Element"
         Me.ACCOUNT_FX_DailyRevaluationNew_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem6.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem6.Appearance.Options.UseImage = True
-        ToolTipTitleItem6.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem6.Text = "FX DAILY REVALUATION"
-        ToolTipItem6.LeftIndent = 6
-        ToolTipItem6.Text = resources.GetString("ToolTipItem6.Text")
-        SuperToolTip6.Items.Add(ToolTipTitleItem6)
-        SuperToolTip6.Items.Add(ToolTipItem6)
-        Me.ACCOUNT_FX_DailyRevaluationNew_Element.SuperTip = SuperToolTip6
+        ToolTipTitleItem1.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.Appearance.Options.UseImage = True
+        ToolTipTitleItem1.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.Text = "FX DAILY REVALUATION"
+        ToolTipItem1.LeftIndent = 6
+        ToolTipItem1.Text = resources.GetString("ToolTipItem1.Text")
+        SuperToolTip1.Items.Add(ToolTipTitleItem1)
+        SuperToolTip1.Items.Add(ToolTipItem1)
+        Me.ACCOUNT_FX_DailyRevaluationNew_Element.SuperTip = SuperToolTip1
         Me.ACCOUNT_FX_DailyRevaluationNew_Element.Text = "FX DAILY EVALUATION"
         '
         'ACCOUNT_FX_CreditEquivalentCalc_Element
@@ -3428,17 +3259,17 @@ Partial Class PSTOOL_MAIN_Form
         Me.ACCOUNT_FX_DailyRevaluation_Element.ImageOptions.ImageLayoutMode = DevExpress.XtraBars.Navigation.ImageLayoutMode.Squeeze
         Me.ACCOUNT_FX_DailyRevaluation_Element.Name = "ACCOUNT_FX_DailyRevaluation_Element"
         Me.ACCOUNT_FX_DailyRevaluation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem7.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem7.Appearance.Options.UseImage = True
-        ToolTipTitleItem7.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem7.Text = "FX Daily Revaluation"
-        ToolTipItem7.LeftIndent = 6
-        ToolTipItem7.Text = "Includes:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-Data from the daily FX Revalaution Report" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-Calculations of the Stand" &
+        ToolTipTitleItem2.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem2.Appearance.Options.UseImage = True
+        ToolTipTitleItem2.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem2.Text = "FX Daily Revaluation"
+        ToolTipItem2.LeftIndent = 6
+        ToolTipItem2.Text = "Includes:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-Data from the daily FX Revalaution Report" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-Calculations of the Stand" &
     "ard and modified IDW  calculation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-Definition of all OWN Deals (Besondere Decku" &
     "ng)"
-        SuperToolTip7.Items.Add(ToolTipTitleItem7)
-        SuperToolTip7.Items.Add(ToolTipItem7)
-        Me.ACCOUNT_FX_DailyRevaluation_Element.SuperTip = SuperToolTip7
+        SuperToolTip2.Items.Add(ToolTipTitleItem2)
+        SuperToolTip2.Items.Add(ToolTipItem2)
+        Me.ACCOUNT_FX_DailyRevaluation_Element.SuperTip = SuperToolTip2
         Me.ACCOUNT_FX_DailyRevaluation_Element.Text = "FX Daily Revaluation"
         '
         'AccordionControlSeparator38
@@ -3580,7 +3411,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'EDP_BAISFiles_Export_GROUP_Element
         '
-        Me.EDP_BAISFiles_Export_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EDP_BAISFiles_ALPHA_Element, Me.EDP_BAISFiles_AnaCredit_Element, Me.EDP_BAISFiles_ALPHA_Test_Element, Me.EDP_BAISFiles_AnaCredit_Test_Element})
+        Me.EDP_BAISFiles_Export_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EDP_BAISFiles_ALPHA_Element, Me.EDP_BAISFiles_AnaCredit_Element})
         Me.EDP_BAISFiles_Export_GROUP_Element.Expanded = True
         Me.EDP_BAISFiles_Export_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("EDP_BAISFiles_Export_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.EDP_BAISFiles_Export_GROUP_Element.Name = "EDP_BAISFiles_Export_GROUP_Element"
@@ -3605,28 +3436,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_BAISFiles_AnaCredit_Element.Name = "EDP_BAISFiles_AnaCredit_Element"
         Me.EDP_BAISFiles_AnaCredit_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.EDP_BAISFiles_AnaCredit_Element.Text = "BAIS AnaCredit ALPHA Interface Files Export (Production)"
-        '
-        'EDP_BAISFiles_ALPHA_Test_Element
-        '
-        Me.EDP_BAISFiles_ALPHA_Test_Element.Hint = "Creates common BAIS Interface Files (Version 1.28 - TEST) for each Business Date"
-        Me.EDP_BAISFiles_ALPHA_Test_Element.ImageOptions.Image = CType(resources.GetObject("EDP_BAISFiles_ALPHA_Test_Element.ImageOptions.Image"), System.Drawing.Image)
-        Me.EDP_BAISFiles_ALPHA_Test_Element.ImageOptions.ImageLayoutMode = DevExpress.XtraBars.Navigation.ImageLayoutMode.Squeeze
-        Me.EDP_BAISFiles_ALPHA_Test_Element.Name = "EDP_BAISFiles_ALPHA_Test_Element"
-        Me.EDP_BAISFiles_ALPHA_Test_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.EDP_BAISFiles_ALPHA_Test_Element.Text = "+++TEST+++BAIS Interface ALPHA Files Export (v.1.28 - Test)"
-        Me.EDP_BAISFiles_ALPHA_Test_Element.Visible = False
-        '
-        'EDP_BAISFiles_AnaCredit_Test_Element
-        '
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.Appearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.Appearance.Normal.Options.UseFont = True
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.Hint = "Creates AnaCredit BAIS Interface Files (Version 1.27) for each Business Date"
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.ImageOptions.Image = CType(resources.GetObject("EDP_BAISFiles_AnaCredit_Test_Element.ImageOptions.Image"), System.Drawing.Image)
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.ImageOptions.ImageLayoutMode = DevExpress.XtraBars.Navigation.ImageLayoutMode.Squeeze
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.Name = "EDP_BAISFiles_AnaCredit_Test_Element"
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.Text = "+++TEST+++BAIS AnaCredit ALPHA Interface Files Export (v.1.28 - Test)"
-        Me.EDP_BAISFiles_AnaCredit_Test_Element.Visible = False
         '
         'EDP_BAIS_Imports_Element
         '
@@ -3707,7 +3516,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'EDP_SQL_FilesCompare_Element
         '
-        Me.EDP_SQL_FilesCompare_Element.Hint = "Excel/csv Files comparing"
+        Me.EDP_SQL_FilesCompare_Element.Hint = "Excel/csv files compare"
         Me.EDP_SQL_FilesCompare_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_FilesCompare_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.EDP_SQL_FilesCompare_Element.Name = "EDP_SQL_FilesCompare_Element"
         Me.EDP_SQL_FilesCompare_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
@@ -3800,16 +3609,16 @@ Partial Class PSTOOL_MAIN_Form
         Me.EAEG_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EAEG_StammDaten_Element, Me.AccordionControlSeparator15, Me.EAEG_Datei_Element})
         Me.EAEG_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("EAEG_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.EAEG_GROUP_Element.Name = "EAEG_GROUP_Element"
-        ToolTipTitleItem8.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem8.Appearance.Options.UseImage = True
-        ToolTipTitleItem8.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem8.Text = "Einlagensicherungsgesetzt (EinSiG) - EAEG"
-        ToolTipItem8.LeftIndent = 6
-        ToolTipItem8.Text = "Module für die Verwaltung der relevanten EinSiG Daten sowie für die erstellung de" &
+        ToolTipTitleItem3.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem3.Appearance.Options.UseImage = True
+        ToolTipTitleItem3.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem3.Text = "Einlagensicherungsgesetzt (EinSiG) - EAEG"
+        ToolTipItem3.LeftIndent = 6
+        ToolTipItem3.Text = "Module für die Verwaltung der relevanten EinSiG Daten sowie für die erstellung de" &
     "r EAEG Einreicher  und Meldedatei "
-        SuperToolTip8.Items.Add(ToolTipTitleItem8)
-        SuperToolTip8.Items.Add(ToolTipItem8)
-        Me.EAEG_GROUP_Element.SuperTip = SuperToolTip8
+        SuperToolTip3.Items.Add(ToolTipTitleItem3)
+        SuperToolTip3.Items.Add(ToolTipItem3)
+        Me.EAEG_GROUP_Element.SuperTip = SuperToolTip3
         Me.EAEG_GROUP_Element.Text = "EAEG (EinSiG)"
         '
         'EAEG_StammDaten_Element
@@ -3882,14 +3691,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.FOREIGN_ExportLC_Customers_Element.ImageOptions.Image = CType(resources.GetObject("FOREIGN_ExportLC_Customers_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.FOREIGN_ExportLC_Customers_Element.Name = "FOREIGN_ExportLC_Customers_Element"
         Me.FOREIGN_ExportLC_Customers_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem9.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
-        ToolTipTitleItem9.Text = "FOREIGN DEPT. CUSTOMERS"
-        ToolTipItem9.LeftIndent = 6
-        ToolTipItem9.Text = "Includes all Data regarding the Foreign Dept. Customer (Name, Address, Bank Detai" &
+        ToolTipTitleItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        ToolTipTitleItem4.Text = "FOREIGN DEPT. CUSTOMERS"
+        ToolTipItem4.LeftIndent = 6
+        ToolTipItem4.Text = "Includes all Data regarding the Foreign Dept. Customer (Name, Address, Bank Detai" &
     "ls, Export LC Conditions, Export Collection Conditions etc.)"
-        SuperToolTip9.Items.Add(ToolTipTitleItem9)
-        SuperToolTip9.Items.Add(ToolTipItem9)
-        Me.FOREIGN_ExportLC_Customers_Element.SuperTip = SuperToolTip9
+        SuperToolTip4.Items.Add(ToolTipTitleItem4)
+        SuperToolTip4.Items.Add(ToolTipItem4)
+        Me.FOREIGN_ExportLC_Customers_Element.SuperTip = SuperToolTip4
         Me.FOREIGN_ExportLC_Customers_Element.Text = "Foreign Dept. Customers"
         '
         'AccordionControlSeparator3
@@ -3902,14 +3711,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.FOREIGN_ExportLC_Applicants_Element.ImageOptions.Image = CType(resources.GetObject("FOREIGN_ExportLC_Applicants_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.FOREIGN_ExportLC_Applicants_Element.Name = "FOREIGN_ExportLC_Applicants_Element"
         Me.FOREIGN_ExportLC_Applicants_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem10.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
-        ToolTipTitleItem10.Text = "FOREIGN BANKS AND COMPANIES"
-        ToolTipItem10.LeftIndent = 6
-        ToolTipItem10.Text = "Includes all Data related to Applicants, Drawees,Applicant Banks and Drawee Banks" &
+        ToolTipTitleItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        ToolTipTitleItem5.Text = "FOREIGN BANKS AND COMPANIES"
+        ToolTipItem5.LeftIndent = 6
+        ToolTipItem5.Text = "Includes all Data related to Applicants, Drawees,Applicant Banks and Drawee Banks" &
     " (Name-Address)"
-        SuperToolTip10.Items.Add(ToolTipTitleItem10)
-        SuperToolTip10.Items.Add(ToolTipItem10)
-        Me.FOREIGN_ExportLC_Applicants_Element.SuperTip = SuperToolTip10
+        SuperToolTip5.Items.Add(ToolTipTitleItem5)
+        SuperToolTip5.Items.Add(ToolTipItem5)
+        Me.FOREIGN_ExportLC_Applicants_Element.SuperTip = SuperToolTip5
         Me.FOREIGN_ExportLC_Applicants_Element.Text = "Foreign Banks and Companies"
         '
         'AccordionControlSeparator4
@@ -3930,13 +3739,13 @@ Partial Class PSTOOL_MAIN_Form
         Me.FOREIGN_ExportLC_MT700_Element.ImageOptions.Image = CType(resources.GetObject("FOREIGN_ExportLC_MT700_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.FOREIGN_ExportLC_MT700_Element.Name = "FOREIGN_ExportLC_MT700_Element"
         Me.FOREIGN_ExportLC_MT700_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
-        ToolTipTitleItem11.Text = "EXPORT LC - PROCESSING"
-        ToolTipItem11.LeftIndent = 6
-        ToolTipItem11.Text = "Processing of all EXPORT LC's " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Advices + Settlements)"
-        SuperToolTip11.Items.Add(ToolTipTitleItem11)
-        SuperToolTip11.Items.Add(ToolTipItem11)
-        Me.FOREIGN_ExportLC_MT700_Element.SuperTip = SuperToolTip11
+        ToolTipTitleItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
+        ToolTipTitleItem6.Text = "EXPORT LC - PROCESSING"
+        ToolTipItem6.LeftIndent = 6
+        ToolTipItem6.Text = "Processing of all EXPORT LC's " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Advices + Settlements)"
+        SuperToolTip6.Items.Add(ToolTipTitleItem6)
+        SuperToolTip6.Items.Add(ToolTipItem6)
+        Me.FOREIGN_ExportLC_MT700_Element.SuperTip = SuperToolTip6
         Me.FOREIGN_ExportLC_MT700_Element.Text = "EXPORT LC - PROCESSING"
         '
         'FOREIGN_ExportLC_Maturities_Element
@@ -4320,7 +4129,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.hideContainerRight.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(248, Byte), Integer))
         Me.hideContainerRight.Controls.Add(Me.DockPanel1)
         Me.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.hideContainerRight.Location = New System.Drawing.Point(1811, 159)
+        Me.hideContainerRight.Location = New System.Drawing.Point(1525, 159)
         Me.hideContainerRight.Name = "hideContainerRight"
         Me.hideContainerRight.Size = New System.Drawing.Size(30, 566)
         '
@@ -4598,12 +4407,20 @@ Partial Class PSTOOL_MAIN_Form
         Me.LogoImageCollection.Images.SetKeyName(5, "login-logo-Prod.png")
         Me.LogoImageCollection.Images.SetKeyName(6, "login-logo-Prod_ALL.png")
         '
+        'RISKCONTROL_CreditSpreadRiskCalculation_Element
+        '
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Hint = "Display the calculated portfolio credit spread risk"
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_CreditSpreadRiskCalculation_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Name = "RISKCONTROL_CreditSpreadRiskCalculation_Element"
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Text = "Portfolio Credit Spread Risk Calculation"
+        '
         'PSTOOL_MAIN_Form
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[False]
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1841, 747)
+        Me.ClientSize = New System.Drawing.Size(1555, 747)
         Me.Controls.Add(Me.SplitterControl1)
         Me.Controls.Add(Me.AccordionControl1)
         Me.Controls.Add(Me.hideContainerRight)
@@ -4616,7 +4433,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.Ribbon = Me.ribbonControl
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.StatusBar = Me.ribbonStatusBar
-        Me.Text = "PS TOOL DX - SQL Server 2008"
+        Me.Text = "PS TOOL DX - SQL Server 2019"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4833,7 +4650,6 @@ Partial Class PSTOOL_MAIN_Form
     Friend WithEvents EDP_OCBS_Imports_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents EDP_BAIS_Imports_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents EDP_BAISFiles_GROUP_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
-    Friend WithEvents EDP_BAISFiles_AnaCredit_Test_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents EDP_BAIS_INTERFACE_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents EDP_PSTOOL_Client_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents EDP_DailyEmailRiskOverview_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
@@ -4947,7 +4763,6 @@ Partial Class PSTOOL_MAIN_Form
     Friend WithEvents MELDW_AnaCredit_Contracts_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents iNewPSTOOL_Test_Session As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents EDP_BAISFiles_Export_GROUP_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
-    Friend WithEvents EDP_BAISFiles_ALPHA_Test_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents EDP_BAISFiles_AnaCredit_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents EDP_BAISFiles_ALPHA_Element As DevExpress.XtraBars.Navigation.AccordionControlElement
     Friend WithEvents NUTS3_Codes_BarButtonItem As DevExpress.XtraBars.BarButtonItem
@@ -5025,33 +4840,16 @@ Partial Class PSTOOL_MAIN_Form
     Private WithEvents AccordionControlSeparator40 As Navigation.AccordionControlSeparator
     Private WithEvents AccordionControlSeparator33 As Navigation.AccordionControlSeparator
     Private WithEvents AccordionControlSeparator41 As Navigation.AccordionControlSeparator
-    Friend WithEvents BarSubItem7 As BarSubItem
-    Friend WithEvents BarSubItem8 As BarSubItem
-    Friend WithEvents BarButtonItem5 As BarButtonItem
-    Friend WithEvents BarButtonItem6 As BarButtonItem
-    Friend WithEvents BarButtonItem4 As BarButtonItem
-    Friend WithEvents BarSubItem9 As BarSubItem
-    Friend WithEvents BarSubItem10 As BarSubItem
-    Friend WithEvents BarButtonItem7 As BarButtonItem
-    Friend WithEvents BarButtonItem8 As BarButtonItem
-    Friend WithEvents BarButtonItem18 As BarButtonItem
-    Friend WithEvents BarButtonItem19 As BarButtonItem
-    Friend WithEvents BarButtonItem9 As BarButtonItem
-    Friend WithEvents BarButtonItem10 As BarButtonItem
-    Friend WithEvents BarButtonItem11 As BarButtonItem
-    Friend WithEvents BarButtonItem12 As BarButtonItem
-    Friend WithEvents BarButtonItem13 As BarButtonItem
-    Friend WithEvents BarButtonItem14 As BarButtonItem
-    Friend WithEvents BarButtonItem15 As BarButtonItem
-    Friend WithEvents BarButtonItem16 As BarButtonItem
-    Friend WithEvents BarButtonItem17 As BarButtonItem
     Friend WithEvents MELDW_ZV_STATISTIC_2022_GROUP_Element As Navigation.AccordionControlElement
     Friend WithEvents ZvStatistik_Reporting_AccordionControlElement As Navigation.AccordionControlElement
     Friend WithEvents ZvStatistik_Parameter_AccordionControlElement As Navigation.AccordionControlElement
     Friend WithEvents ZvStatistik_PayCard_Parameter_AccordionControlElement As Navigation.AccordionControlElement
     Friend WithEvents ZvStatistik_ValidityRules_AccordionControlElement As Navigation.AccordionControlElement
-    Friend WithEvents AccordionControlSeparator42 As Navigation.AccordionControlSeparator
     Friend WithEvents EDP_SQL_Parameters_Tree_Element As Navigation.AccordionControlElement
+    Private WithEvents AccordionControlSeparator42 As Navigation.AccordionControlSeparator
     Friend WithEvents EDP_VB_Script_Execute_Element As Navigation.AccordionControlElement
     Friend WithEvents EDP_SQL_FilesCompare_Element As Navigation.AccordionControlElement
+    Friend WithEvents RISKCONTROL_CreditSpreadRisk_Parameters_Element As Navigation.AccordionControlElement
+    Friend WithEvents RISKCONTROL_CreditSpreadRisk_Correlations_Element As Navigation.AccordionControlElement
+    Friend WithEvents RISKCONTROL_CreditSpreadRiskCalculation_Element As Navigation.AccordionControlElement
 End Class

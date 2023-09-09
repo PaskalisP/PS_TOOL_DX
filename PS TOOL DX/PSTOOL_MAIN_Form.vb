@@ -58,14 +58,34 @@ Imports System.Security.Cryptography
 Imports System.Reflection
 
 
+'*****************************************
+'Class Name: PSTOOL_MAIN_Form
+'Version: V1.0.0.0
+'Version Explanation:
+'Author: CCBFF
+'Email: info@ccbff.de
+'Creation Time:
+'Content:
+'Function:
+'Description:
+'Modify log:  
+'    1. Add by WYQ       ; Time:10.02.2022; Content: update for BAIS version 1.33
+'    2. Add by WYQ       ; Time:03.03.2022; Content: update for Wertpapierstatistik
+'    3. Add by WYQ       ; Time:10.06.2022; Content: update for BAIS version 1.34
+'    4. Add by Siyao Chen; Time:12.12.2022; Content: update for BAIS version 1.35
 
+'******************************************
 Public Class PSTOOL_MAIN_Form
+
+  
 
     Dim Cryptokey As String = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     Public CRForm As CrystalReportsForm
 
 
     Dim n As Double = 0
+
+
 
     'Risk Controlling
     Dim DF_IRR_daily As New DatesForm 'Interest Rate risk
@@ -293,7 +313,6 @@ Public Class PSTOOL_MAIN_Form
 
 
     Private Sub PSTOOL_MAIN_Form_Load(sender As Object, e As EventArgs) Handles Me.Load
-
         'Dim ep As New PAB.Util.EvalProvider
         'Dim objResult As Object = ep.Eval("MsgBox(" & "Stop" & ")")
         'Dim t As Type = objResult.GetType()
@@ -338,7 +357,7 @@ Public Class PSTOOL_MAIN_Form
 
         '*********GET VERSION INFO*********
         '**********************************
-        siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2023 build {2} rev {3} Current User: {4}  - Session ID: {5}",
+        siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2023 build {2} rev {3} Current User: {4}  - Session ID: {5}",
                                     My.Application.Info.Version.Major,
                                     My.Application.Info.Version.Minor,
                                     My.Application.Info.Version.Build,
@@ -380,6 +399,7 @@ Public Class PSTOOL_MAIN_Form
         FX_ALL_LAST_UPDATE_Date = cmd.ExecuteScalar
 
         CloseSqlConnections()
+
         'End If
         '****************************************************************************
 
@@ -394,7 +414,7 @@ Public Class PSTOOL_MAIN_Form
 
             '*********GET VERSION INFO with User Session ID*********
             '**********************************
-            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2023 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
+            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2023 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
                                        My.Application.Info.Version.Major,
                                        My.Application.Info.Version.Minor,
                                        My.Application.Info.Version.Build,
@@ -412,7 +432,7 @@ Public Class PSTOOL_MAIN_Form
 
             '*********GET VERSION INFO with User Session ID*********
             '**********************************
-            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) Paskalis 2023 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
+            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2022 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
                                        My.Application.Info.Version.Major,
                                        My.Application.Info.Version.Minor,
                                        My.Application.Info.Version.Build,
@@ -499,10 +519,9 @@ Public Class PSTOOL_MAIN_Form
     Private Sub SystemFilesTimer_Tick(sender As Object, e As EventArgs) Handles SystemFilesTimer.Tick
         If My.Computer.Network.IsAvailable = True AndAlso cmdSYSTEM.Connection.State <> ConnectionState.Broken Then
             Try
+                OpenSYSTEM_SqlConnection()
                 cmdSYSTEM.CommandText = "SELECT [FileName] from [FILES_IMPORT] where [SYSTEM_NAME] in ('ODAS')"
-                If cmdSYSTEM.Connection.State = ConnectionState.Closed Then
-                    cmdSYSTEM.Connection.Open()
-                End If
+
                 LastOdasFileNumber = cmdSYSTEM.ExecuteScalar
                 iLastOdasFile.Caption = "Last ODAS File: " & LastOdasFileNumber
 
@@ -522,7 +541,8 @@ Public Class PSTOOL_MAIN_Form
                 '*******************************************************************
                 '**********USER PERMISSIONS/DIRECTORIES*****************************
                 '*******************************************************************
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='SUPERUSER' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='SUPERUSER' and [PARAMETER STATUS]='Y' "
                 Dim SUPERUSER_Result As String = cmdSYSTEM.ExecuteScalar
                 If SUPERUSER_Result <> "" Then
                     SUPER_USER = "Y"
@@ -532,18 +552,19 @@ Public Class PSTOOL_MAIN_Form
                 '******************************************************************
                 '***********EDP USERS++++++++++++++++++++++++++++++++++++++++++++++
                 '******************************************************************
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='EDP_USERS' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='EDP_USERS' and [PARAMETER STATUS]='Y' "
                 Dim EDPResult As String = cmdSYSTEM.ExecuteScalar
                 If EDPResult <> "" Then
                     EDP_USER = "Y"
                 Else
                     EDP_USER = "N"
                 End If
-
                 '***********************************************************************
                 '*******AML USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='AML_USER' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='AML_USER' and [PARAMETER STATUS]='Y' "
                 Dim AMLResult As String = cmdSYSTEM.ExecuteScalar
                 If AMLResult <> "" Then
                     AML_USER = "Y"
@@ -553,7 +574,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******FOREIGN USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='FOREIGN_USER' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                         and [IdABTEILUNGSPARAMETER]='FOREIGN_USER' and [PARAMETER STATUS]='Y' "
                 Dim FOREIGNResult As String = cmdSYSTEM.ExecuteScalar
                 If FOREIGNResult <> "" Then
                     FOREIGN_USER = "Y"
@@ -563,21 +585,25 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******ACCOUNTING USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='ACCOUNTING_USER' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='ACCOUNTING_USER' and [PARAMETER STATUS]='Y' "
                 Dim ACCOUNTINGResult As String = cmdSYSTEM.ExecuteScalar
                 If ACCOUNTINGResult <> "" Then
                     ACCOUNTING_USER = "Y"
                 Else
                     ACCOUNTING_USER = "N"
                 End If
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER1]='NostroReconciliationTaskStatus' and [IdABTEILUNGSPARAMETER]='NOSTRO_RECONCILIATION' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER1]='NostroReconciliationTaskStatus' 
+                                        and [IdABTEILUNGSPARAMETER]='NOSTRO_RECONCILIATION' and [PARAMETER STATUS]='Y' "
                 ACCOUNTING_NOSTRO_RECONCILIATION_STATUS = cmdSYSTEM.ExecuteScalar
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER1]='SuspenceReconciliationTaskStatus' and [IdABTEILUNGSPARAMETER]='SUSPENCE_RECONCILIATION' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER1]='SuspenceReconciliationTaskStatus' 
+                                        and [IdABTEILUNGSPARAMETER]='SUSPENCE_RECONCILIATION' and [PARAMETER STATUS]='Y' "
                 ACCOUNTING_SUSPENCE_RECONCILIATION_STATUS = cmdSYSTEM.ExecuteScalar
                 '***********************************************************************
                 '*******SECURITIES USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='SECURITIES_USER' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='SECURITIES_USER' and [PARAMETER STATUS]='Y' "
                 Dim SECURITIESResult As String = cmdSYSTEM.ExecuteScalar
                 If SECURITIESResult <> "" Then
                     SECURITIES_USER = "Y"
@@ -587,7 +613,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******RISK CONTROLLING USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='RISKCONTROLLING_USER' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='RISKCONTROLLING_USER' and [PARAMETER STATUS]='Y' "
                 Dim RISKCONTROLLINGResult As String = cmdSYSTEM.ExecuteScalar
                 If RISKCONTROLLINGResult <> "" Then
                     RISKCONTROLLING_USER = "Y"
@@ -597,7 +624,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******MELDEWESEN USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='MELDEWESEN_USER' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='MELDEWESEN_USER' and [PARAMETER STATUS]='Y' "
                 Dim MELDEWESENResult As String = cmdSYSTEM.ExecuteScalar
                 If MELDEWESENResult <> "" Then
                     MELDEWESEN_USER = "Y"
@@ -607,7 +635,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******MANAGEMENT USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='MANAGEMENTUSERS' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='MANAGEMENTUSERS' and [PARAMETER STATUS]='Y' "
                 Dim MANAGEMENTResult As String = cmdSYSTEM.ExecuteScalar
                 If MANAGEMENTResult <> "" Then
                     MANAGEMENT_USER = "Y"
@@ -617,7 +646,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******EAEG USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='EAEG_USERS' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                         and [IdABTEILUNGSPARAMETER]='EAEG_USERS' and [PARAMETER STATUS]='Y' "
                 Dim EAEGResult As String = cmdSYSTEM.ExecuteScalar
                 If EAEGResult <> "" Then
                     EAEG_USER = "Y"
@@ -627,7 +657,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******TREASURY USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='TREASURY_USERS' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='TREASURY_USERS' and [PARAMETER STATUS]='Y' "
                 Dim TREASURYResult As String = cmdSYSTEM.ExecuteScalar
                 If TREASURYResult <> "" Then
                     TREASURY_USER = "Y"
@@ -637,7 +668,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******CREDIT USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='CREDIT_USERS' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                         and [IdABTEILUNGSPARAMETER]='CREDIT_USERS' and [PARAMETER STATUS]='Y' "
                 Dim CREDITResult As String = cmdSYSTEM.ExecuteScalar
                 If CREDITResult <> "" Then
                     CREDIT_USER = "Y"
@@ -647,7 +679,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******CLEARING USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='CLEARING_USER' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='CLEARING_USER' and [PARAMETER STATUS]='Y' "
                 Dim CLEARINGResult As String = cmdSYSTEM.ExecuteScalar
                 If CLEARINGResult <> "" Then
                     CLEARING_USER = "Y"
@@ -657,7 +690,8 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******COMPLIANCE USER PERMISSION************
                 '+++++++++++++++++++++++++++++++++++++++++++++++++++
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' and [IdABTEILUNGSPARAMETER]='COMPLIANCE_USERS' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER2]='" & SystemInformation.UserName & "' 
+                                        and [IdABTEILUNGSPARAMETER]='COMPLIANCE_USERS' and [PARAMETER STATUS]='Y' "
                 Dim COMPLIANCEResult As String = cmdSYSTEM.ExecuteScalar
                 If COMPLIANCEResult <> "" Then
                     COMPLIANCE_USER = "Y"
@@ -672,9 +706,11 @@ Public Class PSTOOL_MAIN_Form
                 '***********************************************************************
                 '*******IMPORT EVENTS DIRECTORY*************
                 '*******************************************
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='PS_TOOL_Import_Events_Current_File' and [IdABTEILUNGSPARAMETER]='IMPORT EVENTS DIRECTORY' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='PS_TOOL_Import_Events_Current_File' 
+                                        and [IdABTEILUNGSPARAMETER]='IMPORT EVENTS DIRECTORY' and [PARAMETER STATUS]='Y' "
                 ImportEventsDirectory = cmdSYSTEM.ExecuteScalar
-                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='PSTOOL_ImportEventsDirectoryFolder' and [IdABTEILUNGSPARAMETER]='IMPORT EVENTS DIRECTORY' and [PARAMETER STATUS]='Y' "
+                cmdSYSTEM.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='PSTOOL_ImportEventsDirectoryFolder' 
+                                        and [IdABTEILUNGSPARAMETER]='IMPORT EVENTS DIRECTORY' and [PARAMETER STATUS]='Y' "
                 ImportEventsDirectoryFolder = cmdSYSTEM.ExecuteScalar
                 '***********************************************************************
                 '*******EXCEL PARAMETER FILE******************************
@@ -858,9 +894,8 @@ Public Class PSTOOL_MAIN_Form
 
 
 
-                If cmdSYSTEM.Connection.State = ConnectionState.Open Then
-                    cmdSYSTEM.Connection.Close()
-                End If
+                CloseSYSTEM_SqlConnection()
+
             Catch ex As Exception
                 Me.SystemFilesTimer.Enabled = False
                 Me.SystemFilesTimer.Stop()
@@ -939,6 +974,32 @@ Public Class PSTOOL_MAIN_Form
         End If
     End Sub
 
+    Private Sub SECUR_DailyPrice_Element_Click(sender As Object, e As EventArgs) Handles SECUR_DailyPrice_Element.Click
+        If SECURITIES_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Securities daily market prices/modified durations")
+            ' Place code here
+            Dim c As New Securities_Dailyprice
+
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
     Private Sub SECUR_Bestand_Element_Click(sender As Object, e As EventArgs) Handles SECUR_Bestand_Element.Click
         If SECURITIES_USER = "N" AndAlso SUPER_USER = "N" Then
             XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -991,31 +1052,7 @@ Public Class PSTOOL_MAIN_Form
         End If
     End Sub
 
-    Private Sub SECUR_DailyPrice_Element_Click(sender As Object, e As EventArgs) Handles SECUR_DailyPrice_Element.Click
-        If SECURITIES_USER = "N" AndAlso SUPER_USER = "N" Then
-            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-            Exit Sub
-        Else
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("SECURITIES DAILY PRICE")
-            ' Place code here
-            Dim c As New Securities_Dailyprice
 
-            For Each kf As Form In Me.MdiChildren
-                If c.GetType Is kf.GetType Then
-                    kf.Activate()
-                    kf.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-                    Return
-                End If
-            Next
-            c.MdiParent = Me
-
-            c.Show()
-            c.WindowState = FormWindowState.Maximized
-            SplashScreenManager.CloseForm(False)
-        End If
-    End Sub
 
     Private Sub SECUR_Deprec_Apprec_Element_Click(sender As Object, e As EventArgs) Handles SECUR_Deprec_Apprec_Element.Click
         If SECURITIES_USER = "N" AndAlso SUPER_USER = "N" Then
@@ -1719,6 +1756,32 @@ Public Class PSTOOL_MAIN_Form
         End If
     End Sub
 
+    Private Sub RISKCONTROL_CreditSpreadRiskCalculation_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_CreditSpreadRiskCalculation_Element.Click
+        If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("PORTFOLIO CREDIT SPREAD RISK")
+            ' Place code here
+            Dim c As New CreditSpreadRiskCalc
+
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
     Private Sub RISKCONTROL_CurrencyRiskCalculation_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_CurrencyRiskCalculation_Element.Click
         If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
             XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -2061,10 +2124,63 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.CloseForm(False)
         End If
     End Sub
+
+    Private Sub RISKCONTROL_CreditSpreadRisk_Parameters_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_CreditSpreadRisk_Parameters_Element.Click
+        If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("CREDIT SPREAD RISK - PARAMETERS")
+            ' Place code here
+            Dim c As New CreditSpreadRisk_Parameter_References
+
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+    Private Sub RISKCONTROL_CreditSpreadRisk_Correlations_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_CreditSpreadRisk_Correlations_Element.Click
+        If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("CREDIT SPREAD RISK - SEGMENT CORRELATIONS")
+            ' Place code here
+            Dim c As New CreditSpreadRisk_Correlations
+
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+
 #End Region
 
 #Region "EDP ACCORDION ELEMENTS"
-
     Private Sub EDP_GeneralInfo_Element_Click(sender As Object, e As EventArgs) Handles EDP_GeneralInfo_Element.Click
         If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
             XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -2192,57 +2308,6 @@ Public Class PSTOOL_MAIN_Form
         End If
     End Sub
 
-    Private Sub EDP_BAISFiles_19_Element_Click(sender As Object, e As EventArgs) Handles EDP_BAISFiles_AnaCredit_Test_Element.Click
-        If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
-            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-            Exit Sub
-        Else
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.28) - TEST")
-            ' Place code here
-            Dim c As New BaisExportAnaCreditV128
-
-            For Each kf As Form In Me.MdiChildren
-                If c.GetType Is kf.GetType Then
-                    kf.Activate()
-                    kf.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-                    Return
-                End If
-            Next
-            c.MdiParent = Me
-
-            c.Show()
-            c.WindowState = FormWindowState.Normal
-            SplashScreenManager.CloseForm(False)
-        End If
-    End Sub
-
-    Private Sub EDP_BAISFiles_Common_Test_Element_Click(sender As Object, e As EventArgs) Handles EDP_BAISFiles_ALPHA_Test_Element.Click
-        If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
-            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-            Exit Sub
-        Else
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.28) - TEST")
-            ' Place code here
-            Dim c As New BaisExportAlphaV128
-
-            For Each kf As Form In Me.MdiChildren
-                If c.GetType Is kf.GetType Then
-                    kf.Activate()
-                    kf.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-                    Return
-                End If
-            Next
-            c.MdiParent = Me
-
-            c.Show()
-            c.WindowState = FormWindowState.Normal
-            SplashScreenManager.CloseForm(False)
-        End If
-    End Sub
 
     Private Sub EDP_BAISFiles_ALPHA_Test_Element_Click(sender As Object, e As EventArgs) Handles EDP_BAISFiles_ALPHA_Element.Click
         If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
@@ -2251,91 +2316,7 @@ Public Class PSTOOL_MAIN_Form
         Else
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             Select Case BAIS_VERSION_NR
-                Case = 129
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.29) - PRODUCTION")
-                    Dim c As New BaisExportAlphaV129
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-
-                Case = 130
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.30) - PRODUCTION")
-                    Dim c As New BaisExportAlphaV130
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-
-                Case = 131
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.31) - PRODUCTION")
-                    Dim c As New BaisExportAlphaV131
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-
-                Case = 132
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.32) - PRODUCTION")
-                    Dim c As New BaisExportAlphaV132
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-
-                Case = 134
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.34) - PRODUCTION")
-                    Dim c As New BaisExportAlphaV134
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-
+                'Add by Siyao Chen; Time:09.12.2022; Content: update for BAIS version 1.35
                 Case = 135
                     SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.35) - PRODUCTION")
                     Dim c As New BaisExportAlphaV135
@@ -2384,94 +2365,7 @@ Public Class PSTOOL_MAIN_Form
         Else
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             Select Case BAIS_VERSION_NR
-                Case = 129
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.29) - PRODUCTION")
-                    Dim c As New BaisExportAnaCreditV129
-
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-                Case = 130
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.30) - PRODUCTION")
-                    Dim c As New BaisExportAnaCreditV130
-
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-                Case = 131
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.31) - PRODUCTION")
-                    Dim c As New BaisExportAnaCreditV131
-
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-
-                Case = 132
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.32) - PRODUCTION")
-                    Dim c As New BaisExportAnaCreditV132
-
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-
-                Case = 134
-                    SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.34) - PRODUCTION")
-                    Dim c As New BaisExportAnaCreditV134
-
-                    For Each kf As Form In Me.MdiChildren
-                        If c.GetType Is kf.GetType Then
-                            kf.Activate()
-                            kf.WindowState = FormWindowState.Normal
-                            SplashScreenManager.CloseForm(False)
-                            Return
-                        End If
-                    Next
-                    c.MdiParent = Me
-
-                    c.Show()
-                    c.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-
+                'Add by WYQ; Time:12.12.2022; Content: update for BAIS version 1.35
                 Case = 135
                     SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.35) - PRODUCTION")
                     Dim c As New BaisExportAnaCreditV135
@@ -2507,11 +2401,11 @@ Public Class PSTOOL_MAIN_Form
                     c.Show()
                     c.WindowState = FormWindowState.Normal
                     SplashScreenManager.CloseForm(False)
-
             End Select
 
         End If
     End Sub
+
 
 
     Private Sub EDP_DailyEmailRiskOverview_Element_Click(sender As Object, e As EventArgs) Handles EDP_DailyEmailRiskOverview_Element.Click
@@ -2790,11 +2684,11 @@ Public Class PSTOOL_MAIN_Form
             ' Place code here
             Dim c As New ExecuteVbCode
             c.MdiParent = Me
-
             c.Show()
             c.WindowState = FormWindowState.Maximized
             SplashScreenManager.CloseForm(False)
         End If
+
     End Sub
 
     Private Sub EDP_SQL_FilesCompare_Element_Click(sender As Object, e As EventArgs) Handles EDP_SQL_FilesCompare_Element.Click
@@ -2807,7 +2701,6 @@ Public Class PSTOOL_MAIN_Form
             ' Place code here
             Dim c As New SqlFilesCompare
             c.MdiParent = Me
-
             c.Show()
             c.WindowState = FormWindowState.Maximized
             SplashScreenManager.CloseForm(False)
@@ -2941,7 +2834,7 @@ Public Class PSTOOL_MAIN_Form
     End Sub
 #End Region
 
-#Region "ANTI-MONEY LAUNDERING ACCODION ELEMENTS"
+#Region "ANTI-MONEY LAUNDERING ACCORDION ELEMENTS"
 
 
     Private Sub AML_PaymentsFive_PerDay_Element_Click(sender As Object, e As EventArgs) Handles AML_PaymentsFive_PerDay_Element.Click
@@ -3218,12 +3111,10 @@ Public Class PSTOOL_MAIN_Form
 
                         'WERTPAPIERE+++++++++++++++++++++
                         .WriteStartElement("WERTPAPIERE")
-                        QueryText = "Select ISIN_Code
-                                        ,Ccy
-                                        ,SektorCountry
-                                        ,Sum(PrincipalOrigAmt) as PrincipalOrigAmt
-                                        ,Sum(OCBS_Booked_Later) as OCBS_Booked_Later 
-                                        from SECURITIES_LIQUIDITYRESERVE where [LiquidityDate]='" & rdsql & "'  GROUP BY ISIN_Code,Ccy,SektorCountry"
+
+                        'Modify by WYQ; Time:03.03.2022; Content: Change the SQL QueryText to support multi bonds with the same ISIN
+                        'QueryText = "SELECT * FROM [SECURITIES_LIQUIDITYRESERVE] where [LiquidityDate]='" & rdsql & "'"
+                        QueryText = "SELECT isin_code, ccy,'DE' as SektorCountry,ROUND(sum(PrincipalOrigAmt),0) as PrincipalOrigAmt,ROUND(sum(OCBS_Booked_Later),0) as OCBS_Booked_Later  FROM [SECURITIES_LIQUIDITYRESERVE] where [LiquidityDate]='" & rdsql & "' group by isin_code, ccy, SektorCountry"
                         da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New DataTable()
                         da.Fill(dt)
@@ -5300,6 +5191,8 @@ Public Class PSTOOL_MAIN_Form
         c.WindowState = FormWindowState.Normal
         SplashScreenManager.CloseForm(False)
     End Sub
+
+
 
     Private Sub iConfiguration_ItemClick(sender As Object, e As ItemClickEventArgs) Handles iConfiguration.ItemClick
         'Me.SystemFilesTimer.Stop()
@@ -11625,6 +11518,7 @@ Public Class PSTOOL_MAIN_Form
             'Transactions
             QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('ZVDL_Transactions') and Status in ('Y')"
             da1 = New SqlDataAdapter(QueryText.Trim(), conn)
+
             dt1 = New System.Data.DataTable()
             da1.Fill(dt1)
             If dt1.Rows.Count > 0 Then
@@ -11638,6 +11532,7 @@ Public Class PSTOOL_MAIN_Form
             'Totals
             QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('ZVDL_Totals') and Status in ('Y')"
             da = New SqlDataAdapter(QueryText.Trim(), conn)
+
             dt = New System.Data.DataTable()
             da.Fill(dt)
             If dt.Rows.Count > 0 Then
@@ -11731,22 +11626,16 @@ Public Class PSTOOL_MAIN_Form
         If objMutex.WaitOne(0, False) = True Then
             If cmd.Connection.State <> ConnectionState.Broken Then
                 Try
-                    If cmd.Connection.State = ConnectionState.Closed Then
-                        cmd.Connection.Open()
-                    End If
+                    OpenSqlConnections()
                     cmd.CommandText = "DELETE FROM [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "' and [SessionID]='" & PSTOOL_SessionID & "'"
                     cmd.ExecuteNonQuery()
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     objMutex.Close()
                     objMutex = Nothing
                 Catch ex As Exception
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     XtraMessageBox.Show("PS TOOL will be closed!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    If cmd.Connection.State = ConnectionState.Open Then
-                        cmd.Connection.Close()
-                    End If
+                    CloseSqlConnections()
                     Application.Exit()
                 End Try
             End If

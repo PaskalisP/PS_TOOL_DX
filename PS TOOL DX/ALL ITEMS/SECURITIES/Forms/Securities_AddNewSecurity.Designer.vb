@@ -48,6 +48,11 @@ Partial Class Securities_AddNewSecurity
         Dim Label24 As System.Windows.Forms.Label
         Dim Label25 As System.Windows.Forms.Label
         Dim lbl_ExchangeRate As System.Windows.Forms.Label
+        Dim Label29 As System.Windows.Forms.Label
+        Dim Label30 As System.Windows.Forms.Label
+        Dim Label32 As System.Windows.Forms.Label
+        Dim Label31 As System.Windows.Forms.Label
+        Dim Label33 As System.Windows.Forms.Label
         Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
@@ -120,6 +125,33 @@ Partial Class Securities_AddNewSecurity
         Dim ToolTipTitleItem13 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem13 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim ConditionValidationRule11 As DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule = New DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule()
+        Dim EditorButtonImageOptions5 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject17 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject18 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject19 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject20 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip14 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem14 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem14 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ConditionValidationRule12 As DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule = New DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule()
+        Dim EditorButtonImageOptions6 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject21 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject22 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject23 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject24 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip15 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem15 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem15 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ConditionValidationRule13 As DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule = New DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule()
+        Dim SuperToolTip16 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem16 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem16 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip17 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem17 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem17 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip18 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem18 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem18 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Me.Start_DateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
@@ -229,6 +261,22 @@ Partial Class Securities_AddNewSecurity
         Me.FitchRating_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.DxValidationProvider1 = New DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(Me.components)
         Me.ExchangeRate_TextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.Segment_SearchLookUpEdit = New DevExpress.XtraEditors.SearchLookUpEdit()
+        Me.Segments_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn16 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.CurveType_SearchLookUpEdit = New DevExpress.XtraEditors.SearchLookUpEdit()
+        Me.CurveType_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.RatingClass_TextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.RiskWeightBP_TextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.SectorRW_TextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.CurveType_Description_lbl = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
         Label82 = New System.Windows.Forms.Label()
@@ -257,6 +305,11 @@ Partial Class Securities_AddNewSecurity
         Label24 = New System.Windows.Forms.Label()
         Label25 = New System.Windows.Forms.Label()
         lbl_ExchangeRate = New System.Windows.Forms.Label()
+        Label29 = New System.Windows.Forms.Label()
+        Label30 = New System.Windows.Forms.Label()
+        Label32 = New System.Windows.Forms.Label()
+        Label31 = New System.Windows.Forms.Label()
+        Label33 = New System.Windows.Forms.Label()
         CType(Me.Start_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Start_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -296,6 +349,13 @@ Partial Class Securities_AddNewSecurity
         CType(Me.FitchRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ExchangeRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Segment_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Segments_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CurveType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CurveType_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RatingClass_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RiskWeightBP_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SectorRW_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -303,7 +363,7 @@ Partial Class Securities_AddNewSecurity
         Label2.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label2.AutoSize = True
         Label2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label2.Location = New System.Drawing.Point(32, 23)
+        Label2.Location = New System.Drawing.Point(36, 23)
         Label2.Name = "Label2"
         Label2.Size = New System.Drawing.Size(115, 13)
         Label2.TabIndex = 0
@@ -314,7 +374,7 @@ Partial Class Securities_AddNewSecurity
         Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label1.AutoSize = True
         Label1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label1.Location = New System.Drawing.Point(41, 233)
+        Label1.Location = New System.Drawing.Point(45, 233)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(106, 13)
         Label1.TabIndex = 18
@@ -324,22 +384,22 @@ Partial Class Securities_AddNewSecurity
         '
         Label82.AutoSize = True
         Label82.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Label82.Location = New System.Drawing.Point(80, 51)
+        Label82.Location = New System.Drawing.Point(37, 51)
         Label82.Name = "Label82"
-        Label82.Size = New System.Drawing.Size(67, 14)
+        Label82.Size = New System.Drawing.Size(108, 14)
         Label82.TabIndex = 6
-        Label82.Text = "Client Nr.:"
+        Label82.Text = "Issuer Client Nr.:"
         '
         'Label11
         '
         Label11.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label11.AutoSize = True
         Label11.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label11.Location = New System.Drawing.Point(70, 79)
+        Label11.Location = New System.Drawing.Point(34, 79)
         Label11.Name = "Label11"
-        Label11.Size = New System.Drawing.Size(77, 13)
+        Label11.Size = New System.Drawing.Size(116, 13)
         Label11.TabIndex = 8
-        Label11.Text = "Client Name:"
+        Label11.Text = "Issuer Client Name:"
         '
         'Label3
         '
@@ -356,7 +416,7 @@ Partial Class Securities_AddNewSecurity
         Label4.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label4.AutoSize = True
         Label4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label4.Location = New System.Drawing.Point(13, 259)
+        Label4.Location = New System.Drawing.Point(17, 259)
         Label4.Name = "Label4"
         Label4.Size = New System.Drawing.Size(134, 13)
         Label4.TabIndex = 22
@@ -367,7 +427,7 @@ Partial Class Securities_AddNewSecurity
         Label5.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label5.AutoSize = True
         Label5.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label5.Location = New System.Drawing.Point(54, 287)
+        Label5.Location = New System.Drawing.Point(58, 287)
         Label5.Name = "Label5"
         Label5.Size = New System.Drawing.Size(93, 13)
         Label5.TabIndex = 24
@@ -378,7 +438,7 @@ Partial Class Securities_AddNewSecurity
         Label6.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label6.AutoSize = True
         Label6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label6.Location = New System.Drawing.Point(506, 232)
+        Label6.Location = New System.Drawing.Point(510, 232)
         Label6.Name = "Label6"
         Label6.Size = New System.Drawing.Size(143, 13)
         Label6.TabIndex = 26
@@ -389,7 +449,7 @@ Partial Class Securities_AddNewSecurity
         Label7.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label7.AutoSize = True
         Label7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label7.Location = New System.Drawing.Point(529, 258)
+        Label7.Location = New System.Drawing.Point(533, 258)
         Label7.Name = "Label7"
         Label7.Size = New System.Drawing.Size(120, 13)
         Label7.TabIndex = 28
@@ -400,7 +460,7 @@ Partial Class Securities_AddNewSecurity
         Label72.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label72.AutoSize = True
         Label72.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label72.Location = New System.Drawing.Point(74, 109)
+        Label72.Location = New System.Drawing.Point(78, 109)
         Label72.Name = "Label72"
         Label72.Size = New System.Drawing.Size(73, 13)
         Label72.TabIndex = 10
@@ -411,7 +471,7 @@ Partial Class Securities_AddNewSecurity
         Label8.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label8.AutoSize = True
         Label8.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label8.Location = New System.Drawing.Point(78, 135)
+        Label8.Location = New System.Drawing.Point(82, 135)
         Label8.Name = "Label8"
         Label8.Size = New System.Drawing.Size(69, 13)
         Label8.TabIndex = 12
@@ -422,7 +482,7 @@ Partial Class Securities_AddNewSecurity
         Label9.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label9.AutoSize = True
         Label9.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label9.Location = New System.Drawing.Point(58, 165)
+        Label9.Location = New System.Drawing.Point(62, 165)
         Label9.Name = "Label9"
         Label9.Size = New System.Drawing.Size(89, 13)
         Label9.TabIndex = 14
@@ -433,7 +493,7 @@ Partial Class Securities_AddNewSecurity
         Label60.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label60.AutoSize = True
         Label60.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label60.Location = New System.Drawing.Point(619, 19)
+        Label60.Location = New System.Drawing.Point(623, 19)
         Label60.Name = "Label60"
         Label60.Size = New System.Drawing.Size(73, 13)
         Label60.TabIndex = 4
@@ -444,7 +504,7 @@ Partial Class Securities_AddNewSecurity
         Label10.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label10.AutoSize = True
         Label10.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label10.Location = New System.Drawing.Point(314, 21)
+        Label10.Location = New System.Drawing.Point(318, 21)
         Label10.Name = "Label10"
         Label10.Size = New System.Drawing.Size(77, 13)
         Label10.TabIndex = 2
@@ -475,10 +535,10 @@ Partial Class Securities_AddNewSecurity
         Label15.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label15.AutoSize = True
         Label15.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label15.Location = New System.Drawing.Point(117, 398)
+        Label15.Location = New System.Drawing.Point(116, 492)
         Label15.Name = "Label15"
         Label15.Size = New System.Drawing.Size(30, 13)
-        Label15.TabIndex = 34
+        Label15.TabIndex = 44
         Label15.Text = "RIC:"
         '
         'Label16
@@ -486,10 +546,10 @@ Partial Class Securities_AddNewSecurity
         Label16.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label16.AutoSize = True
         Label16.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label16.Location = New System.Drawing.Point(416, 396)
+        Label16.Location = New System.Drawing.Point(415, 490)
         Label16.Name = "Label16"
         Label16.Size = New System.Drawing.Size(74, 13)
-        Label16.TabIndex = 36
+        Label16.TabIndex = 46
         Label16.Text = "SWAP Price:"
         '
         'Label17
@@ -497,10 +557,10 @@ Partial Class Securities_AddNewSecurity
         Label17.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label17.AutoSize = True
         Label17.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label17.Location = New System.Drawing.Point(618, 396)
+        Label17.Location = New System.Drawing.Point(617, 490)
         Label17.Name = "Label17"
         Label17.Size = New System.Drawing.Size(59, 13)
-        Label17.TabIndex = 38
+        Label17.TabIndex = 48
         Label17.Text = "Industry:"
         '
         'Label18
@@ -508,10 +568,10 @@ Partial Class Securities_AddNewSecurity
         Label18.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label18.AutoSize = True
         Label18.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label18.Location = New System.Drawing.Point(17, 426)
+        Label18.Location = New System.Drawing.Point(16, 520)
         Label18.Name = "Label18"
         Label18.Size = New System.Drawing.Size(130, 13)
-        Label18.TabIndex = 40
+        Label18.TabIndex = 50
         Label18.Text = "Floating Rate Coupon:"
         '
         'Label19
@@ -519,10 +579,10 @@ Partial Class Securities_AddNewSecurity
         Label19.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label19.AutoSize = True
         Label19.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label19.Location = New System.Drawing.Point(269, 428)
+        Label19.Location = New System.Drawing.Point(268, 522)
         Label19.Name = "Label19"
         Label19.Size = New System.Drawing.Size(124, 13)
-        Label19.TabIndex = 42
+        Label19.TabIndex = 52
         Label19.Text = "Floating(leg) spread:"
         '
         'Label20
@@ -530,10 +590,10 @@ Partial Class Securities_AddNewSecurity
         Label20.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label20.AutoSize = True
         Label20.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label20.Location = New System.Drawing.Point(488, 428)
+        Label20.Location = New System.Drawing.Point(487, 522)
         Label20.Name = "Label20"
         Label20.Size = New System.Drawing.Size(102, 13)
-        Label20.TabIndex = 44
+        Label20.TabIndex = 54
         Label20.Text = "Purchasing Yield:"
         '
         'Label21
@@ -541,10 +601,10 @@ Partial Class Securities_AddNewSecurity
         Label21.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label21.AutoSize = True
         Label21.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label21.Location = New System.Drawing.Point(78, 456)
+        Label21.Location = New System.Drawing.Point(77, 550)
         Label21.Name = "Label21"
         Label21.Size = New System.Drawing.Size(69, 13)
-        Label21.TabIndex = 46
+        Label21.TabIndex = 56
         Label21.Text = "Bond Type:"
         '
         'Label22
@@ -552,10 +612,10 @@ Partial Class Securities_AddNewSecurity
         Label22.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label22.AutoSize = True
         Label22.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label22.Location = New System.Drawing.Point(393, 458)
+        Label22.Location = New System.Drawing.Point(392, 552)
         Label22.Name = "Label22"
         Label22.Size = New System.Drawing.Size(106, 13)
-        Label22.TabIndex = 48
+        Label22.TabIndex = 58
         Label22.Text = "With Swap or Not:"
         '
         'Label23
@@ -563,10 +623,10 @@ Partial Class Securities_AddNewSecurity
         Label23.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label23.AutoSize = True
         Label23.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label23.Location = New System.Drawing.Point(58, 484)
+        Label23.Location = New System.Drawing.Point(57, 578)
         Label23.Name = "Label23"
         Label23.Size = New System.Drawing.Size(90, 13)
-        Label23.TabIndex = 50
+        Label23.TabIndex = 60
         Label23.Text = "Moody-Rating:"
         '
         'Label24
@@ -574,10 +634,10 @@ Partial Class Securities_AddNewSecurity
         Label24.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label24.AutoSize = True
         Label24.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label24.Location = New System.Drawing.Point(263, 484)
+        Label24.Location = New System.Drawing.Point(262, 578)
         Label24.Name = "Label24"
         Label24.Size = New System.Drawing.Size(75, 13)
-        Label24.TabIndex = 52
+        Label24.TabIndex = 62
         Label24.Text = "S+P-Rating:"
         '
         'Label25
@@ -585,28 +645,79 @@ Partial Class Securities_AddNewSecurity
         Label25.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label25.AutoSize = True
         Label25.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label25.Location = New System.Drawing.Point(458, 484)
+        Label25.Location = New System.Drawing.Point(457, 578)
         Label25.Name = "Label25"
         Label25.Size = New System.Drawing.Size(79, 13)
-        Label25.TabIndex = 54
+        Label25.TabIndex = 64
         Label25.Text = "Fitch-Rating:"
         '
         'lbl_ExchangeRate
         '
         lbl_ExchangeRate.Anchor = System.Windows.Forms.AnchorStyles.Top
         lbl_ExchangeRate.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        lbl_ExchangeRate.Location = New System.Drawing.Point(269, 195)
+        lbl_ExchangeRate.Location = New System.Drawing.Point(273, 195)
         lbl_ExchangeRate.Name = "lbl_ExchangeRate"
         lbl_ExchangeRate.Size = New System.Drawing.Size(164, 28)
         lbl_ExchangeRate.TabIndex = 20
         lbl_ExchangeRate.Text = "Exchange rate on purchase date against EUR:"
         lbl_ExchangeRate.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
+        'Label29
+        '
+        Label29.AutoSize = True
+        Label29.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label29.Location = New System.Drawing.Point(85, 395)
+        Label29.Name = "Label29"
+        Label29.Size = New System.Drawing.Size(61, 13)
+        Label29.TabIndex = 34
+        Label29.Text = "Segment:"
+        '
+        'Label30
+        '
+        Label30.AutoSize = True
+        Label30.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label30.Location = New System.Drawing.Point(218, 395)
+        Label30.Name = "Label30"
+        Label30.Size = New System.Drawing.Size(79, 13)
+        Label30.TabIndex = 36
+        Label30.Text = "Rating Class:"
+        '
+        'Label32
+        '
+        Label32.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Label32.AutoSize = True
+        Label32.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Label32.Location = New System.Drawing.Point(485, 393)
+        Label32.Name = "Label32"
+        Label32.Size = New System.Drawing.Size(107, 13)
+        Label32.TabIndex = 38
+        Label32.Text = "Risk Weight in BP:"
+        '
+        'Label31
+        '
+        Label31.AutoSize = True
+        Label31.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label31.Location = New System.Drawing.Point(96, 424)
+        Label31.Name = "Label31"
+        Label31.Size = New System.Drawing.Size(47, 13)
+        Label31.TabIndex = 40
+        Label31.Text = "Sector:"
+        '
+        'Label33
+        '
+        Label33.AutoSize = True
+        Label33.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Label33.Location = New System.Drawing.Point(73, 453)
+        Label33.Name = "Label33"
+        Label33.Size = New System.Drawing.Size(74, 13)
+        Label33.TabIndex = 42
+        Label33.Text = "Curve Type:"
+        '
         'Start_DateEdit
         '
         Me.Start_DateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Start_DateEdit.EditValue = Nothing
-        Me.Start_DateEdit.Location = New System.Drawing.Point(149, 132)
+        Me.Start_DateEdit.Location = New System.Drawing.Point(153, 132)
         Me.Start_DateEdit.Name = "Start_DateEdit"
         Me.Start_DateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Start_DateEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -670,13 +781,13 @@ Partial Class Securities_AddNewSecurity
         'AddNewSecurity_btn
         '
         Me.AddNewSecurity_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.AddNewSecurity_btn.ImageOptions.ImageIndex = 8
+        Me.AddNewSecurity_btn.ImageOptions.ImageIndex = 7
         Me.AddNewSecurity_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.AddNewSecurity_btn.Location = New System.Drawing.Point(12, 552)
+        Me.AddNewSecurity_btn.Location = New System.Drawing.Point(16, 614)
         Me.AddNewSecurity_btn.Name = "AddNewSecurity_btn"
         Me.AddNewSecurity_btn.Size = New System.Drawing.Size(192, 22)
-        Me.AddNewSecurity_btn.TabIndex = 56
-        Me.AddNewSecurity_btn.Text = "Add new Security"
+        Me.AddNewSecurity_btn.TabIndex = 66
+        Me.AddNewSecurity_btn.Text = "Save new Security"
         '
         'Cancel_Button
         '
@@ -684,16 +795,16 @@ Partial Class Securities_AddNewSecurity
         Me.Cancel_Button.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Cancel_Button.ImageOptions.ImageIndex = 9
         Me.Cancel_Button.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Cancel_Button.Location = New System.Drawing.Point(632, 552)
+        Me.Cancel_Button.Location = New System.Drawing.Point(636, 614)
         Me.Cancel_Button.Name = "Cancel_Button"
         Me.Cancel_Button.Size = New System.Drawing.Size(192, 22)
-        Me.Cancel_Button.TabIndex = 57
+        Me.Cancel_Button.TabIndex = 67
         Me.Cancel_Button.Text = "Cancel"
         '
         'SecIsinCode_TextEdit
         '
         Me.SecIsinCode_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.SecIsinCode_TextEdit.Location = New System.Drawing.Point(149, 18)
+        Me.SecIsinCode_TextEdit.Location = New System.Drawing.Point(153, 18)
         Me.SecIsinCode_TextEdit.Name = "SecIsinCode_TextEdit"
         Me.SecIsinCode_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.SecIsinCode_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1241,7 +1352,7 @@ Partial Class Securities_AddNewSecurity
         'PrincipalAmount_TextEdit
         '
         Me.PrincipalAmount_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.PrincipalAmount_TextEdit.Location = New System.Drawing.Point(149, 226)
+        Me.PrincipalAmount_TextEdit.Location = New System.Drawing.Point(153, 226)
         Me.PrincipalAmount_TextEdit.Name = "PrincipalAmount_TextEdit"
         Me.PrincipalAmount_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.PrincipalAmount_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1272,7 +1383,7 @@ Partial Class Securities_AddNewSecurity
         'ClientName_TextEdit
         '
         Me.ClientName_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.ClientName_TextEdit.Location = New System.Drawing.Point(149, 76)
+        Me.ClientName_TextEdit.Location = New System.Drawing.Point(153, 76)
         Me.ClientName_TextEdit.Name = "ClientName_TextEdit"
         Me.ClientName_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ClientName_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1392,7 +1503,7 @@ Partial Class Securities_AddNewSecurity
         'PrincipalAmountEUR_TextEdit
         '
         Me.PrincipalAmountEUR_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.PrincipalAmountEUR_TextEdit.Location = New System.Drawing.Point(149, 256)
+        Me.PrincipalAmountEUR_TextEdit.Location = New System.Drawing.Point(153, 256)
         Me.PrincipalAmountEUR_TextEdit.Name = "PrincipalAmountEUR_TextEdit"
         Me.PrincipalAmountEUR_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.PrincipalAmountEUR_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1423,7 +1534,7 @@ Partial Class Securities_AddNewSecurity
         'PurchasePrice_TextEdit
         '
         Me.PurchasePrice_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.PurchasePrice_TextEdit.Location = New System.Drawing.Point(149, 284)
+        Me.PurchasePrice_TextEdit.Location = New System.Drawing.Point(153, 284)
         Me.PurchasePrice_TextEdit.Name = "PurchasePrice_TextEdit"
         Me.PurchasePrice_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.PurchasePrice_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1451,7 +1562,7 @@ Partial Class Securities_AddNewSecurity
         'AmountPaidOrigCur_TextEdit
         '
         Me.AmountPaidOrigCur_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.AmountPaidOrigCur_TextEdit.Location = New System.Drawing.Point(655, 227)
+        Me.AmountPaidOrigCur_TextEdit.Location = New System.Drawing.Point(659, 227)
         Me.AmountPaidOrigCur_TextEdit.Name = "AmountPaidOrigCur_TextEdit"
         Me.AmountPaidOrigCur_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.AmountPaidOrigCur_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1486,7 +1597,7 @@ Partial Class Securities_AddNewSecurity
         'AmountPaidEuro_TextEdit
         '
         Me.AmountPaidEuro_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.AmountPaidEuro_TextEdit.Location = New System.Drawing.Point(655, 255)
+        Me.AmountPaidEuro_TextEdit.Location = New System.Drawing.Point(659, 255)
         Me.AmountPaidEuro_TextEdit.Name = "AmountPaidEuro_TextEdit"
         Me.AmountPaidEuro_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.AmountPaidEuro_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1521,7 +1632,7 @@ Partial Class Securities_AddNewSecurity
         '
         Me.Trade_DateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Trade_DateEdit.EditValue = Nothing
-        Me.Trade_DateEdit.Location = New System.Drawing.Point(149, 104)
+        Me.Trade_DateEdit.Location = New System.Drawing.Point(153, 104)
         Me.Trade_DateEdit.Name = "Trade_DateEdit"
         Me.Trade_DateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Trade_DateEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1565,7 +1676,7 @@ Partial Class Securities_AddNewSecurity
         '
         Me.Maturity_DateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Maturity_DateEdit.EditValue = Nothing
-        Me.Maturity_DateEdit.Location = New System.Drawing.Point(149, 160)
+        Me.Maturity_DateEdit.Location = New System.Drawing.Point(153, 160)
         Me.Maturity_DateEdit.Name = "Maturity_DateEdit"
         Me.Maturity_DateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Maturity_DateEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1609,7 +1720,7 @@ Partial Class Securities_AddNewSecurity
         'AssetType_ImageComboBoxEdit
         '
         Me.AssetType_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.AssetType_ImageComboBoxEdit.Location = New System.Drawing.Point(697, 16)
+        Me.AssetType_ImageComboBoxEdit.Location = New System.Drawing.Point(701, 16)
         Me.AssetType_ImageComboBoxEdit.Name = "AssetType_ImageComboBoxEdit"
         Me.AssetType_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AssetType_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -1640,7 +1751,7 @@ Partial Class Securities_AddNewSecurity
         'ContractNr_TextEdit
         '
         Me.ContractNr_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.ContractNr_TextEdit.Location = New System.Drawing.Point(397, 18)
+        Me.ContractNr_TextEdit.Location = New System.Drawing.Point(401, 18)
         Me.ContractNr_TextEdit.Name = "ContractNr_TextEdit"
         Me.ContractNr_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ContractNr_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1866,7 +1977,7 @@ Partial Class Securities_AddNewSecurity
         Me.Sektor_Description_lbl.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Sektor_Description_lbl.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Sektor_Description_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.Sektor_Description_lbl.Location = New System.Drawing.Point(242, 333)
+        Me.Sektor_Description_lbl.Location = New System.Drawing.Point(246, 333)
         Me.Sektor_Description_lbl.Name = "Sektor_Description_lbl"
         Me.Sektor_Description_lbl.Size = New System.Drawing.Size(571, 20)
         Me.Sektor_Description_lbl.TabIndex = 32
@@ -1876,7 +1987,7 @@ Partial Class Securities_AddNewSecurity
         Me.SektorCountry_Description_lbl.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.SektorCountry_Description_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.SektorCountry_Description_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.SektorCountry_Description_lbl.Location = New System.Drawing.Point(242, 354)
+        Me.SektorCountry_Description_lbl.Location = New System.Drawing.Point(246, 354)
         Me.SektorCountry_Description_lbl.Name = "SektorCountry_Description_lbl"
         Me.SektorCountry_Description_lbl.Size = New System.Drawing.Size(571, 22)
         Me.SektorCountry_Description_lbl.TabIndex = 33
@@ -1885,7 +1996,7 @@ Partial Class Securities_AddNewSecurity
         'RIC_TextEdit
         '
         Me.RIC_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.RIC_TextEdit.Location = New System.Drawing.Point(149, 395)
+        Me.RIC_TextEdit.Location = New System.Drawing.Point(148, 489)
         Me.RIC_TextEdit.Name = "RIC_TextEdit"
         Me.RIC_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.RIC_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1897,12 +2008,12 @@ Partial Class Securities_AddNewSecurity
         Me.RIC_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.RIC_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.RIC_TextEdit.Size = New System.Drawing.Size(258, 22)
-        Me.RIC_TextEdit.TabIndex = 35
+        Me.RIC_TextEdit.TabIndex = 45
         '
         'SWAP_Price_TextEdit
         '
         Me.SWAP_Price_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.SWAP_Price_TextEdit.Location = New System.Drawing.Point(491, 393)
+        Me.SWAP_Price_TextEdit.Location = New System.Drawing.Point(490, 487)
         Me.SWAP_Price_TextEdit.Name = "SWAP_Price_TextEdit"
         Me.SWAP_Price_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.SWAP_Price_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1919,12 +2030,12 @@ Partial Class Securities_AddNewSecurity
         Me.SWAP_Price_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.SWAP_Price_TextEdit.Properties.NullText = "0,00"
         Me.SWAP_Price_TextEdit.Size = New System.Drawing.Size(122, 22)
-        Me.SWAP_Price_TextEdit.TabIndex = 37
+        Me.SWAP_Price_TextEdit.TabIndex = 47
         '
         'Industry_TextEdit
         '
         Me.Industry_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Industry_TextEdit.Location = New System.Drawing.Point(678, 391)
+        Me.Industry_TextEdit.Location = New System.Drawing.Point(677, 485)
         Me.Industry_TextEdit.Name = "Industry_TextEdit"
         Me.Industry_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.Industry_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1936,12 +2047,12 @@ Partial Class Securities_AddNewSecurity
         Me.Industry_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.Industry_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.Industry_TextEdit.Size = New System.Drawing.Size(146, 22)
-        Me.Industry_TextEdit.TabIndex = 39
+        Me.Industry_TextEdit.TabIndex = 49
         '
         'FloatingRateCoupon_TextEdit
         '
         Me.FloatingRateCoupon_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.FloatingRateCoupon_TextEdit.Location = New System.Drawing.Point(149, 423)
+        Me.FloatingRateCoupon_TextEdit.Location = New System.Drawing.Point(148, 517)
         Me.FloatingRateCoupon_TextEdit.Name = "FloatingRateCoupon_TextEdit"
         Me.FloatingRateCoupon_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.FloatingRateCoupon_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1958,12 +2069,12 @@ Partial Class Securities_AddNewSecurity
         Me.FloatingRateCoupon_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.FloatingRateCoupon_TextEdit.Properties.NullText = "0,00"
         Me.FloatingRateCoupon_TextEdit.Size = New System.Drawing.Size(114, 22)
-        Me.FloatingRateCoupon_TextEdit.TabIndex = 41
+        Me.FloatingRateCoupon_TextEdit.TabIndex = 51
         '
         'FloatingSpread_TextEdit
         '
         Me.FloatingSpread_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.FloatingSpread_TextEdit.Location = New System.Drawing.Point(397, 425)
+        Me.FloatingSpread_TextEdit.Location = New System.Drawing.Point(396, 519)
         Me.FloatingSpread_TextEdit.Name = "FloatingSpread_TextEdit"
         Me.FloatingSpread_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.FloatingSpread_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1980,12 +2091,12 @@ Partial Class Securities_AddNewSecurity
         Me.FloatingSpread_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.FloatingSpread_TextEdit.Properties.NullText = "0,00"
         Me.FloatingSpread_TextEdit.Size = New System.Drawing.Size(85, 22)
-        Me.FloatingSpread_TextEdit.TabIndex = 43
+        Me.FloatingSpread_TextEdit.TabIndex = 53
         '
         'PurchasingYield_TextEdit
         '
         Me.PurchasingYield_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.PurchasingYield_TextEdit.Location = New System.Drawing.Point(596, 425)
+        Me.PurchasingYield_TextEdit.Location = New System.Drawing.Point(595, 519)
         Me.PurchasingYield_TextEdit.Name = "PurchasingYield_TextEdit"
         Me.PurchasingYield_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.PurchasingYield_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -1997,12 +2108,12 @@ Partial Class Securities_AddNewSecurity
         Me.PurchasingYield_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.PurchasingYield_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.PurchasingYield_TextEdit.Size = New System.Drawing.Size(228, 22)
-        Me.PurchasingYield_TextEdit.TabIndex = 45
+        Me.PurchasingYield_TextEdit.TabIndex = 55
         '
         'BondType_TextEdit
         '
         Me.BondType_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.BondType_TextEdit.Location = New System.Drawing.Point(149, 451)
+        Me.BondType_TextEdit.Location = New System.Drawing.Point(148, 545)
         Me.BondType_TextEdit.Name = "BondType_TextEdit"
         Me.BondType_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.BondType_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -2014,12 +2125,12 @@ Partial Class Securities_AddNewSecurity
         Me.BondType_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.BondType_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.BondType_TextEdit.Size = New System.Drawing.Size(228, 22)
-        Me.BondType_TextEdit.TabIndex = 47
+        Me.BondType_TextEdit.TabIndex = 57
         '
         'WithSwapNo_TextEdit
         '
         Me.WithSwapNo_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.WithSwapNo_TextEdit.Location = New System.Drawing.Point(500, 451)
+        Me.WithSwapNo_TextEdit.Location = New System.Drawing.Point(499, 545)
         Me.WithSwapNo_TextEdit.Name = "WithSwapNo_TextEdit"
         Me.WithSwapNo_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.WithSwapNo_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -2031,12 +2142,12 @@ Partial Class Securities_AddNewSecurity
         Me.WithSwapNo_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.WithSwapNo_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.WithSwapNo_TextEdit.Size = New System.Drawing.Size(324, 22)
-        Me.WithSwapNo_TextEdit.TabIndex = 49
+        Me.WithSwapNo_TextEdit.TabIndex = 59
         '
         'MoodysRating_TextEdit
         '
         Me.MoodysRating_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.MoodysRating_TextEdit.Location = New System.Drawing.Point(149, 479)
+        Me.MoodysRating_TextEdit.Location = New System.Drawing.Point(148, 573)
         Me.MoodysRating_TextEdit.Name = "MoodysRating_TextEdit"
         Me.MoodysRating_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.MoodysRating_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -2048,12 +2159,12 @@ Partial Class Securities_AddNewSecurity
         Me.MoodysRating_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.MoodysRating_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.MoodysRating_TextEdit.Size = New System.Drawing.Size(104, 22)
-        Me.MoodysRating_TextEdit.TabIndex = 51
+        Me.MoodysRating_TextEdit.TabIndex = 61
         '
         'SP_Rating_TextEdit
         '
         Me.SP_Rating_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.SP_Rating_TextEdit.Location = New System.Drawing.Point(339, 479)
+        Me.SP_Rating_TextEdit.Location = New System.Drawing.Point(338, 573)
         Me.SP_Rating_TextEdit.Name = "SP_Rating_TextEdit"
         Me.SP_Rating_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.SP_Rating_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -2065,12 +2176,12 @@ Partial Class Securities_AddNewSecurity
         Me.SP_Rating_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.SP_Rating_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.SP_Rating_TextEdit.Size = New System.Drawing.Size(104, 22)
-        Me.SP_Rating_TextEdit.TabIndex = 53
+        Me.SP_Rating_TextEdit.TabIndex = 63
         '
         'FitchRating_TextEdit
         '
         Me.FitchRating_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.FitchRating_TextEdit.Location = New System.Drawing.Point(537, 479)
+        Me.FitchRating_TextEdit.Location = New System.Drawing.Point(536, 573)
         Me.FitchRating_TextEdit.Name = "FitchRating_TextEdit"
         Me.FitchRating_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.FitchRating_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -2082,7 +2193,7 @@ Partial Class Securities_AddNewSecurity
         Me.FitchRating_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.FitchRating_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.FitchRating_TextEdit.Size = New System.Drawing.Size(104, 22)
-        Me.FitchRating_TextEdit.TabIndex = 55
+        Me.FitchRating_TextEdit.TabIndex = 65
         '
         'DxValidationProvider1
         '
@@ -2092,7 +2203,7 @@ Partial Class Securities_AddNewSecurity
         '
         Me.ExchangeRate_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ExchangeRate_TextEdit.EditValue = "1,0000"
-        Me.ExchangeRate_TextEdit.Location = New System.Drawing.Point(325, 226)
+        Me.ExchangeRate_TextEdit.Location = New System.Drawing.Point(329, 226)
         Me.ExchangeRate_TextEdit.Name = "ExchangeRate_TextEdit"
         Me.ExchangeRate_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ExchangeRate_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -2126,12 +2237,338 @@ Partial Class Securities_AddNewSecurity
         ConditionValidationRule11.Value2 = 0R
         Me.DxValidationProvider1.SetValidationRule(Me.ExchangeRate_TextEdit, ConditionValidationRule11)
         '
+        'Segment_SearchLookUpEdit
+        '
+        Me.Segment_SearchLookUpEdit.EditValue = ""
+        Me.Segment_SearchLookUpEdit.Location = New System.Drawing.Point(149, 391)
+        Me.Segment_SearchLookUpEdit.Name = "Segment_SearchLookUpEdit"
+        Me.Segment_SearchLookUpEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Segment_SearchLookUpEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.Segment_SearchLookUpEdit.Properties.Appearance.Options.UseFont = True
+        Me.Segment_SearchLookUpEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.Segment_SearchLookUpEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.Segment_SearchLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.Segment_SearchLookUpEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.Segment_SearchLookUpEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.Segment_SearchLookUpEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.Segment_SearchLookUpEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.Segment_SearchLookUpEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.Segment_SearchLookUpEdit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        SerializableAppearanceObject17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject17.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject17.Options.UseBackColor = True
+        SerializableAppearanceObject17.Options.UseForeColor = True
+        SerializableAppearanceObject18.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject18.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject18.Options.UseBackColor = True
+        SerializableAppearanceObject18.Options.UseForeColor = True
+        SerializableAppearanceObject19.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject19.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject19.Options.UseBackColor = True
+        SerializableAppearanceObject19.Options.UseForeColor = True
+        SerializableAppearanceObject20.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject20.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject20.Options.UseBackColor = True
+        SerializableAppearanceObject20.Options.UseForeColor = True
+        Me.Segment_SearchLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, True, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.Segment_SearchLookUpEdit.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
+        Me.Segment_SearchLookUpEdit.Properties.NullText = ""
+        Me.Segment_SearchLookUpEdit.Properties.PopupFormSize = New System.Drawing.Size(1200, 600)
+        Me.Segment_SearchLookUpEdit.Properties.PopupView = Me.Segments_GridView
+        Me.Segment_SearchLookUpEdit.Properties.ShowClearButton = False
+        Me.Segment_SearchLookUpEdit.Properties.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
+        Me.Segment_SearchLookUpEdit.Size = New System.Drawing.Size(64, 22)
+        ToolTipTitleItem14.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem14.Text = "Segment"
+        ToolTipItem14.LeftIndent = 6
+        ToolTipItem14.Text = "The Segment of the security regarding the Risk Weight by issuer rating class and " &
+    "sector"
+        SuperToolTip14.Items.Add(ToolTipTitleItem14)
+        SuperToolTip14.Items.Add(ToolTipItem14)
+        Me.Segment_SearchLookUpEdit.SuperTip = SuperToolTip14
+        Me.Segment_SearchLookUpEdit.TabIndex = 35
+        ConditionValidationRule12.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank
+        ConditionValidationRule12.ErrorText = "Mandatory Field"
+        ConditionValidationRule12.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Warning
+        Me.DxValidationProvider1.SetValidationRule(Me.Segment_SearchLookUpEdit, ConditionValidationRule12)
+        '
+        'Segments_GridView
+        '
+        Me.Segments_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn15, Me.GridColumn16})
+        Me.Segments_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.Segments_GridView.Name = "Segments_GridView"
+        Me.Segments_GridView.OptionsBehavior.AllowIncrementalSearch = True
+        Me.Segments_GridView.OptionsBehavior.ReadOnly = True
+        Me.Segments_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
+        Me.Segments_GridView.OptionsFind.AlwaysVisible = True
+        Me.Segments_GridView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.Segments_GridView.OptionsView.ColumnAutoWidth = False
+        Me.Segments_GridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Segments_GridView.OptionsView.ShowAutoFilterRow = True
+        Me.Segments_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.Segments_GridView.OptionsView.ShowGroupPanel = False
+        '
+        'GridColumn4
+        '
+        Me.GridColumn4.FieldName = "ID"
+        Me.GridColumn4.Name = "GridColumn4"
+        Me.GridColumn4.OptionsColumn.AllowEdit = False
+        Me.GridColumn4.OptionsColumn.ReadOnly = True
+        '
+        'GridColumn5
+        '
+        Me.GridColumn5.Caption = "Segment"
+        Me.GridColumn5.FieldName = "ParameterValue1"
+        Me.GridColumn5.Name = "GridColumn5"
+        Me.GridColumn5.OptionsColumn.AllowEdit = False
+        Me.GridColumn5.OptionsColumn.ReadOnly = True
+        Me.GridColumn5.Visible = True
+        Me.GridColumn5.VisibleIndex = 0
+        Me.GridColumn5.Width = 136
+        '
+        'GridColumn6
+        '
+        Me.GridColumn6.Caption = "Rating class"
+        Me.GridColumn6.FieldName = "ParameterName1"
+        Me.GridColumn6.Name = "GridColumn6"
+        Me.GridColumn6.OptionsColumn.AllowEdit = False
+        Me.GridColumn6.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.[True]
+        Me.GridColumn6.OptionsColumn.ReadOnly = True
+        Me.GridColumn6.Visible = True
+        Me.GridColumn6.VisibleIndex = 1
+        Me.GridColumn6.Width = 246
+        '
+        'GridColumn15
+        '
+        Me.GridColumn15.Caption = "Sector"
+        Me.GridColumn15.FieldName = "ParameterName2"
+        Me.GridColumn15.Name = "GridColumn15"
+        Me.GridColumn15.Visible = True
+        Me.GridColumn15.VisibleIndex = 2
+        Me.GridColumn15.Width = 515
+        '
+        'GridColumn16
+        '
+        Me.GridColumn16.Caption = "Risk Weight (in BP)"
+        Me.GridColumn16.FieldName = "ParameterValue2"
+        Me.GridColumn16.Name = "GridColumn16"
+        Me.GridColumn16.Visible = True
+        Me.GridColumn16.VisibleIndex = 3
+        Me.GridColumn16.Width = 114
+        '
+        'CurveType_SearchLookUpEdit
+        '
+        Me.CurveType_SearchLookUpEdit.EditValue = ""
+        Me.CurveType_SearchLookUpEdit.Location = New System.Drawing.Point(148, 448)
+        Me.CurveType_SearchLookUpEdit.Name = "CurveType_SearchLookUpEdit"
+        Me.CurveType_SearchLookUpEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CurveType_SearchLookUpEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.CurveType_SearchLookUpEdit.Properties.Appearance.Options.UseFont = True
+        Me.CurveType_SearchLookUpEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.CurveType_SearchLookUpEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.CurveType_SearchLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.CurveType_SearchLookUpEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.CurveType_SearchLookUpEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.CurveType_SearchLookUpEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.CurveType_SearchLookUpEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.CurveType_SearchLookUpEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.CurveType_SearchLookUpEdit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        SerializableAppearanceObject21.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject21.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject21.Options.UseBackColor = True
+        SerializableAppearanceObject21.Options.UseForeColor = True
+        SerializableAppearanceObject22.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject22.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject22.Options.UseBackColor = True
+        SerializableAppearanceObject22.Options.UseForeColor = True
+        SerializableAppearanceObject23.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject23.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject23.Options.UseBackColor = True
+        SerializableAppearanceObject23.Options.UseForeColor = True
+        SerializableAppearanceObject24.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject24.ForeColor = System.Drawing.Color.Black
+        SerializableAppearanceObject24.Options.UseBackColor = True
+        SerializableAppearanceObject24.Options.UseForeColor = True
+        Me.CurveType_SearchLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, True, False, EditorButtonImageOptions6, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject21, SerializableAppearanceObject22, SerializableAppearanceObject23, SerializableAppearanceObject24, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.CurveType_SearchLookUpEdit.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat
+        Me.CurveType_SearchLookUpEdit.Properties.NullText = ""
+        Me.CurveType_SearchLookUpEdit.Properties.PopupFormSize = New System.Drawing.Size(600, 300)
+        Me.CurveType_SearchLookUpEdit.Properties.PopupView = Me.CurveType_GridView
+        Me.CurveType_SearchLookUpEdit.Properties.ShowClearButton = False
+        Me.CurveType_SearchLookUpEdit.Properties.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
+        Me.CurveType_SearchLookUpEdit.Size = New System.Drawing.Size(120, 22)
+        ToolTipTitleItem15.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem15.Text = "Curve Type"
+        ToolTipItem15.LeftIndent = 6
+        ToolTipItem15.Text = "Curve Type for the security"
+        SuperToolTip15.Items.Add(ToolTipTitleItem15)
+        SuperToolTip15.Items.Add(ToolTipItem15)
+        Me.CurveType_SearchLookUpEdit.SuperTip = SuperToolTip15
+        Me.CurveType_SearchLookUpEdit.TabIndex = 43
+        ConditionValidationRule13.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank
+        ConditionValidationRule13.ErrorText = "Mandatory Field"
+        ConditionValidationRule13.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Warning
+        Me.DxValidationProvider1.SetValidationRule(Me.CurveType_SearchLookUpEdit, ConditionValidationRule13)
+        '
+        'CurveType_GridView
+        '
+        Me.CurveType_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn7, Me.GridColumn8, Me.GridColumn9})
+        Me.CurveType_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.CurveType_GridView.Name = "CurveType_GridView"
+        Me.CurveType_GridView.OptionsBehavior.AllowIncrementalSearch = True
+        Me.CurveType_GridView.OptionsBehavior.ReadOnly = True
+        Me.CurveType_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
+        Me.CurveType_GridView.OptionsFind.AlwaysVisible = True
+        Me.CurveType_GridView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.CurveType_GridView.OptionsView.ColumnAutoWidth = False
+        Me.CurveType_GridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
+        Me.CurveType_GridView.OptionsView.ShowAutoFilterRow = True
+        Me.CurveType_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.CurveType_GridView.OptionsView.ShowGroupPanel = False
+        '
+        'GridColumn7
+        '
+        Me.GridColumn7.FieldName = "ID"
+        Me.GridColumn7.Name = "GridColumn7"
+        Me.GridColumn7.OptionsColumn.AllowEdit = False
+        Me.GridColumn7.OptionsColumn.ReadOnly = True
+        '
+        'GridColumn8
+        '
+        Me.GridColumn8.Caption = "Curve Type"
+        Me.GridColumn8.FieldName = "ParameterName1"
+        Me.GridColumn8.Name = "GridColumn8"
+        Me.GridColumn8.OptionsColumn.AllowEdit = False
+        Me.GridColumn8.OptionsColumn.ReadOnly = True
+        Me.GridColumn8.Visible = True
+        Me.GridColumn8.VisibleIndex = 0
+        Me.GridColumn8.Width = 136
+        '
+        'GridColumn9
+        '
+        Me.GridColumn9.Caption = "Description"
+        Me.GridColumn9.FieldName = "ParameterName2"
+        Me.GridColumn9.Name = "GridColumn9"
+        Me.GridColumn9.OptionsColumn.AllowEdit = False
+        Me.GridColumn9.OptionsColumn.ReadOnly = True
+        Me.GridColumn9.Visible = True
+        Me.GridColumn9.VisibleIndex = 1
+        Me.GridColumn9.Width = 472
+        '
+        'RatingClass_TextEdit
+        '
+        Me.RatingClass_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.RatingClass_TextEdit.Location = New System.Drawing.Point(299, 391)
+        Me.RatingClass_TextEdit.Name = "RatingClass_TextEdit"
+        Me.RatingClass_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.RatingClass_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
+        Me.RatingClass_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.RatingClass_TextEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.RatingClass_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RatingClass_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RatingClass_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RatingClass_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.RatingClass_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.RatingClass_TextEdit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.RatingClass_TextEdit.Properties.ReadOnly = True
+        Me.RatingClass_TextEdit.Size = New System.Drawing.Size(173, 24)
+        ToolTipTitleItem16.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem16.Text = "Rating Class"
+        ToolTipItem16.LeftIndent = 6
+        ToolTipItem16.Text = "The rating class based on the segment"
+        SuperToolTip16.Items.Add(ToolTipTitleItem16)
+        SuperToolTip16.Items.Add(ToolTipItem16)
+        Me.RatingClass_TextEdit.SuperTip = SuperToolTip16
+        Me.RatingClass_TextEdit.TabIndex = 37
+        Me.RatingClass_TextEdit.TabStop = False
+        '
+        'RiskWeightBP_TextEdit
+        '
+        Me.RiskWeightBP_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.RiskWeightBP_TextEdit.EditValue = "39"
+        Me.RiskWeightBP_TextEdit.Location = New System.Drawing.Point(595, 389)
+        Me.RiskWeightBP_TextEdit.Name = "RiskWeightBP_TextEdit"
+        Me.RiskWeightBP_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.RiskWeightBP_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
+        Me.RiskWeightBP_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.RiskWeightBP_TextEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.RiskWeightBP_TextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.RiskWeightBP_TextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.RiskWeightBP_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RiskWeightBP_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RiskWeightBP_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RiskWeightBP_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.RiskWeightBP_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.RiskWeightBP_TextEdit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.RiskWeightBP_TextEdit.Properties.Mask.EditMask = "d0"
+        Me.RiskWeightBP_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.RiskWeightBP_TextEdit.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.RiskWeightBP_TextEdit.Properties.NullText = "0,00"
+        Me.RiskWeightBP_TextEdit.Properties.ReadOnly = True
+        Me.RiskWeightBP_TextEdit.Size = New System.Drawing.Size(70, 24)
+        ToolTipTitleItem17.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem17.Text = "Risk Weight ( In Basis Points)"
+        ToolTipItem17.LeftIndent = 6
+        ToolTipItem17.Text = "The Risk Weight based on the segment"
+        SuperToolTip17.Items.Add(ToolTipTitleItem17)
+        SuperToolTip17.Items.Add(ToolTipItem17)
+        Me.RiskWeightBP_TextEdit.SuperTip = SuperToolTip17
+        Me.RiskWeightBP_TextEdit.TabIndex = 96
+        Me.RiskWeightBP_TextEdit.TabStop = False
+        '
+        'SectorRW_TextEdit
+        '
+        Me.SectorRW_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.SectorRW_TextEdit.Location = New System.Drawing.Point(148, 418)
+        Me.SectorRW_TextEdit.Name = "SectorRW_TextEdit"
+        Me.SectorRW_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SectorRW_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
+        Me.SectorRW_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.SectorRW_TextEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.SectorRW_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.SectorRW_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.SectorRW_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.SectorRW_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.SectorRW_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.SectorRW_TextEdit.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.SectorRW_TextEdit.Properties.ReadOnly = True
+        Me.SectorRW_TextEdit.Size = New System.Drawing.Size(675, 24)
+        ToolTipTitleItem18.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem18.Text = "Sector (Risk Weight)"
+        ToolTipItem18.LeftIndent = 6
+        ToolTipItem18.Text = "The sector based on the segment"
+        SuperToolTip18.Items.Add(ToolTipTitleItem18)
+        SuperToolTip18.Items.Add(ToolTipItem18)
+        Me.SectorRW_TextEdit.SuperTip = SuperToolTip18
+        Me.SectorRW_TextEdit.TabIndex = 41
+        Me.SectorRW_TextEdit.TabStop = False
+        '
+        'CurveType_Description_lbl
+        '
+        Me.CurveType_Description_lbl.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CurveType_Description_lbl.ForeColor = System.Drawing.Color.Yellow
+        Me.CurveType_Description_lbl.Location = New System.Drawing.Point(273, 448)
+        Me.CurveType_Description_lbl.Name = "CurveType_Description_lbl"
+        Me.CurveType_Description_lbl.Size = New System.Drawing.Size(550, 22)
+        Me.CurveType_Description_lbl.TabIndex = 101
+        '
         'Securities_AddNewSecurity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CausesValidation = False
-        Me.ClientSize = New System.Drawing.Size(836, 586)
+        Me.ClientSize = New System.Drawing.Size(844, 648)
+        Me.Controls.Add(Me.CurveType_Description_lbl)
+        Me.Controls.Add(Me.CurveType_SearchLookUpEdit)
+        Me.Controls.Add(Label33)
+        Me.Controls.Add(Me.SectorRW_TextEdit)
+        Me.Controls.Add(Label31)
+        Me.Controls.Add(Me.RiskWeightBP_TextEdit)
+        Me.Controls.Add(Label32)
+        Me.Controls.Add(Me.RatingClass_TextEdit)
+        Me.Controls.Add(Label30)
+        Me.Controls.Add(Me.Segment_SearchLookUpEdit)
+        Me.Controls.Add(Label29)
         Me.Controls.Add(Me.ExchangeRate_TextEdit)
         Me.Controls.Add(lbl_ExchangeRate)
         Me.Controls.Add(Me.FitchRating_TextEdit)
@@ -2238,6 +2675,13 @@ Partial Class Securities_AddNewSecurity
         CType(Me.FitchRating_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ExchangeRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Segment_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Segments_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CurveType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CurveType_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RatingClass_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RiskWeightBP_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SectorRW_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2351,4 +2795,20 @@ Partial Class Securities_AddNewSecurity
     Friend WithEvents DxValidationProvider1 As DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider
     Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents ExchangeRate_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents Segment_SearchLookUpEdit As DevExpress.XtraEditors.SearchLookUpEdit
+    Friend WithEvents Segments_GridView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn15 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn16 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents RatingClass_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents RiskWeightBP_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents SectorRW_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents CurveType_SearchLookUpEdit As DevExpress.XtraEditors.SearchLookUpEdit
+    Friend WithEvents CurveType_GridView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents CurveType_Description_lbl As Label
 End Class

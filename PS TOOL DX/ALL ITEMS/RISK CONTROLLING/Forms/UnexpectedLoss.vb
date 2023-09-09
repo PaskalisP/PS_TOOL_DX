@@ -765,6 +765,9 @@ e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Wid
             worksheet.Cells("P10").Formula = "=SUM(P12:P" & UL_Totals_LastRow & ")"
             worksheet.Cells("W11").Formula = "=SUM(W12:W" & UL_Totals_LastRow & ")/(2*$C$5)"
 
+
+
+
             'Expected Loss
             'worksheet.Cells("C8").Formula = "=O10"
             'Unexpected Loss

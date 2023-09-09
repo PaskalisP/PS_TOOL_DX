@@ -22,21 +22,21 @@ Partial Class Securities_AddNewDailyPrice
         Me.components = New System.ComponentModel.Container()
         Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue2 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Securities_AddNewDailyPrice))
         Me.colMarket_Price = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemTextEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.colModifiedDuration = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.LiquidityDateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.SecuritiesDailyPriceBaseView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colContractNrOCBS = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colISIN_Code = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colName = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCcy = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPrincipalOrigAmt = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colPurchase_price = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colAssetType = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colMaturityDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -65,9 +65,9 @@ Partial Class Securities_AddNewDailyPrice
         '
         'colMarket_Price
         '
-        Me.colMarket_Price.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colMarket_Price.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.colMarket_Price.AppearanceCell.Options.UseFont = True
-        Me.colMarket_Price.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colMarket_Price.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Me.colMarket_Price.AppearanceHeader.ForeColor = System.Drawing.Color.Navy
         Me.colMarket_Price.AppearanceHeader.Options.UseFont = True
         Me.colMarket_Price.AppearanceHeader.Options.UseForeColor = True
@@ -75,10 +75,10 @@ Partial Class Securities_AddNewDailyPrice
         Me.colMarket_Price.ColumnEdit = Me.RepositoryItemTextEdit1
         Me.colMarket_Price.DisplayFormat.FormatString = "n6"
         Me.colMarket_Price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colMarket_Price.FieldName = "Market_Price"
+        Me.colMarket_Price.FieldName = "MarketPrice"
         Me.colMarket_Price.Name = "colMarket_Price"
         Me.colMarket_Price.Visible = True
-        Me.colMarket_Price.VisibleIndex = 7
+        Me.colMarket_Price.VisibleIndex = 4
         Me.colMarket_Price.Width = 139
         '
         'RepositoryItemTextEdit1
@@ -98,6 +98,24 @@ Partial Class Securities_AddNewDailyPrice
         Me.RepositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.RepositoryItemTextEdit1.Name = "RepositoryItemTextEdit1"
         '
+        'colModifiedDuration
+        '
+        Me.colModifiedDuration.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.colModifiedDuration.AppearanceCell.Options.UseFont = True
+        Me.colModifiedDuration.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.colModifiedDuration.AppearanceHeader.ForeColor = System.Drawing.Color.Navy
+        Me.colModifiedDuration.AppearanceHeader.Options.UseFont = True
+        Me.colModifiedDuration.AppearanceHeader.Options.UseForeColor = True
+        Me.colModifiedDuration.Caption = "Modified Duration"
+        Me.colModifiedDuration.ColumnEdit = Me.RepositoryItemTextEdit1
+        Me.colModifiedDuration.DisplayFormat.FormatString = "n6"
+        Me.colModifiedDuration.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colModifiedDuration.FieldName = "ModifiedDuration"
+        Me.colModifiedDuration.Name = "colModifiedDuration"
+        Me.colModifiedDuration.Visible = True
+        Me.colModifiedDuration.VisibleIndex = 5
+        Me.colModifiedDuration.Width = 121
+        '
         'LayoutControl1
         '
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -108,14 +126,14 @@ Partial Class Securities_AddNewDailyPrice
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1308, 599)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1308, 602)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
         'LiquidityDateEdit
         '
         Me.LiquidityDateEdit.EditValue = Nothing
-        Me.LiquidityDateEdit.Location = New System.Drawing.Point(581, 12)
+        Me.LiquidityDateEdit.Location = New System.Drawing.Point(553, 12)
         Me.LiquidityDateEdit.Name = "LiquidityDateEdit"
         Me.LiquidityDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.LiquidityDateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
@@ -131,7 +149,7 @@ Partial Class Securities_AddNewDailyPrice
         Me.LiquidityDateEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.LiquidityDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.LiquidityDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.LiquidityDateEdit.Size = New System.Drawing.Size(152, 22)
+        Me.LiquidityDateEdit.Size = New System.Drawing.Size(180, 22)
         Me.LiquidityDateEdit.StyleController = Me.LayoutControl1
         Me.LiquidityDateEdit.TabIndex = 13
         '
@@ -143,12 +161,12 @@ Partial Class Securities_AddNewDailyPrice
         Me.GridControl2.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl2.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, True, "Add new Daily Prices", "Add")})
+        Me.GridControl2.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, False, "Add new Daily Prices", "Add")})
         Me.GridControl2.Location = New System.Drawing.Point(12, 38)
         Me.GridControl2.MainView = Me.SecuritiesDailyPriceBaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1})
-        Me.GridControl2.Size = New System.Drawing.Size(1284, 549)
+        Me.GridControl2.Size = New System.Drawing.Size(1284, 552)
         Me.GridControl2.TabIndex = 12
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SecuritiesDailyPriceBaseView})
@@ -162,7 +180,7 @@ Partial Class Securities_AddNewDailyPrice
         Me.SecuritiesDailyPriceBaseView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.SecuritiesDailyPriceBaseView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.SecuritiesDailyPriceBaseView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.SecuritiesDailyPriceBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colContractNrOCBS, Me.colISIN_Code, Me.colName, Me.colCcy, Me.colPrincipalOrigAmt, Me.colPurchase_price, Me.colMarket_Price, Me.colAssetType, Me.colMaturityDate})
+        Me.SecuritiesDailyPriceBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colISIN_Code, Me.colName, Me.colCcy, Me.colPrincipalOrigAmt, Me.colMarket_Price, Me.colModifiedDuration, Me.colMaturityDate})
         Me.SecuritiesDailyPriceBaseView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         GridFormatRule1.Column = Me.colMarket_Price
         GridFormatRule1.ColumnApplyTo = Me.colMarket_Price
@@ -173,9 +191,21 @@ Partial Class Securities_AddNewDailyPrice
         FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Expression
-        FormatConditionRuleValue1.Expression = "[Market_Price] = 0"
+        FormatConditionRuleValue1.Expression = "[MarketPrice] = 0"
         GridFormatRule1.Rule = FormatConditionRuleValue1
+        GridFormatRule2.Column = Me.colModifiedDuration
+        GridFormatRule2.ColumnApplyTo = Me.colModifiedDuration
+        GridFormatRule2.Name = "Format1"
+        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.Red
+        FormatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.Red
+        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.White
+        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Expression
+        FormatConditionRuleValue2.Expression = "[ModifiedDuration] = 0"
+        GridFormatRule2.Rule = FormatConditionRuleValue2
         Me.SecuritiesDailyPriceBaseView.FormatRules.Add(GridFormatRule1)
+        Me.SecuritiesDailyPriceBaseView.FormatRules.Add(GridFormatRule2)
         Me.SecuritiesDailyPriceBaseView.GridControl = Me.GridControl2
         Me.SecuritiesDailyPriceBaseView.Name = "SecuritiesDailyPriceBaseView"
         Me.SecuritiesDailyPriceBaseView.NewItemRowText = "Add new Security Depreciation"
@@ -198,84 +228,52 @@ Partial Class Securities_AddNewDailyPrice
         Me.colID.OptionsColumn.AllowEdit = False
         Me.colID.OptionsColumn.ReadOnly = True
         '
-        'colContractNrOCBS
-        '
-        Me.colContractNrOCBS.Caption = "Contract Nr."
-        Me.colContractNrOCBS.FieldName = "ContractNrOCBS"
-        Me.colContractNrOCBS.Name = "colContractNrOCBS"
-        Me.colContractNrOCBS.OptionsColumn.AllowEdit = False
-        Me.colContractNrOCBS.OptionsColumn.ReadOnly = True
-        Me.colContractNrOCBS.Visible = True
-        Me.colContractNrOCBS.VisibleIndex = 0
-        Me.colContractNrOCBS.Width = 110
-        '
         'colISIN_Code
         '
         Me.colISIN_Code.Caption = "ISIN Code"
-        Me.colISIN_Code.FieldName = "ISIN"
+        Me.colISIN_Code.FieldName = "ISIN_Code"
         Me.colISIN_Code.Name = "colISIN_Code"
         Me.colISIN_Code.OptionsColumn.AllowEdit = False
         Me.colISIN_Code.OptionsColumn.ReadOnly = True
         Me.colISIN_Code.Visible = True
-        Me.colISIN_Code.VisibleIndex = 1
-        Me.colISIN_Code.Width = 170
+        Me.colISIN_Code.VisibleIndex = 0
+        Me.colISIN_Code.Width = 142
         '
         'colName
         '
-        Me.colName.FieldName = "SecurityName"
+        Me.colName.Caption = "Issuer Client Name/Security Name"
+        Me.colName.FieldName = "Name"
         Me.colName.Name = "colName"
         Me.colName.OptionsColumn.AllowEdit = False
         Me.colName.OptionsColumn.ReadOnly = True
         Me.colName.Visible = True
-        Me.colName.VisibleIndex = 2
-        Me.colName.Width = 260
+        Me.colName.VisibleIndex = 1
+        Me.colName.Width = 324
         '
         'colCcy
         '
-        Me.colCcy.FieldName = "Currency"
+        Me.colCcy.AppearanceCell.Options.UseTextOptions = True
+        Me.colCcy.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colCcy.FieldName = "Ccy"
         Me.colCcy.Name = "colCcy"
         Me.colCcy.OptionsColumn.AllowEdit = False
         Me.colCcy.OptionsColumn.ReadOnly = True
         Me.colCcy.Visible = True
-        Me.colCcy.VisibleIndex = 3
+        Me.colCcy.VisibleIndex = 2
         Me.colCcy.Width = 68
         '
         'colPrincipalOrigAmt
         '
-        Me.colPrincipalOrigAmt.Caption = "Principal Orig. Amount"
+        Me.colPrincipalOrigAmt.Caption = "Nominal"
         Me.colPrincipalOrigAmt.DisplayFormat.FormatString = "n2"
         Me.colPrincipalOrigAmt.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colPrincipalOrigAmt.FieldName = "PrincipalOrigAmt"
+        Me.colPrincipalOrigAmt.FieldName = "Nominal"
         Me.colPrincipalOrigAmt.Name = "colPrincipalOrigAmt"
         Me.colPrincipalOrigAmt.OptionsColumn.AllowEdit = False
         Me.colPrincipalOrigAmt.OptionsColumn.ReadOnly = True
         Me.colPrincipalOrigAmt.Visible = True
-        Me.colPrincipalOrigAmt.VisibleIndex = 4
+        Me.colPrincipalOrigAmt.VisibleIndex = 3
         Me.colPrincipalOrigAmt.Width = 122
-        '
-        'colPurchase_price
-        '
-        Me.colPurchase_price.Caption = "Purchase price"
-        Me.colPurchase_price.DisplayFormat.FormatString = "n6"
-        Me.colPurchase_price.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colPurchase_price.FieldName = "Purchase_Price"
-        Me.colPurchase_price.Name = "colPurchase_price"
-        Me.colPurchase_price.OptionsColumn.AllowEdit = False
-        Me.colPurchase_price.OptionsColumn.ReadOnly = True
-        Me.colPurchase_price.Visible = True
-        Me.colPurchase_price.VisibleIndex = 6
-        Me.colPurchase_price.Width = 122
-        '
-        'colAssetType
-        '
-        Me.colAssetType.Caption = "Asset Type"
-        Me.colAssetType.FieldName = "AssetType"
-        Me.colAssetType.Name = "colAssetType"
-        Me.colAssetType.OptionsColumn.AllowEdit = False
-        Me.colAssetType.OptionsColumn.ReadOnly = True
-        Me.colAssetType.Visible = True
-        Me.colAssetType.VisibleIndex = 8
-        Me.colAssetType.Width = 121
         '
         'colMaturityDate
         '
@@ -287,7 +285,7 @@ Partial Class Securities_AddNewDailyPrice
         Me.colMaturityDate.OptionsColumn.AllowEdit = False
         Me.colMaturityDate.OptionsColumn.ReadOnly = True
         Me.colMaturityDate.Visible = True
-        Me.colMaturityDate.VisibleIndex = 5
+        Me.colMaturityDate.VisibleIndex = 6
         Me.colMaturityDate.Width = 115
         '
         'LayoutControlGroup1
@@ -296,7 +294,7 @@ Partial Class Securities_AddNewDailyPrice
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.EmptySpaceItem2})
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1308, 599)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1308, 602)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem1
@@ -304,7 +302,7 @@ Partial Class Securities_AddNewDailyPrice
         Me.LayoutControlItem1.Control = Me.GridControl2
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 26)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1288, 553)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1288, 556)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
@@ -324,8 +322,8 @@ Partial Class Securities_AddNewDailyPrice
         Me.LayoutControlItem2.Location = New System.Drawing.Point(450, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(275, 26)
-        Me.LayoutControlItem2.Text = "Date of Market Price"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(116, 13)
+        Me.LayoutControlItem2.Text = "Business Date"
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(79, 13)
         '
         'EmptySpaceItem2
         '
@@ -366,30 +364,30 @@ Partial Class Securities_AddNewDailyPrice
         'DailyPrice_import_btn
         '
         Me.DailyPrice_import_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.DailyPrice_import_btn.ImageOptions.ImageIndex = 8
+        Me.DailyPrice_import_btn.ImageOptions.ImageIndex = 7
         Me.DailyPrice_import_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.DailyPrice_import_btn.Location = New System.Drawing.Point(12, 603)
         Me.DailyPrice_import_btn.Name = "DailyPrice_import_btn"
-        Me.DailyPrice_import_btn.Size = New System.Drawing.Size(192, 22)
+        Me.DailyPrice_import_btn.Size = New System.Drawing.Size(238, 22)
         Me.DailyPrice_import_btn.TabIndex = 12
-        Me.DailyPrice_import_btn.Text = "Import Daily price"
+        Me.DailyPrice_import_btn.Text = "Save Market prices / Modified Duration"
         '
         'Securities_AddNewDailyPrice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1308, 633)
+        Me.ClientSize = New System.Drawing.Size(1308, 636)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.DailyPrice_import_btn)
         Me.Controls.Add(Me.Cancel_Button)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("Securities_AddNewDailyPrice.IconOptions.Icon"), System.Drawing.Icon)
         Me.LookAndFeel.SkinName = "The Bezier"
         Me.LookAndFeel.UseDefaultLookAndFeel = False
         Me.MaximizeBox = False
         Me.Name = "Securities_AddNewDailyPrice"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "New Daily Price"
+        Me.Text = "New Daily Market Price / Modified Duration"
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
@@ -416,9 +414,7 @@ Partial Class Securities_AddNewDailyPrice
     Friend WithEvents colCcy As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colISIN_Code As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colMarket_Price As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colPurchase_price As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colAssetType As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colContractNrOCBS As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colModifiedDuration As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colPrincipalOrigAmt As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colMaturityDate As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem

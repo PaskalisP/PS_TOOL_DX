@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class Securities_LiquidityReserve
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -34,6 +34,21 @@ Partial Class Securities_LiquidityReserve
         Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue6 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Securities_LiquidityReserve))
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.SecuritiesLiquidDetailView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.layoutViewField_colID1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
@@ -210,7 +225,6 @@ Partial Class Securities_LiquidityReserve
         Me.RepositoryItemImageComboBox2 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.ToolTipController1 = New DevExpress.Utils.ToolTipController(Me.components)
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.item1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
@@ -255,29 +269,28 @@ Partial Class Securities_LiquidityReserve
         Me.SECURITIES_LIQUIDITYRESERVETableAdapter = New PS_TOOL_DX.SECURITIESDatasetTableAdapters.SECURITIES_LIQUIDITYRESERVETableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.SECURITIESDatasetTableAdapters.TableAdapterManager()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.SecuritiesReport_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.CreateNewLiquidity_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.TillDateEdit = New DevExpress.XtraEditors.DateEdit()
-        Me.LiquidityDateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.SecuritiesLiquidDetailView_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.Securities_LiquidityReserve_Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem8 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.EmptySpaceItem9 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.LiquidityDate_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.LiquidityDates_SearchLookUpEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit()
+        Me.LiquidityDates_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colLiquidityDates = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.DisplayListDetails_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.LiquidtyReserveReport_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.PrintOrExport_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.Close_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         CType(Me.SecuritiesLiquidDetailView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colLiquidityCreationDate1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -337,7 +350,6 @@ Partial Class Securities_LiquidityReserve
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.item1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -383,24 +395,16 @@ Partial Class Securities_LiquidityReserve
         Me.LayoutControl1.SuspendLayout()
         CType(Me.TillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TillDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LiquidityDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LiquidityDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LiquidityDates_SearchLookUpEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LiquidityDates_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SecuritiesLiquidDetailView
@@ -1454,15 +1458,15 @@ Partial Class Securities_LiquidityReserve
         GridLevelNode1.LevelTemplate = Me.SecuritiesLiquidDetailView
         GridLevelNode1.RelationName = "Level1"
         Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(12, 109)
+        Me.GridControl2.Location = New System.Drawing.Point(12, 12)
         Me.GridControl2.MainView = Me.SecuritiesLiquidBaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.RepositoryItemImageComboBox2})
-        Me.GridControl2.Size = New System.Drawing.Size(1407, 409)
+        Me.GridControl2.Size = New System.Drawing.Size(1407, 476)
         Me.GridControl2.TabIndex = 11
         Me.GridControl2.ToolTipController = Me.ToolTipController1
         Me.GridControl2.UseEmbeddedNavigator = True
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SecuritiesLiquidBaseView, Me.GridView2, Me.SecuritiesLiquidDetailView})
+        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SecuritiesLiquidBaseView, Me.SecuritiesLiquidDetailView})
         '
         'SECURITIES_LIQUIDITYRESERVEBindingSource
         '
@@ -2522,11 +2526,8 @@ Partial Class Securities_LiquidityReserve
         Me.ImageCollection1.Images.SetKeyName(6, "Load.ico")
         Me.ImageCollection1.Images.SetKeyName(7, "New.ico")
         Me.ImageCollection1.Images.SetKeyName(8, "Info.ico")
-        '
-        'GridView2
-        '
-        Me.GridView2.GridControl = Me.GridControl2
-        Me.GridView2.Name = "GridView2"
+        Me.ImageCollection1.Images.SetKeyName(9, "contact_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(10, "listnumbers_16x16.png")
         '
         'LayoutViewCard1
         '
@@ -2916,48 +2917,18 @@ Partial Class Securities_LiquidityReserve
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.SecuritiesReport_btn)
-        Me.LayoutControl1.Controls.Add(Me.CreateNewLiquidity_btn)
         Me.LayoutControl1.Controls.Add(Me.TillDateEdit)
-        Me.LayoutControl1.Controls.Add(Me.LiquidityDateEdit)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.SecuritiesLiquidDetailView_btn)
-        Me.LayoutControl1.Controls.Add(Me.Securities_LiquidityReserve_Print_Export_btn)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.LayoutControlItem6})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(911, 149, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1431, 530)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1431, 500)
         Me.LayoutControl1.TabIndex = 6
         Me.LayoutControl1.Text = "LayoutControl1"
-        '
-        'SecuritiesReport_btn
-        '
-        Me.SecuritiesReport_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.SecuritiesReport_btn.ImageOptions.ImageIndex = 5
-        Me.SecuritiesReport_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.SecuritiesReport_btn.Location = New System.Drawing.Point(128, 12)
-        Me.SecuritiesReport_btn.Name = "SecuritiesReport_btn"
-        Me.SecuritiesReport_btn.Size = New System.Drawing.Size(224, 22)
-        Me.SecuritiesReport_btn.StyleController = Me.LayoutControl1
-        Me.SecuritiesReport_btn.TabIndex = 14
-        Me.SecuritiesReport_btn.Text = "Securities Liquidity Reserve Report"
-        Me.SecuritiesReport_btn.ToolTip = "Creates the Securities report based on the Liquidity Date"
-        '
-        'CreateNewLiquidity_btn
-        '
-        Me.CreateNewLiquidity_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.CreateNewLiquidity_btn.ImageOptions.ImageIndex = 7
-        Me.CreateNewLiquidity_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.CreateNewLiquidity_btn.Location = New System.Drawing.Point(594, 83)
-        Me.CreateNewLiquidity_btn.Name = "CreateNewLiquidity_btn"
-        Me.CreateNewLiquidity_btn.Size = New System.Drawing.Size(174, 22)
-        Me.CreateNewLiquidity_btn.StyleController = Me.LayoutControl1
-        Me.CreateNewLiquidity_btn.TabIndex = 8
-        Me.CreateNewLiquidity_btn.Text = "Create New Liquidity Reserve"
         '
         'TillDateEdit
         '
@@ -2975,29 +2946,6 @@ Partial Class Securities_LiquidityReserve
         Me.TillDateEdit.StyleController = Me.LayoutControl1
         Me.TillDateEdit.TabIndex = 13
         '
-        'LiquidityDateEdit
-        '
-        Me.LiquidityDateEdit.EditValue = Nothing
-        Me.LiquidityDateEdit.Location = New System.Drawing.Point(594, 54)
-        Me.LiquidityDateEdit.Name = "LiquidityDateEdit"
-        Me.LiquidityDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.LiquidityDateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.LiquidityDateEdit.Properties.Appearance.Options.UseFont = True
-        Me.LiquidityDateEdit.Properties.Appearance.Options.UseTextOptions = True
-        Me.LiquidityDateEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.LiquidityDateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.LiquidityDateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.LiquidityDateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.LiquidityDateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.LiquidityDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.LiquidityDateEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.LiquidityDateEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.LiquidityDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.LiquidityDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.LiquidityDateEdit.Size = New System.Drawing.Size(174, 22)
-        Me.LiquidityDateEdit.StyleController = Me.LayoutControl1
-        Me.LiquidityDateEdit.TabIndex = 12
-        '
         'GridControl1
         '
         Me.GridControl1.Location = New System.Drawing.Point(124, 69)
@@ -3011,30 +2959,6 @@ Partial Class Securities_LiquidityReserve
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
-        '
-        'SecuritiesLiquidDetailView_btn
-        '
-        Me.SecuritiesLiquidDetailView_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.SecuritiesLiquidDetailView_btn.ImageOptions.ImageIndex = 0
-        Me.SecuritiesLiquidDetailView_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.SecuritiesLiquidDetailView_btn.Location = New System.Drawing.Point(1275, 12)
-        Me.SecuritiesLiquidDetailView_btn.Name = "SecuritiesLiquidDetailView_btn"
-        Me.SecuritiesLiquidDetailView_btn.Size = New System.Drawing.Size(144, 22)
-        Me.SecuritiesLiquidDetailView_btn.StyleController = Me.LayoutControl1
-        Me.SecuritiesLiquidDetailView_btn.TabIndex = 7
-        Me.SecuritiesLiquidDetailView_btn.Text = "View Details"
-        '
-        'Securities_LiquidityReserve_Print_Export_btn
-        '
-        Me.Securities_LiquidityReserve_Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Securities_LiquidityReserve_Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.Securities_LiquidityReserve_Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Securities_LiquidityReserve_Print_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.Securities_LiquidityReserve_Print_Export_btn.Name = "Securities_LiquidityReserve_Print_Export_btn"
-        Me.Securities_LiquidityReserve_Print_Export_btn.Size = New System.Drawing.Size(112, 22)
-        Me.Securities_LiquidityReserve_Print_Export_btn.StyleController = Me.LayoutControl1
-        Me.Securities_LiquidityReserve_Print_Export_btn.TabIndex = 9
-        Me.Securities_LiquidityReserve_Print_Export_btn.Text = "Print or Export"
         '
         'LayoutControlItem2
         '
@@ -3063,126 +2987,20 @@ Partial Class Securities_LiquidityReserve
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.EmptySpaceItem8, Me.EmptySpaceItem9, Me.LayoutControlItem5, Me.LayoutControlItem7, Me.LayoutControlItem8})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1431, 530)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1431, 500)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(344, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(918, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.Securities_LiquidityReserve_Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.SecuritiesLiquidDetailView_btn
-        Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1263, 0)
-        Me.LayoutControlItem3.MaxSize = New System.Drawing.Size(148, 26)
-        Me.LayoutControlItem3.MinSize = New System.Drawing.Size(148, 26)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(148, 26)
-        Me.LayoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
-        '
-        'SimpleSeparator1
-        '
-        Me.SimpleSeparator1.AllowHotTrack = False
-        Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1262, 0)
-        Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 97)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1411, 413)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1411, 480)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
-        '
-        'EmptySpaceItem8
-        '
-        Me.EmptySpaceItem8.AllowHotTrack = False
-        Me.EmptySpaceItem8.CustomizationFormText = "EmptySpaceItem8"
-        Me.EmptySpaceItem8.Location = New System.Drawing.Point(760, 26)
-        Me.EmptySpaceItem8.MinSize = New System.Drawing.Size(104, 24)
-        Me.EmptySpaceItem8.Name = "EmptySpaceItem8"
-        Me.EmptySpaceItem8.Size = New System.Drawing.Size(651, 71)
-        Me.EmptySpaceItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.EmptySpaceItem8.TextSize = New System.Drawing.Size(0, 0)
-        Me.EmptySpaceItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'EmptySpaceItem9
-        '
-        Me.EmptySpaceItem9.AllowHotTrack = False
-        Me.EmptySpaceItem9.CustomizationFormText = "EmptySpaceItem9"
-        Me.EmptySpaceItem9.Location = New System.Drawing.Point(0, 26)
-        Me.EmptySpaceItem9.Name = "EmptySpaceItem9"
-        Me.EmptySpaceItem9.Size = New System.Drawing.Size(582, 71)
-        Me.EmptySpaceItem9.TextSize = New System.Drawing.Size(0, 0)
-        Me.EmptySpaceItem9.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.AppearanceItemCaption.Options.UseTextOptions = True
-        Me.LayoutControlItem5.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.LayoutControlItem5.Control = Me.LiquidityDateEdit
-        Me.LayoutControlItem5.CustomizationFormText = "Date from"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(582, 26)
-        Me.LayoutControlItem5.MaxSize = New System.Drawing.Size(178, 45)
-        Me.LayoutControlItem5.MinSize = New System.Drawing.Size(178, 45)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(178, 45)
-        Me.LayoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem5.Text = "Date"
-        Me.LayoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(23, 13)
-        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'LayoutControlItem7
-        '
-        Me.LayoutControlItem7.Control = Me.CreateNewLiquidity_btn
-        Me.LayoutControlItem7.CustomizationFormText = "LayoutControlItem7"
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(582, 71)
-        Me.LayoutControlItem7.MaxSize = New System.Drawing.Size(178, 26)
-        Me.LayoutControlItem7.MinSize = New System.Drawing.Size(178, 26)
-        Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(178, 26)
-        Me.LayoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem7.TextVisible = False
-        Me.LayoutControlItem7.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'LayoutControlItem8
-        '
-        Me.LayoutControlItem8.Control = Me.SecuritiesReport_btn
-        Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem8"
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(116, 0)
-        Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(228, 26)
-        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem8.TextVisible = False
         '
         'PrintingSystem1
         '
@@ -3195,15 +3013,140 @@ Partial Class Securities_LiquidityReserve
         Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A3
         Me.PrintableComponentLink1.PrintingSystemBase = Me.PrintingSystem1
         '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.LiquidityDate_BarEditItem, Me.DisplayListDetails_bbi, Me.LiquidtyReserveReport_bbi, Me.PrintOrExport_bbi, Me.Close_bbi})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 6
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.LiquidityDates_SearchLookUpEdit})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1431, 94)
+        '
+        'LiquidityDate_BarEditItem
+        '
+        Me.LiquidityDate_BarEditItem.Caption = "Liquidity Date"
+        Me.LiquidityDate_BarEditItem.CaptionAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.LiquidityDate_BarEditItem.CaptionToEditorIndent = 20
+        Me.LiquidityDate_BarEditItem.Edit = Me.LiquidityDates_SearchLookUpEdit
+        Me.LiquidityDate_BarEditItem.EditHeight = 150
+        Me.LiquidityDate_BarEditItem.EditWidth = 250
+        Me.LiquidityDate_BarEditItem.Id = 1
+        Me.LiquidityDate_BarEditItem.ImageOptions.Image = CType(resources.GetObject("LiquidityDate_BarEditItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.LiquidityDate_BarEditItem.ImageOptions.LargeImage = CType(resources.GetObject("LiquidityDate_BarEditItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.LiquidityDate_BarEditItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LiquidityDate_BarEditItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.LiquidityDate_BarEditItem.Name = "LiquidityDate_BarEditItem"
+        '
+        'LiquidityDates_SearchLookUpEdit
+        '
+        Me.LiquidityDates_SearchLookUpEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LiquidityDates_SearchLookUpEdit.Appearance.Options.UseFont = True
+        Me.LiquidityDates_SearchLookUpEdit.Appearance.Options.UseTextOptions = True
+        Me.LiquidityDates_SearchLookUpEdit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.LiquidityDates_SearchLookUpEdit.AutoHeight = False
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        EditorButtonImageOptions3.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.LiquidityDates_SearchLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", CType(0, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", CType(1, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Reload Data", 50, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", CType(2, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.LiquidityDates_SearchLookUpEdit.Name = "LiquidityDates_SearchLookUpEdit"
+        Me.LiquidityDates_SearchLookUpEdit.PopupView = Me.LiquidityDates_GridView
+        Me.LiquidityDates_SearchLookUpEdit.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
+        '
+        'LiquidityDates_GridView
+        '
+        Me.LiquidityDates_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colLiquidityDates})
+        Me.LiquidityDates_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.LiquidityDates_GridView.Name = "LiquidityDates_GridView"
+        Me.LiquidityDates_GridView.OptionsBehavior.ReadOnly = True
+        Me.LiquidityDates_GridView.OptionsFind.AlwaysVisible = True
+        Me.LiquidityDates_GridView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.LiquidityDates_GridView.OptionsView.ColumnAutoWidth = False
+        Me.LiquidityDates_GridView.OptionsView.ShowAutoFilterRow = True
+        Me.LiquidityDates_GridView.OptionsView.ShowGroupPanel = False
+        '
+        'colLiquidityDates
+        '
+        Me.colLiquidityDates.AppearanceCell.Options.UseTextOptions = True
+        Me.colLiquidityDates.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colLiquidityDates.Caption = "Liquidity Dates"
+        Me.colLiquidityDates.FieldName = "REPORTING_DATE"
+        Me.colLiquidityDates.Name = "colLiquidityDates"
+        Me.colLiquidityDates.Visible = True
+        Me.colLiquidityDates.VisibleIndex = 0
+        Me.colLiquidityDates.Width = 137
+        '
+        'DisplayListDetails_bbi
+        '
+        Me.DisplayListDetails_bbi.Caption = "Display Details"
+        Me.DisplayListDetails_bbi.Id = 2
+        Me.DisplayListDetails_bbi.ImageOptions.ImageIndex = 9
+        Me.DisplayListDetails_bbi.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DisplayListDetails_bbi.ItemAppearance.Normal.Options.UseFont = True
+        Me.DisplayListDetails_bbi.Name = "DisplayListDetails_bbi"
+        '
+        'LiquidtyReserveReport_bbi
+        '
+        Me.LiquidtyReserveReport_bbi.Caption = "Liquidity Reserve Report"
+        Me.LiquidtyReserveReport_bbi.Id = 3
+        Me.LiquidtyReserveReport_bbi.ImageOptions.ImageIndex = 5
+        Me.LiquidtyReserveReport_bbi.Name = "LiquidtyReserveReport_bbi"
+        '
+        'PrintOrExport_bbi
+        '
+        Me.PrintOrExport_bbi.Caption = "Print or Export"
+        Me.PrintOrExport_bbi.Id = 4
+        Me.PrintOrExport_bbi.ImageOptions.ImageIndex = 2
+        Me.PrintOrExport_bbi.Name = "PrintOrExport_bbi"
+        '
+        'Close_bbi
+        '
+        Me.Close_bbi.Caption = "Close"
+        Me.Close_bbi.Id = 5
+        Me.Close_bbi.ImageOptions.Image = CType(resources.GetObject("Close_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.Close_bbi.ImageOptions.LargeImage = CType(resources.GetObject("Close_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.Close_bbi.Name = "Close_bbi"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.LiquidityDate_BarEditItem)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.DisplayListDetails_bbi)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.LiquidtyReserveReport_bbi, True)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.PrintOrExport_bbi, True)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.Close_bbi, True)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
         'Securities_LiquidityReserve
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1431, 530)
+        Me.ClientSize = New System.Drawing.Size(1431, 594)
         Me.Controls.Add(Me.LayoutControl1)
+        Me.Controls.Add(Me.RibbonControl1)
         Me.IconOptions.Icon = CType(resources.GetObject("Securities_LiquidityReserve.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "Securities_LiquidityReserve"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Securities-Liquidity Reserve"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -3266,7 +3209,6 @@ Partial Class Securities_LiquidityReserve
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.item1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3312,25 +3254,18 @@ Partial Class Securities_LiquidityReserve
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.TillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TillDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LiquidityDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LiquidityDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LiquidityDates_SearchLookUpEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LiquidityDates_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents SECURITIESDataset As PS_TOOL_DX.SECURITIESDataset
@@ -3338,30 +3273,17 @@ Partial Class Securities_LiquidityReserve
     Friend WithEvents SECURITIES_LIQUIDITYRESERVETableAdapter As PS_TOOL_DX.SECURITIESDatasetTableAdapters.SECURITIES_LIQUIDITYRESERVETableAdapter
     Friend WithEvents TableAdapterManager As PS_TOOL_DX.SECURITIESDatasetTableAdapters.TableAdapterManager
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents CreateNewLiquidity_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents TillDateEdit As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents LiquidityDateEdit As DevExpress.XtraEditors.DateEdit
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents SecuritiesLiquidDetailView As DevExpress.XtraGrid.Views.Layout.LayoutView
     Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents RepositoryItemImageComboBox2 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents SecuritiesLiquidDetailView_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents Securities_LiquidityReserve_Print_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem8 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents EmptySpaceItem9 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
     Friend WithEvents colID1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
@@ -3403,8 +3325,6 @@ Partial Class Securities_LiquidityReserve
     Friend WithEvents LayoutViewColumn3 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewColumn4 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
-    Friend WithEvents SecuritiesReport_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutViewColumn5 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewColumn6 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewColumn7 As DevExpress.XtraGrid.Columns.LayoutViewColumn
@@ -3577,4 +3497,17 @@ Partial Class Securities_LiquidityReserve
     Friend WithEvents item35 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item30 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item0 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents LiquidityDate_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents LiquidityDates_SearchLookUpEdit As DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit
+    Friend WithEvents LiquidityDates_GridView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colLiquidityDates As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents DisplayListDetails_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents LiquidtyReserveReport_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents PrintOrExport_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents Close_bbi As DevExpress.XtraBars.BarButtonItem
 End Class
