@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class OdasRemmitances
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -130,6 +130,8 @@ Partial Class OdasRemmitances
         Me.colEM00KEY2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colOURTRANREFNO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colINWARDOUTWARD = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.InOut_ImageComboBox = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.colMETHOD = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRECEIVERBRANCH = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colRECEIVERID = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -172,8 +174,6 @@ Partial Class OdasRemmitances
         Me.colORDERCUSTADD3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSWIFTINREF = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colBEMERKUNGEN = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
-        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.RepositoryItemImageComboBox2 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.RepositoryItemTextEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
@@ -202,23 +202,29 @@ Partial Class OdasRemmitances
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.ViewEdit_btn = New DevExpress.XtraEditors.SimpleButton()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
+        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.PaymentTillDateEdit = New DevExpress.XtraEditors.DateEdit()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.LoadPaymentsData_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.PaymentFromDateEdit = New DevExpress.XtraEditors.DateEdit()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.DateFrom_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.DateFrom_DateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.DateTill_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.DateTill_DateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.bbi_Load = New DevExpress.XtraBars.BarButtonItem()
+        Me.DisplayListDetails_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_PrintOrExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarSubItem1 = New DevExpress.XtraBars.BarSubItem()
+        Me.BarButtonItem4 = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         CType(Me.ODASDetailView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colEM00KEY01, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -271,7 +277,7 @@ Partial Class OdasRemmitances
         CType(Me.layoutViewField_colBEMERKUNGEN1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ODASBaseView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InOut_ImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -303,16 +309,14 @@ Partial Class OdasRemmitances
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentTillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentTillDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentFromDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentFromDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateFrom_DateEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateFrom_DateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTill_DateEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTill_DateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ODASDetailView
@@ -1257,11 +1261,11 @@ Partial Class OdasRemmitances
         GridLevelNode1.LevelTemplate = Me.ODASDetailView
         GridLevelNode1.RelationName = "Level1"
         Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(12, 38)
+        Me.GridControl2.Location = New System.Drawing.Point(24, 65)
         Me.GridControl2.MainView = Me.ODASBaseView
         Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.RepositoryItemImageComboBox2, Me.RepositoryItemComboBox1, Me.RepositoryItemTextEdit1, Me.BICCODERepositoryItemTextEdit})
-        Me.GridControl2.Size = New System.Drawing.Size(1295, 643)
+        Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.InOut_ImageComboBox, Me.RepositoryItemImageComboBox2, Me.RepositoryItemComboBox1, Me.RepositoryItemTextEdit1, Me.BICCODERepositoryItemTextEdit})
+        Me.GridControl2.Size = New System.Drawing.Size(1369, 434)
         Me.GridControl2.TabIndex = 23
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ODASBaseView, Me.ODASDetailView})
@@ -1283,6 +1287,7 @@ Partial Class OdasRemmitances
         Me.ODASBaseView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
         Me.ODASBaseView.OptionsBehavior.AllowIncrementalSearch = True
         Me.ODASBaseView.OptionsBehavior.AutoExpandAllGroups = True
+        Me.ODASBaseView.OptionsBehavior.ReadOnly = True
         Me.ODASBaseView.OptionsCustomization.AllowRowSizing = True
         Me.ODASBaseView.OptionsCustomization.CustomizationFormSearchBoxVisible = True
         Me.ODASBaseView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
@@ -1296,20 +1301,17 @@ Partial Class OdasRemmitances
         Me.ODASBaseView.OptionsView.ShowAutoFilterRow = True
         Me.ODASBaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.ODASBaseView.OptionsView.ShowFooter = True
+        Me.ODASBaseView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
         Me.colID.FieldName = "ID"
         Me.colID.Name = "colID"
-        Me.colID.OptionsColumn.AllowEdit = False
-        Me.colID.OptionsColumn.ReadOnly = True
         '
         'colEM00KEY0
         '
         Me.colEM00KEY0.FieldName = "EM00KEY0"
         Me.colEM00KEY0.Name = "colEM00KEY0"
-        Me.colEM00KEY0.OptionsColumn.AllowEdit = False
-        Me.colEM00KEY0.OptionsColumn.ReadOnly = True
         Me.colEM00KEY0.Width = 154
         '
         'colClientAccount
@@ -1317,19 +1319,16 @@ Partial Class OdasRemmitances
         Me.colClientAccount.Caption = "Ordering Customer Account"
         Me.colClientAccount.FieldName = "Client Account"
         Me.colClientAccount.Name = "colClientAccount"
-        Me.colClientAccount.OptionsColumn.AllowEdit = False
-        Me.colClientAccount.OptionsColumn.ReadOnly = True
         Me.colClientAccount.Visible = True
-        Me.colClientAccount.VisibleIndex = 8
+        Me.colClientAccount.VisibleIndex = 7
         Me.colClientAccount.Width = 142
         '
         'colEM00KEY1
         '
         Me.colEM00KEY1.Caption = "Reference Field 20"
         Me.colEM00KEY1.FieldName = "EM00KEY1"
+        Me.colEM00KEY1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
         Me.colEM00KEY1.Name = "colEM00KEY1"
-        Me.colEM00KEY1.OptionsColumn.AllowEdit = False
-        Me.colEM00KEY1.OptionsColumn.ReadOnly = True
         Me.colEM00KEY1.Visible = True
         Me.colEM00KEY1.VisibleIndex = 3
         Me.colEM00KEY1.Width = 137
@@ -1338,16 +1337,13 @@ Partial Class OdasRemmitances
         '
         Me.colEM00KEY2.FieldName = "EM00KEY2"
         Me.colEM00KEY2.Name = "colEM00KEY2"
-        Me.colEM00KEY2.OptionsColumn.AllowEdit = False
-        Me.colEM00KEY2.OptionsColumn.ReadOnly = True
         '
         'colOURTRANREFNO
         '
         Me.colOURTRANREFNO.Caption = "Our Transaction Ref."
         Me.colOURTRANREFNO.FieldName = "OURTRANREFNO"
+        Me.colOURTRANREFNO.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
         Me.colOURTRANREFNO.Name = "colOURTRANREFNO"
-        Me.colOURTRANREFNO.OptionsColumn.AllowEdit = False
-        Me.colOURTRANREFNO.OptionsColumn.ReadOnly = True
         Me.colOURTRANREFNO.Visible = True
         Me.colOURTRANREFNO.VisibleIndex = 2
         Me.colOURTRANREFNO.Width = 122
@@ -1357,439 +1353,31 @@ Partial Class OdasRemmitances
         Me.colINWARDOUTWARD.AppearanceCell.Options.UseTextOptions = True
         Me.colINWARDOUTWARD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colINWARDOUTWARD.Caption = "Incoming/Outgoing"
+        Me.colINWARDOUTWARD.ColumnEdit = Me.InOut_ImageComboBox
         Me.colINWARDOUTWARD.FieldName = "INWARDOUTWARD"
+        Me.colINWARDOUTWARD.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
         Me.colINWARDOUTWARD.Name = "colINWARDOUTWARD"
-        Me.colINWARDOUTWARD.OptionsColumn.AllowEdit = False
-        Me.colINWARDOUTWARD.OptionsColumn.ReadOnly = True
         Me.colINWARDOUTWARD.Visible = True
         Me.colINWARDOUTWARD.VisibleIndex = 1
-        Me.colINWARDOUTWARD.Width = 111
-        '
-        'colMETHOD
-        '
-        Me.colMETHOD.AppearanceCell.Options.UseTextOptions = True
-        Me.colMETHOD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colMETHOD.Caption = "Message Type"
-        Me.colMETHOD.FieldName = "METHOD"
-        Me.colMETHOD.Name = "colMETHOD"
-        Me.colMETHOD.OptionsColumn.AllowEdit = False
-        Me.colMETHOD.OptionsColumn.ReadOnly = True
-        Me.colMETHOD.Visible = True
-        Me.colMETHOD.VisibleIndex = 0
-        Me.colMETHOD.Width = 117
-        '
-        'colRECEIVERBRANCH
-        '
-        Me.colRECEIVERBRANCH.Caption = "Reciever Branch"
-        Me.colRECEIVERBRANCH.FieldName = "RECEIVERBRANCH"
-        Me.colRECEIVERBRANCH.Name = "colRECEIVERBRANCH"
-        Me.colRECEIVERBRANCH.OptionsColumn.AllowEdit = False
-        Me.colRECEIVERBRANCH.OptionsColumn.ReadOnly = True
-        Me.colRECEIVERBRANCH.Width = 113
-        '
-        'colRECEIVERID
-        '
-        Me.colRECEIVERID.Caption = "Receiver ID"
-        Me.colRECEIVERID.FieldName = "RECEIVERID"
-        Me.colRECEIVERID.Name = "colRECEIVERID"
-        Me.colRECEIVERID.OptionsColumn.AllowEdit = False
-        Me.colRECEIVERID.OptionsColumn.ReadOnly = True
-        '
-        'colRECEIVERNAME
-        '
-        Me.colRECEIVERNAME.Caption = "Receiver Name"
-        Me.colRECEIVERNAME.FieldName = "RECEIVERNAME"
-        Me.colRECEIVERNAME.Name = "colRECEIVERNAME"
-        Me.colRECEIVERNAME.OptionsColumn.AllowEdit = False
-        Me.colRECEIVERNAME.OptionsColumn.ReadOnly = True
-        '
-        'colRECEIVERSWIFT
-        '
-        Me.colRECEIVERSWIFT.Caption = "Receiver BIC"
-        Me.colRECEIVERSWIFT.FieldName = "RECEIVERSWIFT"
-        Me.colRECEIVERSWIFT.Name = "colRECEIVERSWIFT"
-        Me.colRECEIVERSWIFT.OptionsColumn.AllowEdit = False
-        Me.colRECEIVERSWIFT.OptionsColumn.ReadOnly = True
-        '
-        'colSENDERCORBKID
-        '
-        Me.colSENDERCORBKID.Caption = "Sender Corr. ID"
-        Me.colSENDERCORBKID.FieldName = "SENDERCORBKID"
-        Me.colSENDERCORBKID.Name = "colSENDERCORBKID"
-        Me.colSENDERCORBKID.OptionsColumn.AllowEdit = False
-        Me.colSENDERCORBKID.OptionsColumn.ReadOnly = True
-        Me.colSENDERCORBKID.Width = 115
-        '
-        'colSENDERCORRNAME
-        '
-        Me.colSENDERCORRNAME.Caption = "Sender Corr. Name"
-        Me.colSENDERCORRNAME.FieldName = "SENDERCORRNAME"
-        Me.colSENDERCORRNAME.Name = "colSENDERCORRNAME"
-        Me.colSENDERCORRNAME.OptionsColumn.AllowEdit = False
-        Me.colSENDERCORRNAME.OptionsColumn.ReadOnly = True
-        '
-        'colSENDERCORRBR
-        '
-        Me.colSENDERCORRBR.Caption = "Sender Corr. Branch"
-        Me.colSENDERCORRBR.FieldName = "SENDERCORRBR"
-        Me.colSENDERCORRBR.Name = "colSENDERCORRBR"
-        Me.colSENDERCORRBR.OptionsColumn.AllowEdit = False
-        Me.colSENDERCORRBR.OptionsColumn.ReadOnly = True
-        '
-        'colSENDERCORRST
-        '
-        Me.colSENDERCORRST.Caption = "Sender Corr. Street"
-        Me.colSENDERCORRST.FieldName = "SENDERCORRST"
-        Me.colSENDERCORRST.Name = "colSENDERCORRST"
-        Me.colSENDERCORRST.OptionsColumn.AllowEdit = False
-        Me.colSENDERCORRST.OptionsColumn.ReadOnly = True
-        '
-        'colRECRCORRID
-        '
-        Me.colRECRCORRID.Caption = "Receiver Corr. ID"
-        Me.colRECRCORRID.FieldName = "RECRCORRID"
-        Me.colRECRCORRID.Name = "colRECRCORRID"
-        Me.colRECRCORRID.OptionsColumn.AllowEdit = False
-        Me.colRECRCORRID.OptionsColumn.ReadOnly = True
-        '
-        'colRECRCORRNAME
-        '
-        Me.colRECRCORRNAME.Caption = "Receiver Corr. Name"
-        Me.colRECRCORRNAME.FieldName = "RECRCORRNAME"
-        Me.colRECRCORRNAME.Name = "colRECRCORRNAME"
-        Me.colRECRCORRNAME.OptionsColumn.AllowEdit = False
-        Me.colRECRCORRNAME.OptionsColumn.ReadOnly = True
-        '
-        'colRECRCORRBR
-        '
-        Me.colRECRCORRBR.Caption = "Receiver Corr. Branch"
-        Me.colRECRCORRBR.FieldName = "RECRCORRBR"
-        Me.colRECRCORRBR.Name = "colRECRCORRBR"
-        Me.colRECRCORRBR.OptionsColumn.AllowEdit = False
-        Me.colRECRCORRBR.OptionsColumn.ReadOnly = True
-        '
-        'colRECRCORRSWIFT
-        '
-        Me.colRECRCORRSWIFT.Caption = "Receiver Corr. BIC"
-        Me.colRECRCORRSWIFT.FieldName = "RECRCORRSWIFT"
-        Me.colRECRCORRSWIFT.Name = "colRECRCORRSWIFT"
-        Me.colRECRCORRSWIFT.OptionsColumn.AllowEdit = False
-        Me.colRECRCORRSWIFT.OptionsColumn.ReadOnly = True
-        '
-        'colACWITHINSTID
-        '
-        Me.colACWITHINSTID.Caption = "Acc. with Institution ID"
-        Me.colACWITHINSTID.FieldName = "ACWITHINSTID"
-        Me.colACWITHINSTID.Name = "colACWITHINSTID"
-        Me.colACWITHINSTID.OptionsColumn.AllowEdit = False
-        Me.colACWITHINSTID.OptionsColumn.ReadOnly = True
-        Me.colACWITHINSTID.Width = 134
-        '
-        'colACWITHINSTNA
-        '
-        Me.colACWITHINSTNA.Caption = "Acc. with Institution Name"
-        Me.colACWITHINSTNA.FieldName = "ACWITHINSTNA"
-        Me.colACWITHINSTNA.Name = "colACWITHINSTNA"
-        Me.colACWITHINSTNA.OptionsColumn.AllowEdit = False
-        Me.colACWITHINSTNA.OptionsColumn.ReadOnly = True
-        Me.colACWITHINSTNA.Visible = True
-        Me.colACWITHINSTNA.VisibleIndex = 10
-        Me.colACWITHINSTNA.Width = 336
-        '
-        'colACWITHINSTBR
-        '
-        Me.colACWITHINSTBR.Caption = "Acc. with Institution Branch"
-        Me.colACWITHINSTBR.FieldName = "ACWITHINSTBR"
-        Me.colACWITHINSTBR.Name = "colACWITHINSTBR"
-        Me.colACWITHINSTBR.OptionsColumn.AllowEdit = False
-        Me.colACWITHINSTBR.OptionsColumn.ReadOnly = True
-        Me.colACWITHINSTBR.Width = 151
-        '
-        'colACWITHINSTST
-        '
-        Me.colACWITHINSTST.Caption = "Acc. with Institution Street"
-        Me.colACWITHINSTST.FieldName = "ACWITHINSTST"
-        Me.colACWITHINSTST.Name = "colACWITHINSTST"
-        Me.colACWITHINSTST.OptionsColumn.AllowEdit = False
-        Me.colACWITHINSTST.OptionsColumn.ReadOnly = True
-        Me.colACWITHINSTST.Width = 142
-        '
-        'colBENEFACNO
-        '
-        Me.colBENEFACNO.Caption = "Beneficiary Acc.Nr./IBAN"
-        Me.colBENEFACNO.FieldName = "BENEFACNO"
-        Me.colBENEFACNO.Name = "colBENEFACNO"
-        Me.colBENEFACNO.OptionsColumn.AllowEdit = False
-        Me.colBENEFACNO.OptionsColumn.ReadOnly = True
-        Me.colBENEFACNO.Visible = True
-        Me.colBENEFACNO.VisibleIndex = 11
-        Me.colBENEFACNO.Width = 234
-        '
-        'colBENEFCUSTBR
-        '
-        Me.colBENEFCUSTBR.Caption = "Beneficiary Branch"
-        Me.colBENEFCUSTBR.FieldName = "BENEFCUSTBR"
-        Me.colBENEFCUSTBR.Name = "colBENEFCUSTBR"
-        Me.colBENEFCUSTBR.OptionsColumn.AllowEdit = False
-        Me.colBENEFCUSTBR.OptionsColumn.ReadOnly = True
-        Me.colBENEFCUSTBR.Width = 165
-        '
-        'colBENEFCUSTID
-        '
-        Me.colBENEFCUSTID.Caption = "Beneficiary ID"
-        Me.colBENEFCUSTID.FieldName = "BENEFCUSTID"
-        Me.colBENEFCUSTID.Name = "colBENEFCUSTID"
-        Me.colBENEFCUSTID.OptionsColumn.AllowEdit = False
-        Me.colBENEFCUSTID.OptionsColumn.ReadOnly = True
-        Me.colBENEFCUSTID.Width = 131
-        '
-        'colBENEFCUSTNAME
-        '
-        Me.colBENEFCUSTNAME.Caption = "Beneficiary Name"
-        Me.colBENEFCUSTNAME.FieldName = "BENEFCUSTNAME"
-        Me.colBENEFCUSTNAME.Name = "colBENEFCUSTNAME"
-        Me.colBENEFCUSTNAME.OptionsColumn.AllowEdit = False
-        Me.colBENEFCUSTNAME.OptionsColumn.ReadOnly = True
-        Me.colBENEFCUSTNAME.Visible = True
-        Me.colBENEFCUSTNAME.VisibleIndex = 12
-        Me.colBENEFCUSTNAME.Width = 358
-        '
-        'colBENEFCUSTADR1
-        '
-        Me.colBENEFCUSTADR1.Caption = "Beneficiary Address 1"
-        Me.colBENEFCUSTADR1.FieldName = "BENEFCUSTADR1"
-        Me.colBENEFCUSTADR1.Name = "colBENEFCUSTADR1"
-        Me.colBENEFCUSTADR1.OptionsColumn.AllowEdit = False
-        Me.colBENEFCUSTADR1.OptionsColumn.ReadOnly = True
-        Me.colBENEFCUSTADR1.Width = 277
-        '
-        'colBENEFCUSTADR2
-        '
-        Me.colBENEFCUSTADR2.Caption = "Beneficiary Address 2"
-        Me.colBENEFCUSTADR2.FieldName = "BENEFCUSTADR2"
-        Me.colBENEFCUSTADR2.Name = "colBENEFCUSTADR2"
-        Me.colBENEFCUSTADR2.OptionsColumn.AllowEdit = False
-        Me.colBENEFCUSTADR2.OptionsColumn.ReadOnly = True
-        Me.colBENEFCUSTADR2.Width = 260
-        '
-        'colPAYMENTDETAILS
-        '
-        Me.colPAYMENTDETAILS.Caption = "Remmitance Information (Payment Details)"
-        Me.colPAYMENTDETAILS.FieldName = "PAYMENTDETAILS"
-        Me.colPAYMENTDETAILS.Name = "colPAYMENTDETAILS"
-        Me.colPAYMENTDETAILS.OptionsColumn.AllowEdit = False
-        Me.colPAYMENTDETAILS.OptionsColumn.ReadOnly = True
-        Me.colPAYMENTDETAILS.Visible = True
-        Me.colPAYMENTDETAILS.VisibleIndex = 13
-        Me.colPAYMENTDETAILS.Width = 336
-        '
-        'colDETOFCHARGE
-        '
-        Me.colDETOFCHARGE.AppearanceCell.Options.UseTextOptions = True
-        Me.colDETOFCHARGE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colDETOFCHARGE.AppearanceHeader.Options.UseTextOptions = True
-        Me.colDETOFCHARGE.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colDETOFCHARGE.Caption = "Details of Charges"
-        Me.colDETOFCHARGE.FieldName = "DETOFCHARGE"
-        Me.colDETOFCHARGE.Name = "colDETOFCHARGE"
-        Me.colDETOFCHARGE.OptionsColumn.AllowEdit = False
-        Me.colDETOFCHARGE.OptionsColumn.ReadOnly = True
-        Me.colDETOFCHARGE.Visible = True
-        Me.colDETOFCHARGE.VisibleIndex = 4
-        Me.colDETOFCHARGE.Width = 104
-        '
-        'colSETOREINFO
-        '
-        Me.colSETOREINFO.Caption = "Sender to Receiver Info"
-        Me.colSETOREINFO.FieldName = "SETOREINFO"
-        Me.colSETOREINFO.Name = "colSETOREINFO"
-        Me.colSETOREINFO.OptionsColumn.AllowEdit = False
-        Me.colSETOREINFO.OptionsColumn.ReadOnly = True
-        Me.colSETOREINFO.Visible = True
-        Me.colSETOREINFO.VisibleIndex = 14
-        Me.colSETOREINFO.Width = 407
-        '
-        'colCURRENCYCODE
-        '
-        Me.colCURRENCYCODE.AppearanceCell.Options.UseTextOptions = True
-        Me.colCURRENCYCODE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colCURRENCYCODE.Caption = "Currency"
-        Me.colCURRENCYCODE.FieldName = "CURRENCYCODE"
-        Me.colCURRENCYCODE.Name = "colCURRENCYCODE"
-        Me.colCURRENCYCODE.OptionsColumn.AllowEdit = False
-        Me.colCURRENCYCODE.OptionsColumn.ReadOnly = True
-        Me.colCURRENCYCODE.Visible = True
-        Me.colCURRENCYCODE.VisibleIndex = 6
-        Me.colCURRENCYCODE.Width = 64
-        '
-        'colTRANSACTIONDATE
-        '
-        Me.colTRANSACTIONDATE.AppearanceCell.Options.UseTextOptions = True
-        Me.colTRANSACTIONDATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colTRANSACTIONDATE.Caption = "Transaction Date"
-        Me.colTRANSACTIONDATE.FieldName = "TRANSACTIONDATE"
-        Me.colTRANSACTIONDATE.Name = "colTRANSACTIONDATE"
-        Me.colTRANSACTIONDATE.OptionsColumn.AllowEdit = False
-        Me.colTRANSACTIONDATE.OptionsColumn.ReadOnly = True
-        '
-        'colVALUEDATE
-        '
-        Me.colVALUEDATE.AppearanceCell.Options.UseTextOptions = True
-        Me.colVALUEDATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colVALUEDATE.Caption = "Value Date"
-        Me.colVALUEDATE.FieldName = "VALUEDATE"
-        Me.colVALUEDATE.Name = "colVALUEDATE"
-        Me.colVALUEDATE.OptionsColumn.AllowEdit = False
-        Me.colVALUEDATE.OptionsColumn.ReadOnly = True
-        Me.colVALUEDATE.Visible = True
-        Me.colVALUEDATE.VisibleIndex = 5
-        '
-        'colDealAmount
-        '
-        Me.colDealAmount.AppearanceCell.Options.UseTextOptions = True
-        Me.colDealAmount.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.colDealAmount.Caption = "Payment Amount"
-        Me.colDealAmount.DisplayFormat.FormatString = "n2"
-        Me.colDealAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colDealAmount.FieldName = "Deal Amount"
-        Me.colDealAmount.Name = "colDealAmount"
-        Me.colDealAmount.OptionsColumn.AllowEdit = False
-        Me.colDealAmount.OptionsColumn.ReadOnly = True
-        Me.colDealAmount.Visible = True
-        Me.colDealAmount.VisibleIndex = 7
-        Me.colDealAmount.Width = 119
-        '
-        'colEXCHANGE_RATE
-        '
-        Me.colEXCHANGE_RATE.AppearanceCell.Options.UseTextOptions = True
-        Me.colEXCHANGE_RATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.colEXCHANGE_RATE.Caption = "Exchange Rate"
-        Me.colEXCHANGE_RATE.DisplayFormat.FormatString = "n5"
-        Me.colEXCHANGE_RATE.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colEXCHANGE_RATE.FieldName = "EXCHANGE_RATE"
-        Me.colEXCHANGE_RATE.Name = "colEXCHANGE_RATE"
-        Me.colEXCHANGE_RATE.OptionsColumn.AllowEdit = False
-        Me.colEXCHANGE_RATE.OptionsColumn.ReadOnly = True
-        '
-        'colDealAmountEuro
-        '
-        Me.colDealAmountEuro.AppearanceCell.Options.UseTextOptions = True
-        Me.colDealAmountEuro.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.colDealAmountEuro.Caption = "Payment Amount (EUR)"
-        Me.colDealAmountEuro.DisplayFormat.FormatString = "n2"
-        Me.colDealAmountEuro.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colDealAmountEuro.FieldName = "Deal Amount Euro"
-        Me.colDealAmountEuro.Name = "colDealAmountEuro"
-        Me.colDealAmountEuro.OptionsColumn.AllowEdit = False
-        Me.colDealAmountEuro.OptionsColumn.ReadOnly = True
-        '
-        'colHANDLINGFEE
-        '
-        Me.colHANDLINGFEE.AppearanceCell.Options.UseTextOptions = True
-        Me.colHANDLINGFEE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.colHANDLINGFEE.Caption = "Handling Fee"
-        Me.colHANDLINGFEE.DisplayFormat.FormatString = "n2"
-        Me.colHANDLINGFEE.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colHANDLINGFEE.FieldName = "HANDLINGFEE"
-        Me.colHANDLINGFEE.Name = "colHANDLINGFEE"
-        Me.colHANDLINGFEE.OptionsColumn.AllowEdit = False
-        Me.colHANDLINGFEE.OptionsColumn.ReadOnly = True
-        '
-        'colORDERCUSTBR
-        '
-        Me.colORDERCUSTBR.Caption = "Ordering Customer Branch"
-        Me.colORDERCUSTBR.FieldName = "ORDERCUSTBR"
-        Me.colORDERCUSTBR.Name = "colORDERCUSTBR"
-        Me.colORDERCUSTBR.OptionsColumn.AllowEdit = False
-        Me.colORDERCUSTBR.OptionsColumn.ReadOnly = True
-        Me.colORDERCUSTBR.Width = 157
-        '
-        'colORDERCUSTID
-        '
-        Me.colORDERCUSTID.Caption = "Ordering Customer ID"
-        Me.colORDERCUSTID.FieldName = "ORDERCUSTID"
-        Me.colORDERCUSTID.Name = "colORDERCUSTID"
-        Me.colORDERCUSTID.OptionsColumn.AllowEdit = False
-        Me.colORDERCUSTID.OptionsColumn.ReadOnly = True
-        Me.colORDERCUSTID.Width = 151
-        '
-        'colORDERCUSTNAME
-        '
-        Me.colORDERCUSTNAME.Caption = "Ordering Customer Name"
-        Me.colORDERCUSTNAME.FieldName = "ORDERCUSTNAME"
-        Me.colORDERCUSTNAME.Name = "colORDERCUSTNAME"
-        Me.colORDERCUSTNAME.OptionsColumn.AllowEdit = False
-        Me.colORDERCUSTNAME.OptionsColumn.ReadOnly = True
-        Me.colORDERCUSTNAME.Visible = True
-        Me.colORDERCUSTNAME.VisibleIndex = 9
-        Me.colORDERCUSTNAME.Width = 304
-        '
-        'colORDERCUSTADD1
-        '
-        Me.colORDERCUSTADD1.Caption = "Ordering Customer Address 1"
-        Me.colORDERCUSTADD1.FieldName = "ORDERCUSTADD1"
-        Me.colORDERCUSTADD1.Name = "colORDERCUSTADD1"
-        Me.colORDERCUSTADD1.OptionsColumn.AllowEdit = False
-        Me.colORDERCUSTADD1.OptionsColumn.ReadOnly = True
-        Me.colORDERCUSTADD1.Width = 184
-        '
-        'colORDERCUSTADD2
-        '
-        Me.colORDERCUSTADD2.Caption = "Ordering Customer Address 2"
-        Me.colORDERCUSTADD2.FieldName = "ORDERCUSTADD2"
-        Me.colORDERCUSTADD2.Name = "colORDERCUSTADD2"
-        Me.colORDERCUSTADD2.OptionsColumn.AllowEdit = False
-        Me.colORDERCUSTADD2.OptionsColumn.ReadOnly = True
-        Me.colORDERCUSTADD2.Width = 159
-        '
-        'colHOLDFUNC
-        '
-        Me.colHOLDFUNC.FieldName = "HOLDFUNC"
-        Me.colHOLDFUNC.Name = "colHOLDFUNC"
-        Me.colHOLDFUNC.OptionsColumn.AllowEdit = False
-        Me.colHOLDFUNC.OptionsColumn.ReadOnly = True
-        '
-        'colORDERCUSTADD3
-        '
-        Me.colORDERCUSTADD3.Caption = "Ordering Customer Address 3"
-        Me.colORDERCUSTADD3.FieldName = "ORDERCUSTADD3"
-        Me.colORDERCUSTADD3.Name = "colORDERCUSTADD3"
-        Me.colORDERCUSTADD3.OptionsColumn.AllowEdit = False
-        Me.colORDERCUSTADD3.OptionsColumn.ReadOnly = True
-        Me.colORDERCUSTADD3.Width = 172
-        '
-        'colSWIFTINREF
-        '
-        Me.colSWIFTINREF.FieldName = "SWIFTINREF"
-        Me.colSWIFTINREF.Name = "colSWIFTINREF"
-        Me.colSWIFTINREF.OptionsColumn.AllowEdit = False
-        Me.colSWIFTINREF.OptionsColumn.ReadOnly = True
-        '
-        'colBEMERKUNGEN
-        '
-        Me.colBEMERKUNGEN.FieldName = "BEMERKUNGEN"
-        Me.colBEMERKUNGEN.Name = "colBEMERKUNGEN"
-        Me.colBEMERKUNGEN.OptionsColumn.AllowEdit = False
-        Me.colBEMERKUNGEN.OptionsColumn.ReadOnly = True
-        '
-        'RepositoryItemImageComboBox1
-        '
-        Me.RepositoryItemImageComboBox1.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemImageComboBox1.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemImageComboBox1.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemImageComboBox1.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemImageComboBox1.Appearance.Options.UseForeColor = True
-        Me.RepositoryItemImageComboBox1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemImageComboBox1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemImageComboBox1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemImageComboBox1.AppearanceFocused.Options.UseBackColor = True
-        Me.RepositoryItemImageComboBox1.AppearanceFocused.Options.UseForeColor = True
-        Me.RepositoryItemImageComboBox1.AutoHeight = False
-        Me.RepositoryItemImageComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemImageComboBox1.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.RepositoryItemImageComboBox1.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "Y", 4), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "N", 3)})
-        Me.RepositoryItemImageComboBox1.Name = "RepositoryItemImageComboBox1"
-        Me.RepositoryItemImageComboBox1.SmallImages = Me.ImageCollection1
+        Me.colINWARDOUTWARD.Width = 123
+        '
+        'InOut_ImageComboBox
+        '
+        Me.InOut_ImageComboBox.Appearance.BackColor = System.Drawing.Color.Yellow
+        Me.InOut_ImageComboBox.Appearance.BackColor2 = System.Drawing.Color.Yellow
+        Me.InOut_ImageComboBox.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.InOut_ImageComboBox.Appearance.Options.UseBackColor = True
+        Me.InOut_ImageComboBox.Appearance.Options.UseForeColor = True
+        Me.InOut_ImageComboBox.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.InOut_ImageComboBox.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.InOut_ImageComboBox.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.InOut_ImageComboBox.AppearanceFocused.Options.UseBackColor = True
+        Me.InOut_ImageComboBox.AppearanceFocused.Options.UseForeColor = True
+        Me.InOut_ImageComboBox.AutoHeight = False
+        Me.InOut_ImageComboBox.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.InOut_ImageComboBox.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("INCOMING", "I", 11), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("OUTGOING", "O", 10)})
+        Me.InOut_ImageComboBox.Name = "InOut_ImageComboBox"
+        Me.InOut_ImageComboBox.SmallImages = Me.ImageCollection1
         '
         'ImageCollection1
         '
@@ -1802,6 +1390,335 @@ Partial Class OdasRemmitances
         Me.ImageCollection1.Images.SetKeyName(5, "Report.ico")
         Me.ImageCollection1.Images.SetKeyName(6, "Folder New1.ico")
         Me.ImageCollection1.Images.SetKeyName(7, "Load.ico")
+        Me.ImageCollection1.Images.SetKeyName(8, "contact_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(9, "chartsshowlegend_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(10, "moveup_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(11, "movedown_16x16.png")
+        '
+        'colMETHOD
+        '
+        Me.colMETHOD.AppearanceCell.Options.UseTextOptions = True
+        Me.colMETHOD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colMETHOD.Caption = "Message Type"
+        Me.colMETHOD.FieldName = "METHOD"
+        Me.colMETHOD.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
+        Me.colMETHOD.Name = "colMETHOD"
+        Me.colMETHOD.Visible = True
+        Me.colMETHOD.VisibleIndex = 0
+        Me.colMETHOD.Width = 130
+        '
+        'colRECEIVERBRANCH
+        '
+        Me.colRECEIVERBRANCH.Caption = "Reciever Branch"
+        Me.colRECEIVERBRANCH.FieldName = "RECEIVERBRANCH"
+        Me.colRECEIVERBRANCH.Name = "colRECEIVERBRANCH"
+        Me.colRECEIVERBRANCH.Width = 113
+        '
+        'colRECEIVERID
+        '
+        Me.colRECEIVERID.Caption = "Receiver ID"
+        Me.colRECEIVERID.FieldName = "RECEIVERID"
+        Me.colRECEIVERID.Name = "colRECEIVERID"
+        '
+        'colRECEIVERNAME
+        '
+        Me.colRECEIVERNAME.Caption = "Receiver Name"
+        Me.colRECEIVERNAME.FieldName = "RECEIVERNAME"
+        Me.colRECEIVERNAME.Name = "colRECEIVERNAME"
+        '
+        'colRECEIVERSWIFT
+        '
+        Me.colRECEIVERSWIFT.Caption = "Receiver BIC"
+        Me.colRECEIVERSWIFT.FieldName = "RECEIVERSWIFT"
+        Me.colRECEIVERSWIFT.Name = "colRECEIVERSWIFT"
+        '
+        'colSENDERCORBKID
+        '
+        Me.colSENDERCORBKID.Caption = "Sender Corr. ID"
+        Me.colSENDERCORBKID.FieldName = "SENDERCORBKID"
+        Me.colSENDERCORBKID.Name = "colSENDERCORBKID"
+        Me.colSENDERCORBKID.Width = 115
+        '
+        'colSENDERCORRNAME
+        '
+        Me.colSENDERCORRNAME.Caption = "Sender Corr. Name"
+        Me.colSENDERCORRNAME.FieldName = "SENDERCORRNAME"
+        Me.colSENDERCORRNAME.Name = "colSENDERCORRNAME"
+        '
+        'colSENDERCORRBR
+        '
+        Me.colSENDERCORRBR.Caption = "Sender Corr. Branch"
+        Me.colSENDERCORRBR.FieldName = "SENDERCORRBR"
+        Me.colSENDERCORRBR.Name = "colSENDERCORRBR"
+        '
+        'colSENDERCORRST
+        '
+        Me.colSENDERCORRST.Caption = "Sender Corr. Street"
+        Me.colSENDERCORRST.FieldName = "SENDERCORRST"
+        Me.colSENDERCORRST.Name = "colSENDERCORRST"
+        '
+        'colRECRCORRID
+        '
+        Me.colRECRCORRID.Caption = "Receiver Corr. ID"
+        Me.colRECRCORRID.FieldName = "RECRCORRID"
+        Me.colRECRCORRID.Name = "colRECRCORRID"
+        '
+        'colRECRCORRNAME
+        '
+        Me.colRECRCORRNAME.Caption = "Receiver Corr. Name"
+        Me.colRECRCORRNAME.FieldName = "RECRCORRNAME"
+        Me.colRECRCORRNAME.Name = "colRECRCORRNAME"
+        '
+        'colRECRCORRBR
+        '
+        Me.colRECRCORRBR.Caption = "Receiver Corr. Branch"
+        Me.colRECRCORRBR.FieldName = "RECRCORRBR"
+        Me.colRECRCORRBR.Name = "colRECRCORRBR"
+        '
+        'colRECRCORRSWIFT
+        '
+        Me.colRECRCORRSWIFT.Caption = "Receiver Corr. BIC"
+        Me.colRECRCORRSWIFT.FieldName = "RECRCORRSWIFT"
+        Me.colRECRCORRSWIFT.Name = "colRECRCORRSWIFT"
+        '
+        'colACWITHINSTID
+        '
+        Me.colACWITHINSTID.Caption = "Acc. with Institution ID"
+        Me.colACWITHINSTID.FieldName = "ACWITHINSTID"
+        Me.colACWITHINSTID.Name = "colACWITHINSTID"
+        Me.colACWITHINSTID.Width = 134
+        '
+        'colACWITHINSTNA
+        '
+        Me.colACWITHINSTNA.Caption = "Acc. with Institution Name"
+        Me.colACWITHINSTNA.FieldName = "ACWITHINSTNA"
+        Me.colACWITHINSTNA.Name = "colACWITHINSTNA"
+        Me.colACWITHINSTNA.Visible = True
+        Me.colACWITHINSTNA.VisibleIndex = 9
+        Me.colACWITHINSTNA.Width = 336
+        '
+        'colACWITHINSTBR
+        '
+        Me.colACWITHINSTBR.Caption = "Acc. with Institution Branch"
+        Me.colACWITHINSTBR.FieldName = "ACWITHINSTBR"
+        Me.colACWITHINSTBR.Name = "colACWITHINSTBR"
+        Me.colACWITHINSTBR.Width = 151
+        '
+        'colACWITHINSTST
+        '
+        Me.colACWITHINSTST.Caption = "Acc. with Institution Street"
+        Me.colACWITHINSTST.FieldName = "ACWITHINSTST"
+        Me.colACWITHINSTST.Name = "colACWITHINSTST"
+        Me.colACWITHINSTST.Width = 142
+        '
+        'colBENEFACNO
+        '
+        Me.colBENEFACNO.Caption = "Beneficiary Acc.Nr./IBAN"
+        Me.colBENEFACNO.FieldName = "BENEFACNO"
+        Me.colBENEFACNO.Name = "colBENEFACNO"
+        Me.colBENEFACNO.Visible = True
+        Me.colBENEFACNO.VisibleIndex = 10
+        Me.colBENEFACNO.Width = 234
+        '
+        'colBENEFCUSTBR
+        '
+        Me.colBENEFCUSTBR.Caption = "Beneficiary Branch"
+        Me.colBENEFCUSTBR.FieldName = "BENEFCUSTBR"
+        Me.colBENEFCUSTBR.Name = "colBENEFCUSTBR"
+        Me.colBENEFCUSTBR.Width = 165
+        '
+        'colBENEFCUSTID
+        '
+        Me.colBENEFCUSTID.Caption = "Beneficiary ID"
+        Me.colBENEFCUSTID.FieldName = "BENEFCUSTID"
+        Me.colBENEFCUSTID.Name = "colBENEFCUSTID"
+        Me.colBENEFCUSTID.Width = 131
+        '
+        'colBENEFCUSTNAME
+        '
+        Me.colBENEFCUSTNAME.Caption = "Beneficiary Name"
+        Me.colBENEFCUSTNAME.FieldName = "BENEFCUSTNAME"
+        Me.colBENEFCUSTNAME.Name = "colBENEFCUSTNAME"
+        Me.colBENEFCUSTNAME.Visible = True
+        Me.colBENEFCUSTNAME.VisibleIndex = 11
+        Me.colBENEFCUSTNAME.Width = 358
+        '
+        'colBENEFCUSTADR1
+        '
+        Me.colBENEFCUSTADR1.Caption = "Beneficiary Address 1"
+        Me.colBENEFCUSTADR1.FieldName = "BENEFCUSTADR1"
+        Me.colBENEFCUSTADR1.Name = "colBENEFCUSTADR1"
+        Me.colBENEFCUSTADR1.Width = 277
+        '
+        'colBENEFCUSTADR2
+        '
+        Me.colBENEFCUSTADR2.Caption = "Beneficiary Address 2"
+        Me.colBENEFCUSTADR2.FieldName = "BENEFCUSTADR2"
+        Me.colBENEFCUSTADR2.Name = "colBENEFCUSTADR2"
+        Me.colBENEFCUSTADR2.Width = 260
+        '
+        'colPAYMENTDETAILS
+        '
+        Me.colPAYMENTDETAILS.Caption = "Remmitance Information (Payment Details)"
+        Me.colPAYMENTDETAILS.FieldName = "PAYMENTDETAILS"
+        Me.colPAYMENTDETAILS.Name = "colPAYMENTDETAILS"
+        Me.colPAYMENTDETAILS.Visible = True
+        Me.colPAYMENTDETAILS.VisibleIndex = 12
+        Me.colPAYMENTDETAILS.Width = 336
+        '
+        'colDETOFCHARGE
+        '
+        Me.colDETOFCHARGE.AppearanceCell.Options.UseTextOptions = True
+        Me.colDETOFCHARGE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colDETOFCHARGE.AppearanceHeader.Options.UseTextOptions = True
+        Me.colDETOFCHARGE.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colDETOFCHARGE.Caption = "Details of Charges"
+        Me.colDETOFCHARGE.FieldName = "DETOFCHARGE"
+        Me.colDETOFCHARGE.Name = "colDETOFCHARGE"
+        Me.colDETOFCHARGE.Visible = True
+        Me.colDETOFCHARGE.VisibleIndex = 13
+        Me.colDETOFCHARGE.Width = 104
+        '
+        'colSETOREINFO
+        '
+        Me.colSETOREINFO.Caption = "Sender to Receiver Info"
+        Me.colSETOREINFO.FieldName = "SETOREINFO"
+        Me.colSETOREINFO.Name = "colSETOREINFO"
+        Me.colSETOREINFO.Visible = True
+        Me.colSETOREINFO.VisibleIndex = 14
+        Me.colSETOREINFO.Width = 407
+        '
+        'colCURRENCYCODE
+        '
+        Me.colCURRENCYCODE.AppearanceCell.Options.UseTextOptions = True
+        Me.colCURRENCYCODE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colCURRENCYCODE.Caption = "Currency"
+        Me.colCURRENCYCODE.FieldName = "CURRENCYCODE"
+        Me.colCURRENCYCODE.Name = "colCURRENCYCODE"
+        Me.colCURRENCYCODE.Visible = True
+        Me.colCURRENCYCODE.VisibleIndex = 5
+        Me.colCURRENCYCODE.Width = 64
+        '
+        'colTRANSACTIONDATE
+        '
+        Me.colTRANSACTIONDATE.AppearanceCell.Options.UseTextOptions = True
+        Me.colTRANSACTIONDATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colTRANSACTIONDATE.Caption = "Transaction Date"
+        Me.colTRANSACTIONDATE.FieldName = "TRANSACTIONDATE"
+        Me.colTRANSACTIONDATE.Name = "colTRANSACTIONDATE"
+        '
+        'colVALUEDATE
+        '
+        Me.colVALUEDATE.AppearanceCell.Options.UseTextOptions = True
+        Me.colVALUEDATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colVALUEDATE.Caption = "Value Date"
+        Me.colVALUEDATE.FieldName = "VALUEDATE"
+        Me.colVALUEDATE.Name = "colVALUEDATE"
+        Me.colVALUEDATE.Visible = True
+        Me.colVALUEDATE.VisibleIndex = 4
+        Me.colVALUEDATE.Width = 102
+        '
+        'colDealAmount
+        '
+        Me.colDealAmount.AppearanceCell.Options.UseTextOptions = True
+        Me.colDealAmount.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.colDealAmount.Caption = "Payment Amount"
+        Me.colDealAmount.DisplayFormat.FormatString = "n2"
+        Me.colDealAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colDealAmount.FieldName = "Deal Amount"
+        Me.colDealAmount.Name = "colDealAmount"
+        Me.colDealAmount.Visible = True
+        Me.colDealAmount.VisibleIndex = 6
+        Me.colDealAmount.Width = 119
+        '
+        'colEXCHANGE_RATE
+        '
+        Me.colEXCHANGE_RATE.AppearanceCell.Options.UseTextOptions = True
+        Me.colEXCHANGE_RATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.colEXCHANGE_RATE.Caption = "Exchange Rate"
+        Me.colEXCHANGE_RATE.DisplayFormat.FormatString = "n5"
+        Me.colEXCHANGE_RATE.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colEXCHANGE_RATE.FieldName = "EXCHANGE_RATE"
+        Me.colEXCHANGE_RATE.Name = "colEXCHANGE_RATE"
+        '
+        'colDealAmountEuro
+        '
+        Me.colDealAmountEuro.AppearanceCell.Options.UseTextOptions = True
+        Me.colDealAmountEuro.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.colDealAmountEuro.Caption = "Payment Amount (EUR)"
+        Me.colDealAmountEuro.DisplayFormat.FormatString = "n2"
+        Me.colDealAmountEuro.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colDealAmountEuro.FieldName = "Deal Amount Euro"
+        Me.colDealAmountEuro.Name = "colDealAmountEuro"
+        '
+        'colHANDLINGFEE
+        '
+        Me.colHANDLINGFEE.AppearanceCell.Options.UseTextOptions = True
+        Me.colHANDLINGFEE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.colHANDLINGFEE.Caption = "Handling Fee"
+        Me.colHANDLINGFEE.DisplayFormat.FormatString = "n2"
+        Me.colHANDLINGFEE.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colHANDLINGFEE.FieldName = "HANDLINGFEE"
+        Me.colHANDLINGFEE.Name = "colHANDLINGFEE"
+        '
+        'colORDERCUSTBR
+        '
+        Me.colORDERCUSTBR.Caption = "Ordering Customer Branch"
+        Me.colORDERCUSTBR.FieldName = "ORDERCUSTBR"
+        Me.colORDERCUSTBR.Name = "colORDERCUSTBR"
+        Me.colORDERCUSTBR.Width = 157
+        '
+        'colORDERCUSTID
+        '
+        Me.colORDERCUSTID.Caption = "Ordering Customer ID"
+        Me.colORDERCUSTID.FieldName = "ORDERCUSTID"
+        Me.colORDERCUSTID.Name = "colORDERCUSTID"
+        Me.colORDERCUSTID.Width = 151
+        '
+        'colORDERCUSTNAME
+        '
+        Me.colORDERCUSTNAME.Caption = "Ordering Customer Name"
+        Me.colORDERCUSTNAME.FieldName = "ORDERCUSTNAME"
+        Me.colORDERCUSTNAME.Name = "colORDERCUSTNAME"
+        Me.colORDERCUSTNAME.Visible = True
+        Me.colORDERCUSTNAME.VisibleIndex = 8
+        Me.colORDERCUSTNAME.Width = 304
+        '
+        'colORDERCUSTADD1
+        '
+        Me.colORDERCUSTADD1.Caption = "Ordering Customer Address 1"
+        Me.colORDERCUSTADD1.FieldName = "ORDERCUSTADD1"
+        Me.colORDERCUSTADD1.Name = "colORDERCUSTADD1"
+        Me.colORDERCUSTADD1.Width = 184
+        '
+        'colORDERCUSTADD2
+        '
+        Me.colORDERCUSTADD2.Caption = "Ordering Customer Address 2"
+        Me.colORDERCUSTADD2.FieldName = "ORDERCUSTADD2"
+        Me.colORDERCUSTADD2.Name = "colORDERCUSTADD2"
+        Me.colORDERCUSTADD2.Width = 159
+        '
+        'colHOLDFUNC
+        '
+        Me.colHOLDFUNC.FieldName = "HOLDFUNC"
+        Me.colHOLDFUNC.Name = "colHOLDFUNC"
+        '
+        'colORDERCUSTADD3
+        '
+        Me.colORDERCUSTADD3.Caption = "Ordering Customer Address 3"
+        Me.colORDERCUSTADD3.FieldName = "ORDERCUSTADD3"
+        Me.colORDERCUSTADD3.Name = "colORDERCUSTADD3"
+        Me.colORDERCUSTADD3.Width = 172
+        '
+        'colSWIFTINREF
+        '
+        Me.colSWIFTINREF.FieldName = "SWIFTINREF"
+        Me.colSWIFTINREF.Name = "colSWIFTINREF"
+        '
+        'colBEMERKUNGEN
+        '
+        Me.colBEMERKUNGEN.FieldName = "BEMERKUNGEN"
+        Me.colBEMERKUNGEN.Name = "colBEMERKUNGEN"
         '
         'RepositoryItemImageComboBox2
         '
@@ -2063,33 +1980,39 @@ Partial Class OdasRemmitances
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LayoutControl1.Controls.Add(Me.ViewEdit_btn)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.Print_Export_btn)
+        Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(-4, 61)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1040, 149, 250, 350)
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(663, 161, 510, 431)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1319, 693)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1417, 523)
         Me.LayoutControl1.TabIndex = 6
         Me.LayoutControl1.Text = "LayoutControl1"
         '
-        'ViewEdit_btn
+        'ProgressPanel1
         '
-        Me.ViewEdit_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ViewEdit_btn.ImageOptions.ImageIndex = 0
-        Me.ViewEdit_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.ViewEdit_btn.Location = New System.Drawing.Point(1190, 12)
-        Me.ViewEdit_btn.Name = "ViewEdit_btn"
-        Me.ViewEdit_btn.Size = New System.Drawing.Size(117, 22)
-        Me.ViewEdit_btn.StyleController = Me.LayoutControl1
-        Me.ViewEdit_btn.TabIndex = 22
-        Me.ViewEdit_btn.Text = "View Details"
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(24, 45)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 123
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'GridControl1
         '
@@ -2105,18 +2028,6 @@ Partial Class OdasRemmitances
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'Print_Export_btn
-        '
-        Me.Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Print_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.Print_Export_btn.Name = "Print_Export_btn"
-        Me.Print_Export_btn.Size = New System.Drawing.Size(142, 22)
-        Me.Print_Export_btn.StyleController = Me.LayoutControl1
-        Me.Print_Export_btn.TabIndex = 20
-        Me.Print_Export_btn.Text = "Print or Export"
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.GridControl1
@@ -2131,170 +2042,195 @@ Partial Class OdasRemmitances
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.LayoutControlItem3})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup2})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1319, 693)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1417, 523)
         Me.LayoutControlGroup1.TextVisible = False
         '
-        'EmptySpaceItem1
+        'LayoutControlGroup2
         '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(789, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(387, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(146, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'EmptySpaceItem4
-        '
-        Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(146, 0)
-        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(643, 26)
-        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'SimpleSeparator1
-        '
-        Me.SimpleSeparator1.AllowHotTrack = False
-        Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1176, 0)
-        Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
+        Me.LayoutControlGroup2.AppearanceGroup.ForeColor = System.Drawing.Color.Aqua
+        Me.LayoutControlGroup2.AppearanceGroup.Options.UseForeColor = True
+        Me.LayoutControlGroup2.CustomizationFormText = "ODAS Remittances"
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem5})
+        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1397, 503)
+        Me.LayoutControlGroup2.Text = "ODAS Remmitances"
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 20)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1299, 647)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1373, 438)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
-        'LayoutControlItem3
+        'LayoutControlItem5
         '
-        Me.LayoutControlItem3.Control = Me.ViewEdit_btn
-        Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1178, 0)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(121, 26)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
+        Me.LayoutControlItem5.Control = Me.ProgressPanel1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1373, 20)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
-        'LabelControl2
+        'RibbonControl1
         '
-        Me.LabelControl2.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.Location = New System.Drawing.Point(590, 18)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(44, 13)
-        Me.LabelControl2.TabIndex = 9
-        Me.LabelControl2.Text = "Date till"
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.DateFrom_BarEditItem, Me.DateTill_BarEditItem, Me.bbi_Load, Me.DisplayListDetails_bbi, Me.bbi_PrintOrExport, Me.BarSubItem1, Me.BarButtonItem4, Me.bbi_Close})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 9
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.DateFrom_DateEdit, Me.DateTill_DateEdit})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1417, 94)
         '
-        'PaymentTillDateEdit
+        'DateFrom_BarEditItem
         '
-        Me.PaymentTillDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.PaymentTillDateEdit.EditValue = Nothing
-        Me.PaymentTillDateEdit.Location = New System.Drawing.Point(590, 37)
-        Me.PaymentTillDateEdit.Name = "PaymentTillDateEdit"
-        Me.PaymentTillDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.PaymentTillDateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.PaymentTillDateEdit.Properties.Appearance.Options.UseFont = True
-        Me.PaymentTillDateEdit.Properties.Appearance.Options.UseTextOptions = True
-        Me.PaymentTillDateEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.PaymentTillDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.PaymentTillDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.PaymentTillDateEdit.Properties.DisplayFormat.FormatString = "dd.MM.yyyy"
-        Me.PaymentTillDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.PaymentTillDateEdit.Properties.EditFormat.FormatString = "dd.MM.yyyy"
-        Me.PaymentTillDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.PaymentTillDateEdit.Properties.Mask.EditMask = "dd.MM.yyyy"
-        Me.PaymentTillDateEdit.Size = New System.Drawing.Size(117, 22)
-        Me.PaymentTillDateEdit.TabIndex = 10
+        Me.DateFrom_BarEditItem.Caption = "Date from:"
+        Me.DateFrom_BarEditItem.CaptionAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateFrom_BarEditItem.CaptionToEditorIndent = 10
+        Me.DateFrom_BarEditItem.Edit = Me.DateFrom_DateEdit
+        Me.DateFrom_BarEditItem.EditHeight = 30
+        Me.DateFrom_BarEditItem.EditWidth = 120
+        Me.DateFrom_BarEditItem.Id = 1
+        Me.DateFrom_BarEditItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateFrom_BarEditItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.DateFrom_BarEditItem.Name = "DateFrom_BarEditItem"
         '
-        'LabelControl1
+        'DateFrom_DateEdit
         '
-        Me.LabelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl1.Appearance.Options.UseFont = True
-        Me.LabelControl1.Location = New System.Drawing.Point(448, 18)
-        Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(57, 13)
-        Me.LabelControl1.TabIndex = 7
-        Me.LabelControl1.Text = "Date from"
+        Me.DateFrom_DateEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateFrom_DateEdit.Appearance.Options.UseFont = True
+        Me.DateFrom_DateEdit.Appearance.Options.UseTextOptions = True
+        Me.DateFrom_DateEdit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateFrom_DateEdit.AutoHeight = False
+        Me.DateFrom_DateEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateFrom_DateEdit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateFrom_DateEdit.Name = "DateFrom_DateEdit"
         '
-        'LoadPaymentsData_btn
+        'DateTill_BarEditItem
         '
-        Me.LoadPaymentsData_btn.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LoadPaymentsData_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LoadPaymentsData_btn.ImageOptions.ImageIndex = 7
-        Me.LoadPaymentsData_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.LoadPaymentsData_btn.Location = New System.Drawing.Point(726, 37)
-        Me.LoadPaymentsData_btn.Name = "LoadPaymentsData_btn"
-        Me.LoadPaymentsData_btn.Size = New System.Drawing.Size(111, 22)
-        Me.LoadPaymentsData_btn.TabIndex = 11
-        Me.LoadPaymentsData_btn.Text = "Load Data"
+        Me.DateTill_BarEditItem.Caption = "Date till:"
+        Me.DateTill_BarEditItem.CaptionAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateTill_BarEditItem.CaptionToEditorIndent = 10
+        Me.DateTill_BarEditItem.Edit = Me.DateTill_DateEdit
+        Me.DateTill_BarEditItem.EditHeight = 30
+        Me.DateTill_BarEditItem.EditWidth = 120
+        Me.DateTill_BarEditItem.Id = 2
+        Me.DateTill_BarEditItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTill_BarEditItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.DateTill_BarEditItem.Name = "DateTill_BarEditItem"
         '
-        'PaymentFromDateEdit
+        'DateTill_DateEdit
         '
-        Me.PaymentFromDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.PaymentFromDateEdit.EditValue = Nothing
-        Me.PaymentFromDateEdit.Location = New System.Drawing.Point(448, 37)
-        Me.PaymentFromDateEdit.Name = "PaymentFromDateEdit"
-        Me.PaymentFromDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.PaymentFromDateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.PaymentFromDateEdit.Properties.Appearance.Options.UseFont = True
-        Me.PaymentFromDateEdit.Properties.Appearance.Options.UseTextOptions = True
-        Me.PaymentFromDateEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.PaymentFromDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.PaymentFromDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.PaymentFromDateEdit.Properties.DisplayFormat.FormatString = "dd.MM.yyyy"
-        Me.PaymentFromDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.PaymentFromDateEdit.Properties.EditFormat.FormatString = "dd.MM.yyyy"
-        Me.PaymentFromDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.PaymentFromDateEdit.Properties.Mask.EditMask = "dd.MM.yyyy"
-        Me.PaymentFromDateEdit.Size = New System.Drawing.Size(117, 22)
-        Me.PaymentFromDateEdit.TabIndex = 8
+        Me.DateTill_DateEdit.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
+        Me.DateTill_DateEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTill_DateEdit.Appearance.Options.UseFont = True
+        Me.DateTill_DateEdit.Appearance.Options.UseTextOptions = True
+        Me.DateTill_DateEdit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateTill_DateEdit.AutoHeight = False
+        Me.DateTill_DateEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTill_DateEdit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTill_DateEdit.Name = "DateTill_DateEdit"
+        '
+        'bbi_Load
+        '
+        Me.bbi_Load.Caption = "Load data"
+        Me.bbi_Load.Id = 3
+        Me.bbi_Load.ImageOptions.Image = CType(resources.GetObject("bbi_Load.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Load.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Load.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Load.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_Load.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_Load.Name = "bbi_Load"
+        '
+        'DisplayListDetails_bbi
+        '
+        Me.DisplayListDetails_bbi.Caption = "Display Details"
+        Me.DisplayListDetails_bbi.Id = 4
+        Me.DisplayListDetails_bbi.ImageOptions.ImageIndex = 8
+        Me.DisplayListDetails_bbi.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DisplayListDetails_bbi.ItemAppearance.Normal.Options.UseFont = True
+        Me.DisplayListDetails_bbi.Name = "DisplayListDetails_bbi"
+        '
+        'bbi_PrintOrExport
+        '
+        Me.bbi_PrintOrExport.Caption = "Print or Export"
+        Me.bbi_PrintOrExport.Id = 5
+        Me.bbi_PrintOrExport.ImageOptions.ImageIndex = 2
+        Me.bbi_PrintOrExport.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_PrintOrExport.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_PrintOrExport.Name = "bbi_PrintOrExport"
+        '
+        'BarSubItem1
+        '
+        Me.BarSubItem1.Caption = "BarSubItem1"
+        Me.BarSubItem1.Id = 6
+        Me.BarSubItem1.Name = "BarSubItem1"
+        '
+        'BarButtonItem4
+        '
+        Me.BarButtonItem4.Caption = "BarButtonItem4"
+        Me.BarButtonItem4.Id = 7
+        Me.BarButtonItem4.Name = "BarButtonItem4"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 8
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_Close.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_Close.Name = "bbi_Close"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DateFrom_BarEditItem)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DateTill_BarEditItem)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Load)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DisplayListDetails_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_PrintOrExport, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Close, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarSubItem1)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.BarButtonItem4)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Visible = False
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
         '
         'OdasRemmitances
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1315, 754)
-        Me.Controls.Add(Me.LabelControl2)
-        Me.Controls.Add(Me.PaymentTillDateEdit)
-        Me.Controls.Add(Me.LabelControl1)
-        Me.Controls.Add(Me.LoadPaymentsData_btn)
-        Me.Controls.Add(Me.PaymentFromDateEdit)
+        Me.ClientSize = New System.Drawing.Size(1417, 617)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.Icon = CType(resources.GetObject("OdasRemmitances.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "OdasRemmitances"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Odas Remittances"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -2350,7 +2286,7 @@ Partial Class OdasRemmitances
         CType(Me.layoutViewField_colBEMERKUNGEN1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ODASBaseView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InOut_ImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2382,16 +2318,14 @@ Partial Class OdasRemmitances
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentTillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentTillDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentFromDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentFromDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateFrom_DateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateFrom_DateEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTill_DateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTill_DateEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2403,31 +2337,19 @@ Partial Class OdasRemmitances
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents ViewEdit_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents ODASDetailView As DevExpress.XtraGrid.Views.Layout.LayoutView
     Friend WithEvents BICCODERepositoryItemTextEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents ODASBaseView As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
+    Friend WithEvents InOut_ImageComboBox As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents RepositoryItemImageComboBox2 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
     Friend WithEvents RepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents Print_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents PaymentTillDateEdit As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LoadPaymentsData_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents PaymentFromDateEdit As DevExpress.XtraEditors.DateEdit
     Friend WithEvents colID1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents colEM00KEY01 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents colClientAccount1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
@@ -2593,4 +2515,22 @@ Partial Class OdasRemmitances
     Friend WithEvents item20 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item21 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item10 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents DateFrom_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents DateFrom_DateEdit As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents DateTill_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents DateTill_DateEdit As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents bbi_Load As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents DisplayListDetails_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_PrintOrExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarSubItem1 As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents BarButtonItem4 As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
 End Class

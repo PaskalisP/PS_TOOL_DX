@@ -60,35 +60,6 @@ Partial Class CurrencyConverterECB
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.RepositoryItemImageComboBox2 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
-        Me.CustomerAccountsDetailView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
-        Me.colID1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colID1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colClientNo1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colClientNo1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colClientAccount1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colClientAccount1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colDealCurrency1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colDealCurrency1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colAccountStatus1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colAccountStatus1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colOnline1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colOnline1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colEnglishName1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colEnglishName1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colProductCode1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colProductCode1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colCurrencyStatus1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colCurrencyStatus1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colCountry1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colCountry1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colPRD_TYPE1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPRD_TYPE1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colOPEN_DATE1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colOPEN_DATE1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colCLOSE_DATE1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colCLOSE_DATE1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.ExchangeRatesOCBSreport_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -168,22 +139,6 @@ Partial Class CurrencyConverterECB
         CType(Me.ExchangeRatesECBBaseView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CustomerAccountsDetailView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colClientNo1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colClientAccount1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colDealCurrency1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colAccountStatus1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colOnline1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colEnglishName1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colProductCode1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colCurrencyStatus1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colCountry1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPRD_TYPE1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colOPEN_DATE1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colCLOSE_DATE1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CurrencyToComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -257,7 +212,7 @@ Partial Class CurrencyConverterECB
         '
         'CurrencyFromComboBoxEdit
         '
-        Me.CurrencyFromComboBoxEdit.Location = New System.Drawing.Point(307, 335)
+        Me.CurrencyFromComboBoxEdit.Location = New System.Drawing.Point(307, 338)
         Me.CurrencyFromComboBoxEdit.Name = "CurrencyFromComboBoxEdit"
         Me.CurrencyFromComboBoxEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.CurrencyFromComboBoxEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
@@ -324,7 +279,7 @@ Partial Class CurrencyConverterECB
         Me.SecondCurrencyName_lbl.Appearance.Options.UseFont = True
         Me.SecondCurrencyName_lbl.Appearance.Options.UseTextOptions = True
         Me.SecondCurrencyName_lbl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.SecondCurrencyName_lbl.Location = New System.Drawing.Point(757, 319)
+        Me.SecondCurrencyName_lbl.Location = New System.Drawing.Point(757, 322)
         Me.SecondCurrencyName_lbl.Name = "SecondCurrencyName_lbl"
         Me.SecondCurrencyName_lbl.Size = New System.Drawing.Size(344, 13)
         Me.SecondCurrencyName_lbl.StyleController = Me.LayoutControl1
@@ -336,7 +291,7 @@ Partial Class CurrencyConverterECB
         Me.FirstCurrencyName_lbl.Appearance.Options.UseFont = True
         Me.FirstCurrencyName_lbl.Appearance.Options.UseTextOptions = True
         Me.FirstCurrencyName_lbl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.FirstCurrencyName_lbl.Location = New System.Drawing.Point(24, 319)
+        Me.FirstCurrencyName_lbl.Location = New System.Drawing.Point(24, 322)
         Me.FirstCurrencyName_lbl.Name = "FirstCurrencyName_lbl"
         Me.FirstCurrencyName_lbl.Size = New System.Drawing.Size(279, 13)
         Me.FirstCurrencyName_lbl.StyleController = Me.LayoutControl1
@@ -348,9 +303,9 @@ Partial Class CurrencyConverterECB
         Me.ConvertedAmount_lbl.Appearance.ForeColor = System.Drawing.Color.Yellow
         Me.ConvertedAmount_lbl.Appearance.Options.UseFont = True
         Me.ConvertedAmount_lbl.Appearance.Options.UseForeColor = True
-        Me.ConvertedAmount_lbl.Location = New System.Drawing.Point(515, 492)
+        Me.ConvertedAmount_lbl.Location = New System.Drawing.Point(515, 495)
         Me.ConvertedAmount_lbl.Name = "ConvertedAmount_lbl"
-        Me.ConvertedAmount_lbl.Size = New System.Drawing.Size(237, 21)
+        Me.ConvertedAmount_lbl.Size = New System.Drawing.Size(237, 20)
         Me.ConvertedAmount_lbl.StyleController = Me.LayoutControl1
         Me.ConvertedAmount_lbl.TabIndex = 24
         '
@@ -362,9 +317,9 @@ Partial Class CurrencyConverterECB
         Me.ConvertedCurrency_lbl.Appearance.Options.UseForeColor = True
         Me.ConvertedCurrency_lbl.Appearance.Options.UseTextOptions = True
         Me.ConvertedCurrency_lbl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.ConvertedCurrency_lbl.Location = New System.Drawing.Point(435, 492)
+        Me.ConvertedCurrency_lbl.Location = New System.Drawing.Point(435, 495)
         Me.ConvertedCurrency_lbl.Name = "ConvertedCurrency_lbl"
-        Me.ConvertedCurrency_lbl.Size = New System.Drawing.Size(66, 21)
+        Me.ConvertedCurrency_lbl.Size = New System.Drawing.Size(66, 20)
         Me.ConvertedCurrency_lbl.StyleController = Me.LayoutControl1
         Me.ConvertedCurrency_lbl.TabIndex = 23
         '
@@ -375,9 +330,9 @@ Partial Class CurrencyConverterECB
         Me.PanelControl1.Controls.Add(Me.SecondCurrencyToEUR_lbl)
         Me.PanelControl1.Controls.Add(Me.FirstCurrencyToEURrate_lbl)
         Me.PanelControl1.Controls.Add(Me.FirstCurrencyToEUR_lbl)
-        Me.PanelControl1.Location = New System.Drawing.Point(304, 539)
+        Me.PanelControl1.Location = New System.Drawing.Point(304, 541)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(447, 152)
+        Me.PanelControl1.Size = New System.Drawing.Size(447, 150)
         Me.PanelControl1.TabIndex = 22
         '
         'GroupControl1
@@ -462,7 +417,7 @@ Partial Class CurrencyConverterECB
         Me.Convert_btn.Appearance.Options.UseFont = True
         Me.Convert_btn.ImageOptions.ImageIndex = 6
         Me.Convert_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Convert_btn.Location = New System.Drawing.Point(435, 466)
+        Me.Convert_btn.Location = New System.Drawing.Point(435, 469)
         Me.Convert_btn.Name = "Convert_btn"
         Me.Convert_btn.Size = New System.Drawing.Size(189, 22)
         Me.Convert_btn.StyleController = Me.LayoutControl1
@@ -484,7 +439,7 @@ Partial Class CurrencyConverterECB
         'RateSecondCurrencyComboBoxEdit
         '
         Me.RateSecondCurrencyComboBoxEdit.EditValue = "MIDDLE"
-        Me.RateSecondCurrencyComboBoxEdit.Location = New System.Drawing.Point(628, 418)
+        Me.RateSecondCurrencyComboBoxEdit.Location = New System.Drawing.Point(628, 421)
         Me.RateSecondCurrencyComboBoxEdit.Name = "RateSecondCurrencyComboBoxEdit"
         Me.RateSecondCurrencyComboBoxEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.RateSecondCurrencyComboBoxEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
@@ -500,7 +455,7 @@ Partial Class CurrencyConverterECB
         '
         'RateSecondCurrencyTextEdit
         '
-        Me.RateSecondCurrencyTextEdit.Location = New System.Drawing.Point(628, 442)
+        Me.RateSecondCurrencyTextEdit.Location = New System.Drawing.Point(628, 445)
         Me.RateSecondCurrencyTextEdit.Name = "RateSecondCurrencyTextEdit"
         Me.RateSecondCurrencyTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.RateSecondCurrencyTextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
@@ -514,7 +469,7 @@ Partial Class CurrencyConverterECB
         '
         'RateFirstCurrencyTextEdit
         '
-        Me.RateFirstCurrencyTextEdit.Location = New System.Drawing.Point(307, 442)
+        Me.RateFirstCurrencyTextEdit.Location = New System.Drawing.Point(307, 445)
         Me.RateFirstCurrencyTextEdit.Name = "RateFirstCurrencyTextEdit"
         Me.RateFirstCurrencyTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.RateFirstCurrencyTextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
@@ -529,7 +484,7 @@ Partial Class CurrencyConverterECB
         'RateFirstCurrencyComboBoxEdit
         '
         Me.RateFirstCurrencyComboBoxEdit.EditValue = "MIDDLE"
-        Me.RateFirstCurrencyComboBoxEdit.Location = New System.Drawing.Point(307, 418)
+        Me.RateFirstCurrencyComboBoxEdit.Location = New System.Drawing.Point(307, 421)
         Me.RateFirstCurrencyComboBoxEdit.Name = "RateFirstCurrencyComboBoxEdit"
         Me.RateFirstCurrencyComboBoxEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.RateFirstCurrencyComboBoxEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
@@ -546,7 +501,7 @@ Partial Class CurrencyConverterECB
         'AmountToConvertTextEdit
         '
         Me.AmountToConvertTextEdit.EditValue = "0,00"
-        Me.AmountToConvertTextEdit.Location = New System.Drawing.Point(435, 376)
+        Me.AmountToConvertTextEdit.Location = New System.Drawing.Point(435, 379)
         Me.AmountToConvertTextEdit.Name = "AmountToConvertTextEdit"
         Me.AmountToConvertTextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.AmountToConvertTextEdit.Properties.Appearance.Options.UseFont = True
@@ -625,7 +580,7 @@ Partial Class CurrencyConverterECB
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.RepositoryItemImageComboBox2})
         Me.GridControl2.Size = New System.Drawing.Size(1101, 203)
         Me.GridControl2.TabIndex = 11
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ExchangeRatesECBBaseView, Me.CustomerAccountsDetailView, Me.GridView2})
+        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ExchangeRatesECBBaseView})
         '
         'EXCHANGE_RATES_ECBBindingSource
         '
@@ -644,12 +599,16 @@ Partial Class CurrencyConverterECB
         Me.ExchangeRatesECBBaseView.GridControl = Me.GridControl2
         Me.ExchangeRatesECBBaseView.Name = "ExchangeRatesECBBaseView"
         Me.ExchangeRatesECBBaseView.OptionsCustomization.AllowRowSizing = True
-        Me.ExchangeRatesECBBaseView.OptionsFilter.AllowFilterEditor = False
         Me.ExchangeRatesECBBaseView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
+        Me.ExchangeRatesECBBaseView.OptionsFilter.ShowCustomFunctions = DevExpress.Utils.DefaultBoolean.[True]
+        Me.ExchangeRatesECBBaseView.OptionsFilter.UseNewCustomFilterDialog = True
+        Me.ExchangeRatesECBBaseView.OptionsFind.AlwaysVisible = True
         Me.ExchangeRatesECBBaseView.OptionsSelection.MultiSelect = True
         Me.ExchangeRatesECBBaseView.OptionsView.ColumnAutoWidth = False
         Me.ExchangeRatesECBBaseView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
+        Me.ExchangeRatesECBBaseView.OptionsView.ShowAutoFilterRow = True
         Me.ExchangeRatesECBBaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
+        Me.ExchangeRatesECBBaseView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -737,275 +696,6 @@ Partial Class CurrencyConverterECB
         Me.RepositoryItemImageComboBox2.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "Y", 4), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("", "N", 3)})
         Me.RepositoryItemImageComboBox2.Name = "RepositoryItemImageComboBox2"
         '
-        'CustomerAccountsDetailView
-        '
-        Me.CustomerAccountsDetailView.CardMinSize = New System.Drawing.Size(615, 282)
-        Me.CustomerAccountsDetailView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.colID1, Me.colClientNo1, Me.colClientAccount1, Me.colDealCurrency1, Me.colAccountStatus1, Me.colOnline1, Me.colEnglishName1, Me.colProductCode1, Me.colCurrencyStatus1, Me.colCountry1, Me.colPRD_TYPE1, Me.colOPEN_DATE1, Me.colCLOSE_DATE1})
-        Me.CustomerAccountsDetailView.GridControl = Me.GridControl2
-        Me.CustomerAccountsDetailView.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colID1})
-        Me.CustomerAccountsDetailView.Name = "CustomerAccountsDetailView"
-        Me.CustomerAccountsDetailView.OptionsBehavior.AllowExpandCollapse = False
-        Me.CustomerAccountsDetailView.OptionsBehavior.AllowRuntimeCustomization = False
-        Me.CustomerAccountsDetailView.OptionsBehavior.AllowSwitchViewModes = False
-        Me.CustomerAccountsDetailView.OptionsBehavior.AutoSelectAllInEditor = False
-        Me.CustomerAccountsDetailView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.Click
-        Me.CustomerAccountsDetailView.OptionsBehavior.ScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.[Auto]
-        Me.CustomerAccountsDetailView.OptionsCarouselMode.StretchCardToViewHeight = True
-        Me.CustomerAccountsDetailView.OptionsCarouselMode.StretchCardToViewWidth = True
-        Me.CustomerAccountsDetailView.OptionsCustomization.AllowFilter = False
-        Me.CustomerAccountsDetailView.OptionsCustomization.AllowSort = False
-        Me.CustomerAccountsDetailView.OptionsCustomization.ShowGroupHiddenItems = False
-        Me.CustomerAccountsDetailView.OptionsFilter.AllowColumnMRUFilterList = False
-        Me.CustomerAccountsDetailView.OptionsFilter.AllowFilterEditor = False
-        Me.CustomerAccountsDetailView.OptionsFilter.AllowFilterIncrementalSearch = False
-        Me.CustomerAccountsDetailView.OptionsFind.AllowFindPanel = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.EnableCarouselModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.EnableColumnModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.EnableCustomizeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.EnableMultiColumnModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.EnableMultiRowModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.EnablePanButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.EnableRowModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.EnableSingleModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.ShowCarouselModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.ShowColumnModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.ShowCustomizeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.ShowMultiColumnModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.ShowMultiRowModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.ShowPanButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.ShowRowModeButton = False
-        Me.CustomerAccountsDetailView.OptionsHeaderPanel.ShowSingleModeButton = False
-        Me.CustomerAccountsDetailView.OptionsSingleRecordMode.StretchCardToViewHeight = True
-        Me.CustomerAccountsDetailView.OptionsSingleRecordMode.StretchCardToViewWidth = True
-        Me.CustomerAccountsDetailView.OptionsView.ShowHeaderPanel = False
-        Me.CustomerAccountsDetailView.TemplateCard = Me.LayoutViewCard1
-        '
-        'colID1
-        '
-        Me.colID1.FieldName = "ID"
-        Me.colID1.LayoutViewField = Me.layoutViewField_colID1
-        Me.colID1.Name = "colID1"
-        Me.colID1.OptionsColumn.AllowEdit = False
-        Me.colID1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colID1
-        '
-        Me.layoutViewField_colID1.EditorPreferredWidth = 20
-        Me.layoutViewField_colID1.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colID1.Name = "layoutViewField_colID1"
-        Me.layoutViewField_colID1.Size = New System.Drawing.Size(595, 240)
-        Me.layoutViewField_colID1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colClientNo1
-        '
-        Me.colClientNo1.FieldName = "ClientNo"
-        Me.colClientNo1.LayoutViewField = Me.layoutViewField_colClientNo1
-        Me.colClientNo1.Name = "colClientNo1"
-        Me.colClientNo1.OptionsColumn.AllowEdit = False
-        Me.colClientNo1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colClientNo1
-        '
-        Me.layoutViewField_colClientNo1.EditorPreferredWidth = 82
-        Me.layoutViewField_colClientNo1.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colClientNo1.Name = "layoutViewField_colClientNo1"
-        Me.layoutViewField_colClientNo1.Size = New System.Drawing.Size(173, 20)
-        Me.layoutViewField_colClientNo1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colClientAccount1
-        '
-        Me.colClientAccount1.FieldName = "Client Account"
-        Me.colClientAccount1.LayoutViewField = Me.layoutViewField_colClientAccount1
-        Me.colClientAccount1.Name = "colClientAccount1"
-        Me.colClientAccount1.OptionsColumn.AllowEdit = False
-        Me.colClientAccount1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colClientAccount1
-        '
-        Me.layoutViewField_colClientAccount1.EditorPreferredWidth = 134
-        Me.layoutViewField_colClientAccount1.Location = New System.Drawing.Point(0, 20)
-        Me.layoutViewField_colClientAccount1.Name = "layoutViewField_colClientAccount1"
-        Me.layoutViewField_colClientAccount1.Size = New System.Drawing.Size(225, 20)
-        Me.layoutViewField_colClientAccount1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colDealCurrency1
-        '
-        Me.colDealCurrency1.FieldName = "Deal Currency"
-        Me.colDealCurrency1.LayoutViewField = Me.layoutViewField_colDealCurrency1
-        Me.colDealCurrency1.Name = "colDealCurrency1"
-        Me.colDealCurrency1.OptionsColumn.AllowEdit = False
-        Me.colDealCurrency1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colDealCurrency1
-        '
-        Me.layoutViewField_colDealCurrency1.EditorPreferredWidth = 47
-        Me.layoutViewField_colDealCurrency1.Location = New System.Drawing.Point(0, 40)
-        Me.layoutViewField_colDealCurrency1.Name = "layoutViewField_colDealCurrency1"
-        Me.layoutViewField_colDealCurrency1.Size = New System.Drawing.Size(138, 20)
-        Me.layoutViewField_colDealCurrency1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colAccountStatus1
-        '
-        Me.colAccountStatus1.ColumnEdit = Me.RepositoryItemImageComboBox1
-        Me.colAccountStatus1.FieldName = "Account Status"
-        Me.colAccountStatus1.LayoutViewField = Me.layoutViewField_colAccountStatus1
-        Me.colAccountStatus1.Name = "colAccountStatus1"
-        Me.colAccountStatus1.OptionsColumn.AllowEdit = False
-        Me.colAccountStatus1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colAccountStatus1
-        '
-        Me.layoutViewField_colAccountStatus1.EditorPreferredWidth = 32
-        Me.layoutViewField_colAccountStatus1.Location = New System.Drawing.Point(0, 60)
-        Me.layoutViewField_colAccountStatus1.Name = "layoutViewField_colAccountStatus1"
-        Me.layoutViewField_colAccountStatus1.Size = New System.Drawing.Size(123, 20)
-        Me.layoutViewField_colAccountStatus1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colOnline1
-        '
-        Me.colOnline1.ColumnEdit = Me.RepositoryItemImageComboBox2
-        Me.colOnline1.FieldName = "Online"
-        Me.colOnline1.LayoutViewField = Me.layoutViewField_colOnline1
-        Me.colOnline1.Name = "colOnline1"
-        Me.colOnline1.ShowButtonMode = DevExpress.XtraGrid.Views.Base.ShowButtonModeEnum.ShowAlways
-        '
-        'layoutViewField_colOnline1
-        '
-        Me.layoutViewField_colOnline1.EditorPreferredWidth = 32
-        Me.layoutViewField_colOnline1.Location = New System.Drawing.Point(0, 80)
-        Me.layoutViewField_colOnline1.Name = "layoutViewField_colOnline1"
-        Me.layoutViewField_colOnline1.Size = New System.Drawing.Size(123, 20)
-        Me.layoutViewField_colOnline1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colEnglishName1
-        '
-        Me.colEnglishName1.FieldName = "English Name"
-        Me.colEnglishName1.LayoutViewField = Me.layoutViewField_colEnglishName1
-        Me.colEnglishName1.Name = "colEnglishName1"
-        Me.colEnglishName1.OptionsColumn.AllowEdit = False
-        Me.colEnglishName1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colEnglishName1
-        '
-        Me.layoutViewField_colEnglishName1.EditorPreferredWidth = 487
-        Me.layoutViewField_colEnglishName1.Location = New System.Drawing.Point(0, 100)
-        Me.layoutViewField_colEnglishName1.Name = "layoutViewField_colEnglishName1"
-        Me.layoutViewField_colEnglishName1.Size = New System.Drawing.Size(578, 20)
-        Me.layoutViewField_colEnglishName1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colProductCode1
-        '
-        Me.colProductCode1.FieldName = "ProductCode"
-        Me.colProductCode1.LayoutViewField = Me.layoutViewField_colProductCode1
-        Me.colProductCode1.Name = "colProductCode1"
-        Me.colProductCode1.OptionsColumn.AllowEdit = False
-        Me.colProductCode1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colProductCode1
-        '
-        Me.layoutViewField_colProductCode1.EditorPreferredWidth = 93
-        Me.layoutViewField_colProductCode1.Location = New System.Drawing.Point(0, 120)
-        Me.layoutViewField_colProductCode1.Name = "layoutViewField_colProductCode1"
-        Me.layoutViewField_colProductCode1.Size = New System.Drawing.Size(184, 20)
-        Me.layoutViewField_colProductCode1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colCurrencyStatus1
-        '
-        Me.colCurrencyStatus1.FieldName = "Currency Status"
-        Me.colCurrencyStatus1.LayoutViewField = Me.layoutViewField_colCurrencyStatus1
-        Me.colCurrencyStatus1.Name = "colCurrencyStatus1"
-        Me.colCurrencyStatus1.OptionsColumn.AllowEdit = False
-        Me.colCurrencyStatus1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colCurrencyStatus1
-        '
-        Me.layoutViewField_colCurrencyStatus1.EditorPreferredWidth = 93
-        Me.layoutViewField_colCurrencyStatus1.Location = New System.Drawing.Point(0, 140)
-        Me.layoutViewField_colCurrencyStatus1.Name = "layoutViewField_colCurrencyStatus1"
-        Me.layoutViewField_colCurrencyStatus1.Size = New System.Drawing.Size(184, 20)
-        Me.layoutViewField_colCurrencyStatus1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colCountry1
-        '
-        Me.colCountry1.FieldName = "Country"
-        Me.colCountry1.LayoutViewField = Me.layoutViewField_colCountry1
-        Me.colCountry1.Name = "colCountry1"
-        Me.colCountry1.OptionsColumn.AllowEdit = False
-        Me.colCountry1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colCountry1
-        '
-        Me.layoutViewField_colCountry1.EditorPreferredWidth = 487
-        Me.layoutViewField_colCountry1.Location = New System.Drawing.Point(0, 160)
-        Me.layoutViewField_colCountry1.Name = "layoutViewField_colCountry1"
-        Me.layoutViewField_colCountry1.Size = New System.Drawing.Size(578, 20)
-        Me.layoutViewField_colCountry1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colPRD_TYPE1
-        '
-        Me.colPRD_TYPE1.Caption = "PRD TYPE"
-        Me.colPRD_TYPE1.FieldName = "PRD_TYPE"
-        Me.colPRD_TYPE1.LayoutViewField = Me.layoutViewField_colPRD_TYPE1
-        Me.colPRD_TYPE1.Name = "colPRD_TYPE1"
-        Me.colPRD_TYPE1.OptionsColumn.AllowEdit = False
-        Me.colPRD_TYPE1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colPRD_TYPE1
-        '
-        Me.layoutViewField_colPRD_TYPE1.EditorPreferredWidth = 487
-        Me.layoutViewField_colPRD_TYPE1.Location = New System.Drawing.Point(0, 180)
-        Me.layoutViewField_colPRD_TYPE1.Name = "layoutViewField_colPRD_TYPE1"
-        Me.layoutViewField_colPRD_TYPE1.Size = New System.Drawing.Size(578, 20)
-        Me.layoutViewField_colPRD_TYPE1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colOPEN_DATE1
-        '
-        Me.colOPEN_DATE1.Caption = "OPEN DATE"
-        Me.colOPEN_DATE1.FieldName = "OPEN_DATE"
-        Me.colOPEN_DATE1.LayoutViewField = Me.layoutViewField_colOPEN_DATE1
-        Me.colOPEN_DATE1.Name = "colOPEN_DATE1"
-        Me.colOPEN_DATE1.OptionsColumn.AllowEdit = False
-        Me.colOPEN_DATE1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colOPEN_DATE1
-        '
-        Me.layoutViewField_colOPEN_DATE1.EditorPreferredWidth = 487
-        Me.layoutViewField_colOPEN_DATE1.Location = New System.Drawing.Point(0, 200)
-        Me.layoutViewField_colOPEN_DATE1.Name = "layoutViewField_colOPEN_DATE1"
-        Me.layoutViewField_colOPEN_DATE1.Size = New System.Drawing.Size(578, 20)
-        Me.layoutViewField_colOPEN_DATE1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'colCLOSE_DATE1
-        '
-        Me.colCLOSE_DATE1.Caption = "CLOSE DATE"
-        Me.colCLOSE_DATE1.FieldName = "CLOSE_DATE"
-        Me.colCLOSE_DATE1.LayoutViewField = Me.layoutViewField_colCLOSE_DATE1
-        Me.colCLOSE_DATE1.Name = "colCLOSE_DATE1"
-        Me.colCLOSE_DATE1.OptionsColumn.AllowEdit = False
-        Me.colCLOSE_DATE1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colCLOSE_DATE1
-        '
-        Me.layoutViewField_colCLOSE_DATE1.EditorPreferredWidth = 487
-        Me.layoutViewField_colCLOSE_DATE1.Location = New System.Drawing.Point(0, 220)
-        Me.layoutViewField_colCLOSE_DATE1.Name = "layoutViewField_colCLOSE_DATE1"
-        Me.layoutViewField_colCLOSE_DATE1.Size = New System.Drawing.Size(578, 20)
-        Me.layoutViewField_colCLOSE_DATE1.TextSize = New System.Drawing.Size(82, 13)
-        '
-        'LayoutViewCard1
-        '
-        Me.LayoutViewCard1.CustomizationFormText = "TemplateCard"
-        Me.LayoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colClientNo1, Me.layoutViewField_colClientAccount1, Me.layoutViewField_colDealCurrency1, Me.layoutViewField_colAccountStatus1, Me.layoutViewField_colOnline1, Me.layoutViewField_colEnglishName1, Me.layoutViewField_colProductCode1, Me.layoutViewField_colCurrencyStatus1, Me.layoutViewField_colCountry1, Me.layoutViewField_colPRD_TYPE1, Me.layoutViewField_colOPEN_DATE1, Me.layoutViewField_colCLOSE_DATE1})
-        Me.LayoutViewCard1.Name = "LayoutViewCard1"
-        Me.LayoutViewCard1.OptionsItemText.TextToControlDistance = 5
-        Me.LayoutViewCard1.Text = "TemplateCard"
-        '
-        'GridView2
-        '
-        Me.GridView2.GridControl = Me.GridControl2
-        Me.GridView2.Name = "GridView2"
-        '
         'GridControl1
         '
         Me.GridControl1.Location = New System.Drawing.Point(124, 69)
@@ -1045,7 +735,7 @@ Partial Class CurrencyConverterECB
         '
         'CurrencyToComboBoxEdit
         '
-        Me.CurrencyToComboBoxEdit.Location = New System.Drawing.Point(628, 335)
+        Me.CurrencyToComboBoxEdit.Location = New System.Drawing.Point(628, 338)
         Me.CurrencyToComboBoxEdit.Name = "CurrencyToComboBoxEdit"
         Me.CurrencyToComboBoxEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.CurrencyToComboBoxEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
@@ -1102,7 +792,7 @@ Partial Class CurrencyConverterECB
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(254, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(701, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(702, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem1
@@ -1136,9 +826,9 @@ Partial Class CurrencyConverterECB
         '
         Me.SimpleSeparator1.AllowHotTrack = False
         Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(955, 0)
+        Me.SimpleSeparator1.Location = New System.Drawing.Point(956, 0)
         Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
+        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
         '
         'LayoutControlItem4
         '
@@ -1168,9 +858,9 @@ Partial Class CurrencyConverterECB
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
         Me.EmptySpaceItem2.CustomizationFormText = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(743, 527)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(743, 529)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(362, 156)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(362, 154)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlGroup2
@@ -1179,7 +869,7 @@ Partial Class CurrencyConverterECB
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem8, Me.LayoutControlItem9, Me.EmptySpaceItem4, Me.EmptySpaceItem3, Me.EmptySpaceItem5, Me.EmptySpaceItem6, Me.LayoutControlItem10, Me.EmptySpaceItem7, Me.EmptySpaceItem10, Me.LayoutControlItem11, Me.EmptySpaceItem11, Me.LayoutControlItem12, Me.EmptySpaceItem12, Me.LayoutControlItem13, Me.LayoutControlItem14, Me.EmptySpaceItem13, Me.EmptySpaceItem14, Me.EmptySpaceItem15, Me.EmptySpaceItem16, Me.LayoutControlItem15, Me.EmptySpaceItem17, Me.EmptySpaceItem18, Me.EmptySpaceItem19, Me.EmptySpaceItem20, Me.LayoutControlItem16, Me.LayoutControlItem18, Me.LayoutControlItem19, Me.LayoutControlItem20, Me.EmptySpaceItem22})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 277)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1105, 250)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1105, 252)
         Me.LayoutControlGroup2.Text = "Currencies Convertion"
         '
         'LayoutControlItem9
@@ -1374,7 +1064,7 @@ Partial Class CurrencyConverterECB
         Me.EmptySpaceItem18.Location = New System.Drawing.Point(732, 173)
         Me.EmptySpaceItem18.MinSize = New System.Drawing.Size(104, 24)
         Me.EmptySpaceItem18.Name = "EmptySpaceItem18"
-        Me.EmptySpaceItem18.Size = New System.Drawing.Size(349, 25)
+        Me.EmptySpaceItem18.Size = New System.Drawing.Size(349, 24)
         Me.EmptySpaceItem18.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.EmptySpaceItem18.TextSize = New System.Drawing.Size(0, 0)
         '
@@ -1384,14 +1074,14 @@ Partial Class CurrencyConverterECB
         Me.EmptySpaceItem19.CustomizationFormText = "EmptySpaceItem19"
         Me.EmptySpaceItem19.Location = New System.Drawing.Point(0, 173)
         Me.EmptySpaceItem19.Name = "EmptySpaceItem19"
-        Me.EmptySpaceItem19.Size = New System.Drawing.Size(411, 25)
+        Me.EmptySpaceItem19.Size = New System.Drawing.Size(411, 24)
         Me.EmptySpaceItem19.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem20
         '
         Me.EmptySpaceItem20.AllowHotTrack = False
         Me.EmptySpaceItem20.CustomizationFormText = "EmptySpaceItem20"
-        Me.EmptySpaceItem20.Location = New System.Drawing.Point(0, 198)
+        Me.EmptySpaceItem20.Location = New System.Drawing.Point(0, 197)
         Me.EmptySpaceItem20.Name = "EmptySpaceItem20"
         Me.EmptySpaceItem20.Size = New System.Drawing.Size(1081, 10)
         Me.EmptySpaceItem20.TextSize = New System.Drawing.Size(0, 0)
@@ -1403,7 +1093,7 @@ Partial Class CurrencyConverterECB
         Me.LayoutControlItem16.Location = New System.Drawing.Point(411, 173)
         Me.LayoutControlItem16.MinSize = New System.Drawing.Size(70, 17)
         Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(70, 25)
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(70, 24)
         Me.LayoutControlItem16.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem16.TextVisible = False
@@ -1415,7 +1105,7 @@ Partial Class CurrencyConverterECB
         Me.LayoutControlItem18.Location = New System.Drawing.Point(491, 173)
         Me.LayoutControlItem18.MinSize = New System.Drawing.Size(70, 17)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(241, 25)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(241, 24)
         Me.LayoutControlItem18.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem18.TextVisible = False
@@ -1454,16 +1144,16 @@ Partial Class CurrencyConverterECB
         Me.EmptySpaceItem22.CustomizationFormText = "EmptySpaceItem22"
         Me.EmptySpaceItem22.Location = New System.Drawing.Point(481, 173)
         Me.EmptySpaceItem22.Name = "EmptySpaceItem22"
-        Me.EmptySpaceItem22.Size = New System.Drawing.Size(10, 25)
+        Me.EmptySpaceItem22.Size = New System.Drawing.Size(10, 24)
         Me.EmptySpaceItem22.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem17
         '
         Me.LayoutControlItem17.Control = Me.PanelControl1
         Me.LayoutControlItem17.CustomizationFormText = "LayoutControlItem17"
-        Me.LayoutControlItem17.Location = New System.Drawing.Point(292, 527)
+        Me.LayoutControlItem17.Location = New System.Drawing.Point(292, 529)
         Me.LayoutControlItem17.Name = "LayoutControlItem17"
-        Me.LayoutControlItem17.Size = New System.Drawing.Size(451, 156)
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(451, 154)
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem17.TextVisible = False
         '
@@ -1471,9 +1161,9 @@ Partial Class CurrencyConverterECB
         '
         Me.EmptySpaceItem21.AllowHotTrack = False
         Me.EmptySpaceItem21.CustomizationFormText = "EmptySpaceItem21"
-        Me.EmptySpaceItem21.Location = New System.Drawing.Point(0, 527)
+        Me.EmptySpaceItem21.Location = New System.Drawing.Point(0, 529)
         Me.EmptySpaceItem21.Name = "EmptySpaceItem21"
-        Me.EmptySpaceItem21.Size = New System.Drawing.Size(292, 156)
+        Me.EmptySpaceItem21.Size = New System.Drawing.Size(292, 154)
         Me.EmptySpaceItem21.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem5
@@ -1531,6 +1221,7 @@ Partial Class CurrencyConverterECB
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BIC_DIRECTORY_PLUSTableAdapter = Nothing
         Me.TableAdapterManager.BIC_DIRECTORYTableAdapter = Nothing
+        Me.TableAdapterManager.BIC_HISTORYTableAdapter = Nothing
         Me.TableAdapterManager.BLZTableAdapter = Nothing
         Me.TableAdapterManager.COUNTRIESTableAdapter = Nothing
         Me.TableAdapterManager.CURRENCIESTableAdapter = Me.CURRENCIESTableAdapter
@@ -1538,7 +1229,6 @@ Partial Class CurrencyConverterECB
         Me.TableAdapterManager.HOLIDAYSTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_BUNDESLANDTableAdapter = Nothing
         Me.TableAdapterManager.SEPA_DIRECTORY_FULLTableAdapter = Nothing
-        Me.TableAdapterManager.SEPA_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.T2_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -1553,7 +1243,7 @@ Partial Class CurrencyConverterECB
         Me.ClientSize = New System.Drawing.Size(1125, 703)
         Me.Controls.Add(Me.LayoutControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("CurrencyConverterECB.IconOptions.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "CurrencyConverterECB"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -1586,22 +1276,6 @@ Partial Class CurrencyConverterECB
         CType(Me.ExchangeRatesECBBaseView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CustomerAccountsDetailView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colClientNo1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colClientAccount1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colDealCurrency1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colAccountStatus1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colOnline1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colEnglishName1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colProductCode1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colCurrencyStatus1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colCountry1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPRD_TYPE1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colOPEN_DATE1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colCLOSE_DATE1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CurrencyToComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1679,35 +1353,6 @@ Partial Class CurrencyConverterECB
     Friend WithEvents ExchangeRatesECBBaseView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents RepositoryItemImageComboBox2 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
-    Friend WithEvents CustomerAccountsDetailView As DevExpress.XtraGrid.Views.Layout.LayoutView
-    Friend WithEvents colID1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colID1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colClientNo1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colClientNo1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colClientAccount1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colClientAccount1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colDealCurrency1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colDealCurrency1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colAccountStatus1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colAccountStatus1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colOnline1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colOnline1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colEnglishName1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colEnglishName1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colProductCode1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colProductCode1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colCurrencyStatus1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colCurrencyStatus1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colCountry1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colCountry1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colPRD_TYPE1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPRD_TYPE1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colOPEN_DATE1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colOPEN_DATE1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colCLOSE_DATE1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colCLOSE_DATE1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewCard1 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents ExchangeRatesOCBSreport_btn As DevExpress.XtraEditors.SimpleButton

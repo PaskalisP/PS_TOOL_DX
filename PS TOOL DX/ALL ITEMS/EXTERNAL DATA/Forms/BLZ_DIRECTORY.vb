@@ -27,16 +27,6 @@ Imports DevExpress.XtraTab
 Imports DevExpress.XtraTab.ViewInfo
 Public Class BLZ_DIRECTORY
 
-    Private conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private QueryText1 As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-
     'BLZ Directory Data
     <VBFixedString(8)> Dim BANKLEITZAHL As String = Nothing
     <VBFixedString(1)> Dim MERKMAL As String = Nothing
@@ -53,6 +43,11 @@ Public Class BLZ_DIRECTORY
     <VBFixedString(8)> Dim NACHFOLGE_BLZ As String = Nothing
 
     Dim BLZ_ROW As String = Nothing
+    Friend WithEvents BgwCreateBlzDirectory As BackgroundWorker
+    Private bgws As New List(Of BackgroundWorker)()
+
+    Dim BLZ_DirectoryCreationFolder As String = Nothing
+    Dim BLZ_CreationFileName As String = Nothing
 
     Sub New()
         InitSkins()
@@ -66,9 +61,14 @@ Public Class BLZ_DIRECTORY
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
     Private Sub BLZ_DIRECTORY_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
 
         Me.BLZTableAdapter.Fill(Me.EXTERNALDataset.BLZ)
 
@@ -80,22 +80,17 @@ Public Class BLZ_DIRECTORY
         BLZGridView.ForceDoubleClick = True
         AddHandler BLZGridView.DoubleClick, AddressOf BLZGridView_DoubleClick
         AddHandler BLZLayoutView.MouseDown, AddressOf BLZLayoutView_MouseDown
-        AddHandler BLZViews_btn.Click, AddressOf BLZViews_btn_Click
+        'AddHandler BLZViews_btn.Click, AddressOf BLZViews_btn_Click
         BLZLayoutView.OptionsBehavior.AutoFocusCardOnScrolling = True
         BLZLayoutView.OptionsBehavior.AllowSwitchViewModes = False
 
-        'Get Last Update
-        cmd.CommandText = "SELECT [LastImportTime] from [MANUAL IMPORTS] where [ProcName]='BLZ DIRECTORY'"
-        cmd.Connection.Open()
-        Dim d As DateTime = cmd.ExecuteScalar
-        Me.LastUpdate_txt.Text = d
-        cmd.Connection.Close()
+
     End Sub
 
 #Region "BLZ_DIRECTORY_CHANGE_VIEWS"
     Private fExtendedEditMode As Boolean = False
-    Private strHideExtendedMode As String = "View List"
-    Private strShowExtendedMode As String = "View Details"
+    Private strHideExtendedMode As String = "Display List"
+    Private strShowExtendedMode As String = "Display Details"
     Protected Sub HideDetail(ByVal rowHandle As Integer)
         GridControl2.MainView.PostEditor()
         Dim datasourceRowIndex As Integer = BLZLayoutView.GetDataSourceRowIndex(rowHandle)
@@ -104,8 +99,8 @@ Public Class BLZ_DIRECTORY
         GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        BLZViews_btn.Text = strShowExtendedMode
-        BLZViews_btn.ImageIndex = 1
+        DisplayListDetails_bbi.Caption = strShowExtendedMode
+        DisplayListDetails_bbi.ImageIndex = 10
         fExtendedEditMode = (GridControl2.MainView Is BLZLayoutView)
     End Sub
     Protected Sub ShowDetail(ByVal rowHandle As Integer)
@@ -115,8 +110,8 @@ Public Class BLZ_DIRECTORY
         GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        BLZViews_btn.Text = strHideExtendedMode
-        BLZViews_btn.ImageIndex = 0
+        DisplayListDetails_bbi.Caption = strHideExtendedMode
+        DisplayListDetails_bbi.ImageIndex = 11
         fExtendedEditMode = (GridControl2.MainView Is BLZLayoutView)
 
     End Sub
@@ -147,35 +142,145 @@ Public Class BLZ_DIRECTORY
         End If
     End Sub
     Protected Sub BLZViews_btn_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+    End Sub
+#End Region
+
+    Private Sub DisplayListDetails_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles DisplayListDetails_bbi.ItemClick
         If fExtendedEditMode Then
             HideDetail((TryCast(GridControl2.MainView, ColumnView)).FocusedRowHandle)
         Else
             ShowDetail((TryCast(GridControl2.MainView, ColumnView)).FocusedRowHandle)
         End If
     End Sub
-#End Region
 
-    Private Sub BLZGridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles BLZGridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+    Private Sub DISABLE_BUTTONS()
+        Me.bbi_Load.Enabled = False
+        Me.DisplayListDetails_bbi.Enabled = False
+        Me.bbi_CreateBlzDirectory.Enabled = False
+
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.bbi_Load.Enabled = True
+        Me.DisplayListDetails_bbi.Enabled = True
+        Me.bbi_CreateBlzDirectory.Enabled = True
+    End Sub
+
+
+
+    Private Sub bbi_Load_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Load.ItemClick
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        SplashScreenManager.Default.SetWaitFormCaption("Load BLZ Data")
+        Me.BLZTableAdapter.Fill(Me.EXTERNALDataset.BLZ)
+        SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub bbi_CreateBlzDirectory_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_CreateBlzDirectory.ItemClick
+        If XtraMessageBox.Show("Should the BLZ Directory (BLZ plus BIC) be re-created?", "BLZplusBIC Directory creation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            Try
+                Using myFileDialog As New SaveFileDialog()
+                    myFileDialog.Title = "BLZplusBIC Directory creation"
+                    myFileDialog.Filter = "Text File (*.txt)|*.txt" '"Text files (*.txt)|*.txt|All files (*.*)|*.*"
+                    myFileDialog.FilterIndex = 1
+                    'myFileDialog.InitialDirectory = "C:\"
+                    myFileDialog.CheckFileExists = False
+                    myFileDialog.RestoreDirectory = True
+                    myFileDialog.FileName = "BLZ_plus_BIC_from_PSTOOL.txt"
+                    Dim result As DialogResult = myFileDialog.ShowDialog
+
+                    If result = DialogResult.OK Then
+                        BLZ_DirectoryCreationFolder = IO.Path.GetDirectoryName(myFileDialog.FileName)
+                        BLZ_CreationFileName = myFileDialog.FileName
+                        DISABLE_BUTTONS()
+                        Me.LayoutControlItem1.Visibility = LayoutVisibility.Always
+                        BgwCreateBlzDirectory = New BackgroundWorker
+                        bgws.Add(BgwCreateBlzDirectory)
+                        BgwCreateBlzDirectory.WorkerReportsProgress = True
+                        BgwCreateBlzDirectory.RunWorkerAsync()
+                    End If
+                End Using
+
+            Catch ex As System.Exception
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Exit Sub
+            End Try
+
         End If
     End Sub
 
-    Private Sub BLZGridView_ShownEditor(sender As Object, e As EventArgs) Handles BLZGridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
+    Private Sub BgwCreateBlzDirectory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwCreateBlzDirectory.DoWork
+        Try
+            BgwCreateBlzDirectory.ReportProgress(5, "Start creating the BLZ Directory")
+            QueryText = "SELECT  * FROM  [BLZ] where [BIC]<>'' and [Änderungs-kennzeichen] not in ('D') ORDER BY [Bankleitzahl] asc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
+            dt = New DataTable()
+            da.Fill(dt)
+            For i = 0 To dt.Rows.Count - 1
+                BgwCreateBlzDirectory.ReportProgress(5, "Create Datarow in BLZ Directory for BLZ: " & dt.Rows.Item(i).Item("Bankleitzahl") & " - " & dt.Rows.Item(i).Item("Bezeichnung"))
+                System.Threading.Thread.Sleep(5)
+                BANKLEITZAHL = dt.Rows.Item(i).Item("Bankleitzahl")
+                MERKMAL = dt.Rows.Item(i).Item("Merkmal")
+                BEZEICHNUNG = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Bezeichnung"), 58)
+                POSTLEITZAHL = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("PLZ"), 5)
+                ORT = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Ort"), 35)
+                KURZBEZEICHNUNG = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Kurzbezeichnung"), 27)
+                If IsDBNull(dt.Rows.Item(i).Item("PAN")) = False Then
+                    PAN_NR = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("PAN"), 5)
+                Else
+                    PAN_NR = ""
+                End If
+                If IsDBNull(dt.Rows.Item(i).Item("BIC")) = False Then
+                    BIC = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("BIC"), 11)
+                Else
+                    BIC = ""
+                End If
+                If IsDBNull(dt.Rows.Item(i).Item("Prüfziffer-berechnungs-methode")) = False Then
+                    PRUEFZIFFER_KZ = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Prüfziffer-berechnungs-methode"), 2)
+                Else
+                    PRUEFZIFFER_KZ = ""
+                End If
+                DATENSATZ_NR = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Datensatz-nummer"), 6)
+                AENDERUNG_KZ = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Änderungs-kennzeichen"), 1)
+                BLZ_LOESCHUNG = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Bankleitzahl-löschung"), 1)
+                NACHFOLGE_BLZ = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Nachfolge-Bankleitzahl"), 8)
+
+
+                BLZ_ROW = BANKLEITZAHL & MERKMAL & BEZEICHNUNG & POSTLEITZAHL & ORT & KURZBEZEICHNUNG & PAN_NR & BIC & PRUEFZIFFER_KZ & DATENSATZ_NR & AENDERUNG_KZ & BLZ_LOESCHUNG & NACHFOLGE_BLZ
+
+                System.IO.File.AppendAllText(BLZ_CreationFileName, BLZ_ROW & vbCrLf)
+            Next
+            BgwCreateBlzDirectory.ReportProgress(5, "The creation of the BLZ Directory is finished")
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+        Finally
+            BgwCreateBlzDirectory.CancelAsync()
+        End Try
     End Sub
 
-    Private Sub BLZPrint_Export_btn_Click(sender As Object, e As EventArgs) Handles BLZPrint_Export_btn.Click
+    Private Sub BgwCreateBlzDirectory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwCreateBlzDirectory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwCreateFullT2Directory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwCreateBlzDirectory.RunWorkerCompleted
+        If e.Cancelled = False Then
+            If XtraMessageBox.Show("The following BLZ file has being created:" & vbNewLine & BLZ_DirectoryCreationFolder & "\" & BLZ_CreationFileName & vbNewLine & "Should the directory be opened?", "NEW T2 DIRECTORY FILE", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) = DialogResult.Yes Then
+                System.Diagnostics.Process.Start(BLZ_DirectoryCreationFolder)
+            End If
+        End If
+        Workers_Complete(BgwCreateBlzDirectory, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem1.Visibility = LayoutVisibility.Never
+    End Sub
+
+    Private Sub bbi_PrintExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_PrintExport.ItemClick
         If Not GridControl2.IsPrintingAvailable Then
             MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
             Return
         End If
         ' Opens the Preview window. 
         'GridControl1.ShowPrintPreview()
-        If BLZViews_btn.Text = "View Details" Then
+        If DisplayListDetails_bbi.Caption = "Display Details" Then
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             PrintableComponentLink1.CreateDocument()
             PrintableComponentLink1.ShowPreview()
@@ -195,6 +300,7 @@ Public Class BLZ_DIRECTORY
 
         End If
     End Sub
+
 
     Private Sub PreviewPrintableComponent(component As IPrintable, lookAndFeel As UserLookAndFeel)
         Dim link As New PrintableComponentLink() With { _
@@ -227,51 +333,17 @@ Public Class BLZ_DIRECTORY
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 
-    Private Sub BLZ_Dir_Create_btn_Click(sender As Object, e As EventArgs) Handles BLZ_Dir_Create_btn.Click
-        If MessageBox.Show("Should the BLZ Directory (BLZ plus BIC) be re-created?" & vbNewLine & vbNewLine & "Existing File will be deleted!", "BLZplusBIC Directory creation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-            Try
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Select only Institutions from BLZ Directory with BIC")
-                If File.Exists("C:\BLZ_plus_BIC_from_PSTOOL.txt") = True Then
-                    File.Delete("C:\BLZ_plus_BIC_from_PSTOOL.txt")
-                End If
-                Me.QueryText = "SELECT  * FROM  [BLZ] where [BIC]<>'' and [Änderungs-kennzeichen] not in ('D') ORDER BY [Bankleitzahl] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New DataTable()
-                da.Fill(dt)
-                For i = 0 To dt.Rows.Count - 1
-                    SplashScreenManager.Default.SetWaitFormCaption("Create Datarow in BLZ Directory for BLZ: " & dt.Rows.Item(i).Item("Bankleitzahl") & vbNewLine & dt.Rows.Item(i).Item("Bezeichnung"))
-                    BANKLEITZAHL = dt.Rows.Item(i).Item("Bankleitzahl")
-                    MERKMAL = dt.Rows.Item(i).Item("Merkmal")
-                    BEZEICHNUNG = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Bezeichnung"), 58)
-                    POSTLEITZAHL = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("PLZ"), 5)
-                    ORT = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Ort"), 35)
-                    KURZBEZEICHNUNG = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Kurzbezeichnung"), 27)
-                    PAN_NR = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("PAN"), 5)
-                    BIC = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("BIC"), 11)
-                    PRUEFZIFFER_KZ = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Prüfziffer-berechnungs-methode"), 2)
-                    DATENSATZ_NR = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Datensatz-nummer"), 6)
-                    AENDERUNG_KZ = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Änderungs-kennzeichen"), 1)
-                    BLZ_LOESCHUNG = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Bankleitzahl-löschung"), 1)
-                    NACHFOLGE_BLZ = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("Nachfolge-Bankleitzahl"), 8)
 
+    Private Sub bbi_Close_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Close.ItemClick
+        Me.Close()
+    End Sub
 
-                    BLZ_ROW = BANKLEITZAHL & MERKMAL & BEZEICHNUNG & POSTLEITZAHL & ORT & KURZBEZEICHNUNG & PAN_NR & BIC & PRUEFZIFFER_KZ & DATENSATZ_NR & AENDERUNG_KZ & BLZ_LOESCHUNG & NACHFOLGE_BLZ
-
-                    System.IO.File.AppendAllText("C:\BLZ_plus_BIC_from_PSTOOL.txt", BLZ_ROW & vbCrLf)
-                Next
-
-                SplashScreenManager.CloseForm(False)
-                MessageBox.Show("The following BLZ Directory file has being created: C:\BLZ_plus_BIC_from_PSTOOL.txt", "NEW BLZ DIRECTORY FILE", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
-
-            Catch ex As System.Exception
-                SplashScreenManager.CloseForm(False)
-
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Sub
-            End Try
+    Private Sub BLZ_DIRECTORY_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
         Else
-            Exit Sub
+            e.Cancel = False
+
         End If
     End Sub
 End Class

@@ -27,16 +27,6 @@ Imports DevExpress.XtraTab
 Imports DevExpress.XtraTab.ViewInfo
 Public Class Holidays
 
-    Private conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private QueryText1 As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-
     Sub New()
         InitSkins()
         InitializeComponent()
@@ -57,21 +47,20 @@ Public Class Holidays
     End Sub
 
     Private Sub Holidays_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
 
         Me.HOLIDAYSTableAdapter.Fill(Me.EXTERNALDataset.HOLIDAYS)
 
-        'Get Last Update
-        cmd.CommandText = "SELECT [LastImportTime] from [MANUAL IMPORTS] where [ProcName]='HOLIDAYS'"
-        cmd.Connection.Open()
-        Dim d As DateTime = cmd.ExecuteScalar
-        Me.LastUpdate_txt.Text = d
-        cmd.Connection.Close()
-
     End Sub
 
-    Private Sub Holiday_Print_Export_btn_Click(sender As Object, e As EventArgs) Handles Holiday_Print_Export_btn.Click
+
+    Private Sub bbi_LoadData_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_LoadData.ItemClick
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        SplashScreenManager.Default.SetWaitFormCaption("Load all Holidays")
+        Me.HOLIDAYSTableAdapter.Fill(Me.EXTERNALDataset.HOLIDAYS)
+        SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub bbi_PrintOrExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_PrintOrExport.ItemClick
         If Not GridControl2.IsPrintingAvailable Then
             MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
             Return
@@ -81,6 +70,8 @@ Public Class Holidays
         PrintableComponentLink1.ShowPreview()
         SplashScreenManager.CloseForm(False)
     End Sub
+
+
 
     Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
         Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
@@ -96,19 +87,11 @@ Public Class Holidays
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
         Dim reportfooter As String = "ALL HOLIDAYS" & "  " & "Printed on: " & Now
-e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 
-    Private Sub Holidays_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Holidays_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
+    Private Sub bbi_Close_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Close.ItemClick
+        Me.Close()
 
-    Private Sub Holidays_GridView_ShownEditor(sender As Object, e As EventArgs) Handles Holidays_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
     End Sub
 End Class

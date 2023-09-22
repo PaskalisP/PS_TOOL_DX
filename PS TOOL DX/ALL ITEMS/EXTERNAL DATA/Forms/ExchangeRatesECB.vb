@@ -57,15 +57,28 @@ Public Class ExchangeRatesECB
 
     Private Sub LoadExchangeRatesECB_btn_Click(sender As Object, e As EventArgs) Handles LoadExchangeRatesECB_btn.Click
         If IsDate(Me.FromDateEdit.Text) = True AndAlso IsDate(Me.TillDateEdit.Text) = True Then
-            Dim d1 As Date = Me.FromDateEdit.Text
-            Dim d2 As Date = Me.TillDateEdit.Text
-            If d1 <= d2 Then
-                Me.EXCHANGE_RATES_ECBTableAdapter.FillByExchangeDate(Me.EXTERNALDataset.EXCHANGE_RATES_ECB, d1, d2)
-                Me.ExchangeRatesECBBaseView.ExpandAllGroups()
-            Else
-                MessageBox.Show("Field:Date Till must be higher or equal to Field:Date From", "INVALID DATES", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Try
+                Me.FromDateEdit.DataBindings.Clear()
+                Me.TillDateEdit.DataBindings.Clear()
+
+                Dim d1 As Date = Me.FromDateEdit.Text
+                Dim d2 As Date = Me.TillDateEdit.Text
+                If d1 <= d2 Then
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    SplashScreenManager.Default.SetWaitFormCaption("Load ECB Exchange rates from: " & d1 & " till " & d2)
+                    Me.EXCHANGE_RATES_ECBTableAdapter.FillByExchangeDate(Me.EXTERNALDataset.EXCHANGE_RATES_ECB, d1, d2)
+                    Me.ExchangeRatesECBBaseView.ExpandAllGroups()
+                    SplashScreenManager.CloseForm(False)
+                Else
+                    MessageBox.Show("Field:Date Till must be higher or equal to Field:Date From", "INVALID DATES", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Exit Sub
+                End If
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
                 Exit Sub
-            End If
+            End Try
+
         End If
     End Sub
 
@@ -94,20 +107,22 @@ Public Class ExchangeRatesECB
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
-        Dim reportfooter As String = "ECB EXCHANGE RATES" & "  " & "Printed on: " & Now
-e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+        Dim reportfooter As String = "ECB EXCHANGE RATES" & "  " & "from: " & Me.FromDateEdit.Text & " till: " & Me.TillDateEdit.Text
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 
-    Private Sub ExchangeRatesECBBaseView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles ExchangeRatesECBBaseView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
+    'Private Sub ExchangeRatesECBBaseView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles ExchangeRatesECBBaseView.RowStyle
+    '    If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+    '        e.Appearance.BackColor = SystemColors.InactiveCaptionText
+    '    End If
+    'End Sub
 
-    Private Sub ExchangeRatesECBBaseView_ShownEditor(sender As Object, e As EventArgs) Handles ExchangeRatesECBBaseView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
+    'Private Sub ExchangeRatesECBBaseView_ShownEditor(sender As Object, e As EventArgs) Handles ExchangeRatesECBBaseView.ShownEditor
+    '    Dim view As GridView = CType(sender, GridView)
+    '    If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+    '        view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
+    '    End If
+    'End Sub
+
+
 End Class

@@ -35,17 +35,6 @@ Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
 Public Class GmpsPaymentsIn
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Dim CrystalRepDir As String = ""
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-
     Dim DATES_FORM As New DatesForm
     Dim FDate As Date
     Dim LDate As Date
@@ -53,6 +42,10 @@ Public Class GmpsPaymentsIn
     Dim LDateSql As String = Nothing
 
     Dim MessageType As String = Nothing
+
+    Friend WithEvents BgwLoadPayments As BackgroundWorker
+
+    Private bgws As New List(Of BackgroundWorker)()
 
 
     Sub New()
@@ -66,6 +59,13 @@ Public Class GmpsPaymentsIn
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
     Private Sub GMPS_PAYMENTS_INBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.GMPS_PAYMENTS_INBindingSource.EndEdit()
@@ -73,28 +73,38 @@ Public Class GmpsPaymentsIn
 
     End Sub
 
+    Private Sub DISABLE_BUTTONS()
+        Me.DateFrom_BarEditItem.Enabled = False
+        Me.DateTill_BarEditItem.Enabled = False
+        Me.bbi_Load.Enabled = False
+        Me.DisplayListDetails_bbi.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.DateFrom_BarEditItem.Enabled = True
+        Me.DateTill_BarEditItem.Enabled = True
+        Me.bbi_Load.Enabled = True
+        Me.DisplayListDetails_bbi.Enabled = True
+    End Sub
+
     Private Sub GmpsPaymentsIn_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
 
         '***********************************************************************
         '*******CRYSTAL REPORTS DIRECTORY************
         '+++++++++++++++++++++++++++++++++++++++++++++++++++
+        OpenSqlConnections()
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
-        cmd.Connection.Open()
         CrystalRepDir = cmd.ExecuteScalar
         'cmd.CommandText = "SELECT Max(IncomingDate) from [GMPS PAYMENTS IN]"
         cmd.CommandText = "Select DPARAMETER1 from PARAMETER where PARAMETER1 in ('GMPS_PAYMENTS_IN') and IdABTEILUNGSPARAMETER in ('MAX_DATES') and IdABTEILUNGSCODE_NAME in ('CLEARING')"
         Dim d As Date = cmd.ExecuteScalar
-        cmd.Connection.Close()
+        CloseSqlConnections()
         '***********************************************************************
 
 
-        Me.PaymentFromDateEdit.Text = d
-        Me.PaymentTillDateEdit.Text = d
+        Me.DateFrom_BarEditItem.EditValue = d
+        Me.DateTill_BarEditItem.EditValue = d
 
-        'Me.GMPS_PAYMENTS_INTableAdapter.SetCommandTimeOut(120000)
-        'Me.GMPS_PAYMENTS_INTableAdapter.FillByGMPS_IN_FILL(Me.ClearingDataSet.GMPS_PAYMENTS_IN, d, d)
 
         'Gridcontrol2
         GridControl2.UseEmbeddedNavigator = True
@@ -106,7 +116,6 @@ Public Class GmpsPaymentsIn
         AddHandler PaymentsIn_MT103_LayoutView.MouseDown, AddressOf PaymentsIn_MT103_LayoutView_MouseDown
         AddHandler PaymentsIn_MT202_LayoutView.MouseDown, AddressOf PaymentsIn_MT202_LayoutView_MouseDown
         AddHandler PaymentsIn_SEPA_DD_LayoutView.MouseDown, AddressOf PaymentsIn_SEPA_DD_LayoutView_MouseDown
-        AddHandler LayoutViews_btn.Click, AddressOf LayoutViews_btn_Click
         PaymentsIn_MT103_LayoutView.OptionsBehavior.AutoFocusCardOnScrolling = True
         PaymentsIn_MT103_LayoutView.OptionsBehavior.AllowSwitchViewModes = False
         PaymentsIn_SEPA_DD_LayoutView.OptionsBehavior.AutoFocusCardOnScrolling = True
@@ -118,8 +127,8 @@ Public Class GmpsPaymentsIn
 
 #Region "PAYMENTS_CHANGE_VIEWS"
     Private fExtendedEditMode As Boolean = False
-    Private strHideExtendedMode As String = "View List"
-    Private strShowExtendedMode As String = "View Details"
+    Private strHideExtendedMode As String = "Display List"
+    Private strShowExtendedMode As String = "Display Details"
     Protected Sub HideDetail(ByVal rowHandle As Integer)
         If MessageType.ToString = "103" OrElse MessageType.ToString = "103-CT-SEPA" OrElse MessageType.ToString = "103-EMZ" OrElse MessageType.ToString = "103-EMZ-CT" _
             OrElse MessageType.ToString.StartsWith("pacs.008") Then
@@ -130,8 +139,8 @@ Public Class GmpsPaymentsIn
             GridControl2.UseEmbeddedNavigator = True
             Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-            LayoutViews_btn.Text = strShowExtendedMode
-            LayoutViews_btn.ImageIndex = 1
+            DisplayListDetails_bbi.Caption = strShowExtendedMode
+            DisplayListDetails_bbi.ImageIndex = 9
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_MT103_LayoutView)
         ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" OrElse MessageType.ToString = "103-EMZ-DD" Then
             GridControl2.MainView.PostEditor()
@@ -141,8 +150,8 @@ Public Class GmpsPaymentsIn
             GridControl2.UseEmbeddedNavigator = True
             Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-            LayoutViews_btn.Text = strShowExtendedMode
-            LayoutViews_btn.ImageIndex = 1
+            DisplayListDetails_bbi.Caption = strShowExtendedMode
+            DisplayListDetails_bbi.ImageIndex = 9
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_SEPA_DD_LayoutView)
         ElseIf MessageType.ToString.StartsWith("202") OrElse MessageType.ToString.StartsWith("pacs.009") OrElse MessageType.ToString.StartsWith("pacs.004") Then
             GridControl2.MainView.PostEditor()
@@ -152,8 +161,8 @@ Public Class GmpsPaymentsIn
             GridControl2.UseEmbeddedNavigator = True
             Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-            LayoutViews_btn.Text = strShowExtendedMode
-            LayoutViews_btn.ImageIndex = 1
+            DisplayListDetails_bbi.Caption = strShowExtendedMode
+            DisplayListDetails_bbi.ImageIndex = 9
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_MT202_LayoutView)
         End If
 
@@ -167,8 +176,8 @@ Public Class GmpsPaymentsIn
             GridControl2.UseEmbeddedNavigator = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-            LayoutViews_btn.Text = strHideExtendedMode
-            LayoutViews_btn.ImageIndex = 0
+            DisplayListDetails_bbi.Caption = strHideExtendedMode
+            DisplayListDetails_bbi.ImageIndex = 10
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_MT103_LayoutView)
         ElseIf MessageType.ToString = "103-DD-SEPA" OrElse MessageType.ToString = "103-DD-SC" OrElse MessageType.ToString = "103-EMZ-DD" Then
             Dim datasourceRowIndex As Integer = PaymentsIn_GridView.GetDataSourceRowIndex(rowHandle)
@@ -177,8 +186,8 @@ Public Class GmpsPaymentsIn
             GridControl2.UseEmbeddedNavigator = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-            LayoutViews_btn.Text = strHideExtendedMode
-            LayoutViews_btn.ImageIndex = 0
+            DisplayListDetails_bbi.Caption = strHideExtendedMode
+            DisplayListDetails_bbi.ImageIndex = 10
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_SEPA_DD_LayoutView)
         ElseIf MessageType.ToString.StartsWith("202") OrElse MessageType.ToString.StartsWith("pacs.009") OrElse MessageType.ToString.StartsWith("pacs.004") Then
             Dim datasourceRowIndex As Integer = PaymentsIn_GridView.GetDataSourceRowIndex(rowHandle)
@@ -187,8 +196,8 @@ Public Class GmpsPaymentsIn
             GridControl2.UseEmbeddedNavigator = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
             Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-            LayoutViews_btn.Text = strHideExtendedMode
-            LayoutViews_btn.ImageIndex = 0
+            DisplayListDetails_bbi.Caption = strHideExtendedMode
+            DisplayListDetails_bbi.ImageIndex = 10
             fExtendedEditMode = (GridControl2.MainView Is PaymentsIn_MT202_LayoutView)
 
         End If
@@ -261,13 +270,18 @@ Public Class GmpsPaymentsIn
         End If
     End Sub
     Protected Sub LayoutViews_btn_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+    End Sub
+#End Region
+
+    Private Sub DisplayListDetails_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles DisplayListDetails_bbi.ItemClick
         If fExtendedEditMode Then
             HideDetail((TryCast(GridControl2.MainView, ColumnView)).FocusedRowHandle)
         Else
             ShowDetail((TryCast(GridControl2.MainView, ColumnView)).FocusedRowHandle)
         End If
     End Sub
-#End Region
+
 
     Private Sub PaymentsIn_MT103_LayoutView_MouseWheel(sender As Object, e As MouseEventArgs) Handles PaymentsIn_MT103_LayoutView.MouseWheel
         DXMouseEventArgs.GetMouseArgs(e).Handled = True
@@ -299,101 +313,103 @@ Public Class GmpsPaymentsIn
         DXMouseEventArgs.GetMouseArgs(e).Handled = True
     End Sub
 
-    Private Sub LoadPaymentsData_btn_Click(sender As Object, e As EventArgs) Handles LoadPaymentsData_btn.Click
-        If IsDate(Me.PaymentFromDateEdit.Text) = True AndAlso IsDate(Me.PaymentTillDateEdit.Text) = True Then
-            FDate = Me.PaymentFromDateEdit.Text
-            LDate = Me.PaymentTillDateEdit.Text
+    Private Sub bbi_Load_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Load.ItemClick
+        If Me.DateFrom_BarEditItem.EditValue.ToString <> "" And Me.DateTill_BarEditItem.EditValue.ToString <> "" Then
+            FDate = Me.DateFrom_BarEditItem.EditValue
+            LDate = Me.DateTill_BarEditItem.EditValue
             If LDate >= FDate Then
-                Dim FDateSql As String = FDate.ToString("yyyyMMdd")
-                Dim LDateSql As String = LDate.ToString("yyyyMMdd")
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Load Incoming Payment Orders from " & FDate & " till " & LDate)
 
+                DISABLE_BUTTONS()
+                Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                BgwLoadPayments = New BackgroundWorker
+                bgws.Add(BgwLoadPayments)
+                BgwLoadPayments.WorkerReportsProgress = True
+                BgwLoadPayments.RunWorkerAsync()
 
-                'Dim objCMD As SqlCommand = New SqlCommand("execute [GMPS_IN_FILL]  @FROMDATE='" & FDateSql & "', @TILLDATE='" & LDateSql & "'  ", conn)
-                'objCMD.CommandTimeout = 5000
-                'da = New SqlDataAdapter(objCMD)
-                'dt = New DataTable()
-                'da.Fill(dt)
-                'Results
-                'If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-                'Me.GridControl2.DataSource = Nothing
-                'Me.GridControl2.DataSource = dt
-                'Me.GridControl2.ForceInitialize()
-                'Else
-                'SplashScreenManager.CloseForm(False)
-                'MessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                'Exit Sub
-                'End If
-
-                'Data reader
-                Try
-                    Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                        Using sqlCmd As New SqlCommand()
-                            sqlCmd.CommandTimeout = 50000
-                            sqlCmd.CommandText = "SELECT * FROM [GMPS PAYMENTS IN] where [IncomingDate]>='" & FDateSql & "' and [IncomingDate]<='" & LDateSql & "'"
-                            sqlCmd.Connection = sqlConn
-                            If sqlConn.State = ConnectionState.Closed Then
-                                sqlConn.Open()
-                            End If
-
-                            Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                            Dim objDataTable As New DataTable()
-                            objDataTable.Load(objDataReader)
-                            If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                                Me.GridControl2.DataSource = Nothing
-                                Me.GridControl2.DataSource = objDataTable
-                                Me.GridControl2.ForceInitialize()
-
-                            Else
-                                SplashScreenManager.CloseForm(False)
-                                MessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                                Return
-                            End If
-                            If sqlConn.State = ConnectionState.Open Then
-                                sqlConn.Close()
-                            End If
-
-                        End Using
-                    End Using
-                Catch ex As Exception
-                    SplashScreenManager.CloseForm(False)
-                    MessageBox.Show(ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    Return
-                End Try
-
-                SplashScreenManager.CloseForm(False)
             Else
-                MessageBox.Show("Date From is higher than Date Till", "WRONG DATE INPUT", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show("Date From is higher than Date Till", "WRONG DATE INPUT", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
         End If
     End Sub
 
-    Private Sub PaymentsIn_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles PaymentsIn_GridView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-            e.Appearance.ForeColor = Color.Yellow
+    Private Sub BgwLoadPayments_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadPayments.DoWork
+        Try
+
+            Me.BgwLoadPayments.ReportProgress(10, "Load all incoming Payments from: " & FDate & " till " & LDate)
+            FDateSql = FDate.ToString("yyyyMMdd")
+            LDateSql = LDate.ToString("yyyyMMdd")
+
+            SqlCommandText = "SELECT * FROM [GMPS PAYMENTS IN] where [IncomingDate] BETWEEN '" & FDateSql & "' and '" & LDateSql & "'"
+            'Data reader
+            Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = SqlCommandText
+                        Sqlcmd.Connection = Sqlconn
+                        'Sqlcmd.CommandTimeout = 5000
+                        Sqlconn.Open()
+
+                        daSqlQueries = New SqlDataAdapter(SqlCommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+
+                        'Dim objDataReader As SqlDataReader = Sqlcmd.ExecuteReader()
+                        'objDataTable.Clear()
+                        'objDataTable.Load(objDataReader)
+
+                        Sqlconn.Close()
+
+                    End Using
+                End Using
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadPayments.CancelAsync()
+
+        End Try
+    End Sub
+
+
+    Private Sub BgwLoadPayments_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadPayments.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadPayments_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadPayments.RunWorkerCompleted
+        Workers_Complete(BgwLoadPayments, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl2.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl2.DataSource = dtSqlQueries
+            Me.GridControl2.ForceInitialize()
+            'Me.LCR_Details_GridView.PopulateColumns()
+            'Me.LCR_Details_GridView.BestFitColumns()
+            'Me.GridControl4.RefreshDataSource()
+            Me.LayoutControlGroup2.Text = "Incoming Payments  from: " & FDate & " till " & LDate
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Pariod", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
         End If
     End Sub
 
-    Private Sub PaymentsIn_GridView_ShownEditor(sender As Object, e As EventArgs) Handles PaymentsIn_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
 
-   
-    Private Sub Print_Export_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_btn.Click
+
+    Private Sub bbi_PrintOrExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_PrintOrExport.ItemClick
         If Not GridControl2.IsPrintingAvailable Then
             MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
             Return
         End If
         ' Opens the Preview window. 
         'GridControl1.ShowPrintPreview()
-        If LayoutViews_btn.Text = "View Details" Then
+        If DisplayListDetails_bbi.Caption = "Display Details" Then
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             PrintableComponentLink1.CreateDocument()
             PrintableComponentLink1.ShowPreview()
@@ -446,7 +462,6 @@ Public Class GmpsPaymentsIn
             End If
 
         End If
-
     End Sub
 
     Private Sub PreviewPrintableComponent(component As IPrintable, lookAndFeel As UserLookAndFeel)
@@ -477,12 +492,22 @@ Public Class GmpsPaymentsIn
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(ByVal sender As Object, ByVal e As DevExpress.XtraPrinting.CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
 
-        Dim reportfooter As String = "INCOMING PAYMENT MESSAGES"
+        Dim reportfooter As String = "INCOMING PAYMENTS FROM " & FDate & " TILL " & LDate
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
 
     End Sub
 
+    Private Sub GmpsPaymentsIn_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
 
+        End If
+    End Sub
 
+    Private Sub bbi_Close_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Close.ItemClick
+        Me.Close()
 
+    End Sub
 End Class

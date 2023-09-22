@@ -148,6 +148,7 @@ Partial Class ExchangeRatesECB
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BIC_DIRECTORY_PLUSTableAdapter = Nothing
         Me.TableAdapterManager.BIC_DIRECTORYTableAdapter = Nothing
+        Me.TableAdapterManager.BIC_HISTORYTableAdapter = Nothing
         Me.TableAdapterManager.BLZTableAdapter = Nothing
         Me.TableAdapterManager.COUNTRIESTableAdapter = Nothing
         Me.TableAdapterManager.CURRENCIESTableAdapter = Nothing
@@ -155,7 +156,6 @@ Partial Class ExchangeRatesECB
         Me.TableAdapterManager.HOLIDAYSTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_BUNDESLANDTableAdapter = Nothing
         Me.TableAdapterManager.SEPA_DIRECTORY_FULLTableAdapter = Nothing
-        Me.TableAdapterManager.SEPA_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.T2_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -174,16 +174,17 @@ Partial Class ExchangeRatesECB
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1040, 149, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1088, 661)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1256, 549)
         Me.LayoutControl1.TabIndex = 4
         Me.LayoutControl1.Text = "LayoutControl1"
         '
         'LoadExchangeRatesECB_btn
         '
         Me.LoadExchangeRatesECB_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LoadExchangeRatesECB_btn.ImageIndex = 6
-        Me.LoadExchangeRatesECB_btn.ImageList = Me.ImageCollection1
-        Me.LoadExchangeRatesECB_btn.Location = New System.Drawing.Point(465, 12)
+        Me.LoadExchangeRatesECB_btn.ImageOptions.Image = CType(resources.GetObject("LoadExchangeRatesECB_btn.ImageOptions.Image"), System.Drawing.Image)
+        Me.LoadExchangeRatesECB_btn.ImageOptions.ImageIndex = 6
+        Me.LoadExchangeRatesECB_btn.ImageOptions.ImageList = Me.ImageCollection1
+        Me.LoadExchangeRatesECB_btn.Location = New System.Drawing.Point(349, 12)
         Me.LoadExchangeRatesECB_btn.Name = "LoadExchangeRatesECB_btn"
         Me.LoadExchangeRatesECB_btn.Size = New System.Drawing.Size(134, 22)
         Me.LoadExchangeRatesECB_btn.StyleController = Me.LayoutControl1
@@ -203,8 +204,9 @@ Partial Class ExchangeRatesECB
         '
         'TillDateEdit
         '
+        Me.TillDateEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.EXCHANGE_RATES_ECBBindingSource, "EXCHANGE RATE DATE", True))
         Me.TillDateEdit.EditValue = Nothing
-        Me.TillDateEdit.Location = New System.Drawing.Point(345, 12)
+        Me.TillDateEdit.Location = New System.Drawing.Point(238, 12)
         Me.TillDateEdit.Name = "TillDateEdit"
         Me.TillDateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
         Me.TillDateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
@@ -213,14 +215,15 @@ Partial Class ExchangeRatesECB
         Me.TillDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.TillDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.TillDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.TillDateEdit.Size = New System.Drawing.Size(116, 20)
+        Me.TillDateEdit.Size = New System.Drawing.Size(107, 20)
         Me.TillDateEdit.StyleController = Me.LayoutControl1
         Me.TillDateEdit.TabIndex = 13
         '
         'FromDateEdit
         '
+        Me.FromDateEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.EXCHANGE_RATES_ECBBindingSource, "EXCHANGE RATE DATE", True))
         Me.FromDateEdit.EditValue = Nothing
-        Me.FromDateEdit.Location = New System.Drawing.Point(179, 12)
+        Me.FromDateEdit.Location = New System.Drawing.Point(72, 12)
         Me.FromDateEdit.Name = "FromDateEdit"
         Me.FromDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
         Me.FromDateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
@@ -230,7 +233,7 @@ Partial Class ExchangeRatesECB
         Me.FromDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.FromDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.FromDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.FromDateEdit.Size = New System.Drawing.Size(111, 20)
+        Me.FromDateEdit.Size = New System.Drawing.Size(102, 20)
         Me.FromDateEdit.StyleController = Me.LayoutControl1
         Me.FromDateEdit.TabIndex = 12
         '
@@ -247,7 +250,7 @@ Partial Class ExchangeRatesECB
         Me.GridControl2.MainView = Me.ExchangeRatesECBBaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.RepositoryItemImageComboBox2})
-        Me.GridControl2.Size = New System.Drawing.Size(1064, 611)
+        Me.GridControl2.Size = New System.Drawing.Size(1232, 499)
         Me.GridControl2.TabIndex = 11
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ExchangeRatesECBBaseView, Me.CustomerAccountsDetailView, Me.GridView2})
@@ -653,9 +656,9 @@ Partial Class ExchangeRatesECB
         'ExchangeRatesOCBSreport_btn
         '
         Me.ExchangeRatesOCBSreport_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ExchangeRatesOCBSreport_btn.ImageIndex = 5
-        Me.ExchangeRatesOCBSreport_btn.ImageList = Me.ImageCollection1
-        Me.ExchangeRatesOCBSreport_btn.Location = New System.Drawing.Point(932, 12)
+        Me.ExchangeRatesOCBSreport_btn.ImageOptions.ImageIndex = 5
+        Me.ExchangeRatesOCBSreport_btn.ImageOptions.ImageList = Me.ImageCollection1
+        Me.ExchangeRatesOCBSreport_btn.Location = New System.Drawing.Point(1100, 12)
         Me.ExchangeRatesOCBSreport_btn.Name = "ExchangeRatesOCBSreport_btn"
         Me.ExchangeRatesOCBSreport_btn.Size = New System.Drawing.Size(144, 22)
         Me.ExchangeRatesOCBSreport_btn.StyleController = Me.LayoutControl1
@@ -665,9 +668,9 @@ Partial Class ExchangeRatesECB
         'ExchangeRates_Print_Export_btn
         '
         Me.ExchangeRates_Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ExchangeRates_Print_Export_btn.ImageIndex = 2
-        Me.ExchangeRates_Print_Export_btn.ImageList = Me.ImageCollection1
-        Me.ExchangeRates_Print_Export_btn.Location = New System.Drawing.Point(12, 12)
+        Me.ExchangeRates_Print_Export_btn.ImageOptions.ImageIndex = 2
+        Me.ExchangeRates_Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
+        Me.ExchangeRates_Print_Export_btn.Location = New System.Drawing.Point(487, 12)
         Me.ExchangeRates_Print_Export_btn.Name = "ExchangeRates_Print_Export_btn"
         Me.ExchangeRates_Print_Export_btn.Size = New System.Drawing.Size(112, 22)
         Me.ExchangeRates_Print_Export_btn.StyleController = Me.LayoutControl1
@@ -688,10 +691,9 @@ Partial Class ExchangeRatesECB
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.LayoutControlItem6, Me.LayoutControlItem7, Me.LayoutControlItem5})
-        Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.LayoutControlItem6, Me.LayoutControlItem7, Me.LayoutControlItem5, Me.LayoutControlItem1})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1088, 661)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1256, 549)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'EmptySpaceItem1
@@ -700,14 +702,14 @@ Partial Class ExchangeRatesECB
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(591, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(327, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(496, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem1
         '
         Me.LayoutControlItem1.Control = Me.ExchangeRates_Print_Export_btn
         Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(475, 0)
         Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(116, 26)
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(116, 26)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
@@ -720,7 +722,7 @@ Partial Class ExchangeRatesECB
         '
         Me.LayoutControlItem3.Control = Me.ExchangeRatesOCBSreport_btn
         Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(920, 0)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(1088, 0)
         Me.LayoutControlItem3.MaxSize = New System.Drawing.Size(148, 26)
         Me.LayoutControlItem3.MinSize = New System.Drawing.Size(148, 26)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
@@ -734,9 +736,9 @@ Partial Class ExchangeRatesECB
         '
         Me.SimpleSeparator1.AllowHotTrack = False
         Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(918, 0)
+        Me.SimpleSeparator1.Location = New System.Drawing.Point(1087, 0)
         Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
+        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
         '
         'LayoutControlItem4
         '
@@ -744,7 +746,7 @@ Partial Class ExchangeRatesECB
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 26)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1068, 615)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1236, 503)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -752,7 +754,7 @@ Partial Class ExchangeRatesECB
         '
         Me.LayoutControlItem6.Control = Me.TillDateEdit
         Me.LayoutControlItem6.CustomizationFormText = "Date Till"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(282, 0)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(166, 0)
         Me.LayoutControlItem6.MaxSize = New System.Drawing.Size(171, 26)
         Me.LayoutControlItem6.MinSize = New System.Drawing.Size(171, 26)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
@@ -765,7 +767,7 @@ Partial Class ExchangeRatesECB
         '
         Me.LayoutControlItem7.Control = Me.LoadExchangeRatesECB_btn
         Me.LayoutControlItem7.CustomizationFormText = "LayoutControlItem7"
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(453, 0)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(337, 0)
         Me.LayoutControlItem7.MaxSize = New System.Drawing.Size(138, 26)
         Me.LayoutControlItem7.MinSize = New System.Drawing.Size(138, 26)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
@@ -778,7 +780,7 @@ Partial Class ExchangeRatesECB
         '
         Me.LayoutControlItem5.Control = Me.FromDateEdit
         Me.LayoutControlItem5.CustomizationFormText = "Date from"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(116, 0)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem5.MaxSize = New System.Drawing.Size(166, 26)
         Me.LayoutControlItem5.MinSize = New System.Drawing.Size(166, 26)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
@@ -802,9 +804,9 @@ Partial Class ExchangeRatesECB
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1088, 661)
+        Me.ClientSize = New System.Drawing.Size(1256, 549)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("ExchangeRatesECB.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "ExchangeRatesECB"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Exchange Rates ECB"

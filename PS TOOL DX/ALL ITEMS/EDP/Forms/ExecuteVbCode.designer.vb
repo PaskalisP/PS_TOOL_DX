@@ -20,7 +20,7 @@ Partial Class ExecuteVbCode
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GalleryItemGroup1 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
+        Dim GalleryItemGroup2 As DevExpress.XtraBars.Ribbon.GalleryItemGroup = New DevExpress.XtraBars.Ribbon.GalleryItemGroup()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ExecuteVbCode))
         Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.PasteItem1 = New DevExpress.XtraRichEdit.UI.PasteItem()
@@ -100,10 +100,11 @@ Partial Class ExecuteVbCode
         Me.bbiPrintVbScript = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiClose = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiExecutingVbProgress = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemProgressBar1 = New DevExpress.XtraEditors.Repository.RepositoryItemProgressBar()
+        Me.RepositoryItemMarqueeProgressBar1 = New DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar()
         Me.VbFileSaved_BarStaticItem = New DevExpress.XtraBars.BarStaticItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RepositoryItemProgressBar1 = New DevExpress.XtraEditors.Repository.RepositoryItemProgressBar()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RichEditBarController1 = New DevExpress.XtraRichEdit.UI.RichEditBarController(Me.components)
@@ -115,25 +116,25 @@ Partial Class ExecuteVbCode
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.XtraSaveFileDialog1 = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
         Me.XtraSaveFileDialog2 = New DevExpress.XtraEditors.XtraSaveFileDialog(Me.components)
-        Me.RepositoryItemMarqueeProgressBar1 = New DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar()
+        Me.bbiStopRunVbCode = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemRichEditFontSizeEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RepositoryItemMarqueeProgressBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemProgressBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RichEditBarController1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SharedImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SharedImageCollection1.ImageSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMarqueeProgressBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RibbonControl1
         '
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
-        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.PasteItem1, Me.CutItem1, Me.CopyItem1, Me.PasteSpecialItem1, Me.BarButtonGroup1, Me.ChangeFontNameItem1, Me.ChangeFontSizeItem1, Me.FontSizeIncreaseItem1, Me.FontSizeDecreaseItem1, Me.BarButtonGroup2, Me.ToggleFontBoldItem1, Me.ToggleFontItalicItem1, Me.ToggleFontUnderlineItem1, Me.ToggleFontDoubleUnderlineItem1, Me.ToggleFontStrikeoutItem1, Me.ToggleFontDoubleStrikeoutItem1, Me.ToggleFontSuperscriptItem1, Me.ToggleFontSubscriptItem1, Me.BarButtonGroup3, Me.ChangeFontColorItem1, Me.ChangeFontHighlightColorItem1, Me.ChangeTextCaseItem1, Me.MakeTextUpperCaseItem1, Me.MakeTextLowerCaseItem1, Me.CapitalizeEachWordCaseItem1, Me.ToggleTextCaseItem1, Me.ClearFormattingItem1, Me.BarButtonGroup4, Me.ToggleBulletedListItem1, Me.ToggleNumberingListItem1, Me.ToggleMultiLevelListItem1, Me.BarButtonGroup5, Me.DecreaseIndentItem1, Me.IncreaseIndentItem1, Me.RtlToggleBulletedListItem1, Me.RtlToggleNumberingListItem1, Me.RtlToggleMultiLevelListItem1, Me.RtlDecreaseIndentItem1, Me.RtlIncreaseIndentItem1, Me.ToggleParagraphLeftToRightItem1, Me.ToggleParagraphRightToLeftItem1, Me.BarButtonGroup6, Me.ToggleParagraphAlignmentLeftItem1, Me.ToggleParagraphAlignmentCenterItem1, Me.ToggleParagraphAlignmentRightItem1, Me.ToggleParagraphAlignmentJustifyItem1, Me.ToggleParagraphAlignmentArabicJustifyGroupItem1, Me.ToggleParagraphAlignmentArabicJustifyItem1, Me.ToggleParagraphAlignmentJustifyLowItem1, Me.ToggleParagraphAlignmentJustifyMediumItem1, Me.ToggleParagraphAlignmentJustifyHighItem1, Me.ToggleParagraphAlignmentDistributeItem1, Me.ToggleParagraphAlignmentThaiDistributeItem1, Me.ToggleShowWhitespaceItem1, Me.BarButtonGroup7, Me.ChangeParagraphLineSpacingItem1, Me.SetSingleParagraphSpacingItem1, Me.SetSesquialteralParagraphSpacingItem1, Me.SetDoubleParagraphSpacingItem1, Me.ShowLineSpacingFormItem1, Me.AddSpacingBeforeParagraphItem1, Me.RemoveSpacingBeforeParagraphItem1, Me.AddSpacingAfterParagraphItem1, Me.RemoveSpacingAfterParagraphItem1, Me.ChangeParagraphBackColorItem1, Me.GalleryChangeStyleItem1, Me.FindItem1, Me.ReplaceItem1, Me.bbiOpenVbFile, Me.bbiRunVbCode, Me.bbiSaveVbFile, Me.bbiPrintVbScript, Me.bbiClose, Me.bbiExecutingVbProgress, Me.VbFileSaved_BarStaticItem})
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.PasteItem1, Me.CutItem1, Me.CopyItem1, Me.PasteSpecialItem1, Me.BarButtonGroup1, Me.ChangeFontNameItem1, Me.ChangeFontSizeItem1, Me.FontSizeIncreaseItem1, Me.FontSizeDecreaseItem1, Me.BarButtonGroup2, Me.ToggleFontBoldItem1, Me.ToggleFontItalicItem1, Me.ToggleFontUnderlineItem1, Me.ToggleFontDoubleUnderlineItem1, Me.ToggleFontStrikeoutItem1, Me.ToggleFontDoubleStrikeoutItem1, Me.ToggleFontSuperscriptItem1, Me.ToggleFontSubscriptItem1, Me.BarButtonGroup3, Me.ChangeFontColorItem1, Me.ChangeFontHighlightColorItem1, Me.ChangeTextCaseItem1, Me.MakeTextUpperCaseItem1, Me.MakeTextLowerCaseItem1, Me.CapitalizeEachWordCaseItem1, Me.ToggleTextCaseItem1, Me.ClearFormattingItem1, Me.BarButtonGroup4, Me.ToggleBulletedListItem1, Me.ToggleNumberingListItem1, Me.ToggleMultiLevelListItem1, Me.BarButtonGroup5, Me.DecreaseIndentItem1, Me.IncreaseIndentItem1, Me.RtlToggleBulletedListItem1, Me.RtlToggleNumberingListItem1, Me.RtlToggleMultiLevelListItem1, Me.RtlDecreaseIndentItem1, Me.RtlIncreaseIndentItem1, Me.ToggleParagraphLeftToRightItem1, Me.ToggleParagraphRightToLeftItem1, Me.BarButtonGroup6, Me.ToggleParagraphAlignmentLeftItem1, Me.ToggleParagraphAlignmentCenterItem1, Me.ToggleParagraphAlignmentRightItem1, Me.ToggleParagraphAlignmentJustifyItem1, Me.ToggleParagraphAlignmentArabicJustifyGroupItem1, Me.ToggleParagraphAlignmentArabicJustifyItem1, Me.ToggleParagraphAlignmentJustifyLowItem1, Me.ToggleParagraphAlignmentJustifyMediumItem1, Me.ToggleParagraphAlignmentJustifyHighItem1, Me.ToggleParagraphAlignmentDistributeItem1, Me.ToggleParagraphAlignmentThaiDistributeItem1, Me.ToggleShowWhitespaceItem1, Me.BarButtonGroup7, Me.ChangeParagraphLineSpacingItem1, Me.SetSingleParagraphSpacingItem1, Me.SetSesquialteralParagraphSpacingItem1, Me.SetDoubleParagraphSpacingItem1, Me.ShowLineSpacingFormItem1, Me.AddSpacingBeforeParagraphItem1, Me.RemoveSpacingBeforeParagraphItem1, Me.AddSpacingAfterParagraphItem1, Me.RemoveSpacingAfterParagraphItem1, Me.ChangeParagraphBackColorItem1, Me.GalleryChangeStyleItem1, Me.FindItem1, Me.ReplaceItem1, Me.bbiOpenVbFile, Me.bbiRunVbCode, Me.bbiSaveVbFile, Me.bbiPrintVbScript, Me.bbiClose, Me.bbiExecutingVbProgress, Me.VbFileSaved_BarStaticItem, Me.bbiStopRunVbCode})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 77
+        Me.RibbonControl1.MaxItemId = 78
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.PageHeaderItemLinks.Add(Me.bbiExecutingVbProgress)
         Me.RibbonControl1.PageHeaderItemLinks.Add(Me.VbFileSaved_BarStaticItem)
@@ -549,7 +550,7 @@ Partial Class ExecuteVbCode
         '
         '
         Me.GalleryChangeStyleItem1.Gallery.ColumnCount = 10
-        Me.GalleryChangeStyleItem1.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {GalleryItemGroup1})
+        Me.GalleryChangeStyleItem1.Gallery.Groups.AddRange(New DevExpress.XtraBars.Ribbon.GalleryItemGroup() {GalleryItemGroup2})
         Me.GalleryChangeStyleItem1.Gallery.ImageSize = New System.Drawing.Size(65, 46)
         Me.GalleryChangeStyleItem1.Id = 66
         Me.GalleryChangeStyleItem1.Name = "GalleryChangeStyleItem1"
@@ -610,9 +611,10 @@ Partial Class ExecuteVbCode
         Me.bbiExecutingVbProgress.Name = "bbiExecutingVbProgress"
         Me.bbiExecutingVbProgress.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
-        'RepositoryItemProgressBar1
+        'RepositoryItemMarqueeProgressBar1
         '
-        Me.RepositoryItemProgressBar1.Name = "RepositoryItemProgressBar1"
+        Me.RepositoryItemMarqueeProgressBar1.Name = "RepositoryItemMarqueeProgressBar1"
+        Me.RepositoryItemMarqueeProgressBar1.ProgressAnimationMode = DevExpress.Utils.Drawing.ProgressAnimationMode.PingPong
         '
         'VbFileSaved_BarStaticItem
         '
@@ -635,11 +637,16 @@ Partial Class ExecuteVbCode
         'RibbonPageGroup1
         '
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiRunVbCode)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiStopRunVbCode, True)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiOpenVbFile, True)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiSaveVbFile, True)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiPrintVbScript, True)
         Me.RibbonPageGroup1.ItemLinks.Add(Me.bbiClose, True)
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        '
+        'RepositoryItemProgressBar1
+        '
+        Me.RepositoryItemProgressBar1.Name = "RepositoryItemProgressBar1"
         '
         'RibbonStatusBar1
         '
@@ -775,10 +782,13 @@ Partial Class ExecuteVbCode
         '
         Me.XtraSaveFileDialog2.FileName = "XtraSaveFileDialog2"
         '
-        'RepositoryItemMarqueeProgressBar1
+        'bbiStopRunVbCode
         '
-        Me.RepositoryItemMarqueeProgressBar1.Name = "RepositoryItemMarqueeProgressBar1"
-        Me.RepositoryItemMarqueeProgressBar1.ProgressAnimationMode = DevExpress.Utils.Drawing.ProgressAnimationMode.PingPong
+        Me.bbiStopRunVbCode.Caption = "Stop VB.NET Script execution"
+        Me.bbiStopRunVbCode.Id = 77
+        Me.bbiStopRunVbCode.ImageOptions.SvgImage = CType(resources.GetObject("bbiStopRunVbCode.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.bbiStopRunVbCode.Name = "bbiStopRunVbCode"
+        Me.bbiStopRunVbCode.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'ExecuteVbCode
         '
@@ -796,13 +806,13 @@ Partial Class ExecuteVbCode
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemFontEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemRichEditFontSizeEdit1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RepositoryItemMarqueeProgressBar1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemProgressBar1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RichEditBarController1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SharedImageCollection1.ImageSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SharedImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMarqueeProgressBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -902,4 +912,5 @@ Partial Class ExecuteVbCode
     Friend WithEvents RepositoryItemProgressBar1 As DevExpress.XtraEditors.Repository.RepositoryItemProgressBar
     Friend WithEvents VbFileSaved_BarStaticItem As DevExpress.XtraBars.BarStaticItem
     Friend WithEvents RepositoryItemMarqueeProgressBar1 As DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar
+    Friend WithEvents bbiStopRunVbCode As DevExpress.XtraBars.BarButtonItem
 End Class

@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class T2_DIRECTORY
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -21,12 +21,17 @@ Partial Class T2_DIRECTORY
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(T2_DIRECTORY))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem1 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim SuperToolTip3 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem3 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem2 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem5 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -37,19 +42,9 @@ Partial Class T2_DIRECTORY
         Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SuperToolTip4 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem6 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Me.T2DetailView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.layoutViewField_colID1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
@@ -148,55 +143,26 @@ Partial Class T2_DIRECTORY
         Me.ValidFrom_DateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
-        Me.LastUpdate_txt = New DevExpress.XtraEditors.TextEdit()
-        Me.DropDownButton1 = New DevExpress.XtraEditors.DropDownButton()
-        Me.PopupMenu1 = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.ReCreateT2Directory_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.FullT2Dir_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.ManualT2Dir_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
-        Me.Bar1 = New DevExpress.XtraBars.Bar()
-        Me.Bar2 = New DevExpress.XtraBars.Bar()
-        Me.Bar3 = New DevExpress.XtraBars.Bar()
-        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
-        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
-        Me.SQL_Run_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.SQL_ReRun_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.SQL_ReRun_AllDays_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.BarButtonItem1 = New DevExpress.XtraBars.BarButtonItem()
-        Me.RR_AllOutstandings_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
-        Me.ReconciliationReportsLast_BarSubItem = New DevExpress.XtraBars.BarSubItem()
-        Me.BarEditItem1 = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemGridLookUpEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit()
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.RR_Last_BarEditItem = New DevExpress.XtraBars.BarEditItem()
-        Me.RepositoryItemGridLookUpEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit()
-        Me.All_Nostro_Last_Reconciliations_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colNostroAccount_LastRec = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNostroCurrency_LastRec = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNostroAccountName_LastRec = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colNostroReconcileDate_LastRec = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colOutstandingItems = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.Reload_T2_Dir_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.ViewEdit_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem_ProgressPanel = New DevExpress.XtraLayout.LayoutControlItem()
         Me.DxValidationProvider1 = New DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(Me.components)
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.bbi_Reload_T2_Dir = New DevExpress.XtraBars.BarButtonItem()
+        Me.DisplayListDetails_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_AddParticipant = New DevExpress.XtraBars.BarButtonItem()
+        Me.T2_Dir_BarSubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.bbi_T2_Full_Dir_Create = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_T2_ManInput_Dir_Create = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_PrintOrExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         CType(Me.T2DetailView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BICCODERepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -247,28 +213,15 @@ Partial Class T2_DIRECTORY
         CType(Me.ValidFrom_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.All_Nostro_Last_Reconciliations_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem_ProgressPanel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'T2DetailView
@@ -582,6 +535,8 @@ Partial Class T2_DIRECTORY
         Me.ImageCollection1.Images.SetKeyName(12, "target2.gif")
         Me.ImageCollection1.InsertGalleryImage("add_16x16.png", "grayscaleimages/actions/add_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("grayscaleimages/actions/add_16x16.png"), 13)
         Me.ImageCollection1.Images.SetKeyName(13, "add_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(14, "contact_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(15, "chartsshowlegend_16x16.png")
         '
         'layoutViewField_colTYPE_OF_CHANGE1
         '
@@ -722,15 +677,15 @@ Partial Class T2_DIRECTORY
         Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl2.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, True, "Add new T2 Participant", "AddNewT2")})
-        GridLevelNode1.LevelTemplate = Me.T2DetailView
-        GridLevelNode1.RelationName = "Level1"
-        Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(12, 58)
+        Me.GridControl2.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, False, "Add new T2 Participant", "AddNewT2")})
+        GridLevelNode2.LevelTemplate = Me.T2DetailView
+        GridLevelNode2.RelationName = "Level1"
+        Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        Me.GridControl2.Location = New System.Drawing.Point(12, 77)
         Me.GridControl2.MainView = Me.T2BaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.RepositoryItemImageComboBox2, Me.RepositoryItemComboBox1, Me.RepositoryItemTextEdit1, Me.BICCODERepositoryItemTextEdit})
-        Me.GridControl2.Size = New System.Drawing.Size(1390, 440)
+        Me.GridControl2.Size = New System.Drawing.Size(1439, 515)
         Me.GridControl2.TabIndex = 23
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.T2BaseView, Me.T2DetailView})
@@ -772,6 +727,7 @@ Partial Class T2_DIRECTORY
         Me.T2BaseView.OptionsView.ShowAutoFilterRow = True
         Me.T2BaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.T2BaseView.OptionsView.ShowFooter = True
+        Me.T2BaseView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -1079,7 +1035,6 @@ Partial Class T2_DIRECTORY
         Me.TableAdapterManager.HOLIDAYSTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_BUNDESLANDTableAdapter = Nothing
         Me.TableAdapterManager.SEPA_DIRECTORY_FULLTableAdapter = Nothing
-        Me.TableAdapterManager.SEPA_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.T2_DIRECTORYTableAdapter = Me.T2_DIRECTORYTableAdapter
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -1091,7 +1046,7 @@ Partial Class T2_DIRECTORY
         '
         Me.PrintableComponentLink1.Component = Me.GridControl2
         Me.PrintableComponentLink1.Landscape = True
-        Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4
+        Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A3
         Me.PrintableComponentLink1.PrintingSystemBase = Me.PrintingSystem1
         '
         'GroupControl1
@@ -1120,9 +1075,9 @@ Partial Class T2_DIRECTORY
         Me.GroupControl1.Controls.Add(Me.LabelControl2)
         Me.GroupControl1.Controls.Add(Me.CurrencyName_lbl)
         Me.GroupControl1.Controls.Add(Me.ValidFrom_DateEdit)
-        Me.GroupControl1.Location = New System.Drawing.Point(261, 39)
+        Me.GroupControl1.Location = New System.Drawing.Point(261, 109)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(899, 408)
+        Me.GroupControl1.Size = New System.Drawing.Size(948, 536)
         Me.GroupControl1.TabIndex = 0
         Me.GroupControl1.Text = "New T2/RTGS Participant"
         '
@@ -1131,21 +1086,21 @@ Partial Class T2_DIRECTORY
         Me.AddNewT2ParticipantAllBranches_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.AddNewT2ParticipantAllBranches_btn.ImageOptions.ImageIndex = 13
         Me.AddNewT2ParticipantAllBranches_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.AddNewT2ParticipantAllBranches_btn.Location = New System.Drawing.Point(299, 377)
+        Me.AddNewT2ParticipantAllBranches_btn.Location = New System.Drawing.Point(324, 505)
         Me.AddNewT2ParticipantAllBranches_btn.Name = "AddNewT2ParticipantAllBranches_btn"
         Me.AddNewT2ParticipantAllBranches_btn.Size = New System.Drawing.Size(283, 23)
-        ToolTipTitleItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
-        ToolTipTitleItem1.Text = "Add new T2/RTGS Participant and all his " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Branches"
-        ToolTipItem1.LeftIndent = 6
-        ToolTipItem1.Text = "Adds the entered participant and all of his branches based on BIC8"
-        ToolTipTitleItem2.LeftIndent = 6
-        ToolTipTitleItem2.Text = "Example: Adding new participant BIC:PCBCCNBJXXX " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "all other Branches" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "PCBCCNBJ001" &
+        ToolTipTitleItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        ToolTipTitleItem4.Text = "Add new T2/RTGS Participant and all his " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Branches"
+        ToolTipItem3.LeftIndent = 6
+        ToolTipItem3.Text = "Adds the entered participant and all of his branches based on BIC8"
+        ToolTipTitleItem5.LeftIndent = 6
+        ToolTipTitleItem5.Text = "Example: Adding new participant BIC:PCBCCNBJXXX " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "all other Branches" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "PCBCCNBJ001" &
     ",PCBCCNBJ002... etc." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "will be added into directory" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        SuperToolTip1.Items.Add(ToolTipTitleItem1)
-        SuperToolTip1.Items.Add(ToolTipItem1)
-        SuperToolTip1.Items.Add(ToolTipSeparatorItem1)
-        SuperToolTip1.Items.Add(ToolTipTitleItem2)
-        Me.AddNewT2ParticipantAllBranches_btn.SuperTip = SuperToolTip1
+        SuperToolTip3.Items.Add(ToolTipTitleItem4)
+        SuperToolTip3.Items.Add(ToolTipItem3)
+        SuperToolTip3.Items.Add(ToolTipSeparatorItem2)
+        SuperToolTip3.Items.Add(ToolTipTitleItem5)
+        Me.AddNewT2ParticipantAllBranches_btn.SuperTip = SuperToolTip3
         Me.AddNewT2ParticipantAllBranches_btn.TabIndex = 20
         Me.AddNewT2ParticipantAllBranches_btn.Text = "Add new T2/RTGS Participant and all his Branches"
         '
@@ -1248,9 +1203,9 @@ Partial Class T2_DIRECTORY
         Me.AccountHolderBIC_ButtonEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.AccountHolderBIC_ButtonEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.AccountHolderBIC_ButtonEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions1.EnableTransparency = False
-        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
-        Me.AccountHolderBIC_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Right, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions4.EnableTransparency = False
+        EditorButtonImageOptions4.Image = CType(resources.GetObject("EditorButtonImageOptions4.Image"), System.Drawing.Image)
+        Me.AccountHolderBIC_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Right, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.AccountHolderBIC_ButtonEdit.Properties.Mask.EditMask = "([A-Z]){6}([0-9A-Z]){2}([0-9A-Z]{3})?"
         Me.AccountHolderBIC_ButtonEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.AccountHolderBIC_ButtonEdit.Size = New System.Drawing.Size(154, 22)
@@ -1282,9 +1237,9 @@ Partial Class T2_DIRECTORY
         Me.AddresseeBIC_ButtonEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.AddresseeBIC_ButtonEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.AddresseeBIC_ButtonEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions2.EnableTransparency = False
-        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
-        Me.AddresseeBIC_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Right, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.EnableTransparency = False
+        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
+        Me.AddresseeBIC_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Right, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.AddresseeBIC_ButtonEdit.Properties.Mask.EditMask = "([A-Z]){6}([0-9A-Z]){2}([0-9A-Z]{3})?"
         Me.AddresseeBIC_ButtonEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.AddresseeBIC_ButtonEdit.Size = New System.Drawing.Size(154, 22)
@@ -1336,9 +1291,9 @@ Partial Class T2_DIRECTORY
         Me.ParticipantBIC_ButtonEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.ParticipantBIC_ButtonEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.ParticipantBIC_ButtonEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        EditorButtonImageOptions3.EnableTransparency = False
-        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
-        Me.ParticipantBIC_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Right, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions2.EnableTransparency = False
+        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
+        Me.ParticipantBIC_ButtonEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Right, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.ParticipantBIC_ButtonEdit.Properties.Mask.EditMask = "([A-Z]){6}([0-9A-Z]){2}([0-9A-Z]{3})?"
         Me.ParticipantBIC_ButtonEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx
         Me.ParticipantBIC_ButtonEdit.Size = New System.Drawing.Size(154, 22)
@@ -1349,7 +1304,7 @@ Partial Class T2_DIRECTORY
         Me.Cancel_btn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cancel_btn.ImageOptions.ImageIndex = 10
         Me.Cancel_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Cancel_btn.Location = New System.Drawing.Point(747, 377)
+        Me.Cancel_btn.Location = New System.Drawing.Point(796, 505)
         Me.Cancel_btn.Name = "Cancel_btn"
         Me.Cancel_btn.Size = New System.Drawing.Size(147, 23)
         Me.Cancel_btn.TabIndex = 19
@@ -1360,16 +1315,16 @@ Partial Class T2_DIRECTORY
         Me.AddNewT2Participant_btn.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.AddNewT2Participant_btn.ImageOptions.ImageIndex = 8
         Me.AddNewT2Participant_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.AddNewT2Participant_btn.Location = New System.Drawing.Point(5, 377)
+        Me.AddNewT2Participant_btn.Location = New System.Drawing.Point(5, 505)
         Me.AddNewT2Participant_btn.Name = "AddNewT2Participant_btn"
         Me.AddNewT2Participant_btn.Size = New System.Drawing.Size(187, 23)
-        ToolTipTitleItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
-        ToolTipTitleItem3.Text = "Add new T2/RTGS Participant"
-        ToolTipItem2.LeftIndent = 6
-        ToolTipItem2.Text = "Adds only the entered Participants data into " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T2 RTGS Directory"
-        SuperToolTip2.Items.Add(ToolTipTitleItem3)
-        SuperToolTip2.Items.Add(ToolTipItem2)
-        Me.AddNewT2Participant_btn.SuperTip = SuperToolTip2
+        ToolTipTitleItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        ToolTipTitleItem6.Text = "Add new T2/RTGS Participant"
+        ToolTipItem4.LeftIndent = 6
+        ToolTipItem4.Text = "Adds only the entered Participants data into " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "T2 RTGS Directory"
+        SuperToolTip4.Items.Add(ToolTipTitleItem6)
+        SuperToolTip4.Items.Add(ToolTipItem4)
+        Me.AddNewT2Participant_btn.SuperTip = SuperToolTip4
         Me.AddNewT2Participant_btn.TabIndex = 18
         Me.AddNewT2Participant_btn.Text = "Add new T2/RTGS Participant"
         '
@@ -1448,20 +1403,15 @@ Partial Class T2_DIRECTORY
         'LayoutControl1
         '
         Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
-        Me.LayoutControl1.Controls.Add(Me.LastUpdate_txt)
-        Me.LayoutControl1.Controls.Add(Me.DropDownButton1)
-        Me.LayoutControl1.Controls.Add(Me.Reload_T2_Dir_btn)
-        Me.LayoutControl1.Controls.Add(Me.ViewEdit_btn)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.Print_Export_btn)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 21)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1040, 149, 250, 350)
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(746, 149, 769, 505)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1414, 510)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1463, 604)
         Me.LayoutControl1.TabIndex = 5
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -1479,345 +1429,12 @@ Partial Class T2_DIRECTORY
         Me.ProgressPanel1.AutoWidth = True
         Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
         Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
-        Me.ProgressPanel1.Location = New System.Drawing.Point(188, 38)
+        Me.ProgressPanel1.Location = New System.Drawing.Point(24, 45)
         Me.ProgressPanel1.Name = "ProgressPanel1"
         Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
         Me.ProgressPanel1.StyleController = Me.LayoutControl1
         Me.ProgressPanel1.TabIndex = 24
         Me.ProgressPanel1.Text = "ProgressPanel1"
-        '
-        'LastUpdate_txt
-        '
-        Me.LastUpdate_txt.Location = New System.Drawing.Point(572, 12)
-        Me.LastUpdate_txt.Name = "LastUpdate_txt"
-        Me.LastUpdate_txt.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LastUpdate_txt.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseFont = True
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseForeColor = True
-        Me.LastUpdate_txt.Properties.ReadOnly = True
-        Me.LastUpdate_txt.Properties.UseReadOnlyAppearance = False
-        Me.LastUpdate_txt.Size = New System.Drawing.Size(176, 20)
-        Me.LastUpdate_txt.StyleController = Me.LayoutControl1
-        Me.LastUpdate_txt.TabIndex = 10
-        '
-        'DropDownButton1
-        '
-        Me.DropDownButton1.DropDownControl = Me.PopupMenu1
-        Me.DropDownButton1.ImageOptions.ImageIndex = 12
-        Me.DropDownButton1.ImageOptions.ImageList = Me.ImageCollection1
-        Me.DropDownButton1.Location = New System.Drawing.Point(368, 12)
-        Me.DropDownButton1.MenuManager = Me.BarManager1
-        Me.DropDownButton1.Name = "DropDownButton1"
-        Me.DropDownButton1.Size = New System.Drawing.Size(137, 22)
-        Me.DropDownButton1.StyleController = Me.LayoutControl1
-        Me.DropDownButton1.TabIndex = 26
-        Me.DropDownButton1.Text = "T2 Directory"
-        '
-        'PopupMenu1
-        '
-        Me.PopupMenu1.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ReCreateT2Directory_BarSubItem)})
-        Me.PopupMenu1.Manager = Me.BarManager1
-        Me.PopupMenu1.Name = "PopupMenu1"
-        '
-        'ReCreateT2Directory_BarSubItem
-        '
-        Me.ReCreateT2Directory_BarSubItem.Caption = "Re-create T2 Directory"
-        Me.ReCreateT2Directory_BarSubItem.Id = 4
-        Me.ReCreateT2Directory_BarSubItem.ImageOptions.ImageIndex = 12
-        Me.ReCreateT2Directory_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.FullT2Dir_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.ManualT2Dir_BarButtonItem, True)})
-        Me.ReCreateT2Directory_BarSubItem.Name = "ReCreateT2Directory_BarSubItem"
-        '
-        'FullT2Dir_BarButtonItem
-        '
-        Me.FullT2Dir_BarButtonItem.Caption = "Full Directory"
-        Me.FullT2Dir_BarButtonItem.Id = 5
-        Me.FullT2Dir_BarButtonItem.ImageOptions.ImageIndex = 12
-        Me.FullT2Dir_BarButtonItem.Name = "FullT2Dir_BarButtonItem"
-        '
-        'ManualT2Dir_BarButtonItem
-        '
-        Me.ManualT2Dir_BarButtonItem.Caption = "Manual inputs only"
-        Me.ManualT2Dir_BarButtonItem.Id = 6
-        Me.ManualT2Dir_BarButtonItem.ImageOptions.ImageIndex = 12
-        Me.ManualT2Dir_BarButtonItem.Name = "ManualT2Dir_BarButtonItem"
-        '
-        'BarManager1
-        '
-        Me.BarManager1.Bars.AddRange(New DevExpress.XtraBars.Bar() {Me.Bar1, Me.Bar2, Me.Bar3})
-        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
-        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
-        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
-        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
-        Me.BarManager1.Form = Me
-        Me.BarManager1.Images = Me.ImageCollection1
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.SQL_Run_BarButtonItem, Me.SQL_ReRun_BarButtonItem, Me.SQL_ReRun_AllDays_BarButtonItem, Me.BarButtonItem1, Me.ReCreateT2Directory_BarSubItem, Me.FullT2Dir_BarButtonItem, Me.ManualT2Dir_BarButtonItem, Me.RR_AllOutstandings_BarButtonItem, Me.ReconciliationReportsLast_BarSubItem, Me.BarEditItem1, Me.RR_Last_BarEditItem})
-        Me.BarManager1.MainMenu = Me.Bar2
-        Me.BarManager1.MaxItemId = 11
-        Me.BarManager1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemGridLookUpEdit1, Me.RepositoryItemGridLookUpEdit2})
-        Me.BarManager1.StatusBar = Me.Bar3
-        '
-        'Bar1
-        '
-        Me.Bar1.BarName = "Tools"
-        Me.Bar1.DockCol = 0
-        Me.Bar1.DockRow = 1
-        Me.Bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.Bar1.FloatLocation = New System.Drawing.Point(1228, 755)
-        Me.Bar1.Text = "Tools"
-        Me.Bar1.Visible = False
-        '
-        'Bar2
-        '
-        Me.Bar2.BarName = "Main menu"
-        Me.Bar2.DockCol = 0
-        Me.Bar2.DockRow = 0
-        Me.Bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top
-        Me.Bar2.OptionsBar.MultiLine = True
-        Me.Bar2.OptionsBar.UseWholeRow = True
-        Me.Bar2.Text = "Main menu"
-        Me.Bar2.Visible = False
-        '
-        'Bar3
-        '
-        Me.Bar3.BarName = "Status bar"
-        Me.Bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom
-        Me.Bar3.DockCol = 0
-        Me.Bar3.DockRow = 0
-        Me.Bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom
-        Me.Bar3.OptionsBar.AllowQuickCustomization = False
-        Me.Bar3.OptionsBar.DrawDragBorder = False
-        Me.Bar3.OptionsBar.UseWholeRow = True
-        Me.Bar3.Text = "Status bar"
-        Me.Bar3.Visible = False
-        '
-        'barDockControlTop
-        '
-        Me.barDockControlTop.CausesValidation = False
-        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
-        Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1414, 21)
-        '
-        'barDockControlBottom
-        '
-        Me.barDockControlBottom.CausesValidation = False
-        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 531)
-        Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1414, 39)
-        '
-        'barDockControlLeft
-        '
-        Me.barDockControlLeft.CausesValidation = False
-        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 21)
-        Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 510)
-        '
-        'barDockControlRight
-        '
-        Me.barDockControlRight.CausesValidation = False
-        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1414, 21)
-        Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 510)
-        '
-        'SQL_Run_BarButtonItem
-        '
-        Me.SQL_Run_BarButtonItem.Caption = "Reconciliations"
-        Me.SQL_Run_BarButtonItem.Id = 0
-        Me.SQL_Run_BarButtonItem.ImageOptions.ImageIndex = 2
-        Me.SQL_Run_BarButtonItem.Name = "SQL_Run_BarButtonItem"
-        '
-        'SQL_ReRun_BarButtonItem
-        '
-        Me.SQL_ReRun_BarButtonItem.Caption = "CAR - Solva re-calculation (Current Day)"
-        Me.SQL_ReRun_BarButtonItem.Id = 1
-        Me.SQL_ReRun_BarButtonItem.ImageOptions.ImageIndex = 2
-        Me.SQL_ReRun_BarButtonItem.Name = "SQL_ReRun_BarButtonItem"
-        '
-        'SQL_ReRun_AllDays_BarButtonItem
-        '
-        Me.SQL_ReRun_AllDays_BarButtonItem.Caption = "SQL Re-Run (All Days)"
-        Me.SQL_ReRun_AllDays_BarButtonItem.Id = 2
-        Me.SQL_ReRun_AllDays_BarButtonItem.ImageOptions.ImageIndex = 2
-        Me.SQL_ReRun_AllDays_BarButtonItem.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Red
-        Me.SQL_ReRun_AllDays_BarButtonItem.ItemAppearance.Normal.Options.UseForeColor = True
-        Me.SQL_ReRun_AllDays_BarButtonItem.ItemInMenuAppearance.Normal.ForeColor = System.Drawing.Color.Red
-        Me.SQL_ReRun_AllDays_BarButtonItem.ItemInMenuAppearance.Normal.Options.UseForeColor = True
-        Me.SQL_ReRun_AllDays_BarButtonItem.Name = "SQL_ReRun_AllDays_BarButtonItem"
-        '
-        'BarButtonItem1
-        '
-        Me.BarButtonItem1.Caption = "SQL Re-Run (Specific Period)"
-        Me.BarButtonItem1.Id = 3
-        Me.BarButtonItem1.ImageOptions.ImageIndex = 2
-        Me.BarButtonItem1.Name = "BarButtonItem1"
-        '
-        'RR_AllOutstandings_BarButtonItem
-        '
-        Me.RR_AllOutstandings_BarButtonItem.Caption = "All outstanding Bookings in all Nostro Accounts                             "
-        Me.RR_AllOutstandings_BarButtonItem.Id = 7
-        Me.RR_AllOutstandings_BarButtonItem.ImageOptions.ImageIndex = 7
-        Me.RR_AllOutstandings_BarButtonItem.Name = "RR_AllOutstandings_BarButtonItem"
-        '
-        'ReconciliationReportsLast_BarSubItem
-        '
-        Me.ReconciliationReportsLast_BarSubItem.Caption = "Reconciliation Reports (Last)"
-        Me.ReconciliationReportsLast_BarSubItem.Id = 8
-        Me.ReconciliationReportsLast_BarSubItem.ImageOptions.ImageIndex = 5
-        Me.ReconciliationReportsLast_BarSubItem.Name = "ReconciliationReportsLast_BarSubItem"
-        '
-        'BarEditItem1
-        '
-        Me.BarEditItem1.Caption = "BarEditItem1"
-        Me.BarEditItem1.Edit = Me.RepositoryItemGridLookUpEdit1
-        Me.BarEditItem1.Id = 9
-        Me.BarEditItem1.Name = "BarEditItem1"
-        '
-        'RepositoryItemGridLookUpEdit1
-        '
-        Me.RepositoryItemGridLookUpEdit1.AutoHeight = False
-        Me.RepositoryItemGridLookUpEdit1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemGridLookUpEdit1.Name = "RepositoryItemGridLookUpEdit1"
-        Me.RepositoryItemGridLookUpEdit1.PopupView = Me.GridView2
-        '
-        'GridView2
-        '
-        Me.GridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        Me.GridView2.Name = "GridView2"
-        Me.GridView2.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.GridView2.OptionsView.ShowGroupPanel = False
-        '
-        'RR_Last_BarEditItem
-        '
-        Me.RR_Last_BarEditItem.Caption = "Last Reconciliation Reports    "
-        Me.RR_Last_BarEditItem.Edit = Me.RepositoryItemGridLookUpEdit2
-        Me.RR_Last_BarEditItem.Id = 10
-        Me.RR_Last_BarEditItem.ImageOptions.ImageIndex = 7
-        Me.RR_Last_BarEditItem.Name = "RR_Last_BarEditItem"
-        '
-        'RepositoryItemGridLookUpEdit2
-        '
-        Me.RepositoryItemGridLookUpEdit2.AutoHeight = False
-        Me.RepositoryItemGridLookUpEdit2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
-        EditorButtonImageOptions4.Image = CType(resources.GetObject("EditorButtonImageOptions4.Image"), System.Drawing.Image)
-        EditorButtonImageOptions4.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.RepositoryItemGridLookUpEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Load", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
-        Me.RepositoryItemGridLookUpEdit2.Name = "RepositoryItemGridLookUpEdit2"
-        Me.RepositoryItemGridLookUpEdit2.NullText = "[Select Nostro Account]"
-        Me.RepositoryItemGridLookUpEdit2.PopupFormSize = New System.Drawing.Size(900, 500)
-        Me.RepositoryItemGridLookUpEdit2.PopupView = Me.All_Nostro_Last_Reconciliations_GridView
-        Me.RepositoryItemGridLookUpEdit2.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
-        '
-        'All_Nostro_Last_Reconciliations_GridView
-        '
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.SelectedRow.BackColor = System.Drawing.Color.Yellow
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.SelectedRow.BackColor2 = System.Drawing.Color.Yellow
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.SelectedRow.Options.UseBackColor = True
-        Me.All_Nostro_Last_Reconciliations_GridView.Appearance.SelectedRow.Options.UseForeColor = True
-        Me.All_Nostro_Last_Reconciliations_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colNostroAccount_LastRec, Me.colNostroCurrency_LastRec, Me.colNostroAccountName_LastRec, Me.colNostroReconcileDate_LastRec, Me.colOutstandingItems})
-        Me.All_Nostro_Last_Reconciliations_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        Me.All_Nostro_Last_Reconciliations_GridView.Name = "All_Nostro_Last_Reconciliations_GridView"
-        Me.All_Nostro_Last_Reconciliations_GridView.OptionsBehavior.AllowIncrementalSearch = True
-        Me.All_Nostro_Last_Reconciliations_GridView.OptionsFind.AlwaysVisible = True
-        Me.All_Nostro_Last_Reconciliations_GridView.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.All_Nostro_Last_Reconciliations_GridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect
-        Me.All_Nostro_Last_Reconciliations_GridView.OptionsView.ColumnAutoWidth = False
-        Me.All_Nostro_Last_Reconciliations_GridView.OptionsView.ShowAutoFilterRow = True
-        Me.All_Nostro_Last_Reconciliations_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
-        Me.All_Nostro_Last_Reconciliations_GridView.OptionsView.ShowGroupPanel = False
-        '
-        'colNostroAccount_LastRec
-        '
-        Me.colNostroAccount_LastRec.Caption = "Nostro Account"
-        Me.colNostroAccount_LastRec.FieldName = "Nostro Account"
-        Me.colNostroAccount_LastRec.Name = "colNostroAccount_LastRec"
-        Me.colNostroAccount_LastRec.OptionsColumn.AllowEdit = False
-        Me.colNostroAccount_LastRec.OptionsColumn.ReadOnly = True
-        Me.colNostroAccount_LastRec.Visible = True
-        Me.colNostroAccount_LastRec.VisibleIndex = 0
-        Me.colNostroAccount_LastRec.Width = 143
-        '
-        'colNostroCurrency_LastRec
-        '
-        Me.colNostroCurrency_LastRec.AppearanceCell.Options.UseTextOptions = True
-        Me.colNostroCurrency_LastRec.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colNostroCurrency_LastRec.Caption = "Currency"
-        Me.colNostroCurrency_LastRec.FieldName = "Currency"
-        Me.colNostroCurrency_LastRec.Name = "colNostroCurrency_LastRec"
-        Me.colNostroCurrency_LastRec.OptionsColumn.AllowEdit = False
-        Me.colNostroCurrency_LastRec.OptionsColumn.ReadOnly = True
-        Me.colNostroCurrency_LastRec.Visible = True
-        Me.colNostroCurrency_LastRec.VisibleIndex = 1
-        '
-        'colNostroAccountName_LastRec
-        '
-        Me.colNostroAccountName_LastRec.Caption = "Nostro Account Name"
-        Me.colNostroAccountName_LastRec.FieldName = "Nostro Account Name"
-        Me.colNostroAccountName_LastRec.Name = "colNostroAccountName_LastRec"
-        Me.colNostroAccountName_LastRec.OptionsColumn.AllowEdit = False
-        Me.colNostroAccountName_LastRec.OptionsColumn.ReadOnly = True
-        Me.colNostroAccountName_LastRec.Visible = True
-        Me.colNostroAccountName_LastRec.VisibleIndex = 2
-        Me.colNostroAccountName_LastRec.Width = 360
-        '
-        'colNostroReconcileDate_LastRec
-        '
-        Me.colNostroReconcileDate_LastRec.Caption = "Last Reconciliation Date"
-        Me.colNostroReconcileDate_LastRec.DisplayFormat.FormatString = "d"
-        Me.colNostroReconcileDate_LastRec.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.colNostroReconcileDate_LastRec.FieldName = "Last Reconcile Date"
-        Me.colNostroReconcileDate_LastRec.Name = "colNostroReconcileDate_LastRec"
-        Me.colNostroReconcileDate_LastRec.OptionsColumn.AllowEdit = False
-        Me.colNostroReconcileDate_LastRec.OptionsColumn.ReadOnly = True
-        Me.colNostroReconcileDate_LastRec.Visible = True
-        Me.colNostroReconcileDate_LastRec.VisibleIndex = 3
-        Me.colNostroReconcileDate_LastRec.Width = 143
-        '
-        'colOutstandingItems
-        '
-        Me.colOutstandingItems.AppearanceCell.Options.UseTextOptions = True
-        Me.colOutstandingItems.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colOutstandingItems.Caption = "Outstanding Items"
-        Me.colOutstandingItems.DisplayFormat.FormatString = "n0"
-        Me.colOutstandingItems.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colOutstandingItems.FieldName = "Outstanding Items"
-        Me.colOutstandingItems.Name = "colOutstandingItems"
-        Me.colOutstandingItems.OptionsColumn.AllowEdit = False
-        Me.colOutstandingItems.OptionsColumn.ReadOnly = True
-        Me.colOutstandingItems.Visible = True
-        Me.colOutstandingItems.VisibleIndex = 4
-        Me.colOutstandingItems.Width = 108
-        '
-        'Reload_T2_Dir_btn
-        '
-        Me.Reload_T2_Dir_btn.ImageOptions.ImageIndex = 7
-        Me.Reload_T2_Dir_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Reload_T2_Dir_btn.Location = New System.Drawing.Point(169, 12)
-        Me.Reload_T2_Dir_btn.Name = "Reload_T2_Dir_btn"
-        Me.Reload_T2_Dir_btn.Size = New System.Drawing.Size(195, 22)
-        Me.Reload_T2_Dir_btn.StyleController = Me.LayoutControl1
-        Me.Reload_T2_Dir_btn.TabIndex = 24
-        Me.Reload_T2_Dir_btn.Text = "Reload T2 Directory - check Validity"
-        '
-        'ViewEdit_btn
-        '
-        Me.ViewEdit_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ViewEdit_btn.ImageOptions.ImageIndex = 0
-        Me.ViewEdit_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.ViewEdit_btn.Location = New System.Drawing.Point(1289, 12)
-        Me.ViewEdit_btn.Name = "ViewEdit_btn"
-        Me.ViewEdit_btn.Size = New System.Drawing.Size(113, 22)
-        Me.ViewEdit_btn.StyleController = Me.LayoutControl1
-        Me.ViewEdit_btn.TabIndex = 22
-        Me.ViewEdit_btn.Text = "Edit T2 Participant"
         '
         'GridControl1
         '
@@ -1833,18 +1450,6 @@ Partial Class T2_DIRECTORY
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'Print_Export_btn
-        '
-        Me.Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Print_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.Print_Export_btn.Name = "Print_Export_btn"
-        Me.Print_Export_btn.Size = New System.Drawing.Size(153, 22)
-        Me.Print_Export_btn.StyleController = Me.LayoutControl1
-        Me.Print_Export_btn.TabIndex = 20
-        Me.Print_Export_btn.Text = "Print or Export"
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.GridControl1
@@ -1859,123 +1464,148 @@ Partial Class T2_DIRECTORY
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem8, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem_ProgressPanel})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlGroup2})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1414, 510)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1463, 604)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(1113, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(163, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(157, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'EmptySpaceItem4
-        '
-        Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(740, 0)
-        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(373, 26)
-        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'SimpleSeparator1
-        '
-        Me.SimpleSeparator1.AllowHotTrack = False
-        Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1276, 0)
-        Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 46)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 65)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1394, 444)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1443, 519)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.ViewEdit_btn
-        Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1277, 0)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(117, 26)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
-        '
-        'LayoutControlItem8
-        '
-        Me.LayoutControlItem8.Control = Me.DropDownButton1
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(356, 0)
-        Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(141, 26)
-        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem8.TextVisible = False
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.Reload_T2_Dir_btn
-        Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem6"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(157, 0)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(199, 26)
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem6.TextVisible = False
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.LastUpdate_txt
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(497, 0)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(243, 26)
-        Me.LayoutControlItem5.Text = "Last Update"
-        Me.LayoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(58, 13)
-        Me.LayoutControlItem5.TextToControlDistance = 5
         '
         'LayoutControlItem_ProgressPanel
         '
         Me.LayoutControlItem_ProgressPanel.Control = Me.ProgressPanel1
-        Me.LayoutControlItem_ProgressPanel.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem_ProgressPanel.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem_ProgressPanel.Name = "LayoutControlItem_ProgressPanel"
-        Me.LayoutControlItem_ProgressPanel.Size = New System.Drawing.Size(1394, 20)
-        Me.LayoutControlItem_ProgressPanel.TextSize = New System.Drawing.Size(164, 13)
-        Me.LayoutControlItem_ProgressPanel.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        Me.LayoutControlItem_ProgressPanel.Size = New System.Drawing.Size(1419, 20)
+        Me.LayoutControlItem_ProgressPanel.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem_ProgressPanel.TextVisible = False
         '
         'DxValidationProvider1
         '
         Me.DxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.[Auto]
         '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbi_Reload_T2_Dir, Me.DisplayListDetails_bbi, Me.bbi_AddParticipant, Me.T2_Dir_BarSubItem, Me.bbi_T2_Full_Dir_Create, Me.bbi_T2_ManInput_Dir_Create, Me.bbi_PrintOrExport, Me.bbi_Close})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 9
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1463, 94)
+        '
+        'bbi_Reload_T2_Dir
+        '
+        Me.bbi_Reload_T2_Dir.Caption = "Reload and validate"
+        Me.bbi_Reload_T2_Dir.Id = 1
+        Me.bbi_Reload_T2_Dir.ImageOptions.Image = CType(resources.GetObject("bbi_Reload_T2_Dir.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Reload_T2_Dir.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Reload_T2_Dir.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Reload_T2_Dir.Name = "bbi_Reload_T2_Dir"
+        '
+        'DisplayListDetails_bbi
+        '
+        Me.DisplayListDetails_bbi.Caption = "Display Details"
+        Me.DisplayListDetails_bbi.Id = 2
+        Me.DisplayListDetails_bbi.ImageOptions.ImageIndex = 14
+        Me.DisplayListDetails_bbi.Name = "DisplayListDetails_bbi"
+        '
+        'bbi_AddParticipant
+        '
+        Me.bbi_AddParticipant.Caption = "Add new T2 Participant"
+        Me.bbi_AddParticipant.Id = 3
+        Me.bbi_AddParticipant.ImageOptions.Image = CType(resources.GetObject("bbi_AddParticipant.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_AddParticipant.ImageOptions.LargeImage = CType(resources.GetObject("bbi_AddParticipant.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_AddParticipant.Name = "bbi_AddParticipant"
+        '
+        'T2_Dir_BarSubItem
+        '
+        Me.T2_Dir_BarSubItem.Caption = "T2 Directory"
+        Me.T2_Dir_BarSubItem.Id = 4
+        Me.T2_Dir_BarSubItem.ImageOptions.ImageIndex = 12
+        Me.T2_Dir_BarSubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbi_T2_Full_Dir_Create), New DevExpress.XtraBars.LinkPersistInfo(Me.bbi_T2_ManInput_Dir_Create, True)})
+        Me.T2_Dir_BarSubItem.Name = "T2_Dir_BarSubItem"
+        '
+        'bbi_T2_Full_Dir_Create
+        '
+        Me.bbi_T2_Full_Dir_Create.Caption = "Re-create T2 Full Directory"
+        Me.bbi_T2_Full_Dir_Create.Id = 5
+        Me.bbi_T2_Full_Dir_Create.ImageOptions.ImageIndex = 12
+        Me.bbi_T2_Full_Dir_Create.Name = "bbi_T2_Full_Dir_Create"
+        '
+        'bbi_T2_ManInput_Dir_Create
+        '
+        Me.bbi_T2_ManInput_Dir_Create.Caption = "Re-create T2 Directory (only manual inputs)"
+        Me.bbi_T2_ManInput_Dir_Create.Id = 6
+        Me.bbi_T2_ManInput_Dir_Create.ImageOptions.ImageIndex = 12
+        Me.bbi_T2_ManInput_Dir_Create.Name = "bbi_T2_ManInput_Dir_Create"
+        '
+        'bbi_PrintOrExport
+        '
+        Me.bbi_PrintOrExport.Caption = "Print or Export"
+        Me.bbi_PrintOrExport.Id = 7
+        Me.bbi_PrintOrExport.ImageOptions.ImageIndex = 2
+        Me.bbi_PrintOrExport.Name = "bbi_PrintOrExport"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 8
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.Name = "bbi_Close"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Reload_T2_Dir)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_AddParticipant, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DisplayListDetails_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.T2_Dir_BarSubItem, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_PrintOrExport, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Close, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
+        'LayoutControlGroup2
+        '
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem_ProgressPanel})
+        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1443, 65)
+        Me.LayoutControlGroup2.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
         'T2_DIRECTORY
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1414, 570)
+        Me.ClientSize = New System.Drawing.Size(1463, 698)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.GroupControl1)
-        Me.Controls.Add(Me.barDockControlLeft)
-        Me.Controls.Add(Me.barDockControlRight)
-        Me.Controls.Add(Me.barDockControlBottom)
-        Me.Controls.Add(Me.barDockControlTop)
+        Me.Controls.Add(Me.RibbonControl1)
         Me.IconOptions.Icon = CType(resources.GetObject("T2_DIRECTORY.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "T2_DIRECTORY"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "T2 RTGS DIRECTORY"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -2030,28 +1660,15 @@ Partial Class T2_DIRECTORY
         CType(Me.ValidFrom_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PopupMenu1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.All_Nostro_Last_Reconciliations_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem_ProgressPanel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2076,7 +1693,6 @@ Partial Class T2_DIRECTORY
     Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents CurrencyName_lbl As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents ViewEdit_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
     Friend WithEvents T2DetailView As DevExpress.XtraGrid.Views.Layout.LayoutView
     Friend WithEvents RepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
@@ -2087,15 +1703,9 @@ Partial Class T2_DIRECTORY
     Friend WithEvents RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents Print_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents ValidTill_DateEdit As DevExpress.XtraEditors.DateEdit
     Friend WithEvents LabelControl7 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents AccountholderName_lbl As DevExpress.XtraEditors.LabelControl
@@ -2137,45 +1747,10 @@ Partial Class T2_DIRECTORY
     Friend WithEvents colPARTICIPATION_TYPE_NAME As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colRESERVE As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
-    Friend WithEvents Reload_T2_Dir_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents AddNewT2ParticipantAllBranches_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
-    Friend WithEvents Bar1 As DevExpress.XtraBars.Bar
-    Friend WithEvents Bar2 As DevExpress.XtraBars.Bar
-    Friend WithEvents Bar3 As DevExpress.XtraBars.Bar
-    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
-    Friend WithEvents SQL_Run_BarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents SQL_ReRun_BarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents SQL_ReRun_AllDays_BarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents BarButtonItem1 As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents ReCreateT2Directory_BarSubItem As DevExpress.XtraBars.BarSubItem
-    Friend WithEvents FullT2Dir_BarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents ManualT2Dir_BarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents RR_AllOutstandings_BarButtonItem As DevExpress.XtraBars.BarButtonItem
-    Friend WithEvents ReconciliationReportsLast_BarSubItem As DevExpress.XtraBars.BarSubItem
-    Friend WithEvents BarEditItem1 As DevExpress.XtraBars.BarEditItem
-    Friend WithEvents RepositoryItemGridLookUpEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents RR_Last_BarEditItem As DevExpress.XtraBars.BarEditItem
-    Friend WithEvents RepositoryItemGridLookUpEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit
-    Friend WithEvents All_Nostro_Last_Reconciliations_GridView As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents colNostroAccount_LastRec As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNostroCurrency_LastRec As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNostroAccountName_LastRec As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colNostroReconcileDate_LastRec As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colOutstandingItems As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents PopupMenu1 As DevExpress.XtraBars.PopupMenu
-    Friend WithEvents DropDownButton1 As DevExpress.XtraEditors.DropDownButton
-    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents DxValidationProvider1 As DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider
     Friend WithEvents colDeletable1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents colDeletable As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents LastUpdate_txt As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents layoutViewField_colID1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colBIC111 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents layoutViewField_colADDRESSEE1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
@@ -2203,4 +1778,17 @@ Partial Class T2_DIRECTORY
     Friend WithEvents item7 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
     Friend WithEvents LayoutControlItem_ProgressPanel As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents bbi_Reload_T2_Dir As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents DisplayListDetails_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_AddParticipant As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents T2_Dir_BarSubItem As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents bbi_T2_Full_Dir_Create As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_T2_ManInput_Dir_Create As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_PrintOrExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
 End Class

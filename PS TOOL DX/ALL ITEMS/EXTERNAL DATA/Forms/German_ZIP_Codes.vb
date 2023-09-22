@@ -65,12 +65,71 @@ Public Class German_ZIP_Codes
 
     Private Sub German_ZIP_Codes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
-        'TODO: This line of code loads data into the 'EXTERNALDataset.PLZ_BUNDESLAND' table. You can move, or remove it, as needed.
+
         Me.PLZ_BUNDESLANDTableAdapter.Fill(Me.EXTERNALDataset.PLZ_BUNDESLAND)
         If SUPER_USER = "N" Then
             PLZBaseView.OptionsBehavior.Editable = False
         End If
 
+    End Sub
+
+    Private Sub bbi_LoadData_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_LoadData.ItemClick
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        SplashScreenManager.Default.SetWaitFormCaption("Load all German ZIP Codes")
+        Me.PLZ_BUNDESLANDTableAdapter.Fill(Me.EXTERNALDataset.PLZ_BUNDESLAND)
+        SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub bbi_AddNew_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_AddNew.ItemClick
+        Try
+            Me.PLZ_BUNDESLANDBindingSource.CancelEdit()
+            Me.PLZBaseView.AddNewRow()
+            Me.PLZBaseView.ShowEditForm()
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End Try
+
+
+    End Sub
+
+    Private Sub bbi_DeleteZipCode_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_DeleteZipCode.ItemClick
+        Try
+            Dim row As System.Data.DataRow = PLZBaseView.GetDataRow(PLZBaseView.FocusedRowHandle)
+            Dim ID As Integer = row(0)
+            Dim PLZ As Double = row(1)
+            Dim STADT As String = row(2)
+
+            If XtraMessageBox.Show("Should the Zipcode: " & PLZ & " (" & STADT & ")" & " be deleted?", "DELETE ZIPCODE", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                Dim ZipcodeDelete As EXTERNALDataset.PLZ_BUNDESLANDRow
+                ZipcodeDelete = EXTERNALDataset.PLZ_BUNDESLAND.FindByID(ID)
+                ZipcodeDelete.Delete()
+                PLZBaseView.DeleteSelectedRows()
+                GridControl2.Update()
+                Me.TableAdapterManager.UpdateAll(Me.EXTERNALDataset)
+                Me.PLZ_BUNDESLANDTableAdapter.Fill(Me.EXTERNALDataset.PLZ_BUNDESLAND)
+            Else
+                Exit Sub
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End Try
+
+    End Sub
+
+    Private Sub bbi_PrintOrExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_PrintOrExport.ItemClick
+        If Not GridControl2.IsPrintingAvailable Then
+            XtraMessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
+            Return
+        End If
+        ' Opens the Preview window. 
+        'GridControl1.ShowPrintPreview()
+
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        PrintableComponentLink1.CreateDocument()
+        PrintableComponentLink1.ShowPreview()
+        SplashScreenManager.CloseForm(False)
     End Sub
 
     Private Sub GridControl2_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
@@ -123,19 +182,7 @@ Public Class German_ZIP_Codes
         XtraMessageBox.Show(e.ErrorText, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
     End Sub
 
-    Private Sub PLZBaseView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles PLZBaseView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
 
-    Private Sub PLZBaseView_ShownEditor(sender As Object, e As EventArgs) Handles PLZBaseView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-
-        End If
-    End Sub
 
     Private Sub PLZBaseView_ValidateRow(sender As Object, e As ValidateRowEventArgs) Handles PLZBaseView.ValidateRow
         Dim View As GridView = CType(sender, GridView)
@@ -172,19 +219,7 @@ Public Class German_ZIP_Codes
 
     End Sub
 
-    Private Sub PLZ_Print_Export_btn_Click(sender As Object, e As EventArgs) Handles PLZ_Print_Export_btn.Click
-        If Not GridControl2.IsPrintingAvailable Then
-            XtraMessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
-            Return
-        End If
-        ' Opens the Preview window. 
-        'GridControl1.ShowPrintPreview()
 
-        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-        PrintableComponentLink1.CreateDocument()
-        PrintableComponentLink1.ShowPreview()
-        SplashScreenManager.CloseForm(False)
-    End Sub
     Private Sub PrintableComponentLink1_CreateMarginalFooterArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
         Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
         Try
@@ -218,6 +253,13 @@ Public Class German_ZIP_Codes
             XtraMessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End Try
+
+    End Sub
+
+
+
+    Private Sub bbi_Close_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Close.ItemClick
+        Me.Close()
 
     End Sub
 End Class

@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class German_ZIP_Codes
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -35,20 +35,25 @@ Partial Class German_ZIP_Codes
         Me.colORT = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.OtherRepositoryItemTextEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.colBUNDESLAND = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.BUNDESLAND_RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.PLZ_Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
-        Me.BUNDESLAND_RepositoryItemComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.bbi_LoadData = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_AddNew = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_DeleteZipCode = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_PrintOrExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         CType(Me.EXTERNALDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PLZ_BUNDESLANDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,18 +63,16 @@ Partial Class German_ZIP_Codes
         CType(Me.PLZBaseView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ZipCodeRepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OtherRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BUNDESLAND_RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BUNDESLAND_RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'EXTERNALDataset
@@ -91,6 +94,7 @@ Partial Class German_ZIP_Codes
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BIC_DIRECTORY_PLUSTableAdapter = Nothing
         Me.TableAdapterManager.BIC_DIRECTORYTableAdapter = Nothing
+        Me.TableAdapterManager.BIC_HISTORYTableAdapter = Nothing
         Me.TableAdapterManager.BLZTableAdapter = Nothing
         Me.TableAdapterManager.COUNTRIESTableAdapter = Nothing
         Me.TableAdapterManager.CURRENCIESTableAdapter = Nothing
@@ -98,7 +102,6 @@ Partial Class German_ZIP_Codes
         Me.TableAdapterManager.HOLIDAYSTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_BUNDESLANDTableAdapter = Me.PLZ_BUNDESLANDTableAdapter
         Me.TableAdapterManager.SEPA_DIRECTORY_FULLTableAdapter = Nothing
-        Me.TableAdapterManager.SEPA_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.T2_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -106,14 +109,13 @@ Partial Class German_ZIP_Codes
         '
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.PLZ_Print_Export_btn)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1040, 149, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1014, 676)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1292, 502)
         Me.LayoutControl1.TabIndex = 7
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -122,14 +124,19 @@ Partial Class German_ZIP_Codes
         Me.GridControl2.Cursor = System.Windows.Forms.Cursors.Default
         Me.GridControl2.DataSource = Me.PLZ_BUNDESLANDBindingSource
         Me.GridControl2.EmbeddedNavigator.Buttons.Append.ImageIndex = 6
+        Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.GridControl2.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.GridControl2.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 8
+        Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.ImageIndex = 7
-        Me.GridControl2.Location = New System.Drawing.Point(12, 38)
+        Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
+        Me.GridControl2.Location = New System.Drawing.Point(12, 13)
         Me.GridControl2.MainView = Me.PLZBaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.ZipCodeRepositoryItemTextEdit1, Me.OtherRepositoryItemTextEdit, Me.BUNDESLAND_RepositoryItemComboBox1})
-        Me.GridControl2.Size = New System.Drawing.Size(990, 626)
+        Me.GridControl2.Size = New System.Drawing.Size(1268, 477)
         Me.GridControl2.TabIndex = 11
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.PLZBaseView})
@@ -177,6 +184,7 @@ Partial Class German_ZIP_Codes
         Me.PLZBaseView.OptionsView.ShowAutoFilterRow = True
         Me.PLZBaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.PLZBaseView.OptionsView.ShowFooter = True
+        Me.PLZBaseView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -260,6 +268,19 @@ Partial Class German_ZIP_Codes
         Me.colBUNDESLAND.VisibleIndex = 2
         Me.colBUNDESLAND.Width = 225
         '
+        'BUNDESLAND_RepositoryItemComboBox1
+        '
+        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.Options.UseBackColor = True
+        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.Options.UseForeColor = True
+        Me.BUNDESLAND_RepositoryItemComboBox1.AutoHeight = False
+        Me.BUNDESLAND_RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.BUNDESLAND_RepositoryItemComboBox1.Items.AddRange(New Object() {"BADEN-WÜRTTEMBERG", "BAYERN", "BERLIN", "BRANDENBURG", "BREMEN", "HAMBURG", "HESSEN", "MECKLENBURG-VORPOMMERN", "NIEDERSACHSEN", "NORDRHEIN-WESTFALEN", "RHEINLAND-PFALZ", "SAARLAND", "SACHSEN", "SACHSEN-ANHALT", "SCHLESWIG-HOLSTEIN", "THÜRINGEN"})
+        Me.BUNDESLAND_RepositoryItemComboBox1.Name = "BUNDESLAND_RepositoryItemComboBox1"
+        Me.BUNDESLAND_RepositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        '
         'RepositoryItemImageComboBox1
         '
         Me.RepositoryItemImageComboBox1.Appearance.BackColor = System.Drawing.Color.Yellow
@@ -292,18 +313,6 @@ Partial Class German_ZIP_Codes
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'PLZ_Print_Export_btn
-        '
-        Me.PLZ_Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PLZ_Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.PLZ_Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.PLZ_Print_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.PLZ_Print_Export_btn.Name = "PLZ_Print_Export_btn"
-        Me.PLZ_Print_Export_btn.Size = New System.Drawing.Size(108, 22)
-        Me.PLZ_Print_Export_btn.StyleController = Me.LayoutControl1
-        Me.PLZ_Print_Export_btn.TabIndex = 9
-        Me.PLZ_Print_Export_btn.Text = "Print or Export"
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.GridControl1
@@ -318,54 +327,26 @@ Partial Class German_ZIP_Codes
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.SimpleSeparator1, Me.LayoutControlItem4})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.SimpleSeparator1, Me.LayoutControlItem4})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1014, 676)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1292, 502)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(248, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(653, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.PLZ_Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(112, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'EmptySpaceItem4
-        '
-        Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(112, 0)
-        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(136, 26)
-        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
         'SimpleSeparator1
         '
         Me.SimpleSeparator1.AllowHotTrack = False
         Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(901, 0)
+        Me.SimpleSeparator1.Location = New System.Drawing.Point(0, 0)
         Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(93, 26)
+        Me.SimpleSeparator1.Size = New System.Drawing.Size(1272, 1)
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 1)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(994, 630)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1272, 481)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -380,27 +361,89 @@ Partial Class German_ZIP_Codes
         Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4
         Me.PrintableComponentLink1.PrintingSystemBase = Me.PrintingSystem1
         '
-        'BUNDESLAND_RepositoryItemComboBox1
+        'RibbonControl1
         '
-        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.Options.UseBackColor = True
-        Me.BUNDESLAND_RepositoryItemComboBox1.AppearanceFocused.Options.UseForeColor = True
-        Me.BUNDESLAND_RepositoryItemComboBox1.AutoHeight = False
-        Me.BUNDESLAND_RepositoryItemComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.BUNDESLAND_RepositoryItemComboBox1.Items.AddRange(New Object() {"BADEN-WÜRTTEMBERG", "BAYERN", "BERLIN", "BRANDENBURG", "BREMEN", "HAMBURG", "HESSEN", "MECKLENBURG-VORPOMMERN", "NIEDERSACHSEN", "NORDRHEIN-WESTFALEN", "RHEINLAND-PFALZ", "SAARLAND", "SACHSEN", "SACHSEN-ANHALT", "SCHLESWIG-HOLSTEIN", "THÜRINGEN"})
-        Me.BUNDESLAND_RepositoryItemComboBox1.Name = "BUNDESLAND_RepositoryItemComboBox1"
-        Me.BUNDESLAND_RepositoryItemComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbi_LoadData, Me.bbi_AddNew, Me.bbi_DeleteZipCode, Me.bbi_PrintOrExport, Me.bbi_Close})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 6
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1292, 94)
+        '
+        'bbi_LoadData
+        '
+        Me.bbi_LoadData.Caption = "Load data"
+        Me.bbi_LoadData.Id = 1
+        Me.bbi_LoadData.ImageOptions.Image = CType(resources.GetObject("bbi_LoadData.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_LoadData.ImageOptions.LargeImage = CType(resources.GetObject("bbi_LoadData.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_LoadData.Name = "bbi_LoadData"
+        '
+        'bbi_AddNew
+        '
+        Me.bbi_AddNew.Caption = "Add new ZIP Code"
+        Me.bbi_AddNew.Id = 2
+        Me.bbi_AddNew.ImageOptions.Image = CType(resources.GetObject("bbi_AddNew.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_AddNew.ImageOptions.LargeImage = CType(resources.GetObject("bbi_AddNew.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_AddNew.Name = "bbi_AddNew"
+        '
+        'bbi_DeleteZipCode
+        '
+        Me.bbi_DeleteZipCode.Caption = "Delete ZIP Code"
+        Me.bbi_DeleteZipCode.Id = 3
+        Me.bbi_DeleteZipCode.ImageOptions.Image = CType(resources.GetObject("bbi_DeleteZipCode.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_DeleteZipCode.ImageOptions.LargeImage = CType(resources.GetObject("bbi_DeleteZipCode.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_DeleteZipCode.Name = "bbi_DeleteZipCode"
+        '
+        'bbi_PrintOrExport
+        '
+        Me.bbi_PrintOrExport.Caption = "Print or Export"
+        Me.bbi_PrintOrExport.Id = 4
+        Me.bbi_PrintOrExport.ImageOptions.ImageIndex = 2
+        Me.bbi_PrintOrExport.Name = "bbi_PrintOrExport"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 5
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.Name = "bbi_Close"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_LoadData)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_AddNew, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_DeleteZipCode, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_PrintOrExport, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Close, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
         '
         'German_ZIP_Codes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1014, 676)
+        Me.ClientSize = New System.Drawing.Size(1292, 596)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.Icon = CType(resources.GetObject("German_ZIP_Codes.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "German_ZIP_Codes"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "German ZIP Codes"
         CType(Me.EXTERNALDataset, System.ComponentModel.ISupportInitialize).EndInit()
@@ -412,19 +455,18 @@ Partial Class German_ZIP_Codes
         CType(Me.PLZBaseView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ZipCodeRepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OtherRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BUNDESLAND_RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BUNDESLAND_RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents EXTERNALDataset As PS_TOOL_DX.EXTERNALDataset
@@ -439,12 +481,8 @@ Partial Class German_ZIP_Codes
     Friend WithEvents ZipCodeRepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents PLZ_Print_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
@@ -455,4 +493,13 @@ Partial Class German_ZIP_Codes
     Friend WithEvents colBUNDESLAND As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
     Friend WithEvents BUNDESLAND_RepositoryItemComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents bbi_LoadData As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_AddNew As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_DeleteZipCode As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_PrintOrExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
 End Class

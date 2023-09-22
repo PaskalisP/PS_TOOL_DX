@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class SEPA_DIRECTORY
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -21,12 +21,12 @@ Partial Class SEPA_DIRECTORY
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SEPA_DIRECTORY))
+        Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.MessageIDTextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.GridControl3 = New DevExpress.XtraGrid.GridControl()
         Me.SEPA_DIRECTORY_FULLBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EXTERNALDataset = New PS_TOOL_DX.EXTERNALDataset()
-        Me.GridControl3 = New DevExpress.XtraGrid.GridControl()
-        Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colStatus = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -47,7 +47,6 @@ Partial Class SEPA_DIRECTORY
         Me.colPartyBIC = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFullTableNr = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colFileValidityDateTime = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.LayoutView1 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.LayoutViewColumn6 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.LayoutViewField1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
@@ -78,76 +77,31 @@ Partial Class SEPA_DIRECTORY
         Me.LayoutViewCard2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
-        Me.SEPA_DIRECTORYBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SEPAGridView = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.colBIC = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colName = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colServiceSCT = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.StatusRepositoryItemImageComboBox = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
-        Me.colServiceSDD = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colServiceCOR1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colServiceB2B = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colServiceSCC = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.BLZLayoutView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
-        Me.colBankleitzahl1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colBankleitzahl1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colMerkmal1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colMerkmal1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colBezeichnung1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colBezeichnung1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colPLZ1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPLZ1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colOrt1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colOrt1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colKurzbezeichnung1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colKurzbezeichnung1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colPAN1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colPAN1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.colBIC1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colBIC1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_LayoutViewColumn1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn2 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_LayoutViewColumn2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn3 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_LayoutViewColumn3 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn4 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_LayoutViewColumn4 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn5 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_LayoutViewColumn5 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
-        Me.SEPAPrint_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
-        Me.TabbedControlGroup1 = New DevExpress.XtraLayout.TabbedControlGroup()
-        Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.SEPA_DIRECTORYTableAdapter = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.SEPA_DIRECTORYTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
-        Me.PrintableComponentLink2 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
         Me.SEPA_DIRECTORY_FULLTableAdapter = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.SEPA_DIRECTORY_FULLTableAdapter()
-        Me.LastUpdate_txt = New DevExpress.XtraEditors.TextEdit()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.SEPA_File_ID_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.SEPA_File_Message_ID_TextEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.PrintExport_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.MessageIDTextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SEPA_DIRECTORY_FULLBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EXTERNALDataset, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,105 +119,22 @@ Partial Class SEPA_DIRECTORY
         CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SEPA_DIRECTORYBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SEPAGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StatusRepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BLZLayoutView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBankleitzahl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colMerkmal1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBezeichnung1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPLZ1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colOrt1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colKurzbezeichnung1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colPAN1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBIC1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_LayoutViewColumn5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SEPA_File_Message_ID_TextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'LayoutControl1
+        'RepositoryItemImageComboBox1
         '
-        Me.LayoutControl1.Controls.Add(Me.LastUpdate_txt)
-        Me.LayoutControl1.Controls.Add(Me.MessageIDTextEdit)
-        Me.LayoutControl1.Controls.Add(Me.GridControl3)
-        Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.GridControl2)
-        Me.LayoutControl1.Controls.Add(Me.SEPAPrint_Export_btn)
-        Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(670, 149, 677, 697)
-        Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1250, 725)
-        Me.LayoutControl1.TabIndex = 2
-        Me.LayoutControl1.Text = "LayoutControl1"
-        '
-        'MessageIDTextEdit
-        '
-        Me.MessageIDTextEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.SEPA_DIRECTORY_FULLBindingSource, "MessageID", True))
-        Me.MessageIDTextEdit.Location = New System.Drawing.Point(134, 72)
-        Me.MessageIDTextEdit.Name = "MessageIDTextEdit"
-        Me.MessageIDTextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.MessageIDTextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.MessageIDTextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.MessageIDTextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.MessageIDTextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.MessageIDTextEdit.Properties.ReadOnly = True
-        Me.MessageIDTextEdit.Size = New System.Drawing.Size(180, 20)
-        Me.MessageIDTextEdit.StyleController = Me.LayoutControl1
-        Me.MessageIDTextEdit.TabIndex = 13
-        '
-        'SEPA_DIRECTORY_FULLBindingSource
-        '
-        Me.SEPA_DIRECTORY_FULLBindingSource.DataMember = "SEPA DIRECTORY FULL"
-        Me.SEPA_DIRECTORY_FULLBindingSource.DataSource = Me.EXTERNALDataset
-        '
-        'EXTERNALDataset
-        '
-        Me.EXTERNALDataset.DataSetName = "EXTERNALDataset"
-        Me.EXTERNALDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'GridControl3
-        '
-        Me.GridControl3.Cursor = System.Windows.Forms.Cursors.Default
-        Me.GridControl3.DataSource = Me.SEPA_DIRECTORY_FULLBindingSource
-        Me.GridControl3.EmbeddedNavigator.Buttons.Append.Visible = False
-        Me.GridControl3.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
-        Me.GridControl3.EmbeddedNavigator.Buttons.Edit.Visible = False
-        Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 7
-        Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.Visible = False
-        Me.GridControl3.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
-        Me.GridControl3.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl3.Location = New System.Drawing.Point(24, 96)
-        Me.GridControl3.MainView = Me.GridView2
-        Me.GridControl3.Name = "GridControl3"
-        Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1})
-        Me.GridControl3.Size = New System.Drawing.Size(1202, 605)
-        Me.GridControl3.TabIndex = 12
-        Me.GridControl3.UseEmbeddedNavigator = True
-        Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2, Me.LayoutView1})
+        Me.RepositoryItemImageComboBox1.AutoHeight = False
+        Me.RepositoryItemImageComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemImageComboBox1.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("NO", 0R, 6), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("YES", 1.0R, 5)})
+        Me.RepositoryItemImageComboBox1.Name = "RepositoryItemImageComboBox1"
+        Me.RepositoryItemImageComboBox1.SmallImages = Me.ImageCollection1
         '
         'ImageCollection1
         '
@@ -279,6 +150,49 @@ Partial Class SEPA_DIRECTORY
         Me.ImageCollection1.Images.SetKeyName(6, "cancel_16x16.png")
         Me.ImageCollection1.InsertGalleryImage("save_16x16.png", "images/save/save_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/save/save_16x16.png"), 7)
         Me.ImageCollection1.Images.SetKeyName(7, "save_16x16.png")
+        '
+        'LayoutControl1
+        '
+        Me.LayoutControl1.Controls.Add(Me.GridControl3)
+        Me.LayoutControl1.Controls.Add(Me.GridControl1)
+        Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
+        Me.LayoutControl1.Name = "LayoutControl1"
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(670, 149, 677, 697)
+        Me.LayoutControl1.Root = Me.LayoutControlGroup1
+        Me.LayoutControl1.Size = New System.Drawing.Size(1409, 527)
+        Me.LayoutControl1.TabIndex = 2
+        Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'GridControl3
+        '
+        Me.GridControl3.Cursor = System.Windows.Forms.Cursors.Default
+        Me.GridControl3.DataSource = Me.SEPA_DIRECTORY_FULLBindingSource
+        Me.GridControl3.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.GridControl3.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.GridControl3.EmbeddedNavigator.Buttons.Edit.Visible = False
+        Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 7
+        Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+        Me.GridControl3.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
+        Me.GridControl3.EmbeddedNavigator.Buttons.Remove.Visible = False
+        Me.GridControl3.Location = New System.Drawing.Point(12, 13)
+        Me.GridControl3.MainView = Me.GridView2
+        Me.GridControl3.Name = "GridControl3"
+        Me.GridControl3.Size = New System.Drawing.Size(1385, 502)
+        Me.GridControl3.TabIndex = 12
+        Me.GridControl3.UseEmbeddedNavigator = True
+        Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView2, Me.LayoutView1})
+        '
+        'SEPA_DIRECTORY_FULLBindingSource
+        '
+        Me.SEPA_DIRECTORY_FULLBindingSource.DataMember = "SEPA DIRECTORY FULL"
+        Me.SEPA_DIRECTORY_FULLBindingSource.DataSource = Me.EXTERNALDataset
+        '
+        'EXTERNALDataset
+        '
+        Me.EXTERNALDataset.DataSetName = "EXTERNALDataset"
+        Me.EXTERNALDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GridView2
         '
@@ -303,6 +217,7 @@ Partial Class SEPA_DIRECTORY
         Me.GridView2.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
         Me.GridView2.OptionsView.ShowAutoFilterRow = True
         Me.GridView2.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.GridView2.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -495,14 +410,6 @@ Partial Class SEPA_DIRECTORY
         Me.colFileValidityDateTime.Name = "colFileValidityDateTime"
         Me.colFileValidityDateTime.OptionsColumn.AllowEdit = False
         Me.colFileValidityDateTime.OptionsColumn.ReadOnly = True
-        '
-        'RepositoryItemImageComboBox1
-        '
-        Me.RepositoryItemImageComboBox1.AutoHeight = False
-        Me.RepositoryItemImageComboBox1.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemImageComboBox1.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("NO", 0R, 6), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("YES", 1.0R, 5)})
-        Me.RepositoryItemImageComboBox1.Name = "RepositoryItemImageComboBox1"
-        Me.RepositoryItemImageComboBox1.SmallImages = Me.ImageCollection1
         '
         'LayoutView1
         '
@@ -767,10 +674,10 @@ Partial Class SEPA_DIRECTORY
         '
         'GridControl1
         '
-        Me.GridControl1.Location = New System.Drawing.Point(124, 69)
+        Me.GridControl1.Location = New System.Drawing.Point(0, 180)
         Me.GridControl1.MainView = Me.GridView1
         Me.GridControl1.Name = "GridControl1"
-        Me.GridControl1.Size = New System.Drawing.Size(804, 535)
+        Me.GridControl1.Size = New System.Drawing.Size(50, 50)
         Me.GridControl1.TabIndex = 10
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
         '
@@ -778,396 +685,6 @@ Partial Class SEPA_DIRECTORY
         '
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
-        '
-        'GridControl2
-        '
-        Me.GridControl2.Cursor = System.Windows.Forms.Cursors.Default
-        Me.GridControl2.DataSource = Me.SEPA_DIRECTORYBindingSource
-        Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.Edit.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 7
-        Me.GridControl2.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
-        Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl2.Location = New System.Drawing.Point(24, 72)
-        Me.GridControl2.MainView = Me.SEPAGridView
-        Me.GridControl2.Name = "GridControl2"
-        Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.StatusRepositoryItemImageComboBox})
-        Me.GridControl2.Size = New System.Drawing.Size(1202, 629)
-        Me.GridControl2.TabIndex = 11
-        Me.GridControl2.UseEmbeddedNavigator = True
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SEPAGridView, Me.BLZLayoutView})
-        '
-        'SEPA_DIRECTORYBindingSource
-        '
-        Me.SEPA_DIRECTORYBindingSource.DataMember = "SEPA DIRECTORY"
-        Me.SEPA_DIRECTORYBindingSource.DataSource = Me.EXTERNALDataset
-        '
-        'SEPAGridView
-        '
-        Me.SEPAGridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
-        Me.SEPAGridView.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
-        Me.SEPAGridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
-        Me.SEPAGridView.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.SEPAGridView.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.SEPAGridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
-        Me.SEPAGridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.SEPAGridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colBIC, Me.colName, Me.colServiceSCT, Me.colServiceSDD, Me.colServiceCOR1, Me.colServiceB2B, Me.colServiceSCC})
-        Me.SEPAGridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        Me.SEPAGridView.GridControl = Me.GridControl2
-        Me.SEPAGridView.Name = "SEPAGridView"
-        Me.SEPAGridView.OptionsBehavior.AllowIncrementalSearch = True
-        Me.SEPAGridView.OptionsBehavior.AutoExpandAllGroups = True
-        Me.SEPAGridView.OptionsCustomization.AllowRowSizing = True
-        Me.SEPAGridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
-        Me.SEPAGridView.OptionsFind.AlwaysVisible = True
-        Me.SEPAGridView.OptionsSelection.MultiSelect = True
-        Me.SEPAGridView.OptionsView.ColumnAutoWidth = False
-        Me.SEPAGridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
-        Me.SEPAGridView.OptionsView.ShowAutoFilterRow = True
-        Me.SEPAGridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
-        '
-        'colBIC
-        '
-        Me.colBIC.FieldName = "BIC"
-        Me.colBIC.Name = "colBIC"
-        Me.colBIC.OptionsColumn.AllowEdit = False
-        Me.colBIC.OptionsColumn.ReadOnly = True
-        Me.colBIC.Visible = True
-        Me.colBIC.VisibleIndex = 0
-        Me.colBIC.Width = 106
-        '
-        'colName
-        '
-        Me.colName.FieldName = "Name"
-        Me.colName.Name = "colName"
-        Me.colName.OptionsColumn.AllowEdit = False
-        Me.colName.OptionsColumn.ReadOnly = True
-        Me.colName.Visible = True
-        Me.colName.VisibleIndex = 1
-        Me.colName.Width = 521
-        '
-        'colServiceSCT
-        '
-        Me.colServiceSCT.ColumnEdit = Me.StatusRepositoryItemImageComboBox
-        Me.colServiceSCT.FieldName = "Service SCT"
-        Me.colServiceSCT.Name = "colServiceSCT"
-        Me.colServiceSCT.Visible = True
-        Me.colServiceSCT.VisibleIndex = 2
-        '
-        'StatusRepositoryItemImageComboBox
-        '
-        Me.StatusRepositoryItemImageComboBox.AutoHeight = False
-        Me.StatusRepositoryItemImageComboBox.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.StatusRepositoryItemImageComboBox.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("NO", 0R, 6), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("YES", 1.0R, 5)})
-        Me.StatusRepositoryItemImageComboBox.Name = "StatusRepositoryItemImageComboBox"
-        Me.StatusRepositoryItemImageComboBox.SmallImages = Me.ImageCollection1
-        '
-        'colServiceSDD
-        '
-        Me.colServiceSDD.ColumnEdit = Me.StatusRepositoryItemImageComboBox
-        Me.colServiceSDD.FieldName = "Service SDD"
-        Me.colServiceSDD.Name = "colServiceSDD"
-        Me.colServiceSDD.Visible = True
-        Me.colServiceSDD.VisibleIndex = 3
-        '
-        'colServiceCOR1
-        '
-        Me.colServiceCOR1.ColumnEdit = Me.StatusRepositoryItemImageComboBox
-        Me.colServiceCOR1.FieldName = "Service COR1"
-        Me.colServiceCOR1.Name = "colServiceCOR1"
-        Me.colServiceCOR1.Visible = True
-        Me.colServiceCOR1.VisibleIndex = 4
-        '
-        'colServiceB2B
-        '
-        Me.colServiceB2B.ColumnEdit = Me.StatusRepositoryItemImageComboBox
-        Me.colServiceB2B.FieldName = "Service B2B"
-        Me.colServiceB2B.Name = "colServiceB2B"
-        Me.colServiceB2B.Visible = True
-        Me.colServiceB2B.VisibleIndex = 5
-        '
-        'colServiceSCC
-        '
-        Me.colServiceSCC.Caption = "Service SCC"
-        Me.colServiceSCC.ColumnEdit = Me.StatusRepositoryItemImageComboBox
-        Me.colServiceSCC.FieldName = "Service SCC"
-        Me.colServiceSCC.Name = "colServiceSCC"
-        Me.colServiceSCC.Visible = True
-        Me.colServiceSCC.VisibleIndex = 6
-        '
-        'BLZLayoutView
-        '
-        Me.BLZLayoutView.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.colBankleitzahl1, Me.colMerkmal1, Me.colBezeichnung1, Me.colPLZ1, Me.colOrt1, Me.colKurzbezeichnung1, Me.colPAN1, Me.colBIC1, Me.LayoutViewColumn1, Me.LayoutViewColumn2, Me.LayoutViewColumn3, Me.LayoutViewColumn4, Me.LayoutViewColumn5})
-        Me.BLZLayoutView.GridControl = Me.GridControl2
-        Me.BLZLayoutView.Name = "BLZLayoutView"
-        Me.BLZLayoutView.OptionsBehavior.AllowExpandCollapse = False
-        Me.BLZLayoutView.OptionsBehavior.AllowRuntimeCustomization = False
-        Me.BLZLayoutView.OptionsBehavior.AllowSwitchViewModes = False
-        Me.BLZLayoutView.OptionsBehavior.AutoSelectAllInEditor = False
-        Me.BLZLayoutView.OptionsBehavior.Editable = False
-        Me.BLZLayoutView.OptionsBehavior.ReadOnly = True
-        Me.BLZLayoutView.OptionsBehavior.ScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.[Auto]
-        Me.BLZLayoutView.OptionsCarouselMode.StretchCardToViewHeight = True
-        Me.BLZLayoutView.OptionsCarouselMode.StretchCardToViewWidth = True
-        Me.BLZLayoutView.OptionsCustomization.AllowFilter = False
-        Me.BLZLayoutView.OptionsCustomization.AllowSort = False
-        Me.BLZLayoutView.OptionsCustomization.ShowGroupHiddenItems = False
-        Me.BLZLayoutView.OptionsFilter.AllowColumnMRUFilterList = False
-        Me.BLZLayoutView.OptionsFilter.AllowFilterEditor = False
-        Me.BLZLayoutView.OptionsFilter.AllowFilterIncrementalSearch = False
-        Me.BLZLayoutView.OptionsFind.AllowFindPanel = False
-        Me.BLZLayoutView.OptionsHeaderPanel.EnableCarouselModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.EnableColumnModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.EnableCustomizeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.EnableMultiColumnModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.EnableMultiRowModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.EnablePanButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.EnableRowModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.EnableSingleModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.ShowCarouselModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.ShowColumnModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.ShowCustomizeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.ShowMultiColumnModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.ShowMultiRowModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.ShowPanButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.ShowRowModeButton = False
-        Me.BLZLayoutView.OptionsHeaderPanel.ShowSingleModeButton = False
-        Me.BLZLayoutView.OptionsSingleRecordMode.StretchCardToViewHeight = True
-        Me.BLZLayoutView.OptionsSingleRecordMode.StretchCardToViewWidth = True
-        Me.BLZLayoutView.OptionsView.ShowHeaderPanel = False
-        Me.BLZLayoutView.TemplateCard = Me.LayoutViewCard1
-        '
-        'colBankleitzahl1
-        '
-        Me.colBankleitzahl1.FieldName = "Bankleitzahl"
-        Me.colBankleitzahl1.LayoutViewField = Me.layoutViewField_colBankleitzahl1
-        Me.colBankleitzahl1.Name = "colBankleitzahl1"
-        Me.colBankleitzahl1.OptionsColumn.AllowEdit = False
-        Me.colBankleitzahl1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colBankleitzahl1
-        '
-        Me.layoutViewField_colBankleitzahl1.EditorPreferredWidth = 93
-        Me.layoutViewField_colBankleitzahl1.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colBankleitzahl1.Name = "layoutViewField_colBankleitzahl1"
-        Me.layoutViewField_colBankleitzahl1.Size = New System.Drawing.Size(263, 20)
-        Me.layoutViewField_colBankleitzahl1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'colMerkmal1
-        '
-        Me.colMerkmal1.FieldName = "Merkmal"
-        Me.colMerkmal1.LayoutViewField = Me.layoutViewField_colMerkmal1
-        Me.colMerkmal1.Name = "colMerkmal1"
-        Me.colMerkmal1.OptionsColumn.AllowEdit = False
-        Me.colMerkmal1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colMerkmal1
-        '
-        Me.layoutViewField_colMerkmal1.EditorPreferredWidth = 36
-        Me.layoutViewField_colMerkmal1.Location = New System.Drawing.Point(0, 20)
-        Me.layoutViewField_colMerkmal1.Name = "layoutViewField_colMerkmal1"
-        Me.layoutViewField_colMerkmal1.Size = New System.Drawing.Size(206, 20)
-        Me.layoutViewField_colMerkmal1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'colBezeichnung1
-        '
-        Me.colBezeichnung1.FieldName = "Bezeichnung"
-        Me.colBezeichnung1.LayoutViewField = Me.layoutViewField_colBezeichnung1
-        Me.colBezeichnung1.Name = "colBezeichnung1"
-        Me.colBezeichnung1.OptionsColumn.AllowEdit = False
-        Me.colBezeichnung1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colBezeichnung1
-        '
-        Me.layoutViewField_colBezeichnung1.EditorPreferredWidth = 526
-        Me.layoutViewField_colBezeichnung1.Location = New System.Drawing.Point(0, 40)
-        Me.layoutViewField_colBezeichnung1.Name = "layoutViewField_colBezeichnung1"
-        Me.layoutViewField_colBezeichnung1.Size = New System.Drawing.Size(696, 20)
-        Me.layoutViewField_colBezeichnung1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'colPLZ1
-        '
-        Me.colPLZ1.FieldName = "PLZ"
-        Me.colPLZ1.LayoutViewField = Me.layoutViewField_colPLZ1
-        Me.colPLZ1.Name = "colPLZ1"
-        Me.colPLZ1.OptionsColumn.AllowEdit = False
-        Me.colPLZ1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colPLZ1
-        '
-        Me.layoutViewField_colPLZ1.EditorPreferredWidth = 52
-        Me.layoutViewField_colPLZ1.Location = New System.Drawing.Point(0, 60)
-        Me.layoutViewField_colPLZ1.Name = "layoutViewField_colPLZ1"
-        Me.layoutViewField_colPLZ1.Size = New System.Drawing.Size(222, 20)
-        Me.layoutViewField_colPLZ1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'colOrt1
-        '
-        Me.colOrt1.FieldName = "Ort"
-        Me.colOrt1.LayoutViewField = Me.layoutViewField_colOrt1
-        Me.colOrt1.Name = "colOrt1"
-        Me.colOrt1.OptionsColumn.AllowEdit = False
-        Me.colOrt1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colOrt1
-        '
-        Me.layoutViewField_colOrt1.EditorPreferredWidth = 526
-        Me.layoutViewField_colOrt1.Location = New System.Drawing.Point(0, 80)
-        Me.layoutViewField_colOrt1.Name = "layoutViewField_colOrt1"
-        Me.layoutViewField_colOrt1.Size = New System.Drawing.Size(696, 20)
-        Me.layoutViewField_colOrt1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'colKurzbezeichnung1
-        '
-        Me.colKurzbezeichnung1.FieldName = "Kurzbezeichnung"
-        Me.colKurzbezeichnung1.LayoutViewField = Me.layoutViewField_colKurzbezeichnung1
-        Me.colKurzbezeichnung1.Name = "colKurzbezeichnung1"
-        Me.colKurzbezeichnung1.OptionsColumn.AllowEdit = False
-        Me.colKurzbezeichnung1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colKurzbezeichnung1
-        '
-        Me.layoutViewField_colKurzbezeichnung1.EditorPreferredWidth = 526
-        Me.layoutViewField_colKurzbezeichnung1.Location = New System.Drawing.Point(0, 100)
-        Me.layoutViewField_colKurzbezeichnung1.Name = "layoutViewField_colKurzbezeichnung1"
-        Me.layoutViewField_colKurzbezeichnung1.Size = New System.Drawing.Size(696, 20)
-        Me.layoutViewField_colKurzbezeichnung1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'colPAN1
-        '
-        Me.colPAN1.FieldName = "PAN"
-        Me.colPAN1.LayoutViewField = Me.layoutViewField_colPAN1
-        Me.colPAN1.Name = "colPAN1"
-        Me.colPAN1.OptionsColumn.AllowEdit = False
-        Me.colPAN1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colPAN1
-        '
-        Me.layoutViewField_colPAN1.EditorPreferredWidth = 526
-        Me.layoutViewField_colPAN1.Location = New System.Drawing.Point(0, 120)
-        Me.layoutViewField_colPAN1.Name = "layoutViewField_colPAN1"
-        Me.layoutViewField_colPAN1.Size = New System.Drawing.Size(696, 20)
-        Me.layoutViewField_colPAN1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'colBIC1
-        '
-        Me.colBIC1.FieldName = "BIC"
-        Me.colBIC1.LayoutViewField = Me.layoutViewField_colBIC1
-        Me.colBIC1.Name = "colBIC1"
-        Me.colBIC1.OptionsColumn.AllowEdit = False
-        Me.colBIC1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colBIC1
-        '
-        Me.layoutViewField_colBIC1.EditorPreferredWidth = 94
-        Me.layoutViewField_colBIC1.Location = New System.Drawing.Point(0, 140)
-        Me.layoutViewField_colBIC1.Name = "layoutViewField_colBIC1"
-        Me.layoutViewField_colBIC1.Size = New System.Drawing.Size(264, 20)
-        Me.layoutViewField_colBIC1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'LayoutViewColumn1
-        '
-        Me.LayoutViewColumn1.FieldName = "Prüfziffer-berechnungs-methode"
-        Me.LayoutViewColumn1.LayoutViewField = Me.layoutViewField_LayoutViewColumn1
-        Me.LayoutViewColumn1.Name = "LayoutViewColumn1"
-        Me.LayoutViewColumn1.OptionsColumn.AllowEdit = False
-        Me.LayoutViewColumn1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_LayoutViewColumn1
-        '
-        Me.layoutViewField_LayoutViewColumn1.EditorPreferredWidth = 31
-        Me.layoutViewField_LayoutViewColumn1.Location = New System.Drawing.Point(0, 160)
-        Me.layoutViewField_LayoutViewColumn1.Name = "layoutViewField_LayoutViewColumn1"
-        Me.layoutViewField_LayoutViewColumn1.Size = New System.Drawing.Size(201, 20)
-        Me.layoutViewField_LayoutViewColumn1.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'LayoutViewColumn2
-        '
-        Me.LayoutViewColumn2.FieldName = "Datensatz-nummer"
-        Me.LayoutViewColumn2.LayoutViewField = Me.layoutViewField_LayoutViewColumn2
-        Me.LayoutViewColumn2.Name = "LayoutViewColumn2"
-        Me.LayoutViewColumn2.OptionsColumn.AllowEdit = False
-        Me.LayoutViewColumn2.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_LayoutViewColumn2
-        '
-        Me.layoutViewField_LayoutViewColumn2.EditorPreferredWidth = 87
-        Me.layoutViewField_LayoutViewColumn2.Location = New System.Drawing.Point(0, 180)
-        Me.layoutViewField_LayoutViewColumn2.Name = "layoutViewField_LayoutViewColumn2"
-        Me.layoutViewField_LayoutViewColumn2.Size = New System.Drawing.Size(257, 20)
-        Me.layoutViewField_LayoutViewColumn2.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'LayoutViewColumn3
-        '
-        Me.LayoutViewColumn3.FieldName = "Änderungs-kennzeichen"
-        Me.LayoutViewColumn3.LayoutViewField = Me.layoutViewField_LayoutViewColumn3
-        Me.LayoutViewColumn3.Name = "LayoutViewColumn3"
-        Me.LayoutViewColumn3.OptionsColumn.AllowEdit = False
-        Me.LayoutViewColumn3.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_LayoutViewColumn3
-        '
-        Me.layoutViewField_LayoutViewColumn3.EditorPreferredWidth = 33
-        Me.layoutViewField_LayoutViewColumn3.Location = New System.Drawing.Point(0, 200)
-        Me.layoutViewField_LayoutViewColumn3.Name = "layoutViewField_LayoutViewColumn3"
-        Me.layoutViewField_LayoutViewColumn3.Size = New System.Drawing.Size(203, 20)
-        Me.layoutViewField_LayoutViewColumn3.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'LayoutViewColumn4
-        '
-        Me.LayoutViewColumn4.Caption = "Status"
-        Me.LayoutViewColumn4.ColumnEdit = Me.StatusRepositoryItemImageComboBox
-        Me.LayoutViewColumn4.FieldName = "Bankleitzahl-löschung"
-        Me.LayoutViewColumn4.LayoutViewField = Me.layoutViewField_LayoutViewColumn4
-        Me.LayoutViewColumn4.Name = "LayoutViewColumn4"
-        Me.LayoutViewColumn4.OptionsColumn.AllowEdit = False
-        Me.LayoutViewColumn4.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_LayoutViewColumn4
-        '
-        Me.layoutViewField_LayoutViewColumn4.EditorPreferredWidth = 87
-        Me.layoutViewField_LayoutViewColumn4.Location = New System.Drawing.Point(0, 220)
-        Me.layoutViewField_LayoutViewColumn4.Name = "layoutViewField_LayoutViewColumn4"
-        Me.layoutViewField_LayoutViewColumn4.Size = New System.Drawing.Size(257, 20)
-        Me.layoutViewField_LayoutViewColumn4.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'LayoutViewColumn5
-        '
-        Me.LayoutViewColumn5.FieldName = "Nachfolge-Bankleitzahl"
-        Me.LayoutViewColumn5.LayoutViewField = Me.layoutViewField_LayoutViewColumn5
-        Me.LayoutViewColumn5.Name = "LayoutViewColumn5"
-        Me.LayoutViewColumn5.OptionsColumn.AllowEdit = False
-        Me.LayoutViewColumn5.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_LayoutViewColumn5
-        '
-        Me.layoutViewField_LayoutViewColumn5.EditorPreferredWidth = 98
-        Me.layoutViewField_LayoutViewColumn5.Location = New System.Drawing.Point(0, 240)
-        Me.layoutViewField_LayoutViewColumn5.Name = "layoutViewField_LayoutViewColumn5"
-        Me.layoutViewField_LayoutViewColumn5.Size = New System.Drawing.Size(268, 20)
-        Me.layoutViewField_LayoutViewColumn5.TextSize = New System.Drawing.Size(161, 13)
-        '
-        'LayoutViewCard1
-        '
-        Me.LayoutViewCard1.CustomizationFormText = "TemplateCard"
-        Me.LayoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colBankleitzahl1, Me.layoutViewField_colMerkmal1, Me.layoutViewField_colBezeichnung1, Me.layoutViewField_colPLZ1, Me.layoutViewField_colOrt1, Me.layoutViewField_colKurzbezeichnung1, Me.layoutViewField_colPAN1, Me.layoutViewField_colBIC1, Me.layoutViewField_LayoutViewColumn1, Me.layoutViewField_LayoutViewColumn2, Me.layoutViewField_LayoutViewColumn3, Me.layoutViewField_LayoutViewColumn4, Me.layoutViewField_LayoutViewColumn5})
-        Me.LayoutViewCard1.Name = "LayoutViewCard1"
-        Me.LayoutViewCard1.OptionsItemText.TextToControlDistance = 5
-        Me.LayoutViewCard1.Text = "TemplateCard"
-        '
-        'SEPAPrint_Export_btn
-        '
-        Me.SEPAPrint_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.SEPAPrint_Export_btn.ImageOptions.ImageIndex = 2
-        Me.SEPAPrint_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.SEPAPrint_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.SEPAPrint_Export_btn.Name = "SEPAPrint_Export_btn"
-        Me.SEPAPrint_Export_btn.Size = New System.Drawing.Size(134, 22)
-        Me.SEPAPrint_Export_btn.StyleController = Me.LayoutControl1
-        Me.SEPAPrint_Export_btn.TabIndex = 9
-        Me.SEPAPrint_Export_btn.Text = "Print or Export"
         '
         'LayoutControlItem2
         '
@@ -1183,200 +700,162 @@ Partial Class SEPA_DIRECTORY
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.SimpleSeparator1, Me.TabbedControlGroup1})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.SimpleSeparator1, Me.LayoutControlItem3})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1250, 725)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1409, 527)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(280, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(948, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.SEPAPrint_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(138, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'EmptySpaceItem4
-        '
-        Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(138, 0)
-        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(142, 26)
-        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
         'SimpleSeparator1
         '
         Me.SimpleSeparator1.AllowHotTrack = False
         Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1228, 0)
+        Me.SimpleSeparator1.Location = New System.Drawing.Point(0, 0)
         Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
-        '
-        'TabbedControlGroup1
-        '
-        Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Yellow
-        Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
-        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 26)
-        Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
-        Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup3
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1230, 679)
-        Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup3, Me.LayoutControlGroup2})
-        '
-        'LayoutControlGroup3
-        '
-        Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LayoutControlGroup3.AppearanceTabPage.HeaderActive.Options.UseFont = True
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlItem6, Me.EmptySpaceItem2, Me.LayoutControlItem5})
-        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1206, 633)
-        Me.LayoutControlGroup3.Text = "DETAILS"
+        Me.SimpleSeparator1.Size = New System.Drawing.Size(1389, 1)
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.GridControl3
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 24)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 1)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(1206, 609)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(1389, 506)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.MessageIDTextEdit
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(294, 24)
-        Me.LayoutControlItem6.Text = "SEPA File Message ID:"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(107, 13)
-        '
-        'EmptySpaceItem2
-        '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(599, 0)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(607, 24)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlGroup2
-        '
-        Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LayoutControlGroup2.AppearanceTabPage.HeaderActive.Options.UseFont = True
-        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4})
-        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1206, 633)
-        Me.LayoutControlGroup2.Text = "GENERAL"
-        '
-        'LayoutControlItem4
-        '
-        Me.LayoutControlItem4.Control = Me.GridControl2
-        Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1206, 633)
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem4.TextVisible = False
-        '
-        'SEPA_DIRECTORYTableAdapter
-        '
-        Me.SEPA_DIRECTORYTableAdapter.ClearBeforeFill = True
         '
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BIC_DIRECTORY_PLUSTableAdapter = Nothing
         Me.TableAdapterManager.BIC_DIRECTORYTableAdapter = Nothing
+        Me.TableAdapterManager.BIC_HISTORYTableAdapter = Nothing
         Me.TableAdapterManager.BLZTableAdapter = Nothing
+        Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.COUNTRIESTableAdapter = Nothing
         Me.TableAdapterManager.CURRENCIESTableAdapter = Nothing
         Me.TableAdapterManager.EXCHANGE_RATES_ECBTableAdapter = Nothing
         Me.TableAdapterManager.HOLIDAYSTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_BUNDESLANDTableAdapter = Nothing
         Me.TableAdapterManager.SEPA_DIRECTORY_FULLTableAdapter = Nothing
-        Me.TableAdapterManager.SEPA_DIRECTORYTableAdapter = Me.SEPA_DIRECTORYTableAdapter
         Me.TableAdapterManager.T2_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'PrintingSystem1
         '
-        Me.PrintingSystem1.Links.AddRange(New Object() {Me.PrintableComponentLink1, Me.PrintableComponentLink2})
+        Me.PrintingSystem1.Links.AddRange(New Object() {Me.PrintableComponentLink1})
         '
         'PrintableComponentLink1
         '
-        Me.PrintableComponentLink1.Component = Me.GridControl2
+        Me.PrintableComponentLink1.Component = Me.GridControl3
         Me.PrintableComponentLink1.Landscape = True
         Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4
         Me.PrintableComponentLink1.PrintingSystemBase = Me.PrintingSystem1
-        '
-        'PrintableComponentLink2
-        '
-        Me.PrintableComponentLink2.Component = Me.GridControl3
-        Me.PrintableComponentLink2.Landscape = True
-        Me.PrintableComponentLink2.PaperKind = System.Drawing.Printing.PaperKind.A4
-        Me.PrintableComponentLink2.PrintingSystemBase = Me.PrintingSystem1
         '
         'SEPA_DIRECTORY_FULLTableAdapter
         '
         Me.SEPA_DIRECTORY_FULLTableAdapter.ClearBeforeFill = True
         '
-        'LastUpdate_txt
+        'RibbonControl1
         '
-        Me.LastUpdate_txt.Location = New System.Drawing.Point(381, 72)
-        Me.LastUpdate_txt.Name = "LastUpdate_txt"
-        Me.LastUpdate_txt.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LastUpdate_txt.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseFont = True
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseForeColor = True
-        Me.LastUpdate_txt.Properties.ReadOnly = True
-        Me.LastUpdate_txt.Properties.UseReadOnlyAppearance = False
-        Me.LastUpdate_txt.Size = New System.Drawing.Size(238, 20)
-        Me.LastUpdate_txt.StyleController = Me.LayoutControl1
-        Me.LastUpdate_txt.TabIndex = 11
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.SEPA_File_ID_BarEditItem, Me.PrintExport_bbi, Me.bbi_Close})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 4
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.SEPA_File_Message_ID_TextEdit})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1409, 94)
         '
-        'LayoutControlItem5
+        'SEPA_File_ID_BarEditItem
         '
-        Me.LayoutControlItem5.Control = Me.LastUpdate_txt
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(294, 0)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(305, 24)
-        Me.LayoutControlItem5.Text = "Last Update"
-        Me.LayoutControlItem5.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(58, 13)
-        Me.LayoutControlItem5.TextToControlDistance = 5
+        Me.SEPA_File_ID_BarEditItem.Caption = "SEPA File Message ID:"
+        Me.SEPA_File_ID_BarEditItem.CaptionAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.SEPA_File_ID_BarEditItem.CaptionToEditorIndent = 10
+        Me.SEPA_File_ID_BarEditItem.DataBindings.Add(New System.Windows.Forms.Binding("AccessibleDescription", Me.SEPA_DIRECTORY_FULLBindingSource, "MessageID", True))
+        Me.SEPA_File_ID_BarEditItem.Edit = Me.SEPA_File_Message_ID_TextEdit
+        Me.SEPA_File_ID_BarEditItem.EditHeight = 50
+        Me.SEPA_File_ID_BarEditItem.EditWidth = 250
+        Me.SEPA_File_ID_BarEditItem.Id = 1
+        Me.SEPA_File_ID_BarEditItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SEPA_File_ID_BarEditItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.SEPA_File_ID_BarEditItem.Name = "SEPA_File_ID_BarEditItem"
+        '
+        'SEPA_File_Message_ID_TextEdit
+        '
+        Me.SEPA_File_Message_ID_TextEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SEPA_File_Message_ID_TextEdit.Appearance.Options.UseFont = True
+        Me.SEPA_File_Message_ID_TextEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.SEPA_File_Message_ID_TextEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.SEPA_File_Message_ID_TextEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.SEPA_File_Message_ID_TextEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.SEPA_File_Message_ID_TextEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.SEPA_File_Message_ID_TextEdit.AutoHeight = False
+        Me.SEPA_File_Message_ID_TextEdit.Name = "SEPA_File_Message_ID_TextEdit"
+        Me.SEPA_File_Message_ID_TextEdit.ReadOnly = True
+        Me.SEPA_File_Message_ID_TextEdit.UseReadOnlyAppearance = False
+        '
+        'PrintExport_bbi
+        '
+        Me.PrintExport_bbi.Caption = "Print or Export"
+        Me.PrintExport_bbi.Id = 2
+        Me.PrintExport_bbi.ImageOptions.ImageIndex = 2
+        Me.PrintExport_bbi.Name = "PrintExport_bbi"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.SEPA_File_ID_BarEditItem)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.PrintExport_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Close, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 3
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.Name = "bbi_Close"
         '
         'SEPA_DIRECTORY
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1250, 725)
+        Me.ClientSize = New System.Drawing.Size(1409, 621)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.Icon = CType(resources.GetObject("SEPA_DIRECTORY.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "SEPA_DIRECTORY"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "SEPA DIRECTORY"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.MessageIDTextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SEPA_DIRECTORY_FULLBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EXTERNALDataset, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1394,105 +873,30 @@ Partial Class SEPA_DIRECTORY
         CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SEPA_DIRECTORYBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SEPAGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StatusRepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BLZLayoutView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBankleitzahl1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colMerkmal1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBezeichnung1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPLZ1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colOrt1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colKurzbezeichnung1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colPAN1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBIC1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_LayoutViewColumn5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SEPA_File_Message_ID_TextEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
-    Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents BLZLayoutView As DevExpress.XtraGrid.Views.Layout.LayoutView
-    Friend WithEvents colBankleitzahl1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colBankleitzahl1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colMerkmal1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colMerkmal1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colBezeichnung1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colBezeichnung1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colPLZ1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPLZ1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colOrt1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colOrt1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colKurzbezeichnung1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colKurzbezeichnung1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colPAN1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colPAN1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents colBIC1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colBIC1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_LayoutViewColumn1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn2 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_LayoutViewColumn2 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn3 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_LayoutViewColumn3 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn4 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents StatusRepositoryItemImageComboBox As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
-    Friend WithEvents layoutViewField_LayoutViewColumn4 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn5 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_LayoutViewColumn5 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewCard1 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
-    Friend WithEvents SEPAGridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents SEPAPrint_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents EXTERNALDataset As PS_TOOL_DX.EXTERNALDataset
-    Friend WithEvents SEPA_DIRECTORYBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents SEPA_DIRECTORYTableAdapter As PS_TOOL_DX.EXTERNALDatasetTableAdapters.SEPA_DIRECTORYTableAdapter
     Friend WithEvents TableAdapterManager As PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
-    Friend WithEvents colBIC As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colName As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colServiceSCT As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colServiceSDD As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colServiceCOR1 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents colServiceB2B As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
-    Friend WithEvents colServiceSCC As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents TabbedControlGroup1 As DevExpress.XtraLayout.TabbedControlGroup
-    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SEPA_DIRECTORY_FULLBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents SEPA_DIRECTORY_FULLTableAdapter As PS_TOOL_DX.EXTERNALDatasetTableAdapters.SEPA_DIRECTORY_FULLTableAdapter
-    Friend WithEvents MessageIDTextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents GridControl3 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
@@ -1512,7 +916,6 @@ Partial Class SEPA_DIRECTORY
     Friend WithEvents colPartyBIC As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFullTableNr As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFileValidityDateTime As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents LayoutView1 As DevExpress.XtraGrid.Views.Layout.LayoutView
     Friend WithEvents LayoutViewColumn6 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewField1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
@@ -1541,13 +944,17 @@ Partial Class SEPA_DIRECTORY
     Friend WithEvents LayoutViewColumn18 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents LayoutViewField13 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
     Friend WithEvents LayoutViewCard2 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
-    Friend WithEvents PrintableComponentLink2 As DevExpress.XtraPrinting.PrintableComponentLink
     Friend WithEvents colValidityTo_Date As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colValidityTo_Time As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LastUpdate_txt As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents SEPA_File_ID_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents SEPA_File_Message_ID_TextEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents PrintExport_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
 End Class

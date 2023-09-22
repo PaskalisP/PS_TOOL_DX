@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class BLZ_DIRECTORY
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -22,11 +22,6 @@ Partial Class BLZ_DIRECTORY
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BLZ_DIRECTORY))
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem1 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Me.BLZLayoutView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.colBankleitzahl1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.layoutViewField_colBankleitzahl1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
@@ -87,23 +82,25 @@ Partial Class BLZ_DIRECTORY
         Me.BLZTableAdapter = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.BLZTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.LastUpdate_txt = New DevExpress.XtraEditors.TextEdit()
-        Me.BLZ_Dir_Create_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.BLZViews_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.BLZPrint_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.bbi_Load = New DevExpress.XtraBars.BarButtonItem()
+        Me.DisplayListDetails_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_CreateBlzDirectory = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_PrintExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.BLZLayoutView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colBankleitzahl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colMerkmal1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -137,19 +134,14 @@ Partial Class BLZ_DIRECTORY
         CType(Me.item10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BLZLayoutView
@@ -392,6 +384,8 @@ Partial Class BLZ_DIRECTORY
         Me.ImageCollection1.Images.SetKeyName(7, "cancel_16x16.png")
         Me.ImageCollection1.Images.SetKeyName(8, "add_16x16.png")
         Me.ImageCollection1.Images.SetKeyName(9, "edit_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(10, "contact_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(11, "chartsshowlegend_16x16.png")
         '
         'layoutViewField_LayoutViewColumn3
         '
@@ -446,11 +440,11 @@ Partial Class BLZ_DIRECTORY
         GridLevelNode1.LevelTemplate = Me.BLZLayoutView
         GridLevelNode1.RelationName = "Level1"
         Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(12, 38)
+        Me.GridControl2.Location = New System.Drawing.Point(12, 32)
         Me.GridControl2.MainView = Me.BLZGridView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.StatusRepositoryItemImageComboBox})
-        Me.GridControl2.Size = New System.Drawing.Size(1363, 598)
+        Me.GridControl2.Size = New System.Drawing.Size(1331, 411)
         Me.GridControl2.TabIndex = 11
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.BLZGridView, Me.BLZLayoutView})
@@ -489,6 +483,7 @@ Partial Class BLZ_DIRECTORY
         Me.BLZGridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
         Me.BLZGridView.OptionsView.ShowAutoFilterRow = True
         Me.BLZGridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.BLZGridView.OptionsView.ShowGroupPanel = False
         '
         'colBankleitzahl
         '
@@ -717,65 +712,23 @@ Partial Class BLZ_DIRECTORY
         Me.TableAdapterManager.HOLIDAYSTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_BUNDESLANDTableAdapter = Nothing
         Me.TableAdapterManager.SEPA_DIRECTORY_FULLTableAdapter = Nothing
-        Me.TableAdapterManager.SEPA_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.T2_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.LastUpdate_txt)
-        Me.LayoutControl1.Controls.Add(Me.BLZ_Dir_Create_btn)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.BLZViews_btn)
-        Me.LayoutControl1.Controls.Add(Me.BLZPrint_Export_btn)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1040, 149, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1387, 648)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1355, 455)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
-        '
-        'LastUpdate_txt
-        '
-        Me.LastUpdate_txt.Location = New System.Drawing.Point(436, 12)
-        Me.LastUpdate_txt.Name = "LastUpdate_txt"
-        Me.LastUpdate_txt.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LastUpdate_txt.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseFont = True
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseForeColor = True
-        Me.LastUpdate_txt.Properties.ReadOnly = True
-        Me.LastUpdate_txt.Properties.UseReadOnlyAppearance = False
-        Me.LastUpdate_txt.Size = New System.Drawing.Size(210, 20)
-        Me.LastUpdate_txt.StyleController = Me.LayoutControl1
-        Me.LastUpdate_txt.TabIndex = 8
-        '
-        'BLZ_Dir_Create_btn
-        '
-        Me.BLZ_Dir_Create_btn.ImageOptions.ImageIndex = 5
-        Me.BLZ_Dir_Create_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.BLZ_Dir_Create_btn.Location = New System.Drawing.Point(169, 12)
-        Me.BLZ_Dir_Create_btn.Name = "BLZ_Dir_Create_btn"
-        Me.BLZ_Dir_Create_btn.Size = New System.Drawing.Size(202, 22)
-        Me.BLZ_Dir_Create_btn.StyleController = Me.LayoutControl1
-        ToolTipTitleItem1.Appearance.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
-        ToolTipTitleItem1.Appearance.Options.UseImage = True
-        ToolTipTitleItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
-        ToolTipTitleItem1.Text = "BLZ Directory creation"
-        ToolTipItem1.LeftIndent = 6
-        ToolTipItem1.Text = "Creates a new BLZ Directory only for valid Institutions where the BIC is present"
-        ToolTipTitleItem2.LeftIndent = 6
-        ToolTipTitleItem2.Text = "The created BLZ Directory can be imported to GMPS BLZ import"
-        SuperToolTip1.Items.Add(ToolTipTitleItem1)
-        SuperToolTip1.Items.Add(ToolTipItem1)
-        SuperToolTip1.Items.Add(ToolTipSeparatorItem1)
-        SuperToolTip1.Items.Add(ToolTipTitleItem2)
-        Me.BLZ_Dir_Create_btn.SuperTip = SuperToolTip1
-        Me.BLZ_Dir_Create_btn.TabIndex = 12
-        Me.BLZ_Dir_Create_btn.Text = "Recreate BLZ Directory File"
         '
         'GridControl1
         '
@@ -791,30 +744,6 @@ Partial Class BLZ_DIRECTORY
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'BLZViews_btn
-        '
-        Me.BLZViews_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BLZViews_btn.ImageOptions.ImageIndex = 0
-        Me.BLZViews_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.BLZViews_btn.Location = New System.Drawing.Point(1258, 12)
-        Me.BLZViews_btn.Name = "BLZViews_btn"
-        Me.BLZViews_btn.Size = New System.Drawing.Size(117, 22)
-        Me.BLZViews_btn.StyleController = Me.LayoutControl1
-        Me.BLZViews_btn.TabIndex = 7
-        Me.BLZViews_btn.Text = "View Detail"
-        '
-        'BLZPrint_Export_btn
-        '
-        Me.BLZPrint_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BLZPrint_Export_btn.ImageOptions.ImageIndex = 2
-        Me.BLZPrint_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.BLZPrint_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.BLZPrint_Export_btn.Name = "BLZPrint_Export_btn"
-        Me.BLZPrint_Export_btn.Size = New System.Drawing.Size(153, 22)
-        Me.BLZPrint_Export_btn.StyleController = Me.LayoutControl1
-        Me.BLZPrint_Export_btn.TabIndex = 9
-        Me.BLZPrint_Export_btn.Text = "Print or Export"
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.GridControl1
@@ -829,76 +758,20 @@ Partial Class BLZ_DIRECTORY
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem1})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1387, 648)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1355, 455)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(638, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(606, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.BLZPrint_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(157, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.BLZViews_btn
-        Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1246, 0)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(121, 26)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
-        '
-        'SimpleSeparator1
-        '
-        Me.SimpleSeparator1.AllowHotTrack = False
-        Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1244, 0)
-        Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 20)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1367, 602)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1335, 415)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.BLZ_Dir_Create_btn
-        Me.LayoutControlItem5.CustomizationFormText = "LayoutControlItem5"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(157, 0)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(206, 26)
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem5.TextVisible = False
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.LastUpdate_txt
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(363, 0)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(275, 26)
-        Me.LayoutControlItem6.Text = "Last Update"
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(58, 13)
         '
         'PrintingSystem1
         '
@@ -911,14 +784,124 @@ Partial Class BLZ_DIRECTORY
         Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4
         Me.PrintableComponentLink1.PrintingSystemBase = Me.PrintingSystem1
         '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbi_Load, Me.DisplayListDetails_bbi, Me.bbi_CreateBlzDirectory, Me.bbi_PrintExport, Me.bbi_Close})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 6
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1355, 94)
+        '
+        'bbi_Load
+        '
+        Me.bbi_Load.Caption = "Load data"
+        Me.bbi_Load.Id = 1
+        Me.bbi_Load.ImageOptions.Image = CType(resources.GetObject("bbi_Load.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Load.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Load.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Load.Name = "bbi_Load"
+        '
+        'DisplayListDetails_bbi
+        '
+        Me.DisplayListDetails_bbi.Caption = "Display Details"
+        Me.DisplayListDetails_bbi.Id = 2
+        Me.DisplayListDetails_bbi.ImageOptions.ImageIndex = 10
+        Me.DisplayListDetails_bbi.Name = "DisplayListDetails_bbi"
+        '
+        'bbi_CreateBlzDirectory
+        '
+        Me.bbi_CreateBlzDirectory.Caption = "Create BLZ Directory File"
+        Me.bbi_CreateBlzDirectory.Id = 3
+        Me.bbi_CreateBlzDirectory.ImageOptions.Image = CType(resources.GetObject("bbi_CreateBlzDirectory.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_CreateBlzDirectory.ImageOptions.LargeImage = CType(resources.GetObject("bbi_CreateBlzDirectory.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_CreateBlzDirectory.Name = "bbi_CreateBlzDirectory"
+        '
+        'bbi_PrintExport
+        '
+        Me.bbi_PrintExport.Caption = "Print or Export"
+        Me.bbi_PrintExport.Id = 4
+        Me.bbi_PrintExport.ImageOptions.ImageIndex = 2
+        Me.bbi_PrintExport.Name = "bbi_PrintExport"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 5
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.Name = "bbi_Close"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Load)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DisplayListDetails_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_CreateBlzDirectory, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_PrintExport, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Close, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(12, 12)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 25
+        Me.ProgressPanel1.Text = "ProgressPanel1"
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.ProgressPanel1
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1335, 20)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem1.TextVisible = False
+        Me.LayoutControlItem1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
         'BLZ_DIRECTORY
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1387, 648)
+        Me.ClientSize = New System.Drawing.Size(1355, 549)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.Icon = CType(resources.GetObject("BLZ_DIRECTORY.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "BLZ_DIRECTORY"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "BLZ DIRECTORY"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -955,20 +938,16 @@ Partial Class BLZ_DIRECTORY
         CType(Me.item10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents EXTERNALDataset As PS_TOOL_DX.EXTERNALDataset
@@ -981,14 +960,8 @@ Partial Class BLZ_DIRECTORY
     Friend WithEvents BLZGridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents BLZViews_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents BLZPrint_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents colBankleitzahl1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents colMerkmal1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
@@ -1044,8 +1017,16 @@ Partial Class BLZ_DIRECTORY
     Friend WithEvents item8 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item9 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item10 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents BLZ_Dir_Create_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LastUpdate_txt As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents bbi_Load As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents DisplayListDetails_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_CreateBlzDirectory As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_PrintExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
 End Class

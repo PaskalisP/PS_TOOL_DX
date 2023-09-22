@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class GmpsPaymentsIn
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -21,9 +21,9 @@ Partial Class GmpsPaymentsIn
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GmpsPaymentsIn))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode5 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode6 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.PaymentsIn_MT103_LayoutView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.layoutViewField_colID1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
@@ -407,27 +407,38 @@ Partial Class GmpsPaymentsIn
         Me.ClearingDataSet = New PS_TOOL_DX.ClearingDataSet()
         Me.GMPS_PAYMENTS_INTableAdapter = New PS_TOOL_DX.ClearingDataSetTableAdapters.GMPS_PAYMENTS_INTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.ClearingDataSetTableAdapters.TableAdapterManager()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
-        Me.PaymentTillDateEdit = New DevExpress.XtraEditors.DateEdit()
-        Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.LoadPaymentsData_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.PaymentFromDateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.LayoutViews_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
+        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.DateFrom_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.DateFrom_DateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.DateTill_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.DateTill_DateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.bbi_Load = New DevExpress.XtraBars.BarButtonItem()
+        Me.DisplayListDetails_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.LayoutTemplatesMenu_SubItem = New DevExpress.XtraBars.BarSubItem()
+        Me.bbiLoadLayout = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiSaveLayout = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiDeleteLayout = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiLoadDefaultLayout = New DevExpress.XtraBars.BarButtonItem()
+        Me.ReportTemplateName_BarStaticItem = New DevExpress.XtraBars.BarStaticItem()
+        Me.bbi_PrintOrExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.PaymentsIn_MT103_LayoutView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colIncomingDate1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -639,11 +650,7 @@ Partial Class GmpsPaymentsIn
         CType(Me.item20, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GMPS_PAYMENTS_INBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClearingDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentTillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentTillDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentFromDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentFromDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
@@ -651,12 +658,15 @@ Partial Class GmpsPaymentsIn
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateFrom_DateEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateFrom_DateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTill_DateEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DateTill_DateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PaymentsIn_MT103_LayoutView
@@ -1410,18 +1420,18 @@ Partial Class GmpsPaymentsIn
         Me.GridControl2.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        GridLevelNode1.LevelTemplate = Me.PaymentsIn_MT103_LayoutView
-        GridLevelNode1.RelationName = "Level1"
-        GridLevelNode2.LevelTemplate = Me.PaymentsIn_MT202_LayoutView
-        GridLevelNode2.RelationName = "Level2"
-        GridLevelNode3.LevelTemplate = Me.PaymentsIn_SEPA_DD_LayoutView
-        GridLevelNode3.RelationName = "Level3"
-        Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1, GridLevelNode2, GridLevelNode3})
-        Me.GridControl2.Location = New System.Drawing.Point(12, 38)
+        GridLevelNode4.LevelTemplate = Me.PaymentsIn_MT103_LayoutView
+        GridLevelNode4.RelationName = "Level1"
+        GridLevelNode5.LevelTemplate = Me.PaymentsIn_MT202_LayoutView
+        GridLevelNode5.RelationName = "Level2"
+        GridLevelNode6.LevelTemplate = Me.PaymentsIn_SEPA_DD_LayoutView
+        GridLevelNode6.RelationName = "Level3"
+        Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode4, GridLevelNode5, GridLevelNode6})
+        Me.GridControl2.Location = New System.Drawing.Point(24, 66)
         Me.GridControl2.MainView = Me.PaymentsIn_GridView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemMemoEdit1})
-        Me.GridControl2.Size = New System.Drawing.Size(1442, 647)
+        Me.GridControl2.Size = New System.Drawing.Size(1414, 572)
         Me.GridControl2.TabIndex = 11
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.PaymentsIn_MT202_LayoutView, Me.PaymentsIn_SEPA_DD_LayoutView, Me.PaymentsIn_GridView, Me.PaymentsIn_MT103_LayoutView})
@@ -4032,68 +4042,6 @@ Partial Class GmpsPaymentsIn
         Me.TableAdapterManager.ODAS_REMMITANCESTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.ClearingDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'LabelControl2
-        '
-        Me.LabelControl2.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.Location = New System.Drawing.Point(651, 17)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(44, 13)
-        Me.LabelControl2.TabIndex = 2
-        Me.LabelControl2.Text = "Date till"
-        '
-        'PaymentTillDateEdit
-        '
-        Me.PaymentTillDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.PaymentTillDateEdit.EditValue = Nothing
-        Me.PaymentTillDateEdit.Location = New System.Drawing.Point(651, 36)
-        Me.PaymentTillDateEdit.Name = "PaymentTillDateEdit"
-        Me.PaymentTillDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.PaymentTillDateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.PaymentTillDateEdit.Properties.Appearance.Options.UseFont = True
-        Me.PaymentTillDateEdit.Properties.Appearance.Options.UseTextOptions = True
-        Me.PaymentTillDateEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.PaymentTillDateEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.PaymentTillDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.PaymentTillDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.PaymentTillDateEdit.Properties.DisplayFormat.FormatString = "dd.MM.yyyy"
-        Me.PaymentTillDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.PaymentTillDateEdit.Properties.EditFormat.FormatString = "dd.MM.yyyy"
-        Me.PaymentTillDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.PaymentTillDateEdit.Properties.Mask.EditMask = "dd.MM.yyyy"
-        Me.PaymentTillDateEdit.Size = New System.Drawing.Size(117, 22)
-        Me.PaymentTillDateEdit.TabIndex = 3
-        '
-        'LabelControl1
-        '
-        Me.LabelControl1.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LabelControl1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl1.Appearance.Options.UseFont = True
-        Me.LabelControl1.Location = New System.Drawing.Point(509, 17)
-        Me.LabelControl1.Name = "LabelControl1"
-        Me.LabelControl1.Size = New System.Drawing.Size(57, 13)
-        Me.LabelControl1.TabIndex = 0
-        Me.LabelControl1.Text = "Date from"
-        '
-        'LoadPaymentsData_btn
-        '
-        Me.LoadPaymentsData_btn.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.LoadPaymentsData_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LoadPaymentsData_btn.ImageOptions.ImageIndex = 6
-        Me.LoadPaymentsData_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.LoadPaymentsData_btn.Location = New System.Drawing.Point(787, 36)
-        Me.LoadPaymentsData_btn.Name = "LoadPaymentsData_btn"
-        Me.LoadPaymentsData_btn.Size = New System.Drawing.Size(111, 22)
-        Me.LoadPaymentsData_btn.TabIndex = 4
-        Me.LoadPaymentsData_btn.Text = "Load Data"
-        '
         'ImageCollection1
         '
         Me.ImageCollection1.ImageStream = CType(resources.GetObject("ImageCollection1.ImageStream"), DevExpress.Utils.ImageCollectionStreamer)
@@ -4106,34 +4054,8 @@ Partial Class GmpsPaymentsIn
         Me.ImageCollection1.Images.SetKeyName(6, "Load.ico")
         Me.ImageCollection1.Images.SetKeyName(7, "CrystalReport.jpg")
         Me.ImageCollection1.Images.SetKeyName(8, "Calculator.ico")
-        '
-        'PaymentFromDateEdit
-        '
-        Me.PaymentFromDateEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.PaymentFromDateEdit.EditValue = Nothing
-        Me.PaymentFromDateEdit.Location = New System.Drawing.Point(509, 36)
-        Me.PaymentFromDateEdit.Name = "PaymentFromDateEdit"
-        Me.PaymentFromDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.PaymentFromDateEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.PaymentFromDateEdit.Properties.Appearance.Options.UseFont = True
-        Me.PaymentFromDateEdit.Properties.Appearance.Options.UseTextOptions = True
-        Me.PaymentFromDateEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.PaymentFromDateEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.PaymentFromDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.PaymentFromDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton()})
-        Me.PaymentFromDateEdit.Properties.DisplayFormat.FormatString = "dd.MM.yyyy"
-        Me.PaymentFromDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.PaymentFromDateEdit.Properties.EditFormat.FormatString = "dd.MM.yyyy"
-        Me.PaymentFromDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.PaymentFromDateEdit.Properties.Mask.EditMask = "dd.MM.yyyy"
-        Me.PaymentFromDateEdit.Size = New System.Drawing.Size(117, 22)
-        Me.PaymentFromDateEdit.TabIndex = 1
+        Me.ImageCollection1.Images.SetKeyName(9, "contact_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(10, "chartsshowlegend_16x16.png")
         '
         'PrintingSystem1
         '
@@ -4148,21 +4070,39 @@ Partial Class GmpsPaymentsIn
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.LayoutViews_btn)
-        Me.LayoutControl1.Controls.Add(Me.Print_Export_btn)
+        Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(-2, 62)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(1040, 149, 250, 350)
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(672, 207, 762, 503)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1466, 697)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1462, 662)
         Me.LayoutControl1.TabIndex = 30
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(24, 46)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 121
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'GridControl1
         '
@@ -4178,30 +4118,6 @@ Partial Class GmpsPaymentsIn
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'LayoutViews_btn
-        '
-        Me.LayoutViews_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LayoutViews_btn.ImageOptions.ImageIndex = 0
-        Me.LayoutViews_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.LayoutViews_btn.Location = New System.Drawing.Point(1304, 12)
-        Me.LayoutViews_btn.Name = "LayoutViews_btn"
-        Me.LayoutViews_btn.Size = New System.Drawing.Size(150, 22)
-        Me.LayoutViews_btn.StyleController = Me.LayoutControl1
-        Me.LayoutViews_btn.TabIndex = 6
-        Me.LayoutViews_btn.Text = "View Detail"
-        '
-        'Print_Export_btn
-        '
-        Me.Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Print_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.Print_Export_btn.Name = "Print_Export_btn"
-        Me.Print_Export_btn.Size = New System.Drawing.Size(162, 22)
-        Me.Print_Export_btn.StyleController = Me.LayoutControl1
-        Me.Print_Export_btn.TabIndex = 5
-        Me.Print_Export_btn.Text = "Print or Export"
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.GridControl1
@@ -4216,66 +4132,219 @@ Partial Class GmpsPaymentsIn
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.LayoutControlItem4})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.SimpleSeparator1, Me.LayoutControlGroup2})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1466, 697)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1462, 662)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(296, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(995, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(166, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'EmptySpaceItem4
-        '
-        Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(166, 0)
-        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(130, 26)
-        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.LayoutViews_btn
-        Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1292, 0)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(154, 26)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
         '
         'SimpleSeparator1
         '
         Me.SimpleSeparator1.AllowHotTrack = False
         Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1291, 0)
+        Me.SimpleSeparator1.Location = New System.Drawing.Point(0, 0)
         Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
+        Me.SimpleSeparator1.Size = New System.Drawing.Size(1442, 1)
+        '
+        'LayoutControlGroup2
+        '
+        Me.LayoutControlGroup2.AppearanceGroup.ForeColor = System.Drawing.Color.Aqua
+        Me.LayoutControlGroup2.AppearanceGroup.Options.UseForeColor = True
+        Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem5})
+        Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 1)
+        Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1442, 641)
+        Me.LayoutControlGroup2.Text = "Incoming Payments"
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 26)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 20)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1446, 651)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1418, 576)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.ProgressPanel1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1418, 20)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.DateFrom_BarEditItem, Me.DateTill_BarEditItem, Me.bbi_Load, Me.DisplayListDetails_bbi, Me.LayoutTemplatesMenu_SubItem, Me.bbiLoadLayout, Me.bbiSaveLayout, Me.bbiDeleteLayout, Me.bbiLoadDefaultLayout, Me.ReportTemplateName_BarStaticItem, Me.bbi_PrintOrExport, Me.bbi_Close})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 14
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.DateFrom_DateEdit, Me.DateTill_DateEdit})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1462, 94)
+        '
+        'DateFrom_BarEditItem
+        '
+        Me.DateFrom_BarEditItem.Caption = "Date from:"
+        Me.DateFrom_BarEditItem.CaptionAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateFrom_BarEditItem.CaptionToEditorIndent = 10
+        Me.DateFrom_BarEditItem.Edit = Me.DateFrom_DateEdit
+        Me.DateFrom_BarEditItem.EditHeight = 30
+        Me.DateFrom_BarEditItem.EditWidth = 120
+        Me.DateFrom_BarEditItem.Id = 1
+        Me.DateFrom_BarEditItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateFrom_BarEditItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.DateFrom_BarEditItem.Name = "DateFrom_BarEditItem"
+        '
+        'DateFrom_DateEdit
+        '
+        Me.DateFrom_DateEdit.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
+        Me.DateFrom_DateEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateFrom_DateEdit.Appearance.Options.UseFont = True
+        Me.DateFrom_DateEdit.Appearance.Options.UseTextOptions = True
+        Me.DateFrom_DateEdit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateFrom_DateEdit.AutoHeight = False
+        Me.DateFrom_DateEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateFrom_DateEdit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateFrom_DateEdit.Name = "DateFrom_DateEdit"
+        '
+        'DateTill_BarEditItem
+        '
+        Me.DateTill_BarEditItem.Caption = "Date till:"
+        Me.DateTill_BarEditItem.CaptionAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateTill_BarEditItem.CaptionToEditorIndent = 10
+        Me.DateTill_BarEditItem.Edit = Me.DateTill_DateEdit
+        Me.DateTill_BarEditItem.EditHeight = 30
+        Me.DateTill_BarEditItem.EditWidth = 120
+        Me.DateTill_BarEditItem.Id = 2
+        Me.DateTill_BarEditItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTill_BarEditItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.DateTill_BarEditItem.Name = "DateTill_BarEditItem"
+        '
+        'DateTill_DateEdit
+        '
+        Me.DateTill_DateEdit.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
+        Me.DateTill_DateEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTill_DateEdit.Appearance.Options.UseFont = True
+        Me.DateTill_DateEdit.Appearance.Options.UseTextOptions = True
+        Me.DateTill_DateEdit.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DateTill_DateEdit.AutoHeight = False
+        Me.DateTill_DateEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTill_DateEdit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.DateTill_DateEdit.Name = "DateTill_DateEdit"
+        '
+        'bbi_Load
+        '
+        Me.bbi_Load.Caption = "Load data"
+        Me.bbi_Load.Id = 3
+        Me.bbi_Load.ImageOptions.Image = CType(resources.GetObject("bbi_Load.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Load.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Load.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Load.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_Load.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_Load.Name = "bbi_Load"
+        '
+        'DisplayListDetails_bbi
+        '
+        Me.DisplayListDetails_bbi.Caption = "Display Details"
+        Me.DisplayListDetails_bbi.Id = 5
+        Me.DisplayListDetails_bbi.ImageOptions.ImageIndex = 9
+        Me.DisplayListDetails_bbi.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DisplayListDetails_bbi.ItemAppearance.Normal.Options.UseFont = True
+        Me.DisplayListDetails_bbi.Name = "DisplayListDetails_bbi"
+        '
+        'LayoutTemplatesMenu_SubItem
+        '
+        Me.LayoutTemplatesMenu_SubItem.Caption = "Layouts"
+        Me.LayoutTemplatesMenu_SubItem.Id = 6
+        Me.LayoutTemplatesMenu_SubItem.ImageOptions.Image = CType(resources.GetObject("LayoutTemplatesMenu_SubItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.LayoutTemplatesMenu_SubItem.ImageOptions.LargeImage = CType(resources.GetObject("LayoutTemplatesMenu_SubItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.LayoutTemplatesMenu_SubItem.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbiLoadLayout), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiSaveLayout, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiDeleteLayout, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiLoadDefaultLayout, True)})
+        Me.LayoutTemplatesMenu_SubItem.Name = "LayoutTemplatesMenu_SubItem"
+        '
+        'bbiLoadLayout
+        '
+        Me.bbiLoadLayout.Caption = "BarButtonItem1"
+        Me.bbiLoadLayout.Id = 7
+        Me.bbiLoadLayout.Name = "bbiLoadLayout"
+        '
+        'bbiSaveLayout
+        '
+        Me.bbiSaveLayout.Caption = "BarButtonItem1"
+        Me.bbiSaveLayout.Id = 8
+        Me.bbiSaveLayout.Name = "bbiSaveLayout"
+        '
+        'bbiDeleteLayout
+        '
+        Me.bbiDeleteLayout.Caption = "BarButtonItem1"
+        Me.bbiDeleteLayout.Id = 9
+        Me.bbiDeleteLayout.Name = "bbiDeleteLayout"
+        '
+        'bbiLoadDefaultLayout
+        '
+        Me.bbiLoadDefaultLayout.Caption = "BarButtonItem1"
+        Me.bbiLoadDefaultLayout.Id = 10
+        Me.bbiLoadDefaultLayout.Name = "bbiLoadDefaultLayout"
+        '
+        'ReportTemplateName_BarStaticItem
+        '
+        Me.ReportTemplateName_BarStaticItem.Caption = "BarStaticItem1"
+        Me.ReportTemplateName_BarStaticItem.Id = 11
+        Me.ReportTemplateName_BarStaticItem.Name = "ReportTemplateName_BarStaticItem"
+        '
+        'bbi_PrintOrExport
+        '
+        Me.bbi_PrintOrExport.Caption = "Print or Export"
+        Me.bbi_PrintOrExport.Id = 12
+        Me.bbi_PrintOrExport.ImageOptions.ImageIndex = 2
+        Me.bbi_PrintOrExport.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_PrintOrExport.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_PrintOrExport.Name = "bbi_PrintOrExport"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DateFrom_BarEditItem)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DateTill_BarEditItem)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Load)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DisplayListDetails_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_PrintOrExport, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Close, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.LayoutTemplatesMenu_SubItem)
+        Me.RibbonPageGroup2.ItemLinks.Add(Me.ReportTemplateName_BarStaticItem)
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Visible = False
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 13
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_Close.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_Close.Name = "bbi_Close"
         '
         'GmpsPaymentsIn
         '
@@ -4283,13 +4352,10 @@ Partial Class GmpsPaymentsIn
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1462, 756)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Controls.Add(Me.LabelControl2)
-        Me.Controls.Add(Me.PaymentTillDateEdit)
-        Me.Controls.Add(Me.LabelControl1)
-        Me.Controls.Add(Me.LoadPaymentsData_btn)
-        Me.Controls.Add(Me.PaymentFromDateEdit)
+        Me.Controls.Add(Me.RibbonControl1)
         Me.IconOptions.Icon = CType(resources.GetObject("GmpsPaymentsIn.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "GmpsPaymentsIn"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "GMPS PAYMENTS - INCOMING"
         CType(Me.PaymentsIn_MT103_LayoutView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4503,11 +4569,7 @@ Partial Class GmpsPaymentsIn
         CType(Me.item20, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GMPS_PAYMENTS_INBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ClearingDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentTillDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentTillDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentFromDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentFromDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
@@ -4515,12 +4577,15 @@ Partial Class GmpsPaymentsIn
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateFrom_DateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateFrom_DateEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTill_DateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DateTill_DateEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -4529,11 +4594,6 @@ Partial Class GmpsPaymentsIn
     Friend WithEvents GMPS_PAYMENTS_INBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents GMPS_PAYMENTS_INTableAdapter As PS_TOOL_DX.ClearingDataSetTableAdapters.GMPS_PAYMENTS_INTableAdapter
     Friend WithEvents TableAdapterManager As PS_TOOL_DX.ClearingDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents PaymentTillDateEdit As DevExpress.XtraEditors.DateEdit
-    Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents LoadPaymentsData_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents PaymentFromDateEdit As DevExpress.XtraEditors.DateEdit
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
@@ -4612,14 +4672,8 @@ Partial Class GmpsPaymentsIn
     Friend WithEvents colSenderToReceiverInformation As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents LayoutViews_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents Print_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
@@ -4929,4 +4983,26 @@ Partial Class GmpsPaymentsIn
     Friend WithEvents item19 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item22 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item20 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents DateFrom_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents DateFrom_DateEdit As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents DateTill_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents DateTill_DateEdit As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents bbi_Load As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents DisplayListDetails_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents LayoutTemplatesMenu_SubItem As DevExpress.XtraBars.BarSubItem
+    Friend WithEvents bbiLoadLayout As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiSaveLayout As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiDeleteLayout As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiLoadDefaultLayout As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ReportTemplateName_BarStaticItem As DevExpress.XtraBars.BarStaticItem
+    Friend WithEvents bbi_PrintOrExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
 End Class

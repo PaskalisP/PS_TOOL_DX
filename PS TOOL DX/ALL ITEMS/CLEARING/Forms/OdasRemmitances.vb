@@ -34,22 +34,15 @@ Imports CrystalDecisions.Shared
 Imports CrystalDecisions.CrystalReports.Engine
 Public Class OdasRemmitances
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Dim CrystalRepDir As String = ""
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-
     Dim DATES_FORM As New DatesForm
     Dim FDate As Date
     Dim LDate As Date
     Dim FDateSql As String = Nothing
     Dim LDateSql As String = Nothing
+
+    Friend WithEvents BgwLoadPayments As BackgroundWorker
+
+    Private bgws As New List(Of BackgroundWorker)()
 
     Sub New()
         InitSkins()
@@ -69,25 +62,44 @@ Public Class OdasRemmitances
 
     End Sub
 
-    Private Sub OdasRemmitances_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
+    Private Sub DISABLE_BUTTONS()
+        Me.DateFrom_BarEditItem.Enabled = False
+        Me.DateTill_BarEditItem.Enabled = False
+        Me.bbi_Load.Enabled = False
+        Me.DisplayListDetails_bbi.Enabled = False
+    End Sub
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
+    Private Sub ENABLE_BUTTONS()
+        Me.DateFrom_BarEditItem.Enabled = True
+        Me.DateTill_BarEditItem.Enabled = True
+        Me.bbi_Load.Enabled = True
+        Me.DisplayListDetails_bbi.Enabled = True
+    End Sub
+
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
+    Private Sub OdasRemmitances_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
 
         '***********************************************************************
         '*******CRYSTAL REPORTS DIRECTORY************
         '+++++++++++++++++++++++++++++++++++++++++++++++++++
+        OpenSqlConnections()
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [IdABTEILUNGSPARAMETER]='CRYSTAL_REP_DIR' and [PARAMETER STATUS]='Y' "
-        cmd.Connection.Open()
         CrystalRepDir = cmd.ExecuteScalar
         'cmd.CommandText = "Select Max(TRANSACTIONDATE) from [ODAS REMMITANCES]"
         cmd.CommandText = "Select DPARAMETER1 from PARAMETER where PARAMETER1 in ('ODAS_REMMITANCES') and IdABTEILUNGSPARAMETER in ('MAX_DATES') and IdABTEILUNGSCODE_NAME in ('CLEARING')"
         Dim d As Date = cmd.ExecuteScalar
-        cmd.Connection.Close()
+        CloseSqlConnections()
+
         '***********************************************************************
-        Me.PaymentFromDateEdit.Text = d
-        Me.PaymentTillDateEdit.Text = d
+        Me.DateFrom_BarEditItem.EditValue = d
+        Me.DateTill_BarEditItem.EditValue = d
 
         'Gridcontrol2 - CUSTOMERS
         GridControl2.UseEmbeddedNavigator = True
@@ -97,21 +109,18 @@ Public Class OdasRemmitances
         ODASBaseView.ForceDoubleClick = True
         AddHandler ODASBaseView.DoubleClick, AddressOf ODASBaseView_DoubleClick
         AddHandler ODASDetailView.MouseDown, AddressOf ODASDetailView_MouseDown
-        AddHandler ViewEdit_btn.Click, AddressOf ViewEdit_btn_Click
         ODASDetailView.OptionsBehavior.AutoFocusCardOnScrolling = True
         ODASDetailView.OptionsBehavior.AllowSwitchViewModes = False
     
 
     End Sub
 
-    Private Sub GridControl2_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
 
-    End Sub
 
 #Region "ODAS_CHANGE_VIEWS"
     Private fExtendedEditMode As Boolean = False
-    Private strHideExtendedMode As String = "View List"
-    Private strShowExtendedMode As String = "View Details"
+    Private strHideExtendedMode As String = "Display List"
+    Private strShowExtendedMode As String = "Display Details"
     Protected Sub HideDetail(ByVal rowHandle As Integer)
 
         GridControl2.MainView.PostEditor()
@@ -121,10 +130,9 @@ Public Class OdasRemmitances
         GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        ViewEdit_btn.Text = strShowExtendedMode
-        ViewEdit_btn.ImageIndex = 1
+        DisplayListDetails_bbi.Caption = strShowExtendedMode
+        DisplayListDetails_bbi.ImageIndex = 8
         fExtendedEditMode = (GridControl2.MainView Is ODASDetailView)
-
 
         '****************************************
     End Sub
@@ -135,8 +143,8 @@ Public Class OdasRemmitances
         GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        ViewEdit_btn.Text = strHideExtendedMode
-        ViewEdit_btn.ImageIndex = 0
+        DisplayListDetails_bbi.Caption = strHideExtendedMode
+        DisplayListDetails_bbi.ImageIndex = 9
         fExtendedEditMode = (GridControl2.MainView Is ODASDetailView)
 
     End Sub
@@ -167,104 +175,115 @@ Public Class OdasRemmitances
         End If
     End Sub
     Protected Sub ViewEdit_btn_Click(ByVal sender As Object, ByVal e As EventArgs)
+
+    End Sub
+#End Region
+
+    Private Sub DisplayListDetails_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles DisplayListDetails_bbi.ItemClick
         If fExtendedEditMode Then
             HideDetail((TryCast(GridControl2.MainView, ColumnView)).FocusedRowHandle)
         Else
             ShowDetail((TryCast(GridControl2.MainView, ColumnView)).FocusedRowHandle)
         End If
     End Sub
-#End Region
 
-    Private Sub LoadPaymentsData_btn_Click(sender As Object, e As EventArgs) Handles LoadPaymentsData_btn.Click
-        If IsDate(Me.PaymentFromDateEdit.Text) = True AndAlso IsDate(Me.PaymentTillDateEdit.Text) = True Then
-            FDate = Me.PaymentFromDateEdit.Text
-            LDate = Me.PaymentTillDateEdit.Text
+    Private Sub bbi_Load_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Load.ItemClick
+        If Me.DateFrom_BarEditItem.EditValue.ToString <> "" And Me.DateTill_BarEditItem.EditValue.ToString <> "" Then
+            FDate = Me.DateFrom_BarEditItem.EditValue
+            LDate = Me.DateTill_BarEditItem.EditValue
             If LDate >= FDate Then
-                Dim FDateSql As String = FDate.ToString("yyyyMMdd")
-                Dim LDateSql As String = LDate.ToString("yyyyMMdd")
 
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Load ODAS Remmitances from " & FDate & " till " & LDate)
+                DISABLE_BUTTONS()
+                Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                BgwLoadPayments = New BackgroundWorker
+                bgws.Add(BgwLoadPayments)
+                BgwLoadPayments.WorkerReportsProgress = True
+                BgwLoadPayments.RunWorkerAsync()
 
-                'Dim objCMD As SqlCommand = New SqlCommand("execute [ODAS_REM_FILL]  @FROMDATE='" & FDateSql & "', @TILLDATE='" & LDateSql & "'  ", conn)
-                'objCMD.CommandTimeout = 5000
-                'da = New SqlDataAdapter(objCMD)
-                'dt = New DataTable()
-                'da.Fill(dt)
-                'Results
-                'If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-                'Me.GridControl2.DataSource = Nothing
-                'Me.GridControl2.DataSource = dt
-                'Me.GridControl2.ForceInitialize()
-                'Else
-                'SplashScreenManager.CloseForm(False)
-                'MessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                'Exit Sub
-                'End If
-
-                'Data reader
-                Try
-                    Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                        Using sqlCmd As New SqlCommand()
-                            sqlCmd.CommandText = "SELECT * FROM [ODAS REMMITANCES] where [TRANSACTIONDATE]>='" & FDateSql & "' and [TRANSACTIONDATE]<='" & LDateSql & "'"
-                            sqlCmd.Connection = sqlConn
-                            If sqlConn.State = ConnectionState.Closed Then
-                                sqlConn.Open()
-                            End If
-
-                            Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                            Dim objDataTable As New DataTable()
-                            objDataTable.Load(objDataReader)
-                            If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                                Me.GridControl2.DataSource = Nothing
-                                Me.GridControl2.DataSource = objDataTable
-                                Me.GridControl2.ForceInitialize()
-
-                            Else
-                                SplashScreenManager.CloseForm(False)
-                                MessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                                Return
-                            End If
-                            If sqlConn.State = ConnectionState.Open Then
-                                sqlConn.Close()
-                            End If
-
-                        End Using
-                    End Using
-                Catch ex As Exception
-                    SplashScreenManager.CloseForm(False)
-                    MessageBox.Show(ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    Return
-                End Try
-                SplashScreenManager.CloseForm(False)
             Else
-                MessageBox.Show("Date From is higher than Date Till", "WRONG DATE INPUT", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show("Date From is higher than Date Till", "WRONG DATE INPUT", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
                 Exit Sub
             End If
         End If
     End Sub
 
-    Private Sub ODASBaseView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles ODASBaseView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+    Private Sub BgwLoadPayments_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadPayments.DoWork
+        Try
+
+            Me.BgwLoadPayments.ReportProgress(10, "Load all ODAS Remmitances from: " & FDate & " till " & LDate)
+            FDateSql = FDate.ToString("yyyyMMdd")
+            LDateSql = LDate.ToString("yyyyMMdd")
+
+            SqlCommandText = "SELECT * FROM [ODAS REMMITANCES] where [TRANSACTIONDATE] BETWEEN '" & FDateSql & "' and '" & LDateSql & "'"
+            'Data reader
+            Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                Using Sqlcmd As New SqlCommand()
+                    Sqlcmd.CommandText = SqlCommandText
+                    Sqlcmd.Connection = Sqlconn
+                    'Sqlcmd.CommandTimeout = 5000
+                    Sqlconn.Open()
+
+                    daSqlQueries = New SqlDataAdapter(SqlCommandText, Sqlconn)
+                    daSqlQueries.SelectCommand.CommandTimeout = 50000
+                    dtSqlQueries = New DataTable()
+                    daSqlQueries.Fill(dtSqlQueries)
+
+                    'Dim objDataReader As SqlDataReader = Sqlcmd.ExecuteReader()
+                    'objDataTable.Clear()
+                    'objDataTable.Load(objDataReader)
+
+                    Sqlconn.Close()
+
+                End Using
+            End Using
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadPayments.CancelAsync()
+
+        End Try
+    End Sub
+
+
+    Private Sub BgwLoadPayments_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadPayments.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadPayments_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadPayments.RunWorkerCompleted
+        Workers_Complete(BgwLoadPayments, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl2.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl2.DataSource = dtSqlQueries
+            Me.GridControl2.ForceInitialize()
+            'Me.LCR_Details_GridView.PopulateColumns()
+            'Me.LCR_Details_GridView.BestFitColumns()
+            'Me.GridControl4.RefreshDataSource()
+            Me.LayoutControlGroup2.Text = "ODAS Remittances from: " & FDate & " till " & LDate
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Pariod", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
         End If
     End Sub
 
-    Private Sub ODASBaseView_ShownEditor(sender As Object, e As EventArgs) Handles ODASBaseView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
 
-    Private Sub Print_Export_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_btn.Click
+
+    Private Sub bbi_PrintOrExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_PrintOrExport.ItemClick
         If Not GridControl2.IsPrintingAvailable Then
             MessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
             Return
         End If
         ' Opens the Preview window. 
         'GridControl1.ShowPrintPreview()
-        If ViewEdit_btn.Text = "View Details" Then
+        If DisplayListDetails_bbi.Caption = "Display Details" Then
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             PrintableComponentLink1.CreateDocument()
             PrintableComponentLink1.ShowPreview()
@@ -284,6 +303,8 @@ Public Class OdasRemmitances
 
         End If
     End Sub
+
+
 
     Private Sub PreviewPrintableComponent(component As IPrintable, lookAndFeel As UserLookAndFeel)
         Dim link As New PrintableComponentLink() With { _
@@ -312,7 +333,21 @@ Public Class OdasRemmitances
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
-        Dim reportfooter As String = "ODAS REMMITANCES" & vbNewLine & "Printed on: " & Now
-e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+        Dim reportfooter As String = "ODAS REMITTANCES FROM" & FDate & " TILL " & LDate
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+    End Sub
+
+    Private Sub bbi_Close_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Close.ItemClick
+        Me.Close()
+
+    End Sub
+
+    Private Sub OdasRemmitances_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        If bgws.Count > 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+
+        End If
     End Sub
 End Class

@@ -43,6 +43,21 @@ Imports System.Drawing
 Imports DevExpress.Utils
 Imports System.Globalization
 Imports DevExpress.Spreadsheet
+
+'*****************************************
+'Class Name: Mindestreserve
+'Version: V1.0.0.0
+'Version Explanation:
+'Author: CCBFF
+'Email: info@ccbff.de
+'Creation Time:
+'Content:
+'Function:
+'Description:
+'Modify log:  
+'    1. Add by WYQ; Time: 06.10.2022; Content: Because of EURO interest rate +1.25%(reserver), +0.75%(Overnight), add booking Accrued
+
+'******************************************
 Public Class Mindestreserve
 
     Dim conn As New SqlConnection
@@ -182,6 +197,7 @@ Public Class Mindestreserve
                     cmd.Connection.Open()
                 End If
                 cmd.CommandText = "exec [MINDESTRESERVE_RUNNING_TOTALS]"
+                cmd.CommandTimeout = 600
                 cmd.ExecuteNonQuery()
                 If cmd.Connection.State = ConnectionState.Open Then
                     cmd.Connection.Close()
@@ -238,6 +254,7 @@ Public Class Mindestreserve
                 '    " LEFT JOIN CTE nex ON nex.rownum = CTE.rownum + 1" & _
                 '    " where CTE.[RiskDate]='" & rdsql & "' )B on A.RiskDate=B.RiskDate"
                 cmd.CommandText = "exec MINDESTRESERVE_RUNNING_TOTALS"
+                cmd.CommandTimeout = 600
                 cmd.ExecuteNonQuery()
                 If cmd.Connection.State = ConnectionState.Open Then
                     cmd.Connection.Close()
@@ -280,6 +297,99 @@ Public Class Mindestreserve
                     cmd.Connection.Open()
                 End If
                 cmd.CommandText = "exec [MINDESTRESERVE_BOOKED_TOTALS] @RISKDATE='" & rdsql & "'"
+                cmd.CommandTimeout = 600
+                cmd.ExecuteNonQuery()
+                If cmd.Connection.State = ConnectionState.Open Then
+                    cmd.Connection.Close()
+                End If
+
+                Me.GridControl4.BeginUpdate()
+                Me.MINDESTRESERVETableAdapter.Fill(Me.AccountingDataSet.MINDESTRESERVE)
+                Me.Mindestreserve_GridView.RefreshData()
+                Me.GridControl4.EndUpdate()
+                view.FocusedRowHandle = focusedRow
+                SplashScreenManager.CloseForm(False)
+
+            End If
+        Catch ex As Exception
+            view.HideEditor()
+
+            SplashScreenManager.CloseForm(False)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+    End Sub
+
+    'Add the RepositoryItemCheckEditReserver_EditValueChanged function
+    'Add by WYQ; Time: 06.10.2022; Content: Because of EURO interest rate +1.25%(reserver), +0.75%(Overnight), add booking Accrued
+    Private Sub RepositoryItemCheckEditReserver_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemCheckEditReserver.EditValueChanged
+        Dim view As GridView = Me.Mindestreserve_GridView
+        Try
+
+
+            If view.IsFilterRow(view.FocusedRowHandle) = False Then 'Wenn Kein Filter Row ist
+
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Booking reserver Interests running Totals")
+                Dim focusedRow As Integer = view.FocusedRowHandle
+                Dim rd As Date = view.GetFocusedRowCellValue(colRiskDate)
+                Dim rdsql As String = rd.ToString("yyyyMMdd")
+                view.PostEditor()
+                Me.Validate()
+                Me.MINDESTRESERVEBindingSource.EndEdit()
+                Me.TableAdapterManager.UpdateAll(Me.AccountingDataSet)
+                If cmd.Connection.State = ConnectionState.Closed Then
+                    cmd.Connection.Open()
+                End If
+
+                cmd.CommandText = "exec MINDESTRESERVE_RUNNING_TOTALS_Reserver"
+                cmd.CommandTimeout = 600
+                cmd.ExecuteNonQuery()
+                If cmd.Connection.State = ConnectionState.Open Then
+                    cmd.Connection.Close()
+                End If
+
+                Me.GridControl4.BeginUpdate()
+                Me.MINDESTRESERVETableAdapter.Fill(Me.AccountingDataSet.MINDESTRESERVE)
+                Me.Mindestreserve_GridView.RefreshData()
+                Me.GridControl4.EndUpdate()
+                view.FocusedRowHandle = focusedRow
+                SplashScreenManager.CloseForm(False)
+
+            End If
+        Catch ex As Exception
+            view.HideEditor()
+
+            SplashScreenManager.CloseForm(False)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
+    End Sub
+
+    'Add the RepositoryItemCheckEditOvernight_EditValueChanged function
+    'Add by WYQ; Time: 06.10.2022; Content: Because of EURO interest rate +1.25%(reserver), +0.75%(Overnight), add booking Accrued
+    Private Sub RepositoryItemCheckEditOvernight_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemCheckEditOvernight.EditValueChanged
+        Dim view As GridView = Me.Mindestreserve_GridView
+        Try
+
+
+            If view.IsFilterRow(view.FocusedRowHandle) = False Then 'Wenn Kein Filter Row ist
+
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Booking Overnight Interests running Totals")
+                Dim focusedRow As Integer = view.FocusedRowHandle
+                Dim rd As Date = view.GetFocusedRowCellValue(colRiskDate)
+                Dim rdsql As String = rd.ToString("yyyyMMdd")
+                view.PostEditor()
+                Me.Validate()
+                Me.MINDESTRESERVEBindingSource.EndEdit()
+                Me.TableAdapterManager.UpdateAll(Me.AccountingDataSet)
+                If cmd.Connection.State = ConnectionState.Closed Then
+                    cmd.Connection.Open()
+                End If
+
+                cmd.CommandText = "exec MINDESTRESERVE_RUNNING_TOTALS_Overnight"
+                cmd.CommandTimeout = 600
                 cmd.ExecuteNonQuery()
                 If cmd.Connection.State = ConnectionState.Open Then
                     cmd.Connection.Close()
@@ -307,5 +417,9 @@ Public Class Mindestreserve
         SplashScreenManager.Default.SetWaitFormCaption("Reload BUNDESBANK MINDESTRESERVE....")
         Me.MINDESTRESERVETableAdapter.Fill(Me.AccountingDataSet.MINDESTRESERVE)
         SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub GridControl4_Click(sender As Object, e As EventArgs) Handles GridControl4.Click
+
     End Sub
 End Class

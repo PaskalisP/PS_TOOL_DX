@@ -169,7 +169,7 @@ Public Class ManualImport
 
     Private Sub Add_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Add_bbi.ItemClick
         Try
-            Me.MANUAL_IMPORTSBindingSource.EndEdit()
+            Me.MANUAL_IMPORTSBindingSource.CancelEdit()
             ManualImportProcedures_BasicView.AddNewRow()
             ManualImportProcedures_BasicView.ShowEditForm()
         Catch ex As Exception
@@ -415,11 +415,11 @@ Public Class ManualImport
         If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_Selected = CInt(view.GetRowCellValue(rowHandle, colID))
         End If
-        If view.FocusedColumn.FieldName = "ProcNr" OrElse view.FocusedColumn.FieldName = "CurrentFileName" Then
-            view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
-        Else
-            view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
-        End If
+        'If view.FocusedColumn.FieldName = "ProcNr" OrElse view.FocusedColumn.FieldName = "CurrentFileName" Then
+        '    view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+        'Else
+        '    view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
+        'End If
         'If Me.ManualImportProcedures_BasicView.IsNewItemRow(Me.ManualImportProcedures_BasicView.FocusedRowHandle) = True Then
         '    Me.ManualImportProcedures_BasicView.Columns.ColumnByFieldName("ProcName").OptionsColumn.ReadOnly = False
         'Else
@@ -430,11 +430,11 @@ Public Class ManualImport
     Private Sub ManualImportProcedures_BasicView_FocusedColumnChanged(sender As Object, e As FocusedColumnChangedEventArgs) Handles ManualImportProcedures_BasicView.FocusedColumnChanged
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        If view.FocusedColumn.FieldName = "ProcNr" OrElse view.FocusedColumn.FieldName = "CurrentFileName" Then
-            view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
-        Else
-            view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
-        End If
+        'If view.FocusedColumn.FieldName = "ProcNr" OrElse view.FocusedColumn.FieldName = "CurrentFileName" Then
+        '    view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+        'Else
+        '    view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
+        'End If
     End Sub
 
     Private Sub ManualImportProcedures_BasicView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles ManualImportProcedures_BasicView.RowCellClick
@@ -444,11 +444,11 @@ Public Class ManualImport
         If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_Selected = CInt(view.GetRowCellValue(rowHandle, colID))
         End If
-        If e.Column.FieldName = "ProcNr" OrElse e.Column.FieldName = "CurrentFileName" Then
-            view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
-        Else
-            view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
-        End If
+        'If e.Column.FieldName = "ProcNr" OrElse e.Column.FieldName = "CurrentFileName" Then
+        '    view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+        'Else
+        '    view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
+        'End If
     End Sub
 
     Private Sub ManualImportProcedures_BasicView_EditFormPrepared(sender As Object, e As EditFormPreparedEventArgs) Handles ManualImportProcedures_BasicView.EditFormPrepared
@@ -459,16 +459,16 @@ Public Class ManualImport
 
     Private Sub ManualImportProcedures_BasicView_InvalidRowException(sender As Object, e As InvalidRowExceptionEventArgs) Handles ManualImportProcedures_BasicView.InvalidRowException
         'Display Error in column
-        e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.DisplayError
+        'e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.DisplayError
         'Show the message with the error text specified 
-        MessageBox.Show(e.ErrorText, "Field Validation failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'XtraMessageBox.Show(e.ErrorText, "Field Validation failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     Private Sub ManualImportProcedures_BasicView_InvalidValueException(sender As Object, e As InvalidValueExceptionEventArgs) Handles ManualImportProcedures_BasicView.InvalidValueException
         'Display Error in column
-        e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.DisplayError
+        'e.ExceptionMode = DevExpress.XtraEditors.Controls.ExceptionMode.DisplayError
         'Show the message with the error text specified 
-        MessageBox.Show(e.ErrorText, "Field Validation failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'XtraMessageBox.Show(e.ErrorText, "Field Validation failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     Private Sub ManualImportProcedures_BasicView_RowUpdated(sender As Object, e As RowObjectEventArgs) Handles ManualImportProcedures_BasicView.RowUpdated
@@ -483,12 +483,12 @@ Public Class ManualImport
 
     Private Sub SelectFileButtonEdit_EditValueChanged(sender As Object, e As EventArgs) Handles SelectFileButtonEdit.EditValueChanged
         ManualImportProcedures_BasicView.PostEditor() 'save the cell value to a data source
-        ManualImportProcedures_BasicView.UpdateCurrentRow() 'update the row and raise the RowUpdated event
+        'ManualImportProcedures_BasicView.UpdateCurrentRow() 'update the row and raise the RowUpdated event
     End Sub
 
     Private Sub RepositoryItemSpinEdit1_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemSpinEdit1.EditValueChanged
         ManualImportProcedures_BasicView.PostEditor() 'save the cell value to a data source
-        ManualImportProcedures_BasicView.UpdateCurrentRow() 'update the row and raise the RowUpdated event
+        'ManualImportProcedures_BasicView.UpdateCurrentRow() 'update the row and raise the RowUpdated event
     End Sub
 
     Private Sub ManualImportProcedures_BasicView_InitNewRow(sender As Object, e As InitNewRowEventArgs) Handles ManualImportProcedures_BasicView.InitNewRow

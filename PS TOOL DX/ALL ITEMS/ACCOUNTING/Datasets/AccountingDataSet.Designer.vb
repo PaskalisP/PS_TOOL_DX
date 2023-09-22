@@ -8008,6 +8008,20 @@ Partial Public Class AccountingDataSet
         
         Private columnRUNNING_TOTAL_INTEREST As Global.System.Data.DataColumn
         
+        Private columnOvernightBalanceBUBA As Global.System.Data.DataColumn
+        
+        Private columnRuning_total_reserver_interest As Global.System.Data.DataColumn
+        
+        Private columnBookedAccruedAmount_reserverInt As Global.System.Data.DataColumn
+        
+        Private columnBookedAccruedAccounting_reserverInt As Global.System.Data.DataColumn
+        
+        Private columnRuning_total_Overnight_interest As Global.System.Data.DataColumn
+        
+        Private columnBookedAccruedAmount_OvernightInt As Global.System.Data.DataColumn
+        
+        Private columnBookedAccruedAccounting_OvernightInt As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -8196,6 +8210,62 @@ Partial Public Class AccountingDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property OvernightBalanceBUBAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOvernightBalanceBUBA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Runing_total_reserver_interestColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRuning_total_reserver_interest
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BookedAccruedAmount_reserverIntColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBookedAccruedAmount_reserverInt
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BookedAccruedAccounting_reserverIntColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBookedAccruedAccounting_reserverInt
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Runing_total_Overnight_interestColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRuning_total_Overnight_interest
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BookedAccruedAmount_OvernightIntColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBookedAccruedAmount_OvernightInt
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BookedAccruedAccounting_OvernightIntColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBookedAccruedAccounting_OvernightInt
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8250,9 +8320,16 @@ Partial Public Class AccountingDataSet
                     ByVal AccountingBookingMark As String,  _
                     ByVal BookedAccruedsAccounting As Boolean,  _
                     ByVal BookedAccruedAmount As Double,  _
-                    ByVal RUNNING_TOTAL_INTEREST As Double) As MINDESTRESERVERow
+                    ByVal RUNNING_TOTAL_INTEREST As Double,  _
+                    ByVal OvernightBalanceBUBA As Double,  _
+                    ByVal Runing_total_reserver_interest As Double,  _
+                    ByVal BookedAccruedAmount_reserverInt As Double,  _
+                    ByVal BookedAccruedAccounting_reserverInt As Boolean,  _
+                    ByVal Runing_total_Overnight_interest As Double,  _
+                    ByVal BookedAccruedAmount_OvernightInt As Double,  _
+                    ByVal BookedAccruedAccounting_OvernightInt As Boolean) As MINDESTRESERVERow
             Dim rowMINDESTRESERVERow As MINDESTRESERVERow = CType(Me.NewRow,MINDESTRESERVERow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, RiskDate, ExternalBalanceBUBA, MindestReserveBUBA, DaysCount, DaysCountNextDate, ReserveInterest, MinusInterest, ReserveInterestAmount, MinusInterestAmount, Booked, RuningTotalMinusInterestAmount, TotalInterest, BookedAccounting, CorrectTotalInterest, AccountingBookingMark, BookedAccruedsAccounting, BookedAccruedAmount, RUNNING_TOTAL_INTEREST}
+            Dim columnValuesArray() As Object = New Object() {Nothing, RiskDate, ExternalBalanceBUBA, MindestReserveBUBA, DaysCount, DaysCountNextDate, ReserveInterest, MinusInterest, ReserveInterestAmount, MinusInterestAmount, Booked, RuningTotalMinusInterestAmount, TotalInterest, BookedAccounting, CorrectTotalInterest, AccountingBookingMark, BookedAccruedsAccounting, BookedAccruedAmount, RUNNING_TOTAL_INTEREST, OvernightBalanceBUBA, Runing_total_reserver_interest, BookedAccruedAmount_reserverInt, BookedAccruedAccounting_reserverInt, Runing_total_Overnight_interest, BookedAccruedAmount_OvernightInt, BookedAccruedAccounting_OvernightInt}
             rowMINDESTRESERVERow.ItemArray = columnValuesArray
             Me.Rows.Add(rowMINDESTRESERVERow)
             Return rowMINDESTRESERVERow
@@ -8300,6 +8377,13 @@ Partial Public Class AccountingDataSet
             Me.columnBookedAccruedsAccounting = MyBase.Columns("BookedAccruedsAccounting")
             Me.columnBookedAccruedAmount = MyBase.Columns("BookedAccruedAmount")
             Me.columnRUNNING_TOTAL_INTEREST = MyBase.Columns("RUNNING_TOTAL_INTEREST")
+            Me.columnOvernightBalanceBUBA = MyBase.Columns("OvernightBalanceBUBA")
+            Me.columnRuning_total_reserver_interest = MyBase.Columns("Runing_total_reserver_interest")
+            Me.columnBookedAccruedAmount_reserverInt = MyBase.Columns("BookedAccruedAmount_reserverInt")
+            Me.columnBookedAccruedAccounting_reserverInt = MyBase.Columns("BookedAccruedAccounting_reserverInt")
+            Me.columnRuning_total_Overnight_interest = MyBase.Columns("Runing_total_Overnight_interest")
+            Me.columnBookedAccruedAmount_OvernightInt = MyBase.Columns("BookedAccruedAmount_OvernightInt")
+            Me.columnBookedAccruedAccounting_OvernightInt = MyBase.Columns("BookedAccruedAccounting_OvernightInt")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8343,6 +8427,20 @@ Partial Public Class AccountingDataSet
             MyBase.Columns.Add(Me.columnBookedAccruedAmount)
             Me.columnRUNNING_TOTAL_INTEREST = New Global.System.Data.DataColumn("RUNNING_TOTAL_INTEREST", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRUNNING_TOTAL_INTEREST)
+            Me.columnOvernightBalanceBUBA = New Global.System.Data.DataColumn("OvernightBalanceBUBA", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOvernightBalanceBUBA)
+            Me.columnRuning_total_reserver_interest = New Global.System.Data.DataColumn("Runing_total_reserver_interest", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRuning_total_reserver_interest)
+            Me.columnBookedAccruedAmount_reserverInt = New Global.System.Data.DataColumn("BookedAccruedAmount_reserverInt", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBookedAccruedAmount_reserverInt)
+            Me.columnBookedAccruedAccounting_reserverInt = New Global.System.Data.DataColumn("BookedAccruedAccounting_reserverInt", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBookedAccruedAccounting_reserverInt)
+            Me.columnRuning_total_Overnight_interest = New Global.System.Data.DataColumn("Runing_total_Overnight_interest", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRuning_total_Overnight_interest)
+            Me.columnBookedAccruedAmount_OvernightInt = New Global.System.Data.DataColumn("BookedAccruedAmount_OvernightInt", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBookedAccruedAmount_OvernightInt)
+            Me.columnBookedAccruedAccounting_OvernightInt = New Global.System.Data.DataColumn("BookedAccruedAccounting_OvernightInt", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBookedAccruedAccounting_OvernightInt)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -16858,6 +16956,117 @@ Partial Public Class AccountingDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property OvernightBalanceBUBA() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableMINDESTRESERVE.OvernightBalanceBUBAColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OvernightBalanceBUBA' in table 'MINDESTRESERVE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMINDESTRESERVE.OvernightBalanceBUBAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Runing_total_reserver_interest() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableMINDESTRESERVE.Runing_total_reserver_interestColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Runing_total_reserver_interest' in table 'MINDESTRESERVE' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMINDESTRESERVE.Runing_total_reserver_interestColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BookedAccruedAmount_reserverInt() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableMINDESTRESERVE.BookedAccruedAmount_reserverIntColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BookedAccruedAmount_reserverInt' in table 'MINDESTRESERVE' "& _ 
+                            "is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMINDESTRESERVE.BookedAccruedAmount_reserverIntColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BookedAccruedAccounting_reserverInt() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableMINDESTRESERVE.BookedAccruedAccounting_reserverIntColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BookedAccruedAccounting_reserverInt' in table 'MINDESTRESER"& _ 
+                            "VE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMINDESTRESERVE.BookedAccruedAccounting_reserverIntColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Runing_total_Overnight_interest() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableMINDESTRESERVE.Runing_total_Overnight_interestColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Runing_total_Overnight_interest' in table 'MINDESTRESERVE' "& _ 
+                            "is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMINDESTRESERVE.Runing_total_Overnight_interestColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BookedAccruedAmount_OvernightInt() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableMINDESTRESERVE.BookedAccruedAmount_OvernightIntColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BookedAccruedAmount_OvernightInt' in table 'MINDESTRESERVE'"& _ 
+                            " is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMINDESTRESERVE.BookedAccruedAmount_OvernightIntColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BookedAccruedAccounting_OvernightInt() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tableMINDESTRESERVE.BookedAccruedAccounting_OvernightIntColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BookedAccruedAccounting_OvernightInt' in table 'MINDESTRESE"& _ 
+                            "RVE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMINDESTRESERVE.BookedAccruedAccounting_OvernightIntColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsRiskDateNull() As Boolean
             Return Me.IsNull(Me.tableMINDESTRESERVE.RiskDateColumn)
         End Function
@@ -17070,6 +17279,90 @@ Partial Public Class AccountingDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetRUNNING_TOTAL_INTERESTNull()
             Me(Me.tableMINDESTRESERVE.RUNNING_TOTAL_INTERESTColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsOvernightBalanceBUBANull() As Boolean
+            Return Me.IsNull(Me.tableMINDESTRESERVE.OvernightBalanceBUBAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetOvernightBalanceBUBANull()
+            Me(Me.tableMINDESTRESERVE.OvernightBalanceBUBAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsRuning_total_reserver_interestNull() As Boolean
+            Return Me.IsNull(Me.tableMINDESTRESERVE.Runing_total_reserver_interestColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetRuning_total_reserver_interestNull()
+            Me(Me.tableMINDESTRESERVE.Runing_total_reserver_interestColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBookedAccruedAmount_reserverIntNull() As Boolean
+            Return Me.IsNull(Me.tableMINDESTRESERVE.BookedAccruedAmount_reserverIntColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBookedAccruedAmount_reserverIntNull()
+            Me(Me.tableMINDESTRESERVE.BookedAccruedAmount_reserverIntColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBookedAccruedAccounting_reserverIntNull() As Boolean
+            Return Me.IsNull(Me.tableMINDESTRESERVE.BookedAccruedAccounting_reserverIntColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBookedAccruedAccounting_reserverIntNull()
+            Me(Me.tableMINDESTRESERVE.BookedAccruedAccounting_reserverIntColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsRuning_total_Overnight_interestNull() As Boolean
+            Return Me.IsNull(Me.tableMINDESTRESERVE.Runing_total_Overnight_interestColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetRuning_total_Overnight_interestNull()
+            Me(Me.tableMINDESTRESERVE.Runing_total_Overnight_interestColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBookedAccruedAmount_OvernightIntNull() As Boolean
+            Return Me.IsNull(Me.tableMINDESTRESERVE.BookedAccruedAmount_OvernightIntColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBookedAccruedAmount_OvernightIntNull()
+            Me(Me.tableMINDESTRESERVE.BookedAccruedAmount_OvernightIntColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBookedAccruedAccounting_OvernightIntNull() As Boolean
+            Return Me.IsNull(Me.tableMINDESTRESERVE.BookedAccruedAccounting_OvernightIntColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBookedAccruedAccounting_OvernightIntNull()
+            Me(Me.tableMINDESTRESERVE.BookedAccruedAccounting_OvernightIntColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -31024,6 +31317,13 @@ Namespace AccountingDataSetTableAdapters
             tableMapping.ColumnMappings.Add("BookedAccruedsAccounting", "BookedAccruedsAccounting")
             tableMapping.ColumnMappings.Add("BookedAccruedAmount", "BookedAccruedAmount")
             tableMapping.ColumnMappings.Add("RUNNING_TOTAL_INTEREST", "RUNNING_TOTAL_INTEREST")
+            tableMapping.ColumnMappings.Add("OvernightBalanceBUBA", "OvernightBalanceBUBA")
+            tableMapping.ColumnMappings.Add("Runing_total_reserver_interest", "Runing_total_reserver_interest")
+            tableMapping.ColumnMappings.Add("BookedAccruedAmount_reserverInt", "BookedAccruedAmount_reserverInt")
+            tableMapping.ColumnMappings.Add("BookedAccruedAccounting_reserverInt", "BookedAccruedAccounting_reserverInt")
+            tableMapping.ColumnMappings.Add("Runing_total_Overnight_interest", "Runing_total_Overnight_interest")
+            tableMapping.ColumnMappings.Add("BookedAccruedAmount_OvernightInt", "BookedAccruedAmount_OvernightInt")
+            tableMapping.ColumnMappings.Add("BookedAccruedAccounting_OvernightInt", "BookedAccruedAccounting_OvernightInt")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -31056,7 +31356,22 @@ Namespace AccountingDataSetTableAdapters
                 " 1 AND [BookedAccruedAmount] IS NULL) OR ([BookedAccruedAmount] = @Original_Book"& _ 
                 "edAccruedAmount)) AND ((@IsNull_RUNNING_TOTAL_INTEREST = 1 AND [RUNNING_TOTAL_IN"& _ 
                 "TEREST] IS NULL) OR ([RUNNING_TOTAL_INTEREST] = @Original_RUNNING_TOTAL_INTEREST"& _ 
-                ")))"
+                ")) AND ((@IsNull_OvernightBalanceBUBA = 1 AND [OvernightBalanceBUBA] IS NULL) OR"& _ 
+                " ([OvernightBalanceBUBA] = @Original_OvernightBalanceBUBA)) AND ((@IsNull_Runing"& _ 
+                "_total_reserver_interest = 1 AND [Runing_total_reserver_interest] IS NULL) OR (["& _ 
+                "Runing_total_reserver_interest] = @Original_Runing_total_reserver_interest)) AND"& _ 
+                " ((@IsNull_BookedAccruedAmount_reserverInt = 1 AND [BookedAccruedAmount_reserver"& _ 
+                "Int] IS NULL) OR ([BookedAccruedAmount_reserverInt] = @Original_BookedAccruedAmo"& _ 
+                "unt_reserverInt)) AND ((@IsNull_BookedAccruedAccounting_reserverInt = 1 AND [Boo"& _ 
+                "kedAccruedAccounting_reserverInt] IS NULL) OR ([BookedAccruedAccounting_reserver"& _ 
+                "Int] = @Original_BookedAccruedAccounting_reserverInt)) AND ((@IsNull_Runing_tota"& _ 
+                "l_Overnight_interest = 1 AND [Runing_total_Overnight_interest] IS NULL) OR ([Run"& _ 
+                "ing_total_Overnight_interest] = @Original_Runing_total_Overnight_interest)) AND "& _ 
+                "((@IsNull_BookedAccruedAmount_OvernightInt = 1 AND [BookedAccruedAmount_Overnigh"& _ 
+                "tInt] IS NULL) OR ([BookedAccruedAmount_OvernightInt] = @Original_BookedAccruedA"& _ 
+                "mount_OvernightInt)) AND ((@IsNull_BookedAccruedAccounting_OvernightInt = 1 AND "& _ 
+                "[BookedAccruedAccounting_OvernightInt] IS NULL) OR ([BookedAccruedAccounting_Ove"& _ 
+                "rnightInt] = @Original_BookedAccruedAccounting_OvernightInt)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RiskDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -31095,6 +31410,20 @@ Namespace AccountingDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAmount", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RUNNING_TOTAL_INTEREST", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RUNNING_TOTAL_INTEREST", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RUNNING_TOTAL_INTEREST", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RUNNING_TOTAL_INTEREST", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_OvernightBalanceBUBA", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OvernightBalanceBUBA", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OvernightBalanceBUBA", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OvernightBalanceBUBA", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Runing_total_reserver_interest", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_reserver_interest", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Runing_total_reserver_interest", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_reserver_interest", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BookedAccruedAmount_reserverInt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_reserverInt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAmount_reserverInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_reserverInt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BookedAccruedAccounting_reserverInt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_reserverInt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAccounting_reserverInt", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_reserverInt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Runing_total_Overnight_interest", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_Overnight_interest", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Runing_total_Overnight_interest", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_Overnight_interest", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BookedAccruedAmount_OvernightInt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_OvernightInt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAmount_OvernightInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_OvernightInt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BookedAccruedAccounting_OvernightInt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_OvernightInt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAccounting_OvernightInt", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_OvernightInt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [MINDESTRESERVE] ([RiskDate], [ExternalBalanceBUBA], [MindestReserveB"& _ 
@@ -31102,11 +31431,17 @@ Namespace AccountingDataSetTableAdapters
                 "erveInterestAmount], [MinusInterestAmount], [Booked], [RuningTotalMinusInterestA"& _ 
                 "mount], [TotalInterest], [BookedAccounting], [CorrectTotalInterest], [Accounting"& _ 
                 "BookingMark], [BookedAccruedsAccounting], [BookedAccruedAmount], [RUNNING_TOTAL_"& _ 
-                "INTEREST]) VALUES (@RiskDate, @ExternalBalanceBUBA, @MindestReserveBUBA, @DaysCo"& _ 
-                "unt, @DaysCountNextDate, @ReserveInterest, @MinusInterest, @ReserveInterestAmoun"& _ 
-                "t, @MinusInterestAmount, @Booked, @RuningTotalMinusInterestAmount, @TotalInteres"& _ 
-                "t, @BookedAccounting, @CorrectTotalInterest, @AccountingBookingMark, @BookedAccr"& _ 
-                "uedsAccounting, @BookedAccruedAmount, @RUNNING_TOTAL_INTEREST)"
+                "INTEREST], [OvernightBalanceBUBA], [Runing_total_reserver_interest], [BookedAccr"& _ 
+                "uedAmount_reserverInt], [BookedAccruedAccounting_reserverInt], [Runing_total_Ove"& _ 
+                "rnight_interest], [BookedAccruedAmount_OvernightInt], [BookedAccruedAccounting_O"& _ 
+                "vernightInt]) VALUES (@RiskDate, @ExternalBalanceBUBA, @MindestReserveBUBA, @Day"& _ 
+                "sCount, @DaysCountNextDate, @ReserveInterest, @MinusInterest, @ReserveInterestAm"& _ 
+                "ount, @MinusInterestAmount, @Booked, @RuningTotalMinusInterestAmount, @TotalInte"& _ 
+                "rest, @BookedAccounting, @CorrectTotalInterest, @AccountingBookingMark, @BookedA"& _ 
+                "ccruedsAccounting, @BookedAccruedAmount, @RUNNING_TOTAL_INTEREST, @OvernightBala"& _ 
+                "nceBUBA, @Runing_total_reserver_interest, @BookedAccruedAmount_reserverInt, @Boo"& _ 
+                "kedAccruedAccounting_reserverInt, @Runing_total_Overnight_interest, @BookedAccru"& _ 
+                "edAmount_OvernightInt, @BookedAccruedAccounting_OvernightInt)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExternalBalanceBUBA", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExternalBalanceBUBA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -31126,6 +31461,13 @@ Namespace AccountingDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedsAccounting", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedsAccounting", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAmount", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RUNNING_TOTAL_INTEREST", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RUNNING_TOTAL_INTEREST", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OvernightBalanceBUBA", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OvernightBalanceBUBA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Runing_total_reserver_interest", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_reserver_interest", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAmount_reserverInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_reserverInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAccounting_reserverInt", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_reserverInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Runing_total_Overnight_interest", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_Overnight_interest", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAmount_OvernightInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_OvernightInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAccounting_OvernightInt", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_OvernightInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [MINDESTRESERVE] SET [RiskDate] = @RiskDate, [ExternalBalanceBUBA] = @Exte"& _ 
@@ -31137,36 +31479,58 @@ Namespace AccountingDataSetTableAdapters
                 " = @TotalInterest, [BookedAccounting] = @BookedAccounting, [CorrectTotalInterest"& _ 
                 "] = @CorrectTotalInterest, [AccountingBookingMark] = @AccountingBookingMark, [Bo"& _ 
                 "okedAccruedsAccounting] = @BookedAccruedsAccounting, [BookedAccruedAmount] = @Bo"& _ 
-                "okedAccruedAmount, [RUNNING_TOTAL_INTEREST] = @RUNNING_TOTAL_INTEREST WHERE (([I"& _ 
-                "D] = @Original_ID) AND ((@IsNull_RiskDate = 1 AND [RiskDate] IS NULL) OR ([RiskD"& _ 
-                "ate] = @Original_RiskDate)) AND ((@IsNull_ExternalBalanceBUBA = 1 AND [ExternalB"& _ 
-                "alanceBUBA] IS NULL) OR ([ExternalBalanceBUBA] = @Original_ExternalBalanceBUBA))"& _ 
-                " AND ((@IsNull_MindestReserveBUBA = 1 AND [MindestReserveBUBA] IS NULL) OR ([Min"& _ 
-                "destReserveBUBA] = @Original_MindestReserveBUBA)) AND ((@IsNull_DaysCount = 1 AN"& _ 
-                "D [DaysCount] IS NULL) OR ([DaysCount] = @Original_DaysCount)) AND ((@IsNull_Day"& _ 
-                "sCountNextDate = 1 AND [DaysCountNextDate] IS NULL) OR ([DaysCountNextDate] = @O"& _ 
-                "riginal_DaysCountNextDate)) AND ((@IsNull_ReserveInterest = 1 AND [ReserveIntere"& _ 
-                "st] IS NULL) OR ([ReserveInterest] = @Original_ReserveInterest)) AND ((@IsNull_M"& _ 
-                "inusInterest = 1 AND [MinusInterest] IS NULL) OR ([MinusInterest] = @Original_Mi"& _ 
-                "nusInterest)) AND ((@IsNull_ReserveInterestAmount = 1 AND [ReserveInterestAmount"& _ 
-                "] IS NULL) OR ([ReserveInterestAmount] = @Original_ReserveInterestAmount)) AND ("& _ 
-                "(@IsNull_MinusInterestAmount = 1 AND [MinusInterestAmount] IS NULL) OR ([MinusIn"& _ 
-                "terestAmount] = @Original_MinusInterestAmount)) AND ((@IsNull_Booked = 1 AND [Bo"& _ 
-                "oked] IS NULL) OR ([Booked] = @Original_Booked)) AND ((@IsNull_RuningTotalMinusI"& _ 
-                "nterestAmount = 1 AND [RuningTotalMinusInterestAmount] IS NULL) OR ([RuningTotal"& _ 
-                "MinusInterestAmount] = @Original_RuningTotalMinusInterestAmount)) AND ((@IsNull_"& _ 
-                "TotalInterest = 1 AND [TotalInterest] IS NULL) OR ([TotalInterest] = @Original_T"& _ 
-                "otalInterest)) AND ((@IsNull_BookedAccounting = 1 AND [BookedAccounting] IS NULL"& _ 
-                ") OR ([BookedAccounting] = @Original_BookedAccounting)) AND ((@IsNull_CorrectTot"& _ 
-                "alInterest = 1 AND [CorrectTotalInterest] IS NULL) OR ([CorrectTotalInterest] = "& _ 
-                "@Original_CorrectTotalInterest)) AND ((@IsNull_AccountingBookingMark = 1 AND [Ac"& _ 
-                "countingBookingMark] IS NULL) OR ([AccountingBookingMark] = @Original_Accounting"& _ 
-                "BookingMark)) AND ((@IsNull_BookedAccruedsAccounting = 1 AND [BookedAccruedsAcco"& _ 
-                "unting] IS NULL) OR ([BookedAccruedsAccounting] = @Original_BookedAccruedsAccoun"& _ 
-                "ting)) AND ((@IsNull_BookedAccruedAmount = 1 AND [BookedAccruedAmount] IS NULL) "& _ 
-                "OR ([BookedAccruedAmount] = @Original_BookedAccruedAmount)) AND ((@IsNull_RUNNIN"& _ 
-                "G_TOTAL_INTEREST = 1 AND [RUNNING_TOTAL_INTEREST] IS NULL) OR ([RUNNING_TOTAL_IN"& _ 
-                "TEREST] = @Original_RUNNING_TOTAL_INTEREST)))"
+                "okedAccruedAmount, [RUNNING_TOTAL_INTEREST] = @RUNNING_TOTAL_INTEREST, [Overnigh"& _ 
+                "tBalanceBUBA] = @OvernightBalanceBUBA, [Runing_total_reserver_interest] = @Runin"& _ 
+                "g_total_reserver_interest, [BookedAccruedAmount_reserverInt] = @BookedAccruedAmo"& _ 
+                "unt_reserverInt, [BookedAccruedAccounting_reserverInt] = @BookedAccruedAccountin"& _ 
+                "g_reserverInt, [Runing_total_Overnight_interest] = @Runing_total_Overnight_inter"& _ 
+                "est, [BookedAccruedAmount_OvernightInt] = @BookedAccruedAmount_OvernightInt, [Bo"& _ 
+                "okedAccruedAccounting_OvernightInt] = @BookedAccruedAccounting_OvernightInt WHER"& _ 
+                "E (([ID] = @Original_ID) AND ((@IsNull_RiskDate = 1 AND [RiskDate] IS NULL) OR ("& _ 
+                "[RiskDate] = @Original_RiskDate)) AND ((@IsNull_ExternalBalanceBUBA = 1 AND [Ext"& _ 
+                "ernalBalanceBUBA] IS NULL) OR ([ExternalBalanceBUBA] = @Original_ExternalBalance"& _ 
+                "BUBA)) AND ((@IsNull_MindestReserveBUBA = 1 AND [MindestReserveBUBA] IS NULL) OR"& _ 
+                " ([MindestReserveBUBA] = @Original_MindestReserveBUBA)) AND ((@IsNull_DaysCount "& _ 
+                "= 1 AND [DaysCount] IS NULL) OR ([DaysCount] = @Original_DaysCount)) AND ((@IsNu"& _ 
+                "ll_DaysCountNextDate = 1 AND [DaysCountNextDate] IS NULL) OR ([DaysCountNextDate"& _ 
+                "] = @Original_DaysCountNextDate)) AND ((@IsNull_ReserveInterest = 1 AND [Reserve"& _ 
+                "Interest] IS NULL) OR ([ReserveInterest] = @Original_ReserveInterest)) AND ((@Is"& _ 
+                "Null_MinusInterest = 1 AND [MinusInterest] IS NULL) OR ([MinusInterest] = @Origi"& _ 
+                "nal_MinusInterest)) AND ((@IsNull_ReserveInterestAmount = 1 AND [ReserveInterest"& _ 
+                "Amount] IS NULL) OR ([ReserveInterestAmount] = @Original_ReserveInterestAmount))"& _ 
+                " AND ((@IsNull_MinusInterestAmount = 1 AND [MinusInterestAmount] IS NULL) OR ([M"& _ 
+                "inusInterestAmount] = @Original_MinusInterestAmount)) AND ((@IsNull_Booked = 1 A"& _ 
+                "ND [Booked] IS NULL) OR ([Booked] = @Original_Booked)) AND ((@IsNull_RuningTotal"& _ 
+                "MinusInterestAmount = 1 AND [RuningTotalMinusInterestAmount] IS NULL) OR ([Runin"& _ 
+                "gTotalMinusInterestAmount] = @Original_RuningTotalMinusInterestAmount)) AND ((@I"& _ 
+                "sNull_TotalInterest = 1 AND [TotalInterest] IS NULL) OR ([TotalInterest] = @Orig"& _ 
+                "inal_TotalInterest)) AND ((@IsNull_BookedAccounting = 1 AND [BookedAccounting] I"& _ 
+                "S NULL) OR ([BookedAccounting] = @Original_BookedAccounting)) AND ((@IsNull_Corr"& _ 
+                "ectTotalInterest = 1 AND [CorrectTotalInterest] IS NULL) OR ([CorrectTotalIntere"& _ 
+                "st] = @Original_CorrectTotalInterest)) AND ((@IsNull_AccountingBookingMark = 1 A"& _ 
+                "ND [AccountingBookingMark] IS NULL) OR ([AccountingBookingMark] = @Original_Acco"& _ 
+                "untingBookingMark)) AND ((@IsNull_BookedAccruedsAccounting = 1 AND [BookedAccrue"& _ 
+                "dsAccounting] IS NULL) OR ([BookedAccruedsAccounting] = @Original_BookedAccrueds"& _ 
+                "Accounting)) AND ((@IsNull_BookedAccruedAmount = 1 AND [BookedAccruedAmount] IS "& _ 
+                "NULL) OR ([BookedAccruedAmount] = @Original_BookedAccruedAmount)) AND ((@IsNull_"& _ 
+                "RUNNING_TOTAL_INTEREST = 1 AND [RUNNING_TOTAL_INTEREST] IS NULL) OR ([RUNNING_TO"& _ 
+                "TAL_INTEREST] = @Original_RUNNING_TOTAL_INTEREST)) AND ((@IsNull_OvernightBalanc"& _ 
+                "eBUBA = 1 AND [OvernightBalanceBUBA] IS NULL) OR ([OvernightBalanceBUBA] = @Orig"& _ 
+                "inal_OvernightBalanceBUBA)) AND ((@IsNull_Runing_total_reserver_interest = 1 AND"& _ 
+                " [Runing_total_reserver_interest] IS NULL) OR ([Runing_total_reserver_interest] "& _ 
+                "= @Original_Runing_total_reserver_interest)) AND ((@IsNull_BookedAccruedAmount_r"& _ 
+                "eserverInt = 1 AND [BookedAccruedAmount_reserverInt] IS NULL) OR ([BookedAccrued"& _ 
+                "Amount_reserverInt] = @Original_BookedAccruedAmount_reserverInt)) AND ((@IsNull_"& _ 
+                "BookedAccruedAccounting_reserverInt = 1 AND [BookedAccruedAccounting_reserverInt"& _ 
+                "] IS NULL) OR ([BookedAccruedAccounting_reserverInt] = @Original_BookedAccruedAc"& _ 
+                "counting_reserverInt)) AND ((@IsNull_Runing_total_Overnight_interest = 1 AND [Ru"& _ 
+                "ning_total_Overnight_interest] IS NULL) OR ([Runing_total_Overnight_interest] = "& _ 
+                "@Original_Runing_total_Overnight_interest)) AND ((@IsNull_BookedAccruedAmount_Ov"& _ 
+                "ernightInt = 1 AND [BookedAccruedAmount_OvernightInt] IS NULL) OR ([BookedAccrue"& _ 
+                "dAmount_OvernightInt] = @Original_BookedAccruedAmount_OvernightInt)) AND ((@IsNu"& _ 
+                "ll_BookedAccruedAccounting_OvernightInt = 1 AND [BookedAccruedAccounting_Overnig"& _ 
+                "htInt] IS NULL) OR ([BookedAccruedAccounting_OvernightInt] = @Original_BookedAcc"& _ 
+                "ruedAccounting_OvernightInt)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ExternalBalanceBUBA", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ExternalBalanceBUBA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -31186,6 +31550,13 @@ Namespace AccountingDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedsAccounting", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedsAccounting", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAmount", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RUNNING_TOTAL_INTEREST", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RUNNING_TOTAL_INTEREST", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OvernightBalanceBUBA", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OvernightBalanceBUBA", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Runing_total_reserver_interest", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_reserver_interest", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAmount_reserverInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_reserverInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAccounting_reserverInt", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_reserverInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Runing_total_Overnight_interest", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_Overnight_interest", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAmount_OvernightInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_OvernightInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BookedAccruedAccounting_OvernightInt", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_OvernightInt", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RiskDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -31223,6 +31594,20 @@ Namespace AccountingDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAmount", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_RUNNING_TOTAL_INTEREST", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RUNNING_TOTAL_INTEREST", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RUNNING_TOTAL_INTEREST", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RUNNING_TOTAL_INTEREST", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_OvernightBalanceBUBA", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OvernightBalanceBUBA", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_OvernightBalanceBUBA", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OvernightBalanceBUBA", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Runing_total_reserver_interest", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_reserver_interest", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Runing_total_reserver_interest", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_reserver_interest", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BookedAccruedAmount_reserverInt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_reserverInt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAmount_reserverInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_reserverInt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BookedAccruedAccounting_reserverInt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_reserverInt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAccounting_reserverInt", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_reserverInt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Runing_total_Overnight_interest", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_Overnight_interest", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Runing_total_Overnight_interest", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Runing_total_Overnight_interest", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BookedAccruedAmount_OvernightInt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_OvernightInt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAmount_OvernightInt", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAmount_OvernightInt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BookedAccruedAccounting_OvernightInt", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_OvernightInt", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BookedAccruedAccounting_OvernightInt", Global.System.Data.SqlDbType.Bit, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BookedAccruedAccounting_OvernightInt", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -31239,10 +31624,14 @@ Namespace AccountingDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, RiskDate, ExternalBalanceBUBA, MindestReserveBUBA, DaysCount, D"& _ 
-                "aysCountNextDate, ReserveInterest, MinusInterest, ReserveInterestAmount, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
-                "                    MinusInterestAmount, Booked, RuningTotalMinusInterestAmount,"& _ 
-                " TotalInterest, BookedAccounting, CorrectTotalInterest, AccountingBookingMark, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         BookedAccruedsAccounting, BookedAccruedAmount, RUNNING"& _ 
-                "_TOTAL_INTEREST"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            MINDESTRESERVE"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY RiskDate DESC"
+                "aysCountNextDate, ReserveInterest, MinusInterest, ReserveInterestAmount, MinusIn"& _ 
+                "terestAmount, Booked, RuningTotalMinusInterestAmount, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
+                " TotalInterest, BookedAccounting, CorrectTotalInterest, AccountingBookingMark, B"& _ 
+                "ookedAccruedsAccounting, BookedAccruedAmount, RUNNING_TOTAL_INTEREST, OvernightB"& _ 
+                "alanceBUBA, Runing_total_reserver_interest, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         BookedAcc"& _ 
+                "ruedAmount_reserverInt, BookedAccruedAccounting_reserverInt, Runing_total_Overni"& _ 
+                "ght_interest, BookedAccruedAmount_OvernightInt, BookedAccruedAccounting_Overnigh"& _ 
+                "tInt"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            MINDESTRESERVE"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY RiskDate DESC"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -31321,7 +31710,14 @@ Namespace AccountingDataSetTableAdapters
                     ByVal Original_AccountingBookingMark As String,  _
                     ByVal Original_BookedAccruedsAccounting As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_BookedAccruedAmount As Global.System.Nullable(Of Double),  _
-                    ByVal Original_RUNNING_TOTAL_INTEREST As Global.System.Nullable(Of Double)) As Integer
+                    ByVal Original_RUNNING_TOTAL_INTEREST As Global.System.Nullable(Of Double),  _
+                    ByVal Original_OvernightBalanceBUBA As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Runing_total_reserver_interest As Global.System.Nullable(Of Double),  _
+                    ByVal Original_BookedAccruedAmount_reserverInt As Global.System.Nullable(Of Double),  _
+                    ByVal Original_BookedAccruedAccounting_reserverInt As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Runing_total_Overnight_interest As Global.System.Nullable(Of Double),  _
+                    ByVal Original_BookedAccruedAmount_OvernightInt As Global.System.Nullable(Of Double),  _
+                    ByVal Original_BookedAccruedAccounting_OvernightInt As Global.System.Nullable(Of Boolean)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_RiskDate.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
@@ -31449,6 +31845,55 @@ Namespace AccountingDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
             End If
+            If (Original_OvernightBalanceBUBA.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_OvernightBalanceBUBA.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Runing_total_reserver_interest.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_Runing_total_reserver_interest.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BookedAccruedAmount_reserverInt.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_BookedAccruedAmount_reserverInt.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(42).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BookedAccruedAccounting_reserverInt.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_BookedAccruedAccounting_reserverInt.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(44).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Runing_total_Overnight_interest.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(45).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(46).Value = CType(Original_Runing_total_Overnight_interest.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(45).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(46).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BookedAccruedAmount_OvernightInt.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(48).Value = CType(Original_BookedAccruedAmount_OvernightInt.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(47).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(48).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BookedAccruedAccounting_OvernightInt.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(Original_BookedAccruedAccounting_OvernightInt.Value,Boolean)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(49).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(50).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -31486,7 +31931,14 @@ Namespace AccountingDataSetTableAdapters
                     ByVal AccountingBookingMark As String,  _
                     ByVal BookedAccruedsAccounting As Global.System.Nullable(Of Boolean),  _
                     ByVal BookedAccruedAmount As Global.System.Nullable(Of Double),  _
-                    ByVal RUNNING_TOTAL_INTEREST As Global.System.Nullable(Of Double)) As Integer
+                    ByVal RUNNING_TOTAL_INTEREST As Global.System.Nullable(Of Double),  _
+                    ByVal OvernightBalanceBUBA As Global.System.Nullable(Of Double),  _
+                    ByVal Runing_total_reserver_interest As Global.System.Nullable(Of Double),  _
+                    ByVal BookedAccruedAmount_reserverInt As Global.System.Nullable(Of Double),  _
+                    ByVal BookedAccruedAccounting_reserverInt As Global.System.Nullable(Of Boolean),  _
+                    ByVal Runing_total_Overnight_interest As Global.System.Nullable(Of Double),  _
+                    ByVal BookedAccruedAmount_OvernightInt As Global.System.Nullable(Of Double),  _
+                    ByVal BookedAccruedAccounting_OvernightInt As Global.System.Nullable(Of Boolean)) As Integer
             If (RiskDate.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(RiskDate.Value,Date)
             Else
@@ -31577,6 +32029,41 @@ Namespace AccountingDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
             End If
+            If (OvernightBalanceBUBA.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(OvernightBalanceBUBA.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (Runing_total_reserver_interest.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(Runing_total_reserver_interest.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (BookedAccruedAmount_reserverInt.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(BookedAccruedAmount_reserverInt.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (BookedAccruedAccounting_reserverInt.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(BookedAccruedAccounting_reserverInt.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (Runing_total_Overnight_interest.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(Runing_total_Overnight_interest.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (BookedAccruedAmount_OvernightInt.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(BookedAccruedAmount_OvernightInt.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (BookedAccruedAccounting_OvernightInt.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(24).Value = CType(BookedAccruedAccounting_OvernightInt.Value,Boolean)
+            Else
+                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -31615,6 +32102,13 @@ Namespace AccountingDataSetTableAdapters
                     ByVal BookedAccruedsAccounting As Global.System.Nullable(Of Boolean),  _
                     ByVal BookedAccruedAmount As Global.System.Nullable(Of Double),  _
                     ByVal RUNNING_TOTAL_INTEREST As Global.System.Nullable(Of Double),  _
+                    ByVal OvernightBalanceBUBA As Global.System.Nullable(Of Double),  _
+                    ByVal Runing_total_reserver_interest As Global.System.Nullable(Of Double),  _
+                    ByVal BookedAccruedAmount_reserverInt As Global.System.Nullable(Of Double),  _
+                    ByVal BookedAccruedAccounting_reserverInt As Global.System.Nullable(Of Boolean),  _
+                    ByVal Runing_total_Overnight_interest As Global.System.Nullable(Of Double),  _
+                    ByVal BookedAccruedAmount_OvernightInt As Global.System.Nullable(Of Double),  _
+                    ByVal BookedAccruedAccounting_OvernightInt As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_ID As Integer,  _
                     ByVal Original_RiskDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_ExternalBalanceBUBA As Global.System.Nullable(Of Double),  _
@@ -31633,7 +32127,14 @@ Namespace AccountingDataSetTableAdapters
                     ByVal Original_AccountingBookingMark As String,  _
                     ByVal Original_BookedAccruedsAccounting As Global.System.Nullable(Of Boolean),  _
                     ByVal Original_BookedAccruedAmount As Global.System.Nullable(Of Double),  _
-                    ByVal Original_RUNNING_TOTAL_INTEREST As Global.System.Nullable(Of Double)) As Integer
+                    ByVal Original_RUNNING_TOTAL_INTEREST As Global.System.Nullable(Of Double),  _
+                    ByVal Original_OvernightBalanceBUBA As Global.System.Nullable(Of Double),  _
+                    ByVal Original_Runing_total_reserver_interest As Global.System.Nullable(Of Double),  _
+                    ByVal Original_BookedAccruedAmount_reserverInt As Global.System.Nullable(Of Double),  _
+                    ByVal Original_BookedAccruedAccounting_reserverInt As Global.System.Nullable(Of Boolean),  _
+                    ByVal Original_Runing_total_Overnight_interest As Global.System.Nullable(Of Double),  _
+                    ByVal Original_BookedAccruedAmount_OvernightInt As Global.System.Nullable(Of Double),  _
+                    ByVal Original_BookedAccruedAccounting_OvernightInt As Global.System.Nullable(Of Boolean)) As Integer
             If (RiskDate.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(RiskDate.Value,Date)
             Else
@@ -31724,132 +32225,216 @@ Namespace AccountingDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_ID,Integer)
-            If (Original_RiskDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_RiskDate.Value,Date)
+            If (OvernightBalanceBUBA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(OvernightBalanceBUBA.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (Runing_total_reserver_interest.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Runing_total_reserver_interest.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (BookedAccruedAmount_reserverInt.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(BookedAccruedAmount_reserverInt.Value,Double)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             End If
-            If (Original_ExternalBalanceBUBA.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_ExternalBalanceBUBA.Value,Double)
+            If (BookedAccruedAccounting_reserverInt.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(BookedAccruedAccounting_reserverInt.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (Runing_total_Overnight_interest.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Runing_total_Overnight_interest.Value,Double)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             End If
-            If (Original_MindestReserveBUBA.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_MindestReserveBUBA.Value,Double)
+            If (BookedAccruedAmount_OvernightInt.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(BookedAccruedAmount_OvernightInt.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (BookedAccruedAccounting_OvernightInt.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(BookedAccruedAccounting_OvernightInt.Value,Boolean)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
             End If
-            If (Original_DaysCount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_DaysCount.Value,Double)
+            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_ID,Integer)
+            If (Original_RiskDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_RiskDate.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ExternalBalanceBUBA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_ExternalBalanceBUBA.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            End If
+            If (Original_MindestReserveBUBA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_MindestReserveBUBA.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+            End If
+            If (Original_DaysCount.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_DaysCount.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
             If (Original_DaysCountNextDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_DaysCountNextDate.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_DaysCountNextDate.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
             If (Original_ReserveInterest.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_ReserveInterest.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_ReserveInterest.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
             If (Original_MinusInterest.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_MinusInterest.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_MinusInterest.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             End If
             If (Original_ReserveInterestAmount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_ReserveInterestAmount.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_ReserveInterestAmount.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             End If
             If (Original_MinusInterestAmount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_MinusInterestAmount.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_MinusInterestAmount.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             End If
             If (Original_Booked.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_Booked.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Booked.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             End If
             If (Original_RuningTotalMinusInterestAmount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_RuningTotalMinusInterestAmount.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_RuningTotalMinusInterestAmount.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
             End If
             If (Original_TotalInterest.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_TotalInterest.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_TotalInterest.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
             End If
             If (Original_BookedAccounting.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_BookedAccounting.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_BookedAccounting.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
             End If
             If (Original_CorrectTotalInterest.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_CorrectTotalInterest.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_CorrectTotalInterest.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
             End If
             If (Original_AccountingBookingMark Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_AccountingBookingMark,String)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_AccountingBookingMark,String)
             End If
             If (Original_BookedAccruedsAccounting.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_BookedAccruedsAccounting.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_BookedAccruedsAccounting.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
             End If
             If (Original_BookedAccruedAmount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_BookedAccruedAmount.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_BookedAccruedAmount.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
             End If
             If (Original_RUNNING_TOTAL_INTEREST.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_RUNNING_TOTAL_INTEREST.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_RUNNING_TOTAL_INTEREST.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
+            End If
+            If (Original_OvernightBalanceBUBA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_OvernightBalanceBUBA.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Runing_total_reserver_interest.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_Runing_total_reserver_interest.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BookedAccruedAmount_reserverInt.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_BookedAccruedAmount_reserverInt.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BookedAccruedAccounting_reserverInt.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(Original_BookedAccruedAccounting_reserverInt.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Runing_total_Overnight_interest.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(Original_Runing_total_Overnight_interest.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BookedAccruedAmount_OvernightInt.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(Original_BookedAccruedAmount_OvernightInt.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = Global.System.DBNull.Value
+            End If
+            If (Original_BookedAccruedAccounting_OvernightInt.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(Original_BookedAccruedAccounting_OvernightInt.Value,Boolean)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

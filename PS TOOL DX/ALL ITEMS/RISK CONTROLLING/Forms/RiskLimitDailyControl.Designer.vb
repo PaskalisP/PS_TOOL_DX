@@ -533,7 +533,7 @@ Partial Class RiskLimitDailyControl
         Me.colRiskBearingCapacityCashPledge.Name = "colRiskBearingCapacityCashPledge"
         Me.colRiskBearingCapacityCashPledge.OptionsColumn.AllowEdit = False
         Me.colRiskBearingCapacityCashPledge.OptionsColumn.ReadOnly = True
-        Me.colRiskBearingCapacityCashPledge.ToolTip = "Risk bearing capacity with cash pledge consideration (as from 14.02.2014 incl. Pr" & _
+        Me.colRiskBearingCapacityCashPledge.ToolTip = "Risk bearing capacity with cash pledge consideration (as from 14.02.2014 incl. Pr" &
     "ofit/Loss,Currency Risk, Operational Risk)"
         Me.colRiskBearingCapacityCashPledge.Visible = True
         Me.colRiskBearingCapacityCashPledge.VisibleIndex = 16
@@ -596,7 +596,7 @@ Partial Class RiskLimitDailyControl
         Me.colPL_AfterBUBA_Interests.Name = "colPL_AfterBUBA_Interests"
         Me.colPL_AfterBUBA_Interests.OptionsColumn.AllowEdit = False
         Me.colPL_AfterBUBA_Interests.OptionsColumn.ReadOnly = True
-        Me.colPL_AfterBUBA_Interests.UnboundExpression = "Iif([BUBA_InterestAmount] <> 0, [PL Result] + [BUBA_InterestAmount], 0)"
+        Me.colPL_AfterBUBA_Interests.UnboundExpression = "[PL Result] + [BUBA_InterestAmount]"
         Me.colPL_AfterBUBA_Interests.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
         Me.colPL_AfterBUBA_Interests.Visible = True
         Me.colPL_AfterBUBA_Interests.VisibleIndex = 3
@@ -616,7 +616,7 @@ Partial Class RiskLimitDailyControl
         Me.colLocal_GAAP_Net_PL.OptionsColumn.AllowEdit = False
         Me.colLocal_GAAP_Net_PL.OptionsColumn.ReadOnly = True
         Me.colLocal_GAAP_Net_PL.ToolTip = "Profit/Loss OCBS + Unbooked BUNDESBANK Interests + FX Evaluation"
-        Me.colLocal_GAAP_Net_PL.UnboundExpression = "Iif([FX_Evaluation_Temp] <> 0, [PL Result] + [BUBA_InterestAmount] + [FX_Evaluati" & _
+        Me.colLocal_GAAP_Net_PL.UnboundExpression = "Iif([FX_Evaluation_Temp] <> 0, [PL Result] + [BUBA_InterestAmount] + [FX_Evaluati" &
     "on_Temp], 0)"
         Me.colLocal_GAAP_Net_PL.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
         Me.colLocal_GAAP_Net_PL.Width = 136
@@ -658,7 +658,7 @@ Partial Class RiskLimitDailyControl
         Me.colPL_InternalIDW.Name = "colPL_InternalIDW"
         Me.colPL_InternalIDW.OptionsColumn.AllowEdit = False
         Me.colPL_InternalIDW.OptionsColumn.ReadOnly = True
-        Me.colPL_InternalIDW.UnboundExpression = "Iif([PLdifferenceOCBS_IDW_INTERN] <> 0, [colPL_AfterBUBA_Interests] + [PLdifferen" & _
+        Me.colPL_InternalIDW.UnboundExpression = "Iif([PLdifferenceOCBS_IDW_INTERN] <> 0, [colPL_AfterBUBA_Interests] + [PLdifferen" &
     "ceOCBS_IDW_INTERN], 0)"
         Me.colPL_InternalIDW.UnboundType = DevExpress.Data.UnboundColumnType.[Decimal]
         Me.colPL_InternalIDW.Visible = True
@@ -678,7 +678,7 @@ Partial Class RiskLimitDailyControl
         Me.colHGB_PL_Calculated.Name = "colHGB_PL_Calculated"
         Me.colHGB_PL_Calculated.OptionsColumn.AllowEdit = False
         Me.colHGB_PL_Calculated.OptionsColumn.ReadOnly = True
-        Me.colHGB_PL_Calculated.ToolTip = "Beinhaltet nicht die vollständige Steuerbelastung und ggfs. Bundesbank negativzin" & _
+        Me.colHGB_PL_Calculated.ToolTip = "Beinhaltet nicht die vollständige Steuerbelastung und ggfs. Bundesbank negativzin" &
     "sen"
         Me.colHGB_PL_Calculated.Visible = True
         Me.colHGB_PL_Calculated.VisibleIndex = 6
@@ -909,7 +909,7 @@ Partial Class RiskLimitDailyControl
         ToolTipItem1.LeftIndent = 6
         ToolTipItem1.Text = "The maximum Amount in the INCIDENTS DATABASE"
         ToolTipTitleItem2.LeftIndent = 6
-        ToolTipTitleItem2.Text = "For the RISK BEARING CAPACITY Calculation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the Operational Risk is compared with " & _
+        ToolTipTitleItem2.Text = "For the RISK BEARING CAPACITY Calculation" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "the Operational Risk is compared with " &
     "the a.m. Amount. Allways the highest Amount is used in the Calculation"
         SuperToolTip1.Items.Add(ToolTipTitleItem1)
         SuperToolTip1.Items.Add(ToolTipItem1)
@@ -1182,7 +1182,7 @@ Partial Class RiskLimitDailyControl
         ToolTipTitleItem4.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
         ToolTipTitleItem4.Text = "RISK BEARING CAPACITY Calculation"
         ToolTipItem3.LeftIndent = 6
-        ToolTipItem3.Text = "Till 30.06.2014 the Market price of securities" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "is included in the calculation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & _
+        ToolTipItem3.Text = "Till 30.06.2014 the Market price of securities" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "is included in the calculation." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) &
     ""
         SuperToolTip3.Items.Add(ToolTipTitleItem4)
         SuperToolTip3.Items.Add(ToolTipItem3)
@@ -1685,7 +1685,10 @@ Partial Class RiskLimitDailyControl
         Me.TableAdapterManager.MAK_REPORTTableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DATETableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DELETIONSTableAdapter = Nothing
+        Me.TableAdapterManager.RATERISK_DETAILS1TableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DETAILSTableAdapter = Nothing
+        Me.TableAdapterManager.RATERISK_TOTALS1TableAdapter = Nothing
+        Me.TableAdapterManager.RATERISK_TOTALS2TableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_TOTALSTableAdapter = Nothing
         Me.TableAdapterManager.RISK_LIMIT_DAILY_CONTROLTableAdapter = Me.RISK_LIMIT_DAILY_CONTROLTableAdapter
         Me.TableAdapterManager.StressTestLiquid_TempTableAdapter = Nothing
@@ -1708,11 +1711,11 @@ Partial Class RiskLimitDailyControl
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 29)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 20)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1502, 766)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1502, 778)
         Me.LayoutControl1.TabIndex = 2
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -1775,7 +1778,7 @@ Partial Class RiskLimitDailyControl
         '
         Me.ObligoLiabilitySurplusDefault_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RISK_LIMIT_DAILY_CONTROLBindingSource, "CCBINFO Obligo Liability surplus Default", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
         Me.ObligoLiabilitySurplusDefault_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.RISK_LIMIT_DAILY_CONTROLBindingSource, "CCBINFO Obligo Liability surplus Default", True))
-        Me.ObligoLiabilitySurplusDefault_TextEdit.EditValue = 0.0R
+        Me.ObligoLiabilitySurplusDefault_TextEdit.EditValue = 0R
         Me.ObligoLiabilitySurplusDefault_TextEdit.Location = New System.Drawing.Point(139, 48)
         Me.ObligoLiabilitySurplusDefault_TextEdit.Name = "ObligoLiabilitySurplusDefault_TextEdit"
         Me.ObligoLiabilitySurplusDefault_TextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
@@ -1967,31 +1970,31 @@ Partial Class RiskLimitDailyControl
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1502, 29)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1502, 20)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 795)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 798)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1502, 23)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1502, 20)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 29)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 20)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 766)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 778)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1502, 29)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1502, 20)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 766)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 778)
         '
         'BarButtonItem1
         '
@@ -2043,7 +2046,7 @@ Partial Class RiskLimitDailyControl
         Me.GridControl1.MainView = Me.RiskLimitDailyControl_TotalView
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEditBIC8, Me.RepositoryItemTextEditBIC3, Me.RepositoryItemPopupContainerEdit1, Me.RepositoryItemPopupContainerEdit2})
-        Me.GridControl1.Size = New System.Drawing.Size(1478, 692)
+        Me.GridControl1.Size = New System.Drawing.Size(1478, 704)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.UseEmbeddedNavigator = True
         Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.RiskLimitDailyControl_TotalView, Me.LayoutView1})
@@ -2087,7 +2090,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleExpression4.Appearance.ForeColor = System.Drawing.Color.Black
         FormatConditionRuleExpression4.Appearance.Options.UseBackColor = True
         FormatConditionRuleExpression4.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression4.Expression = "[RLDC Date] <#12/10/2014# and [Bank SolvV] != ? and [Bank SolvV]>=8 and [Bank Sol" & _
+        FormatConditionRuleExpression4.Expression = "[RLDC Date] <#12/10/2014# and [Bank SolvV] != ? and [Bank SolvV]>=8 and [Bank Sol" &
     "vV]<=9.5"
         GridFormatRule4.Rule = FormatConditionRuleExpression4
         GridFormatRule5.Column = Me.colBankSolvV
@@ -2112,7 +2115,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleExpression7.Appearance.ForeColor = System.Drawing.Color.Black
         FormatConditionRuleExpression7.Appearance.Options.UseBackColor = True
         FormatConditionRuleExpression7.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression7.Expression = "[RLDC Date] >=#12/10/2014# and [Bank SolvV] != ? and [Bank SolvV]>=11.4 and [Bank" & _
+        FormatConditionRuleExpression7.Expression = "[RLDC Date] >=#12/10/2014# and [Bank SolvV] != ? and [Bank SolvV]>=11.4 and [Bank" &
     " SolvV]<13.4"
         GridFormatRule7.Rule = FormatConditionRuleExpression7
         GridFormatRule8.Column = Me.colBankSolvV
@@ -2167,7 +2170,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleExpression14.Appearance.ForeColor = System.Drawing.Color.Black
         FormatConditionRuleExpression14.Appearance.Options.UseBackColor = True
         FormatConditionRuleExpression14.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression14.Expression = "[Interest rate risk] != ? and [Interest rate risk] > 15 and [Interest rate risk] " & _
+        FormatConditionRuleExpression14.Expression = "[Interest rate risk] != ? and [Interest rate risk] > 15 and [Interest rate risk] " &
     "<= 20"
         GridFormatRule14.Rule = FormatConditionRuleExpression14
         GridFormatRule15.Column = Me.colInterestraterisk
@@ -2184,7 +2187,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleExpression16.Appearance.ForeColor = System.Drawing.Color.Black
         FormatConditionRuleExpression16.Appearance.Options.UseBackColor = True
         FormatConditionRuleExpression16.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression16.Expression = "[RiskBearingCapacityCashPledge] != ? and [RiskBearingCapacityCashPledge] >0 and [" & _
+        FormatConditionRuleExpression16.Expression = "[RiskBearingCapacityCashPledge] != ? and [RiskBearingCapacityCashPledge] >0 and [" &
     "RiskBearingCapacityCashPledge] <50"
         GridFormatRule16.Rule = FormatConditionRuleExpression16
         GridFormatRule17.Column = Me.colRiskBearingCapacityCashPledge
@@ -2193,7 +2196,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleExpression17.Appearance.ForeColor = System.Drawing.Color.Black
         FormatConditionRuleExpression17.Appearance.Options.UseBackColor = True
         FormatConditionRuleExpression17.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression17.Expression = "[RiskBearingCapacityCashPledge] != ? and [RiskBearingCapacityCashPledge] >= 50 an" & _
+        FormatConditionRuleExpression17.Expression = "[RiskBearingCapacityCashPledge] != ? and [RiskBearingCapacityCashPledge] >= 50 an" &
     "d [RiskBearingCapacityCashPledge] <= 90"
         GridFormatRule17.Rule = FormatConditionRuleExpression17
         GridFormatRule18.Column = Me.colRiskBearingCapacityCashPledge
@@ -2285,7 +2288,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue3.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue3.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue3.Value1 = 0.0R
+        FormatConditionRuleValue3.Value1 = 0R
         GridFormatRule27.Rule = FormatConditionRuleValue3
         GridFormatRule28.Column = Me.colBUBA_InterestAmount
         GridFormatRule28.Name = "BUBA_Interest_Negative"
@@ -2295,7 +2298,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue4.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue4.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue4.Value1 = 0.0R
+        FormatConditionRuleValue4.Value1 = 0R
         GridFormatRule28.Rule = FormatConditionRuleValue4
         GridFormatRule29.Column = Me.colPL_AfterBUBA_Interests
         GridFormatRule29.Name = "PL_AfterBUBA_Interest_Positiv"
@@ -2305,7 +2308,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue5.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue5.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue5.Value1 = 0.0R
+        FormatConditionRuleValue5.Value1 = 0R
         GridFormatRule29.Rule = FormatConditionRuleValue5
         GridFormatRule30.Column = Me.colPL_AfterBUBA_Interests
         GridFormatRule30.Name = "PL_AfterBUBA_Interest_Negativ"
@@ -2315,7 +2318,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue6.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue6.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue6.Value1 = 0.0R
+        FormatConditionRuleValue6.Value1 = 0R
         GridFormatRule30.Rule = FormatConditionRuleValue6
         GridFormatRule31.Column = Me.colLocal_GAAP_Net_PL
         GridFormatRule31.Name = "Local_GAAP_Net_PL_Positiv"
@@ -2325,7 +2328,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue7.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue7.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue7.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue7.Value1 = 0.0R
+        FormatConditionRuleValue7.Value1 = 0R
         GridFormatRule31.Rule = FormatConditionRuleValue7
         GridFormatRule32.Column = Me.colLocal_GAAP_Net_PL
         GridFormatRule32.Name = "Local_GAAP_Net_PL_Negativ"
@@ -2335,7 +2338,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue8.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue8.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue8.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue8.Value1 = 0.0R
+        FormatConditionRuleValue8.Value1 = 0R
         GridFormatRule32.Rule = FormatConditionRuleValue8
         GridFormatRule33.Column = Me.colFX_Evaluation_Temp
         GridFormatRule33.Name = "FX_Evaluation_Positiv"
@@ -2345,7 +2348,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue9.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue9.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue9.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue9.Value1 = 0.0R
+        FormatConditionRuleValue9.Value1 = 0R
         GridFormatRule33.Rule = FormatConditionRuleValue9
         GridFormatRule34.Column = Me.colFX_Evaluation_Temp
         GridFormatRule34.Name = "FX_Evaluation_Negativ"
@@ -2355,7 +2358,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue10.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue10.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue10.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue10.Value1 = 0.0R
+        FormatConditionRuleValue10.Value1 = 0R
         GridFormatRule34.Rule = FormatConditionRuleValue10
         GridFormatRule35.Column = Me.colPLdifferenceOCBS_IDW_INTERN
         GridFormatRule35.Name = "IDW_Internal_Positiv"
@@ -2365,7 +2368,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue11.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue11.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue11.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue11.Value1 = 0.0R
+        FormatConditionRuleValue11.Value1 = 0R
         GridFormatRule35.Rule = FormatConditionRuleValue11
         GridFormatRule36.Column = Me.colPLdifferenceOCBS_IDW_INTERN
         GridFormatRule36.Name = "IDW_Internal_Negativ"
@@ -2375,7 +2378,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue12.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue12.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue12.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue12.Value1 = 0.0R
+        FormatConditionRuleValue12.Value1 = 0R
         GridFormatRule36.Rule = FormatConditionRuleValue12
         GridFormatRule37.Column = Me.colPL_InternalIDW
         GridFormatRule37.Name = "PL_Internal_IDW_Positiv"
@@ -2385,7 +2388,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue13.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue13.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue13.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue13.Value1 = 0.0R
+        FormatConditionRuleValue13.Value1 = 0R
         GridFormatRule37.Rule = FormatConditionRuleValue13
         GridFormatRule38.Column = Me.colPL_InternalIDW
         GridFormatRule38.Name = "PL_Internal_IDW_Negativ"
@@ -2395,7 +2398,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue14.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue14.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue14.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue14.Value1 = 0.0R
+        FormatConditionRuleValue14.Value1 = 0R
         GridFormatRule38.Rule = FormatConditionRuleValue14
         GridFormatRule39.Column = Me.colHGB_PL_Calculated
         GridFormatRule39.ColumnApplyTo = Me.colHGB_PL_Calculated
@@ -2406,7 +2409,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue15.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue15.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue15.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue15.Value1 = 0.0R
+        FormatConditionRuleValue15.Value1 = 0R
         GridFormatRule39.Rule = FormatConditionRuleValue15
         GridFormatRule40.Column = Me.colHGB_PL_Calculated
         GridFormatRule40.ColumnApplyTo = Me.colHGB_PL_Calculated
@@ -2417,7 +2420,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue16.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue16.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue16.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue16.Value1 = 0.0R
+        FormatConditionRuleValue16.Value1 = 0R
         GridFormatRule40.Rule = FormatConditionRuleValue16
         GridFormatRule41.Column = Me.colUnbund_HGB_PL_afterBUBAint
         GridFormatRule41.ColumnApplyTo = Me.colUnbund_HGB_PL_afterBUBAint
@@ -2428,7 +2431,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue17.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue17.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue17.Condition = DevExpress.XtraEditors.FormatCondition.Greater
-        FormatConditionRuleValue17.Value1 = 0.0R
+        FormatConditionRuleValue17.Value1 = 0R
         GridFormatRule41.Rule = FormatConditionRuleValue17
         GridFormatRule42.Column = Me.colUnbund_HGB_PL_afterBUBAint
         GridFormatRule42.ColumnApplyTo = Me.colUnbund_HGB_PL_afterBUBAint
@@ -2439,7 +2442,7 @@ Partial Class RiskLimitDailyControl
         FormatConditionRuleValue18.Appearance.Options.UseBackColor = True
         FormatConditionRuleValue18.Appearance.Options.UseForeColor = True
         FormatConditionRuleValue18.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue18.Value1 = 0.0R
+        FormatConditionRuleValue18.Value1 = 0R
         GridFormatRule42.Rule = FormatConditionRuleValue18
         Me.RiskLimitDailyControl_TotalView.FormatRules.Add(GridFormatRule1)
         Me.RiskLimitDailyControl_TotalView.FormatRules.Add(GridFormatRule2)
@@ -2982,7 +2985,7 @@ Partial Class RiskLimitDailyControl
         Me.colCIC_Group_Used_Limit.Name = "colCIC_Group_Used_Limit"
         Me.colCIC_Group_Used_Limit.OptionsColumn.AllowEdit = False
         Me.colCIC_Group_Used_Limit.OptionsColumn.ReadOnly = True
-        Me.colCIC_Group_Used_Limit.ToolTip = "China Investment Corporation Group used limit (calculated in Daily_Art13_Kwg_Chin" & _
+        Me.colCIC_Group_Used_Limit.ToolTip = "China Investment Corporation Group used limit (calculated in Daily_Art13_Kwg_Chin" &
     "eseBanks)"
         Me.colCIC_Group_Used_Limit.Visible = True
         Me.colCIC_Group_Used_Limit.VisibleIndex = 29
@@ -3614,7 +3617,7 @@ Partial Class RiskLimitDailyControl
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlGroup3})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1502, 766)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1502, 778)
         '
         'LayoutControlItem1
         '
@@ -3623,7 +3626,7 @@ Partial Class RiskLimitDailyControl
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1482, 696)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1482, 708)
         Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
@@ -3706,7 +3709,7 @@ Partial Class RiskLimitDailyControl
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("RiskLimitDailyControl.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "RiskLimitDailyControl"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Risk Limit Daily Control"

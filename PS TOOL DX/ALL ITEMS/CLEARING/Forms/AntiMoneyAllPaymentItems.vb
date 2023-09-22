@@ -44,22 +44,13 @@ Imports DevExpress.Utils
 Imports System.Globalization
 Imports DevExpress.Spreadsheet
 Public Class AntiMoneyAllPaymentItems
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
 
-    Dim CrystalRepDir As String = ""
 
     Dim excel As Microsoft.Office.Interop.Excel.Application
     Dim instance As Microsoft.Office.Interop.Excel.WorksheetFunction
 
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
     Private objDataTable As New DataTable
 
-    Dim SqlCommandText As String = Nothing
 
     Dim Frd As Date
     Dim Frdsql As String = Nothing
@@ -81,7 +72,9 @@ Public Class AntiMoneyAllPaymentItems
     Dim workbook As IWorkbook
     Dim worksheet As Worksheet
 
-    Dim ActiveTabGroup As Double = 0
+    Friend WithEvents BgwLoadCustomerPayments As BackgroundWorker
+
+    Private bgws As New List(Of BackgroundWorker)()
 
     Sub New()
         InitSkins()
@@ -94,93 +87,50 @@ Public Class AntiMoneyAllPaymentItems
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
-    Private Sub AntiMoneyAllPaymentItems_Load(sender As Object, e As EventArgs) Handles Me.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
-        'cmd.CommandText = "SELECT Max(RegisterDate) from [GMPS PAYMENTS OUT]"
-        cmd.CommandText = "Select DPARAMETER1 from PARAMETER where PARAMETER1 in ('GMPS_PAYMENTS_OUT') and IdABTEILUNGSPARAMETER in ('MAX_DATES') and IdABTEILUNGSCODE_NAME in ('CLEARING')"
-        cmd.Connection.Open()
-        Dim d As Date = cmd.ExecuteScalar
-        cmd.Connection.Close()
-
-        Me.PaymentFromDateEdit.EditValue = d
-        Me.PaymentTillDateEdit.EditValue = d
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
 
     End Sub
 
-    Private Sub Load_Payments_Details_btn_Click(sender As Object, e As EventArgs) Handles Load_Payments_Details_btn.Click
-        If Me.PaymentFromDateEdit.Text <> "" And Me.PaymentTillDateEdit.Text <> "" Then
-            Frd = Me.PaymentFromDateEdit.Text
+    Private Sub DISABLE_BUTTONS()
+        Me.DateFrom_BarEditItem.Enabled = False
+        Me.DateTill_BarEditItem.Enabled = False
+        Me.bbi_Load.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.DateFrom_BarEditItem.Enabled = True
+        Me.DateTill_BarEditItem.Enabled = True
+        Me.bbi_Load.Enabled = True
+    End Sub
+
+    Private Sub AntiMoneyAllPaymentItems_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        cmd.CommandText = "Select DPARAMETER1 from PARAMETER where PARAMETER1 in ('GMPS_PAYMENTS_OUT') and IdABTEILUNGSPARAMETER in ('MAX_DATES') and IdABTEILUNGSCODE_NAME in ('CLEARING')"
+        OpenSqlConnections()
+        Dim d As Date = cmd.ExecuteScalar
+        CloseSqlConnections()
+
+        Me.DateFrom_BarEditItem.EditValue = d
+        Me.DateTill_BarEditItem.EditValue = d
+
+    End Sub
+
+    Private Sub bbi_Load_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Load.ItemClick
+        If Me.DateFrom_BarEditItem.EditValue.ToString <> "" And Me.DateTill_BarEditItem.EditValue.ToString <> "" Then
+            Frd = Me.DateFrom_BarEditItem.EditValue
             Frdsql = Frd.ToString("yyyyMMdd")
-            Trd = Me.PaymentTillDateEdit.Text
+            Trd = Me.DateTill_BarEditItem.EditValue
             Trdsql = Trd.ToString("yyyyMMdd")
             If Frd <= Trd Then
-                Try
-
-                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                    SplashScreenManager.Default.SetWaitFormCaption("Load Customer Payments (IN-OUTGOING)" & vbNewLine & "(SQL PROCEDURES PAREMETER/SEVERAL SELECTIONS/CUSTOMER_PAYMENTS_Temp_Fill) from: " & Frd & " till " & Trd)
-
-                    Me.QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('CUSTOMER_PAYMENTS_Temp_Fill') and Status in ('Y')"
-                    da1 = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                    dt1 = New System.Data.DataTable()
-                    da1.Fill(dt1)
-                    If dt1.Rows.Count > 0 Then
-                        SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", Frdsql)
-                        Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", Trdsql)
-
-                        'Data reader
-                        Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            Using sqlCmd As New SqlCommand()
-                                sqlCmd.CommandText = SqlCommandTextNew
-                                sqlCmd.Connection = sqlConn
-                                sqlCmd.CommandTimeout = 5000
-                                If sqlConn.State = ConnectionState.Closed Then
-                                    sqlConn.Open()
-                                End If
-
-                                Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                                objDataTable.Clear()
-                                objDataTable.Load(objDataReader)
-
-                                If sqlConn.State = ConnectionState.Open Then
-                                    sqlConn.Close()
-                                End If
-
-                            End Using
-                        End Using
-
-                        'Results Datareader
-                        If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                            'Me.GridControl4.BeginUpdate()
-                            Me.GridControl4.DataSource = Nothing
-                            'Me.GridControl1.Refresh()
-                            Me.GridControl4.DataSource = objDataTable
-                            Me.GridControl4.ForceInitialize()
-                            'Me.LCR_Details_GridView.PopulateColumns()
-                            'Me.LCR_Details_GridView.BestFitColumns()
-                            'Me.GridControl4.RefreshDataSource()
-                            SplashScreenManager.CloseForm(False)
-                        Else
-                            SplashScreenManager.CloseForm(False)
-                            XtraMessageBox.Show("There are no Data for the specified Pariod", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                            Exit Sub
-                        End If
-                    Else
-                        SplashScreenManager.CloseForm(False)
-                        MessageBox.Show("The SQL Command:SQL PROCEDURES PAREMETER/SEVERAL SELECTIONS/CUSTOMER_PAYMENTS_Temp_Fill is either deactivated or not present!", "NO SQL COMMAND", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                        Exit Sub
-
-                    End If
-
-
-
-
-                Catch ex As Exception
-                    SplashScreenManager.CloseForm(False)
-                    XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                    Exit Sub
-                End Try
+                DISABLE_BUTTONS()
+                Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                BgwLoadCustomerPayments = New BackgroundWorker
+                bgws.Add(BgwLoadCustomerPayments)
+                BgwLoadCustomerPayments.WorkerReportsProgress = True
+                BgwLoadCustomerPayments.RunWorkerAsync()
             Else
                 XtraMessageBox.Show("From Date must be less or equal Till Date", "Wrong Dates input", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
 
@@ -189,24 +139,84 @@ Public Class AntiMoneyAllPaymentItems
         End If
     End Sub
 
-    Private Sub Payments_Details_GridView_CustomSummaryCalculate(sender As Object, e As CustomSummaryEventArgs) Handles Payments_Details_GridView.CustomSummaryCalculate
 
+    Private Sub BgwLoadCustomerPayments_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadCustomerPayments.DoWork
+        Try
+
+            Me.BgwLoadCustomerPayments.ReportProgress(10, "Load all Customer Payments - (SQL PROCEDURES PAREMETER/SEVERAL SELECTIONS/CUSTOMER_PAYMENTS_Temp_Fill) from: " & Frd & " till " & Trd)
+
+            QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('CUSTOMER_PAYMENTS_Temp_Fill') and Status in ('Y')"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
+            dt = New System.Data.DataTable()
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                SqlCommandText = dt.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", Frdsql).Replace("<TillDate>", Trdsql)
+                'Data reader
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = SqlCommandText
+                        Sqlcmd.Connection = Sqlconn
+                        'Sqlcmd.CommandTimeout = 5000
+                        Sqlconn.Open()
+
+                        daSqlQueries = New SqlDataAdapter(SqlCommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+
+                        'Dim objDataReader As SqlDataReader = Sqlcmd.ExecuteReader()
+                        'objDataTable.Clear()
+                        'objDataTable.Load(objDataReader)
+
+                        Sqlconn.Close()
+
+                    End Using
+                End Using
+
+            Else
+                MessageBox.Show("The SQL Command:SQL PROCEDURES PAREMETER/SEVERAL SELECTIONS/CUSTOMER_PAYMENTS_Temp_Fill is either deactivated or not present!", "NO SQL COMMAND", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                Exit Sub
+
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadCustomerPayments.CancelAsync()
+
+        End Try
     End Sub
 
-    Private Sub Payments_Details_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Payments_Details_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
+
+    Private Sub BgwLoadCustomerPayments_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadCustomerPayments.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadCustomerPayments_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadCustomerPayments.RunWorkerCompleted
+        Workers_Complete(BgwLoadCustomerPayments, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl4.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl4.DataSource = dtSqlQueries
+            Me.GridControl4.ForceInitialize()
+            'Me.LCR_Details_GridView.PopulateColumns()
+            'Me.LCR_Details_GridView.BestFitColumns()
+            'Me.GridControl4.RefreshDataSource()
+            Me.LayoutControlGroup2.Text = "Customer Payments  from: " & Frd & " till " & Trd
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Pariod", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
         End If
     End Sub
 
-    Private Sub Payments_Details_GridView_ShownEditor(sender As Object, e As EventArgs) Handles Payments_Details_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-        End If
-    End Sub
-
-    Private Sub Print_Export_Gridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_Gridview_btn.Click
+    Private Sub bbi_PrintExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_PrintExport.ItemClick
         If Not GridControl4.IsPrintingAvailable Then
             XtraMessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
             Return
@@ -231,6 +241,19 @@ Public Class AntiMoneyAllPaymentItems
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
         Dim reportfooter As String = "Customer Payments" & "  " & "from: " & Frd & " till " & Trd
-e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+    End Sub
+
+    Private Sub bbi_Close_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Close.ItemClick
+        Me.Close()
+    End Sub
+
+    Private Sub AntiMoneyAllPaymentItems_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+
+        End If
     End Sub
 End Class

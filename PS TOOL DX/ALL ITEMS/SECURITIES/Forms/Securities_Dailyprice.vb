@@ -132,6 +132,12 @@ Public Class Securities_Dailyprice
         Me.BusinessDates_SearchLookUpEdit.ValueMember = "REPORTING_DATE"
     End Sub
 
+
+    Private Sub Securities_Dailyprice_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
+    End Sub
+
+
     Private Sub BusinessDates_BarEditItem_EditValueChanged(sender As Object, e As EventArgs) Handles BusinessDates_BarEditItem.EditValueChanged
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         If Me.BusinessDates_BarEditItem.EditValue.ToString = "ALL" Then
@@ -868,4 +874,6 @@ Public Class Securities_Dailyprice
     Private Sub Close_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Close_bbi.ItemClick
         Me.Close()
     End Sub
+
+
 End Class

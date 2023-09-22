@@ -3463,6 +3463,9 @@ Public Class SqlParameter
                                 worksheet1.Import(dt1, True, 6, 0)
                                 'worksheet2.Import(dt1, True, 0, 0)
 
+                                'Set SQLDate1 and SQLDate2 to Dateformat:yyyymmdd
+                                worksheet1.Range("N:O").NumberFormat = "yyyymmdd"
+
                                 workbook.EndUpdate()
 
                                 workbook.SaveDocument(ExcelFileDirectory, DevExpress.Spreadsheet.DocumentFormat.OpenXml)

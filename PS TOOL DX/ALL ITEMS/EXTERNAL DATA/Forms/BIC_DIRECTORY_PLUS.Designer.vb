@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class BIC_DIRECTORY_PLUS
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -22,6 +22,36 @@ Partial Class BIC_DIRECTORY_PLUS
         Me.components = New System.ComponentModel.Container()
         Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BIC_DIRECTORY_PLUS))
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions5 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject17 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject18 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject19 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject20 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions6 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject21 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject22 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject23 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject24 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.BICLayoutView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.layoutViewField_colID1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
@@ -154,27 +184,26 @@ Partial Class BIC_DIRECTORY_PLUS
         Me.BIC_DIRECTORY_PLUSTableAdapter = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.BIC_DIRECTORY_PLUSTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
-        Me.LastUpdate_txt = New DevExpress.XtraEditors.TextEdit()
-        Me.Search_btn = New DevExpress.XtraEditors.SimpleButton()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.SearchText_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.BICViews_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.BICPrint_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.SearchField_BarEditItem = New DevExpress.XtraBars.BarEditItem()
+        Me.SearchField_ButtonEdit = New DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit()
+        Me.DisplayListDetails_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_PrintOrExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.Search_TextEdit = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         CType(Me.BICLayoutView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -226,23 +255,17 @@ Partial Class BIC_DIRECTORY_PLUS
         CType(Me.item3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SearchText_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SearchField_ButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Search_TextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BICLayoutView
@@ -920,11 +943,11 @@ Partial Class BIC_DIRECTORY_PLUS
         GridLevelNode1.LevelTemplate = Me.BICLayoutView
         GridLevelNode1.RelationName = "Level1"
         Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(12, 64)
+        Me.GridControl2.Location = New System.Drawing.Point(12, 32)
         Me.GridControl2.MainView = Me.BICGridView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1})
-        Me.GridControl2.Size = New System.Drawing.Size(1345, 663)
+        Me.GridControl2.Size = New System.Drawing.Size(1396, 447)
         Me.GridControl2.TabIndex = 4
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.BICGridView, Me.BICLayoutView})
@@ -960,6 +983,7 @@ Partial Class BIC_DIRECTORY_PLUS
         Me.BICGridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
         Me.BICGridView.OptionsView.ShowAutoFilterRow = True
         Me.BICGridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.BICGridView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -1380,53 +1404,44 @@ Partial Class BIC_DIRECTORY_PLUS
         Me.TableAdapterManager.HOLIDAYSTableAdapter = Nothing
         Me.TableAdapterManager.PLZ_BUNDESLANDTableAdapter = Nothing
         Me.TableAdapterManager.SEPA_DIRECTORY_FULLTableAdapter = Nothing
-        Me.TableAdapterManager.SEPA_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.T2_DIRECTORYTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'LayoutControl1
         '
-        Me.LayoutControl1.Controls.Add(Me.LastUpdate_txt)
-        Me.LayoutControl1.Controls.Add(Me.Search_btn)
-        Me.LayoutControl1.Controls.Add(Me.SearchText_TextEdit)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.BICViews_btn)
-        Me.LayoutControl1.Controls.Add(Me.BICPrint_Export_btn)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(591, 213, 597, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1369, 739)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1420, 491)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
-        'LastUpdate_txt
+        'ProgressPanel1
         '
-        Me.LastUpdate_txt.Location = New System.Drawing.Point(226, 12)
-        Me.LastUpdate_txt.Name = "LastUpdate_txt"
-        Me.LastUpdate_txt.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LastUpdate_txt.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseFont = True
-        Me.LastUpdate_txt.Properties.Appearance.Options.UseForeColor = True
-        Me.LastUpdate_txt.Properties.ReadOnly = True
-        Me.LastUpdate_txt.Properties.UseReadOnlyAppearance = False
-        Me.LastUpdate_txt.Size = New System.Drawing.Size(208, 20)
-        Me.LastUpdate_txt.StyleController = Me.LayoutControl1
-        Me.LastUpdate_txt.TabIndex = 8
-        '
-        'Search_btn
-        '
-        Me.Search_btn.ImageOptions.ImageIndex = 3
-        Me.Search_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Search_btn.Location = New System.Drawing.Point(1056, 38)
-        Me.Search_btn.Name = "Search_btn"
-        Me.Search_btn.Size = New System.Drawing.Size(100, 22)
-        Me.Search_btn.StyleController = Me.LayoutControl1
-        Me.Search_btn.TabIndex = 1
-        Me.Search_btn.Text = "Search"
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(12, 12)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 26
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'ImageCollection1
         '
@@ -1435,23 +1450,8 @@ Partial Class BIC_DIRECTORY_PLUS
         Me.ImageCollection1.Images.SetKeyName(1, "DisplayAll.ico")
         Me.ImageCollection1.Images.SetKeyName(2, "Print.ico")
         Me.ImageCollection1.Images.SetKeyName(3, "View1.ico")
-        '
-        'SearchText_TextEdit
-        '
-        Me.SearchText_TextEdit.Location = New System.Drawing.Point(169, 38)
-        Me.SearchText_TextEdit.Name = "SearchText_TextEdit"
-        Me.SearchText_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.SearchText_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
-        Me.SearchText_TextEdit.Properties.Appearance.Options.UseFont = True
-        Me.SearchText_TextEdit.Properties.Appearance.Options.UseForeColor = True
-        Me.SearchText_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.SearchText_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.SearchText_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.SearchText_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.SearchText_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.SearchText_TextEdit.Size = New System.Drawing.Size(883, 22)
-        Me.SearchText_TextEdit.StyleController = Me.LayoutControl1
-        Me.SearchText_TextEdit.TabIndex = 0
+        Me.ImageCollection1.Images.SetKeyName(4, "contact_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(5, "chartsshowlegend_16x16.png")
         '
         'GridControl1
         '
@@ -1467,30 +1467,6 @@ Partial Class BIC_DIRECTORY_PLUS
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'BICViews_btn
-        '
-        Me.BICViews_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BICViews_btn.ImageOptions.ImageIndex = 0
-        Me.BICViews_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.BICViews_btn.Location = New System.Drawing.Point(1238, 12)
-        Me.BICViews_btn.Name = "BICViews_btn"
-        Me.BICViews_btn.Size = New System.Drawing.Size(119, 22)
-        Me.BICViews_btn.StyleController = Me.LayoutControl1
-        Me.BICViews_btn.TabIndex = 3
-        Me.BICViews_btn.Text = "View Detail"
-        '
-        'BICPrint_Export_btn
-        '
-        Me.BICPrint_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BICPrint_Export_btn.ImageOptions.ImageIndex = 2
-        Me.BICPrint_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.BICPrint_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.BICPrint_Export_btn.Name = "BICPrint_Export_btn"
-        Me.BICPrint_Export_btn.Size = New System.Drawing.Size(151, 22)
-        Me.BICPrint_Export_btn.StyleController = Me.LayoutControl1
-        Me.BICPrint_Export_btn.TabIndex = 2
-        Me.BICPrint_Export_btn.Text = "Print or Export"
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.GridControl1
@@ -1505,103 +1481,30 @@ Partial Class BIC_DIRECTORY_PLUS
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.LayoutControlItem3, Me.SimpleSeparator1, Me.LayoutControlItem4, Me.EmptySpaceItem2, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.LayoutControlItem7})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4, Me.LayoutControlItem8})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1369, 739)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1420, 491)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(426, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(798, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.BICPrint_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(155, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.BICViews_btn
-        Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1226, 0)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(123, 26)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
-        '
-        'SimpleSeparator1
-        '
-        Me.SimpleSeparator1.AllowHotTrack = False
-        Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1224, 0)
-        Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.GridControl2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 52)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 20)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1349, 667)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1400, 451)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
-        'EmptySpaceItem2
+        'LayoutControlItem8
         '
-        Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.CustomizationFormText = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(1148, 26)
-        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(201, 26)
-        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.AppearanceItemCaption.BackColor = System.Drawing.Color.Cyan
-        Me.LayoutControlItem5.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.LayoutControlItem5.AppearanceItemCaption.ForeColor = System.Drawing.Color.Black
-        Me.LayoutControlItem5.AppearanceItemCaption.Options.UseBackColor = True
-        Me.LayoutControlItem5.AppearanceItemCaption.Options.UseFont = True
-        Me.LayoutControlItem5.AppearanceItemCaption.Options.UseForeColor = True
-        Me.LayoutControlItem5.Control = Me.SearchText_TextEdit
-        Me.LayoutControlItem5.CustomizationFormText = "Search Bank by Name"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 26)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1044, 26)
-        Me.LayoutControlItem5.Text = "Search by Institution Name"
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(154, 16)
-        '
-        'LayoutControlItem6
-        '
-        Me.LayoutControlItem6.Control = Me.Search_btn
-        Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem6"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(1044, 26)
-        Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(104, 26)
-        Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem6.TextVisible = False
-        '
-        'LayoutControlItem7
-        '
-        Me.LayoutControlItem7.Control = Me.LastUpdate_txt
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(155, 0)
-        Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(271, 26)
-        Me.LayoutControlItem7.Text = "Last Update"
-        Me.LayoutControlItem7.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(58, 13)
-        Me.LayoutControlItem7.TextToControlDistance = 1
+        Me.LayoutControlItem8.Control = Me.ProgressPanel1
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem8.Name = "LayoutControlItem8"
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(1400, 20)
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem8.TextVisible = False
+        Me.LayoutControlItem8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'PrintingSystem1
         '
@@ -1614,14 +1517,156 @@ Partial Class BIC_DIRECTORY_PLUS
         Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4
         Me.PrintableComponentLink1.PrintingSystemBase = Me.PrintingSystem1
         '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.SearchField_BarEditItem, Me.DisplayListDetails_bbi, Me.bbi_PrintOrExport, Me.bbi_Close})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 6
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.Search_TextEdit, Me.SearchField_ButtonEdit})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1420, 94)
+        '
+        'SearchField_BarEditItem
+        '
+        Me.SearchField_BarEditItem.Caption = "Search:"
+        Me.SearchField_BarEditItem.CaptionAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.SearchField_BarEditItem.CaptionToEditorIndent = 10
+        Me.SearchField_BarEditItem.Edit = Me.SearchField_ButtonEdit
+        Me.SearchField_BarEditItem.EditHeight = 30
+        Me.SearchField_BarEditItem.EditWidth = 950
+        Me.SearchField_BarEditItem.Id = 2
+        Me.SearchField_BarEditItem.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchField_BarEditItem.ItemAppearance.Normal.Options.UseFont = True
+        Me.SearchField_BarEditItem.Name = "SearchField_BarEditItem"
+        '
+        'SearchField_ButtonEdit
+        '
+        Me.SearchField_ButtonEdit.Appearance.BackColor = System.Drawing.Color.White
+        Me.SearchField_ButtonEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchField_ButtonEdit.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.SearchField_ButtonEdit.Appearance.Options.UseBackColor = True
+        Me.SearchField_ButtonEdit.Appearance.Options.UseFont = True
+        Me.SearchField_ButtonEdit.Appearance.Options.UseForeColor = True
+        Me.SearchField_ButtonEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.SearchField_ButtonEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.SearchField_ButtonEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.SearchField_ButtonEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.SearchField_ButtonEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.SearchField_ButtonEdit.AutoHeight = False
+        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
+        EditorButtonImageOptions1.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        SerializableAppearanceObject1.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject1.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        SerializableAppearanceObject1.ForeColor = System.Drawing.Color.Navy
+        SerializableAppearanceObject1.Options.UseBackColor = True
+        SerializableAppearanceObject1.Options.UseFont = True
+        SerializableAppearanceObject1.Options.UseForeColor = True
+        SerializableAppearanceObject2.ForeColor = System.Drawing.Color.Aqua
+        SerializableAppearanceObject2.Options.UseForeColor = True
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        EditorButtonImageOptions3.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        SerializableAppearanceObject9.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject9.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject9.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        SerializableAppearanceObject9.ForeColor = System.Drawing.Color.Navy
+        SerializableAppearanceObject9.Options.UseBackColor = True
+        SerializableAppearanceObject9.Options.UseFont = True
+        SerializableAppearanceObject9.Options.UseForeColor = True
+        SerializableAppearanceObject10.ForeColor = System.Drawing.Color.Aqua
+        SerializableAppearanceObject10.Options.UseForeColor = True
+        EditorButtonImageOptions5.Image = CType(resources.GetObject("EditorButtonImageOptions5.Image"), System.Drawing.Image)
+        EditorButtonImageOptions5.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        SerializableAppearanceObject17.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject17.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        SerializableAppearanceObject17.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        SerializableAppearanceObject17.ForeColor = System.Drawing.Color.Navy
+        SerializableAppearanceObject17.Options.UseBackColor = True
+        SerializableAppearanceObject17.Options.UseFont = True
+        SerializableAppearanceObject17.Options.UseForeColor = True
+        SerializableAppearanceObject18.ForeColor = System.Drawing.Color.Aqua
+        SerializableAppearanceObject18.Options.UseForeColor = True
+        EditorButtonImageOptions6.Image = CType(resources.GetObject("EditorButtonImageOptions6.Image"), System.Drawing.Image)
+        Me.SearchField_ButtonEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "by Institution Name", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", CType(0, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", CType(1, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "by City Heading", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", CType(2, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", CType(3, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "by Country Name", -1, True, True, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "", CType(4, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, True, EditorButtonImageOptions6, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject21, SerializableAppearanceObject22, SerializableAppearanceObject23, SerializableAppearanceObject24, "", CType(5, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.SearchField_ButtonEdit.Name = "SearchField_ButtonEdit"
+        '
+        'DisplayListDetails_bbi
+        '
+        Me.DisplayListDetails_bbi.Caption = "Display Details"
+        Me.DisplayListDetails_bbi.Id = 3
+        Me.DisplayListDetails_bbi.ImageOptions.ImageIndex = 4
+        Me.DisplayListDetails_bbi.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DisplayListDetails_bbi.ItemAppearance.Normal.Options.UseFont = True
+        Me.DisplayListDetails_bbi.Name = "DisplayListDetails_bbi"
+        '
+        'bbi_PrintOrExport
+        '
+        Me.bbi_PrintOrExport.Caption = "Print or Export"
+        Me.bbi_PrintOrExport.Id = 4
+        Me.bbi_PrintOrExport.ImageOptions.ImageIndex = 2
+        Me.bbi_PrintOrExport.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_PrintOrExport.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_PrintOrExport.Name = "bbi_PrintOrExport"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 5
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_Close.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_Close.Name = "bbi_Close"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.SearchField_BarEditItem)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.DisplayListDetails_bbi, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_PrintOrExport, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Close, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'Search_TextEdit
+        '
+        Me.Search_TextEdit.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Search_TextEdit.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Search_TextEdit.Appearance.Options.UseFont = True
+        Me.Search_TextEdit.Appearance.Options.UseForeColor = True
+        Me.Search_TextEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.Search_TextEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.Search_TextEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.Search_TextEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.Search_TextEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.Search_TextEdit.AutoHeight = False
+        Me.Search_TextEdit.Name = "Search_TextEdit"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
         'BIC_DIRECTORY_PLUS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1369, 739)
+        Me.ClientSize = New System.Drawing.Size(1420, 585)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.Icon = CType(resources.GetObject("BIC_DIRECTORY_PLUS.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "BIC_DIRECTORY_PLUS"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "BANK DIRECTORY PLUS"
         CType(Me.BICLayoutView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1675,24 +1720,19 @@ Partial Class BIC_DIRECTORY_PLUS
         CType(Me.item3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.LastUpdate_txt.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SearchText_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SearchField_ButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Search_TextEdit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents EXTERNALDataset As PS_TOOL_DX.EXTERNALDataset
@@ -1705,14 +1745,8 @@ Partial Class BIC_DIRECTORY_PLUS
     Friend WithEvents BICGridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents BICViews_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents BICPrint_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
@@ -1756,11 +1790,6 @@ Partial Class BIC_DIRECTORY_PLUS
     Friend WithEvents colIBAN_KEY As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFIELD_A As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colFIELD_B As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents Search_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents SearchText_TextEdit As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents colID1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents colMODIFICATION_FLAG1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
     Friend WithEvents colRECORD_KEY1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
@@ -1846,6 +1875,16 @@ Partial Class BIC_DIRECTORY_PLUS
     Friend WithEvents item2 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents item3 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
-    Friend WithEvents LastUpdate_txt As DevExpress.XtraEditors.TextEdit
-    Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents Search_TextEdit As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents SearchField_BarEditItem As DevExpress.XtraBars.BarEditItem
+    Friend WithEvents SearchField_ButtonEdit As DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit
+    Friend WithEvents DisplayListDetails_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_PrintOrExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
 End Class

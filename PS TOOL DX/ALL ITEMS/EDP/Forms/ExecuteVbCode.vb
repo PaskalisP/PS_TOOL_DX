@@ -82,6 +82,7 @@ Public Class ExecuteVbCode
             .FilterIndex = 1
             .InitialDirectory = "C:\"
             .FileName = ""
+            .RestoreDirectory = True
             .Title = "Load VB.NET Script File"
             If Me.XtraOpenFileDialog1.ShowDialog = DialogResult.OK Then
                 If IsNothing(Me.XtraOpenFileDialog1.FileName) = False Then
@@ -100,6 +101,7 @@ Public Class ExecuteVbCode
 
     Private Sub DISABLE_CONTROLS_ON_VB_EXECUTION()
         Me.bbiExecutingVbProgress.Visibility = BarItemVisibility.Always
+        Me.bbiStopRunVbCode.Visibility = BarItemVisibility.Always
         Me.bbiOpenVbFile.Enabled = False
         Me.bbiSaveVbFile.Enabled = False
         Me.bbiRunVbCode.Enabled = False
@@ -108,6 +110,7 @@ Public Class ExecuteVbCode
 
     Private Sub ENABLE_CONTROLS_ON_VB_EXECUTION()
         Me.bbiExecutingVbProgress.Visibility = BarItemVisibility.Never
+        Me.bbiStopRunVbCode.Visibility = BarItemVisibility.Never
         Me.bbiOpenVbFile.Enabled = True
         Me.bbiSaveVbFile.Enabled = True
         Me.bbiRunVbCode.Enabled = True
@@ -122,14 +125,29 @@ Public Class ExecuteVbCode
 
     End Sub
 
+    Private Sub bbiStopRunVbCode_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiStopRunVbCode.ItemClick
+        If Me.BgwVbExecute.IsBusy = True Then
+            If XtraMessageBox.Show("Should the VB.NET Script execution be terminated?", "TERMINATE SCRIPT EXECUTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                Me.BgwVbExecute.CancelAsync()
+            End If
+        End If
+    End Sub
     Private Sub BgwVbExecute_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwVbExecute.DoWork
-        Me.bbiExecutingVbProgress.EditValue = 10
-        RunTheProg()
 
+        If BgwVbExecute.CancellationPending = True Then
+            e.Cancel = True
+            Exit Sub
+        ElseIf BgwVbExecute.CancellationPending = False Then
+            Me.bbiExecutingVbProgress.EditValue = 10
+            RunTheProg()
+        End If
     End Sub
 
     Private Sub BgwVbExecute_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwVbExecute.RunWorkerCompleted
         ENABLE_CONTROLS_ON_VB_EXECUTION()
+        If e.Cancelled = True Then
+            ENABLE_CONTROLS_ON_VB_EXECUTION()
+        End If
     End Sub
 
     Private Sub RunTheProg()
@@ -180,7 +198,8 @@ Public Class ExecuteVbCode
                 .Filter = "vb.net files|*.vb"
                 XtraSaveFileDialog1.DefaultExt = "vb"
                 .FilterIndex = 1
-                .InitialDirectory = "C:\"
+                '.InitialDirectory = "C:\"
+                .RestoreDirectory = True
                 .FileName = ""
                 .Title = "Save current VB.NET Script file"
 
@@ -206,7 +225,7 @@ Public Class ExecuteVbCode
     End Sub
 
     Private Sub ExecuteVbCode_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If BgwVbExecute.IsBusy Then
+        If BgwVbExecute.IsBusy AndAlso BgwVbExecute.CancellationPending = False Then
             e.Cancel = True
         Else
             e.Cancel = False
@@ -254,4 +273,6 @@ Public Class ExecuteVbCode
         Me.Close()
 
     End Sub
+
+
 End Class

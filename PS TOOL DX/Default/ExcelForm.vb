@@ -74,11 +74,11 @@ Public Class ExcelForm
 
     Private Sub SaveAsNew_ItemClick(sender As Object, e As ItemClickEventArgs) Handles SaveAsNew.ItemClick
         Using myFileDialog As New SaveFileDialog()
-            myFileDialog.Filter = "Excel File (*.xls;*.xlsx)|*.xls;*.xlsx" '"Text files (*.txt)|*.txt|All files (*.*)|*.*"
+            myFileDialog.Filter = "Excel File (*.xlsx;*.xls)|*.xlsx;*.xls" '"Text files (*.txt)|*.txt|All files (*.*)|*.*"
             myFileDialog.FilterIndex = 1
-            myFileDialog.InitialDirectory = "C:\"
+            'myFileDialog.InitialDirectory = "C:\"
             myFileDialog.CheckFileExists = False
-            myFileDialog.RestoreDirectory = False
+            myFileDialog.RestoreDirectory = True
 
             Dim result As DialogResult = myFileDialog.ShowDialog
             'Dim workbook As New Workbook()

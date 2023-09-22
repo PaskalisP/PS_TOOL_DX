@@ -30,11 +30,7 @@ Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraEditors.Controls
 Public Class CurrencyConverterECB
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-    Dim QueryText As String
-    Private da As SqlDataAdapter
-    Private dt As DataTable
+
 
     Sub New()
         InitSkins()
@@ -56,26 +52,24 @@ Public Class CurrencyConverterECB
 
     Private Sub CurrencyConverterECB_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
         'TODO: This line of code loads data into the 'EXTERNALDataset.CURRENCIES' table. You can move, or remove it, as needed.
         Me.CURRENCIESTableAdapter.FillByValidCurrencies(Me.EXTERNALDataset.CURRENCIES)
         'TODO: This line of code loads data into the 'EXTERNALDataset.EXCHANGE_RATES_ECB' table. You can move, or remove it, as needed.
         Me.EXCHANGE_RATES_ECBTableAdapter.FillByLastExchangeDate(Me.EXTERNALDataset.EXCHANGE_RATES_ECB)
 
         'Get Max Exchange Date
+        OpenSqlConnections()
         cmd.CommandText = "SELECT MAX([EXCHANGE RATE DATE]) FROM [EXCHANGE RATES ECB] "
-        cmd.Connection.Open()
         Dim MaxExchangeDate As Date = cmd.ExecuteScalar
-        cmd.Connection.Close()
         Me.ExchangeRateDateEdit.Text = MaxExchangeDate
+        CloseSqlConnections()
 
         Me.LayoutControlItem17.Visibility = LayoutVisibility.Never
 
     End Sub
 
     Private Sub ExchangeRateDateEdit_EditValueChanged(sender As Object, e As EventArgs) Handles ExchangeRateDateEdit.EditValueChanged
+        OpenSqlConnections()
         If IsDate(Me.ExchangeRateDateEdit.Text) = True Then
             Dim d As Date = Me.ExchangeRateDateEdit.Text
             Me.EXCHANGE_RATES_ECBTableAdapter.FillByExchangeDate(Me.EXTERNALDataset.EXCHANGE_RATES_ECB, d, d)
@@ -86,9 +80,7 @@ Public Class CurrencyConverterECB
             '************************************************
             'Change EditMask in AmountToConvert
             cmd.CommandText = "SELECT [FRACTIONAL DIGIT]  FROM [CURRENCIES] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "'"
-            cmd.Connection.Open()
             Dim AcceptDecimal As Integer = cmd.ExecuteScalar
-            cmd.Connection.Close()
             If AcceptDecimal = 0 Then
                 Me.AmountToConvertTextEdit.Properties.Mask.EditMask = "n0"
             Else
@@ -98,7 +90,7 @@ Public Class CurrencyConverterECB
             Dim dsql As String = d.ToString("yyyy-MM-dd")
             If Me.CurrencyFromComboBoxEdit.Text <> "EUR" Then
                 QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 If dt.Rows.Count > 0 Then
@@ -121,7 +113,7 @@ Public Class CurrencyConverterECB
             'GetExchange Rates
             If Me.CurrencyToComboBoxEdit.Text <> "EUR" Then
                 QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyToComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
                 dt = New DataTable()
                 da.Fill(dt)
                 If dt.Rows.Count > 0 Then
@@ -149,7 +141,7 @@ Public Class CurrencyConverterECB
                     'GetExchange Rates
                     If Me.CurrencyToComboBoxEdit.Text <> "EUR" Then
                         QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyToComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New DataTable()
                         da.Fill(dt)
                         If dt.Rows.Count > 0 Then
@@ -180,7 +172,7 @@ Public Class CurrencyConverterECB
                 If IsDate(Me.ExchangeRateDateEdit.Text) = True Then
                     If Me.CurrencyFromComboBoxEdit.Text <> "EUR" Then
                         QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                        da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New DataTable()
                         da.Fill(dt)
                         If dt.Rows.Count > 0 Then
@@ -202,91 +194,107 @@ Public Class CurrencyConverterECB
             End If
 
         End If
+        CloseSqlConnections()
+
     End Sub
 
     Private Sub CurrencyFromComboBoxEdit_EditValueChanged(sender As Object, e As EventArgs) Handles CurrencyFromComboBoxEdit.EditValueChanged
-        '******************************
-        Me.ConvertedCurrency_lbl.Text = ""
-        Me.ConvertedAmount_lbl.Text = ""
-        Me.LayoutControlItem17.Visibility = LayoutVisibility.Never
-        '************************************************
-        If IsDate(Me.ExchangeRateDateEdit.Text) = True Then
-            'Change EditMask in AmountToConvert
-            cmd.CommandText = "SELECT [FRACTIONAL DIGIT]  FROM [CURRENCIES] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "'"
-            cmd.Connection.Open()
-            Dim AcceptDecimal As Integer = cmd.ExecuteScalar
-            cmd.Connection.Close()
-            If AcceptDecimal = 0 Then
-                Me.AmountToConvertTextEdit.Properties.Mask.EditMask = "n0"
-            Else
-                Me.AmountToConvertTextEdit.Properties.Mask.EditMask = "n2"
-            End If
-            'Get Exchange Rates
-            Dim d As Date = Me.ExchangeRateDateEdit.Text
-            Dim dsql As String = d.ToString("yyyy-MM-dd")
-            If Me.CurrencyFromComboBoxEdit.Text <> "EUR" Then
-                QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New DataTable()
-                da.Fill(dt)
-                If dt.Rows.Count > 0 Then
-                    Dim Midle_Rate As Double = dt.Rows.Item(0).Item("CURRENCY RATE")
-                    Dim Rate_Art As String = Me.RateFirstCurrencyComboBoxEdit.Text
-                    Select Case Rate_Art
-                        Case Is = "MIDDLE"
-                            Me.RateFirstCurrencyTextEdit.Text = Midle_Rate
-                        Case Else
-                            Me.RateFirstCurrencyTextEdit.Text = 0
-                    End Select
+        OpenSqlConnections()
+        If Me.CurrencyFromComboBoxEdit.Text <> Nothing Then
+            '******************************
+            Me.ConvertedCurrency_lbl.Text = ""
+            Me.ConvertedAmount_lbl.Text = ""
+            Me.LayoutControlItem17.Visibility = LayoutVisibility.Never
+            '************************************************
+            If IsDate(Me.ExchangeRateDateEdit.Text) = True Then
+                'Change EditMask in AmountToConvert
+                cmd.CommandText = "SELECT [FRACTIONAL DIGIT]  FROM [CURRENCIES] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "'"
+                Dim AcceptDecimal As Integer = cmd.ExecuteScalar
+                If AcceptDecimal = 0 Then
+                    Me.AmountToConvertTextEdit.Properties.Mask.EditMask = "n0"
                 Else
-                    Me.RateFirstCurrencyTextEdit.Text = 0
+                    Me.AmountToConvertTextEdit.Properties.Mask.EditMask = "n2"
                 End If
-            Else
-                Me.RateFirstCurrencyTextEdit.Text = 1
+                'Get Exchange Rates
+                Dim d As Date = Me.ExchangeRateDateEdit.Text
+                Dim dsql As String = d.ToString("yyyy-MM-dd")
+                If Me.CurrencyFromComboBoxEdit.Text <> "EUR" Then
+                    QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
+                    dt = New DataTable()
+                    da.Fill(dt)
+                    If dt.Rows.Count > 0 Then
+                        Dim Midle_Rate As Double = dt.Rows.Item(0).Item("CURRENCY RATE")
+                        Dim Rate_Art As String = Me.RateFirstCurrencyComboBoxEdit.Text
+                        Select Case Rate_Art
+                            Case Is = "MIDDLE"
+                                Me.RateFirstCurrencyTextEdit.Text = Midle_Rate
+                            Case Else
+                                Me.RateFirstCurrencyTextEdit.Text = 0
+                        End Select
+                    Else
+                        Me.RateFirstCurrencyTextEdit.Text = 0
+                    End If
+                Else
+                    Me.RateFirstCurrencyTextEdit.Text = 1
+                End If
+
             End If
-
+            'Get Selected CurrencyName
+            Dim c As String = Me.CurrencyFromComboBoxEdit.GetColumnValue("CURRENCY NAME").ToString
+            Me.FirstCurrencyName_lbl.Text = c
+        Else
+            Me.FirstCurrencyName_lbl.Text = Nothing
+            Me.ConvertedCurrency_lbl.Text = Nothing
+            Me.ConvertedAmount_lbl.Text = Nothing
+            Me.LayoutControlItem17.Visibility = LayoutVisibility.Never
         End If
-        'Get Selected CurrencyName
-        Dim c As String = Me.CurrencyFromComboBoxEdit.GetColumnValue("CURRENCY NAME").ToString
-        Me.FirstCurrencyName_lbl.Text = c
-
+        CloseSqlConnections()
 
     End Sub
 
     Private Sub CurrencyToComboBoxEdit_EditValueChanged(sender As Object, e As EventArgs) Handles CurrencyToComboBoxEdit.EditValueChanged
-        '******************************
-        Me.ConvertedCurrency_lbl.Text = ""
-        Me.ConvertedAmount_lbl.Text = ""
-        Me.LayoutControlItem17.Visibility = LayoutVisibility.Never
-        '************************************************
-        If IsDate(Me.ExchangeRateDateEdit.Text) = True Then
-            'GetExchange Rates
-            Dim d As Date = Me.ExchangeRateDateEdit.Text
-            Dim dsql As String = d.ToString("yyyy-MM-dd")
-            If Me.CurrencyToComboBoxEdit.Text <> "EUR" Then
-                QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyToComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New DataTable()
-                da.Fill(dt)
-                If dt.Rows.Count > 0 Then
-                    Dim Midle_Rate As Double = dt.Rows.Item(0).Item("CURRENCY RATE")
-                    Dim Rate_Art As String = Me.RateSecondCurrencyComboBoxEdit.Text
-                    Select Case Rate_Art
-                        Case Is = "MIDDLE"
-                            Me.RateSecondCurrencyTextEdit.Text = Midle_Rate
-                        Case Else
-                            Me.RateSecondCurrencyTextEdit.Text = 0
-                    End Select
+        If Me.CurrencyToComboBoxEdit.Text <> Nothing Then
+            '******************************
+            Me.ConvertedCurrency_lbl.Text = ""
+            Me.ConvertedAmount_lbl.Text = ""
+            Me.LayoutControlItem17.Visibility = LayoutVisibility.Never
+            '************************************************
+            If IsDate(Me.ExchangeRateDateEdit.Text) = True Then
+                'GetExchange Rates
+                Dim d As Date = Me.ExchangeRateDateEdit.Text
+                Dim dsql As String = d.ToString("yyyy-MM-dd")
+                If Me.CurrencyToComboBoxEdit.Text <> "EUR" Then
+                    QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyToComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
+                    dt = New DataTable()
+                    da.Fill(dt)
+                    If dt.Rows.Count > 0 Then
+                        Dim Midle_Rate As Double = dt.Rows.Item(0).Item("CURRENCY RATE")
+                        Dim Rate_Art As String = Me.RateSecondCurrencyComboBoxEdit.Text
+                        Select Case Rate_Art
+                            Case Is = "MIDDLE"
+                                Me.RateSecondCurrencyTextEdit.Text = Midle_Rate
+                            Case Else
+                                Me.RateSecondCurrencyTextEdit.Text = 0
+                        End Select
+                    Else
+                        Me.RateSecondCurrencyTextEdit.Text = 0
+                    End If
                 Else
-                    Me.RateSecondCurrencyTextEdit.Text = 0
+                    Me.RateSecondCurrencyTextEdit.Text = 1
                 End If
-            Else
-                Me.RateSecondCurrencyTextEdit.Text = 1
             End If
+            'Get Selected CurrencyName
+            Dim c As String = Me.CurrencyToComboBoxEdit.GetColumnValue("CURRENCY NAME").ToString
+            Me.SecondCurrencyName_lbl.Text = c
+        Else
+            Me.SecondCurrencyName_lbl.Text = Nothing
+            Me.ConvertedCurrency_lbl.Text = Nothing
+            Me.ConvertedAmount_lbl.Text = Nothing
+            Me.LayoutControlItem17.Visibility = LayoutVisibility.Never
         End If
-        'Get Selected CurrencyName
-        Dim c As String = Me.CurrencyToComboBoxEdit.GetColumnValue("CURRENCY NAME").ToString
-        Me.SecondCurrencyName_lbl.Text = c
+
     End Sub
 
     Private Sub AmountToConvertTextEdit_EditValueChanged(sender As Object, e As EventArgs) Handles AmountToConvertTextEdit.EditValueChanged
@@ -299,10 +307,10 @@ Public Class CurrencyConverterECB
 
     Private Sub AmountToConvertTextEdit_GotFocus(sender As Object, e As EventArgs) Handles AmountToConvertTextEdit.GotFocus
         If Me.CurrencyFromComboBoxEdit.Text <> "" Then
+            OpenSqlConnections()
             cmd.CommandText = "SELECT [FRACTIONAL DIGIT]  FROM [CURRENCIES] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "'"
-            cmd.Connection.Open()
             Dim AcceptDecimal As Integer = cmd.ExecuteScalar
-            cmd.Connection.Close()
+            CloseSqlConnections()
             If AcceptDecimal = 0 Then
                 Me.AmountToConvertTextEdit.Properties.Mask.EditMask = "n0"
             Else
@@ -336,7 +344,7 @@ Public Class CurrencyConverterECB
                 Dim dsql As String = d.ToString("yyyy-MM-dd")
                 If Me.CurrencyToComboBoxEdit.Text <> "EUR" Then
                     QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyToComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -375,7 +383,7 @@ Public Class CurrencyConverterECB
                 Dim dsql As String = d.ToString("yyyy-MM-dd")
                 If Me.CurrencyFromComboBoxEdit.Text <> "EUR" Then
                     QueryText = "SELECT [CURRENCY RATE]  FROM [EXCHANGE RATES ECB] WHERE [CURRENCY CODE]='" & Me.CurrencyFromComboBoxEdit.Text & "' AND [EXCHANGE RATE DATE]='" & dsql & "'"
-                    da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+                    da = New SqlDataAdapter(QueryText.Trim(), conn)
                     dt = New DataTable()
                     da.Fill(dt)
                     If dt.Rows.Count > 0 Then
@@ -436,10 +444,10 @@ Public Class CurrencyConverterECB
         'Check if Currency accepts decimals
         If Me.ConvertedAmount_lbl.Text <> "" Then
             Dim ConvertedAmount As Double = Me.ConvertedAmount_lbl.Text
+            OpenSqlConnections()
             cmd.CommandText = "SELECT [FRACTIONAL DIGIT]  FROM [CURRENCIES] WHERE [CURRENCY CODE]='" & Me.ConvertedCurrency_lbl.Text & "'"
-            cmd.Connection.Open()
             Dim AcceptDecimal As Integer = cmd.ExecuteScalar
-            cmd.Connection.Close()
+            CloseSqlConnections()
             If AcceptDecimal <> 0 Then
                 Me.ConvertedAmount_lbl.Text = FormatNumber(Me.ConvertedAmount_lbl.Text, 2)
             Else
@@ -492,7 +500,7 @@ Public Class CurrencyConverterECB
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
-        Dim reportfooter As String = "ECB CURRENCY CONVERTION" & "  " & "Printed on: " & Now
+        Dim reportfooter As String = "ECB EXCHANGE RATES CURRENCY CONVERTION" & "  " & "Printed on: " & Now
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 End Class

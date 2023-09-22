@@ -846,4 +846,8 @@ Public Class RiskLimitDailyControl
             Exit Sub
         End Try
     End Sub
+
+    Private Sub RISK_LIMIT_DAILY_CONTROLBindingSource_CurrentChanged(sender As Object, e As EventArgs) Handles RISK_LIMIT_DAILY_CONTROLBindingSource.CurrentChanged
+
+    End Sub
 End Class

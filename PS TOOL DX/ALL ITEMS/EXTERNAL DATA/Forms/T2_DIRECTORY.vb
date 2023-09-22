@@ -32,13 +32,6 @@ Imports DevExpress.XtraGrid.Columns
 
 Public Class T2_DIRECTORY
 
-    Private QueryText As String = ""
-    Private QueryText1 As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-
     Dim d As Date = Today
     Dim tilld As Date = "31.12.9999"
 
@@ -89,6 +82,8 @@ Public Class T2_DIRECTORY
     Private bgws As New List(Of BackgroundWorker)()
 
     Dim T2_DirectoryCreationFolder As String = Nothing
+    Delegate Sub ChangeText()
+    Dim CurrentRow As TextBox
 
 
     Sub New()
@@ -117,20 +112,8 @@ Public Class T2_DIRECTORY
     End Sub
 
     Private Sub T2_DIRECTORY_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
+        'AddHandler GridControl2.EmbeddedNavigator.ButtonClick, AddressOf GridControl2_EmbeddedNavigator_ButtonClick
 
-        OpenSqlConnections()
-
-        cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='T2_Directory_Export_Folder' and  [IdABTEILUNGSPARAMETER]='T2_DIRECTORY_EXPORT' and [PARAMETER STATUS]='Y' "
-        T2_DirectoryCreationFolder = cmd.ExecuteScalar
-        'Get Last Update
-        cmd.CommandText = "SELECT [LastImportTime] from [MANUAL IMPORTS] where [ProcName]='TARGET2 XML DIRECTORY'"
-        Dim d As DateTime = cmd.ExecuteScalar
-        Me.LastUpdate_txt.Text = d
-
-        CloseSqlConnections()
-
-        'TODO: This line of code loads data into the 'EXTERNALDataset.T2_DIRECTORY' table. You can move, or remove it, as needed.
         Me.T2_DIRECTORYTableAdapter.FillByT2_FILL(Me.EXTERNALDataset.T2_DIRECTORY)
 
 
@@ -138,14 +121,13 @@ Public Class T2_DIRECTORY
         Me.ValidTill_DateEdit.Text = tilld
 
         'Gridcontrol2 - CUSTOMERS
-        GridControl2.UseEmbeddedNavigator = True
-        Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
+        'GridControl2.UseEmbeddedNavigator = True
+        'Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
+        'Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
         GridControl2.MainView = T2BaseView
         T2BaseView.ForceDoubleClick = True
         AddHandler T2BaseView.DoubleClick, AddressOf T2BaseView_DoubleClick
         AddHandler T2DetailView.MouseDown, AddressOf T2DetailView_MouseDown
-        AddHandler ViewEdit_btn.Click, AddressOf ViewEdit_btn_Click
         T2DetailView.OptionsBehavior.AutoFocusCardOnScrolling = True
         T2DetailView.OptionsBehavior.AllowSwitchViewModes = False
 
@@ -172,21 +154,21 @@ Public Class T2_DIRECTORY
         End If
     End Sub
 
-    Private Sub GridControl2_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
-        If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.Append Then
-            Me.LayoutControl1.Visible = False
-        End If
-        If e.Button.ButtonType = NavigatorButtonType.Custom Then
-            If e.Button.Tag = "AddNewT2" Then
-                Me.LayoutControl1.Visible = False
-            End If
-        End If
-    End Sub
+    'Private Sub GridControl2_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
+    '    If e.Button.ButtonType = DevExpress.XtraEditors.NavigatorButtonType.Append Then
+    '        Me.LayoutControl1.Visible = False
+    '    End If
+    '    If e.Button.ButtonType = NavigatorButtonType.Custom Then
+    '        If e.Button.Tag = "AddNewT2" Then
+    '            Me.LayoutControl1.Visible = False
+    '        End If
+    '    End If
+    'End Sub
 
 #Region "T2_CHANGE_VIEWS"
     Private fExtendedEditMode As Boolean = False
-    Private strHideExtendedMode As String = "View List"
-    Private strShowExtendedMode As String = "Edit T2 Participant"
+    Private strHideExtendedMode As String = "Display List"
+    Private strShowExtendedMode As String = "Display Details"
     Protected Sub HideDetail(ByVal rowHandle As Integer)
         '***********Save Changes****************
         If Me.EXTERNALDataset.HasChanges = True Then
@@ -201,13 +183,13 @@ Public Class T2_DIRECTORY
                 Dim datasourceRowIndex As Integer = T2DetailView.GetDataSourceRowIndex(rowHandle)
                 GridControl2.MainView = T2BaseView
                 SynchronizeOrdersView(datasourceRowIndex)
-                GridControl2.UseEmbeddedNavigator = True
-                Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
-                Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-                ViewEdit_btn.Text = strShowExtendedMode
-                ViewEdit_btn.ImageIndex = 1
+                'GridControl2.UseEmbeddedNavigator = True
+                'Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
+                'Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
+                DisplayListDetails_bbi.Caption = strShowExtendedMode
+                DisplayListDetails_bbi.ImageIndex = 14
                 fExtendedEditMode = (GridControl2.MainView Is T2DetailView)
-
+                T2_Dir_BarSubItem.Visibility = BarItemVisibility.Always
 
                 Try
                     If XtraMessageBox.Show("Should the Changes for Participant BIC:" & ParticipantBIC11 & " in T2 Directory be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
@@ -250,12 +232,13 @@ Public Class T2_DIRECTORY
             Dim datasourceRowIndex As Integer = T2DetailView.GetDataSourceRowIndex(rowHandle)
             GridControl2.MainView = T2BaseView
             SynchronizeOrdersView(datasourceRowIndex)
-            GridControl2.UseEmbeddedNavigator = True
-            Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
-            Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-            ViewEdit_btn.Text = strShowExtendedMode
-            ViewEdit_btn.ImageIndex = 1
+            'GridControl2.UseEmbeddedNavigator = True
+            'Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
+            'Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
+            DisplayListDetails_bbi.Caption = strShowExtendedMode
+            DisplayListDetails_bbi.ImageIndex = 14
             fExtendedEditMode = (GridControl2.MainView Is T2DetailView)
+            T2_Dir_BarSubItem.Visibility = BarItemVisibility.Always
         End If
 
     End Sub
@@ -263,14 +246,13 @@ Public Class T2_DIRECTORY
         Dim datasourceRowIndex As Integer = T2BaseView.GetDataSourceRowIndex(rowHandle)
         GridControl2.MainView = T2DetailView
         SynchronizeOrdersDetailView(datasourceRowIndex)
-        GridControl2.UseEmbeddedNavigator = True
-        Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
-        Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        ViewEdit_btn.Text = strHideExtendedMode
-        ViewEdit_btn.ImageIndex = 0
+        'GridControl2.UseEmbeddedNavigator = True
+        'Me.GridControl2.EmbeddedNavigator.Buttons.Append.Visible = False
+        'Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
+        DisplayListDetails_bbi.Caption = strHideExtendedMode
+        DisplayListDetails_bbi.ImageIndex = 15
         fExtendedEditMode = (GridControl2.MainView Is T2DetailView)
-
-
+        T2_Dir_BarSubItem.Visibility = BarItemVisibility.Never
 
     End Sub
     Protected Sub SynchronizeOrdersView(ByVal dataSourceRowIndex As Integer)
@@ -314,7 +296,7 @@ Public Class T2_DIRECTORY
             Dim hi As LayoutViewHitInfo = T2DetailView.CalcHitInfo(e.Location)
             If hi.InCard Then
                 'HideDetail(hi.RowHandle)
-                ViewEdit_btn.PerformClick()
+                DisplayListDetails_bbi.PerformClick()
 
             End If
         End If
@@ -322,6 +304,10 @@ Public Class T2_DIRECTORY
     Protected Sub ViewEdit_btn_Click(ByVal sender As Object, ByVal e As EventArgs)
 
 
+
+    End Sub
+
+    Private Sub DisplayListDetails_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles DisplayListDetails_bbi.ItemClick
         If fExtendedEditMode Then
             HideDetail((TryCast(GridControl2.MainView, ColumnView)).FocusedRowHandle)
         Else
@@ -343,7 +329,224 @@ Public Class T2_DIRECTORY
             ShowDetail((TryCast(GridControl2.MainView, ColumnView)).FocusedRowHandle)
         End If
     End Sub
+
+
 #End Region
+
+    Private Sub DISABLE_BUTTONS()
+        Me.bbi_Reload_T2_Dir.Enabled = False
+        Me.bbi_AddParticipant.Enabled = False
+        Me.DisplayListDetails_bbi.Enabled = False
+        Me.T2_Dir_BarSubItem.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.bbi_Reload_T2_Dir.Enabled = True
+        Me.bbi_AddParticipant.Enabled = True
+        Me.DisplayListDetails_bbi.Enabled = True
+        Me.T2_Dir_BarSubItem.Enabled = True
+    End Sub
+
+    Public Sub Change_CurrentRow()
+        CurrentRow.Text = BIC11 & " - " & BIC11_NAME
+    End Sub
+
+    Private Sub bbi_Reload_T2_Dir_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Reload_T2_Dir.ItemClick
+        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        SplashScreenManager.Default.SetWaitFormCaption("Check BIC validity for Manual inputs based on the BIC DIRECTORY")
+        OpenSqlConnections()
+        cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [TYPE_OF_CHANGE]='D' where  [BIC11] not in (Select [BIC11] from [BIC DIRECTORY]) and [RESERVE] in ('Manual input')"
+        cmd.ExecuteNonQuery()
+        cmd.CommandText = "Update [T2 DIRECTORY] set [PARTICIPATION_TYPE]='0' + [PARTICIPATION_TYPE] where LEN([PARTICIPATION_TYPE])=1"
+        cmd.ExecuteNonQuery()
+        cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [TYPE_OF_CHANGE]='D' where [VALID_TILL]<GETDATE() and [TYPE_OF_CHANGE] not in ('D')"
+        cmd.ExecuteNonQuery()
+        CloseSqlConnections()
+        SplashScreenManager.Default.SetWaitFormCaption("Reload T2 Directory")
+        Me.DisplayListDetails_bbi.Visibility = BarItemVisibility.Always
+        Me.LayoutControl1.Visible = True
+        If Me.DisplayListDetails_bbi.Caption = "Display List" Then
+            Me.DisplayListDetails_bbi.PerformClick()
+        End If
+        Me.T2_DIRECTORYTableAdapter.FillByT2_FILL(Me.EXTERNALDataset.T2_DIRECTORY)
+        SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub bbi_AddParticipant_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_AddParticipant.ItemClick
+        Me.LayoutControl1.Visible = False
+        Me.DisplayListDetails_bbi.Visibility = BarItemVisibility.Never
+        T2_Dir_BarSubItem.Visibility = BarItemVisibility.Never
+    End Sub
+
+    Private Sub bbi_PrintOrExport_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_PrintOrExport.ItemClick
+        If Not GridControl2.IsPrintingAvailable Then
+            XtraMessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
+            Return
+        End If
+        ' Opens the Preview window. 
+        'GridControl1.ShowPrintPreview()
+        If DisplayListDetails_bbi.Caption = "Display Details" Then
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            PrintableComponentLink1.CreateDocument()
+            PrintableComponentLink1.ShowPreview()
+            SplashScreenManager.CloseForm(False)
+        Else
+            Me.T2DetailView.OptionsSingleRecordMode.StretchCardToViewHeight = False
+            Me.T2DetailView.OptionsSingleRecordMode.StretchCardToViewWidth = False
+            Me.T2DetailView.Columns.ColumnByName("colBIC111").AppearanceCell.ForeColor = Color.Navy
+            Me.T2DetailView.Columns.ColumnByName("colINSTITUTION_NAME1").AppearanceCell.ForeColor = Color.Navy
+            Me.T2DetailView.Columns.ColumnByName("colADDRESSEE1").AppearanceCell.ForeColor = Color.Navy
+            Me.T2DetailView.Columns.ColumnByName("colACCOUNT_HOLDER1").AppearanceCell.ForeColor = Color.Navy
+            Me.T2DetailView.OptionsPrint.PrintSelectedCardsOnly = True
+            Me.T2DetailView.OptionsPrint.PrintCardCaption = True
+            Me.T2DetailView.OptionsPrint.AllowCancelPrintExport = True
+            Me.T2DetailView.OptionsPrint.ShowPrintExportProgress = True
+            'Me.T2DetailView.ShowPrintPreview()
+            PreviewPrintableComponent(GridControl2, GridControl2.LookAndFeel)
+            Me.T2DetailView.Columns.ColumnByName("colBIC111").AppearanceCell.ForeColor = Color.Yellow
+            Me.T2DetailView.Columns.ColumnByName("colINSTITUTION_NAME1").AppearanceCell.ForeColor = Color.Yellow
+            Me.T2DetailView.Columns.ColumnByName("colADDRESSEE1").AppearanceCell.ForeColor = Color.Cyan
+            Me.T2DetailView.Columns.ColumnByName("colACCOUNT_HOLDER1").AppearanceCell.ForeColor = Color.Cyan
+            Me.T2DetailView.OptionsSingleRecordMode.StretchCardToViewHeight = True
+            Me.T2DetailView.OptionsSingleRecordMode.StretchCardToViewWidth = True
+
+
+        End If
+    End Sub
+
+    Private Sub bbi_T2_Full_Dir_Create_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_T2_Full_Dir_Create.ItemClick
+        If XtraMessageBox.Show("Should the Full T2 Directory be re-created?" & vbNewLine & vbNewLine & "ATTENTION: DELETED T2 PARTICIPANTS WILL NOT BE INCLUDED!!!" & vbNewLine & vbNewLine & "Existing File:" & vbNewLine & T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG" & vbNewLine & "will be deleted!", "Full T2 Directory creation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            OpenSqlConnections()
+            cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='T2_Directory_Export_Folder' and  [IdABTEILUNGSPARAMETER]='T2_DIRECTORY_EXPORT' and [PARAMETER STATUS]='Y' "
+            T2_DirectoryCreationFolder = cmd.ExecuteScalar
+            CloseSqlConnections()
+            DISABLE_BUTTONS()
+            Me.LayoutControlGroup2.Visibility = LayoutVisibility.Always
+            Me.LayoutControlGroup2.Text = "T2 Full Directory creation"
+            BgwCreateFullT2Directory = New BackgroundWorker
+            bgws.Add(BgwCreateFullT2Directory)
+            BgwCreateFullT2Directory.WorkerReportsProgress = True
+            BgwCreateFullT2Directory.RunWorkerAsync()
+        End If
+    End Sub
+
+    Private Sub BgwCreateFullT2Directory_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwCreateFullT2Directory.DoWork
+        Try
+            BgwCreateFullT2Directory.ReportProgress(5, "Delete (if exists) current file:T2DIRFULLVA.ASCII_FullNew.ORIG")
+            If File.Exists(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG") = True Then
+                File.Delete(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG")
+            End If
+            Me.BgwCreateFullT2Directory.ReportProgress(10, "Start creation of the T2 full directory!")
+            QueryText = "SELECT  * FROM  [T2 DIRECTORY] where [TYPE_OF_CHANGE] not in ('D') and [VALID_TILL]>=DATEADD(d,DATEDIFF(d,0,getdate()),0) ORDER BY [BIC11] asc" 'where [RESERVE]='Manual input' ORDER BY [BIC11] asc"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
+            dt = New DataTable()
+            da.Fill(dt)
+            If dt.Rows.Count > 0 Then
+                For i = 0 To dt.Rows.Count - 1
+                    'BgwCreateFullT2Directory.ReportProgress(i, "Create Datarow in T2 Directory for BIC: " & dt.Rows.Item(i).Item("BIC11") & " - " & dt.Rows.Item(i).Item("INSTITUTION_NAME"))
+                    BIC11 = dt.Rows.Item(i).Item("BIC11")
+                    ADDRESSEE = dt.Rows.Item(i).Item("ADDRESSEE")
+                    ACCOUNT_HOLDER = dt.Rows.Item(i).Item("ACCOUNT_HOLDER")
+                    BIC11_NAME = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("INSTITUTION_NAME"), 105)
+                    CITY = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("CITY_HEADING"), 35)
+                    SORTCODE = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("SORTCODE"), 15)
+                    MAIN_BIC_FLAG = dt.Rows.Item(i).Item("MAIN_BIC_FLAG")
+                    TYPE_OF_CHANGE = dt.Rows.Item(i).Item("TYPE_OF_CHANGE")
+                    ValidFrom = dt.Rows.Item(i).Item("VALID_FROM")
+                    ValidFromSql = ValidFrom.ToString("yyyyMMdd")
+                    ValidTill = dt.Rows.Item(i).Item("VALID_TILL")
+                    ValidTillSql = ValidTill.ToString("yyyyMMdd")
+                    PARTICIPATION_TYPE = dt.Rows.Item(i).Item("PARTICIPATION_TYPE")
+
+                    'CurrentRow.BeginInvoke(New ChangeText(AddressOf Change_CurrentRow))
+                    'Me.BgwCreateFullT2Directory.ReportProgress(i, "Create Datarow in T2 Directory for BIC: " & CurrentRow.Text)
+
+                    T2_ROW = BIC11 & ADDRESSEE & ACCOUNT_HOLDER & BIC11_NAME.PadRight(105) & CITY.PadRight(35) & SORTCODE.PadRight(15) & MAIN_BIC_FLAG & TYPE_OF_CHANGE & ValidFromSql & ValidTillSql & PARTICIPATION_TYPE & RESERVE
+
+                    System.IO.File.AppendAllText(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG", T2_ROW & vbCrLf)
+                    'System.Threading.Thread.Sleep(1000)
+                Next i
+                BgwCreateFullT2Directory.ReportProgress(10, "T2 Full Directory created!")
+            End If
+
+        Catch ex As System.Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Finally
+            BgwCreateFullT2Directory.CancelAsync()
+        End Try
+    End Sub
+
+    Private Sub BgwCreateFullT2Directory_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwCreateFullT2Directory.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwCreateFullT2Directory_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwCreateFullT2Directory.RunWorkerCompleted
+        If e.Cancelled = False Then
+            If XtraMessageBox.Show("The following T2 Directory file has being created:" & vbNewLine & T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG" & vbNewLine & "Should the directory be opened?", "NEW T2 DIRECTORY FILE", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1) = DialogResult.Yes Then
+                System.Diagnostics.Process.Start(T2_DirectoryCreationFolder)
+            End If
+        End If
+        Workers_Complete(BgwCreateFullT2Directory, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlGroup2.Visibility = LayoutVisibility.Never
+    End Sub
+
+    Private Sub bbi_T2_ManInput_Dir_Create_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_T2_ManInput_Dir_Create.ItemClick
+        If XtraMessageBox.Show("Should the T2 Directory for Manual inputs be re-created?" & vbNewLine & vbNewLine & "Existing File:" & vbNewLine & T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_ManInp.ORIG" & vbNewLine & "will be deleted!", "T2 Directory (Manual Inputs) creation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Select only manually inputed Data from T2 Directory")
+                OpenSqlConnections()
+                cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER1]='T2_Directory_Export_Folder' and  [IdABTEILUNGSPARAMETER]='T2_DIRECTORY_EXPORT' and [PARAMETER STATUS]='Y' "
+                T2_DirectoryCreationFolder = cmd.ExecuteScalar
+                CloseSqlConnections()
+                If File.Exists(T2_DirectoryCreationFolder & "T2DIRFULLVA.ASCII_ManInp.ORIG") = True Then
+                    File.Delete(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_ManInp.ORIG")
+                End If
+                QueryText = "SELECT  * FROM  [T2 DIRECTORY] where [TYPE_OF_CHANGE] not in ('D') and  [RESERVE]='Manual input' ORDER BY [BIC11] asc"
+                da = New SqlDataAdapter(QueryText.Trim(), conn)
+                dt = New DataTable()
+                da.Fill(dt)
+                For i = 0 To dt.Rows.Count - 1
+                    SplashScreenManager.Default.SetWaitFormCaption("Create Datarow in T2 Directory for BIC: " & dt.Rows.Item(i).Item("BIC11") & vbNewLine & dt.Rows.Item(i).Item("INSTITUTION_NAME"))
+                    BIC11 = dt.Rows.Item(i).Item("BIC11")
+                    ADDRESSEE = dt.Rows.Item(i).Item("ADDRESSEE")
+                    ACCOUNT_HOLDER = dt.Rows.Item(i).Item("ACCOUNT_HOLDER")
+                    BIC11_NAME = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("INSTITUTION_NAME"), 105)
+                    CITY = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("CITY_HEADING"), 35)
+                    SORTCODE = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("SORTCODE"), 15)
+                    MAIN_BIC_FLAG = dt.Rows.Item(i).Item("MAIN_BIC_FLAG")
+                    TYPE_OF_CHANGE = dt.Rows.Item(i).Item("TYPE_OF_CHANGE")
+                    ValidFrom = dt.Rows.Item(i).Item("VALID_FROM")
+                    ValidFromSql = ValidFrom.ToString("yyyyMMdd")
+                    ValidTill = dt.Rows.Item(i).Item("VALID_TILL")
+                    ValidTillSql = ValidTill.ToString("yyyyMMdd")
+                    PARTICIPATION_TYPE = dt.Rows.Item(i).Item("PARTICIPATION_TYPE")
+
+                    T2_ROW = BIC11 & ADDRESSEE & ACCOUNT_HOLDER & BIC11_NAME.PadRight(105) & CITY.PadRight(35) & SORTCODE.PadRight(15) & MAIN_BIC_FLAG & TYPE_OF_CHANGE & ValidFromSql & ValidTillSql & PARTICIPATION_TYPE & RESERVE
+
+                    System.IO.File.AppendAllText(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_ManInp.ORIG", T2_ROW & vbCrLf)
+                Next
+
+                SplashScreenManager.CloseForm(False)
+                XtraMessageBox.Show("The following T2 Directory file has being created: " & vbNewLine & T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_ManInp.ORIG", "NEW T2 DIRECTORY FILE", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
+
+            Catch ex As System.Exception
+                SplashScreenManager.CloseForm(False)
+
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Exit Sub
+            End Try
+        Else
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub bbi_Close_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Close.ItemClick
+        Me.Close()
+
+    End Sub
 
     Private Sub ParticipantBIC_ButtonEdit_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles ParticipantBIC_ButtonEdit.ButtonClick
         Me.ParticipantName_lbl.Text = ""
@@ -553,6 +756,7 @@ Public Class T2_DIRECTORY
         Me.ParticipantName_lbl.Text = Nothing
         Me.AddresseeName_lbl.Text = Nothing
         Me.AccountholderName_lbl.Text = Nothing
+        Me.DisplayListDetails_bbi.Visibility = BarItemVisibility.Always
         Me.LayoutControl1.Visible = True
     End Sub
 
@@ -837,54 +1041,7 @@ Public Class T2_DIRECTORY
 
     End Sub
 
-    Private Sub T2BaseView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles T2BaseView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
 
-    Private Sub T2BaseView_ShownEditor(sender As Object, e As EventArgs) Handles T2BaseView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub Print_Export_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_btn.Click
-        If Not GridControl2.IsPrintingAvailable Then
-            XtraMessageBox.Show("The 'DevExpress.XtraPrinting' Library is not found", "Error")
-            Return
-        End If
-        ' Opens the Preview window. 
-        'GridControl1.ShowPrintPreview()
-        If ViewEdit_btn.Text = "Edit T2 Participant" Then
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            PrintableComponentLink1.CreateDocument()
-            PrintableComponentLink1.ShowPreview()
-            SplashScreenManager.CloseForm(False)
-        Else
-            Me.T2DetailView.OptionsSingleRecordMode.StretchCardToViewHeight = False
-            Me.T2DetailView.OptionsSingleRecordMode.StretchCardToViewWidth = False
-            Me.T2DetailView.Columns.ColumnByName("colBIC111").AppearanceCell.ForeColor = Color.Navy
-            Me.T2DetailView.Columns.ColumnByName("colINSTITUTION_NAME1").AppearanceCell.ForeColor = Color.Navy
-            Me.T2DetailView.Columns.ColumnByName("colADDRESSEE1").AppearanceCell.ForeColor = Color.Navy
-            Me.T2DetailView.Columns.ColumnByName("colACCOUNT_HOLDER1").AppearanceCell.ForeColor = Color.Navy
-            Me.T2DetailView.OptionsPrint.PrintSelectedCardsOnly = True
-            Me.T2DetailView.OptionsPrint.PrintCardCaption = True
-            Me.T2DetailView.OptionsPrint.AllowCancelPrintExport = True
-            Me.T2DetailView.OptionsPrint.ShowPrintExportProgress = True
-            'Me.T2DetailView.ShowPrintPreview()
-            PreviewPrintableComponent(GridControl2, GridControl2.LookAndFeel)
-            Me.T2DetailView.Columns.ColumnByName("colBIC111").AppearanceCell.ForeColor = Color.Yellow
-            Me.T2DetailView.Columns.ColumnByName("colINSTITUTION_NAME1").AppearanceCell.ForeColor = Color.Yellow
-            Me.T2DetailView.Columns.ColumnByName("colADDRESSEE1").AppearanceCell.ForeColor = Color.Cyan
-            Me.T2DetailView.Columns.ColumnByName("colACCOUNT_HOLDER1").AppearanceCell.ForeColor = Color.Cyan
-            Me.T2DetailView.OptionsSingleRecordMode.StretchCardToViewHeight = True
-            Me.T2DetailView.OptionsSingleRecordMode.StretchCardToViewWidth = True
-
-
-        End If
-    End Sub
 
     Private Sub PreviewPrintableComponent(component As IPrintable, lookAndFeel As UserLookAndFeel)
         Dim link As New PrintableComponentLink() With {
@@ -915,25 +1072,6 @@ Public Class T2_DIRECTORY
         Dim reportfooter As String = "TARGET2 DIRECTORY" & "  " & "Printed on: " & Now
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
-
-
-
-    Private Sub Reload_T2_Dir_btn_Click(sender As Object, e As EventArgs) Handles Reload_T2_Dir_btn.Click
-        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-        SplashScreenManager.Default.SetWaitFormCaption("Check BIC validity for Manual inputs based on the BIC DIRECTORY")
-        OpenSqlConnections()
-        cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [TYPE_OF_CHANGE]='D' where  [BIC11] not in (Select [BIC11] from [BIC DIRECTORY]) and [RESERVE] in ('Manual input')"
-        cmd.ExecuteNonQuery()
-        cmd.CommandText = "Update [T2 DIRECTORY] set [PARTICIPATION_TYPE]='0' + [PARTICIPATION_TYPE] where LEN([PARTICIPATION_TYPE])=1"
-        cmd.ExecuteNonQuery()
-        cmd.CommandText = "UPDATE [T2 DIRECTORY] SET [TYPE_OF_CHANGE]='D' where [VALID_TILL]<GETDATE() and [TYPE_OF_CHANGE] not in ('D')"
-        cmd.ExecuteNonQuery()
-        CloseSqlConnections()
-        SplashScreenManager.Default.SetWaitFormCaption("Reload T2 Directory")
-        Me.T2_DIRECTORYTableAdapter.FillByT2_FILL(Me.EXTERNALDataset.T2_DIRECTORY)
-        SplashScreenManager.CloseForm(False)
-    End Sub
-
 
 
     Private Sub AddNewT2ParticipantAllBranches_btn_Click(sender As Object, e As EventArgs) Handles AddNewT2ParticipantAllBranches_btn.Click
@@ -1006,99 +1144,7 @@ Public Class T2_DIRECTORY
 
     End Sub
 
-    Private Sub FullT2Dir_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles FullT2Dir_BarButtonItem.ItemClick
-        If XtraMessageBox.Show("Should the Full T2 Directory be re-created?" & vbNewLine & vbNewLine & "ATTENTION: DELETED T2 PARTICIPANTS WILL NOT BE INCLUDED!!!" & vbNewLine & vbNewLine & "Existing File:" & vbNewLine & T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG" & vbNewLine & "will be deleted!", "Full T2 Directory creation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-            Try
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Select all Data from T2 Directory")
-                If File.Exists(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG") = True Then
-                    File.Delete(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG")
-                End If
-                Me.QueryText = "SELECT  * FROM  [T2 DIRECTORY] where [TYPE_OF_CHANGE] not in ('D') and [VALID_TILL]>=DATEADD(d,DATEDIFF(d,0,getdate()),0) ORDER BY [BIC11] asc" 'where [RESERVE]='Manual input' ORDER BY [BIC11] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New DataTable()
-                da.Fill(dt)
-                For i = 0 To dt.Rows.Count - 1
-                    SplashScreenManager.Default.SetWaitFormCaption("Create Datarow in T2 Directory for BIC: " & dt.Rows.Item(i).Item("BIC11") & vbNewLine & dt.Rows.Item(i).Item("INSTITUTION_NAME"))
-                    BIC11 = dt.Rows.Item(i).Item("BIC11")
-                    ADDRESSEE = dt.Rows.Item(i).Item("ADDRESSEE")
-                    ACCOUNT_HOLDER = dt.Rows.Item(i).Item("ACCOUNT_HOLDER")
-                    BIC11_NAME = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("INSTITUTION_NAME"), 105)
-                    CITY = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("CITY_HEADING"), 35)
-                    SORTCODE = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("SORTCODE"), 15)
-                    MAIN_BIC_FLAG = dt.Rows.Item(i).Item("MAIN_BIC_FLAG")
-                    TYPE_OF_CHANGE = dt.Rows.Item(i).Item("TYPE_OF_CHANGE")
-                    ValidFrom = dt.Rows.Item(i).Item("VALID_FROM")
-                    ValidFromSql = ValidFrom.ToString("yyyyMMdd")
-                    ValidTill = dt.Rows.Item(i).Item("VALID_TILL")
-                    ValidTillSql = ValidTill.ToString("yyyyMMdd")
-                    PARTICIPATION_TYPE = dt.Rows.Item(i).Item("PARTICIPATION_TYPE")
 
-                    T2_ROW = BIC11 & ADDRESSEE & ACCOUNT_HOLDER & BIC11_NAME.PadRight(105) & CITY.PadRight(35) & SORTCODE.PadRight(15) & MAIN_BIC_FLAG & TYPE_OF_CHANGE & ValidFromSql & ValidTillSql & PARTICIPATION_TYPE & RESERVE
-
-                    System.IO.File.AppendAllText(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG", T2_ROW & vbCrLf)
-                Next
-
-                SplashScreenManager.CloseForm(False)
-                XtraMessageBox.Show("The following T2 Directory file has being created:" & vbNewLine & T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_FullNew.ORIG", "NEW T2 DIRECTORY FILE", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
-
-            Catch ex As System.Exception
-                SplashScreenManager.CloseForm(False)
-
-                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Sub
-            End Try
-        Else
-            Exit Sub
-        End If
-    End Sub
-
-    Private Sub ManualT2Dir_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles ManualT2Dir_BarButtonItem.ItemClick
-        If XtraMessageBox.Show("Should the T2 Directory for Manual inputs be re-created?" & vbNewLine & vbNewLine & "Existing File:" & vbNewLine & T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_ManInp.ORIG" & vbNewLine & "will be deleted!", "T2 Directory (Manual Inputs) creation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-            Try
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                SplashScreenManager.Default.SetWaitFormCaption("Select only manually inputed Data from T2 Directory")
-                If File.Exists(T2_DirectoryCreationFolder & "T2DIRFULLVA.ASCII_ManInp.ORIG") = True Then
-                    File.Delete(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_ManInp.ORIG")
-                End If
-                Me.QueryText = "SELECT  * FROM  [T2 DIRECTORY] where [TYPE_OF_CHANGE] not in ('D') and  [RESERVE]='Manual input' ORDER BY [BIC11] asc"
-                da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                dt = New DataTable()
-                da.Fill(dt)
-                For i = 0 To dt.Rows.Count - 1
-                    SplashScreenManager.Default.SetWaitFormCaption("Create Datarow in T2 Directory for BIC: " & dt.Rows.Item(i).Item("BIC11") & vbNewLine & dt.Rows.Item(i).Item("INSTITUTION_NAME"))
-                    BIC11 = dt.Rows.Item(i).Item("BIC11")
-                    ADDRESSEE = dt.Rows.Item(i).Item("ADDRESSEE")
-                    ACCOUNT_HOLDER = dt.Rows.Item(i).Item("ACCOUNT_HOLDER")
-                    BIC11_NAME = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("INSTITUTION_NAME"), 105)
-                    CITY = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("CITY_HEADING"), 35)
-                    SORTCODE = Microsoft.VisualBasic.Left(dt.Rows.Item(i).Item("SORTCODE"), 15)
-                    MAIN_BIC_FLAG = dt.Rows.Item(i).Item("MAIN_BIC_FLAG")
-                    TYPE_OF_CHANGE = dt.Rows.Item(i).Item("TYPE_OF_CHANGE")
-                    ValidFrom = dt.Rows.Item(i).Item("VALID_FROM")
-                    ValidFromSql = ValidFrom.ToString("yyyyMMdd")
-                    ValidTill = dt.Rows.Item(i).Item("VALID_TILL")
-                    ValidTillSql = ValidTill.ToString("yyyyMMdd")
-                    PARTICIPATION_TYPE = dt.Rows.Item(i).Item("PARTICIPATION_TYPE")
-
-                    T2_ROW = BIC11 & ADDRESSEE & ACCOUNT_HOLDER & BIC11_NAME.PadRight(105) & CITY.PadRight(35) & SORTCODE.PadRight(15) & MAIN_BIC_FLAG & TYPE_OF_CHANGE & ValidFromSql & ValidTillSql & PARTICIPATION_TYPE & RESERVE
-
-                    System.IO.File.AppendAllText(T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_ManInp.ORIG", T2_ROW & vbCrLf)
-                Next
-
-                SplashScreenManager.CloseForm(False)
-                XtraMessageBox.Show("The following T2 Directory file has being created: " & vbNewLine & T2_DirectoryCreationFolder & "\T2DIRFULLVA.ASCII_ManInp.ORIG", "NEW T2 DIRECTORY FILE", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1)
-
-            Catch ex As System.Exception
-                SplashScreenManager.CloseForm(False)
-
-                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Sub
-            End Try
-        Else
-            Exit Sub
-        End If
-    End Sub
 
 
 End Class
