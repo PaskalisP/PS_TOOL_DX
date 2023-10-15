@@ -182,6 +182,7 @@ Partial Class CustomerBalances
         Me.OCBS_BookingDate_From = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.SearchText_lbl = New DevExpress.XtraEditors.LabelControl()
         Me.Print_Export_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.Edit_BICDIR_Details_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -191,6 +192,7 @@ Partial Class CustomerBalances
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CUSTOMER_ACCOUNTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -225,6 +227,7 @@ Partial Class CustomerBalances
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -240,7 +243,7 @@ Partial Class CustomerBalances
         '
         'colBatchNo1
         '
-        Me.colBatchNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colBatchNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colBatchNo1.AppearanceHeader.Options.UseFont = True
         Me.colBatchNo1.FieldName = "BatchNo"
         Me.colBatchNo1.Name = "colBatchNo1"
@@ -252,7 +255,6 @@ Partial Class CustomerBalances
         '
         'GridColumn14
         '
-        Me.GridColumn14.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn14.AppearanceHeader.Options.UseFont = True
         Me.GridColumn14.DisplayFormat.FormatString = "#,##0.00"
         Me.GridColumn14.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -266,7 +268,6 @@ Partial Class CustomerBalances
         '
         'GridColumn34
         '
-        Me.GridColumn34.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn34.AppearanceHeader.Options.UseBorderColor = True
         Me.GridColumn34.AppearanceHeader.Options.UseFont = True
         Me.GridColumn34.AppearanceHeader.Options.UseImage = True
@@ -489,6 +490,7 @@ Partial Class CustomerBalances
         Me.Customer_Balances_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.Customer_Balances_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.Customer_Balances_BasicView.OptionsView.ShowFooter = True
+        Me.Customer_Balances_BasicView.OptionsView.ShowGroupPanel = False
         Me.Customer_Balances_BasicView.PaintStyleName = "Skin"
         Me.Customer_Balances_BasicView.ViewCaption = "Results by GL Item"
         '
@@ -927,7 +929,6 @@ Partial Class CustomerBalances
         Me.OCBS_Balances_BasicView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         StyleFormatCondition3.Appearance.BackColor = System.Drawing.Color.Black
         StyleFormatCondition3.Appearance.BackColor2 = System.Drawing.Color.Black
-        StyleFormatCondition3.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         StyleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Aqua
         StyleFormatCondition3.Appearance.Options.UseBackColor = True
         StyleFormatCondition3.Appearance.Options.UseFont = True
@@ -941,7 +942,6 @@ Partial Class CustomerBalances
         StyleFormatCondition3.Value1 = "OPENING BALANCE OCBS ACC."
         StyleFormatCondition4.Appearance.BackColor = System.Drawing.Color.Aqua
         StyleFormatCondition4.Appearance.BackColor2 = System.Drawing.Color.Cyan
-        StyleFormatCondition4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         StyleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Black
         StyleFormatCondition4.Appearance.Options.UseBackColor = True
         StyleFormatCondition4.Appearance.Options.UseFont = True
@@ -970,12 +970,13 @@ Partial Class CustomerBalances
         Me.OCBS_Balances_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.OCBS_Balances_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.OCBS_Balances_BasicView.OptionsView.ShowFooter = True
+        Me.OCBS_Balances_BasicView.OptionsView.ShowGroupPanel = False
         '
         'colIdNr1
         '
         Me.colIdNr1.AppearanceHeader.BackColor = System.Drawing.SystemColors.Control
         Me.colIdNr1.AppearanceHeader.BackColor2 = System.Drawing.SystemColors.Control
-        Me.colIdNr1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colIdNr1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colIdNr1.AppearanceHeader.ForeColor = System.Drawing.Color.Navy
         Me.colIdNr1.AppearanceHeader.Options.UseBackColor = True
         Me.colIdNr1.AppearanceHeader.Options.UseFont = True
@@ -987,7 +988,7 @@ Partial Class CustomerBalances
         '
         'colSequenceNo1
         '
-        Me.colSequenceNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colSequenceNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colSequenceNo1.AppearanceHeader.Options.UseFont = True
         Me.colSequenceNo1.FieldName = "SequenceNo"
         Me.colSequenceNo1.Name = "colSequenceNo1"
@@ -996,7 +997,7 @@ Partial Class CustomerBalances
         '
         'colGLBook1
         '
-        Me.colGLBook1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGLBook1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGLBook1.AppearanceHeader.Options.UseFont = True
         Me.colGLBook1.FieldName = "GL Book"
         Me.colGLBook1.Name = "colGLBook1"
@@ -1005,7 +1006,7 @@ Partial Class CustomerBalances
         '
         'colAccountingCentre1
         '
-        Me.colAccountingCentre1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAccountingCentre1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAccountingCentre1.AppearanceHeader.Options.UseFont = True
         Me.colAccountingCentre1.FieldName = "Accounting Centre"
         Me.colAccountingCentre1.Name = "colAccountingCentre1"
@@ -1014,7 +1015,7 @@ Partial Class CustomerBalances
         '
         'colGL_AC_No1
         '
-        Me.colGL_AC_No1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGL_AC_No1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGL_AC_No1.AppearanceHeader.Options.UseFont = True
         Me.colGL_AC_No1.Caption = "OCBS Account Nr."
         Me.colGL_AC_No1.FieldName = "GL_AC_No"
@@ -1024,7 +1025,7 @@ Partial Class CustomerBalances
         '
         'colValueDate1
         '
-        Me.colValueDate1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colValueDate1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colValueDate1.AppearanceHeader.Options.UseFont = True
         Me.colValueDate1.FieldName = "Value Date"
         Me.colValueDate1.Name = "colValueDate1"
@@ -1037,7 +1038,7 @@ Partial Class CustomerBalances
         '
         'colTransactionTime1
         '
-        Me.colTransactionTime1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colTransactionTime1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colTransactionTime1.AppearanceHeader.Options.UseFont = True
         Me.colTransactionTime1.FieldName = "Transaction Time"
         Me.colTransactionTime1.Name = "colTransactionTime1"
@@ -1046,7 +1047,7 @@ Partial Class CustomerBalances
         '
         'colAccountNo1
         '
-        Me.colAccountNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAccountNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAccountNo1.AppearanceHeader.Options.UseFont = True
         Me.colAccountNo1.FieldName = "AccountNo"
         Me.colAccountNo1.Name = "colAccountNo1"
@@ -1056,7 +1057,7 @@ Partial Class CustomerBalances
         '
         'colContractType1
         '
-        Me.colContractType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colContractType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colContractType1.AppearanceHeader.Options.UseFont = True
         Me.colContractType1.FieldName = "Contract Type"
         Me.colContractType1.Name = "colContractType1"
@@ -1065,7 +1066,7 @@ Partial Class CustomerBalances
         '
         'colProductType1
         '
-        Me.colProductType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colProductType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colProductType1.AppearanceHeader.Options.UseFont = True
         Me.colProductType1.FieldName = "Product Type"
         Me.colProductType1.Name = "colProductType1"
@@ -1074,7 +1075,7 @@ Partial Class CustomerBalances
         '
         'colEventType1
         '
-        Me.colEventType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colEventType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colEventType1.AppearanceHeader.Options.UseFont = True
         Me.colEventType1.FieldName = "Event Type"
         Me.colEventType1.Name = "colEventType1"
@@ -1083,7 +1084,7 @@ Partial Class CustomerBalances
         '
         'colCCY1
         '
-        Me.colCCY1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colCCY1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colCCY1.AppearanceHeader.Options.UseFont = True
         Me.colCCY1.FieldName = "CCY"
         Me.colCCY1.Name = "colCCY1"
@@ -1095,7 +1096,7 @@ Partial Class CustomerBalances
         '
         'colAmount1
         '
-        Me.colAmount1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAmount1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAmount1.AppearanceHeader.Options.UseFont = True
         Me.colAmount1.DisplayFormat.FormatString = "#,##0.00"
         Me.colAmount1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -1109,7 +1110,7 @@ Partial Class CustomerBalances
         '
         'colDR_CR1
         '
-        Me.colDR_CR1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colDR_CR1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colDR_CR1.AppearanceHeader.Options.UseFont = True
         Me.colDR_CR1.FieldName = "DR_CR"
         Me.colDR_CR1.Name = "colDR_CR1"
@@ -1118,7 +1119,7 @@ Partial Class CustomerBalances
         '
         'colGroupNo1
         '
-        Me.colGroupNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGroupNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGroupNo1.AppearanceHeader.Options.UseFont = True
         Me.colGroupNo1.FieldName = "GroupNo"
         Me.colGroupNo1.Name = "colGroupNo1"
@@ -1127,7 +1128,7 @@ Partial Class CustomerBalances
         '
         'colClientNo1
         '
-        Me.colClientNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colClientNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colClientNo1.AppearanceHeader.Options.UseFont = True
         Me.colClientNo1.FieldName = "ClientNo"
         Me.colClientNo1.Name = "colClientNo1"
@@ -1136,7 +1137,7 @@ Partial Class CustomerBalances
         '
         'colPortfolioCode1
         '
-        Me.colPortfolioCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colPortfolioCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colPortfolioCode1.AppearanceHeader.Options.UseFont = True
         Me.colPortfolioCode1.FieldName = "Portfolio Code"
         Me.colPortfolioCode1.Name = "colPortfolioCode1"
@@ -1145,7 +1146,7 @@ Partial Class CustomerBalances
         '
         'colNarrativeCode1
         '
-        Me.colNarrativeCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colNarrativeCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colNarrativeCode1.AppearanceHeader.Options.UseFont = True
         Me.colNarrativeCode1.FieldName = "Narrative Code"
         Me.colNarrativeCode1.Name = "colNarrativeCode1"
@@ -1154,7 +1155,7 @@ Partial Class CustomerBalances
         '
         'colReferenceCode1
         '
-        Me.colReferenceCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colReferenceCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colReferenceCode1.AppearanceHeader.Options.UseFont = True
         Me.colReferenceCode1.FieldName = "Reference Code"
         Me.colReferenceCode1.Name = "colReferenceCode1"
@@ -1163,7 +1164,7 @@ Partial Class CustomerBalances
         '
         'colChequeNo1
         '
-        Me.colChequeNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colChequeNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colChequeNo1.AppearanceHeader.Options.UseFont = True
         Me.colChequeNo1.FieldName = "ChequeNo"
         Me.colChequeNo1.Name = "colChequeNo1"
@@ -1172,7 +1173,7 @@ Partial Class CustomerBalances
         '
         'colAP1
         '
-        Me.colAP1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAP1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAP1.AppearanceHeader.Options.UseFont = True
         Me.colAP1.FieldName = "AP"
         Me.colAP1.Name = "colAP1"
@@ -1181,7 +1182,7 @@ Partial Class CustomerBalances
         '
         'colTRNAccountingCentre1
         '
-        Me.colTRNAccountingCentre1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colTRNAccountingCentre1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colTRNAccountingCentre1.AppearanceHeader.Options.UseFont = True
         Me.colTRNAccountingCentre1.FieldName = "TRN Accounting Centre"
         Me.colTRNAccountingCentre1.Name = "colTRNAccountingCentre1"
@@ -1190,7 +1191,7 @@ Partial Class CustomerBalances
         '
         'colCheckerID1
         '
-        Me.colCheckerID1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colCheckerID1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colCheckerID1.AppearanceHeader.Options.UseFont = True
         Me.colCheckerID1.FieldName = "Checker ID"
         Me.colCheckerID1.Name = "colCheckerID1"
@@ -1199,7 +1200,7 @@ Partial Class CustomerBalances
         '
         'colChannel1
         '
-        Me.colChannel1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colChannel1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colChannel1.AppearanceHeader.Options.UseFont = True
         Me.colChannel1.FieldName = "Channel"
         Me.colChannel1.Name = "colChannel1"
@@ -1208,7 +1209,7 @@ Partial Class CustomerBalances
         '
         'colOtherSystemKey1
         '
-        Me.colOtherSystemKey1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colOtherSystemKey1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colOtherSystemKey1.AppearanceHeader.Options.UseFont = True
         Me.colOtherSystemKey1.FieldName = "Other System Key"
         Me.colOtherSystemKey1.Name = "colOtherSystemKey1"
@@ -1217,7 +1218,7 @@ Partial Class CustomerBalances
         '
         'colGeneratedType1
         '
-        Me.colGeneratedType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGeneratedType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGeneratedType1.AppearanceHeader.Options.UseFont = True
         Me.colGeneratedType1.FieldName = "Generated Type"
         Me.colGeneratedType1.Name = "colGeneratedType1"
@@ -1226,7 +1227,7 @@ Partial Class CustomerBalances
         '
         'colReversalFlag1
         '
-        Me.colReversalFlag1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colReversalFlag1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colReversalFlag1.AppearanceHeader.Options.UseFont = True
         Me.colReversalFlag1.FieldName = "Reversal Flag"
         Me.colReversalFlag1.Name = "colReversalFlag1"
@@ -1235,7 +1236,7 @@ Partial Class CustomerBalances
         '
         'colDescription1
         '
-        Me.colDescription1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colDescription1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colDescription1.AppearanceHeader.Options.UseFont = True
         Me.colDescription1.FieldName = "Description"
         Me.colDescription1.Name = "colDescription1"
@@ -1247,7 +1248,7 @@ Partial Class CustomerBalances
         '
         'colGL_Rep_Date1
         '
-        Me.colGL_Rep_Date1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGL_Rep_Date1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGL_Rep_Date1.AppearanceHeader.Options.UseFont = True
         Me.colGL_Rep_Date1.Caption = "Booking Date"
         Me.colGL_Rep_Date1.FieldName = "GL_Rep_Date"
@@ -1261,7 +1262,7 @@ Partial Class CustomerBalances
         '
         'colGL_Item_Nr1
         '
-        Me.colGL_Item_Nr1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGL_Item_Nr1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGL_Item_Nr1.AppearanceHeader.Options.UseFont = True
         Me.colGL_Item_Nr1.Caption = "GL Item"
         Me.colGL_Item_Nr1.FieldName = "GL_Item_Nr"
@@ -1274,7 +1275,7 @@ Partial Class CustomerBalances
         '
         'colGL_AC_No_Name1
         '
-        Me.colGL_AC_No_Name1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGL_AC_No_Name1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGL_AC_No_Name1.AppearanceHeader.Options.UseFont = True
         Me.colGL_AC_No_Name1.Caption = "OCBS/NGS Acc. Name"
         Me.colGL_AC_No_Name1.FieldName = "GL_AC_No_Name"
@@ -1284,7 +1285,7 @@ Partial Class CustomerBalances
         '
         'colExchange_Rate1
         '
-        Me.colExchange_Rate1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colExchange_Rate1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colExchange_Rate1.AppearanceHeader.Options.UseFont = True
         Me.colExchange_Rate1.Caption = "Exchange Rate"
         Me.colExchange_Rate1.DisplayFormat.FormatString = "#,##0.0000"
@@ -1299,7 +1300,7 @@ Partial Class CustomerBalances
         '
         'colAmountInEuro1
         '
-        Me.colAmountInEuro1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAmountInEuro1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAmountInEuro1.AppearanceHeader.Options.UseFont = True
         Me.colAmountInEuro1.DisplayFormat.FormatString = "#,##0.00"
         Me.colAmountInEuro1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -1361,12 +1362,12 @@ Partial Class CustomerBalances
         Me.OCBS_Postings_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.OCBS_Postings_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.OCBS_Postings_BasicView.OptionsView.ShowFooter = True
+        Me.OCBS_Postings_BasicView.OptionsView.ShowGroupPanel = False
         Me.OCBS_Postings_BasicView.PaintStyleName = "Skin"
         Me.OCBS_Postings_BasicView.ViewCaption = "Results by GL Item"
         '
         'GridColumn35
         '
-        Me.GridColumn35.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn35.AppearanceHeader.Options.UseFont = True
         Me.GridColumn35.FieldName = "IdNr"
         Me.GridColumn35.Name = "GridColumn35"
@@ -1375,7 +1376,6 @@ Partial Class CustomerBalances
         '
         'GridColumn2
         '
-        Me.GridColumn2.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn2.AppearanceHeader.Options.UseFont = True
         Me.GridColumn2.FieldName = "BatchNo"
         Me.GridColumn2.Name = "GridColumn2"
@@ -1387,7 +1387,6 @@ Partial Class CustomerBalances
         '
         'GridColumn3
         '
-        Me.GridColumn3.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn3.AppearanceHeader.Options.UseFont = True
         Me.GridColumn3.FieldName = "SequenceNo"
         Me.GridColumn3.Name = "GridColumn3"
@@ -1396,7 +1395,6 @@ Partial Class CustomerBalances
         '
         'GridColumn4
         '
-        Me.GridColumn4.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn4.AppearanceHeader.Options.UseFont = True
         Me.GridColumn4.FieldName = "GL Book"
         Me.GridColumn4.Name = "GridColumn4"
@@ -1405,7 +1403,6 @@ Partial Class CustomerBalances
         '
         'GridColumn5
         '
-        Me.GridColumn5.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn5.AppearanceHeader.Options.UseFont = True
         Me.GridColumn5.FieldName = "Accounting Centre"
         Me.GridColumn5.Name = "GridColumn5"
@@ -1414,7 +1411,6 @@ Partial Class CustomerBalances
         '
         'GridColumn6
         '
-        Me.GridColumn6.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn6.AppearanceHeader.Options.UseFont = True
         Me.GridColumn6.Caption = "OCBS Account Nr."
         Me.GridColumn6.FieldName = "GL_AC_No"
@@ -1427,7 +1423,6 @@ Partial Class CustomerBalances
         '
         'GridColumn7
         '
-        Me.GridColumn7.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn7.AppearanceHeader.Options.UseFont = True
         Me.GridColumn7.FieldName = "Value Date"
         Me.GridColumn7.Name = "GridColumn7"
@@ -1440,7 +1435,6 @@ Partial Class CustomerBalances
         '
         'GridColumn8
         '
-        Me.GridColumn8.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn8.AppearanceHeader.Options.UseFont = True
         Me.GridColumn8.FieldName = "Transaction Time"
         Me.GridColumn8.Name = "GridColumn8"
@@ -1450,7 +1444,6 @@ Partial Class CustomerBalances
         '
         'GridColumn9
         '
-        Me.GridColumn9.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn9.AppearanceHeader.Options.UseFont = True
         Me.GridColumn9.FieldName = "AccountNo"
         Me.GridColumn9.Name = "GridColumn9"
@@ -1462,7 +1455,6 @@ Partial Class CustomerBalances
         '
         'GridColumn10
         '
-        Me.GridColumn10.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn10.AppearanceHeader.Options.UseFont = True
         Me.GridColumn10.FieldName = "Contract Type"
         Me.GridColumn10.Name = "GridColumn10"
@@ -1472,7 +1464,6 @@ Partial Class CustomerBalances
         '
         'GridColumn11
         '
-        Me.GridColumn11.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn11.AppearanceHeader.Options.UseFont = True
         Me.GridColumn11.FieldName = "Product Type"
         Me.GridColumn11.Name = "GridColumn11"
@@ -1481,7 +1472,6 @@ Partial Class CustomerBalances
         '
         'GridColumn12
         '
-        Me.GridColumn12.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn12.AppearanceHeader.Options.UseFont = True
         Me.GridColumn12.FieldName = "Event Type"
         Me.GridColumn12.Name = "GridColumn12"
@@ -1490,7 +1480,6 @@ Partial Class CustomerBalances
         '
         'GridColumn13
         '
-        Me.GridColumn13.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn13.AppearanceHeader.Options.UseFont = True
         Me.GridColumn13.FieldName = "CCY"
         Me.GridColumn13.Name = "GridColumn13"
@@ -1502,7 +1491,6 @@ Partial Class CustomerBalances
         '
         'GridColumn15
         '
-        Me.GridColumn15.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn15.AppearanceHeader.Options.UseFont = True
         Me.GridColumn15.FieldName = "DR_CR"
         Me.GridColumn15.Name = "GridColumn15"
@@ -1511,7 +1499,6 @@ Partial Class CustomerBalances
         '
         'GridColumn16
         '
-        Me.GridColumn16.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn16.AppearanceHeader.Options.UseFont = True
         Me.GridColumn16.FieldName = "GroupNo"
         Me.GridColumn16.Name = "GridColumn16"
@@ -1520,7 +1507,6 @@ Partial Class CustomerBalances
         '
         'GridColumn17
         '
-        Me.GridColumn17.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn17.AppearanceHeader.Options.UseFont = True
         Me.GridColumn17.FieldName = "ClientNo"
         Me.GridColumn17.Name = "GridColumn17"
@@ -1529,7 +1515,6 @@ Partial Class CustomerBalances
         '
         'GridColumn18
         '
-        Me.GridColumn18.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn18.AppearanceHeader.Options.UseFont = True
         Me.GridColumn18.FieldName = "Portfolio Code"
         Me.GridColumn18.Name = "GridColumn18"
@@ -1538,7 +1523,6 @@ Partial Class CustomerBalances
         '
         'GridColumn19
         '
-        Me.GridColumn19.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn19.AppearanceHeader.Options.UseFont = True
         Me.GridColumn19.FieldName = "Narrative Code"
         Me.GridColumn19.Name = "GridColumn19"
@@ -1547,7 +1531,6 @@ Partial Class CustomerBalances
         '
         'GridColumn20
         '
-        Me.GridColumn20.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn20.AppearanceHeader.Options.UseFont = True
         Me.GridColumn20.FieldName = "Reference Code"
         Me.GridColumn20.Name = "GridColumn20"
@@ -1556,7 +1539,6 @@ Partial Class CustomerBalances
         '
         'GridColumn21
         '
-        Me.GridColumn21.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn21.AppearanceHeader.Options.UseFont = True
         Me.GridColumn21.FieldName = "ChequeNo"
         Me.GridColumn21.Name = "GridColumn21"
@@ -1565,7 +1547,6 @@ Partial Class CustomerBalances
         '
         'GridColumn22
         '
-        Me.GridColumn22.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn22.AppearanceHeader.Options.UseFont = True
         Me.GridColumn22.FieldName = "AP"
         Me.GridColumn22.Name = "GridColumn22"
@@ -1574,7 +1555,6 @@ Partial Class CustomerBalances
         '
         'GridColumn23
         '
-        Me.GridColumn23.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn23.AppearanceHeader.Options.UseFont = True
         Me.GridColumn23.FieldName = "TRN Accounting Centre"
         Me.GridColumn23.Name = "GridColumn23"
@@ -1583,7 +1563,6 @@ Partial Class CustomerBalances
         '
         'GridColumn24
         '
-        Me.GridColumn24.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn24.AppearanceHeader.Options.UseFont = True
         Me.GridColumn24.FieldName = "Checker ID"
         Me.GridColumn24.Name = "GridColumn24"
@@ -1592,7 +1571,6 @@ Partial Class CustomerBalances
         '
         'GridColumn25
         '
-        Me.GridColumn25.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn25.AppearanceHeader.Options.UseFont = True
         Me.GridColumn25.FieldName = "Channel"
         Me.GridColumn25.Name = "GridColumn25"
@@ -1601,7 +1579,6 @@ Partial Class CustomerBalances
         '
         'GridColumn26
         '
-        Me.GridColumn26.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn26.AppearanceHeader.Options.UseFont = True
         Me.GridColumn26.FieldName = "Other System Key"
         Me.GridColumn26.Name = "GridColumn26"
@@ -1610,7 +1587,6 @@ Partial Class CustomerBalances
         '
         'GridColumn27
         '
-        Me.GridColumn27.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn27.AppearanceHeader.Options.UseFont = True
         Me.GridColumn27.FieldName = "Generated Type"
         Me.GridColumn27.Name = "GridColumn27"
@@ -1619,7 +1595,6 @@ Partial Class CustomerBalances
         '
         'GridColumn28
         '
-        Me.GridColumn28.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn28.AppearanceHeader.Options.UseFont = True
         Me.GridColumn28.FieldName = "Reversal Flag"
         Me.GridColumn28.Name = "GridColumn28"
@@ -1628,7 +1603,6 @@ Partial Class CustomerBalances
         '
         'GridColumn29
         '
-        Me.GridColumn29.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn29.AppearanceHeader.Options.UseFont = True
         Me.GridColumn29.FieldName = "Description"
         Me.GridColumn29.Name = "GridColumn29"
@@ -1640,7 +1614,6 @@ Partial Class CustomerBalances
         '
         'GridColumn30
         '
-        Me.GridColumn30.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn30.AppearanceHeader.Options.UseFont = True
         Me.GridColumn30.Caption = "Booking Date"
         Me.GridColumn30.FieldName = "GL_Rep_Date"
@@ -1654,7 +1627,6 @@ Partial Class CustomerBalances
         '
         'GridColumn31
         '
-        Me.GridColumn31.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn31.AppearanceHeader.Options.UseFont = True
         Me.GridColumn31.Caption = "GL Item"
         Me.GridColumn31.FieldName = "GL_Item_Nr"
@@ -1666,7 +1638,6 @@ Partial Class CustomerBalances
         '
         'GridColumn32
         '
-        Me.GridColumn32.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn32.AppearanceHeader.Options.UseFont = True
         Me.GridColumn32.Caption = "OCBS/NGS Account Name"
         Me.GridColumn32.FieldName = "GL_AC_No_Name"
@@ -1679,7 +1650,6 @@ Partial Class CustomerBalances
         '
         'GridColumn33
         '
-        Me.GridColumn33.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GridColumn33.AppearanceHeader.Options.UseFont = True
         Me.GridColumn33.Caption = "Exchange Rate"
         Me.GridColumn33.DisplayFormat.FormatString = "#,##0.0000"
@@ -1918,6 +1888,7 @@ Partial Class CustomerBalances
         '
         'LoadOCBS_btn
         '
+        Me.LoadOCBS_btn.ImageOptions.Image = CType(resources.GetObject("LoadOCBS_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadOCBS_btn.ImageOptions.ImageIndex = 6
         Me.LoadOCBS_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadOCBS_btn.Location = New System.Drawing.Point(246, 118)
@@ -1983,6 +1954,7 @@ Partial Class CustomerBalances
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.SearchText_lbl)
         Me.LayoutControl1.Controls.Add(Me.Print_Export_Gridview_btn)
         Me.LayoutControl1.Controls.Add(Me.Edit_BICDIR_Details_btn)
@@ -1994,6 +1966,27 @@ Partial Class CustomerBalances
         Me.LayoutControl1.Size = New System.Drawing.Size(1528, 564)
         Me.LayoutControl1.TabIndex = 120
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(200, 24)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 124
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'SearchText_lbl
         '
@@ -2057,7 +2050,7 @@ Partial Class CustomerBalances
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem5})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(1508, 50)
@@ -2078,9 +2071,9 @@ Partial Class CustomerBalances
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(176, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(1378, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1217, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(15, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -2092,6 +2085,16 @@ Partial Class CustomerBalances
         Me.LayoutControlItem4.Size = New System.Drawing.Size(176, 26)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.ProgressPanel1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(176, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1202, 26)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem3
         '
@@ -2110,7 +2113,7 @@ Partial Class CustomerBalances
         Me.ClientSize = New System.Drawing.Size(1526, 725)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.GroupControl2)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("CustomerBalances.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "CustomerBalances"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Corporate - Personal Customers Accounts Postings and Balances"
@@ -2147,6 +2150,7 @@ Partial Class CustomerBalances
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -2314,4 +2318,6 @@ Partial Class CustomerBalances
     Friend WithEvents colAmountValueBalance As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colAmountInEuro_ValueBalance As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colProductTypeDescription As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
 End Class

@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Data.SqlClient
 Imports System.ComponentModel
+Imports System.Text.RegularExpressions
 
 Module GlobalFunctions
 
@@ -124,6 +125,15 @@ Module GlobalFunctions
             'Return nothing if something fails
             Return Nothing
         End Try
+    End Function
+
+    Public Function GetNumberFromString(ByVal theString As String) As Integer
+        Dim returnVal As String = "0"
+        Dim collection As MatchCollection = Regex.Matches(theString, "\d+")
+        For Each m As Match In collection
+            returnVal += m.ToString()
+        Next
+        Return Convert.ToInt32(returnVal)
     End Function
 
 End Module

@@ -37,22 +37,17 @@ Imports DevExpress.XtraRichEdit.Services
 
 Public Class Audit
 
-    Dim conn As New SqlClient.SqlConnection
-    Dim cmd As New SqlCommand
-
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New System.Data.DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New System.Data.DataTable
-
-    Dim rd As Date
-    Dim rdsql As String = Nothing
-    Dim MaxProcDate As Date
+    Dim d1 As Date
+    Dim d2 As Date
+    Dim rdsql1 As String = Nothing
+    Dim rdsql2 As String = Nothing
 
     Dim Table_Name As String = Nothing
     Dim Related_ID As Integer = 0
+
+    Private BS_All_OperationDates As BindingSource
+    Friend WithEvents BgwLoad_Data As BackgroundWorker
+    Private bgws As New List(Of BackgroundWorker)()
 
 
     Sub New()
@@ -66,6 +61,13 @@ Public Class Audit
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
     Private Sub AuditBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.AuditBindingSource.EndEdit()
@@ -75,104 +77,94 @@ Public Class Audit
 
     Private Sub Audit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
         Try
+            ALL_OPERATIONS_DATES_initData()
+            ALL_OPERATIONS_DATES_InitLookUp()
 
-            'Get Max Date
-            cmd.CommandText = "SELECT MAX([OperationDate]) FROM [Audit]"
-            cmd.Connection.Open()
-            If cmd.ExecuteScalar IsNot DBNull.Value Then
-                MaxProcDate = cmd.ExecuteScalar
-            Else
-                MaxProcDate = DateSerial(2014, 9, 30)
+            If BS_All_OperationDates.Count > 0 Then
+                Me.AuditDateFrom_Comboedit.EditValue = CType(BS_All_OperationDates.Current, DataRowView).Item(0).ToString
+                Me.AuditDateTill_Comboedit.EditValue = CType(BS_All_OperationDates.Current, DataRowView).Item(0).ToString
             End If
-            cmd.Connection.Close()
 
-            'Bind Combobox
-            Me.AuditDateFrom_Comboedit.Properties.Items.Clear()
-            Me.AuditDateTill_Comboedit.Properties.Items.Clear()
-            Me.QueryText = "Select [OperationDate] from [Audit] GROUP BY [OperationDate]  ORDER BY [OperationDate] desc"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-            dt = New System.Data.DataTable()
-            da.Fill(dt)
-            For Each row As DataRow In dt.Rows
-                If dt.Rows.Count > 0 Then
-                    Me.AuditDateFrom_Comboedit.Properties.Items.Add(row("OperationDate"))
-                    Me.AuditDateTill_Comboedit.Properties.Items.Add(row("OperationDate"))
-                End If
-            Next
-            If dt.Rows.Count > 0 Then
-                Me.AuditDateFrom_Comboedit.Text = dt.Rows.Item(0).Item("OperationDate")
-                Me.AuditDateTill_Comboedit.Text = dt.Rows.Item(0).Item("OperationDate")
-            End If
-            Me.AuditTableAdapter.SetCommandTimeOut(120000)
+            d1 = Me.AuditDateFrom_Comboedit.Text
+            d2 = Me.AuditDateTill_Comboedit.Text
+            rdsql1 = d1.ToString("yyyyMMdd")
+            rdsql2 = d2.ToString("yyyyMMdd")
 
-            Dim d1 As Date = Me.AuditDateFrom_Comboedit.Text
-            Dim d2 As Date = Me.AuditDateTill_Comboedit.Text
-            Dim rdsql1 As String = d1.ToString("yyyyMMdd")
-            Dim rdsql2 As String = d2.ToString("yyyyMMdd")
-
-            'Dim objCMD As SqlCommand = New SqlCommand("execute [AUDIT_FILL_SEARCH]  @MINRISKDATE='" & rdsql1 & "', @MAXRISKDATE='" & rdsql2 & "'  ", conn)
-            'objCMD.CommandTimeout = 5000
-            'da = New SqlDataAdapter(objCMD)
-            'dt = New DataTable()
-            'da.Fill(dt)
-            'Results
-            'If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-            'Me.GridControl2.DataSource = Nothing
-            'Me.GridControl2.DataSource = dt
-            'Me.GridControl2.ForceInitialize()
-            'Else
-            'MessageBox.Show("There are no Data for the specified Pariod", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-            'Exit Sub
-            'End If
-
-
-            'Data reader
-            Try
-                Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                    Using sqlCmd As New SqlCommand()
-                        sqlCmd.CommandText = "SELECT * FROM [Audit] where [OperationDate]>='" & rdsql1 & "' and [OperationDate]<='" & rdsql2 & "' order by ID desc"
-                        sqlCmd.Connection = sqlConn
-                        If sqlConn.State = ConnectionState.Closed Then
-                            sqlConn.Open()
-                        End If
-
-                        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                        Dim objDataTable As New DataTable()
-                        objDataTable.Load(objDataReader)
-                        If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                            Me.GridControl2.DataSource = Nothing
-                            Me.GridControl2.DataSource = objDataTable
-                            Me.GridControl2.ForceInitialize()
-
-                        Else
-                            SplashScreenManager.CloseForm(False)
-                            MessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                            Return
-                        End If
-                        If sqlConn.State = ConnectionState.Open Then
-                            sqlConn.Close()
-                        End If
-
-                    End Using
+            Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                Using Sqlcmd As New SqlCommand()
+                    Sqlcmd.CommandText = "SELECT * FROM [Audit] 
+                                          where [OperationDate] BETWEEN '" & rdsql1 & "' AND '" & rdsql2 & "' order by ID desc"
+                    Sqlcmd.Connection = Sqlconn
+                    Sqlconn.Open()
+                    daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                    daSqlQueries.SelectCommand.CommandTimeout = 50000
+                    dtSqlQueries = New DataTable()
+                    daSqlQueries.Fill(dtSqlQueries)
+                    Sqlconn.Close()
+                    If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+                        Me.GridControl2.DataSource = Nothing
+                        Me.GridControl2.DataSource = dtSqlQueries
+                        Me.GridControl2.ForceInitialize()
+                        Me.GridControl2.RefreshDataSource()
+                    Else
+                        XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+                        Return
+                    End If
                 End Using
-            Catch ex As Exception
-                SplashScreenManager.CloseForm(False)
-                MessageBox.Show(ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Return
-            End Try
+            End Using
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End Try
 
     End Sub
 
+    Private Sub ALL_OPERATIONS_DATES_initData()
+        Dim objCMD1 As SqlCommand = New SqlCommand("Declare @SELECTION_TABLE Table([ID] int IDENTITY(1,1) Not NULL, [OPERATION_DATE] varchar(10) NULL)
+                                                    INSERT INTO @SELECTION_TABLE
+                                                    SELECT 'OPERATION_DATE'=CONVERT(varchar(10),[OperationDate],104) from Audit
+                                                    group by OperationDate order by OperationDate asc
+                                                    SELECT OPERATION_DATE  from @SELECTION_TABLE 
+                                                    order by ID desc", conn)
+        objCMD1.CommandTimeout = 50000
+        Dim dbOperationDates As SqlDataAdapter = New SqlDataAdapter(objCMD1)
 
+        Dim ds As DataSet = New DataSet()
+        Try
+
+            dbOperationDates.Fill(ds, "OPERATION_DATE")
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_All_OperationDates = New BindingSource(ds, "OPERATION_DATE")
+    End Sub
+    Private Sub ALL_OPERATIONS_DATES_InitLookUp()
+        Me.AuditDateFrom_Comboedit.Properties.DataSource = BS_All_OperationDates
+        Me.AuditDateFrom_Comboedit.Properties.DisplayMember = "OPERATION_DATE"
+        Me.AuditDateFrom_Comboedit.Properties.ValueMember = "OPERATION_DATE"
+        Me.AuditDateTill_Comboedit.Properties.DataSource = BS_All_OperationDates
+        Me.AuditDateTill_Comboedit.Properties.DisplayMember = "OPERATION_DATE"
+        Me.AuditDateTill_Comboedit.Properties.ValueMember = "OPERATION_DATE"
+
+    End Sub
+
+    Private Sub DISABLE_BUTTONS()
+        Me.AuditDateFrom_Comboedit.Enabled = False
+        Me.AuditDateTill_Comboedit.Enabled = False
+        Me.LoadAudit_btn.Enabled = False
+        Me.Print_Export_AuditEvents_Gridview_btn.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.AuditDateFrom_Comboedit.Enabled = True
+        Me.AuditDateTill_Comboedit.Enabled = True
+        Me.LoadAudit_btn.Enabled = True
+        Me.Print_Export_AuditEvents_Gridview_btn.Enabled = True
+    End Sub
 
     Private Sub AuditEvents_BasicView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles AuditEvents_BasicView.PopupMenuShowing
         Dim View As GridView = CType(sender, GridView)
@@ -199,20 +191,7 @@ Public Class Audit
 
     End Sub
 
-    Private Sub AuditEvents_BasicView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles AuditEvents_BasicView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
 
-        End If
-    End Sub
-
-    Private Sub AuditEvents_BasicView_ShownEditor(sender As Object, e As EventArgs) Handles AuditEvents_BasicView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
 
     Private Sub Print_Export_AuditEvents_Gridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_AuditEvents_Gridview_btn.Click
         If Not GridControl2.IsPrintingAvailable Then
@@ -245,73 +224,73 @@ Public Class Audit
 
     Private Sub LoadAudit_btn_Click(sender As Object, e As EventArgs) Handles LoadAudit_btn.Click
         If Me.AuditDateFrom_Comboedit.Text <> "" And Me.AuditDateTill_Comboedit.Text <> "" Then
-            Dim d1 As Date = Me.AuditDateFrom_Comboedit.Text
-            Dim sqld1 As String = d1.ToString("yyyyMMdd")
-            Dim d2 As Date = Me.AuditDateTill_Comboedit.Text
-            Dim sqld2 As String = d2.ToString("yyyyMMdd")
+            d1 = Me.AuditDateFrom_Comboedit.Text
+            d2 = Me.AuditDateTill_Comboedit.Text
+            rdsql1 = d1.ToString("yyyyMMdd")
+            rdsql2 = d2.ToString("yyyyMMdd")
             If d2 >= d1 Then
-                Try
-                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                    SplashScreenManager.Default.SetWaitFormCaption("Loading Audit Items for " & d1 & " till " & d2)
-
-                    'Dim objCMD As SqlCommand = New SqlCommand("execute [AUDIT_FILL_SEARCH]  @MINRISKDATE='" & sqld1 & "', @MAXRISKDATE='" & sqld2 & "'  ", conn)
-                    'objCMD.CommandTimeout = 5000
-                    'da = New SqlDataAdapter(objCMD)
-                    'dt = New DataTable()
-                    'da.Fill(dt)
-                    'Results
-                    'If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-                    'Me.GridControl2.DataSource = Nothing
-                    'Me.GridControl2.DataSource = dt
-                    'Me.GridControl2.ForceInitialize()
-                    'Else
-                    'MessageBox.Show("There are no Data for the specified Pariod", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                    'Exit Sub
-                    'End If
-
-                    'Data reader
-                    Try
-                        Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            Using sqlCmd As New SqlCommand()
-                                sqlCmd.CommandText = "SELECT * FROM [Audit] where [OperationDate]>='" & sqld1 & "' and [OperationDate]<='" & sqld2 & "' order by ID desc"
-                                sqlCmd.Connection = sqlConn
-                                If sqlConn.State = ConnectionState.Closed Then
-                                    sqlConn.Open()
-                                End If
-
-                                Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                                Dim objDataTable As New DataTable()
-                                objDataTable.Load(objDataReader)
-                                If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                                    Me.GridControl2.DataSource = Nothing
-                                    Me.GridControl2.DataSource = objDataTable
-                                    Me.GridControl2.ForceInitialize()
-
-                                Else
-                                    SplashScreenManager.CloseForm(False)
-                                    MessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                                    Return
-                                End If
-                                If sqlConn.State = ConnectionState.Open Then
-                                    sqlConn.Close()
-                                End If
-
-                            End Using
-                        End Using
-                    Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        MessageBox.Show(ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        Return
-                    End Try
-
-                    SplashScreenManager.CloseForm(False)
-                Catch ex As Exception
-                    SplashScreenManager.CloseForm(False)
-                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                End Try
+                DISABLE_BUTTONS()
+                Me.LayoutControlItem1.Visibility = LayoutVisibility.Always
+                BgwLoad_Data = New BackgroundWorker
+                bgws.Add(BgwLoad_Data)
+                BgwLoad_Data.WorkerReportsProgress = True
+                BgwLoad_Data.RunWorkerAsync()
+            Else
+                XtraMessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
             End If
         End If
 
+    End Sub
+
+    Private Sub BgwLoad_Data_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoad_Data.DoWork
+        Try
+            Me.BgwLoad_Data.ReportProgress(10, "Load all Audit data from: " & d1 & " till " & d2)
+
+            Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                Using Sqlcmd As New SqlCommand()
+                    Sqlcmd.CommandText = "SELECT * FROM [Audit] 
+                                          where [OperationDate] BETWEEN '" & rdsql1 & "' AND '" & rdsql2 & "' order by ID desc"
+                    Sqlcmd.Connection = Sqlconn
+                    Sqlconn.Open()
+                    daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                    daSqlQueries.SelectCommand.CommandTimeout = 50000
+                    dtSqlQueries = New DataTable()
+                    daSqlQueries.Fill(dtSqlQueries)
+                    Sqlconn.Close()
+                End Using
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoad_Data.CancelAsync()
+
+        End Try
+    End Sub
+
+    Private Sub BgwLoad_Data_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoad_Data.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadContractPostings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoad_Data.RunWorkerCompleted
+        Workers_Complete(BgwLoad_Data, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem1.Visibility = LayoutVisibility.Never
+        Me.GridControl2.DataSource = Nothing
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl2.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl2.DataSource = dtSqlQueries
+            Me.GridControl2.ForceInitialize()
+            Me.GridControl2.RefreshDataSource()
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
     End Sub
 
     Private Sub SeeDetails_Form_ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeeDetails_Form_ToolStripMenuItem.Click
@@ -328,5 +307,14 @@ Public Class Audit
         c.RichEditControl1.ReadOnly = True
         c.RichEditControl1.Enabled = False
         SplashScreenManager.CloseForm(False)
+    End Sub
+
+    Private Sub Audit_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+
+        End If
     End Sub
 End Class

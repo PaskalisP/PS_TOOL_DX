@@ -161,6 +161,9 @@ Module GlobalVariables
     'Global EAEG
     Public EAEG_FILE_DIR As String = Nothing
 
+    'Global DataBase Environment
+    Public DB_Environment As String = Nothing
+
     'Layouts
     Public PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR As String = Nothing
 

@@ -33,16 +33,6 @@ Imports DevExpress.XtraReports.Parameters
 Imports CrystalDecisions.Shared
 Public Class SwiftStatementsAll
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-    Private objDataTable As New DataTable
-
     Dim d1 As Date
     Dim d2 As Date
     Dim sqld1 As String = Nothing
@@ -50,20 +40,14 @@ Public Class SwiftStatementsAll
     Dim rdsql1 As String
     Dim rdsql2 As String
 
-    Dim GLItemlbl As String = Nothing
-    Dim GLitemNamelbl As String = Nothing
-    Dim GLitemDatefromlbl As String = Nothing
-    Dim GLitemDatetilllbl As String = Nothing
-    Dim GLitemStartBalancelbl As String = Nothing
-    Dim GLitemClosingBalancelbl As String = Nothing
+    Dim AccCCY As String = Nothing
+    Dim AccName As String = Nothing
+    Dim AccStatus As String = Nothing
+    Dim AccOpenDate As String = Nothing
+    Dim AccClosedDate As String = Nothing
 
-    Dim OCBSaccountNamelbl As String = Nothing
-    Dim OCBSaccountlbl As String = Nothing
-    Dim OCBSaccountCurlbl As String = Nothing
-    Dim OCBSDatefromlbl As String = Nothing
-    Dim OCBSDatetilllbl As String = Nothing
-    Dim OCBSstartingBalancelbl As String = Nothing
-    Dim OCBSclosingBalancelbl As String = Nothing
+    Friend WithEvents BgwLoadPostings As BackgroundWorker
+    Private bgws As New List(Of BackgroundWorker)()
 
     Private BS_ExternalAccounts As BindingSource
 
@@ -78,6 +62,13 @@ Public Class SwiftStatementsAll
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
     Private Sub SWIFT_ACC_STATEMENTSBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.SWIFT_ACC_STATEMENTSBindingSource.EndEdit()
@@ -85,9 +76,23 @@ Public Class SwiftStatementsAll
 
     End Sub
 
+    Private Sub DISABLE_BUTTONS()
+        Me.OCBS_BookingDate_From.Enabled = False
+        Me.OCBS_BookingDate_Till.Enabled = False
+        Me.OCBS_LookUpEdit.Enabled = False
+        Me.LoadOCBS_btn.Enabled = False
+        Me.Print_Export_Gridview_btn.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.OCBS_BookingDate_From.Enabled = True
+        Me.OCBS_BookingDate_Till.Enabled = True
+        Me.OCBS_LookUpEdit.Enabled = True
+        Me.LoadOCBS_btn.Enabled = True
+        Me.Print_Export_Gridview_btn.Enabled = True
+    End Sub
+
     Private Sub SwiftStatementsAll_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
 
         Me.CURlbl.Text = ""
         Me.Nostro_Balances_BasicView.ActiveFilterString = "[SwiftTagName] NOT LIKE 'Intermed%'"
@@ -114,10 +119,23 @@ Public Class SwiftStatementsAll
 
     End Sub
 
+    Private Sub OCBS_LookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles OCBS_LookUpEdit.EditValueChanged
+        If Me.OCBS_LookUpEdit.Text <> "" Then
+            Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+            Dim NOSTRO_NAME_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_CURRENCY_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Me.CURlbl.Text = ACC_CURRENCY_Row("CCY").ToString
+            Me.NostroAccountNamelbl.Text = NOSTRO_NAME_Row("Sender BIC Name").ToString.Trim
+        Else
+            Me.CURlbl.Text = Nothing
+            Me.NostroAccountNamelbl.Text = Nothing
+        End If
+    End Sub
+
 #Region "NOSTRO_STATEMENTS_CHANGE_VIEWS"
     Private fExtendedEditMode As Boolean = False
-    Private strHideExtendedMode As String = "View List"
-    Private strShowExtendedMode As String = "View Details"
+    Private strHideExtendedMode As String = "Display List"
+    Private strShowExtendedMode As String = "Display Details"
     Protected Sub HideDetail(ByVal rowHandle As Integer)
         GridControl1.MainView.PostEditor()
         Dim datasourceRowIndex As Integer = Nostro_Balances_DetailView.GetDataSourceRowIndex(rowHandle)
@@ -127,7 +145,7 @@ Public Class SwiftStatementsAll
         Me.GridControl1.EmbeddedNavigator.Buttons.Append.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
         Edit_BICDIR_Details_btn.Text = strShowExtendedMode
-        Edit_BICDIR_Details_btn.ImageIndex = 1
+        Edit_BICDIR_Details_btn.ImageIndex = 10
         fExtendedEditMode = (GridControl1.MainView Is Nostro_Balances_DetailView)
     End Sub
     Protected Sub ShowDetail(ByVal rowHandle As Integer)
@@ -138,7 +156,7 @@ Public Class SwiftStatementsAll
         Me.GridControl1.EmbeddedNavigator.Buttons.Append.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
         Edit_BICDIR_Details_btn.Text = strHideExtendedMode
-        Edit_BICDIR_Details_btn.ImageIndex = 0
+        Edit_BICDIR_Details_btn.ImageIndex = 11
         fExtendedEditMode = (GridControl1.MainView Is Nostro_Balances_DetailView)
 
     End Sub
@@ -201,88 +219,100 @@ Public Class SwiftStatementsAll
 
     Private Sub LoadOCBS_btn_Click(sender As Object, e As EventArgs) Handles LoadOCBS_btn.Click
         If IsDate(Me.OCBS_BookingDate_From.Text) = True AndAlso IsDate(Me.OCBS_BookingDate_Till.Text) = True Then
-
-            d1 = Me.OCBS_BookingDate_From.Text
-            d2 = Me.OCBS_BookingDate_Till.Text
-            If d2 >= d1 Then
-                rdsql1 = d1.ToString("yyyyMMdd")
-                rdsql2 = d2.ToString("yyyyMMdd")
-                'ALL SEARCH ITEMS
-                If IsNothing(Me.OCBS_LookUpEdit.Text) = False Then
-                    Try
-                      
-                        'Account Name finden
-                        Me.QueryText = "Select [SQL_Name_1] as 'External Account Nr.',[SQL_Name_2] as 'CCY',[SQL_Name_3] as 'Sender BIC',[SQL_Name_4] as 'Sender BIC Name' from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='SWIFT STATEMENTS ACCOUNTS ALL' and [SQL_Name_1]='" & Me.OCBS_LookUpEdit.Text & "'"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                        dt = New DataTable()
-                        da.Fill(dt)
-
-                        Me.CURlbl.Text = dt.Rows.Item(0).Item("CCY")
-                        Me.NostroAccountNamelbl.Text = dt.Rows.Item(0).Item("Sender BIC Name")
-
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load external postings + Balances for external Nostro Account: " & vbNewLine & Me.OCBS_LookUpEdit.Text & " from: " & d1 & " till " & d2)
-
-
-                        'Dim objCMD As SqlCommand = New SqlCommand("execute [SWIFT_ACCOUNT_STATEMENTS_ALL] @FROMDATE='" & rdsql1 & "', @TILLDATE='" & rdsql2 & "',@ACCOUNT_NR='" & Me.OCBS_LookUpEdit.Text & "'  ", conn)
-                        'objCMD.CommandTimeout = 5000
-                        'da = New SqlDataAdapter(objCMD)
-
-                        'Data reader
-                        Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            Using sqlCmd As New SqlCommand()
-                                sqlCmd.CommandText = "SELECT * FROM [SWIFT_ACC_STATEMENTS] WHERE ([AccountIdentification]= '" & Me.OCBS_LookUpEdit.Text & "') AND ([ReceivedDate] >= '" & rdsql1 & "') AND ([ReceivedDate] <= '" & rdsql2 & "') ORDER BY  PageNr asc,Case SwiftTag when '60F' then 1 when '60M' then 2 when '61' then 3 when '62M' then 4 when '62F' then 5 when '64' then 6 when '65' then 7 end, StatementNr asc "
-                                sqlCmd.Connection = sqlConn
-                                sqlCmd.CommandTimeout = 5000
-                                If sqlConn.State = ConnectionState.Closed Then
-                                    sqlConn.Open()
-                                End If
-
-                                Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                                objDataTable.Clear()
-                                objDataTable.Load(objDataReader)
-
-                                If sqlConn.State = ConnectionState.Open Then
-                                    sqlConn.Close()
-                                End If
-
-                            End Using
-                        End Using
-
-                        Me.SearchText_lbl.Text = "Search results for External Nostro Account: " & Me.OCBS_LookUpEdit.Text & " -Currency: " & Me.CURlbl.Text & " from " & d1 & " till " & d2
-                        'Me.colNostroCode.Visible = False
-                        'Me.colNostroName.Visible = False
-                        'dt = New DataTable()
-                        'da.Fill(dt)
-                        'Results Datareader
-                        If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                            Me.GridControl1.DataSource = Nothing
-                            Me.GridControl1.DataSource = objDataTable
-                            Me.GridControl1.ForceInitialize()
-                            SplashScreenManager.CloseForm(False)
-
-                        Else
-                            SplashScreenManager.CloseForm(False)
-                            Me.GridControl1.DataSource = Nothing
-                            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                            Exit Sub
-                        End If
-
-                      
-                    Catch ex As Exception
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        SplashScreenManager.CloseForm(False)
-                    End Try
-
-
-
+            If Me.OCBS_LookUpEdit.Text <> "" Then
+                d1 = Me.OCBS_BookingDate_From.Text
+                d2 = Me.OCBS_BookingDate_Till.Text
+                If d2 >= d1 Then
+                    rdsql1 = d1.ToString("yyyyMMdd")
+                    rdsql2 = d2.ToString("yyyyMMdd")
+                    'ALL SEARCH ITEMS
+                    rdsql1 = d1.ToString("yyyyMMdd")
+                    rdsql2 = d2.ToString("yyyyMMdd")
+                    If IsNothing(Me.OCBS_LookUpEdit.Text) = False AndAlso IsNumeric(Me.OCBS_LookUpEdit.Text) = True Then
+                        Me.SearchText_lbl.Text = "External postings and Balances for external Nostro Account: " & Me.OCBS_LookUpEdit.Text & " -Currency: " & Me.CURlbl.Text & " - Name: " & Me.NostroAccountNamelbl.Text & " from " & d1 & " till " & d2
+                    End If
+                    DISABLE_BUTTONS()
+                    Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                    'Me.ProgressPanel1.Visible = True
+                    BgwLoadPostings = New BackgroundWorker
+                    bgws.Add(BgwLoadPostings)
+                    BgwLoadPostings.WorkerReportsProgress = True
+                    BgwLoadPostings.RunWorkerAsync()
+                Else
+                    XtraMessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Return
                 End If
             Else
-                SplashScreenManager.CloseForm(False)
-                XtraMessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                XtraMessageBox.Show("Please enter Nostro Account Nr.", "Missing Nostro Account", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
             End If
         Else
             XtraMessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub BgwLoadPostings_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadPostings.DoWork
+        Try
+
+            Me.BgwLoadPostings.ReportProgress(10, "Load External postings and Balances for Nostro Account: " & Me.OCBS_LookUpEdit.Text & " from: " & d1 & " till " & d2)
+
+            Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                Using Sqlcmd As New SqlCommand()
+                    Sqlcmd.CommandText = "SELECT * FROM [SWIFT_ACC_STATEMENTS] 
+                                        WHERE [AccountIdentification]= '" & Me.OCBS_LookUpEdit.Text & "' 
+                                        AND [ReceivedDate] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "' 
+                                        ORDER BY  PageNr asc,
+                                        Case SwiftTag when '60F' then 1 
+                                        when '60M' then 2 
+                                        when '61' then 3 
+                                        when '62M' then 4 
+                                        when '62F' then 5 
+                                        when '64' then 6 
+                                        when '65' then 7 end, 
+                                        StatementNr asc"
+                    Sqlcmd.Connection = Sqlconn
+                    Sqlconn.Open()
+                    daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                    daSqlQueries.SelectCommand.CommandTimeout = 50000
+                    dtSqlQueries = New DataTable()
+                    daSqlQueries.Fill(dtSqlQueries)
+                    Sqlconn.Close()
+
+                End Using
+            End Using
+
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadPostings.CancelAsync()
+
+        End Try
+    End Sub
+
+    Private Sub BgwLoadPostings_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadPostings.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadPostings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadPostings.RunWorkerCompleted
+        Workers_Complete(BgwLoadPostings, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+        'Me.ProgressPanel1.Visible = False
+        Me.GridControl1.DataSource = Nothing
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl1.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl1.DataSource = dtSqlQueries
+            Me.GridControl1.ForceInitialize()
+            Me.GridControl1.RefreshDataSource()
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
             Exit Sub
         End If
     End Sub
@@ -327,13 +357,12 @@ Public Class SwiftStatementsAll
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(ByVal sender As Object, ByVal e As DevExpress.XtraPrinting.CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
-        If Me.SearchText_lbl.Text.StartsWith("Search results for External Nostro Account:") = True Then
-            Dim reportfooter As String = "ABFRAGE (Externe Buchungen + Salden) für Externes NOSTRO Konto " & Me.OCBS_LookUpEdit.Text & " (" & Me.CURlbl.Text & ")" & Me.NostroAccountNamelbl.Text & " von " & d1 & " bis " & d2
-            e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
-            'ElseIf Me.SearchText_lbl.Text.StartsWith("Search results for the last Nostro Accounts Balances") = True Then
-            'Dim reportfooter As String = "ABFRAGE (Letzte Salden) für alle NOSTRO Konten"
-            'e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
-        End If
+
+        Dim reportfooter As String = Me.SearchText_lbl.Text
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+        'ElseIf Me.SearchText_lbl.Text.StartsWith("Search results for the last Nostro Accounts Balances") = True Then
+        'Dim reportfooter As String = "ABFRAGE (Letzte Salden) für alle NOSTRO Konten"
+        'e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
 
         'Dim pinfoBrick As PageInfoBrick, r As RectangleF, iSize As Size
         'Try
@@ -343,69 +372,6 @@ Public Class SwiftStatementsAll
         'pinfoBrick = e.Graph.DrawPageInfo(PageInfo.NumberOfTotal, "Page {0} of {1}", e.Graph.ForeColor, r, DevExpress.XtraPrinting.BorderSide.None)
         'Catch ex As Exception
         'End Try
-
-    End Sub
-
-    Private Sub Nostro_Balances_BasicView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Nostro_Balances_BasicView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub Nostro_Balances_BasicView_ShownEditor(sender As Object, e As EventArgs) Handles Nostro_Balances_BasicView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub GridView1_RowStyle(sender As Object, e As RowStyleEventArgs) Handles GridView1.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-
-        End If
-    End Sub
-
-    Private Sub GridView1_ShownEditor(sender As Object, e As EventArgs) Handles GridView1.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-        End If
-    End Sub
-
-    Private Sub OCBS_LookUpEdit_Click(sender As Object, e As EventArgs) Handles OCBS_LookUpEdit.Click
-        Me.GridControl1.DataSource = Nothing
-        Me.SearchText_lbl.Text = ""
-        Me.CURlbl.Text = ""
-        Me.NostroAccountNamelbl.Text = ""
-    End Sub
-
-    Private Sub OCBS_LookUpEdit_Leave(sender As Object, e As EventArgs) Handles OCBS_LookUpEdit.Leave
-        'Account Name finden
-        If Me.OCBS_LookUpEdit.Text <> "" Then
-            Me.QueryText = "Select [SQL_Name_1] as 'External Account Nr.',[SQL_Name_2] as 'CCY',[SQL_Name_3] as 'Sender BIC',[SQL_Name_4] as 'Sender BIC Name' from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='SWIFT STATEMENTS ACCOUNTS ALL' and [SQL_Name_1]='" & Me.OCBS_LookUpEdit.Text & "'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-            dt = New DataTable()
-            da.Fill(dt)
-
-            Me.CURlbl.Text = dt.Rows.Item(0).Item("CCY")
-            Me.NostroAccountNamelbl.Text = dt.Rows.Item(0).Item("Sender BIC Name")
-        End If
-
-    End Sub
-
-    Private Sub OCBS_LookUpEdit_TextChanged(sender As Object, e As EventArgs) Handles OCBS_LookUpEdit.TextChanged
-        'Account Name finden
-        If Me.OCBS_LookUpEdit.Text <> "" Then
-            Me.QueryText = "Select [SQL_Name_1] as 'External Account Nr.',[SQL_Name_2] as 'CCY',[SQL_Name_3] as 'Sender BIC',[SQL_Name_4] as 'Sender BIC Name' from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='SWIFT STATEMENTS ACCOUNTS ALL' and [SQL_Name_1]='" & Me.OCBS_LookUpEdit.Text & "'"
-            da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-            dt = New DataTable()
-            da.Fill(dt)
-
-            Me.CURlbl.Text = dt.Rows.Item(0).Item("CCY")
-            Me.NostroAccountNamelbl.Text = dt.Rows.Item(0).Item("Sender BIC Name")
-        End If
 
     End Sub
 
@@ -423,4 +389,12 @@ Public Class SwiftStatementsAll
 
     End Sub
 
+    Private Sub SwiftStatementsAll_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+
+        End If
+    End Sub
 End Class

@@ -35,16 +35,6 @@ Imports DevExpress.DataAccess.ConnectionParameters
 Imports DevExpress.DataAccess.Sql
 
 Public Class CustomerBalancesNEWG
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-    Private objDataTable As New DataTable
-
     Dim d1 As Date
     Dim d2 As Date
     Dim sqld1 As String = Nothing
@@ -52,14 +42,14 @@ Public Class CustomerBalancesNEWG
     Dim rdsql1 As String
     Dim rdsql2 As String
 
-    Dim OCBSaccountNamelbl As String = Nothing
-    Dim OCBSaccountlbl As String = Nothing
-    Dim OCBSaccountCurlbl As String = Nothing
-    Dim OCBSaccountStatuslbl As String = Nothing
-    Dim OCBSDatefromlbl As String = Nothing
-    Dim OCBSDatetilllbl As String = Nothing
-    Dim OCBSstartingBalancelbl As String = Nothing
-    Dim OCBSclosingBalancelbl As String = Nothing
+    Dim AccCCY As String = Nothing
+    Dim AccName As String = Nothing
+    Dim AccStatus As String = Nothing
+    Dim AccOpenDate As String = Nothing
+    Dim AccClosedDate As String = Nothing
+
+    Friend WithEvents BgwLoadPostings As BackgroundWorker
+    Private bgws As New List(Of BackgroundWorker)()
 
     Dim query As New CustomSqlQuery()
 
@@ -73,6 +63,13 @@ Public Class CustomerBalancesNEWG
         DevExpress.UserSkins.BonusSkins.Register()
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
+
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
     Private Sub CUSTOMER_VOLUMESBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.CUSTOMER_VOLUMESBindingSource.EndEdit()
@@ -82,10 +79,6 @@ Public Class CustomerBalancesNEWG
 
     Private Sub CustomerBalancesNEWG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
         Me.CUSTOMER_ACCOUNTSTableAdapter.FillByCustomerOnly(Me.PSTOOLDataset.CUSTOMER_ACCOUNTS)
 
         'Get Forelast Date and fill DateEdits
@@ -93,6 +86,22 @@ Public Class CustomerBalancesNEWG
         OCBS_BookingDate_From.EditValue = d
         OCBS_BookingDate_Till.EditValue = d
 
+    End Sub
+
+    Private Sub DISABLE_BUTTONS()
+        Me.OCBS_BookingDate_From.Enabled = False
+        Me.OCBS_BookingDate_Till.Enabled = False
+        Me.Account_LookUpEdit.Enabled = False
+        Me.LoadOCBS_btn.Enabled = False
+        Me.Print_Export_Gridview_btn.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.OCBS_BookingDate_From.Enabled = True
+        Me.OCBS_BookingDate_Till.Enabled = True
+        Me.Account_LookUpEdit.Enabled = True
+        Me.LoadOCBS_btn.Enabled = True
+        Me.Print_Export_Gridview_btn.Enabled = True
     End Sub
 
     Private Sub FILL_ONE_ACCOUNT_DATATABLE()
@@ -127,6 +136,35 @@ Public Class CustomerBalancesNEWG
         SplashScreenManager.CloseForm(False)
     End Sub
 
+    Private Sub Account_LookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles Account_LookUpEdit.EditValueChanged
+        If Me.Account_LookUpEdit.Text <> "" Then
+            Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+            Dim CUSTOMER_NAME_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_CURRENCY_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_STATUS_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_OPEN_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_CLOSED_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Me.CustomerAccountNamelbl.Text = CUSTOMER_NAME_Row("English Name").ToString
+            AccCCY = ACC_CURRENCY_Row("Deal Currency").ToString
+            AccStatus = ACC_STATUS_Row("Account Status").ToString
+            AccOpenDate = ACC_STATUS_Row("OPEN_DATE").ToString
+            AccClosedDate = ACC_STATUS_Row("CLOSE_DATE").ToString
+            If AccClosedDate <> Nothing Then
+                AccClosedDate = CDate(AccClosedDate)
+            End If
+            Me.AccountStatusLbl.Text = "Currency: " & AccCCY & " - Status: " & AccStatus _
+                           & vbNewLine & "Opened on: " & CDate(AccOpenDate) _
+                           & vbNewLine & "Closed on :" & AccClosedDate
+        Else
+            Me.CustomerAccountNamelbl.Text = Nothing
+            AccCCY = Nothing
+            AccStatus = Nothing
+            AccOpenDate = Nothing
+            AccClosedDate = Nothing
+            Me.AccountStatusLbl.Text = Nothing
+        End If
+    End Sub
+
     Private Sub LoadOCBS_btn_Click(sender As Object, e As EventArgs) Handles LoadOCBS_btn.Click
         If IsDate(Me.OCBS_BookingDate_From.Text) = True AndAlso IsDate(Me.OCBS_BookingDate_Till.Text) = True Then
 
@@ -135,173 +173,101 @@ Public Class CustomerBalancesNEWG
             If d2 >= d1 Then
                 rdsql1 = d1.ToString("yyyyMMdd")
                 rdsql2 = d2.ToString("yyyyMMdd")
-                'ALL SEARCH ITEMS
-                If Me.Account_LookUpEdit.Text <> "" Then ' AndAlso IsNumeric(Me.Account_LookUpEdit.Text) = True Then
-                    Try
-                        'Account Name finden
-                        Me.QueryText = "SELECT * from [CUSTOMER_ACCOUNTS] where [Client Account]='" & Me.Account_LookUpEdit.Text & "'"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                        dt = New DataTable()
-                        da.Fill(dt)
-
-                        OCBSaccountCurlbl = dt.Rows.Item(0).Item("Deal Currency")
-                        OCBSaccountNamelbl = dt.Rows.Item(0).Item("English Name")
-                        Me.CustomerAccountNamelbl.Text = dt.Rows.Item(0).Item("English Name")
-                        OCBSaccountlbl = Me.Account_LookUpEdit.Text
-
-                        Me.AccountStatusLbl.Text = dt.Rows.Item(0).Item("Account Status") _
-                           & vbNewLine & "Opened on: " & dt.Rows.Item(0).Item("OPEN_DATE") _
-                           & vbNewLine & "Closed on :" & dt.Rows.Item(0).Item("CLOSE_DATE")
-                        OCBSaccountStatuslbl = Me.AccountStatusLbl.Text
-
-
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load  Balances for Customer Account: " & Me.Account_LookUpEdit.Text & " from: " & d1 & " till " & d2)
-
-                        FILL_ONE_ACCOUNT_DATATABLE()
-
-                        'Dim objCMD As SqlCommand = New SqlCommand("execute [CUSTOMER_VOLUMES_ACCOUNT_NR]  @FROMDATE='" & rdsql1 & "', @TILLDATE='" & rdsql2 & "',@ACCOUNT_NR='" & Me.Account_LookUpEdit.Text & "'  ", conn)
-                        'objCMD.CommandTimeout = 5000
-                        'da = New SqlDataAdapter(objCMD)
-
-                        'Data reader
-                        'Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                        '    Using sqlCmd As New SqlCommand()
-                        '        sqlCmd.CommandText = "SELECT * FROM   [CUSTOMER_ACC_BALANCES] WHERE  (AccountNo = '" & Me.Account_LookUpEdit.Text & "') AND ([BalanceDate] >= '" & rdsql1 & "') AND ([BalanceDate] <= '" & rdsql2 & "') and [AccountType] in ('Current account') ORDER BY [BalanceDate] asc"
-                        '        sqlCmd.Connection = sqlConn
-                        '        sqlCmd.CommandTimeout = 5000
-                        '        If sqlConn.State = ConnectionState.Closed Then
-                        '            sqlConn.Open()
-                        '        End If
-
-                        '        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                        '        objDataTable.Clear()
-                        '        objDataTable.Load(objDataReader)
-
-                        '        If sqlConn.State = ConnectionState.Open Then
-                        '            sqlConn.Close()
-                        '        End If
-
-                        '    End Using
-                        'End Using
-
-                        Me.SearchText_lbl.Text = "Balances for Customer Account: " & Me.Account_LookUpEdit.Text & " -Currency: " & OCBSaccountCurlbl & " from " & d1 & " till " & d2 & "  - Account Status: " & dt.Rows.Item(0).Item("Account Status")
-
-                        'dt = New DataTable()
-                        'da.Fill(dt)
-                        'Results
-                        'If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-                        'Me.GridControl1.DataSource = Nothing
-                        'Me.GridControl1.DataSource = dt
-                        'Me.GridControl1.ForceInitialize()
-                        'SplashScreenManager.CloseForm(False)
-                        'Else
-                        'SplashScreenManager.CloseForm(False)
-                        'Me.GridControl1.DataSource = Nothing
-                        'XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                        'Exit Sub
-                        'End If
-
-                        'Results Datareader
-                        'If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                        '    Me.GridControl1.DataSource = Nothing
-                        '    Me.GridControl1.DataSource = objDataTable
-                        '    Me.GridControl1.ForceInitialize()
-                        '    Me.GridControl1.RefreshDataSource()
-                        '    SplashScreenManager.CloseForm(False)
-                        'Else
-                        '    SplashScreenManager.CloseForm(False)
-                        '    XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                        '    Return
-                        'End If
-
-                    Catch ex As Exception
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        SplashScreenManager.CloseForm(False)
-                    End Try
-
-                Else
-                    Try
-
-                        OCBSaccountCurlbl = ""
-                        OCBSaccountNamelbl = ""
-                        Me.CustomerAccountNamelbl.Text = ""
-                        OCBSaccountlbl = ""
-
-                        Me.AccountStatusLbl.Text = ""
-                        OCBSaccountStatuslbl = ""
-
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load  Balances for all Customer Accounts from: " & d1 & " till " & d2)
-
-                        FILL_ALL_ACCOUNTS_DATATABLE()
-
-                        'Dim objCMD As SqlCommand = New SqlCommand("execute [CUSTOMER_VOLUMES_BALANCES]  @FROMDATE='" & rdsql1 & "', @TILLDATE='" & rdsql2 & "' ", conn)
-                        'objCMD.CommandTimeout = 5000
-                        'da = New SqlDataAdapter(objCMD)
-
-                        'Data reader
-                        'Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                        '    Using sqlCmd As New SqlCommand()
-                        '        sqlCmd.CommandText = "SELECT * FROM   [CUSTOMER_ACC_BALANCES] WHERE   ([BalanceDate] >= '" & rdsql1 & "') AND ([BalanceDate] <= '" & rdsql2 & "') ORDER BY [BalanceDate] asc"
-                        '        sqlCmd.Connection = sqlConn
-                        '        sqlCmd.CommandTimeout = 5000
-                        '        If sqlConn.State = ConnectionState.Closed Then
-                        '            sqlConn.Open()
-                        '        End If
-
-                        '        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                        '        objDataTable.Clear()
-                        '        objDataTable.Load(objDataReader)
-
-                        '        If sqlConn.State = ConnectionState.Open Then
-                        '            sqlConn.Close()
-                        '        End If
-
-                        '    End Using
-                        'End Using
-
-                        Me.SearchText_lbl.Text = "Closing Balances for all Customer Accounts  from " & d1 & " till " & d2
-
-                        'dt = New DataTable()
-                        'da.Fill(dt)
-                        'Results
-                        'If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-                        'Me.GridControl1.DataSource = Nothing
-                        'Me.GridControl1.DataSource = dt
-                        'Me.GridControl1.ForceInitialize()
-                        'SplashScreenManager.CloseForm(False)
-                        'Else
-                        'SplashScreenManager.CloseForm(False)
-                        'Me.GridControl1.DataSource = Nothing
-                        'XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                        'Exit Sub
-                        'End If
-
-                        'Results Datareader
-                        'If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                        '    Me.GridControl1.DataSource = Nothing
-                        '    Me.GridControl1.DataSource = objDataTable
-                        '    Me.GridControl1.ForceInitialize()
-                        '    Me.GridControl1.RefreshDataSource()
-                        '    SplashScreenManager.CloseForm(False)
-                        'Else
-                        '    SplashScreenManager.CloseForm(False)
-                        '    XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                        '    Return
-                        'End If
-
-                    Catch ex As Exception
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        SplashScreenManager.CloseForm(False)
-                    End Try
+                If IsNothing(Me.Account_LookUpEdit.Text) = False AndAlso IsNumeric(Me.Account_LookUpEdit.Text) = True Then
+                    Me.SearchText_lbl.Text = "Balances for Customer Account: " & Me.Account_LookUpEdit.Text & " -Currency: " & AccCCY & " - Name: " & Me.CustomerAccountNamelbl.Text & " from " & d1 & " till " & d2 & "  - Account Status: " & AccStatus
+                ElseIf Me.Account_LookUpEdit.Text = "" Then
+                    Me.SearchText_lbl.Text = "Closing Balances for all Customer Accounts  from " & d1 & " till " & d2
                 End If
+                DISABLE_BUTTONS()
+                Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                BgwLoadPostings = New BackgroundWorker
+                bgws.Add(BgwLoadPostings)
+                BgwLoadPostings.WorkerReportsProgress = True
+                BgwLoadPostings.RunWorkerAsync()
+
             Else
-                SplashScreenManager.CloseForm(False)
                 XtraMessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
             End If
         Else
             XtraMessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub BgwLoadPostings_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadPostings.DoWork
+        Try
+            If IsNothing(Me.Account_LookUpEdit.Text) = False AndAlso IsNumeric(Me.Account_LookUpEdit.Text) = True Then
+                Me.BgwLoadPostings.ReportProgress(10, "Load  Balances for Customer Account: " & Me.Account_LookUpEdit.Text & " from: " & d1 & " till " & d2)
+
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "SELECT * FROM  [CUSTOMER_ACC_BALANCES] 
+                                            WHERE  AccountNo = '" & Me.Account_LookUpEdit.Text & "' 
+                                            AND [BalanceDate] BETWEEN '" & rdsql1 & "') AND  '" & rdsql2 & "' 
+                                            and [AccountType] in ('Current account') 
+                                            ORDER BY [BalanceDate] asc"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+
+                    End Using
+                End Using
+
+            ElseIf Me.Account_LookUpEdit.Text = "" Then
+                Me.BgwLoadPostings.ReportProgress(10, "Load closing Balances for all Customer Accounts from: " & d1 & " till " & d2)
+
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "SELECT * FROM   [CUSTOMER_ACC_BALANCES] 
+                                            WHERE [BalanceDate] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "'
+                                            and [AccountType] in ('Current account') 
+                                            ORDER BY [BalanceDate] asc"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+                    End Using
+                End Using
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadPostings.CancelAsync()
+
+        End Try
+    End Sub
+
+    Private Sub BgwLoadPostings_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadPostings.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadPostings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadPostings.RunWorkerCompleted
+        Workers_Complete(BgwLoadPostings, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+        Me.GridControl1.DataSource = Nothing
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl1.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl1.DataSource = dtSqlQueries
+            Me.GridControl1.MainView = Customer_Balances_BasicView
+            Me.GridControl1.ForceInitialize()
+            Me.GridControl1.RefreshDataSource()
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
             Exit Sub
         End If
     End Sub
@@ -347,31 +313,12 @@ Public Class CustomerBalancesNEWG
         'End Try
     End Sub
 
-    Private Sub Customer_Balances_BasicView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Customer_Balances_BasicView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
+    Private Sub CustomerBalancesNEWG_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
 
-    Private Sub Customer_Balances_BasicView_ShownEditor(sender As Object, e As EventArgs) Handles Customer_Balances_BasicView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub GridView1_RowStyle(sender As Object, e As RowStyleEventArgs) Handles GridView1.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-
-        End If
-    End Sub
-
-    Private Sub GridView1_ShownEditor(sender As Object, e As EventArgs) Handles GridView1.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
         End If
     End Sub
 End Class

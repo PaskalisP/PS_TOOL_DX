@@ -156,6 +156,7 @@ Partial Class InternalNostroBalances
         Me.OCBS_BookingDate_From = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.SearchText_lbl = New DevExpress.XtraEditors.LabelControl()
         Me.Print_Export_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.Edit_BICDIR_Details_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -165,6 +166,7 @@ Partial Class InternalNostroBalances
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SSISBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -199,6 +201,7 @@ Partial Class InternalNostroBalances
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -215,7 +218,7 @@ Partial Class InternalNostroBalances
         Me.colLedgerBalanceEUR.OptionsColumn.AllowEdit = False
         Me.colLedgerBalanceEUR.OptionsColumn.ReadOnly = True
         Me.colLedgerBalanceEUR.Visible = True
-        Me.colLedgerBalanceEUR.VisibleIndex = 6
+        Me.colLedgerBalanceEUR.VisibleIndex = 7
         Me.colLedgerBalanceEUR.Width = 121
         '
         'colValueBalanceEUR
@@ -231,12 +234,12 @@ Partial Class InternalNostroBalances
         Me.colValueBalanceEUR.OptionsColumn.AllowEdit = False
         Me.colValueBalanceEUR.OptionsColumn.ReadOnly = True
         Me.colValueBalanceEUR.Visible = True
-        Me.colValueBalanceEUR.VisibleIndex = 7
+        Me.colValueBalanceEUR.VisibleIndex = 8
         Me.colValueBalanceEUR.Width = 117
         '
         'colBatchNo1
         '
-        Me.colBatchNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colBatchNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colBatchNo1.AppearanceHeader.Options.UseFont = True
         Me.colBatchNo1.FieldName = "BatchNo"
         Me.colBatchNo1.Name = "colBatchNo1"
@@ -336,6 +339,7 @@ Partial Class InternalNostroBalances
         Me.TableAdapterManager1.DailyPLSheetIncomeTableAdapter = Nothing
         Me.TableAdapterManager1.EXCHANGE_RATES_OCBSTableAdapter = Nothing
         Me.TableAdapterManager1.FRISTENTableAdapter = Nothing
+        Me.TableAdapterManager1.GL_ACCOUNTS_BAISTableAdapter = Nothing
         Me.TableAdapterManager1.GL_ACCOUNTS_NEWGTableAdapter = Nothing
         Me.TableAdapterManager1.GL_ACCOUNTSTableAdapter = Nothing
         Me.TableAdapterManager1.IndustrialClassLocalTableAdapter = Nothing
@@ -467,6 +471,7 @@ Partial Class InternalNostroBalances
         Me.Nostro_Balances_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.Nostro_Balances_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.Nostro_Balances_BasicView.OptionsView.ShowFooter = True
+        Me.Nostro_Balances_BasicView.OptionsView.ShowGroupPanel = False
         Me.Nostro_Balances_BasicView.PaintStyleName = "Skin"
         Me.Nostro_Balances_BasicView.ViewCaption = "Results by GL Item"
         '
@@ -496,6 +501,8 @@ Partial Class InternalNostroBalances
         Me.colNostroCode.Name = "colNostroCode"
         Me.colNostroCode.OptionsColumn.AllowEdit = False
         Me.colNostroCode.OptionsColumn.ReadOnly = True
+        Me.colNostroCode.Visible = True
+        Me.colNostroCode.VisibleIndex = 2
         Me.colNostroCode.Width = 108
         '
         'colNostroName
@@ -505,6 +512,8 @@ Partial Class InternalNostroBalances
         Me.colNostroName.Name = "colNostroName"
         Me.colNostroName.OptionsColumn.AllowEdit = False
         Me.colNostroName.OptionsColumn.ReadOnly = True
+        Me.colNostroName.Visible = True
+        Me.colNostroName.VisibleIndex = 3
         Me.colNostroName.Width = 364
         '
         'colGLCode
@@ -513,8 +522,6 @@ Partial Class InternalNostroBalances
         Me.colGLCode.Name = "colGLCode"
         Me.colGLCode.OptionsColumn.AllowEdit = False
         Me.colGLCode.OptionsColumn.ReadOnly = True
-        Me.colGLCode.Visible = True
-        Me.colGLCode.VisibleIndex = 2
         Me.colGLCode.Width = 89
         '
         'colLedgerBalance
@@ -528,7 +535,7 @@ Partial Class InternalNostroBalances
         Me.colLedgerBalance.OptionsColumn.AllowEdit = False
         Me.colLedgerBalance.OptionsColumn.ReadOnly = True
         Me.colLedgerBalance.Visible = True
-        Me.colLedgerBalance.VisibleIndex = 3
+        Me.colLedgerBalance.VisibleIndex = 4
         Me.colLedgerBalance.Width = 117
         '
         'colValueBalance
@@ -542,7 +549,7 @@ Partial Class InternalNostroBalances
         Me.colValueBalance.OptionsColumn.AllowEdit = False
         Me.colValueBalance.OptionsColumn.ReadOnly = True
         Me.colValueBalance.Visible = True
-        Me.colValueBalance.VisibleIndex = 4
+        Me.colValueBalance.VisibleIndex = 5
         Me.colValueBalance.Width = 117
         '
         'colBalanceDate
@@ -570,7 +577,7 @@ Partial Class InternalNostroBalances
         Me.colExchange_Rate.OptionsColumn.AllowEdit = False
         Me.colExchange_Rate.OptionsColumn.ReadOnly = True
         Me.colExchange_Rate.Visible = True
-        Me.colExchange_Rate.VisibleIndex = 5
+        Me.colExchange_Rate.VisibleIndex = 6
         Me.colExchange_Rate.Width = 97
         '
         'RepositoryItemComboBox1
@@ -706,7 +713,6 @@ Partial Class InternalNostroBalances
         Me.OCBS_Balances_BasicView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         StyleFormatCondition3.Appearance.BackColor = System.Drawing.Color.Black
         StyleFormatCondition3.Appearance.BackColor2 = System.Drawing.Color.Black
-        StyleFormatCondition3.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         StyleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Aqua
         StyleFormatCondition3.Appearance.Options.UseBackColor = True
         StyleFormatCondition3.Appearance.Options.UseFont = True
@@ -720,7 +726,6 @@ Partial Class InternalNostroBalances
         StyleFormatCondition3.Value1 = "OPENING BALANCE OCBS ACC."
         StyleFormatCondition4.Appearance.BackColor = System.Drawing.Color.Aqua
         StyleFormatCondition4.Appearance.BackColor2 = System.Drawing.Color.Cyan
-        StyleFormatCondition4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         StyleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Black
         StyleFormatCondition4.Appearance.Options.UseBackColor = True
         StyleFormatCondition4.Appearance.Options.UseFont = True
@@ -750,12 +755,13 @@ Partial Class InternalNostroBalances
         Me.OCBS_Balances_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.OCBS_Balances_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.OCBS_Balances_BasicView.OptionsView.ShowFooter = True
+        Me.OCBS_Balances_BasicView.OptionsView.ShowGroupPanel = False
         '
         'colIdNr1
         '
         Me.colIdNr1.AppearanceHeader.BackColor = System.Drawing.SystemColors.Control
         Me.colIdNr1.AppearanceHeader.BackColor2 = System.Drawing.SystemColors.Control
-        Me.colIdNr1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colIdNr1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colIdNr1.AppearanceHeader.ForeColor = System.Drawing.Color.Navy
         Me.colIdNr1.AppearanceHeader.Options.UseBackColor = True
         Me.colIdNr1.AppearanceHeader.Options.UseFont = True
@@ -767,7 +773,7 @@ Partial Class InternalNostroBalances
         '
         'colSequenceNo1
         '
-        Me.colSequenceNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colSequenceNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colSequenceNo1.AppearanceHeader.Options.UseFont = True
         Me.colSequenceNo1.FieldName = "SequenceNo"
         Me.colSequenceNo1.Name = "colSequenceNo1"
@@ -776,7 +782,7 @@ Partial Class InternalNostroBalances
         '
         'colGLBook1
         '
-        Me.colGLBook1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGLBook1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGLBook1.AppearanceHeader.Options.UseFont = True
         Me.colGLBook1.FieldName = "GL Book"
         Me.colGLBook1.Name = "colGLBook1"
@@ -785,7 +791,7 @@ Partial Class InternalNostroBalances
         '
         'colAccountingCentre1
         '
-        Me.colAccountingCentre1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAccountingCentre1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAccountingCentre1.AppearanceHeader.Options.UseFont = True
         Me.colAccountingCentre1.FieldName = "Accounting Centre"
         Me.colAccountingCentre1.Name = "colAccountingCentre1"
@@ -794,7 +800,7 @@ Partial Class InternalNostroBalances
         '
         'colGL_AC_No1
         '
-        Me.colGL_AC_No1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGL_AC_No1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGL_AC_No1.AppearanceHeader.Options.UseFont = True
         Me.colGL_AC_No1.Caption = "OCBS Account Nr."
         Me.colGL_AC_No1.FieldName = "GL_AC_No"
@@ -804,7 +810,7 @@ Partial Class InternalNostroBalances
         '
         'colValueDate1
         '
-        Me.colValueDate1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colValueDate1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colValueDate1.AppearanceHeader.Options.UseFont = True
         Me.colValueDate1.FieldName = "Value Date"
         Me.colValueDate1.Name = "colValueDate1"
@@ -817,7 +823,7 @@ Partial Class InternalNostroBalances
         '
         'colTransactionTime1
         '
-        Me.colTransactionTime1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colTransactionTime1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colTransactionTime1.AppearanceHeader.Options.UseFont = True
         Me.colTransactionTime1.FieldName = "Transaction Time"
         Me.colTransactionTime1.Name = "colTransactionTime1"
@@ -826,7 +832,7 @@ Partial Class InternalNostroBalances
         '
         'colAccountNo1
         '
-        Me.colAccountNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAccountNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAccountNo1.AppearanceHeader.Options.UseFont = True
         Me.colAccountNo1.FieldName = "AccountNo"
         Me.colAccountNo1.Name = "colAccountNo1"
@@ -836,7 +842,7 @@ Partial Class InternalNostroBalances
         '
         'colContractType1
         '
-        Me.colContractType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colContractType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colContractType1.AppearanceHeader.Options.UseFont = True
         Me.colContractType1.FieldName = "Contract Type"
         Me.colContractType1.Name = "colContractType1"
@@ -845,7 +851,7 @@ Partial Class InternalNostroBalances
         '
         'colProductType1
         '
-        Me.colProductType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colProductType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colProductType1.AppearanceHeader.Options.UseFont = True
         Me.colProductType1.FieldName = "Product Type"
         Me.colProductType1.Name = "colProductType1"
@@ -854,7 +860,7 @@ Partial Class InternalNostroBalances
         '
         'colEventType1
         '
-        Me.colEventType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colEventType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colEventType1.AppearanceHeader.Options.UseFont = True
         Me.colEventType1.FieldName = "Event Type"
         Me.colEventType1.Name = "colEventType1"
@@ -863,7 +869,7 @@ Partial Class InternalNostroBalances
         '
         'colCCY1
         '
-        Me.colCCY1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colCCY1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colCCY1.AppearanceHeader.Options.UseFont = True
         Me.colCCY1.FieldName = "CCY"
         Me.colCCY1.Name = "colCCY1"
@@ -875,7 +881,7 @@ Partial Class InternalNostroBalances
         '
         'colAmount1
         '
-        Me.colAmount1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAmount1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAmount1.AppearanceHeader.Options.UseFont = True
         Me.colAmount1.DisplayFormat.FormatString = "#,##0.00"
         Me.colAmount1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -889,7 +895,7 @@ Partial Class InternalNostroBalances
         '
         'colDR_CR1
         '
-        Me.colDR_CR1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colDR_CR1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colDR_CR1.AppearanceHeader.Options.UseFont = True
         Me.colDR_CR1.FieldName = "DR_CR"
         Me.colDR_CR1.Name = "colDR_CR1"
@@ -898,7 +904,7 @@ Partial Class InternalNostroBalances
         '
         'colGroupNo1
         '
-        Me.colGroupNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGroupNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGroupNo1.AppearanceHeader.Options.UseFont = True
         Me.colGroupNo1.FieldName = "GroupNo"
         Me.colGroupNo1.Name = "colGroupNo1"
@@ -907,7 +913,7 @@ Partial Class InternalNostroBalances
         '
         'colClientNo1
         '
-        Me.colClientNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colClientNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colClientNo1.AppearanceHeader.Options.UseFont = True
         Me.colClientNo1.FieldName = "ClientNo"
         Me.colClientNo1.Name = "colClientNo1"
@@ -916,7 +922,7 @@ Partial Class InternalNostroBalances
         '
         'colPortfolioCode1
         '
-        Me.colPortfolioCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colPortfolioCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colPortfolioCode1.AppearanceHeader.Options.UseFont = True
         Me.colPortfolioCode1.FieldName = "Portfolio Code"
         Me.colPortfolioCode1.Name = "colPortfolioCode1"
@@ -925,7 +931,7 @@ Partial Class InternalNostroBalances
         '
         'colNarrativeCode1
         '
-        Me.colNarrativeCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colNarrativeCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colNarrativeCode1.AppearanceHeader.Options.UseFont = True
         Me.colNarrativeCode1.FieldName = "Narrative Code"
         Me.colNarrativeCode1.Name = "colNarrativeCode1"
@@ -934,7 +940,7 @@ Partial Class InternalNostroBalances
         '
         'colReferenceCode1
         '
-        Me.colReferenceCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colReferenceCode1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colReferenceCode1.AppearanceHeader.Options.UseFont = True
         Me.colReferenceCode1.FieldName = "Reference Code"
         Me.colReferenceCode1.Name = "colReferenceCode1"
@@ -943,7 +949,7 @@ Partial Class InternalNostroBalances
         '
         'colChequeNo1
         '
-        Me.colChequeNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colChequeNo1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colChequeNo1.AppearanceHeader.Options.UseFont = True
         Me.colChequeNo1.FieldName = "ChequeNo"
         Me.colChequeNo1.Name = "colChequeNo1"
@@ -952,7 +958,7 @@ Partial Class InternalNostroBalances
         '
         'colAP1
         '
-        Me.colAP1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAP1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAP1.AppearanceHeader.Options.UseFont = True
         Me.colAP1.FieldName = "AP"
         Me.colAP1.Name = "colAP1"
@@ -961,7 +967,7 @@ Partial Class InternalNostroBalances
         '
         'colTRNAccountingCentre1
         '
-        Me.colTRNAccountingCentre1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colTRNAccountingCentre1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colTRNAccountingCentre1.AppearanceHeader.Options.UseFont = True
         Me.colTRNAccountingCentre1.FieldName = "TRN Accounting Centre"
         Me.colTRNAccountingCentre1.Name = "colTRNAccountingCentre1"
@@ -970,7 +976,7 @@ Partial Class InternalNostroBalances
         '
         'colCheckerID1
         '
-        Me.colCheckerID1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colCheckerID1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colCheckerID1.AppearanceHeader.Options.UseFont = True
         Me.colCheckerID1.FieldName = "Checker ID"
         Me.colCheckerID1.Name = "colCheckerID1"
@@ -979,7 +985,7 @@ Partial Class InternalNostroBalances
         '
         'colChannel1
         '
-        Me.colChannel1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colChannel1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colChannel1.AppearanceHeader.Options.UseFont = True
         Me.colChannel1.FieldName = "Channel"
         Me.colChannel1.Name = "colChannel1"
@@ -988,7 +994,7 @@ Partial Class InternalNostroBalances
         '
         'colOtherSystemKey1
         '
-        Me.colOtherSystemKey1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colOtherSystemKey1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colOtherSystemKey1.AppearanceHeader.Options.UseFont = True
         Me.colOtherSystemKey1.FieldName = "Other System Key"
         Me.colOtherSystemKey1.Name = "colOtherSystemKey1"
@@ -997,7 +1003,7 @@ Partial Class InternalNostroBalances
         '
         'colGeneratedType1
         '
-        Me.colGeneratedType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGeneratedType1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGeneratedType1.AppearanceHeader.Options.UseFont = True
         Me.colGeneratedType1.FieldName = "Generated Type"
         Me.colGeneratedType1.Name = "colGeneratedType1"
@@ -1006,7 +1012,7 @@ Partial Class InternalNostroBalances
         '
         'colReversalFlag1
         '
-        Me.colReversalFlag1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colReversalFlag1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colReversalFlag1.AppearanceHeader.Options.UseFont = True
         Me.colReversalFlag1.FieldName = "Reversal Flag"
         Me.colReversalFlag1.Name = "colReversalFlag1"
@@ -1015,7 +1021,7 @@ Partial Class InternalNostroBalances
         '
         'colDescription1
         '
-        Me.colDescription1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colDescription1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colDescription1.AppearanceHeader.Options.UseFont = True
         Me.colDescription1.FieldName = "Description"
         Me.colDescription1.Name = "colDescription1"
@@ -1027,7 +1033,7 @@ Partial Class InternalNostroBalances
         '
         'colGL_Rep_Date1
         '
-        Me.colGL_Rep_Date1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGL_Rep_Date1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGL_Rep_Date1.AppearanceHeader.Options.UseFont = True
         Me.colGL_Rep_Date1.Caption = "Booking Date"
         Me.colGL_Rep_Date1.FieldName = "GL_Rep_Date"
@@ -1041,7 +1047,7 @@ Partial Class InternalNostroBalances
         '
         'colGL_Item_Nr1
         '
-        Me.colGL_Item_Nr1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGL_Item_Nr1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGL_Item_Nr1.AppearanceHeader.Options.UseFont = True
         Me.colGL_Item_Nr1.Caption = "GL Item"
         Me.colGL_Item_Nr1.FieldName = "GL_Item_Nr"
@@ -1054,7 +1060,7 @@ Partial Class InternalNostroBalances
         '
         'colGL_AC_No_Name1
         '
-        Me.colGL_AC_No_Name1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colGL_AC_No_Name1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colGL_AC_No_Name1.AppearanceHeader.Options.UseFont = True
         Me.colGL_AC_No_Name1.Caption = "OCBS Acc. Name"
         Me.colGL_AC_No_Name1.FieldName = "GL_AC_No_Name"
@@ -1064,7 +1070,7 @@ Partial Class InternalNostroBalances
         '
         'colExchange_Rate1
         '
-        Me.colExchange_Rate1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colExchange_Rate1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colExchange_Rate1.AppearanceHeader.Options.UseFont = True
         Me.colExchange_Rate1.Caption = "Exchange Rate"
         Me.colExchange_Rate1.DisplayFormat.FormatString = "#,##0.0000"
@@ -1079,7 +1085,7 @@ Partial Class InternalNostroBalances
         '
         'colAmountInEuro1
         '
-        Me.colAmountInEuro1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.colAmountInEuro1.AppearanceHeader.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.colAmountInEuro1.AppearanceHeader.Options.UseFont = True
         Me.colAmountInEuro1.DisplayFormat.FormatString = "#,##0.00"
         Me.colAmountInEuro1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
@@ -1147,6 +1153,7 @@ Partial Class InternalNostroBalances
         Me.OCBS_Postings_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.OCBS_Postings_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.OCBS_Postings_BasicView.OptionsView.ShowFooter = True
+        Me.OCBS_Postings_BasicView.OptionsView.ShowGroupPanel = False
         Me.OCBS_Postings_BasicView.PaintStyleName = "Skin"
         Me.OCBS_Postings_BasicView.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.GridColumn33, DevExpress.Data.ColumnSortOrder.Ascending)})
         Me.OCBS_Postings_BasicView.ViewCaption = "Results by GL Item"
@@ -1415,6 +1422,7 @@ Partial Class InternalNostroBalances
         '
         'LoadOCBS_PostingsBalances_btn
         '
+        Me.LoadOCBS_PostingsBalances_btn.ImageOptions.Image = CType(resources.GetObject("LoadOCBS_PostingsBalances_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadOCBS_PostingsBalances_btn.ImageOptions.ImageIndex = 6
         Me.LoadOCBS_PostingsBalances_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadOCBS_PostingsBalances_btn.Location = New System.Drawing.Point(423, 101)
@@ -1620,6 +1628,7 @@ Partial Class InternalNostroBalances
         '
         'LoadOCBS_btn
         '
+        Me.LoadOCBS_btn.ImageOptions.Image = CType(resources.GetObject("LoadOCBS_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadOCBS_btn.ImageOptions.ImageIndex = 6
         Me.LoadOCBS_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadOCBS_btn.Location = New System.Drawing.Point(247, 101)
@@ -1685,6 +1694,7 @@ Partial Class InternalNostroBalances
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.SearchText_lbl)
         Me.LayoutControl1.Controls.Add(Me.Print_Export_Gridview_btn)
         Me.LayoutControl1.Controls.Add(Me.Edit_BICDIR_Details_btn)
@@ -1696,6 +1706,27 @@ Partial Class InternalNostroBalances
         Me.LayoutControl1.Size = New System.Drawing.Size(1460, 577)
         Me.LayoutControl1.TabIndex = 119
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(192, 24)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 127
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'SearchText_lbl
         '
@@ -1759,7 +1790,7 @@ Partial Class InternalNostroBalances
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem5})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(1440, 50)
@@ -1780,9 +1811,9 @@ Partial Class InternalNostroBalances
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(168, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(1311, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1161, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(18, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -1794,6 +1825,16 @@ Partial Class InternalNostroBalances
         Me.LayoutControlItem4.Size = New System.Drawing.Size(168, 26)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.ProgressPanel1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(168, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1143, 26)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem3
         '
@@ -1812,7 +1853,7 @@ Partial Class InternalNostroBalances
         Me.ClientSize = New System.Drawing.Size(1445, 721)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.GroupControl2)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("InternalNostroBalances.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "InternalNostroBalances"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Internal Nostro Accounts Balances"
@@ -1849,6 +1890,7 @@ Partial Class InternalNostroBalances
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -1990,4 +2032,6 @@ Partial Class InternalNostroBalances
     Friend WithEvents GridColumn36 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn37 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colClientName2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
 End Class

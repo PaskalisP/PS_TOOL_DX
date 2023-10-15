@@ -1365,6 +1365,11 @@
     <Compile Include="ALL ITEMS\MELDEWESEN\Forms\ZvStatistik_PayCard_Parameter.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditMigrationRiskDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CreditMigrationRiskDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditSpreadRiskDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1424,6 +1429,12 @@
       <DependentUpon>CashPledge.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CashPledge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditMigrationRiskCalc.designer.vb">
+      <DependentUpon>CreditMigrationRiskCalc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditMigrationRiskCalc.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.Designer.vb">
@@ -1693,6 +1704,12 @@
     <Compile Include="Default\InputBox.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Default\LoginForm.designer.vb">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default\LoginForm.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Default\MyPivotGrid.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -1836,6 +1853,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Person.vb" />
+    <Compile Include="Settings.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ALL ITEMS\ACCOUNTING\Forms\ChinesseReporting.resx">
@@ -2288,6 +2306,9 @@
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CashPledge.resx">
       <DependentUpon>CashPledge.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditMigrationRiskCalc.resx">
+      <DependentUpon>CreditMigrationRiskCalc.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.resx">
       <DependentUpon>CreditRiskMak.vb</DependentUpon>
     </EmbeddedResource>
@@ -2410,6 +2431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Default\InputBox.resx">
       <DependentUpon>InputBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Default\LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Default\PdfDevForm.resx">
       <DependentUpon>PdfDevForm.vb</DependentUpon>
@@ -2791,6 +2815,17 @@
     </None>
     <None Include="ALL ITEMS\MELDEWESEN\Datasets\ZvStatistik_DataSet.xss">
       <DependentUpon>ZvStatistik_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditMigrationRiskDataSet.xsc">
+      <DependentUpon>CreditMigrationRiskDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditMigrationRiskDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CreditMigrationRiskDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditMigrationRiskDataSet.xss">
+      <DependentUpon>CreditMigrationRiskDataSet.xsd</DependentUpon>
     </None>
     <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\CreditSpreadRiskDataSet.xsc">
       <DependentUpon>CreditSpreadRiskDataSet.xsd</DependentUpon>

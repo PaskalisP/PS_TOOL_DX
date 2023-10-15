@@ -329,6 +329,9 @@ Public Class PSTOOL_MAIN_Form
 
         'Try
 
+        UserLookAndFeel.Default.SetSkinStyle("Sharp Plus")
+        CurrentSkinName = "Sharp Plus"
+
         Me.TreeList1.OptionsDragAndDrop.DragNodesMode = DevExpress.XtraTreeList.TreeListDragNodesMode.Advanced
         'Me.AccordionControl1.Visible = False
 
@@ -352,18 +355,19 @@ Public Class PSTOOL_MAIN_Form
 
         'Get Server Name and showing in Window Text
         CurrentUserWindowsID = SystemInformation.UserName
-        Me.Text = My.Application.Info.Title & " - Server Instance: " & TOOL_SQL_SERVER & " - Database: " & TOOL_SQL_DATABASE
+        Me.Text = My.Application.Info.Title & " " & DATABASE_ENVIRONMENT.ToUpper & " - Server Instance: " & TOOL_SQL_SERVER & " - Database: " & TOOL_SQL_DATABASE
 
 
         '*********GET VERSION INFO*********
         '**********************************
-        siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2023 build {2} rev {3} Current User: {4}  - Session ID: {5}",
+        siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2023 build {2} rev {3} Current User: {4}  - Session ID: {5} - Environment: {6}",
                                     My.Application.Info.Version.Major,
                                     My.Application.Info.Version.Minor,
                                     My.Application.Info.Version.Build,
                                     My.Application.Info.Version.Revision,
-                                    SystemInformation.UserName,
-                                    PSTOOL_SessionID)
+                                    CurrentUserWindowsID,
+                                    PSTOOL_SessionID,
+                                    DATABASE_ENVIRONMENT.ToUpper)
         '******************************************************************************************
 
 
@@ -371,6 +375,14 @@ Public Class PSTOOL_MAIN_Form
 
         Me.SystemFilesTimer.Enabled = True
         Me.SystemFilesTimer.Start()
+
+        If DATABASE_ENVIRONMENT.ToUpper = "PRODUCTION" Then
+            siInfo.ItemAppearance.Normal.BackColor = System.Drawing.Color.DarkGreen
+            siInfo.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White
+        Else
+            siInfo.ItemAppearance.Normal.BackColor = System.Drawing.Color.Red
+            siInfo.ItemAppearance.Normal.ForeColor = System.Drawing.Color.White
+        End If
 
         '**************************************************************************
         'Only for 1 Instance of the Application
@@ -387,11 +399,10 @@ Public Class PSTOOL_MAIN_Form
         'cmd.CommandText = "INSERT INTO [CURRENT USERS] ([UserName],[Logged on]) Values ('" & SystemInformation.UserName & "', Getdate()) "
         'cmd.CommandText = "Select Count(ID) from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "' "
         'PSTOOL_SessionID = cmd.ExecuteScalar+1
-        cmd.CommandText = "Select 'UserID'=Case when (Select Count(ID) from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "')=0 then 1 when (Select Count(ID) from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "')>0 then (Select Max(SessionID)+1 from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "') end"
-        PSTOOL_SessionID = cmd.ExecuteScalar
-
-        cmd.CommandText = "INSERT INTO [CURRENT USERS] ([UserName],[Logged on],[HostName],[IP_Address],[SessionID]) Values ('" & SystemInformation.UserName & "', Getdate() , (SELECT HOST_NAME()), (SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID), " & Str(PSTOOL_SessionID) & ") "
-        cmd.ExecuteNonQuery()
+        'cmd.CommandText = "Select 'UserID'=Case when (Select Count(ID) from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "')=0 then 1 when (Select Count(ID) from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "')>0 then (Select Max(SessionID)+1 from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "') end"
+        'PSTOOL_SessionID = cmd.ExecuteScalar
+        'cmd.CommandText = "INSERT INTO [CURRENT USERS] ([UserName],[Logged on],[HostName],[IP_Address],[SessionID]) Values ('" & SystemInformation.UserName & "', Getdate() , (SELECT HOST_NAME()), (SELECT client_net_address FROM sys.dm_exec_connections WHERE session_id = @@SPID), " & Str(PSTOOL_SessionID) & ") "
+        'cmd.ExecuteNonQuery()
         'cmd.CommandText = "INSERT INTO [CURRENT USERS] ([UserName],[Logged on],[SessionID]) Select '" & SystemInformation.UserName & "', Getdate() , (Select 'SessionID'=Case when (Select Count([SessionID]) from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "')>0 then Count([SessionID])+1 else 1 end from [CURRENT USERS] where [UserName]='" & SystemInformation.UserName & "')"
         'cmd.ExecuteNonQuery()
         'Get Last Date of FX ALL DEALS Update
@@ -404,44 +415,44 @@ Public Class PSTOOL_MAIN_Form
         '****************************************************************************
 
 
+        'OLD SCRIPT
+        'If Me.Text.EndsWith("TEST") = True Then
+        '    UserLookAndFeel.Default.SetSkinStyle("Blueprint")
+        '    CurrentSkinName = "Blueprint"
+        '    Me.iNewPSTOOL_Test_Session.Visibility = BarItemVisibility.Never
+        '    'Me.BackgroundImage = LogoImageCollection.Images(4)
+        '    'Me.BackgroundImageLayout = ImageLayout.Center
 
-        If Me.Text.EndsWith("TEST") = True Then
-            UserLookAndFeel.Default.SetSkinStyle("Blueprint")
-            CurrentSkinName = "Blueprint"
-            Me.iNewPSTOOL_Test_Session.Visibility = BarItemVisibility.Never
-            'Me.BackgroundImage = LogoImageCollection.Images(4)
-            'Me.BackgroundImageLayout = ImageLayout.Center
+        '    '*********GET VERSION INFO with User Session ID*********
+        '    '**********************************
+        '    siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2023 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
+        '                               My.Application.Info.Version.Major,
+        '                               My.Application.Info.Version.Minor,
+        '                               My.Application.Info.Version.Build,
+        '                               My.Application.Info.Version.Revision,
+        '                               SystemInformation.UserName,
+        '                               PSTOOL_SessionID,
+        '                               "+++++++TEST+++++++")
 
-            '*********GET VERSION INFO with User Session ID*********
-            '**********************************
-            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2023 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
-                                       My.Application.Info.Version.Major,
-                                       My.Application.Info.Version.Minor,
-                                       My.Application.Info.Version.Build,
-                                       My.Application.Info.Version.Revision,
-                                       SystemInformation.UserName,
-                                       PSTOOL_SessionID,
-                                       "+++++++TEST+++++++")
+        '    '**********************************
+        'Else
+        '    UserLookAndFeel.Default.SetSkinStyle("Sharp Plus")
+        '    CurrentSkinName = "Sharp Plus"
+        '    'Me.BackgroundImage = LogoImageCollection.Images(6)
+        '    'Me.BackgroundImageLayout = ImageLayout.Center
 
-            '**********************************
-        Else
-            UserLookAndFeel.Default.SetSkinStyle("Sharp Plus")
-            CurrentSkinName = "Sharp Plus"
-            'Me.BackgroundImage = LogoImageCollection.Images(6)
-            'Me.BackgroundImageLayout = ImageLayout.Center
-
-            '*********GET VERSION INFO with User Session ID*********
-            '**********************************
-            siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2022 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
-                                       My.Application.Info.Version.Major,
-                                       My.Application.Info.Version.Minor,
-                                       My.Application.Info.Version.Build,
-                                       My.Application.Info.Version.Revision,
-                                       SystemInformation.UserName,
-                                       PSTOOL_SessionID,
-                                       "PRODUCTION")
-            '**********************************
-        End If
+        '    '*********GET VERSION INFO with User Session ID*********
+        '    '**********************************
+        '    siInfo.Caption = String.Format(" Version {0}.{1:00} (c) CCBFF 2022 build {2} rev {3} Current User: {4} - Session ID: {5} - Environment: {6}",
+        '                               My.Application.Info.Version.Major,
+        '                               My.Application.Info.Version.Minor,
+        '                               My.Application.Info.Version.Build,
+        '                               My.Application.Info.Version.Revision,
+        '                               SystemInformation.UserName,
+        '                               PSTOOL_SessionID,
+        '                               "PRODUCTION")
+        '    '**********************************
+        'End If
 
 
         Me.DocumentManager1.View = Me.NativeMdiView1
@@ -900,7 +911,23 @@ Public Class PSTOOL_MAIN_Form
                 Me.SystemFilesTimer.Enabled = False
                 Me.SystemFilesTimer.Stop()
 
-                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                'XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Dim args As XtraMessageBoxArgs = New XtraMessageBoxArgs()
+                args.AutoCloseOptions.ShowTimerOnDefaultButton = True
+                args.AutoCloseOptions.Delay = 5000
+                args.Caption = "ERROR"
+                args.Text = ex.Message & vbNewLine & "PS TOOL will be closed!"
+                args.Icon = System.Drawing.SystemIcons.Error
+                args.Buttons = New DialogResult() {DialogResult.OK}
+                XtraMessageBox.SmartTextWrap = True
+                XtraMessageBox.Show(args)
+                For j As Integer = Application.OpenForms.Count - 1 To 0 Step -1
+                    Dim frm = Application.OpenForms(j)
+                    If frm.Text <> Me.Text Then
+                        frm.Close()
+                        frm.Dispose()
+                    End If
+                Next
                 'If cmdSYSTEM.Connection.State = ConnectionState.Open Then
                 'cmdSYSTEM.Connection.Close()
                 'End If
@@ -1781,6 +1808,33 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.CloseForm(False)
         End If
     End Sub
+
+    Private Sub RISKCONTROL_CreditMigrationRiskCalculation_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_CreditMigrationRiskCalculation_Element.Click
+        If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("CREDIT MIGRATION RISK")
+            ' Place code here
+            Dim c As New CreditMigrationRiskCalc
+
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
 
     Private Sub RISKCONTROL_CurrencyRiskCalculation_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_CurrencyRiskCalculation_Element.Click
         If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
@@ -5152,24 +5206,32 @@ Public Class PSTOOL_MAIN_Form
 
     End Sub
 
-    Private Sub iNewPSTOOL_Test_Session_ItemClick(sender As Object, e As ItemClickEventArgs) Handles iNewPSTOOL_Test_Session.ItemClick
 
-        Try
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("Starting new PS TOOL Session (Test Environment)...")
-            Thread.Sleep(2000)
-            QueryText = "SELECT [PARAMETER2] FROM [PARAMETER] where [PARAMETER STATUS] in ('Y') and IdABTEILUNGSPARAMETER in ('PS_TOOL_TEST_ENVIRONMENT_DIR') and IdABTEILUNGSCODE_NAME in ('EDP')"
-            da = New SqlDataAdapter(QueryText.Trim(), conn)
-            dt = New System.Data.DataTable()
-            da.Fill(dt)
-            Dim PS_TOOL_Test_Directory As String = dt.Rows.Item(0).Item("PARAMETER2")
-            Process.Start(PS_TOOL_Test_Directory)
-            SplashScreenManager.CloseForm(False)
-        Catch ex As Exception
-            SplashScreenManager.CloseForm(False)
-            MessageBox.Show(ex.Message.ToString, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-            Return
-        End Try
+    Private Sub bbi_KillSession_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_KillSession.ItemClick
+        If XtraMessageBox.Show("Should the current Session be closed?" & vbNewLine & "All opened windows will be closed", "KILLING CURRENT PSTOOL SESSION", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = DialogResult.Yes Then
+            'For i = Me.MdiChildren.Length - 1 To 0 Step -1
+            '    Me.MdiChildren(i).Close()
+            'Next
+
+            For j As Integer = Application.OpenForms.Count - 1 To 0 Step -1
+                Dim frm = Application.OpenForms(j)
+                If frm.Text <> Me.Text Then
+                    frm.Close()
+                    frm.Dispose()
+                End If
+            Next
+
+            Application.Exit()
+        End If
+    End Sub
+
+    Private Sub bbi_RestartSession_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_RestartSession.ItemClick
+        If XtraMessageBox.Show("Should the current Session be closed and restarted?", "RESTART PSTOOL APPLICATION", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = DialogResult.Yes Then
+            For i = Me.MdiChildren.Length - 1 To 0 Step -1
+                Me.MdiChildren(i).Close()
+            Next
+            Application.Restart()
+        End If
     End Sub
 
     Private Sub iBankData_ItemClick(sender As Object, e As ItemClickEventArgs) Handles iBankData.ItemClick
@@ -11633,19 +11695,66 @@ Public Class PSTOOL_MAIN_Form
                     objMutex.Close()
                     objMutex = Nothing
                 Catch ex As Exception
-                    XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    XtraMessageBox.Show("PS TOOL will be closed!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    'XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    'XtraMessageBox.Show("PS TOOL will be closed!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     CloseSqlConnections()
+                    Dim args As XtraMessageBoxArgs = New XtraMessageBoxArgs()
+                    args.AutoCloseOptions.ShowTimerOnDefaultButton = True
+                    args.AutoCloseOptions.Delay = 5000
+                    args.Caption = "ERROR"
+                    args.Text = ex.Message & vbNewLine & "PS TOOL will be closed!"
+                    args.Icon = System.Drawing.SystemIcons.Error
+                    args.Buttons = New DialogResult() {DialogResult.OK}
+                    XtraMessageBox.Show(args)
+                    For j As Integer = Application.OpenForms.Count - 1 To 0 Step -1
+                        Dim frm = Application.OpenForms(j)
+                        If frm.Text <> Me.Text Then
+                            frm.Close()
+                            frm.Dispose()
+                        End If
+                    Next
                     Application.Exit()
                 End Try
             End If
             If cmd.Connection.State = ConnectionState.Broken Then
                 Try
-                    XtraMessageBox.Show("PS TOOL will be closed!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    'XtraMessageBox.Show("PS TOOL will be closed!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Dim args As XtraMessageBoxArgs = New XtraMessageBoxArgs()
+                    args.AutoCloseOptions.ShowTimerOnDefaultButton = True
+                    args.AutoCloseOptions.Delay = 5000
+                    args.Caption = "Connection broked"
+                    args.Text = "PS TOOL will be closed!"
+                    args.Icon = System.Drawing.SystemIcons.Error
+                    args.Buttons = New DialogResult() {DialogResult.OK}
+                    XtraMessageBox.SmartTextWrap = True
+                    XtraMessageBox.Show(args)
+                    For j As Integer = Application.OpenForms.Count - 1 To 0 Step -1
+                        Dim frm = Application.OpenForms(j)
+                        If frm.Text <> Me.Text Then
+                            frm.Close()
+                            frm.Dispose()
+                        End If
+                    Next
                     Application.Exit()
                 Catch ex As Exception
-                    XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    XtraMessageBox.Show("PS TOOL will be closed!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    'XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    'XtraMessageBox.Show("PS TOOL will be closed!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Dim args As XtraMessageBoxArgs = New XtraMessageBoxArgs()
+                    args.AutoCloseOptions.ShowTimerOnDefaultButton = True
+                    args.AutoCloseOptions.Delay = 5000
+                    args.Caption = "ERROR"
+                    args.Text = ex.Message & vbNewLine & "PS TOOL will be closed!"
+                    args.Icon = System.Drawing.SystemIcons.Error
+                    args.Buttons = New DialogResult() {DialogResult.OK}
+                    XtraMessageBox.SmartTextWrap = True
+                    XtraMessageBox.Show(args)
+                    For j As Integer = Application.OpenForms.Count - 1 To 0 Step -1
+                        Dim frm = Application.OpenForms(j)
+                        If frm.Text <> Me.Text Then
+                            frm.Close()
+                            frm.Dispose()
+                        End If
+                    Next
                     Application.Exit()
                 End Try
 
@@ -12660,8 +12769,7 @@ Public Class PSTOOL_MAIN_Form
         End If
         'Dim image As System.Drawing.Image = DevExpress.Utils.Frames.ApplicationCaption8_1.GetImageLogoEx(LookAndFeel)
 
-
-        If Me.Text.EndsWith("CCB_PS_TOOL_TEST") = True OrElse Me.Text.Contains("CCB_PS_TOOL_TEST") Then
+        If DATABASE_ENVIRONMENT.ToUpper = "TEST" Then
             Dim image As System.Drawing.Image = LogoImageCollection.Images(4)
             If bounds.Height < image.Height Then
                 Return
@@ -12675,44 +12783,10 @@ Public Class PSTOOL_MAIN_Form
             bounds.Width = width
             bounds.Y += offset
             bounds.Height = image.Height
-            e.Graphics.DrawImage(image, bounds.Location)
-            'Text
-            Dim str As StringFormat = StringFormat.GenericDefault
-            str.Alignment = StringAlignment.Center
-            Dim ribbon As RibbonControl = TryCast(sender, RibbonControl)
-            Dim ri As RibbonViewInfo = ribbon.ViewInfo
-            Dim fontSize As Integer = 40
-            Dim boundsText As New System.Drawing.Rectangle(ri.Panel.Bounds.Left, (ri.Panel.Bounds.Top + ri.Panel.Bounds.Bottom - fontSize) / 2, ri.Panel.Bounds.Width, fontSize)
-            e.Graphics.DrawString("PS TOOL TEST Environment", New System.Drawing.Font("Tahoma", fontSize, FontStyle.Bold), Brushes.Red, ri.Panel.Bounds, str)
-            'TEST
-            '' Create string to draw.
-            'Dim drawString As [String] = "Sample Text"
+            'e.Graphics.DrawImage(image, bounds.Location)
+            e.Graphics.DrawImage(image, New System.Drawing.Rectangle(bounds.Location, image.Size), New System.Drawing.Rectangle(Point.Empty, image.Size), GraphicsUnit.Pixel)
 
-            '' Create font and brush.
-            'Dim drawFont As New System.Drawing.Font("Arial", 16)
-            'Dim drawBrush As New SolidBrush(System.Drawing.Color.Red)
-
-            '' Create rectangle for drawing.
-            'Dim x As Single = 12.0F
-            'Dim y As Single = 150.0F
-            'width = 200.0F
-            'Dim height As Single = 50.0F
-            'Dim drawRect As New RectangleF(x, y, width, height)
-
-            '' Draw rectangle to screen.
-            'Dim blackPen As New Pen(System.Drawing.Color.Red)
-            'e.Graphics.DrawRectangle(blackPen, x, y, width, height)
-
-            '' Set format of string.
-            'Dim drawFormat As New StringFormat
-            'drawFormat.Alignment = StringAlignment.Center
-
-            '' Draw string to screen.
-            'e.Graphics.DrawString(drawString, drawFont, drawBrush, _
-            'drawRect, drawFormat)
-
-        Else
-
+        ElseIf DATABASE_ENVIRONMENT.ToUpper = "PRODUCTION" Then
             Dim image As System.Drawing.Image = LogoImageCollection.Images(5)
             If bounds.Height < image.Height Then
                 Return
@@ -12726,8 +12800,80 @@ Public Class PSTOOL_MAIN_Form
             bounds.Width = width
             bounds.Y += offset
             bounds.Height = image.Height
-            e.Graphics.DrawImage(image, bounds.Location)
+            'e.Graphics.DrawImage(image, bounds.Location)
+            e.Graphics.DrawImage(image, New System.Drawing.Rectangle(bounds.Location, image.Size), New System.Drawing.Rectangle(Point.Empty, image.Size), GraphicsUnit.Pixel)
         End If
+
+
+        'OLD SCRIPT
+        'If Me.Text.EndsWith("CCB_PS_TOOL_TEST") = True OrElse Me.Text.Contains("CCB_PS_TOOL_TEST") Then
+        '    Dim image As System.Drawing.Image = LogoImageCollection.Images(4)
+        '    If bounds.Height < image.Height Then
+        '        Return
+        '    End If
+        '    Dim offset As Integer = (bounds.Height - image.Height) / 2
+        '    Dim width As Integer = image.Width + 15
+        '    bounds.X = bounds.Width - width
+        '    If bounds.X < minX Then
+        '        Return
+        '    End If
+        '    bounds.Width = width
+        '    bounds.Y += offset
+        '    bounds.Height = image.Height
+        '    e.Graphics.DrawImage(image, bounds.Location)
+        '    'Text
+        '    Dim str As StringFormat = StringFormat.GenericDefault
+        '    str.Alignment = StringAlignment.Center
+        '    Dim ribbon As RibbonControl = TryCast(sender, RibbonControl)
+        '    Dim ri As RibbonViewInfo = ribbon.ViewInfo
+        '    Dim fontSize As Integer = 40
+        '    Dim boundsText As New System.Drawing.Rectangle(ri.Panel.Bounds.Left, (ri.Panel.Bounds.Top + ri.Panel.Bounds.Bottom - fontSize) / 2, ri.Panel.Bounds.Width, fontSize)
+        '    e.Graphics.DrawString("PS TOOL TEST Environment", New System.Drawing.Font("Tahoma", fontSize, FontStyle.Bold), Brushes.Red, ri.Panel.Bounds, str)
+        '    'TEST
+        '    '' Create string to draw.
+        '    'Dim drawString As [String] = "Sample Text"
+
+        '    '' Create font and brush.
+        '    'Dim drawFont As New System.Drawing.Font("Arial", 16)
+        '    'Dim drawBrush As New SolidBrush(System.Drawing.Color.Red)
+
+        '    '' Create rectangle for drawing.
+        '    'Dim x As Single = 12.0F
+        '    'Dim y As Single = 150.0F
+        '    'width = 200.0F
+        '    'Dim height As Single = 50.0F
+        '    'Dim drawRect As New RectangleF(x, y, width, height)
+
+        '    '' Draw rectangle to screen.
+        '    'Dim blackPen As New Pen(System.Drawing.Color.Red)
+        '    'e.Graphics.DrawRectangle(blackPen, x, y, width, height)
+
+        '    '' Set format of string.
+        '    'Dim drawFormat As New StringFormat
+        '    'drawFormat.Alignment = StringAlignment.Center
+
+        '    '' Draw string to screen.
+        '    'e.Graphics.DrawString(drawString, drawFont, drawBrush, _
+        '    'drawRect, drawFormat)
+
+        'Else
+
+        '    Dim image As System.Drawing.Image = LogoImageCollection.Images(5)
+        '    If bounds.Height < image.Height Then
+        '        Return
+        '    End If
+        '    Dim offset As Integer = (bounds.Height - image.Height) / 2
+        '    Dim width As Integer = image.Width + 15
+        '    bounds.X = bounds.Width - width
+        '    If bounds.X < minX Then
+        '        Return
+        '    End If
+        '    bounds.Width = width
+        '    bounds.Y += offset
+        '    bounds.Height = image.Height
+        '    'e.Graphics.DrawImage(image, bounds.Location)
+        '    e.Graphics.DrawImage(image, New System.Drawing.Rectangle(bounds.Location, image.Size), New System.Drawing.Rectangle(Point.Empty, image.Size), GraphicsUnit.Pixel)
+        'End If
 
 
 

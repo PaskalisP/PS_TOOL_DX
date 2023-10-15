@@ -198,7 +198,7 @@ Public Class AntiMoneyAllPaymentItems
         Workers_Complete(BgwLoadCustomerPayments, e)
         ENABLE_BUTTONS()
         Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
-
+        Me.GridControl4.DataSource = Nothing
         'Results Datareader
         If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
             'Me.GridControl4.BeginUpdate()
@@ -211,7 +211,7 @@ Public Class AntiMoneyAllPaymentItems
             'Me.GridControl4.RefreshDataSource()
             Me.LayoutControlGroup2.Text = "Customer Payments  from: " & Frd & " till " & Trd
         Else
-            XtraMessageBox.Show("There are no Data for the specified Pariod", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
             Exit Sub
         End If
     End Sub

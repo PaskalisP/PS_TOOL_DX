@@ -334,6 +334,16 @@ Public Class ManualImport
         inStream.Close()
     End Sub
 
+    Private Sub End_Excel_App(datestart As Date, dateEnd As Date)
+        Dim xlp() As Process = Process.GetProcessesByName("EXCEL")
+        For Each Process As Process In xlp
+            If Process.StartTime >= datestart And Process.StartTime <= dateEnd Then
+                Process.Kill()
+                Exit For
+            End If
+        Next
+    End Sub
+
 #End Region
 
 #Region "GRIDVIEWS_DEFAULT_SETTINGS"
@@ -414,12 +424,13 @@ Public Class ManualImport
         Dim rowHandle As Integer = view.FocusedRowHandle
         If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_Selected = CInt(view.GetRowCellValue(rowHandle, colID))
+            If view.FocusedColumn.FieldName = "ProcNr" OrElse view.FocusedColumn.FieldName = "CurrentFileName" Then
+                view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+            Else
+                view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
+            End If
         End If
-        'If view.FocusedColumn.FieldName = "ProcNr" OrElse view.FocusedColumn.FieldName = "CurrentFileName" Then
-        '    view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
-        'Else
-        '    view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
-        'End If
+
         'If Me.ManualImportProcedures_BasicView.IsNewItemRow(Me.ManualImportProcedures_BasicView.FocusedRowHandle) = True Then
         '    Me.ManualImportProcedures_BasicView.Columns.ColumnByFieldName("ProcName").OptionsColumn.ReadOnly = False
         'Else
@@ -430,11 +441,14 @@ Public Class ManualImport
     Private Sub ManualImportProcedures_BasicView_FocusedColumnChanged(sender As Object, e As FocusedColumnChangedEventArgs) Handles ManualImportProcedures_BasicView.FocusedColumnChanged
         Dim view As GridView = TryCast(sender, GridView)
         Dim rowHandle As Integer = view.FocusedRowHandle
-        'If view.FocusedColumn.FieldName = "ProcNr" OrElse view.FocusedColumn.FieldName = "CurrentFileName" Then
-        '    view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
-        'Else
-        '    view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
-        'End If
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            If view.FocusedColumn.FieldName = "ProcNr" OrElse view.FocusedColumn.FieldName = "CurrentFileName" Then
+                view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+            Else
+                view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
+            End If
+        End If
+
     End Sub
 
     Private Sub ManualImportProcedures_BasicView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles ManualImportProcedures_BasicView.RowCellClick
@@ -443,12 +457,13 @@ Public Class ManualImport
         Dim rowHandle As Integer = view.FocusedRowHandle
         If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
             ID_Selected = CInt(view.GetRowCellValue(rowHandle, colID))
+            If e.Column.FieldName = "ProcNr" OrElse e.Column.FieldName = "CurrentFileName" Then
+                view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
+            Else
+                view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
+            End If
         End If
-        'If e.Column.FieldName = "ProcNr" OrElse e.Column.FieldName = "CurrentFileName" Then
-        '    view.OptionsBehavior.EditingMode = GridEditingMode.Inplace
-        'Else
-        '    view.OptionsBehavior.EditingMode = GridEditingMode.EditFormInplaceHideCurrentRow
-        'End If
+
     End Sub
 
     Private Sub ManualImportProcedures_BasicView_EditFormPrepared(sender As Object, e As EditFormPreparedEventArgs) Handles ManualImportProcedures_BasicView.EditFormPrepared
@@ -1116,6 +1131,9 @@ Public Class ManualImport
                                         Me.BgwFilesImport.ReportProgress(50, "File:" & CurrentFileForImport & " marked for convertion: " & FileConvertion)
                                         If CurrentFileForImport.ToUpper.Trim.EndsWith(".XLS") = True Then
                                             Me.BgwFilesImport.ReportProgress(50, "Start converting File:" & CurrentFileForImport & " from: " & FileConvertion)
+                                            '+++++++++++++++++++++++++++++++++++
+                                            'StartDate for ExcelProcess
+                                            Dim datestart As Date = Date.Now
                                             EXCELL = CreateObject("Excel.Application")
                                             xlWorkBook = EXCELL.Workbooks.Open(ManualImportDirectory & CurrentFileForImport)
                                             EXCELL.Visible = False
@@ -1125,6 +1143,10 @@ Public Class ManualImport
                                             xlWorkBook.Close()
                                             EXCELL.Quit()
                                             EXCELL = Nothing
+                                            'EndDate for excel Process
+                                            Dim dateEnd As Date = Date.Now
+                                            End_Excel_App(datestart, dateEnd) ' This closes excel proces
+                                            '+++++++++++++++++++++++++++++++++
                                             If ConvertWorkbook Is Nothing Then
                                                 ConvertWorkbook = New Workbook()
                                             End If

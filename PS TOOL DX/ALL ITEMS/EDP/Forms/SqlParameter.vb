@@ -3599,9 +3599,11 @@ Public Class SqlParameter
 
                                         SELECT * INTO #Temp_SQL_PARAMETER 
                                         FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=<IMPORT_DIR_FILE>', 'SELECT * FROM [<ExcelSheet>$A4:Z5]')
+                                        where ID is not NULL
 
                                         SELECT * INTO #Temp_SQL_COMMANDS FROM 
                                         OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;Database=<IMPORT_DIR_FILE>', 'SELECT * FROM [<ExcelSheet>$A7:Z50000]') 
+                                        where ID is not NULL
 
                                         INSERT INTO #Temp_DECLARED_PARAMETER
                                         VALUES 

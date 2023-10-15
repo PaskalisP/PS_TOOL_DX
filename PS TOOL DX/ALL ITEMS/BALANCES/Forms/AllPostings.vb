@@ -36,30 +36,23 @@ Imports DevExpress.DataAccess.ConnectionParameters
 Imports DevExpress.DataAccess.Sql
 Public Class AllPostings
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
     Private objDataTable As New DataTable
 
     Dim d1 As Date
     Dim d2 As Date
     Dim rdsql1 As String
     Dim rdsql2 As String
-
-    Dim OCBSaccountNamelbl As String = Nothing
-    Dim OCBSaccountlbl As String = Nothing
-    Dim OCBSaccountCurlbl As String = Nothing
-    Dim OCBSDatefromlbl As String = Nothing
-    Dim OCBSDatetilllbl As String = Nothing
+    Dim ds As SqlDataSource
 
     Private BS_AllContractsAccounts As BindingSource
+    Private BS_AllGLAccounts As BindingSource
 
     Dim query As New CustomSqlQuery()
+    Friend WithEvents BgwLoadPostings As BackgroundWorker
+    Friend WithEvents BgwLoadContractPostings As BackgroundWorker
+    Friend WithEvents BgwLoad_GL_ACC_Postings As BackgroundWorker
+
+    Private bgws As New List(Of BackgroundWorker)()
 
     Sub New()
         InitSkins()
@@ -72,6 +65,13 @@ Public Class AllPostings
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
     Private Sub GL_ACCOUNTSBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.GL_ACCOUNTSBindingSource.EndEdit()
@@ -80,17 +80,17 @@ Public Class AllPostings
     End Sub
 
     Private Sub AllPostings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
 
-        Me.GL_ACCOUNTSTableAdapter.Fill(Me.BalancesDataset.GL_ACCOUNTS)
+        'Me.GL_ACCOUNTSTableAdapter.Fill(Me.BalancesDataset.GL_ACCOUNTS)
         ALL_CONTRACTS_ACCOUNTS_initData()
         ALL_CONTRACTS_ACCOUNTS_InitLookUp()
+        ALL_GL_ACCOUNTS_initData()
+        ALL_GL_ACCOUNTS_InitLookUp()
 
         'Bind Combobox Currencies
         Me.ComboBoxEdit1.Properties.Items.Clear()
-        Me.QueryText = "SELECT '***' as 'CURRENCY CODE' UNION ALL SELECT [CURRENCY CODE] FROM [OWN_CURRENCIES]"
-        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "SELECT '***' as 'CURRENCY CODE' UNION ALL SELECT [CURRENCY CODE] FROM [OWN_CURRENCIES]"
+        da = New SqlDataAdapter(QueryText.Trim(), conn)
         dt = New System.Data.DataTable()
         da.Fill(dt)
         For Each row As DataRow In dt.Rows
@@ -98,6 +98,7 @@ Public Class AllPostings
                 Me.ComboBoxEdit1.Properties.Items.Add(row("CURRENCY CODE"))
             End If
         Next
+        Me.ComboBoxEdit1.Text = "***"
 
         'Get last Date and fill DateEdits
         Dim d As Date = DateSerial(2017, 12, 8)
@@ -110,9 +111,43 @@ Public Class AllPostings
 
     End Sub
 
+    Private Sub DISABLE_BUTTONS()
+        Me.BookingDate_From.Enabled = False
+        Me.BookingDate_Till.Enabled = False
+        Me.BookingDateContractFrom_DateEdit.Enabled = False
+        Me.BookingDateContractTill_DateEdit.Enabled = False
+        Me.FromDateEdit.Enabled = False
+        Me.TillDateEdit.Enabled = False
+        Me.LoadData_btn.Enabled = False
+        Me.LoadDataContract_btn.Enabled = False
+        Me.Load_PB_Data_btn.Enabled = False
+        Me.LookUpEdit2.Enabled = False
+        Me.ContractLookUpEdit.Enabled = False
+        Me.SearchLookUpEdit1.Enabled = False
+        Me.ComboBoxEdit1.Enabled = False
+        Me.Print_Export_Gridview_btn.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.BookingDate_From.Enabled = True
+        Me.BookingDate_Till.Enabled = True
+        Me.BookingDateContractFrom_DateEdit.Enabled = True
+        Me.BookingDateContractTill_DateEdit.Enabled = True
+        Me.FromDateEdit.Enabled = True
+        Me.TillDateEdit.Enabled = True
+        Me.LoadData_btn.Enabled = True
+        Me.LoadDataContract_btn.Enabled = True
+        Me.Load_PB_Data_btn.Enabled = True
+        Me.LookUpEdit2.Enabled = True
+        Me.ContractLookUpEdit.Enabled = True
+        Me.SearchLookUpEdit1.Enabled = True
+        Me.ComboBoxEdit1.Enabled = True
+        Me.Print_Export_Gridview_btn.Enabled = True
+    End Sub
+
     Private Sub FILL_Specific_GL_ACCOUNT_BOOKINGS_ALL_CURRENCIES_DATATABLE()
         Dim connectionParameters As New CustomStringConnectionParameters(conn.ConnectionString)
-        Dim ds As New SqlDataSource(connectionParameters)
+        ds = New SqlDataSource(connectionParameters)
         query.Name = "customQuery1"
         query.Sql = "SELECT * FROM   ALL_VOLUMES WHERE  (GL_AC_No = '" & Me.LookUpEdit2.Text & "') AND ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') AND [System] in ('OCBS') ORDER BY IdNr"
         ds.Queries.Add(query)
@@ -128,7 +163,7 @@ Public Class AllPostings
 
     Private Sub FILL_Specific_GL_ACCOUNT_BOOKINGS_Specific_CURRENCY_DATATABLE()
         Dim connectionParameters As New CustomStringConnectionParameters(conn.ConnectionString)
-        Dim ds As New SqlDataSource(connectionParameters)
+        ds = New SqlDataSource(connectionParameters)
         query.Name = "customQuery1"
         query.Sql = "SELECT * FROM  ALL_VOLUMES WHERE  (GL_AC_No = '" & Me.LookUpEdit2.Text & "') AND ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') AND (CCY = '" & Me.ComboBoxEdit1.Text & "') AND [System] in ('OCBS') ORDER BY IdNr"
         ds.Queries.Add(query)
@@ -144,7 +179,7 @@ Public Class AllPostings
 
     Private Sub FILL_ALL_GL_ACCOUNT_BOOKINGS_ALL_CURRENCY_DATATABLE()
         Dim connectionParameters As New CustomStringConnectionParameters(conn.ConnectionString)
-        Dim ds As New SqlDataSource(connectionParameters)
+        ds = New SqlDataSource(connectionParameters)
         query.Name = "customQuery1"
         query.Sql = "SELECT * FROM  ALL_VOLUMES WHERE   ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') AND [System] in ('OCBS')  ORDER BY IdNr"
         ds.Queries.Add(query)
@@ -160,7 +195,7 @@ Public Class AllPostings
 
     Private Sub FILL_ALL_GL_ACCOUNT_BOOKINGS_Specific_CURRENCY_DATATABLE()
         Dim connectionParameters As New CustomStringConnectionParameters(conn.ConnectionString)
-        Dim ds As New SqlDataSource(connectionParameters)
+        ds = New SqlDataSource(connectionParameters)
         query.Name = "customQuery1"
         query.Sql = "SELECT * FROM  ALL_VOLUMES WHERE   ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') AND (CCY = '" & Me.ComboBoxEdit1.Text & "') AND [System] in ('OCBS') ORDER BY IdNr"
         ds.Queries.Add(query)
@@ -176,7 +211,7 @@ Public Class AllPostings
 
     Private Sub FILL_CONTRACT_DATA_DATATABLE()
         Dim connectionParameters As New CustomStringConnectionParameters(conn.ConnectionString)
-        Dim ds As New SqlDataSource(connectionParameters)
+        ds = New SqlDataSource(connectionParameters)
         query.Name = "customQuery1"
         query.Sql = "SELECT * FROM   ALL_VOLUMES WHERE  ([AccountNo] = '" & Me.ContractLookUpEdit.Text & "') AND ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') AND [System] in ('OCBS') ORDER BY IdNr"
         ds.Queries.Add(query)
@@ -212,9 +247,63 @@ Public Class AllPostings
     End Sub
 #End Region
 
+#Region "ALL GL ACCOUNTS LOAD"
+    Private Sub ALL_GL_ACCOUNTS_initData()
+        Dim ds As DataSet = New DataSet()
+        Dim dbAllGLAccounts As SqlDataAdapter = New SqlDataAdapter("SELECT * FROM [GL_ACCOUNTS] order by [ID] desc", conn) '
+        Try
+
+            dbAllGLAccounts.Fill(ds, "ALL_GL_ACCOUNTS")
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_AllGLAccounts = New BindingSource(ds, "ALL_GL_ACCOUNTS")
+    End Sub
+    Private Sub ALL_GL_ACCOUNTS_InitLookUp()
+        Me.LookUpEdit2.Properties.DataSource = BS_AllGLAccounts
+        Me.LookUpEdit2.Properties.DisplayMember = "GL_AC_No"
+        Me.LookUpEdit2.Properties.ValueMember = "GL_AC_No"
+        Me.SearchLookUpEdit1.Properties.DataSource = BS_AllGLAccounts
+        Me.SearchLookUpEdit1.Properties.DisplayMember = "GL_AC_No"
+        Me.SearchLookUpEdit1.Properties.ValueMember = "GL_AC_No"
+    End Sub
+#End Region
+
+    Private Sub LookUpEdit2_EditValueChanged(sender As Object, e As EventArgs) Handles LookUpEdit2.EditValueChanged
+        If Me.LookUpEdit2.Text <> "" Then
+            Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+            Dim GL_ACC_NAME_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Me.LabelControl8.Text = GL_ACC_NAME_Row("GL_AC_Name").ToString
+
+        Else
+            Me.LabelControl8.Text = ""
+        End If
+    End Sub
+
+    Private Sub ContractLookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles ContractLookUpEdit.EditValueChanged
+        If Me.ContractLookUpEdit.Text <> "" Then
+            Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+            Dim CLIENT_NAME_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Me.ContractName_lbl.Text = CLIENT_NAME_Row("ClientName").ToString
+        Else
+            Me.ContractName_lbl.Text = ""
+        End If
+    End Sub
+
+    Private Sub SearchLookUpEdit1_EditValueChanged(sender As Object, e As EventArgs) Handles SearchLookUpEdit1.EditValueChanged
+        If Me.SearchLookUpEdit1.Text <> "" Then
+            Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+            Dim GL_ACC_NAME_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Me.LabelControl3.Text = GL_ACC_NAME_Row("GL_AC_Name").ToString
+
+        Else
+            Me.LabelControl3.Text = ""
+        End If
+    End Sub
 
     Private Sub LoadData_btn_Click(sender As Object, e As EventArgs) Handles LoadData_btn.Click
-
 
         If IsDate(Me.BookingDate_From.Text) = True AndAlso IsDate(Me.BookingDate_Till.Text) = True Then
             d1 = Me.BookingDate_From.Text
@@ -224,216 +313,380 @@ Public Class AllPostings
                 rdsql2 = d2.ToString("yyyyMMdd")
                 Me.GridControl1.MainView = Nothing
                 Me.GridControl1.DataSource = Nothing
-
                 'ALL SEARCH ITEMS
-                'If IsNothing(Me.LookUpEdit2.Text) = False AndAlso IsNumeric(Me.LookUpEdit2.Text) = True AndAlso IsNothing(Me.ComboBoxEdit1.Text) = False Then
                 If Me.LookUpEdit2.Text <> "" AndAlso Me.ComboBoxEdit1.Text <> "" Then
-                    Try
-
-                        'Account Name finden
-                        cmd.CommandTimeout = 120
-                        cmd.CommandText = "SELECT [GL_AC_Name] from [GL_ACCOUNTS] where [GL_AC_No]='" & Me.LookUpEdit2.Text & "'"
-                        cmd.Connection.Open()
-                        Me.LabelControl8.Text = cmd.ExecuteScalar
-                        OCBSaccountNamelbl = Me.LabelControl8.Text
-                        OCBSaccountlbl = Me.LookUpEdit2.Text
-                        OCBSaccountCurlbl = Me.ComboBoxEdit1.Text
-                        OCBSDatefromlbl = Me.BookingDate_From.Text
-                        OCBSDatetilllbl = Me.BookingDate_Till.Text
-                        cmd.Connection.Close()
-
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        If Me.ComboBoxEdit1.Text = "***" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Load Postings for GL Account: " & Me.LookUpEdit2.Text & vbNewLine & "for all currencies from: " & d1 & " till " & d2)
-
-                            FILL_Specific_GL_ACCOUNT_BOOKINGS_ALL_CURRENCIES_DATATABLE()
-                            'Data reader
-                            'Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            '    Using sqlCmd As New SqlCommand()
-                            '        sqlCmd.CommandText = "SELECT * FROM   ALL_VOLUMES WHERE  (GL_AC_No = '" & Me.LookUpEdit2.Text & "') AND ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') ORDER BY IdNr"
-                            '        sqlCmd.Connection = sqlConn
-                            '        sqlCmd.CommandTimeout = 5000
-                            '        If sqlConn.State = ConnectionState.Closed Then
-                            '            sqlConn.Open()
-                            '        End If
-
-                            '        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                            '        objDataTable.Clear()
-                            '        objDataTable.Load(objDataReader)
-
-                            '        If sqlConn.State = ConnectionState.Open Then
-                            '            sqlConn.Close()
-                            '        End If
-
-                            '    End Using
-                            'End Using
-
-
-                            Me.LabelControl14.Text = "Postings for GL OCBS Account (" & Me.LookUpEdit2.Text & ")-" & Me.LabelControl8.Text & " - ALL CURRENCIES"
-
-                        ElseIf Me.ComboBoxEdit1.Text <> "***" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Load Postings for GL Account: " & Me.LookUpEdit2.Text & vbNewLine & "Currency:" & Me.ComboBoxEdit1.Text & " from: " & d1 & " till " & d2)
-                            FILL_Specific_GL_ACCOUNT_BOOKINGS_Specific_CURRENCY_DATATABLE()
-                            'Data reader
-                            'Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            '    Using sqlCmd As New SqlCommand()
-                            '        sqlCmd.CommandText = "SELECT * FROM  ALL_VOLUMES WHERE  (GL_AC_No = '" & Me.LookUpEdit2.Text & "') AND ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') AND (CCY = '" & Me.ComboBoxEdit1.Text & "') ORDER BY IdNr"
-                            '        sqlCmd.Connection = sqlConn
-                            '        sqlCmd.CommandTimeout = 5000
-                            '        If sqlConn.State = ConnectionState.Closed Then
-                            '            sqlConn.Open()
-                            '        End If
-
-                            '        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                            '        objDataTable.Clear()
-                            '        objDataTable.Load(objDataReader)
-
-                            '        If sqlConn.State = ConnectionState.Open Then
-                            '            sqlConn.Close()
-                            '        End If
-
-                            '    End Using
-                            'End Using
-
-                            Me.LabelControl14.Text = "Postings for GL OCBS Account (" & Me.LookUpEdit2.Text & ")-" & Me.LabelControl8.Text & " -Currency: " & Me.ComboBoxEdit1.Text
-
-                        End If
-                    Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                    End Try
-
+                    If Me.ComboBoxEdit1.Text = "***" Then
+                        Me.LabelControl14.Text = "Postings for GL OCBS Account (" & Me.LookUpEdit2.Text & ")-" & Me.LabelControl8.Text & " - ALL CURRENCIES " & " from " & d1 & " till " & d2
+                    ElseIf Me.ComboBoxEdit1.Text <> "***" Then
+                        Me.LabelControl14.Text = "Postings for GL OCBS Account (" & Me.LookUpEdit2.Text & ")-" & Me.LabelControl8.Text & " -Currency: " & Me.ComboBoxEdit1.Text & " from " & d1 & " till " & d2
+                    End If
                     'ONLY CURRENCY
                 ElseIf Me.LookUpEdit2.Text = "" AndAlso Me.ComboBoxEdit1.Text <> "" Then
-                    Try
-                        OCBSaccountCurlbl = Me.ComboBoxEdit1.Text
-                        OCBSDatefromlbl = Me.BookingDate_From.Text
-                        OCBSDatetilllbl = Me.BookingDate_Till.Text
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        If Me.ComboBoxEdit1.Text = "***" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Load all Postings from: " & d1 & " till " & d2)
-                            FILL_ALL_GL_ACCOUNT_BOOKINGS_ALL_CURRENCY_DATATABLE()
-
-                            'Data reader
-                            'Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            '    Using sqlCmd As New SqlCommand()
-                            '        sqlCmd.CommandText = "SELECT  * FROM   ALL_VOLUMES WHERE  ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') ORDER BY IdNr"
-                            '        sqlCmd.Connection = sqlConn
-                            '        sqlCmd.CommandTimeout = 5000
-                            '        If sqlConn.State = ConnectionState.Closed Then
-                            '            sqlConn.Open()
-                            '        End If
-
-                            '        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                            '        objDataTable.Clear()
-                            '        objDataTable.Load(objDataReader)
-
-                            '        If sqlConn.State = ConnectionState.Open Then
-                            '            sqlConn.Close()
-                            '        End If
-
-                            '    End Using
-                            'End Using
-
-                            Me.LabelControl14.Text = "Postings for all GL OCBS Accounts " & " - ALL CURRENCIES"
-
-                        ElseIf Me.ComboBoxEdit1.Text <> "***" Then
-                            SplashScreenManager.Default.SetWaitFormCaption("Load all Postings for Currency:" & Me.ComboBoxEdit1.Text & vbNewLine & "from: " & d1 & " till " & d2)
-                            FILL_ALL_GL_ACCOUNT_BOOKINGS_Specific_CURRENCY_DATATABLE()
-
-                            'Data reader
-                            'Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            '    Using sqlCmd As New SqlCommand()
-                            '        sqlCmd.CommandText = "SELECT  * FROM   ALL_VOLUMES WHERE  ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') AND (CCY = '" & Me.ComboBoxEdit1.Text & "') ORDER BY IdNr"
-                            '        sqlCmd.Connection = sqlConn
-                            '        sqlCmd.CommandTimeout = 5000
-                            '        If sqlConn.State = ConnectionState.Closed Then
-                            '            sqlConn.Open()
-                            '        End If
-
-                            '        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                            '        objDataTable.Clear()
-                            '        objDataTable.Load(objDataReader)
-
-                            '        If sqlConn.State = ConnectionState.Open Then
-                            '            sqlConn.Close()
-                            '        End If
-
-                            '    End Using
-                            'End Using
-
-                            Me.LabelControl14.Text = "Postings for all GL OCBS Accounts " & " - Currency:" & Me.ComboBoxEdit1.Text
-
-                        End If
-                    Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-
-                    End Try
-
+                    If Me.ComboBoxEdit1.Text = "***" Then
+                        Me.LabelControl14.Text = "Postings for all GL OCBS Accounts " & " - ALL CURRENCIES" & " from " & d1 & " till " & d2
+                    ElseIf Me.ComboBoxEdit1.Text <> "***" Then
+                        Me.LabelControl14.Text = "Postings for all GL OCBS Accounts " & " - Currency:" & Me.ComboBoxEdit1.Text & " from " & d1 & " till " & d2
+                    End If
                     'ONLY DATES
                 ElseIf Me.LookUpEdit2.Text = "" AndAlso Me.ComboBoxEdit1.Text = "" Then
-                    Try
-                        OCBSDatefromlbl = Me.BookingDate_From.Text
-                        OCBSDatetilllbl = Me.BookingDate_Till.Text
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load all Postings from: " & d1 & " till " & d2)
-                        FILL_ALL_GL_ACCOUNT_BOOKINGS_ALL_CURRENCY_DATATABLE()
-
-                        'Data reader
-                        'Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                        '    Using sqlCmd As New SqlCommand()
-                        '        sqlCmd.CommandText = "SELECT  * FROM   ALL_VOLUMES WHERE  ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') ORDER BY IdNr"
-                        '        sqlCmd.Connection = sqlConn
-                        '        sqlCmd.CommandTimeout = 5000
-                        '        If sqlConn.State = ConnectionState.Closed Then
-                        '            sqlConn.Open()
-                        '        End If
-
-                        '        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                        '        objDataTable.Clear()
-                        '        objDataTable.Load(objDataReader)
-
-                        '        If sqlConn.State = ConnectionState.Open Then
-                        '            sqlConn.Close()
-                        '        End If
-
-                        '    End Using
-                        'End Using
-
-
-                        Me.LabelControl14.Text = "Postings for all GL OCBS Accounts " & " - ALL CURRENCIES"
-
-
-                    Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-
-                    End Try
+                    Me.LabelControl14.Text = "Postings for all GL OCBS Accounts " & " - ALL CURRENCIES" & " from " & d1 & " till " & d2
                 End If
+                DISABLE_BUTTONS()
+                Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                BgwLoadPostings = New BackgroundWorker
+                bgws.Add(BgwLoadPostings)
+                BgwLoadPostings.WorkerReportsProgress = True
+                BgwLoadPostings.RunWorkerAsync()
 
-                'Results Datareader
-                'If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                '    Me.GridControl1.DataSource = Nothing
-                '    Me.GridControl1.DataSource = objDataTable
-                '    Me.GridControl1.MainView = AllPostings_BasicView
-                '    Me.GridControl1.ForceInitialize()
-                '    Me.GridControl1.RefreshDataSource()
-                '    SplashScreenManager.CloseForm(False)
-                'Else
-                '    SplashScreenManager.CloseForm(False)
-                '    XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                '    Return
-                'End If
 
             Else
-                SplashScreenManager.CloseForm(False)
                 XtraMessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
+            End If
+
+        Else
+            XtraMessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub BgwLoadPostings_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadPostings.DoWork
+        Try
+            If Me.LookUpEdit2.Text <> "" AndAlso Me.ComboBoxEdit1.Text <> "" Then
+                If Me.ComboBoxEdit1.Text = "***" Then
+                    Me.BgwLoadPostings.ReportProgress(10, "Load Postings for GL Account: " & Me.LookUpEdit2.Text & vbNewLine & "for all currencies from: " & d1 & " till " & d2)
+
+                    Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                        Using Sqlcmd As New SqlCommand()
+                            Sqlcmd.CommandText = "SELECT * FROM   ALL_VOLUMES WHERE  GL_AC_No = '" & Me.LookUpEdit2.Text & "'
+                                                    AND [Value Date] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "'
+                                                    AND [System] in ('OCBS') ORDER BY IdNr"
+                            Sqlcmd.Connection = Sqlconn
+                            Sqlconn.Open()
+                            daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                            daSqlQueries.SelectCommand.CommandTimeout = 50000
+                            dtSqlQueries = New DataTable()
+                            daSqlQueries.Fill(dtSqlQueries)
+                            Sqlconn.Close()
+
+                        End Using
+                    End Using
+
+                ElseIf Me.ComboBoxEdit1.Text <> "***" Then
+                    Me.BgwLoadPostings.ReportProgress(10, "Load Postings for GL Account: " & Me.LookUpEdit2.Text & vbNewLine & "Currency:" & Me.ComboBoxEdit1.Text & " from: " & d1 & " till " & d2)
+
+                    Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                        Using Sqlcmd As New SqlCommand()
+                            Sqlcmd.CommandText = "SELECT * FROM  ALL_VOLUMES WHERE  GL_AC_No = '" & Me.LookUpEdit2.Text & "'
+                                                    AND [Value Date] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "'
+                                                    AND CCY = '" & Me.ComboBoxEdit1.Text & "'
+                                                    AND [System] in ('OCBS') ORDER BY IdNr"
+                            Sqlcmd.Connection = Sqlconn
+                            Sqlconn.Open()
+                            daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                            daSqlQueries.SelectCommand.CommandTimeout = 50000
+                            dtSqlQueries = New DataTable()
+                            daSqlQueries.Fill(dtSqlQueries)
+                            Sqlconn.Close()
+                        End Using
+                    End Using
+                End If
+
+                'ONLY CURRENCY
+            ElseIf Me.LookUpEdit2.Text = "" AndAlso Me.ComboBoxEdit1.Text <> "" Then
+                If Me.ComboBoxEdit1.Text = "***" Then
+                    Me.BgwLoadPostings.ReportProgress(10, "Load all Postings from: " & d1 & " till " & d2)
+
+                    Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                        Using Sqlcmd As New SqlCommand()
+                            Sqlcmd.CommandText = "SELECT * FROM  ALL_VOLUMES WHERE   
+                                                [Value Date] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "'
+                                                AND [System] in ('OCBS')  ORDER BY IdNr"
+                            Sqlcmd.Connection = Sqlconn
+                            Sqlconn.Open()
+                            daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                            daSqlQueries.SelectCommand.CommandTimeout = 50000
+                            dtSqlQueries = New DataTable()
+                            daSqlQueries.Fill(dtSqlQueries)
+                            Sqlconn.Close()
+                        End Using
+                    End Using
+                ElseIf Me.ComboBoxEdit1.Text <> "***" Then
+                    Me.BgwLoadPostings.ReportProgress(10, "Load all Postings for Currency:" & Me.ComboBoxEdit1.Text & vbNewLine & "from: " & d1 & " till " & d2)
+
+                    Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                        Using Sqlcmd As New SqlCommand()
+                            Sqlcmd.CommandText = "SELECT * FROM  ALL_VOLUMES 
+                                                  WHERE  [Value Date] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "' 
+                                                  AND CCY = '" & Me.ComboBoxEdit1.Text & "' 
+                                                  AND [System] in ('OCBS') ORDER BY IdNr"
+                            Sqlcmd.Connection = Sqlconn
+                            Sqlconn.Open()
+                            daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                            daSqlQueries.SelectCommand.CommandTimeout = 50000
+                            dtSqlQueries = New DataTable()
+                            daSqlQueries.Fill(dtSqlQueries)
+                            Sqlconn.Close()
+                        End Using
+                    End Using
+
+                End If
+
+                'ONLY DATES
+            ElseIf Me.LookUpEdit2.Text = "" AndAlso Me.ComboBoxEdit1.Text = "" Then
+                Me.BgwLoadPostings.ReportProgress(10, "Load all Postings from: " & d1 & " till " & d2)
+
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "SELECT * FROM  ALL_VOLUMES WHERE   
+                                            [Value Date] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "'
+                                            AND [System] in ('OCBS')  ORDER BY IdNr"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+                    End Using
+                End Using
+
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadPostings.CancelAsync()
+
+        End Try
+    End Sub
+
+    Private Sub BgwLoadPostings_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadPostings.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadPostings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadPostings.RunWorkerCompleted
+        Workers_Complete(BgwLoadPostings, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+        Me.GridControl1.DataSource = Nothing
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl1.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl1.DataSource = dtSqlQueries
+            Me.GridControl1.MainView = AllPostings_BasicView
+            Me.GridControl1.ForceInitialize()
+            Me.GridControl1.RefreshDataSource()
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub LoadDataContract_btn_Click(sender As Object, e As EventArgs) Handles LoadDataContract_btn.Click
+        If IsDate(Me.BookingDateContractFrom_DateEdit.Text) = True AndAlso IsDate(Me.BookingDateContractTill_DateEdit.Text) = True Then
+            d1 = Me.BookingDateContractFrom_DateEdit.Text
+            d2 = Me.BookingDateContractTill_DateEdit.Text
+            If d2 >= d1 Then
+                'ALL SEARCH ITEMS
+                If Me.ContractLookUpEdit.Text <> "" Then
+                    rdsql1 = d1.ToString("yyyyMMdd")
+                    rdsql2 = d2.ToString("yyyyMMdd")
+                    Me.GridControl1.MainView = Nothing
+                    Me.GridControl1.DataSource = Nothing
+
+                    Me.LabelControl14.Text = "Postings for Contract/Account (" & Me.ContractLookUpEdit.Text & ")- " & Me.ContractName_lbl.Text & " - ALL CURRENCIES"
+
+                    DISABLE_BUTTONS()
+                    Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                    BgwLoadContractPostings = New BackgroundWorker
+                    bgws.Add(BgwLoadContractPostings)
+                    BgwLoadContractPostings.WorkerReportsProgress = True
+                    BgwLoadContractPostings.RunWorkerAsync()
+                Else
+                    XtraMessageBox.Show("Please enter Contract/Account", "Contract/Account is missing", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                    Return
+                End If
+            Else
+                XtraMessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
             End If
 
         Else
             XtraMessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
 
+            Exit Sub
+        End If
+
+    End Sub
+
+    Private Sub BgwLoadContractPostings_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadContractPostings.DoWork
+        Try
+            Me.BgwLoadContractPostings.ReportProgress(10, "Load Postings for Contract/Account: " & Me.ContractLookUpEdit.Text & vbNewLine & "for all currencies from: " & d1 & " till " & d2)
+
+            Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                Using Sqlcmd As New SqlCommand()
+                    Sqlcmd.CommandText = "SELECT * FROM  ALL_VOLUMES 
+                                        WHERE  [AccountNo] = '" & Me.ContractLookUpEdit.Text & "' 
+                                        AND [Value Date] BETWEEN '" & rdsql1 & "' AND '" & rdsql2 & "'
+                                        AND [System] in ('OCBS') ORDER BY IdNr"
+                    Sqlcmd.Connection = Sqlconn
+                    Sqlconn.Open()
+                    daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                    daSqlQueries.SelectCommand.CommandTimeout = 50000
+                    dtSqlQueries = New DataTable()
+                    daSqlQueries.Fill(dtSqlQueries)
+                    Sqlconn.Close()
+                End Using
+            End Using
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadContractPostings.CancelAsync()
+
+        End Try
+    End Sub
+
+    Private Sub BgwLoadContractPostings_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadContractPostings.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadContractPostings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadContractPostings.RunWorkerCompleted
+        Workers_Complete(BgwLoadContractPostings, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+        Me.GridControl1.DataSource = Nothing
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl1.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl1.DataSource = dtSqlQueries
+            Me.GridControl1.MainView = AllPostings_BasicView
+            Me.GridControl1.ForceInitialize()
+            Me.GridControl1.RefreshDataSource()
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub Load_PB_Data_btn_Click(sender As Object, e As EventArgs) Handles Load_PB_Data_btn.Click
+
+        If IsDate(Me.FromDateEdit.Text) = True AndAlso IsDate(Me.TillDateEdit.Text) = True Then
+            d1 = Me.FromDateEdit.Text
+            d2 = Me.TillDateEdit.Text
+            If d2 >= d1 Then
+                rdsql1 = d1.ToString("yyyyMMdd")
+                rdsql2 = d2.ToString("yyyyMMdd")
+                Me.GridControl1.DataSource = Nothing
+                Me.GridControl1.MainView = Nothing
+                'ALL SEARCH ITEMS
+                If Me.SearchLookUpEdit1.Text <> "" Then
+                    Me.LabelControl14.Text = "Postings + Balances for GL OCBS Account (" & Me.SearchLookUpEdit1.Text & ")-" & Me.LabelControl3.Text & " - CURRENCY:EURO"
+                    'ALL
+                ElseIf Me.SearchLookUpEdit1.Text = "" Then
+                    Me.GridControl1.MainView = All_Postings_Balances_All_GridView
+                    Me.LabelControl14.Text = "Postings + Balances for all GL OCBS Accounts " & " - CURRENCY:EURO"
+                End If
+                DISABLE_BUTTONS()
+                Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                BgwLoad_GL_ACC_Postings = New BackgroundWorker
+                bgws.Add(BgwLoad_GL_ACC_Postings)
+                BgwLoad_GL_ACC_Postings.WorkerReportsProgress = True
+                BgwLoad_GL_ACC_Postings.RunWorkerAsync()
+
+            Else
+                XtraMessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
+            End If
+
+        Else
+            XtraMessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+
+            Exit Sub
+        End If
+    End Sub
+
+    Private Sub BgwLoad_GL_ACC_Postings_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoad_GL_ACC_Postings.DoWork
+        Try
+            If Me.SearchLookUpEdit1.Text <> "" Then
+                Me.BgwLoad_GL_ACC_Postings.ReportProgress(10, "Load Postings + Balances for GL Account: " & Me.SearchLookUpEdit1.Text & " from: " & d1 & " till " & d2)
+
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "execute [ALL_BALANCES_POSTINGS_SEARCH]  
+                                      @FROMDATE='" & rdsql1 & "'
+                                     ,@TILLDATE='" & rdsql2 & "'
+                                     ,@GL_ACCOUNT_NR='" & Me.SearchLookUpEdit1.Text & "'"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+                    End Using
+                End Using
+            ElseIf Me.SearchLookUpEdit1.Text = "" Then
+                Me.BgwLoad_GL_ACC_Postings.ReportProgress(10, "Load Postings + Balances for all GL Accounts from: " & d1 & " till " & d2)
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "execute [ALL_BALANCES_POSTINGS_ALL_SEARCH]  
+                                            @FROMDATE='" & rdsql1 & "'
+                                            ,@TILLDATE='" & rdsql2 & "'"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+                    End Using
+                End Using
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoad_GL_ACC_Postings.CancelAsync()
+
+        End Try
+
+
+    End Sub
+
+    Private Sub BgwLoad_GL_ACC_Postings_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoad_GL_ACC_Postings.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoad_GL_ACC_Postings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoad_GL_ACC_Postings.RunWorkerCompleted
+        Workers_Complete(BgwLoad_GL_ACC_Postings, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+        Me.GridControl1.DataSource = Nothing
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl1.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl1.DataSource = dtSqlQueries
+            If Me.SearchLookUpEdit1.Text <> "" Then
+                Me.GridControl1.MainView = All_Postings_Balances_GridView
+            ElseIf Me.SearchLookUpEdit1.Text = "" Then
+                Me.GridControl1.MainView = All_Postings_Balances_All_GridView
+            End If
+            Me.GridControl1.ForceInitialize()
+            Me.GridControl1.RefreshDataSource()
+        Else
+                XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
             Exit Sub
         End If
     End Sub
@@ -456,11 +709,7 @@ Public Class AllPostings
             Return
         End Try
 
-
-
     End Sub
-
-
 
     Private Sub PrintableComponentLink1_CreateMarginalFooterArea(ByVal sender As Object, ByVal e As DevExpress.XtraPrinting.CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalFooterArea
 
@@ -476,7 +725,7 @@ Public Class AllPostings
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(ByVal sender As Object, ByVal e As DevExpress.XtraPrinting.CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
-        Dim reportfooter As String = Me.LabelControl14.Text & " from " & OCBSDatefromlbl & " till " & OCBSDatetilllbl
+        Dim reportfooter As String = Me.LabelControl14.Text
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
         'e.Graph.StringFormat = New BrickStringFormat(StringAlignment.Center)
         'e.Graph.Font = New Font("Tahoma", 10, FontStyle.Bold)
@@ -495,329 +744,18 @@ Public Class AllPostings
 
     End Sub
 
-#Region "GRIDVIEW STYLES"
-    Private Sub AllPostings_BasicView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles AllPostings_BasicView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
 
-    Private Sub AllPostings_BasicView_ShownEditor(sender As Object, e As EventArgs) Handles AllPostings_BasicView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub GridView4_RowStyle(sender As Object, e As RowStyleEventArgs) Handles GridView4.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-
-        End If
-    End Sub
-
-    Private Sub GridView4_ShownEditor(sender As Object, e As EventArgs) Handles GridView4.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-        End If
-    End Sub
-
-    Private Sub All_Postings_Balances_All_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles All_Postings_Balances_All_GridView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub All_Postings_Balances_All_GridView_ShownEditor(sender As Object, e As EventArgs) Handles All_Postings_Balances_All_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub All_Postings_Balances_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles All_Postings_Balances_GridView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub All_Postings_Balances_GridView_ShownEditor(sender As Object, e As EventArgs) Handles All_Postings_Balances_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub AllContractsAccounts_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles AllContractsAccounts_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub AllContractsAccounts_GridView_ShownEditor(sender As Object, e As EventArgs) Handles AllContractsAccounts_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-        End If
-    End Sub
-
-#End Region
-
-
-    Private Sub Load_PB_Data_btn_Click(sender As Object, e As EventArgs) Handles Load_PB_Data_btn.Click
-
-
-        If IsDate(Me.FromDateEdit.Text) = True AndAlso IsDate(Me.TillDateEdit.Text) = True Then
-            d1 = Me.FromDateEdit.Text
-            d2 = Me.TillDateEdit.Text
-            If d2 >= d1 Then
-                rdsql1 = d1.ToString("yyyyMMdd")
-                rdsql2 = d2.ToString("yyyyMMdd")
-                Me.GridControl1.DataSource = Nothing
-                Me.GridControl1.MainView = Nothing
-
-                'ALL SEARCH ITEMS
-                'If IsNothing(Me.LookUpEdit2.Text) = False AndAlso IsNumeric(Me.LookUpEdit2.Text) = True AndAlso IsNothing(Me.ComboBoxEdit1.Text) = False Then
-                If Me.SearchLookUpEdit1.Text <> "" Then
-
-                    Try
-
-                        'Account Name finden
-                        cmd.CommandTimeout = 120
-                        cmd.CommandText = "SELECT [GL_AC_Name] from [GL_ACCOUNTS] where [GL_AC_No]='" & Me.SearchLookUpEdit1.Text & "'"
-                        cmd.Connection.Open()
-                        Me.LabelControl3.Text = cmd.ExecuteScalar
-                        OCBSaccountNamelbl = Me.LabelControl3.Text
-                        OCBSaccountlbl = Me.SearchLookUpEdit1.Text
-                        OCBSaccountCurlbl = "EUR"
-                        OCBSDatefromlbl = Me.FromDateEdit.Text
-                        OCBSDatetilllbl = Me.TillDateEdit.Text
-                        cmd.Connection.Close()
-
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load Postings + Balances for GL Account: " & Me.SearchLookUpEdit1.Text & vbNewLine & "from: " & d1 & " till " & d2)
-
-                        'Data reader
-                        Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            Using sqlCmd As New SqlCommand()
-                                sqlCmd.CommandText = "execute [ALL_BALANCES_POSTINGS_SEARCH]  @FROMDATE='" & rdsql1 & "', @TILLDATE='" & rdsql2 & "',@GL_ACCOUNT_NR='" & Me.SearchLookUpEdit1.Text & "'"
-                                sqlCmd.Connection = sqlConn
-                                sqlCmd.CommandTimeout = 5000
-                                If sqlConn.State = ConnectionState.Closed Then
-                                    sqlConn.Open()
-                                End If
-
-                                Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                                objDataTable.Clear()
-                                objDataTable.Load(objDataReader)
-
-                                If sqlConn.State = ConnectionState.Open Then
-                                    sqlConn.Close()
-                                End If
-
-                            End Using
-                        End Using
-
-
-                        Me.LabelControl14.Text = "Postings + Balances for GL OCBS Account (" & Me.SearchLookUpEdit1.Text & ")-" & Me.LabelControl3.Text & " - CURRENCY:EURO"
-
-
-                    Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-
-
-                    End Try
-
-
-                    'ONLY CURRENCY
-                ElseIf Me.SearchLookUpEdit1.Text = "" Then
-                    Me.GridControl1.MainView = All_Postings_Balances_All_GridView
-                    Try
-                        OCBSaccountCurlbl = "EUR"
-                        OCBSDatefromlbl = Me.FromDateEdit.Text
-                        OCBSDatetilllbl = Me.TillDateEdit.Text
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load Postings + Balances from: " & d1 & " till " & d2)
-
-
-
-                        'Data reader
-                        Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                            Using sqlCmd As New SqlCommand()
-                                sqlCmd.CommandText = "execute [ALL_BALANCES_POSTINGS_ALL_SEARCH]  @FROMDATE='" & rdsql1 & "', @TILLDATE='" & rdsql2 & "'"
-                                sqlCmd.Connection = sqlConn
-                                sqlCmd.CommandTimeout = 5000
-                                If sqlConn.State = ConnectionState.Closed Then
-                                    sqlConn.Open()
-                                End If
-
-                                Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                                objDataTable.Clear()
-                                objDataTable.Load(objDataReader)
-
-                                If sqlConn.State = ConnectionState.Open Then
-                                    sqlConn.Close()
-                                End If
-
-                            End Using
-                        End Using
-
-                        Me.LabelControl14.Text = "Postings + Balances for all GL OCBS Accounts " & " - CURRENCY:EURO"
-
-
-                    Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-
-
-                    End Try
-
-                End If
-
-                'Results Datareader
-                If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                    Me.GridControl1.DataSource = Nothing
-                    Me.GridControl1.DataSource = objDataTable
-                    Me.GridControl1.MainView = All_Postings_Balances_GridView
-                    Me.GridControl1.ForceInitialize()
-                    Me.GridControl1.RefreshDataSource()
-                    SplashScreenManager.CloseForm(False)
-                Else
-                    SplashScreenManager.CloseForm(False)
-                    XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                    Return
-                End If
-
-
-            Else
-                SplashScreenManager.CloseForm(False)
-                MsgBox("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", MsgBoxStyle.Exclamation, "Wrong Search criteria")
-            End If
-
+    Private Sub AllPostings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
         Else
-            XtraMessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            e.Cancel = False
 
-            Exit Sub
         End If
     End Sub
 
-
-    Private Sub LookUpEdit2_TextChanged(sender As Object, e As EventArgs) Handles LookUpEdit2.TextChanged
-        If Me.LookUpEdit2.Text = "" Then
-            Me.LabelControl8.Text = ""
-        End If
-    End Sub
-
-    Private Sub SearchLookUpEdit1_TextChanged(sender As Object, e As EventArgs) Handles SearchLookUpEdit1.TextChanged
-        If Me.SearchLookUpEdit1.Text = "" Then
-            Me.LabelControl3.Text = ""
-        End If
-
-    End Sub
-
-    Private Sub ContractLookUpEdit_TextChanged(sender As Object, e As EventArgs) Handles ContractLookUpEdit.TextChanged
-        If Me.ContractLookUpEdit.Text = "" Then
-            Me.ContractName_lbl.Text = ""
-        End If
-    End Sub
-
-
-    Private Sub LoadDataContract_btn_Click(sender As Object, e As EventArgs) Handles LoadDataContract_btn.Click
-        If IsDate(Me.BookingDateContractFrom_DateEdit.Text) = True AndAlso IsDate(Me.BookingDateContractTill_DateEdit.Text) = True Then
-            d1 = Me.BookingDateContractFrom_DateEdit.Text
-            d2 = Me.BookingDateContractTill_DateEdit.Text
-            If d2 >= d1 Then
-                rdsql1 = d1.ToString("yyyyMMdd")
-                rdsql2 = d2.ToString("yyyyMMdd")
-                Me.GridControl1.MainView = Nothing
-                Me.GridControl1.DataSource = Nothing
-
-                'ALL SEARCH ITEMS
-                If Me.ContractLookUpEdit.Text <> "" Then
-                    Try
-
-                        'Account Name finden
-                        cmd.CommandTimeout = 120
-                        cmd.CommandText = "SELECT [ClientName] from [ALL_CONTRACTS_ACCOUNTS] where [Contract_Account]='" & Me.ContractLookUpEdit.Text & "'"
-                        cmd.Connection.Open()
-                        Me.ContractName_lbl.Text = cmd.ExecuteScalar
-                        OCBSaccountNamelbl = Me.ContractName_lbl.Text
-                        OCBSaccountlbl = Me.ContractLookUpEdit.Text
-                        OCBSaccountCurlbl = Nothing
-                        OCBSDatefromlbl = Me.BookingDateContractFrom_DateEdit.Text
-                        OCBSDatetilllbl = Me.BookingDateContractTill_DateEdit.Text
-                        cmd.Connection.Close()
-
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load Postings for Contract/Account: " & Me.ContractLookUpEdit.Text & vbNewLine & "for all currencies from: " & d1 & " till " & d2)
-
-                        FILL_CONTRACT_DATA_DATATABLE()
-
-                        'Data reader
-                        'Using sqlConn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
-                        '    Using sqlCmd As New SqlCommand()
-                        '        sqlCmd.CommandText = "SELECT * FROM   ALL_VOLUMES WHERE  ([AccountNo] = '" & Me.ContractLookUpEdit.Text & "') AND ([Value Date] >= '" & rdsql1 & "') AND ([Value Date] <= '" & rdsql2 & "') ORDER BY IdNr"
-                        '        sqlCmd.Connection = sqlConn
-                        '        sqlCmd.CommandTimeout = 5000
-                        '        If sqlConn.State = ConnectionState.Closed Then
-                        '            sqlConn.Open()
-                        '        End If
-
-                        '        Dim objDataReader As SqlDataReader = sqlCmd.ExecuteReader()
-                        '        objDataTable.Clear()
-                        '        objDataTable.Load(objDataReader)
-
-                        '        If sqlConn.State = ConnectionState.Open Then
-                        '            sqlConn.Close()
-                        '        End If
-
-                        '    End Using
-                        'End Using
-
-
-                        Me.LabelControl14.Text = "Postings for Contract/Account (" & Me.ContractLookUpEdit.Text & ")- " & Me.ContractName_lbl.Text & " - ALL CURRENCIES"
-
-
-                    Catch ex As Exception
-                        SplashScreenManager.CloseForm(False)
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-
-                    End Try
-
-
-
-                    ''Results Datareader
-                    'If objDataTable IsNot Nothing AndAlso objDataTable.Rows.Count > 0 Then
-                    '    Me.GridControl1.DataSource = Nothing
-                    '    Me.GridControl1.DataSource = objDataTable
-                    '    Me.GridControl1.MainView = AllPostings_BasicView
-                    '    Me.GridControl1.ForceInitialize()
-                    '    Me.GridControl1.RefreshDataSource()
-                    '    SplashScreenManager.CloseForm(False)
-                    'Else
-                    '    SplashScreenManager.CloseForm(False)
-                    '    XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-                    '    Return
-                    'End If
-
-                End If
-            Else
-                SplashScreenManager.CloseForm(False)
-                MsgBox("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", MsgBoxStyle.Exclamation, "Wrong Search criteria")
-            End If
-
-        Else
-            XtraMessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-
-            Exit Sub
-        End If
-
-
+    Private Sub bbi_Close_Click(sender As Object, e As EventArgs) Handles bbi_Close.Click
+        Me.Close()
 
     End Sub
 

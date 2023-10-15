@@ -115,7 +115,12 @@ Partial Class AllPostingsOCBS_Search
         Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
         Me.LoadData_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.CheckedListBoxControl1 = New DevExpress.XtraEditors.CheckedListBoxControl()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.GroupControl3 = New DevExpress.XtraEditors.GroupControl()
         Me.ListBoxControl1 = New DevExpress.XtraEditors.ListBoxControl()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
@@ -129,6 +134,7 @@ Partial Class AllPostingsOCBS_Search
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.SplitterItem1 = New DevExpress.XtraLayout.SplitterItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -137,10 +143,6 @@ Partial Class AllPostingsOCBS_Search
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SplitterItem2 = New DevExpress.XtraLayout.SplitterItem()
         Me.GL_ACCOUNTS_NEWGTableAdapter = New PS_TOOL_DX.BalancesNEWGDatasetTableAdapters.GL_ACCOUNTS_NEWGTableAdapter()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.RepositoryItemImageComboBox10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GL_Accounts_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -171,6 +173,7 @@ Partial Class AllPostingsOCBS_Search
         Me.GroupControl1.SuspendLayout()
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CheckedListBoxControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -186,6 +189,7 @@ Partial Class AllPostingsOCBS_Search
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -193,7 +197,6 @@ Partial Class AllPostingsOCBS_Search
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'colAmount
@@ -276,7 +279,7 @@ Partial Class AllPostingsOCBS_Search
         Me.GL_Accounts_GridControl.MainView = Me.GL_Accounts_BaseView
         Me.GL_Accounts_GridControl.Name = "GL_Accounts_GridControl"
         Me.GL_Accounts_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox3, Me.RepositoryItemTextEdit4, Me.RepositoryItemTextEdit5, Me.RepositoryItemTextEdit6, Me.RepositoryItemMemoExEdit3, Me.RepositoryItemImageComboBox3, Me.RepositoryItemImageComboBox10, Me.RepositoryItemImageComboBox11})
-        Me.GL_Accounts_GridControl.Size = New System.Drawing.Size(666, 274)
+        Me.GL_Accounts_GridControl.Size = New System.Drawing.Size(666, 269)
         Me.GL_Accounts_GridControl.TabIndex = 117
         Me.GL_Accounts_GridControl.UseEmbeddedNavigator = True
         Me.GL_Accounts_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GL_Accounts_BaseView})
@@ -708,6 +711,7 @@ Partial Class AllPostingsOCBS_Search
         Me.All_Postings_Balances_All_GridView.OptionsView.ShowAutoFilterRow = True
         Me.All_Postings_Balances_All_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.All_Postings_Balances_All_GridView.OptionsView.ShowFooter = True
+        Me.All_Postings_Balances_All_GridView.OptionsView.ShowGroupPanel = False
         Me.All_Postings_Balances_All_GridView.ViewCaption = "Results by GL Item"
         '
         'colIdNr
@@ -1109,9 +1113,9 @@ Partial Class AllPostingsOCBS_Search
         Me.GroupControl1.Controls.Add(Me.ComboBoxEdit1)
         Me.GroupControl1.Controls.Add(Me.LabelControl13)
         Me.GroupControl1.Controls.Add(Me.LoadData_btn)
-        Me.GroupControl1.Location = New System.Drawing.Point(1088, 12)
+        Me.GroupControl1.Location = New System.Drawing.Point(1091, 12)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(399, 274)
+        Me.GroupControl1.Size = New System.Drawing.Size(396, 269)
         Me.GroupControl1.TabIndex = 0
         Me.GroupControl1.Text = "Search with selected Parameters"
         '
@@ -1163,14 +1167,40 @@ Partial Class AllPostingsOCBS_Search
         Me.CheckedListBoxControl1.CheckOnClick = True
         Me.CheckedListBoxControl1.ContextMenuStrip = Me.ContextMenuStrip1
         Me.CheckedListBoxControl1.IncrementalSearch = True
-        Me.CheckedListBoxControl1.Location = New System.Drawing.Point(832, 12)
+        Me.CheckedListBoxControl1.Location = New System.Drawing.Point(837, 12)
         Me.CheckedListBoxControl1.Name = "CheckedListBoxControl1"
-        Me.CheckedListBoxControl1.Size = New System.Drawing.Size(133, 274)
+        Me.CheckedListBoxControl1.Size = New System.Drawing.Size(132, 269)
         Me.CheckedListBoxControl1.StyleController = Me.LayoutControl1
         Me.CheckedListBoxControl1.TabIndex = 32
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripSeparator1, Me.ToolStripMenuItem2})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(137, 54)
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(136, 22)
+        Me.ToolStripMenuItem1.Text = "Select All"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(133, 6)
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(136, 22)
+        Me.ToolStripMenuItem2.Text = "Unselect All"
+        '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.GroupControl3)
         Me.LayoutControl1.Controls.Add(Me.CheckedListBoxControl1)
         Me.LayoutControl1.Controls.Add(Me.GroupControl2)
@@ -1188,14 +1218,35 @@ Partial Class AllPostingsOCBS_Search
         Me.LayoutControl1.TabIndex = 116
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(222, 307)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 125
+        Me.ProgressPanel1.Text = "ProgressPanel1"
+        '
         'GroupControl3
         '
         Me.GroupControl3.AppearanceCaption.ForeColor = System.Drawing.Color.Yellow
         Me.GroupControl3.AppearanceCaption.Options.UseForeColor = True
         Me.GroupControl3.Controls.Add(Me.ListBoxControl1)
-        Me.GroupControl3.Location = New System.Drawing.Point(969, 12)
+        Me.GroupControl3.Location = New System.Drawing.Point(973, 12)
         Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(115, 274)
+        Me.GroupControl3.Size = New System.Drawing.Size(114, 269)
         Me.GroupControl3.TabIndex = 119
         Me.GroupControl3.Text = "Selected Dates"
         '
@@ -1206,9 +1257,9 @@ Partial Class AllPostingsOCBS_Search
         Me.ListBoxControl1.Appearance.Options.UseTextOptions = True
         Me.ListBoxControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.ListBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListBoxControl1.Location = New System.Drawing.Point(2, 20)
+        Me.ListBoxControl1.Location = New System.Drawing.Point(2, 23)
         Me.ListBoxControl1.Name = "ListBoxControl1"
-        Me.ListBoxControl1.Size = New System.Drawing.Size(111, 252)
+        Me.ListBoxControl1.Size = New System.Drawing.Size(110, 244)
         Me.ListBoxControl1.TabIndex = 0
         '
         'GroupControl2
@@ -1218,7 +1269,7 @@ Partial Class AllPostingsOCBS_Search
         Me.GroupControl2.Controls.Add(Me.Selected_GL_Accounts_ListBoxControl)
         Me.GroupControl2.Location = New System.Drawing.Point(682, 12)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(131, 274)
+        Me.GroupControl2.Size = New System.Drawing.Size(131, 269)
         Me.GroupControl2.TabIndex = 118
         Me.GroupControl2.Text = "Selected GL Accounts"
         '
@@ -1229,9 +1280,9 @@ Partial Class AllPostingsOCBS_Search
         Me.Selected_GL_Accounts_ListBoxControl.Appearance.Options.UseTextOptions = True
         Me.Selected_GL_Accounts_ListBoxControl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.Selected_GL_Accounts_ListBoxControl.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Selected_GL_Accounts_ListBoxControl.Location = New System.Drawing.Point(2, 20)
+        Me.Selected_GL_Accounts_ListBoxControl.Location = New System.Drawing.Point(2, 23)
         Me.Selected_GL_Accounts_ListBoxControl.Name = "Selected_GL_Accounts_ListBoxControl"
-        Me.Selected_GL_Accounts_ListBoxControl.Size = New System.Drawing.Size(127, 252)
+        Me.Selected_GL_Accounts_ListBoxControl.Size = New System.Drawing.Size(127, 244)
         Me.Selected_GL_Accounts_ListBoxControl.TabIndex = 0
         '
         'Print_Export_Gridview_btn
@@ -1281,16 +1332,16 @@ Partial Class AllPostingsOCBS_Search
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.GroupControl1
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(1076, 0)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(1079, 0)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(403, 278)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(400, 273)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem9})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 283)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(1479, 50)
@@ -1311,9 +1362,9 @@ Partial Class AllPostingsOCBS_Search
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(198, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(1364, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1181, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(15, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -1326,29 +1377,39 @@ Partial Class AllPostingsOCBS_Search
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
+        'LayoutControlItem9
+        '
+        Me.LayoutControlItem9.Control = Me.ProgressPanel1
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(198, 0)
+        Me.LayoutControlItem9.Name = "LayoutControlItem9"
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(1166, 26)
+        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem9.TextVisible = False
+        Me.LayoutControlItem9.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(810, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(815, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(10, 278)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(10, 273)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'SplitterItem1
         '
         Me.SplitterItem1.AllowHotTrack = True
         Me.SplitterItem1.IsCollapsible = DevExpress.Utils.DefaultBoolean.[True]
-        Me.SplitterItem1.Location = New System.Drawing.Point(0, 278)
+        Me.SplitterItem1.Location = New System.Drawing.Point(0, 273)
         Me.SplitterItem1.Name = "SplitterItem1"
         Me.SplitterItem1.ResizeMode = DevExpress.XtraLayout.SplitterItemResizeMode.AllSiblings
-        Me.SplitterItem1.Size = New System.Drawing.Size(1479, 5)
+        Me.SplitterItem1.Size = New System.Drawing.Size(1479, 10)
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.GL_Accounts_GridControl
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(670, 278)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(670, 273)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
@@ -1357,25 +1418,25 @@ Partial Class AllPostingsOCBS_Search
         Me.LayoutControlItem6.Control = Me.GroupControl2
         Me.LayoutControlItem6.Location = New System.Drawing.Point(670, 0)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(135, 278)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(135, 273)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         '
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.CheckedListBoxControl1
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(820, 0)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(825, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(137, 278)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(136, 273)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
         'LayoutControlItem8
         '
         Me.LayoutControlItem8.Control = Me.GroupControl3
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(957, 0)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(961, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(119, 278)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(118, 273)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -1386,36 +1447,11 @@ Partial Class AllPostingsOCBS_Search
         Me.SplitterItem2.Location = New System.Drawing.Point(805, 0)
         Me.SplitterItem2.Name = "SplitterItem2"
         Me.SplitterItem2.ResizeMode = DevExpress.XtraLayout.SplitterItemResizeMode.AllSiblings
-        Me.SplitterItem2.Size = New System.Drawing.Size(5, 278)
+        Me.SplitterItem2.Size = New System.Drawing.Size(10, 273)
         '
         'GL_ACCOUNTS_NEWGTableAdapter
         '
         Me.GL_ACCOUNTS_NEWGTableAdapter.ClearBeforeFill = True
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripSeparator1, Me.ToolStripMenuItem2})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(137, 54)
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(136, 22)
-        Me.ToolStripMenuItem1.Text = "Select All"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(133, 6)
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(136, 22)
-        Me.ToolStripMenuItem2.Text = "Unselect All"
         '
         'AllPostingsOCBS_Search
         '
@@ -1423,7 +1459,7 @@ Partial Class AllPostingsOCBS_Search
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1499, 721)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("AllPostingsOCBS_Search.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "AllPostingsOCBS_Search"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "All Postings in OCBS GL Accounts (Specific Search Options)"
@@ -1457,6 +1493,7 @@ Partial Class AllPostingsOCBS_Search
         Me.GroupControl1.ResumeLayout(False)
         CType(Me.ComboBoxEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CheckedListBoxControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1472,6 +1509,7 @@ Partial Class AllPostingsOCBS_Search
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1479,7 +1517,6 @@ Partial Class AllPostingsOCBS_Search
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1583,4 +1620,6 @@ Partial Class AllPostingsOCBS_Search
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
 End Class

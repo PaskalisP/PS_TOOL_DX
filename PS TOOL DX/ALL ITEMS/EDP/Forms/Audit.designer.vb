@@ -208,21 +208,26 @@ Partial Class Audit
         Me.LayoutViewColumn50 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.LayoutViewField25 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.LabelControl1 = New DevExpress.XtraEditors.LabelControl()
-        Me.AuditDateTill_Comboedit = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LoadAudit_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
-        Me.AuditDateFrom_Comboedit = New DevExpress.XtraEditors.ComboBoxEdit()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.Print_Export_AuditEvents_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.Edit_INTERBANKV_Details_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlGroup4 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup5 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.SeeDetails_Form_ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AuditDateFrom_Comboedit = New DevExpress.XtraEditors.SearchLookUpEdit()
+        Me.AuditDateTill_Comboedit = New DevExpress.XtraEditors.SearchLookUpEdit()
+        Me.AuditDateTill_ComboeditView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.AuditDateFrom_ComboeditView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.colOperationDateFrom = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.AuditDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AuditBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -314,17 +319,19 @@ Partial Class Audit
         CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AuditDateTill_Comboedit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AuditDateFrom_Comboedit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl2.SuspendLayout()
         CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
+        CType(Me.AuditDateFrom_Comboedit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AuditDateTill_Comboedit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AuditDateTill_ComboeditView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AuditDateFrom_ComboeditView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AuditDataSet
@@ -446,6 +453,7 @@ Partial Class Audit
         Me.AuditEvents_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.AuditEvents_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.AuditEvents_BasicView.OptionsView.ShowFooter = True
+        Me.AuditEvents_BasicView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -2118,14 +2126,13 @@ Partial Class Audit
         Me.LayoutViewColumn48.AppearanceHeader.Options.UseFont = True
         Me.LayoutViewColumn48.ColumnEdit = Me.RepositoryItemTextEdit4
         Me.LayoutViewColumn48.FieldName = "BIC CODE"
-        Me.LayoutViewColumn48.ImageIndex = 0
         Me.LayoutViewColumn48.LayoutViewField = Me.LayoutViewField23
         Me.LayoutViewColumn48.Name = "LayoutViewColumn48"
         '
         'LayoutViewField23
         '
         Me.LayoutViewField23.EditorPreferredWidth = 70
-        Me.LayoutViewField23.ImageIndex = 0
+        Me.LayoutViewField23.ImageOptions.ImageIndex = 0
         Me.LayoutViewField23.Location = New System.Drawing.Point(0, 0)
         Me.LayoutViewField23.Name = "LayoutViewField23"
         Me.LayoutViewField23.Size = New System.Drawing.Size(202, 20)
@@ -2180,33 +2187,11 @@ Partial Class Audit
         Me.LabelControl1.TabIndex = 7
         Me.LabelControl1.Text = "Date till"
         '
-        'AuditDateTill_Comboedit
-        '
-        Me.AuditDateTill_Comboedit.Location = New System.Drawing.Point(699, 39)
-        Me.AuditDateTill_Comboedit.Name = "AuditDateTill_Comboedit"
-        Me.AuditDateTill_Comboedit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.AuditDateTill_Comboedit.Properties.Appearance.Options.UseFont = True
-        Me.AuditDateTill_Comboedit.Properties.Appearance.Options.UseTextOptions = True
-        Me.AuditDateTill_Comboedit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.AuditDateTill_Comboedit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.AuditDateTill_Comboedit.Properties.DisplayFormat.FormatString = "d"
-        Me.AuditDateTill_Comboedit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.AuditDateTill_Comboedit.Properties.MaxLength = 8
-        Me.AuditDateTill_Comboedit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.AuditDateTill_Comboedit.Size = New System.Drawing.Size(136, 26)
-        Me.AuditDateTill_Comboedit.TabIndex = 8
-        '
         'LoadAudit_btn
         '
-        Me.LoadAudit_btn.ImageIndex = 6
-        Me.LoadAudit_btn.ImageList = Me.ImageCollection1
+        Me.LoadAudit_btn.ImageOptions.Image = CType(resources.GetObject("LoadAudit_btn.ImageOptions.Image"), System.Drawing.Image)
+        Me.LoadAudit_btn.ImageOptions.ImageIndex = 6
+        Me.LoadAudit_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadAudit_btn.Location = New System.Drawing.Point(546, 71)
         Me.LoadAudit_btn.Name = "LoadAudit_btn"
         Me.LoadAudit_btn.Size = New System.Drawing.Size(289, 23)
@@ -2223,34 +2208,12 @@ Partial Class Audit
         Me.LabelControl4.TabIndex = 5
         Me.LabelControl4.Text = "Date from"
         '
-        'AuditDateFrom_Comboedit
-        '
-        Me.AuditDateFrom_Comboedit.Location = New System.Drawing.Point(546, 39)
-        Me.AuditDateFrom_Comboedit.Name = "AuditDateFrom_Comboedit"
-        Me.AuditDateFrom_Comboedit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.AuditDateFrom_Comboedit.Properties.Appearance.Options.UseFont = True
-        Me.AuditDateFrom_Comboedit.Properties.Appearance.Options.UseTextOptions = True
-        Me.AuditDateFrom_Comboedit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.AuditDateFrom_Comboedit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.AuditDateFrom_Comboedit.Properties.DisplayFormat.FormatString = "d"
-        Me.AuditDateFrom_Comboedit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.AuditDateFrom_Comboedit.Properties.MaxLength = 8
-        Me.AuditDateFrom_Comboedit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.AuditDateFrom_Comboedit.Size = New System.Drawing.Size(136, 26)
-        Me.AuditDateFrom_Comboedit.TabIndex = 6
-        '
         'LayoutControl2
         '
         Me.LayoutControl2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl2.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl2.Controls.Add(Me.Print_Export_AuditEvents_Gridview_btn)
         Me.LayoutControl2.Controls.Add(Me.Edit_INTERBANKV_Details_btn)
         Me.LayoutControl2.Controls.Add(Me.GridControl2)
@@ -2262,11 +2225,32 @@ Partial Class Audit
         Me.LayoutControl2.TabIndex = 16
         Me.LayoutControl2.Text = "LayoutControl2"
         '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(183, 24)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl2
+        Me.ProgressPanel1.TabIndex = 123
+        Me.ProgressPanel1.Text = "ProgressPanel1"
+        '
         'Print_Export_AuditEvents_Gridview_btn
         '
         Me.Print_Export_AuditEvents_Gridview_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_AuditEvents_Gridview_btn.ImageIndex = 2
-        Me.Print_Export_AuditEvents_Gridview_btn.ImageList = Me.ImageCollection1
+        Me.Print_Export_AuditEvents_Gridview_btn.ImageOptions.ImageIndex = 2
+        Me.Print_Export_AuditEvents_Gridview_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_AuditEvents_Gridview_btn.Location = New System.Drawing.Point(24, 24)
         Me.Print_Export_AuditEvents_Gridview_btn.Name = "Print_Export_AuditEvents_Gridview_btn"
         Me.Print_Export_AuditEvents_Gridview_btn.Size = New System.Drawing.Size(155, 22)
@@ -2277,10 +2261,10 @@ Partial Class Audit
         'Edit_INTERBANKV_Details_btn
         '
         Me.Edit_INTERBANKV_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Edit_INTERBANKV_Details_btn.ImageIndex = 5
-        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1164, 24)
+        Me.Edit_INTERBANKV_Details_btn.ImageOptions.ImageIndex = 5
+        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1249, 24)
         Me.Edit_INTERBANKV_Details_btn.Name = "Edit_INTERBANKV_Details_btn"
-        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(182, 22)
+        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(97, 22)
         Me.Edit_INTERBANKV_Details_btn.StyleController = Me.LayoutControl2
         Me.Edit_INTERBANKV_Details_btn.TabIndex = 4
         Me.Edit_INTERBANKV_Details_btn.Text = "Show Details"
@@ -2291,7 +2275,6 @@ Partial Class Audit
         Me.LayoutControlGroup4.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.LayoutControlGroup5})
-        Me.LayoutControlGroup4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup4.Name = "Root"
         Me.LayoutControlGroup4.Size = New System.Drawing.Size(1370, 654)
         '
@@ -2310,7 +2293,7 @@ Partial Class Audit
         'LayoutControlGroup5
         '
         Me.LayoutControlGroup5.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem8})
+        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.LayoutControlItem8, Me.LayoutControlItem1})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup5.Size = New System.Drawing.Size(1350, 50)
@@ -2320,31 +2303,38 @@ Partial Class Audit
         '
         Me.LayoutControlItem6.Control = Me.Edit_INTERBANKV_Details_btn
         Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(1140, 0)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(1225, 0)
+        Me.LayoutControlItem6.MaxSize = New System.Drawing.Size(101, 26)
+        Me.LayoutControlItem6.MinSize = New System.Drawing.Size(101, 26)
         Me.LayoutControlItem6.Name = "LayoutControlItem2"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(186, 26)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(101, 26)
+        Me.LayoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         Me.LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(159, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(981, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem8
         '
         Me.LayoutControlItem8.Control = Me.Print_Export_AuditEvents_Gridview_btn
         Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem8.MaxSize = New System.Drawing.Size(159, 26)
+        Me.LayoutControlItem8.MinSize = New System.Drawing.Size(159, 26)
         Me.LayoutControlItem8.Name = "LayoutControlItem4"
         Me.LayoutControlItem8.Size = New System.Drawing.Size(159, 26)
+        Me.LayoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
+        '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.ProgressPanel1
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(159, 0)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1066, 26)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem1.TextVisible = False
+        Me.LayoutControlItem1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'ContextMenuStrip1
         '
@@ -2359,6 +2349,102 @@ Partial Class Audit
         Me.SeeDetails_Form_ToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.SeeDetails_Form_ToolStripMenuItem.Text = "See Details"
         '
+        'AuditDateFrom_Comboedit
+        '
+        Me.AuditDateFrom_Comboedit.Location = New System.Drawing.Point(546, 39)
+        Me.AuditDateFrom_Comboedit.Name = "AuditDateFrom_Comboedit"
+        Me.AuditDateFrom_Comboedit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.AuditDateFrom_Comboedit.Properties.Appearance.Options.UseFont = True
+        Me.AuditDateFrom_Comboedit.Properties.Appearance.Options.UseTextOptions = True
+        Me.AuditDateFrom_Comboedit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.Options.UseTextOptions = True
+        Me.AuditDateFrom_Comboedit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.AuditDateFrom_Comboedit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.AuditDateFrom_Comboedit.Properties.MaxLength = 8
+        Me.AuditDateFrom_Comboedit.Properties.NullText = ""
+        Me.AuditDateFrom_Comboedit.Properties.PopupView = Me.AuditDateFrom_ComboeditView
+        Me.AuditDateFrom_Comboedit.Properties.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth
+        Me.AuditDateFrom_Comboedit.Properties.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
+        Me.AuditDateFrom_Comboedit.Size = New System.Drawing.Size(136, 26)
+        Me.AuditDateFrom_Comboedit.TabIndex = 6
+        '
+        'AuditDateTill_Comboedit
+        '
+        Me.AuditDateTill_Comboedit.Location = New System.Drawing.Point(699, 39)
+        Me.AuditDateTill_Comboedit.Name = "AuditDateTill_Comboedit"
+        Me.AuditDateTill_Comboedit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.AuditDateTill_Comboedit.Properties.Appearance.Options.UseFont = True
+        Me.AuditDateTill_Comboedit.Properties.Appearance.Options.UseTextOptions = True
+        Me.AuditDateTill_Comboedit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.Options.UseTextOptions = True
+        Me.AuditDateTill_Comboedit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.AuditDateTill_Comboedit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.AuditDateTill_Comboedit.Properties.MaxLength = 8
+        Me.AuditDateTill_Comboedit.Properties.NullText = ""
+        Me.AuditDateTill_Comboedit.Properties.PopupView = Me.AuditDateTill_ComboeditView
+        Me.AuditDateTill_Comboedit.Properties.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth
+        Me.AuditDateTill_Comboedit.Properties.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
+        Me.AuditDateTill_Comboedit.Size = New System.Drawing.Size(136, 26)
+        Me.AuditDateTill_Comboedit.TabIndex = 8
+        '
+        'AuditDateTill_ComboeditView
+        '
+        Me.AuditDateTill_ComboeditView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn1})
+        Me.AuditDateTill_ComboeditView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.AuditDateTill_ComboeditView.Name = "AuditDateTill_ComboeditView"
+        Me.AuditDateTill_ComboeditView.OptionsBehavior.ReadOnly = True
+        Me.AuditDateTill_ComboeditView.OptionsFind.AlwaysVisible = True
+        Me.AuditDateTill_ComboeditView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.AuditDateTill_ComboeditView.OptionsView.ColumnAutoWidth = False
+        Me.AuditDateTill_ComboeditView.OptionsView.ShowAutoFilterRow = True
+        Me.AuditDateTill_ComboeditView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.AuditDateTill_ComboeditView.OptionsView.ShowGroupPanel = False
+        '
+        'AuditDateFrom_ComboeditView
+        '
+        Me.AuditDateFrom_ComboeditView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colOperationDateFrom})
+        Me.AuditDateFrom_ComboeditView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.AuditDateFrom_ComboeditView.Name = "AuditDateFrom_ComboeditView"
+        Me.AuditDateFrom_ComboeditView.OptionsBehavior.ReadOnly = True
+        Me.AuditDateFrom_ComboeditView.OptionsFind.AlwaysVisible = True
+        Me.AuditDateFrom_ComboeditView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.AuditDateFrom_ComboeditView.OptionsView.ColumnAutoWidth = False
+        Me.AuditDateFrom_ComboeditView.OptionsView.ShowAutoFilterRow = True
+        Me.AuditDateFrom_ComboeditView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.AuditDateFrom_ComboeditView.OptionsView.ShowGroupPanel = False
+        '
+        'colOperationDateFrom
+        '
+        Me.colOperationDateFrom.AppearanceCell.Options.UseTextOptions = True
+        Me.colOperationDateFrom.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colOperationDateFrom.Caption = "Operation Date"
+        Me.colOperationDateFrom.FieldName = "OPERATION_DATE"
+        Me.colOperationDateFrom.Name = "colOperationDateFrom"
+        Me.colOperationDateFrom.Visible = True
+        Me.colOperationDateFrom.VisibleIndex = 0
+        Me.colOperationDateFrom.Width = 139
+        '
+        'GridColumn1
+        '
+        Me.GridColumn1.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn1.Caption = "Operation Date"
+        Me.GridColumn1.FieldName = "OPERATION_DATE"
+        Me.GridColumn1.Name = "GridColumn1"
+        Me.GridColumn1.Visible = True
+        Me.GridColumn1.VisibleIndex = 0
+        Me.GridColumn1.Width = 139
+        '
         'Audit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2366,11 +2452,11 @@ Partial Class Audit
         Me.ClientSize = New System.Drawing.Size(1361, 748)
         Me.Controls.Add(Me.LayoutControl2)
         Me.Controls.Add(Me.LabelControl1)
-        Me.Controls.Add(Me.AuditDateTill_Comboedit)
         Me.Controls.Add(Me.LoadAudit_btn)
         Me.Controls.Add(Me.LabelControl4)
         Me.Controls.Add(Me.AuditDateFrom_Comboedit)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.AuditDateTill_Comboedit)
+        Me.IconOptions.Icon = CType(resources.GetObject("Audit.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "Audit"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Audit Table Values"
@@ -2466,17 +2552,19 @@ Partial Class Audit
         CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AuditDateTill_Comboedit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AuditDateFrom_Comboedit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LayoutControl2.ResumeLayout(False)
         CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ContextMenuStrip1.ResumeLayout(False)
+        CType(Me.AuditDateFrom_Comboedit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AuditDateTill_Comboedit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AuditDateTill_ComboeditView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AuditDateFrom_ComboeditView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2488,10 +2576,8 @@ Partial Class Audit
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
     Friend WithEvents LabelControl1 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents AuditDateTill_Comboedit As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LoadAudit_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents AuditDateFrom_Comboedit As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LayoutControl2 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents Print_Export_AuditEvents_Gridview_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents Edit_INTERBANKV_Details_btn As DevExpress.XtraEditors.SimpleButton
@@ -2664,7 +2750,6 @@ Partial Class Audit
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup5 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colOperationDate As DevExpress.XtraGrid.Columns.GridColumn
@@ -2679,4 +2764,12 @@ Partial Class Audit
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents SeeDetails_Form_ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents AuditDateFrom_Comboedit As DevExpress.XtraEditors.SearchLookUpEdit
+    Friend WithEvents AuditDateTill_Comboedit As DevExpress.XtraEditors.SearchLookUpEdit
+    Friend WithEvents AuditDateFrom_ComboeditView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents AuditDateTill_ComboeditView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents colOperationDateFrom As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

@@ -21,6 +21,14 @@ Partial Class AllPostingsNEWG
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AllPostingsNEWG))
+        Dim GridFormatRule15 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue15 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule16 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue16 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule17 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue17 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule18 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue18 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
@@ -29,26 +37,18 @@ Partial Class AllPostingsNEWG
         Dim FormatConditionRuleValue3 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule4 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue4 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule19 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue19 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule20 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue20 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule21 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue21 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule22 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue22 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule5 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue5 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
         Dim FormatConditionRuleValue6 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule7 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue7 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule8 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue8 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule9 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue9 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule10 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue10 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule11 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue11 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule12 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue12 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule13 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue13 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule14 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue14 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Me.GridColumn39 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAmount = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAmountInEuro = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -247,6 +247,7 @@ Partial Class AllPostingsNEWG
         Me.BookingDate_From = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
         Me.Print_Export_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.Edit_BICDIR_Details_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -254,8 +255,8 @@ Partial Class AllPostingsNEWG
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
@@ -287,6 +288,7 @@ Partial Class AllPostingsNEWG
         Me.BookingDateContractFrom_DateEdit = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl15 = New DevExpress.XtraEditors.LabelControl()
         Me.GL_ACCOUNTS_NEWGTableAdapter = New PS_TOOL_DX.BalancesNEWGDatasetTableAdapters.GL_ACCOUNTS_NEWGTableAdapter()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         CType(Me.BalancesDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GL_ACCOUNTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OWN_CURRENCIESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -347,8 +349,8 @@ Partial Class AllPostingsNEWG
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
@@ -366,6 +368,7 @@ Partial Class AllPostingsNEWG
         CType(Me.BookingDateContractTill_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BookingDateContractFrom_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BookingDateContractFrom_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridColumn39
@@ -582,62 +585,62 @@ Partial Class AllPostingsNEWG
         Me.All_Postings_Balances_All_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn38, Me.GridColumn39, Me.GridColumn40, Me.GridColumn41, Me.GridColumn42, Me.GridColumn43, Me.colUBGL_AC_No, Me.GridColumn44, Me.GridColumn45, Me.GridColumn46, Me.GridColumn47, Me.GridColumn48, Me.GridColumn49, Me.GridColumn50, Me.GridColumn51, Me.GridColumn52, Me.GridColumn53, Me.GridColumn54, Me.GridColumn55, Me.GridColumn56, Me.GridColumn57, Me.GridColumn58, Me.GridColumn59, Me.GridColumn60, Me.GridColumn61, Me.GridColumn62, Me.GridColumn63, Me.GridColumn64, Me.GridColumn65, Me.GridColumn66, Me.GridColumn67, Me.GridColumn68, Me.GridColumn69, Me.GridColumn70, Me.GridColumn71, Me.colClientName})
         Me.All_Postings_Balances_All_GridView.CustomizationFormBounds = New System.Drawing.Rectangle(1349, 617, 210, 256)
         Me.All_Postings_Balances_All_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule1.ApplyToRow = True
-        GridFormatRule1.Column = Me.GridColumn39
-        GridFormatRule1.Name = "OpeningBalance"
-        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleValue1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleValue1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue1.Appearance.Options.UseFont = True
-        FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue1.Value1 = "OPENING VALUE BALANCE GL ACCOUNT"
-        GridFormatRule1.Rule = FormatConditionRuleValue1
-        GridFormatRule2.ApplyToRow = True
-        GridFormatRule2.Column = Me.GridColumn39
-        GridFormatRule2.Name = "ClosingBalance"
-        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.Aqua
-        FormatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.Aqua
-        FormatConditionRuleValue2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue2.Appearance.Options.UseFont = True
-        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue2.Value1 = "CLOSING VALUE BALANCE GL ACCOUNT"
-        GridFormatRule2.Rule = FormatConditionRuleValue2
-        GridFormatRule3.ApplyToRow = True
-        GridFormatRule3.Column = Me.GridColumn39
-        GridFormatRule3.Name = "Format6"
-        FormatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.Black
-        FormatConditionRuleValue3.Appearance.BackColor2 = System.Drawing.Color.Black
-        FormatConditionRuleValue3.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Yellow
-        FormatConditionRuleValue3.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue3.Appearance.Options.UseFont = True
-        FormatConditionRuleValue3.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue3.Value1 = "GL ITEM CLOSING BALANCE"
-        GridFormatRule3.Rule = FormatConditionRuleValue3
-        GridFormatRule4.ApplyToRow = True
-        GridFormatRule4.Column = Me.GridColumn39
-        GridFormatRule4.Name = "Format7"
-        FormatConditionRuleValue4.Appearance.BackColor = System.Drawing.SystemColors.ControlLight
-        FormatConditionRuleValue4.Appearance.BackColor2 = System.Drawing.SystemColors.ControlLight
-        FormatConditionRuleValue4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        FormatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.DarkBlue
-        FormatConditionRuleValue4.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue4.Appearance.Options.UseFont = True
-        FormatConditionRuleValue4.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue4.Value1 = "GL ITEM OPENING BALANCE"
-        GridFormatRule4.Rule = FormatConditionRuleValue4
-        Me.All_Postings_Balances_All_GridView.FormatRules.Add(GridFormatRule1)
-        Me.All_Postings_Balances_All_GridView.FormatRules.Add(GridFormatRule2)
-        Me.All_Postings_Balances_All_GridView.FormatRules.Add(GridFormatRule3)
-        Me.All_Postings_Balances_All_GridView.FormatRules.Add(GridFormatRule4)
+        GridFormatRule15.ApplyToRow = True
+        GridFormatRule15.Column = Me.GridColumn39
+        GridFormatRule15.Name = "OpeningBalance"
+        FormatConditionRuleValue15.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleValue15.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleValue15.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue15.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue15.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue15.Appearance.Options.UseFont = True
+        FormatConditionRuleValue15.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue15.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue15.Value1 = "OPENING VALUE BALANCE GL ACCOUNT"
+        GridFormatRule15.Rule = FormatConditionRuleValue15
+        GridFormatRule16.ApplyToRow = True
+        GridFormatRule16.Column = Me.GridColumn39
+        GridFormatRule16.Name = "ClosingBalance"
+        FormatConditionRuleValue16.Appearance.BackColor = System.Drawing.Color.Aqua
+        FormatConditionRuleValue16.Appearance.BackColor2 = System.Drawing.Color.Aqua
+        FormatConditionRuleValue16.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue16.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue16.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue16.Appearance.Options.UseFont = True
+        FormatConditionRuleValue16.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue16.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue16.Value1 = "CLOSING VALUE BALANCE GL ACCOUNT"
+        GridFormatRule16.Rule = FormatConditionRuleValue16
+        GridFormatRule17.ApplyToRow = True
+        GridFormatRule17.Column = Me.GridColumn39
+        GridFormatRule17.Name = "Format6"
+        FormatConditionRuleValue17.Appearance.BackColor = System.Drawing.Color.Black
+        FormatConditionRuleValue17.Appearance.BackColor2 = System.Drawing.Color.Black
+        FormatConditionRuleValue17.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue17.Appearance.ForeColor = System.Drawing.Color.Yellow
+        FormatConditionRuleValue17.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue17.Appearance.Options.UseFont = True
+        FormatConditionRuleValue17.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue17.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue17.Value1 = "GL ITEM CLOSING BALANCE"
+        GridFormatRule17.Rule = FormatConditionRuleValue17
+        GridFormatRule18.ApplyToRow = True
+        GridFormatRule18.Column = Me.GridColumn39
+        GridFormatRule18.Name = "Format7"
+        FormatConditionRuleValue18.Appearance.BackColor = System.Drawing.SystemColors.ControlLight
+        FormatConditionRuleValue18.Appearance.BackColor2 = System.Drawing.SystemColors.ControlLight
+        FormatConditionRuleValue18.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
+        FormatConditionRuleValue18.Appearance.ForeColor = System.Drawing.Color.DarkBlue
+        FormatConditionRuleValue18.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue18.Appearance.Options.UseFont = True
+        FormatConditionRuleValue18.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue18.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue18.Value1 = "GL ITEM OPENING BALANCE"
+        GridFormatRule18.Rule = FormatConditionRuleValue18
+        Me.All_Postings_Balances_All_GridView.FormatRules.Add(GridFormatRule15)
+        Me.All_Postings_Balances_All_GridView.FormatRules.Add(GridFormatRule16)
+        Me.All_Postings_Balances_All_GridView.FormatRules.Add(GridFormatRule17)
+        Me.All_Postings_Balances_All_GridView.FormatRules.Add(GridFormatRule18)
         Me.All_Postings_Balances_All_GridView.GridControl = Me.GridControl1
         Me.All_Postings_Balances_All_GridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "", Me.GridColumn38, "")})
         Me.All_Postings_Balances_All_GridView.Name = "All_Postings_Balances_All_GridView"
@@ -658,6 +661,7 @@ Partial Class AllPostingsNEWG
         Me.All_Postings_Balances_All_GridView.OptionsView.ShowAutoFilterRow = True
         Me.All_Postings_Balances_All_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.All_Postings_Balances_All_GridView.OptionsView.ShowFooter = True
+        Me.All_Postings_Balances_All_GridView.OptionsView.ShowGroupPanel = False
         Me.All_Postings_Balances_All_GridView.ViewCaption = "Results by GL Item"
         '
         'GridColumn38
@@ -1067,98 +1071,98 @@ Partial Class AllPostingsNEWG
         Me.AllPostings_BasicView.Appearance.GroupRow.Options.UseForeColor = True
         Me.AllPostings_BasicView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colIdNr, Me.colBatchNo, Me.colSequenceNo, Me.colGLBook, Me.colAccountingCentre, Me.colGL_AC_No, Me.colUBGL_AC_No1, Me.colValueDate, Me.colTransactionTime, Me.colAccountNo, Me.colContractType, Me.colProductType, Me.colEventType, Me.colCCY, Me.colAmount, Me.colDR_CR, Me.colGroupNo, Me.colClientNo, Me.colPortfolioCode, Me.colNarrativeCode, Me.colReferenceCode, Me.colChequeNo, Me.colAP, Me.colTRNAccountingCentre, Me.colCheckerID, Me.colChannel, Me.colOtherSystemKey, Me.colGeneratedType, Me.colReversalFlag, Me.colDescription, Me.colGL_Rep_Date, Me.colGL_Item_Nr, Me.colGL_AC_No_Name, Me.colExchange_Rate, Me.colAmountInEuro, Me.colClientName1})
         Me.AllPostings_BasicView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule5.Column = Me.colAmount
-        GridFormatRule5.Name = "Format0"
-        FormatConditionRuleValue5.Appearance.ForeColor = System.Drawing.Color.LimeGreen
-        FormatConditionRuleValue5.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.GreaterOrEqual
-        FormatConditionRuleValue5.Value1 = "0"
-        GridFormatRule5.Rule = FormatConditionRuleValue5
-        GridFormatRule6.Column = Me.colAmount
-        GridFormatRule6.Name = "Format1"
-        FormatConditionRuleValue6.Appearance.ForeColor = System.Drawing.Color.OrangeRed
-        FormatConditionRuleValue6.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue6.Value1 = "0"
-        GridFormatRule6.Rule = FormatConditionRuleValue6
-        GridFormatRule7.Column = Me.colAmountInEuro
-        GridFormatRule7.Name = "Format2"
-        FormatConditionRuleValue7.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue7.Appearance.ForeColor = System.Drawing.Color.LimeGreen
-        FormatConditionRuleValue7.Appearance.Options.UseFont = True
-        FormatConditionRuleValue7.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue7.Condition = DevExpress.XtraEditors.FormatCondition.GreaterOrEqual
-        FormatConditionRuleValue7.Value1 = "0"
-        GridFormatRule7.Rule = FormatConditionRuleValue7
-        GridFormatRule8.Column = Me.colAmountInEuro
-        GridFormatRule8.Name = "Format3"
-        FormatConditionRuleValue8.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue8.Appearance.ForeColor = System.Drawing.Color.OrangeRed
-        FormatConditionRuleValue8.Appearance.Options.UseFont = True
-        FormatConditionRuleValue8.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue8.Condition = DevExpress.XtraEditors.FormatCondition.Less
-        FormatConditionRuleValue8.Value1 = "0"
-        GridFormatRule8.Rule = FormatConditionRuleValue8
-        GridFormatRule9.ApplyToRow = True
-        GridFormatRule9.Column = Me.colBatchNo
-        GridFormatRule9.Name = "Format4"
-        FormatConditionRuleValue9.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue9.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        FormatConditionRuleValue9.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue9.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        FormatConditionRuleValue9.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue9.Appearance.Options.UseFont = True
-        FormatConditionRuleValue9.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue9.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue9.Value1 = "OPENING BALANCE OCBS ACC."
-        GridFormatRule9.Rule = FormatConditionRuleValue9
-        GridFormatRule10.ApplyToRow = True
-        GridFormatRule10.Column = Me.colBatchNo
-        GridFormatRule10.Name = "Format5"
-        FormatConditionRuleValue10.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleValue10.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleValue10.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue10.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        FormatConditionRuleValue10.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue10.Appearance.Options.UseFont = True
-        FormatConditionRuleValue10.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue10.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue10.Value1 = "CLOSING BALANCE OCBS ACC."
-        GridFormatRule10.Rule = FormatConditionRuleValue10
-        GridFormatRule11.ApplyToRow = True
-        GridFormatRule11.Column = Me.colBatchNo
-        GridFormatRule11.Name = "Format6"
-        FormatConditionRuleValue11.Appearance.BackColor = System.Drawing.Color.Black
-        FormatConditionRuleValue11.Appearance.BackColor2 = System.Drawing.Color.Black
-        FormatConditionRuleValue11.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue11.Appearance.ForeColor = System.Drawing.Color.Yellow
-        FormatConditionRuleValue11.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue11.Appearance.Options.UseFont = True
-        FormatConditionRuleValue11.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue11.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue11.Value1 = "GL ITEM CLOSING BALANCE"
-        GridFormatRule11.Rule = FormatConditionRuleValue11
-        GridFormatRule12.ApplyToRow = True
-        GridFormatRule12.Column = Me.colBatchNo
-        GridFormatRule12.Name = "Format7"
-        FormatConditionRuleValue12.Appearance.BackColor = System.Drawing.SystemColors.ControlLight
-        FormatConditionRuleValue12.Appearance.BackColor2 = System.Drawing.SystemColors.ControlLight
-        FormatConditionRuleValue12.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        FormatConditionRuleValue12.Appearance.ForeColor = System.Drawing.Color.DarkBlue
-        FormatConditionRuleValue12.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue12.Appearance.Options.UseFont = True
-        FormatConditionRuleValue12.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue12.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue12.Value1 = "GL ITEM OPENING BALANCE"
-        GridFormatRule12.Rule = FormatConditionRuleValue12
-        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule5)
-        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule6)
-        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule7)
-        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule8)
-        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule9)
-        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule10)
-        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule11)
-        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule12)
+        GridFormatRule1.Column = Me.colAmount
+        GridFormatRule1.Name = "Format0"
+        FormatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.LimeGreen
+        FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.GreaterOrEqual
+        FormatConditionRuleValue1.Value1 = "0"
+        GridFormatRule1.Rule = FormatConditionRuleValue1
+        GridFormatRule2.Column = Me.colAmount
+        GridFormatRule2.Name = "Format1"
+        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.OrangeRed
+        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Less
+        FormatConditionRuleValue2.Value1 = "0"
+        GridFormatRule2.Rule = FormatConditionRuleValue2
+        GridFormatRule3.Column = Me.colAmountInEuro
+        GridFormatRule3.Name = "Format2"
+        FormatConditionRuleValue3.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.LimeGreen
+        FormatConditionRuleValue3.Appearance.Options.UseFont = True
+        FormatConditionRuleValue3.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.GreaterOrEqual
+        FormatConditionRuleValue3.Value1 = "0"
+        GridFormatRule3.Rule = FormatConditionRuleValue3
+        GridFormatRule4.Column = Me.colAmountInEuro
+        GridFormatRule4.Name = "Format3"
+        FormatConditionRuleValue4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.OrangeRed
+        FormatConditionRuleValue4.Appearance.Options.UseFont = True
+        FormatConditionRuleValue4.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Less
+        FormatConditionRuleValue4.Value1 = "0"
+        GridFormatRule4.Rule = FormatConditionRuleValue4
+        GridFormatRule19.ApplyToRow = True
+        GridFormatRule19.Column = Me.colBatchNo
+        GridFormatRule19.Name = "Format4"
+        FormatConditionRuleValue19.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue19.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        FormatConditionRuleValue19.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue19.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        FormatConditionRuleValue19.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue19.Appearance.Options.UseFont = True
+        FormatConditionRuleValue19.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue19.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue19.Value1 = "OPENING BALANCE OCBS ACC."
+        GridFormatRule19.Rule = FormatConditionRuleValue19
+        GridFormatRule20.ApplyToRow = True
+        GridFormatRule20.Column = Me.colBatchNo
+        GridFormatRule20.Name = "Format5"
+        FormatConditionRuleValue20.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleValue20.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleValue20.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue20.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        FormatConditionRuleValue20.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue20.Appearance.Options.UseFont = True
+        FormatConditionRuleValue20.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue20.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue20.Value1 = "CLOSING BALANCE OCBS ACC."
+        GridFormatRule20.Rule = FormatConditionRuleValue20
+        GridFormatRule21.ApplyToRow = True
+        GridFormatRule21.Column = Me.colBatchNo
+        GridFormatRule21.Name = "Format6"
+        FormatConditionRuleValue21.Appearance.BackColor = System.Drawing.Color.Black
+        FormatConditionRuleValue21.Appearance.BackColor2 = System.Drawing.Color.Black
+        FormatConditionRuleValue21.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue21.Appearance.ForeColor = System.Drawing.Color.Yellow
+        FormatConditionRuleValue21.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue21.Appearance.Options.UseFont = True
+        FormatConditionRuleValue21.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue21.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue21.Value1 = "GL ITEM CLOSING BALANCE"
+        GridFormatRule21.Rule = FormatConditionRuleValue21
+        GridFormatRule22.ApplyToRow = True
+        GridFormatRule22.Column = Me.colBatchNo
+        GridFormatRule22.Name = "Format7"
+        FormatConditionRuleValue22.Appearance.BackColor = System.Drawing.SystemColors.ControlLight
+        FormatConditionRuleValue22.Appearance.BackColor2 = System.Drawing.SystemColors.ControlLight
+        FormatConditionRuleValue22.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
+        FormatConditionRuleValue22.Appearance.ForeColor = System.Drawing.Color.DarkBlue
+        FormatConditionRuleValue22.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue22.Appearance.Options.UseFont = True
+        FormatConditionRuleValue22.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue22.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue22.Value1 = "GL ITEM OPENING BALANCE"
+        GridFormatRule22.Rule = FormatConditionRuleValue22
+        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule1)
+        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule2)
+        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule3)
+        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule4)
+        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule19)
+        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule20)
+        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule21)
+        Me.AllPostings_BasicView.FormatRules.Add(GridFormatRule22)
         Me.AllPostings_BasicView.GridControl = Me.GridControl1
         Me.AllPostings_BasicView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "", Me.colIdNr, "")})
         Me.AllPostings_BasicView.Name = "AllPostings_BasicView"
@@ -1179,6 +1183,7 @@ Partial Class AllPostingsNEWG
         Me.AllPostings_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.AllPostings_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.AllPostings_BasicView.OptionsView.ShowFooter = True
+        Me.AllPostings_BasicView.OptionsView.ShowGroupPanel = False
         Me.AllPostings_BasicView.PaintStyleName = "Skin"
         Me.AllPostings_BasicView.ViewCaption = "Results by GL Item"
         '
@@ -1938,34 +1943,34 @@ Partial Class AllPostingsNEWG
         Me.All_Postings_Balances_GridView.Appearance.GroupRow.Options.UseForeColor = True
         Me.All_Postings_Balances_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn4, Me.GridColumn5, Me.GridColumn6, Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.colUBGL_AC_No2, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14, Me.GridColumn15, Me.GridColumn16, Me.GridColumn17, Me.GridColumn18, Me.GridColumn19, Me.GridColumn20, Me.GridColumn21, Me.GridColumn22, Me.GridColumn23, Me.GridColumn24, Me.GridColumn25, Me.GridColumn26, Me.GridColumn27, Me.GridColumn28, Me.GridColumn29, Me.GridColumn30, Me.GridColumn31, Me.GridColumn32, Me.GridColumn33, Me.GridColumn34, Me.GridColumn35, Me.GridColumn36, Me.GridColumn37, Me.colClientName2})
         Me.All_Postings_Balances_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule13.ApplyToRow = True
-        GridFormatRule13.Column = Me.GridColumn5
-        GridFormatRule13.Name = "OpeningBalance"
-        FormatConditionRuleValue13.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleValue13.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleValue13.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue13.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        FormatConditionRuleValue13.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue13.Appearance.Options.UseFont = True
-        FormatConditionRuleValue13.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue13.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue13.Value1 = "OPENING VALUE BALANCE GL ACCOUNT"
-        GridFormatRule13.Rule = FormatConditionRuleValue13
-        GridFormatRule14.ApplyToRow = True
-        GridFormatRule14.Column = Me.GridColumn5
-        GridFormatRule14.Name = "ClosingBalance"
-        FormatConditionRuleValue14.Appearance.BackColor = System.Drawing.Color.Aqua
-        FormatConditionRuleValue14.Appearance.BackColor2 = System.Drawing.Color.Aqua
-        FormatConditionRuleValue14.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue14.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        FormatConditionRuleValue14.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue14.Appearance.Options.UseFont = True
-        FormatConditionRuleValue14.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue14.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue14.Value1 = "CLOSING VALUE BALANCE GL ACCOUNT"
-        GridFormatRule14.Rule = FormatConditionRuleValue14
-        Me.All_Postings_Balances_GridView.FormatRules.Add(GridFormatRule13)
-        Me.All_Postings_Balances_GridView.FormatRules.Add(GridFormatRule14)
+        GridFormatRule5.ApplyToRow = True
+        GridFormatRule5.Column = Me.GridColumn5
+        GridFormatRule5.Name = "OpeningBalance"
+        FormatConditionRuleValue5.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleValue5.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleValue5.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue5.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        FormatConditionRuleValue5.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue5.Appearance.Options.UseFont = True
+        FormatConditionRuleValue5.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue5.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue5.Value1 = "OPENING VALUE BALANCE GL ACCOUNT"
+        GridFormatRule5.Rule = FormatConditionRuleValue5
+        GridFormatRule6.ApplyToRow = True
+        GridFormatRule6.Column = Me.GridColumn5
+        GridFormatRule6.Name = "ClosingBalance"
+        FormatConditionRuleValue6.Appearance.BackColor = System.Drawing.Color.Aqua
+        FormatConditionRuleValue6.Appearance.BackColor2 = System.Drawing.Color.Aqua
+        FormatConditionRuleValue6.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue6.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        FormatConditionRuleValue6.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue6.Appearance.Options.UseFont = True
+        FormatConditionRuleValue6.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue6.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue6.Value1 = "CLOSING VALUE BALANCE GL ACCOUNT"
+        GridFormatRule6.Rule = FormatConditionRuleValue6
+        Me.All_Postings_Balances_GridView.FormatRules.Add(GridFormatRule5)
+        Me.All_Postings_Balances_GridView.FormatRules.Add(GridFormatRule6)
         Me.All_Postings_Balances_GridView.GridControl = Me.GridControl1
         Me.All_Postings_Balances_GridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "", Me.GridColumn4, "")})
         Me.All_Postings_Balances_GridView.Name = "All_Postings_Balances_GridView"
@@ -1986,6 +1991,7 @@ Partial Class AllPostingsNEWG
         Me.All_Postings_Balances_GridView.OptionsView.ShowAutoFilterRow = True
         Me.All_Postings_Balances_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.All_Postings_Balances_GridView.OptionsView.ShowFooter = True
+        Me.All_Postings_Balances_GridView.OptionsView.ShowGroupPanel = False
         Me.All_Postings_Balances_GridView.ViewCaption = "Results by GL Item"
         '
         'GridColumn4
@@ -2402,6 +2408,7 @@ Partial Class AllPostingsNEWG
         '
         'LoadData_btn
         '
+        Me.LoadData_btn.ImageOptions.Image = CType(resources.GetObject("LoadData_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadData_btn.ImageOptions.ImageIndex = 6
         Me.LoadData_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadData_btn.Location = New System.Drawing.Point(236, 101)
@@ -2467,6 +2474,7 @@ Partial Class AllPostingsNEWG
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.LabelControl14)
         Me.LayoutControl1.Controls.Add(Me.Print_Export_Gridview_btn)
         Me.LayoutControl1.Controls.Add(Me.Edit_BICDIR_Details_btn)
@@ -2478,6 +2486,27 @@ Partial Class AllPostingsNEWG
         Me.LayoutControl1.Size = New System.Drawing.Size(1501, 572)
         Me.LayoutControl1.TabIndex = 116
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(198, 24)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 123
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'LabelControl14
         '
@@ -2510,9 +2539,9 @@ Partial Class AllPostingsNEWG
         '
         Me.Edit_BICDIR_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Edit_BICDIR_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1390, 24)
+        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1415, 24)
         Me.Edit_BICDIR_Details_btn.Name = "Edit_BICDIR_Details_btn"
-        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(87, 22)
+        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(62, 22)
         Me.Edit_BICDIR_Details_btn.StyleController = Me.LayoutControl1
         Me.Edit_BICDIR_Details_btn.TabIndex = 4
         Me.Edit_BICDIR_Details_btn.Text = "Edit Details"
@@ -2541,7 +2570,7 @@ Partial Class AllPostingsNEWG
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.EmptySpaceItem1})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(1481, 50)
@@ -2551,21 +2580,12 @@ Partial Class AllPostingsNEWG
         '
         Me.LayoutControlItem2.Control = Me.Edit_BICDIR_Details_btn
         Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1366, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1391, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(91, 26)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(66, 26)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         Me.LayoutControlItem2.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
-        'EmptySpaceItem3
-        '
-        Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(174, 0)
-        Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1192, 26)
-        Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
         '
@@ -2576,6 +2596,16 @@ Partial Class AllPostingsNEWG
         Me.LayoutControlItem4.Size = New System.Drawing.Size(174, 26)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.ProgressPanel1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(174, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1200, 26)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem3
         '
@@ -2694,6 +2724,7 @@ Partial Class AllPostingsNEWG
         '
         'Load_PB_Data_btn
         '
+        Me.Load_PB_Data_btn.ImageOptions.Image = CType(resources.GetObject("Load_PB_Data_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.Load_PB_Data_btn.ImageOptions.ImageIndex = 6
         Me.Load_PB_Data_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Load_PB_Data_btn.Location = New System.Drawing.Point(236, 101)
@@ -2906,6 +2937,7 @@ Partial Class AllPostingsNEWG
         '
         'LoadDataContract_btn
         '
+        Me.LoadDataContract_btn.ImageOptions.Image = CType(resources.GetObject("LoadDataContract_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadDataContract_btn.ImageOptions.ImageIndex = 6
         Me.LoadDataContract_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadDataContract_btn.Location = New System.Drawing.Point(236, 101)
@@ -2970,6 +3002,14 @@ Partial Class AllPostingsNEWG
         '
         Me.GL_ACCOUNTS_NEWGTableAdapter.ClearBeforeFill = True
         '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(1374, 0)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(17, 26)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
         'AllPostingsNEWG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2979,7 +3019,7 @@ Partial Class AllPostingsNEWG
         Me.Controls.Add(Me.GroupControl2)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.GroupControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("AllPostingsNEWG.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "AllPostingsNEWG"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "All Postings + Balances in NGS GL Accounts"
@@ -3043,8 +3083,8 @@ Partial Class AllPostingsNEWG
         CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
@@ -3062,6 +3102,7 @@ Partial Class AllPostingsNEWG
         CType(Me.BookingDateContractTill_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BookingDateContractFrom_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BookingDateContractFrom_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -3156,7 +3197,6 @@ Partial Class AllPostingsNEWG
     Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem3 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LabelControl14 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
@@ -3303,4 +3343,7 @@ Partial Class AllPostingsNEWG
     Friend WithEvents colUBGL_AC_No As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colUBGL_AC_No1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colUBGL_AC_No2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
 End Class

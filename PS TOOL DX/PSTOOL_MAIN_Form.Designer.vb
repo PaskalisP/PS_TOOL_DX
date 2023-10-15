@@ -74,13 +74,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.ribbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.ApplicationMenu1 = New DevExpress.XtraBars.Ribbon.ApplicationMenu(Me.components)
         Me.iNewPSTOOL_Session = New DevExpress.XtraBars.BarButtonItem()
-        Me.iNewPSTOOL_Test_Session = New DevExpress.XtraBars.BarButtonItem()
-        Me.iConfiguration = New DevExpress.XtraBars.BarButtonItem()
-        Me.iBankData = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_KillSession = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_RestartSession = New DevExpress.XtraBars.BarButtonItem()
         Me.iHelp = New DevExpress.XtraBars.BarButtonItem()
         Me.Close_all_Forms_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.iExit = New DevExpress.XtraBars.BarButtonItem()
         Me.ribbonImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.iConfiguration = New DevExpress.XtraBars.BarButtonItem()
+        Me.iBankData = New DevExpress.XtraBars.BarButtonItem()
         Me.iInternalCurrencies = New DevExpress.XtraBars.BarButtonItem()
         Me.iFind = New DevExpress.XtraBars.BarButtonItem()
         Me.iSave = New DevExpress.XtraBars.BarButtonItem()
@@ -200,6 +201,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.BarHeaderItem1 = New DevExpress.XtraBars.BarHeaderItem()
         Me.BarStaticItem4 = New DevExpress.XtraBars.BarStaticItem()
         Me.BarStaticItem5 = New DevExpress.XtraBars.BarStaticItem()
+        Me.iNewPSTOOL_Test_Session = New DevExpress.XtraBars.BarButtonItem()
         Me.BarButtonItem3 = New DevExpress.XtraBars.BarButtonItem()
         Me.ClientMerge_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.ribbonImageCollectionLarge = New DevExpress.Utils.ImageCollection(Me.components)
@@ -259,6 +261,8 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_CreditRiskMAK_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_EL_UL_GA_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CAR_Calculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.RISKCONTROL_CreditMigrationRiskCalculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CurrencyRiskCalculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_RLDC_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_ScenarioAnalyzes_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -460,7 +464,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.AlertControl_NewUser_ActiveDirectory = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.AlertControl_General_Info = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.LogoImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -577,10 +580,10 @@ Partial Class PSTOOL_MAIN_Form
         Me.ribbonControl.ApplicationButtonText = Nothing
         Me.ribbonControl.ExpandCollapseItem.Id = 0
         Me.ribbonControl.Images = Me.ribbonImageCollection
-        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.ribbonControl.SearchEditItem, Me.iConfiguration, Me.iBankData, Me.iInternalCurrencies, Me.iFind, Me.iSave, Me.iSaveAs, Me.iExit, Me.iHelp, Me.iAbout, Me.siStatus, Me.siInfo, Me.alignButtonGroup, Me.iBoldFontStyle, Me.iItalicFontStyle, Me.iUnderlinedFontStyle, Me.fontStyleButtonGroup, Me.iLeftTextAlign, Me.iCenterTextAlign, Me.iRightTextAlign, Me.rgbiSkins, Me.iSSI, Me.iOCBSExchangeRates, Me.iCalendar, Me.iCurrencyConverterOCBS, Me.iCustomers, Me.iCustomerAccounts, Me.iIBANCalculator, Me.iBICDirectory, Me.iECBExchangeRates, Me.iCountries, Me.iCurrencies, Me.iCurrencyConverterECB, Me.iIndustrialValuesOCBS, Me.iContractTypesOCBS, Me.iProductTypesOCBS, Me.iBLZ, Me.iSEPA, Me.iPLZ, Me.iDailyBalanceSheets, Me.iDailyPLSheets, Me.iFristen, Me.iTrialBalance218, Me.iMakReport, Me.iCreditRisk, Me.iAccruedInterestAnalysis, Me.iGLAccounts, Me.iOrgaChart, Me.iLastOdasFile, Me.iLastOcbsFile, Me.iLastBaisFile, Me.Active_MDI_BarSubItem, Me.Cascade_BarButtonItem, Me.Tile_Horizontal_BarButtonItem, Me.Tile_Vertical_BarButtonItem, Me.BarMdiChildrenListItem1, Me.Close_all_Forms_BarButtonItem, Me.OCBSallPostingsBarButtonItem, Me.OCBSprofitLossGLbalancesBarButtonItem, Me.OCBSdiverseGLbalancesBarButtonItem, Me.OCBSinternalNostroBalancesBarButtonItem, Me.OCBScustomerBalancesBarButtonItem, Me.OCBS_PL_MappingBarButtonItem, Me.OCBS_DIVERSE_MappingBarButtonItem, Me.OCBSvostroBalancesBarButtonItem, Me.T2DirectoryBarButtonItem, Me.iBICplusDirectory, Me.iInterestCalculator, Me.iUnratedCustomers, Me.iImportEventsErrorsCount, Me.iHolidays, Me.OCBSsuspenceBalancesBarButtonItem, Me.FullWindowModeBarCheckItem, Me.iClients, Me.iDailyBalanceSheetsDetails, Me.BarButtonGroup1, Me.BarButtonItem1, Me.BarButtonItem2, Me.OCBSExternalNostroBalancesBarButtonItem, Me.OCBSExternalNostroBalancesAllBarButtonItem, Me.SingleTabbedViewModeBarCheckItem, Me.BarWorkspaceMenuItem1, Me.PivotGrids_BarSubItem, Me.PivotGrid_BS_Details_BarButtonItem, Me.PivotGrid_BS_Totals_BarButtonItem, Me.PivotGrid_Liquidity_Overview_BarButtonItem, Me.PivotGrid_All_Postings_BarButtonItem, Me.iBasicBankData_BarSubItem, Me.iBasicReports_BarSubItem, Me.iHelp_BarSubItem, Me.BarSubItem1, Me.CloseAndExit_BarSubItem, Me.BasicExternalSate_BarSubItem, Me.BarSubItem2, Me.PostingsBalances_BarSubItem, Me.BarSubItem3, Me.iAllContractsAccounts_BarButtonItem, Me.BarStaticItem1, Me.iLastBaisInterfaceFile, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarHeaderItem1, Me.iFinancialReconciliation, Me.BarStaticItem4, Me.BarStaticItem5, Me.ObligoLiabilities_BarButtonItem, Me.Pivotgrid_ObligoLiabilitySurplusBarButtonItem, Me.PivotGrid_HGB_Positions_BarButtonItem, Me.CustomerGroups_BarButtonItem, Me.iNewPSTOOL_Session, Me.iNewPSTOOL_Test_Session, Me.NUTS3_Codes_BarButtonItem, Me.JustizID_BarButtonItem, Me.BarSubItem4, Me.NEWGallPostingsBarButtonItem, Me.CashFlows_BarButtonItem, Me.BarSubItem5, Me.CorporateCustomerBalancesNEWG_BarButtonItem, Me.BarSubItem6, Me.VostroBalancesNEWG_BarButtonItem, Me.Pivotgrid_FinRecon_BarButtonItem, Me.NGS_Postings_BarSubItem, Me.OCBS_Postings_BarSubItem, Me.BarButtonItem3, Me.NGS_Postings_Search_BarButtonItem, Me.OCBS_Postings_Search_BarButtonItem, Me.BIC_History_BarButtonItem, Me.ClientMerge_BarButtonItem})
+        Me.ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ribbonControl.ExpandCollapseItem, Me.ribbonControl.SearchEditItem, Me.iConfiguration, Me.iBankData, Me.iInternalCurrencies, Me.iFind, Me.iSave, Me.iSaveAs, Me.iExit, Me.iHelp, Me.iAbout, Me.siStatus, Me.siInfo, Me.alignButtonGroup, Me.iBoldFontStyle, Me.iItalicFontStyle, Me.iUnderlinedFontStyle, Me.fontStyleButtonGroup, Me.iLeftTextAlign, Me.iCenterTextAlign, Me.iRightTextAlign, Me.rgbiSkins, Me.iSSI, Me.iOCBSExchangeRates, Me.iCalendar, Me.iCurrencyConverterOCBS, Me.iCustomers, Me.iCustomerAccounts, Me.iIBANCalculator, Me.iBICDirectory, Me.iECBExchangeRates, Me.iCountries, Me.iCurrencies, Me.iCurrencyConverterECB, Me.iIndustrialValuesOCBS, Me.iContractTypesOCBS, Me.iProductTypesOCBS, Me.iBLZ, Me.iSEPA, Me.iPLZ, Me.iDailyBalanceSheets, Me.iDailyPLSheets, Me.iFristen, Me.iTrialBalance218, Me.iMakReport, Me.iCreditRisk, Me.iAccruedInterestAnalysis, Me.iGLAccounts, Me.iOrgaChart, Me.iLastOdasFile, Me.iLastOcbsFile, Me.iLastBaisFile, Me.Active_MDI_BarSubItem, Me.Cascade_BarButtonItem, Me.Tile_Horizontal_BarButtonItem, Me.Tile_Vertical_BarButtonItem, Me.BarMdiChildrenListItem1, Me.Close_all_Forms_BarButtonItem, Me.OCBSallPostingsBarButtonItem, Me.OCBSprofitLossGLbalancesBarButtonItem, Me.OCBSdiverseGLbalancesBarButtonItem, Me.OCBSinternalNostroBalancesBarButtonItem, Me.OCBScustomerBalancesBarButtonItem, Me.OCBS_PL_MappingBarButtonItem, Me.OCBS_DIVERSE_MappingBarButtonItem, Me.OCBSvostroBalancesBarButtonItem, Me.T2DirectoryBarButtonItem, Me.iBICplusDirectory, Me.iInterestCalculator, Me.iUnratedCustomers, Me.iImportEventsErrorsCount, Me.iHolidays, Me.OCBSsuspenceBalancesBarButtonItem, Me.FullWindowModeBarCheckItem, Me.iClients, Me.iDailyBalanceSheetsDetails, Me.BarButtonGroup1, Me.BarButtonItem1, Me.BarButtonItem2, Me.OCBSExternalNostroBalancesBarButtonItem, Me.OCBSExternalNostroBalancesAllBarButtonItem, Me.SingleTabbedViewModeBarCheckItem, Me.BarWorkspaceMenuItem1, Me.PivotGrids_BarSubItem, Me.PivotGrid_BS_Details_BarButtonItem, Me.PivotGrid_BS_Totals_BarButtonItem, Me.PivotGrid_Liquidity_Overview_BarButtonItem, Me.PivotGrid_All_Postings_BarButtonItem, Me.iBasicBankData_BarSubItem, Me.iBasicReports_BarSubItem, Me.iHelp_BarSubItem, Me.BarSubItem1, Me.CloseAndExit_BarSubItem, Me.BasicExternalSate_BarSubItem, Me.BarSubItem2, Me.PostingsBalances_BarSubItem, Me.BarSubItem3, Me.iAllContractsAccounts_BarButtonItem, Me.BarStaticItem1, Me.iLastBaisInterfaceFile, Me.BarStaticItem2, Me.BarStaticItem3, Me.BarHeaderItem1, Me.iFinancialReconciliation, Me.BarStaticItem4, Me.BarStaticItem5, Me.ObligoLiabilities_BarButtonItem, Me.Pivotgrid_ObligoLiabilitySurplusBarButtonItem, Me.PivotGrid_HGB_Positions_BarButtonItem, Me.CustomerGroups_BarButtonItem, Me.iNewPSTOOL_Session, Me.iNewPSTOOL_Test_Session, Me.NUTS3_Codes_BarButtonItem, Me.JustizID_BarButtonItem, Me.BarSubItem4, Me.NEWGallPostingsBarButtonItem, Me.CashFlows_BarButtonItem, Me.BarSubItem5, Me.CorporateCustomerBalancesNEWG_BarButtonItem, Me.BarSubItem6, Me.VostroBalancesNEWG_BarButtonItem, Me.Pivotgrid_FinRecon_BarButtonItem, Me.NGS_Postings_BarSubItem, Me.OCBS_Postings_BarSubItem, Me.BarButtonItem3, Me.NGS_Postings_Search_BarButtonItem, Me.OCBS_Postings_Search_BarButtonItem, Me.BIC_History_BarButtonItem, Me.ClientMerge_BarButtonItem, Me.bbi_KillSession, Me.bbi_RestartSession})
         Me.ribbonControl.LargeImages = Me.ribbonImageCollectionLarge
         Me.ribbonControl.Location = New System.Drawing.Point(0, 0)
-        Me.ribbonControl.MaxItemId = 33
+        Me.ribbonControl.MaxItemId = 35
         Me.ribbonControl.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Never
         Me.ribbonControl.Name = "ribbonControl"
         Me.ribbonControl.PageHeaderItemLinks.Add(Me.Active_MDI_BarSubItem)
@@ -607,12 +610,11 @@ Partial Class PSTOOL_MAIN_Form
         'ApplicationMenu1
         '
         Me.ApplicationMenu1.ItemLinks.Add(Me.iNewPSTOOL_Session)
-        Me.ApplicationMenu1.ItemLinks.Add(Me.iNewPSTOOL_Test_Session)
-        Me.ApplicationMenu1.ItemLinks.Add(Me.iConfiguration)
-        Me.ApplicationMenu1.ItemLinks.Add(Me.iBankData)
-        Me.ApplicationMenu1.ItemLinks.Add(Me.iHelp)
-        Me.ApplicationMenu1.ItemLinks.Add(Me.Close_all_Forms_BarButtonItem)
-        Me.ApplicationMenu1.ItemLinks.Add(Me.iExit)
+        Me.ApplicationMenu1.ItemLinks.Add(Me.bbi_KillSession, True)
+        Me.ApplicationMenu1.ItemLinks.Add(Me.bbi_RestartSession, True)
+        Me.ApplicationMenu1.ItemLinks.Add(Me.iHelp, True)
+        Me.ApplicationMenu1.ItemLinks.Add(Me.Close_all_Forms_BarButtonItem, True)
+        Me.ApplicationMenu1.ItemLinks.Add(Me.iExit, True)
         Me.ApplicationMenu1.Name = "ApplicationMenu1"
         Me.ApplicationMenu1.Ribbon = Me.ribbonControl
         '
@@ -626,36 +628,21 @@ Partial Class PSTOOL_MAIN_Form
         Me.iNewPSTOOL_Session.ImageOptions.LargeImageIndex = 71
         Me.iNewPSTOOL_Session.Name = "iNewPSTOOL_Session"
         '
-        'iNewPSTOOL_Test_Session
+        'bbi_KillSession
         '
-        Me.iNewPSTOOL_Test_Session.Caption = "New PS TOOL Session " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Test Environment)"
-        Me.iNewPSTOOL_Test_Session.Description = "Opens new PS TOOL Session in Test Environment"
-        Me.iNewPSTOOL_Test_Session.Hint = "Opens new PS TOOL Session in Test Environment"
-        Me.iNewPSTOOL_Test_Session.Id = 15
-        Me.iNewPSTOOL_Test_Session.ImageOptions.ImageIndex = 94
-        Me.iNewPSTOOL_Test_Session.ImageOptions.LargeImageIndex = 72
-        Me.iNewPSTOOL_Test_Session.Name = "iNewPSTOOL_Test_Session"
+        Me.bbi_KillSession.Caption = "Kill PSTOOL Session"
+        Me.bbi_KillSession.Description = "Closes the current session - no modifications will saved"
+        Me.bbi_KillSession.Id = 33
+        Me.bbi_KillSession.ImageOptions.SvgImage = CType(resources.GetObject("bbi_KillSession.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.bbi_KillSession.Name = "bbi_KillSession"
         '
-        'iConfiguration
+        'bbi_RestartSession
         '
-        Me.iConfiguration.Caption = "Configuration"
-        Me.iConfiguration.Description = "Add New or Modify Applications Parameter"
-        Me.iConfiguration.Hint = "Add New/ Modify Applications Parameter"
-        Me.iConfiguration.Id = 1
-        Me.iConfiguration.ImageOptions.ImageIndex = 15
-        Me.iConfiguration.ImageOptions.LargeImageIndex = 9
-        Me.iConfiguration.Name = "iConfiguration"
-        '
-        'iBankData
-        '
-        Me.iBankData.Caption = "Bank Data"
-        Me.iBankData.Description = "Display/Modify Bank Data"
-        Me.iBankData.Hint = "Display/Modify General Bank Data"
-        Me.iBankData.Id = 2
-        Me.iBankData.ImageOptions.ImageIndex = 16
-        Me.iBankData.ImageOptions.LargeImageIndex = 10
-        Me.iBankData.Name = "iBankData"
-        Me.iBankData.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
+        Me.bbi_RestartSession.Caption = "Restart PSTOOL Session"
+        Me.bbi_RestartSession.Description = "Closes and restarts current session"
+        Me.bbi_RestartSession.Id = 34
+        Me.bbi_RestartSession.ImageOptions.SvgImage = CType(resources.GetObject("bbi_RestartSession.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.bbi_RestartSession.Name = "bbi_RestartSession"
         '
         'iHelp
         '
@@ -678,8 +665,8 @@ Partial Class PSTOOL_MAIN_Form
         '
         'iExit
         '
-        Me.iExit.Caption = "Exit"
-        Me.iExit.Description = "Closes this program after prompting you to close all opened Forms"
+        Me.iExit.Caption = "Exit PSTOOL"
+        Me.iExit.Description = "Closes PSTOOL after prompting user to close all opened Forms"
         Me.iExit.Hint = "Closes this program after prompting you to close all opened Forms"
         Me.iExit.Id = 20
         Me.iExit.ImageOptions.ImageIndex = 86
@@ -806,6 +793,27 @@ Partial Class PSTOOL_MAIN_Form
         Me.ribbonImageCollection.Images.SetKeyName(92, "groupbyresource_16x16.png")
         Me.ribbonImageCollection.Images.SetKeyName(93, "PS.jpg")
         Me.ribbonImageCollection.Images.SetKeyName(94, "PS_Test.ico")
+        '
+        'iConfiguration
+        '
+        Me.iConfiguration.Caption = "Configuration"
+        Me.iConfiguration.Description = "Add New or Modify Applications Parameter"
+        Me.iConfiguration.Hint = "Add New/ Modify Applications Parameter"
+        Me.iConfiguration.Id = 1
+        Me.iConfiguration.ImageOptions.ImageIndex = 15
+        Me.iConfiguration.ImageOptions.LargeImageIndex = 9
+        Me.iConfiguration.Name = "iConfiguration"
+        '
+        'iBankData
+        '
+        Me.iBankData.Caption = "Bank Data"
+        Me.iBankData.Description = "Display/Modify Bank Data"
+        Me.iBankData.Hint = "Display/Modify General Bank Data"
+        Me.iBankData.Id = 2
+        Me.iBankData.ImageOptions.ImageIndex = 16
+        Me.iBankData.ImageOptions.LargeImageIndex = 10
+        Me.iBankData.Name = "iBankData"
+        Me.iBankData.RibbonStyle = CType((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
         '
         'iInternalCurrencies
         '
@@ -2061,6 +2069,16 @@ Partial Class PSTOOL_MAIN_Form
         Me.BarStaticItem5.ItemAppearance.Normal.Options.UseFont = True
         Me.BarStaticItem5.Name = "BarStaticItem5"
         '
+        'iNewPSTOOL_Test_Session
+        '
+        Me.iNewPSTOOL_Test_Session.Caption = "New PS TOOL Session " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Test Environment)"
+        Me.iNewPSTOOL_Test_Session.Description = "Opens new PS TOOL Session in Test Environment"
+        Me.iNewPSTOOL_Test_Session.Hint = "Opens new PS TOOL Session in Test Environment"
+        Me.iNewPSTOOL_Test_Session.Id = 15
+        Me.iNewPSTOOL_Test_Session.ImageOptions.ImageIndex = 94
+        Me.iNewPSTOOL_Test_Session.ImageOptions.LargeImageIndex = 72
+        Me.iNewPSTOOL_Test_Session.Name = "iNewPSTOOL_Test_Session"
+        '
         'BarButtonItem3
         '
         Me.BarButtonItem3.Caption = "Test"
@@ -2521,7 +2539,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_GROUP_Element
         '
-        Me.RISKCONTROL_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_INTERESTRISK_GROUP_Element, Me.AccordionControlSeparator6, Me.RISKCONTROL_BUSINESSTYPES_GROUP_Element, Me.AccordionControlSeparator7, Me.RISKCONTROL_CreditRiskMAK_Element, Me.RISKCONTROL_EL_UL_GA_Element, Me.RISKCONTROL_CAR_Calculation_Element, Me.RISKCONTROL_CreditSpreadRiskCalculation_Element, Me.RISKCONTROL_CurrencyRiskCalculation_Element, Me.RISKCONTROL_RLDC_Element, Me.RISKCONTROL_ScenarioAnalyzes_Element, Me.RISKCONTROL_RiskStrategyPlanningProcess_Element, Me.RISKCONTROL_StressTestHO_Element, Me.AccordionControlSeparator13, Me.RISKCONTROL_PARAMETERS_GROUP_Element, Me.AccordionControlSeparator14, Me.RISKCONTROL_IncidentsDatabase_Element})
+        Me.RISKCONTROL_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_INTERESTRISK_GROUP_Element, Me.AccordionControlSeparator6, Me.RISKCONTROL_BUSINESSTYPES_GROUP_Element, Me.AccordionControlSeparator7, Me.RISKCONTROL_CreditRiskMAK_Element, Me.RISKCONTROL_EL_UL_GA_Element, Me.RISKCONTROL_CAR_Calculation_Element, Me.RISKCONTROL_CreditSpreadRiskCalculation_Element, Me.RISKCONTROL_CreditMigrationRiskCalculation_Element, Me.RISKCONTROL_CurrencyRiskCalculation_Element, Me.RISKCONTROL_RLDC_Element, Me.RISKCONTROL_ScenarioAnalyzes_Element, Me.RISKCONTROL_RiskStrategyPlanningProcess_Element, Me.RISKCONTROL_StressTestHO_Element, Me.AccordionControlSeparator13, Me.RISKCONTROL_PARAMETERS_GROUP_Element, Me.AccordionControlSeparator14, Me.RISKCONTROL_IncidentsDatabase_Element})
         Me.RISKCONTROL_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_GROUP_Element.Name = "RISKCONTROL_GROUP_Element"
         Me.RISKCONTROL_GROUP_Element.Text = "RISK CONTROLLING"
@@ -2631,6 +2649,22 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_CAR_Calculation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.RISKCONTROL_CAR_Calculation_Element.Text = "CAR (Solva) + Countercycl. Capital Buffer Calculation"
         '
+        'RISKCONTROL_CreditSpreadRiskCalculation_Element
+        '
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Hint = "Display the calculated portfolio credit spread risk"
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_CreditSpreadRiskCalculation_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Name = "RISKCONTROL_CreditSpreadRiskCalculation_Element"
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Text = "Portfolio Credit Spread Risk Calculation"
+        '
+        'RISKCONTROL_CreditMigrationRiskCalculation_Element
+        '
+        Me.RISKCONTROL_CreditMigrationRiskCalculation_Element.Hint = "Display the calculated credit migration risk"
+        Me.RISKCONTROL_CreditMigrationRiskCalculation_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_CreditMigrationRiskCalculation_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.RISKCONTROL_CreditMigrationRiskCalculation_Element.Name = "RISKCONTROL_CreditMigrationRiskCalculation_Element"
+        Me.RISKCONTROL_CreditMigrationRiskCalculation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.RISKCONTROL_CreditMigrationRiskCalculation_Element.Text = "Credit Migration Risk Calculation"
+        '
         'RISKCONTROL_CurrencyRiskCalculation_Element
         '
         Me.RISKCONTROL_CurrencyRiskCalculation_Element.Hint = "Display/Calculate the daily CURRENCY RISK"
@@ -2686,11 +2720,12 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_ObligorGratesRatting_Element
         '
-        Me.RISKCONTROL_ObligorGratesRatting_Element.Hint = "Display/Modify Obligor Grates"
+        Me.RISKCONTROL_ObligorGratesRatting_Element.Hint = "Display/Modify Obligor Grades, Ratings and Downgrade Probalities (for Credit Migr" &
+    "ation Risk)"
         Me.RISKCONTROL_ObligorGratesRatting_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_ObligorGratesRatting_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_ObligorGratesRatting_Element.Name = "RISKCONTROL_ObligorGratesRatting_Element"
         Me.RISKCONTROL_ObligorGratesRatting_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.RISKCONTROL_ObligorGratesRatting_Element.Text = "Obligor Grates + Ratings"
+        Me.RISKCONTROL_ObligorGratesRatting_Element.Text = "Obligor Grades - Ratings - Downgrade Probabilities"
         '
         'RISKCONTROL_CustomerRating_Element
         '
@@ -2964,6 +2999,7 @@ Partial Class PSTOOL_MAIN_Form
         'MELDW_RRH_REPORTING_GROUP_Element
         '
         Me.MELDW_RRH_REPORTING_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.MELDW_MIFIR_Element})
+        Me.MELDW_RRH_REPORTING_GROUP_Element.Expanded = True
         Me.MELDW_RRH_REPORTING_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_RRH_REPORTING_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_RRH_REPORTING_GROUP_Element.Name = "MELDW_RRH_REPORTING_GROUP_Element"
         Me.MELDW_RRH_REPORTING_GROUP_Element.Text = "REGULATORY REPORTING"
@@ -4076,7 +4112,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.TreeList1.OptionsView.ShowPreview = True
         Me.TreeList1.OptionsView.TreeLineStyle = DevExpress.XtraTreeList.LineStyle.Wide
         Me.TreeList1.SelectImageList = Me.ImageCollection1
-        Me.TreeList1.Size = New System.Drawing.Size(436, 546)
+        Me.TreeList1.Size = New System.Drawing.Size(438, 517)
         Me.TreeList1.TabIndex = 23
         Me.TreeList1.ToolTipController = Me.ToolTipController1
         '
@@ -4152,7 +4188,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.DockPanel1.OriginalSize = New System.Drawing.Size(445, 200)
         Me.DockPanel1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right
         Me.DockPanel1.SavedIndex = 0
-        Me.DockPanel1.Size = New System.Drawing.Size(445, 573)
+        Me.DockPanel1.Size = New System.Drawing.Size(445, 566)
         Me.DockPanel1.TabsScroll = True
         Me.DockPanel1.Text = "ALL REPORTS"
         Me.DockPanel1.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide
@@ -4160,9 +4196,9 @@ Partial Class PSTOOL_MAIN_Form
         'DockPanel1_Container
         '
         Me.DockPanel1_Container.Controls.Add(Me.TreeList1)
-        Me.DockPanel1_Container.Location = New System.Drawing.Point(5, 23)
+        Me.DockPanel1_Container.Location = New System.Drawing.Point(4, 46)
         Me.DockPanel1_Container.Name = "DockPanel1_Container"
-        Me.DockPanel1_Container.Size = New System.Drawing.Size(436, 546)
+        Me.DockPanel1_Container.Size = New System.Drawing.Size(438, 517)
         Me.DockPanel1_Container.TabIndex = 0
         '
         'AlertControl_UnratedCustomers
@@ -4406,14 +4442,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.LogoImageCollection.Images.SetKeyName(4, "login-logo-Test.png")
         Me.LogoImageCollection.Images.SetKeyName(5, "login-logo-Prod.png")
         Me.LogoImageCollection.Images.SetKeyName(6, "login-logo-Prod_ALL.png")
-        '
-        'RISKCONTROL_CreditSpreadRiskCalculation_Element
-        '
-        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Hint = "Display the calculated portfolio credit spread risk"
-        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_CreditSpreadRiskCalculation_Element.ImageOptions.Image"), System.Drawing.Image)
-        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Name = "RISKCONTROL_CreditSpreadRiskCalculation_Element"
-        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.RISKCONTROL_CreditSpreadRiskCalculation_Element.Text = "Portfolio Credit Spread Risk Calculation"
         '
         'PSTOOL_MAIN_Form
         '
@@ -4852,4 +4880,7 @@ Partial Class PSTOOL_MAIN_Form
     Friend WithEvents RISKCONTROL_CreditSpreadRisk_Parameters_Element As Navigation.AccordionControlElement
     Friend WithEvents RISKCONTROL_CreditSpreadRisk_Correlations_Element As Navigation.AccordionControlElement
     Friend WithEvents RISKCONTROL_CreditSpreadRiskCalculation_Element As Navigation.AccordionControlElement
+    Friend WithEvents bbi_KillSession As BarButtonItem
+    Friend WithEvents bbi_RestartSession As BarButtonItem
+    Friend WithEvents RISKCONTROL_CreditMigrationRiskCalculation_Element As Navigation.AccordionControlElement
 End Class

@@ -35,16 +35,6 @@ Imports DevExpress.DataAccess.ConnectionParameters
 Imports DevExpress.DataAccess.Sql
 Public Class SuspenceBalances
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-    Private objDataTable As New DataTable
-
     Dim d1 As Date
     Dim d2 As Date
     Dim sqld1 As String = Nothing
@@ -52,19 +42,15 @@ Public Class SuspenceBalances
     Dim rdsql1 As String
     Dim rdsql2 As String
 
-    Dim OCBSaccountNamelbl As String = Nothing
-    Dim OCBSaccountlbl As String = Nothing
-    Dim OCBSaccountCurlbl As String = Nothing
-    Dim OCBSaccountStatuslbl As String = Nothing
-    Dim OCBSDatefromlbl As String = Nothing
-    Dim OCBSDatetilllbl As String = Nothing
-    Dim OCBSstartingBalancelbl As String = Nothing
-    Dim OCBSclosingBalancelbl As String = Nothing
+    Dim AccCCY As String = Nothing
+    Dim AccName As String = Nothing
+    Dim AccStatus As String = Nothing
+    Dim AccOpenDate As String = Nothing
+    Dim AccClosedDate As String = Nothing
 
-    Friend WithEvents BgwSingleAccount As BackgroundWorker
-    Friend WithEvents BgwAllAccounts As BackgroundWorker
+    Friend WithEvents BgwLoadPostings As BackgroundWorker
 
-    Dim ActiveGridview As Boolean = True
+    Private bgws As New List(Of BackgroundWorker)()
     Dim query As New CustomSqlQuery()
 
 
@@ -79,6 +65,13 @@ Public Class SuspenceBalances
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
     Private Sub SUSPENCE_VOLUMESBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.SUSPENCE_VOLUMESBindingSource.EndEdit()
@@ -86,9 +79,23 @@ Public Class SuspenceBalances
 
     End Sub
 
+    Private Sub DISABLE_BUTTONS()
+        Me.OCBS_BookingDate_From.Enabled = False
+        Me.OCBS_BookingDate_Till.Enabled = False
+        Me.Account_LookUpEdit.Enabled = False
+        Me.LoadOCBS_btn.Enabled = False
+        Me.Print_Export_Gridview_btn.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.OCBS_BookingDate_From.Enabled = True
+        Me.OCBS_BookingDate_Till.Enabled = True
+        Me.Account_LookUpEdit.Enabled = True
+        Me.LoadOCBS_btn.Enabled = True
+        Me.Print_Export_Gridview_btn.Enabled = True
+    End Sub
+
     Private Sub SuspenceBalances_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
 
         Me.CUSTOMER_ACCOUNTSTableAdapter.FillBySuspenceAccounts(Me.PSTOOLDataset.CUSTOMER_ACCOUNTS)
 
@@ -98,6 +105,34 @@ Public Class SuspenceBalances
         OCBS_BookingDate_Till.EditValue = d
     End Sub
 
+    Private Sub Account_LookUpEdit_EditValueChanged(sender As Object, e As EventArgs) Handles Account_LookUpEdit.EditValueChanged
+        If Me.Account_LookUpEdit.Text <> "" Then
+            Dim editor As DevExpress.XtraEditors.SearchLookUpEdit = CType(sender, DevExpress.XtraEditors.SearchLookUpEdit)
+            Dim CUSTOMER_NAME_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_CURRENCY_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_STATUS_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_OPEN_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Dim ACC_CLOSED_Row As DataRowView = CType(editor.Properties.GetRowByKeyValue(editor.EditValue), DataRowView)
+            Me.CustomerAccountNamelbl.Text = CUSTOMER_NAME_Row("English Name").ToString.Trim
+            AccCCY = ACC_CURRENCY_Row("Deal Currency").ToString
+            AccStatus = ACC_STATUS_Row("Account Status").ToString
+            AccOpenDate = ACC_STATUS_Row("OPEN_DATE").ToString
+            AccClosedDate = ACC_STATUS_Row("CLOSE_DATE").ToString
+            If AccClosedDate <> Nothing Then
+                AccClosedDate = CDate(AccClosedDate)
+            End If
+            Me.AccountStatusLbl.Text = "Currency: " & AccCCY & " - Status: " & AccStatus _
+                           & vbNewLine & "Opened on: " & CDate(AccOpenDate) _
+                           & vbNewLine & "Closed on :" & AccClosedDate
+        Else
+            Me.CustomerAccountNamelbl.Text = Nothing
+            AccCCY = Nothing
+            AccStatus = Nothing
+            AccOpenDate = Nothing
+            AccClosedDate = Nothing
+            Me.AccountStatusLbl.Text = Nothing
+        End If
+    End Sub
     Private Sub FILL_ONE_ACCOUNT_DATATABLE()
         Dim connectionParameters As New CustomStringConnectionParameters(conn.ConnectionString)
         Dim ds As New SqlDataSource(connectionParameters)
@@ -132,73 +167,27 @@ Public Class SuspenceBalances
 
     Private Sub LoadOCBS_btn_Click(sender As Object, e As EventArgs) Handles LoadOCBS_btn.Click
 
-
-        'ActiveGridview = True
         If IsDate(Me.OCBS_BookingDate_From.Text) = True AndAlso IsDate(Me.OCBS_BookingDate_Till.Text) = True Then
-
             d1 = Me.OCBS_BookingDate_From.Text
             d2 = Me.OCBS_BookingDate_Till.Text
-            rdsql1 = d1.ToString("yyyyMMdd")
-            rdsql2 = d2.ToString("yyyyMMdd")
             If d2 >= d1 Then
-                'ALL SEARCH ITEMS
+                rdsql1 = d1.ToString("yyyyMMdd")
+                rdsql2 = d2.ToString("yyyyMMdd")
                 If IsNothing(Me.Account_LookUpEdit.Text) = False AndAlso IsNumeric(Me.Account_LookUpEdit.Text) = True Then
-                    Try
-                        'Me.GridControl1.MainView = Suspence_Balances_BasicView
-                        'Me.GridControl1.DataSource = Nothing
-                        'Me.GridControl1.DataSource = Me.SUSPENCE_VOLUMESBindingSource
-                        'Account Name finden
-                        Me.QueryText = "SELECT * from [CUSTOMER_ACCOUNTS] where [Client Account]='" & Me.Account_LookUpEdit.Text & "'"
-                        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
-                        dt = New DataTable()
-                        da.Fill(dt)
-
-                        OCBSaccountCurlbl = dt.Rows.Item(0).Item("Deal Currency")
-                        OCBSaccountNamelbl = dt.Rows.Item(0).Item("English Name")
-                        Me.CustomerAccountNamelbl.Text = dt.Rows.Item(0).Item("English Name")
-                        OCBSaccountlbl = Me.Account_LookUpEdit.Text
-
-                        Me.AccountStatusLbl.Text = dt.Rows.Item(0).Item("Account Status") _
-                           & vbNewLine & "Opened on: " & dt.Rows.Item(0).Item("OPEN_DATE") _
-                           & vbNewLine & "Closed on :" & dt.Rows.Item(0).Item("CLOSE_DATE")
-                        OCBSaccountStatuslbl = Me.AccountStatusLbl.Text
-
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load  Balances for Suspence Account: " & Me.Account_LookUpEdit.Text & " from: " & d1 & " till " & d2)
-                        Me.SUSPENCE_VOLUMESTableAdapter.SetCommandTimeOut(120000)
-                        Me.SUSPENCE_VOLUMESTableAdapter.FillByAccountNo(BalancesDataset.SUSPENCE_VOLUMES, Me.Account_LookUpEdit.Text, d1, d2)
-                        SplashScreenManager.CloseForm(False)
-                        Me.SearchText_lbl.Text = "Search results for Suspence Account: " & Me.Account_LookUpEdit.Text & " -Currency: " & OCBSaccountCurlbl & " from " & d1 & " till " & d2
-
-                        
-                       
-
-                       
-                    Catch ex As Exception
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        SplashScreenManager.CloseForm(False)
-                    End Try
-                Else
-                    'ONLY BALANCE DATES
-                    Try
-                        
-                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                        SplashScreenManager.Default.SetWaitFormCaption("Load  Balances for all Suspence Accounts from: " & d1 & " till " & d2)
-                        Me.SUSPENCE_VOLUMESTableAdapter.SetCommandTimeOut(120000)
-                        Me.SUSPENCE_VOLUMESTableAdapter.FillByBalanceDate(BalancesDataset.SUSPENCE_VOLUMES, d1, d2)
-                        SplashScreenManager.CloseForm(False)
-                        'FILL_ALL_ACCOUNTS_DATATABLE()
-
-                        Me.SearchText_lbl.Text = "Search results for all Suspence Accounts from " & d1 & " till " & d2
-                    Catch ex As Exception
-                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                        SplashScreenManager.CloseForm(False)
-                    End Try
-
+                    Me.SearchText_lbl.Text = "Balances for Suspence Account: " & Me.Account_LookUpEdit.Text & " -Currency: " & AccCCY & " - Name: " & Me.CustomerAccountNamelbl.Text & " from " & d1 & " till " & d2 & "  - Account Status: " & AccStatus
+                ElseIf Me.Account_LookUpEdit.Text = "" Then
+                    Me.SearchText_lbl.Text = "Balances for all Suspence Accounts  from " & d1 & " till " & d2
                 End If
+                DISABLE_BUTTONS()
+                Me.LayoutControlItem5.Visibility = LayoutVisibility.Always
+                BgwLoadPostings = New BackgroundWorker
+                bgws.Add(BgwLoadPostings)
+                BgwLoadPostings.WorkerReportsProgress = True
+                BgwLoadPostings.RunWorkerAsync()
+
             Else
-                SplashScreenManager.CloseForm(False)
                 XtraMessageBox.Show("Please check your inputs" & vbNewLine & "The Date from... is higher than Date till...", "Wrong Search criteria", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Return
             End If
         Else
             XtraMessageBox.Show("Missing Data", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
@@ -206,6 +195,79 @@ Public Class SuspenceBalances
         End If
     End Sub
 
+    Private Sub BgwLoadPostings_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadPostings.DoWork
+        Try
+            If IsNothing(Me.Account_LookUpEdit.Text) = False AndAlso IsNumeric(Me.Account_LookUpEdit.Text) = True Then
+                Me.BgwLoadPostings.ReportProgress(10, "Load  Balances for Suspence Account: " & Me.Account_LookUpEdit.Text & " from: " & d1 & " till " & d2)
+
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "SELECT * FROM   [SUSPENCE_BALANCES] 
+                                                WHERE  Suspence_Acc_Nr = '" & Me.Account_LookUpEdit.Text & "'
+                                                AND [BalanceDate] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "' 
+                                                ORDER BY [BalanceDate] asc"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+
+                    End Using
+                End Using
+
+            ElseIf Me.Account_LookUpEdit.Text = "" Then
+                Me.BgwLoadPostings.ReportProgress(10, "Load Balances for all Suspence Accounts from: " & d1 & " till " & d2)
+
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "SELECT * FROM   [SUSPENCE_BALANCES] 
+                                                WHERE  [BalanceDate] BETWEEN '" & rdsql1 & "' AND  '" & rdsql2 & "' 
+                                                ORDER BY [BalanceDate] asc"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+                    End Using
+                End Using
+            End If
+
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadPostings.CancelAsync()
+
+        End Try
+    End Sub
+
+    Private Sub BgwLoadPostings_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadPostings.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadPostings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadPostings.RunWorkerCompleted
+        Workers_Complete(BgwLoadPostings, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem5.Visibility = LayoutVisibility.Never
+        Me.GridControl1.DataSource = Nothing
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl1.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl1.DataSource = dtSqlQueries
+            Me.GridControl1.ForceInitialize()
+            Me.GridControl1.RefreshDataSource()
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
+    End Sub
 
 
     Private Sub Print_Export_Gridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_Gridview_btn.Click
@@ -235,7 +297,7 @@ Public Class SuspenceBalances
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As DevExpress.XtraPrinting.CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
         'If ActiveGridview = True Then
-        Dim reportfooter As String = "Balances for Suspence Accounts from " & d1 & " till " & d2
+        Dim reportfooter As String = Me.SearchText_lbl.Text
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
         'End If
         'If ActiveGridview = False Then
@@ -253,47 +315,6 @@ Public Class SuspenceBalances
         'End Try
     End Sub
 
-    Private Sub Suspence_Balances_BasicView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Suspence_Balances_BasicView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub Suspence_Balances_BasicView_ShownEditor(sender As Object, e As EventArgs) Handles Suspence_Balances_BasicView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub GridView1_RowStyle(sender As Object, e As RowStyleEventArgs) Handles GridView1.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-
-        End If
-    End Sub
-
-    Private Sub GridView1_ShownEditor(sender As Object, e As EventArgs) Handles GridView1.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-        End If
-    End Sub
-
-    Private Sub OCBS_Postings_BasicView_RowStyle(sender As Object, e As RowStyleEventArgs)
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-
-        End If
-    End Sub
-
-    Private Sub OCBS_Postings_BasicView_ShownEditor(sender As Object, e As EventArgs)
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-        End If
-    End Sub
 
     Private Sub LoadOCBS_PostingsBalances_btn_Click(sender As Object, e As EventArgs) Handles LoadOCBS_PostingsBalances_btn.Click
 
@@ -403,14 +424,5 @@ Public Class SuspenceBalances
         'End If
     End Sub
 
-   
-    Private Sub BgwSingleAccount_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwSingleAccount.DoWork
 
-
-    End Sub
-
-    Private Sub BgwSingleAccount_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwSingleAccount.RunWorkerCompleted
-       
-
-    End Sub
 End Class

@@ -411,12 +411,14 @@ Public Class SqlParameterTree
 
     Private Sub TreeList1_FocusedNodeChanged(sender As Object, e As FocusedNodeChangedEventArgs) Handles TreeList1.FocusedNodeChanged
         Dim node As DevExpress.XtraTreeList.Nodes.TreeListNode = TreeList1.FocusedNode
-        If node IsNot TreeList1.Nodes.AutoFilterNode Then
+        If node Is Nothing = False Then
+            If node IsNot TreeList1.Nodes.AutoFilterNode Then
 
-            Sql_ScriptType_General = Nothing
-            Sql_ScriptType_General = node.Item(17).ToString()
-        ElseIf TreeList1.FocusedNode Is TreeList1.Nodes.AutoFilterNode Then
-            Sql_ScriptType_General = Nothing
+                Sql_ScriptType_General = Nothing
+                Sql_ScriptType_General = node.Item(17).ToString()
+            ElseIf TreeList1.FocusedNode Is TreeList1.Nodes.AutoFilterNode Then
+                Sql_ScriptType_General = Nothing
+            End If
         End If
 
     End Sub

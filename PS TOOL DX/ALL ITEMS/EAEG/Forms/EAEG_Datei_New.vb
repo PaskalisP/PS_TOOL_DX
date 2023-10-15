@@ -247,6 +247,8 @@ Public Class EAEG_Datei_New
                     Dim EAEG_Stichtag_result As Double = cmd.ExecuteScalar
                     If EAEG_Stichtag_result <> 0 Then
                         If XtraMessageBox.Show("Der EAEG Stichtag: " & rd & " ist bereits vorhanden!" & vbNewLine & "Soll er nochmals erstellt werden?" & vbNewLine & vbNewLine & "Achtung! Die vorhandenen Daten werden gelöscht!", "EAEG Stichtag erstellung", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                            SplashScreenManager.Default.SetWaitFormCaption("Starte EAEG Daten Erstellung für Stichtag: " & rd)
                             QueryText = "Select * from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EAEG_BASIS_V4.1') and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
                             da = New SqlDataAdapter(QueryText.Trim(), conn)
                             dt = New System.Data.DataTable()
@@ -281,6 +283,8 @@ Public Class EAEG_Datei_New
 
                         End If
                     Else
+                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                        SplashScreenManager.Default.SetWaitFormCaption("Starte EAEG Daten Erstellung für Stichtag: " & rd)
                         QueryText = "Select * from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('EAEG_BASIS_V4.1') and [SQL_Command_1] is not NULL  and [Status] in ('Y') order by [SQL_Float_1] asc"
                         da = New SqlDataAdapter(QueryText.Trim(), conn)
                         dt = New System.Data.DataTable()
@@ -313,6 +317,7 @@ Public Class EAEG_Datei_New
                     End If
                     CloseSqlConnections()
                 Catch ex As System.Exception
+                    SplashScreenManager.CloseForm(False)
                     XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
                     Exit Sub
                 End Try

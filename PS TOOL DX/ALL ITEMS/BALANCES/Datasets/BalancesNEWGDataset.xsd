@@ -82,7 +82,18 @@ FROM            GL_ACCOUNTS_NEWG</CommandText>
               <Mapping SourceColumn="NEWG_GL_Nr_Second" DataSetColumn="NEWG_GL_Nr_Second" />
               <Mapping SourceColumn="NEWG_GL_Name_Second" DataSetColumn="NEWG_GL_Name_Second" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="PS_TOOL_DX_SQL_Client_ConnectionString (MySettings)" DbObjectName="[PS TOOL DX Live].dbo.GL_ACCOUNTS_NEWG" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByNumericGLaccounts" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByNumericGLaccounts" GeneratorSourceName="FillByNumericGLaccounts" GetMethodModifier="Public" GetMethodName="GetDataByNumericGLaccounts" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByNumericGLaccounts" UserSourceName="FillByNumericGLaccounts">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        NEWG_GL_ACC_Nr, NEWG_GL_ACC_Name, NEWG_GL_Nr_First, NEWG_GL_Nr_First_Name, NEWG_GL_Nr_Second, NEWG_GL_Name_Second
+FROM            GL_ACCOUNTS_NEWG
+WHERE        (ISNUMERIC(NEWG_GL_ACC_Nr) = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CUSTOMER_ACC_BALANCESTableAdapter" GeneratorDataComponentClassName="CUSTOMER_ACC_BALANCESTableAdapter" Name="CUSTOMER_ACC_BALANCES" UserDataComponentName="CUSTOMER_ACC_BALANCESTableAdapter">
             <MainSource>
@@ -169,7 +180,7 @@ SELECT ClientNo, ClientName, AccountNo, AccountType, Currency, ID FROM CUSTOMER_
   <xs:element name="BalancesNEWGDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="BalancesNEWGDataset" msprop:Generator_UserDSName="BalancesNEWGDataset">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="GL_ACCOUNTS_NEWG" msprop:Generator_TableClassName="GL_ACCOUNTS_NEWGDataTable" msprop:Generator_TableVarName="tableGL_ACCOUNTS_NEWG" msprop:Generator_RowChangedName="GL_ACCOUNTS_NEWGRowChanged" msprop:Generator_TablePropName="GL_ACCOUNTS_NEWG" msprop:Generator_RowDeletingName="GL_ACCOUNTS_NEWGRowDeleting" msprop:Generator_RowChangingName="GL_ACCOUNTS_NEWGRowChanging" msprop:Generator_RowEvHandlerName="GL_ACCOUNTS_NEWGRowChangeEventHandler" msprop:Generator_RowDeletedName="GL_ACCOUNTS_NEWGRowDeleted" msprop:Generator_RowClassName="GL_ACCOUNTS_NEWGRow" msprop:Generator_UserTableName="GL_ACCOUNTS_NEWG" msprop:Generator_RowEvArgName="GL_ACCOUNTS_NEWGRowChangeEvent">
+        <xs:element name="GL_ACCOUNTS_NEWG" msprop:Generator_TableClassName="GL_ACCOUNTS_NEWGDataTable" msprop:Generator_TableVarName="tableGL_ACCOUNTS_NEWG" msprop:Generator_TablePropName="GL_ACCOUNTS_NEWG" msprop:Generator_RowDeletingName="GL_ACCOUNTS_NEWGRowDeleting" msprop:Generator_RowChangingName="GL_ACCOUNTS_NEWGRowChanging" msprop:Generator_RowEvHandlerName="GL_ACCOUNTS_NEWGRowChangeEventHandler" msprop:Generator_RowDeletedName="GL_ACCOUNTS_NEWGRowDeleted" msprop:Generator_UserTableName="GL_ACCOUNTS_NEWG" msprop:Generator_RowChangedName="GL_ACCOUNTS_NEWGRowChanged" msprop:Generator_RowEvArgName="GL_ACCOUNTS_NEWGRowChangeEvent" msprop:Generator_RowClassName="GL_ACCOUNTS_NEWGRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NEWG_GL_ACC_Nr" msprop:Generator_ColumnVarNameInTable="columnNEWG_GL_ACC_Nr" msprop:Generator_ColumnPropNameInRow="NEWG_GL_ACC_Nr" msprop:Generator_ColumnPropNameInTable="NEWG_GL_ACC_NrColumn" msprop:Generator_UserColumnName="NEWG_GL_ACC_Nr">
@@ -217,7 +228,7 @@ SELECT ClientNo, ClientName, AccountNo, AccountType, Currency, ID FROM CUSTOMER_
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CUSTOMER_ACC_BALANCES" msprop:Generator_TableClassName="CUSTOMER_ACC_BALANCESDataTable" msprop:Generator_TableVarName="tableCUSTOMER_ACC_BALANCES" msprop:Generator_TablePropName="CUSTOMER_ACC_BALANCES" msprop:Generator_RowDeletingName="CUSTOMER_ACC_BALANCESRowDeleting" msprop:Generator_RowChangingName="CUSTOMER_ACC_BALANCESRowChanging" msprop:Generator_RowEvHandlerName="CUSTOMER_ACC_BALANCESRowChangeEventHandler" msprop:Generator_RowDeletedName="CUSTOMER_ACC_BALANCESRowDeleted" msprop:Generator_UserTableName="CUSTOMER_ACC_BALANCES" msprop:Generator_RowChangedName="CUSTOMER_ACC_BALANCESRowChanged" msprop:Generator_RowEvArgName="CUSTOMER_ACC_BALANCESRowChangeEvent" msprop:Generator_RowClassName="CUSTOMER_ACC_BALANCESRow">
+        <xs:element name="CUSTOMER_ACC_BALANCES" msprop:Generator_TableClassName="CUSTOMER_ACC_BALANCESDataTable" msprop:Generator_TableVarName="tableCUSTOMER_ACC_BALANCES" msprop:Generator_RowChangedName="CUSTOMER_ACC_BALANCESRowChanged" msprop:Generator_TablePropName="CUSTOMER_ACC_BALANCES" msprop:Generator_RowDeletingName="CUSTOMER_ACC_BALANCESRowDeleting" msprop:Generator_RowChangingName="CUSTOMER_ACC_BALANCESRowChanging" msprop:Generator_RowEvHandlerName="CUSTOMER_ACC_BALANCESRowChangeEventHandler" msprop:Generator_RowDeletedName="CUSTOMER_ACC_BALANCESRowDeleted" msprop:Generator_RowClassName="CUSTOMER_ACC_BALANCESRow" msprop:Generator_UserTableName="CUSTOMER_ACC_BALANCES" msprop:Generator_RowEvArgName="CUSTOMER_ACC_BALANCESRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ClientNo" msprop:Generator_ColumnVarNameInTable="columnClientNo" msprop:Generator_ColumnPropNameInRow="ClientNo" msprop:Generator_ColumnPropNameInTable="ClientNoColumn" msprop:Generator_UserColumnName="ClientNo" minOccurs="0">

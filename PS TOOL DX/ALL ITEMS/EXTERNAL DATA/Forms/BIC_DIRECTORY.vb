@@ -32,7 +32,7 @@ Imports DevExpress.XtraEditors.Controls
 Public Class BIC_DIRECTORY
 
     Dim query As New CustomSqlQuery()
-
+    Private NeedShowEditor As Boolean = True
     Dim SearchButtonClicked As Integer = 0
     Dim SearchText As String = Nothing
     Friend WithEvents BgwSearchDirectory As BackgroundWorker
@@ -73,6 +73,18 @@ Public Class BIC_DIRECTORY
         Me.BIC_DIRECTORYBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.EXTERNALDataset)
 
+    End Sub
+
+    Private Sub RibbonControl1_Paint(sender As Object, e As PaintEventArgs) Handles RibbonControl1.Paint
+        If NeedShowEditor Then
+            BeginInvoke(New MethodInvoker(AddressOf ShowEditor))
+            NeedShowEditor = False
+        End If
+    End Sub
+
+    Private Sub ShowEditor()
+        Dim link As BarEditItemLink = TryCast(SearchField_BarEditItem.Links(0), BarEditItemLink)
+        link.ShowEditor()
     End Sub
 
     Private Sub FILL_BIC_DIRECTORY_DATATABLE()
@@ -442,6 +454,10 @@ Public Class BIC_DIRECTORY
     Private Sub bbi_Close_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbi_Close.ItemClick
         Me.Close()
 
+    End Sub
+
+    Private Sub SearchField_BarEditItem_ShownEditor(sender As Object, e As ItemClickEventArgs) Handles SearchField_BarEditItem.ShownEditor
+        TryCast(e.Link, BarEditItemLink).ActiveEditor.BackColor = Color.Yellow
     End Sub
 
 

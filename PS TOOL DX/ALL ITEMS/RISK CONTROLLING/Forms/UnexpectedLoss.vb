@@ -275,7 +275,7 @@ Public Class UnexpectedLoss
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
         Dim reportfooter As String = "UNEXPECTED LOSS " & "   " & "on: " & Me.UnexpectedLossDateEdit.Text
-e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
+        e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 
     Private Sub RecalculateUL_btn_Click(sender As Object, e As EventArgs) Handles RecalculateUL_btn.Click

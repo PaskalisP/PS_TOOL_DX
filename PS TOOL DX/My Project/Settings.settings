@@ -5,21 +5,37 @@
     <Setting Name="PS_TOOL_DX_SQL_Client_ConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=CCB-PSTOOL;Initial Catalog="PS TOOL DX Live";Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-SLJQ4B6;Initial Catalog="PS TOOL DX Live";Integrated Security=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=CCB-PSTOOL;Initial Catalog="PS TOOL DX Live";Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=DESKTOP-SLJQ4B6;Initial Catalog="PS TOOL DX Live";Integrated Security=True</Value>
     </Setting>
     <Setting Name="PSTOOLConnectionString_OLEDB" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Provider=SQLNCLI10.1;Data Source=CCB-PSTOOL;Integrated Security=SSPI;Initial Catalog="PS TOOL DX Live"&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Provider=SQLNCLI10.1;Data Source=DESKTOP-SLJQ4B6;Integrated Security=SSPI;Initial Catalog="PS TOOL DX Live"&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.OleDb&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Provider=SQLNCLI10.1;Data Source=CCB-PSTOOL;Integrated Security=SSPI;Initial Catalog="PS TOOL DX Live"</Value>
+      <Value Profile="(Default)">Provider=SQLNCLI10.1;Data Source=DESKTOP-SLJQ4B6;Integrated Security=SSPI;Initial Catalog="PS TOOL DX Live"</Value>
+    </Setting>
+    <Setting Name="PS_TOOL_DX_SQL_ClientTEST_ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-SLJQ4B6;Initial Catalog="PS_TOOL_DX_Test";Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=DESKTOP-SLJQ4B6;Initial Catalog="PS_TOOL_DX_Test";Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="PSTOOLConnectionStringTEST_OLEDB" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Provider=SQLNCLI10.1;Data Source=DESKTOP-SLJQ4B6;Integrated Security=SSPI;Initial Catalog="PS_TOOL_DX_Test"&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.OleDb&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Provider=SQLNCLI10.1;Data Source=DESKTOP-SLJQ4B6;Integrated Security=SSPI;Initial Catalog="PS_TOOL_DX_Test"</Value>
     </Setting>
     <Setting Name="OurReferenceNISS_Enabled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

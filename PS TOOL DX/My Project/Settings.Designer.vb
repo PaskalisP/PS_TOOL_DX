@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -57,8 +57,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=CCB-PSTOOL;Initial Catalog=""PS TOOL DX Live"";Integrated Security=True"& _ 
-            "")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-SLJQ4B6;Initial Catalog=""PS TOOL DX Live"";Integrated Security"& _ 
+            "=True")>  _
         Public ReadOnly Property PS_TOOL_DX_SQL_Client_ConnectionString() As String
             Get
                 Return CType(Me("PS_TOOL_DX_SQL_Client_ConnectionString"),String)
@@ -68,17 +68,39 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Data Source=CCB-PSTOOL;Integrated Security=SSPI;Initial Cata"& _ 
-            "log=""PS TOOL DX Live""")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Data Source=DESKTOP-SLJQ4B6;Integrated Security=SSPI;Initial"& _ 
+            " Catalog=""PS TOOL DX Live""")>  _
         Public ReadOnly Property PSTOOLConnectionString_OLEDB() As String
             Get
                 Return CType(Me("PSTOOLConnectionString_OLEDB"),String)
             End Get
         End Property
         
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-SLJQ4B6;Initial Catalog=""PS_TOOL_DX_Test"";Integrated Security"& _ 
+            "=True")>  _
+        Public ReadOnly Property PS_TOOL_DX_SQL_ClientTEST_ConnectionString() As String
+            Get
+                Return CType(Me("PS_TOOL_DX_SQL_ClientTEST_ConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=SQLNCLI10.1;Data Source=DESKTOP-SLJQ4B6;Integrated Security=SSPI;Initial"& _ 
+            " Catalog=""PS_TOOL_DX_Test""")>  _
+        Public ReadOnly Property PSTOOLConnectionStringTEST_OLEDB() As String
+            Get
+                Return CType(Me("PSTOOLConnectionStringTEST_OLEDB"),String)
+            End Get
+        End Property
+        
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
         Public Property OurReferenceNISS_Enabled() As Boolean
             Get
                 Return CType(Me("OurReferenceNISS_Enabled"),Boolean)

@@ -39,26 +39,11 @@ Imports DevExpress.Utils
 
 Public Class AllPostingsNGS_Search
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
-    Private da1 As New SqlDataAdapter
-    Private dt1 As New DataTable
-    Private objDataTable As New DataTable
-
     Dim d1 As Date
     Dim d2 As Date
     Dim rdsql1 As String
     Dim rdsql2 As String
 
-    Dim OCBSaccountNamelbl As String = Nothing
-    Dim OCBSaccountlbl As String = Nothing
-    Dim OCBSaccountCurlbl As String = Nothing
-    Dim OCBSDatefromlbl As String = Nothing
-    Dim OCBSDatetilllbl As String = Nothing
 
     Private BS_AllContractsAccounts As BindingSource
 
@@ -68,6 +53,10 @@ Public Class AllPostingsNGS_Search
     Dim commaSeparatedDates As String = Nothing
     Dim SelectedAccounts As String = Nothing
     Dim commaSeparatedSelectedAccounts As String = Nothing
+
+    Friend WithEvents BgwLoadPostings As BackgroundWorker
+
+    Private bgws As New List(Of BackgroundWorker)()
 
     Dim query As New CustomSqlQuery()
 
@@ -82,6 +71,13 @@ Public Class AllPostingsNGS_Search
         UserLookAndFeel.Default.SetSkinStyle(CurrentSkinName)
     End Sub
 
+    Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
+        Dim bgw As BackgroundWorker = DirectCast(sender, BackgroundWorker)
+        bgws.Remove(bgw)
+        bgw.Dispose()
+
+    End Sub
+
     Private Sub GL_ACCOUNTSBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.GL_ACCOUNTSBindingSource.EndEdit()
@@ -89,21 +85,34 @@ Public Class AllPostingsNGS_Search
 
     End Sub
 
+    Private Sub DISABLE_BUTTONS()
+        Me.GL_Accounts_GridControl.Enabled = False
+        Me.CheckedListBoxControl1.Enabled = False
+        Me.LoadData_btn.Enabled = False
+        Me.ComboBoxEdit1.Enabled = False
+        Me.Print_Export_Gridview_btn.Enabled = False
+    End Sub
+
+    Private Sub ENABLE_BUTTONS()
+        Me.GL_Accounts_GridControl.Enabled = True
+        Me.CheckedListBoxControl1.Enabled = True
+        Me.LoadData_btn.Enabled = True
+        Me.ComboBoxEdit1.Enabled = True
+        Me.Print_Export_Gridview_btn.Enabled = True
+    End Sub
+
     Private Sub AllPostingsNGS_Search_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         AddHandler GL_Accounts_GridControl.EmbeddedNavigator.ButtonClick, AddressOf GL_Accounts_GridControl_EmbeddedNavigator_ButtonClick
 
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
-        Me.GL_ACCOUNTS_NEWGTableAdapter.Fill(Me.BalancesNEWGDataset.GL_ACCOUNTS_NEWG)
+        Me.GL_ACCOUNTS_NEWGTableAdapter.FillByNumericGLaccounts(Me.BalancesNEWGDataset.GL_ACCOUNTS_NEWG)
 
         dtSelected.Columns.Add("NEWG_GL_ACC_Nr", GetType(String))
 
         'Bind Combobox Currencies
         Me.ComboBoxEdit1.Properties.Items.Clear()
-        Me.QueryText = "SELECT '***' as 'CURRENCY CODE' UNION ALL SELECT [CURRENCY CODE] FROM [OWN_CURRENCIES]"
-        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "SELECT '***' as 'CURRENCY CODE' UNION ALL SELECT [CURRENCY CODE] FROM [OWN_CURRENCIES]"
+        da = New SqlDataAdapter(QueryText.Trim(), conn)
         dt = New System.Data.DataTable()
         da.Fill(dt)
         For Each row As DataRow In dt.Rows
@@ -113,8 +122,8 @@ Public Class AllPostingsNGS_Search
         Next
         Me.ComboBoxEdit1.EditValue = "***"
 
-        Me.QueryText = "Select CONVERT(VARCHAR(10),CalendarDate,104) as 'RLDC Date' from Calendar where   CalendarDate BETWEEN '20171209' AND DATEADD(Day,-1,GETDATE())  ORDER BY [ID] desc"
-        da = New SqlDataAdapter(Me.QueryText.Trim(), conn)
+        QueryText = "Select CONVERT(VARCHAR(10),CalendarDate,104) as 'RLDC Date' from Calendar where   CalendarDate BETWEEN '20171209' AND DATEADD(Day,-1,GETDATE())  ORDER BY [ID] desc"
+        da = New SqlDataAdapter(QueryText.Trim(), conn)
         dt = New System.Data.DataTable()
         da.Fill(dt)
         With CheckedListBoxControl1
@@ -217,28 +226,17 @@ Public Class AllPostingsNGS_Search
                 SelectedDates = String.Join(",", arr)
                 commaSeparatedDates = String.Join(",", DateArr)
             End If
+            DISABLE_BUTTONS()
+            Me.LayoutControlItem9.Visibility = LayoutVisibility.Always
+            BgwLoadPostings = New BackgroundWorker
+            bgws.Add(BgwLoadPostings)
+            BgwLoadPostings.WorkerReportsProgress = True
+            BgwLoadPostings.RunWorkerAsync()
 
             'MsgBox(SelectedAccounts)
             'MsgBox(SelectedDates)
 
-            Try
 
-
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                If Me.ComboBoxEdit1.Text = "***" OrElse Me.ComboBoxEdit1.Text = "" Then
-
-                    SplashScreenManager.Default.SetWaitFormCaption("Load Postings for the selected criteria (All Currencies)")
-                    FILL_Specific_GL_ACCOUNT_BOOKINGS_ALL_CURRENCIES_DATATABLE()
-
-                ElseIf Me.ComboBoxEdit1.Text <> "" Then
-                    SplashScreenManager.Default.SetWaitFormCaption("Load Postings for the selected criteria (Specified Currency)")
-                    FILL_Specific_GL_ACCOUNT_BOOKINGS_Specific_CURRENCY_DATATABLE()
-
-                End If
-            Catch ex As Exception
-                SplashScreenManager.CloseForm(False)
-                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-            End Try
 
         Else
 
@@ -246,6 +244,81 @@ Public Class AllPostingsNGS_Search
             Return
         End If
 
+    End Sub
+
+    Private Sub BgwLoadPostings_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwLoadPostings.DoWork
+        Try
+            If Me.ComboBoxEdit1.Text = "***" OrElse Me.ComboBoxEdit1.Text = "" Then
+
+                Me.BgwLoadPostings.ReportProgress(10, "Load Postings for the selected criteria (All Currencies)")
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "SELECT * FROM   ALL_VOLUMES WHERE  GL_AC_No in (" & SelectedAccounts & ") 
+                                              AND [Value Date] in (" & SelectedDates & ") 
+                                              AND GL_AC_No<>0  
+                                              AND [System] in ('NEWG') ORDER BY IdNr"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+
+                    End Using
+                End Using
+            ElseIf Me.ComboBoxEdit1.Text <> "***" AndAlso Me.ComboBoxEdit1.Text <> "" Then
+                Me.BgwLoadPostings.ReportProgress(10, "Load Postings for the selected criteria (Specified Currency)")
+                Using Sqlconn As New SqlConnection(My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString)
+                    Using Sqlcmd As New SqlCommand()
+                        Sqlcmd.CommandText = "SELECT * FROM  ALL_VOLUMES WHERE  GL_AC_No in (" & SelectedAccounts & ") 
+                                              AND [Value Date] in (" & SelectedDates & ") 
+                                              AND GL_AC_No<>0 
+                                              AND CCY = '" & Me.ComboBoxEdit1.Text & "'
+                                              AND [System] in ('NEWG') ORDER BY IdNr"
+                        Sqlcmd.Connection = Sqlconn
+                        Sqlconn.Open()
+                        daSqlQueries = New SqlDataAdapter(Sqlcmd.CommandText, Sqlconn)
+                        daSqlQueries.SelectCommand.CommandTimeout = 50000
+                        dtSqlQueries = New DataTable()
+                        daSqlQueries.Fill(dtSqlQueries)
+                        Sqlconn.Close()
+
+                    End Using
+                End Using
+
+            End If
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+
+        Finally
+            BgwLoadPostings.CancelAsync()
+
+        End Try
+    End Sub
+
+    Private Sub BgwLoadPostings_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwLoadPostings.ProgressChanged
+        Me.ProgressPanel1.Caption = e.UserState.ToString
+    End Sub
+
+    Private Sub BgwLoadPostings_RunWorkerCompleted(sender As Object, e As RunWorkerCompletedEventArgs) Handles BgwLoadPostings.RunWorkerCompleted
+        Workers_Complete(BgwLoadPostings, e)
+        ENABLE_BUTTONS()
+        Me.LayoutControlItem9.Visibility = LayoutVisibility.Never
+        Me.GridControl1.DataSource = Nothing
+        'Results Datareader
+        If dtSqlQueries IsNot Nothing AndAlso dtSqlQueries.Rows.Count > 0 Then
+            'Me.GridControl4.BeginUpdate()
+            Me.GridControl1.DataSource = Nothing
+            'Me.GridControl1.Refresh()
+            Me.GridControl1.DataSource = dtSqlQueries
+            Me.GridControl1.ForceInitialize()
+            Me.GridControl1.RefreshDataSource()
+        Else
+            XtraMessageBox.Show("There are no Data for the specified Period", "NO DATA", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        End If
     End Sub
 
     Private Sub Print_Export_Gridview_btn_Click(sender As Object, e As EventArgs) Handles Print_Export_Gridview_btn.Click
@@ -304,93 +377,6 @@ Public Class AllPostingsNGS_Search
         'End Try
 
     End Sub
-
-#Region "GRIDVIEW STYLES"
-
-    Private Sub GL_Accounts_BaseView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles GL_Accounts_BaseView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub GL_Accounts_BaseView_ShownEditor(sender As Object, e As EventArgs) Handles GL_Accounts_BaseView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-        End If
-    End Sub
-    Private Sub AllPostings_BasicView_RowStyle(sender As Object, e As RowStyleEventArgs)
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub AllPostings_BasicView_ShownEditor(sender As Object, e As EventArgs)
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub GridView4_RowStyle(sender As Object, e As RowStyleEventArgs)
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-
-        End If
-    End Sub
-
-    Private Sub GridView4_ShownEditor(sender As Object, e As EventArgs)
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Black
-        End If
-    End Sub
-
-    Private Sub All_Postings_Balances_All_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles All_Postings_Balances_All_GridView.RowStyle
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub All_Postings_Balances_All_GridView_ShownEditor(sender As Object, e As EventArgs) Handles All_Postings_Balances_All_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub All_Postings_Balances_GridView_RowStyle(sender As Object, e As RowStyleEventArgs)
-        'Set Backcolor to Filter row
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub All_Postings_Balances_GridView_ShownEditor(sender As Object, e As EventArgs)
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub AllContractsAccounts_GridView_RowStyle(sender As Object, e As RowStyleEventArgs)
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub AllContractsAccounts_GridView_ShownEditor(sender As Object, e As EventArgs)
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-#End Region
-
 
 
     Private Sub GL_Accounts_BaseView_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles GL_Accounts_BaseView.SelectionChanged
@@ -478,5 +464,14 @@ Public Class AllPostingsNGS_Search
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
         Me.CheckedListBoxControl1.UnCheckAll()
+    End Sub
+
+    Private Sub AllPostingsNGS_Search_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If bgws.Count > 0 Then
+            e.Cancel = True
+        Else
+            e.Cancel = False
+
+        End If
     End Sub
 End Class

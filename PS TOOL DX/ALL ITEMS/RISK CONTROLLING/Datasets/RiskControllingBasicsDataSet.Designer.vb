@@ -623,6 +623,12 @@ Partial Public Class RiskControllingBasicsDataSet
         
         Private columnFitchRating As Global.System.Data.DataColumn
         
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -739,6 +745,30 @@ Partial Public Class RiskControllingBasicsDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -775,9 +805,9 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddPDRow(ByVal Obligor_Grade As String, ByVal PD As Double, ByVal StandardPoorsRating As String, ByVal CoreDefinition As String, ByVal ER_25 As Double, ByVal ER_45 As Double, ByVal MainlandBranchRating As String, ByVal MoodysRating As String, ByVal FitchRating As String) As PDRow
+        Public Overloads Function AddPDRow(ByVal Obligor_Grade As String, ByVal PD As Double, ByVal StandardPoorsRating As String, ByVal CoreDefinition As String, ByVal ER_25 As Double, ByVal ER_45 As Double, ByVal MainlandBranchRating As String, ByVal MoodysRating As String, ByVal FitchRating As String, ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Date) As PDRow
             Dim rowPDRow As PDRow = CType(Me.NewRow,PDRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Obligor_Grade, PD, StandardPoorsRating, CoreDefinition, ER_25, ER_45, MainlandBranchRating, MoodysRating, FitchRating}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Obligor_Grade, PD, StandardPoorsRating, CoreDefinition, ER_25, ER_45, MainlandBranchRating, MoodysRating, FitchRating, LastAction, LastUpdateUser, LastUpdateDate}
             rowPDRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPDRow)
             Return rowPDRow
@@ -816,6 +846,9 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.columnMainlandBranchRating = MyBase.Columns("MainlandBranchRating")
             Me.columnMoodysRating = MyBase.Columns("MoodysRating")
             Me.columnFitchRating = MyBase.Columns("FitchRating")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -841,6 +874,12 @@ Partial Public Class RiskControllingBasicsDataSet
             MyBase.Columns.Add(Me.columnMoodysRating)
             Me.columnFitchRating = New Global.System.Data.DataColumn("FitchRating", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFitchRating)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -854,6 +893,8 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.columnMainlandBranchRating.MaxLength = 255
             Me.columnMoodysRating.MaxLength = 255
             Me.columnFitchRating.MaxLength = 255
+            Me.columnLastAction.MaxLength = 50
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3526,6 +3567,12 @@ Partial Public Class RiskControllingBasicsDataSet
         
         Private columnInstiInCountryRating As Global.System.Data.DataColumn
         
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -3634,6 +3681,30 @@ Partial Public Class RiskControllingBasicsDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3670,9 +3741,9 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddPD_EXTERNALRow(ByVal Rating As String, ByVal Stufe As String, ByVal CentralGov As Double, ByVal InstiOver3M As Double, ByVal InstiLess3M As Double, ByVal Corporates As Double, ByVal WeightingFactor As Double, ByVal InstiInCountryRating As Double) As PD_EXTERNALRow
+        Public Overloads Function AddPD_EXTERNALRow(ByVal Rating As String, ByVal Stufe As String, ByVal CentralGov As Double, ByVal InstiOver3M As Double, ByVal InstiLess3M As Double, ByVal Corporates As Double, ByVal WeightingFactor As Double, ByVal InstiInCountryRating As Double, ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Date) As PD_EXTERNALRow
             Dim rowPD_EXTERNALRow As PD_EXTERNALRow = CType(Me.NewRow,PD_EXTERNALRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Rating, Stufe, CentralGov, InstiOver3M, InstiLess3M, Corporates, WeightingFactor, InstiInCountryRating}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Rating, Stufe, CentralGov, InstiOver3M, InstiLess3M, Corporates, WeightingFactor, InstiInCountryRating, LastAction, LastUpdateUser, LastUpdateDate}
             rowPD_EXTERNALRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPD_EXTERNALRow)
             Return rowPD_EXTERNALRow
@@ -3710,6 +3781,9 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.columnCorporates = MyBase.Columns("Corporates")
             Me.columnWeightingFactor = MyBase.Columns("WeightingFactor")
             Me.columnInstiInCountryRating = MyBase.Columns("InstiInCountryRating")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3733,6 +3807,12 @@ Partial Public Class RiskControllingBasicsDataSet
             MyBase.Columns.Add(Me.columnWeightingFactor)
             Me.columnInstiInCountryRating = New Global.System.Data.DataColumn("InstiInCountryRating", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnInstiInCountryRating)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -3742,6 +3822,8 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.columnID.Unique = true
             Me.columnRating.MaxLength = 255
             Me.columnStufe.MaxLength = 50
+            Me.columnLastAction.MaxLength = 50
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5368,6 +5450,51 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePD.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'PD' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePD.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePD.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'PD' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePD.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablePD.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'PD' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePD.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsObligor_GradeNull() As Boolean
             Return Me.IsNull(Me.tablePD.Obligor_GradeColumn)
         End Function
@@ -5472,6 +5599,42 @@ Partial Public Class RiskControllingBasicsDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetFitchRatingNull()
             Me(Me.tablePD.FitchRatingColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tablePD.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tablePD.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tablePD.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tablePD.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tablePD.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tablePD.LastUpdateDateColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8034,6 +8197,51 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePD_EXTERNAL.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'PD_EXTERNAL' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePD_EXTERNAL.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePD_EXTERNAL.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'PD_EXTERNAL' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePD_EXTERNAL.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablePD_EXTERNAL.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'PD_EXTERNAL' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePD_EXTERNAL.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsRatingNull() As Boolean
             Return Me.IsNull(Me.tablePD_EXTERNAL.RatingColumn)
         End Function
@@ -8126,6 +8334,42 @@ Partial Public Class RiskControllingBasicsDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetInstiInCountryRatingNull()
             Me(Me.tablePD_EXTERNAL.InstiInCountryRatingColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tablePD_EXTERNAL.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tablePD_EXTERNAL.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tablePD_EXTERNAL.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tablePD_EXTERNAL.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tablePD_EXTERNAL.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tablePD_EXTERNAL.LastUpdateDateColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -9748,6 +9992,9 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             tableMapping.ColumnMappings.Add("MainlandBranchRating", "MainlandBranchRating")
             tableMapping.ColumnMappings.Add("MoodysRating", "MoodysRating")
             tableMapping.ColumnMappings.Add("FitchRating", "FitchRating")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -9757,9 +10004,10 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [PD] ([Obligor Grade], [CoreDefinition], [ER_25], [ER_45], [PD], [Sta"& _ 
-                "ndardPoorsRating], [MainlandBranchRating], [FitchRating], [MoodysRating]) VALUES"& _ 
-                " (@Obligor_Grade, @CoreDefinition, @ER_25, @ER_45, @PD, @StandardPoorsRating, @M"& _ 
-                "ainlandBranchRating, @FitchRating, @MoodysRating)"
+                "ndardPoorsRating], [MainlandBranchRating], [FitchRating], [MoodysRating], [LastA"& _ 
+                "ction], [LastUpdateUser], [LastUpdateDate]) VALUES (@Obligor_Grade, @CoreDefinit"& _ 
+                "ion, @ER_25, @ER_45, @PD, @StandardPoorsRating, @MainlandBranchRating, @FitchRat"& _ 
+                "ing, @MoodysRating, @LastAction, @LastUpdateUser, @LastUpdateDate)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Obligor_Grade", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Obligor Grade", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoreDefinition", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CoreDefinition", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -9770,12 +10018,17 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MainlandBranchRating", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MainlandBranchRating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FitchRating", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FitchRating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MoodysRating", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MoodysRating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [PD] SET [Obligor Grade] = @Obligor_Grade, [CoreDefinition] = @CoreDefinit"& _ 
                 "ion, [ER_25] = @ER_25, [ER_45] = @ER_45, [PD] = @PD, [StandardPoorsRating] = @St"& _ 
                 "andardPoorsRating, [MainlandBranchRating] = @MainlandBranchRating, [FitchRating]"& _ 
-                " = @FitchRating, [MoodysRating] = @MoodysRating WHERE (([ID] = @Original_ID))"
+                " = @FitchRating, [MoodysRating] = @MoodysRating, [LastAction] = @LastAction, [La"& _ 
+                "stUpdateUser] = @LastUpdateUser, [LastUpdateDate] = @LastUpdateDate WHERE (([ID]"& _ 
+                " = @Original_ID))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Obligor_Grade", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Obligor Grade", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CoreDefinition", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CoreDefinition", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -9786,6 +10039,9 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MainlandBranchRating", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MainlandBranchRating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@FitchRating", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "FitchRating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MoodysRating", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MoodysRating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -9803,7 +10059,8 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, [Obligor Grade], CoreDefinition, ER_25, ER_45, PD, StandardPoor"& _ 
-                "sRating, MainlandBranchRating, FitchRating, MoodysRating"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PD"
+                "sRating, MainlandBranchRating, FitchRating, MoodysRating, LastAction, LastUpdate"& _ 
+                "User, LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PD"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -9884,7 +10141,7 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Obligor_Grade As String, ByVal CoreDefinition As String, ByVal ER_25 As Global.System.Nullable(Of Double), ByVal ER_45 As Global.System.Nullable(Of Double), ByVal PD As Global.System.Nullable(Of Double), ByVal StandardPoorsRating As String, ByVal MainlandBranchRating As String, ByVal FitchRating As String, ByVal MoodysRating As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal Obligor_Grade As String, ByVal CoreDefinition As String, ByVal ER_25 As Global.System.Nullable(Of Double), ByVal ER_45 As Global.System.Nullable(Of Double), ByVal PD As Global.System.Nullable(Of Double), ByVal StandardPoorsRating As String, ByVal MainlandBranchRating As String, ByVal FitchRating As String, ByVal MoodysRating As String, ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (Obligor_Grade Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -9930,6 +10187,21 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = CType(MoodysRating,String)
             End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -9949,7 +10221,7 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Obligor_Grade As String, ByVal CoreDefinition As String, ByVal ER_25 As Global.System.Nullable(Of Double), ByVal ER_45 As Global.System.Nullable(Of Double), ByVal PD As Global.System.Nullable(Of Double), ByVal StandardPoorsRating As String, ByVal MainlandBranchRating As String, ByVal FitchRating As String, ByVal MoodysRating As String, ByVal Original_ID As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal Obligor_Grade As String, ByVal CoreDefinition As String, ByVal ER_25 As Global.System.Nullable(Of Double), ByVal ER_45 As Global.System.Nullable(Of Double), ByVal PD As Global.System.Nullable(Of Double), ByVal StandardPoorsRating As String, ByVal MainlandBranchRating As String, ByVal FitchRating As String, ByVal MoodysRating As String, ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date), ByVal Original_ID As Integer) As Integer
             If (Obligor_Grade Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -9995,7 +10267,22 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(8).Value = CType(MoodysRating,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_ID,Integer)
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -14090,6 +14377,9 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             tableMapping.ColumnMappings.Add("Corporates", "Corporates")
             tableMapping.ColumnMappings.Add("WeightingFactor", "WeightingFactor")
             tableMapping.ColumnMappings.Add("InstiInCountryRating", "InstiInCountryRating")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -14099,11 +14389,13 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [PD_EXTERNAL] ([Rating], [Stufe], [CentralGov], [InstiOver3M], [Insti"& _ 
-                "Less3M], [Corporates], [WeightingFactor], [InstiInCountryRating]) VALUES (@Ratin"& _ 
-                "g, @Stufe, @CentralGov, @InstiOver3M, @InstiLess3M, @Corporates, @WeightingFacto"& _ 
-                "r, @InstiInCountryRating);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, Rating, Stufe, CentralGov, InstiOver3M, I"& _ 
-                "nstiLess3M, Corporates, WeightingFactor, InstiInCountryRating FROM PD_EXTERNAL W"& _ 
-                "HERE (ID = SCOPE_IDENTITY())"
+                "Less3M], [Corporates], [WeightingFactor], [InstiInCountryRating], [LastAction], "& _ 
+                "[LastUpdateUser], [LastUpdateDate]) VALUES (@Rating, @Stufe, @CentralGov, @Insti"& _ 
+                "Over3M, @InstiLess3M, @Corporates, @WeightingFactor, @InstiInCountryRating, @Las"& _ 
+                "tAction, @LastUpdateUser, @LastUpdateDate);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, Rating, Stufe, CentralGo"& _ 
+                "v, InstiOver3M, InstiLess3M, Corporates, WeightingFactor, InstiInCountryRating, "& _ 
+                "LastAction, LastUpdateUser, LastUpdateDate FROM PD_EXTERNAL WHERE (ID = SCOPE_ID"& _ 
+                "ENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Rating", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Rating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stufe", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stufe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -14113,14 +14405,19 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Corporates", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Corporates", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WeightingFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WeightingFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InstiInCountryRating", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InstiInCountryRating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [PD_EXTERNAL] SET [Rating] = @Rating, [Stufe] = @Stufe, [CentralGov] = @Ce"& _ 
                 "ntralGov, [InstiOver3M] = @InstiOver3M, [InstiLess3M] = @InstiLess3M, [Corporate"& _ 
                 "s] = @Corporates, [WeightingFactor] = @WeightingFactor, [InstiInCountryRating] ="& _ 
-                " @InstiInCountryRating WHERE (([ID] = @Original_ID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, Rating, Stufe,"& _ 
-                " CentralGov, InstiOver3M, InstiLess3M, Corporates, WeightingFactor, InstiInCount"& _ 
-                "ryRating FROM PD_EXTERNAL WHERE (ID = @ID)"
+                " @InstiInCountryRating, [LastAction] = @LastAction, [LastUpdateUser] = @LastUpda"& _ 
+                "teUser, [LastUpdateDate] = @LastUpdateDate WHERE (([ID] = @Original_ID));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELEC"& _ 
+                "T ID, Rating, Stufe, CentralGov, InstiOver3M, InstiLess3M, Corporates, Weighting"& _ 
+                "Factor, InstiInCountryRating, LastAction, LastUpdateUser, LastUpdateDate FROM PD"& _ 
+                "_EXTERNAL WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Rating", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Rating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Stufe", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Stufe", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -14130,6 +14427,9 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Corporates", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Corporates", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WeightingFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WeightingFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InstiInCountryRating", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InstiInCountryRating", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -14148,7 +14448,8 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, Rating, Stufe, CentralGov, InstiOver3M, InstiLess3M, Corporates"& _ 
-                ", WeightingFactor, InstiInCountryRating"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PD_EXTERNAL"
+                ", WeightingFactor, InstiInCountryRating, LastAction, LastUpdateUser, LastUpdateD"& _ 
+                "ate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            PD_EXTERNAL"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -14229,7 +14530,7 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Rating As String, ByVal Stufe As String, ByVal CentralGov As Global.System.Nullable(Of Double), ByVal InstiOver3M As Global.System.Nullable(Of Double), ByVal InstiLess3M As Global.System.Nullable(Of Double), ByVal Corporates As Global.System.Nullable(Of Double), ByVal WeightingFactor As Global.System.Nullable(Of Double), ByVal InstiInCountryRating As Global.System.Nullable(Of Double)) As Integer
+        Public Overloads Overridable Function Insert(ByVal Rating As String, ByVal Stufe As String, ByVal CentralGov As Global.System.Nullable(Of Double), ByVal InstiOver3M As Global.System.Nullable(Of Double), ByVal InstiLess3M As Global.System.Nullable(Of Double), ByVal Corporates As Global.System.Nullable(Of Double), ByVal WeightingFactor As Global.System.Nullable(Of Double), ByVal InstiInCountryRating As Global.System.Nullable(Of Double), ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (Rating Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -14270,6 +14571,21 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -14289,7 +14605,7 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Rating As String, ByVal Stufe As String, ByVal CentralGov As Global.System.Nullable(Of Double), ByVal InstiOver3M As Global.System.Nullable(Of Double), ByVal InstiLess3M As Global.System.Nullable(Of Double), ByVal Corporates As Global.System.Nullable(Of Double), ByVal WeightingFactor As Global.System.Nullable(Of Double), ByVal InstiInCountryRating As Global.System.Nullable(Of Double), ByVal Original_ID As Integer, ByVal ID As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal Rating As String, ByVal Stufe As String, ByVal CentralGov As Global.System.Nullable(Of Double), ByVal InstiOver3M As Global.System.Nullable(Of Double), ByVal InstiLess3M As Global.System.Nullable(Of Double), ByVal Corporates As Global.System.Nullable(Of Double), ByVal WeightingFactor As Global.System.Nullable(Of Double), ByVal InstiInCountryRating As Global.System.Nullable(Of Double), ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date), ByVal Original_ID As Integer, ByVal ID As Integer) As Integer
             If (Rating Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -14330,8 +14646,23 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_ID,Integer)
-            Me.Adapter.UpdateCommand.Parameters(9).Value = CType(ID,Integer)
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -14351,8 +14682,8 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Rating As String, ByVal Stufe As String, ByVal CentralGov As Global.System.Nullable(Of Double), ByVal InstiOver3M As Global.System.Nullable(Of Double), ByVal InstiLess3M As Global.System.Nullable(Of Double), ByVal Corporates As Global.System.Nullable(Of Double), ByVal WeightingFactor As Global.System.Nullable(Of Double), ByVal InstiInCountryRating As Global.System.Nullable(Of Double), ByVal Original_ID As Integer) As Integer
-            Return Me.Update(Rating, Stufe, CentralGov, InstiOver3M, InstiLess3M, Corporates, WeightingFactor, InstiInCountryRating, Original_ID, Original_ID)
+        Public Overloads Overridable Function Update(ByVal Rating As String, ByVal Stufe As String, ByVal CentralGov As Global.System.Nullable(Of Double), ByVal InstiOver3M As Global.System.Nullable(Of Double), ByVal InstiLess3M As Global.System.Nullable(Of Double), ByVal Corporates As Global.System.Nullable(Of Double), ByVal WeightingFactor As Global.System.Nullable(Of Double), ByVal InstiInCountryRating As Global.System.Nullable(Of Double), ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date), ByVal Original_ID As Integer) As Integer
+            Return Me.Update(Rating, Stufe, CentralGov, InstiOver3M, InstiLess3M, Corporates, WeightingFactor, InstiInCountryRating, LastAction, LastUpdateUser, LastUpdateDate, Original_ID, Original_ID)
         End Function
     End Class
     

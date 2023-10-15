@@ -85,6 +85,7 @@ Partial Class CustomerBalancesNEWG
         Me.OCBS_BookingDate_From = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.SearchText_lbl = New DevExpress.XtraEditors.LabelControl()
         Me.Print_Export_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.Edit_BICDIR_Details_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -94,6 +95,7 @@ Partial Class CustomerBalancesNEWG
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.BalancesNEWGDataset = New PS_TOOL_DX.BalancesNEWGDataset()
         Me.BalancesNEWGDatasetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -130,6 +132,7 @@ Partial Class CustomerBalancesNEWG
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BalancesNEWGDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BalancesNEWGDatasetBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -203,6 +206,7 @@ Partial Class CustomerBalancesNEWG
         Me.TableAdapterManager1.DailyPLSheetIncomeTableAdapter = Nothing
         Me.TableAdapterManager1.EXCHANGE_RATES_OCBSTableAdapter = Nothing
         Me.TableAdapterManager1.FRISTENTableAdapter = Nothing
+        Me.TableAdapterManager1.GL_ACCOUNTS_BAISTableAdapter = Nothing
         Me.TableAdapterManager1.GL_ACCOUNTS_NEWGTableAdapter = Nothing
         Me.TableAdapterManager1.GL_ACCOUNTSTableAdapter = Nothing
         Me.TableAdapterManager1.IndustrialClassLocalTableAdapter = Nothing
@@ -340,6 +344,7 @@ Partial Class CustomerBalancesNEWG
         Me.Customer_Balances_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.Customer_Balances_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.Customer_Balances_BasicView.OptionsView.ShowFooter = True
+        Me.Customer_Balances_BasicView.OptionsView.ShowGroupPanel = False
         Me.Customer_Balances_BasicView.PaintStyleName = "Skin"
         Me.Customer_Balances_BasicView.ViewCaption = "Results by GL Item"
         '
@@ -861,6 +866,7 @@ Partial Class CustomerBalancesNEWG
         '
         'LoadOCBS_btn
         '
+        Me.LoadOCBS_btn.ImageOptions.Image = CType(resources.GetObject("LoadOCBS_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadOCBS_btn.ImageOptions.ImageIndex = 6
         Me.LoadOCBS_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadOCBS_btn.Location = New System.Drawing.Point(246, 118)
@@ -926,6 +932,7 @@ Partial Class CustomerBalancesNEWG
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.SearchText_lbl)
         Me.LayoutControl1.Controls.Add(Me.Print_Export_Gridview_btn)
         Me.LayoutControl1.Controls.Add(Me.Edit_BICDIR_Details_btn)
@@ -937,6 +944,27 @@ Partial Class CustomerBalancesNEWG
         Me.LayoutControl1.Size = New System.Drawing.Size(1523, 564)
         Me.LayoutControl1.TabIndex = 120
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(200, 24)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 125
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'SearchText_lbl
         '
@@ -1000,7 +1028,7 @@ Partial Class CustomerBalancesNEWG
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem5})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(1503, 50)
@@ -1021,9 +1049,9 @@ Partial Class CustomerBalancesNEWG
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(176, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(1368, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1212, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(20, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -1035,6 +1063,16 @@ Partial Class CustomerBalancesNEWG
         Me.LayoutControlItem4.Size = New System.Drawing.Size(176, 26)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.ProgressPanel1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(176, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1192, 26)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem3
         '
@@ -1072,7 +1110,7 @@ Partial Class CustomerBalancesNEWG
         Me.ClientSize = New System.Drawing.Size(1521, 725)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.GroupControl2)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("CustomerBalancesNEWG.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "CustomerBalancesNEWG"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Corporate Customers Accounts Balances"
@@ -1107,6 +1145,7 @@ Partial Class CustomerBalancesNEWG
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BalancesNEWGDataset, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BalancesNEWGDatasetBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1190,4 +1229,6 @@ Partial Class CustomerBalancesNEWG
     Friend WithEvents colPRD_TYPE As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colOPEN_DATE As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCLOSE_DATE As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
 End Class

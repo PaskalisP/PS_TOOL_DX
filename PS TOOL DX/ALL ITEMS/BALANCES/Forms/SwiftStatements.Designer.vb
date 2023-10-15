@@ -20,18 +20,18 @@ Partial Class SwiftStatements
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleContains4 As DevExpress.XtraEditors.FormatConditionRuleContains = New DevExpress.XtraEditors.FormatConditionRuleContains()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SwiftStatements))
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleContains1 As DevExpress.XtraEditors.FormatConditionRuleContains = New DevExpress.XtraEditors.FormatConditionRuleContains()
-        Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleContains2 As DevExpress.XtraEditors.FormatConditionRuleContains = New DevExpress.XtraEditors.FormatConditionRuleContains()
-        Dim GridFormatRule3 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleContains3 As DevExpress.XtraEditors.FormatConditionRuleContains = New DevExpress.XtraEditors.FormatConditionRuleContains()
-        Dim GridFormatRule4 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
-        Dim GridFormatRule5 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleValue2 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule7 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleContains5 As DevExpress.XtraEditors.FormatConditionRuleContains = New DevExpress.XtraEditors.FormatConditionRuleContains()
+        Dim GridFormatRule8 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleContains6 As DevExpress.XtraEditors.FormatConditionRuleContains = New DevExpress.XtraEditors.FormatConditionRuleContains()
+        Dim GridFormatRule9 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue3 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule10 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue4 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Me.Nostro_Balances_DetailView = New DevExpress.XtraGrid.Views.Layout.LayoutView()
         Me.colSwiftFileName1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.layoutViewField_colSwiftFileName1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
@@ -200,6 +200,7 @@ Partial Class SwiftStatements
         Me.OCBS_BookingDate_From = New DevExpress.XtraEditors.DateEdit()
         Me.LabelControl14 = New DevExpress.XtraEditors.LabelControl()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.SearchText_lbl = New DevExpress.XtraEditors.LabelControl()
         Me.Print_Export_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.Edit_BICDIR_Details_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -209,6 +210,7 @@ Partial Class SwiftStatements
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem3 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.Nostro_Balances_DetailView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colSwiftFileName1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -285,6 +287,7 @@ Partial Class SwiftStatements
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -836,6 +839,8 @@ Partial Class SwiftStatements
         Me.ImageCollection1.Images.SetKeyName(8, "apply_16x16.png")
         Me.ImageCollection1.InsertGalleryImage("cancel_16x16.png", "images/actions/cancel_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/actions/cancel_16x16.png"), 9)
         Me.ImageCollection1.Images.SetKeyName(9, "cancel_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(10, "contact_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(11, "chartsshowlegend_16x16.png")
         '
         'layoutViewField_LayoutViewColumn1
         '
@@ -1084,9 +1089,9 @@ Partial Class SwiftStatements
         Me.GridControl1.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
-        GridLevelNode1.LevelTemplate = Me.Nostro_Balances_DetailView
-        GridLevelNode1.RelationName = "Level1"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode2.LevelTemplate = Me.Nostro_Balances_DetailView
+        GridLevelNode2.RelationName = "Level1"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
         Me.GridControl1.Location = New System.Drawing.Point(12, 82)
         Me.GridControl1.MainView = Me.Nostro_Balances_BasicView
         Me.GridControl1.Name = "GridControl1"
@@ -1117,84 +1122,84 @@ Partial Class SwiftStatements
         Me.Nostro_Balances_BasicView.Appearance.GroupRow.Options.UseForeColor = True
         Me.Nostro_Balances_BasicView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colSwiftFileName, Me.colSenderBIC, Me.colMessageType, Me.colReceivedDate, Me.colOSN, Me.colOSN_ReceivedDate, Me.colRef20, Me.colAccountIdentification, Me.colInternalAccount1, Me.colNostro_Name1, Me.colStatementNr, Me.colPageNr, Me.colSwiftTag, Me.colSwiftTagName, Me.colDebitCreditMark, Me.colFundsCode, Me.colBookingDate, Me.colValueDate, Me.colCUR, Me.colAmount, Me.colTransactionTypeID, Me.colReferenceAccountOwner, Me.colReferenceServiInstitution, Me.colSupplementaryDetails, Me.colReconciled, Me.colReconciled_IB, Me.colEntryStatus, Me.colUETR, Me.colRelatedParty_DebtorAcc, Me.colRelatedParty_DebtorName, Me.colRelatedParty_DebtorBIC, Me.colRelatedParty_CreditorAcc, Me.colRelatedParty_CreditorName, Me.colRelatedParty_CreditorBIC, Me.colRelatedAgent_InstructingAgent, Me.colRelatedAgent_InstructedAgent, Me.colLocalInstrument, Me.colRelatedDetails_InterbankSettlementDate})
         Me.Nostro_Balances_BasicView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule1.ApplyToRow = True
-        GridFormatRule1.Column = Me.colSwiftTag
-        GridFormatRule1.ColumnApplyTo = Me.colSwiftTagName
-        GridFormatRule1.Name = "OpeningBalance"
-        FormatConditionRuleContains1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleContains1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleContains1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleContains1.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleContains1.Appearance.Options.UseBackColor = True
-        FormatConditionRuleContains1.Appearance.Options.UseFont = True
-        FormatConditionRuleContains1.Appearance.Options.UseForeColor = True
-        FormatConditionRuleContains1.Appearance.Options.UseTextOptions = True
-        FormatConditionRuleContains1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        FormatConditionRuleContains1.Values = CType(resources.GetObject("FormatConditionRuleContains1.Values"), System.Collections.IList)
-        GridFormatRule1.Rule = FormatConditionRuleContains1
-        GridFormatRule2.ApplyToRow = True
-        GridFormatRule2.Column = Me.colSwiftTag
-        GridFormatRule2.ColumnApplyTo = Me.colSwiftTag
-        GridFormatRule2.Name = "AvailableFunds"
-        FormatConditionRuleContains2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleContains2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        FormatConditionRuleContains2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleContains2.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleContains2.Appearance.Options.UseBackColor = True
-        FormatConditionRuleContains2.Appearance.Options.UseFont = True
-        FormatConditionRuleContains2.Appearance.Options.UseForeColor = True
-        FormatConditionRuleContains2.Appearance.Options.UseTextOptions = True
-        FormatConditionRuleContains2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        FormatConditionRuleContains2.Values = CType(resources.GetObject("FormatConditionRuleContains2.Values"), System.Collections.IList)
-        GridFormatRule2.Rule = FormatConditionRuleContains2
-        GridFormatRule3.ApplyToRow = True
-        GridFormatRule3.Column = Me.colSwiftTag
-        GridFormatRule3.ColumnApplyTo = Me.colSwiftTag
-        GridFormatRule3.Name = "IntermediateBalances"
-        FormatConditionRuleContains3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleContains3.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleContains3.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Italic)
-        FormatConditionRuleContains3.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleContains3.Appearance.Options.UseBackColor = True
-        FormatConditionRuleContains3.Appearance.Options.UseFont = True
-        FormatConditionRuleContains3.Appearance.Options.UseForeColor = True
-        FormatConditionRuleContains3.Values = CType(resources.GetObject("FormatConditionRuleContains3.Values"), System.Collections.IList)
-        GridFormatRule3.Rule = FormatConditionRuleContains3
-        GridFormatRule4.ApplyToRow = True
-        GridFormatRule4.Column = Me.colSwiftTag
-        GridFormatRule4.ColumnApplyTo = Me.colSwiftTag
-        GridFormatRule4.Name = "ClosingBalance"
-        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.Cyan
-        FormatConditionRuleValue1.Appearance.BackColor2 = System.Drawing.Color.Cyan
-        FormatConditionRuleValue1.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue1.Appearance.Options.UseFont = True
-        FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue1.Appearance.Options.UseTextOptions = True
-        FormatConditionRuleValue1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue1.Value1 = "62F"
-        GridFormatRule4.Rule = FormatConditionRuleValue1
-        GridFormatRule5.ApplyToRow = True
-        GridFormatRule5.Column = Me.colSwiftTag
-        GridFormatRule5.ColumnApplyTo = Me.colSwiftTag
-        GridFormatRule5.Name = "ForwardAvailableBalance"
-        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.Teal
-        FormatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleValue2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
-        FormatConditionRuleValue2.Appearance.Options.UseFont = True
-        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
-        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal
-        FormatConditionRuleValue2.Value1 = "65"
-        GridFormatRule5.Rule = FormatConditionRuleValue2
-        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule1)
-        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule2)
-        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule3)
-        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule4)
-        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule5)
+        GridFormatRule6.ApplyToRow = True
+        GridFormatRule6.Column = Me.colSwiftTag
+        GridFormatRule6.ColumnApplyTo = Me.colSwiftTagName
+        GridFormatRule6.Name = "OpeningBalance"
+        FormatConditionRuleContains4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleContains4.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleContains4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleContains4.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleContains4.Appearance.Options.UseBackColor = True
+        FormatConditionRuleContains4.Appearance.Options.UseFont = True
+        FormatConditionRuleContains4.Appearance.Options.UseForeColor = True
+        FormatConditionRuleContains4.Appearance.Options.UseTextOptions = True
+        FormatConditionRuleContains4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        FormatConditionRuleContains4.Values = CType(resources.GetObject("FormatConditionRuleContains4.Values"), System.Collections.IList)
+        GridFormatRule6.Rule = FormatConditionRuleContains4
+        GridFormatRule7.ApplyToRow = True
+        GridFormatRule7.Column = Me.colSwiftTag
+        GridFormatRule7.ColumnApplyTo = Me.colSwiftTag
+        GridFormatRule7.Name = "AvailableFunds"
+        FormatConditionRuleContains5.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleContains5.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        FormatConditionRuleContains5.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleContains5.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleContains5.Appearance.Options.UseBackColor = True
+        FormatConditionRuleContains5.Appearance.Options.UseFont = True
+        FormatConditionRuleContains5.Appearance.Options.UseForeColor = True
+        FormatConditionRuleContains5.Appearance.Options.UseTextOptions = True
+        FormatConditionRuleContains5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        FormatConditionRuleContains5.Values = CType(resources.GetObject("FormatConditionRuleContains5.Values"), System.Collections.IList)
+        GridFormatRule7.Rule = FormatConditionRuleContains5
+        GridFormatRule8.ApplyToRow = True
+        GridFormatRule8.Column = Me.colSwiftTag
+        GridFormatRule8.ColumnApplyTo = Me.colSwiftTag
+        GridFormatRule8.Name = "IntermediateBalances"
+        FormatConditionRuleContains6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleContains6.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleContains6.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Italic)
+        FormatConditionRuleContains6.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleContains6.Appearance.Options.UseBackColor = True
+        FormatConditionRuleContains6.Appearance.Options.UseFont = True
+        FormatConditionRuleContains6.Appearance.Options.UseForeColor = True
+        FormatConditionRuleContains6.Values = CType(resources.GetObject("FormatConditionRuleContains6.Values"), System.Collections.IList)
+        GridFormatRule8.Rule = FormatConditionRuleContains6
+        GridFormatRule9.ApplyToRow = True
+        GridFormatRule9.Column = Me.colSwiftTag
+        GridFormatRule9.ColumnApplyTo = Me.colSwiftTag
+        GridFormatRule9.Name = "ClosingBalance"
+        FormatConditionRuleValue3.Appearance.BackColor = System.Drawing.Color.Cyan
+        FormatConditionRuleValue3.Appearance.BackColor2 = System.Drawing.Color.Cyan
+        FormatConditionRuleValue3.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue3.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue3.Appearance.Options.UseFont = True
+        FormatConditionRuleValue3.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue3.Appearance.Options.UseTextOptions = True
+        FormatConditionRuleValue3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue3.Value1 = "62F"
+        GridFormatRule9.Rule = FormatConditionRuleValue3
+        GridFormatRule10.ApplyToRow = True
+        GridFormatRule10.Column = Me.colSwiftTag
+        GridFormatRule10.ColumnApplyTo = Me.colSwiftTag
+        GridFormatRule10.Name = "ForwardAvailableBalance"
+        FormatConditionRuleValue4.Appearance.BackColor = System.Drawing.Color.Teal
+        FormatConditionRuleValue4.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleValue4.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue4.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue4.Appearance.Options.UseFont = True
+        FormatConditionRuleValue4.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue4.Value1 = "65"
+        GridFormatRule10.Rule = FormatConditionRuleValue4
+        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule6)
+        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule7)
+        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule8)
+        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule9)
+        Me.Nostro_Balances_BasicView.FormatRules.Add(GridFormatRule10)
         Me.Nostro_Balances_BasicView.GridControl = Me.GridControl1
         Me.Nostro_Balances_BasicView.GroupCount = 1
         Me.Nostro_Balances_BasicView.Name = "Nostro_Balances_BasicView"
@@ -1798,6 +1803,7 @@ Partial Class SwiftStatements
         '
         'LoadAllLastBalances_btn
         '
+        Me.LoadAllLastBalances_btn.ImageOptions.Image = CType(resources.GetObject("LoadAllLastBalances_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadAllLastBalances_btn.ImageOptions.ImageIndex = 6
         Me.LoadAllLastBalances_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadAllLastBalances_btn.Location = New System.Drawing.Point(451, 101)
@@ -2005,6 +2011,7 @@ Partial Class SwiftStatements
         '
         'LoadOCBS_btn
         '
+        Me.LoadOCBS_btn.ImageOptions.Image = CType(resources.GetObject("LoadOCBS_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadOCBS_btn.ImageOptions.ImageIndex = 6
         Me.LoadOCBS_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadOCBS_btn.Location = New System.Drawing.Point(256, 101)
@@ -2070,17 +2077,39 @@ Partial Class SwiftStatements
         Me.LayoutControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl1.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl1.Controls.Add(Me.SearchText_lbl)
         Me.LayoutControl1.Controls.Add(Me.Print_Export_Gridview_btn)
         Me.LayoutControl1.Controls.Add(Me.Edit_BICDIR_Details_btn)
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
         Me.LayoutControl1.Location = New System.Drawing.Point(-2, 152)
         Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 636, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
         Me.LayoutControl1.Size = New System.Drawing.Size(1427, 594)
         Me.LayoutControl1.TabIndex = 120
         Me.LayoutControl1.Text = "LayoutControl1"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(188, 24)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 126
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'SearchText_lbl
         '
@@ -2112,14 +2141,14 @@ Partial Class SwiftStatements
         'Edit_BICDIR_Details_btn
         '
         Me.Edit_BICDIR_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Edit_BICDIR_Details_btn.ImageOptions.ImageIndex = 0
+        Me.Edit_BICDIR_Details_btn.ImageOptions.ImageIndex = 10
         Me.Edit_BICDIR_Details_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1300, 24)
+        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1277, 24)
         Me.Edit_BICDIR_Details_btn.Name = "Edit_BICDIR_Details_btn"
-        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(103, 22)
+        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(126, 22)
         Me.Edit_BICDIR_Details_btn.StyleController = Me.LayoutControl1
         Me.Edit_BICDIR_Details_btn.TabIndex = 4
-        Me.Edit_BICDIR_Details_btn.Text = "View Details"
+        Me.Edit_BICDIR_Details_btn.Text = "Display Details"
         '
         'LayoutControlGroup1
         '
@@ -2145,7 +2174,7 @@ Partial Class SwiftStatements
         'LayoutControlGroup3
         '
         Me.LayoutControlGroup3.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4})
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem5})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
         Me.LayoutControlGroup3.Size = New System.Drawing.Size(1407, 50)
@@ -2155,19 +2184,24 @@ Partial Class SwiftStatements
         '
         Me.LayoutControlItem2.Control = Me.Edit_BICDIR_Details_btn
         Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1276, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1253, 0)
+        Me.LayoutControlItem2.MaxSize = New System.Drawing.Size(130, 26)
+        Me.LayoutControlItem2.MinSize = New System.Drawing.Size(130, 26)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(107, 26)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(130, 26)
+        Me.LayoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem2.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem2.TextToControlDistance = 0
         Me.LayoutControlItem2.TextVisible = False
         '
         'EmptySpaceItem3
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(164, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(1237, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1112, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(16, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -2179,6 +2213,16 @@ Partial Class SwiftStatements
         Me.LayoutControlItem4.Size = New System.Drawing.Size(164, 26)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.ProgressPanel1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(164, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1073, 26)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem3
         '
@@ -2276,6 +2320,7 @@ Partial Class SwiftStatements
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -2458,4 +2503,6 @@ Partial Class SwiftStatements
     Friend WithEvents item4 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents item5 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents colLocalInstrument As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
 End Class

@@ -142,11 +142,13 @@ Partial Class BIC_DIRECTORY
         Me.item5 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.Group1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.BIC_DIRECTORYTableAdapter = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.BIC_DIRECTORYTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EXTERNALDatasetTableAdapters.TableAdapterManager()
@@ -161,8 +163,6 @@ Partial Class BIC_DIRECTORY
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
-        Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.BICLayoutView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colIdnr, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colTAG, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -209,11 +209,11 @@ Partial Class BIC_DIRECTORY
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Search_RepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BICLayoutView
@@ -992,6 +992,27 @@ Partial Class BIC_DIRECTORY
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(12, 12)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl1
+        Me.ProgressPanel1.TabIndex = 27
+        Me.ProgressPanel1.Text = "ProgressPanel1"
+        '
         'GridControl1
         '
         Me.GridControl1.Location = New System.Drawing.Point(124, 69)
@@ -1034,6 +1055,16 @@ Partial Class BIC_DIRECTORY
         Me.LayoutControlItem4.Size = New System.Drawing.Size(1360, 414)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
+        '
+        'LayoutControlItem5
+        '
+        Me.LayoutControlItem5.Control = Me.ProgressPanel1
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem5.Name = "LayoutControlItem5"
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1360, 20)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem5.TextVisible = False
+        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'EmptySpaceItem2
         '
@@ -1111,6 +1142,11 @@ Partial Class BIC_DIRECTORY
         Me.Search_RepositoryItemButtonEdit.Appearance.Options.UseBackColor = True
         Me.Search_RepositoryItemButtonEdit.Appearance.Options.UseFont = True
         Me.Search_RepositoryItemButtonEdit.Appearance.Options.UseForeColor = True
+        Me.Search_RepositoryItemButtonEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.Search_RepositoryItemButtonEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.Search_RepositoryItemButtonEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.Search_RepositoryItemButtonEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.Search_RepositoryItemButtonEdit.AppearanceFocused.Options.UseForeColor = True
         Me.Search_RepositoryItemButtonEdit.AutoHeight = False
         EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
         EditorButtonImageOptions1.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
@@ -1188,37 +1224,6 @@ Partial Class BIC_DIRECTORY
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "RibbonPage2"
         '
-        'ProgressPanel1
-        '
-        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
-        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
-        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
-        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
-        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
-        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
-        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
-        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
-        Me.ProgressPanel1.AutoWidth = True
-        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
-        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
-        Me.ProgressPanel1.Location = New System.Drawing.Point(12, 12)
-        Me.ProgressPanel1.Name = "ProgressPanel1"
-        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
-        Me.ProgressPanel1.StyleController = Me.LayoutControl1
-        Me.ProgressPanel1.TabIndex = 27
-        Me.ProgressPanel1.Text = "ProgressPanel1"
-        '
-        'LayoutControlItem5
-        '
-        Me.LayoutControlItem5.Control = Me.ProgressPanel1
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1360, 20)
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem5.TextVisible = False
-        Me.LayoutControlItem5.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        '
         'BIC_DIRECTORY
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1277,11 +1282,11 @@ Partial Class BIC_DIRECTORY
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Search_RepositoryItemButtonEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

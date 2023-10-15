@@ -30,6 +30,7 @@ Imports DevExpress.XtraEditors.Controls
 Public Class BIC_DIRECTORY_PLUS
 
     Dim SearchButtonClicked As Integer = 0
+    Private NeedShowEditor As Boolean = True
     Dim SearchText As String = Nothing
     Friend WithEvents BgwSearchDirectory As BackgroundWorker
     Private bgws As New List(Of BackgroundWorker)()
@@ -60,10 +61,25 @@ Public Class BIC_DIRECTORY_PLUS
 
     End Sub
 
+    Private Sub RibbonControl1_Paint(sender As Object, e As PaintEventArgs) Handles RibbonControl1.Paint
+        If NeedShowEditor Then
+            BeginInvoke(New MethodInvoker(AddressOf ShowEditor))
+            NeedShowEditor = False
+        End If
+    End Sub
+
+    Private Sub ShowEditor()
+        Dim link As BarEditItemLink = TryCast(SearchField_BarEditItem.Links(0), BarEditItemLink)
+        link.ShowEditor()
+    End Sub
+
+    Private Sub SearchField_BarEditItem_ShownEditor(sender As Object, e As ItemClickEventArgs) Handles SearchField_BarEditItem.ShownEditor
+        TryCast(e.Link, BarEditItemLink).ActiveEditor.BackColor = Color.Yellow
+    End Sub
+
     Private Sub BIC_DIRECTORY_PLUS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.SearchField_BarEditItem.Links(0).Focus()
-
+        'Me.SearchField_BarEditItem.Links(0).Focus()
 
         'Me.SearchText_TextEdit.Focus()
 
