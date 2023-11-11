@@ -635,7 +635,10 @@ Partial Class InterestRateRisk
         Me.TableAdapterManager.MAK_REPORTTableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DATETableAdapter = Me.RATERISK_DATETableAdapter
         Me.TableAdapterManager.RATERISK_DELETIONSTableAdapter = Nothing
+        Me.TableAdapterManager.RATERISK_DETAILS1TableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DETAILSTableAdapter = Me.RATERISK_DETAILSTableAdapter
+        Me.TableAdapterManager.RATERISK_TOTALS1TableAdapter = Nothing
+        Me.TableAdapterManager.RATERISK_TOTALS2TableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_TOTALSTableAdapter = Me.RATERISK_TOTALSTableAdapter
         Me.TableAdapterManager.RISK_LIMIT_DAILY_CONTROLTableAdapter = Nothing
         Me.TableAdapterManager.StressTestLiquid_TempTableAdapter = Nothing
@@ -717,7 +720,7 @@ Partial Class InterestRateRisk
         Me.TOTALS_XtraTabPage.Controls.Add(Me.LayoutControl1)
         Me.TOTALS_XtraTabPage.Name = "TOTALS_XtraTabPage"
         Me.TOTALS_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.TOTALS_XtraTabPage.Size = New System.Drawing.Size(1603, 595)
+        Me.TOTALS_XtraTabPage.Size = New System.Drawing.Size(1607, 600)
         Me.TOTALS_XtraTabPage.Text = "TOTALS"
         '
         'LayoutControl1
@@ -732,7 +735,7 @@ Partial Class InterestRateRisk
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1603, 595)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1607, 600)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -744,7 +747,7 @@ Partial Class InterestRateRisk
         Me.InterestRateRiskReportsDropDownButton.ImageOptions.ImageList = Me.ImageCollection1
         Me.InterestRateRiskReportsDropDownButton.Location = New System.Drawing.Point(212, 24)
         Me.InterestRateRiskReportsDropDownButton.Name = "InterestRateRiskReportsDropDownButton"
-        Me.InterestRateRiskReportsDropDownButton.Size = New System.Drawing.Size(276, 22)
+        Me.InterestRateRiskReportsDropDownButton.Size = New System.Drawing.Size(277, 22)
         Me.InterestRateRiskReportsDropDownButton.StyleController = Me.LayoutControl1
         Me.InterestRateRiskReportsDropDownButton.TabIndex = 7
         Me.InterestRateRiskReportsDropDownButton.Text = "INTEREST RATE RISK REPORTS"
@@ -829,31 +832,31 @@ Partial Class InterestRateRisk
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1616, 49)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1616, 41)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 704)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 708)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1616, 23)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1616, 19)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 41)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 655)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 667)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1616, 49)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1616, 41)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 655)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 667)
         '
         'ImageCollection1
         '
@@ -887,9 +890,9 @@ Partial Class InterestRateRisk
         Me.Recalculate_Interest_Rate_Risk_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Recalculate_Interest_Rate_Risk_btn.ImageOptions.ImageIndex = 8
         Me.Recalculate_Interest_Rate_Risk_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Recalculate_Interest_Rate_Risk_btn.Location = New System.Drawing.Point(492, 24)
+        Me.Recalculate_Interest_Rate_Risk_btn.Location = New System.Drawing.Point(493, 24)
         Me.Recalculate_Interest_Rate_Risk_btn.Name = "Recalculate_Interest_Rate_Risk_btn"
-        Me.Recalculate_Interest_Rate_Risk_btn.Size = New System.Drawing.Size(235, 22)
+        Me.Recalculate_Interest_Rate_Risk_btn.Size = New System.Drawing.Size(236, 22)
         Me.Recalculate_Interest_Rate_Risk_btn.StyleController = Me.LayoutControl1
         Me.Recalculate_Interest_Rate_Risk_btn.TabIndex = 5
         Me.Recalculate_Interest_Rate_Risk_btn.Text = "Re-calculate Interest Rate Risk"
@@ -898,7 +901,7 @@ Partial Class InterestRateRisk
         '
         Me.Edit_BICDIR_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Edit_BICDIR_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1484, 24)
+        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1488, 24)
         Me.Edit_BICDIR_Details_btn.Name = "Edit_BICDIR_Details_btn"
         Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(95, 22)
         Me.Edit_BICDIR_Details_btn.StyleController = Me.LayoutControl1
@@ -918,7 +921,7 @@ Partial Class InterestRateRisk
         Me.GridControl1.MainView = Me.TOTALSBandedGridView
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEditBIC8, Me.RepositoryItemTextEditBIC3})
-        Me.GridControl1.Size = New System.Drawing.Size(1579, 521)
+        Me.GridControl1.Size = New System.Drawing.Size(1583, 526)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ToolTipController = Me.ToolTipController1
         Me.GridControl1.UseEmbeddedNavigator = True
@@ -2067,7 +2070,7 @@ Partial Class InterestRateRisk
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlGroup3})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1603, 595)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1607, 600)
         '
         'LayoutControlItem1
         '
@@ -2076,7 +2079,7 @@ Partial Class InterestRateRisk
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1583, 525)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1587, 530)
         Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
@@ -2087,14 +2090,14 @@ Partial Class InterestRateRisk
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem7})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1583, 50)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1587, 50)
         Me.LayoutControlGroup3.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.Edit_BICDIR_Details_btn
         Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1460, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1464, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(99, 26)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
@@ -2105,9 +2108,9 @@ Partial Class InterestRateRisk
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(707, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(709, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(753, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(755, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -2124,9 +2127,9 @@ Partial Class InterestRateRisk
         '
         Me.LayoutControlItem3.Control = Me.Recalculate_Interest_Rate_Risk_btn
         Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(468, 0)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(469, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(239, 26)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(240, 26)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         Me.LayoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -2137,7 +2140,7 @@ Partial Class InterestRateRisk
         Me.LayoutControlItem7.CustomizationFormText = "LayoutControlItem7"
         Me.LayoutControlItem7.Location = New System.Drawing.Point(188, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(280, 26)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(281, 26)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -2150,7 +2153,7 @@ Partial Class InterestRateRisk
         Me.DETAILS_XtraTabPage.Controls.Add(Me.LayoutControl2)
         Me.DETAILS_XtraTabPage.Name = "DETAILS_XtraTabPage"
         Me.DETAILS_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.DETAILS_XtraTabPage.Size = New System.Drawing.Size(1603, 595)
+        Me.DETAILS_XtraTabPage.Size = New System.Drawing.Size(1607, 600)
         Me.DETAILS_XtraTabPage.Text = "DETAILS"
         '
         'LayoutControl2
@@ -2163,7 +2166,7 @@ Partial Class InterestRateRisk
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(550, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup4
-        Me.LayoutControl2.Size = New System.Drawing.Size(1603, 595)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1607, 600)
         Me.LayoutControl2.TabIndex = 2
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -2183,9 +2186,9 @@ Partial Class InterestRateRisk
         '
         Me.Edit_INTERBANKV_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Edit_INTERBANKV_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1364, 24)
+        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1367, 24)
         Me.Edit_INTERBANKV_Details_btn.Name = "Edit_INTERBANKV_Details_btn"
-        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(215, 22)
+        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(216, 22)
         Me.Edit_INTERBANKV_Details_btn.StyleController = Me.LayoutControl2
         Me.Edit_INTERBANKV_Details_btn.TabIndex = 4
         Me.Edit_INTERBANKV_Details_btn.Text = "Show Details"
@@ -2202,7 +2205,7 @@ Partial Class InterestRateRisk
         Me.GridControl2.MainView = Me.DETAILSGridView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox2, Me.RepositoryItemTextEdit4})
-        Me.GridControl2.Size = New System.Drawing.Size(1579, 521)
+        Me.GridControl2.Size = New System.Drawing.Size(1583, 526)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DETAILSGridView, Me.LayoutView4, Me.LayoutView3, Me.LayoutView2})
@@ -4013,7 +4016,7 @@ Partial Class InterestRateRisk
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.LayoutControlGroup5})
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1603, 595)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1607, 600)
         '
         'LayoutControlItem5
         '
@@ -4022,7 +4025,7 @@ Partial Class InterestRateRisk
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem5.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem5.Name = "LayoutControlItem1"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1583, 525)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1587, 530)
         Me.LayoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
@@ -4033,16 +4036,16 @@ Partial Class InterestRateRisk
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem8})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1583, 50)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1587, 50)
         Me.LayoutControlGroup5.TextVisible = False
         '
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.Edit_INTERBANKV_Details_btn
         Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(1340, 0)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(1343, 0)
         Me.LayoutControlItem6.Name = "LayoutControlItem2"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(219, 26)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(220, 26)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         Me.LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -4053,7 +4056,7 @@ Partial Class InterestRateRisk
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem3"
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(186, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1154, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1157, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem8
@@ -4229,7 +4232,7 @@ Partial Class InterestRateRisk
         Me.InterestRateRiskDateEdit.Properties.EditFormat.FormatString = "d"
         Me.InterestRateRiskDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.InterestRateRiskDateEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.InterestRateRiskDateEdit.Size = New System.Drawing.Size(206, 22)
+        Me.InterestRateRiskDateEdit.Size = New System.Drawing.Size(206, 24)
         Me.InterestRateRiskDateEdit.TabIndex = 14
         '
         'GroupControl1
@@ -4307,10 +4310,10 @@ Partial Class InterestRateRisk
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("InterestRateRisk.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "InterestRateRisk"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Interest Rate Risk (Calculation 1)"
+        Me.Text = "Interest Rate Risk (till 30.12.2018)"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.RiskControllingDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BANKBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

@@ -966,6 +966,8 @@ Partial Public Class ClearingDataSet
         
         Private columnRemittanceInformation As Global.System.Data.DataColumn
         
+        Private columnProcessingQueue As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1298,6 +1300,14 @@ Partial Public Class ClearingDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ProcessingQueueColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProcessingQueue
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1370,9 +1380,10 @@ Partial Public Class ClearingDataSet
                     ByVal MsgBenefCountry As String,  _
                     ByVal SenderToReceiverInformation As String,  _
                     ByVal PrivateFlag As String,  _
-                    ByVal RemittanceInformation As String) As GMPS_PAYMENTS_INRow
+                    ByVal RemittanceInformation As String,  _
+                    ByVal ProcessingQueue As String) As GMPS_PAYMENTS_INRow
             Dim rowGMPS_PAYMENTS_INRow As GMPS_PAYMENTS_INRow = CType(Me.NewRow,GMPS_PAYMENTS_INRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, IncomingDate, OurReference, ValueDate, MessageSender, MessageSenderName, MessageSenderCity, Currency, ReferenceNo, AccountOfInstitution, AccountOfInstitutionName, AccountOfInstitutionCity, Amount, ExchangeRate, AmountEuro, OriginalOrderingCustomer, OriginalOrderingInstitution, OriginalOrderingInstitutionName, OriginalOrderingInstitutionCity, BeneficiaryCustomer, Commission, DetailsOfCharges, PAYMENT_CODE, ReceiverBICofConstructMessage, ReceiverBICofConstructMessageName, ReceiverBICofConstructMessageCity, PaymentYear, ProcessedBy, MsgSenderCountry, MTTYPE, BeneficiaryBank, BeneficiaryBankName, BeneficiaryBankCity, MsgBenefCountry, SenderToReceiverInformation, PrivateFlag, RemittanceInformation}
+            Dim columnValuesArray() As Object = New Object() {Nothing, IncomingDate, OurReference, ValueDate, MessageSender, MessageSenderName, MessageSenderCity, Currency, ReferenceNo, AccountOfInstitution, AccountOfInstitutionName, AccountOfInstitutionCity, Amount, ExchangeRate, AmountEuro, OriginalOrderingCustomer, OriginalOrderingInstitution, OriginalOrderingInstitutionName, OriginalOrderingInstitutionCity, BeneficiaryCustomer, Commission, DetailsOfCharges, PAYMENT_CODE, ReceiverBICofConstructMessage, ReceiverBICofConstructMessageName, ReceiverBICofConstructMessageCity, PaymentYear, ProcessedBy, MsgSenderCountry, MTTYPE, BeneficiaryBank, BeneficiaryBankName, BeneficiaryBankCity, MsgBenefCountry, SenderToReceiverInformation, PrivateFlag, RemittanceInformation, ProcessingQueue}
             rowGMPS_PAYMENTS_INRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowGMPS_PAYMENTS_INRow)
             Return rowGMPS_PAYMENTS_INRow
@@ -1438,6 +1449,7 @@ Partial Public Class ClearingDataSet
             Me.columnSenderToReceiverInformation = MyBase.Columns("SenderToReceiverInformation")
             Me.columnPrivateFlag = MyBase.Columns("PrivateFlag")
             Me.columnRemittanceInformation = MyBase.Columns("RemittanceInformation")
+            Me.columnProcessingQueue = MyBase.Columns("ProcessingQueue")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1517,6 +1529,8 @@ Partial Public Class ClearingDataSet
             MyBase.Columns.Add(Me.columnPrivateFlag)
             Me.columnRemittanceInformation = New Global.System.Data.DataColumn("RemittanceInformation", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRemittanceInformation)
+            Me.columnProcessingQueue = New Global.System.Data.DataColumn("ProcessingQueue", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProcessingQueue)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -1553,6 +1567,7 @@ Partial Public Class ClearingDataSet
             Me.columnSenderToReceiverInformation.MaxLength = 255
             Me.columnPrivateFlag.MaxLength = 50
             Me.columnRemittanceInformation.MaxLength = 2147483647
+            Me.columnProcessingQueue.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5599,6 +5614,21 @@ Partial Public Class ClearingDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ProcessingQueue() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableGMPS_PAYMENTS_IN.ProcessingQueueColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ProcessingQueue' in table 'GMPS PAYMENTS IN' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGMPS_PAYMENTS_IN.ProcessingQueueColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsIncomingDateNull() As Boolean
             Return Me.IsNull(Me.tableGMPS_PAYMENTS_IN.IncomingDateColumn)
         End Function
@@ -6027,6 +6057,18 @@ Partial Public Class ClearingDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetRemittanceInformationNull()
             Me(Me.tableGMPS_PAYMENTS_IN.RemittanceInformationColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsProcessingQueueNull() As Boolean
+            Return Me.IsNull(Me.tableGMPS_PAYMENTS_IN.ProcessingQueueColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetProcessingQueueNull()
+            Me(Me.tableGMPS_PAYMENTS_IN.ProcessingQueueColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -10821,6 +10863,7 @@ Namespace ClearingDataSetTableAdapters
             tableMapping.ColumnMappings.Add("SenderToReceiverInformation", "SenderToReceiverInformation")
             tableMapping.ColumnMappings.Add("PrivateFlag", "PrivateFlag")
             tableMapping.ColumnMappings.Add("RemittanceInformation", "RemittanceInformation")
+            tableMapping.ColumnMappings.Add("ProcessingQueue", "ProcessingQueue")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -10880,7 +10923,8 @@ Namespace ClearingDataSetTableAdapters
                 "l_SenderToReceiverInformation = 1 AND [SenderToReceiverInformation] IS NULL) OR "& _ 
                 "([SenderToReceiverInformation] = @Original_SenderToReceiverInformation)) AND ((@"& _ 
                 "IsNull_PrivateFlag = 1 AND [PrivateFlag] IS NULL) OR ([PrivateFlag] = @Original_"& _ 
-                "PrivateFlag)))"
+                "PrivateFlag)) AND ((@IsNull_ProcessingQueue = 1 AND [ProcessingQueue] IS NULL) O"& _ 
+                "R ([ProcessingQueue] = @Original_ProcessingQueue)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IncomingDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IncomingDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -10953,6 +10997,8 @@ Namespace ClearingDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SenderToReceiverInformation", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SenderToReceiverInformation", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PrivateFlag", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateFlag", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PrivateFlag", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateFlag", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ProcessingQueue", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcessingQueue", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ProcessingQueue", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcessingQueue", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [GMPS PAYMENTS IN] ([IncomingDate], [OurReference], [ValueDate], [Mes"& _ 
@@ -10965,16 +11011,16 @@ Namespace ClearingDataSetTableAdapters
                 "verBICofConstructMessageCity], [PaymentYear], [ProcessedBy], [MsgSenderCountry],"& _ 
                 " [MTTYPE], [BeneficiaryBank], [BeneficiaryBankName], [BeneficiaryBankCity], [Msg"& _ 
                 "BenefCountry], [SenderToReceiverInformation], [PrivateFlag], [RemittanceInformat"& _ 
-                "ion]) VALUES (@IncomingDate, @OurReference, @ValueDate, @MessageSender, @Message"& _ 
-                "SenderName, @MessageSenderCity, @Currency, @ReferenceNo, @AccountOfInstitution, "& _ 
-                "@AccountOfInstitutionName, @AccountOfInstitutionCity, @Amount, @ExchangeRate, @A"& _ 
-                "mountEuro, @OriginalOrderingCustomer, @OriginalOrderingInstitution, @OriginalOrd"& _ 
-                "eringInstitutionName, @OriginalOrderingInstitutionCity, @BeneficiaryCustomer, @C"& _ 
-                "ommission, @DetailsOfCharges, @PAYMENT_CODE, @ReceiverBICofConstructMessage, @Re"& _ 
-                "ceiverBICofConstructMessageName, @ReceiverBICofConstructMessageCity, @PaymentYea"& _ 
-                "r, @ProcessedBy, @MsgSenderCountry, @MTTYPE, @BeneficiaryBank, @BeneficiaryBankN"& _ 
-                "ame, @BeneficiaryBankCity, @MsgBenefCountry, @SenderToReceiverInformation, @Priv"& _ 
-                "ateFlag, @RemittanceInformation)"
+                "ion], [ProcessingQueue]) VALUES (@IncomingDate, @OurReference, @ValueDate, @Mess"& _ 
+                "ageSender, @MessageSenderName, @MessageSenderCity, @Currency, @ReferenceNo, @Acc"& _ 
+                "ountOfInstitution, @AccountOfInstitutionName, @AccountOfInstitutionCity, @Amount"& _ 
+                ", @ExchangeRate, @AmountEuro, @OriginalOrderingCustomer, @OriginalOrderingInstit"& _ 
+                "ution, @OriginalOrderingInstitutionName, @OriginalOrderingInstitutionCity, @Bene"& _ 
+                "ficiaryCustomer, @Commission, @DetailsOfCharges, @PAYMENT_CODE, @ReceiverBICofCo"& _ 
+                "nstructMessage, @ReceiverBICofConstructMessageName, @ReceiverBICofConstructMessa"& _ 
+                "geCity, @PaymentYear, @ProcessedBy, @MsgSenderCountry, @MTTYPE, @BeneficiaryBank"& _ 
+                ", @BeneficiaryBankName, @BeneficiaryBankCity, @MsgBenefCountry, @SenderToReceive"& _ 
+                "rInformation, @PrivateFlag, @RemittanceInformation, @ProcessingQueue)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IncomingDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IncomingDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OurReference", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OurReference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -11012,6 +11058,7 @@ Namespace ClearingDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SenderToReceiverInformation", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SenderToReceiverInformation", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrivateFlag", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateFlag", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RemittanceInformation", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RemittanceInformation", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProcessingQueue", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcessingQueue", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [GMPS PAYMENTS IN] SET [IncomingDate] = @IncomingDate, [OurReference] = @O"& _ 
@@ -11033,63 +11080,65 @@ Namespace ClearingDataSetTableAdapters
                 "yBank] = @BeneficiaryBank, [BeneficiaryBankName] = @BeneficiaryBankName, [Benefi"& _ 
                 "ciaryBankCity] = @BeneficiaryBankCity, [MsgBenefCountry] = @MsgBenefCountry, [Se"& _ 
                 "nderToReceiverInformation] = @SenderToReceiverInformation, [PrivateFlag] = @Priv"& _ 
-                "ateFlag, [RemittanceInformation] = @RemittanceInformation WHERE (([ID] = @Origin"& _ 
-                "al_ID) AND ((@IsNull_IncomingDate = 1 AND [IncomingDate] IS NULL) OR ([IncomingD"& _ 
-                "ate] = @Original_IncomingDate)) AND ((@IsNull_OurReference = 1 AND [OurReference"& _ 
-                "] IS NULL) OR ([OurReference] = @Original_OurReference)) AND ((@IsNull_ValueDate"& _ 
-                " = 1 AND [ValueDate] IS NULL) OR ([ValueDate] = @Original_ValueDate)) AND ((@IsN"& _ 
-                "ull_MessageSender = 1 AND [MessageSender] IS NULL) OR ([MessageSender] = @Origin"& _ 
-                "al_MessageSender)) AND ((@IsNull_MessageSenderName = 1 AND [MessageSenderName] I"& _ 
-                "S NULL) OR ([MessageSenderName] = @Original_MessageSenderName)) AND ((@IsNull_Me"& _ 
-                "ssageSenderCity = 1 AND [MessageSenderCity] IS NULL) OR ([MessageSenderCity] = @"& _ 
-                "Original_MessageSenderCity)) AND ((@IsNull_Currency = 1 AND [Currency] IS NULL) "& _ 
-                "OR ([Currency] = @Original_Currency)) AND ((@IsNull_ReferenceNo = 1 AND [Referen"& _ 
-                "ceNo] IS NULL) OR ([ReferenceNo] = @Original_ReferenceNo)) AND ((@IsNull_Account"& _ 
-                "OfInstitution = 1 AND [AccountOfInstitution] IS NULL) OR ([AccountOfInstitution]"& _ 
-                " = @Original_AccountOfInstitution)) AND ((@IsNull_AccountOfInstitutionName = 1 A"& _ 
-                "ND [AccountOfInstitutionName] IS NULL) OR ([AccountOfInstitutionName] = @Origina"& _ 
-                "l_AccountOfInstitutionName)) AND ((@IsNull_AccountOfInstitutionCity = 1 AND [Acc"& _ 
-                "ountOfInstitutionCity] IS NULL) OR ([AccountOfInstitutionCity] = @Original_Accou"& _ 
-                "ntOfInstitutionCity)) AND ((@IsNull_Amount = 1 AND [Amount] IS NULL) OR ([Amount"& _ 
-                "] = @Original_Amount)) AND ((@IsNull_ExchangeRate = 1 AND [ExchangeRate] IS NULL"& _ 
-                ") OR ([ExchangeRate] = @Original_ExchangeRate)) AND ((@IsNull_AmountEuro = 1 AND"& _ 
-                " [AmountEuro] IS NULL) OR ([AmountEuro] = @Original_AmountEuro)) AND ((@IsNull_O"& _ 
-                "riginalOrderingCustomer = 1 AND [OriginalOrderingCustomer] IS NULL) OR ([Origina"& _ 
-                "lOrderingCustomer] = @Original_OriginalOrderingCustomer)) AND ((@IsNull_Original"& _ 
-                "OrderingInstitution = 1 AND [OriginalOrderingInstitution] IS NULL) OR ([Original"& _ 
-                "OrderingInstitution] = @Original_OriginalOrderingInstitution)) AND ((@IsNull_Ori"& _ 
-                "ginalOrderingInstitutionName = 1 AND [OriginalOrderingInstitutionName] IS NULL) "& _ 
-                "OR ([OriginalOrderingInstitutionName] = @Original_OriginalOrderingInstitutionNam"& _ 
-                "e)) AND ((@IsNull_OriginalOrderingInstitutionCity = 1 AND [OriginalOrderingInsti"& _ 
-                "tutionCity] IS NULL) OR ([OriginalOrderingInstitutionCity] = @Original_OriginalO"& _ 
-                "rderingInstitutionCity)) AND ((@IsNull_BeneficiaryCustomer = 1 AND [BeneficiaryC"& _ 
-                "ustomer] IS NULL) OR ([BeneficiaryCustomer] = @Original_BeneficiaryCustomer)) AN"& _ 
-                "D ((@IsNull_Commission = 1 AND [Commission] IS NULL) OR ([Commission] = @Origina"& _ 
-                "l_Commission)) AND ((@IsNull_DetailsOfCharges = 1 AND [DetailsOfCharges] IS NULL"& _ 
-                ") OR ([DetailsOfCharges] = @Original_DetailsOfCharges)) AND ((@IsNull_PAYMENT_CO"& _ 
-                "DE = 1 AND [PAYMENT_CODE] IS NULL) OR ([PAYMENT_CODE] = @Original_PAYMENT_CODE))"& _ 
-                " AND ((@IsNull_ReceiverBICofConstructMessage = 1 AND [ReceiverBICofConstructMess"& _ 
-                "age] IS NULL) OR ([ReceiverBICofConstructMessage] = @Original_ReceiverBICofConst"& _ 
-                "ructMessage)) AND ((@IsNull_ReceiverBICofConstructMessageName = 1 AND [ReceiverB"& _ 
-                "ICofConstructMessageName] IS NULL) OR ([ReceiverBICofConstructMessageName] = @Or"& _ 
-                "iginal_ReceiverBICofConstructMessageName)) AND ((@IsNull_ReceiverBICofConstructM"& _ 
-                "essageCity = 1 AND [ReceiverBICofConstructMessageCity] IS NULL) OR ([ReceiverBIC"& _ 
-                "ofConstructMessageCity] = @Original_ReceiverBICofConstructMessageCity)) AND ((@I"& _ 
-                "sNull_PaymentYear = 1 AND [PaymentYear] IS NULL) OR ([PaymentYear] = @Original_P"& _ 
-                "aymentYear)) AND ((@IsNull_ProcessedBy = 1 AND [ProcessedBy] IS NULL) OR ([Proce"& _ 
-                "ssedBy] = @Original_ProcessedBy)) AND ((@IsNull_MsgSenderCountry = 1 AND [MsgSen"& _ 
-                "derCountry] IS NULL) OR ([MsgSenderCountry] = @Original_MsgSenderCountry)) AND ("& _ 
-                "(@IsNull_MTTYPE = 1 AND [MTTYPE] IS NULL) OR ([MTTYPE] = @Original_MTTYPE)) AND "& _ 
-                "((@IsNull_BeneficiaryBank = 1 AND [BeneficiaryBank] IS NULL) OR ([BeneficiaryBan"& _ 
-                "k] = @Original_BeneficiaryBank)) AND ((@IsNull_BeneficiaryBankName = 1 AND [Bene"& _ 
-                "ficiaryBankName] IS NULL) OR ([BeneficiaryBankName] = @Original_BeneficiaryBankN"& _ 
-                "ame)) AND ((@IsNull_BeneficiaryBankCity = 1 AND [BeneficiaryBankCity] IS NULL) O"& _ 
-                "R ([BeneficiaryBankCity] = @Original_BeneficiaryBankCity)) AND ((@IsNull_MsgBene"& _ 
-                "fCountry = 1 AND [MsgBenefCountry] IS NULL) OR ([MsgBenefCountry] = @Original_Ms"& _ 
-                "gBenefCountry)) AND ((@IsNull_SenderToReceiverInformation = 1 AND [SenderToRecei"& _ 
-                "verInformation] IS NULL) OR ([SenderToReceiverInformation] = @Original_SenderToR"& _ 
-                "eceiverInformation)) AND ((@IsNull_PrivateFlag = 1 AND [PrivateFlag] IS NULL) OR"& _ 
-                " ([PrivateFlag] = @Original_PrivateFlag)))"
+                "ateFlag, [RemittanceInformation] = @RemittanceInformation, [ProcessingQueue] = @"& _ 
+                "ProcessingQueue WHERE (([ID] = @Original_ID) AND ((@IsNull_IncomingDate = 1 AND "& _ 
+                "[IncomingDate] IS NULL) OR ([IncomingDate] = @Original_IncomingDate)) AND ((@IsN"& _ 
+                "ull_OurReference = 1 AND [OurReference] IS NULL) OR ([OurReference] = @Original_"& _ 
+                "OurReference)) AND ((@IsNull_ValueDate = 1 AND [ValueDate] IS NULL) OR ([ValueDa"& _ 
+                "te] = @Original_ValueDate)) AND ((@IsNull_MessageSender = 1 AND [MessageSender] "& _ 
+                "IS NULL) OR ([MessageSender] = @Original_MessageSender)) AND ((@IsNull_MessageSe"& _ 
+                "nderName = 1 AND [MessageSenderName] IS NULL) OR ([MessageSenderName] = @Origina"& _ 
+                "l_MessageSenderName)) AND ((@IsNull_MessageSenderCity = 1 AND [MessageSenderCity"& _ 
+                "] IS NULL) OR ([MessageSenderCity] = @Original_MessageSenderCity)) AND ((@IsNull"& _ 
+                "_Currency = 1 AND [Currency] IS NULL) OR ([Currency] = @Original_Currency)) AND "& _ 
+                "((@IsNull_ReferenceNo = 1 AND [ReferenceNo] IS NULL) OR ([ReferenceNo] = @Origin"& _ 
+                "al_ReferenceNo)) AND ((@IsNull_AccountOfInstitution = 1 AND [AccountOfInstitutio"& _ 
+                "n] IS NULL) OR ([AccountOfInstitution] = @Original_AccountOfInstitution)) AND (("& _ 
+                "@IsNull_AccountOfInstitutionName = 1 AND [AccountOfInstitutionName] IS NULL) OR "& _ 
+                "([AccountOfInstitutionName] = @Original_AccountOfInstitutionName)) AND ((@IsNull"& _ 
+                "_AccountOfInstitutionCity = 1 AND [AccountOfInstitutionCity] IS NULL) OR ([Accou"& _ 
+                "ntOfInstitutionCity] = @Original_AccountOfInstitutionCity)) AND ((@IsNull_Amount"& _ 
+                " = 1 AND [Amount] IS NULL) OR ([Amount] = @Original_Amount)) AND ((@IsNull_Excha"& _ 
+                "ngeRate = 1 AND [ExchangeRate] IS NULL) OR ([ExchangeRate] = @Original_ExchangeR"& _ 
+                "ate)) AND ((@IsNull_AmountEuro = 1 AND [AmountEuro] IS NULL) OR ([AmountEuro] = "& _ 
+                "@Original_AmountEuro)) AND ((@IsNull_OriginalOrderingCustomer = 1 AND [OriginalO"& _ 
+                "rderingCustomer] IS NULL) OR ([OriginalOrderingCustomer] = @Original_OriginalOrd"& _ 
+                "eringCustomer)) AND ((@IsNull_OriginalOrderingInstitution = 1 AND [OriginalOrder"& _ 
+                "ingInstitution] IS NULL) OR ([OriginalOrderingInstitution] = @Original_OriginalO"& _ 
+                "rderingInstitution)) AND ((@IsNull_OriginalOrderingInstitutionName = 1 AND [Orig"& _ 
+                "inalOrderingInstitutionName] IS NULL) OR ([OriginalOrderingInstitutionName] = @O"& _ 
+                "riginal_OriginalOrderingInstitutionName)) AND ((@IsNull_OriginalOrderingInstitut"& _ 
+                "ionCity = 1 AND [OriginalOrderingInstitutionCity] IS NULL) OR ([OriginalOrdering"& _ 
+                "InstitutionCity] = @Original_OriginalOrderingInstitutionCity)) AND ((@IsNull_Ben"& _ 
+                "eficiaryCustomer = 1 AND [BeneficiaryCustomer] IS NULL) OR ([BeneficiaryCustomer"& _ 
+                "] = @Original_BeneficiaryCustomer)) AND ((@IsNull_Commission = 1 AND [Commission"& _ 
+                "] IS NULL) OR ([Commission] = @Original_Commission)) AND ((@IsNull_DetailsOfChar"& _ 
+                "ges = 1 AND [DetailsOfCharges] IS NULL) OR ([DetailsOfCharges] = @Original_Detai"& _ 
+                "lsOfCharges)) AND ((@IsNull_PAYMENT_CODE = 1 AND [PAYMENT_CODE] IS NULL) OR ([PA"& _ 
+                "YMENT_CODE] = @Original_PAYMENT_CODE)) AND ((@IsNull_ReceiverBICofConstructMessa"& _ 
+                "ge = 1 AND [ReceiverBICofConstructMessage] IS NULL) OR ([ReceiverBICofConstructM"& _ 
+                "essage] = @Original_ReceiverBICofConstructMessage)) AND ((@IsNull_ReceiverBICofC"& _ 
+                "onstructMessageName = 1 AND [ReceiverBICofConstructMessageName] IS NULL) OR ([Re"& _ 
+                "ceiverBICofConstructMessageName] = @Original_ReceiverBICofConstructMessageName))"& _ 
+                " AND ((@IsNull_ReceiverBICofConstructMessageCity = 1 AND [ReceiverBICofConstruct"& _ 
+                "MessageCity] IS NULL) OR ([ReceiverBICofConstructMessageCity] = @Original_Receiv"& _ 
+                "erBICofConstructMessageCity)) AND ((@IsNull_PaymentYear = 1 AND [PaymentYear] IS"& _ 
+                " NULL) OR ([PaymentYear] = @Original_PaymentYear)) AND ((@IsNull_ProcessedBy = 1"& _ 
+                " AND [ProcessedBy] IS NULL) OR ([ProcessedBy] = @Original_ProcessedBy)) AND ((@I"& _ 
+                "sNull_MsgSenderCountry = 1 AND [MsgSenderCountry] IS NULL) OR ([MsgSenderCountry"& _ 
+                "] = @Original_MsgSenderCountry)) AND ((@IsNull_MTTYPE = 1 AND [MTTYPE] IS NULL) "& _ 
+                "OR ([MTTYPE] = @Original_MTTYPE)) AND ((@IsNull_BeneficiaryBank = 1 AND [Benefic"& _ 
+                "iaryBank] IS NULL) OR ([BeneficiaryBank] = @Original_BeneficiaryBank)) AND ((@Is"& _ 
+                "Null_BeneficiaryBankName = 1 AND [BeneficiaryBankName] IS NULL) OR ([Beneficiary"& _ 
+                "BankName] = @Original_BeneficiaryBankName)) AND ((@IsNull_BeneficiaryBankCity = "& _ 
+                "1 AND [BeneficiaryBankCity] IS NULL) OR ([BeneficiaryBankCity] = @Original_Benef"& _ 
+                "iciaryBankCity)) AND ((@IsNull_MsgBenefCountry = 1 AND [MsgBenefCountry] IS NULL"& _ 
+                ") OR ([MsgBenefCountry] = @Original_MsgBenefCountry)) AND ((@IsNull_SenderToRece"& _ 
+                "iverInformation = 1 AND [SenderToReceiverInformation] IS NULL) OR ([SenderToRece"& _ 
+                "iverInformation] = @Original_SenderToReceiverInformation)) AND ((@IsNull_Private"& _ 
+                "Flag = 1 AND [PrivateFlag] IS NULL) OR ([PrivateFlag] = @Original_PrivateFlag)) "& _ 
+                "AND ((@IsNull_ProcessingQueue = 1 AND [ProcessingQueue] IS NULL) OR ([Processing"& _ 
+                "Queue] = @Original_ProcessingQueue)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IncomingDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IncomingDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@OurReference", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "OurReference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -11127,6 +11176,7 @@ Namespace ClearingDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@SenderToReceiverInformation", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SenderToReceiverInformation", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PrivateFlag", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateFlag", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RemittanceInformation", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RemittanceInformation", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ProcessingQueue", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcessingQueue", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_IncomingDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IncomingDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_IncomingDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IncomingDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -11198,6 +11248,8 @@ Namespace ClearingDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_SenderToReceiverInformation", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "SenderToReceiverInformation", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PrivateFlag", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateFlag", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PrivateFlag", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PrivateFlag", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ProcessingQueue", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcessingQueue", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ProcessingQueue", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ProcessingQueue", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11222,7 +11274,8 @@ Namespace ClearingDataSetTableAdapters
                 "ReceiverBICofConstructMessage, ReceiverBICofConstructMessageName, ReceiverBICofC"& _ 
                 "onstructMessageCity, PaymentYear, ProcessedBy, MsgSenderCountry, MTTYPE, Benefic"& _ 
                 "iaryBank, BeneficiaryBankName, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         BeneficiaryBankCity, M"& _ 
-                "sgBenefCountry, SenderToReceiverInformation, PrivateFlag, RemittanceInformation"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [GMPS PAYMENTS IN]"
+                "sgBenefCountry, SenderToReceiverInformation, PrivateFlag, RemittanceInformation,"& _ 
+                " ProcessingQueue"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [GMPS PAYMENTS IN]"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -11369,7 +11422,8 @@ Namespace ClearingDataSetTableAdapters
                     ByVal Original_BeneficiaryBankCity As String,  _
                     ByVal Original_MsgBenefCountry As String,  _
                     ByVal Original_SenderToReceiverInformation As String,  _
-                    ByVal Original_PrivateFlag As String) As Integer
+                    ByVal Original_PrivateFlag As String,  _
+                    ByVal Original_ProcessingQueue As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_IncomingDate.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
@@ -11616,6 +11670,13 @@ Namespace ClearingDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(69).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(70).Value = CType(Original_PrivateFlag,String)
             End If
+            If (Original_ProcessingQueue Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(71).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(72).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(71).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(72).Value = CType(Original_ProcessingQueue,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11671,7 +11732,8 @@ Namespace ClearingDataSetTableAdapters
                     ByVal MsgBenefCountry As String,  _
                     ByVal SenderToReceiverInformation As String,  _
                     ByVal PrivateFlag As String,  _
-                    ByVal RemittanceInformation As String) As Integer
+                    ByVal RemittanceInformation As String,  _
+                    ByVal ProcessingQueue As String) As Integer
             If (IncomingDate.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(IncomingDate.Value,Date)
             Else
@@ -11852,6 +11914,11 @@ Namespace ClearingDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(35).Value = CType(RemittanceInformation,String)
             End If
+            If (ProcessingQueue Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(36).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(36).Value = CType(ProcessingQueue,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11908,6 +11975,7 @@ Namespace ClearingDataSetTableAdapters
                     ByVal SenderToReceiverInformation As String,  _
                     ByVal PrivateFlag As String,  _
                     ByVal RemittanceInformation As String,  _
+                    ByVal ProcessingQueue As String,  _
                     ByVal Original_ID As Integer,  _
                     ByVal Original_IncomingDate As Global.System.Nullable(Of Date),  _
                     ByVal Original_OurReference As String,  _
@@ -11943,7 +12011,8 @@ Namespace ClearingDataSetTableAdapters
                     ByVal Original_BeneficiaryBankCity As String,  _
                     ByVal Original_MsgBenefCountry As String,  _
                     ByVal Original_SenderToReceiverInformation As String,  _
-                    ByVal Original_PrivateFlag As String) As Integer
+                    ByVal Original_PrivateFlag As String,  _
+                    ByVal Original_ProcessingQueue As String) As Integer
             If (IncomingDate.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(IncomingDate.Value,Date)
             Else
@@ -12124,251 +12193,263 @@ Namespace ClearingDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(35).Value = CType(RemittanceInformation,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_ID,Integer)
-            If (Original_IncomingDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_IncomingDate.Value,Date)
+            If (ProcessingQueue Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(ProcessingQueue,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_ID,Integer)
+            If (Original_IncomingDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_IncomingDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             End If
             If (Original_OurReference Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_OurReference,String)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_OurReference,String)
             End If
             If (Original_ValueDate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_ValueDate.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_ValueDate.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             End If
             If (Original_MessageSender Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_MessageSender,String)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_MessageSender,String)
             End If
             If (Original_MessageSenderName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_MessageSenderName,String)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_MessageSenderName,String)
             End If
             If (Original_MessageSenderCity Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_MessageSenderCity,String)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_MessageSenderCity,String)
             End If
             If (Original_Currency Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_Currency,String)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_Currency,String)
             End If
             If (Original_ReferenceNo Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_ReferenceNo,String)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_ReferenceNo,String)
             End If
             If (Original_AccountOfInstitution Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_AccountOfInstitution,String)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_AccountOfInstitution,String)
             End If
             If (Original_AccountOfInstitutionName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_AccountOfInstitutionName,String)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_AccountOfInstitutionName,String)
             End If
             If (Original_AccountOfInstitutionCity Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_AccountOfInstitutionCity,String)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_AccountOfInstitutionCity,String)
             End If
             If (Original_Amount.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_Amount.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_Amount.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
             End If
             If (Original_ExchangeRate.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_ExchangeRate.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_ExchangeRate.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
             End If
             If (Original_AmountEuro.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_AmountEuro.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_AmountEuro.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
             End If
             If (Original_OriginalOrderingCustomer Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_OriginalOrderingCustomer,String)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_OriginalOrderingCustomer,String)
             End If
             If (Original_OriginalOrderingInstitution Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_OriginalOrderingInstitution,String)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(Original_OriginalOrderingInstitution,String)
             End If
             If (Original_OriginalOrderingInstitutionName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_OriginalOrderingInstitutionName,String)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(Original_OriginalOrderingInstitutionName,String)
             End If
             If (Original_OriginalOrderingInstitutionCity Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_OriginalOrderingInstitutionCity,String)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(Original_OriginalOrderingInstitutionCity,String)
             End If
             If (Original_BeneficiaryCustomer Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_BeneficiaryCustomer,String)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(Original_BeneficiaryCustomer,String)
             End If
             If (Original_Commission.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_Commission.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(Original_Commission.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(77).Value = Global.System.DBNull.Value
             End If
             If (Original_DetailsOfCharges Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_DetailsOfCharges,String)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(Original_DetailsOfCharges,String)
             End If
             If (Original_PAYMENT_CODE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_PAYMENT_CODE,String)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(Original_PAYMENT_CODE,String)
             End If
             If (Original_ReceiverBICofConstructMessage Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_ReceiverBICofConstructMessage,String)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(Original_ReceiverBICofConstructMessage,String)
             End If
             If (Original_ReceiverBICofConstructMessageName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(85).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_ReceiverBICofConstructMessageName,String)
+                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(Original_ReceiverBICofConstructMessageName,String)
             End If
             If (Original_ReceiverBICofConstructMessageCity Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(87).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_ReceiverBICofConstructMessageCity,String)
+                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(Original_ReceiverBICofConstructMessageCity,String)
             End If
             If (Original_PaymentYear.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Original_PaymentYear.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(Original_PaymentYear.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(89).Value = Global.System.DBNull.Value
             End If
             If (Original_ProcessedBy Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(91).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(Original_ProcessedBy,String)
+                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(Original_ProcessedBy,String)
             End If
             If (Original_MsgSenderCountry Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(93).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(Original_MsgSenderCountry,String)
+                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(Original_MsgSenderCountry,String)
             End If
             If (Original_MTTYPE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(95).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(Original_MTTYPE,String)
+                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(Original_MTTYPE,String)
             End If
             If (Original_BeneficiaryBank Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(97).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(Original_BeneficiaryBank,String)
+                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(Original_BeneficiaryBank,String)
             End If
             If (Original_BeneficiaryBankName Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(98).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(99).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(Original_BeneficiaryBankName,String)
+                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(Original_BeneficiaryBankName,String)
             End If
             If (Original_BeneficiaryBankCity Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(100).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(101).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(Original_BeneficiaryBankCity,String)
+                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(Original_BeneficiaryBankCity,String)
             End If
             If (Original_MsgBenefCountry Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(102).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(103).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(Original_MsgBenefCountry,String)
+                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(Original_MsgBenefCountry,String)
             End If
             If (Original_SenderToReceiverInformation Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(104).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(105).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(Original_SenderToReceiverInformation,String)
+                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(Original_SenderToReceiverInformation,String)
             End If
             If (Original_PrivateFlag Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(106).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(107).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(Original_PrivateFlag,String)
+                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(Original_PrivateFlag,String)
+            End If
+            If (Original_ProcessingQueue Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(108).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(109).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(108).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(Original_ProcessingQueue,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

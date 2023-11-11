@@ -21,33 +21,33 @@ Partial Class InterestRateRiskCalc2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InterestRateRiskCalc2))
-        Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression1 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression2 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule3 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression3 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule4 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression4 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim GridFormatRule5 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
-        Dim FormatConditionRuleExpression5 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
-        Dim SuperToolTip1 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem1 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem2 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipTitleItem3 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim SuperToolTip3 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
-        Dim ToolTipTitleItem4 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim ToolTipItem3 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
-        Dim ToolTipSeparatorItem1 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
-        Dim ToolTipTitleItem5 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim GridFormatRule6 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression6 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule7 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression7 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule8 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression8 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule9 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression9 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim GridFormatRule10 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleExpression10 As DevExpress.XtraEditors.FormatConditionRuleExpression = New DevExpress.XtraEditors.FormatConditionRuleExpression()
+        Dim SuperToolTip4 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem6 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem4 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim SuperToolTip5 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem7 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem5 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipTitleItem8 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim SuperToolTip6 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
+        Dim ToolTipTitleItem9 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim ToolTipItem6 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim ToolTipSeparatorItem2 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
+        Dim ToolTipTitleItem10 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.colCURRENCY = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
@@ -631,8 +631,10 @@ Partial Class InterestRateRiskCalc2
         Me.TableAdapterManager.MAK_REPORTTableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DATETableAdapter = Me.RATERISK_DATETableAdapter
         Me.TableAdapterManager.RATERISK_DELETIONSTableAdapter = Nothing
+        Me.TableAdapterManager.RATERISK_DETAILS1TableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DETAILSTableAdapter = Me.RATERISK_DETAILSTableAdapter
         Me.TableAdapterManager.RATERISK_TOTALS1TableAdapter = Nothing
+        Me.TableAdapterManager.RATERISK_TOTALS2TableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_TOTALSTableAdapter = Me.RATERISK_TOTALSTableAdapter
         Me.TableAdapterManager.RISK_LIMIT_DAILY_CONTROLTableAdapter = Nothing
         Me.TableAdapterManager.StressTestLiquid_TempTableAdapter = Nothing
@@ -701,7 +703,7 @@ Partial Class InterestRateRiskCalc2
         Me.XtraTabControl1.Location = New System.Drawing.Point(3, 70)
         Me.XtraTabControl1.Name = "XtraTabControl1"
         Me.XtraTabControl1.SelectedTabPage = Me.TOTALS_XtraTabPage
-        Me.XtraTabControl1.Size = New System.Drawing.Size(1609, 623)
+        Me.XtraTabControl1.Size = New System.Drawing.Size(1399, 459)
         Me.XtraTabControl1.TabIndex = 7
         Me.XtraTabControl1.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.TOTALS_XtraTabPage, Me.DETAILS_XtraTabPage})
         '
@@ -714,7 +716,7 @@ Partial Class InterestRateRiskCalc2
         Me.TOTALS_XtraTabPage.Controls.Add(Me.LayoutControl1)
         Me.TOTALS_XtraTabPage.Name = "TOTALS_XtraTabPage"
         Me.TOTALS_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.TOTALS_XtraTabPage.Size = New System.Drawing.Size(1603, 595)
+        Me.TOTALS_XtraTabPage.Size = New System.Drawing.Size(1397, 436)
         Me.TOTALS_XtraTabPage.Text = "TOTALS"
         '
         'LayoutControl1
@@ -729,7 +731,7 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1603, 595)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1397, 436)
         Me.LayoutControl1.TabIndex = 1
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -739,9 +741,9 @@ Partial Class InterestRateRiskCalc2
         Me.InterestRateRiskReportsDropDownButton.DropDownControl = Me.PopupMenu1
         Me.InterestRateRiskReportsDropDownButton.ImageOptions.ImageIndex = 7
         Me.InterestRateRiskReportsDropDownButton.ImageOptions.ImageList = Me.ImageCollection1
-        Me.InterestRateRiskReportsDropDownButton.Location = New System.Drawing.Point(212, 24)
+        Me.InterestRateRiskReportsDropDownButton.Location = New System.Drawing.Point(187, 24)
         Me.InterestRateRiskReportsDropDownButton.Name = "InterestRateRiskReportsDropDownButton"
-        Me.InterestRateRiskReportsDropDownButton.Size = New System.Drawing.Size(276, 22)
+        Me.InterestRateRiskReportsDropDownButton.Size = New System.Drawing.Size(239, 22)
         Me.InterestRateRiskReportsDropDownButton.StyleController = Me.LayoutControl1
         Me.InterestRateRiskReportsDropDownButton.TabIndex = 7
         Me.InterestRateRiskReportsDropDownButton.Text = "INTEREST RATE RISK REPORTS"
@@ -828,31 +830,31 @@ Partial Class InterestRateRiskCalc2
         Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
         Me.barDockControlTop.Manager = Me.BarManager1
-        Me.barDockControlTop.Size = New System.Drawing.Size(1616, 49)
+        Me.barDockControlTop.Size = New System.Drawing.Size(1406, 41)
         '
         'barDockControlBottom
         '
         Me.barDockControlBottom.CausesValidation = False
         Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 704)
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 544)
         Me.barDockControlBottom.Manager = Me.BarManager1
-        Me.barDockControlBottom.Size = New System.Drawing.Size(1616, 23)
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1406, 19)
         '
         'barDockControlLeft
         '
         Me.barDockControlLeft.CausesValidation = False
         Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
-        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 49)
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 41)
         Me.barDockControlLeft.Manager = Me.BarManager1
-        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 655)
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 503)
         '
         'barDockControlRight
         '
         Me.barDockControlRight.CausesValidation = False
         Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
-        Me.barDockControlRight.Location = New System.Drawing.Point(1616, 49)
+        Me.barDockControlRight.Location = New System.Drawing.Point(1406, 41)
         Me.barDockControlRight.Manager = Me.BarManager1
-        Me.barDockControlRight.Size = New System.Drawing.Size(0, 655)
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 503)
         '
         'ImageCollection1
         '
@@ -876,7 +878,7 @@ Partial Class InterestRateRiskCalc2
         Me.Print_Export_TOTALSGridview_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_TOTALSGridview_btn.Location = New System.Drawing.Point(24, 24)
         Me.Print_Export_TOTALSGridview_btn.Name = "Print_Export_TOTALSGridview_btn"
-        Me.Print_Export_TOTALSGridview_btn.Size = New System.Drawing.Size(184, 22)
+        Me.Print_Export_TOTALSGridview_btn.Size = New System.Drawing.Size(159, 22)
         Me.Print_Export_TOTALSGridview_btn.StyleController = Me.LayoutControl1
         Me.Print_Export_TOTALSGridview_btn.TabIndex = 6
         Me.Print_Export_TOTALSGridview_btn.Text = "Print or Export"
@@ -886,9 +888,9 @@ Partial Class InterestRateRiskCalc2
         Me.Recalculate_Interest_Rate_Risk_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Recalculate_Interest_Rate_Risk_btn.ImageOptions.ImageIndex = 8
         Me.Recalculate_Interest_Rate_Risk_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Recalculate_Interest_Rate_Risk_btn.Location = New System.Drawing.Point(492, 24)
+        Me.Recalculate_Interest_Rate_Risk_btn.Location = New System.Drawing.Point(430, 24)
         Me.Recalculate_Interest_Rate_Risk_btn.Name = "Recalculate_Interest_Rate_Risk_btn"
-        Me.Recalculate_Interest_Rate_Risk_btn.Size = New System.Drawing.Size(235, 22)
+        Me.Recalculate_Interest_Rate_Risk_btn.Size = New System.Drawing.Size(204, 22)
         Me.Recalculate_Interest_Rate_Risk_btn.StyleController = Me.LayoutControl1
         Me.Recalculate_Interest_Rate_Risk_btn.TabIndex = 5
         Me.Recalculate_Interest_Rate_Risk_btn.Text = "Re-calculate Interest Rate Risk"
@@ -897,9 +899,9 @@ Partial Class InterestRateRiskCalc2
         '
         Me.Edit_BICDIR_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Edit_BICDIR_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1484, 24)
+        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1291, 24)
         Me.Edit_BICDIR_Details_btn.Name = "Edit_BICDIR_Details_btn"
-        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(95, 22)
+        Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(82, 22)
         Me.Edit_BICDIR_Details_btn.StyleController = Me.LayoutControl1
         Me.Edit_BICDIR_Details_btn.TabIndex = 4
         Me.Edit_BICDIR_Details_btn.Text = "Edit Details"
@@ -917,7 +919,7 @@ Partial Class InterestRateRiskCalc2
         Me.GridControl1.MainView = Me.TOTALSBandedGridView
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEditBIC8, Me.RepositoryItemTextEditBIC3})
-        Me.GridControl1.Size = New System.Drawing.Size(1579, 521)
+        Me.GridControl1.Size = New System.Drawing.Size(1373, 362)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ToolTipController = Me.ToolTipController1
         Me.GridControl1.UseEmbeddedNavigator = True
@@ -944,49 +946,49 @@ Partial Class InterestRateRiskCalc2
         Me.TOTALSBandedGridView.Bands.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.GridBand() {Me.GridBand1, Me.gridBand2, Me.gridBand3, Me.gridBand4, Me.gridBand5, Me.gridBand6, Me.gridBand7, Me.gridBand8, Me.gridBand9, Me.gridBand10, Me.gridBand11, Me.gridBand12})
         Me.TOTALSBandedGridView.Columns.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn() {Me.colID1, Me.colCURRENCY, Me.colPeriod, Me.GridColumn6, Me.GridColumn7, Me.colWF_N, Me.colAM_N, Me.colDATADATE, Me.colRISKDATE, Me.colIMPORTDATE, Me.colBEMERKUNGEN, Me.colIdRateRiskDate})
         Me.TOTALSBandedGridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        GridFormatRule1.Column = Me.colCURRENCY
-        GridFormatRule1.Name = "Format0"
-        FormatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleExpression1.Appearance.Options.UseBackColor = True
-        FormatConditionRuleExpression1.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression1.Expression = "[CURRENCY] != ?"
-        GridFormatRule1.Rule = FormatConditionRuleExpression1
-        GridFormatRule2.Name = "Format1"
-        FormatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleExpression2.Appearance.Options.UseBackColor = True
-        FormatConditionRuleExpression2.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression2.Expression = "[Period] != ?"
-        GridFormatRule2.Rule = FormatConditionRuleExpression2
-        GridFormatRule3.Column = Me.GridColumn6
-        GridFormatRule3.Name = "Format2"
-        FormatConditionRuleExpression3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleExpression3.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleExpression3.Appearance.Options.UseBackColor = True
-        FormatConditionRuleExpression3.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression3.Expression = " [Principal Amount/Value Balance] != ?"
-        GridFormatRule3.Rule = FormatConditionRuleExpression3
-        GridFormatRule4.Column = Me.GridColumn7
-        GridFormatRule4.Name = "Format3"
-        FormatConditionRuleExpression4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleExpression4.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleExpression4.Appearance.Options.UseBackColor = True
-        FormatConditionRuleExpression4.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression4.Expression = "[Principal Amount/Value Balance(EUR Equ)] != ?"
-        GridFormatRule4.Rule = FormatConditionRuleExpression4
-        GridFormatRule5.Name = "Format4"
-        FormatConditionRuleExpression5.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        FormatConditionRuleExpression5.Appearance.ForeColor = System.Drawing.Color.Black
-        FormatConditionRuleExpression5.Appearance.Options.UseBackColor = True
-        FormatConditionRuleExpression5.Appearance.Options.UseForeColor = True
-        FormatConditionRuleExpression5.Expression = "[Principal Amount/Value Balance(EUR Equ)withoutSECUR] != ?"
-        GridFormatRule5.Rule = FormatConditionRuleExpression5
-        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule1)
-        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule2)
-        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule3)
-        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule4)
-        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule5)
+        GridFormatRule6.Column = Me.colCURRENCY
+        GridFormatRule6.Name = "Format0"
+        FormatConditionRuleExpression6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleExpression6.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleExpression6.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression6.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression6.Expression = "[CURRENCY] != ?"
+        GridFormatRule6.Rule = FormatConditionRuleExpression6
+        GridFormatRule7.Name = "Format1"
+        FormatConditionRuleExpression7.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleExpression7.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleExpression7.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression7.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression7.Expression = "[Period] != ?"
+        GridFormatRule7.Rule = FormatConditionRuleExpression7
+        GridFormatRule8.Column = Me.GridColumn6
+        GridFormatRule8.Name = "Format2"
+        FormatConditionRuleExpression8.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleExpression8.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleExpression8.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression8.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression8.Expression = " [Principal Amount/Value Balance] != ?"
+        GridFormatRule8.Rule = FormatConditionRuleExpression8
+        GridFormatRule9.Column = Me.GridColumn7
+        GridFormatRule9.Name = "Format3"
+        FormatConditionRuleExpression9.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleExpression9.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleExpression9.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression9.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression9.Expression = "[Principal Amount/Value Balance(EUR Equ)] != ?"
+        GridFormatRule9.Rule = FormatConditionRuleExpression9
+        GridFormatRule10.Name = "Format4"
+        FormatConditionRuleExpression10.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        FormatConditionRuleExpression10.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleExpression10.Appearance.Options.UseBackColor = True
+        FormatConditionRuleExpression10.Appearance.Options.UseForeColor = True
+        FormatConditionRuleExpression10.Expression = "[Principal Amount/Value Balance(EUR Equ)withoutSECUR] != ?"
+        GridFormatRule10.Rule = FormatConditionRuleExpression10
+        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule6)
+        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule7)
+        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule8)
+        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule9)
+        Me.TOTALSBandedGridView.FormatRules.Add(GridFormatRule10)
         Me.TOTALSBandedGridView.GridControl = Me.GridControl1
         Me.TOTALSBandedGridView.GroupCount = 1
         Me.TOTALSBandedGridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AM2", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AM2", Me.colAM_N, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Principal Amount/Value Balance", Me.GridColumn6, "SUM={0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Principal Amount/Value Balance(EUR Equ)", Me.GridColumn7, "SUM={0:n2}")})
@@ -1783,7 +1785,7 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlGroup3})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1603, 595)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1397, 436)
         '
         'LayoutControlItem1
         '
@@ -1792,7 +1794,7 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1583, 525)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1377, 366)
         Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
@@ -1803,16 +1805,16 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem3, Me.LayoutControlItem7})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1583, 50)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1377, 50)
         Me.LayoutControlGroup3.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.Edit_BICDIR_Details_btn
         Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1460, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1267, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(99, 26)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(86, 26)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         Me.LayoutControlItem2.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -1821,9 +1823,9 @@ Partial Class InterestRateRiskCalc2
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(707, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(614, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(753, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(653, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -1832,7 +1834,7 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(188, 26)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(163, 26)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -1840,9 +1842,9 @@ Partial Class InterestRateRiskCalc2
         '
         Me.LayoutControlItem3.Control = Me.Recalculate_Interest_Rate_Risk_btn
         Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(468, 0)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(406, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(239, 26)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(208, 26)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         Me.LayoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -1851,9 +1853,9 @@ Partial Class InterestRateRiskCalc2
         '
         Me.LayoutControlItem7.Control = Me.InterestRateRiskReportsDropDownButton
         Me.LayoutControlItem7.CustomizationFormText = "LayoutControlItem7"
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(188, 0)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(163, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(280, 26)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(243, 26)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -1866,7 +1868,7 @@ Partial Class InterestRateRiskCalc2
         Me.DETAILS_XtraTabPage.Controls.Add(Me.LayoutControl2)
         Me.DETAILS_XtraTabPage.Name = "DETAILS_XtraTabPage"
         Me.DETAILS_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.DETAILS_XtraTabPage.Size = New System.Drawing.Size(1603, 595)
+        Me.DETAILS_XtraTabPage.Size = New System.Drawing.Size(1397, 436)
         Me.DETAILS_XtraTabPage.Text = "DETAILS"
         '
         'LayoutControl2
@@ -1879,7 +1881,7 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(550, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup4
-        Me.LayoutControl2.Size = New System.Drawing.Size(1603, 595)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1397, 436)
         Me.LayoutControl2.TabIndex = 2
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -1890,7 +1892,7 @@ Partial Class InterestRateRiskCalc2
         Me.Print_Export_DETAILSGridview_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_DETAILSGridview_btn.Location = New System.Drawing.Point(24, 24)
         Me.Print_Export_DETAILSGridview_btn.Name = "Print_Export_DETAILSGridview_btn"
-        Me.Print_Export_DETAILSGridview_btn.Size = New System.Drawing.Size(182, 22)
+        Me.Print_Export_DETAILSGridview_btn.Size = New System.Drawing.Size(157, 22)
         Me.Print_Export_DETAILSGridview_btn.StyleController = Me.LayoutControl2
         Me.Print_Export_DETAILSGridview_btn.TabIndex = 6
         Me.Print_Export_DETAILSGridview_btn.Text = "Print or Export"
@@ -1899,9 +1901,9 @@ Partial Class InterestRateRiskCalc2
         '
         Me.Edit_INTERBANKV_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Edit_INTERBANKV_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1364, 24)
+        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1187, 24)
         Me.Edit_INTERBANKV_Details_btn.Name = "Edit_INTERBANKV_Details_btn"
-        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(215, 22)
+        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(186, 22)
         Me.Edit_INTERBANKV_Details_btn.StyleController = Me.LayoutControl2
         Me.Edit_INTERBANKV_Details_btn.TabIndex = 4
         Me.Edit_INTERBANKV_Details_btn.Text = "Show Details"
@@ -1918,7 +1920,7 @@ Partial Class InterestRateRiskCalc2
         Me.GridControl2.MainView = Me.DETAILSGridView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox2, Me.RepositoryItemTextEdit4})
-        Me.GridControl2.Size = New System.Drawing.Size(1579, 521)
+        Me.GridControl2.Size = New System.Drawing.Size(1373, 362)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DETAILSGridView, Me.LayoutView4, Me.LayoutView3, Me.LayoutView2})
@@ -3732,7 +3734,7 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.LayoutControlGroup5})
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1603, 595)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1397, 436)
         '
         'LayoutControlItem5
         '
@@ -3741,7 +3743,7 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem5.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem5.Name = "LayoutControlItem1"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1583, 525)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1377, 366)
         Me.LayoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
@@ -3752,16 +3754,16 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem8})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1583, 50)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1377, 50)
         Me.LayoutControlGroup5.TextVisible = False
         '
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.Edit_INTERBANKV_Details_btn
         Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(1340, 0)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(1163, 0)
         Me.LayoutControlItem6.Name = "LayoutControlItem2"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(219, 26)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(190, 26)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         Me.LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -3770,9 +3772,9 @@ Partial Class InterestRateRiskCalc2
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(186, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(161, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1154, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1002, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem8
@@ -3781,7 +3783,7 @@ Partial Class InterestRateRiskCalc2
         Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem4"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(186, 26)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(161, 26)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -3798,13 +3800,13 @@ Partial Class InterestRateRiskCalc2
         Me.LabelControl3.Location = New System.Drawing.Point(5, 24)
         Me.LabelControl3.Name = "LabelControl3"
         Me.LabelControl3.Size = New System.Drawing.Size(190, 19)
-        ToolTipTitleItem1.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem1.Text = "Interest Rate Risk Amount"
-        ToolTipItem1.LeftIndent = 6
-        ToolTipItem1.Text = "Sum of Amount (+200 bps)*VaR(95%)/VaR(99,9%)"
-        SuperToolTip1.Items.Add(ToolTipTitleItem1)
-        SuperToolTip1.Items.Add(ToolTipItem1)
-        Me.LabelControl3.SuperTip = SuperToolTip1
+        ToolTipTitleItem6.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem6.Text = "Interest Rate Risk Amount"
+        ToolTipItem4.LeftIndent = 6
+        ToolTipItem4.Text = "Sum of Amount (+200 bps)*VaR(95%)/VaR(99,9%)"
+        SuperToolTip4.Items.Add(ToolTipTitleItem6)
+        SuperToolTip4.Items.Add(ToolTipItem4)
+        Me.LabelControl3.SuperTip = SuperToolTip4
         Me.LabelControl3.TabIndex = 10
         Me.LabelControl3.Text = "LabelControl3"
         '
@@ -3871,17 +3873,17 @@ Partial Class InterestRateRiskCalc2
         Me.LabelControl7.Location = New System.Drawing.Point(5, 26)
         Me.LabelControl7.Name = "LabelControl7"
         Me.LabelControl7.Size = New System.Drawing.Size(190, 19)
-        ToolTipTitleItem2.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem2.Text = "VaR(95,00%)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Inverse of the normal cumulative " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "distribution"
-        ToolTipItem2.LeftIndent = 6
-        ToolTipItem2.Text = "NORM.INV Function" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Probability corresponding to the normal distribution," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Standa" &
+        ToolTipTitleItem7.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem7.Text = "VaR(95,00%)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Inverse of the normal cumulative " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "distribution"
+        ToolTipItem5.LeftIndent = 6
+        ToolTipItem5.Text = "NORM.INV Function" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Probability corresponding to the normal distribution," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Standa" &
     "rd deviation of the distribution)"
-        ToolTipTitleItem3.LeftIndent = 6
-        ToolTipTitleItem3.Text = "NORM.INV(0,95;1)"
-        SuperToolTip2.Items.Add(ToolTipTitleItem2)
-        SuperToolTip2.Items.Add(ToolTipItem2)
-        SuperToolTip2.Items.Add(ToolTipTitleItem3)
-        Me.LabelControl7.SuperTip = SuperToolTip2
+        ToolTipTitleItem8.LeftIndent = 6
+        ToolTipTitleItem8.Text = "NORM.INV(0,95;1)"
+        SuperToolTip5.Items.Add(ToolTipTitleItem7)
+        SuperToolTip5.Items.Add(ToolTipItem5)
+        SuperToolTip5.Items.Add(ToolTipTitleItem8)
+        Me.LabelControl7.SuperTip = SuperToolTip5
         Me.LabelControl7.TabIndex = 26
         Me.LabelControl7.Text = "LabelControl7"
         '
@@ -3912,18 +3914,18 @@ Partial Class InterestRateRiskCalc2
         Me.LabelControl9.Location = New System.Drawing.Point(5, 26)
         Me.LabelControl9.Name = "LabelControl9"
         Me.LabelControl9.Size = New System.Drawing.Size(190, 19)
-        ToolTipTitleItem4.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
-        ToolTipTitleItem4.Text = "VaR(99,9%)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Inverse of the normal cumulative " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "distribution"
-        ToolTipItem3.LeftIndent = 6
-        ToolTipItem3.Text = "NORM.INV Function" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Probability corresponding to the normal distribution," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Standa" &
+        ToolTipTitleItem9.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem9.Text = "VaR(99,9%)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Inverse of the normal cumulative " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "distribution"
+        ToolTipItem6.LeftIndent = 6
+        ToolTipItem6.Text = "NORM.INV Function" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Probability corresponding to the normal distribution," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Standa" &
     "rd deviation of the distribution)"
-        ToolTipTitleItem5.LeftIndent = 6
-        ToolTipTitleItem5.Text = "NORM.INV(0,999;1)"
-        SuperToolTip3.Items.Add(ToolTipTitleItem4)
-        SuperToolTip3.Items.Add(ToolTipItem3)
-        SuperToolTip3.Items.Add(ToolTipSeparatorItem1)
-        SuperToolTip3.Items.Add(ToolTipTitleItem5)
-        Me.LabelControl9.SuperTip = SuperToolTip3
+        ToolTipTitleItem10.LeftIndent = 6
+        ToolTipTitleItem10.Text = "NORM.INV(0,999;1)"
+        SuperToolTip6.Items.Add(ToolTipTitleItem9)
+        SuperToolTip6.Items.Add(ToolTipItem6)
+        SuperToolTip6.Items.Add(ToolTipSeparatorItem2)
+        SuperToolTip6.Items.Add(ToolTipTitleItem10)
+        Me.LabelControl9.SuperTip = SuperToolTip6
         Me.LabelControl9.TabIndex = 10
         Me.LabelControl9.Text = "LabelControl9"
         '
@@ -3943,15 +3945,15 @@ Partial Class InterestRateRiskCalc2
         Me.InterestRateRiskDateEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.InterestRateRiskDateEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
         Me.InterestRateRiskDateEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
-        EditorButtonImageOptions1.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
-        Me.InterestRateRiskDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Reload", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
+        EditorButtonImageOptions2.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        Me.InterestRateRiskDateEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Reload", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.InterestRateRiskDateEdit.Properties.DisplayFormat.FormatString = "d"
         Me.InterestRateRiskDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.InterestRateRiskDateEdit.Properties.EditFormat.FormatString = "d"
         Me.InterestRateRiskDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.InterestRateRiskDateEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.InterestRateRiskDateEdit.Size = New System.Drawing.Size(206, 22)
+        Me.InterestRateRiskDateEdit.Size = New System.Drawing.Size(206, 24)
         Me.InterestRateRiskDateEdit.TabIndex = 14
         '
         'GroupControl1
@@ -4021,7 +4023,7 @@ Partial Class InterestRateRiskCalc2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1616, 727)
+        Me.ClientSize = New System.Drawing.Size(1406, 563)
         Me.Controls.Add(Me.GroupControl4)
         Me.Controls.Add(Me.GroupControl3)
         Me.Controls.Add(Me.GroupControl2)
@@ -4034,7 +4036,7 @@ Partial Class InterestRateRiskCalc2
         Me.Controls.Add(Me.barDockControlRight)
         Me.Controls.Add(Me.barDockControlBottom)
         Me.Controls.Add(Me.barDockControlTop)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("InterestRateRiskCalc2.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "InterestRateRiskCalc2"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Interest Rate Risk Amount (RBC)"

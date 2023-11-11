@@ -106,7 +106,7 @@ Public Class CreditMigrationRiskCalc
     End Sub
 
     Private Sub BUSINESS_DATES_initData()
-        Dim objCMD1 As SqlCommand = New SqlCommand("Select CONVERT(VARCHAR(10),[RiskDate],104) as 'BusinessDate' from [CreditMigrationRisk_DATE] ORDER BY [ID] desc", conn)
+        Dim objCMD1 As SqlCommand = New SqlCommand("Select CONVERT(VARCHAR(10),[RiskDate],104) as 'BusinessDate' from [CreditMigrationRisk_DATE] ORDER BY [RiskDate] desc", conn)
         objCMD1.CommandTimeout = 50000
         Dim dbBusinessDates As SqlDataAdapter = New SqlDataAdapter(objCMD1)
 

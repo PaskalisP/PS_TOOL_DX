@@ -381,6 +381,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_SQL_Parameters_Tree_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_SQL_Queries_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_VB_Script_Execute_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.EDP_SQL_FilesLoad_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.EDP_SQL_FilesCompare_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator30 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.EDP_Audit_TOTAL_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -1714,9 +1715,9 @@ Partial Class PSTOOL_MAIN_Form
         Me.iBasicBankData_BarSubItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu
         Me.iBasicBankData_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         Me.iBasicBankData_BarSubItem.ShowMenuCaption = True
-        ToolTipTitleItem7.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem7.Appearance.Image = CType(resources.GetObject("resource.Image9"), System.Drawing.Image)
         ToolTipTitleItem7.Appearance.Options.UseImage = True
-        ToolTipTitleItem7.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem7.ImageOptions.Image = CType(resources.GetObject("resource.Image10"), System.Drawing.Image)
         ToolTipTitleItem7.Text = "Basic Internal Data"
         ToolTipItem7.LeftIndent = 6
         ToolTipItem7.Text = "Includes Forms with basic internal data" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Internal Currencies, Products, Contract" &
@@ -1757,9 +1758,9 @@ Partial Class PSTOOL_MAIN_Form
         Me.iBasicReports_BarSubItem.Name = "iBasicReports_BarSubItem"
         Me.iBasicReports_BarSubItem.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large
         Me.iBasicReports_BarSubItem.ShowMenuCaption = True
-        ToolTipTitleItem8.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem8.Appearance.Image = CType(resources.GetObject("resource.Image11"), System.Drawing.Image)
         ToolTipTitleItem8.Appearance.Options.UseImage = True
-        ToolTipTitleItem8.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem8.ImageOptions.Image = CType(resources.GetObject("resource.Image12"), System.Drawing.Image)
         ToolTipTitleItem8.Text = "Basic Internal Reports"
         ToolTipItem8.LeftIndent = 6
         ToolTipItem8.Text = "Includes basic internal Reports" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Balance Sheet, Maturities, Accrued Interests et" &
@@ -1839,9 +1840,9 @@ Partial Class PSTOOL_MAIN_Form
         Me.BasicExternalSate_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
         Me.BasicExternalSate_BarSubItem.Name = "BasicExternalSate_BarSubItem"
         Me.BasicExternalSate_BarSubItem.ShowMenuCaption = True
-        ToolTipTitleItem9.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem9.Appearance.Image = CType(resources.GetObject("resource.Image13"), System.Drawing.Image)
         ToolTipTitleItem9.Appearance.Options.UseImage = True
-        ToolTipTitleItem9.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem9.ImageOptions.Image = CType(resources.GetObject("resource.Image14"), System.Drawing.Image)
         ToolTipTitleItem9.Text = "Basic External Data"
         ToolTipItem9.LeftIndent = 6
         ToolTipItem9.Text = "Includes basic external Data" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Bank Directories, Countries, Currencies etc.)"
@@ -1904,9 +1905,9 @@ Partial Class PSTOOL_MAIN_Form
         Me.PostingsBalances_BarSubItem.MenuDrawMode = DevExpress.XtraBars.MenuDrawMode.LargeImagesText
         Me.PostingsBalances_BarSubItem.Name = "PostingsBalances_BarSubItem"
         Me.PostingsBalances_BarSubItem.ShowMenuCaption = True
-        ToolTipTitleItem10.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem10.Appearance.Image = CType(resources.GetObject("resource.Image15"), System.Drawing.Image)
         ToolTipTitleItem10.Appearance.Options.UseImage = True
-        ToolTipTitleItem10.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem10.ImageOptions.Image = CType(resources.GetObject("resource.Image16"), System.Drawing.Image)
         ToolTipTitleItem10.Text = "Postings and Balances"
         ToolTipItem10.LeftIndent = 6
         ToolTipItem10.Text = "Includes Postings and Balances of the General Ledger Accounts, Nostro Accounts (I" &
@@ -2095,7 +2096,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.ClientMerge_BarButtonItem.Name = "ClientMerge_BarButtonItem"
         Me.ClientMerge_BarButtonItem.RibbonStyle = CType(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) _
             Or DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText), DevExpress.XtraBars.Ribbon.RibbonItemStyles)
-        ToolTipTitleItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
+        ToolTipTitleItem11.ImageOptions.Image = CType(resources.GetObject("resource.Image17"), System.Drawing.Image)
         ToolTipTitleItem11.Text = "Client Nr. Merge"
         ToolTipItem11.LeftIndent = 6
         ToolTipItem11.Text = "Internal Function for merging the Old Client Nr. to the New Client Nr."
@@ -2581,6 +2582,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Name = "RISKCONTROL_InterestRateRisk_Calc2_Element"
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Text = "Interest Rate Risk RBC Amount (as from 31.12.2018)"
+        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Visible = False
         '
         'AccordionControlSeparator6
         '
@@ -2737,11 +2739,11 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_WeightingFactors_Element
         '
-        Me.RISKCONTROL_WeightingFactors_Element.Hint = "Add-Modify Weighting Factors/Yield Curves"
+        Me.RISKCONTROL_WeightingFactors_Element.Hint = "Add-Modify Yield Curves / Weighting Factors"
         Me.RISKCONTROL_WeightingFactors_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_WeightingFactors_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_WeightingFactors_Element.Name = "RISKCONTROL_WeightingFactors_Element"
         Me.RISKCONTROL_WeightingFactors_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.RISKCONTROL_WeightingFactors_Element.Text = "Weighting Factors/Yield Curves"
+        Me.RISKCONTROL_WeightingFactors_Element.Text = "Yield Curves / Weighting Factors"
         '
         'RISKCONTROL_CreditSpreadRisk_Parameters_Element
         '
@@ -3268,9 +3270,9 @@ Partial Class PSTOOL_MAIN_Form
         Me.ACCOUNT_FX_DailyRevaluationNew_Element.ImageOptions.ImageLayoutMode = DevExpress.XtraBars.Navigation.ImageLayoutMode.Squeeze
         Me.ACCOUNT_FX_DailyRevaluationNew_Element.Name = "ACCOUNT_FX_DailyRevaluationNew_Element"
         Me.ACCOUNT_FX_DailyRevaluationNew_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem1.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.Appearance.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
         ToolTipTitleItem1.Appearance.Options.UseImage = True
-        ToolTipTitleItem1.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem1.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
         ToolTipTitleItem1.Text = "FX DAILY REVALUATION"
         ToolTipItem1.LeftIndent = 6
         ToolTipItem1.Text = resources.GetString("ToolTipItem1.Text")
@@ -3295,9 +3297,9 @@ Partial Class PSTOOL_MAIN_Form
         Me.ACCOUNT_FX_DailyRevaluation_Element.ImageOptions.ImageLayoutMode = DevExpress.XtraBars.Navigation.ImageLayoutMode.Squeeze
         Me.ACCOUNT_FX_DailyRevaluation_Element.Name = "ACCOUNT_FX_DailyRevaluation_Element"
         Me.ACCOUNT_FX_DailyRevaluation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem2.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem2.Appearance.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
         ToolTipTitleItem2.Appearance.Options.UseImage = True
-        ToolTipTitleItem2.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem2.ImageOptions.Image = CType(resources.GetObject("resource.Image3"), System.Drawing.Image)
         ToolTipTitleItem2.Text = "FX Daily Revaluation"
         ToolTipItem2.LeftIndent = 6
         ToolTipItem2.Text = "Includes:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-Data from the daily FX Revalaution Report" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "-Calculations of the Stand" &
@@ -3512,7 +3514,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'EDP_SQL_Configurations_Element
         '
-        Me.EDP_SQL_Configurations_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EDP_SQL_Parameters_Element, Me.EDP_SQL_Parameters_Tree_Element, Me.EDP_SQL_Queries_Element, Me.EDP_VB_Script_Execute_Element, Me.EDP_SQL_FilesCompare_Element})
+        Me.EDP_SQL_Configurations_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EDP_SQL_Parameters_Element, Me.EDP_SQL_Parameters_Tree_Element, Me.EDP_SQL_Queries_Element, Me.EDP_VB_Script_Execute_Element, Me.EDP_SQL_FilesLoad_Element, Me.EDP_SQL_FilesCompare_Element})
         Me.EDP_SQL_Configurations_Element.Expanded = True
         Me.EDP_SQL_Configurations_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_Configurations_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.EDP_SQL_Configurations_Element.Name = "EDP_SQL_Configurations_Element"
@@ -3550,13 +3552,21 @@ Partial Class PSTOOL_MAIN_Form
         Me.EDP_VB_Script_Execute_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.EDP_VB_Script_Execute_Element.Text = "Execute VB.NET Script"
         '
+        'EDP_SQL_FilesLoad_Element
+        '
+        Me.EDP_SQL_FilesLoad_Element.Hint = "Excel/csv files load"
+        Me.EDP_SQL_FilesLoad_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_FilesLoad_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.EDP_SQL_FilesLoad_Element.Name = "EDP_SQL_FilesLoad_Element"
+        Me.EDP_SQL_FilesLoad_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.EDP_SQL_FilesLoad_Element.Text = "Excel/Csv Files load"
+        '
         'EDP_SQL_FilesCompare_Element
         '
         Me.EDP_SQL_FilesCompare_Element.Hint = "Excel/csv files compare"
         Me.EDP_SQL_FilesCompare_Element.ImageOptions.Image = CType(resources.GetObject("EDP_SQL_FilesCompare_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.EDP_SQL_FilesCompare_Element.Name = "EDP_SQL_FilesCompare_Element"
         Me.EDP_SQL_FilesCompare_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.EDP_SQL_FilesCompare_Element.Text = "Files comparing"
+        Me.EDP_SQL_FilesCompare_Element.Text = "Excel/Csv Files comparing"
         '
         'AccordionControlSeparator30
         '
@@ -3645,9 +3655,9 @@ Partial Class PSTOOL_MAIN_Form
         Me.EAEG_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.EAEG_StammDaten_Element, Me.AccordionControlSeparator15, Me.EAEG_Datei_Element})
         Me.EAEG_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("EAEG_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.EAEG_GROUP_Element.Name = "EAEG_GROUP_Element"
-        ToolTipTitleItem3.Appearance.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem3.Appearance.Image = CType(resources.GetObject("resource.Image4"), System.Drawing.Image)
         ToolTipTitleItem3.Appearance.Options.UseImage = True
-        ToolTipTitleItem3.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Info
+        ToolTipTitleItem3.ImageOptions.Image = CType(resources.GetObject("resource.Image5"), System.Drawing.Image)
         ToolTipTitleItem3.Text = "Einlagensicherungsgesetzt (EinSiG) - EAEG"
         ToolTipItem3.LeftIndent = 6
         ToolTipItem3.Text = "Module für die Verwaltung der relevanten EinSiG Daten sowie für die erstellung de" &
@@ -3727,7 +3737,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.FOREIGN_ExportLC_Customers_Element.ImageOptions.Image = CType(resources.GetObject("FOREIGN_ExportLC_Customers_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.FOREIGN_ExportLC_Customers_Element.Name = "FOREIGN_ExportLC_Customers_Element"
         Me.FOREIGN_ExportLC_Customers_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
+        ToolTipTitleItem4.ImageOptions.Image = CType(resources.GetObject("resource.Image6"), System.Drawing.Image)
         ToolTipTitleItem4.Text = "FOREIGN DEPT. CUSTOMERS"
         ToolTipItem4.LeftIndent = 6
         ToolTipItem4.Text = "Includes all Data regarding the Foreign Dept. Customer (Name, Address, Bank Detai" &
@@ -3747,7 +3757,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.FOREIGN_ExportLC_Applicants_Element.ImageOptions.Image = CType(resources.GetObject("FOREIGN_ExportLC_Applicants_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.FOREIGN_ExportLC_Applicants_Element.Name = "FOREIGN_ExportLC_Applicants_Element"
         Me.FOREIGN_ExportLC_Applicants_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image1"), System.Drawing.Image)
+        ToolTipTitleItem5.ImageOptions.Image = CType(resources.GetObject("resource.Image7"), System.Drawing.Image)
         ToolTipTitleItem5.Text = "FOREIGN BANKS AND COMPANIES"
         ToolTipItem5.LeftIndent = 6
         ToolTipItem5.Text = "Includes all Data related to Applicants, Drawees,Applicant Banks and Drawee Banks" &
@@ -3775,7 +3785,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.FOREIGN_ExportLC_MT700_Element.ImageOptions.Image = CType(resources.GetObject("FOREIGN_ExportLC_MT700_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.FOREIGN_ExportLC_MT700_Element.Name = "FOREIGN_ExportLC_MT700_Element"
         Me.FOREIGN_ExportLC_MT700_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        ToolTipTitleItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image2"), System.Drawing.Image)
+        ToolTipTitleItem6.ImageOptions.Image = CType(resources.GetObject("resource.Image8"), System.Drawing.Image)
         ToolTipTitleItem6.Text = "EXPORT LC - PROCESSING"
         ToolTipItem6.LeftIndent = 6
         ToolTipItem6.Text = "Processing of all EXPORT LC's " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Advices + Settlements)"
@@ -4883,4 +4893,5 @@ Partial Class PSTOOL_MAIN_Form
     Friend WithEvents bbi_KillSession As BarButtonItem
     Friend WithEvents bbi_RestartSession As BarButtonItem
     Friend WithEvents RISKCONTROL_CreditMigrationRiskCalculation_Element As Navigation.AccordionControlElement
+    Friend WithEvents EDP_SQL_FilesLoad_Element As Navigation.AccordionControlElement
 End Class

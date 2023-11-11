@@ -126,9 +126,11 @@ Public Class Configuration
         End If
 
         If focusedView.Name.ToString = "ParameterView" Then
+            'MsgBox(DepartmentsParameterDetailView.Name.ToString)
             Me.PARAMETERFK00BindingSource.EndEdit()
             DepartmentsParameterDetailView.AddNewRow()
             DepartmentsParameterDetailView.ShowEditForm()
+
 
             'Me.ParameterView.FocusedRowHandle = DevExpress.XtraGrid.GridControl.NewItemRowHandle
         End If
@@ -198,7 +200,8 @@ Public Class Configuration
                     Exit Sub
                 End Try
                 OpenSqlConnections()
-                cmd.CommandText = "UPDATE A SET A.[IdABTEILUNGSCODE_NAME]=B.[IdABTEILUNGSCODE] from [PARAMETER] A INNER JOIN [ABTEILUNGSPARAMETER] B on A.[IdABTEILUNGSPARAMETER]=B.[ABTEILUNGSPARAMETER NAME]"
+                cmd.CommandText = "UPDATE A SET A.[IdABTEILUNGSCODE_NAME]=B.[IdABTEILUNGSCODE] from [PARAMETER] A INNER JOIN [ABTEILUNGSPARAMETER] B 
+                                   on A.[IdABTEILUNGSPARAMETER]=B.[ABTEILUNGSPARAMETER NAME]"
                 cmd.ExecuteNonQuery()
                 CloseSqlConnections()
 
@@ -454,14 +457,11 @@ Public Class Configuration
 
             End If
 
-            If cmd.Connection.State = ConnectionState.Closed Then
-                cmd.Connection.Open()
-            End If
-            cmd.CommandText = "UPDATE A SET A.[IdABTEILUNGSCODE_NAME]=B.[IdABTEILUNGSCODE] from [PARAMETER] A INNER JOIN [ABTEILUNGSPARAMETER] B on A.[IdABTEILUNGSPARAMETER]=B.[ABTEILUNGSPARAMETER NAME]"
+            OpenSqlConnections()
+            cmd.CommandText = "UPDATE A SET A.[IdABTEILUNGSCODE_NAME]=B.[IdABTEILUNGSCODE] from [PARAMETER] A INNER JOIN [ABTEILUNGSPARAMETER] B 
+                               on A.[IdABTEILUNGSPARAMETER]=B.[ABTEILUNGSPARAMETER NAME]"
             cmd.ExecuteNonQuery()
-            If cmd.Connection.State = ConnectionState.Open Then
-                cmd.Connection.Close()
-            End If
+            CloseSqlConnections()
         End If
 
 
@@ -672,14 +672,61 @@ Public Class Configuration
                     SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                     SplashScreenManager.Default.SetWaitFormCaption("Start import Parameters from Excel File :" & vbNewLine & PSTOOL_Parameter_Excel_File)
                     OpenSqlConnections()
-                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ABTEILUNGEN_Temp' AND xtype='U') CREATE TABLE [dbo].[ABTEILUNGEN_Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[ABTEILUNGS CODE] [nvarchar](255) NOT NULL,[ABTEILUNGS NAME] [nvarchar](255) NULL,[ABTEILUNGSLEITER] [nvarchar](255) NULL,[ABTEILUNG TEL] [nvarchar](255) NULL,[ABTEILUNG FAX] [nvarchar](255) NULL,[ABTEILUNG E-MAIL] [nvarchar](255) NULL,[ABTEILUNG BEMERKUNGEN] [ntext] NULL,[ABTEILUNG EVENT JOURNAL] [ntext] NULL,[ABTEILUNG STATUS] [nvarchar](255) NULL,[CURRENT USER] [nvarchar](255) NULL,[Bearbeitungsstatus] [nvarchar](255) NULL,[IdBANK] [int] NULL) ELSE DELETE FROM [ABTEILUNGEN_Temp]"
+                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ABTEILUNGEN_Temp' AND xtype='U') 
+                                       CREATE TABLE [ABTEILUNGEN_Temp]
+                                       ([ID] [int] IDENTITY(1,1) NOT NULL
+                                       ,[ABTEILUNGS CODE] [nvarchar](255) NOT NULL
+                                       ,[ABTEILUNGS NAME] [nvarchar](255) NULL
+                                       ,[ABTEILUNGSLEITER] [nvarchar](255) NULL
+                                       ,[ABTEILUNG TEL] [nvarchar](255) NULL
+                                        ,[ABTEILUNG FAX] [nvarchar](255) NULL
+                                        ,[ABTEILUNG E-MAIL] [nvarchar](255) NULL
+                                        ,[ABTEILUNG BEMERKUNGEN] [ntext] NULL
+                                        ,[ABTEILUNG EVENT JOURNAL] [ntext] NULL
+                                        ,[ABTEILUNG STATUS] [nvarchar](255) NULL
+                                        ,[CURRENT USER] [nvarchar](255) NULL
+                                        ,[Bearbeitungsstatus] [nvarchar](255) NULL
+                                        ,[IdBANK] [int] NULL) 
+                                        ELSE DELETE FROM [ABTEILUNGEN_Temp]"
                     cmd.ExecuteNonQuery()
-                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ABTEILUNGSPARAMETER_Temp' AND xtype='U') CREATE TABLE [dbo].[ABTEILUNGSPARAMETER_Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[ABTEILUNGSPARAMETER NAME] [nvarchar](255) NOT NULL,[ABTEILUNGSPARAMETER STATUS] [nvarchar](255) NULL,[ABTEILUNGSPARAMETER INFO] [ntext] NULL,[IdABTEILUNGSCODE] [nvarchar](255) NULL) ELSE DELETE FROM [ABTEILUNGSPARAMETER_Temp]"
+                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='ABTEILUNGSPARAMETER_Temp' AND xtype='U') 
+                                       CREATE TABLE [ABTEILUNGSPARAMETER_Temp]
+                                        ([ID] [int] IDENTITY(1,1) NOT NULL
+                                        ,[ABTEILUNGSPARAMETER NAME] [nvarchar](255) NOT NULL
+                                        ,[ABTEILUNGSPARAMETER STATUS] [nvarchar](255) NULL
+                                        ,[ABTEILUNGSPARAMETER INFO] [ntext] NULL
+                                        ,[IdABTEILUNGSCODE] [nvarchar](255) NULL) 
+                                        ELSE DELETE FROM [ABTEILUNGSPARAMETER_Temp]"
                     cmd.ExecuteNonQuery()
-                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='PARAMETER_Temp' AND xtype='U') CREATE TABLE [dbo].[PARAMETER_Temp]([ID] [int] IDENTITY(1,1) NOT NULL,[PARAMETER1] [nvarchar](255) NULL,[PARAMETER2] [nvarchar](255) NULL,[PARAMETER STATUS] [nvarchar](255) NULL,[PARAMETER INFO] [ntext] NULL,[IdABTEILUNGSPARAMETER] [nvarchar](255) NULL,[NPARAMETER1] [float] NULL,[NPARAMETER2] [float] NULL,[DPARAMETER1] [Datetime] NULL,[DPARAMETER2] [Datetime] NULL) ELSE DELETE FROM [ABTEILUNGSPARAMETER_Temp]"
+                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='PARAMETER_Temp' AND xtype='U') 
+                                       CREATE TABLE [PARAMETER_Temp]
+                                        ([ID] [int] IDENTITY(1,1) NOT NULL
+                                        ,[PARAMETER1] [nvarchar](255) NULL
+                                        ,[PARAMETER2] [nvarchar](255) NULL
+                                        ,[PARAMETER STATUS] [nvarchar](255) NULL
+                                        ,[PARAMETER INFO] [ntext] NULL
+                                        ,[IdABTEILUNGSPARAMETER] [nvarchar](255) NULL
+                                        ,[NPARAMETER1] [float] NULL
+                                        ,[NPARAMETER2] [float] NULL
+                                        ,[DPARAMETER1] [Datetime] NULL
+                                        ,[DPARAMETER2] [Datetime] NULL) 
+                                        ELSE DELETE FROM [ABTEILUNGSPARAMETER_Temp]"
                     cmd.ExecuteNonQuery()
                     'Insert for ABTEILUNGEN
-                    cmd.CommandText = "INSERT INTO [ABTEILUNGEN_Temp] ([ABTEILUNGS CODE],[ABTEILUNGS NAME],[ABTEILUNGSLEITER],[ABTEILUNG TEL],[ABTEILUNG FAX],[ABTEILUNG E-MAIL],[ABTEILUNG BEMERKUNGEN],[ABTEILUNG EVENT JOURNAL],[ABTEILUNG STATUS],[CURRENT USER],[Bearbeitungsstatus],[IdBANK]) SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & PSTOOL_Parameter_Excel_File & ";','SELECT [ABTEILUNGS CODE],[ABTEILUNGS NAME],[ABTEILUNGSLEITER],[ABTEILUNG TEL],[ABTEILUNG FAX],[ABTEILUNG E-MAIL],[ABTEILUNG BEMERKUNGEN],[ABTEILUNG EVENT JOURNAL],[ABTEILUNG STATUS],[CURRENT USER],[Bearbeitungsstatus],[IdBANK] FROM [ABTEILUNGEN$]')"
+                    cmd.CommandText = "INSERT INTO [ABTEILUNGEN_Temp] 
+                                    ([ABTEILUNGS CODE]
+                                    ,[ABTEILUNGS NAME]
+                                    ,[ABTEILUNGSLEITER]
+                                    ,[ABTEILUNG TEL]
+                                    ,[ABTEILUNG FAX]
+                                    ,[ABTEILUNG E-MAIL]
+                                    ,[ABTEILUNG BEMERKUNGEN]
+                                    ,[ABTEILUNG EVENT JOURNAL]
+                                    ,[ABTEILUNG STATUS]
+                                    ,[CURRENT USER]
+                                    ,[Bearbeitungsstatus]
+                                    ,[IdBANK]) 
+                                    SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & PSTOOL_Parameter_Excel_File & ";','SELECT [ABTEILUNGS CODE],[ABTEILUNGS NAME],[ABTEILUNGSLEITER],[ABTEILUNG TEL],[ABTEILUNG FAX],[ABTEILUNG E-MAIL],[ABTEILUNG BEMERKUNGEN],[ABTEILUNG EVENT JOURNAL],[ABTEILUNG STATUS],[CURRENT USER],[Bearbeitungsstatus],[IdBANK] FROM [ABTEILUNGEN$]')"
                     cmd.ExecuteNonQuery()
                     'Insert for ABTEILUNGSPARAMETER
                     cmd.CommandText = "INSERT INTO [ABTEILUNGSPARAMETER_Temp] ([ABTEILUNGSPARAMETER NAME],[ABTEILUNGSPARAMETER STATUS],[ABTEILUNGSPARAMETER INFO],[IdABTEILUNGSCODE])   SELECT * FROM OPENROWSET('Microsoft.ACE.OLEDB.12.0', 'EXCEL 12.0;HDR=YES;Database=" & PSTOOL_Parameter_Excel_File & ";','SELECT [ABTEILUNGSPARAMETER NAME],[ABTEILUNGSPARAMETER STATUS],[ABTEILUNGSPARAMETER INFO],[IdABTEILUNGSCODE] FROM [ABTEILUNGSPARAMETER$]')"
@@ -840,7 +887,8 @@ Public Class Configuration
     End Sub
 
     Private Sub DepartmentsParameterView_MasterRowExpanded(sender As Object, e As CustomMasterRowEventArgs) Handles DepartmentsParameterView.MasterRowExpanded
-        DepartmentsParameterDetailView = DirectCast(DepartmentsView.GetDetailView(e.RowHandle, e.RelationIndex), DevExpress.XtraGrid.Views.Grid.GridView)
+        'DepartmentsParameterDetailView = DirectCast(DepartmentsView.GetDetailView(e.RowHandle, e.RelationIndex), DevExpress.XtraGrid.Views.Grid.GridView)
+        DepartmentsParameterDetailView = DirectCast(DepartmentsDetailView.GetDetailView(e.RowHandle, e.RelationIndex), DevExpress.XtraGrid.Views.Grid.GridView)
         If Me.GridControl1.FocusedView.Name = "DepartmentsParameterView" Then
             Dim view As GridView = DirectCast(sender, GridView)
             DepartmentsParameterDetailViewCaption = DepartmentsDetailViewCaption & " - PARAMETER DETAILS for : " & view.GetFocusedRowCellValue("ABTEILUNGSPARAMETER NAME").ToString
@@ -855,7 +903,8 @@ Public Class Configuration
     End Sub
 
     Private Sub DepartmentsParameterView_MasterRowExpanding(sender As Object, e As MasterRowCanExpandEventArgs) Handles DepartmentsParameterView.MasterRowExpanding
-        DepartmentsParameterDetailView = DirectCast(DepartmentsView.GetDetailView(e.RowHandle, e.RelationIndex), DevExpress.XtraGrid.Views.Grid.GridView)
+        'DepartmentsParameterDetailView = DirectCast(DepartmentsView.GetDetailView(e.RowHandle, e.RelationIndex), DevExpress.XtraGrid.Views.Grid.GridView)
+        DepartmentsParameterDetailView = DirectCast(DepartmentsDetailView.GetDetailView(e.RowHandle, e.RelationIndex), DevExpress.XtraGrid.Views.Grid.GridView)
         If Me.GridControl1.FocusedView.Name = "DepartmentsParameterView" Then
             Dim view As GridView = DirectCast(sender, GridView)
             DepartmentsParameterDetailViewCaption = DepartmentsDetailViewCaption & " - PARAMETER DETAILS for : " & view.GetFocusedRowCellValue("ABTEILUNGSPARAMETER NAME").ToString
@@ -904,22 +953,22 @@ Public Class Configuration
     End Sub
 
     Private Sub DepartmentsView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles DepartmentsView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
+        'If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        '    e.Appearance.BackColor = SystemColors.InactiveCaptionText
+        'End If
     End Sub
 
 
     Private Sub DepartmentsParameterView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles DepartmentsParameterView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
+        'If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        '    e.Appearance.BackColor = SystemColors.InactiveCaptionText
+        'End If
     End Sub
 
     Private Sub ParameterView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles ParameterView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
+        'If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        '    e.Appearance.BackColor = SystemColors.InactiveCaptionText
+        'End If
     End Sub
 
 
@@ -938,9 +987,9 @@ Public Class Configuration
 
 
     Private Sub Parameter_All_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Parameter_All_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
+        'If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
+        '    e.Appearance.BackColor = SystemColors.InactiveCaptionText
+        'End If
     End Sub
 
     Private Sub FindAndReplaceText_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles FindAndReplaceText_bbi.ItemClick

@@ -89,7 +89,7 @@ Public Class Pivot_Liquidity_Overview
 
         OpenSqlConnections()
         cmd.CommandText = "SELECT [PARAMETER2] FROM [PARAMETER] where  [PARAMETER1]='PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR' 
-                                           and [IdABTEILUNGSPARAMETER]='LAYOUTS_SAVE_DIRECTORY' and [IdABTEILUNGSCODE_NAME]='EDP' and [PARAMETER STATUS]='Y'"
+                                  and [IdABTEILUNGSPARAMETER]='LAYOUTS_SAVE_DIRECTORY' and [IdABTEILUNGSCODE_NAME]='EDP' and [PARAMETER STATUS]='Y'"
         If IsDBNull(cmd.ExecuteScalar) = False Then
             PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR = CType(cmd.ExecuteScalar, String)
         End If
@@ -106,6 +106,24 @@ Public Class Pivot_Liquidity_Overview
         rd2 = CDate(Me.BS_DateTill_BarEditItem.EditValue.ToString)
         rdsql1 = rd1.ToString("yyyyMMdd")
         rdsql2 = rd2.ToString("yyyyMMdd")
+
+        'Get the current layout as default
+        Me.PivotGridControl1.SaveLayoutToStream(str, PivotGridOptionsLayout.FullLayout)
+        str.Seek(0, System.IO.SeekOrigin.Begin)
+
+        'Create Layout Save Folder directory (if not present)
+        If IsDBNull(PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR) = False AndAlso PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR <> "" Then
+            Try
+                If Not Directory.Exists(PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR) Then
+                    Directory.CreateDirectory(PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR)
+                End If
+            Catch ex As Exception
+                XtraMessageBox.Show(ex.Message, "UNABLE TO CREATE LAYOUT SAVE DIRECTORY", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                Exit Try
+            End Try
+        Else
+            'XtraMessageBox.Show("Pivotgrid Layout save directory could not be created" & vbNewLine & "Check Parameter:EDP/LAYOUTS_SAVE_DIRECTORY", "UNABLE TO CREATE LAYOUT SAVE DIRECTORY", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+        End If
 
 
 
@@ -134,78 +152,66 @@ Public Class Pivot_Liquidity_Overview
 
 
 
-        'Me.QueryText = "SELECT A.[ID],A.[PERIOD],A.[PERIOD_Additional],A.[PERIOD_MaturityDate],A.[BusinessType],A.[Contract Type],A.[ProductType],A.[GLMaster / Account Type],A.[Contract/Account],A.[ClientNr],A.[Counterparty/Issuer],A.[StartDate],A.[Next EventType],A.[Next EventDate],A.[DaysToEventDate],A.[DaysToMaturity],A.[Final Maturity Date],A.[InterestRate],A.[InterestAmountOrigCur],A.[InterestAmountEuro],A.[Type],A.[CURRENCY],'Principal Amount (Orig CUR)'=Case when [Type] in ('Liabilities','Short positions') then [Principal Amount/Value Balance]*(-1) else [Principal Amount/Value Balance] end,'Principal Amount (EUR Equ)'=Case when [Type] in ('Liabilities','Short positions') then [Principal Amount/Value Balance(EUR Equ)]*(-1) else [Principal Amount/Value Balance(EUR Equ)] end,[RISK DATE],'OrderColumn'=CASE WHEN [Period] = '<= 1 Month' THEN 1 WHEN [Period] = '1 - 3 Months' THEN 2 WHEN [Period] = '3 - 6 Months' THEN 3 WHEN [Period] = '6 - 12 Months' THEN 4 WHEN [Period] = '1 - 2 Years' THEN 5 WHEN [Period] = '2 - 3 Years' THEN 6 WHEN [Period] = '3 - 4 Years' THEN 7 WHEN [Period] = '4 - 5 Years' THEN 8 WHEN [Period] = '5 - 7 Years' THEN 9 WHEN [Period] = '7 - 10 Years' THEN 10 WHEN [Period] = '10 - 15 Years' THEN 11 WHEN [Period] = '15 - 20 Years' THEN 12 WHEN [Period] = '> 20 Years' THEN 13 END,A.AccruedInterestAmountEUR,A.AccruedInterestAmountOrigCur,A.[AverageDuration],B.[ClientType],B.[COUNTRY_OF_REGISTRATION],B.[COUNTRY_OF_RESIDENCE],B.[INDUSTRIAL_CLASS_CN],B.[CCB_Group],B.[CCB_Group_OwnID],B.[INDUSTRIAL_CLASS_LOCAL],B.[INDUSTRIAL_CLASS_LOCAL_NAME],C.[EU EEA],C.EWU,C.[LANDKZ BUBA],C.[COUNTRY NAME],'Is Bank'=Case when B.ClientType in ('F - FINANCIAL') then 'Bank' else 'No Bank' END FROM [RATERISK DETAILS] A INNER JOIN CUSTOMER_INFO B on A.ClientNr=B.ClientNo INNER JOIN [COUNTRIES] C on B.[COUNTRY_OF_RESIDENCE]=C.[COUNTRY CODE]   where [RISK DATE]>='" & rdsql1 & "' and [RISK DATE]<='" & rdsql2 & "'"
-        QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('LIQUIDITY_OVERVIEW_SELECTION_FROM_TILL') and Status in ('Y')"
-        da1 = New SqlDataAdapter(QueryText.Trim(), conn)
-        da1.SelectCommand.CommandTimeout = 60000
-        dt1 = New System.Data.DataTable()
-        da1.Fill(dt1)
-        If dt1.Rows.Count > 0 Then
-            SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
-            Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
-            QueryText = SqlCommandTextNew
-            da = New SqlDataAdapter(QueryText.Trim(), conn)
-            da.SelectCommand.CommandTimeout = 60000
-            dt = New System.Data.DataTable()
-            da.Fill(dt)
-            If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-                Me.PivotGridControl1.DataSource = Nothing
-                Me.PivotGridControl1.DataSource = dt
-                Me.PivotGridControl1.ForceInitialize()
-                Me.PivotGridControl1.BestFit()
-            End If
-        End If
-
-        'Get the current layout as default
-        Me.PivotGridControl1.SaveLayoutToStream(str, PivotGridOptionsLayout.FullLayout)
-        str.Seek(0, System.IO.SeekOrigin.Begin)
-
-        'Create Layout Save Folder directory (if not present)
-        If IsDBNull(PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR) = False AndAlso PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR <> "" Then
-            Try
-                If Not Directory.Exists(PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR) Then
-                    Directory.CreateDirectory(PIVOTGRID_LIQUIDITY_OVERVIEW_LAYOUT_SAVE_DIR)
-                End If
-            Catch ex As Exception
-                XtraMessageBox.Show(ex.Message, "UNABLE TO CREATE LAYOUT SAVE DIRECTORY", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-                Exit Try
-            End Try
-        Else
-            'XtraMessageBox.Show("Pivotgrid Layout save directory could not be created" & vbNewLine & "Check Parameter:EDP/LAYOUTS_SAVE_DIRECTORY", "UNABLE TO CREATE LAYOUT SAVE DIRECTORY", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-        End If
+        'Execute via SEVERAL SELECTIONS
+        'QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('LIQUIDITY_OVERVIEW_SELECTION_FROM_TILL') and Status in ('Y')"
+        'da1 = New SqlDataAdapter(QueryText.Trim(), conn)
+        'da1.SelectCommand.CommandTimeout = 60000
+        'dt1 = New System.Data.DataTable()
+        'da1.Fill(dt1)
+        'If dt1.Rows.Count > 0 Then
+        '    SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
+        '    Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
+        '    QueryText = SqlCommandTextNew
+        '    da = New SqlDataAdapter(QueryText.Trim(), conn)
+        '    da.SelectCommand.CommandTimeout = 60000
+        '    dt = New System.Data.DataTable()
+        '    da.Fill(dt)
+        '    If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+        '        Me.PivotGridControl1.DataSource = Nothing
+        '        Me.PivotGridControl1.DataSource = dt
+        '        Me.PivotGridControl1.ForceInitialize()
+        '        Me.PivotGridControl1.BestFit()
+        '    End If
+        'End If
 
 
-        'Forelast Date for Daily Balance Sheet
-        QueryText = "Select [RLDC Date] from [RISK LIMIT DAILY CONTROL] where  [PL Result] is not NULL and [RLDC Date]= (SELECT MAX([RLDC Date]) AS second FROM  [RISK LIMIT DAILY CONTROL] WHERE  [RLDC Date] < (SELECT MAX([RLDC Date]) AS first FROM  [RISK LIMIT DAILY CONTROL] where [RLDC Date]='" & rdsql1 & "'))"
-        da = New SqlDataAdapter(QueryText.Trim(), conn)
-        da.SelectCommand.CommandTimeout = 60000
-        dt = New System.Data.DataTable()
-        da.Fill(dt)
 
-        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-            flrd = dt.Rows.Item(0).Item("RLDC Date")
-            flrdsql = flrd.ToString("yyyyMMdd")
-        End If
 
-        Try
+        'Get Forelast Date for Daily Balance Sheet and execute Liquidity Overview Compare
+        'QueryText = "SELECT TOP 1 *
+        'FROM [RISK LIMIT DAILY CONTROL]
+        'WHERE [RLDC Date] < '" & rdsql1 & "'
+        'AND [PL Result] is not NULL
+        'ORDER BY [RLDC Date] DESC"
+        'da = New SqlDataAdapter(QueryText.Trim(), conn)
+        'da.SelectCommand.CommandTimeout = 60000
+        'dt = New System.Data.DataTable()
+        'da.Fill(dt)
+        'If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+        '    flrd = dt.Rows.Item(0).Item("RLDC Date")
+        '    flrdsql = flrd.ToString("yyyyMMdd")
+        '    Try
+        '        QueryText = "Exec [Liquidity_Overview_Compare] @Min_Date ='" & flrdsql & "', @Max_Date='" & rdsql1 & "'"
+        '        da = New SqlDataAdapter(QueryText.Trim(), conn)
+        '        da.SelectCommand.CommandTimeout = 60000
+        '        dt = New System.Data.DataTable()
+        '        da.Fill(dt)
+        '        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+        '            Me.PivotGridControl2.DataSource = Nothing
+        '            Me.PivotGridControl2.DataSource = dt
+        '            Me.PivotGridControl2.ForceInitialize()
+        '            Me.PivotGridField8.Caption = flrd.ToString("dd.MM.yyyy")
+        '            Me.PivotGridField9.Caption = rd2.ToString("dd.MM.yyyy")
+        '            Me.PivotGridControl2.BestFit()
+        '        End If
+        '    Catch ex As Exception
+        '        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+        '        Return
+        '    End Try
 
-            QueryText = "Exec [Liquidity_Overview_Compare] @Min_Date ='" & flrdsql & "', @Max_Date='" & rdsql1 & "'"
-            da = New SqlDataAdapter(QueryText.Trim(), conn)
-            da.SelectCommand.CommandTimeout = 60000
-            dt = New System.Data.DataTable()
-            da.Fill(dt)
-            If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
-                Me.PivotGridControl2.DataSource = Nothing
-                Me.PivotGridControl2.DataSource = dt
-                Me.PivotGridControl2.ForceInitialize()
-                Me.PivotGridField8.Caption = flrd.ToString("dd.MM.yyyy")
-                Me.PivotGridField9.Caption = rd2.ToString("dd.MM.yyyy")
-                Me.PivotGridControl2.BestFit()
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
-            Return
-        End Try
+        'End If
+
+
 
     End Sub
 
@@ -240,9 +246,6 @@ Public Class Pivot_Liquidity_Overview
         Me.RepositoryItemSearchLookUpEdit2.ValueMember = "BUSINESS_DATE"
 
     End Sub
-
-
-
 
 
     Private Sub Workers_Complete(sender As Object, e As RunWorkerCompletedEventArgs)
@@ -828,7 +831,12 @@ Public Class Pivot_Liquidity_Overview
         rdsql2 = rd2.ToString("yyyyMMdd")
         If rd2 >= rd1 Then
             Me.LayoutControlItem9.Visibility = LayoutVisibility.Always
+            Me.LayoutControl1.Enabled = False
+            Me.ProgressPanel1.Caption = "Please wait ... Liquidity Overview data are loaded ..."
+            Me.RibbonPageGroup1.Enabled = False
+            Me.RibbonPageGroup2.Enabled = False
             BgwLoadFromTill = New BackgroundWorker
+            BgwLoadFromTill.WorkerSupportsCancellation = True
             bgws.Clear()
             bgws.Add(BgwLoadFromTill)
             BgwLoadFromTill.WorkerReportsProgress = True
@@ -881,6 +889,8 @@ Public Class Pivot_Liquidity_Overview
         Catch ex As Exception
 
             XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Me.BgwLoadFromTill.CancelAsync()
         End Try
 
     End Sub
@@ -903,9 +913,11 @@ Public Class Pivot_Liquidity_Overview
             Return
         End If
 
-
         Workers_Complete(BgwLoadFromTill, e)
 
+        Me.RibbonPageGroup1.Enabled = True
+        Me.RibbonPageGroup2.Enabled = True
+        Me.LayoutControl1.Enabled = True
     End Sub
 
     Private Sub LoadDataSelectedDate_Bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles LoadDataSelectedDate_Bbi.ItemClick
@@ -916,7 +928,12 @@ Public Class Pivot_Liquidity_Overview
         If rd2 >= rd1 Then
             If ActiveTabGroup = 0 Then
                 Me.LayoutControlItem9.Visibility = LayoutVisibility.Always
+                Me.LayoutControl1.Enabled = False
+                Me.ProgressPanel1.Caption = "Please wait ... Liquidity Overview data are loaded ..."
+                Me.RibbonPageGroup1.Enabled = False
+                Me.RibbonPageGroup2.Enabled = False
                 BgwLoadOnlyFromTill = New BackgroundWorker
+                BgwLoadOnlyFromTill.WorkerSupportsCancellation = True
                 bgws.Clear()
                 bgws.Add(BgwLoadOnlyFromTill)
                 BgwLoadOnlyFromTill.WorkerReportsProgress = True
@@ -948,22 +965,23 @@ Public Class Pivot_Liquidity_Overview
             QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('LIQUIDITY_OVERVIEW_SELECTION_ONLY_IN_DATES') and Status in ('Y')"
             da1 = New SqlDataAdapter(QueryText.Trim(), conn)
             da1.SelectCommand.CommandTimeout = 60000
-                    dt1 = New System.Data.DataTable()
-                    da1.Fill(dt1)
-                    If dt1.Rows.Count > 0 Then
-                        SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
-                        Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
+            dt1 = New System.Data.DataTable()
+            da1.Fill(dt1)
+            If dt1.Rows.Count > 0 Then
+                SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString.Replace("<FromDate>", rdsql1)
+                Dim SqlCommandTextNew As String = SqlCommandText.ToString.Replace("<TillDate>", rdsql2)
                 QueryText = SqlCommandTextNew
                 da = New SqlDataAdapter(QueryText.Trim(), conn)
                 da.SelectCommand.CommandTimeout = 60000
-                        dt = New System.Data.DataTable()
-                        da.Fill(dt)
-
+                dt = New System.Data.DataTable()
+                da.Fill(dt)
             End If
 
         Catch ex As Exception
 
             XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Me.BgwLoadOnlyFromTill.CancelAsync()
         End Try
 
     End Sub
@@ -988,6 +1006,10 @@ Public Class Pivot_Liquidity_Overview
 
         Workers_Complete(BgwLoadOnlyFromTill, e)
 
+        Me.RibbonPageGroup1.Enabled = True
+        Me.RibbonPageGroup2.Enabled = True
+        Me.LayoutControl1.Enabled = True
+
     End Sub
 
 
@@ -998,7 +1020,11 @@ Public Class Pivot_Liquidity_Overview
         If DevExpress.XtraEditors.XtraDialog.Show(c, "Select Dates for Liquidity Overview", MessageBoxButtons.OKCancel) = DialogResult.OK Then
             If SELECTED_DATES <> Nothing Then
                 Me.LayoutControlItem9.Visibility = LayoutVisibility.Always
+                Me.LayoutControl1.Enabled = False
+                Me.RibbonPageGroup1.Enabled = False
+                Me.RibbonPageGroup2.Enabled = False
                 BgwLoadSelection = New BackgroundWorker
+                BgwLoadSelection.WorkerSupportsCancellation = True
                 bgws.Clear()
                 bgws.Add(BgwLoadSelection)
                 BgwLoadSelection.WorkerReportsProgress = True
@@ -1040,14 +1066,13 @@ Public Class Pivot_Liquidity_Overview
                 da.SelectCommand.CommandTimeout = 60000
                 dt = New System.Data.DataTable()
                 da.Fill(dt)
-
-
             End If
-
 
         Catch ex As Exception
 
             XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Me.BgwLoadSelection.CancelAsync()
         End Try
 
     End Sub
@@ -1070,9 +1095,11 @@ Public Class Pivot_Liquidity_Overview
             Return
         End If
 
-
         Workers_Complete(BgwLoadSelection, e)
 
+        Me.RibbonPageGroup1.Enabled = True
+        Me.RibbonPageGroup2.Enabled = True
+        Me.LayoutControl1.Enabled = True
     End Sub
 
     Private Sub CompareData_Bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles CompareData_Bbi.ItemClick
@@ -1083,6 +1110,10 @@ Public Class Pivot_Liquidity_Overview
         If rd2 >= rd1 Then
             If ActiveTabGroup = 1 Then
                 Me.LayoutControlItem9.Visibility = LayoutVisibility.Always
+                Me.LayoutControl1.Enabled = False
+                Me.ProgressPanel1.Caption = "Please wait ... Liquidity compared data are loaded ..."
+                Me.RibbonPageGroup1.Enabled = False
+                Me.RibbonPageGroup2.Enabled = False
                 BgwCompareDates = New BackgroundWorker
                 bgws.Clear()
                 bgws.Add(BgwCompareDates)
@@ -1096,12 +1127,20 @@ Public Class Pivot_Liquidity_Overview
     End Sub
 
     Private Sub BgwCompareDates_DoWork(sender As Object, e As DoWorkEventArgs) Handles BgwCompareDates.DoWork
-        'Differences PivotGrid
-        QueryText = "Exec [Liquidity_Overview_Compare] @Min_Date ='" & rdsql1 & "', @Max_Date='" & rdsql2 & "'"
-        da = New SqlDataAdapter(QueryText.Trim(), conn)
-        da.SelectCommand.CommandTimeout = 60000
-        dt = New System.Data.DataTable()
-        da.Fill(dt)
+        Try
+            'Differences PivotGrid
+            QueryText = "Exec [Liquidity_Overview_Compare] @Min_Date ='" & rdsql1 & "', @Max_Date='" & rdsql2 & "'"
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
+            da.SelectCommand.CommandTimeout = 60000
+            dt = New System.Data.DataTable()
+            da.Fill(dt)
+        Catch ex As Exception
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            Me.BgwCompareDates.CancelAsync()
+        End Try
+
+
     End Sub
 
     Private Sub BgwCompareDates_ProgressChanged(sender As Object, e As ProgressChangedEventArgs) Handles BgwCompareDates.ProgressChanged
@@ -1124,9 +1163,11 @@ Public Class Pivot_Liquidity_Overview
             Return
         End If
 
-
         Workers_Complete(BgwCompareDates, e)
 
+        Me.RibbonPageGroup1.Enabled = True
+        Me.RibbonPageGroup2.Enabled = True
+        Me.LayoutControl1.Enabled = True
     End Sub
 
     Private Sub bbiClose_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiClose.ItemClick

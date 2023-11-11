@@ -157,7 +157,7 @@ Public Class CustomerBalances
                 rdsql1 = d1.ToString("yyyyMMdd")
                 rdsql2 = d2.ToString("yyyyMMdd")
                 If IsNothing(Me.Account_LookUpEdit.Text) = False AndAlso IsNumeric(Me.Account_LookUpEdit.Text) = True Then
-                    Me.SearchText_lbl.Text = "Postings and Balances for Customer Account: " & Me.Account_LookUpEdit.Text & " -Currency: " & AccCCY & " - Name: " & Me.CustomerAccountNamelbl.Text & " from " & d1 & " till " & d2 & "  - Account Status: " & AccStatus
+                    Me.SearchText_lbl.Text = "Postings and Balances for Customer Account: " & Me.Account_LookUpEdit.Text.ToString.Trim & " -Currency: " & AccCCY & " - Name: " & Me.CustomerAccountNamelbl.Text & " from " & d1 & " till " & d2 & "  - Account Status: " & AccStatus
                 ElseIf Me.Account_LookUpEdit.Text = "" Then
                     Me.SearchText_lbl.Text = "Closing Balances for all Customer Accounts  from " & d1 & " till " & d2
                 End If

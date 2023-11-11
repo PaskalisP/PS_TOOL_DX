@@ -806,13 +806,14 @@ Partial Class CreditMigrationRiskCalc
         Me.CSR_AllDates_GridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.CSR_AllDates_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.CSR_AllDates_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.CSR_AllDates_GridControl.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 16, True, True, "Neue EAEG Stichtag erstellung", "NeuStichtag")})
+        Me.CSR_AllDates_GridControl.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 16, True, False, "Neue EAEG Stichtag erstellung", "NeuStichtag")})
         Me.CSR_AllDates_GridControl.Location = New System.Drawing.Point(24, 24)
         Me.CSR_AllDates_GridControl.MainView = Me.CMR_AllDates_GridView
         Me.CSR_AllDates_GridControl.Name = "CSR_AllDates_GridControl"
         Me.CSR_AllDates_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox2, Me.RepositoryItemTextEdit2, Me.RepositoryItemTextEdit3, Me.RepositoryItemTextEdit4, Me.RepositoryItemMemoExEdit1})
         Me.CSR_AllDates_GridControl.Size = New System.Drawing.Size(1623, 20)
         Me.CSR_AllDates_GridControl.TabIndex = 6
+        Me.CSR_AllDates_GridControl.UseEmbeddedNavigator = True
         Me.CSR_AllDates_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.CMR_AllDates_GridView})
         '
         'CreditMigrationRisk_DATEBindingSource
@@ -2349,6 +2350,7 @@ Partial Class CreditMigrationRiskCalc
         Me.BusinessDate_SearchLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.BusinessDate_SearchLookUpEdit.Name = "BusinessDate_SearchLookUpEdit"
         Me.BusinessDate_SearchLookUpEdit.PopupView = Me.BusinessDates_GridView
+        Me.BusinessDate_SearchLookUpEdit.ShowClearButton = False
         Me.BusinessDate_SearchLookUpEdit.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
         '
         'BusinessDates_GridView

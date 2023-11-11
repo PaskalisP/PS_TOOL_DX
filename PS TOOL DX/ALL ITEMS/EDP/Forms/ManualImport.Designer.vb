@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ManualImport
     Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class ManualImport
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ManualImport))
@@ -118,6 +118,14 @@ Partial Class ManualImport
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.ProceduresGridviewPopupMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.ProcedureDuplicateNewPosition_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.ProcedureDuplicateNextPosition_bbi = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
         CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDPDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MANUAL_IMPORTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -159,6 +167,8 @@ Partial Class ManualImport
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProceduresGridviewPopupMenu, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'colEvent
@@ -1184,6 +1194,70 @@ Partial Class ManualImport
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "RibbonPage2"
         '
+        'ProceduresGridviewPopupMenu
+        '
+        Me.ProceduresGridviewPopupMenu.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.ProcedureDuplicateNextPosition_bbi), New DevExpress.XtraBars.LinkPersistInfo(Me.ProcedureDuplicateNewPosition_bbi, True)})
+        Me.ProceduresGridviewPopupMenu.Manager = Me.BarManager1
+        Me.ProceduresGridviewPopupMenu.Name = "ProceduresGridviewPopupMenu"
+        '
+        'ProcedureDuplicateNewPosition_bbi
+        '
+        Me.ProcedureDuplicateNewPosition_bbi.Caption = "Duplicate current procedure to new position"
+        Me.ProcedureDuplicateNewPosition_bbi.Id = 1
+        Me.ProcedureDuplicateNewPosition_bbi.ImageOptions.Image = CType(resources.GetObject("ProcedureDuplicateNewPosition_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.ProcedureDuplicateNewPosition_bbi.ImageOptions.LargeImage = CType(resources.GetObject("ProcedureDuplicateNewPosition_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.ProcedureDuplicateNewPosition_bbi.Name = "ProcedureDuplicateNewPosition_bbi"
+        '
+        'ProcedureDuplicateNextPosition_bbi
+        '
+        Me.ProcedureDuplicateNextPosition_bbi.Caption = "Duplicate current procedure to next position"
+        Me.ProcedureDuplicateNextPosition_bbi.Id = 0
+        Me.ProcedureDuplicateNextPosition_bbi.ImageOptions.Image = CType(resources.GetObject("ProcedureDuplicateNextPosition_bbi.ImageOptions.Image"), System.Drawing.Image)
+        Me.ProcedureDuplicateNextPosition_bbi.ImageOptions.LargeImage = CType(resources.GetObject("ProcedureDuplicateNextPosition_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.ProcedureDuplicateNextPosition_bbi.Name = "ProcedureDuplicateNextPosition_bbi"
+        '
+        'BarManager1
+        '
+        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager1.Form = Me
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.ProcedureDuplicateNextPosition_bbi, Me.ProcedureDuplicateNewPosition_bbi})
+        Me.BarManager1.MaxItemId = 2
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
+        Me.barDockControlTop.Size = New System.Drawing.Size(1411, 0)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 581)
+        Me.barDockControlBottom.Manager = Me.BarManager1
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1411, 0)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlLeft.Manager = Me.BarManager1
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 581)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(1411, 0)
+        Me.barDockControlRight.Manager = Me.BarManager1
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 581)
+        '
         'ManualImport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1192,6 +1266,10 @@ Partial Class ManualImport
         Me.Controls.Add(Me.XtraTabControl1)
         Me.Controls.Add(Me.RibbonStatusBar1)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.IconOptions.Icon = CType(resources.GetObject("ManualImport.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "ManualImport"
         Me.Ribbon = Me.RibbonControl1
@@ -1239,6 +1317,8 @@ Partial Class ManualImport
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProceduresGridviewPopupMenu, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1326,4 +1406,12 @@ Partial Class ManualImport
     Friend WithEvents FileCoversionRepositoryItemImageComboBox As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents colFileExtraction As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ProceduresGridviewPopupMenu As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents ProcedureDuplicateNewPosition_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ProcedureDuplicateNextPosition_bbi As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
 End Class

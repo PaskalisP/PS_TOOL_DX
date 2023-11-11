@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class WeightingFactors
-    Inherits DevExpress.XtraEditors.XtraForm
+    Inherits DevExpress.XtraBars.Ribbon.RibbonForm
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -33,7 +33,7 @@ Partial Class WeightingFactors
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridControl4 = New DevExpress.XtraGrid.GridControl()
+        Me.YieldCurves_GridControl = New DevExpress.XtraGrid.GridControl()
         Me.YIELDCURVESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
         Me.YieldCurves_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -43,30 +43,46 @@ Partial Class WeightingFactors
         Me.RepositoryItemGridLookUpEdit7 = New DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit()
         Me.OWNCURRENCIESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PSTOOLDataset = New PS_TOOL_DX.PSTOOLDataset()
-        Me.RepositoryItemGridLookUpEdit7View = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.CCY_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colCURRENCYCODE = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCURRENCYNAME = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.col1M = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col1D = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemTextEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.col1M = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col2M = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col3M = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col6M = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col9M = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col1Y = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col2Y = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col3Y = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col4Y = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col5Y = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col6Y = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col7Y = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col8Y = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col9Y = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col10Y = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col15Y = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col20Y = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.col30Y = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridControl3 = New DevExpress.XtraGrid.GridControl()
+        Me.col40Y = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.col50Y = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.WeightingFactors_GridControl = New DevExpress.XtraGrid.GridControl()
         Me.RATERISKBCWF1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.RiskControllingBasicsDataSet1 = New PS_TOOL_DX.RiskControllingBasicsDataSet()
-        Me.WeightingFactorsCalculation2_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.WeightingFactors_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn41 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colPeriodNr = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn42 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn47 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemTextEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.colLastAction1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemImageComboBox2 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
         Me.RepositoryItemGridLookUpEdit4 = New DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit()
         Me.GridView6 = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -193,26 +209,32 @@ Partial Class WeightingFactors
         Me.colWFplus100 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colWFminus50 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
-        Me.WF_Print_Export_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
         Me.TabbedControlGroup1 = New DevExpress.XtraLayout.TabbedControlGroup()
         Me.LayoutControlGroup4 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
-        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup3 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlGroup2 = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
         Me.PrintableComponentLink2 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
         Me.PrintableComponentLink3 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
         Me.RATERISK_BC_WF1TableAdapter = New PS_TOOL_DX.RiskControllingBasicsDataSetTableAdapters.RATERISK_BC_WF1TableAdapter()
         Me.OWN_CURRENCIESTableAdapter = New PS_TOOL_DX.PSTOOLDatasetTableAdapters.OWN_CURRENCIESTableAdapter()
+        Me.RibbonControl1 = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.bbi_Reload = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_Save = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_PrintExport = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbi_AddNewYieldCurve = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.colPeriodNr1 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemGridLookUpEdit10, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -223,19 +245,19 @@ Partial Class WeightingFactors
         Me.LayoutControl1.SuspendLayout()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.YieldCurves_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YIELDCURVESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.YieldCurves_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemGridLookUpEdit7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OWNCURRENCIESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemGridLookUpEdit7View, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CCY_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WeightingFactors_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RATERISKBCWF1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RiskControllingBasicsDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.WeightingFactorsCalculation2_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WeightingFactors_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemGridLookUpEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -256,18 +278,15 @@ Partial Class WeightingFactors
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RepositoryItemDateEdit1
@@ -368,17 +387,16 @@ Partial Class WeightingFactors
         'LayoutControl1
         '
         Me.LayoutControl1.Controls.Add(Me.GridControl1)
-        Me.LayoutControl1.Controls.Add(Me.GridControl4)
-        Me.LayoutControl1.Controls.Add(Me.GridControl3)
+        Me.LayoutControl1.Controls.Add(Me.YieldCurves_GridControl)
+        Me.LayoutControl1.Controls.Add(Me.WeightingFactors_GridControl)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
-        Me.LayoutControl1.Controls.Add(Me.WF_Print_Export_btn)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2})
-        Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Location = New System.Drawing.Point(0, 94)
         Me.LayoutControl1.Name = "LayoutControl1"
-        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(567, 219, 487, 479)
+        Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(567, 219, 601, 479)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1245, 714)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1238, 484)
         Me.LayoutControl1.TabIndex = 9
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -396,25 +414,26 @@ Partial Class WeightingFactors
         Me.GridView1.GridControl = Me.GridControl1
         Me.GridView1.Name = "GridView1"
         '
-        'GridControl4
+        'YieldCurves_GridControl
         '
-        Me.GridControl4.Cursor = System.Windows.Forms.Cursors.Default
-        Me.GridControl4.DataSource = Me.YIELDCURVESBindingSource
-        Me.GridControl4.EmbeddedNavigator.Buttons.Append.Visible = False
-        Me.GridControl4.EmbeddedNavigator.Buttons.CancelEdit.ImageIndex = 6
-        Me.GridControl4.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
-        Me.GridControl4.EmbeddedNavigator.Buttons.Edit.Visible = False
-        Me.GridControl4.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 7
-        Me.GridControl4.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
-        Me.GridControl4.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl4.Location = New System.Drawing.Point(24, 72)
-        Me.GridControl4.MainView = Me.YieldCurves_GridView
-        Me.GridControl4.Name = "GridControl4"
-        Me.GridControl4.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemGridLookUpEdit7, Me.RepositoryItemTextEdit3})
-        Me.GridControl4.Size = New System.Drawing.Size(1197, 618)
-        Me.GridControl4.TabIndex = 13
-        Me.GridControl4.UseEmbeddedNavigator = True
-        Me.GridControl4.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.YieldCurves_GridView})
+        Me.YieldCurves_GridControl.Cursor = System.Windows.Forms.Cursors.Default
+        Me.YieldCurves_GridControl.DataSource = Me.YIELDCURVESBindingSource
+        Me.YieldCurves_GridControl.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.YieldCurves_GridControl.EmbeddedNavigator.Buttons.CancelEdit.ImageIndex = 6
+        Me.YieldCurves_GridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.YieldCurves_GridControl.EmbeddedNavigator.Buttons.Edit.Visible = False
+        Me.YieldCurves_GridControl.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 7
+        Me.YieldCurves_GridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+        Me.YieldCurves_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
+        Me.YieldCurves_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
+        Me.YieldCurves_GridControl.Location = New System.Drawing.Point(24, 45)
+        Me.YieldCurves_GridControl.MainView = Me.YieldCurves_GridView
+        Me.YieldCurves_GridControl.Name = "YieldCurves_GridControl"
+        Me.YieldCurves_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemGridLookUpEdit7, Me.RepositoryItemTextEdit3})
+        Me.YieldCurves_GridControl.Size = New System.Drawing.Size(1190, 415)
+        Me.YieldCurves_GridControl.TabIndex = 13
+        Me.YieldCurves_GridControl.UseEmbeddedNavigator = True
+        Me.YieldCurves_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.YieldCurves_GridView})
         '
         'YIELDCURVESBindingSource
         '
@@ -444,13 +463,15 @@ Partial Class WeightingFactors
         Me.YieldCurves_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.YieldCurves_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.YieldCurves_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.YieldCurves_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colRiskDate, Me.colCCY, Me.col1M, Me.col2M, Me.col3M, Me.col6M, Me.col1Y, Me.col2Y, Me.col3Y, Me.col5Y, Me.col7Y, Me.col10Y, Me.col20Y, Me.col30Y})
+        Me.YieldCurves_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colRiskDate, Me.colCCY, Me.col1D, Me.col1M, Me.col2M, Me.col3M, Me.col6M, Me.col9M, Me.col1Y, Me.col2Y, Me.col3Y, Me.col4Y, Me.col5Y, Me.col6Y, Me.col7Y, Me.col8Y, Me.col9Y, Me.col10Y, Me.col15Y, Me.col20Y, Me.col30Y, Me.col40Y, Me.col50Y, Me.colLastAction, Me.colLastUpdateDate, Me.colLastUpdateUser})
         Me.YieldCurves_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        Me.YieldCurves_GridView.GridControl = Me.GridControl4
+        Me.YieldCurves_GridView.GridControl = Me.YieldCurves_GridControl
         Me.YieldCurves_GridView.Name = "YieldCurves_GridView"
+        Me.YieldCurves_GridView.NewItemRowText = "Add new Yield Curve"
         Me.YieldCurves_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.YieldCurves_GridView.OptionsBehavior.AllowIncrementalSearch = True
         Me.YieldCurves_GridView.OptionsBehavior.AutoExpandAllGroups = True
+        Me.YieldCurves_GridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
         Me.YieldCurves_GridView.OptionsCustomization.AllowRowSizing = True
         Me.YieldCurves_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.YieldCurves_GridView.OptionsFind.AlwaysVisible = True
@@ -461,6 +482,7 @@ Partial Class WeightingFactors
         Me.YieldCurves_GridView.OptionsView.ShowAutoFilterRow = True
         Me.YieldCurves_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.YieldCurves_GridView.OptionsView.ShowFooter = True
+        Me.YieldCurves_GridView.OptionsView.ShowGroupPanel = False
         '
         'colID2
         '
@@ -472,22 +494,30 @@ Partial Class WeightingFactors
         '
         'colRiskDate
         '
+        Me.colRiskDate.AppearanceCell.Options.UseTextOptions = True
+        Me.colRiskDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colRiskDate.Caption = "Date"
         Me.colRiskDate.ColumnEdit = Me.RepositoryItemDateEdit1
         Me.colRiskDate.DisplayFormat.FormatString = "d"
         Me.colRiskDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
         Me.colRiskDate.FieldName = "RiskDate"
+        Me.colRiskDate.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
         Me.colRiskDate.Name = "colRiskDate"
         Me.colRiskDate.Visible = True
         Me.colRiskDate.VisibleIndex = 0
+        Me.colRiskDate.Width = 118
         '
         'colCCY
         '
+        Me.colCCY.AppearanceCell.Options.UseTextOptions = True
+        Me.colCCY.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colCCY.ColumnEdit = Me.RepositoryItemGridLookUpEdit7
         Me.colCCY.FieldName = "CCY"
+        Me.colCCY.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
         Me.colCCY.Name = "colCCY"
         Me.colCCY.Visible = True
         Me.colCCY.VisibleIndex = 1
+        Me.colCCY.Width = 104
         '
         'RepositoryItemGridLookUpEdit7
         '
@@ -501,8 +531,9 @@ Partial Class WeightingFactors
         Me.RepositoryItemGridLookUpEdit7.DataSource = Me.OWNCURRENCIESBindingSource
         Me.RepositoryItemGridLookUpEdit7.DisplayMember = "CURRENCY CODE"
         Me.RepositoryItemGridLookUpEdit7.Name = "RepositoryItemGridLookUpEdit7"
-        Me.RepositoryItemGridLookUpEdit7.PopupView = Me.RepositoryItemGridLookUpEdit7View
+        Me.RepositoryItemGridLookUpEdit7.PopupView = Me.CCY_GridView
         Me.RepositoryItemGridLookUpEdit7.ValueMember = "CURRENCY CODE"
+        Me.RepositoryItemGridLookUpEdit7.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
         '
         'OWNCURRENCIESBindingSource
         '
@@ -514,33 +545,28 @@ Partial Class WeightingFactors
         Me.PSTOOLDataset.DataSetName = "PSTOOLDataset"
         Me.PSTOOLDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'RepositoryItemGridLookUpEdit7View
+        'CCY_GridView
         '
-        Me.RepositoryItemGridLookUpEdit7View.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemGridLookUpEdit7View.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemGridLookUpEdit7View.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemGridLookUpEdit7View.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.RepositoryItemGridLookUpEdit7View.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.RepositoryItemGridLookUpEdit7View.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCURRENCYCODE, Me.colCURRENCYNAME})
-        Me.RepositoryItemGridLookUpEdit7View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        Me.RepositoryItemGridLookUpEdit7View.Name = "RepositoryItemGridLookUpEdit7View"
-        Me.RepositoryItemGridLookUpEdit7View.OptionsBehavior.Editable = False
-        Me.RepositoryItemGridLookUpEdit7View.OptionsSelection.EnableAppearanceFocusedCell = False
-        Me.RepositoryItemGridLookUpEdit7View.OptionsView.ColumnAutoWidth = False
-        Me.RepositoryItemGridLookUpEdit7View.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
-        Me.RepositoryItemGridLookUpEdit7View.OptionsView.ShowGroupPanel = False
+        Me.CCY_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colCURRENCYCODE, Me.colCURRENCYNAME})
+        Me.CCY_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.CCY_GridView.Name = "CCY_GridView"
+        Me.CCY_GridView.OptionsBehavior.ReadOnly = True
+        Me.CCY_GridView.OptionsFind.AlwaysVisible = True
+        Me.CCY_GridView.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.CCY_GridView.OptionsView.ColumnAutoWidth = False
+        Me.CCY_GridView.OptionsView.ShowAutoFilterRow = True
+        Me.CCY_GridView.OptionsView.ShowGroupPanel = False
         '
         'colCURRENCYCODE
         '
         Me.colCURRENCYCODE.AppearanceCell.Options.UseTextOptions = True
         Me.colCURRENCYCODE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colCURRENCYCODE.AppearanceHeader.Options.UseTextOptions = True
-        Me.colCURRENCYCODE.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colCURRENCYCODE.Caption = "CCY"
         Me.colCURRENCYCODE.FieldName = "CURRENCY CODE"
         Me.colCURRENCYCODE.Name = "colCURRENCYCODE"
         Me.colCURRENCYCODE.Visible = True
         Me.colCURRENCYCODE.VisibleIndex = 0
-        Me.colCURRENCYCODE.Width = 89
+        Me.colCURRENCYCODE.Width = 105
         '
         'colCURRENCYNAME
         '
@@ -548,20 +574,20 @@ Partial Class WeightingFactors
         Me.colCURRENCYNAME.Name = "colCURRENCYNAME"
         Me.colCURRENCYNAME.Visible = True
         Me.colCURRENCYNAME.VisibleIndex = 1
-        Me.colCURRENCYNAME.Width = 261
+        Me.colCURRENCYNAME.Width = 393
         '
-        'col1M
+        'col1D
         '
-        Me.col1M.Caption = "1 Month"
-        Me.col1M.ColumnEdit = Me.RepositoryItemTextEdit3
-        Me.col1M.DisplayFormat.FormatString = "P6"
-        Me.col1M.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.col1M.FieldName = "1M"
-        Me.col1M.Name = "col1M"
-        Me.col1M.OptionsEditForm.StartNewRow = True
-        Me.col1M.Visible = True
-        Me.col1M.VisibleIndex = 2
-        Me.col1M.Width = 108
+        Me.col1D.Caption = "Overnight"
+        Me.col1D.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col1D.DisplayFormat.FormatString = "p6"
+        Me.col1D.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col1D.FieldName = "1D"
+        Me.col1D.Name = "col1D"
+        Me.col1D.OptionsEditForm.StartNewRow = True
+        Me.col1D.Visible = True
+        Me.col1D.VisibleIndex = 2
+        Me.col1D.Width = 108
         '
         'RepositoryItemTextEdit3
         '
@@ -579,6 +605,18 @@ Partial Class WeightingFactors
         Me.RepositoryItemTextEdit3.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.RepositoryItemTextEdit3.Name = "RepositoryItemTextEdit3"
         '
+        'col1M
+        '
+        Me.col1M.Caption = "1 Month"
+        Me.col1M.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col1M.DisplayFormat.FormatString = "P6"
+        Me.col1M.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col1M.FieldName = "1M"
+        Me.col1M.Name = "col1M"
+        Me.col1M.Visible = True
+        Me.col1M.VisibleIndex = 3
+        Me.col1M.Width = 108
+        '
         'col2M
         '
         Me.col2M.Caption = "2 Months"
@@ -587,9 +625,8 @@ Partial Class WeightingFactors
         Me.col2M.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col2M.FieldName = "2M"
         Me.col2M.Name = "col2M"
-        Me.col2M.OptionsEditForm.StartNewRow = True
         Me.col2M.Visible = True
-        Me.col2M.VisibleIndex = 3
+        Me.col2M.VisibleIndex = 4
         Me.col2M.Width = 114
         '
         'col3M
@@ -600,9 +637,8 @@ Partial Class WeightingFactors
         Me.col3M.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col3M.FieldName = "3M"
         Me.col3M.Name = "col3M"
-        Me.col3M.OptionsEditForm.StartNewRow = True
         Me.col3M.Visible = True
-        Me.col3M.VisibleIndex = 4
+        Me.col3M.VisibleIndex = 5
         Me.col3M.Width = 114
         '
         'col6M
@@ -613,10 +649,20 @@ Partial Class WeightingFactors
         Me.col6M.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col6M.FieldName = "6M"
         Me.col6M.Name = "col6M"
-        Me.col6M.OptionsEditForm.StartNewRow = True
         Me.col6M.Visible = True
-        Me.col6M.VisibleIndex = 5
+        Me.col6M.VisibleIndex = 6
         Me.col6M.Width = 108
+        '
+        'col9M
+        '
+        Me.col9M.Caption = "9 Months"
+        Me.col9M.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col9M.DisplayFormat.FormatString = "p6"
+        Me.col9M.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.col9M.FieldName = "9M"
+        Me.col9M.Name = "col9M"
+        Me.col9M.Visible = True
+        Me.col9M.VisibleIndex = 7
         '
         'col1Y
         '
@@ -628,7 +674,7 @@ Partial Class WeightingFactors
         Me.col1Y.Name = "col1Y"
         Me.col1Y.OptionsEditForm.StartNewRow = True
         Me.col1Y.Visible = True
-        Me.col1Y.VisibleIndex = 6
+        Me.col1Y.VisibleIndex = 8
         Me.col1Y.Width = 112
         '
         'col2Y
@@ -641,7 +687,7 @@ Partial Class WeightingFactors
         Me.col2Y.Name = "col2Y"
         Me.col2Y.OptionsEditForm.StartNewRow = True
         Me.col2Y.Visible = True
-        Me.col2Y.VisibleIndex = 7
+        Me.col2Y.VisibleIndex = 9
         Me.col2Y.Width = 107
         '
         'col3Y
@@ -652,10 +698,21 @@ Partial Class WeightingFactors
         Me.col3Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col3Y.FieldName = "3Y"
         Me.col3Y.Name = "col3Y"
-        Me.col3Y.OptionsEditForm.StartNewRow = True
         Me.col3Y.Visible = True
-        Me.col3Y.VisibleIndex = 8
+        Me.col3Y.VisibleIndex = 10
         Me.col3Y.Width = 112
+        '
+        'col4Y
+        '
+        Me.col4Y.Caption = "4 Years"
+        Me.col4Y.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col4Y.DisplayFormat.FormatString = "p6"
+        Me.col4Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col4Y.FieldName = "4Y"
+        Me.col4Y.Name = "col4Y"
+        Me.col4Y.Visible = True
+        Me.col4Y.VisibleIndex = 11
+        Me.col4Y.Width = 102
         '
         'col5Y
         '
@@ -667,8 +724,20 @@ Partial Class WeightingFactors
         Me.col5Y.Name = "col5Y"
         Me.col5Y.OptionsEditForm.StartNewRow = True
         Me.col5Y.Visible = True
-        Me.col5Y.VisibleIndex = 9
-        Me.col5Y.Width = 116
+        Me.col5Y.VisibleIndex = 12
+        Me.col5Y.Width = 111
+        '
+        'col6Y
+        '
+        Me.col6Y.Caption = "6 Years"
+        Me.col6Y.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col6Y.DisplayFormat.FormatString = "p6"
+        Me.col6Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col6Y.FieldName = "6Y"
+        Me.col6Y.Name = "col6Y"
+        Me.col6Y.Visible = True
+        Me.col6Y.VisibleIndex = 13
+        Me.col6Y.Width = 101
         '
         'col7Y
         '
@@ -678,10 +747,33 @@ Partial Class WeightingFactors
         Me.col7Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col7Y.FieldName = "7Y"
         Me.col7Y.Name = "col7Y"
-        Me.col7Y.OptionsEditForm.StartNewRow = True
         Me.col7Y.Visible = True
-        Me.col7Y.VisibleIndex = 10
+        Me.col7Y.VisibleIndex = 14
         Me.col7Y.Width = 106
+        '
+        'col8Y
+        '
+        Me.col8Y.Caption = "8 Years"
+        Me.col8Y.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col8Y.DisplayFormat.FormatString = "p6"
+        Me.col8Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col8Y.FieldName = "8Y"
+        Me.col8Y.Name = "col8Y"
+        Me.col8Y.Visible = True
+        Me.col8Y.VisibleIndex = 15
+        Me.col8Y.Width = 102
+        '
+        'col9Y
+        '
+        Me.col9Y.Caption = "9 Years"
+        Me.col9Y.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col9Y.DisplayFormat.FormatString = "p6"
+        Me.col9Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col9Y.FieldName = "9Y"
+        Me.col9Y.Name = "col9Y"
+        Me.col9Y.Visible = True
+        Me.col9Y.VisibleIndex = 16
+        Me.col9Y.Width = 106
         '
         'col10Y
         '
@@ -691,10 +783,21 @@ Partial Class WeightingFactors
         Me.col10Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col10Y.FieldName = "10Y"
         Me.col10Y.Name = "col10Y"
-        Me.col10Y.OptionsEditForm.StartNewRow = True
         Me.col10Y.Visible = True
-        Me.col10Y.VisibleIndex = 11
+        Me.col10Y.VisibleIndex = 17
         Me.col10Y.Width = 112
+        '
+        'col15Y
+        '
+        Me.col15Y.Caption = "15 Years"
+        Me.col15Y.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col15Y.DisplayFormat.FormatString = "p6"
+        Me.col15Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col15Y.FieldName = "15Y"
+        Me.col15Y.Name = "col15Y"
+        Me.col15Y.Visible = True
+        Me.col15Y.VisibleIndex = 18
+        Me.col15Y.Width = 101
         '
         'col20Y
         '
@@ -704,9 +807,8 @@ Partial Class WeightingFactors
         Me.col20Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col20Y.FieldName = "20Y"
         Me.col20Y.Name = "col20Y"
-        Me.col20Y.OptionsEditForm.StartNewRow = True
         Me.col20Y.Visible = True
-        Me.col20Y.VisibleIndex = 12
+        Me.col20Y.VisibleIndex = 19
         Me.col20Y.Width = 107
         '
         'col30Y
@@ -717,29 +819,83 @@ Partial Class WeightingFactors
         Me.col30Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.col30Y.FieldName = "30Y"
         Me.col30Y.Name = "col30Y"
-        Me.col30Y.OptionsEditForm.StartNewRow = True
         Me.col30Y.Visible = True
-        Me.col30Y.VisibleIndex = 13
+        Me.col30Y.VisibleIndex = 20
         Me.col30Y.Width = 107
         '
-        'GridControl3
+        'col40Y
         '
-        Me.GridControl3.Cursor = System.Windows.Forms.Cursors.Default
-        Me.GridControl3.DataSource = Me.RATERISKBCWF1BindingSource
-        Me.GridControl3.EmbeddedNavigator.Buttons.Append.Visible = False
-        Me.GridControl3.EmbeddedNavigator.Buttons.CancelEdit.ImageIndex = 6
-        Me.GridControl3.EmbeddedNavigator.Buttons.Edit.Visible = False
-        Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 7
-        Me.GridControl3.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
-        Me.GridControl3.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl3.Location = New System.Drawing.Point(24, 72)
-        Me.GridControl3.MainView = Me.WeightingFactorsCalculation2_GridView
-        Me.GridControl3.Name = "GridControl3"
-        Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox2, Me.RepositoryItemTextEdit1, Me.RepositoryItemGridLookUpEdit4, Me.RepositoryItemGridLookUpEdit5, Me.RepositoryItemGridLookUpEdit6})
-        Me.GridControl3.Size = New System.Drawing.Size(1197, 618)
-        Me.GridControl3.TabIndex = 12
-        Me.GridControl3.UseEmbeddedNavigator = True
-        Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.WeightingFactorsCalculation2_GridView})
+        Me.col40Y.Caption = "40 Years"
+        Me.col40Y.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col40Y.DisplayFormat.FormatString = "p6"
+        Me.col40Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col40Y.FieldName = "40Y"
+        Me.col40Y.Name = "col40Y"
+        Me.col40Y.Visible = True
+        Me.col40Y.VisibleIndex = 21
+        Me.col40Y.Width = 98
+        '
+        'col50Y
+        '
+        Me.col50Y.Caption = "50 Years"
+        Me.col50Y.ColumnEdit = Me.RepositoryItemTextEdit3
+        Me.col50Y.DisplayFormat.FormatString = "p6"
+        Me.col50Y.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.col50Y.FieldName = "50Y"
+        Me.col50Y.Name = "col50Y"
+        Me.col50Y.Visible = True
+        Me.col50Y.VisibleIndex = 22
+        Me.col50Y.Width = 99
+        '
+        'colLastAction
+        '
+        Me.colLastAction.Caption = "Last Action"
+        Me.colLastAction.FieldName = "LastAction"
+        Me.colLastAction.Name = "colLastAction"
+        Me.colLastAction.OptionsColumn.ReadOnly = True
+        Me.colLastAction.OptionsEditForm.StartNewRow = True
+        Me.colLastAction.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateDate
+        '
+        Me.colLastUpdateDate.AppearanceCell.Options.UseTextOptions = True
+        Me.colLastUpdateDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colLastUpdateDate.Caption = "Last Update Date"
+        Me.colLastUpdateDate.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.colLastUpdateDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.colLastUpdateDate.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate.Name = "colLastUpdateDate"
+        Me.colLastUpdateDate.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateDate.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateUser
+        '
+        Me.colLastUpdateUser.Caption = "Last Update User"
+        Me.colLastUpdateUser.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser.Name = "colLastUpdateUser"
+        Me.colLastUpdateUser.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateUser.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'WeightingFactors_GridControl
+        '
+        Me.WeightingFactors_GridControl.Cursor = System.Windows.Forms.Cursors.Default
+        Me.WeightingFactors_GridControl.DataSource = Me.RATERISKBCWF1BindingSource
+        Me.WeightingFactors_GridControl.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.WeightingFactors_GridControl.EmbeddedNavigator.Buttons.CancelEdit.ImageIndex = 6
+        Me.WeightingFactors_GridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.WeightingFactors_GridControl.EmbeddedNavigator.Buttons.Edit.Visible = False
+        Me.WeightingFactors_GridControl.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 7
+        Me.WeightingFactors_GridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+        Me.WeightingFactors_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
+        Me.WeightingFactors_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
+        Me.WeightingFactors_GridControl.Location = New System.Drawing.Point(24, 45)
+        Me.WeightingFactors_GridControl.MainView = Me.WeightingFactors_GridView
+        Me.WeightingFactors_GridControl.Name = "WeightingFactors_GridControl"
+        Me.WeightingFactors_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox2, Me.RepositoryItemTextEdit1, Me.RepositoryItemGridLookUpEdit4, Me.RepositoryItemGridLookUpEdit5, Me.RepositoryItemGridLookUpEdit6})
+        Me.WeightingFactors_GridControl.Size = New System.Drawing.Size(1190, 415)
+        Me.WeightingFactors_GridControl.TabIndex = 12
+        Me.WeightingFactors_GridControl.UseEmbeddedNavigator = True
+        Me.WeightingFactors_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.WeightingFactors_GridView})
         '
         'RATERISKBCWF1BindingSource
         '
@@ -751,34 +907,47 @@ Partial Class WeightingFactors
         Me.RiskControllingBasicsDataSet1.DataSetName = "RiskControllingBasicsDataSet"
         Me.RiskControllingBasicsDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'WeightingFactorsCalculation2_GridView
+        'WeightingFactors_GridView
         '
-        Me.WeightingFactorsCalculation2_GridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
-        Me.WeightingFactorsCalculation2_GridView.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
-        Me.WeightingFactorsCalculation2_GridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
-        Me.WeightingFactorsCalculation2_GridView.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.WeightingFactorsCalculation2_GridView.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.WeightingFactorsCalculation2_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn41, Me.GridColumn42, Me.GridColumn47})
-        Me.WeightingFactorsCalculation2_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        Me.WeightingFactorsCalculation2_GridView.GridControl = Me.GridControl3
-        Me.WeightingFactorsCalculation2_GridView.Name = "WeightingFactorsCalculation2_GridView"
-        Me.WeightingFactorsCalculation2_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
-        Me.WeightingFactorsCalculation2_GridView.OptionsBehavior.AllowIncrementalSearch = True
-        Me.WeightingFactorsCalculation2_GridView.OptionsCustomization.AllowRowSizing = True
-        Me.WeightingFactorsCalculation2_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
-        Me.WeightingFactorsCalculation2_GridView.OptionsFind.AlwaysVisible = True
-        Me.WeightingFactorsCalculation2_GridView.OptionsSelection.MultiSelect = True
-        Me.WeightingFactorsCalculation2_GridView.OptionsView.ColumnAutoWidth = False
-        Me.WeightingFactorsCalculation2_GridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
-        Me.WeightingFactorsCalculation2_GridView.OptionsView.ShowAutoFilterRow = True
-        Me.WeightingFactorsCalculation2_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
-        Me.WeightingFactorsCalculation2_GridView.OptionsView.ShowFooter = True
+        Me.WeightingFactors_GridView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
+        Me.WeightingFactors_GridView.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
+        Me.WeightingFactors_GridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
+        Me.WeightingFactors_GridView.Appearance.FocusedRow.Options.UseBackColor = True
+        Me.WeightingFactors_GridView.Appearance.FocusedRow.Options.UseForeColor = True
+        Me.WeightingFactors_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn41, Me.colPeriodNr, Me.GridColumn42, Me.GridColumn47, Me.colLastAction1, Me.colLastUpdateDate1, Me.colLastUpdateUser1})
+        Me.WeightingFactors_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.WeightingFactors_GridView.GridControl = Me.WeightingFactors_GridControl
+        Me.WeightingFactors_GridView.Name = "WeightingFactors_GridView"
+        Me.WeightingFactors_GridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
+        Me.WeightingFactors_GridView.OptionsBehavior.AllowIncrementalSearch = True
+        Me.WeightingFactors_GridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
+        Me.WeightingFactors_GridView.OptionsCustomization.AllowRowSizing = True
+        Me.WeightingFactors_GridView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
+        Me.WeightingFactors_GridView.OptionsFind.AlwaysVisible = True
+        Me.WeightingFactors_GridView.OptionsSelection.MultiSelect = True
+        Me.WeightingFactors_GridView.OptionsView.ColumnAutoWidth = False
+        Me.WeightingFactors_GridView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
+        Me.WeightingFactors_GridView.OptionsView.ShowAutoFilterRow = True
+        Me.WeightingFactors_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.WeightingFactors_GridView.OptionsView.ShowFooter = True
+        Me.WeightingFactors_GridView.OptionsView.ShowGroupPanel = False
         '
         'GridColumn41
         '
         Me.GridColumn41.FieldName = "ID"
         Me.GridColumn41.Name = "GridColumn41"
         Me.GridColumn41.OptionsColumn.ReadOnly = True
+        '
+        'colPeriodNr
+        '
+        Me.colPeriodNr.Caption = "Period Nr."
+        Me.colPeriodNr.FieldName = "PeriodNr"
+        Me.colPeriodNr.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
+        Me.colPeriodNr.Name = "colPeriodNr"
+        Me.colPeriodNr.OptionsColumn.ReadOnly = True
+        Me.colPeriodNr.Visible = True
+        Me.colPeriodNr.VisibleIndex = 0
+        Me.colPeriodNr.Width = 61
         '
         'GridColumn42
         '
@@ -787,9 +956,10 @@ Partial Class WeightingFactors
         Me.GridColumn42.Name = "GridColumn42"
         Me.GridColumn42.OptionsColumn.AllowEdit = False
         Me.GridColumn42.OptionsColumn.ReadOnly = True
+        Me.GridColumn42.OptionsEditForm.UseEditorColRowSpan = False
         Me.GridColumn42.Visible = True
-        Me.GridColumn42.VisibleIndex = 0
-        Me.GridColumn42.Width = 252
+        Me.GridColumn42.VisibleIndex = 1
+        Me.GridColumn42.Width = 91
         '
         'GridColumn47
         '
@@ -801,8 +971,10 @@ Partial Class WeightingFactors
         Me.GridColumn47.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.GridColumn47.FieldName = "WF"
         Me.GridColumn47.Name = "GridColumn47"
+        Me.GridColumn47.OptionsEditForm.StartNewRow = True
+        Me.GridColumn47.OptionsEditForm.UseEditorColRowSpan = False
         Me.GridColumn47.Visible = True
-        Me.GridColumn47.VisibleIndex = 1
+        Me.GridColumn47.VisibleIndex = 2
         Me.GridColumn47.Width = 111
         '
         'RepositoryItemTextEdit1
@@ -825,6 +997,28 @@ Partial Class WeightingFactors
         Me.RepositoryItemTextEdit1.Mask.EditMask = "n4"
         Me.RepositoryItemTextEdit1.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.RepositoryItemTextEdit1.Name = "RepositoryItemTextEdit1"
+        '
+        'colLastAction1
+        '
+        Me.colLastAction1.FieldName = "LastAction"
+        Me.colLastAction1.Name = "colLastAction1"
+        Me.colLastAction1.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate1
+        '
+        Me.colLastUpdateDate1.AppearanceCell.Options.UseTextOptions = True
+        Me.colLastUpdateDate1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colLastUpdateDate1.DisplayFormat.FormatString = "dd.MM.yyyy HH:mm:ss"
+        Me.colLastUpdateDate1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom
+        Me.colLastUpdateDate1.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate1.Name = "colLastUpdateDate1"
+        Me.colLastUpdateDate1.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser1
+        '
+        Me.colLastUpdateUser1.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser1.Name = "colLastUpdateUser1"
+        Me.colLastUpdateUser1.OptionsColumn.ReadOnly = True
         '
         'RepositoryItemImageComboBox2
         '
@@ -1419,11 +1613,11 @@ Partial Class WeightingFactors
         Me.GridControl2.EmbeddedNavigator.Buttons.EndEdit.ImageIndex = 7
         Me.GridControl2.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GridControl2.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl2.Location = New System.Drawing.Point(24, 72)
+        Me.GridControl2.Location = New System.Drawing.Point(24, 45)
         Me.GridControl2.MainView = Me.WeightingFactorsBaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.WeightingFactorsRepositoryItemTextEdit1, Me.RepositoryItemGridLookUpEdit1, Me.RepositoryItemGridLookUpEdit2, Me.RepositoryItemGridLookUpEdit3})
-        Me.GridControl2.Size = New System.Drawing.Size(1197, 618)
+        Me.GridControl2.Size = New System.Drawing.Size(1190, 415)
         Me.GridControl2.TabIndex = 11
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.WeightingFactorsBaseView})
@@ -1435,7 +1629,7 @@ Partial Class WeightingFactors
         Me.WeightingFactorsBaseView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
         Me.WeightingFactorsBaseView.Appearance.FocusedRow.Options.UseBackColor = True
         Me.WeightingFactorsBaseView.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.WeightingFactorsBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colPeriod, Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.colWF, Me.colWF20, Me.colWF25, Me.colWFHUMP, Me.colWF_TWIST1, Me.colWF_TWIST2, Me.colWFplus100, Me.colWFminus50})
+        Me.WeightingFactorsBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colPeriodNr1, Me.colPeriod, Me.GridColumn1, Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.colWF, Me.colWF20, Me.colWF25, Me.colWFHUMP, Me.colWF_TWIST1, Me.colWF_TWIST2, Me.colWFplus100, Me.colWFminus50})
         Me.WeightingFactorsBaseView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.WeightingFactorsBaseView.GridControl = Me.GridControl2
         Me.WeightingFactorsBaseView.Name = "WeightingFactorsBaseView"
@@ -1450,6 +1644,7 @@ Partial Class WeightingFactors
         Me.WeightingFactorsBaseView.OptionsView.ShowAutoFilterRow = True
         Me.WeightingFactorsBaseView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.WeightingFactorsBaseView.OptionsView.ShowFooter = True
+        Me.WeightingFactorsBaseView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -1468,7 +1663,7 @@ Partial Class WeightingFactors
         Me.GridColumn1.Name = "GridColumn1"
         Me.GridColumn1.OptionsColumn.ReadOnly = True
         Me.GridColumn1.Visible = True
-        Me.GridColumn1.VisibleIndex = 2
+        Me.GridColumn1.VisibleIndex = 3
         '
         'WeightingFactorsRepositoryItemTextEdit1
         '
@@ -1501,7 +1696,7 @@ Partial Class WeightingFactors
         Me.GridColumn2.FieldName = "WF+200"
         Me.GridColumn2.Name = "GridColumn2"
         Me.GridColumn2.Visible = True
-        Me.GridColumn2.VisibleIndex = 1
+        Me.GridColumn2.VisibleIndex = 2
         '
         'GridColumn3
         '
@@ -1514,7 +1709,7 @@ Partial Class WeightingFactors
         Me.GridColumn3.Name = "GridColumn3"
         Me.GridColumn3.OptionsColumn.ReadOnly = True
         Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 5
+        Me.GridColumn3.VisibleIndex = 6
         '
         'GridColumn4
         '
@@ -1527,7 +1722,7 @@ Partial Class WeightingFactors
         Me.GridColumn4.Name = "GridColumn4"
         Me.GridColumn4.OptionsColumn.ReadOnly = True
         Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 4
+        Me.GridColumn4.VisibleIndex = 5
         '
         'colWF
         '
@@ -1541,7 +1736,7 @@ Partial Class WeightingFactors
         Me.colWF.Name = "colWF"
         Me.colWF.OptionsColumn.ReadOnly = True
         Me.colWF.Visible = True
-        Me.colWF.VisibleIndex = 7
+        Me.colWF.VisibleIndex = 8
         '
         'colWF20
         '
@@ -1555,7 +1750,7 @@ Partial Class WeightingFactors
         Me.colWF20.Name = "colWF20"
         Me.colWF20.OptionsColumn.ReadOnly = True
         Me.colWF20.Visible = True
-        Me.colWF20.VisibleIndex = 8
+        Me.colWF20.VisibleIndex = 9
         '
         'colWF25
         '
@@ -1569,7 +1764,7 @@ Partial Class WeightingFactors
         Me.colWF25.Name = "colWF25"
         Me.colWF25.OptionsColumn.ReadOnly = True
         Me.colWF25.Visible = True
-        Me.colWF25.VisibleIndex = 9
+        Me.colWF25.VisibleIndex = 10
         '
         'colWFHUMP
         '
@@ -1582,7 +1777,7 @@ Partial Class WeightingFactors
         Me.colWFHUMP.FieldName = "WFHUMP"
         Me.colWFHUMP.Name = "colWFHUMP"
         Me.colWFHUMP.Visible = True
-        Me.colWFHUMP.VisibleIndex = 10
+        Me.colWFHUMP.VisibleIndex = 11
         '
         'RepositoryItemGridLookUpEdit1
         '
@@ -1783,7 +1978,7 @@ Partial Class WeightingFactors
         Me.colWF_TWIST1.FieldName = "WF_TWIST1"
         Me.colWF_TWIST1.Name = "colWF_TWIST1"
         Me.colWF_TWIST1.Visible = True
-        Me.colWF_TWIST1.VisibleIndex = 11
+        Me.colWF_TWIST1.VisibleIndex = 12
         '
         'RepositoryItemGridLookUpEdit2
         '
@@ -1985,7 +2180,7 @@ Partial Class WeightingFactors
         Me.colWF_TWIST2.FieldName = "WF_TWIST2"
         Me.colWF_TWIST2.Name = "colWF_TWIST2"
         Me.colWF_TWIST2.Visible = True
-        Me.colWF_TWIST2.VisibleIndex = 12
+        Me.colWF_TWIST2.VisibleIndex = 13
         '
         'RepositoryItemGridLookUpEdit3
         '
@@ -2188,7 +2383,7 @@ Partial Class WeightingFactors
         Me.colWFplus100.Name = "colWFplus100"
         Me.colWFplus100.OptionsColumn.ReadOnly = True
         Me.colWFplus100.Visible = True
-        Me.colWFplus100.VisibleIndex = 3
+        Me.colWFplus100.VisibleIndex = 4
         '
         'colWFminus50
         '
@@ -2201,7 +2396,7 @@ Partial Class WeightingFactors
         Me.colWFminus50.Name = "colWFminus50"
         Me.colWFminus50.OptionsColumn.ReadOnly = True
         Me.colWFminus50.Visible = True
-        Me.colWFminus50.VisibleIndex = 6
+        Me.colWFminus50.VisibleIndex = 7
         '
         'RepositoryItemImageComboBox1
         '
@@ -2220,18 +2415,6 @@ Partial Class WeightingFactors
         Me.RepositoryItemImageComboBox1.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("Y", "Y", 4), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("N", "N", 3)})
         Me.RepositoryItemImageComboBox1.Name = "RepositoryItemImageComboBox1"
         '
-        'WF_Print_Export_btn
-        '
-        Me.WF_Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.WF_Print_Export_btn.ImageOptions.ImageIndex = 2
-        Me.WF_Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.WF_Print_Export_btn.Location = New System.Drawing.Point(12, 12)
-        Me.WF_Print_Export_btn.Name = "WF_Print_Export_btn"
-        Me.WF_Print_Export_btn.Size = New System.Drawing.Size(134, 22)
-        Me.WF_Print_Export_btn.StyleController = Me.LayoutControl1
-        Me.WF_Print_Export_btn.TabIndex = 9
-        Me.WF_Print_Export_btn.Text = "Print or Export"
-        '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.GridControl1
@@ -2246,81 +2429,63 @@ Partial Class WeightingFactors
         Me.LayoutControlGroup1.CustomizationFormText = "Root"
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.EmptySpaceItem1, Me.LayoutControlItem1, Me.EmptySpaceItem4, Me.SimpleSeparator1, Me.TabbedControlGroup1})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup1})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1245, 714)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1238, 484)
         Me.LayoutControlGroup1.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(306, 0)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(803, 26)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.WF_Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(138, 26)
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
-        'EmptySpaceItem4
-        '
-        Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.CustomizationFormText = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(138, 0)
-        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(168, 26)
-        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
-        '
-        'SimpleSeparator1
-        '
-        Me.SimpleSeparator1.AllowHotTrack = False
-        Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
-        Me.SimpleSeparator1.Location = New System.Drawing.Point(1109, 0)
-        Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(116, 26)
         '
         'TabbedControlGroup1
         '
         Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.ForeColor = System.Drawing.Color.Yellow
         Me.TabbedControlGroup1.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
-        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 26)
+        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
-        Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup2
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1225, 668)
-        Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup2, Me.LayoutControlGroup3, Me.LayoutControlGroup4})
+        Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup4
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1218, 464)
+        Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup4, Me.LayoutControlGroup3, Me.LayoutControlGroup2})
         '
         'LayoutControlGroup4
         '
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5})
         Me.LayoutControlGroup4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup4.Name = "LayoutControlGroup4"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1201, 622)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1194, 419)
         Me.LayoutControlGroup4.Text = "Yield Curves"
         '
         'LayoutControlItem5
         '
-        Me.LayoutControlItem5.Control = Me.GridControl4
+        Me.LayoutControlItem5.Control = Me.YieldCurves_GridControl
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1201, 622)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1194, 419)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
+        '
+        'LayoutControlGroup3
+        '
+        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3})
+        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1194, 419)
+        Me.LayoutControlGroup3.Text = "Weighting Factors"
+        '
+        'LayoutControlItem3
+        '
+        Me.LayoutControlItem3.Control = Me.WeightingFactors_GridControl
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem3.Name = "LayoutControlItem3"
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(1194, 419)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem3.TextVisible = False
         '
         'LayoutControlGroup2
         '
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1201, 622)
-        Me.LayoutControlGroup2.Text = "Weighting Factors (IRR Calculation till 30.12.2018)"
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1194, 419)
+        Me.LayoutControlGroup2.Text = "Weighting Factors (till 30.12.2018)"
+        Me.LayoutControlGroup2.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'LayoutControlItem4
         '
@@ -2328,26 +2493,9 @@ Partial Class WeightingFactors
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1201, 622)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1194, 419)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
-        '
-        'LayoutControlGroup3
-        '
-        Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3})
-        Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1201, 622)
-        Me.LayoutControlGroup3.Text = "Weighting Factors (IRR Amount for RBC Calculation from 31.12.2018)"
-        '
-        'LayoutControlItem3
-        '
-        Me.LayoutControlItem3.Control = Me.GridControl3
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(1201, 622)
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem3.TextVisible = False
         '
         'PrintingSystem1
         '
@@ -2362,14 +2510,14 @@ Partial Class WeightingFactors
         '
         'PrintableComponentLink2
         '
-        Me.PrintableComponentLink2.Component = Me.GridControl3
+        Me.PrintableComponentLink2.Component = Me.WeightingFactors_GridControl
         Me.PrintableComponentLink2.Landscape = True
         Me.PrintableComponentLink2.PaperKind = System.Drawing.Printing.PaperKind.A4
         Me.PrintableComponentLink2.PrintingSystemBase = Me.PrintingSystem1
         '
         'PrintableComponentLink3
         '
-        Me.PrintableComponentLink3.Component = Me.GridControl4
+        Me.PrintableComponentLink3.Component = Me.YieldCurves_GridControl
         Me.PrintableComponentLink3.Landscape = True
         Me.PrintableComponentLink3.PaperKind = System.Drawing.Printing.PaperKind.A4
         Me.PrintableComponentLink3.PrintingSystemBase = Me.PrintingSystem1
@@ -2382,16 +2530,105 @@ Partial Class WeightingFactors
         '
         Me.OWN_CURRENCIESTableAdapter.ClearBeforeFill = True
         '
+        'RibbonControl1
+        '
+        Me.RibbonControl1.CommandLayout = DevExpress.XtraBars.Ribbon.CommandLayout.Simplified
+        Me.RibbonControl1.ExpandCollapseItem.Id = 0
+        Me.RibbonControl1.Images = Me.ImageCollection1
+        Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbi_Reload, Me.bbi_Save, Me.bbi_PrintExport, Me.bbi_Close, Me.bbi_AddNewYieldCurve})
+        Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl1.MaxItemId = 6
+        Me.RibbonControl1.Name = "RibbonControl1"
+        Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
+        Me.RibbonControl1.ShowSearchItem = True
+        Me.RibbonControl1.Size = New System.Drawing.Size(1238, 94)
+        '
+        'bbi_Reload
+        '
+        Me.bbi_Reload.Caption = "Reload"
+        Me.bbi_Reload.Id = 1
+        Me.bbi_Reload.ImageOptions.Image = CType(resources.GetObject("bbi_Reload.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Reload.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Reload.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Reload.Name = "bbi_Reload"
+        '
+        'bbi_Save
+        '
+        Me.bbi_Save.Caption = "Save"
+        Me.bbi_Save.Id = 2
+        Me.bbi_Save.ImageOptions.Image = CType(resources.GetObject("bbi_Save.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Save.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Save.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Save.Name = "bbi_Save"
+        '
+        'bbi_PrintExport
+        '
+        Me.bbi_PrintExport.Caption = "Print or Export"
+        Me.bbi_PrintExport.Id = 3
+        Me.bbi_PrintExport.ImageOptions.ImageIndex = 2
+        Me.bbi_PrintExport.Name = "bbi_PrintExport"
+        '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 4
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.Name = "bbi_Close"
+        '
+        'bbi_AddNewYieldCurve
+        '
+        Me.bbi_AddNewYieldCurve.Caption = "Add new Yield Curve"
+        Me.bbi_AddNewYieldCurve.Id = 5
+        Me.bbi_AddNewYieldCurve.ImageOptions.Image = CType(resources.GetObject("bbi_AddNewYieldCurve.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_AddNewYieldCurve.ImageOptions.LargeImage = CType(resources.GetObject("bbi_AddNewYieldCurve.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_AddNewYieldCurve.Name = "bbi_AddNewYieldCurve"
+        '
+        'RibbonPage1
+        '
+        Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
+        Me.RibbonPage1.Name = "RibbonPage1"
+        Me.RibbonPage1.Text = "Home"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Reload)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_AddNewYieldCurve, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Save, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_PrintExport, True)
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.bbi_Close, True)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'RibbonPageGroup2
+        '
+        Me.RibbonPageGroup2.Name = "RibbonPageGroup2"
+        Me.RibbonPageGroup2.Text = "RibbonPageGroup2"
+        '
+        'RibbonPage2
+        '
+        Me.RibbonPage2.Name = "RibbonPage2"
+        Me.RibbonPage2.Text = "RibbonPage2"
+        '
+        'colPeriodNr1
+        '
+        Me.colPeriodNr1.Caption = "Period Nr."
+        Me.colPeriodNr1.FieldName = "PeriodNr"
+        Me.colPeriodNr1.Name = "colPeriodNr1"
+        Me.colPeriodNr1.OptionsColumn.ReadOnly = True
+        Me.colPeriodNr1.Visible = True
+        Me.colPeriodNr1.VisibleIndex = 1
+        '
         'WeightingFactors
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1245, 714)
+        Me.ClientSize = New System.Drawing.Size(1238, 578)
         Me.Controls.Add(Me.LayoutControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.RibbonControl1)
+        Me.IconOptions.Icon = CType(resources.GetObject("WeightingFactors.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "WeightingFactors"
+        Me.Ribbon = Me.RibbonControl1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Weighting Factors / Yield Curves"
+        Me.Text = "Yield Curves / Weighting Factors "
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2403,19 +2640,19 @@ Partial Class WeightingFactors
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.YieldCurves_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.YIELDCURVESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.YieldCurves_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemGridLookUpEdit7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OWNCURRENCIESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemGridLookUpEdit7View, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CCY_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WeightingFactors_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RATERISKBCWF1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RiskControllingBasicsDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.WeightingFactorsCalculation2_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WeightingFactors_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemGridLookUpEdit4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2436,19 +2673,17 @@ Partial Class WeightingFactors
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents RiskControllingBasicsDataSet As PS_TOOL_DX.RiskControllingBasicsDataSet
@@ -2462,13 +2697,8 @@ Partial Class WeightingFactors
     Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents GridControl1 As DevExpress.XtraGrid.GridControl
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents WF_Print_Export_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem2 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
-    Friend WithEvents SimpleSeparator1 As DevExpress.XtraLayout.SimpleSeparator
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
     Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
@@ -2540,8 +2770,8 @@ Partial Class WeightingFactors
     Friend WithEvents GridColumn38 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn40 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colWFminus50 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridControl3 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents WeightingFactorsCalculation2_GridView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents WeightingFactors_GridControl As DevExpress.XtraGrid.GridControl
+    Friend WithEvents WeightingFactors_GridView As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridColumn41 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents GridColumn42 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
@@ -2602,18 +2832,12 @@ Partial Class WeightingFactors
     Friend WithEvents GridColumn100 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemImageComboBox2 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
     Friend WithEvents TabbedControlGroup1 As DevExpress.XtraLayout.TabbedControlGroup
-    Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents RiskControllingBasicsDataSet1 As RiskControllingBasicsDataSet
     Friend WithEvents RATERISKBCWF1BindingSource As BindingSource
     Friend WithEvents RATERISK_BC_WF1TableAdapter As RiskControllingBasicsDataSetTableAdapters.RATERISK_BC_WF1TableAdapter
     Friend WithEvents PrintableComponentLink2 As DevExpress.XtraPrinting.PrintableComponentLink
-    Friend WithEvents GridControl4 As DevExpress.XtraGrid.GridControl
+    Friend WithEvents YieldCurves_GridControl As DevExpress.XtraGrid.GridControl
     Friend WithEvents YieldCurves_GridView As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents LayoutControlGroup4 As DevExpress.XtraLayout.LayoutControlGroup
-    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents YIELDCURVESBindingSource As BindingSource
     Friend WithEvents YIELD_CURVESTableAdapter As RiskControllingBasicsDataSetTableAdapters.YIELD_CURVESTableAdapter
     Friend WithEvents colID2 As DevExpress.XtraGrid.Columns.GridColumn
@@ -2643,4 +2867,39 @@ Partial Class WeightingFactors
     Friend WithEvents colCURRENCYCODE As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCURRENCYNAME As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemTextEdit3 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents LayoutControlGroup3 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem3 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents RibbonControl1 As DevExpress.XtraBars.Ribbon.RibbonControl
+    Friend WithEvents RibbonPage1 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonPageGroup2 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents RibbonStatusBar1 As DevExpress.XtraBars.Ribbon.RibbonStatusBar
+    Friend WithEvents RibbonPage2 As DevExpress.XtraBars.Ribbon.RibbonPage
+    Friend WithEvents bbi_Reload As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_Save As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_PrintExport As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents CCY_GridView As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents col1D As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col9M As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col4Y As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col6Y As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col8Y As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col9Y As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col15Y As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col40Y As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents col50Y As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastAction1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateDate1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colLastUpdateUser1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents bbi_Close As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbi_AddNewYieldCurve As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents LayoutControlGroup4 As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents colPeriodNr As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colPeriodNr1 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

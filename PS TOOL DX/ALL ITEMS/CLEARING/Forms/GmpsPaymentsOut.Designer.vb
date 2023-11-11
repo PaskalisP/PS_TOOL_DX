@@ -456,11 +456,11 @@ Partial Class GmpsPaymentsOut
         Me.bbi_PrintOrExport = New DevExpress.XtraBars.BarButtonItem()
         Me.BarSubItem1 = New DevExpress.XtraBars.BarSubItem()
         Me.BarStaticItem1 = New DevExpress.XtraBars.BarStaticItem()
+        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.bbi_Close = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.PaymentsOut_MT103_LayoutView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colID1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.layoutViewField_colMTTYPE1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -3809,7 +3809,7 @@ Partial Class GmpsPaymentsOut
         Me.colOrderingCustomer.OptionsColumn.AllowEdit = False
         Me.colOrderingCustomer.OptionsColumn.ReadOnly = True
         Me.colOrderingCustomer.Visible = True
-        Me.colOrderingCustomer.VisibleIndex = 10
+        Me.colOrderingCustomer.VisibleIndex = 11
         Me.colOrderingCustomer.Width = 316
         '
         'colOrderingCustomersAccNo
@@ -3820,7 +3820,9 @@ Partial Class GmpsPaymentsOut
         Me.colOrderingCustomersAccNo.Name = "colOrderingCustomersAccNo"
         Me.colOrderingCustomersAccNo.OptionsColumn.AllowEdit = False
         Me.colOrderingCustomersAccNo.OptionsColumn.ReadOnly = True
-        Me.colOrderingCustomersAccNo.Width = 141
+        Me.colOrderingCustomersAccNo.Visible = True
+        Me.colOrderingCustomersAccNo.VisibleIndex = 10
+        Me.colOrderingCustomersAccNo.Width = 174
         '
         'colIntermediaryInstitutionBIC
         '
@@ -3832,7 +3834,7 @@ Partial Class GmpsPaymentsOut
         Me.colIntermediaryInstitutionBIC.OptionsColumn.AllowEdit = False
         Me.colIntermediaryInstitutionBIC.OptionsColumn.ReadOnly = True
         Me.colIntermediaryInstitutionBIC.Visible = True
-        Me.colIntermediaryInstitutionBIC.VisibleIndex = 11
+        Me.colIntermediaryInstitutionBIC.VisibleIndex = 12
         Me.colIntermediaryInstitutionBIC.Width = 144
         '
         'colIntermediaryInstitutionName
@@ -3867,7 +3869,7 @@ Partial Class GmpsPaymentsOut
         Me.colAccountPayeeBIC.OptionsColumn.AllowEdit = False
         Me.colAccountPayeeBIC.OptionsColumn.ReadOnly = True
         Me.colAccountPayeeBIC.Visible = True
-        Me.colAccountPayeeBIC.VisibleIndex = 12
+        Me.colAccountPayeeBIC.VisibleIndex = 13
         Me.colAccountPayeeBIC.Width = 126
         '
         'colAccountPayeeNameAddress
@@ -3902,7 +3904,7 @@ Partial Class GmpsPaymentsOut
         Me.colBeneficiaryBankBIC.OptionsColumn.AllowEdit = False
         Me.colBeneficiaryBankBIC.OptionsColumn.ReadOnly = True
         Me.colBeneficiaryBankBIC.Visible = True
-        Me.colBeneficiaryBankBIC.VisibleIndex = 13
+        Me.colBeneficiaryBankBIC.VisibleIndex = 14
         Me.colBeneficiaryBankBIC.Width = 118
         '
         'colBeneficiaryBankName
@@ -3947,7 +3949,7 @@ Partial Class GmpsPaymentsOut
         Me.colBeneficiaryCustomerAccNo.OptionsColumn.AllowEdit = False
         Me.colBeneficiaryCustomerAccNo.OptionsColumn.ReadOnly = True
         Me.colBeneficiaryCustomerAccNo.Visible = True
-        Me.colBeneficiaryCustomerAccNo.VisibleIndex = 14
+        Me.colBeneficiaryCustomerAccNo.VisibleIndex = 15
         Me.colBeneficiaryCustomerAccNo.Width = 153
         '
         'colBeneficiaryCustomerNameAddress
@@ -3957,7 +3959,7 @@ Partial Class GmpsPaymentsOut
         Me.colBeneficiaryCustomerNameAddress.OptionsColumn.AllowEdit = False
         Me.colBeneficiaryCustomerNameAddress.OptionsColumn.ReadOnly = True
         Me.colBeneficiaryCustomerNameAddress.Visible = True
-        Me.colBeneficiaryCustomerNameAddress.VisibleIndex = 15
+        Me.colBeneficiaryCustomerNameAddress.VisibleIndex = 16
         Me.colBeneficiaryCustomerNameAddress.Width = 347
         '
         'colDetailsOfCharges
@@ -3969,7 +3971,7 @@ Partial Class GmpsPaymentsOut
         Me.colDetailsOfCharges.OptionsColumn.AllowEdit = False
         Me.colDetailsOfCharges.OptionsColumn.ReadOnly = True
         Me.colDetailsOfCharges.Visible = True
-        Me.colDetailsOfCharges.VisibleIndex = 16
+        Me.colDetailsOfCharges.VisibleIndex = 17
         Me.colDetailsOfCharges.Width = 97
         '
         'colRemittanceInformation
@@ -3995,7 +3997,7 @@ Partial Class GmpsPaymentsOut
         Me.colSenderToReceiverInformation.OptionsColumn.AllowEdit = False
         Me.colSenderToReceiverInformation.OptionsColumn.ReadOnly = True
         Me.colSenderToReceiverInformation.Visible = True
-        Me.colSenderToReceiverInformation.VisibleIndex = 17
+        Me.colSenderToReceiverInformation.VisibleIndex = 18
         Me.colSenderToReceiverInformation.Width = 269
         '
         'colDebitTransactionsSigns
@@ -4005,7 +4007,7 @@ Partial Class GmpsPaymentsOut
         Me.colDebitTransactionsSigns.OptionsColumn.AllowEdit = False
         Me.colDebitTransactionsSigns.OptionsColumn.ReadOnly = True
         Me.colDebitTransactionsSigns.Visible = True
-        Me.colDebitTransactionsSigns.VisibleIndex = 18
+        Me.colDebitTransactionsSigns.VisibleIndex = 19
         Me.colDebitTransactionsSigns.Width = 132
         '
         'colProcessingQueue
@@ -4015,7 +4017,7 @@ Partial Class GmpsPaymentsOut
         Me.colProcessingQueue.OptionsColumn.AllowEdit = False
         Me.colProcessingQueue.OptionsColumn.ReadOnly = True
         Me.colProcessingQueue.Visible = True
-        Me.colProcessingQueue.VisibleIndex = 19
+        Me.colProcessingQueue.VisibleIndex = 20
         Me.colProcessingQueue.Width = 104
         '
         'colACK_State
@@ -4027,7 +4029,7 @@ Partial Class GmpsPaymentsOut
         Me.colACK_State.OptionsColumn.AllowEdit = False
         Me.colACK_State.OptionsColumn.ReadOnly = True
         Me.colACK_State.Visible = True
-        Me.colACK_State.VisibleIndex = 20
+        Me.colACK_State.VisibleIndex = 21
         '
         'colStatus
         '
@@ -4038,7 +4040,7 @@ Partial Class GmpsPaymentsOut
         Me.colStatus.OptionsColumn.AllowEdit = False
         Me.colStatus.OptionsColumn.ReadOnly = True
         Me.colStatus.Visible = True
-        Me.colStatus.VisibleIndex = 21
+        Me.colStatus.VisibleIndex = 22
         '
         'colPaymentYear
         '
@@ -4056,7 +4058,7 @@ Partial Class GmpsPaymentsOut
         Me.colProcessedBy.OptionsColumn.AllowEdit = False
         Me.colProcessedBy.OptionsColumn.ReadOnly = True
         Me.colProcessedBy.Visible = True
-        Me.colProcessedBy.VisibleIndex = 22
+        Me.colProcessedBy.VisibleIndex = 23
         '
         'colMsgSenderCountry
         '
@@ -4075,7 +4077,7 @@ Partial Class GmpsPaymentsOut
         Me.colSendType.OptionsColumn.AllowEdit = False
         Me.colSendType.OptionsColumn.ReadOnly = True
         Me.colSendType.Visible = True
-        Me.colSendType.VisibleIndex = 23
+        Me.colSendType.VisibleIndex = 24
         '
         'LayoutViewCard1
         '
@@ -4486,6 +4488,16 @@ Partial Class GmpsPaymentsOut
         Me.BarStaticItem1.Id = 7
         Me.BarStaticItem1.Name = "BarStaticItem1"
         '
+        'bbi_Close
+        '
+        Me.bbi_Close.Caption = "Close"
+        Me.bbi_Close.Id = 8
+        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbi_Close.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.bbi_Close.ItemAppearance.Normal.Options.UseFont = True
+        Me.bbi_Close.Name = "bbi_Close"
+        '
         'RibbonPage1
         '
         Me.RibbonPage1.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.RibbonPageGroup1, Me.RibbonPageGroup2})
@@ -4515,16 +4527,6 @@ Partial Class GmpsPaymentsOut
         '
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "RibbonPage2"
-        '
-        'bbi_Close
-        '
-        Me.bbi_Close.Caption = "Close"
-        Me.bbi_Close.Id = 8
-        Me.bbi_Close.ImageOptions.Image = CType(resources.GetObject("bbi_Close.ImageOptions.Image"), System.Drawing.Image)
-        Me.bbi_Close.ImageOptions.LargeImage = CType(resources.GetObject("bbi_Close.ImageOptions.LargeImage"), System.Drawing.Image)
-        Me.bbi_Close.ItemAppearance.Normal.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.bbi_Close.ItemAppearance.Normal.Options.UseFont = True
-        Me.bbi_Close.Name = "bbi_Close"
         '
         'GmpsPaymentsOut
         '

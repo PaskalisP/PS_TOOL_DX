@@ -194,6 +194,7 @@ Partial Class CustomerBalances
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.colPaymentReference = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.PSTOOLDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CUSTOMER_ACCOUNTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BalancesDataset, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -444,7 +445,7 @@ Partial Class CustomerBalances
         Me.Customer_Balances_BasicView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.Customer_Balances_BasicView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.Customer_Balances_BasicView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.Customer_Balances_BasicView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colIdNr, Me.colBatchNo, Me.colSequenceNo, Me.colGLBook, Me.colAccountingCentre, Me.colGL_AC_No, Me.colValueDate, Me.colTransactionTime, Me.colAccountNo, Me.colContractType, Me.colProductType, Me.colProductTypeDescription, Me.colEventType, Me.colCCY, Me.colAmount, Me.colAmountValueBalance, Me.colDR_CR, Me.colGroupNo, Me.colClientNo, Me.colPortfolioCode, Me.colNarrativeCode, Me.colReferenceCode, Me.colChequeNo, Me.colAP, Me.colTRNAccountingCentre, Me.colCheckerID, Me.colChannel, Me.colOtherSystemKey, Me.colGeneratedType, Me.colReversalFlag, Me.colDescription, Me.colGL_Rep_Date, Me.colGL_Item_Nr, Me.colGL_AC_No_Name, Me.colExchange_Rate, Me.colAmountInEuro, Me.colAmountInEuro_ValueBalance, Me.colPaymentDetails})
+        Me.Customer_Balances_BasicView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colIdNr, Me.colBatchNo, Me.colSequenceNo, Me.colGLBook, Me.colAccountingCentre, Me.colGL_AC_No, Me.colValueDate, Me.colTransactionTime, Me.colAccountNo, Me.colContractType, Me.colProductType, Me.colProductTypeDescription, Me.colEventType, Me.colCCY, Me.colAmount, Me.colAmountValueBalance, Me.colDR_CR, Me.colGroupNo, Me.colClientNo, Me.colPortfolioCode, Me.colNarrativeCode, Me.colReferenceCode, Me.colChequeNo, Me.colAP, Me.colTRNAccountingCentre, Me.colCheckerID, Me.colChannel, Me.colOtherSystemKey, Me.colGeneratedType, Me.colReversalFlag, Me.colDescription, Me.colGL_Rep_Date, Me.colGL_Item_Nr, Me.colGL_AC_No_Name, Me.colExchange_Rate, Me.colAmountInEuro, Me.colAmountInEuro_ValueBalance, Me.colPaymentDetails, Me.colPaymentReference})
         Me.Customer_Balances_BasicView.CustomizationFormBounds = New System.Drawing.Rectangle(1374, 624, 210, 256)
         Me.Customer_Balances_BasicView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         StyleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Aqua
@@ -2106,6 +2107,13 @@ Partial Class CustomerBalances
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
+        'colPaymentReference
+        '
+        Me.colPaymentReference.Caption = "Payment Reference"
+        Me.colPaymentReference.FieldName = "PaymentReference"
+        Me.colPaymentReference.Name = "colPaymentReference"
+        Me.colPaymentReference.OptionsColumn.ReadOnly = True
+        '
         'CustomerBalances
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2320,4 +2328,5 @@ Partial Class CustomerBalances
     Friend WithEvents colProductTypeDescription As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
     Friend WithEvents LayoutControlItem5 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents colPaymentReference As DevExpress.XtraGrid.Columns.GridColumn
 End Class

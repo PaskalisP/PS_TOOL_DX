@@ -5,7 +5,7 @@ Imports System.ComponentModel
 Imports System.Text.RegularExpressions
 
 Module GlobalFunctions
-
+    Private Declare Function SetProcessWorkingSetSize Lib "kernel32.dll" (ByVal hProcess As IntPtr, ByVal dwMinimumWorkingSetSize As Int32, ByVal dwMaximumWorkingSetSize As Int32) As Int32
     Public Function OpenSqlConnections() As SqlConnection
         cmd.CommandTimeout = 60000
         cmd1.CommandTimeout = 60000
@@ -135,5 +135,13 @@ Module GlobalFunctions
         Next
         Return Convert.ToInt32(returnVal)
     End Function
+
+    Public Sub FlushMemory()
+        GC.Collect()
+        GC.WaitForPendingFinalizers()
+        If (Environment.OSVersion.Platform = PlatformID.Win32NT) Then
+            SetProcessWorkingSetSize(Process.GetCurrentProcess().Handle, -1, -1)
+        End If
+    End Sub
 
 End Module

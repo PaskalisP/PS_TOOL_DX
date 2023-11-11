@@ -668,6 +668,12 @@
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV136.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV137.designer.vb">
+      <DependentUpon>BaisExportAlphaV137.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV137.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV135.designer.vb">
       <DependentUpon>BaisExportAnaCreditV135.vb</DependentUpon>
     </Compile>
@@ -678,6 +684,12 @@
       <DependentUpon>BaisExportAnaCreditV136.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV136.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV137.designer.vb">
+      <DependentUpon>BaisExportAnaCreditV137.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV137.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\BaisImport.Designer.vb">
@@ -708,6 +720,12 @@
       <DependentUpon>ExecuteVbCode.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\ExecuteVbCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\FilesLoad.designer.vb">
+      <DependentUpon>FilesLoad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\FilesLoad.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\ImportEvents.Designer.vb">
@@ -1385,6 +1403,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IncidentsDataset.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\InterestRateRiskDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InterestRateRiskDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingBasicsDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1489,6 +1512,12 @@
       <DependentUpon>InterestRateRiskCalc2.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2018.designer.vb">
+      <DependentUpon>InterestRateRiskCalc2018.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2018.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc3.designer.vb">
@@ -1991,11 +2020,17 @@
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV136.resx">
       <DependentUpon>BaisExportAlphaV136.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAlphaV137.resx">
+      <DependentUpon>BaisExportAlphaV137.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV135.resx">
       <DependentUpon>BaisExportAnaCreditV135.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV136.resx">
       <DependentUpon>BaisExportAnaCreditV136.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisExportAnaCreditV137.resx">
+      <DependentUpon>BaisExportAnaCreditV137.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\BaisImport.resx">
       <DependentUpon>BaisImport.vb</DependentUpon>
@@ -2011,6 +2046,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\ExecuteVbCode.resx">
       <DependentUpon>ExecuteVbCode.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\FilesLoad.resx">
+      <DependentUpon>FilesLoad.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\ImportEvents.resx">
       <DependentUpon>ImportEvents.vb</DependentUpon>
@@ -2335,6 +2373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2.resx">
       <DependentUpon>InterestRateRiskCalc2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2018.resx">
+      <DependentUpon>InterestRateRiskCalc2018.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc3.resx">
       <DependentUpon>InterestRateRiskCalc3.vb</DependentUpon>
@@ -2859,6 +2900,17 @@
     </None>
     <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\IncidentsDataset.xss">
       <DependentUpon>IncidentsDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\InterestRateRiskDataSet.xsc">
+      <DependentUpon>InterestRateRiskDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\InterestRateRiskDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InterestRateRiskDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\InterestRateRiskDataSet.xss">
+      <DependentUpon>InterestRateRiskDataSet.xsd</DependentUpon>
     </None>
     <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingBasicsDataSet.xsc">
       <DependentUpon>RiskControllingBasicsDataSet.xsd</DependentUpon>

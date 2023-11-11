@@ -1064,6 +1064,14 @@ Partial Public Class RiskControllingBasicsDataSet
         
         Private columnMethod As Global.System.Data.DataColumn
         
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
+        Private columnPeriodNr As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1228,6 +1236,38 @@ Partial Public Class RiskControllingBasicsDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PeriodNrColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPeriodNr
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1264,9 +1304,28 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddRATERISK_BC_WFRow(ByVal Period As String, ByVal _WF_200 As Double, ByVal __WF_200 As Double, ByVal _WF_50 As Double, ByVal _WF_100 As Double, ByVal WF As Double, ByVal WF15 As Double, ByVal WF20 As Double, ByVal WF25 As Double, ByVal WFHUMP As Double, ByVal WF_TWIST1 As Double, ByVal WF_TWIST2 As Double, ByVal __WF_100 As Double, ByVal __WF_50 As Double, ByVal Method As Double) As RATERISK_BC_WFRow
+        Public Overloads Function AddRATERISK_BC_WFRow( _
+                    ByVal Period As String,  _
+                    ByVal _WF_200 As Double,  _
+                    ByVal __WF_200 As Double,  _
+                    ByVal _WF_50 As Double,  _
+                    ByVal _WF_100 As Double,  _
+                    ByVal WF As Double,  _
+                    ByVal WF15 As Double,  _
+                    ByVal WF20 As Double,  _
+                    ByVal WF25 As Double,  _
+                    ByVal WFHUMP As Double,  _
+                    ByVal WF_TWIST1 As Double,  _
+                    ByVal WF_TWIST2 As Double,  _
+                    ByVal __WF_100 As Double,  _
+                    ByVal __WF_50 As Double,  _
+                    ByVal Method As Double,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Date,  _
+                    ByVal PeriodNr As Double) As RATERISK_BC_WFRow
             Dim rowRATERISK_BC_WFRow As RATERISK_BC_WFRow = CType(Me.NewRow,RATERISK_BC_WFRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Period, _WF_200, __WF_200, _WF_50, _WF_100, WF, WF15, WF20, WF25, WFHUMP, WF_TWIST1, WF_TWIST2, __WF_100, __WF_50, Method}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Period, _WF_200, __WF_200, _WF_50, _WF_100, WF, WF15, WF20, WF25, WFHUMP, WF_TWIST1, WF_TWIST2, __WF_100, __WF_50, Method, LastAction, LastUpdateUser, LastUpdateDate, PeriodNr}
             rowRATERISK_BC_WFRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowRATERISK_BC_WFRow)
             Return rowRATERISK_BC_WFRow
@@ -1311,6 +1370,10 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.__columnWF_100 = MyBase.Columns("WF+100")
             Me.__columnWF_50 = MyBase.Columns("WF-50")
             Me.columnMethod = MyBase.Columns("Method")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
+            Me.columnPeriodNr = MyBase.Columns("PeriodNr")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1360,6 +1423,14 @@ Partial Public Class RiskControllingBasicsDataSet
             MyBase.Columns.Add(Me.__columnWF_50)
             Me.columnMethod = New Global.System.Data.DataColumn("Method", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMethod)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
+            Me.columnPeriodNr = New Global.System.Data.DataColumn("PeriodNr", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPeriodNr)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -1368,6 +1439,8 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.columnID.ReadOnly = true
             Me.columnID.Unique = true
             Me.columnPeriod.MaxLength = 255
+            Me.columnLastAction.MaxLength = 50
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4382,6 +4455,14 @@ Partial Public Class RiskControllingBasicsDataSet
         
         Private columnMethod As Global.System.Data.DataColumn
         
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
+        Private columnPeriodNr As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -4546,6 +4627,38 @@ Partial Public Class RiskControllingBasicsDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PeriodNrColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPeriodNr
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4582,9 +4695,28 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddRATERISK_BC_WF1Row(ByVal Period As String, ByVal _WF_200 As Double, ByVal __WF_200 As Double, ByVal _WF_50 As Double, ByVal _WF_100 As Double, ByVal WF As Double, ByVal WF15 As Double, ByVal WF20 As Double, ByVal WF25 As Double, ByVal WFHUMP As Double, ByVal WF_TWIST1 As Double, ByVal WF_TWIST2 As Double, ByVal __WF_100 As Double, ByVal __WF_50 As Double, ByVal Method As Double) As RATERISK_BC_WF1Row
+        Public Overloads Function AddRATERISK_BC_WF1Row( _
+                    ByVal Period As String,  _
+                    ByVal _WF_200 As Double,  _
+                    ByVal __WF_200 As Double,  _
+                    ByVal _WF_50 As Double,  _
+                    ByVal _WF_100 As Double,  _
+                    ByVal WF As Double,  _
+                    ByVal WF15 As Double,  _
+                    ByVal WF20 As Double,  _
+                    ByVal WF25 As Double,  _
+                    ByVal WFHUMP As Double,  _
+                    ByVal WF_TWIST1 As Double,  _
+                    ByVal WF_TWIST2 As Double,  _
+                    ByVal __WF_100 As Double,  _
+                    ByVal __WF_50 As Double,  _
+                    ByVal Method As Double,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Date,  _
+                    ByVal PeriodNr As Double) As RATERISK_BC_WF1Row
             Dim rowRATERISK_BC_WF1Row As RATERISK_BC_WF1Row = CType(Me.NewRow,RATERISK_BC_WF1Row)
-            Dim columnValuesArray() As Object = New Object() {Nothing, Period, _WF_200, __WF_200, _WF_50, _WF_100, WF, WF15, WF20, WF25, WFHUMP, WF_TWIST1, WF_TWIST2, __WF_100, __WF_50, Method}
+            Dim columnValuesArray() As Object = New Object() {Nothing, Period, _WF_200, __WF_200, _WF_50, _WF_100, WF, WF15, WF20, WF25, WFHUMP, WF_TWIST1, WF_TWIST2, __WF_100, __WF_50, Method, LastAction, LastUpdateUser, LastUpdateDate, PeriodNr}
             rowRATERISK_BC_WF1Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowRATERISK_BC_WF1Row)
             Return rowRATERISK_BC_WF1Row
@@ -4629,6 +4761,10 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.__columnWF_100 = MyBase.Columns("WF+100")
             Me.__columnWF_50 = MyBase.Columns("WF-50")
             Me.columnMethod = MyBase.Columns("Method")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
+            Me.columnPeriodNr = MyBase.Columns("PeriodNr")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4678,6 +4814,14 @@ Partial Public Class RiskControllingBasicsDataSet
             MyBase.Columns.Add(Me.__columnWF_50)
             Me.columnMethod = New Global.System.Data.DataColumn("Method", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMethod)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
+            Me.columnPeriodNr = New Global.System.Data.DataColumn("PeriodNr", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPeriodNr)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -4686,6 +4830,8 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.columnID.ReadOnly = true
             Me.columnID.Unique = true
             Me.columnPeriod.MaxLength = 255
+            Me.columnLastAction.MaxLength = 50
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4853,6 +4999,30 @@ Partial Public Class RiskControllingBasicsDataSet
         
         Private column30Y As Global.System.Data.DataColumn
         
+        Private column1D As Global.System.Data.DataColumn
+        
+        Private column9M As Global.System.Data.DataColumn
+        
+        Private column4Y As Global.System.Data.DataColumn
+        
+        Private column6Y As Global.System.Data.DataColumn
+        
+        Private column8Y As Global.System.Data.DataColumn
+        
+        Private column9Y As Global.System.Data.DataColumn
+        
+        Private column15Y As Global.System.Data.DataColumn
+        
+        Private column40Y As Global.System.Data.DataColumn
+        
+        Private column50Y As Global.System.Data.DataColumn
+        
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -5009,6 +5179,102 @@ Partial Public Class RiskControllingBasicsDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _1DColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1D
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _9MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column9M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _4YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column4Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _6YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column6Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _8YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column8Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _9YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column9Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _15YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column15Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _40YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column40Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _50YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column50Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5045,9 +5311,35 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddYIELD_CURVESRow(ByVal RiskDate As Date, ByVal CCY As String, ByVal _1M As Double, ByVal _2M As Double, ByVal _3M As Double, ByVal _6M As Double, ByVal _1Y As Double, ByVal _2Y As Double, ByVal _3Y As Double, ByVal _5Y As Double, ByVal _7Y As Double, ByVal _10Y As Double, ByVal _20Y As Double, ByVal _30Y As Double) As YIELD_CURVESRow
+        Public Overloads Function AddYIELD_CURVESRow( _
+                    ByVal RiskDate As Date,  _
+                    ByVal CCY As String,  _
+                    ByVal _1M As Double,  _
+                    ByVal _2M As Double,  _
+                    ByVal _3M As Double,  _
+                    ByVal _6M As Double,  _
+                    ByVal _1Y As Double,  _
+                    ByVal _2Y As Double,  _
+                    ByVal _3Y As Double,  _
+                    ByVal _5Y As Double,  _
+                    ByVal _7Y As Double,  _
+                    ByVal _10Y As Double,  _
+                    ByVal _20Y As Double,  _
+                    ByVal _30Y As Double,  _
+                    ByVal _1D As Double,  _
+                    ByVal _9M As Double,  _
+                    ByVal _4Y As Double,  _
+                    ByVal _6Y As Double,  _
+                    ByVal _8Y As Double,  _
+                    ByVal _9Y As Double,  _
+                    ByVal _15Y As Double,  _
+                    ByVal _40Y As Double,  _
+                    ByVal _50Y As Double,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Date) As YIELD_CURVESRow
             Dim rowYIELD_CURVESRow As YIELD_CURVESRow = CType(Me.NewRow,YIELD_CURVESRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, RiskDate, CCY, _1M, _2M, _3M, _6M, _1Y, _2Y, _3Y, _5Y, _7Y, _10Y, _20Y, _30Y}
+            Dim columnValuesArray() As Object = New Object() {Nothing, RiskDate, CCY, _1M, _2M, _3M, _6M, _1Y, _2Y, _3Y, _5Y, _7Y, _10Y, _20Y, _30Y, _1D, _9M, _4Y, _6Y, _8Y, _9Y, _15Y, _40Y, _50Y, LastAction, LastUpdateUser, LastUpdateDate}
             rowYIELD_CURVESRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowYIELD_CURVESRow)
             Return rowYIELD_CURVESRow
@@ -5091,6 +5383,18 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.column10Y = MyBase.Columns("10Y")
             Me.column20Y = MyBase.Columns("20Y")
             Me.column30Y = MyBase.Columns("30Y")
+            Me.column1D = MyBase.Columns("1D")
+            Me.column9M = MyBase.Columns("9M")
+            Me.column4Y = MyBase.Columns("4Y")
+            Me.column6Y = MyBase.Columns("6Y")
+            Me.column8Y = MyBase.Columns("8Y")
+            Me.column9Y = MyBase.Columns("9Y")
+            Me.column15Y = MyBase.Columns("15Y")
+            Me.column40Y = MyBase.Columns("40Y")
+            Me.column50Y = MyBase.Columns("50Y")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5150,6 +5454,48 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.column30Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column30Y")
             Me.column30Y.ExtendedProperties.Add("Generator_UserColumnName", "30Y")
             MyBase.Columns.Add(Me.column30Y)
+            Me.column1D = New Global.System.Data.DataColumn("1D", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1D.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1D")
+            Me.column1D.ExtendedProperties.Add("Generator_UserColumnName", "1D")
+            MyBase.Columns.Add(Me.column1D)
+            Me.column9M = New Global.System.Data.DataColumn("9M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column9M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column9M")
+            Me.column9M.ExtendedProperties.Add("Generator_UserColumnName", "9M")
+            MyBase.Columns.Add(Me.column9M)
+            Me.column4Y = New Global.System.Data.DataColumn("4Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column4Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column4Y")
+            Me.column4Y.ExtendedProperties.Add("Generator_UserColumnName", "4Y")
+            MyBase.Columns.Add(Me.column4Y)
+            Me.column6Y = New Global.System.Data.DataColumn("6Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column6Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column6Y")
+            Me.column6Y.ExtendedProperties.Add("Generator_UserColumnName", "6Y")
+            MyBase.Columns.Add(Me.column6Y)
+            Me.column8Y = New Global.System.Data.DataColumn("8Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column8Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column8Y")
+            Me.column8Y.ExtendedProperties.Add("Generator_UserColumnName", "8Y")
+            MyBase.Columns.Add(Me.column8Y)
+            Me.column9Y = New Global.System.Data.DataColumn("9Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column9Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column9Y")
+            Me.column9Y.ExtendedProperties.Add("Generator_UserColumnName", "9Y")
+            MyBase.Columns.Add(Me.column9Y)
+            Me.column15Y = New Global.System.Data.DataColumn("15Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column15Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column15Y")
+            Me.column15Y.ExtendedProperties.Add("Generator_UserColumnName", "15Y")
+            MyBase.Columns.Add(Me.column15Y)
+            Me.column40Y = New Global.System.Data.DataColumn("40Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column40Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column40Y")
+            Me.column40Y.ExtendedProperties.Add("Generator_UserColumnName", "40Y")
+            MyBase.Columns.Add(Me.column40Y)
+            Me.column50Y = New Global.System.Data.DataColumn("50Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column50Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column50Y")
+            Me.column50Y.ExtendedProperties.Add("Generator_UserColumnName", "50Y")
+            MyBase.Columns.Add(Me.column50Y)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -5158,6 +5504,8 @@ Partial Public Class RiskControllingBasicsDataSet
             Me.columnID.ReadOnly = true
             Me.columnID.Unique = true
             Me.columnCCY.MaxLength = 255
+            Me.columnLastAction.MaxLength = 50
+            Me.columnLastUpdateUser.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5891,6 +6239,66 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_BC_WF.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'RATERISK BC WF' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_BC_WF.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_BC_WF.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'RATERISK BC WF' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_BC_WF.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_BC_WF.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'RATERISK BC WF' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_BC_WF.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PeriodNr() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_BC_WF.PeriodNrColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PeriodNr' in table 'RATERISK BC WF' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_BC_WF.PeriodNrColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsPeriodNull() As Boolean
             Return Me.IsNull(Me.tableRATERISK_BC_WF.PeriodColumn)
         End Function
@@ -6067,6 +6475,54 @@ Partial Public Class RiskControllingBasicsDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetMethodNull()
             Me(Me.tableRATERISK_BC_WF.MethodColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_BC_WF.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableRATERISK_BC_WF.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_BC_WF.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableRATERISK_BC_WF.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_BC_WF.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableRATERISK_BC_WF.LastUpdateDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPeriodNrNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_BC_WF.PeriodNrColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPeriodNrNull()
+            Me(Me.tableRATERISK_BC_WF.PeriodNrColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8908,6 +9364,66 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_BC_WF1.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'RATERISK BC WF1' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_BC_WF1.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_BC_WF1.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'RATERISK BC WF1' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_BC_WF1.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_BC_WF1.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'RATERISK BC WF1' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_BC_WF1.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PeriodNr() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_BC_WF1.PeriodNrColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PeriodNr' in table 'RATERISK BC WF1' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_BC_WF1.PeriodNrColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsPeriodNull() As Boolean
             Return Me.IsNull(Me.tableRATERISK_BC_WF1.PeriodColumn)
         End Function
@@ -9084,6 +9600,54 @@ Partial Public Class RiskControllingBasicsDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetMethodNull()
             Me(Me.tableRATERISK_BC_WF1.MethodColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_BC_WF1.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableRATERISK_BC_WF1.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_BC_WF1.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableRATERISK_BC_WF1.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_BC_WF1.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableRATERISK_BC_WF1.LastUpdateDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPeriodNrNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_BC_WF1.PeriodNrColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPeriodNrNull()
+            Me(Me.tableRATERISK_BC_WF1.PeriodNrColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -9325,6 +9889,186 @@ Partial Public Class RiskControllingBasicsDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _1D() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._1DColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '1D' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._1DColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _9M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._9MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '9M' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._9MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _4Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._4YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '4Y' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._4YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _6Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._6YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '6Y' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._6YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _8Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._8YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '8Y' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._8YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _9Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._9YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '9Y' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._9YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _15Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._15YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '15Y' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._15YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _40Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._40YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '40Y' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._40YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _50Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES._50YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '50Y' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES._50YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableYIELD_CURVES.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'YIELD_CURVES' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableYIELD_CURVES.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsRiskDateNull() As Boolean
             Return Me.IsNull(Me.tableYIELD_CURVES.RiskDateColumn)
         End Function
@@ -9489,6 +10233,150 @@ Partial Public Class RiskControllingBasicsDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Set_30YNull()
             Me(Me.tableYIELD_CURVES._30YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_1DNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._1DColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_1DNull()
+            Me(Me.tableYIELD_CURVES._1DColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_9MNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._9MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_9MNull()
+            Me(Me.tableYIELD_CURVES._9MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_4YNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._4YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_4YNull()
+            Me(Me.tableYIELD_CURVES._4YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_6YNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._6YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_6YNull()
+            Me(Me.tableYIELD_CURVES._6YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_8YNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._8YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_8YNull()
+            Me(Me.tableYIELD_CURVES._8YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_9YNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._9YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_9YNull()
+            Me(Me.tableYIELD_CURVES._9YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_15YNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._15YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_15YNull()
+            Me(Me.tableYIELD_CURVES._15YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_40YNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._40YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_40YNull()
+            Me(Me.tableYIELD_CURVES._40YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_50YNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES._50YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_50YNull()
+            Me(Me.tableYIELD_CURVES._50YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableYIELD_CURVES.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableYIELD_CURVES.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableYIELD_CURVES.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableYIELD_CURVES.LastUpdateDateColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -10442,6 +11330,10 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             tableMapping.ColumnMappings.Add("WF+100", "WF+100")
             tableMapping.ColumnMappings.Add("WF-50", "WF-50")
             tableMapping.ColumnMappings.Add("Method", "Method")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
+            tableMapping.ColumnMappings.Add("PeriodNr", "PeriodNr")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -10458,7 +11350,13 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                 "= @Original_WF_TWIST1)) AND ((@IsNull_WF_TWIST2 = 1 AND [WF_TWIST2] IS NULL) OR "& _ 
                 "([WF_TWIST2] = @Original_WF_TWIST2)) AND ((@p15 = 1 AND [WF+100] IS NULL) OR ([W"& _ 
                 "F+100] = @p14)) AND ((@p18 = 1 AND [WF-50] IS NULL) OR ([WF-50] = @p17)) AND ((@"& _ 
-                "IsNull_Method = 1 AND [Method] IS NULL) OR ([Method] = @Original_Method)))"
+                "IsNull_Method = 1 AND [Method] IS NULL) OR ([Method] = @Original_Method)) AND (("& _ 
+                "@IsNull_LastAction = 1 AND [LastAction] IS NULL) OR ([LastAction] = @Original_La"& _ 
+                "stAction)) AND ((@IsNull_LastUpdateUser = 1 AND [LastUpdateUser] IS NULL) OR ([L"& _ 
+                "astUpdateUser] = @Original_LastUpdateUser)) AND ((@IsNull_LastUpdateDate = 1 AND"& _ 
+                " [LastUpdateDate] IS NULL) OR ([LastUpdateDate] = @Original_LastUpdateDate)) AND"& _ 
+                " ((@IsNull_PeriodNr = 1 AND [PeriodNr] IS NULL) OR ([PeriodNr] = @Original_Perio"& _ 
+                "dNr)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Period", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -10491,12 +11389,22 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p17", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-50", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Method", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Method", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastAction", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateUser", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PeriodNr", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [RATERISK BC WF] ([Period], [WF-200], [WF+200], [WF+50], [WF-100], [W"& _ 
                 "F], [WF15], [WF20], [WF25], [WFHUMP], [WF_TWIST1], [WF_TWIST2], [WF+100], [WF-50"& _ 
-                "], [Method]) VALUES (@Period, @p1, @p4, @p7, @p10, @WF, @WF15, @WF20, @WF25, @WF"& _ 
-                "HUMP, @WF_TWIST1, @WF_TWIST2, @p13, @p16, @Method)"
+                "], [Method], [LastAction], [LastUpdateUser], [LastUpdateDate], [PeriodNr]) VALUE"& _ 
+                "S (@Period, @p1, @p4, @p7, @p10, @WF, @WF15, @WF20, @WF25, @WFHUMP, @WF_TWIST1, "& _ 
+                "@WF_TWIST2, @p13, @p16, @Method, @LastAction, @LastUpdateUser, @LastUpdateDate, "& _ 
+                "@PeriodNr)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Period", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-200", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10513,26 +11421,36 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p13", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF+100", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p16", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-50", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Method", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [RATERISK BC WF] SET [Period] = @Period, [WF-200] = @p1, [WF+200] = @p4, ["& _ 
                 "WF+50] = @p7, [WF-100] = @p10, [WF] = @WF, [WF15] = @WF15, [WF20] = @WF20, [WF25"& _ 
                 "] = @WF25, [WFHUMP] = @WFHUMP, [WF_TWIST1] = @WF_TWIST1, [WF_TWIST2] = @WF_TWIST"& _ 
-                "2, [WF+100] = @p13, [WF-50] = @p16, [Method] = @Method WHERE (([ID] = @Original_"& _ 
-                "ID) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Peri"& _ 
-                "od)) AND ((@p3 = 1 AND [WF-200] IS NULL) OR ([WF-200] = @p2)) AND ((@p6 = 1 AND "& _ 
-                "[WF+200] IS NULL) OR ([WF+200] = @p5)) AND ((@p9 = 1 AND [WF+50] IS NULL) OR ([W"& _ 
-                "F+50] = @p8)) AND ((@p12 = 1 AND [WF-100] IS NULL) OR ([WF-100] = @p11)) AND ((@"& _ 
-                "IsNull_WF = 1 AND [WF] IS NULL) OR ([WF] = @Original_WF)) AND ((@IsNull_WF15 = 1"& _ 
-                " AND [WF15] IS NULL) OR ([WF15] = @Original_WF15)) AND ((@IsNull_WF20 = 1 AND [W"& _ 
-                "F20] IS NULL) OR ([WF20] = @Original_WF20)) AND ((@IsNull_WF25 = 1 AND [WF25] IS"& _ 
-                " NULL) OR ([WF25] = @Original_WF25)) AND ((@IsNull_WFHUMP = 1 AND [WFHUMP] IS NU"& _ 
-                "LL) OR ([WFHUMP] = @Original_WFHUMP)) AND ((@IsNull_WF_TWIST1 = 1 AND [WF_TWIST1"& _ 
-                "] IS NULL) OR ([WF_TWIST1] = @Original_WF_TWIST1)) AND ((@IsNull_WF_TWIST2 = 1 A"& _ 
-                "ND [WF_TWIST2] IS NULL) OR ([WF_TWIST2] = @Original_WF_TWIST2)) AND ((@p15 = 1 A"& _ 
-                "ND [WF+100] IS NULL) OR ([WF+100] = @p14)) AND ((@p18 = 1 AND [WF-50] IS NULL) O"& _ 
-                "R ([WF-50] = @p17)) AND ((@IsNull_Method = 1 AND [Method] IS NULL) OR ([Method] "& _ 
-                "= @Original_Method)))"
+                "2, [WF+100] = @p13, [WF-50] = @p16, [Method] = @Method, [LastAction] = @LastActi"& _ 
+                "on, [LastUpdateUser] = @LastUpdateUser, [LastUpdateDate] = @LastUpdateDate, [Per"& _ 
+                "iodNr] = @PeriodNr WHERE (([ID] = @Original_ID) AND ((@IsNull_Period = 1 AND [Pe"& _ 
+                "riod] IS NULL) OR ([Period] = @Original_Period)) AND ((@p3 = 1 AND [WF-200] IS N"& _ 
+                "ULL) OR ([WF-200] = @p2)) AND ((@p6 = 1 AND [WF+200] IS NULL) OR ([WF+200] = @p5"& _ 
+                ")) AND ((@p9 = 1 AND [WF+50] IS NULL) OR ([WF+50] = @p8)) AND ((@p12 = 1 AND [WF"& _ 
+                "-100] IS NULL) OR ([WF-100] = @p11)) AND ((@IsNull_WF = 1 AND [WF] IS NULL) OR ("& _ 
+                "[WF] = @Original_WF)) AND ((@IsNull_WF15 = 1 AND [WF15] IS NULL) OR ([WF15] = @O"& _ 
+                "riginal_WF15)) AND ((@IsNull_WF20 = 1 AND [WF20] IS NULL) OR ([WF20] = @Original"& _ 
+                "_WF20)) AND ((@IsNull_WF25 = 1 AND [WF25] IS NULL) OR ([WF25] = @Original_WF25))"& _ 
+                " AND ((@IsNull_WFHUMP = 1 AND [WFHUMP] IS NULL) OR ([WFHUMP] = @Original_WFHUMP)"& _ 
+                ") AND ((@IsNull_WF_TWIST1 = 1 AND [WF_TWIST1] IS NULL) OR ([WF_TWIST1] = @Origin"& _ 
+                "al_WF_TWIST1)) AND ((@IsNull_WF_TWIST2 = 1 AND [WF_TWIST2] IS NULL) OR ([WF_TWIS"& _ 
+                "T2] = @Original_WF_TWIST2)) AND ((@p15 = 1 AND [WF+100] IS NULL) OR ([WF+100] = "& _ 
+                "@p14)) AND ((@p18 = 1 AND [WF-50] IS NULL) OR ([WF-50] = @p17)) AND ((@IsNull_Me"& _ 
+                "thod = 1 AND [Method] IS NULL) OR ([Method] = @Original_Method)) AND ((@IsNull_L"& _ 
+                "astAction = 1 AND [LastAction] IS NULL) OR ([LastAction] = @Original_LastAction)"& _ 
+                ") AND ((@IsNull_LastUpdateUser = 1 AND [LastUpdateUser] IS NULL) OR ([LastUpdate"& _ 
+                "User] = @Original_LastUpdateUser)) AND ((@IsNull_LastUpdateDate = 1 AND [LastUpd"& _ 
+                "ateDate] IS NULL) OR ([LastUpdateDate] = @Original_LastUpdateDate)) AND ((@IsNul"& _ 
+                "l_PeriodNr = 1 AND [PeriodNr] IS NULL) OR ([PeriodNr] = @Original_PeriodNr)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Period", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-200", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10549,6 +11467,10 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p13", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF+100", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p16", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-50", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Method", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Period", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Period", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -10580,6 +11502,14 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p17", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-50", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Method", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Method", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastAction", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateUser", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PeriodNr", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10596,8 +11526,9 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, Period, [WF-200], [WF+200], [WF+50], [WF-100], WF, WF15, WF20, "& _ 
-                "WF25, WFHUMP, WF_TWIST1, WF_TWIST2, [WF+100], [WF-50], Method"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ["& _ 
-                "RATERISK BC WF]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Method = 1)"
+                "WF25, WFHUMP, WF_TWIST1, WF_TWIST2, [WF+100], [WF-50], Method, LastAction, LastU"& _ 
+                "pdateUser, LastUpdateDate, PeriodNr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK BC WF]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE    "& _ 
+                "    (Method = 1)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -10673,7 +11604,11 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                     ByVal Original_WF_TWIST2 As Global.System.Nullable(Of Double),  _
                     ByVal p14 As Global.System.Nullable(Of Double),  _
                     ByVal p17 As Global.System.Nullable(Of Double),  _
-                    ByVal Original_Method As Global.System.Nullable(Of Double)) As Integer
+                    ByVal Original_Method As Global.System.Nullable(Of Double),  _
+                    ByVal Original_LastAction As String,  _
+                    ByVal Original_LastUpdateUser As String,  _
+                    ByVal Original_LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_PeriodNr As Global.System.Nullable(Of Double)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_Period Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -10780,6 +11715,34 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
             End If
+            If (Original_LastAction Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_LastAction,String)
+            End If
+            If (Original_LastUpdateUser Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_LastUpdateUser,String)
+            End If
+            If (Original_LastUpdateDate.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PeriodNr.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_PeriodNr.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -10799,7 +11762,26 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Period As String, ByVal p1 As Global.System.Nullable(Of Double), ByVal p4 As Global.System.Nullable(Of Double), ByVal p7 As Global.System.Nullable(Of Double), ByVal p10 As Global.System.Nullable(Of Double), ByVal WF As Global.System.Nullable(Of Double), ByVal WF15 As Global.System.Nullable(Of Double), ByVal WF20 As Global.System.Nullable(Of Double), ByVal WF25 As Global.System.Nullable(Of Double), ByVal WFHUMP As Global.System.Nullable(Of Double), ByVal WF_TWIST1 As Global.System.Nullable(Of Double), ByVal WF_TWIST2 As Global.System.Nullable(Of Double), ByVal p13 As Global.System.Nullable(Of Double), ByVal p16 As Global.System.Nullable(Of Double), ByVal Method As Global.System.Nullable(Of Double)) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal Period As String,  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal p4 As Global.System.Nullable(Of Double),  _
+                    ByVal p7 As Global.System.Nullable(Of Double),  _
+                    ByVal p10 As Global.System.Nullable(Of Double),  _
+                    ByVal WF As Global.System.Nullable(Of Double),  _
+                    ByVal WF15 As Global.System.Nullable(Of Double),  _
+                    ByVal WF20 As Global.System.Nullable(Of Double),  _
+                    ByVal WF25 As Global.System.Nullable(Of Double),  _
+                    ByVal WFHUMP As Global.System.Nullable(Of Double),  _
+                    ByVal WF_TWIST1 As Global.System.Nullable(Of Double),  _
+                    ByVal WF_TWIST2 As Global.System.Nullable(Of Double),  _
+                    ByVal p13 As Global.System.Nullable(Of Double),  _
+                    ByVal p16 As Global.System.Nullable(Of Double),  _
+                    ByVal Method As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal PeriodNr As Global.System.Nullable(Of Double)) As Integer
             If (Period Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -10875,6 +11857,26 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (PeriodNr.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(PeriodNr.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -10910,6 +11912,10 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                     ByVal p13 As Global.System.Nullable(Of Double),  _
                     ByVal p16 As Global.System.Nullable(Of Double),  _
                     ByVal Method As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal PeriodNr As Global.System.Nullable(Of Double),  _
                     ByVal Original_ID As Integer,  _
                     ByVal Original_Period As String,  _
                     ByVal p2 As Global.System.Nullable(Of Double),  _
@@ -10925,7 +11931,11 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                     ByVal Original_WF_TWIST2 As Global.System.Nullable(Of Double),  _
                     ByVal p14 As Global.System.Nullable(Of Double),  _
                     ByVal p17 As Global.System.Nullable(Of Double),  _
-                    ByVal Original_Method As Global.System.Nullable(Of Double)) As Integer
+                    ByVal Original_Method As Global.System.Nullable(Of Double),  _
+                    ByVal Original_LastAction As String,  _
+                    ByVal Original_LastUpdateUser As String,  _
+                    ByVal Original_LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_PeriodNr As Global.System.Nullable(Of Double)) As Integer
             If (Period Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -11001,111 +12011,159 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_ID,Integer)
-            If (Original_Period Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(LastUpdateDate.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Period,String)
             End If
-            If (p2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(p2.Value,Double)
+            If (PeriodNr.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(PeriodNr.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
-            If (p5.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p5.Value,Double)
-            Else
+            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_ID,Integer)
+            If (Original_Period Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Period,String)
             End If
-            If (p8.HasValue = true) Then
+            If (p2.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p8.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p2.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
-            If (p11.HasValue = true) Then
+            If (p5.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p11.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p5.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF.HasValue = true) Then
+            If (p8.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_WF.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(p8.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF15.HasValue = true) Then
+            If (p11.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_WF15.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(p11.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF20.HasValue = true) Then
+            If (Original_WF.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_WF20.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_WF.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF25.HasValue = true) Then
+            If (Original_WF15.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_WF25.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_WF15.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
-            If (Original_WFHUMP.HasValue = true) Then
+            If (Original_WF20.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_WFHUMP.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_WF20.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF_TWIST1.HasValue = true) Then
+            If (Original_WF25.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_WF_TWIST1.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_WF25.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF_TWIST2.HasValue = true) Then
+            If (Original_WFHUMP.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_WF_TWIST2.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_WFHUMP.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             End If
-            If (p14.HasValue = true) Then
+            If (Original_WF_TWIST1.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(p14.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_WF_TWIST1.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             End If
-            If (p17.HasValue = true) Then
+            If (Original_WF_TWIST2.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(p17.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_WF_TWIST2.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             End If
-            If (Original_Method.HasValue = true) Then
+            If (p14.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Method.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(p14.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+            End If
+            If (p17.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(p17.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Method.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_Method.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+            End If
+            If (Original_LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_LastAction,String)
+            End If
+            If (Original_LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_LastUpdateUser,String)
+            End If
+            If (Original_LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PeriodNr.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_PeriodNr.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -15505,6 +16563,10 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             tableMapping.ColumnMappings.Add("WF+100", "WF+100")
             tableMapping.ColumnMappings.Add("WF-50", "WF-50")
             tableMapping.ColumnMappings.Add("Method", "Method")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
+            tableMapping.ColumnMappings.Add("PeriodNr", "PeriodNr")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -15521,7 +16583,13 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                 "= @Original_WF_TWIST1)) AND ((@IsNull_WF_TWIST2 = 1 AND [WF_TWIST2] IS NULL) OR "& _ 
                 "([WF_TWIST2] = @Original_WF_TWIST2)) AND ((@p15 = 1 AND [WF+100] IS NULL) OR ([W"& _ 
                 "F+100] = @p14)) AND ((@p18 = 1 AND [WF-50] IS NULL) OR ([WF-50] = @p17)) AND ((@"& _ 
-                "IsNull_Method = 1 AND [Method] IS NULL) OR ([Method] = @Original_Method)))"
+                "IsNull_Method = 1 AND [Method] IS NULL) OR ([Method] = @Original_Method)) AND (("& _ 
+                "@IsNull_LastAction = 1 AND [LastAction] IS NULL) OR ([LastAction] = @Original_La"& _ 
+                "stAction)) AND ((@IsNull_LastUpdateUser = 1 AND [LastUpdateUser] IS NULL) OR ([L"& _ 
+                "astUpdateUser] = @Original_LastUpdateUser)) AND ((@IsNull_LastUpdateDate = 1 AND"& _ 
+                " [LastUpdateDate] IS NULL) OR ([LastUpdateDate] = @Original_LastUpdateDate)) AND"& _ 
+                " ((@IsNull_PeriodNr = 1 AND [PeriodNr] IS NULL) OR ([PeriodNr] = @Original_Perio"& _ 
+                "dNr)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Period", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -15554,12 +16622,22 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p17", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-50", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Method", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Method", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastAction", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateUser", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PeriodNr", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [RATERISK BC WF] ([Period], [WF-200], [WF+200], [WF+50], [WF-100], [W"& _ 
                 "F], [WF15], [WF20], [WF25], [WFHUMP], [WF_TWIST1], [WF_TWIST2], [WF+100], [WF-50"& _ 
-                "], [Method]) VALUES (@Period, @p1, @p4, @p7, @p10, @WF, @WF15, @WF20, @WF25, @WF"& _ 
-                "HUMP, @WF_TWIST1, @WF_TWIST2, @p13, @p16, @Method)"
+                "], [Method], [LastAction], [LastUpdateUser], [LastUpdateDate], [PeriodNr]) VALUE"& _ 
+                "S (@Period, @p1, @p4, @p7, @p10, @WF, @WF15, @WF20, @WF25, @WFHUMP, @WF_TWIST1, "& _ 
+                "@WF_TWIST2, @p13, @p16, @Method, @LastAction, @LastUpdateUser, @LastUpdateDate, "& _ 
+                "@PeriodNr)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Period", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-200", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15576,26 +16654,36 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p13", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF+100", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p16", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-50", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Method", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [RATERISK BC WF] SET [Period] = @Period, [WF-200] = @p1, [WF+200] = @p4, ["& _ 
                 "WF+50] = @p7, [WF-100] = @p10, [WF] = @WF, [WF15] = @WF15, [WF20] = @WF20, [WF25"& _ 
                 "] = @WF25, [WFHUMP] = @WFHUMP, [WF_TWIST1] = @WF_TWIST1, [WF_TWIST2] = @WF_TWIST"& _ 
-                "2, [WF+100] = @p13, [WF-50] = @p16, [Method] = @Method WHERE (([ID] = @Original_"& _ 
-                "ID) AND ((@IsNull_Period = 1 AND [Period] IS NULL) OR ([Period] = @Original_Peri"& _ 
-                "od)) AND ((@p3 = 1 AND [WF-200] IS NULL) OR ([WF-200] = @p2)) AND ((@p6 = 1 AND "& _ 
-                "[WF+200] IS NULL) OR ([WF+200] = @p5)) AND ((@p9 = 1 AND [WF+50] IS NULL) OR ([W"& _ 
-                "F+50] = @p8)) AND ((@p12 = 1 AND [WF-100] IS NULL) OR ([WF-100] = @p11)) AND ((@"& _ 
-                "IsNull_WF = 1 AND [WF] IS NULL) OR ([WF] = @Original_WF)) AND ((@IsNull_WF15 = 1"& _ 
-                " AND [WF15] IS NULL) OR ([WF15] = @Original_WF15)) AND ((@IsNull_WF20 = 1 AND [W"& _ 
-                "F20] IS NULL) OR ([WF20] = @Original_WF20)) AND ((@IsNull_WF25 = 1 AND [WF25] IS"& _ 
-                " NULL) OR ([WF25] = @Original_WF25)) AND ((@IsNull_WFHUMP = 1 AND [WFHUMP] IS NU"& _ 
-                "LL) OR ([WFHUMP] = @Original_WFHUMP)) AND ((@IsNull_WF_TWIST1 = 1 AND [WF_TWIST1"& _ 
-                "] IS NULL) OR ([WF_TWIST1] = @Original_WF_TWIST1)) AND ((@IsNull_WF_TWIST2 = 1 A"& _ 
-                "ND [WF_TWIST2] IS NULL) OR ([WF_TWIST2] = @Original_WF_TWIST2)) AND ((@p15 = 1 A"& _ 
-                "ND [WF+100] IS NULL) OR ([WF+100] = @p14)) AND ((@p18 = 1 AND [WF-50] IS NULL) O"& _ 
-                "R ([WF-50] = @p17)) AND ((@IsNull_Method = 1 AND [Method] IS NULL) OR ([Method] "& _ 
-                "= @Original_Method)))"
+                "2, [WF+100] = @p13, [WF-50] = @p16, [Method] = @Method, [LastAction] = @LastActi"& _ 
+                "on, [LastUpdateUser] = @LastUpdateUser, [LastUpdateDate] = @LastUpdateDate, [Per"& _ 
+                "iodNr] = @PeriodNr WHERE (([ID] = @Original_ID) AND ((@IsNull_Period = 1 AND [Pe"& _ 
+                "riod] IS NULL) OR ([Period] = @Original_Period)) AND ((@p3 = 1 AND [WF-200] IS N"& _ 
+                "ULL) OR ([WF-200] = @p2)) AND ((@p6 = 1 AND [WF+200] IS NULL) OR ([WF+200] = @p5"& _ 
+                ")) AND ((@p9 = 1 AND [WF+50] IS NULL) OR ([WF+50] = @p8)) AND ((@p12 = 1 AND [WF"& _ 
+                "-100] IS NULL) OR ([WF-100] = @p11)) AND ((@IsNull_WF = 1 AND [WF] IS NULL) OR ("& _ 
+                "[WF] = @Original_WF)) AND ((@IsNull_WF15 = 1 AND [WF15] IS NULL) OR ([WF15] = @O"& _ 
+                "riginal_WF15)) AND ((@IsNull_WF20 = 1 AND [WF20] IS NULL) OR ([WF20] = @Original"& _ 
+                "_WF20)) AND ((@IsNull_WF25 = 1 AND [WF25] IS NULL) OR ([WF25] = @Original_WF25))"& _ 
+                " AND ((@IsNull_WFHUMP = 1 AND [WFHUMP] IS NULL) OR ([WFHUMP] = @Original_WFHUMP)"& _ 
+                ") AND ((@IsNull_WF_TWIST1 = 1 AND [WF_TWIST1] IS NULL) OR ([WF_TWIST1] = @Origin"& _ 
+                "al_WF_TWIST1)) AND ((@IsNull_WF_TWIST2 = 1 AND [WF_TWIST2] IS NULL) OR ([WF_TWIS"& _ 
+                "T2] = @Original_WF_TWIST2)) AND ((@p15 = 1 AND [WF+100] IS NULL) OR ([WF+100] = "& _ 
+                "@p14)) AND ((@p18 = 1 AND [WF-50] IS NULL) OR ([WF-50] = @p17)) AND ((@IsNull_Me"& _ 
+                "thod = 1 AND [Method] IS NULL) OR ([Method] = @Original_Method)) AND ((@IsNull_L"& _ 
+                "astAction = 1 AND [LastAction] IS NULL) OR ([LastAction] = @Original_LastAction)"& _ 
+                ") AND ((@IsNull_LastUpdateUser = 1 AND [LastUpdateUser] IS NULL) OR ([LastUpdate"& _ 
+                "User] = @Original_LastUpdateUser)) AND ((@IsNull_LastUpdateDate = 1 AND [LastUpd"& _ 
+                "ateDate] IS NULL) OR ([LastUpdateDate] = @Original_LastUpdateDate)) AND ((@IsNul"& _ 
+                "l_PeriodNr = 1 AND [PeriodNr] IS NULL) OR ([PeriodNr] = @Original_PeriodNr)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Period", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-200", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -15612,6 +16700,10 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p13", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF+100", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p16", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-50", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Method", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Period", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Period", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -15643,6 +16735,14 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p17", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF-50", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Method", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Method", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Method", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastAction", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateUser", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_LastUpdateDate", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_PeriodNr", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15659,8 +16759,9 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, Period, [WF-200], [WF+200], [WF+50], [WF-100], WF, WF15, WF20, "& _ 
-                "WF25, WFHUMP, WF_TWIST1, WF_TWIST2, [WF+100], [WF-50], Method"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ["& _ 
-                "RATERISK BC WF]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Method = 2)"
+                "WF25, WFHUMP, WF_TWIST1, WF_TWIST2, [WF+100], [WF-50], Method, LastAction, LastU"& _ 
+                "pdateUser, LastUpdateDate, PeriodNr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK BC WF]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE    "& _ 
+                "    (Method = 2)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -15736,7 +16837,11 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                     ByVal Original_WF_TWIST2 As Global.System.Nullable(Of Double),  _
                     ByVal p14 As Global.System.Nullable(Of Double),  _
                     ByVal p17 As Global.System.Nullable(Of Double),  _
-                    ByVal Original_Method As Global.System.Nullable(Of Double)) As Integer
+                    ByVal Original_Method As Global.System.Nullable(Of Double),  _
+                    ByVal Original_LastAction As String,  _
+                    ByVal Original_LastUpdateUser As String,  _
+                    ByVal Original_LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_PeriodNr As Global.System.Nullable(Of Double)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_Period Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -15843,6 +16948,34 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
             End If
+            If (Original_LastAction Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_LastAction,String)
+            End If
+            If (Original_LastUpdateUser Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_LastUpdateUser,String)
+            End If
+            If (Original_LastUpdateDate.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PeriodNr.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_PeriodNr.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -15862,7 +16995,26 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal Period As String, ByVal p1 As Global.System.Nullable(Of Double), ByVal p4 As Global.System.Nullable(Of Double), ByVal p7 As Global.System.Nullable(Of Double), ByVal p10 As Global.System.Nullable(Of Double), ByVal WF As Global.System.Nullable(Of Double), ByVal WF15 As Global.System.Nullable(Of Double), ByVal WF20 As Global.System.Nullable(Of Double), ByVal WF25 As Global.System.Nullable(Of Double), ByVal WFHUMP As Global.System.Nullable(Of Double), ByVal WF_TWIST1 As Global.System.Nullable(Of Double), ByVal WF_TWIST2 As Global.System.Nullable(Of Double), ByVal p13 As Global.System.Nullable(Of Double), ByVal p16 As Global.System.Nullable(Of Double), ByVal Method As Global.System.Nullable(Of Double)) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal Period As String,  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal p4 As Global.System.Nullable(Of Double),  _
+                    ByVal p7 As Global.System.Nullable(Of Double),  _
+                    ByVal p10 As Global.System.Nullable(Of Double),  _
+                    ByVal WF As Global.System.Nullable(Of Double),  _
+                    ByVal WF15 As Global.System.Nullable(Of Double),  _
+                    ByVal WF20 As Global.System.Nullable(Of Double),  _
+                    ByVal WF25 As Global.System.Nullable(Of Double),  _
+                    ByVal WFHUMP As Global.System.Nullable(Of Double),  _
+                    ByVal WF_TWIST1 As Global.System.Nullable(Of Double),  _
+                    ByVal WF_TWIST2 As Global.System.Nullable(Of Double),  _
+                    ByVal p13 As Global.System.Nullable(Of Double),  _
+                    ByVal p16 As Global.System.Nullable(Of Double),  _
+                    ByVal Method As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal PeriodNr As Global.System.Nullable(Of Double)) As Integer
             If (Period Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -15938,6 +17090,26 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (PeriodNr.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(PeriodNr.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -15973,6 +17145,10 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                     ByVal p13 As Global.System.Nullable(Of Double),  _
                     ByVal p16 As Global.System.Nullable(Of Double),  _
                     ByVal Method As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal PeriodNr As Global.System.Nullable(Of Double),  _
                     ByVal Original_ID As Integer,  _
                     ByVal Original_Period As String,  _
                     ByVal p2 As Global.System.Nullable(Of Double),  _
@@ -15988,7 +17164,11 @@ Namespace RiskControllingBasicsDataSetTableAdapters
                     ByVal Original_WF_TWIST2 As Global.System.Nullable(Of Double),  _
                     ByVal p14 As Global.System.Nullable(Of Double),  _
                     ByVal p17 As Global.System.Nullable(Of Double),  _
-                    ByVal Original_Method As Global.System.Nullable(Of Double)) As Integer
+                    ByVal Original_Method As Global.System.Nullable(Of Double),  _
+                    ByVal Original_LastAction As String,  _
+                    ByVal Original_LastUpdateUser As String,  _
+                    ByVal Original_LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_PeriodNr As Global.System.Nullable(Of Double)) As Integer
             If (Period Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -16064,111 +17244,159 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_ID,Integer)
-            If (Original_Period Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(LastUpdateDate.Value,Date)
+            Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_Period,String)
             End If
-            If (p2.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(p2.Value,Double)
+            If (PeriodNr.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(PeriodNr.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
-            If (p5.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p5.Value,Double)
-            Else
+            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_ID,Integer)
+            If (Original_Period Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_Period,String)
             End If
-            If (p8.HasValue = true) Then
+            If (p2.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p8.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p2.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
-            If (p11.HasValue = true) Then
+            If (p5.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p11.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p5.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF.HasValue = true) Then
+            If (p8.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_WF.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(p8.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF15.HasValue = true) Then
+            If (p11.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_WF15.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(p11.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF20.HasValue = true) Then
+            If (Original_WF.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_WF20.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_WF.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF25.HasValue = true) Then
+            If (Original_WF15.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_WF25.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_WF15.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
-            If (Original_WFHUMP.HasValue = true) Then
+            If (Original_WF20.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_WFHUMP.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_WF20.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF_TWIST1.HasValue = true) Then
+            If (Original_WF25.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_WF_TWIST1.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_WF25.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
-            If (Original_WF_TWIST2.HasValue = true) Then
+            If (Original_WFHUMP.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(38).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_WF_TWIST2.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_WFHUMP.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(38).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
             End If
-            If (p14.HasValue = true) Then
+            If (Original_WF_TWIST1.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(40).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(p14.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_WF_TWIST1.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(40).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
             End If
-            If (p17.HasValue = true) Then
+            If (Original_WF_TWIST2.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(42).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(p17.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_WF_TWIST2.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(42).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
             End If
-            If (Original_Method.HasValue = true) Then
+            If (p14.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(44).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Method.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(p14.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(44).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+            End If
+            If (p17.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(p17.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = Global.System.DBNull.Value
+            End If
+            If (Original_Method.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_Method.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = Global.System.DBNull.Value
+            End If
+            If (Original_LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_LastAction,String)
+            End If
+            If (Original_LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_LastUpdateUser,String)
+            End If
+            If (Original_LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PeriodNr.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_PeriodNr.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -16328,6 +17556,18 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             tableMapping.ColumnMappings.Add("10Y", "10Y")
             tableMapping.ColumnMappings.Add("20Y", "20Y")
             tableMapping.ColumnMappings.Add("30Y", "30Y")
+            tableMapping.ColumnMappings.Add("1D", "1D")
+            tableMapping.ColumnMappings.Add("9M", "9M")
+            tableMapping.ColumnMappings.Add("4Y", "4Y")
+            tableMapping.ColumnMappings.Add("6Y", "6Y")
+            tableMapping.ColumnMappings.Add("8Y", "8Y")
+            tableMapping.ColumnMappings.Add("9Y", "9Y")
+            tableMapping.ColumnMappings.Add("15Y", "15Y")
+            tableMapping.ColumnMappings.Add("40Y", "40Y")
+            tableMapping.ColumnMappings.Add("50Y", "50Y")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -16337,8 +17577,11 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [YIELD_CURVES] ([RiskDate], [CCY], [1M], [2M], [3M], [6M], [1Y], [2Y]"& _ 
-                ", [3Y], [5Y], [7Y], [10Y], [20Y], [30Y]) VALUES (@RiskDate, @CCY, @p1, @p4, @p7,"& _ 
-                " @p10, @p13, @p16, @p19, @p22, @p25, @p28, @p31, @p34)"
+                ", [3Y], [5Y], [7Y], [10Y], [20Y], [30Y], [1D], [9M], [4Y], [6Y], [8Y], [9Y], [15"& _ 
+                "Y], [40Y], [50Y], [LastAction], [LastUpdateUser], [LastUpdateDate]) VALUES (@Ris"& _ 
+                "kDate, @CCY, @p1, @p4, @p7, @p10, @p13, @p16, @p19, @p22, @p25, @p28, @p31, @p34"& _ 
+                ", @p37, @p40, @p43, @p46, @p49, @p52, @p55, @p58, @p61, @LastAction, @LastUpdate"& _ 
+                "User, @LastUpdateDate)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CCY", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CCY", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -16354,12 +17597,26 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p28", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "10Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p31", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "20Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p34", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "30Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p37", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1D", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p40", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p43", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "4Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p46", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p49", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "8Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p52", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p55", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "15Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p58", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "40Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p61", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "50Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [YIELD_CURVES] SET [RiskDate] = @RiskDate, [CCY] = @CCY, [1M] = @p1, [2M] "& _ 
                 "= @p4, [3M] = @p7, [6M] = @p10, [1Y] = @p13, [2Y] = @p16, [3Y] = @p19, [5Y] = @p"& _ 
-                "22, [7Y] = @p25, [10Y] = @p28, [20Y] = @p31, [30Y] = @p34 WHERE (([ID] = @Origin"& _ 
-                "al_ID))"
+                "22, [7Y] = @p25, [10Y] = @p28, [20Y] = @p31, [30Y] = @p34, [1D] = @p37, [9M] = @"& _ 
+                "p40, [4Y] = @p43, [6Y] = @p46, [8Y] = @p49, [9Y] = @p52, [15Y] = @p55, [40Y] = @"& _ 
+                "p58, [50Y] = @p61, [LastAction] = @LastAction, [LastUpdateUser] = @LastUpdateUse"& _ 
+                "r, [LastUpdateDate] = @LastUpdateDate WHERE (([ID] = @Original_ID))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CCY", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CCY", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -16375,6 +17632,18 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p28", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "10Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p31", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "20Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p34", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "30Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p37", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1D", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p40", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p43", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "4Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p46", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p49", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "8Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p52", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p55", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "15Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p58", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "40Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p61", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "50Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -16388,12 +17657,22 @@ Namespace RiskControllingBasicsDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, RiskDate, CCY, [1M], [2M], [3M], [6M], [1Y], [2Y], [3Y], [5Y], "& _ 
-                "[7Y], [10Y], [20Y], [30Y]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            YIELD_CURVES"
+                "[7Y], [10Y], [20Y], [30Y], [1D], [9M], [4Y], [6Y], [8Y], [9Y], [15Y], [40Y], [50"& _ 
+                "Y], LastAction, LastUpdateUser, LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            YIELD_CURVES"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"OR"& _ 
+                "DER BY RiskDate DESC"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT [10Y], [15Y], [1D], [1M], [1Y], [20Y], [2M], [2Y], [30Y], [3M], [3Y], [40Y"& _ 
+                "], [4Y], [50Y], [5Y], [6M], [6Y], [7Y], [8Y], [9M], [9Y], CCY, ID, LastAction, L"& _ 
+                "astUpdateDate, LastUpdateUser, RiskDate FROM YIELD_CURVES WHERE (RiskDate = @Par"& _ 
+                "am1) ORDER BY ID"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -16415,6 +17694,40 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData() As RiskControllingBasicsDataSet.YIELD_CURVESDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As RiskControllingBasicsDataSet.YIELD_CURVESDataTable = New RiskControllingBasicsDataSet.YIELD_CURVESDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByRiskDate(ByVal dataTable As RiskControllingBasicsDataSet.YIELD_CURVESDataTable, ByVal Param1 As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Param1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByRiskDate(ByVal Param1 As Global.System.Nullable(Of Date)) As RiskControllingBasicsDataSet.YIELD_CURVESDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Param1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
             Dim dataTable As RiskControllingBasicsDataSet.YIELD_CURVESDataTable = New RiskControllingBasicsDataSet.YIELD_CURVESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -16473,7 +17786,33 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal RiskDate As Global.System.Nullable(Of Date), ByVal CCY As String, ByVal p1 As Global.System.Nullable(Of Double), ByVal p4 As Global.System.Nullable(Of Double), ByVal p7 As Global.System.Nullable(Of Double), ByVal p10 As Global.System.Nullable(Of Double), ByVal p13 As Global.System.Nullable(Of Double), ByVal p16 As Global.System.Nullable(Of Double), ByVal p19 As Global.System.Nullable(Of Double), ByVal p22 As Global.System.Nullable(Of Double), ByVal p25 As Global.System.Nullable(Of Double), ByVal p28 As Global.System.Nullable(Of Double), ByVal p31 As Global.System.Nullable(Of Double), ByVal p34 As Global.System.Nullable(Of Double)) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal RiskDate As Global.System.Nullable(Of Date),  _
+                    ByVal CCY As String,  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal p4 As Global.System.Nullable(Of Double),  _
+                    ByVal p7 As Global.System.Nullable(Of Double),  _
+                    ByVal p10 As Global.System.Nullable(Of Double),  _
+                    ByVal p13 As Global.System.Nullable(Of Double),  _
+                    ByVal p16 As Global.System.Nullable(Of Double),  _
+                    ByVal p19 As Global.System.Nullable(Of Double),  _
+                    ByVal p22 As Global.System.Nullable(Of Double),  _
+                    ByVal p25 As Global.System.Nullable(Of Double),  _
+                    ByVal p28 As Global.System.Nullable(Of Double),  _
+                    ByVal p31 As Global.System.Nullable(Of Double),  _
+                    ByVal p34 As Global.System.Nullable(Of Double),  _
+                    ByVal p37 As Global.System.Nullable(Of Double),  _
+                    ByVal p40 As Global.System.Nullable(Of Double),  _
+                    ByVal p43 As Global.System.Nullable(Of Double),  _
+                    ByVal p46 As Global.System.Nullable(Of Double),  _
+                    ByVal p49 As Global.System.Nullable(Of Double),  _
+                    ByVal p52 As Global.System.Nullable(Of Double),  _
+                    ByVal p55 As Global.System.Nullable(Of Double),  _
+                    ByVal p58 As Global.System.Nullable(Of Double),  _
+                    ByVal p61 As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
             If (RiskDate.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(RiskDate.Value,Date)
             Else
@@ -16544,6 +17883,66 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
+            If (p37.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(p37.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (p40.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(p40.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (p43.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(p43.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (p46.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(p46.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (p49.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(p49.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (p52.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(p52.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (p55.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(p55.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (p58.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(p58.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (p61.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(p61.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(24).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(25).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -16563,7 +17962,34 @@ Namespace RiskControllingBasicsDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal RiskDate As Global.System.Nullable(Of Date), ByVal CCY As String, ByVal p1 As Global.System.Nullable(Of Double), ByVal p4 As Global.System.Nullable(Of Double), ByVal p7 As Global.System.Nullable(Of Double), ByVal p10 As Global.System.Nullable(Of Double), ByVal p13 As Global.System.Nullable(Of Double), ByVal p16 As Global.System.Nullable(Of Double), ByVal p19 As Global.System.Nullable(Of Double), ByVal p22 As Global.System.Nullable(Of Double), ByVal p25 As Global.System.Nullable(Of Double), ByVal p28 As Global.System.Nullable(Of Double), ByVal p31 As Global.System.Nullable(Of Double), ByVal p34 As Global.System.Nullable(Of Double), ByVal Original_ID As Integer) As Integer
+        Public Overloads Overridable Function Update( _
+                    ByVal RiskDate As Global.System.Nullable(Of Date),  _
+                    ByVal CCY As String,  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal p4 As Global.System.Nullable(Of Double),  _
+                    ByVal p7 As Global.System.Nullable(Of Double),  _
+                    ByVal p10 As Global.System.Nullable(Of Double),  _
+                    ByVal p13 As Global.System.Nullable(Of Double),  _
+                    ByVal p16 As Global.System.Nullable(Of Double),  _
+                    ByVal p19 As Global.System.Nullable(Of Double),  _
+                    ByVal p22 As Global.System.Nullable(Of Double),  _
+                    ByVal p25 As Global.System.Nullable(Of Double),  _
+                    ByVal p28 As Global.System.Nullable(Of Double),  _
+                    ByVal p31 As Global.System.Nullable(Of Double),  _
+                    ByVal p34 As Global.System.Nullable(Of Double),  _
+                    ByVal p37 As Global.System.Nullable(Of Double),  _
+                    ByVal p40 As Global.System.Nullable(Of Double),  _
+                    ByVal p43 As Global.System.Nullable(Of Double),  _
+                    ByVal p46 As Global.System.Nullable(Of Double),  _
+                    ByVal p49 As Global.System.Nullable(Of Double),  _
+                    ByVal p52 As Global.System.Nullable(Of Double),  _
+                    ByVal p55 As Global.System.Nullable(Of Double),  _
+                    ByVal p58 As Global.System.Nullable(Of Double),  _
+                    ByVal p61 As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_ID As Integer) As Integer
             If (RiskDate.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(RiskDate.Value,Date)
             Else
@@ -16634,7 +18060,67 @@ Namespace RiskControllingBasicsDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_ID,Integer)
+            If (p37.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(p37.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (p40.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(p40.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (p43.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(p43.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (p46.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(p46.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (p49.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(p49.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (p52.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(p52.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (p55.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(p55.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (p58.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p58.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (p61.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(p61.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

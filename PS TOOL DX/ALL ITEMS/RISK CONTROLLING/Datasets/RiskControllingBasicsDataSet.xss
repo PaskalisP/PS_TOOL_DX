@@ -15,7 +15,7 @@
     <Shape ID="DesignTable:PD_EXTERNAL" ZOrder="7" X="386" Y="360" Height="305" Width="227" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
     <Shape ID="DesignTable:CUSTOMER_RATING_DETAILS" ZOrder="6" X="976" Y="448" Height="286" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
     <Shape ID="DesignTable:RATERISK BC WF1" ZOrder="2" X="521" Y="23" Height="305" Width="250" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:YIELD_CURVES" ZOrder="1" X="1147" Y="36" Height="305" Width="229" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:YIELD_CURVES" ZOrder="1" X="1122" Y="33" Height="324" Width="266" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_CUSTOMER_RATING_DETAILS_CUSTOMER_RATING_DETAILS" ZOrder="5" LineWidth="11">

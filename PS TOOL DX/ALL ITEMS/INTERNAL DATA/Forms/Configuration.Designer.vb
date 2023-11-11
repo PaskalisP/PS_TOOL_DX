@@ -21,8 +21,8 @@ Partial Class Configuration
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Configuration))
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.DepartmentsParameterView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colABTEILUNGSPARAMETERNAME = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -60,34 +60,6 @@ Partial Class Configuration
         Me.colLastUpdateUser = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemDateEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.RepositoryItemSpinEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
-        Me.LayoutView1 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
-        Me.LayoutViewColumn1 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colID = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn2 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colABTEILUNGSCODE = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn3 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colABTEILUNGSNAME = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn4 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colABTEILUNGSLEITER = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn5 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colABTEILUNGTEL = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn6 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colABTEILUNGFAX = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn7 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn8 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colABTEILUNGBEMERKUNGEN = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn9 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colABTEILUNGEVENTJOURNAL = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn10 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colABTEILUNGSTATUS = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn11 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colCURRENTUSER = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn12 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colBearbeitungsstatus = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn13 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.layoutViewField_colIdBANK = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewCard1 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.ParameterView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colPARAMETER1 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -97,20 +69,16 @@ Partial Class Configuration
         Me.colIdABTEILUNGSPARAMETER = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNPARAMETER1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colNPARAMETER2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNPARAMETER3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNPARAMETER4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDPARAMETER1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDPARAMETER2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLastAction2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLastUpdateDate2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLastUpdateUser2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemTextEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.GridColumn4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemImageComboBox1 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
-        Me.GridColumn5 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemMemoExEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit()
-        Me.GridColumn6 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.PARAMETER_AllBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Parameter_All_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -124,6 +92,8 @@ Partial Class Configuration
         Me.colNPARAMETER11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Number_RepositoryItemSpinEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
         Me.colNPARAMETER21 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNPARAMETER31 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colNPARAMETER41 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colDPARAMETER11 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemDateEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.DPARAMETER22 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -132,43 +102,6 @@ Partial Class Configuration
         Me.colLastUpdateDate3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.DateTime_RepositoryItemDateEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
         Me.colLastUpdateUser3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn7 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn8 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn9 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn10 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn11 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn12 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn13 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn14 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.LayoutView2 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
-        Me.LayoutViewColumn14 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn15 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField3 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn16 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField4 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn17 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField5 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn18 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField6 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn19 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField7 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn20 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField8 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn21 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField9 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn22 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField10 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn23 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField11 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn24 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField12 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn25 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField13 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn26 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField14 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewCard2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.ABTEILUNGSPARAMETERBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PARAMETERBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ABTEILUNGENTableAdapter = New PS_TOOL_DX.PSTOOLDatasetTableAdapters.ABTEILUNGENTableAdapter()
@@ -215,23 +148,7 @@ Partial Class Configuration
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colID, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colABTEILUNGSCODE, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colABTEILUNGSNAME, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colABTEILUNGSLEITER, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colABTEILUNGTEL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colABTEILUNGFAX, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colABTEILUNGBEMERKUNGEN, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colABTEILUNGEVENTJOURNAL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colABTEILUNGSTATUS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colCURRENTUSER, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colBearbeitungsstatus, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.layoutViewField_colIdBANK, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ParameterView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemMemoExEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -244,22 +161,6 @@ Partial Class Configuration
         CType(Me.RepositoryItemDateEdit2.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateTime_RepositoryItemDateEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ABTEILUNGSPARAMETERBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PARAMETERBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PARAMETERFK00BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -292,7 +193,6 @@ Partial Class Configuration
         Me.DepartmentsParameterView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
         Me.DepartmentsParameterView.OptionsDetail.AllowExpandEmptyDetails = True
         Me.DepartmentsParameterView.OptionsDetail.AutoZoomDetail = True
-        Me.DepartmentsParameterView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
         Me.DepartmentsParameterView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.DepartmentsParameterView.OptionsFilter.UseNewCustomFilterDialog = True
         Me.DepartmentsParameterView.OptionsFind.AlwaysVisible = True
@@ -484,12 +384,12 @@ Partial Class Configuration
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.ImageIndex = 7
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
         Me.GridControl1.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 2, True, False, "Print", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 8, True, False, "ExportToExcel", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 11, True, False, "ImportFromExcel", Nothing), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 7, True, False, "Delete", Nothing)})
-        GridLevelNode3.LevelTemplate = Me.DepartmentsParameterView
-        GridLevelNode4.LevelTemplate = Me.ParameterView
-        GridLevelNode4.RelationName = "PARAMETER_FK00"
-        GridLevelNode3.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode4})
-        GridLevelNode3.RelationName = "FK_ABTEILUNGSPARAMETER_ABTEILUNGEN"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
+        GridLevelNode1.LevelTemplate = Me.DepartmentsParameterView
+        GridLevelNode2.LevelTemplate = Me.ParameterView
+        GridLevelNode2.RelationName = "PARAMETER_FK00"
+        GridLevelNode1.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        GridLevelNode1.RelationName = "FK_ABTEILUNGSPARAMETER_ABTEILUNGEN"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.GridControl1.Location = New System.Drawing.Point(24, 45)
         Me.GridControl1.MainView = Me.DepartmentsView
         Me.GridControl1.Name = "GridControl1"
@@ -497,7 +397,7 @@ Partial Class Configuration
         Me.GridControl1.Size = New System.Drawing.Size(1384, 413)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.UseEmbeddedNavigator = True
-        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DepartmentsView, Me.LayoutView1, Me.ParameterView, Me.DepartmentsParameterView})
+        Me.GridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DepartmentsView, Me.ParameterView, Me.DepartmentsParameterView})
         '
         'ABTEILUNGENBindingSource
         '
@@ -530,7 +430,6 @@ Partial Class Configuration
         Me.DepartmentsView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
         Me.DepartmentsView.OptionsDetail.AllowExpandEmptyDetails = True
         Me.DepartmentsView.OptionsDetail.AutoZoomDetail = True
-        Me.DepartmentsView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
         Me.DepartmentsView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.DepartmentsView.OptionsFind.AlwaysVisible = True
         Me.DepartmentsView.OptionsMenu.ShowAddNewSummaryItem = DevExpress.Utils.DefaultBoolean.[True]
@@ -750,206 +649,6 @@ Partial Class Configuration
         Me.RepositoryItemSpinEdit1.Mask.EditMask = "n6"
         Me.RepositoryItemSpinEdit1.Name = "RepositoryItemSpinEdit1"
         '
-        'LayoutView1
-        '
-        Me.LayoutView1.CardMinSize = New System.Drawing.Size(575, 346)
-        Me.LayoutView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.LayoutViewColumn1, Me.LayoutViewColumn2, Me.LayoutViewColumn3, Me.LayoutViewColumn4, Me.LayoutViewColumn5, Me.LayoutViewColumn6, Me.LayoutViewColumn7, Me.LayoutViewColumn8, Me.LayoutViewColumn9, Me.LayoutViewColumn10, Me.LayoutViewColumn11, Me.LayoutViewColumn12, Me.LayoutViewColumn13})
-        Me.LayoutView1.GridControl = Me.GridControl1
-        Me.LayoutView1.Name = "LayoutView1"
-        Me.LayoutView1.TemplateCard = Me.LayoutViewCard1
-        '
-        'LayoutViewColumn1
-        '
-        Me.LayoutViewColumn1.FieldName = "ID"
-        Me.LayoutViewColumn1.LayoutViewField = Me.layoutViewField_colID
-        Me.LayoutViewColumn1.Name = "LayoutViewColumn1"
-        Me.LayoutViewColumn1.OptionsColumn.ReadOnly = True
-        '
-        'layoutViewField_colID
-        '
-        Me.layoutViewField_colID.EditorPreferredWidth = 404
-        Me.layoutViewField_colID.Location = New System.Drawing.Point(0, 0)
-        Me.layoutViewField_colID.Name = "layoutViewField_colID"
-        Me.layoutViewField_colID.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colID.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn2
-        '
-        Me.LayoutViewColumn2.FieldName = "ABTEILUNGS CODE"
-        Me.LayoutViewColumn2.LayoutViewField = Me.layoutViewField_colABTEILUNGSCODE
-        Me.LayoutViewColumn2.Name = "LayoutViewColumn2"
-        '
-        'layoutViewField_colABTEILUNGSCODE
-        '
-        Me.layoutViewField_colABTEILUNGSCODE.EditorPreferredWidth = 404
-        Me.layoutViewField_colABTEILUNGSCODE.Location = New System.Drawing.Point(0, 20)
-        Me.layoutViewField_colABTEILUNGSCODE.Name = "layoutViewField_colABTEILUNGSCODE"
-        Me.layoutViewField_colABTEILUNGSCODE.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colABTEILUNGSCODE.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn3
-        '
-        Me.LayoutViewColumn3.FieldName = "ABTEILUNGS NAME"
-        Me.LayoutViewColumn3.LayoutViewField = Me.layoutViewField_colABTEILUNGSNAME
-        Me.LayoutViewColumn3.Name = "LayoutViewColumn3"
-        '
-        'layoutViewField_colABTEILUNGSNAME
-        '
-        Me.layoutViewField_colABTEILUNGSNAME.EditorPreferredWidth = 404
-        Me.layoutViewField_colABTEILUNGSNAME.Location = New System.Drawing.Point(0, 40)
-        Me.layoutViewField_colABTEILUNGSNAME.Name = "layoutViewField_colABTEILUNGSNAME"
-        Me.layoutViewField_colABTEILUNGSNAME.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colABTEILUNGSNAME.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn4
-        '
-        Me.LayoutViewColumn4.FieldName = "ABTEILUNGSLEITER"
-        Me.LayoutViewColumn4.LayoutViewField = Me.layoutViewField_colABTEILUNGSLEITER
-        Me.LayoutViewColumn4.Name = "LayoutViewColumn4"
-        '
-        'layoutViewField_colABTEILUNGSLEITER
-        '
-        Me.layoutViewField_colABTEILUNGSLEITER.EditorPreferredWidth = 404
-        Me.layoutViewField_colABTEILUNGSLEITER.Location = New System.Drawing.Point(0, 60)
-        Me.layoutViewField_colABTEILUNGSLEITER.Name = "layoutViewField_colABTEILUNGSLEITER"
-        Me.layoutViewField_colABTEILUNGSLEITER.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colABTEILUNGSLEITER.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn5
-        '
-        Me.LayoutViewColumn5.FieldName = "ABTEILUNG TEL"
-        Me.LayoutViewColumn5.LayoutViewField = Me.layoutViewField_colABTEILUNGTEL
-        Me.LayoutViewColumn5.Name = "LayoutViewColumn5"
-        '
-        'layoutViewField_colABTEILUNGTEL
-        '
-        Me.layoutViewField_colABTEILUNGTEL.EditorPreferredWidth = 404
-        Me.layoutViewField_colABTEILUNGTEL.Location = New System.Drawing.Point(0, 80)
-        Me.layoutViewField_colABTEILUNGTEL.Name = "layoutViewField_colABTEILUNGTEL"
-        Me.layoutViewField_colABTEILUNGTEL.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colABTEILUNGTEL.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn6
-        '
-        Me.LayoutViewColumn6.FieldName = "ABTEILUNG FAX"
-        Me.LayoutViewColumn6.LayoutViewField = Me.layoutViewField_colABTEILUNGFAX
-        Me.LayoutViewColumn6.Name = "LayoutViewColumn6"
-        '
-        'layoutViewField_colABTEILUNGFAX
-        '
-        Me.layoutViewField_colABTEILUNGFAX.EditorPreferredWidth = 404
-        Me.layoutViewField_colABTEILUNGFAX.Location = New System.Drawing.Point(0, 100)
-        Me.layoutViewField_colABTEILUNGFAX.Name = "layoutViewField_colABTEILUNGFAX"
-        Me.layoutViewField_colABTEILUNGFAX.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colABTEILUNGFAX.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn7
-        '
-        Me.LayoutViewColumn7.FieldName = "ABTEILUNG E-MAIL"
-        Me.LayoutViewColumn7.LayoutViewField = Me.LayoutViewField1
-        Me.LayoutViewColumn7.Name = "LayoutViewColumn7"
-        '
-        'LayoutViewField1
-        '
-        Me.LayoutViewField1.EditorPreferredWidth = 404
-        Me.LayoutViewField1.Location = New System.Drawing.Point(0, 120)
-        Me.LayoutViewField1.Name = "LayoutViewField1"
-        Me.LayoutViewField1.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField1.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn8
-        '
-        Me.LayoutViewColumn8.FieldName = "ABTEILUNG BEMERKUNGEN"
-        Me.LayoutViewColumn8.LayoutViewField = Me.layoutViewField_colABTEILUNGBEMERKUNGEN
-        Me.LayoutViewColumn8.Name = "LayoutViewColumn8"
-        '
-        'layoutViewField_colABTEILUNGBEMERKUNGEN
-        '
-        Me.layoutViewField_colABTEILUNGBEMERKUNGEN.EditorPreferredWidth = 404
-        Me.layoutViewField_colABTEILUNGBEMERKUNGEN.Location = New System.Drawing.Point(0, 140)
-        Me.layoutViewField_colABTEILUNGBEMERKUNGEN.Name = "layoutViewField_colABTEILUNGBEMERKUNGEN"
-        Me.layoutViewField_colABTEILUNGBEMERKUNGEN.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colABTEILUNGBEMERKUNGEN.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn9
-        '
-        Me.LayoutViewColumn9.FieldName = "ABTEILUNG EVENT JOURNAL"
-        Me.LayoutViewColumn9.LayoutViewField = Me.layoutViewField_colABTEILUNGEVENTJOURNAL
-        Me.LayoutViewColumn9.Name = "LayoutViewColumn9"
-        '
-        'layoutViewField_colABTEILUNGEVENTJOURNAL
-        '
-        Me.layoutViewField_colABTEILUNGEVENTJOURNAL.EditorPreferredWidth = 404
-        Me.layoutViewField_colABTEILUNGEVENTJOURNAL.Location = New System.Drawing.Point(0, 160)
-        Me.layoutViewField_colABTEILUNGEVENTJOURNAL.Name = "layoutViewField_colABTEILUNGEVENTJOURNAL"
-        Me.layoutViewField_colABTEILUNGEVENTJOURNAL.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colABTEILUNGEVENTJOURNAL.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn10
-        '
-        Me.LayoutViewColumn10.FieldName = "ABTEILUNG STATUS"
-        Me.LayoutViewColumn10.LayoutViewField = Me.layoutViewField_colABTEILUNGSTATUS
-        Me.LayoutViewColumn10.Name = "LayoutViewColumn10"
-        '
-        'layoutViewField_colABTEILUNGSTATUS
-        '
-        Me.layoutViewField_colABTEILUNGSTATUS.EditorPreferredWidth = 404
-        Me.layoutViewField_colABTEILUNGSTATUS.Location = New System.Drawing.Point(0, 180)
-        Me.layoutViewField_colABTEILUNGSTATUS.Name = "layoutViewField_colABTEILUNGSTATUS"
-        Me.layoutViewField_colABTEILUNGSTATUS.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colABTEILUNGSTATUS.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn11
-        '
-        Me.LayoutViewColumn11.FieldName = "CURRENT USER"
-        Me.LayoutViewColumn11.LayoutViewField = Me.layoutViewField_colCURRENTUSER
-        Me.LayoutViewColumn11.Name = "LayoutViewColumn11"
-        '
-        'layoutViewField_colCURRENTUSER
-        '
-        Me.layoutViewField_colCURRENTUSER.EditorPreferredWidth = 404
-        Me.layoutViewField_colCURRENTUSER.Location = New System.Drawing.Point(0, 200)
-        Me.layoutViewField_colCURRENTUSER.Name = "layoutViewField_colCURRENTUSER"
-        Me.layoutViewField_colCURRENTUSER.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colCURRENTUSER.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn12
-        '
-        Me.LayoutViewColumn12.FieldName = "Bearbeitungsstatus"
-        Me.LayoutViewColumn12.LayoutViewField = Me.layoutViewField_colBearbeitungsstatus
-        Me.LayoutViewColumn12.Name = "LayoutViewColumn12"
-        '
-        'layoutViewField_colBearbeitungsstatus
-        '
-        Me.layoutViewField_colBearbeitungsstatus.EditorPreferredWidth = 404
-        Me.layoutViewField_colBearbeitungsstatus.Location = New System.Drawing.Point(0, 220)
-        Me.layoutViewField_colBearbeitungsstatus.Name = "layoutViewField_colBearbeitungsstatus"
-        Me.layoutViewField_colBearbeitungsstatus.Size = New System.Drawing.Size(555, 20)
-        Me.layoutViewField_colBearbeitungsstatus.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn13
-        '
-        Me.LayoutViewColumn13.FieldName = "IdBANK"
-        Me.LayoutViewColumn13.LayoutViewField = Me.layoutViewField_colIdBANK
-        Me.LayoutViewColumn13.Name = "LayoutViewColumn13"
-        '
-        'layoutViewField_colIdBANK
-        '
-        Me.layoutViewField_colIdBANK.EditorPreferredWidth = 404
-        Me.layoutViewField_colIdBANK.Location = New System.Drawing.Point(0, 240)
-        Me.layoutViewField_colIdBANK.Name = "layoutViewField_colIdBANK"
-        Me.layoutViewField_colIdBANK.Size = New System.Drawing.Size(555, 67)
-        Me.layoutViewField_colIdBANK.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewCard1
-        '
-        Me.LayoutViewCard1.CustomizationFormText = "TemplateCard"
-        Me.LayoutViewCard1.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.layoutViewField_colID, Me.layoutViewField_colABTEILUNGSCODE, Me.layoutViewField_colABTEILUNGSNAME, Me.layoutViewField_colABTEILUNGSLEITER, Me.layoutViewField_colABTEILUNGTEL, Me.layoutViewField_colABTEILUNGFAX, Me.LayoutViewField1, Me.layoutViewField_colABTEILUNGBEMERKUNGEN, Me.layoutViewField_colABTEILUNGEVENTJOURNAL, Me.layoutViewField_colABTEILUNGSTATUS, Me.layoutViewField_colCURRENTUSER, Me.layoutViewField_colBearbeitungsstatus, Me.layoutViewField_colIdBANK})
-        Me.LayoutViewCard1.Name = "layoutViewTemplateCard"
-        Me.LayoutViewCard1.OptionsItemText.TextToControlDistance = 5
-        Me.LayoutViewCard1.Text = "TemplateCard"
-        '
         'ParameterView
         '
         Me.ParameterView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
@@ -957,7 +656,7 @@ Partial Class Configuration
         Me.ParameterView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
         Me.ParameterView.Appearance.FocusedRow.Options.UseBackColor = True
         Me.ParameterView.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.ParameterView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colPARAMETER1, Me.colPARAMETER2, Me.colPARAMETERSTATUS, Me.colPARAMETERINFO, Me.colIdABTEILUNGSPARAMETER, Me.colNPARAMETER1, Me.colNPARAMETER2, Me.colDPARAMETER1, Me.colDPARAMETER2, Me.colLastAction2, Me.colLastUpdateDate2, Me.colLastUpdateUser2})
+        Me.ParameterView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colPARAMETER1, Me.colPARAMETER2, Me.colPARAMETERSTATUS, Me.colPARAMETERINFO, Me.colIdABTEILUNGSPARAMETER, Me.colNPARAMETER1, Me.colNPARAMETER2, Me.colNPARAMETER3, Me.colNPARAMETER4, Me.colDPARAMETER1, Me.colDPARAMETER2, Me.colLastAction2, Me.colLastUpdateDate2, Me.colLastUpdateUser2})
         Me.ParameterView.GridControl = Me.GridControl1
         Me.ParameterView.Name = "ParameterView"
         Me.ParameterView.NewItemRowText = "Add new Parameters"
@@ -965,7 +664,7 @@ Partial Class Configuration
         Me.ParameterView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
         Me.ParameterView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
         Me.ParameterView.OptionsDetail.AllowExpandEmptyDetails = True
-        Me.ParameterView.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
+        Me.ParameterView.OptionsDetail.AutoZoomDetail = True
         Me.ParameterView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
         Me.ParameterView.OptionsFind.AlwaysVisible = True
         Me.ParameterView.OptionsNavigation.AutoFocusNewRow = True
@@ -1044,7 +743,7 @@ Partial Class Configuration
         Me.colIdABTEILUNGSPARAMETER.OptionsEditForm.StartNewRow = True
         Me.colIdABTEILUNGSPARAMETER.OptionsEditForm.UseEditorColRowSpan = False
         Me.colIdABTEILUNGSPARAMETER.Visible = True
-        Me.colIdABTEILUNGSPARAMETER.VisibleIndex = 8
+        Me.colIdABTEILUNGSPARAMETER.VisibleIndex = 10
         Me.colIdABTEILUNGSPARAMETER.Width = 158
         '
         'colNPARAMETER1
@@ -1073,6 +772,29 @@ Partial Class Configuration
         Me.colNPARAMETER2.Visible = True
         Me.colNPARAMETER2.VisibleIndex = 3
         Me.colNPARAMETER2.Width = 136
+        '
+        'colNPARAMETER3
+        '
+        Me.colNPARAMETER3.Caption = "NUMERIC PARAMETER 3"
+        Me.colNPARAMETER3.ColumnEdit = Me.RepositoryItemSpinEdit1
+        Me.colNPARAMETER3.FieldName = "NPARAMETER3"
+        Me.colNPARAMETER3.Name = "colNPARAMETER3"
+        Me.colNPARAMETER3.OptionsEditForm.StartNewRow = True
+        Me.colNPARAMETER3.OptionsEditForm.UseEditorColRowSpan = False
+        Me.colNPARAMETER3.Visible = True
+        Me.colNPARAMETER3.VisibleIndex = 8
+        Me.colNPARAMETER3.Width = 141
+        '
+        'colNPARAMETER4
+        '
+        Me.colNPARAMETER4.Caption = "NUMERIC PARAMETER 4"
+        Me.colNPARAMETER4.ColumnEdit = Me.RepositoryItemSpinEdit1
+        Me.colNPARAMETER4.FieldName = "NPARAMETER4"
+        Me.colNPARAMETER4.Name = "colNPARAMETER4"
+        Me.colNPARAMETER4.OptionsEditForm.UseEditorColRowSpan = False
+        Me.colNPARAMETER4.Visible = True
+        Me.colNPARAMETER4.VisibleIndex = 9
+        Me.colNPARAMETER4.Width = 138
         '
         'colDPARAMETER1
         '
@@ -1132,49 +854,6 @@ Partial Class Configuration
         Me.colLastUpdateUser2.OptionsColumn.ReadOnly = True
         Me.colLastUpdateUser2.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
         '
-        'GridView1
-        '
-        Me.GridView1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
-        Me.GridView1.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
-        Me.GridView1.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
-        Me.GridView1.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.GridView1.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.GridView1.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn2, Me.GridColumn3, Me.GridColumn4, Me.GridColumn5, Me.GridColumn6})
-        Me.GridView1.GridControl = Me.GridControl2
-        Me.GridView1.Name = "GridView1"
-        Me.GridView1.NewItemRowText = "Add New Department Parameter"
-        Me.GridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
-        Me.GridView1.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
-        Me.GridView1.OptionsBehavior.AllowIncrementalSearch = True
-        Me.GridView1.OptionsDetail.AllowExpandEmptyDetails = True
-        Me.GridView1.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
-        Me.GridView1.OptionsFilter.UseNewCustomFilterDialog = True
-        Me.GridView1.OptionsFind.AlwaysVisible = True
-        Me.GridView1.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always
-        Me.GridView1.OptionsNavigation.AutoFocusNewRow = True
-        Me.GridView1.OptionsSelection.MultiSelect = True
-        Me.GridView1.OptionsView.ColumnAutoWidth = False
-        Me.GridView1.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
-        Me.GridView1.OptionsView.ShowAutoFilterRow = True
-        Me.GridView1.ViewCaption = "DEPARTMENT PARAMETERS"
-        '
-        'GridColumn2
-        '
-        Me.GridColumn2.FieldName = "ID"
-        Me.GridColumn2.Name = "GridColumn2"
-        Me.GridColumn2.OptionsColumn.ReadOnly = True
-        '
-        'GridColumn3
-        '
-        Me.GridColumn3.Caption = "DEPARTMENT PARAMETER NAME"
-        Me.GridColumn3.ColumnEdit = Me.RepositoryItemTextEdit1
-        Me.GridColumn3.FieldName = "ABTEILUNGSPARAMETER NAME"
-        Me.GridColumn3.Name = "GridColumn3"
-        Me.GridColumn3.OptionsColumn.ReadOnly = True
-        Me.GridColumn3.Visible = True
-        Me.GridColumn3.VisibleIndex = 0
-        Me.GridColumn3.Width = 197
-        '
         'RepositoryItemTextEdit1
         '
         Me.RepositoryItemTextEdit1.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
@@ -1185,16 +864,6 @@ Partial Class Configuration
         Me.RepositoryItemTextEdit1.AutoHeight = False
         Me.RepositoryItemTextEdit1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.RepositoryItemTextEdit1.Name = "RepositoryItemTextEdit1"
-        '
-        'GridColumn4
-        '
-        Me.GridColumn4.Caption = "DEPARTMENT PARAMETER STATUS"
-        Me.GridColumn4.ColumnEdit = Me.RepositoryItemImageComboBox1
-        Me.GridColumn4.FieldName = "ABTEILUNGSPARAMETER STATUS"
-        Me.GridColumn4.Name = "GridColumn4"
-        Me.GridColumn4.Visible = True
-        Me.GridColumn4.VisibleIndex = 1
-        Me.GridColumn4.Width = 183
         '
         'RepositoryItemImageComboBox1
         '
@@ -1214,16 +883,6 @@ Partial Class Configuration
         Me.RepositoryItemImageComboBox1.Name = "RepositoryItemImageComboBox1"
         Me.RepositoryItemImageComboBox1.SmallImages = Me.ImageCollection1
         '
-        'GridColumn5
-        '
-        Me.GridColumn5.Caption = "DEPARTMENT PARAMETER INFO"
-        Me.GridColumn5.ColumnEdit = Me.RepositoryItemMemoExEdit2
-        Me.GridColumn5.FieldName = "ABTEILUNGSPARAMETER INFO"
-        Me.GridColumn5.Name = "GridColumn5"
-        Me.GridColumn5.Visible = True
-        Me.GridColumn5.VisibleIndex = 2
-        Me.GridColumn5.Width = 175
-        '
         'RepositoryItemMemoExEdit2
         '
         Me.RepositoryItemMemoExEdit2.Appearance.BackColor = System.Drawing.Color.Yellow
@@ -1238,16 +897,6 @@ Partial Class Configuration
         Me.RepositoryItemMemoExEdit2.AppearanceFocused.Options.UseForeColor = True
         Me.RepositoryItemMemoExEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
         Me.RepositoryItemMemoExEdit2.Name = "RepositoryItemMemoExEdit2"
-        '
-        'GridColumn6
-        '
-        Me.GridColumn6.Caption = "ID DEPARTMENT CODE"
-        Me.GridColumn6.FieldName = "IdABTEILUNGSCODE"
-        Me.GridColumn6.Name = "GridColumn6"
-        Me.GridColumn6.OptionsColumn.ReadOnly = True
-        Me.GridColumn6.Visible = True
-        Me.GridColumn6.VisibleIndex = 3
-        Me.GridColumn6.Width = 126
         '
         'GridControl2
         '
@@ -1272,7 +921,7 @@ Partial Class Configuration
         Me.GridControl2.Size = New System.Drawing.Size(1384, 413)
         Me.GridControl2.TabIndex = 2
         Me.GridControl2.UseEmbeddedNavigator = True
-        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.Parameter_All_GridView, Me.GridView2, Me.LayoutView2, Me.GridView1})
+        Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.Parameter_All_GridView})
         '
         'PARAMETER_AllBindingSource
         '
@@ -1288,7 +937,7 @@ Partial Class Configuration
         Me.Parameter_All_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.Parameter_All_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
         Me.Parameter_All_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.Parameter_All_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID3, Me.colPARAMETER11, Me.colPARAMETER21, Me.colPARAMETERSTATUS1, Me.colPARAMETERINFO1, Me.colIdABTEILUNGSPARAMETER1, Me.colNPARAMETER11, Me.colNPARAMETER21, Me.colDPARAMETER11, Me.DPARAMETER22, Me.colIdABTEILUNGSCODE_NAME, Me.colLastAction3, Me.colLastUpdateDate3, Me.colLastUpdateUser3})
+        Me.Parameter_All_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID3, Me.colPARAMETER11, Me.colPARAMETER21, Me.colPARAMETERSTATUS1, Me.colPARAMETERINFO1, Me.colIdABTEILUNGSPARAMETER1, Me.colNPARAMETER11, Me.colNPARAMETER21, Me.colNPARAMETER31, Me.colNPARAMETER41, Me.colDPARAMETER11, Me.DPARAMETER22, Me.colIdABTEILUNGSCODE_NAME, Me.colLastAction3, Me.colLastUpdateDate3, Me.colLastUpdateUser3})
         Me.Parameter_All_GridView.GridControl = Me.GridControl2
         Me.Parameter_All_GridView.Images = Me.ImageCollection1
         Me.Parameter_All_GridView.Name = "Parameter_All_GridView"
@@ -1386,7 +1035,7 @@ Partial Class Configuration
         Me.colPARAMETERINFO1.OptionsEditForm.StartNewRow = True
         Me.colPARAMETERINFO1.OptionsEditForm.UseEditorColRowSpan = False
         Me.colPARAMETERINFO1.Visible = True
-        Me.colPARAMETERINFO1.VisibleIndex = 8
+        Me.colPARAMETERINFO1.VisibleIndex = 10
         Me.colPARAMETERINFO1.Width = 80
         '
         'colIdABTEILUNGSPARAMETER1
@@ -1399,7 +1048,7 @@ Partial Class Configuration
         Me.colIdABTEILUNGSPARAMETER1.OptionsEditForm.ColumnSpan = 2
         Me.colIdABTEILUNGSPARAMETER1.OptionsEditForm.UseEditorColRowSpan = False
         Me.colIdABTEILUNGSPARAMETER1.Visible = True
-        Me.colIdABTEILUNGSPARAMETER1.VisibleIndex = 9
+        Me.colIdABTEILUNGSPARAMETER1.VisibleIndex = 11
         Me.colIdABTEILUNGSPARAMETER1.Width = 217
         '
         'colNPARAMETER11
@@ -1440,6 +1089,27 @@ Partial Class Configuration
         Me.colNPARAMETER21.Visible = True
         Me.colNPARAMETER21.VisibleIndex = 4
         Me.colNPARAMETER21.Width = 100
+        '
+        'colNPARAMETER31
+        '
+        Me.colNPARAMETER31.Caption = "Nummeric Parameter 3"
+        Me.colNPARAMETER31.ColumnEdit = Me.Number_RepositoryItemSpinEdit
+        Me.colNPARAMETER31.FieldName = "NPARAMETER3"
+        Me.colNPARAMETER31.Name = "colNPARAMETER31"
+        Me.colNPARAMETER31.OptionsEditForm.StartNewRow = True
+        Me.colNPARAMETER31.OptionsEditForm.UseEditorColRowSpan = False
+        Me.colNPARAMETER31.Visible = True
+        Me.colNPARAMETER31.VisibleIndex = 8
+        '
+        'colNPARAMETER41
+        '
+        Me.colNPARAMETER41.Caption = "Nummeric Parameter 4"
+        Me.colNPARAMETER41.ColumnEdit = Me.Number_RepositoryItemSpinEdit
+        Me.colNPARAMETER41.FieldName = "NPARAMETER4"
+        Me.colNPARAMETER41.Name = "colNPARAMETER41"
+        Me.colNPARAMETER41.OptionsEditForm.UseEditorColRowSpan = False
+        Me.colNPARAMETER41.Visible = True
+        Me.colNPARAMETER41.VisibleIndex = 9
         '
         'colDPARAMETER11
         '
@@ -1495,7 +1165,7 @@ Partial Class Configuration
         Me.colIdABTEILUNGSCODE_NAME.OptionsEditForm.StartNewRow = True
         Me.colIdABTEILUNGSCODE_NAME.OptionsEditForm.UseEditorColRowSpan = False
         Me.colIdABTEILUNGSCODE_NAME.Visible = True
-        Me.colIdABTEILUNGSCODE_NAME.VisibleIndex = 10
+        Me.colIdABTEILUNGSCODE_NAME.VisibleIndex = 12
         Me.colIdABTEILUNGSCODE_NAME.Width = 161
         '
         'colLastAction3
@@ -1505,7 +1175,7 @@ Partial Class Configuration
         Me.colLastAction3.OptionsColumn.ReadOnly = True
         Me.colLastAction3.OptionsEditForm.StartNewRow = True
         Me.colLastAction3.Visible = True
-        Me.colLastAction3.VisibleIndex = 11
+        Me.colLastAction3.VisibleIndex = 13
         Me.colLastAction3.Width = 113
         '
         'colLastUpdateDate3
@@ -1519,7 +1189,7 @@ Partial Class Configuration
         Me.colLastUpdateDate3.Name = "colLastUpdateDate3"
         Me.colLastUpdateDate3.OptionsColumn.ReadOnly = True
         Me.colLastUpdateDate3.Visible = True
-        Me.colLastUpdateDate3.VisibleIndex = 12
+        Me.colLastUpdateDate3.VisibleIndex = 14
         Me.colLastUpdateDate3.Width = 145
         '
         'DateTime_RepositoryItemDateEdit3
@@ -1544,312 +1214,8 @@ Partial Class Configuration
         Me.colLastUpdateUser3.Name = "colLastUpdateUser3"
         Me.colLastUpdateUser3.OptionsColumn.ReadOnly = True
         Me.colLastUpdateUser3.Visible = True
-        Me.colLastUpdateUser3.VisibleIndex = 13
+        Me.colLastUpdateUser3.VisibleIndex = 15
         Me.colLastUpdateUser3.Width = 141
-        '
-        'GridView2
-        '
-        Me.GridView2.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
-        Me.GridView2.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
-        Me.GridView2.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
-        Me.GridView2.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.GridView2.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn7, Me.GridColumn8, Me.GridColumn9, Me.GridColumn10, Me.GridColumn11, Me.GridColumn12, Me.GridColumn13, Me.GridColumn14})
-        Me.GridView2.GridControl = Me.GridControl2
-        Me.GridView2.Name = "GridView2"
-        Me.GridView2.NewItemRowText = "Add new Parameters"
-        Me.GridView2.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
-        Me.GridView2.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.[True]
-        Me.GridView2.OptionsDetail.AllowExpandEmptyDetails = True
-        Me.GridView2.OptionsDetail.SmartDetailExpandButtonMode = DevExpress.XtraGrid.Views.Grid.DetailExpandButtonMode.AlwaysEnabled
-        Me.GridView2.OptionsFind.AlwaysVisible = True
-        Me.GridView2.OptionsNavigation.AutoFocusNewRow = True
-        Me.GridView2.OptionsSelection.MultiSelect = True
-        Me.GridView2.OptionsView.ColumnAutoWidth = False
-        Me.GridView2.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
-        Me.GridView2.OptionsView.ShowAutoFilterRow = True
-        Me.GridView2.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
-        Me.GridView2.OptionsView.ShowFooter = True
-        Me.GridView2.ViewCaption = "PARAMETERS"
-        '
-        'GridColumn7
-        '
-        Me.GridColumn7.Caption = "ID"
-        Me.GridColumn7.FieldName = "ID"
-        Me.GridColumn7.Name = "GridColumn7"
-        Me.GridColumn7.OptionsColumn.ReadOnly = True
-        '
-        'GridColumn8
-        '
-        Me.GridColumn8.Caption = "PARAMETER 1"
-        Me.GridColumn8.ColumnEdit = Me.RepositoryItemTextEdit2
-        Me.GridColumn8.FieldName = "PARAMETER1"
-        Me.GridColumn8.Name = "GridColumn8"
-        Me.GridColumn8.Visible = True
-        Me.GridColumn8.VisibleIndex = 0
-        Me.GridColumn8.Width = 433
-        '
-        'GridColumn9
-        '
-        Me.GridColumn9.Caption = "PARAMETER 2"
-        Me.GridColumn9.ColumnEdit = Me.RepositoryItemTextEdit2
-        Me.GridColumn9.FieldName = "PARAMETER2"
-        Me.GridColumn9.Name = "GridColumn9"
-        Me.GridColumn9.Visible = True
-        Me.GridColumn9.VisibleIndex = 1
-        Me.GridColumn9.Width = 440
-        '
-        'GridColumn10
-        '
-        Me.GridColumn10.Caption = "PARAMETER STATUS"
-        Me.GridColumn10.ColumnEdit = Me.RepositoryItemImageComboBox1
-        Me.GridColumn10.FieldName = "PARAMETER STATUS"
-        Me.GridColumn10.Name = "GridColumn10"
-        Me.GridColumn10.Visible = True
-        Me.GridColumn10.VisibleIndex = 4
-        Me.GridColumn10.Width = 109
-        '
-        'GridColumn11
-        '
-        Me.GridColumn11.Caption = "PARAMETER INFO"
-        Me.GridColumn11.ColumnEdit = Me.RepositoryItemMemoExEdit2
-        Me.GridColumn11.FieldName = "PARAMETER INFO"
-        Me.GridColumn11.Name = "GridColumn11"
-        Me.GridColumn11.Visible = True
-        Me.GridColumn11.VisibleIndex = 5
-        Me.GridColumn11.Width = 99
-        '
-        'GridColumn12
-        '
-        Me.GridColumn12.Caption = "ID DEPARTMENT PARAMETER"
-        Me.GridColumn12.FieldName = "IdABTEILUNGSPARAMETER"
-        Me.GridColumn12.Name = "GridColumn12"
-        Me.GridColumn12.OptionsColumn.ReadOnly = True
-        Me.GridColumn12.Visible = True
-        Me.GridColumn12.VisibleIndex = 6
-        Me.GridColumn12.Width = 158
-        '
-        'GridColumn13
-        '
-        Me.GridColumn13.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn13.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn13.Caption = "NUMERIC PARAMETER 1"
-        Me.GridColumn13.FieldName = "NPARAMETER1"
-        Me.GridColumn13.Name = "GridColumn13"
-        Me.GridColumn13.Visible = True
-        Me.GridColumn13.VisibleIndex = 2
-        Me.GridColumn13.Width = 126
-        '
-        'GridColumn14
-        '
-        Me.GridColumn14.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn14.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn14.Caption = "NUMERIC PARAMETER 2"
-        Me.GridColumn14.FieldName = "NPARAMETER2"
-        Me.GridColumn14.Name = "GridColumn14"
-        Me.GridColumn14.Visible = True
-        Me.GridColumn14.VisibleIndex = 3
-        Me.GridColumn14.Width = 136
-        '
-        'LayoutView2
-        '
-        Me.LayoutView2.CardMinSize = New System.Drawing.Size(575, 346)
-        Me.LayoutView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.LayoutViewColumn14, Me.LayoutViewColumn15, Me.LayoutViewColumn16, Me.LayoutViewColumn17, Me.LayoutViewColumn18, Me.LayoutViewColumn19, Me.LayoutViewColumn20, Me.LayoutViewColumn21, Me.LayoutViewColumn22, Me.LayoutViewColumn23, Me.LayoutViewColumn24, Me.LayoutViewColumn25, Me.LayoutViewColumn26})
-        Me.LayoutView2.GridControl = Me.GridControl2
-        Me.LayoutView2.Name = "LayoutView2"
-        Me.LayoutView2.TemplateCard = Me.LayoutViewCard2
-        '
-        'LayoutViewColumn14
-        '
-        Me.LayoutViewColumn14.FieldName = "ID"
-        Me.LayoutViewColumn14.LayoutViewField = Me.LayoutViewField2
-        Me.LayoutViewColumn14.Name = "LayoutViewColumn14"
-        Me.LayoutViewColumn14.OptionsColumn.ReadOnly = True
-        '
-        'LayoutViewField2
-        '
-        Me.LayoutViewField2.EditorPreferredWidth = 404
-        Me.LayoutViewField2.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutViewField2.Name = "LayoutViewField2"
-        Me.LayoutViewField2.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField2.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn15
-        '
-        Me.LayoutViewColumn15.FieldName = "ABTEILUNGS CODE"
-        Me.LayoutViewColumn15.LayoutViewField = Me.LayoutViewField3
-        Me.LayoutViewColumn15.Name = "LayoutViewColumn15"
-        '
-        'LayoutViewField3
-        '
-        Me.LayoutViewField3.EditorPreferredWidth = 404
-        Me.LayoutViewField3.Location = New System.Drawing.Point(0, 20)
-        Me.LayoutViewField3.Name = "LayoutViewField3"
-        Me.LayoutViewField3.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField3.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn16
-        '
-        Me.LayoutViewColumn16.FieldName = "ABTEILUNGS NAME"
-        Me.LayoutViewColumn16.LayoutViewField = Me.LayoutViewField4
-        Me.LayoutViewColumn16.Name = "LayoutViewColumn16"
-        '
-        'LayoutViewField4
-        '
-        Me.LayoutViewField4.EditorPreferredWidth = 404
-        Me.LayoutViewField4.Location = New System.Drawing.Point(0, 40)
-        Me.LayoutViewField4.Name = "LayoutViewField4"
-        Me.LayoutViewField4.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField4.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn17
-        '
-        Me.LayoutViewColumn17.FieldName = "ABTEILUNGSLEITER"
-        Me.LayoutViewColumn17.LayoutViewField = Me.LayoutViewField5
-        Me.LayoutViewColumn17.Name = "LayoutViewColumn17"
-        '
-        'LayoutViewField5
-        '
-        Me.LayoutViewField5.EditorPreferredWidth = 404
-        Me.LayoutViewField5.Location = New System.Drawing.Point(0, 60)
-        Me.LayoutViewField5.Name = "LayoutViewField5"
-        Me.LayoutViewField5.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField5.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn18
-        '
-        Me.LayoutViewColumn18.FieldName = "ABTEILUNG TEL"
-        Me.LayoutViewColumn18.LayoutViewField = Me.LayoutViewField6
-        Me.LayoutViewColumn18.Name = "LayoutViewColumn18"
-        '
-        'LayoutViewField6
-        '
-        Me.LayoutViewField6.EditorPreferredWidth = 404
-        Me.LayoutViewField6.Location = New System.Drawing.Point(0, 80)
-        Me.LayoutViewField6.Name = "LayoutViewField6"
-        Me.LayoutViewField6.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField6.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn19
-        '
-        Me.LayoutViewColumn19.FieldName = "ABTEILUNG FAX"
-        Me.LayoutViewColumn19.LayoutViewField = Me.LayoutViewField7
-        Me.LayoutViewColumn19.Name = "LayoutViewColumn19"
-        '
-        'LayoutViewField7
-        '
-        Me.LayoutViewField7.EditorPreferredWidth = 404
-        Me.LayoutViewField7.Location = New System.Drawing.Point(0, 100)
-        Me.LayoutViewField7.Name = "LayoutViewField7"
-        Me.LayoutViewField7.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField7.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn20
-        '
-        Me.LayoutViewColumn20.FieldName = "ABTEILUNG E-MAIL"
-        Me.LayoutViewColumn20.LayoutViewField = Me.LayoutViewField8
-        Me.LayoutViewColumn20.Name = "LayoutViewColumn20"
-        '
-        'LayoutViewField8
-        '
-        Me.LayoutViewField8.EditorPreferredWidth = 404
-        Me.LayoutViewField8.Location = New System.Drawing.Point(0, 120)
-        Me.LayoutViewField8.Name = "LayoutViewField8"
-        Me.LayoutViewField8.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField8.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn21
-        '
-        Me.LayoutViewColumn21.FieldName = "ABTEILUNG BEMERKUNGEN"
-        Me.LayoutViewColumn21.LayoutViewField = Me.LayoutViewField9
-        Me.LayoutViewColumn21.Name = "LayoutViewColumn21"
-        '
-        'LayoutViewField9
-        '
-        Me.LayoutViewField9.EditorPreferredWidth = 404
-        Me.LayoutViewField9.Location = New System.Drawing.Point(0, 140)
-        Me.LayoutViewField9.Name = "LayoutViewField9"
-        Me.LayoutViewField9.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField9.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn22
-        '
-        Me.LayoutViewColumn22.FieldName = "ABTEILUNG EVENT JOURNAL"
-        Me.LayoutViewColumn22.LayoutViewField = Me.LayoutViewField10
-        Me.LayoutViewColumn22.Name = "LayoutViewColumn22"
-        '
-        'LayoutViewField10
-        '
-        Me.LayoutViewField10.EditorPreferredWidth = 404
-        Me.LayoutViewField10.Location = New System.Drawing.Point(0, 160)
-        Me.LayoutViewField10.Name = "LayoutViewField10"
-        Me.LayoutViewField10.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField10.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn23
-        '
-        Me.LayoutViewColumn23.FieldName = "ABTEILUNG STATUS"
-        Me.LayoutViewColumn23.LayoutViewField = Me.LayoutViewField11
-        Me.LayoutViewColumn23.Name = "LayoutViewColumn23"
-        '
-        'LayoutViewField11
-        '
-        Me.LayoutViewField11.EditorPreferredWidth = 404
-        Me.LayoutViewField11.Location = New System.Drawing.Point(0, 180)
-        Me.LayoutViewField11.Name = "LayoutViewField11"
-        Me.LayoutViewField11.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField11.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn24
-        '
-        Me.LayoutViewColumn24.FieldName = "CURRENT USER"
-        Me.LayoutViewColumn24.LayoutViewField = Me.LayoutViewField12
-        Me.LayoutViewColumn24.Name = "LayoutViewColumn24"
-        '
-        'LayoutViewField12
-        '
-        Me.LayoutViewField12.EditorPreferredWidth = 404
-        Me.LayoutViewField12.Location = New System.Drawing.Point(0, 200)
-        Me.LayoutViewField12.Name = "LayoutViewField12"
-        Me.LayoutViewField12.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField12.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn25
-        '
-        Me.LayoutViewColumn25.FieldName = "Bearbeitungsstatus"
-        Me.LayoutViewColumn25.LayoutViewField = Me.LayoutViewField13
-        Me.LayoutViewColumn25.Name = "LayoutViewColumn25"
-        '
-        'LayoutViewField13
-        '
-        Me.LayoutViewField13.EditorPreferredWidth = 404
-        Me.LayoutViewField13.Location = New System.Drawing.Point(0, 220)
-        Me.LayoutViewField13.Name = "LayoutViewField13"
-        Me.LayoutViewField13.Size = New System.Drawing.Size(555, 20)
-        Me.LayoutViewField13.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewColumn26
-        '
-        Me.LayoutViewColumn26.FieldName = "IdBANK"
-        Me.LayoutViewColumn26.LayoutViewField = Me.LayoutViewField14
-        Me.LayoutViewColumn26.Name = "LayoutViewColumn26"
-        '
-        'LayoutViewField14
-        '
-        Me.LayoutViewField14.EditorPreferredWidth = 404
-        Me.LayoutViewField14.Location = New System.Drawing.Point(0, 240)
-        Me.LayoutViewField14.Name = "LayoutViewField14"
-        Me.LayoutViewField14.Size = New System.Drawing.Size(555, 67)
-        Me.LayoutViewField14.TextSize = New System.Drawing.Size(142, 13)
-        '
-        'LayoutViewCard2
-        '
-        Me.LayoutViewCard2.CustomizationFormText = "TemplateCard"
-        Me.LayoutViewCard2.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutViewField2, Me.LayoutViewField3, Me.LayoutViewField4, Me.LayoutViewField5, Me.LayoutViewField6, Me.LayoutViewField7, Me.LayoutViewField8, Me.LayoutViewField9, Me.LayoutViewField10, Me.LayoutViewField11, Me.LayoutViewField12, Me.LayoutViewField13, Me.LayoutViewField14})
-        Me.LayoutViewCard2.Name = "layoutViewTemplateCard"
-        Me.LayoutViewCard2.OptionsItemText.TextToControlDistance = 5
-        Me.LayoutViewCard2.Text = "TemplateCard"
         '
         'ABTEILUNGSPARAMETERBindingSource
         '
@@ -2147,23 +1513,7 @@ Partial Class Configuration
         CType(Me.RepositoryItemDateEdit1.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemDateEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colID, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colABTEILUNGSCODE, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colABTEILUNGSNAME, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colABTEILUNGSLEITER, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colABTEILUNGTEL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colABTEILUNGFAX, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colABTEILUNGBEMERKUNGEN, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colABTEILUNGEVENTJOURNAL, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colABTEILUNGSTATUS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colCURRENTUSER, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colBearbeitungsstatus, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.layoutViewField_colIdBANK, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewCard1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ParameterView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepositoryItemMemoExEdit2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2176,22 +1526,6 @@ Partial Class Configuration
         CType(Me.RepositoryItemDateEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateTime_RepositoryItemDateEdit3.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DateTime_RepositoryItemDateEdit3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ABTEILUNGSPARAMETERBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PARAMETERBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PARAMETERFK00BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2234,34 +1568,6 @@ Partial Class Configuration
     Friend WithEvents colBearbeitungsstatus As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colIdBANK As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents DepartmentsParameterView As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents LayoutView1 As DevExpress.XtraGrid.Views.Layout.LayoutView
-    Friend WithEvents LayoutViewColumn1 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colID As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn2 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colABTEILUNGSCODE As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn3 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colABTEILUNGSNAME As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn4 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colABTEILUNGSLEITER As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn5 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colABTEILUNGTEL As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn6 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colABTEILUNGFAX As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn7 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField1 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn8 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colABTEILUNGBEMERKUNGEN As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn9 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colABTEILUNGEVENTJOURNAL As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn10 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colABTEILUNGSTATUS As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn11 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colCURRENTUSER As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn12 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colBearbeitungsstatus As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn13 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents layoutViewField_colIdBANK As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewCard1 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
     Friend WithEvents colID1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colABTEILUNGSPARAMETERNAME As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colABTEILUNGSPARAMETERSTATUS As DevExpress.XtraGrid.Columns.GridColumn
@@ -2286,54 +1592,11 @@ Partial Class Configuration
     Friend WithEvents colNPARAMETER2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents LayoutControl1 As DevExpress.XtraLayout.LayoutControl
     Friend WithEvents GridControl2 As DevExpress.XtraGrid.GridControl
-    Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn3 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents GridColumn4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemImageComboBox1 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
-    Friend WithEvents GridColumn5 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemMemoExEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit
-    Friend WithEvents GridColumn6 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridColumn7 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn8 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents RepositoryItemTextEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents GridColumn9 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn10 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn11 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn12 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn13 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn14 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents Parameter_All_GridView As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents LayoutView2 As DevExpress.XtraGrid.Views.Layout.LayoutView
-    Friend WithEvents LayoutViewColumn14 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField2 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn15 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField3 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn16 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField4 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn17 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField5 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn18 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField6 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn19 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField7 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn20 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField8 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn21 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField9 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn22 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField10 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn23 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField11 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn24 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField12 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn25 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField13 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn26 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField14 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewCard2 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
     Friend WithEvents LayoutControlGroup1 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents TabbedControlGroup1 As DevExpress.XtraLayout.TabbedControlGroup
     Friend WithEvents LayoutControlGroup2 As DevExpress.XtraLayout.LayoutControlGroup
@@ -2386,4 +1649,8 @@ Partial Class Configuration
     Friend WithEvents FindAndReplaceText_bbi As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents DateTime_RepositoryItemDateEdit As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
     Friend WithEvents DateTime_RepositoryItemDateEdit3 As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents colNPARAMETER3 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNPARAMETER4 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNPARAMETER31 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colNPARAMETER41 As DevExpress.XtraGrid.Columns.GridColumn
 End Class

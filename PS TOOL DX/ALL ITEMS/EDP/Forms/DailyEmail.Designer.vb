@@ -21,18 +21,20 @@ Partial Class DailyEmail
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DailyEmail))
-        Dim StyleFormatCondition1 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition2 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition3 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim StyleFormatCondition4 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
-        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim StyleFormatCondition5 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim StyleFormatCondition6 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim StyleFormatCondition7 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim StyleFormatCondition8 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.colEvent = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemMemoExEdit1 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit()
         Me.EDPDataSet = New PS_TOOL_DX.EDPDataSet()
@@ -221,6 +223,7 @@ Partial Class DailyEmail
         Me.Subject_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.EMAILProgressBar = New System.Windows.Forms.ProgressBar()
         Me.LayoutControl2 = New DevExpress.XtraLayout.LayoutControl()
+        Me.ProgressPanel1 = New DevExpress.XtraWaitForm.ProgressPanel()
         Me.Print_Export_EmailEvents_Gridview_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.Edit_INTERBANKV_Details_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlGroup4 = New DevExpress.XtraLayout.LayoutControlGroup()
@@ -229,9 +232,14 @@ Partial Class DailyEmail
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmailCreationDate = New DevExpress.XtraEditors.ComboBoxEdit()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.BgwDailyRiskEmail = New System.ComponentModel.BackgroundWorker()
         Me.SendEmail_CheckEdit = New DevExpress.XtraEditors.CheckEdit()
+        Me.EmailCreationDate_SearchLookUpEdit = New DevExpress.XtraEditors.SearchLookUpEdit()
+        Me.EmailCreationDate_Gridview = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.LabelControl5 = New DevExpress.XtraEditors.LabelControl()
+        Me.EmailVersion_TextEdit = New DevExpress.XtraEditors.TextEdit()
         CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDPDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IMPORT_EVENTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -335,8 +343,11 @@ Partial Class DailyEmail
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmailCreationDate.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SendEmail_CheckEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmailCreationDate_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmailCreationDate_Gridview, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmailVersion_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'colEvent
@@ -390,13 +401,18 @@ Partial Class DailyEmail
         '
         Me.TableAdapterManager.ALL_TABLE_COLUMNSTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.BAIS_IMPORT_PROCEDURESTableAdapter = Nothing
+        Me.TableAdapterManager.BAISFORMS_IMPORT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.CLIENT_EVENTSTableAdapter = Nothing
         Me.TableAdapterManager.CURRENT_USERSTableAdapter = Nothing
+        Me.TableAdapterManager.FILES_IMPORTTableAdapter = Nothing
         Me.TableAdapterManager.IMPORT_EVENTSTableAdapter = Me.IMPORT_EVENTSTableAdapter
         Me.TableAdapterManager.MANUAL_IMPORTSTableAdapter = Nothing
         Me.TableAdapterManager.OCBS_IMPORT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.ODAS_IMPORT_PROCEDURESTableAdapter = Nothing
+        Me.TableAdapterManager.PSTOOL_CLIENT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.SQL_PARAMETER_DETAILS_SECONDTableAdapter = Nothing
+        Me.TableAdapterManager.SQL_PARAMETER_DETAILS_THIRDTableAdapter = Nothing
         Me.TableAdapterManager.SQL_PARAMETER_DETAILSTableAdapter = Nothing
         Me.TableAdapterManager.SQL_PARAMETERTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.EDPDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
@@ -437,7 +453,7 @@ Partial Class DailyEmail
         Me.GridControl2.MainView = Me.EmailEvents_BasicView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox2, Me.RepositoryItemTextEdit4, Me.RepositoryItemMemoExEdit1})
-        Me.GridControl2.Size = New System.Drawing.Size(1186, 387)
+        Me.GridControl2.Size = New System.Drawing.Size(1397, 224)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.EmailEvents_BasicView, Me.LayoutView4, Me.LayoutView3, Me.LayoutView2})
@@ -451,33 +467,33 @@ Partial Class DailyEmail
         Me.EmailEvents_BasicView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.EmailEvents_BasicView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colProcDate, Me.colProcTime, Me.colEvent, Me.GridColumn1, Me.colSystemName})
         Me.EmailEvents_BasicView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        StyleFormatCondition1.Appearance.BackColor = System.Drawing.Color.Red
-        StyleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.White
-        StyleFormatCondition1.Appearance.Options.UseBackColor = True
-        StyleFormatCondition1.Appearance.Options.UseForeColor = True
-        StyleFormatCondition1.ApplyToRow = True
-        StyleFormatCondition1.Column = Me.colEvent
-        StyleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition1.Expression = "StartsWith([Event], 'ERROR')"
-        StyleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition2.Appearance.Options.UseBackColor = True
-        StyleFormatCondition2.Appearance.Options.UseForeColor = True
-        StyleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition2.Expression = "[Client No] != ?"
-        StyleFormatCondition3.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition3.Appearance.Options.UseBackColor = True
-        StyleFormatCondition3.Appearance.Options.UseForeColor = True
-        StyleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition3.Expression = "[Counterparty/Issuer/Collateral Name] != ?"
-        StyleFormatCondition4.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition4.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition4.Appearance.Options.UseBackColor = True
-        StyleFormatCondition4.Appearance.Options.UseForeColor = True
-        StyleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
-        StyleFormatCondition4.Expression = "[Contract Collateral ID] != ?"
-        Me.EmailEvents_BasicView.FormatConditions.AddRange(New DevExpress.XtraGrid.StyleFormatCondition() {StyleFormatCondition1, StyleFormatCondition2, StyleFormatCondition3, StyleFormatCondition4})
+        StyleFormatCondition5.Appearance.BackColor = System.Drawing.Color.Red
+        StyleFormatCondition5.Appearance.ForeColor = System.Drawing.Color.White
+        StyleFormatCondition5.Appearance.Options.UseBackColor = True
+        StyleFormatCondition5.Appearance.Options.UseForeColor = True
+        StyleFormatCondition5.ApplyToRow = True
+        StyleFormatCondition5.Column = Me.colEvent
+        StyleFormatCondition5.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
+        StyleFormatCondition5.Expression = "StartsWith([Event], 'ERROR')"
+        StyleFormatCondition6.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        StyleFormatCondition6.Appearance.ForeColor = System.Drawing.Color.Black
+        StyleFormatCondition6.Appearance.Options.UseBackColor = True
+        StyleFormatCondition6.Appearance.Options.UseForeColor = True
+        StyleFormatCondition6.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
+        StyleFormatCondition6.Expression = "[Client No] != ?"
+        StyleFormatCondition7.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        StyleFormatCondition7.Appearance.ForeColor = System.Drawing.Color.Black
+        StyleFormatCondition7.Appearance.Options.UseBackColor = True
+        StyleFormatCondition7.Appearance.Options.UseForeColor = True
+        StyleFormatCondition7.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
+        StyleFormatCondition7.Expression = "[Counterparty/Issuer/Collateral Name] != ?"
+        StyleFormatCondition8.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        StyleFormatCondition8.Appearance.ForeColor = System.Drawing.Color.Black
+        StyleFormatCondition8.Appearance.Options.UseBackColor = True
+        StyleFormatCondition8.Appearance.Options.UseForeColor = True
+        StyleFormatCondition8.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression
+        StyleFormatCondition8.Expression = "[Contract Collateral ID] != ?"
+        Me.EmailEvents_BasicView.FormatConditions.AddRange(New DevExpress.XtraGrid.StyleFormatCondition() {StyleFormatCondition5, StyleFormatCondition6, StyleFormatCondition7, StyleFormatCondition8})
         Me.EmailEvents_BasicView.GridControl = Me.GridControl2
         Me.EmailEvents_BasicView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit Outstanding (EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditOutstandingAmountEUR", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Credit Risk Amount(EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCredit Risk Amount(EUR Equ)", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CreditRiskAmountEUREquER45", Nothing, "{0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditRiskAmountEUREquER45", Nothing, "{0:n2}")})
         Me.EmailEvents_BasicView.Name = "EmailEvents_BasicView"
@@ -492,6 +508,7 @@ Partial Class DailyEmail
         Me.EmailEvents_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.EmailEvents_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.EmailEvents_BasicView.OptionsView.ShowFooter = True
+        Me.EmailEvents_BasicView.OptionsView.ShowGroupPanel = False
         '
         'colID
         '
@@ -2091,14 +2108,13 @@ Partial Class DailyEmail
         Me.LayoutViewColumn48.AppearanceHeader.Options.UseFont = True
         Me.LayoutViewColumn48.ColumnEdit = Me.RepositoryItemTextEdit4
         Me.LayoutViewColumn48.FieldName = "BIC CODE"
-        Me.LayoutViewColumn48.ImageIndex = 0
         Me.LayoutViewColumn48.LayoutViewField = Me.LayoutViewField23
         Me.LayoutViewColumn48.Name = "LayoutViewColumn48"
         '
         'LayoutViewField23
         '
         Me.LayoutViewField23.EditorPreferredWidth = 70
-        Me.LayoutViewField23.ImageIndex = 0
+        Me.LayoutViewField23.ImageOptions.ImageIndex = 0
         Me.LayoutViewField23.Location = New System.Drawing.Point(0, 0)
         Me.LayoutViewField23.Name = "LayoutViewField23"
         Me.LayoutViewField23.Size = New System.Drawing.Size(202, 20)
@@ -2162,7 +2178,7 @@ Partial Class DailyEmail
         Me.To_MemoEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.To_MemoEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.To_MemoEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.To_MemoEdit.Size = New System.Drawing.Size(1099, 39)
+        Me.To_MemoEdit.Size = New System.Drawing.Size(1310, 39)
         Me.To_MemoEdit.TabIndex = 4
         '
         'LabelControl2
@@ -2184,7 +2200,7 @@ Partial Class DailyEmail
         Me.CC_MemoEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.CC_MemoEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.CC_MemoEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.CC_MemoEdit.Size = New System.Drawing.Size(1099, 57)
+        Me.CC_MemoEdit.Size = New System.Drawing.Size(1310, 57)
         Me.CC_MemoEdit.TabIndex = 6
         '
         'LabelControl3
@@ -2206,7 +2222,7 @@ Partial Class DailyEmail
         Me.BCC_MemoEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
         Me.BCC_MemoEdit.Properties.AppearanceFocused.Options.UseBackColor = True
         Me.BCC_MemoEdit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.BCC_MemoEdit.Size = New System.Drawing.Size(1099, 33)
+        Me.BCC_MemoEdit.Size = New System.Drawing.Size(1310, 33)
         Me.BCC_MemoEdit.TabIndex = 8
         '
         'LabelControl4
@@ -2223,8 +2239,10 @@ Partial Class DailyEmail
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Subject_TextEdit.Location = New System.Drawing.Point(101, 165)
         Me.Subject_TextEdit.Name = "Subject_TextEdit"
+        Me.Subject_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Subject_TextEdit.Properties.Appearance.Options.UseFont = True
         Me.Subject_TextEdit.Properties.ReadOnly = True
-        Me.Subject_TextEdit.Size = New System.Drawing.Size(1099, 20)
+        Me.Subject_TextEdit.Size = New System.Drawing.Size(1309, 20)
         Me.Subject_TextEdit.TabIndex = 10
         '
         'EMAILProgressBar
@@ -2234,7 +2252,7 @@ Partial Class DailyEmail
         Me.EMAILProgressBar.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.EMAILProgressBar.Location = New System.Drawing.Point(22, 225)
         Me.EMAILProgressBar.Name = "EMAILProgressBar"
-        Me.EMAILProgressBar.Size = New System.Drawing.Size(1178, 23)
+        Me.EMAILProgressBar.Size = New System.Drawing.Size(1389, 23)
         Me.EMAILProgressBar.TabIndex = 17
         Me.EMAILProgressBar.Visible = False
         '
@@ -2243,6 +2261,7 @@ Partial Class DailyEmail
         Me.LayoutControl2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LayoutControl2.Controls.Add(Me.ProgressPanel1)
         Me.LayoutControl2.Controls.Add(Me.Print_Export_EmailEvents_Gridview_btn)
         Me.LayoutControl2.Controls.Add(Me.Edit_INTERBANKV_Details_btn)
         Me.LayoutControl2.Controls.Add(Me.GridControl2)
@@ -2250,18 +2269,39 @@ Partial Class DailyEmail
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(550, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup4
-        Me.LayoutControl2.Size = New System.Drawing.Size(1210, 461)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1421, 298)
         Me.LayoutControl2.TabIndex = 22
         Me.LayoutControl2.Text = "LayoutControl2"
+        '
+        'ProgressPanel1
+        '
+        Me.ProgressPanel1.Appearance.BackColor = System.Drawing.Color.Transparent
+        Me.ProgressPanel1.Appearance.Options.UseBackColor = True
+        Me.ProgressPanel1.AppearanceCaption.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ProgressPanel1.AppearanceCaption.ForeColor = System.Drawing.Color.Aqua
+        Me.ProgressPanel1.AppearanceCaption.Options.UseFont = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseForeColor = True
+        Me.ProgressPanel1.AppearanceCaption.Options.UseTextOptions = True
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
+        Me.ProgressPanel1.AppearanceCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap
+        Me.ProgressPanel1.AutoWidth = True
+        Me.ProgressPanel1.BarAnimationMotionType = DevExpress.Utils.Animation.MotionType.WithAcceleration
+        Me.ProgressPanel1.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Triangle
+        Me.ProgressPanel1.Location = New System.Drawing.Point(189, 24)
+        Me.ProgressPanel1.Name = "ProgressPanel1"
+        Me.ProgressPanel1.Size = New System.Drawing.Size(116, 16)
+        Me.ProgressPanel1.StyleController = Me.LayoutControl2
+        Me.ProgressPanel1.TabIndex = 30
+        Me.ProgressPanel1.Text = "ProgressPanel1"
         '
         'Print_Export_EmailEvents_Gridview_btn
         '
         Me.Print_Export_EmailEvents_Gridview_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Print_Export_EmailEvents_Gridview_btn.ImageIndex = 2
-        Me.Print_Export_EmailEvents_Gridview_btn.ImageList = Me.ImageCollection1
+        Me.Print_Export_EmailEvents_Gridview_btn.ImageOptions.ImageIndex = 2
+        Me.Print_Export_EmailEvents_Gridview_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.Print_Export_EmailEvents_Gridview_btn.Location = New System.Drawing.Point(24, 24)
         Me.Print_Export_EmailEvents_Gridview_btn.Name = "Print_Export_EmailEvents_Gridview_btn"
-        Me.Print_Export_EmailEvents_Gridview_btn.Size = New System.Drawing.Size(136, 22)
+        Me.Print_Export_EmailEvents_Gridview_btn.Size = New System.Drawing.Size(161, 22)
         Me.Print_Export_EmailEvents_Gridview_btn.StyleController = Me.LayoutControl2
         Me.Print_Export_EmailEvents_Gridview_btn.TabIndex = 6
         Me.Print_Export_EmailEvents_Gridview_btn.Text = "Print or Export"
@@ -2269,10 +2309,10 @@ Partial Class DailyEmail
         'Edit_INTERBANKV_Details_btn
         '
         Me.Edit_INTERBANKV_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Edit_INTERBANKV_Details_btn.ImageIndex = 5
-        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1027, 24)
+        Me.Edit_INTERBANKV_Details_btn.ImageOptions.ImageIndex = 5
+        Me.Edit_INTERBANKV_Details_btn.Location = New System.Drawing.Point(1208, 24)
         Me.Edit_INTERBANKV_Details_btn.Name = "Edit_INTERBANKV_Details_btn"
-        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(159, 22)
+        Me.Edit_INTERBANKV_Details_btn.Size = New System.Drawing.Size(189, 22)
         Me.Edit_INTERBANKV_Details_btn.StyleController = Me.LayoutControl2
         Me.Edit_INTERBANKV_Details_btn.TabIndex = 4
         Me.Edit_INTERBANKV_Details_btn.Text = "Show Details"
@@ -2283,9 +2323,8 @@ Partial Class DailyEmail
         Me.LayoutControlGroup4.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.LayoutControlGroup5})
-        Me.LayoutControlGroup4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1210, 461)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1421, 298)
         '
         'LayoutControlItem5
         '
@@ -2294,7 +2333,7 @@ Partial Class DailyEmail
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem5.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem5.Name = "LayoutControlItem1"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1190, 391)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1401, 228)
         Me.LayoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
@@ -2302,19 +2341,19 @@ Partial Class DailyEmail
         'LayoutControlGroup5
         '
         Me.LayoutControlGroup5.CustomizationFormText = "LayoutControlGroup3"
-        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem8})
+        Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem8, Me.LayoutControlItem1})
         Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1190, 50)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1401, 50)
         Me.LayoutControlGroup5.TextVisible = False
         '
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.Edit_INTERBANKV_Details_btn
         Me.LayoutControlItem6.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(1003, 0)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(1184, 0)
         Me.LayoutControlItem6.Name = "LayoutControlItem2"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(163, 26)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(193, 26)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         Me.LayoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
@@ -2323,9 +2362,9 @@ Partial Class DailyEmail
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(140, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(1162, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(863, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(22, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem8
@@ -2334,59 +2373,19 @@ Partial Class DailyEmail
         Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem4"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(140, 26)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(165, 26)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
-        'EmailCreationDate
+        'LayoutControlItem1
         '
-        Me.EmailCreationDate.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.EmailCreationDate.Location = New System.Drawing.Point(459, 193)
-        Me.EmailCreationDate.Name = "EmailCreationDate"
-        Me.EmailCreationDate.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.EmailCreationDate.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.EmailCreationDate.Properties.Appearance.Options.UseFont = True
-        Me.EmailCreationDate.Properties.Appearance.Options.UseTextOptions = True
-        Me.EmailCreationDate.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.EmailCreationDate.Properties.AppearanceDropDown.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.EmailCreationDate.Properties.AppearanceDropDown.Options.UseFont = True
-        Me.EmailCreationDate.Properties.AppearanceDropDown.Options.UseTextOptions = True
-        Me.EmailCreationDate.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.EmailCreationDate.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.EmailCreationDate.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        SerializableAppearanceObject1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        SerializableAppearanceObject1.Options.UseFont = True
-        SerializableAppearanceObject2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        SerializableAppearanceObject2.Options.UseFont = True
-        SerializableAppearanceObject3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        SerializableAppearanceObject3.Options.UseFont = True
-        SerializableAppearanceObject4.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        SerializableAppearanceObject4.Options.UseFont = True
-        SerializableAppearanceObject5.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        SerializableAppearanceObject5.Image = CType(resources.GetObject("SerializableAppearanceObject5.Image"), System.Drawing.Image)
-        SerializableAppearanceObject5.Options.UseFont = True
-        SerializableAppearanceObject5.Options.UseImage = True
-        SerializableAppearanceObject6.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        SerializableAppearanceObject6.Image = CType(resources.GetObject("SerializableAppearanceObject6.Image"), System.Drawing.Image)
-        SerializableAppearanceObject6.Options.UseFont = True
-        SerializableAppearanceObject6.Options.UseImage = True
-        SerializableAppearanceObject7.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        SerializableAppearanceObject7.Image = CType(resources.GetObject("SerializableAppearanceObject7.Image"), System.Drawing.Image)
-        SerializableAppearanceObject7.Options.UseFont = True
-        SerializableAppearanceObject7.Options.UseImage = True
-        SerializableAppearanceObject8.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        SerializableAppearanceObject8.Image = CType(resources.GetObject("SerializableAppearanceObject8.Image"), System.Drawing.Image)
-        SerializableAppearanceObject8.Options.UseFont = True
-        SerializableAppearanceObject8.Options.UseImage = True
-        Me.EmailCreationDate.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Dates", 50, True, True, False, DevExpress.XtraEditors.ImageLocation.MiddleLeft, CType(resources.GetObject("EmailCreationDate.Properties.Buttons"), System.Drawing.Image), "", New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", Nothing, Nothing, True), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Create Email", 90, True, True, False, DevExpress.XtraEditors.ImageLocation.MiddleLeft, CType(resources.GetObject("EmailCreationDate.Properties.Buttons1"), System.Drawing.Image), "", New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", Nothing, Nothing, True)})
-        Me.EmailCreationDate.Properties.DisplayFormat.FormatString = "d"
-        Me.EmailCreationDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.EmailCreationDate.Properties.EditFormat.FormatString = "d"
-        Me.EmailCreationDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.EmailCreationDate.Properties.MaxLength = 8
-        Me.EmailCreationDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.EmailCreationDate.Size = New System.Drawing.Size(327, 26)
-        Me.EmailCreationDate.TabIndex = 13
+        Me.LayoutControlItem1.Control = Me.ProgressPanel1
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(165, 0)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(997, 26)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem1.TextVisible = False
+        Me.LayoutControlItem1.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
         'BgwDailyRiskEmail
         '
@@ -2396,17 +2395,121 @@ Partial Class DailyEmail
         'SendEmail_CheckEdit
         '
         Me.SendEmail_CheckEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.SendEmail_CheckEdit.Location = New System.Drawing.Point(801, 198)
+        Me.SendEmail_CheckEdit.Location = New System.Drawing.Point(1267, 194)
         Me.SendEmail_CheckEdit.Name = "SendEmail_CheckEdit"
         Me.SendEmail_CheckEdit.Properties.Caption = "Send Email immediately"
-        Me.SendEmail_CheckEdit.Size = New System.Drawing.Size(192, 19)
+        Me.SendEmail_CheckEdit.Size = New System.Drawing.Size(143, 18)
         Me.SendEmail_CheckEdit.TabIndex = 27
+        Me.SendEmail_CheckEdit.Visible = False
+        '
+        'EmailCreationDate_SearchLookUpEdit
+        '
+        Me.EmailCreationDate_SearchLookUpEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.EmailCreationDate_SearchLookUpEdit.Location = New System.Drawing.Point(616, 192)
+        Me.EmailCreationDate_SearchLookUpEdit.Name = "EmailCreationDate_SearchLookUpEdit"
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.Appearance.Options.UseFont = True
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.AppearanceDropDown.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.AppearanceDropDown.Options.UseFont = True
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.AppearanceDropDown.Options.UseTextOptions = True
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.AppearanceDropDown.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        EditorButtonImageOptions3.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        SerializableAppearanceObject9.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        SerializableAppearanceObject9.Options.UseFont = True
+        SerializableAppearanceObject10.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        SerializableAppearanceObject10.Options.UseFont = True
+        SerializableAppearanceObject11.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        SerializableAppearanceObject11.Options.UseFont = True
+        SerializableAppearanceObject12.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        SerializableAppearanceObject12.Options.UseFont = True
+        EditorButtonImageOptions4.Image = CType(resources.GetObject("EditorButtonImageOptions4.Image"), System.Drawing.Image)
+        EditorButtonImageOptions4.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft
+        SerializableAppearanceObject13.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        SerializableAppearanceObject13.Image = CType(resources.GetObject("SerializableAppearanceObject13.Image"), System.Drawing.Image)
+        SerializableAppearanceObject13.Options.UseFont = True
+        SerializableAppearanceObject13.Options.UseImage = True
+        SerializableAppearanceObject14.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        SerializableAppearanceObject14.Image = CType(resources.GetObject("SerializableAppearanceObject14.Image"), System.Drawing.Image)
+        SerializableAppearanceObject14.Options.UseFont = True
+        SerializableAppearanceObject14.Options.UseImage = True
+        SerializableAppearanceObject15.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        SerializableAppearanceObject15.Image = CType(resources.GetObject("SerializableAppearanceObject15.Image"), System.Drawing.Image)
+        SerializableAppearanceObject15.Options.UseFont = True
+        SerializableAppearanceObject15.Options.UseImage = True
+        SerializableAppearanceObject16.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        SerializableAppearanceObject16.Image = CType(resources.GetObject("SerializableAppearanceObject16.Image"), System.Drawing.Image)
+        SerializableAppearanceObject16.Options.UseFont = True
+        SerializableAppearanceObject16.Options.UseImage = True
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Dates", 50, True, True, True, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", CType(0, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Create Email", 90, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "", CType(1, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.DisplayFormat.FormatString = "d"
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.EditFormat.FormatString = "d"
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.MaxLength = 8
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.NullText = ""
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.PopupFormSize = New System.Drawing.Size(150, 450)
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.PopupView = Me.EmailCreationDate_Gridview
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.ShowClearButton = False
+        Me.EmailCreationDate_SearchLookUpEdit.Properties.ViewType = DevExpress.XtraEditors.Repository.GridLookUpViewType.GridView
+        Me.EmailCreationDate_SearchLookUpEdit.Size = New System.Drawing.Size(310, 26)
+        Me.EmailCreationDate_SearchLookUpEdit.TabIndex = 13
+        '
+        'EmailCreationDate_Gridview
+        '
+        Me.EmailCreationDate_Gridview.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn2})
+        Me.EmailCreationDate_Gridview.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.EmailCreationDate_Gridview.Name = "EmailCreationDate_Gridview"
+        Me.EmailCreationDate_Gridview.OptionsFind.AlwaysVisible = True
+        Me.EmailCreationDate_Gridview.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.EmailCreationDate_Gridview.OptionsView.ColumnAutoWidth = False
+        Me.EmailCreationDate_Gridview.OptionsView.ShowAutoFilterRow = True
+        Me.EmailCreationDate_Gridview.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.EmailCreationDate_Gridview.OptionsView.ShowGroupPanel = False
+        '
+        'GridColumn2
+        '
+        Me.GridColumn2.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn2.Caption = "Business Date"
+        Me.GridColumn2.DisplayFormat.FormatString = "d"
+        Me.GridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
+        Me.GridColumn2.FieldName = "BUSINESS_DATE"
+        Me.GridColumn2.Name = "GridColumn2"
+        Me.GridColumn2.Visible = True
+        Me.GridColumn2.VisibleIndex = 0
+        Me.GridColumn2.Width = 111
+        '
+        'LabelControl5
+        '
+        Me.LabelControl5.Location = New System.Drawing.Point(29, 195)
+        Me.LabelControl5.Name = "LabelControl5"
+        Me.LabelControl5.Size = New System.Drawing.Size(66, 13)
+        Me.LabelControl5.TabIndex = 28
+        Me.LabelControl5.Text = "Email Version:"
+        '
+        'EmailVersion_TextEdit
+        '
+        Me.EmailVersion_TextEdit.Location = New System.Drawing.Point(101, 192)
+        Me.EmailVersion_TextEdit.Name = "EmailVersion_TextEdit"
+        Me.EmailVersion_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EmailVersion_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.EmailVersion_TextEdit.Properties.ReadOnly = True
+        Me.EmailVersion_TextEdit.Size = New System.Drawing.Size(171, 20)
+        Me.EmailVersion_TextEdit.TabIndex = 29
         '
         'DailyEmail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1212, 708)
+        Me.ClientSize = New System.Drawing.Size(1423, 545)
+        Me.Controls.Add(Me.EmailVersion_TextEdit)
+        Me.Controls.Add(Me.LabelControl5)
         Me.Controls.Add(Me.SendEmail_CheckEdit)
         Me.Controls.Add(Me.LayoutControl2)
         Me.Controls.Add(Me.EMAILProgressBar)
@@ -2418,8 +2521,8 @@ Partial Class DailyEmail
         Me.Controls.Add(Me.LabelControl2)
         Me.Controls.Add(Me.To_MemoEdit)
         Me.Controls.Add(Me.LabelControl1)
-        Me.Controls.Add(Me.EmailCreationDate)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Controls.Add(Me.EmailCreationDate_SearchLookUpEdit)
+        Me.IconOptions.Icon = CType(resources.GetObject("DailyEmail.IconOptions.Icon"), System.Drawing.Icon)
         Me.Name = "DailyEmail"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Daily Email  for Risk Control Overview"
@@ -2526,8 +2629,11 @@ Partial Class DailyEmail
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmailCreationDate.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SendEmail_CheckEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmailCreationDate_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmailCreationDate_Gridview, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmailVersion_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2721,7 +2827,6 @@ Partial Class DailyEmail
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem1 As DevExpress.XtraLayout.EmptySpaceItem
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
-    Friend WithEvents EmailCreationDate As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents BgwDailyRiskEmail As System.ComponentModel.BackgroundWorker
     Friend WithEvents colID As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colProcDate As DevExpress.XtraGrid.Columns.GridColumn
@@ -2731,4 +2836,11 @@ Partial Class DailyEmail
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
     Friend WithEvents SendEmail_CheckEdit As DevExpress.XtraEditors.CheckEdit
+    Friend WithEvents EmailCreationDate_SearchLookUpEdit As DevExpress.XtraEditors.SearchLookUpEdit
+    Friend WithEvents EmailCreationDate_Gridview As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn2 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LabelControl5 As DevExpress.XtraEditors.LabelControl
+    Friend WithEvents EmailVersion_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents ProgressPanel1 As DevExpress.XtraWaitForm.ProgressPanel
+    Friend WithEvents LayoutControlItem1 As DevExpress.XtraLayout.LayoutControlItem
 End Class

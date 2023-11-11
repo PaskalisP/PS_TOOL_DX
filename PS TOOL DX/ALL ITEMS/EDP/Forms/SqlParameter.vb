@@ -178,7 +178,7 @@ Public Class SqlParameter
             Me.SQL_PARAMETER_DETAILS_SECONDBindingSource.EndEdit()
             Me.SQL_PARAMETER_DETAILS_THIRDBindingSource.EndEdit()
             If Me.EDPDataSet.HasChanges = True Then
-                If MessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                If XtraMessageBox.Show("Should the Changes be saved?", "SAVE CHANGES", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
                     SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
                     SplashScreenManager.Default.SetWaitFormCaption("Save Changes - Reload SQL Parameters")
                     Me.TableAdapterManager.UpdateAll(Me.EDPDataSet)
@@ -224,7 +224,8 @@ Public Class SqlParameter
             End If
         Catch ex As Exception
             SplashScreenManager.CloseForm(False)
-            MessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            XtraMessageBox.SmartTextWrap = True
+            XtraMessageBox.Show(ex.Message, "Error on Save Changes", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
         End Try
         CloseSqlConnections()
@@ -234,106 +235,118 @@ Public Class SqlParameter
     End Sub
 
     Private Sub bbiDelete_ItemClick(sender As Object, e As ItemClickEventArgs) Handles bbiDelete.ItemClick
-        OpenSqlConnections()
-        'Remove PARAMETER NAMES
-        If Me.GridControl3.FocusedView.Name = "SQL_Parameter_Gridview" Then
-            Dim row As System.Data.DataRow = SQL_Parameter_Gridview.GetDataRow(SQL_Parameter_Gridview.FocusedRowHandle)
-            Dim cellvalue As String = row(0)
-            Dim ParameterName As String = row(1)
-            If MessageBox.Show("Should the SQL Parameter " & ParameterName & " and all its details be deleted ?", "DELETE SQL PARAMETER", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                'Delete Parameter with the same [Id_SQL_Parameters]
-                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "'))"
-                cmd.ExecuteNonQuery()
-                'Delete Parameter with the same [Id_SQL_Parameters]
-                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "')"
-                cmd.ExecuteNonQuery()
-                'Delete Parameter with the same [Id_SQL_Parameters]
-                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "'"
-                cmd.ExecuteNonQuery()
-                'Delete Abteilungen with the same ABTEILUNGS NAME 
-                cmd.CommandText = "DELETE  FROM [SQL_PARAMETER] where [SQL_Parameter_Name]='" & ParameterName & "'"
-                cmd.ExecuteNonQuery()
-                'Me.SQL_Parameter_Gridview.DeleteSelectedRows()
-                'GridControl3.Update()
-                Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
-                Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
-                Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
-                Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
-                SplashScreenManager.CloseForm(False)
+        Try
+            OpenSqlConnections()
+            'Remove PARAMETER NAMES
+            If Me.GridControl3.FocusedView.Name = "SQL_Parameter_Gridview" Then
+                Dim row As System.Data.DataRow = SQL_Parameter_Gridview.GetDataRow(SQL_Parameter_Gridview.FocusedRowHandle)
+                Dim cellvalue As String = row(0)
+                Dim ParameterName As String = row(1)
+                If XtraMessageBox.Show("Should the SQL Parameter " & ParameterName & " and all its details be deleted ?", "DELETE SQL PARAMETER", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = MsgBoxResult.Yes Then
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    'Delete Parameter with the same [Id_SQL_Parameters]
+                    cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "'))"
+                    cmd.ExecuteNonQuery()
+                    'Delete Parameter with the same [Id_SQL_Parameters]
+                    cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "')"
+                    cmd.ExecuteNonQuery()
+                    'Delete Parameter with the same [Id_SQL_Parameters]
+                    cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]='" & ParameterName & "'"
+                    cmd.ExecuteNonQuery()
+                    'Delete Abteilungen with the same ABTEILUNGS NAME 
+                    cmd.CommandText = "DELETE  FROM [SQL_PARAMETER] where [SQL_Parameter_Name]='" & ParameterName & "'"
+                    cmd.ExecuteNonQuery()
+                    'Me.SQL_Parameter_Gridview.DeleteSelectedRows()
+                    'GridControl3.Update()
+                    Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                    Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                    Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                    Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+                    SplashScreenManager.CloseForm(False)
 
-            End If
-        ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_GridView" Then
-            'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
-            'Dim cellvalue As String = row(0)
-            If MessageBox.Show("Should the SQL Parameter ID: " & ID_2 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-                'Delete Parameter with the same [Id_SQL_Parameters]
-                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID]='" & ID_2 & "')"
-                cmd.ExecuteNonQuery()
-                'Delete Parameter with the same [Id_SQL_Parameters]
-                cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID='" & ID_2 & "')
+                End If
+            ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_GridView" Then
+                'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
+                'Dim cellvalue As String = row(0)
+                If XtraMessageBox.Show("Should the SQL Parameter ID: " & ID_2 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    'Delete Parameter with the same [Id_SQL_Parameters]
+                    cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID]='" & ID_2 & "')"
+                    cmd.ExecuteNonQuery()
+                    'Delete Parameter with the same [Id_SQL_Parameters]
+                    cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID='" & ID_2 & "')
                                            DELETE FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]='" & ID_2 & "'
                                            UPDATE A SET A.[SQL_Float_1]=B.New_LfdNr FROM  [SQL_PARAMETER_DETAILS_SECOND] A INNER JOIN 
                                            (SELECT ID,[SQL_Float_1], ROW_NUMBER() OVER (ORDER BY [SQL_Float_1]) AS New_LfdNr
                                            FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters) B on A.ID=B.ID"
-                cmd.ExecuteNonQuery()
-                'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
-                cmd.CommandText = "DECLARE @ID_SQL_Parameters nvarchar(max)=(Select [Id_SQL_Parameters] from [SQL_PARAMETER_DETAILS] where ID='" & ID_2 & "')
+                    cmd.ExecuteNonQuery()
+                    'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
+                    cmd.CommandText = "DECLARE @ID_SQL_Parameters nvarchar(max)=(Select [Id_SQL_Parameters] from [SQL_PARAMETER_DETAILS] where ID='" & ID_2 & "')
                                            DELETE FROM [SQL_PARAMETER_DETAILS] where [ID]='" & ID_2 & "'
                                            UPDATE A SET A.[SQL_Float_1]=B.New_LfdNr FROM  [SQL_PARAMETER_DETAILS] A INNER JOIN 
                                            (SELECT ID,[SQL_Float_1], ROW_NUMBER() OVER (ORDER BY [SQL_Float_1]) AS New_LfdNr
                                            FROM [SQL_PARAMETER_DETAILS] where [Id_SQL_Parameters]=@ID_SQL_Parameters) B on A.ID=B.ID"
-                cmd.ExecuteNonQuery()
-                'Me.SQL_Parameter_Details_GridView.DeleteSelectedRows()
-                'GridControl3.Update()
-                Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
-                Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
-                Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
-                'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
-            End If
-        ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_Second_GridView" Then
-            'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
-            'Dim cellvalue As String = row(0)
-            If MessageBox.Show("Should the SQL Parameter ID: " & ID_3 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-                'Delete Parameter with the same [Id_SQL_Parameters]
-                cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID]='" & ID_3 & "')"
-                cmd.ExecuteNonQuery()
-                'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
-                cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID='" & ID_3 & "')
+                    cmd.ExecuteNonQuery()
+                    'Me.SQL_Parameter_Details_GridView.DeleteSelectedRows()
+                    'GridControl3.Update()
+                    Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                    Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                    Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                    'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+                    SplashScreenManager.CloseForm(False)
+                End If
+            ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_Second_GridView" Then
+                'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
+                'Dim cellvalue As String = row(0)
+                If XtraMessageBox.Show("Should the SQL Parameter ID: " & ID_3 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    'Delete Parameter with the same [Id_SQL_Parameters]
+                    cmd.CommandText = "DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details] in (Select [ID] from [SQL_PARAMETER_DETAILS_SECOND] where [ID]='" & ID_3 & "')"
+                    cmd.ExecuteNonQuery()
+                    'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
+                    cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_SECOND] where ID='" & ID_3 & "')
                                            DELETE FROM [SQL_PARAMETER_DETAILS_SECOND] where [ID]='" & ID_3 & "'
                                            UPDATE A SET A.[SQL_Float_1]=B.New_LfdNr FROM  [SQL_PARAMETER_DETAILS_SECOND] A INNER JOIN 
                                            (SELECT ID,[SQL_Float_1], ROW_NUMBER() OVER (ORDER BY [SQL_Float_1]) AS New_LfdNr
                                            FROM [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters) B on A.ID=B.ID"
-                cmd.ExecuteNonQuery()
-                'Me.SQL_Parameter_Details_Second_GridView.DeleteSelectedRows()
-                'GridControl3.Update()
-                Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
-                Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
-                'Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
-                'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
-            End If
-        ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_Third_GridView" Then
-            'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
-            'Dim cellvalue As String = row(0)
-            If MessageBox.Show("Should the SQL Parameter ID: " & ID_4 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
-                'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
-                cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID='" & ID_4 & "')
+                    cmd.ExecuteNonQuery()
+                    'Me.SQL_Parameter_Details_Second_GridView.DeleteSelectedRows()
+                    'GridControl3.Update()
+                    Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                    Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_SECOND)
+                    'Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                    'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+                    SplashScreenManager.CloseForm(False)
+                End If
+            ElseIf Me.GridControl3.FocusedView.Name = "SQL_Parameter_Details_Third_GridView" Then
+                'Dim row As System.Data.DataRow = SQL_Parameter_Details_GridView.GetDataRow(SQL_Parameter_Details_GridView.FocusedRowHandle)
+                'Dim cellvalue As String = row(0)
+                If XtraMessageBox.Show("Should the SQL Parameter ID: " & ID_4 & " be deleted ? ", "DELETE SQL PARAMETER DETAIL", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    'Delete Parameter with the same [IdABTEILUNGSPARAMETER]
+                    cmd.CommandText = "DECLARE @ID_SQL_Parameters int=(Select [Id_SQL_Parameters_Details] from [SQL_PARAMETER_DETAILS_THIRD] where ID='" & ID_4 & "')
                                            DELETE FROM [SQL_PARAMETER_DETAILS_THIRD] where [ID]='" & ID_4 & "'
                                            UPDATE A SET A.[SQL_Float_1]=B.New_LfdNr FROM  [SQL_PARAMETER_DETAILS_THIRD] A INNER JOIN 
                                            (SELECT ID,[SQL_Float_1], ROW_NUMBER() OVER (ORDER BY [SQL_Float_1]) AS New_LfdNr
                                            FROM [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@ID_SQL_Parameters) B on A.ID=B.ID"
-                cmd.ExecuteNonQuery()
-                'Me.SQL_Parameter_Details_Second_GridView.DeleteSelectedRows()
-                'GridControl3.Update()
-                Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
-                'Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
-                'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
-
+                    cmd.ExecuteNonQuery()
+                    'Me.SQL_Parameter_Details_Second_GridView.DeleteSelectedRows()
+                    'GridControl3.Update()
+                    Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS_THIRD)
+                    'Me.SQL_PARAMETER_DETAILSTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER_DETAILS)
+                    'Me.SQL_PARAMETERTableAdapter.Fill(Me.EDPDataSet.SQL_PARAMETER)
+                    SplashScreenManager.CloseForm(False)
+                End If
             End If
-        End If
-        CloseSqlConnections()
+            CloseSqlConnections()
 
-        'LOAD_ALL_SQL_PARAMETER_DETAILS()
+            'LOAD_ALL_SQL_PARAMETER_DETAILS()
+        Catch ex As Exception
+            SplashScreenManager.CloseForm(False)
+            XtraMessageBox.SmartTextWrap = True
+            XtraMessageBox.Show(ex.Message, "Error on delete data", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End Try
 
     End Sub
 
@@ -1435,8 +1448,9 @@ Public Class SqlParameter
 
                                             UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
 
-                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            --SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_C from @Param_C where ID_C>@MinID ORDER BY ID_C asc)
                                             end
 
 
@@ -1449,8 +1463,9 @@ Public Class SqlParameter
 
                                             UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            --SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_C from @Param_C where ID_C>@MinID ORDER BY ID_C asc)
                                             end
 
 
@@ -1504,8 +1519,9 @@ Public Class SqlParameter
 
                                             UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-                                            SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-                                            SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                            --SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_D from @Param_D where ID_D>@MinID ORDER BY ID_D asc)
                                             end"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_2)
                         cmd.CommandText = cmd.CommandText
@@ -1656,8 +1672,9 @@ Public Class SqlParameter
 
                                         UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-                                        SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-                                        SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                        --SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                        --SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                        SET @MinID=(Select TOP 1 ID_D from @Param_D where ID_D>@MinID ORDER BY ID_D asc)
                                         end"
                         cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_3)
                         cmd.CommandText = cmd.CommandText
@@ -2137,8 +2154,9 @@ Public Class SqlParameter
 
                                             UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
 
-                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            --SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_C from @Param_C where ID_C>@MinID ORDER BY ID_C asc)
                                             end
 
 
@@ -2151,8 +2169,9 @@ Public Class SqlParameter
 
                                             UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            --SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_C from @Param_C where ID_C>@MinID ORDER BY ID_C asc)
                                             end
 
 
@@ -2206,8 +2225,9 @@ Public Class SqlParameter
 
                                             UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-                                            SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-                                            SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                            --SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_D from @Param_D where ID_D>@MinID ORDER BY ID_D asc)
                                             end
 
                                             SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS]
@@ -2393,8 +2413,9 @@ Public Class SqlParameter
 
                                                 UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-                                                SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-                                                SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                --SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                                --SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                SET @MinID=(Select TOP 1 ID_D from @Param_D where ID_D>@MinID ORDER BY ID_D asc)
                                                 end
 
 
@@ -2407,8 +2428,9 @@ Public Class SqlParameter
 
                                                 UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-                                                SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-                                                SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                                --SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                                --SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                                SET @MinID=(Select TOP 1 ID_C from @Param_C where ID_C>@MinID ORDER BY ID_C asc)
                                                 end
 
 
@@ -2462,8 +2484,9 @@ Public Class SqlParameter
 
                                                 UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-                                                SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-                                                SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                --SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                                --SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                SET @MinID=(Select TOP 1 ID_D from @Param_D where ID_D>@MinID ORDER BY ID_D asc)
                                                 end
 
                                                 SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND]
@@ -2781,8 +2804,9 @@ Public Class SqlParameter
 
                                             UPDATE @Param_C set ID_C_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_SECOND] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_C=@MinID
 
-                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            --SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_C from @Param_C where ID_C>@MinID ORDER BY ID_C asc)
                                             end
 
 
@@ -2795,8 +2819,9 @@ Public Class SqlParameter
 
                                             UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-                                            SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-                                            SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                            --SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_C from @Param_C where ID_C>@MinID ORDER BY ID_C asc)
                                             end
 
 
@@ -2850,8 +2875,9 @@ Public Class SqlParameter
 
                                             UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-                                            SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-                                            SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            --SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                            --SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                            SET @MinID=(Select TOP 1 ID_D from @Param_D where ID_D>@MinID ORDER BY ID_D asc)
                                             end
 
                                             SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS]
@@ -3037,8 +3063,9 @@ Public Class SqlParameter
 
                                                 UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-                                                SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-                                                SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                --SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                                --SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                SET @MinID=(Select TOP 1 ID_D from @Param_D where ID_D>@MinID ORDER BY ID_D asc)
                                                 end
 
 
@@ -3051,8 +3078,9 @@ Public Class SqlParameter
 
                                                 UPDATE A SET A.ID_SQL_D_New=B.ID_C_New from  @Param_D A INNER JOIN @Param_C B ON A.ID_SQL_D=B.ID_C   
 
-                                                SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
-                                                SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                                --SET @CURRENT_ID =(Select ID from @Param_C where ID_C=@MinID)
+                                                --SET @MinID=(Select ID_C from @Param_C where ID=@CURRENT_ID+1)
+                                                SET @MinID=(Select TOP 1 ID_C from @Param_C where ID_C>@MinID ORDER BY ID_C asc)
                                                 end
 
 
@@ -3106,8 +3134,9 @@ Public Class SqlParameter
 
                                                 UPDATE @Param_D set ID_D_New=(Select MAX(ID) from [SQL_PARAMETER_DETAILS_THIRD] where [Id_SQL_Parameters_Details]=@MaxID_New) where ID_D=@MinID
 
-                                                SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
-                                                SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                --SET @CURRENT_ID =(Select ID from @Param_D where ID_D=@MinID)
+                                                --SET @MinID=(Select ID_D from @Param_D where ID=@CURRENT_ID+1)
+                                                SET @MinID=(Select TOP 1 ID_D from @Param_D where ID_D>@MinID ORDER BY ID_D asc)
                                                 end
 
                                                 SET @DUBLICATE_NR=(select [SQL_Float_1] from [SQL_PARAMETER_DETAILS_SECOND]

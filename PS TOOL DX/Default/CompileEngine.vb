@@ -72,6 +72,7 @@ Namespace DynamicCompileAndRun
     Public Enum LanguageType
         CSharp
         VB
+
     End Enum
 
     Public Class CompileEngine
@@ -92,6 +93,7 @@ Namespace DynamicCompileAndRun
             CallEntry(assembly, EntryPoint)
             DisplayErrorMsg()
         End Sub
+
 
         Friend SourceCode As String = String.Empty
         Friend EntryPoint As String = "Main"
@@ -348,31 +350,33 @@ Namespace DynamicCompileAndRun
         Friend Sub DisplayErrorMsg()
             If errMsg.Length > 0 Then
                 XtraMessageBox.Show(errMsg.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+                'XtraMessageBox.Show("ProcedureName:" & CurrentProcedureName & vbNewLine & "CurrentSystemExecuting:" & CurrentSystemExecuting & vbNewLine & "CurrentSystemName:" & CurrentSystemName)
                 If CurrentProcedureName = Nothing Then
                     CurrentProcedureName = "VB_SCRIPT_EXECUTION"
                     CurrentSystemName = "VB_SCRIPT_EXECUTION"
+                    OpenVbScript_SqlConnection()
+                    cmdVbScript.CommandText = "INSERT INTO [Events_Journal] ([ProcDate],[Event],[ProcName],[SystemName],[SystemUser]) 
+                                               Values(GETDATE(),@Event,@ProcName,@SystemName,@CurrentUserWindowsId)"
+                    cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = errMsg.ToString()
+                    cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
+                    cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemName
+                    cmdVbScript.Parameters.Add("@CurrentUserWindowsId", SqlDbType.NVarChar).Value = CurrentUserWindowsID
+                    cmdVbScript.ExecuteNonQuery()
+                    cmdVbScript.Parameters.Clear()
+                    CloseVbScript_SqlConnection()
                 End If
-                OpenVbScript_SqlConnection()
-                cmdVbScript.CommandText = "INSERT INTO [Events_Journal] ([ProcDate],[Event],[ProcName],[SystemName],[SystemUser]) Values(GETDATE(),@Event,@ProcName,@SystemName,@CurrentUserWindowsId)"
-                cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = errMsg.ToString()
-                cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
-                cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemName
-                cmdVbScript.Parameters.Add("@CurrentUserWindowsId", SqlDbType.NVarChar).Value = CurrentUserWindowsID
-                cmdVbScript.ExecuteNonQuery()
-                cmdVbScript.Parameters.Clear()
-                CloseVbScript_SqlConnection()
 
-                MsgBox(CurrentSystemExecuting)
+                'MsgBox(CurrentSystemExecuting)
 
                 If CurrentSystemExecuting <> Nothing Then
                     Select Case CurrentSystemExecuting
                         Case = "PS TOOL CLIENT"
                             OpenVbScript_SqlConnection()
                             cmdVbScript.CommandText = "INSERT INTO [CLIENT EVENTS] ([ProcDate],[Event],[ProcName],[SystemName]) 
-                                                       Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@Event,@ProcName,@SystemName)"
-                            cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
-                            cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
-                            cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemExecuting
+                                                       Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@EventClient,@ProcNameClient,@SystemNameClient)"
+                            cmdVbScript.Parameters.Add("@EventClient", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
+                            cmdVbScript.Parameters.Add("@ProcNameClient", SqlDbType.NVarChar).Value = CurrentProcedureName
+                            cmdVbScript.Parameters.Add("@SystemNameClient", SqlDbType.NVarChar).Value = CurrentSystemExecuting
                             cmdVbScript.ExecuteNonQuery()
                             cmdVbScript.Parameters.Clear()
                             CloseVbScript_SqlConnection()
@@ -389,10 +393,10 @@ Namespace DynamicCompileAndRun
                         Case Else
                             OpenVbScript_SqlConnection()
                             cmdVbScript.CommandText = "INSERT INTO [IMPORT EVENTS] ([ProcDate],[Event],[ProcName],[SystemName]) 
-                                                       Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@Event,@ProcName,@SystemName)"
-                            cmdVbScript.Parameters.Add("@Event", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
-                            cmdVbScript.Parameters.Add("@ProcName", SqlDbType.NVarChar).Value = CurrentProcedureName
-                            cmdVbScript.Parameters.Add("@SystemName", SqlDbType.NVarChar).Value = CurrentSystemExecuting
+                                                       Values((SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))),@EventOthers,@ProcNameOthers,@SystemNameOthers)"
+                            cmdVbScript.Parameters.Add("@EventOthers", SqlDbType.NVarChar).Value = "ERROR +++ " & errMsg.ToString()
+                            cmdVbScript.Parameters.Add("@ProcNameOthers", SqlDbType.NVarChar).Value = CurrentProcedureName
+                            cmdVbScript.Parameters.Add("@SystemNameOthers", SqlDbType.NVarChar).Value = CurrentSystemExecuting
                             cmdVbScript.ExecuteNonQuery()
                             cmdVbScript.Parameters.Clear()
                             CloseVbScript_SqlConnection()

@@ -101,6 +101,7 @@ Public Class ManualImport
     Dim IDNrRowValue As Integer
     'New
     Dim ID_Selected As Integer = 0
+    Dim GetFocusedRow As Integer = 0
     Dim SelectedFilesDir As New List(Of String)
     Private ConvertWorkbook As IWorkbook
     Dim ManualImportDirectory As String = Nothing
@@ -727,12 +728,20 @@ Public Class ManualImport
     End Sub
 
     Private Sub SelectFileButtonEdit_Click(sender As Object, e As EventArgs) Handles SelectFileButtonEdit.Click
+        Dim focusedView As GridView = CType(GridControl1.FocusedView, GridView)
+        Dim view As GridView = Me.GridControl1.FocusedView
+        Dim focusedRow As Integer = view.FocusedRowHandle
+
         'Select files from the specific directory based on the file path
         If Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colExectutionType) = "IMPORT" Then
             With XtraOpenFileDialog1
                 .Filter = "Excel Files (*.xls;*.xlsx)|*.xls;*.xlsx|Text Files (*.txt)|*.txt|Csv Files (*.csv;*.CSV)|*.csv;*.CSV|XML Files (*.xml;*.XML)|*.xml;*.XML|ORIG Files (*.orig;*.ORIG)|*.orig;*.ORIG|All Files|*.*"
                 .FilterIndex = 1
-                .InitialDirectory = Path.GetDirectoryName(Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colCurrentFileName))
+                If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+                    .InitialDirectory = "C:\"
+                Else
+                    .InitialDirectory = Path.GetDirectoryName(Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colCurrentFileName))
+                End If
                 .FileName = Nothing
                 .Title = Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcNr) & " - " & Me.ManualImportProcedures_BasicView.GetFocusedRowCellValue(colProcName)
                 .RestoreDirectory = True
@@ -1406,6 +1415,15 @@ Public Class ManualImport
 
     End Sub
 
+    Private Sub ManualImportProcedures_BasicView_PopupMenuShowing(sender As Object, e As PopupMenuShowingEventArgs) Handles ManualImportProcedures_BasicView.PopupMenuShowing
+        Dim view As GridView = TryCast(sender, GridView)
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            If e.HitInfo.HitTest = DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell Then
+                e.Allow = False
+                Me.ProceduresGridviewPopupMenu.ShowPopup(GridControl1.PointToScreen(e.Point))
+            End If
+        End If
+    End Sub
 
     Private Sub MANUALImportEvents_BasicView_CustomDrawCell(sender As Object, e As RowCellCustomDrawEventArgs) Handles MANUALImportEvents_BasicView.CustomDrawCell
         Dim AlertImage As Image = Me.ImageCollection1.Images.Item(23)
@@ -1431,7 +1449,191 @@ Public Class ManualImport
                 e.Cache.DrawImage(OkImage, imagePoint)
             End If
         End If
+
+
+
     End Sub
 
 
+    Private Sub ProcedureDuplicateNextPosition_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles ProcedureDuplicateNextPosition_bbi.ItemClick
+        Dim focusedView As GridView = CType(GridControl1.FocusedView, GridView)
+        Dim rowHandle As Integer = focusedView.FocusedRowHandle
+        GetFocusedRow = focusedView.FocusedRowHandle
+
+        If XtraMessageBox.Show("Should the current procedure: " & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & " be duplicated in the next row?", "DUPLICATE PROCEDURE - NEXT ROW", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Starting procedure duplication in the next row")
+
+                OpenSqlConnections()
+                cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
+                                   DECLARE @CURRENT_USER Nvarchar(50)='<CurrentUser>'
+                                                DECLARE @Procedure_Name_New nvarchar(100)='NEW_' + (Select ProcName from [MANUAL IMPORTS] where ID=@ID_A)
+                                                DECLARE @DUBLICATE_NR float=0
+												DECLARE @DUBLICATE_ID int=0
+                                                DECLARE @NEW_RUNNING_NR float=0
+                                              
+                                                DECLARE @ID_3 table (ID int NULL,Number float)
+                                                DECLARE @ID_4 table (ID int NULL,Number float)
+
+                                                
+                                                INSERT INTO [MANUAL IMPORTS]
+                                                           ([ProcNr]
+														   ,[ProcName]
+														   ,[FileName]
+														   ,[FileDirImport]
+														   ,[CurrentFileName]
+														   ,[InternalNotes]
+														   ,[Multiselect]
+														   ,[DeleteFileAfterImport]
+														   ,[RequestBusinessDate]
+														   ,[FileConvertion]
+														   ,[ExectutionType]
+														   ,[FileExtraction]
+														   ,[Importance]
+														   ,[LastImportDate]
+														   ,[LastImportTime]
+														   ,[LastAction]
+														   ,[LastImportUser])
+                                                SELECT		[ProcNr]+1
+														   ,@Procedure_Name_New
+                                                           ,[FileName]
+														   ,[FileDirImport]
+														   ,[CurrentFileName]
+														   ,[InternalNotes]
+														   ,[Multiselect]
+														   ,[DeleteFileAfterImport]
+														   ,[RequestBusinessDate]
+														   ,[FileConvertion]
+														   ,[ExectutionType]
+														   ,[FileExtraction]
+														   ,[Importance]
+														   ,GETDATE()
+														   ,GETDATE()
+                                                           ,'DUPLICATED'
+                                                           ,@CURRENT_USER
+                                                FROM [MANUAL IMPORTS] where ID=@ID_A
+
+
+                                                SET @DUBLICATE_NR=(select [ProcNr] from [MANUAL IMPORTS]
+                                                where ID not in (Select Min(ID) from [MANUAL IMPORTS] 
+												group by [ProcNr]))
+
+												
+                                                IF @DUBLICATE_NR>0
+                                                BEGIN
+                                                SELECT @DUBLICATE_NR
+
+                                                --Find equal Nr to @DUPLICATE
+                                                INSERT INTO @ID_3
+                                                (ID,Number)
+                                                select ID,[ProcNr] from [MANUAL IMPORTS] 
+                                                where ID in (Select Min(ID) from [MANUAL IMPORTS] 
+												where [ProcNr]=@DUBLICATE_NR)
+
+                                                SET @NEW_RUNNING_NR=@DUBLICATE_NR-(Select Number from @ID_3)
+                                                IF @NEW_RUNNING_NR=0
+                                                BEGIN
+                                                SET @NEW_RUNNING_NR=1
+                                                INSERT INTO @ID_4
+                                                (ID,Number)
+                                                Select ID,[ProcNr]+@NEW_RUNNING_NR from [MANUAL IMPORTS]
+                                                where ID in (Select Min(ID) from [MANUAL IMPORTS] 
+												where [ProcNr] >=@DUBLICATE_NR
+                                                group by [ProcNr]) order by ID asc
+                                                END
+                                                END
+
+                                                UPDATE A SET A.[ProcNr]=B.Number from [MANUAL IMPORTS] A INNER JOIN @ID_4 B on A.ID=B.ID"
+                cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_Selected).Replace("<CurrentUser>", SystemInformation.UserName)
+                cmd.CommandText = cmd.CommandText
+                cmd.ExecuteNonQuery()
+                SplashScreenManager.CloseForm(False)
+
+                XtraMessageBox.Show("Procedure:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                CloseSqlConnections()
+                Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
+                focusedView.RefreshData()
+                focusedView.FocusedRowHandle = GetFocusedRow
+
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                CloseSqlConnections()
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
+    Private Sub ProcedureDuplicateNewPosition_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles ProcedureDuplicateNewPosition_bbi.ItemClick
+        Dim focusedView As GridView = CType(GridControl1.FocusedView, GridView)
+        Dim rowHandle As Integer = focusedView.FocusedRowHandle
+        GetFocusedRow = focusedView.FocusedRowHandle
+
+        If XtraMessageBox.Show("Should the current procedure: " & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & " be duplicated in a new row?", "DUPLICATE PROCEDURE - NEW ROW", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+            Try
+                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                SplashScreenManager.Default.SetWaitFormCaption("Starting procedure duplication in a new row")
+
+                OpenSqlConnections()
+                cmd.CommandText = "DECLARE @ID_A int=<ID_to_DUPLICATE>
+                                   DECLARE @CURRENT_USER Nvarchar(50)='<CurrentUser>'
+                                                DECLARE @Procedure_Name_New nvarchar(100)='NEW_' + (Select ProcName from [MANUAL IMPORTS] where ID=@ID_A)
+                                                DECLARE @MAX_LFD_NR float=(Select MAX(ProcNr) from [MANUAL IMPORTS])
+												
+                                                INSERT INTO [MANUAL IMPORTS]
+                                                           ([ProcNr]
+														   ,[ProcName]
+														   ,[FileName]
+														   ,[FileDirImport]
+														   ,[CurrentFileName]
+														   ,[InternalNotes]
+														   ,[Multiselect]
+														   ,[DeleteFileAfterImport]
+														   ,[RequestBusinessDate]
+														   ,[FileConvertion]
+														   ,[ExectutionType]
+														   ,[FileExtraction]
+														   ,[Importance]
+														   ,[LastImportDate]
+														   ,[LastImportTime]
+														   ,[LastAction]
+														   ,[LastImportUser])
+                                                SELECT		@MAX_LFD_NR+1
+														   ,@Procedure_Name_New
+                                                           ,[FileName]
+														   ,[FileDirImport]
+														   ,[CurrentFileName]
+														   ,[InternalNotes]
+														   ,[Multiselect]
+														   ,[DeleteFileAfterImport]
+														   ,[RequestBusinessDate]
+														   ,[FileConvertion]
+														   ,[ExectutionType]
+														   ,[FileExtraction]
+														   ,[Importance]
+														   ,GETDATE()
+														   ,GETDATE()
+                                                           ,'DUPLICATED'
+                                                           ,@CURRENT_USER
+                                                FROM [MANUAL IMPORTS] where ID=@ID_A"
+                cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_Selected).Replace("<CurrentUser>", SystemInformation.UserName)
+                cmd.CommandText = cmd.CommandText
+                cmd.ExecuteNonQuery()
+                SplashScreenManager.CloseForm(False)
+
+                XtraMessageBox.Show("Procedure:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "ProcName") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                CloseSqlConnections()
+                Me.MANUAL_IMPORTSTableAdapter.Fill(Me.EDPDataSet.MANUAL_IMPORTS)
+                focusedView.RefreshData()
+                focusedView.FocusedRowHandle = GetFocusedRow
+
+            Catch ex As Exception
+                SplashScreenManager.CloseForm(False)
+                CloseSqlConnections()
+                XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+
 End Class
+

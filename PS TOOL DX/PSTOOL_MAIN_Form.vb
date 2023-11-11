@@ -1835,7 +1835,6 @@ Public Class PSTOOL_MAIN_Form
         End If
     End Sub
 
-
     Private Sub RISKCONTROL_CurrencyRiskCalculation_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_CurrencyRiskCalculation_Element.Click
         If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
             XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -1972,9 +1971,9 @@ Public Class PSTOOL_MAIN_Form
             Exit Sub
         Else
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK " & vbNewLine & "as from 31.12.2018 - Calculation 3")
+            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK " & vbNewLine & "as from 31.12.2018")
             ' Place code here
-            Dim c As New InterestRateRiskCalc3
+            Dim c As New InterestRateRiskCalc2018
 
             For Each kf As Form In Me.MdiChildren
                 If c.GetType Is kf.GetType Then
@@ -1993,29 +1992,29 @@ Public Class PSTOOL_MAIN_Form
     End Sub
 
     Private Sub RISKCONTROL_InterestRateRisk_Calc2_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_InterestRateRisk_Calc2_Element.Click
-        If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
-            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-            Exit Sub
-        Else
-            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK AMOUNT" & vbNewLine & " for RISK BEARING CAPACITY " & vbNewLine & " as from 31.12.2018 - Calculation 2")
-            ' Place code here
-            Dim c As New InterestRateRiskCalc2
+        'If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
+        '    XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+        '    Exit Sub
+        'Else
+        '    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+        '    SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK AMOUNT" & vbNewLine & " for RISK BEARING CAPACITY " & vbNewLine & " as from 31.12.2018 - Calculation 2")
+        '    ' Place code here
+        '    Dim c As New InterestRateRiskCalc2
 
-            For Each kf As Form In Me.MdiChildren
-                If c.GetType Is kf.GetType Then
-                    kf.Activate()
-                    kf.WindowState = FormWindowState.Normal
-                    SplashScreenManager.CloseForm(False)
-                    Return
-                End If
-            Next
-            c.MdiParent = Me
+        '    For Each kf As Form In Me.MdiChildren
+        '        If c.GetType Is kf.GetType Then
+        '            kf.Activate()
+        '            kf.WindowState = FormWindowState.Normal
+        '            SplashScreenManager.CloseForm(False)
+        '            Return
+        '        End If
+        '    Next
+        '    c.MdiParent = Me
 
-            c.Show()
-            c.WindowState = FormWindowState.Maximized
-            SplashScreenManager.CloseForm(False)
-        End If
+        '    c.Show()
+        '    c.WindowState = FormWindowState.Maximized
+        '    SplashScreenManager.CloseForm(False)
+        'End If
     End Sub
 
     Private Sub RISKCONTROL_ObligorGratesRatting_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_ObligorGratesRatting_Element.Click
@@ -2159,7 +2158,7 @@ Public Class PSTOOL_MAIN_Form
             Exit Sub
         Else
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("WEIGHTING FACTORS / YIELD CURVES")
+            SplashScreenManager.Default.SetWaitFormCaption("YIELD CURVES / WEIGHTING FACTORS")
             ' Place code here
             Dim c As New WeightingFactors
 
@@ -2405,6 +2404,23 @@ Public Class PSTOOL_MAIN_Form
                     c.WindowState = FormWindowState.Normal
                     SplashScreenManager.CloseForm(False)
 
+                Case = 137
+                    SplashScreenManager.Default.SetWaitFormCaption("BAIS COMMON ALPHA FILES EXPORT (VERSION 1.37) - PRODUCTION")
+                    Dim c As New BaisExportAlphaV137
+                    For Each kf As Form In Me.MdiChildren
+                        If c.GetType Is kf.GetType Then
+                            kf.Activate()
+                            kf.WindowState = FormWindowState.Normal
+                            SplashScreenManager.CloseForm(False)
+                            Return
+                        End If
+                    Next
+                    c.MdiParent = Me
+
+                    c.Show()
+                    c.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+
             End Select
 
 
@@ -2441,6 +2457,24 @@ Public Class PSTOOL_MAIN_Form
                 Case = 136
                     SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.36) - PRODUCTION")
                     Dim c As New BaisExportAnaCreditV136
+
+                    For Each kf As Form In Me.MdiChildren
+                        If c.GetType Is kf.GetType Then
+                            kf.Activate()
+                            kf.WindowState = FormWindowState.Normal
+                            SplashScreenManager.CloseForm(False)
+                            Return
+                        End If
+                    Next
+                    c.MdiParent = Me
+
+                    c.Show()
+                    c.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+
+                Case = 137
+                    SplashScreenManager.Default.SetWaitFormCaption("BAIS ANACREDIT FILES EXPORT (VERSION 1.37) - PRODUCTION")
+                    Dim c As New BaisExportAnaCreditV137
 
                     For Each kf As Form In Me.MdiChildren
                         If c.GetType Is kf.GetType Then
@@ -2743,6 +2777,22 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.CloseForm(False)
         End If
 
+    End Sub
+
+    Private Sub EDP_SQL_FilesLoad_Element_Click(sender As Object, e As EventArgs) Handles EDP_SQL_FilesLoad_Element.Click
+        If EDP_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("EXCEL/CSV Files load")
+            ' Place code here
+            Dim c As New FilesLoad
+            c.MdiParent = Me
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
     End Sub
 
     Private Sub EDP_SQL_FilesCompare_Element_Click(sender As Object, e As EventArgs) Handles EDP_SQL_FilesCompare_Element.Click
@@ -8985,23 +9035,30 @@ Public Class PSTOOL_MAIN_Form
 
     Private Sub dxOK_DailyRiskTable_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim d As Date = DF_RiskTables_Daily.DateEdit1.Text
+        rd = d
+        rdsql = rd.ToString("yyyyMMdd")
+
         dxOK_DailyRiskTable.Dispose()
 
         DF_RiskTables_Daily.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating Daily Risk Tables for " & d)
-        Dim f As New CreditRiskMak
-        f.INDUSTRY_VALUESTableAdapter.Fill(f.RiskControllingDataSet.INDUSTRY_VALUES)
-        f.COUNTRIESTableAdapter.Fill(f.RiskControllingDataSet.COUNTRIES)
-        f.ContractTypeTableAdapter.Fill(f.RiskControllingDataSet.ContractType)
-        f.MAK_REPORTTableAdapter.FillByMakDate(f.RiskControllingDataSet.MAK_REPORT, d)
-        f.CREDIT_RISKTableAdapter.FillByCreditRiskDate(f.RiskControllingDataSet.CREDIT_RISK, d)
-        f.MAK_CR_TOTALSTableAdapter.FillByMakCrTotalsDate(f.RiskControllingDataSet.MAK_CR_TOTALS, d)
-        f.MAK_ALLTableAdapter.FillByRiskDate(f.RiskControllingDataSet.MAK_ALL, d)
-        f.BusinessTypesCreditPortfolioLiveTableAdapter.FillByRiskDate(f.RiskControllingDataSet.BusinessTypesCreditPortfolioLive, d)
+        'Dim f As New CreditRiskMak
+        'f.INDUSTRY_VALUESTableAdapter.Fill(f.RiskControllingDataSet.INDUSTRY_VALUES)
+        'f.COUNTRIESTableAdapter.Fill(f.RiskControllingDataSet.COUNTRIES)
+        'f.ContractTypeTableAdapter.Fill(f.RiskControllingDataSet.ContractType)
+        'f.MAK_REPORTTableAdapter.FillByMakDate(f.RiskControllingDataSet.MAK_REPORT, d)
+        'f.CREDIT_RISKTableAdapter.FillByCreditRiskDate(f.RiskControllingDataSet.CREDIT_RISK, d)
+        'f.MAK_CR_TOTALSTableAdapter.FillByMakCrTotalsDate(f.RiskControllingDataSet.MAK_CR_TOTALS, d)
+        'f.MAK_ALLTableAdapter.FillByRiskDate(f.RiskControllingDataSet.MAK_ALL, d)
+        'f.BusinessTypesCreditPortfolioLiveTableAdapter.FillByRiskDate(f.RiskControllingDataSet.BusinessTypesCreditPortfolioLive, d)
+        Dim MAK_ALLDa As New SqlDataAdapter("SELECT * FROM [MAK ALL] where [RiskDate]='" & rdsql & "'", conn)
+        Dim DAILY_RISK_TABLESdataset As New DataSet("DAILY_RISK_TABLES")
+        MAK_ALLDa.Fill(DAILY_RISK_TABLESdataset, "MAK_ALL")
         Dim CrRep As New ReportDocument
         CrRep.Load(CrystalRepDir & "\DAILY_RISK_TABLES.rpt")
-        CrRep.SetDataSource(f.RiskControllingDataSet)
+        'CrRep.SetDataSource(f.RiskControllingDataSet)
+        CrRep.SetDataSource(DAILY_RISK_TABLESdataset)
         Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myParams As ParameterField = New ParameterField
         myValue.Value = d
@@ -9020,6 +9077,8 @@ Public Class PSTOOL_MAIN_Form
         c.CrystalReportViewer1.ShowGroupTreeButton = False
         c.CrystalReportViewer1.Zoom(85)
         SplashScreenManager.CloseForm(False)
+
+
     End Sub
 
     Private Sub dxOK_LoansStructure_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
