@@ -794,6 +794,12 @@
     <Compile Include="ALL ITEMS\EDP\Forms\UpdateSqlScript.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\UpdateSqlScriptFromXML.designer.vb">
+      <DependentUpon>UpdateSqlScriptFromXML.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\EDP\Forms\UpdateSqlScriptFromXML.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ALL ITEMS\EDP\Forms\UserDirectoryPermissions.Designer.vb">
       <DependentUpon>UserDirectoryPermissions.vb</DependentUpon>
     </Compile>
@@ -1408,6 +1414,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InterestRateRiskDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskBearingCapacityDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RiskBearingCapacityDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingBasicsDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1484,10 +1495,10 @@
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRisk_Parameter_References.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc.Designer.vb">
-      <DependentUpon>CurrencyRiskCalc.vb</DependentUpon>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc2023.designer.vb">
+      <DependentUpon>CurrencyRiskCalc2023.vb</DependentUpon>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc.vb">
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc2023.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CustomerRating.Designer.vb">
@@ -1508,28 +1519,34 @@
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRisk.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2.designer.vb">
-      <DependentUpon>InterestRateRiskCalc2.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2018.designer.vb">
       <DependentUpon>InterestRateRiskCalc2018.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2018.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc3.designer.vb">
-      <DependentUpon>InterestRateRiskCalc3.vb</DependentUpon>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2023.designer.vb">
+      <DependentUpon>InterestRateRiskCalc2023.vb</DependentUpon>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc3.vb">
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2023.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRisk_Parameters.designer.vb">
+      <DependentUpon>InterestRateRisk_Parameters.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRisk_Parameters.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\PD.Designer.vb">
       <DependentUpon>PD.vb</DependentUpon>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\PD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskBearingCapacityCalc.designer.vb">
+      <DependentUpon>RiskBearingCapacityCalc.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskBearingCapacityCalc.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskLimitDailyControl.Designer.vb">
@@ -1562,10 +1579,10 @@
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\StressTestsHO.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLoss.Designer.vb">
-      <DependentUpon>UnexpectedLoss.vb</DependentUpon>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLossCalc2023.designer.vb">
+      <DependentUpon>UnexpectedLossCalc2023.vb</DependentUpon>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLoss.vb">
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLossCalc2023.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\WeightingFactors.Designer.vb">
@@ -1828,6 +1845,7 @@
     <Compile Include="Default\PSTOOL_SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Default\RefreshHelperClass.vb" />
     <Compile Include="Default\SelectFromListForm1.Designer.vb">
       <DependentUpon>SelectFromListForm1.vb</DependentUpon>
     </Compile>
@@ -2082,6 +2100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\UpdateSqlScript.resx">
       <DependentUpon>UpdateSqlScript.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\EDP\Forms\UpdateSqlScriptFromXML.resx">
+      <DependentUpon>UpdateSqlScriptFromXML.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\EDP\Forms\UserDirectoryPermissions.resx">
       <DependentUpon>UserDirectoryPermissions.vb</DependentUpon>
@@ -2359,8 +2380,8 @@
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRisk_Parameter_References.resx">
       <DependentUpon>CreditSpreadRisk_Parameter_References.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc.resx">
-      <DependentUpon>CurrencyRiskCalc.vb</DependentUpon>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CurrencyRiskCalc2023.resx">
+      <DependentUpon>CurrencyRiskCalc2023.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CustomerRating.resx">
       <DependentUpon>CustomerRating.vb</DependentUpon>
@@ -2371,17 +2392,20 @@
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRisk.resx">
       <DependentUpon>InterestRateRisk.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2.resx">
-      <DependentUpon>InterestRateRiskCalc2.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2018.resx">
       <DependentUpon>InterestRateRiskCalc2018.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc3.resx">
-      <DependentUpon>InterestRateRiskCalc3.vb</DependentUpon>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRiskCalc2023.resx">
+      <DependentUpon>InterestRateRiskCalc2023.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\InterestRateRisk_Parameters.resx">
+      <DependentUpon>InterestRateRisk_Parameters.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\PD.resx">
       <DependentUpon>PD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskBearingCapacityCalc.resx">
+      <DependentUpon>RiskBearingCapacityCalc.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskLimitDailyControl.resx">
       <DependentUpon>RiskLimitDailyControl.vb</DependentUpon>
@@ -2398,8 +2422,8 @@
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\StressTestsHO.resx">
       <DependentUpon>StressTestsHO.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLoss.resx">
-      <DependentUpon>UnexpectedLoss.vb</DependentUpon>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\UnexpectedLossCalc2023.resx">
+      <DependentUpon>UnexpectedLossCalc2023.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\WeightingFactors.resx">
       <DependentUpon>WeightingFactors.vb</DependentUpon>
@@ -2911,6 +2935,17 @@
     </None>
     <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\InterestRateRiskDataSet.xss">
       <DependentUpon>InterestRateRiskDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskBearingCapacityDataSet.xsc">
+      <DependentUpon>RiskBearingCapacityDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskBearingCapacityDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RiskBearingCapacityDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskBearingCapacityDataSet.xss">
+      <DependentUpon>RiskBearingCapacityDataSet.xsd</DependentUpon>
     </None>
     <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskControllingBasicsDataSet.xsc">
       <DependentUpon>RiskControllingBasicsDataSet.xsd</DependentUpon>

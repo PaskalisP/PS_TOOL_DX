@@ -52,6 +52,9 @@ Partial Class SqlParameter
         Me.colSQL_ScriptType_2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSQL_ScriptType_3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSQL_ScriptType_4 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colId_SQL_Parameters = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl3 = New DevExpress.XtraGrid.GridControl()
         Me.SQL_PARAMETERBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -63,6 +66,9 @@ Partial Class SqlParameter
         Me.RepositoryItemTextEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.colSQL_Parameter_Info = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSQL_Parameter_Status = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemComboBox3 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.PopupContainerEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit()
         Me.popupContainerControl = New DevExpress.XtraEditors.PopupContainerControl()
@@ -77,6 +83,8 @@ Partial Class SqlParameter
         Me.SQL_DuplicateCurrentPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.SQL_DuplicateNextPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
         Me.bbiExportCurrentSqlParameter = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiExportCurrentSqlParameterInXML = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiUpdateCurrentSqlParameterFromXML = New DevExpress.XtraBars.BarButtonItem()
         Me.SQL_Parameter_Details_Second_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn2 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -98,6 +106,9 @@ Partial Class SqlParameter
         Me.colSQL_ScriptType_21 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSQL_ScriptType_31 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSQL_ScriptType_41 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser2 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate2 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colId_SQL_Parameters_Details_3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.SQL_Parameter_Details_Third_GridView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn15 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -120,6 +131,9 @@ Partial Class SqlParameter
         Me.colSQL_ScriptType_22 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSQL_ScriptType_32 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSQL_ScriptType_42 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastAction3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateUser3 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colLastUpdateDate3 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colId_SQL_Parameters_Details_4 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.SQL_PARAMETERTableAdapter = New PS_TOOL_DX.EDPDataSetTableAdapters.SQL_PARAMETERTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.EDPDataSetTableAdapters.TableAdapterManager()
@@ -217,18 +231,6 @@ Partial Class SqlParameter
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
-        Me.colLastAction = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastUpdateUser = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastUpdateDate = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastAction1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastUpdateUser1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastUpdateDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastAction2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastUpdateDate2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastUpdateUser2 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastAction3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastUpdateUser3 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colLastUpdateDate3 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.SQL_Parameter_Details_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -576,6 +578,24 @@ Partial Class SqlParameter
         Me.colSQL_ScriptType_4.FieldName = "SQL_ScriptType_4"
         Me.colSQL_ScriptType_4.Name = "colSQL_ScriptType_4"
         '
+        'colLastAction1
+        '
+        Me.colLastAction1.FieldName = "LastAction"
+        Me.colLastAction1.Name = "colLastAction1"
+        Me.colLastAction1.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser1
+        '
+        Me.colLastUpdateUser1.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser1.Name = "colLastUpdateUser1"
+        Me.colLastUpdateUser1.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate1
+        '
+        Me.colLastUpdateDate1.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate1.Name = "colLastUpdateDate1"
+        Me.colLastUpdateDate1.OptionsColumn.ReadOnly = True
+        '
         'colId_SQL_Parameters
         '
         Me.colId_SQL_Parameters.FieldName = "Id_SQL_Parameters"
@@ -720,6 +740,24 @@ Partial Class SqlParameter
         Me.colSQL_Parameter_Status.VisibleIndex = 3
         Me.colSQL_Parameter_Status.Width = 115
         '
+        'colLastAction
+        '
+        Me.colLastAction.FieldName = "LastAction"
+        Me.colLastAction.Name = "colLastAction"
+        Me.colLastAction.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser
+        '
+        Me.colLastUpdateUser.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser.Name = "colLastUpdateUser"
+        Me.colLastUpdateUser.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate
+        '
+        Me.colLastUpdateDate.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate.Name = "colLastUpdateDate"
+        Me.colLastUpdateDate.OptionsColumn.ReadOnly = True
+        '
         'RepositoryItemComboBox3
         '
         Me.RepositoryItemComboBox3.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
@@ -774,8 +812,8 @@ Partial Class SqlParameter
         Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
         Me.BarManager1.DockControls.Add(Me.barDockControlRight)
         Me.BarManager1.Form = Me
-        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.SQL_Duplicate_BarButtonItem, Me.SQL_AddToPosition_BarButtonItem, Me.SQL_DuplicateCurrentPosition_BarButtonItem, Me.SQL_DuplicateNextPosition_BarButtonItem, Me.bbiExportCurrentSqlParameter})
-        Me.BarManager1.MaxItemId = 5
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.SQL_Duplicate_BarButtonItem, Me.SQL_AddToPosition_BarButtonItem, Me.SQL_DuplicateCurrentPosition_BarButtonItem, Me.SQL_DuplicateNextPosition_BarButtonItem, Me.bbiExportCurrentSqlParameter, Me.bbiExportCurrentSqlParameterInXML, Me.bbiUpdateCurrentSqlParameterFromXML})
+        Me.BarManager1.MaxItemId = 7
         '
         'barDockControlTop
         '
@@ -811,7 +849,7 @@ Partial Class SqlParameter
         '
         'SQL_Duplicate_BarButtonItem
         '
-        Me.SQL_Duplicate_BarButtonItem.Caption = "Duplicate current SQL Parameter (as new Parameter)"
+        Me.SQL_Duplicate_BarButtonItem.Caption = "Duplicate current Parameter (as new Parameter)"
         Me.SQL_Duplicate_BarButtonItem.Id = 0
         Me.SQL_Duplicate_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_Duplicate_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
@@ -819,7 +857,7 @@ Partial Class SqlParameter
         '
         'SQL_AddToPosition_BarButtonItem
         '
-        Me.SQL_AddToPosition_BarButtonItem.Caption = "Add new SQL Parameter to current position"
+        Me.SQL_AddToPosition_BarButtonItem.Caption = "Add new Parameter to current position"
         Me.SQL_AddToPosition_BarButtonItem.Id = 1
         Me.SQL_AddToPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
@@ -827,7 +865,7 @@ Partial Class SqlParameter
         '
         'SQL_DuplicateCurrentPosition_BarButtonItem
         '
-        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the current Position)"
+        Me.SQL_DuplicateCurrentPosition_BarButtonItem.Caption = "Duplicate current Parameter (in the current Position)"
         Me.SQL_DuplicateCurrentPosition_BarButtonItem.Id = 2
         Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateCurrentPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
@@ -835,7 +873,7 @@ Partial Class SqlParameter
         '
         'SQL_DuplicateNextPosition_BarButtonItem
         '
-        Me.SQL_DuplicateNextPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the next Position)"
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Caption = "Duplicate current Parameter (in the next Position)"
         Me.SQL_DuplicateNextPosition_BarButtonItem.Id = 3
         Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
         Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
@@ -848,6 +886,22 @@ Partial Class SqlParameter
         Me.bbiExportCurrentSqlParameter.ImageOptions.Image = CType(resources.GetObject("bbiExportCurrentSqlParameter.ImageOptions.Image"), System.Drawing.Image)
         Me.bbiExportCurrentSqlParameter.ImageOptions.LargeImage = CType(resources.GetObject("bbiExportCurrentSqlParameter.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.bbiExportCurrentSqlParameter.Name = "bbiExportCurrentSqlParameter"
+        '
+        'bbiExportCurrentSqlParameterInXML
+        '
+        Me.bbiExportCurrentSqlParameterInXML.Caption = "Export current Parameter in XML File"
+        Me.bbiExportCurrentSqlParameterInXML.Id = 5
+        Me.bbiExportCurrentSqlParameterInXML.ImageOptions.Image = CType(resources.GetObject("bbiExportCurrentSqlParameterInXML.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiExportCurrentSqlParameterInXML.ImageOptions.LargeImage = CType(resources.GetObject("bbiExportCurrentSqlParameterInXML.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiExportCurrentSqlParameterInXML.Name = "bbiExportCurrentSqlParameterInXML"
+        '
+        'bbiUpdateCurrentSqlParameterFromXML
+        '
+        Me.bbiUpdateCurrentSqlParameterFromXML.Caption = "Update current parameter from XML File"
+        Me.bbiUpdateCurrentSqlParameterFromXML.Id = 6
+        Me.bbiUpdateCurrentSqlParameterFromXML.ImageOptions.Image = CType(resources.GetObject("bbiUpdateCurrentSqlParameterFromXML.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiUpdateCurrentSqlParameterFromXML.ImageOptions.LargeImage = CType(resources.GetObject("bbiUpdateCurrentSqlParameterFromXML.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiUpdateCurrentSqlParameterFromXML.Name = "bbiUpdateCurrentSqlParameterFromXML"
         '
         'SQL_Parameter_Details_Second_GridView
         '
@@ -1051,6 +1105,24 @@ Partial Class SqlParameter
         Me.colSQL_ScriptType_41.ColumnEdit = Me.ScriptType_RepositoryItemImageComboBox
         Me.colSQL_ScriptType_41.FieldName = "SQL_ScriptType_4"
         Me.colSQL_ScriptType_41.Name = "colSQL_ScriptType_41"
+        '
+        'colLastAction2
+        '
+        Me.colLastAction2.FieldName = "LastAction"
+        Me.colLastAction2.Name = "colLastAction2"
+        Me.colLastAction2.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser2
+        '
+        Me.colLastUpdateUser2.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser2.Name = "colLastUpdateUser2"
+        Me.colLastUpdateUser2.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate2
+        '
+        Me.colLastUpdateDate2.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate2.Name = "colLastUpdateDate2"
+        Me.colLastUpdateDate2.OptionsColumn.ReadOnly = True
         '
         'colId_SQL_Parameters_Details_3
         '
@@ -1263,6 +1335,24 @@ Partial Class SqlParameter
         Me.colSQL_ScriptType_42.FieldName = "SQL_ScriptType_4"
         Me.colSQL_ScriptType_42.Name = "colSQL_ScriptType_42"
         '
+        'colLastAction3
+        '
+        Me.colLastAction3.FieldName = "LastAction"
+        Me.colLastAction3.Name = "colLastAction3"
+        Me.colLastAction3.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateUser3
+        '
+        Me.colLastUpdateUser3.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser3.Name = "colLastUpdateUser3"
+        Me.colLastUpdateUser3.OptionsColumn.ReadOnly = True
+        '
+        'colLastUpdateDate3
+        '
+        Me.colLastUpdateDate3.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate3.Name = "colLastUpdateDate3"
+        Me.colLastUpdateDate3.OptionsColumn.ReadOnly = True
+        '
         'colId_SQL_Parameters_Details_4
         '
         Me.colId_SQL_Parameters_Details_4.Caption = "Id_SQL_Parameters_Details"
@@ -1279,6 +1369,8 @@ Partial Class SqlParameter
         '
         Me.TableAdapterManager.ALL_TABLE_COLUMNSTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.BAIS_IMPORT_PROCEDURESTableAdapter = Nothing
+        Me.TableAdapterManager.BAISFORMS_IMPORT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.CLIENT_EVENTSTableAdapter = Nothing
         Me.TableAdapterManager.CURRENT_USERSTableAdapter = Nothing
         Me.TableAdapterManager.FILES_IMPORTTableAdapter = Nothing
@@ -1286,6 +1378,7 @@ Partial Class SqlParameter
         Me.TableAdapterManager.MANUAL_IMPORTSTableAdapter = Nothing
         Me.TableAdapterManager.OCBS_IMPORT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.ODAS_IMPORT_PROCEDURESTableAdapter = Nothing
+        Me.TableAdapterManager.PSTOOL_CLIENT_PROCEDURESTableAdapter = Nothing
         Me.TableAdapterManager.SQL_PARAMETER_DETAILS_SECONDTableAdapter = Me.SQL_PARAMETER_DETAILS_SECONDTableAdapter
         Me.TableAdapterManager.SQL_PARAMETER_DETAILS_THIRDTableAdapter = Me.SQL_PARAMETER_DETAILS_THIRDTableAdapter
         Me.TableAdapterManager.SQL_PARAMETER_DETAILSTableAdapter = Me.SQL_PARAMETER_DETAILSTableAdapter
@@ -2053,7 +2146,7 @@ Partial Class SqlParameter
         '
         'SqlParameterGridviewPopupMenu
         '
-        Me.SqlParameterGridviewPopupMenu.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_DuplicateCurrentPosition_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_Duplicate_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_DuplicateNextPosition_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_AddToPosition_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiExportCurrentSqlParameter, True)})
+        Me.SqlParameterGridviewPopupMenu.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_DuplicateCurrentPosition_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_Duplicate_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_DuplicateNextPosition_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.SQL_AddToPosition_BarButtonItem, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiExportCurrentSqlParameterInXML, True), New DevExpress.XtraBars.LinkPersistInfo(Me.bbiUpdateCurrentSqlParameterFromXML, True)})
         Me.SqlParameterGridviewPopupMenu.Manager = Me.BarManager1
         Me.SqlParameterGridviewPopupMenu.Name = "SqlParameterGridviewPopupMenu"
         '
@@ -2063,7 +2156,7 @@ Partial Class SqlParameter
         Me.RibbonControl1.ExpandCollapseItem.Id = 0
         Me.RibbonControl1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl1.ExpandCollapseItem, Me.RibbonControl1.SearchEditItem, Me.bbiReload, Me.bbiSave, Me.bbiDelete, Me.bbiPrintPreview, Me.FindAndReplaceText_bbi, Me.bbiClose, Me.ImportSqlFromExcelFile_bbi})
         Me.RibbonControl1.Location = New System.Drawing.Point(0, 0)
-        Me.RibbonControl1.MaxItemId = 8
+        Me.RibbonControl1.MaxItemId = 9
         Me.RibbonControl1.Name = "RibbonControl1"
         Me.RibbonControl1.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1})
         Me.RibbonControl1.Size = New System.Drawing.Size(1434, 94)
@@ -2124,6 +2217,7 @@ Partial Class SqlParameter
         Me.ImportSqlFromExcelFile_bbi.ImageOptions.Image = CType(resources.GetObject("ImportSqlFromExcelFile_bbi.ImageOptions.Image"), System.Drawing.Image)
         Me.ImportSqlFromExcelFile_bbi.ImageOptions.LargeImage = CType(resources.GetObject("ImportSqlFromExcelFile_bbi.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.ImportSqlFromExcelFile_bbi.Name = "ImportSqlFromExcelFile_bbi"
+        Me.ImportSqlFromExcelFile_bbi.Visibility = DevExpress.XtraBars.BarItemVisibility.Never
         '
         'RibbonPage1
         '
@@ -2149,83 +2243,12 @@ Partial Class SqlParameter
         Me.RibbonStatusBar1.Name = "RibbonStatusBar1"
         Me.RibbonStatusBar1.Ribbon = Me.RibbonControl1
         Me.RibbonStatusBar1.Size = New System.Drawing.Size(1434, 22)
+        Me.RibbonStatusBar1.Visible = False
         '
         'RibbonPage2
         '
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "RibbonPage2"
-        '
-        'colLastAction
-        '
-        Me.colLastAction.FieldName = "LastAction"
-        Me.colLastAction.Name = "colLastAction"
-        Me.colLastAction.OptionsColumn.ReadOnly = True
-        '
-        'colLastUpdateUser
-        '
-        Me.colLastUpdateUser.FieldName = "LastUpdateUser"
-        Me.colLastUpdateUser.Name = "colLastUpdateUser"
-        Me.colLastUpdateUser.OptionsColumn.ReadOnly = True
-        '
-        'colLastUpdateDate
-        '
-        Me.colLastUpdateDate.FieldName = "LastUpdateDate"
-        Me.colLastUpdateDate.Name = "colLastUpdateDate"
-        Me.colLastUpdateDate.OptionsColumn.ReadOnly = True
-        '
-        'colLastAction1
-        '
-        Me.colLastAction1.FieldName = "LastAction"
-        Me.colLastAction1.Name = "colLastAction1"
-        Me.colLastAction1.OptionsColumn.ReadOnly = True
-        '
-        'colLastUpdateUser1
-        '
-        Me.colLastUpdateUser1.FieldName = "LastUpdateUser"
-        Me.colLastUpdateUser1.Name = "colLastUpdateUser1"
-        Me.colLastUpdateUser1.OptionsColumn.ReadOnly = True
-        '
-        'colLastUpdateDate1
-        '
-        Me.colLastUpdateDate1.FieldName = "LastUpdateDate"
-        Me.colLastUpdateDate1.Name = "colLastUpdateDate1"
-        Me.colLastUpdateDate1.OptionsColumn.ReadOnly = True
-        '
-        'colLastAction2
-        '
-        Me.colLastAction2.FieldName = "LastAction"
-        Me.colLastAction2.Name = "colLastAction2"
-        Me.colLastAction2.OptionsColumn.ReadOnly = True
-        '
-        'colLastUpdateDate2
-        '
-        Me.colLastUpdateDate2.FieldName = "LastUpdateDate"
-        Me.colLastUpdateDate2.Name = "colLastUpdateDate2"
-        Me.colLastUpdateDate2.OptionsColumn.ReadOnly = True
-        '
-        'colLastUpdateUser2
-        '
-        Me.colLastUpdateUser2.FieldName = "LastUpdateUser"
-        Me.colLastUpdateUser2.Name = "colLastUpdateUser2"
-        Me.colLastUpdateUser2.OptionsColumn.ReadOnly = True
-        '
-        'colLastAction3
-        '
-        Me.colLastAction3.FieldName = "LastAction"
-        Me.colLastAction3.Name = "colLastAction3"
-        Me.colLastAction3.OptionsColumn.ReadOnly = True
-        '
-        'colLastUpdateUser3
-        '
-        Me.colLastUpdateUser3.FieldName = "LastUpdateUser"
-        Me.colLastUpdateUser3.Name = "colLastUpdateUser3"
-        Me.colLastUpdateUser3.OptionsColumn.ReadOnly = True
-        '
-        'colLastUpdateDate3
-        '
-        Me.colLastUpdateDate3.FieldName = "LastUpdateDate"
-        Me.colLastUpdateDate3.Name = "colLastUpdateDate3"
-        Me.colLastUpdateDate3.OptionsColumn.ReadOnly = True
         '
         'SqlParameter
         '
@@ -2501,4 +2524,6 @@ Partial Class SqlParameter
     Friend WithEvents colLastAction As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLastUpdateUser As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLastUpdateDate As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents bbiExportCurrentSqlParameterInXML As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiUpdateCurrentSqlParameterFromXML As DevExpress.XtraBars.BarButtonItem
 End Class

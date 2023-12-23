@@ -578,5 +578,24 @@ Public Class CreditSpreadRiskCalc
         End Try
     End Sub
 
+    Private Sub BusinessDate_SearchLookUpEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles BusinessDate_SearchLookUpEdit.ButtonClick
+        If e.Button.Tag = 2 Then
+            rd = Me.BusinessDate_BarEditItem.EditValue.ToString
+            rdsql = rd.ToString("yyyyMMdd")
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Load Credit Spread Risk Data for: " & rd)
 
+            Me.CreditSpreadRisk_SingleAssetsCorrelationTableAdapter.FillByRiskDate(Me.CreditSpreadRiskDataSet.CreditSpreadRisk_SingleAssetsCorrelation, rd)
+            Me.CreditSpreadRisk_SegmentsTableAdapter.FillByRiskDate(Me.CreditSpreadRiskDataSet.CreditSpreadRisk_Segments, rd)
+            Me.CreditSpreadRisk_SegmentRiskCalculationTableAdapter.FillByRiskDate(Me.CreditSpreadRiskDataSet.CreditSpreadRisk_SegmentRiskCalculation, rd)
+            Me.CreditSpreadRisk_PortfolioRiskCalculationTableAdapter.FillByRiskDate(Me.CreditSpreadRiskDataSet.CreditSpreadRisk_PortfolioRiskCalculation, rd)
+            Me.CreditSpreadRisk_MatrixCorrelationCalculationsTableAdapter.FillByRiskDate(Me.CreditSpreadRiskDataSet.CreditSpreadRisk_MatrixCorrelationCalculations, rd)
+            Me.CreditSpreadRisk_BondPortfolioTableAdapter.FillByRiskDate(Me.CreditSpreadRiskDataSet.CreditSpreadRisk_BondPortfolio, rd)
+            Me.CreditSpreadRisk_TOTALSTableAdapter.FillByRiskDate(Me.CreditSpreadRiskDataSet.CreditSpreadRisk_TOTALS, rd)
+            LOAD_Calculation_Single_Asset_MidVec()
+            LOAD_Calculation_Single_Segment_MidVec()
+            LOAD_Calculation_Segment_Risk_MidVec()
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
 End Class

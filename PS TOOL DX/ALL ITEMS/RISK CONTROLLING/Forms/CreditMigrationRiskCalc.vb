@@ -488,4 +488,19 @@ Public Class CreditMigrationRiskCalc
             rowInfo.GroupText = rowInfo.GroupText.Replace(caption, "")
         End If
     End Sub
+
+    Private Sub BusinessDate_SearchLookUpEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles BusinessDate_SearchLookUpEdit.ButtonClick
+        If e.Button.Tag = 2 Then
+            rd = Me.BusinessDate_BarEditItem.EditValue.ToString
+            rdsql = rd.ToString("yyyyMMdd")
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Load Credit Migration Risk Data for: " & rd)
+            Me.CreditMigrationRisk_TotalsTableAdapter.FillByRiskDate(Me.CreditMigrationRiskDataSet.CreditMigrationRisk_Totals, rd)
+            Me.CreditMigrationRisk_GroupsTableAdapter.FillByRiskDate(Me.CreditMigrationRiskDataSet.CreditMigrationRisk_Groups, rd)
+            Me.CreditMigrationRisk_DetailsTableAdapter.FillByRiskDate(Me.CreditMigrationRiskDataSet.CreditMigrationRisk_Details, rd)
+            Me.CreditMigrationRisk_DATETableAdapter.FillByRiskDate(Me.CreditMigrationRiskDataSet.CreditMigrationRisk_DATE, rd)
+            SplashScreenManager.CloseForm(False)
+        End If
+
+    End Sub
 End Class

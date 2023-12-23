@@ -1843,7 +1843,33 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("CURRENCY RISK CALCULATION")
             ' Place code here
-            Dim c As New CurrencyRiskCalc
+            Dim c As New CurrencyRiskCalc2023
+
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
+
+    Private Sub RISKCONTROL_RiskBearingCapacityCalc_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_RiskBearingCapacityCalc_Element.Click
+        If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("RISK BEARING CAPACITY CALCULATION")
+            ' Place code here
+            Dim c As New RiskBearingCapacityCalc
 
             For Each kf As Form In Me.MdiChildren
                 If c.GetType Is kf.GetType Then
@@ -1895,7 +1921,7 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("EXPECTED/UNEXPECTED LOSS and GRANULARITY APPROACH")
             ' Place code here
-            Dim c As New UnexpectedLoss
+            Dim c As New UnexpectedLossCalc2023
 
             For Each kf As Form In Me.MdiChildren
                 If c.GetType Is kf.GetType Then
@@ -1971,7 +1997,7 @@ Public Class PSTOOL_MAIN_Form
             Exit Sub
         Else
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK " & vbNewLine & "as from 31.12.2018")
+            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK " & vbNewLine & "as from 31.12.2018 till 31.12.2023")
             ' Place code here
             Dim c As New InterestRateRiskCalc2018
 
@@ -1992,29 +2018,29 @@ Public Class PSTOOL_MAIN_Form
     End Sub
 
     Private Sub RISKCONTROL_InterestRateRisk_Calc2_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_InterestRateRisk_Calc2_Element.Click
-        'If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
-        '    XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
-        '    Exit Sub
-        'Else
-        '    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-        '    SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK AMOUNT" & vbNewLine & " for RISK BEARING CAPACITY " & vbNewLine & " as from 31.12.2018 - Calculation 2")
-        '    ' Place code here
-        '    Dim c As New InterestRateRiskCalc2
+        If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK" & vbNewLine & "Method: Net Interest Income (NII) " & vbNewLine & "Method: Economic Value of Equity (EVE) " & vbNewLine & " as from 31.12.2023")
+            ' Place code here
+            Dim c As New InterestRateRiskCalc2023
 
-        '    For Each kf As Form In Me.MdiChildren
-        '        If c.GetType Is kf.GetType Then
-        '            kf.Activate()
-        '            kf.WindowState = FormWindowState.Normal
-        '            SplashScreenManager.CloseForm(False)
-        '            Return
-        '        End If
-        '    Next
-        '    c.MdiParent = Me
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
 
-        '    c.Show()
-        '    c.WindowState = FormWindowState.Maximized
-        '    SplashScreenManager.CloseForm(False)
-        'End If
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
     End Sub
 
     Private Sub RISKCONTROL_ObligorGratesRatting_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_ObligorGratesRatting_Element.Click
@@ -2178,6 +2204,31 @@ Public Class PSTOOL_MAIN_Form
         End If
     End Sub
 
+    Private Sub RISKCONTROL_InterestRateRisk_Parameters_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_InterestRateRisk_Parameters_Element.Click
+        If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
+            XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
+            Exit Sub
+        Else
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK PARAMETERS")
+            ' Place code here
+            Dim c As New InterestRateRisk_Parameters
+
+            For Each kf As Form In Me.MdiChildren
+                If c.GetType Is kf.GetType Then
+                    kf.Activate()
+                    kf.WindowState = FormWindowState.Normal
+                    SplashScreenManager.CloseForm(False)
+                    Return
+                End If
+            Next
+            c.MdiParent = Me
+
+            c.Show()
+            c.WindowState = FormWindowState.Maximized
+            SplashScreenManager.CloseForm(False)
+        End If
+    End Sub
     Private Sub RISKCONTROL_CreditSpreadRisk_Parameters_Element_Click(sender As Object, e As EventArgs) Handles RISKCONTROL_CreditSpreadRisk_Parameters_Element.Click
         If RISKCONTROLLING_USER = "N" AndAlso SUPER_USER = "N" Then
             XtraMessageBox.Show("You are not authorized for this Form", "NO USER AUTHORIZATION", MessageBoxButtons.OK, MessageBoxIcon.Stop, MessageBoxDefaultButton.Button1)
@@ -4315,7 +4366,7 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("Currency Risk calculation")
             ' Place code here
-            Dim c As New CurrencyRiskCalc
+            Dim c As New CurrencyRiskCalc2023
 
             For Each kf As Form In Me.MdiChildren
                 If c.GetType Is kf.GetType Then
@@ -5510,7 +5561,6 @@ Public Class PSTOOL_MAIN_Form
         c.Show()
         c.TopMost = True
         c.WindowState = FormWindowState.Maximized
-        c.Cancel_btn.Focus()
         SplashScreenManager.CloseForm(False)
     End Sub
 

@@ -35,6 +35,12 @@ Partial Public Class InterestRateRiskDataSet
     
     Private tableRATERISK_DELETIONS As RATERISK_DELETIONSDataTable
     
+    Private tableRateRisk_InterestRateSchocks As RateRisk_InterestRateSchocksDataTable
+    
+    Private tableRateRisk_StandardTimeBuckets As RateRisk_StandardTimeBucketsDataTable
+    
+    Private tableRateRisk_ShockTypesValues As RateRisk_ShockTypesValuesDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -78,6 +84,15 @@ Partial Public Class InterestRateRiskDataSet
             End If
             If (Not (ds.Tables("RATERISK DELETIONS")) Is Nothing) Then
                 MyBase.Tables.Add(New RATERISK_DELETIONSDataTable(ds.Tables("RATERISK DELETIONS")))
+            End If
+            If (Not (ds.Tables("RateRisk_InterestRateSchocks")) Is Nothing) Then
+                MyBase.Tables.Add(New RateRisk_InterestRateSchocksDataTable(ds.Tables("RateRisk_InterestRateSchocks")))
+            End If
+            If (Not (ds.Tables("RateRisk_StandardTimeBuckets")) Is Nothing) Then
+                MyBase.Tables.Add(New RateRisk_StandardTimeBucketsDataTable(ds.Tables("RateRisk_StandardTimeBuckets")))
+            End If
+            If (Not (ds.Tables("RateRisk_ShockTypesValues")) Is Nothing) Then
+                MyBase.Tables.Add(New RateRisk_ShockTypesValuesDataTable(ds.Tables("RateRisk_ShockTypesValues")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -143,6 +158,36 @@ Partial Public Class InterestRateRiskDataSet
     Public ReadOnly Property RATERISK_DELETIONS() As RATERISK_DELETIONSDataTable
         Get
             Return Me.tableRATERISK_DELETIONS
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property RateRisk_InterestRateSchocks() As RateRisk_InterestRateSchocksDataTable
+        Get
+            Return Me.tableRateRisk_InterestRateSchocks
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property RateRisk_StandardTimeBuckets() As RateRisk_StandardTimeBucketsDataTable
+        Get
+            Return Me.tableRateRisk_StandardTimeBuckets
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property RateRisk_ShockTypesValues() As RateRisk_ShockTypesValuesDataTable
+        Get
+            Return Me.tableRateRisk_ShockTypesValues
         End Get
     End Property
     
@@ -228,6 +273,15 @@ Partial Public Class InterestRateRiskDataSet
             If (Not (ds.Tables("RATERISK DELETIONS")) Is Nothing) Then
                 MyBase.Tables.Add(New RATERISK_DELETIONSDataTable(ds.Tables("RATERISK DELETIONS")))
             End If
+            If (Not (ds.Tables("RateRisk_InterestRateSchocks")) Is Nothing) Then
+                MyBase.Tables.Add(New RateRisk_InterestRateSchocksDataTable(ds.Tables("RateRisk_InterestRateSchocks")))
+            End If
+            If (Not (ds.Tables("RateRisk_StandardTimeBuckets")) Is Nothing) Then
+                MyBase.Tables.Add(New RateRisk_StandardTimeBucketsDataTable(ds.Tables("RateRisk_StandardTimeBuckets")))
+            End If
+            If (Not (ds.Tables("RateRisk_ShockTypesValues")) Is Nothing) Then
+                MyBase.Tables.Add(New RateRisk_ShockTypesValuesDataTable(ds.Tables("RateRisk_ShockTypesValues")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -290,6 +344,24 @@ Partial Public Class InterestRateRiskDataSet
                 Me.tableRATERISK_DELETIONS.InitVars
             End If
         End If
+        Me.tableRateRisk_InterestRateSchocks = CType(MyBase.Tables("RateRisk_InterestRateSchocks"),RateRisk_InterestRateSchocksDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableRateRisk_InterestRateSchocks) Is Nothing) Then
+                Me.tableRateRisk_InterestRateSchocks.InitVars
+            End If
+        End If
+        Me.tableRateRisk_StandardTimeBuckets = CType(MyBase.Tables("RateRisk_StandardTimeBuckets"),RateRisk_StandardTimeBucketsDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableRateRisk_StandardTimeBuckets) Is Nothing) Then
+                Me.tableRateRisk_StandardTimeBuckets.InitVars
+            End If
+        End If
+        Me.tableRateRisk_ShockTypesValues = CType(MyBase.Tables("RateRisk_ShockTypesValues"),RateRisk_ShockTypesValuesDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableRateRisk_ShockTypesValues) Is Nothing) Then
+                Me.tableRateRisk_ShockTypesValues.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -310,6 +382,12 @@ Partial Public Class InterestRateRiskDataSet
         MyBase.Tables.Add(Me.tableRATERISK_TOTALS)
         Me.tableRATERISK_DELETIONS = New RATERISK_DELETIONSDataTable()
         MyBase.Tables.Add(Me.tableRATERISK_DELETIONS)
+        Me.tableRateRisk_InterestRateSchocks = New RateRisk_InterestRateSchocksDataTable()
+        MyBase.Tables.Add(Me.tableRateRisk_InterestRateSchocks)
+        Me.tableRateRisk_StandardTimeBuckets = New RateRisk_StandardTimeBucketsDataTable()
+        MyBase.Tables.Add(Me.tableRateRisk_StandardTimeBuckets)
+        Me.tableRateRisk_ShockTypesValues = New RateRisk_ShockTypesValuesDataTable()
+        MyBase.Tables.Add(Me.tableRateRisk_ShockTypesValues)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -339,6 +417,24 @@ Partial Public Class InterestRateRiskDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializeRATERISK_DELETIONS() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializeRateRisk_InterestRateSchocks() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializeRateRisk_StandardTimeBuckets() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializeRateRisk_ShockTypesValues() As Boolean
         Return false
     End Function
     
@@ -415,6 +511,15 @@ Partial Public Class InterestRateRiskDataSet
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub RATERISK_DELETIONSRowChangeEventHandler(ByVal sender As Object, ByVal e As RATERISK_DELETIONSRowChangeEvent)
     
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub RateRisk_InterestRateSchocksRowChangeEventHandler(ByVal sender As Object, ByVal e As RateRisk_InterestRateSchocksRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub RateRisk_StandardTimeBucketsRowChangeEventHandler(ByVal sender As Object, ByVal e As RateRisk_StandardTimeBucketsRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub RateRisk_ShockTypesValuesRowChangeEventHandler(ByVal sender As Object, ByVal e As RateRisk_ShockTypesValuesRowChangeEvent)
+    
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
@@ -450,6 +555,46 @@ Partial Public Class InterestRateRiskDataSet
         Private columnUNTER_BEARBEITUNG_VON As Global.System.Data.DataColumn
         
         Private columnIdBank As Global.System.Data.DataColumn
+        
+        Private columnIRR_NII_Change As Global.System.Data.DataColumn
+        
+        Private columnBAIS_CET1_Capital As Global.System.Data.DataColumn
+        
+        Private columnWF_N As Global.System.Data.DataColumn
+        
+        Private columnAM_N As Global.System.Data.DataColumn
+        
+        Private columnWF1 As Global.System.Data.DataColumn
+        
+        Private columnAM1 As Global.System.Data.DataColumn
+        
+        Private columnWF2 As Global.System.Data.DataColumn
+        
+        Private columnAM2 As Global.System.Data.DataColumn
+        
+        Private columnWF3 As Global.System.Data.DataColumn
+        
+        Private columnAM3 As Global.System.Data.DataColumn
+        
+        Private columnWF4 As Global.System.Data.DataColumn
+        
+        Private columnAM4 As Global.System.Data.DataColumn
+        
+        Private columnWF10 As Global.System.Data.DataColumn
+        
+        Private columnAM10 As Global.System.Data.DataColumn
+        
+        Private columnWF20 As Global.System.Data.DataColumn
+        
+        Private columnAM20 As Global.System.Data.DataColumn
+        
+        Private columnWF25 As Global.System.Data.DataColumn
+        
+        Private columnAM25 As Global.System.Data.DataColumn
+        
+        Private columnWFHUMP As Global.System.Data.DataColumn
+        
+        Private columnAMHUMP As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -599,6 +744,166 @@ Partial Public Class InterestRateRiskDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IRR_NII_ChangeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIRR_NII_Change
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property BAIS_CET1_CapitalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBAIS_CET1_Capital
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WF_NColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWF_N
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AM_NColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAM_N
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WF1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWF1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AM1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAM1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WF2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWF2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AM2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAM2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WF3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWF3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AM3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAM3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WF4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWF4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AM4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAM4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WF10Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWF10
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AM10Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAM10
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WF20Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWF20
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AM20Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAM20
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WF25Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWF25
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AM25Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAM25
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property WFHUMPColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWFHUMP
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property AMHUMPColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAMHUMP
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -635,9 +940,42 @@ Partial Public Class InterestRateRiskDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddRATERISK_DATERow(ByVal RateRiskDate As Date, ByVal Working_Capital As Double, ByVal _Position_Capital As Double, ByVal SumAM1 As Double, ByVal SumAM2 As Double, ByVal IRR_200bps_Minus As Double, ByVal IRR_200bps_Plus As Double, ByVal VaR_99 As Double, ByVal VaR_95 As Double, ByVal VaR_IRRA As Double, ByVal USER As String, ByVal UNTER_BEARBEITUNG_VON As String, ByVal IdBank As Integer) As RATERISK_DATERow
+        Public Overloads Function AddRATERISK_DATERow( _
+                    ByVal RateRiskDate As Date,  _
+                    ByVal Working_Capital As Double,  _
+                    ByVal _Position_Capital As Double,  _
+                    ByVal SumAM1 As Double,  _
+                    ByVal SumAM2 As Double,  _
+                    ByVal IRR_200bps_Minus As Double,  _
+                    ByVal IRR_200bps_Plus As Double,  _
+                    ByVal VaR_99 As Double,  _
+                    ByVal VaR_95 As Double,  _
+                    ByVal VaR_IRRA As Double,  _
+                    ByVal USER As String,  _
+                    ByVal UNTER_BEARBEITUNG_VON As String,  _
+                    ByVal IdBank As Integer,  _
+                    ByVal IRR_NII_Change As Double,  _
+                    ByVal BAIS_CET1_Capital As Double,  _
+                    ByVal WF_N As Double,  _
+                    ByVal AM_N As Double,  _
+                    ByVal WF1 As Double,  _
+                    ByVal AM1 As Double,  _
+                    ByVal WF2 As Double,  _
+                    ByVal AM2 As Double,  _
+                    ByVal WF3 As Double,  _
+                    ByVal AM3 As Double,  _
+                    ByVal WF4 As Double,  _
+                    ByVal AM4 As Double,  _
+                    ByVal WF10 As Double,  _
+                    ByVal AM10 As Double,  _
+                    ByVal WF20 As Double,  _
+                    ByVal AM20 As Double,  _
+                    ByVal WF25 As Double,  _
+                    ByVal AM25 As Double,  _
+                    ByVal WFHUMP As Double,  _
+                    ByVal AMHUMP As Double) As RATERISK_DATERow
             Dim rowRATERISK_DATERow As RATERISK_DATERow = CType(Me.NewRow,RATERISK_DATERow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, RateRiskDate, Working_Capital, _Position_Capital, SumAM1, SumAM2, IRR_200bps_Minus, IRR_200bps_Plus, VaR_99, VaR_95, VaR_IRRA, USER, UNTER_BEARBEITUNG_VON, IdBank}
+            Dim columnValuesArray() As Object = New Object() {Nothing, RateRiskDate, Working_Capital, _Position_Capital, SumAM1, SumAM2, IRR_200bps_Minus, IRR_200bps_Plus, VaR_99, VaR_95, VaR_IRRA, USER, UNTER_BEARBEITUNG_VON, IdBank, IRR_NII_Change, BAIS_CET1_Capital, WF_N, AM_N, WF1, AM1, WF2, AM2, WF3, AM3, WF4, AM4, WF10, AM10, WF20, AM20, WF25, AM25, WFHUMP, AMHUMP}
             rowRATERISK_DATERow.ItemArray = columnValuesArray
             Me.Rows.Add(rowRATERISK_DATERow)
             Return rowRATERISK_DATERow
@@ -680,6 +1018,26 @@ Partial Public Class InterestRateRiskDataSet
             Me.columnUSER = MyBase.Columns("USER")
             Me.columnUNTER_BEARBEITUNG_VON = MyBase.Columns("UNTER BEARBEITUNG VON")
             Me.columnIdBank = MyBase.Columns("IdBank")
+            Me.columnIRR_NII_Change = MyBase.Columns("IRR_NII_Change")
+            Me.columnBAIS_CET1_Capital = MyBase.Columns("BAIS_CET1_Capital")
+            Me.columnWF_N = MyBase.Columns("WF_N")
+            Me.columnAM_N = MyBase.Columns("AM_N")
+            Me.columnWF1 = MyBase.Columns("WF1")
+            Me.columnAM1 = MyBase.Columns("AM1")
+            Me.columnWF2 = MyBase.Columns("WF2")
+            Me.columnAM2 = MyBase.Columns("AM2")
+            Me.columnWF3 = MyBase.Columns("WF3")
+            Me.columnAM3 = MyBase.Columns("AM3")
+            Me.columnWF4 = MyBase.Columns("WF4")
+            Me.columnAM4 = MyBase.Columns("AM4")
+            Me.columnWF10 = MyBase.Columns("WF10")
+            Me.columnAM10 = MyBase.Columns("AM10")
+            Me.columnWF20 = MyBase.Columns("WF20")
+            Me.columnAM20 = MyBase.Columns("AM20")
+            Me.columnWF25 = MyBase.Columns("WF25")
+            Me.columnAM25 = MyBase.Columns("AM25")
+            Me.columnWFHUMP = MyBase.Columns("WFHUMP")
+            Me.columnAMHUMP = MyBase.Columns("AMHUMP")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -715,6 +1073,46 @@ Partial Public Class InterestRateRiskDataSet
             MyBase.Columns.Add(Me.columnUNTER_BEARBEITUNG_VON)
             Me.columnIdBank = New Global.System.Data.DataColumn("IdBank", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIdBank)
+            Me.columnIRR_NII_Change = New Global.System.Data.DataColumn("IRR_NII_Change", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIRR_NII_Change)
+            Me.columnBAIS_CET1_Capital = New Global.System.Data.DataColumn("BAIS_CET1_Capital", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBAIS_CET1_Capital)
+            Me.columnWF_N = New Global.System.Data.DataColumn("WF_N", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWF_N)
+            Me.columnAM_N = New Global.System.Data.DataColumn("AM_N", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAM_N)
+            Me.columnWF1 = New Global.System.Data.DataColumn("WF1", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWF1)
+            Me.columnAM1 = New Global.System.Data.DataColumn("AM1", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAM1)
+            Me.columnWF2 = New Global.System.Data.DataColumn("WF2", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWF2)
+            Me.columnAM2 = New Global.System.Data.DataColumn("AM2", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAM2)
+            Me.columnWF3 = New Global.System.Data.DataColumn("WF3", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWF3)
+            Me.columnAM3 = New Global.System.Data.DataColumn("AM3", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAM3)
+            Me.columnWF4 = New Global.System.Data.DataColumn("WF4", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWF4)
+            Me.columnAM4 = New Global.System.Data.DataColumn("AM4", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAM4)
+            Me.columnWF10 = New Global.System.Data.DataColumn("WF10", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWF10)
+            Me.columnAM10 = New Global.System.Data.DataColumn("AM10", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAM10)
+            Me.columnWF20 = New Global.System.Data.DataColumn("WF20", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWF20)
+            Me.columnAM20 = New Global.System.Data.DataColumn("AM20", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAM20)
+            Me.columnWF25 = New Global.System.Data.DataColumn("WF25", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWF25)
+            Me.columnAM25 = New Global.System.Data.DataColumn("AM25", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAM25)
+            Me.columnWFHUMP = New Global.System.Data.DataColumn("WFHUMP", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWFHUMP)
+            Me.columnAMHUMP = New Global.System.Data.DataColumn("AMHUMP", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAMHUMP)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnRateRiskDate}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -977,6 +1375,54 @@ Partial Public Class InterestRateRiskDataSet
         Private columnCashFlow As Global.System.Data.DataColumn
         
         Private columnWeightingFactor As Global.System.Data.DataColumn
+        
+        Private columnInOutFlow As Global.System.Data.DataColumn
+        
+        Private columnIRR_NII_Change As Global.System.Data.DataColumn
+        
+        Private columnYieldPeriod As Global.System.Data.DataColumn
+        
+        Private columnEVE_Parallel_Up_BumpRate As Global.System.Data.DataColumn
+        
+        Private columnEVE_Parallel_Up_Difference As Global.System.Data.DataColumn
+        
+        Private columnEVE_Parallel_Down_BumpRate As Global.System.Data.DataColumn
+        
+        Private columnEVE_Parallel_Down_Difference As Global.System.Data.DataColumn
+        
+        Private columnEVE_ShortRate_Up_BumpRate As Global.System.Data.DataColumn
+        
+        Private columnEVE_ShortRate_Up_TermFactor As Global.System.Data.DataColumn
+        
+        Private columnEVE_ShortRate_Up_Difference As Global.System.Data.DataColumn
+        
+        Private columnEVE_ShortRate_Down_BumpRate As Global.System.Data.DataColumn
+        
+        Private columnEVE_ShortRate_Down_TermFactor As Global.System.Data.DataColumn
+        
+        Private columnEVE_ShortRate_Down_Difference As Global.System.Data.DataColumn
+        
+        Private columnEVE_Steepener_ShortBumpRate As Global.System.Data.DataColumn
+        
+        Private columnEVE_Steepener_LongBumpRate As Global.System.Data.DataColumn
+        
+        Private columnEVE_Steepener_TermFactor As Global.System.Data.DataColumn
+        
+        Private columnEVE_Steepener_Shock As Global.System.Data.DataColumn
+        
+        Private columnEVE_Steepener_Difference As Global.System.Data.DataColumn
+        
+        Private columnEVE_Flattener_ShortBumpRate As Global.System.Data.DataColumn
+        
+        Private columnEVE_Flattener_LongBumpRate As Global.System.Data.DataColumn
+        
+        Private columnEVE_Flattener_TermFactor As Global.System.Data.DataColumn
+        
+        Private columnEVE_Flattener_Shock As Global.System.Data.DataColumn
+        
+        Private columnEVE_Flattener_Difference As Global.System.Data.DataColumn
+        
+        Private columnDiscountRate As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -1478,6 +1924,198 @@ Partial Public Class InterestRateRiskDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property InOutFlowColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnInOutFlow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IRR_NII_ChangeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIRR_NII_Change
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property YieldPeriodColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnYieldPeriod
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Parallel_Up_BumpRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Parallel_Up_BumpRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Parallel_Up_DifferenceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Parallel_Up_Difference
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Parallel_Down_BumpRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Parallel_Down_BumpRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Parallel_Down_DifferenceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Parallel_Down_Difference
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_ShortRate_Up_BumpRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_ShortRate_Up_BumpRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_ShortRate_Up_TermFactorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_ShortRate_Up_TermFactor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_ShortRate_Up_DifferenceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_ShortRate_Up_Difference
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_ShortRate_Down_BumpRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_ShortRate_Down_BumpRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_ShortRate_Down_TermFactorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_ShortRate_Down_TermFactor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_ShortRate_Down_DifferenceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_ShortRate_Down_Difference
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Steepener_ShortBumpRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Steepener_ShortBumpRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Steepener_LongBumpRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Steepener_LongBumpRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Steepener_TermFactorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Steepener_TermFactor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Steepener_ShockColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Steepener_Shock
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Steepener_DifferenceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Steepener_Difference
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Flattener_ShortBumpRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Flattener_ShortBumpRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Flattener_LongBumpRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Flattener_LongBumpRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Flattener_TermFactorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Flattener_TermFactor
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Flattener_ShockColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Flattener_Shock
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EVE_Flattener_DifferenceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEVE_Flattener_Difference
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DiscountRateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDiscountRate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1571,9 +2209,33 @@ Partial Public Class InterestRateRiskDataSet
                     ByVal PeriodNr As Double,  _
                     ByVal MonthsToEventDate As Double,  _
                     ByVal CashFlow As Double,  _
-                    ByVal WeightingFactor As Double) As RATERISK_DETAILSRow
+                    ByVal WeightingFactor As Double,  _
+                    ByVal InOutFlow As String,  _
+                    ByVal IRR_NII_Change As Double,  _
+                    ByVal YieldPeriod As String,  _
+                    ByVal EVE_Parallel_Up_BumpRate As Double,  _
+                    ByVal EVE_Parallel_Up_Difference As Double,  _
+                    ByVal EVE_Parallel_Down_BumpRate As Double,  _
+                    ByVal EVE_Parallel_Down_Difference As Double,  _
+                    ByVal EVE_ShortRate_Up_BumpRate As Double,  _
+                    ByVal EVE_ShortRate_Up_TermFactor As Double,  _
+                    ByVal EVE_ShortRate_Up_Difference As Double,  _
+                    ByVal EVE_ShortRate_Down_BumpRate As Double,  _
+                    ByVal EVE_ShortRate_Down_TermFactor As Double,  _
+                    ByVal EVE_ShortRate_Down_Difference As Double,  _
+                    ByVal EVE_Steepener_ShortBumpRate As Double,  _
+                    ByVal EVE_Steepener_LongBumpRate As Double,  _
+                    ByVal EVE_Steepener_TermFactor As Double,  _
+                    ByVal EVE_Steepener_Shock As Double,  _
+                    ByVal EVE_Steepener_Difference As Double,  _
+                    ByVal EVE_Flattener_ShortBumpRate As Double,  _
+                    ByVal EVE_Flattener_LongBumpRate As Double,  _
+                    ByVal EVE_Flattener_TermFactor As Double,  _
+                    ByVal EVE_Flattener_Shock As Double,  _
+                    ByVal EVE_Flattener_Difference As Double,  _
+                    ByVal DiscountRate As Double) As RATERISK_DETAILSRow
             Dim rowRATERISK_DETAILSRow As RATERISK_DETAILSRow = CType(Me.NewRow,RATERISK_DETAILSRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, PERIOD, BusinessType, Contract_Type, ProductType, _GLMaster___Account_Type, ClientNr, _Contract_Account, ContractClear, _Counterparty_Issuer, StartDate, Next_EventType, Next_EventDate, Final_Maturity_Date, Type, CURRENCY, _Principal_Amount_Value_Balance, _Principal_Amount_Value_Balance_EUR_Equ_, InterestRate, InterestAmountOrigCur, InterestAmountEuro, AccruedInterestEndDate, AccruedInterestAmountEUR, AccruedInterestAmountOrigCur, AverageDuration, DaysToEventDate, DATA_DATE, RISK_DATE, IMPORT_DATE, IdRateRiskDate, PERIOD_Additional, PERIOD_MaturityDate, DaysToMaturity, ClientNrM, ContractClearM, PERIOD_N, InterestType, TOTAL_CASH_FLOW, NextEventPeriod, NextEventNr, NextEventYears, Yield_RiskDate, InterestRateCalculated, PV_Calculated, InterestRatePlus200_orig, InterestRateMinus200_orig, InterestRatePlus200_Corrected, InterestRateMinus200_Corrected, PV_IRplus200_Corrected, PV_IRminus200_Corrected, DifferencePV_IRplus200_PV_Calculated, DifferencePV_IRminus200_PV_Calculated, InternalInfo, CalculationMethod, PeriodNr, MonthsToEventDate, CashFlow, WeightingFactor}
+            Dim columnValuesArray() As Object = New Object() {Nothing, PERIOD, BusinessType, Contract_Type, ProductType, _GLMaster___Account_Type, ClientNr, _Contract_Account, ContractClear, _Counterparty_Issuer, StartDate, Next_EventType, Next_EventDate, Final_Maturity_Date, Type, CURRENCY, _Principal_Amount_Value_Balance, _Principal_Amount_Value_Balance_EUR_Equ_, InterestRate, InterestAmountOrigCur, InterestAmountEuro, AccruedInterestEndDate, AccruedInterestAmountEUR, AccruedInterestAmountOrigCur, AverageDuration, DaysToEventDate, DATA_DATE, RISK_DATE, IMPORT_DATE, IdRateRiskDate, PERIOD_Additional, PERIOD_MaturityDate, DaysToMaturity, ClientNrM, ContractClearM, PERIOD_N, InterestType, TOTAL_CASH_FLOW, NextEventPeriod, NextEventNr, NextEventYears, Yield_RiskDate, InterestRateCalculated, PV_Calculated, InterestRatePlus200_orig, InterestRateMinus200_orig, InterestRatePlus200_Corrected, InterestRateMinus200_Corrected, PV_IRplus200_Corrected, PV_IRminus200_Corrected, DifferencePV_IRplus200_PV_Calculated, DifferencePV_IRminus200_PV_Calculated, InternalInfo, CalculationMethod, PeriodNr, MonthsToEventDate, CashFlow, WeightingFactor, InOutFlow, IRR_NII_Change, YieldPeriod, EVE_Parallel_Up_BumpRate, EVE_Parallel_Up_Difference, EVE_Parallel_Down_BumpRate, EVE_Parallel_Down_Difference, EVE_ShortRate_Up_BumpRate, EVE_ShortRate_Up_TermFactor, EVE_ShortRate_Up_Difference, EVE_ShortRate_Down_BumpRate, EVE_ShortRate_Down_TermFactor, EVE_ShortRate_Down_Difference, EVE_Steepener_ShortBumpRate, EVE_Steepener_LongBumpRate, EVE_Steepener_TermFactor, EVE_Steepener_Shock, EVE_Steepener_Difference, EVE_Flattener_ShortBumpRate, EVE_Flattener_LongBumpRate, EVE_Flattener_TermFactor, EVE_Flattener_Shock, EVE_Flattener_Difference, DiscountRate}
             rowRATERISK_DETAILSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowRATERISK_DETAILSRow)
             Return rowRATERISK_DETAILSRow
@@ -1660,6 +2322,30 @@ Partial Public Class InterestRateRiskDataSet
             Me.columnMonthsToEventDate = MyBase.Columns("MonthsToEventDate")
             Me.columnCashFlow = MyBase.Columns("CashFlow")
             Me.columnWeightingFactor = MyBase.Columns("WeightingFactor")
+            Me.columnInOutFlow = MyBase.Columns("InOutFlow")
+            Me.columnIRR_NII_Change = MyBase.Columns("IRR_NII_Change")
+            Me.columnYieldPeriod = MyBase.Columns("YieldPeriod")
+            Me.columnEVE_Parallel_Up_BumpRate = MyBase.Columns("EVE_Parallel_Up_BumpRate")
+            Me.columnEVE_Parallel_Up_Difference = MyBase.Columns("EVE_Parallel_Up_Difference")
+            Me.columnEVE_Parallel_Down_BumpRate = MyBase.Columns("EVE_Parallel_Down_BumpRate")
+            Me.columnEVE_Parallel_Down_Difference = MyBase.Columns("EVE_Parallel_Down_Difference")
+            Me.columnEVE_ShortRate_Up_BumpRate = MyBase.Columns("EVE_ShortRate_Up_BumpRate")
+            Me.columnEVE_ShortRate_Up_TermFactor = MyBase.Columns("EVE_ShortRate_Up_TermFactor")
+            Me.columnEVE_ShortRate_Up_Difference = MyBase.Columns("EVE_ShortRate_Up_Difference")
+            Me.columnEVE_ShortRate_Down_BumpRate = MyBase.Columns("EVE_ShortRate_Down_BumpRate")
+            Me.columnEVE_ShortRate_Down_TermFactor = MyBase.Columns("EVE_ShortRate_Down_TermFactor")
+            Me.columnEVE_ShortRate_Down_Difference = MyBase.Columns("EVE_ShortRate_Down_Difference")
+            Me.columnEVE_Steepener_ShortBumpRate = MyBase.Columns("EVE_Steepener_ShortBumpRate")
+            Me.columnEVE_Steepener_LongBumpRate = MyBase.Columns("EVE_Steepener_LongBumpRate")
+            Me.columnEVE_Steepener_TermFactor = MyBase.Columns("EVE_Steepener_TermFactor")
+            Me.columnEVE_Steepener_Shock = MyBase.Columns("EVE_Steepener_Shock")
+            Me.columnEVE_Steepener_Difference = MyBase.Columns("EVE_Steepener_Difference")
+            Me.columnEVE_Flattener_ShortBumpRate = MyBase.Columns("EVE_Flattener_ShortBumpRate")
+            Me.columnEVE_Flattener_LongBumpRate = MyBase.Columns("EVE_Flattener_LongBumpRate")
+            Me.columnEVE_Flattener_TermFactor = MyBase.Columns("EVE_Flattener_TermFactor")
+            Me.columnEVE_Flattener_Shock = MyBase.Columns("EVE_Flattener_Shock")
+            Me.columnEVE_Flattener_Difference = MyBase.Columns("EVE_Flattener_Difference")
+            Me.columnDiscountRate = MyBase.Columns("DiscountRate")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1791,6 +2477,54 @@ Partial Public Class InterestRateRiskDataSet
             MyBase.Columns.Add(Me.columnCashFlow)
             Me.columnWeightingFactor = New Global.System.Data.DataColumn("WeightingFactor", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnWeightingFactor)
+            Me.columnInOutFlow = New Global.System.Data.DataColumn("InOutFlow", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnInOutFlow)
+            Me.columnIRR_NII_Change = New Global.System.Data.DataColumn("IRR_NII_Change", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIRR_NII_Change)
+            Me.columnYieldPeriod = New Global.System.Data.DataColumn("YieldPeriod", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnYieldPeriod)
+            Me.columnEVE_Parallel_Up_BumpRate = New Global.System.Data.DataColumn("EVE_Parallel_Up_BumpRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Parallel_Up_BumpRate)
+            Me.columnEVE_Parallel_Up_Difference = New Global.System.Data.DataColumn("EVE_Parallel_Up_Difference", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Parallel_Up_Difference)
+            Me.columnEVE_Parallel_Down_BumpRate = New Global.System.Data.DataColumn("EVE_Parallel_Down_BumpRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Parallel_Down_BumpRate)
+            Me.columnEVE_Parallel_Down_Difference = New Global.System.Data.DataColumn("EVE_Parallel_Down_Difference", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Parallel_Down_Difference)
+            Me.columnEVE_ShortRate_Up_BumpRate = New Global.System.Data.DataColumn("EVE_ShortRate_Up_BumpRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_ShortRate_Up_BumpRate)
+            Me.columnEVE_ShortRate_Up_TermFactor = New Global.System.Data.DataColumn("EVE_ShortRate_Up_TermFactor", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_ShortRate_Up_TermFactor)
+            Me.columnEVE_ShortRate_Up_Difference = New Global.System.Data.DataColumn("EVE_ShortRate_Up_Difference", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_ShortRate_Up_Difference)
+            Me.columnEVE_ShortRate_Down_BumpRate = New Global.System.Data.DataColumn("EVE_ShortRate_Down_BumpRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_ShortRate_Down_BumpRate)
+            Me.columnEVE_ShortRate_Down_TermFactor = New Global.System.Data.DataColumn("EVE_ShortRate_Down_TermFactor", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_ShortRate_Down_TermFactor)
+            Me.columnEVE_ShortRate_Down_Difference = New Global.System.Data.DataColumn("EVE_ShortRate_Down_Difference", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_ShortRate_Down_Difference)
+            Me.columnEVE_Steepener_ShortBumpRate = New Global.System.Data.DataColumn("EVE_Steepener_ShortBumpRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Steepener_ShortBumpRate)
+            Me.columnEVE_Steepener_LongBumpRate = New Global.System.Data.DataColumn("EVE_Steepener_LongBumpRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Steepener_LongBumpRate)
+            Me.columnEVE_Steepener_TermFactor = New Global.System.Data.DataColumn("EVE_Steepener_TermFactor", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Steepener_TermFactor)
+            Me.columnEVE_Steepener_Shock = New Global.System.Data.DataColumn("EVE_Steepener_Shock", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Steepener_Shock)
+            Me.columnEVE_Steepener_Difference = New Global.System.Data.DataColumn("EVE_Steepener_Difference", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Steepener_Difference)
+            Me.columnEVE_Flattener_ShortBumpRate = New Global.System.Data.DataColumn("EVE_Flattener_ShortBumpRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Flattener_ShortBumpRate)
+            Me.columnEVE_Flattener_LongBumpRate = New Global.System.Data.DataColumn("EVE_Flattener_LongBumpRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Flattener_LongBumpRate)
+            Me.columnEVE_Flattener_TermFactor = New Global.System.Data.DataColumn("EVE_Flattener_TermFactor", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Flattener_TermFactor)
+            Me.columnEVE_Flattener_Shock = New Global.System.Data.DataColumn("EVE_Flattener_Shock", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Flattener_Shock)
+            Me.columnEVE_Flattener_Difference = New Global.System.Data.DataColumn("EVE_Flattener_Difference", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEVE_Flattener_Difference)
+            Me.columnDiscountRate = New Global.System.Data.DataColumn("DiscountRate", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDiscountRate)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -1818,6 +2552,8 @@ Partial Public Class InterestRateRiskDataSet
             Me.columnInterestType.MaxLength = 10
             Me.columnNextEventPeriod.MaxLength = 10
             Me.columnInternalInfo.MaxLength = 255
+            Me.columnInOutFlow.MaxLength = 50
+            Me.columnYieldPeriod.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2630,6 +3366,24 @@ Partial Public Class InterestRateRiskDataSet
         
         Private columnPeriodNr As Global.System.Data.DataColumn
         
+        Private columnIn_CashFlow As Global.System.Data.DataColumn
+        
+        Private columnIn_AvgTermDays As Global.System.Data.DataColumn
+        
+        Private columnIn_NII_Change As Global.System.Data.DataColumn
+        
+        Private columnOut_CashFlow As Global.System.Data.DataColumn
+        
+        Private columnOut_AvgTermDays As Global.System.Data.DataColumn
+        
+        Private columnOut_NII_Change As Global.System.Data.DataColumn
+        
+        Private columnNet_CashFlow As Global.System.Data.DataColumn
+        
+        Private columnNet_AvgTermDays As Global.System.Data.DataColumn
+        
+        Private columnNet_NII_Change As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -2978,6 +3732,78 @@ Partial Public Class InterestRateRiskDataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property In_CashFlowColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIn_CashFlow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property In_AvgTermDaysColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIn_AvgTermDays
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property In_NII_ChangeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIn_NII_Change
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Out_CashFlowColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOut_CashFlow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Out_AvgTermDaysColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOut_AvgTermDays
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Out_NII_ChangeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOut_NII_Change
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Net_CashFlowColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNet_CashFlow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Net_AvgTermDaysColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNet_AvgTermDays
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Net_NII_ChangeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNet_NII_Change
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3052,9 +3878,18 @@ Partial Public Class InterestRateRiskDataSet
                     ByVal BEMERKUNGEN As String,  _
                     ByVal IdRateRiskDate As Date,  _
                     ByVal CalculationMethod As Double,  _
-                    ByVal PeriodNr As Double) As RATERISK_TOTALSRow
+                    ByVal PeriodNr As Double,  _
+                    ByVal In_CashFlow As Double,  _
+                    ByVal In_AvgTermDays As Double,  _
+                    ByVal In_NII_Change As Double,  _
+                    ByVal Out_CashFlow As Double,  _
+                    ByVal Out_AvgTermDays As Double,  _
+                    ByVal Out_NII_Change As Double,  _
+                    ByVal Net_CashFlow As Double,  _
+                    ByVal Net_AvgTermDays As Double,  _
+                    ByVal Net_NII_Change As Double) As RATERISK_TOTALSRow
             Dim rowRATERISK_TOTALSRow As RATERISK_TOTALSRow = CType(Me.NewRow,RATERISK_TOTALSRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, CURRENCY, Period, PERIOD_N, Type, _Principal_Amount_Value_Balance, _Principal_Amount_Value_Balance_EUR_Equ_, _Principal_Amount_Value_Balance_EUR_Equ_withoutSECUR, PRINCIPAL_AMOUNT_N, PRINCIPAL_AMOUNT_EUR_N, WF_N, AM_N, WF1, AM1, WF2, AM2, WF3, AM3, WF4, AM4, WF10, AM10, WF20, AM20, WF25, AM25, WFHUMP, AMHUMP, WF_TWIST1, AM_TWIST1, WF_TWIST2, AM_TWIST2, DATA_DATE, RISK_DATE, IMPORT_DATE, BEMERKUNGEN, IdRateRiskDate, CalculationMethod, PeriodNr}
+            Dim columnValuesArray() As Object = New Object() {Nothing, CURRENCY, Period, PERIOD_N, Type, _Principal_Amount_Value_Balance, _Principal_Amount_Value_Balance_EUR_Equ_, _Principal_Amount_Value_Balance_EUR_Equ_withoutSECUR, PRINCIPAL_AMOUNT_N, PRINCIPAL_AMOUNT_EUR_N, WF_N, AM_N, WF1, AM1, WF2, AM2, WF3, AM3, WF4, AM4, WF10, AM10, WF20, AM20, WF25, AM25, WFHUMP, AMHUMP, WF_TWIST1, AM_TWIST1, WF_TWIST2, AM_TWIST2, DATA_DATE, RISK_DATE, IMPORT_DATE, BEMERKUNGEN, IdRateRiskDate, CalculationMethod, PeriodNr, In_CashFlow, In_AvgTermDays, In_NII_Change, Out_CashFlow, Out_AvgTermDays, Out_NII_Change, Net_CashFlow, Net_AvgTermDays, Net_NII_Change}
             rowRATERISK_TOTALSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowRATERISK_TOTALSRow)
             Return rowRATERISK_TOTALSRow
@@ -3122,6 +3957,15 @@ Partial Public Class InterestRateRiskDataSet
             Me.columnIdRateRiskDate = MyBase.Columns("IdRateRiskDate")
             Me.columnCalculationMethod = MyBase.Columns("CalculationMethod")
             Me.columnPeriodNr = MyBase.Columns("PeriodNr")
+            Me.columnIn_CashFlow = MyBase.Columns("In_CashFlow")
+            Me.columnIn_AvgTermDays = MyBase.Columns("In_AvgTermDays")
+            Me.columnIn_NII_Change = MyBase.Columns("In_NII_Change")
+            Me.columnOut_CashFlow = MyBase.Columns("Out_CashFlow")
+            Me.columnOut_AvgTermDays = MyBase.Columns("Out_AvgTermDays")
+            Me.columnOut_NII_Change = MyBase.Columns("Out_NII_Change")
+            Me.columnNet_CashFlow = MyBase.Columns("Net_CashFlow")
+            Me.columnNet_AvgTermDays = MyBase.Columns("Net_AvgTermDays")
+            Me.columnNet_NII_Change = MyBase.Columns("Net_NII_Change")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3211,6 +4055,24 @@ Partial Public Class InterestRateRiskDataSet
             MyBase.Columns.Add(Me.columnCalculationMethod)
             Me.columnPeriodNr = New Global.System.Data.DataColumn("PeriodNr", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPeriodNr)
+            Me.columnIn_CashFlow = New Global.System.Data.DataColumn("In_CashFlow", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIn_CashFlow)
+            Me.columnIn_AvgTermDays = New Global.System.Data.DataColumn("In_AvgTermDays", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIn_AvgTermDays)
+            Me.columnIn_NII_Change = New Global.System.Data.DataColumn("In_NII_Change", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIn_NII_Change)
+            Me.columnOut_CashFlow = New Global.System.Data.DataColumn("Out_CashFlow", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOut_CashFlow)
+            Me.columnOut_AvgTermDays = New Global.System.Data.DataColumn("Out_AvgTermDays", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOut_AvgTermDays)
+            Me.columnOut_NII_Change = New Global.System.Data.DataColumn("Out_NII_Change", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOut_NII_Change)
+            Me.columnNet_CashFlow = New Global.System.Data.DataColumn("Net_CashFlow", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNet_CashFlow)
+            Me.columnNet_AvgTermDays = New Global.System.Data.DataColumn("Net_AvgTermDays", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNet_AvgTermDays)
+            Me.columnNet_NII_Change = New Global.System.Data.DataColumn("Net_NII_Change", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNet_NII_Change)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -3832,6 +4694,1683 @@ Partial Public Class InterestRateRiskDataSet
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class RateRisk_InterestRateSchocksDataTable
+        Inherits Global.System.Data.TypedTableBase(Of RateRisk_InterestRateSchocksRow)
+        
+        Private columnID As Global.System.Data.DataColumn
+        
+        Private columnCCY As Global.System.Data.DataColumn
+        
+        Private columnIRS_Type As Global.System.Data.DataColumn
+        
+        Private columnIRS_Value As Global.System.Data.DataColumn
+        
+        Private columnRiskDate As Global.System.Data.DataColumn
+        
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "RateRisk_InterestRateSchocks"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CCYColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCCY
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IRS_TypeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIRS_Type
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IRS_ValueColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIRS_Value
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property RiskDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRiskDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As RateRisk_InterestRateSchocksRow
+            Get
+                Return CType(Me.Rows(index),RateRisk_InterestRateSchocksRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_InterestRateSchocksRowChanging As RateRisk_InterestRateSchocksRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_InterestRateSchocksRowChanged As RateRisk_InterestRateSchocksRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_InterestRateSchocksRowDeleting As RateRisk_InterestRateSchocksRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_InterestRateSchocksRowDeleted As RateRisk_InterestRateSchocksRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddRateRisk_InterestRateSchocksRow(ByVal row As RateRisk_InterestRateSchocksRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddRateRisk_InterestRateSchocksRow(ByVal CCY As String, ByVal IRS_Type As String, ByVal IRS_Value As Double, ByVal RiskDate As Date, ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Date) As RateRisk_InterestRateSchocksRow
+            Dim rowRateRisk_InterestRateSchocksRow As RateRisk_InterestRateSchocksRow = CType(Me.NewRow,RateRisk_InterestRateSchocksRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, CCY, IRS_Type, IRS_Value, RiskDate, LastAction, LastUpdateUser, LastUpdateDate}
+            rowRateRisk_InterestRateSchocksRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowRateRisk_InterestRateSchocksRow)
+            Return rowRateRisk_InterestRateSchocksRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByID(ByVal ID As Integer) As RateRisk_InterestRateSchocksRow
+            Return CType(Me.Rows.Find(New Object() {ID}),RateRisk_InterestRateSchocksRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As RateRisk_InterestRateSchocksDataTable = CType(MyBase.Clone,RateRisk_InterestRateSchocksDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New RateRisk_InterestRateSchocksDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnID = MyBase.Columns("ID")
+            Me.columnCCY = MyBase.Columns("CCY")
+            Me.columnIRS_Type = MyBase.Columns("IRS_Type")
+            Me.columnIRS_Value = MyBase.Columns("IRS_Value")
+            Me.columnRiskDate = MyBase.Columns("RiskDate")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID)
+            Me.columnCCY = New Global.System.Data.DataColumn("CCY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCCY)
+            Me.columnIRS_Type = New Global.System.Data.DataColumn("IRS_Type", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIRS_Type)
+            Me.columnIRS_Value = New Global.System.Data.DataColumn("IRS_Value", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIRS_Value)
+            Me.columnRiskDate = New Global.System.Data.DataColumn("RiskDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRiskDate)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
+            Me.columnID.AutoIncrement = true
+            Me.columnID.AutoIncrementSeed = -1
+            Me.columnID.AutoIncrementStep = -1
+            Me.columnID.AllowDBNull = false
+            Me.columnID.ReadOnly = true
+            Me.columnID.Unique = true
+            Me.columnCCY.AllowDBNull = false
+            Me.columnCCY.MaxLength = 255
+            Me.columnIRS_Type.MaxLength = 255
+            Me.columnLastAction.MaxLength = 50
+            Me.columnLastUpdateUser.MaxLength = 255
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewRateRisk_InterestRateSchocksRow() As RateRisk_InterestRateSchocksRow
+            Return CType(Me.NewRow,RateRisk_InterestRateSchocksRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New RateRisk_InterestRateSchocksRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(RateRisk_InterestRateSchocksRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.RateRisk_InterestRateSchocksRowChangedEvent) Is Nothing) Then
+                RaiseEvent RateRisk_InterestRateSchocksRowChanged(Me, New RateRisk_InterestRateSchocksRowChangeEvent(CType(e.Row,RateRisk_InterestRateSchocksRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.RateRisk_InterestRateSchocksRowChangingEvent) Is Nothing) Then
+                RaiseEvent RateRisk_InterestRateSchocksRowChanging(Me, New RateRisk_InterestRateSchocksRowChangeEvent(CType(e.Row,RateRisk_InterestRateSchocksRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.RateRisk_InterestRateSchocksRowDeletedEvent) Is Nothing) Then
+                RaiseEvent RateRisk_InterestRateSchocksRowDeleted(Me, New RateRisk_InterestRateSchocksRowChangeEvent(CType(e.Row,RateRisk_InterestRateSchocksRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.RateRisk_InterestRateSchocksRowDeletingEvent) Is Nothing) Then
+                RaiseEvent RateRisk_InterestRateSchocksRowDeleting(Me, New RateRisk_InterestRateSchocksRowChangeEvent(CType(e.Row,RateRisk_InterestRateSchocksRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveRateRisk_InterestRateSchocksRow(ByVal row As RateRisk_InterestRateSchocksRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As InterestRateRiskDataSet = New InterestRateRiskDataSet()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "RateRisk_InterestRateSchocksDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class RateRisk_StandardTimeBucketsDataTable
+        Inherits Global.System.Data.TypedTableBase(Of RateRisk_StandardTimeBucketsRow)
+        
+        Private columnID As Global.System.Data.DataColumn
+        
+        Private columnGroupType As Global.System.Data.DataColumn
+        
+        Private columnTermType As Global.System.Data.DataColumn
+        
+        Private column1D As Global.System.Data.DataColumn
+        
+        Private column1M As Global.System.Data.DataColumn
+        
+        Private column3M As Global.System.Data.DataColumn
+        
+        Private column6M As Global.System.Data.DataColumn
+        
+        Private column9M As Global.System.Data.DataColumn
+        
+        Private column1Y As Global.System.Data.DataColumn
+        
+        Private column2Y As Global.System.Data.DataColumn
+        
+        Private column3Y As Global.System.Data.DataColumn
+        
+        Private column4Y As Global.System.Data.DataColumn
+        
+        Private column5Y As Global.System.Data.DataColumn
+        
+        Private column6Y As Global.System.Data.DataColumn
+        
+        Private column7Y As Global.System.Data.DataColumn
+        
+        Private column8Y As Global.System.Data.DataColumn
+        
+        Private column9Y As Global.System.Data.DataColumn
+        
+        Private column10Y As Global.System.Data.DataColumn
+        
+        Private column15Y As Global.System.Data.DataColumn
+        
+        Private column20Y As Global.System.Data.DataColumn
+        
+        Private column30Y As Global.System.Data.DataColumn
+        
+        Private column40Y As Global.System.Data.DataColumn
+        
+        Private column50Y As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "RateRisk_StandardTimeBuckets"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property GroupTypeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGroupType
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TermTypeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTermType
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _1DColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1D
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _1MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _3MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column3M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _6MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column6M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _9MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column9M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _1YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _2YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column2Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _3YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column3Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _4YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column4Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _5YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column5Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _6YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column6Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _7YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column7Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _8YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column8Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _9YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column9Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _10YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column10Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _15YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column15Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _20YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column20Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _30YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column30Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _40YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column40Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _50YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column50Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As RateRisk_StandardTimeBucketsRow
+            Get
+                Return CType(Me.Rows(index),RateRisk_StandardTimeBucketsRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_StandardTimeBucketsRowChanging As RateRisk_StandardTimeBucketsRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_StandardTimeBucketsRowChanged As RateRisk_StandardTimeBucketsRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_StandardTimeBucketsRowDeleting As RateRisk_StandardTimeBucketsRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_StandardTimeBucketsRowDeleted As RateRisk_StandardTimeBucketsRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddRateRisk_StandardTimeBucketsRow(ByVal row As RateRisk_StandardTimeBucketsRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddRateRisk_StandardTimeBucketsRow( _
+                    ByVal GroupType As String,  _
+                    ByVal TermType As String,  _
+                    ByVal _1D As Double,  _
+                    ByVal _1M As Double,  _
+                    ByVal _3M As Double,  _
+                    ByVal _6M As Double,  _
+                    ByVal _9M As Double,  _
+                    ByVal _1Y As Double,  _
+                    ByVal _2Y As Double,  _
+                    ByVal _3Y As Double,  _
+                    ByVal _4Y As Double,  _
+                    ByVal _5Y As Double,  _
+                    ByVal _6Y As Double,  _
+                    ByVal _7Y As Double,  _
+                    ByVal _8Y As Double,  _
+                    ByVal _9Y As Double,  _
+                    ByVal _10Y As Double,  _
+                    ByVal _15Y As Double,  _
+                    ByVal _20Y As Double,  _
+                    ByVal _30Y As Double,  _
+                    ByVal _40Y As Double,  _
+                    ByVal _50Y As Double) As RateRisk_StandardTimeBucketsRow
+            Dim rowRateRisk_StandardTimeBucketsRow As RateRisk_StandardTimeBucketsRow = CType(Me.NewRow,RateRisk_StandardTimeBucketsRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, GroupType, TermType, _1D, _1M, _3M, _6M, _9M, _1Y, _2Y, _3Y, _4Y, _5Y, _6Y, _7Y, _8Y, _9Y, _10Y, _15Y, _20Y, _30Y, _40Y, _50Y}
+            rowRateRisk_StandardTimeBucketsRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowRateRisk_StandardTimeBucketsRow)
+            Return rowRateRisk_StandardTimeBucketsRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByID(ByVal ID As Integer) As RateRisk_StandardTimeBucketsRow
+            Return CType(Me.Rows.Find(New Object() {ID}),RateRisk_StandardTimeBucketsRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As RateRisk_StandardTimeBucketsDataTable = CType(MyBase.Clone,RateRisk_StandardTimeBucketsDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New RateRisk_StandardTimeBucketsDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnID = MyBase.Columns("ID")
+            Me.columnGroupType = MyBase.Columns("GroupType")
+            Me.columnTermType = MyBase.Columns("TermType")
+            Me.column1D = MyBase.Columns("1D")
+            Me.column1M = MyBase.Columns("1M")
+            Me.column3M = MyBase.Columns("3M")
+            Me.column6M = MyBase.Columns("6M")
+            Me.column9M = MyBase.Columns("9M")
+            Me.column1Y = MyBase.Columns("1Y")
+            Me.column2Y = MyBase.Columns("2Y")
+            Me.column3Y = MyBase.Columns("3Y")
+            Me.column4Y = MyBase.Columns("4Y")
+            Me.column5Y = MyBase.Columns("5Y")
+            Me.column6Y = MyBase.Columns("6Y")
+            Me.column7Y = MyBase.Columns("7Y")
+            Me.column8Y = MyBase.Columns("8Y")
+            Me.column9Y = MyBase.Columns("9Y")
+            Me.column10Y = MyBase.Columns("10Y")
+            Me.column15Y = MyBase.Columns("15Y")
+            Me.column20Y = MyBase.Columns("20Y")
+            Me.column30Y = MyBase.Columns("30Y")
+            Me.column40Y = MyBase.Columns("40Y")
+            Me.column50Y = MyBase.Columns("50Y")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID)
+            Me.columnGroupType = New Global.System.Data.DataColumn("GroupType", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGroupType)
+            Me.columnTermType = New Global.System.Data.DataColumn("TermType", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTermType)
+            Me.column1D = New Global.System.Data.DataColumn("1D", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1D.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1D")
+            Me.column1D.ExtendedProperties.Add("Generator_UserColumnName", "1D")
+            MyBase.Columns.Add(Me.column1D)
+            Me.column1M = New Global.System.Data.DataColumn("1M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1M")
+            Me.column1M.ExtendedProperties.Add("Generator_UserColumnName", "1M")
+            MyBase.Columns.Add(Me.column1M)
+            Me.column3M = New Global.System.Data.DataColumn("3M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column3M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column3M")
+            Me.column3M.ExtendedProperties.Add("Generator_UserColumnName", "3M")
+            MyBase.Columns.Add(Me.column3M)
+            Me.column6M = New Global.System.Data.DataColumn("6M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column6M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column6M")
+            Me.column6M.ExtendedProperties.Add("Generator_UserColumnName", "6M")
+            MyBase.Columns.Add(Me.column6M)
+            Me.column9M = New Global.System.Data.DataColumn("9M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column9M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column9M")
+            Me.column9M.ExtendedProperties.Add("Generator_UserColumnName", "9M")
+            MyBase.Columns.Add(Me.column9M)
+            Me.column1Y = New Global.System.Data.DataColumn("1Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1Y")
+            Me.column1Y.ExtendedProperties.Add("Generator_UserColumnName", "1Y")
+            MyBase.Columns.Add(Me.column1Y)
+            Me.column2Y = New Global.System.Data.DataColumn("2Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column2Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column2Y")
+            Me.column2Y.ExtendedProperties.Add("Generator_UserColumnName", "2Y")
+            MyBase.Columns.Add(Me.column2Y)
+            Me.column3Y = New Global.System.Data.DataColumn("3Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column3Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column3Y")
+            Me.column3Y.ExtendedProperties.Add("Generator_UserColumnName", "3Y")
+            MyBase.Columns.Add(Me.column3Y)
+            Me.column4Y = New Global.System.Data.DataColumn("4Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column4Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column4Y")
+            Me.column4Y.ExtendedProperties.Add("Generator_UserColumnName", "4Y")
+            MyBase.Columns.Add(Me.column4Y)
+            Me.column5Y = New Global.System.Data.DataColumn("5Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column5Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column5Y")
+            Me.column5Y.ExtendedProperties.Add("Generator_UserColumnName", "5Y")
+            MyBase.Columns.Add(Me.column5Y)
+            Me.column6Y = New Global.System.Data.DataColumn("6Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column6Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column6Y")
+            Me.column6Y.ExtendedProperties.Add("Generator_UserColumnName", "6Y")
+            MyBase.Columns.Add(Me.column6Y)
+            Me.column7Y = New Global.System.Data.DataColumn("7Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column7Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column7Y")
+            Me.column7Y.ExtendedProperties.Add("Generator_UserColumnName", "7Y")
+            MyBase.Columns.Add(Me.column7Y)
+            Me.column8Y = New Global.System.Data.DataColumn("8Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column8Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column8Y")
+            Me.column8Y.ExtendedProperties.Add("Generator_UserColumnName", "8Y")
+            MyBase.Columns.Add(Me.column8Y)
+            Me.column9Y = New Global.System.Data.DataColumn("9Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column9Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column9Y")
+            Me.column9Y.ExtendedProperties.Add("Generator_UserColumnName", "9Y")
+            MyBase.Columns.Add(Me.column9Y)
+            Me.column10Y = New Global.System.Data.DataColumn("10Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column10Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column10Y")
+            Me.column10Y.ExtendedProperties.Add("Generator_UserColumnName", "10Y")
+            MyBase.Columns.Add(Me.column10Y)
+            Me.column15Y = New Global.System.Data.DataColumn("15Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column15Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column15Y")
+            Me.column15Y.ExtendedProperties.Add("Generator_UserColumnName", "15Y")
+            MyBase.Columns.Add(Me.column15Y)
+            Me.column20Y = New Global.System.Data.DataColumn("20Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column20Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column20Y")
+            Me.column20Y.ExtendedProperties.Add("Generator_UserColumnName", "20Y")
+            MyBase.Columns.Add(Me.column20Y)
+            Me.column30Y = New Global.System.Data.DataColumn("30Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column30Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column30Y")
+            Me.column30Y.ExtendedProperties.Add("Generator_UserColumnName", "30Y")
+            MyBase.Columns.Add(Me.column30Y)
+            Me.column40Y = New Global.System.Data.DataColumn("40Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column40Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column40Y")
+            Me.column40Y.ExtendedProperties.Add("Generator_UserColumnName", "40Y")
+            MyBase.Columns.Add(Me.column40Y)
+            Me.column50Y = New Global.System.Data.DataColumn("50Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column50Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column50Y")
+            Me.column50Y.ExtendedProperties.Add("Generator_UserColumnName", "50Y")
+            MyBase.Columns.Add(Me.column50Y)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
+            Me.columnID.AutoIncrement = true
+            Me.columnID.AutoIncrementSeed = -1
+            Me.columnID.AutoIncrementStep = -1
+            Me.columnID.AllowDBNull = false
+            Me.columnID.ReadOnly = true
+            Me.columnID.Unique = true
+            Me.columnGroupType.MaxLength = 255
+            Me.columnTermType.MaxLength = 255
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewRateRisk_StandardTimeBucketsRow() As RateRisk_StandardTimeBucketsRow
+            Return CType(Me.NewRow,RateRisk_StandardTimeBucketsRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New RateRisk_StandardTimeBucketsRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(RateRisk_StandardTimeBucketsRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.RateRisk_StandardTimeBucketsRowChangedEvent) Is Nothing) Then
+                RaiseEvent RateRisk_StandardTimeBucketsRowChanged(Me, New RateRisk_StandardTimeBucketsRowChangeEvent(CType(e.Row,RateRisk_StandardTimeBucketsRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.RateRisk_StandardTimeBucketsRowChangingEvent) Is Nothing) Then
+                RaiseEvent RateRisk_StandardTimeBucketsRowChanging(Me, New RateRisk_StandardTimeBucketsRowChangeEvent(CType(e.Row,RateRisk_StandardTimeBucketsRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.RateRisk_StandardTimeBucketsRowDeletedEvent) Is Nothing) Then
+                RaiseEvent RateRisk_StandardTimeBucketsRowDeleted(Me, New RateRisk_StandardTimeBucketsRowChangeEvent(CType(e.Row,RateRisk_StandardTimeBucketsRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.RateRisk_StandardTimeBucketsRowDeletingEvent) Is Nothing) Then
+                RaiseEvent RateRisk_StandardTimeBucketsRowDeleting(Me, New RateRisk_StandardTimeBucketsRowChangeEvent(CType(e.Row,RateRisk_StandardTimeBucketsRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveRateRisk_StandardTimeBucketsRow(ByVal row As RateRisk_StandardTimeBucketsRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As InterestRateRiskDataSet = New InterestRateRiskDataSet()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "RateRisk_StandardTimeBucketsDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class RateRisk_ShockTypesValuesDataTable
+        Inherits Global.System.Data.TypedTableBase(Of RateRisk_ShockTypesValuesRow)
+        
+        Private columnID As Global.System.Data.DataColumn
+        
+        Private columnShockType As Global.System.Data.DataColumn
+        
+        Private columnCCY As Global.System.Data.DataColumn
+        
+        Private column1D As Global.System.Data.DataColumn
+        
+        Private column1M As Global.System.Data.DataColumn
+        
+        Private column3M As Global.System.Data.DataColumn
+        
+        Private column6M As Global.System.Data.DataColumn
+        
+        Private column1Y As Global.System.Data.DataColumn
+        
+        Private column2Y As Global.System.Data.DataColumn
+        
+        Private column3Y As Global.System.Data.DataColumn
+        
+        Private column9M As Global.System.Data.DataColumn
+        
+        Private column4Y As Global.System.Data.DataColumn
+        
+        Private column5Y As Global.System.Data.DataColumn
+        
+        Private column6Y As Global.System.Data.DataColumn
+        
+        Private column7Y As Global.System.Data.DataColumn
+        
+        Private column8Y As Global.System.Data.DataColumn
+        
+        Private column9Y As Global.System.Data.DataColumn
+        
+        Private column10Y As Global.System.Data.DataColumn
+        
+        Private column15Y As Global.System.Data.DataColumn
+        
+        Private column20Y As Global.System.Data.DataColumn
+        
+        Private column30Y As Global.System.Data.DataColumn
+        
+        Private column40Y As Global.System.Data.DataColumn
+        
+        Private column50Y As Global.System.Data.DataColumn
+        
+        Private columnRiskDate As Global.System.Data.DataColumn
+        
+        Private columnValue_A As Global.System.Data.DataColumn
+        
+        Private columnValue_B As Global.System.Data.DataColumn
+        
+        Private columnLastAction As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateUser As Global.System.Data.DataColumn
+        
+        Private columnLastUpdateDate As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "RateRisk_ShockTypesValues"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ShockTypeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnShockType
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CCYColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCCY
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _1DColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1D
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _1MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _3MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column3M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _6MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column6M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _1YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column1Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _2YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column2Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _3YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column3Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _9MColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column9M
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _4YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column4Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _5YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column5Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _6YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column6Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _7YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column7Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _8YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column8Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _9YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column9Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _10YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column10Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _15YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column15Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _20YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column20Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _30YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column30Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _40YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column40Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property _50YColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.column50Y
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property RiskDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRiskDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Value_AColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnValue_A
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Value_BColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnValue_B
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastActionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastAction
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateUserColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateUser
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LastUpdateDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLastUpdateDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As RateRisk_ShockTypesValuesRow
+            Get
+                Return CType(Me.Rows(index),RateRisk_ShockTypesValuesRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_ShockTypesValuesRowChanging As RateRisk_ShockTypesValuesRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_ShockTypesValuesRowChanged As RateRisk_ShockTypesValuesRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_ShockTypesValuesRowDeleting As RateRisk_ShockTypesValuesRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event RateRisk_ShockTypesValuesRowDeleted As RateRisk_ShockTypesValuesRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub AddRateRisk_ShockTypesValuesRow(ByVal row As RateRisk_ShockTypesValuesRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function AddRateRisk_ShockTypesValuesRow( _
+                    ByVal ShockType As String,  _
+                    ByVal CCY As String,  _
+                    ByVal _1D As Double,  _
+                    ByVal _1M As Double,  _
+                    ByVal _3M As Double,  _
+                    ByVal _6M As Double,  _
+                    ByVal _1Y As Double,  _
+                    ByVal _2Y As Double,  _
+                    ByVal _3Y As Double,  _
+                    ByVal _9M As Double,  _
+                    ByVal _4Y As Double,  _
+                    ByVal _5Y As Double,  _
+                    ByVal _6Y As Double,  _
+                    ByVal _7Y As Double,  _
+                    ByVal _8Y As Double,  _
+                    ByVal _9Y As Double,  _
+                    ByVal _10Y As Double,  _
+                    ByVal _15Y As Double,  _
+                    ByVal _20Y As Double,  _
+                    ByVal _30Y As Double,  _
+                    ByVal _40Y As Double,  _
+                    ByVal _50Y As Double,  _
+                    ByVal RiskDate As Date,  _
+                    ByVal Value_A As Double,  _
+                    ByVal Value_B As Double,  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Date) As RateRisk_ShockTypesValuesRow
+            Dim rowRateRisk_ShockTypesValuesRow As RateRisk_ShockTypesValuesRow = CType(Me.NewRow,RateRisk_ShockTypesValuesRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, ShockType, CCY, _1D, _1M, _3M, _6M, _1Y, _2Y, _3Y, _9M, _4Y, _5Y, _6Y, _7Y, _8Y, _9Y, _10Y, _15Y, _20Y, _30Y, _40Y, _50Y, RiskDate, Value_A, Value_B, LastAction, LastUpdateUser, LastUpdateDate}
+            rowRateRisk_ShockTypesValuesRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowRateRisk_ShockTypesValuesRow)
+            Return rowRateRisk_ShockTypesValuesRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function FindByID(ByVal ID As Integer) As RateRisk_ShockTypesValuesRow
+            Return CType(Me.Rows.Find(New Object() {ID}),RateRisk_ShockTypesValuesRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As RateRisk_ShockTypesValuesDataTable = CType(MyBase.Clone,RateRisk_ShockTypesValuesDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New RateRisk_ShockTypesValuesDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnID = MyBase.Columns("ID")
+            Me.columnShockType = MyBase.Columns("ShockType")
+            Me.columnCCY = MyBase.Columns("CCY")
+            Me.column1D = MyBase.Columns("1D")
+            Me.column1M = MyBase.Columns("1M")
+            Me.column3M = MyBase.Columns("3M")
+            Me.column6M = MyBase.Columns("6M")
+            Me.column1Y = MyBase.Columns("1Y")
+            Me.column2Y = MyBase.Columns("2Y")
+            Me.column3Y = MyBase.Columns("3Y")
+            Me.column9M = MyBase.Columns("9M")
+            Me.column4Y = MyBase.Columns("4Y")
+            Me.column5Y = MyBase.Columns("5Y")
+            Me.column6Y = MyBase.Columns("6Y")
+            Me.column7Y = MyBase.Columns("7Y")
+            Me.column8Y = MyBase.Columns("8Y")
+            Me.column9Y = MyBase.Columns("9Y")
+            Me.column10Y = MyBase.Columns("10Y")
+            Me.column15Y = MyBase.Columns("15Y")
+            Me.column20Y = MyBase.Columns("20Y")
+            Me.column30Y = MyBase.Columns("30Y")
+            Me.column40Y = MyBase.Columns("40Y")
+            Me.column50Y = MyBase.Columns("50Y")
+            Me.columnRiskDate = MyBase.Columns("RiskDate")
+            Me.columnValue_A = MyBase.Columns("Value_A")
+            Me.columnValue_B = MyBase.Columns("Value_B")
+            Me.columnLastAction = MyBase.Columns("LastAction")
+            Me.columnLastUpdateUser = MyBase.Columns("LastUpdateUser")
+            Me.columnLastUpdateDate = MyBase.Columns("LastUpdateDate")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID)
+            Me.columnShockType = New Global.System.Data.DataColumn("ShockType", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnShockType)
+            Me.columnCCY = New Global.System.Data.DataColumn("CCY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCCY)
+            Me.column1D = New Global.System.Data.DataColumn("1D", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1D.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1D")
+            Me.column1D.ExtendedProperties.Add("Generator_UserColumnName", "1D")
+            MyBase.Columns.Add(Me.column1D)
+            Me.column1M = New Global.System.Data.DataColumn("1M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1M")
+            Me.column1M.ExtendedProperties.Add("Generator_UserColumnName", "1M")
+            MyBase.Columns.Add(Me.column1M)
+            Me.column3M = New Global.System.Data.DataColumn("3M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column3M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column3M")
+            Me.column3M.ExtendedProperties.Add("Generator_UserColumnName", "3M")
+            MyBase.Columns.Add(Me.column3M)
+            Me.column6M = New Global.System.Data.DataColumn("6M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column6M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column6M")
+            Me.column6M.ExtendedProperties.Add("Generator_UserColumnName", "6M")
+            MyBase.Columns.Add(Me.column6M)
+            Me.column1Y = New Global.System.Data.DataColumn("1Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column1Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column1Y")
+            Me.column1Y.ExtendedProperties.Add("Generator_UserColumnName", "1Y")
+            MyBase.Columns.Add(Me.column1Y)
+            Me.column2Y = New Global.System.Data.DataColumn("2Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column2Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column2Y")
+            Me.column2Y.ExtendedProperties.Add("Generator_UserColumnName", "2Y")
+            MyBase.Columns.Add(Me.column2Y)
+            Me.column3Y = New Global.System.Data.DataColumn("3Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column3Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column3Y")
+            Me.column3Y.ExtendedProperties.Add("Generator_UserColumnName", "3Y")
+            MyBase.Columns.Add(Me.column3Y)
+            Me.column9M = New Global.System.Data.DataColumn("9M", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column9M.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column9M")
+            Me.column9M.ExtendedProperties.Add("Generator_UserColumnName", "9M")
+            MyBase.Columns.Add(Me.column9M)
+            Me.column4Y = New Global.System.Data.DataColumn("4Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column4Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column4Y")
+            Me.column4Y.ExtendedProperties.Add("Generator_UserColumnName", "4Y")
+            MyBase.Columns.Add(Me.column4Y)
+            Me.column5Y = New Global.System.Data.DataColumn("5Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column5Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column5Y")
+            Me.column5Y.ExtendedProperties.Add("Generator_UserColumnName", "5Y")
+            MyBase.Columns.Add(Me.column5Y)
+            Me.column6Y = New Global.System.Data.DataColumn("6Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column6Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column6Y")
+            Me.column6Y.ExtendedProperties.Add("Generator_UserColumnName", "6Y")
+            MyBase.Columns.Add(Me.column6Y)
+            Me.column7Y = New Global.System.Data.DataColumn("7Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column7Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column7Y")
+            Me.column7Y.ExtendedProperties.Add("Generator_UserColumnName", "7Y")
+            MyBase.Columns.Add(Me.column7Y)
+            Me.column8Y = New Global.System.Data.DataColumn("8Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column8Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column8Y")
+            Me.column8Y.ExtendedProperties.Add("Generator_UserColumnName", "8Y")
+            MyBase.Columns.Add(Me.column8Y)
+            Me.column9Y = New Global.System.Data.DataColumn("9Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column9Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column9Y")
+            Me.column9Y.ExtendedProperties.Add("Generator_UserColumnName", "9Y")
+            MyBase.Columns.Add(Me.column9Y)
+            Me.column10Y = New Global.System.Data.DataColumn("10Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column10Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column10Y")
+            Me.column10Y.ExtendedProperties.Add("Generator_UserColumnName", "10Y")
+            MyBase.Columns.Add(Me.column10Y)
+            Me.column15Y = New Global.System.Data.DataColumn("15Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column15Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column15Y")
+            Me.column15Y.ExtendedProperties.Add("Generator_UserColumnName", "15Y")
+            MyBase.Columns.Add(Me.column15Y)
+            Me.column20Y = New Global.System.Data.DataColumn("20Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column20Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column20Y")
+            Me.column20Y.ExtendedProperties.Add("Generator_UserColumnName", "20Y")
+            MyBase.Columns.Add(Me.column20Y)
+            Me.column30Y = New Global.System.Data.DataColumn("30Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column30Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column30Y")
+            Me.column30Y.ExtendedProperties.Add("Generator_UserColumnName", "30Y")
+            MyBase.Columns.Add(Me.column30Y)
+            Me.column40Y = New Global.System.Data.DataColumn("40Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column40Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column40Y")
+            Me.column40Y.ExtendedProperties.Add("Generator_UserColumnName", "40Y")
+            MyBase.Columns.Add(Me.column40Y)
+            Me.column50Y = New Global.System.Data.DataColumn("50Y", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            Me.column50Y.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "column50Y")
+            Me.column50Y.ExtendedProperties.Add("Generator_UserColumnName", "50Y")
+            MyBase.Columns.Add(Me.column50Y)
+            Me.columnRiskDate = New Global.System.Data.DataColumn("RiskDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRiskDate)
+            Me.columnValue_A = New Global.System.Data.DataColumn("Value_A", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnValue_A)
+            Me.columnValue_B = New Global.System.Data.DataColumn("Value_B", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnValue_B)
+            Me.columnLastAction = New Global.System.Data.DataColumn("LastAction", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastAction)
+            Me.columnLastUpdateUser = New Global.System.Data.DataColumn("LastUpdateUser", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateUser)
+            Me.columnLastUpdateDate = New Global.System.Data.DataColumn("LastUpdateDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLastUpdateDate)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
+            Me.columnID.AutoIncrement = true
+            Me.columnID.AutoIncrementSeed = -1
+            Me.columnID.AutoIncrementStep = -1
+            Me.columnID.AllowDBNull = false
+            Me.columnID.ReadOnly = true
+            Me.columnID.Unique = true
+            Me.columnShockType.MaxLength = 255
+            Me.columnCCY.MaxLength = 255
+            Me.columnLastAction.MaxLength = 50
+            Me.columnLastUpdateUser.MaxLength = 255
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function NewRateRisk_ShockTypesValuesRow() As RateRisk_ShockTypesValuesRow
+            Return CType(Me.NewRow,RateRisk_ShockTypesValuesRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New RateRisk_ShockTypesValuesRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(RateRisk_ShockTypesValuesRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.RateRisk_ShockTypesValuesRowChangedEvent) Is Nothing) Then
+                RaiseEvent RateRisk_ShockTypesValuesRowChanged(Me, New RateRisk_ShockTypesValuesRowChangeEvent(CType(e.Row,RateRisk_ShockTypesValuesRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.RateRisk_ShockTypesValuesRowChangingEvent) Is Nothing) Then
+                RaiseEvent RateRisk_ShockTypesValuesRowChanging(Me, New RateRisk_ShockTypesValuesRowChangeEvent(CType(e.Row,RateRisk_ShockTypesValuesRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.RateRisk_ShockTypesValuesRowDeletedEvent) Is Nothing) Then
+                RaiseEvent RateRisk_ShockTypesValuesRowDeleted(Me, New RateRisk_ShockTypesValuesRowChangeEvent(CType(e.Row,RateRisk_ShockTypesValuesRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.RateRisk_ShockTypesValuesRowDeletingEvent) Is Nothing) Then
+                RaiseEvent RateRisk_ShockTypesValuesRowDeleting(Me, New RateRisk_ShockTypesValuesRowChangeEvent(CType(e.Row,RateRisk_ShockTypesValuesRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub RemoveRateRisk_ShockTypesValuesRow(ByVal row As RateRisk_ShockTypesValuesRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As InterestRateRiskDataSet = New InterestRateRiskDataSet()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "RateRisk_ShockTypesValuesDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class RATERISK_DATERow
@@ -4050,6 +6589,306 @@ Partial Public Class InterestRateRiskDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IRR_NII_Change() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.IRR_NII_ChangeColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IRR_NII_Change' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.IRR_NII_ChangeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property BAIS_CET1_Capital() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.BAIS_CET1_CapitalColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BAIS_CET1_Capital' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.BAIS_CET1_CapitalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WF_N() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WF_NColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WF_N' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WF_NColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AM_N() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AM_NColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AM_N' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AM_NColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WF1() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WF1Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WF1' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WF1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AM1() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AM1Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AM1' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AM1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WF2() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WF2Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WF2' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WF2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AM2() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AM2Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AM2' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AM2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WF3() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WF3Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WF3' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WF3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AM3() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AM3Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AM3' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AM3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WF4() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WF4Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WF4' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WF4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AM4() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AM4Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AM4' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AM4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WF10() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WF10Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WF10' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WF10Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AM10() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AM10Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AM10' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AM10Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WF20() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WF20Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WF20' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WF20Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AM20() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AM20Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AM20' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AM20Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WF25() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WF25Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WF25' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WF25Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AM25() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AM25Column),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AM25' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AM25Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property WFHUMP() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.WFHUMPColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WFHUMP' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.WFHUMPColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property AMHUMP() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DATE.AMHUMPColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AMHUMP' in table 'RATERISK DATE' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DATE.AMHUMPColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsWorking_CapitalNull() As Boolean
             Return Me.IsNull(Me.tableRATERISK_DATE.Working_CapitalColumn)
         End Function
@@ -4190,6 +7029,246 @@ Partial Public Class InterestRateRiskDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetIdBankNull()
             Me(Me.tableRATERISK_DATE.IdBankColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIRR_NII_ChangeNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.IRR_NII_ChangeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIRR_NII_ChangeNull()
+            Me(Me.tableRATERISK_DATE.IRR_NII_ChangeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsBAIS_CET1_CapitalNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.BAIS_CET1_CapitalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetBAIS_CET1_CapitalNull()
+            Me(Me.tableRATERISK_DATE.BAIS_CET1_CapitalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWF_NNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WF_NColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWF_NNull()
+            Me(Me.tableRATERISK_DATE.WF_NColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAM_NNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AM_NColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAM_NNull()
+            Me(Me.tableRATERISK_DATE.AM_NColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWF1Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WF1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWF1Null()
+            Me(Me.tableRATERISK_DATE.WF1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAM1Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AM1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAM1Null()
+            Me(Me.tableRATERISK_DATE.AM1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWF2Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WF2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWF2Null()
+            Me(Me.tableRATERISK_DATE.WF2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAM2Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AM2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAM2Null()
+            Me(Me.tableRATERISK_DATE.AM2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWF3Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WF3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWF3Null()
+            Me(Me.tableRATERISK_DATE.WF3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAM3Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AM3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAM3Null()
+            Me(Me.tableRATERISK_DATE.AM3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWF4Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WF4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWF4Null()
+            Me(Me.tableRATERISK_DATE.WF4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAM4Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AM4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAM4Null()
+            Me(Me.tableRATERISK_DATE.AM4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWF10Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WF10Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWF10Null()
+            Me(Me.tableRATERISK_DATE.WF10Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAM10Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AM10Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAM10Null()
+            Me(Me.tableRATERISK_DATE.AM10Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWF20Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WF20Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWF20Null()
+            Me(Me.tableRATERISK_DATE.WF20Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAM20Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AM20Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAM20Null()
+            Me(Me.tableRATERISK_DATE.AM20Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWF25Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WF25Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWF25Null()
+            Me(Me.tableRATERISK_DATE.WF25Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAM25Null() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AM25Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAM25Null()
+            Me(Me.tableRATERISK_DATE.AM25Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsWFHUMPNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.WFHUMPColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetWFHUMPNull()
+            Me(Me.tableRATERISK_DATE.WFHUMPColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsAMHUMPNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DATE.AMHUMPColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetAMHUMPNull()
+            Me(Me.tableRATERISK_DATE.AMHUMPColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5095,6 +8174,386 @@ Partial Public Class InterestRateRiskDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property InOutFlow() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.InOutFlowColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'InOutFlow' in table 'RATERISK DETAILS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.InOutFlowColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IRR_NII_Change() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.IRR_NII_ChangeColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IRR_NII_Change' in table 'RATERISK DETAILS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.IRR_NII_ChangeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property YieldPeriod() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.YieldPeriodColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'YieldPeriod' in table 'RATERISK DETAILS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.YieldPeriodColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Parallel_Up_BumpRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Up_BumpRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Parallel_Up_BumpRate' in table 'RATERISK DETAILS' is DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Up_BumpRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Parallel_Up_Difference() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Up_DifferenceColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Parallel_Up_Difference' in table 'RATERISK DETAILS' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Up_DifferenceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Parallel_Down_BumpRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Down_BumpRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Parallel_Down_BumpRate' in table 'RATERISK DETAILS' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Down_BumpRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Parallel_Down_Difference() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Down_DifferenceColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Parallel_Down_Difference' in table 'RATERISK DETAILS' i"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Down_DifferenceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_ShortRate_Up_BumpRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_BumpRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_ShortRate_Up_BumpRate' in table 'RATERISK DETAILS' is D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_BumpRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_ShortRate_Up_TermFactor() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_TermFactorColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_ShortRate_Up_TermFactor' in table 'RATERISK DETAILS' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_TermFactorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_ShortRate_Up_Difference() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_DifferenceColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_ShortRate_Up_Difference' in table 'RATERISK DETAILS' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_DifferenceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_ShortRate_Down_BumpRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_BumpRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_ShortRate_Down_BumpRate' in table 'RATERISK DETAILS' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_BumpRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_ShortRate_Down_TermFactor() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_TermFactorColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_ShortRate_Down_TermFactor' in table 'RATERISK DETAILS' "& _ 
+                            "is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_TermFactorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_ShortRate_Down_Difference() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_DifferenceColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_ShortRate_Down_Difference' in table 'RATERISK DETAILS' "& _ 
+                            "is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_DifferenceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Steepener_ShortBumpRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Steepener_ShortBumpRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Steepener_ShortBumpRate' in table 'RATERISK DETAILS' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Steepener_ShortBumpRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Steepener_LongBumpRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Steepener_LongBumpRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Steepener_LongBumpRate' in table 'RATERISK DETAILS' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Steepener_LongBumpRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Steepener_TermFactor() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Steepener_TermFactorColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Steepener_TermFactor' in table 'RATERISK DETAILS' is DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Steepener_TermFactorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Steepener_Shock() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Steepener_ShockColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Steepener_Shock' in table 'RATERISK DETAILS' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Steepener_ShockColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Steepener_Difference() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Steepener_DifferenceColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Steepener_Difference' in table 'RATERISK DETAILS' is DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Steepener_DifferenceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Flattener_ShortBumpRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Flattener_ShortBumpRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Flattener_ShortBumpRate' in table 'RATERISK DETAILS' is"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Flattener_ShortBumpRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Flattener_LongBumpRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Flattener_LongBumpRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Flattener_LongBumpRate' in table 'RATERISK DETAILS' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Flattener_LongBumpRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Flattener_TermFactor() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Flattener_TermFactorColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Flattener_TermFactor' in table 'RATERISK DETAILS' is DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Flattener_TermFactorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Flattener_Shock() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Flattener_ShockColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Flattener_Shock' in table 'RATERISK DETAILS' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Flattener_ShockColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EVE_Flattener_Difference() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.EVE_Flattener_DifferenceColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'EVE_Flattener_Difference' in table 'RATERISK DETAILS' is DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.EVE_Flattener_DifferenceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DiscountRate() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_DETAILS.DiscountRateColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DiscountRate' in table 'RATERISK DETAILS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_DETAILS.DiscountRateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsPERIODNull() As Boolean
             Return Me.IsNull(Me.tableRATERISK_DETAILS.PERIODColumn)
         End Function
@@ -5775,6 +9234,294 @@ Partial Public Class InterestRateRiskDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetWeightingFactorNull()
             Me(Me.tableRATERISK_DETAILS.WeightingFactorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsInOutFlowNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.InOutFlowColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetInOutFlowNull()
+            Me(Me.tableRATERISK_DETAILS.InOutFlowColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIRR_NII_ChangeNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.IRR_NII_ChangeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIRR_NII_ChangeNull()
+            Me(Me.tableRATERISK_DETAILS.IRR_NII_ChangeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsYieldPeriodNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.YieldPeriodColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetYieldPeriodNull()
+            Me(Me.tableRATERISK_DETAILS.YieldPeriodColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Parallel_Up_BumpRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Parallel_Up_BumpRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Parallel_Up_BumpRateNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Up_BumpRateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Parallel_Up_DifferenceNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Parallel_Up_DifferenceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Parallel_Up_DifferenceNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Up_DifferenceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Parallel_Down_BumpRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Parallel_Down_BumpRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Parallel_Down_BumpRateNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Down_BumpRateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Parallel_Down_DifferenceNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Parallel_Down_DifferenceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Parallel_Down_DifferenceNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Parallel_Down_DifferenceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_ShortRate_Up_BumpRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_BumpRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_ShortRate_Up_BumpRateNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_BumpRateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_ShortRate_Up_TermFactorNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_TermFactorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_ShortRate_Up_TermFactorNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_TermFactorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_ShortRate_Up_DifferenceNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_DifferenceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_ShortRate_Up_DifferenceNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Up_DifferenceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_ShortRate_Down_BumpRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_BumpRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_ShortRate_Down_BumpRateNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_BumpRateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_ShortRate_Down_TermFactorNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_TermFactorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_ShortRate_Down_TermFactorNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_TermFactorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_ShortRate_Down_DifferenceNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_DifferenceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_ShortRate_Down_DifferenceNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_ShortRate_Down_DifferenceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Steepener_ShortBumpRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Steepener_ShortBumpRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Steepener_ShortBumpRateNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Steepener_ShortBumpRateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Steepener_LongBumpRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Steepener_LongBumpRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Steepener_LongBumpRateNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Steepener_LongBumpRateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Steepener_TermFactorNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Steepener_TermFactorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Steepener_TermFactorNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Steepener_TermFactorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Steepener_ShockNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Steepener_ShockColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Steepener_ShockNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Steepener_ShockColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Steepener_DifferenceNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Steepener_DifferenceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Steepener_DifferenceNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Steepener_DifferenceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Flattener_ShortBumpRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Flattener_ShortBumpRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Flattener_ShortBumpRateNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Flattener_ShortBumpRateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Flattener_LongBumpRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Flattener_LongBumpRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Flattener_LongBumpRateNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Flattener_LongBumpRateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Flattener_TermFactorNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Flattener_TermFactorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Flattener_TermFactorNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Flattener_TermFactorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Flattener_ShockNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Flattener_ShockColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Flattener_ShockNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Flattener_ShockColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEVE_Flattener_DifferenceNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.EVE_Flattener_DifferenceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEVE_Flattener_DifferenceNull()
+            Me(Me.tableRATERISK_DETAILS.EVE_Flattener_DifferenceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDiscountRateNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_DETAILS.DiscountRateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDiscountRateNull()
+            Me(Me.tableRATERISK_DETAILS.DiscountRateColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -7016,6 +10763,141 @@ Partial Public Class InterestRateRiskDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property In_CashFlow() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.In_CashFlowColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'In_CashFlow' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.In_CashFlowColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property In_AvgTermDays() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.In_AvgTermDaysColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'In_AvgTermDays' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.In_AvgTermDaysColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property In_NII_Change() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.In_NII_ChangeColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'In_NII_Change' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.In_NII_ChangeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Out_CashFlow() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.Out_CashFlowColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Out_CashFlow' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.Out_CashFlowColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Out_AvgTermDays() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.Out_AvgTermDaysColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Out_AvgTermDays' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.Out_AvgTermDaysColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Out_NII_Change() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.Out_NII_ChangeColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Out_NII_Change' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.Out_NII_ChangeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Net_CashFlow() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.Net_CashFlowColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Net_CashFlow' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.Net_CashFlowColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Net_AvgTermDays() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.Net_AvgTermDaysColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Net_AvgTermDays' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.Net_AvgTermDaysColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Net_NII_Change() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRATERISK_TOTALS.Net_NII_ChangeColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Net_NII_Change' in table 'RATERISK TOTALS' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRATERISK_TOTALS.Net_NII_ChangeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsCURRENCYNull() As Boolean
             Return Me.IsNull(Me.tableRATERISK_TOTALS.CURRENCYColumn)
         End Function
@@ -7469,6 +11351,114 @@ Partial Public Class InterestRateRiskDataSet
         Public Sub SetPeriodNrNull()
             Me(Me.tableRATERISK_TOTALS.PeriodNrColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIn_CashFlowNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.In_CashFlowColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIn_CashFlowNull()
+            Me(Me.tableRATERISK_TOTALS.In_CashFlowColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIn_AvgTermDaysNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.In_AvgTermDaysColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIn_AvgTermDaysNull()
+            Me(Me.tableRATERISK_TOTALS.In_AvgTermDaysColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIn_NII_ChangeNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.In_NII_ChangeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIn_NII_ChangeNull()
+            Me(Me.tableRATERISK_TOTALS.In_NII_ChangeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsOut_CashFlowNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.Out_CashFlowColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetOut_CashFlowNull()
+            Me(Me.tableRATERISK_TOTALS.Out_CashFlowColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsOut_AvgTermDaysNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.Out_AvgTermDaysColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetOut_AvgTermDaysNull()
+            Me(Me.tableRATERISK_TOTALS.Out_AvgTermDaysColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsOut_NII_ChangeNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.Out_NII_ChangeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetOut_NII_ChangeNull()
+            Me(Me.tableRATERISK_TOTALS.Out_NII_ChangeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNet_CashFlowNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.Net_CashFlowColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNet_CashFlowNull()
+            Me(Me.tableRATERISK_TOTALS.Net_CashFlowColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNet_AvgTermDaysNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.Net_AvgTermDaysColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNet_AvgTermDaysNull()
+            Me(Me.tableRATERISK_TOTALS.Net_AvgTermDaysColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNet_NII_ChangeNull() As Boolean
+            Return Me.IsNull(Me.tableRATERISK_TOTALS.Net_NII_ChangeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNet_NII_ChangeNull()
+            Me(Me.tableRATERISK_TOTALS.Net_NII_ChangeColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -7909,6 +11899,1621 @@ Partial Public Class InterestRateRiskDataSet
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class RateRisk_InterestRateSchocksRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableRateRisk_InterestRateSchocks As RateRisk_InterestRateSchocksDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableRateRisk_InterestRateSchocks = CType(Me.Table,RateRisk_InterestRateSchocksDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ID() As Integer
+            Get
+                Return CType(Me(Me.tableRateRisk_InterestRateSchocks.IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableRateRisk_InterestRateSchocks.IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CCY() As String
+            Get
+                Return CType(Me(Me.tableRateRisk_InterestRateSchocks.CCYColumn),String)
+            End Get
+            Set
+                Me(Me.tableRateRisk_InterestRateSchocks.CCYColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IRS_Type() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_InterestRateSchocks.IRS_TypeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IRS_Type' in table 'RateRisk_InterestRateSchocks' is DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_InterestRateSchocks.IRS_TypeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property IRS_Value() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_InterestRateSchocks.IRS_ValueColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IRS_Value' in table 'RateRisk_InterestRateSchocks' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_InterestRateSchocks.IRS_ValueColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property RiskDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_InterestRateSchocks.RiskDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'RiskDate' in table 'RateRisk_InterestRateSchocks' is DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_InterestRateSchocks.RiskDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_InterestRateSchocks.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'RateRisk_InterestRateSchocks' is DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_InterestRateSchocks.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_InterestRateSchocks.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'RateRisk_InterestRateSchocks' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_InterestRateSchocks.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_InterestRateSchocks.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'RateRisk_InterestRateSchocks' is "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_InterestRateSchocks.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIRS_TypeNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_InterestRateSchocks.IRS_TypeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIRS_TypeNull()
+            Me(Me.tableRateRisk_InterestRateSchocks.IRS_TypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsIRS_ValueNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_InterestRateSchocks.IRS_ValueColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetIRS_ValueNull()
+            Me(Me.tableRateRisk_InterestRateSchocks.IRS_ValueColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsRiskDateNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_InterestRateSchocks.RiskDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetRiskDateNull()
+            Me(Me.tableRateRisk_InterestRateSchocks.RiskDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_InterestRateSchocks.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableRateRisk_InterestRateSchocks.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_InterestRateSchocks.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableRateRisk_InterestRateSchocks.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_InterestRateSchocks.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableRateRisk_InterestRateSchocks.LastUpdateDateColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class RateRisk_StandardTimeBucketsRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableRateRisk_StandardTimeBuckets As RateRisk_StandardTimeBucketsDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableRateRisk_StandardTimeBuckets = CType(Me.Table,RateRisk_StandardTimeBucketsDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ID() As Integer
+            Get
+                Return CType(Me(Me.tableRateRisk_StandardTimeBuckets.IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets.IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property GroupType() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets.GroupTypeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'GroupType' in table 'RateRisk_StandardTimeBuckets' is DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets.GroupTypeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TermType() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets.TermTypeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TermType' in table 'RateRisk_StandardTimeBuckets' is DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets.TermTypeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _1D() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._1DColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '1D' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._1DColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _1M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._1MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '1M' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._1MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _3M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._3MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '3M' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._3MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _6M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._6MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '6M' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._6MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _9M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._9MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '9M' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._9MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _1Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._1YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '1Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._1YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _2Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._2YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '2Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._2YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _3Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._3YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '3Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._3YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _4Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._4YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '4Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._4YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _5Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._5YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '5Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._5YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _6Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._6YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '6Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._6YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _7Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._7YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '7Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._7YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _8Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._8YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '8Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._8YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _9Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._9YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '9Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._9YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _10Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._10YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '10Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._10YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _15Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._15YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '15Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._15YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _20Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._20YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '20Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._20YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _30Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._30YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '30Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._30YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _40Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._40YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '40Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._40YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _50Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_StandardTimeBuckets._50YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '50Y' in table 'RateRisk_StandardTimeBuckets' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_StandardTimeBuckets._50YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsGroupTypeNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets.GroupTypeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetGroupTypeNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets.GroupTypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTermTypeNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets.TermTypeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTermTypeNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets.TermTypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_1DNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._1DColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_1DNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._1DColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_1MNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._1MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_1MNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._1MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_3MNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._3MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_3MNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._3MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_6MNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._6MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_6MNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._6MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_9MNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._9MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_9MNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._9MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_1YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._1YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_1YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._1YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_2YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._2YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_2YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._2YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_3YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._3YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_3YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._3YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_4YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._4YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_4YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._4YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_5YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._5YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_5YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._5YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_6YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._6YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_6YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._6YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_7YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._7YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_7YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._7YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_8YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._8YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_8YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._8YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_9YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._9YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_9YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._9YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_10YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._10YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_10YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._10YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_15YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._15YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_15YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._15YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_20YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._20YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_20YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._20YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_30YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._30YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_30YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._30YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_40YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._40YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_40YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._40YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_50YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_StandardTimeBuckets._50YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_50YNull()
+            Me(Me.tableRateRisk_StandardTimeBuckets._50YColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class RateRisk_ShockTypesValuesRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableRateRisk_ShockTypesValues As RateRisk_ShockTypesValuesDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableRateRisk_ShockTypesValues = CType(Me.Table,RateRisk_ShockTypesValuesDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ID() As Integer
+            Get
+                Return CType(Me(Me.tableRateRisk_ShockTypesValues.IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ShockType() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues.ShockTypeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ShockType' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.ShockTypeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CCY() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues.CCYColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CCY' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.CCYColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _1D() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._1DColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '1D' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._1DColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _1M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._1MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '1M' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._1MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _3M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._3MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '3M' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._3MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _6M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._6MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '6M' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._6MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _1Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._1YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '1Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._1YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _2Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._2YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '2Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._2YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _3Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._3YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '3Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._3YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _9M() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._9MColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '9M' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._9MColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _4Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._4YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '4Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._4YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _5Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._5YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '5Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._5YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _6Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._6YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '6Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._6YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _7Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._7YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '7Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._7YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _8Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._8YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '8Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._8YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _9Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._9YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '9Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._9YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _10Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._10YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '10Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._10YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _15Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._15YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '15Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._15YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _20Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._20YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '20Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._20YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _30Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._30YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '30Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._30YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _40Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._40YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '40Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._40YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property _50Y() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues._50YColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column '50Y' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues._50YColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property RiskDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues.RiskDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'RiskDate' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.RiskDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Value_A() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues.Value_AColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Value_A' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.Value_AColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property Value_B() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues.Value_BColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Value_B' in table 'RateRisk_ShockTypesValues' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.Value_BColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastAction() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues.LastActionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastAction' in table 'RateRisk_ShockTypesValues' is DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.LastActionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateUser() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues.LastUpdateUserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateUser' in table 'RateRisk_ShockTypesValues' is DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.LastUpdateUserColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LastUpdateDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tableRateRisk_ShockTypesValues.LastUpdateDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'LastUpdateDate' in table 'RateRisk_ShockTypesValues' is DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableRateRisk_ShockTypesValues.LastUpdateDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsShockTypeNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues.ShockTypeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetShockTypeNull()
+            Me(Me.tableRateRisk_ShockTypesValues.ShockTypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCCYNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues.CCYColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCCYNull()
+            Me(Me.tableRateRisk_ShockTypesValues.CCYColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_1DNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._1DColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_1DNull()
+            Me(Me.tableRateRisk_ShockTypesValues._1DColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_1MNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._1MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_1MNull()
+            Me(Me.tableRateRisk_ShockTypesValues._1MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_3MNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._3MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_3MNull()
+            Me(Me.tableRateRisk_ShockTypesValues._3MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_6MNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._6MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_6MNull()
+            Me(Me.tableRateRisk_ShockTypesValues._6MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_1YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._1YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_1YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._1YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_2YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._2YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_2YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._2YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_3YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._3YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_3YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._3YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_9MNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._9MColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_9MNull()
+            Me(Me.tableRateRisk_ShockTypesValues._9MColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_4YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._4YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_4YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._4YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_5YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._5YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_5YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._5YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_6YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._6YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_6YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._6YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_7YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._7YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_7YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._7YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_8YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._8YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_8YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._8YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_9YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._9YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_9YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._9YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_10YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._10YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_10YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._10YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_15YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._15YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_15YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._15YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_20YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._20YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_20YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._20YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_30YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._30YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_30YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._30YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_40YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._40YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_40YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._40YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Is_50YNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues._50YColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Set_50YNull()
+            Me(Me.tableRateRisk_ShockTypesValues._50YColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsRiskDateNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues.RiskDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetRiskDateNull()
+            Me(Me.tableRateRisk_ShockTypesValues.RiskDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsValue_ANull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues.Value_AColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetValue_ANull()
+            Me(Me.tableRateRisk_ShockTypesValues.Value_AColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsValue_BNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues.Value_BColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetValue_BNull()
+            Me(Me.tableRateRisk_ShockTypesValues.Value_BColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastActionNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues.LastActionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastActionNull()
+            Me(Me.tableRateRisk_ShockTypesValues.LastActionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateUserNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues.LastUpdateUserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateUserNull()
+            Me(Me.tableRateRisk_ShockTypesValues.LastUpdateUserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLastUpdateDateNull() As Boolean
+            Return Me.IsNull(Me.tableRateRisk_ShockTypesValues.LastUpdateDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLastUpdateDateNull()
+            Me(Me.tableRateRisk_ShockTypesValues.LastUpdateDateColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -8087,6 +13692,114 @@ Partial Public Class InterestRateRiskDataSet
             End Get
         End Property
     End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class RateRisk_InterestRateSchocksRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As RateRisk_InterestRateSchocksRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As RateRisk_InterestRateSchocksRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As RateRisk_InterestRateSchocksRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class RateRisk_StandardTimeBucketsRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As RateRisk_StandardTimeBucketsRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As RateRisk_StandardTimeBucketsRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As RateRisk_StandardTimeBucketsRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class RateRisk_ShockTypesValuesRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As RateRisk_ShockTypesValuesRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As RateRisk_ShockTypesValuesRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As RateRisk_ShockTypesValuesRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
 End Class
 
 Namespace InterestRateRiskDataSetTableAdapters
@@ -8232,6 +13945,26 @@ Namespace InterestRateRiskDataSetTableAdapters
             tableMapping.ColumnMappings.Add("USER", "USER")
             tableMapping.ColumnMappings.Add("UNTER BEARBEITUNG VON", "UNTER BEARBEITUNG VON")
             tableMapping.ColumnMappings.Add("IdBank", "IdBank")
+            tableMapping.ColumnMappings.Add("IRR_NII_Change", "IRR_NII_Change")
+            tableMapping.ColumnMappings.Add("BAIS_CET1_Capital", "BAIS_CET1_Capital")
+            tableMapping.ColumnMappings.Add("WF_N", "WF_N")
+            tableMapping.ColumnMappings.Add("AM_N", "AM_N")
+            tableMapping.ColumnMappings.Add("WF1", "WF1")
+            tableMapping.ColumnMappings.Add("AM1", "AM1")
+            tableMapping.ColumnMappings.Add("WF2", "WF2")
+            tableMapping.ColumnMappings.Add("AM2", "AM2")
+            tableMapping.ColumnMappings.Add("WF3", "WF3")
+            tableMapping.ColumnMappings.Add("AM3", "AM3")
+            tableMapping.ColumnMappings.Add("WF4", "WF4")
+            tableMapping.ColumnMappings.Add("AM4", "AM4")
+            tableMapping.ColumnMappings.Add("WF10", "WF10")
+            tableMapping.ColumnMappings.Add("AM10", "AM10")
+            tableMapping.ColumnMappings.Add("WF20", "WF20")
+            tableMapping.ColumnMappings.Add("AM20", "AM20")
+            tableMapping.ColumnMappings.Add("WF25", "WF25")
+            tableMapping.ColumnMappings.Add("AM25", "AM25")
+            tableMapping.ColumnMappings.Add("WFHUMP", "WFHUMP")
+            tableMapping.ColumnMappings.Add("AMHUMP", "AMHUMP")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -8242,9 +13975,14 @@ Namespace InterestRateRiskDataSetTableAdapters
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [RATERISK DATE] ([RateRiskDate], [Working Capital], [Position/Capital"& _ 
                 "], [SumAM1], [SumAM2], [IRR_200bps_Minus], [IRR_200bps_Plus], [VaR_99], [VaR_95]"& _ 
-                ", [VaR_IRRA], [USER], [UNTER BEARBEITUNG VON], [IdBank]) VALUES (@RateRiskDate, "& _ 
-                "@Working_Capital, @p1, @SumAM1, @SumAM2, @IRR_200bps_Minus, @IRR_200bps_Plus, @V"& _ 
-                "aR_99, @VaR_95, @VaR_IRRA, @USER, @UNTER_BEARBEITUNG_VON, @IdBank)"
+                ", [VaR_IRRA], [USER], [UNTER BEARBEITUNG VON], [IdBank], [IRR_NII_Change], [BAIS"& _ 
+                "_CET1_Capital], [WF_N], [AM_N], [WF1], [AM1], [WF2], [AM2], [WF3], [AM3], [WF4],"& _ 
+                " [AM4], [WF10], [AM10], [WF20], [AM20], [WF25], [AM25], [WFHUMP], [AMHUMP]) VALU"& _ 
+                "ES (@RateRiskDate, @Working_Capital, @p1, @SumAM1, @SumAM2, @IRR_200bps_Minus, @"& _ 
+                "IRR_200bps_Plus, @VaR_99, @VaR_95, @VaR_IRRA, @USER, @UNTER_BEARBEITUNG_VON, @Id"& _ 
+                "Bank, @IRR_NII_Change, @BAIS_CET1_Capital, @WF_N, @AM_N, @WF1, @AM1, @WF2, @AM2,"& _ 
+                " @WF3, @AM3, @WF4, @AM4, @WF10, @AM10, @WF20, @AM20, @WF25, @AM25, @WFHUMP, @AMH"& _ 
+                "UMP)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RateRiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RateRiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Working_Capital", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Working Capital", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8259,14 +13997,38 @@ Namespace InterestRateRiskDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@USER", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "USER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UNTER_BEARBEITUNG_VON", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UNTER BEARBEITUNG VON", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdBank", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdBank", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IRR_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IRR_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BAIS_CET1_Capital", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BAIS_CET1_Capital", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF_N", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF_N", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM_N", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM_N", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF2", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM2", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF3", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM3", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF4", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM4", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF10", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM10", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF20", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM20", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF25", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF25", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM25", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM25", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WFHUMP", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WFHUMP", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AMHUMP", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AMHUMP", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [RATERISK DATE] SET [RateRiskDate] = @RateRiskDate, [Working Capital] = @W"& _ 
                 "orking_Capital, [Position/Capital] = @p1, [SumAM1] = @SumAM1, [SumAM2] = @SumAM2"& _ 
                 ", [IRR_200bps_Minus] = @IRR_200bps_Minus, [IRR_200bps_Plus] = @IRR_200bps_Plus, "& _ 
                 "[VaR_99] = @VaR_99, [VaR_95] = @VaR_95, [VaR_IRRA] = @VaR_IRRA, [USER] = @USER, "& _ 
-                "[UNTER BEARBEITUNG VON] = @UNTER_BEARBEITUNG_VON, [IdBank] = @IdBank WHERE (([Ra"& _ 
-                "teRiskDate] = @Original_RateRiskDate))"
+                "[UNTER BEARBEITUNG VON] = @UNTER_BEARBEITUNG_VON, [IdBank] = @IdBank, [IRR_NII_C"& _ 
+                "hange] = @IRR_NII_Change, [BAIS_CET1_Capital] = @BAIS_CET1_Capital, [WF_N] = @WF"& _ 
+                "_N, [AM_N] = @AM_N, [WF1] = @WF1, [AM1] = @AM1, [WF2] = @WF2, [AM2] = @AM2, [WF3"& _ 
+                "] = @WF3, [AM3] = @AM3, [WF4] = @WF4, [AM4] = @AM4, [WF10] = @WF10, [AM10] = @AM"& _ 
+                "10, [WF20] = @WF20, [AM20] = @AM20, [WF25] = @WF25, [AM25] = @AM25, [WFHUMP] = @"& _ 
+                "WFHUMP, [AMHUMP] = @AMHUMP WHERE (([RateRiskDate] = @Original_RateRiskDate))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RateRiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RateRiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Working_Capital", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Working Capital", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8281,6 +14043,26 @@ Namespace InterestRateRiskDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@USER", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "USER", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@UNTER_BEARBEITUNG_VON", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "UNTER BEARBEITUNG VON", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdBank", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdBank", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IRR_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IRR_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BAIS_CET1_Capital", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BAIS_CET1_Capital", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF_N", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF_N", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM_N", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM_N", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM1", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF2", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM2", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM2", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF3", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM3", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM3", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF4", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM4", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM4", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF10", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM10", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM10", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF20", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM20", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM20", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WF25", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WF25", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AM25", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AM25", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WFHUMP", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WFHUMP", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AMHUMP", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "AMHUMP", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RateRiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RateRiskDate", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -8294,21 +14076,44 @@ Namespace InterestRateRiskDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, RateRiskDate, [Working Capital], [Position/Capital], SumAM1, Su"& _ 
                 "mAM2, IRR_200bps_Minus, IRR_200bps_Plus, VaR_99, VaR_95, VaR_IRRA, [USER], [UNTE"& _ 
-                "R BEARBEITUNG VON], IdBank"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK DATE]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (RateR"& _ 
-                "iskDate >= '20181231')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY RateRiskDate DESC"
+                "R BEARBEITUNG VON], IdBank, IRR_NII_Change, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         BAIS_CET1"& _ 
+                "_Capital, WF_N, AM_N, WF1, AM1, WF2, AM2, WF3, AM3, WF4, AM4, WF10, AM10, WF20, "& _ 
+                "AM20, WF25, AM25, WFHUMP, AMHUMP"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK DATE]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
+                "(RateRiskDate >= '20181231')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY RateRiskDate DESC"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT ID, IRR_200bps_Minus, IRR_200bps_Plus, IdBank, [Position/Capital], RateRis"& _ 
-                "kDate, SumAM1, SumAM2, [UNTER BEARBEITUNG VON], [USER], VaR_95, VaR_99, VaR_IRRA"& _ 
-                ", [Working Capital] FROM [RATERISK DATE] WHERE (RateRiskDate = @Param1)"
+            Me._commandCollection(1).CommandText = "SELECT        AM1, AM10, AM2, AM20, AM25, AM3, AM4, AMHUMP, AM_N, BAIS_CET1_Capit"& _ 
+                "al, ID, IRR_200bps_Minus, IRR_200bps_Plus, IRR_NII_Change, IdBank, [Position/Cap"& _ 
+                "ital], RateRiskDate, SumAM1, SumAM2, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         [UNTER BEARBEITU"& _ 
+                "NG VON], [USER], VaR_95, VaR_99, VaR_IRRA, WF1, WF10, WF2, WF20, WF25, WF3, WF4,"& _ 
+                " WFHUMP, WF_N, [Working Capital]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK DATE]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
+                "(RateRiskDate = @Param1)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "RateRiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        ID, RateRiskDate, [Working Capital], [Position/Capital], SumAM1, Su"& _ 
+                "mAM2, IRR_200bps_Minus, IRR_200bps_Plus, VaR_99, VaR_95, VaR_IRRA, [USER], [UNTE"& _ 
+                "R BEARBEITUNG VON], IdBank, IRR_NII_Change, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         BAIS_CET1"& _ 
+                "_Capital, WF_N, AM_N, WF1, AM1, WF2, AM2, WF3, AM3, WF4, AM4, WF10, AM10, WF20, "& _ 
+                "AM20, WF25, AM25, WFHUMP, AMHUMP"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK DATE]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
+                "(RateRiskDate >= '20230930')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY RateRiskDate DESC"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT        ID, RateRiskDate, [Working Capital], [Position/Capital], SumAM1, Su"& _ 
+                "mAM2, IRR_200bps_Minus, IRR_200bps_Plus, VaR_99, VaR_95, VaR_IRRA, [USER], [UNTE"& _ 
+                "R BEARBEITUNG VON], IdBank, IRR_NII_Change, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         BAIS_CET1"& _ 
+                "_Capital, WF_N, AM_N, WF1, AM1, WF2, AM2, WF3, AM3, WF4, AM4, WF10, AM10, WF20, "& _ 
+                "AM20, WF25, AM25, WFHUMP, AMHUMP"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK DATE]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        "& _ 
+                "(RateRiskDate BETWEEN '20181231' AND '20231231')"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY RateRiskDate DESC"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8356,6 +14161,54 @@ Namespace InterestRateRiskDataSetTableAdapters
         Public Overloads Overridable Function GetDataByRiskDate(ByVal Param1 As Date) As InterestRateRiskDataSet.RATERISK_DATEDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,Date)
+            Dim dataTable As InterestRateRiskDataSet.RATERISK_DATEDataTable = New InterestRateRiskDataSet.RATERISK_DATEDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByRiskDateFrom20231231(ByVal dataTable As InterestRateRiskDataSet.RATERISK_DATEDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByRiskDateFrom20231231() As InterestRateRiskDataSet.RATERISK_DATEDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            Dim dataTable As InterestRateRiskDataSet.RATERISK_DATEDataTable = New InterestRateRiskDataSet.RATERISK_DATEDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByRiskDateTill_20231231(ByVal dataTable As InterestRateRiskDataSet.RATERISK_DATEDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByRiskDateTill_20231231() As InterestRateRiskDataSet.RATERISK_DATEDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             Dim dataTable As InterestRateRiskDataSet.RATERISK_DATEDataTable = New InterestRateRiskDataSet.RATERISK_DATEDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -8414,7 +14267,40 @@ Namespace InterestRateRiskDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal RateRiskDate As Date, ByVal Working_Capital As Global.System.Nullable(Of Double), ByVal p1 As Global.System.Nullable(Of Double), ByVal SumAM1 As Global.System.Nullable(Of Double), ByVal SumAM2 As Global.System.Nullable(Of Double), ByVal IRR_200bps_Minus As Global.System.Nullable(Of Double), ByVal IRR_200bps_Plus As Global.System.Nullable(Of Double), ByVal VaR_99 As Global.System.Nullable(Of Double), ByVal VaR_95 As Global.System.Nullable(Of Double), ByVal VaR_IRRA As Global.System.Nullable(Of Double), ByVal USER As String, ByVal UNTER_BEARBEITUNG_VON As String, ByVal IdBank As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Insert( _
+                    ByVal RateRiskDate As Date,  _
+                    ByVal Working_Capital As Global.System.Nullable(Of Double),  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal SumAM1 As Global.System.Nullable(Of Double),  _
+                    ByVal SumAM2 As Global.System.Nullable(Of Double),  _
+                    ByVal IRR_200bps_Minus As Global.System.Nullable(Of Double),  _
+                    ByVal IRR_200bps_Plus As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_99 As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_95 As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_IRRA As Global.System.Nullable(Of Double),  _
+                    ByVal USER As String,  _
+                    ByVal UNTER_BEARBEITUNG_VON As String,  _
+                    ByVal IdBank As Global.System.Nullable(Of Integer),  _
+                    ByVal IRR_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal BAIS_CET1_Capital As Global.System.Nullable(Of Double),  _
+                    ByVal WF_N As Global.System.Nullable(Of Double),  _
+                    ByVal AM_N As Global.System.Nullable(Of Double),  _
+                    ByVal WF1 As Global.System.Nullable(Of Double),  _
+                    ByVal AM1 As Global.System.Nullable(Of Double),  _
+                    ByVal WF2 As Global.System.Nullable(Of Double),  _
+                    ByVal AM2 As Global.System.Nullable(Of Double),  _
+                    ByVal WF3 As Global.System.Nullable(Of Double),  _
+                    ByVal AM3 As Global.System.Nullable(Of Double),  _
+                    ByVal WF4 As Global.System.Nullable(Of Double),  _
+                    ByVal AM4 As Global.System.Nullable(Of Double),  _
+                    ByVal WF10 As Global.System.Nullable(Of Double),  _
+                    ByVal AM10 As Global.System.Nullable(Of Double),  _
+                    ByVal WF20 As Global.System.Nullable(Of Double),  _
+                    ByVal AM20 As Global.System.Nullable(Of Double),  _
+                    ByVal WF25 As Global.System.Nullable(Of Double),  _
+                    ByVal AM25 As Global.System.Nullable(Of Double),  _
+                    ByVal WFHUMP As Global.System.Nullable(Of Double),  _
+                    ByVal AMHUMP As Global.System.Nullable(Of Double)) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(RateRiskDate,Date)
             If (Working_Capital.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(Working_Capital.Value,Double)
@@ -8476,6 +14362,106 @@ Namespace InterestRateRiskDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
             End If
+            If (IRR_NII_Change.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(IRR_NII_Change.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (BAIS_CET1_Capital.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(BAIS_CET1_Capital.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (WF_N.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(WF_N.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (AM_N.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(AM_N.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (WF1.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(WF1.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (AM1.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(AM1.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (WF2.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(WF2.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (AM2.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(AM2.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (WF3.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(WF3.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (AM3.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(AM3.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (WF4.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(WF4.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (AM4.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(24).Value = CType(AM4.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (WF10.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(25).Value = CType(WF10.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
+            End If
+            If (AM10.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(AM10.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
+            End If
+            If (WF20.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(27).Value = CType(WF20.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
+            End If
+            If (AM20.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(28).Value = CType(AM20.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
+            End If
+            If (WF25.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(29).Value = CType(WF25.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
+            End If
+            If (AM25.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(30).Value = CType(AM25.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
+            End If
+            If (WFHUMP.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(31).Value = CType(WFHUMP.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
+            End If
+            If (AMHUMP.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(32).Value = CType(AMHUMP.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8495,7 +14481,41 @@ Namespace InterestRateRiskDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal RateRiskDate As Date, ByVal Working_Capital As Global.System.Nullable(Of Double), ByVal p1 As Global.System.Nullable(Of Double), ByVal SumAM1 As Global.System.Nullable(Of Double), ByVal SumAM2 As Global.System.Nullable(Of Double), ByVal IRR_200bps_Minus As Global.System.Nullable(Of Double), ByVal IRR_200bps_Plus As Global.System.Nullable(Of Double), ByVal VaR_99 As Global.System.Nullable(Of Double), ByVal VaR_95 As Global.System.Nullable(Of Double), ByVal VaR_IRRA As Global.System.Nullable(Of Double), ByVal USER As String, ByVal UNTER_BEARBEITUNG_VON As String, ByVal IdBank As Global.System.Nullable(Of Integer), ByVal Original_RateRiskDate As Date) As Integer
+        Public Overloads Overridable Function Update( _
+                    ByVal RateRiskDate As Date,  _
+                    ByVal Working_Capital As Global.System.Nullable(Of Double),  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal SumAM1 As Global.System.Nullable(Of Double),  _
+                    ByVal SumAM2 As Global.System.Nullable(Of Double),  _
+                    ByVal IRR_200bps_Minus As Global.System.Nullable(Of Double),  _
+                    ByVal IRR_200bps_Plus As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_99 As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_95 As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_IRRA As Global.System.Nullable(Of Double),  _
+                    ByVal USER As String,  _
+                    ByVal UNTER_BEARBEITUNG_VON As String,  _
+                    ByVal IdBank As Global.System.Nullable(Of Integer),  _
+                    ByVal IRR_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal BAIS_CET1_Capital As Global.System.Nullable(Of Double),  _
+                    ByVal WF_N As Global.System.Nullable(Of Double),  _
+                    ByVal AM_N As Global.System.Nullable(Of Double),  _
+                    ByVal WF1 As Global.System.Nullable(Of Double),  _
+                    ByVal AM1 As Global.System.Nullable(Of Double),  _
+                    ByVal WF2 As Global.System.Nullable(Of Double),  _
+                    ByVal AM2 As Global.System.Nullable(Of Double),  _
+                    ByVal WF3 As Global.System.Nullable(Of Double),  _
+                    ByVal AM3 As Global.System.Nullable(Of Double),  _
+                    ByVal WF4 As Global.System.Nullable(Of Double),  _
+                    ByVal AM4 As Global.System.Nullable(Of Double),  _
+                    ByVal WF10 As Global.System.Nullable(Of Double),  _
+                    ByVal AM10 As Global.System.Nullable(Of Double),  _
+                    ByVal WF20 As Global.System.Nullable(Of Double),  _
+                    ByVal AM20 As Global.System.Nullable(Of Double),  _
+                    ByVal WF25 As Global.System.Nullable(Of Double),  _
+                    ByVal AM25 As Global.System.Nullable(Of Double),  _
+                    ByVal WFHUMP As Global.System.Nullable(Of Double),  _
+                    ByVal AMHUMP As Global.System.Nullable(Of Double),  _
+                    ByVal Original_RateRiskDate As Date) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(RateRiskDate,Date)
             If (Working_Capital.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Working_Capital.Value,Double)
@@ -8557,7 +14577,107 @@ Namespace InterestRateRiskDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_RateRiskDate,Date)
+            If (IRR_NII_Change.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(IRR_NII_Change.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (BAIS_CET1_Capital.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(BAIS_CET1_Capital.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (WF_N.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(WF_N.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (AM_N.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(AM_N.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (WF1.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(WF1.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (AM1.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(AM1.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (WF2.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(WF2.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (AM2.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(AM2.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (WF3.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(WF3.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (AM3.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(AM3.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (WF4.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(WF4.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (AM4.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(AM4.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (WF10.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(WF10.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            End If
+            If (AM10.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(AM10.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+            End If
+            If (WF20.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(WF20.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            End If
+            If (AM20.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(AM20.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+            End If
+            If (WF25.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(WF25.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            End If
+            If (AM25.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(AM25.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+            End If
+            If (WFHUMP.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(WFHUMP.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
+            End If
+            If (AMHUMP.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(AMHUMP.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_RateRiskDate,Date)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -8577,8 +14697,41 @@ Namespace InterestRateRiskDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Working_Capital As Global.System.Nullable(Of Double), ByVal p1 As Global.System.Nullable(Of Double), ByVal SumAM1 As Global.System.Nullable(Of Double), ByVal SumAM2 As Global.System.Nullable(Of Double), ByVal IRR_200bps_Minus As Global.System.Nullable(Of Double), ByVal IRR_200bps_Plus As Global.System.Nullable(Of Double), ByVal VaR_99 As Global.System.Nullable(Of Double), ByVal VaR_95 As Global.System.Nullable(Of Double), ByVal VaR_IRRA As Global.System.Nullable(Of Double), ByVal USER As String, ByVal UNTER_BEARBEITUNG_VON As String, ByVal IdBank As Global.System.Nullable(Of Integer), ByVal Original_RateRiskDate As Date) As Integer
-            Return Me.Update(Original_RateRiskDate, Working_Capital, p1, SumAM1, SumAM2, IRR_200bps_Minus, IRR_200bps_Plus, VaR_99, VaR_95, VaR_IRRA, USER, UNTER_BEARBEITUNG_VON, IdBank, Original_RateRiskDate)
+        Public Overloads Overridable Function Update( _
+                    ByVal Working_Capital As Global.System.Nullable(Of Double),  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal SumAM1 As Global.System.Nullable(Of Double),  _
+                    ByVal SumAM2 As Global.System.Nullable(Of Double),  _
+                    ByVal IRR_200bps_Minus As Global.System.Nullable(Of Double),  _
+                    ByVal IRR_200bps_Plus As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_99 As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_95 As Global.System.Nullable(Of Double),  _
+                    ByVal VaR_IRRA As Global.System.Nullable(Of Double),  _
+                    ByVal USER As String,  _
+                    ByVal UNTER_BEARBEITUNG_VON As String,  _
+                    ByVal IdBank As Global.System.Nullable(Of Integer),  _
+                    ByVal IRR_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal BAIS_CET1_Capital As Global.System.Nullable(Of Double),  _
+                    ByVal WF_N As Global.System.Nullable(Of Double),  _
+                    ByVal AM_N As Global.System.Nullable(Of Double),  _
+                    ByVal WF1 As Global.System.Nullable(Of Double),  _
+                    ByVal AM1 As Global.System.Nullable(Of Double),  _
+                    ByVal WF2 As Global.System.Nullable(Of Double),  _
+                    ByVal AM2 As Global.System.Nullable(Of Double),  _
+                    ByVal WF3 As Global.System.Nullable(Of Double),  _
+                    ByVal AM3 As Global.System.Nullable(Of Double),  _
+                    ByVal WF4 As Global.System.Nullable(Of Double),  _
+                    ByVal AM4 As Global.System.Nullable(Of Double),  _
+                    ByVal WF10 As Global.System.Nullable(Of Double),  _
+                    ByVal AM10 As Global.System.Nullable(Of Double),  _
+                    ByVal WF20 As Global.System.Nullable(Of Double),  _
+                    ByVal AM20 As Global.System.Nullable(Of Double),  _
+                    ByVal WF25 As Global.System.Nullable(Of Double),  _
+                    ByVal AM25 As Global.System.Nullable(Of Double),  _
+                    ByVal WFHUMP As Global.System.Nullable(Of Double),  _
+                    ByVal AMHUMP As Global.System.Nullable(Of Double),  _
+                    ByVal Original_RateRiskDate As Date) As Integer
+            Return Me.Update(Original_RateRiskDate, Working_Capital, p1, SumAM1, SumAM2, IRR_200bps_Minus, IRR_200bps_Plus, VaR_99, VaR_95, VaR_IRRA, USER, UNTER_BEARBEITUNG_VON, IdBank, IRR_NII_Change, BAIS_CET1_Capital, WF_N, AM_N, WF1, AM1, WF2, AM2, WF3, AM3, WF4, AM4, WF10, AM10, WF20, AM20, WF25, AM25, WFHUMP, AMHUMP, Original_RateRiskDate)
         End Function
     End Class
     
@@ -8767,6 +14920,30 @@ Namespace InterestRateRiskDataSetTableAdapters
             tableMapping.ColumnMappings.Add("MonthsToEventDate", "MonthsToEventDate")
             tableMapping.ColumnMappings.Add("CashFlow", "CashFlow")
             tableMapping.ColumnMappings.Add("WeightingFactor", "WeightingFactor")
+            tableMapping.ColumnMappings.Add("InOutFlow", "InOutFlow")
+            tableMapping.ColumnMappings.Add("IRR_NII_Change", "IRR_NII_Change")
+            tableMapping.ColumnMappings.Add("YieldPeriod", "YieldPeriod")
+            tableMapping.ColumnMappings.Add("EVE_Parallel_Up_BumpRate", "EVE_Parallel_Up_BumpRate")
+            tableMapping.ColumnMappings.Add("EVE_Parallel_Up_Difference", "EVE_Parallel_Up_Difference")
+            tableMapping.ColumnMappings.Add("EVE_Parallel_Down_BumpRate", "EVE_Parallel_Down_BumpRate")
+            tableMapping.ColumnMappings.Add("EVE_Parallel_Down_Difference", "EVE_Parallel_Down_Difference")
+            tableMapping.ColumnMappings.Add("EVE_ShortRate_Up_BumpRate", "EVE_ShortRate_Up_BumpRate")
+            tableMapping.ColumnMappings.Add("EVE_ShortRate_Up_TermFactor", "EVE_ShortRate_Up_TermFactor")
+            tableMapping.ColumnMappings.Add("EVE_ShortRate_Up_Difference", "EVE_ShortRate_Up_Difference")
+            tableMapping.ColumnMappings.Add("EVE_ShortRate_Down_BumpRate", "EVE_ShortRate_Down_BumpRate")
+            tableMapping.ColumnMappings.Add("EVE_ShortRate_Down_TermFactor", "EVE_ShortRate_Down_TermFactor")
+            tableMapping.ColumnMappings.Add("EVE_ShortRate_Down_Difference", "EVE_ShortRate_Down_Difference")
+            tableMapping.ColumnMappings.Add("EVE_Steepener_ShortBumpRate", "EVE_Steepener_ShortBumpRate")
+            tableMapping.ColumnMappings.Add("EVE_Steepener_LongBumpRate", "EVE_Steepener_LongBumpRate")
+            tableMapping.ColumnMappings.Add("EVE_Steepener_TermFactor", "EVE_Steepener_TermFactor")
+            tableMapping.ColumnMappings.Add("EVE_Steepener_Shock", "EVE_Steepener_Shock")
+            tableMapping.ColumnMappings.Add("EVE_Steepener_Difference", "EVE_Steepener_Difference")
+            tableMapping.ColumnMappings.Add("EVE_Flattener_ShortBumpRate", "EVE_Flattener_ShortBumpRate")
+            tableMapping.ColumnMappings.Add("EVE_Flattener_LongBumpRate", "EVE_Flattener_LongBumpRate")
+            tableMapping.ColumnMappings.Add("EVE_Flattener_TermFactor", "EVE_Flattener_TermFactor")
+            tableMapping.ColumnMappings.Add("EVE_Flattener_Shock", "EVE_Flattener_Shock")
+            tableMapping.ColumnMappings.Add("EVE_Flattener_Difference", "EVE_Flattener_Difference")
+            tableMapping.ColumnMappings.Add("DiscountRate", "DiscountRate")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -8790,19 +14967,35 @@ Namespace InterestRateRiskDataSetTableAdapters
                 "inus200_Corrected], [PV_IRplus200_Corrected], [PV_IRminus200_Corrected], [Differ"& _ 
                 "encePV_IRplus200_PV_Calculated], [DifferencePV_IRminus200_PV_Calculated], [Inter"& _ 
                 "nalInfo], [CalculationMethod], [PeriodNr], [MonthsToEventDate], [CashFlow], [Wei"& _ 
-                "ghtingFactor]) VALUES (@PERIOD, @BusinessType, @Contract_Type, @ProductType, @p1"& _ 
-                ", @ClientNr, @p4, @ContractClear, @p7, @StartDate, @Next_EventType, @Next_EventD"& _ 
-                "ate, @Final_Maturity_Date, @Type, @CURRENCY, @p10, @p13, @InterestRate, @Interes"& _ 
-                "tAmountOrigCur, @InterestAmountEuro, @AccruedInterestEndDate, @AccruedInterestAm"& _ 
-                "ountEUR, @AccruedInterestAmountOrigCur, @AverageDuration, @DaysToEventDate, @DAT"& _ 
-                "A_DATE, @RISK_DATE, @IMPORT_DATE, @IdRateRiskDate, @PERIOD_Additional, @PERIOD_M"& _ 
-                "aturityDate, @DaysToMaturity, @ClientNrM, @ContractClearM, @PERIOD_N, @InterestT"& _ 
-                "ype, @TOTAL_CASH_FLOW, @NextEventPeriod, @NextEventNr, @NextEventYears, @Yield_R"& _ 
-                "iskDate, @InterestRateCalculated, @PV_Calculated, @InterestRatePlus200_orig, @In"& _ 
-                "terestRateMinus200_orig, @InterestRatePlus200_Corrected, @InterestRateMinus200_C"& _ 
-                "orrected, @PV_IRplus200_Corrected, @PV_IRminus200_Corrected, @DifferencePV_IRplu"& _ 
-                "s200_PV_Calculated, @DifferencePV_IRminus200_PV_Calculated, @InternalInfo, @Calc"& _ 
-                "ulationMethod, @PeriodNr, @MonthsToEventDate, @CashFlow, @WeightingFactor)"
+                "ghtingFactor], [InOutFlow], [IRR_NII_Change], [YieldPeriod], [EVE_Parallel_Up_Bu"& _ 
+                "mpRate], [EVE_Parallel_Up_Difference], [EVE_Parallel_Down_BumpRate], [EVE_Parall"& _ 
+                "el_Down_Difference], [EVE_ShortRate_Up_BumpRate], [EVE_ShortRate_Up_TermFactor],"& _ 
+                " [EVE_ShortRate_Up_Difference], [EVE_ShortRate_Down_BumpRate], [EVE_ShortRate_Do"& _ 
+                "wn_TermFactor], [EVE_ShortRate_Down_Difference], [EVE_Steepener_ShortBumpRate], "& _ 
+                "[EVE_Steepener_LongBumpRate], [EVE_Steepener_TermFactor], [EVE_Steepener_Shock],"& _ 
+                " [EVE_Steepener_Difference], [EVE_Flattener_ShortBumpRate], [EVE_Flattener_LongB"& _ 
+                "umpRate], [EVE_Flattener_TermFactor], [EVE_Flattener_Shock], [EVE_Flattener_Diff"& _ 
+                "erence], [DiscountRate]) VALUES (@PERIOD, @BusinessType, @Contract_Type, @Produc"& _ 
+                "tType, @p1, @ClientNr, @p4, @ContractClear, @p7, @StartDate, @Next_EventType, @N"& _ 
+                "ext_EventDate, @Final_Maturity_Date, @Type, @CURRENCY, @p10, @p13, @InterestRate"& _ 
+                ", @InterestAmountOrigCur, @InterestAmountEuro, @AccruedInterestEndDate, @Accrued"& _ 
+                "InterestAmountEUR, @AccruedInterestAmountOrigCur, @AverageDuration, @DaysToEvent"& _ 
+                "Date, @DATA_DATE, @RISK_DATE, @IMPORT_DATE, @IdRateRiskDate, @PERIOD_Additional,"& _ 
+                " @PERIOD_MaturityDate, @DaysToMaturity, @ClientNrM, @ContractClearM, @PERIOD_N, "& _ 
+                "@InterestType, @TOTAL_CASH_FLOW, @NextEventPeriod, @NextEventNr, @NextEventYears"& _ 
+                ", @Yield_RiskDate, @InterestRateCalculated, @PV_Calculated, @InterestRatePlus200"& _ 
+                "_orig, @InterestRateMinus200_orig, @InterestRatePlus200_Corrected, @InterestRate"& _ 
+                "Minus200_Corrected, @PV_IRplus200_Corrected, @PV_IRminus200_Corrected, @Differen"& _ 
+                "cePV_IRplus200_PV_Calculated, @DifferencePV_IRminus200_PV_Calculated, @InternalI"& _ 
+                "nfo, @CalculationMethod, @PeriodNr, @MonthsToEventDate, @CashFlow, @WeightingFac"& _ 
+                "tor, @InOutFlow, @IRR_NII_Change, @YieldPeriod, @EVE_Parallel_Up_BumpRate, @EVE_"& _ 
+                "Parallel_Up_Difference, @EVE_Parallel_Down_BumpRate, @EVE_Parallel_Down_Differen"& _ 
+                "ce, @EVE_ShortRate_Up_BumpRate, @EVE_ShortRate_Up_TermFactor, @EVE_ShortRate_Up_"& _ 
+                "Difference, @EVE_ShortRate_Down_BumpRate, @EVE_ShortRate_Down_TermFactor, @EVE_S"& _ 
+                "hortRate_Down_Difference, @EVE_Steepener_ShortBumpRate, @EVE_Steepener_LongBumpR"& _ 
+                "ate, @EVE_Steepener_TermFactor, @EVE_Steepener_Shock, @EVE_Steepener_Difference,"& _ 
+                " @EVE_Flattener_ShortBumpRate, @EVE_Flattener_LongBumpRate, @EVE_Flattener_TermF"& _ 
+                "actor, @EVE_Flattener_Shock, @EVE_Flattener_Difference, @DiscountRate)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PERIOD", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PERIOD", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BusinessType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BusinessType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8861,6 +15054,30 @@ Namespace InterestRateRiskDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MonthsToEventDate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MonthsToEventDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CashFlow", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CashFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WeightingFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WeightingFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InOutFlow", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InOutFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IRR_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IRR_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@YieldPeriod", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "YieldPeriod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Parallel_Up_BumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Parallel_Up_BumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Parallel_Up_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Parallel_Up_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Parallel_Down_BumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Parallel_Down_BumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Parallel_Down_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Parallel_Down_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Up_BumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Up_BumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Up_TermFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Up_TermFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Up_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Up_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Down_BumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Down_BumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Down_TermFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Down_TermFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Down_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Down_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_ShortBumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_ShortBumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_LongBumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_LongBumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_TermFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_TermFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_Shock", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_Shock", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_ShortBumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_ShortBumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_LongBumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_LongBumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_TermFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_TermFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_Shock", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_Shock", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DiscountRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DiscountRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [RATERISK DETAILS] SET [PERIOD] = @PERIOD, [BusinessType] = @BusinessType,"& _ 
@@ -8891,7 +15108,24 @@ Namespace InterestRateRiskDataSetTableAdapters
                 "ifferencePV_IRminus200_PV_Calculated] = @DifferencePV_IRminus200_PV_Calculated, "& _ 
                 "[InternalInfo] = @InternalInfo, [CalculationMethod] = @CalculationMethod, [Perio"& _ 
                 "dNr] = @PeriodNr, [MonthsToEventDate] = @MonthsToEventDate, [CashFlow] = @CashFl"& _ 
-                "ow, [WeightingFactor] = @WeightingFactor WHERE (([ID] = @Original_ID))"
+                "ow, [WeightingFactor] = @WeightingFactor, [InOutFlow] = @InOutFlow, [IRR_NII_Cha"& _ 
+                "nge] = @IRR_NII_Change, [YieldPeriod] = @YieldPeriod, [EVE_Parallel_Up_BumpRate]"& _ 
+                " = @EVE_Parallel_Up_BumpRate, [EVE_Parallel_Up_Difference] = @EVE_Parallel_Up_Di"& _ 
+                "fference, [EVE_Parallel_Down_BumpRate] = @EVE_Parallel_Down_BumpRate, [EVE_Paral"& _ 
+                "lel_Down_Difference] = @EVE_Parallel_Down_Difference, [EVE_ShortRate_Up_BumpRate"& _ 
+                "] = @EVE_ShortRate_Up_BumpRate, [EVE_ShortRate_Up_TermFactor] = @EVE_ShortRate_U"& _ 
+                "p_TermFactor, [EVE_ShortRate_Up_Difference] = @EVE_ShortRate_Up_Difference, [EVE"& _ 
+                "_ShortRate_Down_BumpRate] = @EVE_ShortRate_Down_BumpRate, [EVE_ShortRate_Down_Te"& _ 
+                "rmFactor] = @EVE_ShortRate_Down_TermFactor, [EVE_ShortRate_Down_Difference] = @E"& _ 
+                "VE_ShortRate_Down_Difference, [EVE_Steepener_ShortBumpRate] = @EVE_Steepener_Sho"& _ 
+                "rtBumpRate, [EVE_Steepener_LongBumpRate] = @EVE_Steepener_LongBumpRate, [EVE_Ste"& _ 
+                "epener_TermFactor] = @EVE_Steepener_TermFactor, [EVE_Steepener_Shock] = @EVE_Ste"& _ 
+                "epener_Shock, [EVE_Steepener_Difference] = @EVE_Steepener_Difference, [EVE_Flatt"& _ 
+                "ener_ShortBumpRate] = @EVE_Flattener_ShortBumpRate, [EVE_Flattener_LongBumpRate]"& _ 
+                " = @EVE_Flattener_LongBumpRate, [EVE_Flattener_TermFactor] = @EVE_Flattener_Term"& _ 
+                "Factor, [EVE_Flattener_Shock] = @EVE_Flattener_Shock, [EVE_Flattener_Difference]"& _ 
+                " = @EVE_Flattener_Difference, [DiscountRate] = @DiscountRate WHERE (([ID] = @Ori"& _ 
+                "ginal_ID))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PERIOD", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PERIOD", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BusinessType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BusinessType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -8950,6 +15184,30 @@ Namespace InterestRateRiskDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MonthsToEventDate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MonthsToEventDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CashFlow", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CashFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@WeightingFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "WeightingFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@InOutFlow", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "InOutFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IRR_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IRR_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@YieldPeriod", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "YieldPeriod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Parallel_Up_BumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Parallel_Up_BumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Parallel_Up_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Parallel_Up_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Parallel_Down_BumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Parallel_Down_BumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Parallel_Down_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Parallel_Down_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Up_BumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Up_BumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Up_TermFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Up_TermFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Up_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Up_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Down_BumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Down_BumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Down_TermFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Down_TermFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_ShortRate_Down_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_ShortRate_Down_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_ShortBumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_ShortBumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_LongBumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_LongBumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_TermFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_TermFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_Shock", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_Shock", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Steepener_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Steepener_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_ShortBumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_ShortBumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_LongBumpRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_LongBumpRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_TermFactor", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_TermFactor", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_Shock", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_Shock", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EVE_Flattener_Difference", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EVE_Flattener_Difference", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DiscountRate", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DiscountRate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -8981,8 +15239,16 @@ Namespace InterestRateRiskDataSetTableAdapters
                 "_Corrected, InterestRateMinus200_Corrected, PV_IRplus200_Corrected, PV_IRminus20"& _ 
                 "0_Corrected, DifferencePV_IRplus200_PV_Calculated, DifferencePV_IRminus200_PV_Ca"& _ 
                 "lculated, InternalInfo, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CalculationMethod, PeriodNr, "& _ 
-                "MonthsToEventDate, CashFlow, WeightingFactor"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK DETAILS]"& _ 
-                ""
+                "MonthsToEventDate, CashFlow, WeightingFactor, InOutFlow, IRR_NII_Change, YieldPe"& _ 
+                "riod, EVE_Parallel_Up_BumpRate, EVE_Parallel_Up_Difference, EVE_Parallel_Down_Bu"& _ 
+                "mpRate, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         EVE_Parallel_Down_Difference, EVE_ShortRate_U"& _ 
+                "p_BumpRate, EVE_ShortRate_Up_TermFactor, EVE_ShortRate_Up_Difference, EVE_ShortR"& _ 
+                "ate_Down_BumpRate, EVE_ShortRate_Down_TermFactor, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         EVE"& _ 
+                "_ShortRate_Down_Difference, EVE_Steepener_ShortBumpRate, EVE_Steepener_LongBumpR"& _ 
+                "ate, EVE_Steepener_TermFactor, EVE_Steepener_Shock, EVE_Steepener_Difference, EV"& _ 
+                "E_Flattener_ShortBumpRate, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         EVE_Flattener_LongBumpRate"& _ 
+                ", EVE_Flattener_TermFactor, EVE_Flattener_Shock, EVE_Flattener_Difference, Disco"& _ 
+                "untRate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK DETAILS]"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -8990,17 +15256,24 @@ Namespace InterestRateRiskDataSetTableAdapters
                 "Date, AverageDuration, BusinessType, CURRENCY, CalculationMethod, CashFlow, Clie"& _ 
                 "ntNr, ClientNrM, [Contract Type], [Contract/Account], ContractClear, ContractCle"& _ 
                 "arM, [Counterparty/Issuer], [DATA DATE], DaysToEventDate, DaysToMaturity, Differ"& _ 
-                "encePV_IRminus200_PV_Calculated, DifferencePV_IRplus200_PV_Calculated, [Final Ma"& _ 
-                "turity Date], [GLMaster / Account Type], ID, [IMPORT DATE], IdRateRiskDate, Inte"& _ 
-                "restAmountEuro, InterestAmountOrigCur, InterestRate, InterestRateCalculated, Int"& _ 
-                "erestRateMinus200_Corrected, InterestRateMinus200_orig, InterestRatePlus200_Corr"& _ 
-                "ected, InterestRatePlus200_orig, InterestType, InternalInfo, MonthsToEventDate, "& _ 
-                "[Next EventDate], [Next EventType], NextEventNr, NextEventPeriod, NextEventYears"& _ 
-                ", PERIOD, PERIOD_Additional, PERIOD_MaturityDate, PERIOD_N, PV_Calculated, PV_IR"& _ 
-                "minus200_Corrected, PV_IRplus200_Corrected, PeriodNr, [Principal Amount/Value Ba"& _ 
-                "lance], [Principal Amount/Value Balance(EUR Equ)], ProductType, [RISK DATE], Sta"& _ 
-                "rtDate, TOTAL_CASH_FLOW, Type, WeightingFactor, Yield_RiskDate FROM [RATERISK DE"& _ 
-                "TAILS] WHERE ([RISK DATE] = @Param1)"
+                "encePV_IRminus200_PV_Calculated, DifferencePV_IRplus200_PV_Calculated, DiscountR"& _ 
+                "ate, EVE_Flattener_Difference, EVE_Flattener_LongBumpRate, EVE_Flattener_Shock, "& _ 
+                "EVE_Flattener_ShortBumpRate, EVE_Flattener_TermFactor, EVE_Parallel_Down_BumpRat"& _ 
+                "e, EVE_Parallel_Down_Difference, EVE_Parallel_Up_BumpRate, EVE_Parallel_Up_Diffe"& _ 
+                "rence, EVE_ShortRate_Down_BumpRate, EVE_ShortRate_Down_Difference, EVE_ShortRate"& _ 
+                "_Down_TermFactor, EVE_ShortRate_Up_BumpRate, EVE_ShortRate_Up_Difference, EVE_Sh"& _ 
+                "ortRate_Up_TermFactor, EVE_Steepener_Difference, EVE_Steepener_LongBumpRate, EVE"& _ 
+                "_Steepener_Shock, EVE_Steepener_ShortBumpRate, EVE_Steepener_TermFactor, [Final "& _ 
+                "Maturity Date], [GLMaster / Account Type], ID, [IMPORT DATE], IRR_NII_Change, Id"& _ 
+                "RateRiskDate, InOutFlow, InterestAmountEuro, InterestAmountOrigCur, InterestRate"& _ 
+                ", InterestRateCalculated, InterestRateMinus200_Corrected, InterestRateMinus200_o"& _ 
+                "rig, InterestRatePlus200_Corrected, InterestRatePlus200_orig, InterestType, Inte"& _ 
+                "rnalInfo, MonthsToEventDate, [Next EventDate], [Next EventType], NextEventNr, Ne"& _ 
+                "xtEventPeriod, NextEventYears, PERIOD, PERIOD_Additional, PERIOD_MaturityDate, P"& _ 
+                "ERIOD_N, PV_Calculated, PV_IRminus200_Corrected, PV_IRplus200_Corrected, PeriodN"& _ 
+                "r, [Principal Amount/Value Balance], [Principal Amount/Value Balance(EUR Equ)], "& _ 
+                "ProductType, [RISK DATE], StartDate, TOTAL_CASH_FLOW, Type, WeightingFactor, Yie"& _ 
+                "ldPeriod, Yield_RiskDate FROM [RATERISK DETAILS] WHERE ([RISK DATE] = @Param1)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "RISK DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -9173,7 +15446,31 @@ Namespace InterestRateRiskDataSetTableAdapters
                     ByVal PeriodNr As Global.System.Nullable(Of Double),  _
                     ByVal MonthsToEventDate As Global.System.Nullable(Of Double),  _
                     ByVal CashFlow As Global.System.Nullable(Of Double),  _
-                    ByVal WeightingFactor As Global.System.Nullable(Of Double)) As Integer
+                    ByVal WeightingFactor As Global.System.Nullable(Of Double),  _
+                    ByVal InOutFlow As String,  _
+                    ByVal IRR_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal YieldPeriod As String,  _
+                    ByVal EVE_Parallel_Up_BumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Parallel_Up_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Parallel_Down_BumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Parallel_Down_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Up_BumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Up_TermFactor As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Up_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Down_BumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Down_TermFactor As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Down_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_ShortBumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_LongBumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_TermFactor As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_Shock As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_ShortBumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_LongBumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_TermFactor As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_Shock As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal DiscountRate As Global.System.Nullable(Of Double)) As Integer
             If (PERIOD Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -9459,6 +15756,126 @@ Namespace InterestRateRiskDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(56).Value = Global.System.DBNull.Value
             End If
+            If (InOutFlow Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(57).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(57).Value = CType(InOutFlow,String)
+            End If
+            If (IRR_NII_Change.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(58).Value = CType(IRR_NII_Change.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(58).Value = Global.System.DBNull.Value
+            End If
+            If (YieldPeriod Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(59).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(59).Value = CType(YieldPeriod,String)
+            End If
+            If (EVE_Parallel_Up_BumpRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(60).Value = CType(EVE_Parallel_Up_BumpRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(60).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Parallel_Up_Difference.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(61).Value = CType(EVE_Parallel_Up_Difference.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(61).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Parallel_Down_BumpRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(62).Value = CType(EVE_Parallel_Down_BumpRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(62).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Parallel_Down_Difference.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(63).Value = CType(EVE_Parallel_Down_Difference.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(63).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Up_BumpRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(64).Value = CType(EVE_ShortRate_Up_BumpRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(64).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Up_TermFactor.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(65).Value = CType(EVE_ShortRate_Up_TermFactor.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(65).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Up_Difference.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(66).Value = CType(EVE_ShortRate_Up_Difference.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(66).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Down_BumpRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(67).Value = CType(EVE_ShortRate_Down_BumpRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(67).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Down_TermFactor.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(68).Value = CType(EVE_ShortRate_Down_TermFactor.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(68).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Down_Difference.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(69).Value = CType(EVE_ShortRate_Down_Difference.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(69).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_ShortBumpRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(70).Value = CType(EVE_Steepener_ShortBumpRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(70).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_LongBumpRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(71).Value = CType(EVE_Steepener_LongBumpRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(71).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_TermFactor.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(72).Value = CType(EVE_Steepener_TermFactor.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(72).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_Shock.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(73).Value = CType(EVE_Steepener_Shock.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(73).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_Difference.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(74).Value = CType(EVE_Steepener_Difference.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(74).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_ShortBumpRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(75).Value = CType(EVE_Flattener_ShortBumpRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(75).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_LongBumpRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(76).Value = CType(EVE_Flattener_LongBumpRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(76).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_TermFactor.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(77).Value = CType(EVE_Flattener_TermFactor.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(77).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_Shock.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(78).Value = CType(EVE_Flattener_Shock.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(78).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_Difference.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(79).Value = CType(EVE_Flattener_Difference.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(79).Value = Global.System.DBNull.Value
+            End If
+            If (DiscountRate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(80).Value = CType(DiscountRate.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(80).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -9536,6 +15953,30 @@ Namespace InterestRateRiskDataSetTableAdapters
                     ByVal MonthsToEventDate As Global.System.Nullable(Of Double),  _
                     ByVal CashFlow As Global.System.Nullable(Of Double),  _
                     ByVal WeightingFactor As Global.System.Nullable(Of Double),  _
+                    ByVal InOutFlow As String,  _
+                    ByVal IRR_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal YieldPeriod As String,  _
+                    ByVal EVE_Parallel_Up_BumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Parallel_Up_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Parallel_Down_BumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Parallel_Down_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Up_BumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Up_TermFactor As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Up_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Down_BumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Down_TermFactor As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_ShortRate_Down_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_ShortBumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_LongBumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_TermFactor As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_Shock As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Steepener_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_ShortBumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_LongBumpRate As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_TermFactor As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_Shock As Global.System.Nullable(Of Double),  _
+                    ByVal EVE_Flattener_Difference As Global.System.Nullable(Of Double),  _
+                    ByVal DiscountRate As Global.System.Nullable(Of Double),  _
                     ByVal Original_ID As Integer) As Integer
             If (PERIOD Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -9822,7 +16263,127 @@ Namespace InterestRateRiskDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_ID,Integer)
+            If (InOutFlow Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(57).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(InOutFlow,String)
+            End If
+            If (IRR_NII_Change.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(IRR_NII_Change.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
+            End If
+            If (YieldPeriod Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(59).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(59).Value = CType(YieldPeriod,String)
+            End If
+            If (EVE_Parallel_Up_BumpRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(EVE_Parallel_Up_BumpRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Parallel_Up_Difference.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(EVE_Parallel_Up_Difference.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(61).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Parallel_Down_BumpRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(EVE_Parallel_Down_BumpRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Parallel_Down_Difference.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(EVE_Parallel_Down_Difference.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Up_BumpRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(EVE_ShortRate_Up_BumpRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Up_TermFactor.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(EVE_ShortRate_Up_TermFactor.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Up_Difference.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(EVE_ShortRate_Up_Difference.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Down_BumpRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(EVE_ShortRate_Down_BumpRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Down_TermFactor.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(EVE_ShortRate_Down_TermFactor.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_ShortRate_Down_Difference.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(EVE_ShortRate_Down_Difference.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(69).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_ShortBumpRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(EVE_Steepener_ShortBumpRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_LongBumpRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(71).Value = CType(EVE_Steepener_LongBumpRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(71).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_TermFactor.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(EVE_Steepener_TermFactor.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_Shock.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(73).Value = CType(EVE_Steepener_Shock.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(73).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Steepener_Difference.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(EVE_Steepener_Difference.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_ShortBumpRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(75).Value = CType(EVE_Flattener_ShortBumpRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(75).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_LongBumpRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(EVE_Flattener_LongBumpRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_TermFactor.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(77).Value = CType(EVE_Flattener_TermFactor.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(77).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_Shock.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(EVE_Flattener_Shock.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
+            End If
+            If (EVE_Flattener_Difference.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(EVE_Flattener_Difference.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(79).Value = Global.System.DBNull.Value
+            End If
+            If (DiscountRate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(DiscountRate.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(81).Value = CType(Original_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -10683,6 +17244,15 @@ Namespace InterestRateRiskDataSetTableAdapters
             tableMapping.ColumnMappings.Add("IdRateRiskDate", "IdRateRiskDate")
             tableMapping.ColumnMappings.Add("CalculationMethod", "CalculationMethod")
             tableMapping.ColumnMappings.Add("PeriodNr", "PeriodNr")
+            tableMapping.ColumnMappings.Add("In_CashFlow", "In_CashFlow")
+            tableMapping.ColumnMappings.Add("In_AvgTermDays", "In_AvgTermDays")
+            tableMapping.ColumnMappings.Add("In_NII_Change", "In_NII_Change")
+            tableMapping.ColumnMappings.Add("Out_CashFlow", "Out_CashFlow")
+            tableMapping.ColumnMappings.Add("Out_AvgTermDays", "Out_AvgTermDays")
+            tableMapping.ColumnMappings.Add("Out_NII_Change", "Out_NII_Change")
+            tableMapping.ColumnMappings.Add("Net_CashFlow", "Net_CashFlow")
+            tableMapping.ColumnMappings.Add("Net_AvgTermDays", "Net_AvgTermDays")
+            tableMapping.ColumnMappings.Add("Net_NII_Change", "Net_NII_Change")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -10697,12 +17267,16 @@ Namespace InterestRateRiskDataSetTableAdapters
                 "UNT_EUR_N], [WF_N], [AM_N], [WF1], [AM1], [WF2], [AM2], [WF3], [AM3], [WF4], [AM"& _ 
                 "4], [WF10], [AM10], [WF20], [AM20], [WF25], [AM25], [WFHUMP], [AMHUMP], [WF_TWIS"& _ 
                 "T1], [AM_TWIST1], [WF_TWIST2], [AM_TWIST2], [DATA DATE], [RISK DATE], [IMPORT DA"& _ 
-                "TE], [BEMERKUNGEN], [IdRateRiskDate], [CalculationMethod], [PeriodNr]) VALUES (@"& _ 
-                "CURRENCY, @Period, @PERIOD_N, @Type, @p1, @p4, @p7, @PRINCIPAL_AMOUNT_N, @PRINCI"& _ 
-                "PAL_AMOUNT_EUR_N, @WF_N, @AM_N, @WF1, @AM1, @WF2, @AM2, @WF3, @AM3, @WF4, @AM4, "& _ 
-                "@WF10, @AM10, @WF20, @AM20, @WF25, @AM25, @WFHUMP, @AMHUMP, @WF_TWIST1, @AM_TWIS"& _ 
-                "T1, @WF_TWIST2, @AM_TWIST2, @DATA_DATE, @RISK_DATE, @IMPORT_DATE, @BEMERKUNGEN, "& _ 
-                "@IdRateRiskDate, @CalculationMethod, @PeriodNr)"
+                "TE], [BEMERKUNGEN], [IdRateRiskDate], [CalculationMethod], [PeriodNr], [In_CashF"& _ 
+                "low], [In_AvgTermDays], [In_NII_Change], [Out_CashFlow], [Out_AvgTermDays], [Out"& _ 
+                "_NII_Change], [Net_CashFlow], [Net_AvgTermDays], [Net_NII_Change]) VALUES (@CURR"& _ 
+                "ENCY, @Period, @PERIOD_N, @Type, @p1, @p4, @p7, @PRINCIPAL_AMOUNT_N, @PRINCIPAL_"& _ 
+                "AMOUNT_EUR_N, @WF_N, @AM_N, @WF1, @AM1, @WF2, @AM2, @WF3, @AM3, @WF4, @AM4, @WF1"& _ 
+                "0, @AM10, @WF20, @AM20, @WF25, @AM25, @WFHUMP, @AMHUMP, @WF_TWIST1, @AM_TWIST1, "& _ 
+                "@WF_TWIST2, @AM_TWIST2, @DATA_DATE, @RISK_DATE, @IMPORT_DATE, @BEMERKUNGEN, @IdR"& _ 
+                "ateRiskDate, @CalculationMethod, @PeriodNr, @In_CashFlow, @In_AvgTermDays, @In_N"& _ 
+                "II_Change, @Out_CashFlow, @Out_AvgTermDays, @Out_NII_Change, @Net_CashFlow, @Net"& _ 
+                "_AvgTermDays, @Net_NII_Change)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CURRENCY", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Period", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10742,6 +17316,15 @@ Namespace InterestRateRiskDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdRateRiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdRateRiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CalculationMethod", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CalculationMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@In_CashFlow", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "In_CashFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@In_AvgTermDays", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "In_AvgTermDays", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@In_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "In_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Out_CashFlow", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Out_CashFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Out_AvgTermDays", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Out_AvgTermDays", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Out_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Out_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Net_CashFlow", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Net_CashFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Net_AvgTermDays", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Net_AvgTermDays", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Net_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Net_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [RATERISK TOTALS] SET [CURRENCY] = @CURRENCY, [Period] = @Period, [PERIOD_"& _ 
@@ -10755,8 +17338,12 @@ Namespace InterestRateRiskDataSetTableAdapters
                 "F_TWIST1] = @WF_TWIST1, [AM_TWIST1] = @AM_TWIST1, [WF_TWIST2] = @WF_TWIST2, [AM_"& _ 
                 "TWIST2] = @AM_TWIST2, [DATA DATE] = @DATA_DATE, [RISK DATE] = @RISK_DATE, [IMPOR"& _ 
                 "T DATE] = @IMPORT_DATE, [BEMERKUNGEN] = @BEMERKUNGEN, [IdRateRiskDate] = @IdRate"& _ 
-                "RiskDate, [CalculationMethod] = @CalculationMethod, [PeriodNr] = @PeriodNr WHERE"& _ 
-                " (([ID] = @Original_ID))"
+                "RiskDate, [CalculationMethod] = @CalculationMethod, [PeriodNr] = @PeriodNr, [In_"& _ 
+                "CashFlow] = @In_CashFlow, [In_AvgTermDays] = @In_AvgTermDays, [In_NII_Change] = "& _ 
+                "@In_NII_Change, [Out_CashFlow] = @Out_CashFlow, [Out_AvgTermDays] = @Out_AvgTerm"& _ 
+                "Days, [Out_NII_Change] = @Out_NII_Change, [Net_CashFlow] = @Net_CashFlow, [Net_A"& _ 
+                "vgTermDays] = @Net_AvgTermDays, [Net_NII_Change] = @Net_NII_Change WHERE (([ID] "& _ 
+                "= @Original_ID))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CURRENCY", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Period", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Period", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -10796,6 +17383,15 @@ Namespace InterestRateRiskDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IdRateRiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IdRateRiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CalculationMethod", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CalculationMethod", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@PeriodNr", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "PeriodNr", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@In_CashFlow", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "In_CashFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@In_AvgTermDays", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "In_AvgTermDays", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@In_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "In_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Out_CashFlow", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Out_CashFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Out_AvgTermDays", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Out_AvgTermDays", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Out_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Out_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Net_CashFlow", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Net_CashFlow", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Net_AvgTermDays", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Net_AvgTermDays", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Net_NII_Change", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Net_NII_Change", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
@@ -10818,18 +17414,22 @@ Namespace InterestRateRiskDataSetTableAdapters
                 "AMOUNT_EUR_N, WF_N, AM_N, WF1, AM1, WF2, AM2, WF3, AM3, WF4, AM4, WF10, AM10, WF"& _ 
                 "20, AM20, WF25, AM25, WFHUMP, AMHUMP, WF_TWIST1, AM_TWIST1, WF_TWIST2, AM_TWIST2"& _ 
                 ", [DATA DATE], "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         [RISK DATE], [IMPORT DATE], BEMERKUNGE"& _ 
-                "N, IdRateRiskDate, CalculationMethod, PeriodNr"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK TOTALS"& _ 
-                "]"
+                "N, IdRateRiskDate, CalculationMethod, PeriodNr, In_CashFlow, In_AvgTermDays, In_"& _ 
+                "NII_Change, Out_CashFlow, Out_AvgTermDays, Out_NII_Change, Net_CashFlow, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
+                "                    Net_AvgTermDays, Net_NII_Change"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [RATERISK T"& _ 
+                "OTALS]"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT AM1, AM10, AM2, AM20, AM25, AM3, AM4, AMHUMP, AM_N, AM_TWIST1, AM_TWIST2, "& _ 
                 "BEMERKUNGEN, CURRENCY, CalculationMethod, [DATA DATE], ID, [IMPORT DATE], IdRate"& _ 
-                "RiskDate, PERIOD_N, PRINCIPAL_AMOUNT_EUR_N, PRINCIPAL_AMOUNT_N, Period, PeriodNr"& _ 
-                ", [Principal Amount/Value Balance], [Principal Amount/Value Balance(EUR Equ)], ["& _ 
-                "Principal Amount/Value Balance(EUR Equ)withoutSECUR], [RISK DATE], Type, WF1, WF"& _ 
-                "10, WF2, WF20, WF25, WF3, WF4, WFHUMP, WF_N, WF_TWIST1, WF_TWIST2 FROM [RATERISK"& _ 
-                " TOTALS] WHERE ([RISK DATE] = @Param1)"
+                "RiskDate, In_AvgTermDays, In_CashFlow, In_NII_Change, Net_AvgTermDays, Net_CashF"& _ 
+                "low, Net_NII_Change, Out_AvgTermDays, Out_CashFlow, Out_NII_Change, PERIOD_N, PR"& _ 
+                "INCIPAL_AMOUNT_EUR_N, PRINCIPAL_AMOUNT_N, Period, PeriodNr, [Principal Amount/Va"& _ 
+                "lue Balance], [Principal Amount/Value Balance(EUR Equ)], [Principal Amount/Value"& _ 
+                " Balance(EUR Equ)withoutSECUR], [RISK DATE], Type, WF1, WF10, WF2, WF20, WF25, W"& _ 
+                "F3, WF4, WFHUMP, WF_N, WF_TWIST1, WF_TWIST2 FROM [RATERISK TOTALS] WHERE ([RISK "& _ 
+                "DATE] = @Param1)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "RISK DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -10983,7 +17583,16 @@ Namespace InterestRateRiskDataSetTableAdapters
                     ByVal BEMERKUNGEN As String,  _
                     ByVal IdRateRiskDate As Global.System.Nullable(Of Date),  _
                     ByVal CalculationMethod As Global.System.Nullable(Of Double),  _
-                    ByVal PeriodNr As Global.System.Nullable(Of Double)) As Integer
+                    ByVal PeriodNr As Global.System.Nullable(Of Double),  _
+                    ByVal In_CashFlow As Global.System.Nullable(Of Double),  _
+                    ByVal In_AvgTermDays As Global.System.Nullable(Of Double),  _
+                    ByVal In_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal Out_CashFlow As Global.System.Nullable(Of Double),  _
+                    ByVal Out_AvgTermDays As Global.System.Nullable(Of Double),  _
+                    ByVal Out_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal Net_CashFlow As Global.System.Nullable(Of Double),  _
+                    ByVal Net_AvgTermDays As Global.System.Nullable(Of Double),  _
+                    ByVal Net_NII_Change As Global.System.Nullable(Of Double)) As Integer
             If (CURRENCY Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -11174,6 +17783,51 @@ Namespace InterestRateRiskDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
+            If (In_CashFlow.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(38).Value = CType(In_CashFlow.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
+            If (In_AvgTermDays.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(39).Value = CType(In_AvgTermDays.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(39).Value = Global.System.DBNull.Value
+            End If
+            If (In_NII_Change.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(40).Value = CType(In_NII_Change.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(40).Value = Global.System.DBNull.Value
+            End If
+            If (Out_CashFlow.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(41).Value = CType(Out_CashFlow.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(41).Value = Global.System.DBNull.Value
+            End If
+            If (Out_AvgTermDays.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(42).Value = CType(Out_AvgTermDays.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(42).Value = Global.System.DBNull.Value
+            End If
+            If (Out_NII_Change.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(43).Value = CType(Out_NII_Change.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(43).Value = Global.System.DBNull.Value
+            End If
+            If (Net_CashFlow.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(44).Value = CType(Net_CashFlow.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(44).Value = Global.System.DBNull.Value
+            End If
+            If (Net_AvgTermDays.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(45).Value = CType(Net_AvgTermDays.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(45).Value = Global.System.DBNull.Value
+            End If
+            If (Net_NII_Change.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(46).Value = CType(Net_NII_Change.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(46).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11232,6 +17886,15 @@ Namespace InterestRateRiskDataSetTableAdapters
                     ByVal IdRateRiskDate As Global.System.Nullable(Of Date),  _
                     ByVal CalculationMethod As Global.System.Nullable(Of Double),  _
                     ByVal PeriodNr As Global.System.Nullable(Of Double),  _
+                    ByVal In_CashFlow As Global.System.Nullable(Of Double),  _
+                    ByVal In_AvgTermDays As Global.System.Nullable(Of Double),  _
+                    ByVal In_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal Out_CashFlow As Global.System.Nullable(Of Double),  _
+                    ByVal Out_AvgTermDays As Global.System.Nullable(Of Double),  _
+                    ByVal Out_NII_Change As Global.System.Nullable(Of Double),  _
+                    ByVal Net_CashFlow As Global.System.Nullable(Of Double),  _
+                    ByVal Net_AvgTermDays As Global.System.Nullable(Of Double),  _
+                    ByVal Net_NII_Change As Global.System.Nullable(Of Double),  _
                     ByVal Original_ID As Integer) As Integer
             If (CURRENCY Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -11423,7 +18086,52 @@ Namespace InterestRateRiskDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_ID,Integer)
+            If (In_CashFlow.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(In_CashFlow.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
+            If (In_AvgTermDays.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(In_AvgTermDays.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
+            End If
+            If (In_NII_Change.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(In_NII_Change.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+            End If
+            If (Out_CashFlow.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Out_CashFlow.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+            End If
+            If (Out_AvgTermDays.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Out_AvgTermDays.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+            End If
+            If (Out_NII_Change.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Out_NII_Change.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
+            End If
+            If (Net_CashFlow.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Net_CashFlow.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+            End If
+            If (Net_AvgTermDays.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Net_AvgTermDays.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(45).Value = Global.System.DBNull.Value
+            End If
+            If (Net_NII_Change.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Net_NII_Change.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_ID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -11989,6 +18697,1803 @@ Namespace InterestRateRiskDataSetTableAdapters
     End Class
     
     '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class RateRisk_InterestRateSchocksTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "RateRisk_InterestRateSchocks"
+            tableMapping.ColumnMappings.Add("ID", "ID")
+            tableMapping.ColumnMappings.Add("CCY", "CCY")
+            tableMapping.ColumnMappings.Add("IRS_Type", "IRS_Type")
+            tableMapping.ColumnMappings.Add("IRS_Value", "IRS_Value")
+            tableMapping.ColumnMappings.Add("RiskDate", "RiskDate")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [RateRisk_InterestRateSchocks] WHERE (([ID] = @Original_ID))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [RateRisk_InterestRateSchocks] ([CCY], [IRS_Type], [IRS_Value], [Risk"& _ 
+                "Date], [LastAction], [LastUpdateUser], [LastUpdateDate]) VALUES (@CCY, @IRS_Type"& _ 
+                ", @IRS_Value, @RiskDate, @LastAction, @LastUpdateUser, @LastUpdateDate)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CCY", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CCY", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IRS_Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IRS_Type", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IRS_Value", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IRS_Value", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [RateRisk_InterestRateSchocks] SET [CCY] = @CCY, [IRS_Type] = @IRS_Type, ["& _ 
+                "IRS_Value] = @IRS_Value, [RiskDate] = @RiskDate, [LastAction] = @LastAction, [La"& _ 
+                "stUpdateUser] = @LastUpdateUser, [LastUpdateDate] = @LastUpdateDate WHERE (([ID]"& _ 
+                " = @Original_ID))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CCY", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CCY", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IRS_Type", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IRS_Type", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IRS_Value", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IRS_Value", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.PS_TOOL_DX.My.MySettings.Default.PS_TOOL_DX_SQL_Client_ConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        ID, CCY, IRS_Type, IRS_Value, RiskDate, LastAction, LastUpdateUser,"& _ 
+                " LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            RateRisk_InterestRateSchocks"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        ID, CCY, IRS_Type, IRS_Value, RiskDate, LastAction, LastUpdateUser,"& _ 
+                " LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            RateRisk_InterestRateSchocks"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Ris"& _ 
+                "kDate = @Param1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CASE WHEN IRS_Type IN ('Paralell') THEN 1 WHEN IRS_Ty"& _ 
+                "pe IN ('Short') THEN 2 WHEN IRS_Type IN ('Long') THEN 3 ELSE 4 END"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable = New InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByRiskDate(ByVal dataTable As InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable, ByVal Param1 As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Param1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByRiskDate(ByVal Param1 As Global.System.Nullable(Of Date)) As InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Param1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable = New InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As InterestRateRiskDataSet.RateRisk_InterestRateSchocksDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As InterestRateRiskDataSet) As Integer
+            Return Me.Adapter.Update(dataSet, "RateRisk_InterestRateSchocks")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal CCY As String, ByVal IRS_Type As String, ByVal IRS_Value As Global.System.Nullable(Of Double), ByVal RiskDate As Global.System.Nullable(Of Date), ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
+            If (CCY Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("CCY")
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(CCY,String)
+            End If
+            If (IRS_Type Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(IRS_Type,String)
+            End If
+            If (IRS_Value.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(IRS_Value.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (RiskDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(RiskDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal CCY As String, ByVal IRS_Type As String, ByVal IRS_Value As Global.System.Nullable(Of Double), ByVal RiskDate As Global.System.Nullable(Of Date), ByVal LastAction As String, ByVal LastUpdateUser As String, ByVal LastUpdateDate As Global.System.Nullable(Of Date), ByVal Original_ID As Integer) As Integer
+            If (CCY Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("CCY")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(CCY,String)
+            End If
+            If (IRS_Type Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(IRS_Type,String)
+            End If
+            If (IRS_Value.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(IRS_Value.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (RiskDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(RiskDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class RateRisk_StandardTimeBucketsTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "RateRisk_StandardTimeBuckets"
+            tableMapping.ColumnMappings.Add("ID", "ID")
+            tableMapping.ColumnMappings.Add("GroupType", "GroupType")
+            tableMapping.ColumnMappings.Add("TermType", "TermType")
+            tableMapping.ColumnMappings.Add("1D", "1D")
+            tableMapping.ColumnMappings.Add("1M", "1M")
+            tableMapping.ColumnMappings.Add("3M", "3M")
+            tableMapping.ColumnMappings.Add("6M", "6M")
+            tableMapping.ColumnMappings.Add("9M", "9M")
+            tableMapping.ColumnMappings.Add("1Y", "1Y")
+            tableMapping.ColumnMappings.Add("2Y", "2Y")
+            tableMapping.ColumnMappings.Add("3Y", "3Y")
+            tableMapping.ColumnMappings.Add("4Y", "4Y")
+            tableMapping.ColumnMappings.Add("5Y", "5Y")
+            tableMapping.ColumnMappings.Add("6Y", "6Y")
+            tableMapping.ColumnMappings.Add("7Y", "7Y")
+            tableMapping.ColumnMappings.Add("8Y", "8Y")
+            tableMapping.ColumnMappings.Add("9Y", "9Y")
+            tableMapping.ColumnMappings.Add("10Y", "10Y")
+            tableMapping.ColumnMappings.Add("15Y", "15Y")
+            tableMapping.ColumnMappings.Add("20Y", "20Y")
+            tableMapping.ColumnMappings.Add("30Y", "30Y")
+            tableMapping.ColumnMappings.Add("40Y", "40Y")
+            tableMapping.ColumnMappings.Add("50Y", "50Y")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [RateRisk_StandardTimeBuckets] WHERE (([ID] = @Original_ID))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [RateRisk_StandardTimeBuckets] ([GroupType], [TermType], [1D], [1M], "& _ 
+                "[3M], [6M], [9M], [1Y], [2Y], [3Y], [4Y], [5Y], [6Y], [7Y], [8Y], [9Y], [10Y], ["& _ 
+                "15Y], [20Y], [30Y], [40Y], [50Y]) VALUES (@GroupType, @TermType, @p1, @p4, @p7, "& _ 
+                "@p10, @p13, @p16, @p19, @p22, @p25, @p28, @p31, @p34, @p37, @p40, @p43, @p46, @p"& _ 
+                "49, @p52, @p55, @p58)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GroupType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GroupType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TermType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TermType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1D", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p4", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p7", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "3M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p10", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p13", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p16", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p19", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "2Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p22", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "3Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p25", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "4Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p28", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "5Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p31", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p34", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "7Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p37", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "8Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p40", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p43", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "10Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p46", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "15Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p49", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "20Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p52", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "30Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p55", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "40Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p58", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "50Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [RateRisk_StandardTimeBuckets] SET [GroupType] = @GroupType, [TermType] = "& _ 
+                "@TermType, [1D] = @p1, [1M] = @p4, [3M] = @p7, [6M] = @p10, [9M] = @p13, [1Y] = "& _ 
+                "@p16, [2Y] = @p19, [3Y] = @p22, [4Y] = @p25, [5Y] = @p28, [6Y] = @p31, [7Y] = @p"& _ 
+                "34, [8Y] = @p37, [9Y] = @p40, [10Y] = @p43, [15Y] = @p46, [20Y] = @p49, [30Y] = "& _ 
+                "@p52, [40Y] = @p55, [50Y] = @p58 WHERE (([ID] = @Original_ID))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GroupType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GroupType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@TermType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "TermType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1D", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p4", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p7", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "3M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p10", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p13", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p16", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p19", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "2Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p22", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "3Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p25", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "4Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p28", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "5Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p31", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p34", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "7Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p37", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "8Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p40", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p43", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "10Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p46", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "15Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p49", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "20Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p52", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "30Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p55", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "40Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p58", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "50Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.PS_TOOL_DX.My.MySettings.Default.PS_TOOL_DX_SQL_Client_ConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        ID, GroupType, TermType, [1D], [1M], [3M], [6M], [9M], [1Y], [2Y], "& _ 
+                "[3Y], [4Y], [5Y], [6Y], [7Y], [8Y], [9Y], [10Y], [15Y], [20Y], [30Y], [40Y], [50"& _ 
+                "Y]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            RateRisk_StandardTimeBuckets"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ID"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As InterestRateRiskDataSet.RateRisk_StandardTimeBucketsDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As InterestRateRiskDataSet.RateRisk_StandardTimeBucketsDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As InterestRateRiskDataSet.RateRisk_StandardTimeBucketsDataTable = New InterestRateRiskDataSet.RateRisk_StandardTimeBucketsDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As InterestRateRiskDataSet.RateRisk_StandardTimeBucketsDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As InterestRateRiskDataSet) As Integer
+            Return Me.Adapter.Update(dataSet, "RateRisk_StandardTimeBuckets")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert( _
+                    ByVal GroupType As String,  _
+                    ByVal TermType As String,  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal p4 As Global.System.Nullable(Of Double),  _
+                    ByVal p7 As Global.System.Nullable(Of Double),  _
+                    ByVal p10 As Global.System.Nullable(Of Double),  _
+                    ByVal p13 As Global.System.Nullable(Of Double),  _
+                    ByVal p16 As Global.System.Nullable(Of Double),  _
+                    ByVal p19 As Global.System.Nullable(Of Double),  _
+                    ByVal p22 As Global.System.Nullable(Of Double),  _
+                    ByVal p25 As Global.System.Nullable(Of Double),  _
+                    ByVal p28 As Global.System.Nullable(Of Double),  _
+                    ByVal p31 As Global.System.Nullable(Of Double),  _
+                    ByVal p34 As Global.System.Nullable(Of Double),  _
+                    ByVal p37 As Global.System.Nullable(Of Double),  _
+                    ByVal p40 As Global.System.Nullable(Of Double),  _
+                    ByVal p43 As Global.System.Nullable(Of Double),  _
+                    ByVal p46 As Global.System.Nullable(Of Double),  _
+                    ByVal p49 As Global.System.Nullable(Of Double),  _
+                    ByVal p52 As Global.System.Nullable(Of Double),  _
+                    ByVal p55 As Global.System.Nullable(Of Double),  _
+                    ByVal p58 As Global.System.Nullable(Of Double)) As Integer
+            If (GroupType Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(GroupType,String)
+            End If
+            If (TermType Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(TermType,String)
+            End If
+            If (p1.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(p1.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (p4.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (p7.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(p7.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (p10.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p10.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (p13.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(p13.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (p16.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(p16.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (p19.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(p19.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (p22.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(p22.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (p25.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(p25.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (p28.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(p28.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (p31.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(p31.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (p34.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(p34.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (p37.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(p37.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (p40.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(p40.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (p43.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(p43.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (p46.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(p46.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (p49.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(p49.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (p52.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(p52.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (p55.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(p55.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (p58.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(p58.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal GroupType As String,  _
+                    ByVal TermType As String,  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal p4 As Global.System.Nullable(Of Double),  _
+                    ByVal p7 As Global.System.Nullable(Of Double),  _
+                    ByVal p10 As Global.System.Nullable(Of Double),  _
+                    ByVal p13 As Global.System.Nullable(Of Double),  _
+                    ByVal p16 As Global.System.Nullable(Of Double),  _
+                    ByVal p19 As Global.System.Nullable(Of Double),  _
+                    ByVal p22 As Global.System.Nullable(Of Double),  _
+                    ByVal p25 As Global.System.Nullable(Of Double),  _
+                    ByVal p28 As Global.System.Nullable(Of Double),  _
+                    ByVal p31 As Global.System.Nullable(Of Double),  _
+                    ByVal p34 As Global.System.Nullable(Of Double),  _
+                    ByVal p37 As Global.System.Nullable(Of Double),  _
+                    ByVal p40 As Global.System.Nullable(Of Double),  _
+                    ByVal p43 As Global.System.Nullable(Of Double),  _
+                    ByVal p46 As Global.System.Nullable(Of Double),  _
+                    ByVal p49 As Global.System.Nullable(Of Double),  _
+                    ByVal p52 As Global.System.Nullable(Of Double),  _
+                    ByVal p55 As Global.System.Nullable(Of Double),  _
+                    ByVal p58 As Global.System.Nullable(Of Double),  _
+                    ByVal Original_ID As Integer) As Integer
+            If (GroupType Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(GroupType,String)
+            End If
+            If (TermType Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(TermType,String)
+            End If
+            If (p1.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(p1.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (p4.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (p7.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p7.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (p10.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p10.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (p13.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p13.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (p16.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p16.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (p19.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(p19.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (p22.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p22.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (p25.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(p25.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (p28.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(p28.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (p31.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(p31.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (p34.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(p34.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (p37.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(p37.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (p40.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(p40.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (p43.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(p43.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (p46.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(p46.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (p49.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(p49.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (p52.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(p52.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (p55.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(p55.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (p58.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p58.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class RateRisk_ShockTypesValuesTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "RateRisk_ShockTypesValues"
+            tableMapping.ColumnMappings.Add("ID", "ID")
+            tableMapping.ColumnMappings.Add("ShockType", "ShockType")
+            tableMapping.ColumnMappings.Add("CCY", "CCY")
+            tableMapping.ColumnMappings.Add("1D", "1D")
+            tableMapping.ColumnMappings.Add("1M", "1M")
+            tableMapping.ColumnMappings.Add("3M", "3M")
+            tableMapping.ColumnMappings.Add("6M", "6M")
+            tableMapping.ColumnMappings.Add("1Y", "1Y")
+            tableMapping.ColumnMappings.Add("2Y", "2Y")
+            tableMapping.ColumnMappings.Add("3Y", "3Y")
+            tableMapping.ColumnMappings.Add("9M", "9M")
+            tableMapping.ColumnMappings.Add("4Y", "4Y")
+            tableMapping.ColumnMappings.Add("5Y", "5Y")
+            tableMapping.ColumnMappings.Add("6Y", "6Y")
+            tableMapping.ColumnMappings.Add("7Y", "7Y")
+            tableMapping.ColumnMappings.Add("8Y", "8Y")
+            tableMapping.ColumnMappings.Add("9Y", "9Y")
+            tableMapping.ColumnMappings.Add("10Y", "10Y")
+            tableMapping.ColumnMappings.Add("15Y", "15Y")
+            tableMapping.ColumnMappings.Add("20Y", "20Y")
+            tableMapping.ColumnMappings.Add("30Y", "30Y")
+            tableMapping.ColumnMappings.Add("40Y", "40Y")
+            tableMapping.ColumnMappings.Add("50Y", "50Y")
+            tableMapping.ColumnMappings.Add("RiskDate", "RiskDate")
+            tableMapping.ColumnMappings.Add("Value_A", "Value_A")
+            tableMapping.ColumnMappings.Add("Value_B", "Value_B")
+            tableMapping.ColumnMappings.Add("LastAction", "LastAction")
+            tableMapping.ColumnMappings.Add("LastUpdateUser", "LastUpdateUser")
+            tableMapping.ColumnMappings.Add("LastUpdateDate", "LastUpdateDate")
+            Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [RateRisk_ShockTypesValues] WHERE (([ID] = @Original_ID))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [RateRisk_ShockTypesValues] ([ShockType], [CCY], [1D], [1M], [3M], [6"& _ 
+                "M], [1Y], [2Y], [3Y], [9M], [4Y], [5Y], [6Y], [7Y], [8Y], [9Y], [10Y], [15Y], [2"& _ 
+                "0Y], [30Y], [40Y], [50Y], [RiskDate], [Value_A], [Value_B], [LastAction], [LastU"& _ 
+                "pdateUser], [LastUpdateDate]) VALUES (@ShockType, @CCY, @p1, @p4, @p7, @p10, @p1"& _ 
+                "3, @p16, @p19, @p22, @p25, @p28, @p31, @p34, @p37, @p40, @p43, @p46, @p49, @p52,"& _ 
+                " @p55, @p58, @RiskDate, @Value_A, @Value_B, @LastAction, @LastUpdateUser, @LastU"& _ 
+                "pdateDate)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShockType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ShockType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CCY", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CCY", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1D", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p4", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p7", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "3M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p10", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p13", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p16", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "2Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p19", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "3Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p22", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p25", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "4Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p28", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "5Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p31", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p34", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "7Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p37", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "8Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p40", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p43", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "10Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p46", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "15Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p49", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "20Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p52", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "30Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p55", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "40Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p58", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "50Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Value_A", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Value_A", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Value_B", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Value_B", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [RateRisk_ShockTypesValues] SET [ShockType] = @ShockType, [CCY] = @CCY, [1"& _ 
+                "D] = @p1, [1M] = @p4, [3M] = @p7, [6M] = @p10, [1Y] = @p13, [2Y] = @p16, [3Y] = "& _ 
+                "@p19, [9M] = @p22, [4Y] = @p25, [5Y] = @p28, [6Y] = @p31, [7Y] = @p34, [8Y] = @p"& _ 
+                "37, [9Y] = @p40, [10Y] = @p43, [15Y] = @p46, [20Y] = @p49, [30Y] = @p52, [40Y] ="& _ 
+                " @p55, [50Y] = @p58, [RiskDate] = @RiskDate, [Value_A] = @Value_A, [Value_B] = @"& _ 
+                "Value_B, [LastAction] = @LastAction, [LastUpdateUser] = @LastUpdateUser, [LastUp"& _ 
+                "dateDate] = @LastUpdateDate WHERE (([ID] = @Original_ID))"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ShockType", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ShockType", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CCY", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CCY", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p1", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1D", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p4", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p7", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "3M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p10", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p13", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "1Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p16", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "2Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p19", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "3Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p22", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9M", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p25", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "4Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p28", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "5Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p31", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "6Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p34", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "7Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p37", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "8Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p40", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "9Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p43", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "10Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p46", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "15Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p49", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "20Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p52", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "30Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p55", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "40Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@p58", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "50Y", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RiskDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Value_A", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Value_A", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Value_B", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Value_B", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastAction", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastAction", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateUser", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateUser", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@LastUpdateDate", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "LastUpdateDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.PS_TOOL_DX.My.MySettings.Default.PS_TOOL_DX_SQL_Client_ConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        ID, ShockType, CCY, [1D], [1M], [3M], [6M], [1Y], [2Y], [3Y], [9M],"& _ 
+                " [4Y], [5Y], [6Y], [7Y], [8Y], [9Y], [10Y], [15Y], [20Y], [30Y], [40Y], [50Y], R"& _ 
+                "iskDate, Value_A, Value_B, LastAction, LastUpdateUser, LastUpdateDate"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
+                "       RateRisk_ShockTypesValues"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CASE WHEN ShockType IN ('ParallelShoc"& _ 
+                "k_PlusMinus') THEN 1 WHEN ShockType IN ('ShortRateShock_PlusMinus') THEN 2 WHEN "& _ 
+                "ShockType IN ('LongRateShock') "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         THEN 3 WHEN ShockType "& _ 
+                "IN ('RotationShockSteepener_Plus') THEN 4 WHEN ShockType IN ('ShortRateShock_Plu"& _ 
+                "sMinus') THEN 5 ELSE 6 END, CCY"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        [10Y], [15Y], [1D], [1M], [1Y], [20Y], [2Y], [30Y], [3M], [3Y], [40"& _ 
+                "Y], [4Y], [50Y], [5Y], [6M], [6Y], [7Y], [8Y], [9M], [9Y], CCY, ID, LastAction, "& _ 
+                "LastUpdateDate, LastUpdateUser, RiskDate, ShockType, Value_A, Value_B"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     "& _ 
+                "       RateRisk_ShockTypesValues"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (RiskDate = @Param1)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY CA"& _ 
+                "SE WHEN ShockType IN ('ParallelShock_PlusMinus') THEN 1 WHEN ShockType IN ('Shor"& _ 
+                "tRateShock_PlusMinus') THEN 2 WHEN ShockType IN ('LongRateShock') "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+                "             THEN 3 WHEN ShockType IN ('RotationShockSteepener_Plus') THEN 4 WHE"& _ 
+                "N ShockType IN ('ShortRateShock_PlusMinus') THEN 5 ELSE 6 END, CCY"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "RiskDate", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable = New InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByRiskDate(ByVal dataTable As InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable, ByVal Param1 As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Param1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataByRiskDate(ByVal Param1 As Global.System.Nullable(Of Date)) As InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Param1.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable = New InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As InterestRateRiskDataSet.RateRisk_ShockTypesValuesDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As InterestRateRiskDataSet) As Integer
+            Return Me.Adapter.Update(dataSet, "RateRisk_ShockTypesValues")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert( _
+                    ByVal ShockType As String,  _
+                    ByVal CCY As String,  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal p4 As Global.System.Nullable(Of Double),  _
+                    ByVal p7 As Global.System.Nullable(Of Double),  _
+                    ByVal p10 As Global.System.Nullable(Of Double),  _
+                    ByVal p13 As Global.System.Nullable(Of Double),  _
+                    ByVal p16 As Global.System.Nullable(Of Double),  _
+                    ByVal p19 As Global.System.Nullable(Of Double),  _
+                    ByVal p22 As Global.System.Nullable(Of Double),  _
+                    ByVal p25 As Global.System.Nullable(Of Double),  _
+                    ByVal p28 As Global.System.Nullable(Of Double),  _
+                    ByVal p31 As Global.System.Nullable(Of Double),  _
+                    ByVal p34 As Global.System.Nullable(Of Double),  _
+                    ByVal p37 As Global.System.Nullable(Of Double),  _
+                    ByVal p40 As Global.System.Nullable(Of Double),  _
+                    ByVal p43 As Global.System.Nullable(Of Double),  _
+                    ByVal p46 As Global.System.Nullable(Of Double),  _
+                    ByVal p49 As Global.System.Nullable(Of Double),  _
+                    ByVal p52 As Global.System.Nullable(Of Double),  _
+                    ByVal p55 As Global.System.Nullable(Of Double),  _
+                    ByVal p58 As Global.System.Nullable(Of Double),  _
+                    ByVal RiskDate As Global.System.Nullable(Of Date),  _
+                    ByVal Value_A As Global.System.Nullable(Of Double),  _
+                    ByVal Value_B As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date)) As Integer
+            If (ShockType Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(ShockType,String)
+            End If
+            If (CCY Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(CCY,String)
+            End If
+            If (p1.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(p1.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (p4.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (p7.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(p7.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (p10.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p10.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (p13.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(p13.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (p16.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(p16.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (p19.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(p19.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (p22.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(p22.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (p25.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(p25.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (p28.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(p28.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (p31.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(p31.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (p34.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(p34.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (p37.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(p37.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (p40.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(p40.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (p43.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(p43.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (p46.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(p46.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (p49.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(p49.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (p52.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(p52.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (p55.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(p55.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (p58.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(p58.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (RiskDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(RiskDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (Value_A.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(Value_A.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (Value_B.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(24).Value = CType(Value_B.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(25).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(27).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update( _
+                    ByVal ShockType As String,  _
+                    ByVal CCY As String,  _
+                    ByVal p1 As Global.System.Nullable(Of Double),  _
+                    ByVal p4 As Global.System.Nullable(Of Double),  _
+                    ByVal p7 As Global.System.Nullable(Of Double),  _
+                    ByVal p10 As Global.System.Nullable(Of Double),  _
+                    ByVal p13 As Global.System.Nullable(Of Double),  _
+                    ByVal p16 As Global.System.Nullable(Of Double),  _
+                    ByVal p19 As Global.System.Nullable(Of Double),  _
+                    ByVal p22 As Global.System.Nullable(Of Double),  _
+                    ByVal p25 As Global.System.Nullable(Of Double),  _
+                    ByVal p28 As Global.System.Nullable(Of Double),  _
+                    ByVal p31 As Global.System.Nullable(Of Double),  _
+                    ByVal p34 As Global.System.Nullable(Of Double),  _
+                    ByVal p37 As Global.System.Nullable(Of Double),  _
+                    ByVal p40 As Global.System.Nullable(Of Double),  _
+                    ByVal p43 As Global.System.Nullable(Of Double),  _
+                    ByVal p46 As Global.System.Nullable(Of Double),  _
+                    ByVal p49 As Global.System.Nullable(Of Double),  _
+                    ByVal p52 As Global.System.Nullable(Of Double),  _
+                    ByVal p55 As Global.System.Nullable(Of Double),  _
+                    ByVal p58 As Global.System.Nullable(Of Double),  _
+                    ByVal RiskDate As Global.System.Nullable(Of Date),  _
+                    ByVal Value_A As Global.System.Nullable(Of Double),  _
+                    ByVal Value_B As Global.System.Nullable(Of Double),  _
+                    ByVal LastAction As String,  _
+                    ByVal LastUpdateUser As String,  _
+                    ByVal LastUpdateDate As Global.System.Nullable(Of Date),  _
+                    ByVal Original_ID As Integer) As Integer
+            If (ShockType Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(ShockType,String)
+            End If
+            If (CCY Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(CCY,String)
+            End If
+            If (p1.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(p1.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
+            End If
+            If (p4.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(p4.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (p7.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(p7.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (p10.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(p10.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (p13.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(p13.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            End If
+            If (p16.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(p16.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (p19.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(p19.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
+            If (p22.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(p22.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+            End If
+            If (p25.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(p25.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (p28.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(p28.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
+            If (p31.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(p31.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (p34.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(p34.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (p37.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(p37.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+            End If
+            If (p40.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(p40.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+            End If
+            If (p43.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(p43.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+            End If
+            If (p46.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(p46.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (p49.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(p49.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            If (p52.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(p52.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            End If
+            If (p55.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(p55.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            End If
+            If (p58.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p58.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            End If
+            If (RiskDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(RiskDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            End If
+            If (Value_A.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Value_A.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            End If
+            If (Value_B.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Value_B.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (LastAction Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(LastAction,String)
+            End If
+            If (LastUpdateUser Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(LastUpdateUser,String)
+            End If
+            If (LastUpdateDate.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(LastUpdateDate.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+    End Class
+    
+    '''<summary>
     '''TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     '''</summary>
     <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
@@ -12010,6 +20515,12 @@ Namespace InterestRateRiskDataSetTableAdapters
         Private _rATERISK_TOTALSTableAdapter As RATERISK_TOTALSTableAdapter
         
         Private _rATERISK_DELETIONSTableAdapter As RATERISK_DELETIONSTableAdapter
+        
+        Private _rateRisk_InterestRateSchocksTableAdapter As RateRisk_InterestRateSchocksTableAdapter
+        
+        Private _rateRisk_StandardTimeBucketsTableAdapter As RateRisk_StandardTimeBucketsTableAdapter
+        
+        Private _rateRisk_ShockTypesValuesTableAdapter As RateRisk_ShockTypesValuesTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -12097,6 +20608,48 @@ Namespace InterestRateRiskDataSetTableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property RateRisk_InterestRateSchocksTableAdapter() As RateRisk_InterestRateSchocksTableAdapter
+            Get
+                Return Me._rateRisk_InterestRateSchocksTableAdapter
+            End Get
+            Set
+                Me._rateRisk_InterestRateSchocksTableAdapter = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property RateRisk_StandardTimeBucketsTableAdapter() As RateRisk_StandardTimeBucketsTableAdapter
+            Get
+                Return Me._rateRisk_StandardTimeBucketsTableAdapter
+            End Get
+            Set
+                Me._rateRisk_StandardTimeBucketsTableAdapter = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property RateRisk_ShockTypesValuesTableAdapter() As RateRisk_ShockTypesValuesTableAdapter
+            Get
+                Return Me._rateRisk_ShockTypesValuesTableAdapter
+            End Get
+            Set
+                Me._rateRisk_ShockTypesValuesTableAdapter = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property BackupDataSetBeforeUpdate() As Boolean
             Get
@@ -12135,6 +20688,18 @@ Namespace InterestRateRiskDataSetTableAdapters
                             AndAlso (Not (Me._rATERISK_DELETIONSTableAdapter.Connection) Is Nothing)) Then
                     Return Me._rATERISK_DELETIONSTableAdapter.Connection
                 End If
+                If ((Not (Me._rateRisk_InterestRateSchocksTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._rateRisk_InterestRateSchocksTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._rateRisk_InterestRateSchocksTableAdapter.Connection
+                End If
+                If ((Not (Me._rateRisk_StandardTimeBucketsTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._rateRisk_StandardTimeBucketsTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._rateRisk_StandardTimeBucketsTableAdapter.Connection
+                End If
+                If ((Not (Me._rateRisk_ShockTypesValuesTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._rateRisk_ShockTypesValuesTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._rateRisk_ShockTypesValuesTableAdapter.Connection
+                End If
                 Return Nothing
             End Get
             Set
@@ -12161,6 +20726,15 @@ Namespace InterestRateRiskDataSetTableAdapters
                     count = (count + 1)
                 End If
                 If (Not (Me._rATERISK_DELETIONSTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
+                If (Not (Me._rateRisk_InterestRateSchocksTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
+                If (Not (Me._rateRisk_StandardTimeBucketsTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
+                If (Not (Me._rateRisk_ShockTypesValuesTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -12219,6 +20793,33 @@ Namespace InterestRateRiskDataSetTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
+            If (Not (Me._rateRisk_InterestRateSchocksTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.RateRisk_InterestRateSchocks.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._rateRisk_InterestRateSchocksTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._rateRisk_StandardTimeBucketsTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.RateRisk_StandardTimeBuckets.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._rateRisk_StandardTimeBucketsTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
+            If (Not (Me._rateRisk_ShockTypesValuesTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.RateRisk_ShockTypesValues.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._rateRisk_ShockTypesValuesTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -12269,6 +20870,30 @@ Namespace InterestRateRiskDataSetTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
+            If (Not (Me._rateRisk_InterestRateSchocksTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.RateRisk_InterestRateSchocks.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._rateRisk_InterestRateSchocksTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._rateRisk_StandardTimeBucketsTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.RateRisk_StandardTimeBuckets.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._rateRisk_StandardTimeBucketsTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
+            If (Not (Me._rateRisk_ShockTypesValuesTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.RateRisk_ShockTypesValues.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._rateRisk_ShockTypesValuesTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -12279,6 +20904,30 @@ Namespace InterestRateRiskDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As InterestRateRiskDataSet, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._rateRisk_ShockTypesValuesTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.RateRisk_ShockTypesValues.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._rateRisk_ShockTypesValuesTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._rateRisk_StandardTimeBucketsTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.RateRisk_StandardTimeBuckets.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._rateRisk_StandardTimeBucketsTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
+            If (Not (Me._rateRisk_InterestRateSchocksTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.RateRisk_InterestRateSchocks.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._rateRisk_InterestRateSchocksTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._rATERISK_DELETIONSTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.RATERISK_DELETIONS.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -12385,6 +21034,21 @@ Namespace InterestRateRiskDataSetTableAdapters
                 Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
                         "tring.")
             End If
+            If ((Not (Me._rateRisk_InterestRateSchocksTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._rateRisk_InterestRateSchocksTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
+            End If
+            If ((Not (Me._rateRisk_StandardTimeBucketsTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._rateRisk_StandardTimeBucketsTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
+            End If
+            If ((Not (Me._rateRisk_ShockTypesValuesTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._rateRisk_ShockTypesValuesTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
+            End If
             Dim workConnection As Global.System.Data.IDbConnection = Me.Connection
             If (workConnection Is Nothing) Then
                 Throw New Global.System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana"& _ 
@@ -12460,6 +21124,33 @@ Namespace InterestRateRiskDataSetTableAdapters
                     If Me._rATERISK_DELETIONSTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._rATERISK_DELETIONSTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._rATERISK_DELETIONSTableAdapter.Adapter)
+                    End If
+                End If
+                If (Not (Me._rateRisk_InterestRateSchocksTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._rateRisk_InterestRateSchocksTableAdapter, Me._rateRisk_InterestRateSchocksTableAdapter.Connection)
+                    Me._rateRisk_InterestRateSchocksTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._rateRisk_InterestRateSchocksTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._rateRisk_InterestRateSchocksTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._rateRisk_InterestRateSchocksTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._rateRisk_InterestRateSchocksTableAdapter.Adapter)
+                    End If
+                End If
+                If (Not (Me._rateRisk_StandardTimeBucketsTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._rateRisk_StandardTimeBucketsTableAdapter, Me._rateRisk_StandardTimeBucketsTableAdapter.Connection)
+                    Me._rateRisk_StandardTimeBucketsTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._rateRisk_StandardTimeBucketsTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._rateRisk_StandardTimeBucketsTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._rateRisk_StandardTimeBucketsTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._rateRisk_StandardTimeBucketsTableAdapter.Adapter)
+                    End If
+                End If
+                If (Not (Me._rateRisk_ShockTypesValuesTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._rateRisk_ShockTypesValuesTableAdapter, Me._rateRisk_ShockTypesValuesTableAdapter.Connection)
+                    Me._rateRisk_ShockTypesValuesTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._rateRisk_ShockTypesValuesTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._rateRisk_ShockTypesValuesTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._rateRisk_ShockTypesValuesTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._rateRisk_ShockTypesValuesTableAdapter.Adapter)
                     End If
                 End If
                 '
@@ -12541,6 +21232,18 @@ Namespace InterestRateRiskDataSetTableAdapters
                 If (Not (Me._rATERISK_DELETIONSTableAdapter) Is Nothing) Then
                     Me._rATERISK_DELETIONSTableAdapter.Connection = CType(revertConnections(Me._rATERISK_DELETIONSTableAdapter),Global.System.Data.SqlClient.SqlConnection)
                     Me._rATERISK_DELETIONSTableAdapter.Transaction = Nothing
+                End If
+                If (Not (Me._rateRisk_InterestRateSchocksTableAdapter) Is Nothing) Then
+                    Me._rateRisk_InterestRateSchocksTableAdapter.Connection = CType(revertConnections(Me._rateRisk_InterestRateSchocksTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._rateRisk_InterestRateSchocksTableAdapter.Transaction = Nothing
+                End If
+                If (Not (Me._rateRisk_StandardTimeBucketsTableAdapter) Is Nothing) Then
+                    Me._rateRisk_StandardTimeBucketsTableAdapter.Connection = CType(revertConnections(Me._rateRisk_StandardTimeBucketsTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._rateRisk_StandardTimeBucketsTableAdapter.Transaction = Nothing
+                End If
+                If (Not (Me._rateRisk_ShockTypesValuesTableAdapter) Is Nothing) Then
+                    Me._rateRisk_ShockTypesValuesTableAdapter.Connection = CType(revertConnections(Me._rateRisk_ShockTypesValuesTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._rateRisk_ShockTypesValuesTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

@@ -1174,4 +1174,208 @@ Public Class Configuration
     Private Sub RepositoryItemDateEdit2_EditValueChanged(sender As Object, e As EventArgs) Handles RepositoryItemDateEdit2.EditValueChanged
         Me.GridControl1.FocusedView.PostEditor()
     End Sub
+
+    Private Sub ParameterView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles ParameterView.PopupMenuShowing
+        Dim view As GridView = TryCast(sender, GridView)
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            If e.HitInfo.HitTest = DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell Then
+                e.Allow = False
+                Me.ConfigurationParameterView_PopupMenu.ShowPopup(GridControl1.PointToScreen(e.Point))
+            End If
+        End If
+    End Sub
+
+    Private Sub ParameterView_RowCellClick(sender As Object, e As RowCellClickEventArgs) Handles ParameterView.RowCellClick
+        If ParameterView.IsNewItemRow(e.RowHandle) = False Then
+            Dim view As GridView = DirectCast(sender, GridView)
+            IdRowValue = view.GetFocusedRowCellValue("PARAMETER1").ToString
+            IDNrRowValue = view.GetFocusedRowCellValue("ID")
+        End If
+    End Sub
+
+    Private Sub DuplicateCurrentParameter_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles DuplicateCurrentParameter_BarButtonItem.ItemClick
+        Dim focusedView As GridView = CType(GridControl1.FocusedView, GridView)
+        Dim rowHandle As Integer = focusedView.FocusedRowHandle
+
+        If focusedView.RowCount > 0 Then
+            If focusedView.Name.ToString = "ParameterView" Then
+                If XtraMessageBox.Show("Should the current Parameter Name: " & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "PARAMETER1") & " be duplicated ?", "DUPLICATE CURRENT PARAMETER", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    Try
+                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                        SplashScreenManager.Default.SetWaitFormCaption("Starting Parameter duplication in new row")
+
+                        OpenSqlConnections()
+                        cmd.CommandText = "DECLARE @ID int=<ID_to_DUPLICATE>
+                                                        INSERT INTO [PARAMETER]
+                                                                   ([PARAMETER1]
+                                                                   ,[PARAMETER2]
+                                                                   ,[NPARAMETER1]
+                                                                   ,[NPARAMETER2]
+                                                                   ,[NPARAMETER3]
+                                                                   ,[NPARAMETER4]
+                                                                   ,[DPARAMETER1]
+                                                                   ,[DPARAMETER2]
+                                                                   ,[PARAMETER STATUS]
+                                                                   ,[PARAMETER INFO]
+                                                                   ,[IdABTEILUNGSPARAMETER]
+                                                                   ,[IdABTEILUNGSCODE_NAME]
+                                                                   ,[LastAction]
+                                                                   ,[LastUpdateUser]
+                                                                   ,[LastUpdateDate])
+                                                            SELECT
+	                                                               'NEW-'+[PARAMETER1]
+                                                                   ,[PARAMETER2]
+                                                                   ,[NPARAMETER1]
+                                                                   ,[NPARAMETER2]
+                                                                   ,[NPARAMETER3]
+                                                                   ,[NPARAMETER4]
+                                                                   ,[DPARAMETER1]
+                                                                   ,[DPARAMETER2]
+                                                                   ,[PARAMETER STATUS]
+                                                                   ,[PARAMETER INFO]
+                                                                   ,[IdABTEILUNGSPARAMETER]
+                                                                   ,[IdABTEILUNGSCODE_NAME]
+                                                                   ,'Duplicated from ID: ' + CONVERT(nvarchar(255),@ID)
+                                                                  ,'" & CurrentUserWindowsID & "'
+                                                                   ,GETDATE()
+		                                                           from [PARAMETER] where ID=@ID"
+                        cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", IDNrRowValue)
+                        cmd.CommandText = cmd.CommandText
+                        cmd.ExecuteNonQuery()
+                        SplashScreenManager.CloseForm(False)
+
+                        XtraMessageBox.Show("Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "PARAMETER1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        CloseSqlConnections()
+                        Me.PARAMETERTableAdapter.Fill(Me.PSTOOLDataset.PARAMETER)
+                        Me.PARAMETER_All_TableAdapter.Fill(Me.PSTOOLDataset.PARAMETER_All)
+                        focusedView.RefreshData()
+                        Parameter_All_GridView.RefreshData()
+                        'focusedView.FocusedRowHandle = GetFocusedRow
+
+                    Catch ex As Exception
+                        SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
+                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub Parameter_All_GridView_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs) Handles Parameter_All_GridView.PopupMenuShowing
+        Dim view As GridView = TryCast(sender, GridView)
+        If view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.AutoFilterRowHandle AndAlso view.FocusedRowHandle <> DevExpress.XtraGrid.GridControl.NewItemRowHandle Then
+            If e.HitInfo.HitTest = DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitTest.RowCell Then
+                e.Allow = False
+                Me.ConfigurationParameterViewAll_PopupMenu.ShowPopup(GridControl2.PointToScreen(e.Point))
+            End If
+        End If
+    End Sub
+
+    Private Sub DuplicateCurrentParameterAll_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles DuplicateCurrentParameterAll_BarButtonItem.ItemClick
+        Dim focusedView As GridView = CType(GridControl2.FocusedView, GridView)
+        Dim rowHandle As Integer = focusedView.FocusedRowHandle
+
+        If focusedView.RowCount > 0 Then
+            If focusedView.Name.ToString = "Parameter_All_GridView" Then
+                If XtraMessageBox.Show("Should the current Parameter Name: " & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "PARAMETER1") & " be duplicated ?", "DUPLICATE CURRENT PARAMETER", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    Try
+                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                        SplashScreenManager.Default.SetWaitFormCaption("Starting Parameter duplication in new row")
+
+                        OpenSqlConnections()
+                        cmd.CommandText = "DECLARE @ID int=<ID_to_DUPLICATE>
+                                                        INSERT INTO [PARAMETER]
+                                                                   ([PARAMETER1]
+                                                                   ,[PARAMETER2]
+                                                                   ,[NPARAMETER1]
+                                                                   ,[NPARAMETER2]
+                                                                   ,[NPARAMETER3]
+                                                                   ,[NPARAMETER4]
+                                                                   ,[DPARAMETER1]
+                                                                   ,[DPARAMETER2]
+                                                                   ,[PARAMETER STATUS]
+                                                                   ,[PARAMETER INFO]
+                                                                   ,[IdABTEILUNGSPARAMETER]
+                                                                   ,[IdABTEILUNGSCODE_NAME]
+                                                                   ,[LastAction]
+                                                                   ,[LastUpdateUser]
+                                                                   ,[LastUpdateDate])
+                                                            SELECT
+	                                                               'NEW-'+[PARAMETER1]
+                                                                   ,[PARAMETER2]
+                                                                   ,[NPARAMETER1]
+                                                                   ,[NPARAMETER2]
+                                                                   ,[NPARAMETER3]
+                                                                   ,[NPARAMETER4]
+                                                                   ,[DPARAMETER1]
+                                                                   ,[DPARAMETER2]
+                                                                   ,[PARAMETER STATUS]
+                                                                   ,[PARAMETER INFO]
+                                                                   ,[IdABTEILUNGSPARAMETER]
+                                                                   ,[IdABTEILUNGSCODE_NAME]
+                                                                   ,'Duplicated from ID: ' + CONVERT(nvarchar(255),@ID)
+                                                                  ,'" & CurrentUserWindowsID & "'
+                                                                   ,GETDATE()
+		                                                           from [PARAMETER] where ID=@ID"
+                        cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_Nr_RowValue_All_Parameters)
+                        cmd.CommandText = cmd.CommandText
+                        cmd.ExecuteNonQuery()
+                        SplashScreenManager.CloseForm(False)
+
+                        XtraMessageBox.Show("Parameter:" & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "PARAMETER1") & vbNewLine & "successfull duplicated", "DUPLICATION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        CloseSqlConnections()
+                        Me.PARAMETERTableAdapter.Fill(Me.PSTOOLDataset.PARAMETER)
+                        Me.PARAMETER_All_TableAdapter.Fill(Me.PSTOOLDataset.PARAMETER_All)
+                        focusedView.RefreshData()
+                        ParameterView.RefreshData()
+                        'focusedView.FocusedRowHandle = GetFocusedRow
+
+                    Catch ex As Exception
+                        SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
+                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub DeleteParameterAll_BarButtonItem_ItemClick(sender As Object, e As ItemClickEventArgs) Handles DeleteParameterAll_BarButtonItem.ItemClick
+        Dim focusedView As GridView = CType(GridControl2.FocusedView, GridView)
+        Dim rowHandle As Integer = focusedView.FocusedRowHandle
+
+        If focusedView.RowCount > 0 Then
+            If focusedView.Name.ToString = "Parameter_All_GridView" Then
+                If XtraMessageBox.Show("Should the current Parameter Name: " & focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "PARAMETER1") & " be deleted ?", "DELETE CURRENT PARAMETER", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = System.Windows.Forms.DialogResult.Yes Then
+                    Try
+                        Dim ParameterForDeletion As String = focusedView.GetRowCellValue(focusedView.FocusedRowHandle, "PARAMETER1").ToString
+                        SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                        SplashScreenManager.Default.SetWaitFormCaption("Starting Parameter deletion")
+
+                        OpenSqlConnections()
+                        cmd.CommandText = "DECLARE @ID int=<ID_to_DUPLICATE>
+                                           DELETE FROM [PARAMETER] WHERE ID=@ID"
+                        cmd.CommandText = cmd.CommandText.ToString.Replace("<ID_to_DUPLICATE>", ID_Nr_RowValue_All_Parameters)
+                        cmd.CommandText = cmd.CommandText
+                        cmd.ExecuteNonQuery()
+                        SplashScreenManager.CloseForm(False)
+
+                        XtraMessageBox.Show("Parameter:" & ParameterForDeletion & vbNewLine & "successfull deleted", "DELETION FINISHED", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        CloseSqlConnections()
+                        Me.PARAMETERTableAdapter.Fill(Me.PSTOOLDataset.PARAMETER)
+                        Me.PARAMETER_All_TableAdapter.Fill(Me.PSTOOLDataset.PARAMETER_All)
+                        focusedView.RefreshData()
+                        ParameterView.RefreshData()
+                        'focusedView.FocusedRowHandle = GetFocusedRow
+
+                    Catch ex As Exception
+                        SplashScreenManager.CloseForm(False)
+                        CloseSqlConnections()
+                        XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
+            End If
+        End If
+    End Sub
 End Class

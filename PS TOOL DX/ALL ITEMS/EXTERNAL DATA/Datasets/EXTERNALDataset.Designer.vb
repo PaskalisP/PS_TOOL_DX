@@ -2104,6 +2104,8 @@ Partial Public Class EXTERNALDataset
         
         Private columnEXCHANGE_RATE_DATE As Global.System.Data.DataColumn
         
+        Private columnYieldDaily As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -2180,6 +2182,14 @@ Partial Public Class EXTERNALDataset
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property YieldDailyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnYieldDaily
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2216,9 +2226,9 @@ Partial Public Class EXTERNALDataset
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddEXCHANGE_RATES_ECBRow(ByVal CURRENCY_CODE As String, ByVal CURRENCY_NAME As String, ByVal CURRENCY_RATE As Double, ByVal EXCHANGE_RATE_DATE As Date) As EXCHANGE_RATES_ECBRow
+        Public Overloads Function AddEXCHANGE_RATES_ECBRow(ByVal CURRENCY_CODE As String, ByVal CURRENCY_NAME As String, ByVal CURRENCY_RATE As Double, ByVal EXCHANGE_RATE_DATE As Date, ByVal YieldDaily As Double) As EXCHANGE_RATES_ECBRow
             Dim rowEXCHANGE_RATES_ECBRow As EXCHANGE_RATES_ECBRow = CType(Me.NewRow,EXCHANGE_RATES_ECBRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, CURRENCY_CODE, CURRENCY_NAME, CURRENCY_RATE, EXCHANGE_RATE_DATE}
+            Dim columnValuesArray() As Object = New Object() {Nothing, CURRENCY_CODE, CURRENCY_NAME, CURRENCY_RATE, EXCHANGE_RATE_DATE, YieldDaily}
             rowEXCHANGE_RATES_ECBRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowEXCHANGE_RATES_ECBRow)
             Return rowEXCHANGE_RATES_ECBRow
@@ -2252,6 +2262,7 @@ Partial Public Class EXTERNALDataset
             Me.columnCURRENCY_NAME = MyBase.Columns("CURRENCY NAME")
             Me.columnCURRENCY_RATE = MyBase.Columns("CURRENCY RATE")
             Me.columnEXCHANGE_RATE_DATE = MyBase.Columns("EXCHANGE RATE DATE")
+            Me.columnYieldDaily = MyBase.Columns("YieldDaily")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2267,6 +2278,8 @@ Partial Public Class EXTERNALDataset
             MyBase.Columns.Add(Me.columnCURRENCY_RATE)
             Me.columnEXCHANGE_RATE_DATE = New Global.System.Data.DataColumn("EXCHANGE RATE DATE", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEXCHANGE_RATE_DATE)
+            Me.columnYieldDaily = New Global.System.Data.DataColumn("YieldDaily", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnYieldDaily)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AutoIncrement = true
             Me.columnID.AutoIncrementSeed = -1
@@ -7977,6 +7990,21 @@ Partial Public Class EXTERNALDataset
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property YieldDaily() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tableEXCHANGE_RATES_ECB.YieldDailyColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'YieldDaily' in table 'EXCHANGE RATES ECB' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEXCHANGE_RATES_ECB.YieldDailyColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsCURRENCY_CODENull() As Boolean
             Return Me.IsNull(Me.tableEXCHANGE_RATES_ECB.CURRENCY_CODEColumn)
         End Function
@@ -8021,6 +8049,18 @@ Partial Public Class EXTERNALDataset
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetEXCHANGE_RATE_DATENull()
             Me(Me.tableEXCHANGE_RATES_ECB.EXCHANGE_RATE_DATEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsYieldDailyNull() As Boolean
+            Return Me.IsNull(Me.tableEXCHANGE_RATES_ECB.YieldDailyColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetYieldDailyNull()
+            Me(Me.tableEXCHANGE_RATES_ECB.YieldDailyColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -15587,6 +15627,7 @@ Namespace EXTERNALDatasetTableAdapters
             tableMapping.ColumnMappings.Add("CURRENCY NAME", "CURRENCY NAME")
             tableMapping.ColumnMappings.Add("CURRENCY RATE", "CURRENCY RATE")
             tableMapping.ColumnMappings.Add("EXCHANGE RATE DATE", "EXCHANGE RATE DATE")
+            tableMapping.ColumnMappings.Add("YieldDaily", "YieldDaily")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -15596,7 +15637,8 @@ Namespace EXTERNALDatasetTableAdapters
                 "ENCY NAME] = @Original_CURRENCY_NAME)) AND ((@IsNull_CURRENCY_RATE = 1 AND [CURR"& _ 
                 "ENCY RATE] IS NULL) OR ([CURRENCY RATE] = @Original_CURRENCY_RATE)) AND ((@IsNul"& _ 
                 "l_EXCHANGE_RATE_DATE = 1 AND [EXCHANGE RATE DATE] IS NULL) OR ([EXCHANGE RATE DA"& _ 
-                "TE] = @Original_EXCHANGE_RATE_DATE)))"
+                "TE] = @Original_EXCHANGE_RATE_DATE)) AND ((@IsNull_YieldDaily = 1 AND [YieldDail"& _ 
+                "y] IS NULL) OR ([YieldDaily] = @Original_YieldDaily)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CURRENCY_CODE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY CODE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -15607,32 +15649,37 @@ Namespace EXTERNALDatasetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CURRENCY_RATE", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY RATE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_EXCHANGE_RATE_DATE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EXCHANGE RATE DATE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EXCHANGE_RATE_DATE", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EXCHANGE RATE DATE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_YieldDaily", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "YieldDaily", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_YieldDaily", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "YieldDaily", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [EXCHANGE RATES ECB] ([CURRENCY CODE], [CURRENCY NAME], [CURRENCY RAT"& _ 
-                "E], [EXCHANGE RATE DATE]) VALUES (@CURRENCY_CODE, @CURRENCY_NAME, @CURRENCY_RATE"& _ 
-                ", @EXCHANGE_RATE_DATE)"
+                "E], [EXCHANGE RATE DATE], [YieldDaily]) VALUES (@CURRENCY_CODE, @CURRENCY_NAME, "& _ 
+                "@CURRENCY_RATE, @EXCHANGE_RATE_DATE, @YieldDaily)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CURRENCY_CODE", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY CODE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CURRENCY_NAME", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CURRENCY_RATE", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY RATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EXCHANGE_RATE_DATE", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EXCHANGE RATE DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@YieldDaily", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "YieldDaily", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [EXCHANGE RATES ECB] SET [CURRENCY CODE] = @CURRENCY_CODE, [CURRENCY NAME]"& _ 
                 " = @CURRENCY_NAME, [CURRENCY RATE] = @CURRENCY_RATE, [EXCHANGE RATE DATE] = @EXC"& _ 
-                "HANGE_RATE_DATE WHERE (([ID] = @Original_ID) AND ((@IsNull_CURRENCY_CODE = 1 AND"& _ 
-                " [CURRENCY CODE] IS NULL) OR ([CURRENCY CODE] = @Original_CURRENCY_CODE)) AND (("& _ 
-                "@IsNull_CURRENCY_NAME = 1 AND [CURRENCY NAME] IS NULL) OR ([CURRENCY NAME] = @Or"& _ 
-                "iginal_CURRENCY_NAME)) AND ((@IsNull_CURRENCY_RATE = 1 AND [CURRENCY RATE] IS NU"& _ 
-                "LL) OR ([CURRENCY RATE] = @Original_CURRENCY_RATE)) AND ((@IsNull_EXCHANGE_RATE_"& _ 
-                "DATE = 1 AND [EXCHANGE RATE DATE] IS NULL) OR ([EXCHANGE RATE DATE] = @Original_"& _ 
-                "EXCHANGE_RATE_DATE)))"
+                "HANGE_RATE_DATE, [YieldDaily] = @YieldDaily WHERE (([ID] = @Original_ID) AND ((@"& _ 
+                "IsNull_CURRENCY_CODE = 1 AND [CURRENCY CODE] IS NULL) OR ([CURRENCY CODE] = @Ori"& _ 
+                "ginal_CURRENCY_CODE)) AND ((@IsNull_CURRENCY_NAME = 1 AND [CURRENCY NAME] IS NUL"& _ 
+                "L) OR ([CURRENCY NAME] = @Original_CURRENCY_NAME)) AND ((@IsNull_CURRENCY_RATE ="& _ 
+                " 1 AND [CURRENCY RATE] IS NULL) OR ([CURRENCY RATE] = @Original_CURRENCY_RATE)) "& _ 
+                "AND ((@IsNull_EXCHANGE_RATE_DATE = 1 AND [EXCHANGE RATE DATE] IS NULL) OR ([EXCH"& _ 
+                "ANGE RATE DATE] = @Original_EXCHANGE_RATE_DATE)) AND ((@IsNull_YieldDaily = 1 AN"& _ 
+                "D [YieldDaily] IS NULL) OR ([YieldDaily] = @Original_YieldDaily)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CURRENCY_CODE", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY CODE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CURRENCY_NAME", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY NAME", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CURRENCY_RATE", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY RATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@EXCHANGE_RATE_DATE", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EXCHANGE RATE DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@YieldDaily", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "YieldDaily", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_CURRENCY_CODE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY CODE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CURRENCY_CODE", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY CODE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -15642,6 +15689,8 @@ Namespace EXTERNALDatasetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_CURRENCY_RATE", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "CURRENCY RATE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_EXCHANGE_RATE_DATE", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EXCHANGE RATE DATE", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_EXCHANGE_RATE_DATE", Global.System.Data.SqlDbType.DateTime, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "EXCHANGE RATE DATE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_YieldDaily", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "YieldDaily", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_YieldDaily", Global.System.Data.SqlDbType.Float, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "YieldDaily", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -15658,23 +15707,22 @@ Namespace EXTERNALDatasetTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID, [CURRENCY CODE], [CURRENCY NAME], [CURRENCY RATE], [EXCHANGE RA"& _ 
-                "TE DATE]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [EXCHANGE RATES ECB]"
+                "TE DATE], YieldDaily"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [EXCHANGE RATES ECB]"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
             Me._commandCollection(1).CommandText = "SELECT [CURRENCY CODE], [CURRENCY NAME], [CURRENCY RATE], [EXCHANGE RATE DATE], I"& _ 
-                "D FROM [EXCHANGE RATES ECB] WHERE ([EXCHANGE RATE DATE] >= @Param1) AND ([EXCHAN"& _ 
-                "GE RATE DATE] <= @Param2)"
+                "D, YieldDaily FROM [EXCHANGE RATES ECB] WHERE ([EXCHANGE RATE DATE] >= @Param1) "& _ 
+                "AND ([EXCHANGE RATE DATE] <= @Param2)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param1", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "EXCHANGE RATE DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param2", Global.System.Data.SqlDbType.DateTime, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "EXCHANGE RATE DATE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        [CURRENCY CODE], [CURRENCY NAME], [CURRENCY RATE], [EXCHANGE RATE D"& _ 
-                "ATE], ID"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            [EXCHANGE RATES ECB]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ([EXCHANGE RATE DAT"& _ 
-                "E] IN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             (SELECT        MAX([EXCHANGE RATE DATE]) AS "& _ 
-                "Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               FROM            [EXCHANGE RATES ECB] AS [E"& _ 
-                "XCHANGE RATES ECB_1]))"
+            Me._commandCollection(2).CommandText = "SELECT [CURRENCY CODE], [CURRENCY NAME], [CURRENCY RATE], [EXCHANGE RATE DATE], I"& _ 
+                "D, YieldDaily FROM [EXCHANGE RATES ECB] WHERE ([EXCHANGE RATE DATE] IN (SELECT M"& _ 
+                "AX([EXCHANGE RATE DATE]) AS Expr1 FROM [EXCHANGE RATES ECB] AS [EXCHANGE RATES E"& _ 
+                "CB_1]))"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -15802,7 +15850,7 @@ Namespace EXTERNALDatasetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_CURRENCY_CODE As String, ByVal Original_CURRENCY_NAME As String, ByVal Original_CURRENCY_RATE As Global.System.Nullable(Of Double), ByVal Original_EXCHANGE_RATE_DATE As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_CURRENCY_CODE As String, ByVal Original_CURRENCY_NAME As String, ByVal Original_CURRENCY_RATE As Global.System.Nullable(Of Double), ByVal Original_EXCHANGE_RATE_DATE As Global.System.Nullable(Of Date), ByVal Original_YieldDaily As Global.System.Nullable(Of Double)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
             If (Original_CURRENCY_CODE Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -15832,6 +15880,13 @@ Namespace EXTERNALDatasetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
+            If (Original_YieldDaily.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_YieldDaily.Value,Double)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -15851,7 +15906,7 @@ Namespace EXTERNALDatasetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal CURRENCY_CODE As String, ByVal CURRENCY_NAME As String, ByVal CURRENCY_RATE As Global.System.Nullable(Of Double), ByVal EXCHANGE_RATE_DATE As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Insert(ByVal CURRENCY_CODE As String, ByVal CURRENCY_NAME As String, ByVal CURRENCY_RATE As Global.System.Nullable(Of Double), ByVal EXCHANGE_RATE_DATE As Global.System.Nullable(Of Date), ByVal YieldDaily As Global.System.Nullable(Of Double)) As Integer
             If (CURRENCY_CODE Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -15872,6 +15927,11 @@ Namespace EXTERNALDatasetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
+            If (YieldDaily.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(YieldDaily.Value,Double)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -15891,7 +15951,7 @@ Namespace EXTERNALDatasetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal CURRENCY_CODE As String, ByVal CURRENCY_NAME As String, ByVal CURRENCY_RATE As Global.System.Nullable(Of Double), ByVal EXCHANGE_RATE_DATE As Global.System.Nullable(Of Date), ByVal Original_ID As Integer, ByVal Original_CURRENCY_CODE As String, ByVal Original_CURRENCY_NAME As String, ByVal Original_CURRENCY_RATE As Global.System.Nullable(Of Double), ByVal Original_EXCHANGE_RATE_DATE As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Update(ByVal CURRENCY_CODE As String, ByVal CURRENCY_NAME As String, ByVal CURRENCY_RATE As Global.System.Nullable(Of Double), ByVal EXCHANGE_RATE_DATE As Global.System.Nullable(Of Date), ByVal YieldDaily As Global.System.Nullable(Of Double), ByVal Original_ID As Integer, ByVal Original_CURRENCY_CODE As String, ByVal Original_CURRENCY_NAME As String, ByVal Original_CURRENCY_RATE As Global.System.Nullable(Of Double), ByVal Original_EXCHANGE_RATE_DATE As Global.System.Nullable(Of Date), ByVal Original_YieldDaily As Global.System.Nullable(Of Double)) As Integer
             If (CURRENCY_CODE Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -15912,34 +15972,46 @@ Namespace EXTERNALDatasetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_ID,Integer)
-            If (Original_CURRENCY_CODE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            If (YieldDaily.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(YieldDaily.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_CURRENCY_CODE,String)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_ID,Integer)
+            If (Original_CURRENCY_CODE Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_CURRENCY_CODE,String)
             End If
             If (Original_CURRENCY_NAME Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_CURRENCY_NAME,String)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_CURRENCY_NAME,String)
             End If
             If (Original_CURRENCY_RATE.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_CURRENCY_RATE.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_CURRENCY_RATE.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
             If (Original_EXCHANGE_RATE_DATE.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_EXCHANGE_RATE_DATE.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_EXCHANGE_RATE_DATE.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            End If
+            If (Original_YieldDaily.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_YieldDaily.Value,Double)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

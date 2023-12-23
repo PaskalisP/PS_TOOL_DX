@@ -76,15 +76,16 @@ Partial Class ExchangeRatesECB
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
-        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem3 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SimpleSeparator1 = New DevExpress.XtraLayout.SimpleSeparator()
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem5 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PrintingSystem1 = New DevExpress.XtraPrinting.PrintingSystem(Me.components)
         Me.PrintableComponentLink1 = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
+        Me.colYieldDaily = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.EXTERNALDataset, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EXCHANGE_RATES_ECBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -119,13 +120,13 @@ Partial Class ExchangeRatesECB
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -264,7 +265,7 @@ Partial Class ExchangeRatesECB
         Me.ExchangeRatesECBBaseView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.ExchangeRatesECBBaseView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Cyan
         Me.ExchangeRatesECBBaseView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.ExchangeRatesECBBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCURRENCYCODE, Me.colCURRENCYNAME, Me.colCURRENCYRATE, Me.colEXCHANGERATEDATE, Me.GridColumn1})
+        Me.ExchangeRatesECBBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colCURRENCYCODE, Me.colCURRENCYNAME, Me.colCURRENCYRATE, Me.colEXCHANGERATEDATE, Me.GridColumn1, Me.colYieldDaily})
         Me.ExchangeRatesECBBaseView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.ExchangeRatesECBBaseView.GridControl = Me.GridControl2
         Me.ExchangeRatesECBBaseView.GroupCount = 1
@@ -705,19 +706,6 @@ Partial Class ExchangeRatesECB
         Me.EmptySpaceItem1.Size = New System.Drawing.Size(496, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
-        'LayoutControlItem1
-        '
-        Me.LayoutControlItem1.Control = Me.ExchangeRates_Print_Export_btn
-        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
-        Me.LayoutControlItem1.Location = New System.Drawing.Point(475, 0)
-        Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(116, 26)
-        Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
-        Me.LayoutControlItem1.TextVisible = False
-        '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.ExchangeRatesOCBSreport_btn
@@ -789,6 +777,19 @@ Partial Class ExchangeRatesECB
         Me.LayoutControlItem5.Text = "Date from"
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(48, 13)
         '
+        'LayoutControlItem1
+        '
+        Me.LayoutControlItem1.Control = Me.ExchangeRates_Print_Export_btn
+        Me.LayoutControlItem1.CustomizationFormText = "LayoutControlItem1"
+        Me.LayoutControlItem1.Location = New System.Drawing.Point(475, 0)
+        Me.LayoutControlItem1.MaxSize = New System.Drawing.Size(116, 26)
+        Me.LayoutControlItem1.MinSize = New System.Drawing.Size(116, 26)
+        Me.LayoutControlItem1.Name = "LayoutControlItem1"
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(116, 26)
+        Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem1.TextVisible = False
+        '
         'PrintingSystem1
         '
         Me.PrintingSystem1.Links.AddRange(New Object() {Me.PrintableComponentLink1})
@@ -799,6 +800,15 @@ Partial Class ExchangeRatesECB
         Me.PrintableComponentLink1.Landscape = True
         Me.PrintableComponentLink1.PaperKind = System.Drawing.Printing.PaperKind.A4
         Me.PrintableComponentLink1.PrintingSystemBase = Me.PrintingSystem1
+        '
+        'colYieldDaily
+        '
+        Me.colYieldDaily.DisplayFormat.FormatString = "n8"
+        Me.colYieldDaily.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colYieldDaily.FieldName = "YieldDaily"
+        Me.colYieldDaily.Name = "colYieldDaily"
+        Me.colYieldDaily.OptionsColumn.ReadOnly = True
+        Me.colYieldDaily.Width = 156
         '
         'ExchangeRatesECB
         '
@@ -845,13 +855,13 @@ Partial Class ExchangeRatesECB
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SimpleSeparator1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -920,4 +930,5 @@ Partial Class ExchangeRatesECB
     Friend WithEvents colEXCHANGERATEDATE As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents PrintableComponentLink1 As DevExpress.XtraPrinting.PrintableComponentLink
     Friend WithEvents GridColumn1 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents colYieldDaily As DevExpress.XtraGrid.Columns.GridColumn
 End Class

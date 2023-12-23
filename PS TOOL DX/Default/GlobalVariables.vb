@@ -50,6 +50,8 @@ Module GlobalVariables
     Public dt5 As System.Data.DataTable
     Public daInfo As New SqlDataAdapter
     Public dtInfo As New DataTable
+    Public XmlSqlDataSet As New DataSet()
+    Public XmlSqlDataTable As New DataTable()
 
     Public daSqlQueries As SqlDataAdapter
     Public dtSqlQueries As System.Data.DataTable

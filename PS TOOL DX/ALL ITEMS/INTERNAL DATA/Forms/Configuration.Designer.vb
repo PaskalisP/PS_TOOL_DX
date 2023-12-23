@@ -133,6 +133,18 @@ Partial Class Configuration
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonStatusBar1 = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
+        Me.ConfigurationParameterView_PopupMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.DuplicateCurrentParameter_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.BarManager1 = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.barDockControlTop = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlBottom = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlLeft = New DevExpress.XtraBars.BarDockControl()
+        Me.barDockControlRight = New DevExpress.XtraBars.BarDockControl()
+        Me.DuplicateCurrentParameterAll_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.DeleteParameterAll_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.SQL_DuplicateNextPosition_BarButtonItem = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbiExportCurrentSqlParameter = New DevExpress.XtraBars.BarButtonItem()
+        Me.ConfigurationParameterViewAll_PopupMenu = New DevExpress.XtraBars.PopupMenu(Me.components)
         CType(Me.DepartmentsParameterView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DEPARTMENT_CODERepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VALIDRepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,6 +186,9 @@ Partial Class Configuration
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ConfigurationParameterView_PopupMenu, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ConfigurationParameterViewAll_PopupMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DepartmentsParameterView
@@ -1482,6 +1497,100 @@ Partial Class Configuration
         Me.RibbonPage2.Name = "RibbonPage2"
         Me.RibbonPage2.Text = "RibbonPage2"
         '
+        'ConfigurationParameterView_PopupMenu
+        '
+        Me.ConfigurationParameterView_PopupMenu.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.DuplicateCurrentParameter_BarButtonItem)})
+        Me.ConfigurationParameterView_PopupMenu.Manager = Me.BarManager1
+        Me.ConfigurationParameterView_PopupMenu.Name = "ConfigurationParameterView_PopupMenu"
+        '
+        'DuplicateCurrentParameter_BarButtonItem
+        '
+        Me.DuplicateCurrentParameter_BarButtonItem.Caption = "Duplicate current Parameter"
+        Me.DuplicateCurrentParameter_BarButtonItem.Id = 2
+        Me.DuplicateCurrentParameter_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("DuplicateCurrentParameter_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.DuplicateCurrentParameter_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("DuplicateCurrentParameter_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.DuplicateCurrentParameter_BarButtonItem.Name = "DuplicateCurrentParameter_BarButtonItem"
+        '
+        'BarManager1
+        '
+        Me.BarManager1.DockControls.Add(Me.barDockControlTop)
+        Me.BarManager1.DockControls.Add(Me.barDockControlBottom)
+        Me.BarManager1.DockControls.Add(Me.barDockControlLeft)
+        Me.BarManager1.DockControls.Add(Me.barDockControlRight)
+        Me.BarManager1.Form = Me
+        Me.BarManager1.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.DuplicateCurrentParameterAll_BarButtonItem, Me.DeleteParameterAll_BarButtonItem, Me.DuplicateCurrentParameter_BarButtonItem, Me.SQL_DuplicateNextPosition_BarButtonItem, Me.bbiExportCurrentSqlParameter})
+        Me.BarManager1.MaxItemId = 5
+        '
+        'barDockControlTop
+        '
+        Me.barDockControlTop.CausesValidation = False
+        Me.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.barDockControlTop.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlTop.Manager = Me.BarManager1
+        Me.barDockControlTop.Size = New System.Drawing.Size(1432, 0)
+        '
+        'barDockControlBottom
+        '
+        Me.barDockControlBottom.CausesValidation = False
+        Me.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.barDockControlBottom.Location = New System.Drawing.Point(0, 598)
+        Me.barDockControlBottom.Manager = Me.BarManager1
+        Me.barDockControlBottom.Size = New System.Drawing.Size(1432, 0)
+        '
+        'barDockControlLeft
+        '
+        Me.barDockControlLeft.CausesValidation = False
+        Me.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left
+        Me.barDockControlLeft.Location = New System.Drawing.Point(0, 0)
+        Me.barDockControlLeft.Manager = Me.BarManager1
+        Me.barDockControlLeft.Size = New System.Drawing.Size(0, 598)
+        '
+        'barDockControlRight
+        '
+        Me.barDockControlRight.CausesValidation = False
+        Me.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right
+        Me.barDockControlRight.Location = New System.Drawing.Point(1432, 0)
+        Me.barDockControlRight.Manager = Me.BarManager1
+        Me.barDockControlRight.Size = New System.Drawing.Size(0, 598)
+        '
+        'DuplicateCurrentParameterAll_BarButtonItem
+        '
+        Me.DuplicateCurrentParameterAll_BarButtonItem.Caption = "Duplicate current Parameter"
+        Me.DuplicateCurrentParameterAll_BarButtonItem.Id = 0
+        Me.DuplicateCurrentParameterAll_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("DuplicateCurrentParameterAll_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.DuplicateCurrentParameterAll_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("DuplicateCurrentParameterAll_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.DuplicateCurrentParameterAll_BarButtonItem.Name = "DuplicateCurrentParameterAll_BarButtonItem"
+        '
+        'DeleteParameterAll_BarButtonItem
+        '
+        Me.DeleteParameterAll_BarButtonItem.Caption = "Delete selected parameter"
+        Me.DeleteParameterAll_BarButtonItem.Id = 1
+        Me.DeleteParameterAll_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.DeleteParameterAll_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_AddToPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.DeleteParameterAll_BarButtonItem.Name = "DeleteParameterAll_BarButtonItem"
+        '
+        'SQL_DuplicateNextPosition_BarButtonItem
+        '
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Caption = "Duplicate current SQL Parameter (in the next Position)"
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Id = 3
+        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.Image"), System.Drawing.Image)
+        Me.SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage = CType(resources.GetObject("SQL_DuplicateNextPosition_BarButtonItem.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.SQL_DuplicateNextPosition_BarButtonItem.Name = "SQL_DuplicateNextPosition_BarButtonItem"
+        '
+        'bbiExportCurrentSqlParameter
+        '
+        Me.bbiExportCurrentSqlParameter.Caption = "Export current SQL Parameter"
+        Me.bbiExportCurrentSqlParameter.Id = 4
+        Me.bbiExportCurrentSqlParameter.ImageOptions.Image = CType(resources.GetObject("bbiExportCurrentSqlParameter.ImageOptions.Image"), System.Drawing.Image)
+        Me.bbiExportCurrentSqlParameter.ImageOptions.LargeImage = CType(resources.GetObject("bbiExportCurrentSqlParameter.ImageOptions.LargeImage"), System.Drawing.Image)
+        Me.bbiExportCurrentSqlParameter.Name = "bbiExportCurrentSqlParameter"
+        '
+        'ConfigurationParameterViewAll_PopupMenu
+        '
+        Me.ConfigurationParameterViewAll_PopupMenu.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.DuplicateCurrentParameterAll_BarButtonItem), New DevExpress.XtraBars.LinkPersistInfo(Me.DeleteParameterAll_BarButtonItem, True)})
+        Me.ConfigurationParameterViewAll_PopupMenu.Manager = Me.BarManager1
+        Me.ConfigurationParameterViewAll_PopupMenu.Name = "ConfigurationParameterViewAll_PopupMenu"
+        '
         'Configuration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1490,6 +1599,10 @@ Partial Class Configuration
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.RibbonStatusBar1)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.Controls.Add(Me.barDockControlLeft)
+        Me.Controls.Add(Me.barDockControlRight)
+        Me.Controls.Add(Me.barDockControlBottom)
+        Me.Controls.Add(Me.barDockControlTop)
         Me.IconOptions.Icon = CType(resources.GetObject("Configuration.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "Configuration"
@@ -1539,6 +1652,9 @@ Partial Class Configuration
         CType(Me.LayoutControlGroup3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RibbonControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ConfigurationParameterView_PopupMenu, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ConfigurationParameterViewAll_PopupMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1653,4 +1769,16 @@ Partial Class Configuration
     Friend WithEvents colNPARAMETER4 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colNPARAMETER31 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colNPARAMETER41 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ConfigurationParameterView_PopupMenu As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents DuplicateCurrentParameter_BarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents BarManager1 As DevExpress.XtraBars.BarManager
+    Friend WithEvents barDockControlTop As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlBottom As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlLeft As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents barDockControlRight As DevExpress.XtraBars.BarDockControl
+    Friend WithEvents DuplicateCurrentParameterAll_BarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents DeleteParameterAll_BarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents SQL_DuplicateNextPosition_BarButtonItem As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbiExportCurrentSqlParameter As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents ConfigurationParameterViewAll_PopupMenu As DevExpress.XtraBars.PopupMenu
 End Class

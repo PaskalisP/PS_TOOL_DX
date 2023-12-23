@@ -251,6 +251,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_InterestRateRisk_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator1 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.RISKCONTROL_InterestRateRisk_Calc3_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.AccordionControlSeparator43 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.AccordionControlSeparator6 = New DevExpress.XtraBars.Navigation.AccordionControlSeparator()
         Me.RISKCONTROL_BUSINESSTYPES_GROUP_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -273,6 +274,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_ObligorGratesRatting_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CustomerRating_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_WeightingFactors_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.RISKCONTROL_InterestRateRisk_Parameters_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CashPledge_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -465,6 +467,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.AlertControl_NewUser_ActiveDirectory = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.AlertControl_General_Info = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.LogoImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2540,14 +2543,14 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_GROUP_Element
         '
-        Me.RISKCONTROL_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_INTERESTRISK_GROUP_Element, Me.AccordionControlSeparator6, Me.RISKCONTROL_BUSINESSTYPES_GROUP_Element, Me.AccordionControlSeparator7, Me.RISKCONTROL_CreditRiskMAK_Element, Me.RISKCONTROL_EL_UL_GA_Element, Me.RISKCONTROL_CAR_Calculation_Element, Me.RISKCONTROL_CreditSpreadRiskCalculation_Element, Me.RISKCONTROL_CreditMigrationRiskCalculation_Element, Me.RISKCONTROL_CurrencyRiskCalculation_Element, Me.RISKCONTROL_RLDC_Element, Me.RISKCONTROL_ScenarioAnalyzes_Element, Me.RISKCONTROL_RiskStrategyPlanningProcess_Element, Me.RISKCONTROL_StressTestHO_Element, Me.AccordionControlSeparator13, Me.RISKCONTROL_PARAMETERS_GROUP_Element, Me.AccordionControlSeparator14, Me.RISKCONTROL_IncidentsDatabase_Element})
+        Me.RISKCONTROL_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_INTERESTRISK_GROUP_Element, Me.AccordionControlSeparator6, Me.RISKCONTROL_BUSINESSTYPES_GROUP_Element, Me.AccordionControlSeparator7, Me.RISKCONTROL_CreditRiskMAK_Element, Me.RISKCONTROL_EL_UL_GA_Element, Me.RISKCONTROL_CAR_Calculation_Element, Me.RISKCONTROL_CreditSpreadRiskCalculation_Element, Me.RISKCONTROL_CreditMigrationRiskCalculation_Element, Me.RISKCONTROL_CurrencyRiskCalculation_Element, Me.RISKCONTROL_RiskBearingCapacityCalc_Element, Me.RISKCONTROL_RLDC_Element, Me.RISKCONTROL_ScenarioAnalyzes_Element, Me.RISKCONTROL_RiskStrategyPlanningProcess_Element, Me.RISKCONTROL_StressTestHO_Element, Me.AccordionControlSeparator13, Me.RISKCONTROL_PARAMETERS_GROUP_Element, Me.AccordionControlSeparator14, Me.RISKCONTROL_IncidentsDatabase_Element})
         Me.RISKCONTROL_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_GROUP_Element.Name = "RISKCONTROL_GROUP_Element"
         Me.RISKCONTROL_GROUP_Element.Text = "RISK CONTROLLING"
         '
         'RISKCONTROL_INTERESTRISK_GROUP_Element
         '
-        Me.RISKCONTROL_INTERESTRISK_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_InterestRateRisk_Element, Me.AccordionControlSeparator1, Me.RISKCONTROL_InterestRateRisk_Calc3_Element, Me.RISKCONTROL_InterestRateRisk_Calc2_Element})
+        Me.RISKCONTROL_INTERESTRISK_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_InterestRateRisk_Element, Me.AccordionControlSeparator1, Me.RISKCONTROL_InterestRateRisk_Calc3_Element, Me.AccordionControlSeparator43, Me.RISKCONTROL_InterestRateRisk_Calc2_Element})
         Me.RISKCONTROL_INTERESTRISK_GROUP_Element.Expanded = True
         Me.RISKCONTROL_INTERESTRISK_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_INTERESTRISK_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_INTERESTRISK_GROUP_Element.Name = "RISKCONTROL_INTERESTRISK_GROUP_Element"
@@ -2567,22 +2570,25 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_InterestRateRisk_Calc3_Element
         '
-        Me.RISKCONTROL_InterestRateRisk_Calc3_Element.Hint = "Displays the daily calculated Interest Rate Risk (as from 31.12.2018-Calulation 3" &
-    ")"
+        Me.RISKCONTROL_InterestRateRisk_Calc3_Element.Hint = "Displays the daily calculated Interest Rate Risk (as from 31.12.2018 till 31.12.2" &
+    "023-Calulation 3)"
         Me.RISKCONTROL_InterestRateRisk_Calc3_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_InterestRateRisk_Calc3_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_InterestRateRisk_Calc3_Element.Name = "RISKCONTROL_InterestRateRisk_Calc3_Element"
         Me.RISKCONTROL_InterestRateRisk_Calc3_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.RISKCONTROL_InterestRateRisk_Calc3_Element.Text = "Interest Rate Risk (as from 31.12.2018)"
+        Me.RISKCONTROL_InterestRateRisk_Calc3_Element.Text = "Interest Rate Risk (as from 31.12.2018 till 31.12.2023)"
+        '
+        'AccordionControlSeparator43
+        '
+        Me.AccordionControlSeparator43.Name = "AccordionControlSeparator43"
         '
         'RISKCONTROL_InterestRateRisk_Calc2_Element
         '
-        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Hint = "Displays the daily calculated Interest Rate Risk Amount for Risk Bearing Capacity" &
-    " (as from 31.12.2018 - Calculation 2)"
+        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Hint = "Displays the daily calculated Interest Rate Risk (as from 30.12.2022-NII and EVE " &
+    "Method)"
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_InterestRateRisk_Calc2_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Name = "RISKCONTROL_InterestRateRisk_Calc2_Element"
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Text = "Interest Rate Risk RBC Amount (as from 31.12.2018)"
-        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Visible = False
+        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Text = "Interest Rate Risk (as from 31.12.2023)"
         '
         'AccordionControlSeparator6
         '
@@ -2669,11 +2675,11 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_CurrencyRiskCalculation_Element
         '
-        Me.RISKCONTROL_CurrencyRiskCalculation_Element.Hint = "Display/Calculate the daily CURRENCY RISK"
+        Me.RISKCONTROL_CurrencyRiskCalculation_Element.Hint = "Displays the daily CURRENCY RISK calculations (Market Risk - VaR approach)"
         Me.RISKCONTROL_CurrencyRiskCalculation_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_CurrencyRiskCalculation_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_CurrencyRiskCalculation_Element.Name = "RISKCONTROL_CurrencyRiskCalculation_Element"
         Me.RISKCONTROL_CurrencyRiskCalculation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.RISKCONTROL_CurrencyRiskCalculation_Element.Text = "Currency Risk calculation"
+        Me.RISKCONTROL_CurrencyRiskCalculation_Element.Text = "Currency Risk Calculation"
         '
         'RISKCONTROL_RLDC_Element
         '
@@ -2714,7 +2720,7 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_PARAMETERS_GROUP_Element
         '
-        Me.RISKCONTROL_PARAMETERS_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_ObligorGratesRatting_Element, Me.RISKCONTROL_CustomerRating_Element, Me.RISKCONTROL_WeightingFactors_Element, Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element, Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element, Me.RISKCONTROL_CashPledge_Element})
+        Me.RISKCONTROL_PARAMETERS_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.RISKCONTROL_ObligorGratesRatting_Element, Me.RISKCONTROL_CustomerRating_Element, Me.RISKCONTROL_WeightingFactors_Element, Me.RISKCONTROL_InterestRateRisk_Parameters_Element, Me.RISKCONTROL_CreditSpreadRisk_Parameters_Element, Me.RISKCONTROL_CreditSpreadRisk_Correlations_Element, Me.RISKCONTROL_CashPledge_Element})
         Me.RISKCONTROL_PARAMETERS_GROUP_Element.Expanded = True
         Me.RISKCONTROL_PARAMETERS_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_PARAMETERS_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_PARAMETERS_GROUP_Element.Name = "RISKCONTROL_PARAMETERS_GROUP_Element"
@@ -2744,6 +2750,15 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_WeightingFactors_Element.Name = "RISKCONTROL_WeightingFactors_Element"
         Me.RISKCONTROL_WeightingFactors_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.RISKCONTROL_WeightingFactors_Element.Text = "Yield Curves / Weighting Factors"
+        '
+        'RISKCONTROL_InterestRateRisk_Parameters_Element
+        '
+        Me.RISKCONTROL_InterestRateRisk_Parameters_Element.Hint = "Add-Modify sizes of Interest Rate Schocks / Standard time buckes (acc. to SRP 31." &
+    "96) / Groups of term rates"
+        Me.RISKCONTROL_InterestRateRisk_Parameters_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_InterestRateRisk_Parameters_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.RISKCONTROL_InterestRateRisk_Parameters_Element.Name = "RISKCONTROL_InterestRateRisk_Parameters_Element"
+        Me.RISKCONTROL_InterestRateRisk_Parameters_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.RISKCONTROL_InterestRateRisk_Parameters_Element.Text = "Interest Rate Risk - Parameters"
         '
         'RISKCONTROL_CreditSpreadRisk_Parameters_Element
         '
@@ -4453,6 +4468,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.LogoImageCollection.Images.SetKeyName(5, "login-logo-Prod.png")
         Me.LogoImageCollection.Images.SetKeyName(6, "login-logo-Prod_ALL.png")
         '
+        'RISKCONTROL_RiskBearingCapacityCalc_Element
+        '
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Hint = "Displays the daily Risk Bearing Capacity Calculation"
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_RiskBearingCapacityCalc_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Name = "RISKCONTROL_RiskBearingCapacityCalc_Element"
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Text = "Risk Bearing Capacity Calculation"
+        '
         'PSTOOL_MAIN_Form
         '
         Me.AllowFormGlass = DevExpress.Utils.DefaultBoolean.[False]
@@ -4894,4 +4917,7 @@ Partial Class PSTOOL_MAIN_Form
     Friend WithEvents bbi_RestartSession As BarButtonItem
     Friend WithEvents RISKCONTROL_CreditMigrationRiskCalculation_Element As Navigation.AccordionControlElement
     Friend WithEvents EDP_SQL_FilesLoad_Element As Navigation.AccordionControlElement
+    Friend WithEvents RISKCONTROL_InterestRateRisk_Parameters_Element As Navigation.AccordionControlElement
+    Friend WithEvents AccordionControlSeparator43 As Navigation.AccordionControlSeparator
+    Friend WithEvents RISKCONTROL_RiskBearingCapacityCalc_Element As Navigation.AccordionControlElement
 End Class

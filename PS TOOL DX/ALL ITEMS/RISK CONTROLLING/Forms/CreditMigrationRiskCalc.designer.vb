@@ -30,6 +30,21 @@ Partial Class CreditMigrationRiskCalc
         Dim ToolTipItem1 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim SuperToolTip2 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem2 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Me.colExpectedValue = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.ToolTipController1 = New DevExpress.Utils.ToolTipController(Me.components)
         Me.ImageCollection1 = New DevExpress.Utils.ImageCollection(Me.components)
@@ -2331,7 +2346,7 @@ Partial Class CreditMigrationRiskCalc
         Me.BusinessDate_BarEditItem.Caption = "Business Date"
         Me.BusinessDate_BarEditItem.CaptionToEditorIndent = 10
         Me.BusinessDate_BarEditItem.Edit = Me.BusinessDate_SearchLookUpEdit
-        Me.BusinessDate_BarEditItem.EditWidth = 150
+        Me.BusinessDate_BarEditItem.EditWidth = 180
         Me.BusinessDate_BarEditItem.Id = 6
         Me.BusinessDate_BarEditItem.ImageOptions.Image = CType(resources.GetObject("BusinessDate_BarEditItem.ImageOptions.Image"), System.Drawing.Image)
         Me.BusinessDate_BarEditItem.ImageOptions.LargeImage = CType(resources.GetObject("BusinessDate_BarEditItem.ImageOptions.LargeImage"), System.Drawing.Image)
@@ -2347,7 +2362,9 @@ Partial Class CreditMigrationRiskCalc
         Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.Options.UseBackColor = True
         Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.Options.UseForeColor = True
         Me.BusinessDate_SearchLookUpEdit.AutoHeight = False
-        Me.BusinessDate_SearchLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        EditorButtonImageOptions3.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.BusinessDate_SearchLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", CType(0, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", CType(1, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Reload", 100, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", CType(2, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.BusinessDate_SearchLookUpEdit.Name = "BusinessDate_SearchLookUpEdit"
         Me.BusinessDate_SearchLookUpEdit.PopupView = Me.BusinessDates_GridView
         Me.BusinessDate_SearchLookUpEdit.ShowClearButton = False

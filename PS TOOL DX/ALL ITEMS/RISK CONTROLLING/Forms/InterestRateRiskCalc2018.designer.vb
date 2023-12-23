@@ -68,9 +68,26 @@ Partial Class InterestRateRiskCalc2018
         Dim SuperToolTip8 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem10 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem8 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject3 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject4 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions2 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject5 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject6 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject7 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject8 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim EditorButtonImageOptions3 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject9 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Me.GridColumn35 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.BandedGridColumn3 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
         Me.colType1 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
         Me.BandedGridColumn4 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colCashFlow = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCURRENCY = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
         Me.GridColumn6 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
         Me.GridColumn7 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
@@ -144,6 +161,8 @@ Partial Class InterestRateRiskCalc2018
         Me.GridColumn22 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn27 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn23 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn34 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn36 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemComboBox5 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.RepositoryItemTextEdit9 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.LayoutView6 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
@@ -412,6 +431,8 @@ Partial Class InterestRateRiskCalc2018
         Me.colIMPORTDATE1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn32 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colIdRateRiskDate1 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colMonthsToEventDate = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colWeightingFactor = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.RepositoryItemComboBox3 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
         Me.RepositoryItemTextEdit5 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
         Me.LayoutView4 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
@@ -738,12 +759,6 @@ Partial Class InterestRateRiskCalc2018
         Me.BehaviorManager1 = New DevExpress.Utils.Behaviors.BehaviorManager(Me.components)
         Me.RATERISK_DATETableAdapter = New PS_TOOL_DX.InterestRateRiskDataSetTableAdapters.RATERISK_DATETableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.InterestRateRiskDataSetTableAdapters.TableAdapterManager()
-        Me.colMonthsToEventDate = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colCashFlow = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.colWeightingFactor = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn34 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn35 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn36 = New DevExpress.XtraGrid.Columns.GridColumn()
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.IRR_AllDates_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1053,6 +1068,14 @@ Partial Class InterestRateRiskCalc2018
         CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
+        'GridColumn35
+        '
+        Me.GridColumn35.Caption = "Cash Flow"
+        Me.GridColumn35.DisplayFormat.FormatString = "n2"
+        Me.GridColumn35.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn35.FieldName = "CashFlow"
+        Me.GridColumn35.Name = "GridColumn35"
+        '
         'BandedGridColumn3
         '
         Me.BandedGridColumn3.AppearanceCell.Options.UseTextOptions = True
@@ -1078,6 +1101,14 @@ Partial Class InterestRateRiskCalc2018
         Me.BandedGridColumn4.Name = "BandedGridColumn4"
         Me.BandedGridColumn4.Visible = True
         Me.BandedGridColumn4.Width = 139
+        '
+        'colCashFlow
+        '
+        Me.colCashFlow.Caption = "Cash Flow"
+        Me.colCashFlow.DisplayFormat.FormatString = "n2"
+        Me.colCashFlow.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colCashFlow.FieldName = "CashFlow"
+        Me.colCashFlow.Name = "colCashFlow"
         '
         'colCURRENCY
         '
@@ -1932,6 +1963,22 @@ Partial Class InterestRateRiskCalc2018
         '
         Me.GridColumn23.FieldName = "IdRateRiskDate"
         Me.GridColumn23.Name = "GridColumn23"
+        '
+        'GridColumn34
+        '
+        Me.GridColumn34.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn34.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn34.Caption = "Months To EventDate"
+        Me.GridColumn34.DisplayFormat.FormatString = "n0"
+        Me.GridColumn34.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn34.FieldName = "MonthsToEventDate"
+        Me.GridColumn34.Name = "GridColumn34"
+        '
+        'GridColumn36
+        '
+        Me.GridColumn36.Caption = "Weighting Factor"
+        Me.GridColumn36.FieldName = "WeightingFactor"
+        Me.GridColumn36.Name = "GridColumn36"
         '
         'RepositoryItemComboBox5
         '
@@ -4646,6 +4693,22 @@ Partial Class InterestRateRiskCalc2018
         '
         Me.colIdRateRiskDate1.FieldName = "IdRateRiskDate"
         Me.colIdRateRiskDate1.Name = "colIdRateRiskDate1"
+        '
+        'colMonthsToEventDate
+        '
+        Me.colMonthsToEventDate.AppearanceCell.Options.UseTextOptions = True
+        Me.colMonthsToEventDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colMonthsToEventDate.Caption = "Months To EventDate"
+        Me.colMonthsToEventDate.DisplayFormat.FormatString = "n0"
+        Me.colMonthsToEventDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colMonthsToEventDate.FieldName = "MonthsToEventDate"
+        Me.colMonthsToEventDate.Name = "colMonthsToEventDate"
+        '
+        'colWeightingFactor
+        '
+        Me.colWeightingFactor.Caption = "Weighting Factor"
+        Me.colWeightingFactor.FieldName = "WeightingFactor"
+        Me.colWeightingFactor.Name = "colWeightingFactor"
         '
         'RepositoryItemComboBox3
         '
@@ -7805,7 +7868,7 @@ Partial Class InterestRateRiskCalc2018
         Me.BusinessDate_BarEditItem.Caption = "Business Date"
         Me.BusinessDate_BarEditItem.CaptionToEditorIndent = 10
         Me.BusinessDate_BarEditItem.Edit = Me.BusinessDate_SearchLookUpEdit
-        Me.BusinessDate_BarEditItem.EditWidth = 150
+        Me.BusinessDate_BarEditItem.EditWidth = 180
         Me.BusinessDate_BarEditItem.Id = 6
         Me.BusinessDate_BarEditItem.ImageOptions.Image = CType(resources.GetObject("BusinessDate_BarEditItem.ImageOptions.Image"), System.Drawing.Image)
         Me.BusinessDate_BarEditItem.ImageOptions.LargeImage = CType(resources.GetObject("BusinessDate_BarEditItem.ImageOptions.LargeImage"), System.Drawing.Image)
@@ -7821,7 +7884,9 @@ Partial Class InterestRateRiskCalc2018
         Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.Options.UseBackColor = True
         Me.BusinessDate_SearchLookUpEdit.AppearanceFocused.Options.UseForeColor = True
         Me.BusinessDate_SearchLookUpEdit.AutoHeight = False
-        Me.BusinessDate_SearchLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        EditorButtonImageOptions3.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter
+        Me.BusinessDate_SearchLookUpEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "", CType(0, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Separator, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "", CType(1, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default]), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Reload", 110, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "", CType(2, Short), Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.BusinessDate_SearchLookUpEdit.Name = "BusinessDate_SearchLookUpEdit"
         Me.BusinessDate_SearchLookUpEdit.PopupView = Me.BusinessDates_GridView
         Me.BusinessDate_SearchLookUpEdit.ShowClearButton = False
@@ -8025,56 +8090,11 @@ Partial Class InterestRateRiskCalc2018
         Me.TableAdapterManager.RATERISK_DELETIONSTableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DETAILS_ALL_DATATableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_DETAILSTableAdapter = Nothing
+        Me.TableAdapterManager.RateRisk_InterestRateSchocksTableAdapter = Nothing
+        Me.TableAdapterManager.RateRisk_ShockTypesValuesTableAdapter = Nothing
+        Me.TableAdapterManager.RateRisk_StandardTimeBucketsTableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_TOTALSTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.InterestRateRiskDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'colMonthsToEventDate
-        '
-        Me.colMonthsToEventDate.AppearanceCell.Options.UseTextOptions = True
-        Me.colMonthsToEventDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.colMonthsToEventDate.Caption = "Months To EventDate"
-        Me.colMonthsToEventDate.DisplayFormat.FormatString = "n0"
-        Me.colMonthsToEventDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colMonthsToEventDate.FieldName = "MonthsToEventDate"
-        Me.colMonthsToEventDate.Name = "colMonthsToEventDate"
-        '
-        'colCashFlow
-        '
-        Me.colCashFlow.Caption = "Cash Flow"
-        Me.colCashFlow.DisplayFormat.FormatString = "n2"
-        Me.colCashFlow.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.colCashFlow.FieldName = "CashFlow"
-        Me.colCashFlow.Name = "colCashFlow"
-        '
-        'colWeightingFactor
-        '
-        Me.colWeightingFactor.Caption = "Weighting Factor"
-        Me.colWeightingFactor.FieldName = "WeightingFactor"
-        Me.colWeightingFactor.Name = "colWeightingFactor"
-        '
-        'GridColumn34
-        '
-        Me.GridColumn34.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn34.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn34.Caption = "Months To EventDate"
-        Me.GridColumn34.DisplayFormat.FormatString = "n0"
-        Me.GridColumn34.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn34.FieldName = "MonthsToEventDate"
-        Me.GridColumn34.Name = "GridColumn34"
-        '
-        'GridColumn35
-        '
-        Me.GridColumn35.Caption = "Cash Flow"
-        Me.GridColumn35.DisplayFormat.FormatString = "n2"
-        Me.GridColumn35.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn35.FieldName = "CashFlow"
-        Me.GridColumn35.Name = "GridColumn35"
-        '
-        'GridColumn36
-        '
-        Me.GridColumn36.Caption = "Weighting Factor"
-        Me.GridColumn36.FieldName = "WeightingFactor"
-        Me.GridColumn36.Name = "GridColumn36"
         '
         'InterestRateRiskCalc2018
         '
@@ -8089,7 +8109,7 @@ Partial Class InterestRateRiskCalc2018
         Me.Name = "InterestRateRiskCalc2018"
         Me.Ribbon = Me.RibbonControl2
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Interest Rate Risk (as from 31.12.2018)"
+        Me.Text = "Interest Rate Risk (as from 31.12.2018 till 31.12.2023)"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit

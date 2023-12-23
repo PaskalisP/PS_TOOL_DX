@@ -89,7 +89,7 @@ Public Class InterestRateRiskCalc2018
             If Me.LayoutControl2.Visible = False Then
                 Me.ViewDetails_SwitchItem.Checked = False
                 Me.LayoutControl2.Visible = True
-                Me.RATERISK_DATETableAdapter.Fill(Me.InterestRateRiskDataSet.RATERISK_DATE)
+                Me.RATERISK_DATETableAdapter.FillByRiskDateTill_20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
             End If
 
         End If
@@ -99,14 +99,14 @@ Public Class InterestRateRiskCalc2018
 
         Me.LayoutControl2.Dock = DockStyle.Fill
         Me.LayoutControl1.Dock = DockStyle.Fill
-        Me.RATERISK_DATETableAdapter.Fill(Me.InterestRateRiskDataSet.RATERISK_DATE)
+        Me.RATERISK_DATETableAdapter.FillByRiskDateTill_20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
         BUSINESS_DATES_initData()
         BUSINESS_DATES_InitLookUp()
 
     End Sub
 
     Private Sub BUSINESS_DATES_initData()
-        Dim objCMD1 As SqlCommand = New SqlCommand("Select CONVERT(VARCHAR(10),[RateRiskDate],104) as 'BusinessDate' from [RATERISK DATE] where [RateRiskDate]>='20181231' ORDER BY [RateRiskDate] desc", conn)
+        Dim objCMD1 As SqlCommand = New SqlCommand("Select CONVERT(VARCHAR(10),[RateRiskDate],104) as 'BusinessDate' from [RATERISK DATE] where [RateRiskDate] BETWEEN '20181231' AND '20231231' ORDER BY [RateRiskDate] desc", conn)
         objCMD1.CommandTimeout = 50000
         Dim dbBusinessDates As SqlDataAdapter = New SqlDataAdapter(objCMD1)
 
@@ -165,7 +165,7 @@ Public Class InterestRateRiskCalc2018
     Private Sub Reload_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Reload_bbi.ItemClick
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Loading all Business Dates")
-        Me.RATERISK_DATETableAdapter.Fill(Me.InterestRateRiskDataSet.RATERISK_DATE)
+        Me.RATERISK_DATETableAdapter.FillByRiskDateTill_20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
         BUSINESS_DATES_initData()
         BUSINESS_DATES_InitLookUp()
         SplashScreenManager.CloseForm(False)
@@ -506,5 +506,16 @@ Public Class InterestRateRiskCalc2018
         'If info IsNot Nothing Then
         '    e.Info = info
         'End If
+    End Sub
+
+    Private Sub BusinessDate_SearchLookUpEdit_ButtonClick(sender As Object, e As ButtonPressedEventArgs) Handles BusinessDate_SearchLookUpEdit.ButtonClick
+        If e.Button.Tag = 2 Then
+            rd = Me.BusinessDate_BarEditItem.EditValue.ToString
+            rdsql = rd.ToString("yyyyMMdd")
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            SplashScreenManager.Default.SetWaitFormCaption("Load Interest Rate Risk Data for: " & rd)
+            FILL_ALL_DATA()
+            SplashScreenManager.CloseForm(False)
+        End If
     End Sub
 End Class
