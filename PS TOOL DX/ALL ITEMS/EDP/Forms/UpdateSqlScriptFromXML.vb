@@ -80,6 +80,14 @@ Public Class UpdateSqlScriptFromXML
 
                     Try
                         XmlSqlDataSet.Clear()
+                        XmlSqlDataSet.Relations.Clear()
+                        For Each tbl As DataTable In XmlSqlDataSet.Tables
+                            If tbl.Constraints.Contains("document_UnderlyingTable") Then
+                                tbl.Constraints.Remove("document_UnderlyingTable")
+                            End If
+                        Next
+                        XmlSqlDataSet.Tables.Clear()
+                        GridControl1.DataSource = Nothing
                         XmlSqlDataSet.ReadXml(Me.OpenFileDialog1.FileName)
                         ' Assuming the XML file contains multiple tables (if not, it will create a single table)
                         ' Accessing the first table in the DataSet
@@ -102,6 +110,8 @@ Public Class UpdateSqlScriptFromXML
                             Me.XmlSql_GridView.BestFitColumns()
                             'Check XML Validity
                             If XmlSqlDataTable.Columns.Contains("CURRENT_TABLE") AndAlso XmlSqlDataTable.Columns.Contains("UNDERLYING_TABLE") AndAlso ViewLabelName = "document_UnderlyingTable" Then
+                                Me.FileValidity_BarEditItem.EditValue = "Y"
+                            ElseIf XmlSqlDataTable.Columns.Contains("CURRENT_TABLE") AndAlso XmlSqlDataTable.Columns.Contains("UNDERLYING_TABLE") Then
                                 Me.FileValidity_BarEditItem.EditValue = "Y"
                             End If
                         End If

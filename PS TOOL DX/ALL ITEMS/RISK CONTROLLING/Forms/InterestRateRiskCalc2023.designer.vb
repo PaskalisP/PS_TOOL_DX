@@ -5090,7 +5090,7 @@ Partial Class InterestRateRiskCalc2023
         Me.Name = "InterestRateRiskCalc2023"
         Me.Ribbon = Me.RibbonControl2
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Interest Rate Risk (NII and EVE Method as from 31.12.2022) "
+        Me.Text = "Interest Rate Risk (NII and EVE Method) "
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.NII_TOTALS_DETAILS_BandedGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IRR_NII_Totals_GridControl, System.ComponentModel.ISupportInitialize).EndInit()

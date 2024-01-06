@@ -1765,7 +1765,7 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("CREDIT RISK + MAK REPORT")
             ' Place code here
-            Dim c As New CreditRiskMak
+            Dim c As New CreditRiskMak2023
 
             For Each kf As Form In Me.MdiChildren
                 If c.GetType Is kf.GetType Then
@@ -2023,7 +2023,7 @@ Public Class PSTOOL_MAIN_Form
             Exit Sub
         Else
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK" & vbNewLine & "Method: Net Interest Income (NII) " & vbNewLine & "Method: Economic Value of Equity (EVE) " & vbNewLine & " as from 31.12.2023")
+            SplashScreenManager.Default.SetWaitFormCaption("INTEREST RATE RISK" & vbNewLine & "Method: Net Interest Income (NII) " & vbNewLine & "Method: Economic Value of Equity (EVE)")
             ' Place code here
             Dim c As New InterestRateRiskCalc2023
 
@@ -9093,15 +9093,6 @@ Public Class PSTOOL_MAIN_Form
         DF_RiskTables_Daily.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating Daily Risk Tables for " & d)
-        'Dim f As New CreditRiskMak
-        'f.INDUSTRY_VALUESTableAdapter.Fill(f.RiskControllingDataSet.INDUSTRY_VALUES)
-        'f.COUNTRIESTableAdapter.Fill(f.RiskControllingDataSet.COUNTRIES)
-        'f.ContractTypeTableAdapter.Fill(f.RiskControllingDataSet.ContractType)
-        'f.MAK_REPORTTableAdapter.FillByMakDate(f.RiskControllingDataSet.MAK_REPORT, d)
-        'f.CREDIT_RISKTableAdapter.FillByCreditRiskDate(f.RiskControllingDataSet.CREDIT_RISK, d)
-        'f.MAK_CR_TOTALSTableAdapter.FillByMakCrTotalsDate(f.RiskControllingDataSet.MAK_CR_TOTALS, d)
-        'f.MAK_ALLTableAdapter.FillByRiskDate(f.RiskControllingDataSet.MAK_ALL, d)
-        'f.BusinessTypesCreditPortfolioLiveTableAdapter.FillByRiskDate(f.RiskControllingDataSet.BusinessTypesCreditPortfolioLive, d)
         Dim MAK_ALLDa As New SqlDataAdapter("SELECT * FROM [MAK ALL] where [RiskDate]='" & rdsql & "'", conn)
         Dim DAILY_RISK_TABLESdataset As New DataSet("DAILY_RISK_TABLES")
         MAK_ALLDa.Fill(DAILY_RISK_TABLESdataset, "MAK_ALL")
@@ -9133,19 +9124,20 @@ Public Class PSTOOL_MAIN_Form
 
     Private Sub dxOK_LoansStructure_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim d As Date = DF_LoansStructure_daily.DateEdit1.Text
+        rd = d
+        rdsql = rd.ToString("yyyyMMdd")
+
         dxOK_LoansStructure.Dispose()
+
         DF_LoansStructure_daily.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating Loan Structure Tables for " & d)
-        Dim f As New CreditRiskMak
-        'f.MAK_REPORTTableAdapter.FillByMakDate(f.RiskControllingDataSet.MAK_REPORT, d)
-        'f.CREDIT_RISKTableAdapter.FillByCreditRiskDate(f.RiskControllingDataSet.CREDIT_RISK, d)
-        f.BusinessTypesCreditPortfolioLiveTableAdapter.FillByRiskDate(f.RiskControllingDataSet.BusinessTypesCreditPortfolioLive, d)
-        f.MAK_ALLTableAdapter.FillByRiskDate(f.RiskControllingDataSet.MAK_ALL, d)
-        f.MAK_CR_TOTALSTableAdapter.FillByMakCrTotalsDate(f.RiskControllingDataSet.MAK_CR_TOTALS, d)
+        Dim MAK_ALLDa As New SqlDataAdapter("SELECT * FROM [MAK ALL] where [RiskDate]='" & rdsql & "'", conn)
+        Dim DAILY_RISK_TABLESdataset As New DataSet("DAILY_RISK_TABLES")
+        MAK_ALLDa.Fill(DAILY_RISK_TABLESdataset, "MAK_ALL")
         Dim CrRep As New ReportDocument
         CrRep.Load(CrystalRepDir & "\LOAN STRUCTURE TABLE.rpt")
-        CrRep.SetDataSource(f.RiskControllingDataSet)
+        CrRep.SetDataSource(DAILY_RISK_TABLESdataset)
         Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myParams As ParameterField = New ParameterField
         myValue.Value = d
@@ -9215,12 +9207,14 @@ Public Class PSTOOL_MAIN_Form
         If d <= DateSerial(2017, 6, 26) Then
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("Creating Obligo liability Surplus report for " & d)
-            Dim f As New RiskLimitDailyControl
-            f.RISK_LIMIT_DAILY_CONTROLTableAdapter.FillByRiskDate(f.RiskControllingDataSet.RISK_LIMIT_DAILY_CONTROL, d, d)
-            f.TIME_DEP_OUTST_CLIENT_DEALSTableAdapter.FillByRepDate(f.RiskControllingDataSet.TIME_DEP_OUTST_CLIENT_DEALS, d)
+            Dim RLDC_Da As New SqlDataAdapter("Select * from [RISK LIMIT DAILY CONTROL] where [RLDC Date]='" & dsql & "' ", conn)
+            Dim TDCD_Da As New SqlDataAdapter("Select * from [TIME DEP OUTST CLIENT DEALS] where [RepDate]='" & dsql & "'", conn)
+            Dim REPORTINGdataset As New DataSet("REPORTING")
+            RLDC_Da.Fill(REPORTINGdataset, "RISK LIMIT DAILY CONTROL")
+            TDCD_Da.Fill(REPORTINGdataset, "TIME DEP OUTST CLIENT DEALS")
             Dim CrRep As New ReportDocument
             CrRep.Load(CrystalRepDir & "\ObligoLiabilitySurplus.rpt")
-            CrRep.SetDataSource(f.RiskControllingDataSet)
+            CrRep.SetDataSource(REPORTINGdataset)
             Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
             Dim myParams As ParameterField = New ParameterField
             myValue.Value = d
@@ -9397,16 +9391,23 @@ Public Class PSTOOL_MAIN_Form
     Private Sub dxOK_IndustrialDistributionRecon_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim d1 As Date = DF_IndustrialDistributionRecon.DateEdit1.Text
         Dim d2 As Date = DF_IndustrialDistributionRecon.DateEdit2.Text
+        rd = d1
+        rdsql = rd.ToString("yyyyMMdd")
+        rd1 = d2
+        rdsql1 = rd1.ToString("yyyyMMdd")
+
         dxOK_IndustrialDistributionRecon.Dispose()
         DF_IndustrialDistributionRecon.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating Industrial distribution reconciliation on " & d1 & " and " & d2)
 
-        Dim f As New CreditRiskMak
-        f.MAK_ALLTableAdapter.FillByRiskDateFromTill(f.RiskControllingDataSet.MAK_ALL, d1, d2)
+        Dim MAK_ALLDa As New SqlDataAdapter("SELECT * FROM [MAK ALL] where [RiskDate] BETWEEN '" & rdsql & "' and '" & rdsql1 & "'", conn)
+        Dim DAILY_RISK_TABLESdataset As New DataSet("DAILY_RISK_TABLES")
+        MAK_ALLDa.Fill(DAILY_RISK_TABLESdataset, "MAK_ALL")
+
         Dim CrRep As New ReportDocument
         CrRep.Load(CrystalRepDir & "\DAILY RISK TABLES IndustrialDistribReconcile.rpt")
-        CrRep.SetDataSource(f.RiskControllingDataSet)
+        CrRep.SetDataSource(DAILY_RISK_TABLESdataset)
         Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myParams As ParameterField = New ParameterField
@@ -9436,16 +9437,23 @@ Public Class PSTOOL_MAIN_Form
     Private Sub dxOK_MaturityStrutureRecon_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim d1 As Date = DF_MaturityStructureRecon.DateEdit1.Text
         Dim d2 As Date = DF_MaturityStructureRecon.DateEdit2.Text
+        rd = d1
+        rdsql = rd.ToString("yyyyMMdd")
+        rd1 = d2
+        rdsql1 = rd1.ToString("yyyyMMdd")
+
         dxOK_MaturityStrutureRecon.Dispose()
         DF_MaturityStructureRecon.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating maturity structure reconciliation on " & d1 & " and " & d2)
+        Dim MAK_ALLDa As New SqlDataAdapter("SELECT * FROM [CREDIT RISK] where [RiskDate] BETWEEN '" & rdsql & "' and '" & rdsql1 & "'", conn)
+        Dim DAILY_RISK_TABLESdataset As New DataSet("DAILY_RISK_TABLES")
+        MAK_ALLDa.Fill(DAILY_RISK_TABLESdataset, "MAK_ALL")
 
-        Dim f As New CreditRiskMak
-        f.CREDIT_RISKTableAdapter.FillByRiskDateFromTill(f.RiskControllingDataSet.CREDIT_RISK, d1, d2)
+
         Dim CrRep As New ReportDocument
         CrRep.Load(CrystalRepDir & "\DAILY RISK TABLES MaturityStructureReconcile.rpt")
-        CrRep.SetDataSource(f.RiskControllingDataSet)
+        CrRep.SetDataSource(DAILY_RISK_TABLESdataset)
         Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myParams As ParameterField = New ParameterField
@@ -9514,16 +9522,22 @@ Public Class PSTOOL_MAIN_Form
     Private Sub dxOK_CountriesLargeCreditExposureRecon_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim d1 As Date = DF_CountriesLargeCreditExposureRecon.DateEdit1.Text
         Dim d2 As Date = DF_CountriesLargeCreditExposureRecon.DateEdit2.Text
+        rd = d1
+        rdsql = rd.ToString("yyyyMMdd")
+        rd1 = d2
+        rdsql1 = rd1.ToString("yyyyMMdd")
         dxOK_CountriesLargeCreditExposureRecon.Dispose()
         DF_CountriesLargeCreditExposureRecon.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating Countries with large Credit Exposure reconciliation on " & d1 & " and " & d2)
 
-        Dim f As New CreditRiskMak
-        f.MAK_ALLTableAdapter.FillByRiskDateFromTill(f.RiskControllingDataSet.MAK_ALL, d1, d2)
+        Dim MAK_ALLDa As New SqlDataAdapter("SELECT * FROM [MAK ALL] where [RiskDate] BETWEEN '" & rdsql & "' and '" & rdsql1 & "'", conn)
+        Dim DAILY_RISK_TABLESdataset As New DataSet("DAILY_RISK_TABLES")
+        MAK_ALLDa.Fill(DAILY_RISK_TABLESdataset, "MAK_ALL")
+
         Dim CrRep As New ReportDocument
         CrRep.Load(CrystalRepDir & "\DAILY RISK TABLES CountriesLargeCreditExpReconcile.rpt")
-        CrRep.SetDataSource(f.RiskControllingDataSet)
+        CrRep.SetDataSource(DAILY_RISK_TABLESdataset)
         Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myParams As ParameterField = New ParameterField
@@ -9553,16 +9567,22 @@ Public Class PSTOOL_MAIN_Form
     Private Sub dxOK_RatingClasificationRecon_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim d1 As Date = DF_RatingClasificationRecon.DateEdit1.Text
         Dim d2 As Date = DF_RatingClasificationRecon.DateEdit2.Text
+        rd = d1
+        rdsql = rd.ToString("yyyyMMdd")
+        rd1 = d2
+        rdsql1 = rd1.ToString("yyyyMMdd")
         dxOK_RatingClasificationRecon.Dispose()
         DF_RatingClasificationRecon.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating Rating clasification reconciliation on " & d1 & " and " & d2)
 
-        Dim f As New CreditRiskMak
-        f.CREDIT_RISKTableAdapter.FillByRiskDateFromTill(f.RiskControllingDataSet.CREDIT_RISK, d1, d2)
+        Dim MAK_ALLDa As New SqlDataAdapter("SELECT * FROM [CREDIT RISK] where [RiskDate] BETWEEN '" & rdsql & "' and '" & rdsql1 & "'", conn)
+        Dim DAILY_RISK_TABLESdataset As New DataSet("DAILY_RISK_TABLES")
+        MAK_ALLDa.Fill(DAILY_RISK_TABLESdataset, "MAK_ALL")
+
         Dim CrRep As New ReportDocument
         CrRep.Load(CrystalRepDir & "\DAILY RISK TABLES RatingClasificatReconcile.rpt")
-        CrRep.SetDataSource(f.RiskControllingDataSet)
+        CrRep.SetDataSource(DAILY_RISK_TABLESdataset)
         Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myValue1 As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myParams As ParameterField = New ParameterField
@@ -10021,17 +10041,19 @@ Public Class PSTOOL_MAIN_Form
 
     Private Sub dxOK_RefinancingMaturityList_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim d As Date = DF_RefinancingMaturityList.DateEdit1.Text
+        Dim dsql As String = d.ToString("yyyyMMdd")
         dxOK_RefinancingMaturityList.Dispose()
         DF_RefinancingMaturityList.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating Refinancing Maturity List Report for " & d)
-        Dim da As New RiskControllingDataSetTableAdapters.BANKTableAdapter
-        Dim f As New RiskLimitDailyControl
-        da.Fill(f.RiskControllingDataSet.BANK)
-        f.TIME_DEP_OUTST_CLIENT_DEALSTableAdapter.FillByRepDate(f.RiskControllingDataSet.TIME_DEP_OUTST_CLIENT_DEALS, d)
+        Dim Bank_Da As New SqlDataAdapter("Select * from BANK", conn)
+        Dim TDCD_Da As New SqlDataAdapter("Select * from [TIME DEP OUTST CLIENT DEALS] where [RepDate]='" & dsql & "'", conn)
+        Dim REPORTINGdataset As New DataSet("REPORTING")
+        Bank_Da.Fill(REPORTINGdataset, "BANK")
+        TDCD_Da.Fill(REPORTINGdataset, "TIME DEP OUTST CLIENT DEALS")
         Dim CrRep As New ReportDocument
         CrRep.Load(CrystalRepDir & "\REFINANCING_MATURITY_LIST.rpt")
-        CrRep.SetDataSource(f.RiskControllingDataSet)
+        CrRep.SetDataSource(REPORTINGdataset)
         Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myParams As ParameterField = New ParameterField
         myValue.Value = d
@@ -10614,16 +10636,17 @@ Public Class PSTOOL_MAIN_Form
 
     Private Sub dxOK_TimeDepositOutDeals_click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim d As Date = DF_TimeDepositOutstandingClientDeals.DateEdit1.Text
+        Dim dsql As String = d.ToString("yyyyMMdd")
         dxOK_TimeDepositOutDeals.Dispose()
         DF_TimeDepositOutstandingClientDeals.Close()
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Creating Time Deposit Outstanding Client Deals Report for " & d)
-
-        Dim f As New RiskLimitDailyControl
-        f.TIME_DEP_OUTST_CLIENT_DEALSTableAdapter.FillByRepDate(f.RiskControllingDataSet.TIME_DEP_OUTST_CLIENT_DEALS, d)
+        Dim TDCD_Da As New SqlDataAdapter("Select * from [TIME DEP OUTST CLIENT DEALS] where [RepDate]='" & dsql & "'", conn)
+        Dim REPORTINGdataset As New DataSet("REPORTING")
+        TDCD_Da.Fill(REPORTINGdataset, "TIME DEP OUTST CLIENT DEALS")
         Dim CrRep As New ReportDocument
         CrRep.Load(CrystalRepDir & "\Time_Deposit_Outstanding_Clients_Deals.rpt")
-        CrRep.SetDataSource(f.RiskControllingDataSet)
+        CrRep.SetDataSource(REPORTINGdataset)
         Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
         Dim myParams As ParameterField = New ParameterField
         myValue.Value = d

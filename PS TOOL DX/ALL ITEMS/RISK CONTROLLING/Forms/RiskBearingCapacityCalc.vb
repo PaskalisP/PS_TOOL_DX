@@ -135,10 +135,10 @@ Public Class RiskBearingCapacityCalc
                     Me.Validate()
                     Me.RISK_BEARING_CAPACITY_CALCULATIONSBindingSource.EndEdit()
                     OpenSqlConnections()
-                    cmd.CommandText = "ALTER TABLE RISK_BEARING_CAPACITY_DATES ENABLE TRIGGER [AuditRISK_BEARING_CAPACITY_DATES]"
-                    cmd.ExecuteNonQuery()
-                    cmd.CommandText = "ALTER TABLE RISK_BEARING_CAPACITY_CALCULATIONS ENABLE TRIGGER [AuditRISK_BEARING_CAPACITY_CALCULATIONS]"
-                    cmd.ExecuteNonQuery()
+                    'cmd.CommandText = "ALTER TABLE RISK_BEARING_CAPACITY_DATES ENABLE TRIGGER [AuditRISK_BEARING_CAPACITY_DATES]"
+                    'cmd.ExecuteNonQuery()
+                    'cmd.CommandText = "ALTER TABLE RISK_BEARING_CAPACITY_CALCULATIONS ENABLE TRIGGER [AuditRISK_BEARING_CAPACITY_CALCULATIONS]"
+                    'cmd.ExecuteNonQuery()
                     Me.TableAdapterManager.UpdateAll(Me.RiskBearingCapacityDataSet)
                     QueryText = "Select  * from [SQL_PARAMETER_DETAILS_SECOND] where Id_SQL_Parameters_Details 
                      in (Select ID from SQL_PARAMETER_DETAILS where SQL_Name_1 in ('RISK_BEARING_CAPACITY_CALCULATION_Manual') 
@@ -165,7 +165,7 @@ Public Class RiskBearingCapacityCalc
                         Next
                     Else
                         SplashScreenManager.CloseForm(False)
-                        XtraMessageBox.Show("There are no parameters in SEVERAL SELECTIOS/RISK_BEARING_CAPACITY_CALCULATION_Manual", "No parameters found", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        XtraMessageBox.Show("There are no parameters in SEVERAL SELECTIONS/RISK_BEARING_CAPACITY_CALCULATION_Manual", "No parameters found", MessageBoxButtons.OK, MessageBoxIcon.Error)
                         Exit Sub
                     End If
                     cmd.CommandText = "ALTER TABLE RISK_BEARING_CAPACITY_DATES DISABLE TRIGGER [AuditRISK_BEARING_CAPACITY_DATES]"

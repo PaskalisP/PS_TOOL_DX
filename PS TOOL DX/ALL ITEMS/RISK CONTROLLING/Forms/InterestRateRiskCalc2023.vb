@@ -85,7 +85,8 @@ Public Class InterestRateRiskCalc2023
             If Me.LayoutControl2.Visible = False Then
                 Me.ViewDetails_SwitchItem.Checked = False
                 Me.LayoutControl2.Visible = True
-                Me.RATERISK_DATETableAdapter.FillByRiskDateFrom20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
+                LOAD_ALL_DATA_FROM()
+                'Me.RATERISK_DATETableAdapter.FillByRiskDateFrom20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
             End If
 
         End If
@@ -95,32 +96,74 @@ Public Class InterestRateRiskCalc2023
 
         Me.LayoutControl2.Dock = DockStyle.Fill
         Me.LayoutControl1.Dock = DockStyle.Fill
-        Me.RATERISK_DATETableAdapter.FillByRiskDateFrom20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
+        'Me.RATERISK_DATETableAdapter.FillByRiskDateFrom20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
+        LOAD_ALL_DATA_FROM()
         BUSINESS_DATES_initData()
         BUSINESS_DATES_InitLookUp()
 
     End Sub
 
     Private Sub BUSINESS_DATES_initData()
-        Dim objCMD1 As SqlCommand = New SqlCommand("Select CONVERT(VARCHAR(10),[RateRiskDate],104) as 'BusinessDate' from [RATERISK DATE] where [RateRiskDate]>='20220930' ORDER BY [RateRiskDate] desc", conn)
-        objCMD1.CommandTimeout = 50000
-        Dim dbBusinessDates As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+        QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('IRR_NII_EVE_BUSINESS_DATES_LOAD') and Status in ('Y')"
+        da = New SqlDataAdapter(QueryText.Trim(), conn)
+        da.SelectCommand.CommandTimeout = 60000
+        dt = New System.Data.DataTable()
+        da.Fill(dt)
+        If dt.Rows.Count > 0 Then
+            Dim objCMD1 As SqlCommand = New SqlCommand(dt.Rows.Item(0).Item("SQL_Command_1").ToString, conn)
+            objCMD1.CommandTimeout = 50000
+            Dim dbBusinessDates As SqlDataAdapter = New SqlDataAdapter(objCMD1)
 
-        Dim ds As DataSet = New DataSet()
-        Try
+            Dim ds As DataSet = New DataSet()
+            Try
 
-            dbBusinessDates.Fill(ds, "BusinessDate")
+                dbBusinessDates.Fill(ds, "BusinessDate")
 
-        Catch ex As System.Exception
-            MsgBox(ex.Message)
+            Catch ex As System.Exception
+                MsgBox(ex.Message)
 
-        End Try
-        BS_BusinessDates = New BindingSource(ds, "BusinessDate")
+            End Try
+            BS_BusinessDates = New BindingSource(ds, "BusinessDate")
+        End If
+
+
     End Sub
     Private Sub BUSINESS_DATES_InitLookUp()
         Me.BusinessDate_SearchLookUpEdit.DataSource = BS_BusinessDates
         Me.BusinessDate_SearchLookUpEdit.DisplayMember = "BusinessDate"
         Me.BusinessDate_SearchLookUpEdit.ValueMember = "BusinessDate"
+    End Sub
+
+    Private Sub LOAD_ALL_DATA_FROM()
+        QueryText = "Select * from SQL_PARAMETER_DETAILS where Id_SQL_Parameters in ('SEVERAL SELECTIONS') and SQL_Name_1 in ('IRR_NII_EVE_ALL_DATA_LOAD') and Status in ('Y')"
+        da1 = New SqlDataAdapter(QueryText.Trim(), conn)
+        da1.SelectCommand.CommandTimeout = 60000
+        dt1 = New System.Data.DataTable()
+        da1.Fill(dt1)
+        If dt1.Rows.Count > 0 Then
+            SqlCommandText = dt1.Rows.Item(0).Item("SQL_Command_1").ToString
+            QueryText = SqlCommandText
+            da = New SqlDataAdapter(QueryText.Trim(), conn)
+            da.SelectCommand.CommandTimeout = 60000
+            dt = New System.Data.DataTable()
+            da.Fill(dt)
+            IRR_AllDates_GridControl.DataSource = Nothing
+            IRR_AllDates_GridControl.DataSource = dt
+            IRR_AllDates_GridView.BestFitColumns()
+        End If
+
+        'QueryText = "SELECT * FROM [RATERISK DETAILS]
+        '        where CalculationMethod=2 and [RISK DATE]='" & rdsql & "'
+        '        ORDER BY PeriodNr asc"
+        'da = New SqlDataAdapter(QueryText.Trim(), conn)
+        'dt = New System.Data.DataTable()
+        'da.Fill(dt)
+        'Me.IRR_NII_Details_GridControl.DataSource = Nothing
+        'Me.IRR_NII_Details_GridControl.DataSource = dt
+        'Me.NII_Details_GridView.BestFitColumns()
+        'Me.IRR_EVE_Details_GridControl.DataSource = Nothing
+        'Me.IRR_EVE_Details_GridControl.DataSource = dt
+        'Me.IRR_EVE_Details_BandedGridView.BestFitColumns()
     End Sub
 
     Private Sub IRR_EVE_GeneralRatios()
@@ -224,7 +267,8 @@ Public Class InterestRateRiskCalc2023
     Private Sub Reload_bbi_ItemClick(sender As Object, e As ItemClickEventArgs) Handles Reload_bbi.ItemClick
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
         SplashScreenManager.Default.SetWaitFormCaption("Loading all Business Dates")
-        Me.RATERISK_DATETableAdapter.FillByRiskDateFrom20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
+        'Me.RATERISK_DATETableAdapter.FillByRiskDateFrom20231231(Me.InterestRateRiskDataSet.RATERISK_DATE)
+        LOAD_ALL_DATA_FROM()
         BUSINESS_DATES_initData()
         BUSINESS_DATES_InitLookUp()
         SplashScreenManager.CloseForm(False)

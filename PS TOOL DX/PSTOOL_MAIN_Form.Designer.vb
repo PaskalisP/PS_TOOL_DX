@@ -265,6 +265,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_CreditSpreadRiskCalculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CreditMigrationRiskCalculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_CurrencyRiskCalculation_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_RLDC_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_ScenarioAnalyzes_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         Me.RISKCONTROL_RiskStrategyPlanningProcess_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
@@ -467,7 +468,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.AlertControl_NewUser_ActiveDirectory = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.AlertControl_General_Info = New DevExpress.XtraBars.Alerter.AlertControl(Me.components)
         Me.LogoImageCollection = New DevExpress.Utils.ImageCollection(Me.components)
-        Me.RISKCONTROL_RiskBearingCapacityCalc_Element = New DevExpress.XtraBars.Navigation.AccordionControlElement()
         CType(Me.DocumentGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ribbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ApplicationMenu1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2583,12 +2583,11 @@ Partial Class PSTOOL_MAIN_Form
         '
         'RISKCONTROL_InterestRateRisk_Calc2_Element
         '
-        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Hint = "Displays the daily calculated Interest Rate Risk (as from 30.12.2022-NII and EVE " &
-    "Method)"
+        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Hint = "Displays the daily calculated Interest Rate Risk (NII and EVE Method)"
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_InterestRateRisk_Calc2_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Name = "RISKCONTROL_InterestRateRisk_Calc2_Element"
         Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Text = "Interest Rate Risk (as from 31.12.2023)"
+        Me.RISKCONTROL_InterestRateRisk_Calc2_Element.Text = "Interest Rate Risk (NII and EVE Method)"
         '
         'AccordionControlSeparator6
         '
@@ -2680,6 +2679,14 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_CurrencyRiskCalculation_Element.Name = "RISKCONTROL_CurrencyRiskCalculation_Element"
         Me.RISKCONTROL_CurrencyRiskCalculation_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.RISKCONTROL_CurrencyRiskCalculation_Element.Text = "Currency Risk Calculation"
+        '
+        'RISKCONTROL_RiskBearingCapacityCalc_Element
+        '
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Hint = "Displays the daily Risk Bearing Capacity Calculation"
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_RiskBearingCapacityCalc_Element.ImageOptions.Image"), System.Drawing.Image)
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Name = "RISKCONTROL_RiskBearingCapacityCalc_Element"
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
+        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Text = "Risk Bearing Capacity Calculation"
         '
         'RISKCONTROL_RLDC_Element
         '
@@ -4467,14 +4474,6 @@ Partial Class PSTOOL_MAIN_Form
         Me.LogoImageCollection.Images.SetKeyName(4, "login-logo-Test.png")
         Me.LogoImageCollection.Images.SetKeyName(5, "login-logo-Prod.png")
         Me.LogoImageCollection.Images.SetKeyName(6, "login-logo-Prod_ALL.png")
-        '
-        'RISKCONTROL_RiskBearingCapacityCalc_Element
-        '
-        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Hint = "Displays the daily Risk Bearing Capacity Calculation"
-        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.ImageOptions.Image = CType(resources.GetObject("RISKCONTROL_RiskBearingCapacityCalc_Element.ImageOptions.Image"), System.Drawing.Image)
-        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Name = "RISKCONTROL_RiskBearingCapacityCalc_Element"
-        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.RISKCONTROL_RiskBearingCapacityCalc_Element.Text = "Risk Bearing Capacity Calculation"
         '
         'PSTOOL_MAIN_Form
         '

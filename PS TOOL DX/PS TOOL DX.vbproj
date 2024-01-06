@@ -1471,10 +1471,10 @@
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditMigrationRiskCalc.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.Designer.vb">
-      <DependentUpon>CreditRiskMak.vb</DependentUpon>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak2023.designer.vb">
+      <DependentUpon>CreditRiskMak2023.vb</DependentUpon>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.vb">
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak2023.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRiskCalc.designer.vb">
@@ -2368,8 +2368,8 @@
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditMigrationRiskCalc.resx">
       <DependentUpon>CreditMigrationRiskCalc.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak.resx">
-      <DependentUpon>CreditRiskMak.vb</DependentUpon>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditRiskMak2023.resx">
+      <DependentUpon>CreditRiskMak2023.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\CreditSpreadRiskCalc.resx">
       <DependentUpon>CreditSpreadRiskCalc.vb</DependentUpon>
