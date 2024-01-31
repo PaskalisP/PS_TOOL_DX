@@ -1437,11 +1437,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RiskStrategyPlanningProcessDataset.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\ScenarioAnalysisDataset.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ScenarioAnalysisDataset.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Datasets\SolvaCalculationDataset.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1561,10 +1556,10 @@
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskStrategyPlanningProcess.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalysis.Designer.vb">
-      <DependentUpon>ScenarioAnalysis.vb</DependentUpon>
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalyzes2023.designer.vb">
+      <DependentUpon>ScenarioAnalyzes2023.vb</DependentUpon>
     </Compile>
-    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalysis.vb">
+    <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalyzes2023.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ALL ITEMS\RISK CONTROLLING\Forms\SolvCalculation.Designer.vb">
@@ -2413,8 +2408,8 @@
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\RiskStrategyPlanningProcess.resx">
       <DependentUpon>RiskStrategyPlanningProcess.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalysis.resx">
-      <DependentUpon>ScenarioAnalysis.vb</DependentUpon>
+    <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\ScenarioAnalyzes2023.resx">
+      <DependentUpon>ScenarioAnalyzes2023.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ALL ITEMS\RISK CONTROLLING\Forms\SolvCalculation.resx">
       <DependentUpon>SolvCalculation.vb</DependentUpon>
@@ -2979,17 +2974,6 @@
     </None>
     <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\RiskStrategyPlanningProcessDataset.xss">
       <DependentUpon>RiskStrategyPlanningProcessDataset.xsd</DependentUpon>
-    </None>
-    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\ScenarioAnalysisDataset.xsc">
-      <DependentUpon>ScenarioAnalysisDataset.xsd</DependentUpon>
-    </None>
-    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\ScenarioAnalysisDataset.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ScenarioAnalysisDataset.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\ScenarioAnalysisDataset.xss">
-      <DependentUpon>ScenarioAnalysisDataset.xsd</DependentUpon>
     </None>
     <None Include="ALL ITEMS\RISK CONTROLLING\Datasets\SolvaCalculationDataset.xsc">
       <DependentUpon>SolvaCalculationDataset.xsd</DependentUpon>

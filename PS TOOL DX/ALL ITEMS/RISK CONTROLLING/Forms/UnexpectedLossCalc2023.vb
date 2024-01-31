@@ -152,6 +152,7 @@ Public Class UnexpectedLossCalc2023
         Me.EL_TextEdit.DataBindings.Clear()
         Me.UL_TextEdit.DataBindings.Clear()
         Me.GA_TextEdit.DataBindings.Clear()
+        Me.DefaultRisk_TextEdit.DataBindings.Clear()
 
         Me.LevelOfConfidence_SpinEdit.DataBindings.Add("EditValue", dt, "LevelOfConfidence")
         Me.nu_Value_SpinEdit.DataBindings.Add("EditValue", dt, "nu_Value")
@@ -164,7 +165,7 @@ Public Class UnexpectedLossCalc2023
         Me.EL_TextEdit.DataBindings.Add("Text", dt, "SumEL")
         Me.UL_TextEdit.DataBindings.Add("Text", dt, "SumUL")
         Me.GA_TextEdit.DataBindings.Add("Text", dt, "SumGA_Total")
-
+        Me.DefaultRisk_TextEdit.DataBindings.Add("Text", dt, "DefaultRisk")
 
         'Create data adapters for retrieving data from the tables
         Dim UL_Totals_Adapter As New SqlDataAdapter("SELECT *
@@ -279,7 +280,7 @@ Public Class UnexpectedLossCalc2023
     End Sub
 
     Private Sub PrintableComponentLink_AllDates_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink_AllDates.CreateMarginalHeaderArea
-        Dim reportfooter As String = "Currency Risks"
+        Dim reportfooter As String = "EL, UL and Granularity adjustments"
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 
@@ -296,7 +297,7 @@ Public Class UnexpectedLossCalc2023
     End Sub
 
     Private Sub PrintableComponentLink_SingleDate_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink_SingleDate.CreateMarginalHeaderArea
-        Dim reportfooter As String = "Currency Risk" & "  " & "for Business Date: " & Me.BusinessDate_BarEditItem.EditValue.ToString
+        Dim reportfooter As String = "EL, UL and Granularity adjustments" & "  " & "for Business Date: " & Me.BusinessDate_BarEditItem.EditValue.ToString
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 
@@ -471,6 +472,7 @@ Public Class UnexpectedLossCalc2023
             dt = New DataTable()
             da.Fill(dt)
             If dt.Rows.Count > 0 Then
+                OpenSqlConnections()
                 For s = 0 To dt.Rows.Count - 1
                     ScriptType = dt.Rows.Item(s).Item("SQL_ScriptType_1").ToString
                     If ScriptType = "SQL" Then
@@ -487,6 +489,7 @@ Public Class UnexpectedLossCalc2023
                         engine.Run()
                     End If
                 Next
+                CloseSqlConnections()
             Else
                 SplashScreenManager.CloseForm(False)
                 XtraMessageBox.Show("There are no parameters in EXCEL_FILE_CREATION/ExpectedUnexpectedGA_ExcelFile_creation", "No parameters found", MessageBoxButtons.OK, MessageBoxIcon.Error)

@@ -427,11 +427,11 @@ Partial Class CustomerRating
         GridLevelNode1.LevelTemplate = Me.CustomerRating_DetailView
         GridLevelNode1.RelationName = "FK_CUSTOMER_RATING_DETAILS_CUSTOMER_RATING_DETAILS"
         Me.GridControl2.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
-        Me.GridControl2.Location = New System.Drawing.Point(24, 72)
+        Me.GridControl2.Location = New System.Drawing.Point(24, 71)
         Me.GridControl2.MainView = Me.CustomerRating_BaseView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox1, Me.RatesRepositoryItemTextEdit1, Me.RepositoryItemPopupContainerEdit1, Me.ER1_RepositoryItemTextEdit, Me.RepositoryItemCheckEdit1, Me.ExternalRatingRepositoryItemGridLookUpEdit, Me.RatingStatus_RepositoryItemImageComboBox})
-        Me.GridControl2.Size = New System.Drawing.Size(1496, 651)
+        Me.GridControl2.Size = New System.Drawing.Size(1496, 652)
         Me.GridControl2.TabIndex = 11
         Me.GridControl2.UseEmbeddedNavigator = True
         Me.GridControl2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.CustomerRating_BaseView, Me.CustomerRating_DetailView})
@@ -1410,8 +1410,10 @@ Partial Class CustomerRating
         Me.TableAdapterManager.NEW_CREDIT_BUSINESSTableAdapter = Nothing
         Me.TableAdapterManager.PD_EXTERNALTableAdapter = Nothing
         Me.TableAdapterManager.PDTableAdapter = Nothing
+        Me.TableAdapterManager.RATERISK_BC_WF1TableAdapter = Nothing
         Me.TableAdapterManager.RATERISK_BC_WFTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.RiskControllingBasicsDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.YIELD_CURVESTableAdapter = Nothing
         '
         'CUSTOMER_RATING_DETAILSTableAdapter
         '
@@ -1445,11 +1447,11 @@ Partial Class CustomerRating
         Me.GridControl4.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl4.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.GridControl4.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.GridControl4.Location = New System.Drawing.Point(24, 72)
+        Me.GridControl4.Location = New System.Drawing.Point(24, 71)
         Me.GridControl4.MainView = Me.Ratings_All_GridView
         Me.GridControl4.Name = "GridControl4"
         Me.GridControl4.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox4, Me.RepositoryItemTextEdit3, Me.RepositoryItemPopupContainerEdit3, Me.RepositoryItemTextEdit4, Me.RepositoryItemCheckEdit3, Me.RepositoryItemGridLookUpEdit2, Me.RepositoryItemImageComboBox3})
-        Me.GridControl4.Size = New System.Drawing.Size(1496, 651)
+        Me.GridControl4.Size = New System.Drawing.Size(1496, 652)
         Me.GridControl4.TabIndex = 14
         Me.GridControl4.UseEmbeddedNavigator = True
         Me.GridControl4.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.Ratings_All_GridView, Me.GridView4})
@@ -1956,7 +1958,7 @@ Partial Class CustomerRating
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem4})
         Me.LayoutControlGroup2.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup2.Name = "LayoutControlGroup2"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1500, 655)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1500, 656)
         Me.LayoutControlGroup2.Text = "RATINGS BY CLIENT NR."
         '
         'LayoutControlItem4
@@ -1965,7 +1967,7 @@ Partial Class CustomerRating
         Me.LayoutControlItem4.CustomizationFormText = "LayoutControlItem4"
         Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(1500, 655)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(1500, 656)
         Me.LayoutControlItem4.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem4.TextVisible = False
         '
@@ -1974,7 +1976,7 @@ Partial Class CustomerRating
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1500, 655)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1500, 656)
         Me.LayoutControlGroup3.Text = "ALL RATINGS"
         '
         'LayoutControlItem3
@@ -1982,7 +1984,7 @@ Partial Class CustomerRating
         Me.LayoutControlItem3.Control = Me.GridControl4
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(1500, 655)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(1500, 656)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
@@ -2369,7 +2371,7 @@ Partial Class CustomerRating
         Me.ClientSize = New System.Drawing.Size(1544, 747)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.PanelControl1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("CustomerRating.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "CustomerRating"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

@@ -309,6 +309,44 @@ ORDER BY StartDate DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="PS_TOOL_DX_SQL_Client_ConnectionString (MySettings)" DbObjectName="[PS TOOL DX Live].dbo.ALL_CONTRACTS_ACCOUNTS" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByInvalid" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByInvalid" GeneratorSourceName="FillByInvalid" GetMethodModifier="Public" GetMethodName="GetDataByInvalid" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByInvalid" UserSourceName="FillByInvalid">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, Contract_Account, ClientNr, ClientName, ContractType, ProductType, StartDate, MaturityDate, BusinessType, KEV_Collateral, Valid, AnaCredit_Valid, IsAnaCredit, CCY, GSTIFF_Reference, CCB_Group, InputDate, 
+                         TypeOfInstrument, TypeOfInstrumentDescription, AmortisationType, AmortisationTypeDescription, FiduciaryInstrument, FiduciaryInstrumentDescription, InterestRate, Spread, InterestRateType, InterestRateTypeDescription, 
+                         InterestRateCap, InterestRateFloor, InterestRateResetFrequency, InterestRateResetFrequencyDescription, CommitmentAmountInceptionOrig, ExchangeRate, CommitmentAmountInceptionEUR, PaymentFrequency, 
+                         PaymentFrequencyDescription, ProjectFinanceLoan, ProjectFinanceLoanDescription, Purpose, PurposeDescription, Recourse, RecourseDescription, ReferenceRate, ReferenceRateDescription, SettlementDate, 
+                         SyndicatedContractIdentifier, RepaymentRights, RepaymentRightsDescription, InterestRateAverage, NextInterestRateDateReset, DefaultStatusInstrument, DefaultStatusInstrumentDescription, DateDefaultStatusInstrument, 
+                         AmountPastDue, DatePastDue, TypeOfSecurisation, TypeOfSecurisationDescription, OutstandingNominalAmount, AccountingClassifInstruments, AccountingClassifInstrumentsDescription, PerformingStatusInstrument, 
+                         PerformingStatusInstrumentDescription, DatePerformingStatus, StatusForbearance, DateStatusForbearance, ComulativeRecoveryAmount, StatusForbearance_Description, Contract_AccountM, ClientNrM, ContractTypeDescription,
+                          ProductTypeDescription, CounterpartyRole, CounterpartyRoleDescription, JointLiabilityAmount, EndDateOfInterestPaymentOnlyPeriod, WriteOffsStatus, ImpairmentStatus, SourcesOfEncumbrance, 
+                         SourcesOfEncumbranceDescription, Class, PrincipalCCY, PrincipalAmount
+FROM            ALL_CONTRACTS_ACCOUNTS
+WHERE        (ClientNr &lt;&gt; '0') AND (Valid IN ('N'))
+ORDER BY StartDate DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="PS_TOOL_DX_SQL_Client_ConnectionString (MySettings)" DbObjectName="[PS TOOL DX Live].dbo.ALL_CONTRACTS_ACCOUNTS" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByValid" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByValid" GeneratorSourceName="FillByValid" GetMethodModifier="Public" GetMethodName="GetDataByValid" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByValid" UserSourceName="FillByValid">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ID, Contract_Account, ClientNr, ClientName, ContractType, ProductType, StartDate, MaturityDate, BusinessType, KEV_Collateral, Valid, AnaCredit_Valid, IsAnaCredit, CCY, GSTIFF_Reference, CCB_Group, InputDate, 
+                         TypeOfInstrument, TypeOfInstrumentDescription, AmortisationType, AmortisationTypeDescription, FiduciaryInstrument, FiduciaryInstrumentDescription, InterestRate, Spread, InterestRateType, InterestRateTypeDescription, 
+                         InterestRateCap, InterestRateFloor, InterestRateResetFrequency, InterestRateResetFrequencyDescription, CommitmentAmountInceptionOrig, ExchangeRate, CommitmentAmountInceptionEUR, PaymentFrequency, 
+                         PaymentFrequencyDescription, ProjectFinanceLoan, ProjectFinanceLoanDescription, Purpose, PurposeDescription, Recourse, RecourseDescription, ReferenceRate, ReferenceRateDescription, SettlementDate, 
+                         SyndicatedContractIdentifier, RepaymentRights, RepaymentRightsDescription, InterestRateAverage, NextInterestRateDateReset, DefaultStatusInstrument, DefaultStatusInstrumentDescription, DateDefaultStatusInstrument, 
+                         AmountPastDue, DatePastDue, TypeOfSecurisation, TypeOfSecurisationDescription, OutstandingNominalAmount, AccountingClassifInstruments, AccountingClassifInstrumentsDescription, PerformingStatusInstrument, 
+                         PerformingStatusInstrumentDescription, DatePerformingStatus, StatusForbearance, DateStatusForbearance, ComulativeRecoveryAmount, StatusForbearance_Description, Contract_AccountM, ClientNrM, ContractTypeDescription,
+                          ProductTypeDescription, CounterpartyRole, CounterpartyRoleDescription, JointLiabilityAmount, EndDateOfInterestPaymentOnlyPeriod, WriteOffsStatus, ImpairmentStatus, SourcesOfEncumbrance, 
+                         SourcesOfEncumbranceDescription, Class, PrincipalCCY, PrincipalAmount
+FROM            ALL_CONTRACTS_ACCOUNTS
+WHERE        (ClientNr &lt;&gt; '0') AND (Valid IN ('Y'))
+ORDER BY StartDate DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ALL_GL_ITEMS_BS_TableAdapter" GeneratorDataComponentClassName="ALL_GL_ITEMS_BS_TableAdapter" Name="ALL_GL_ITEMS_BS" UserDataComponentName="ALL_GL_ITEMS_BS_TableAdapter">
@@ -564,7 +602,7 @@ FROM            ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST</CommandText>
   <xs:element name="AllContractsAccountsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AllContractsAccountsDataSet" msprop:Generator_UserDSName="AllContractsAccountsDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ALL_CONTRACTS_ACCOUNTS" msprop:Generator_TableClassName="ALL_CONTRACTS_ACCOUNTSDataTable" msprop:Generator_TableVarName="tableALL_CONTRACTS_ACCOUNTS" msprop:Generator_TablePropName="ALL_CONTRACTS_ACCOUNTS" msprop:Generator_RowDeletingName="ALL_CONTRACTS_ACCOUNTSRowDeleting" msprop:Generator_RowChangingName="ALL_CONTRACTS_ACCOUNTSRowChanging" msprop:Generator_RowEvHandlerName="ALL_CONTRACTS_ACCOUNTSRowChangeEventHandler" msprop:Generator_RowDeletedName="ALL_CONTRACTS_ACCOUNTSRowDeleted" msprop:Generator_UserTableName="ALL_CONTRACTS_ACCOUNTS" msprop:Generator_RowChangedName="ALL_CONTRACTS_ACCOUNTSRowChanged" msprop:Generator_RowEvArgName="ALL_CONTRACTS_ACCOUNTSRowChangeEvent" msprop:Generator_RowClassName="ALL_CONTRACTS_ACCOUNTSRow">
+        <xs:element name="ALL_CONTRACTS_ACCOUNTS" msprop:Generator_TableClassName="ALL_CONTRACTS_ACCOUNTSDataTable" msprop:Generator_TableVarName="tableALL_CONTRACTS_ACCOUNTS" msprop:Generator_RowChangedName="ALL_CONTRACTS_ACCOUNTSRowChanged" msprop:Generator_TablePropName="ALL_CONTRACTS_ACCOUNTS" msprop:Generator_RowDeletingName="ALL_CONTRACTS_ACCOUNTSRowDeleting" msprop:Generator_RowChangingName="ALL_CONTRACTS_ACCOUNTSRowChanging" msprop:Generator_RowEvHandlerName="ALL_CONTRACTS_ACCOUNTSRowChangeEventHandler" msprop:Generator_RowDeletedName="ALL_CONTRACTS_ACCOUNTSRowDeleted" msprop:Generator_RowClassName="ALL_CONTRACTS_ACCOUNTSRow" msprop:Generator_UserTableName="ALL_CONTRACTS_ACCOUNTS" msprop:Generator_RowEvArgName="ALL_CONTRACTS_ACCOUNTSRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1000,7 +1038,7 @@ FROM            ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ALL_GL_ITEMS_BS" msprop:Generator_TableClassName="ALL_GL_ITEMS_BSDataTable" msprop:Generator_TableVarName="tableALL_GL_ITEMS_BS" msprop:Generator_RowChangedName="ALL_GL_ITEMS_BSRowChanged" msprop:Generator_TablePropName="ALL_GL_ITEMS_BS" msprop:Generator_RowDeletingName="ALL_GL_ITEMS_BSRowDeleting" msprop:Generator_RowChangingName="ALL_GL_ITEMS_BSRowChanging" msprop:Generator_RowEvHandlerName="ALL_GL_ITEMS_BSRowChangeEventHandler" msprop:Generator_RowDeletedName="ALL_GL_ITEMS_BSRowDeleted" msprop:Generator_RowClassName="ALL_GL_ITEMS_BSRow" msprop:Generator_UserTableName="ALL_GL_ITEMS_BS" msprop:Generator_RowEvArgName="ALL_GL_ITEMS_BSRowChangeEvent">
+        <xs:element name="ALL_GL_ITEMS_BS" msprop:Generator_TableClassName="ALL_GL_ITEMS_BSDataTable" msprop:Generator_TableVarName="tableALL_GL_ITEMS_BS" msprop:Generator_TablePropName="ALL_GL_ITEMS_BS" msprop:Generator_RowDeletingName="ALL_GL_ITEMS_BSRowDeleting" msprop:Generator_RowChangingName="ALL_GL_ITEMS_BSRowChanging" msprop:Generator_RowEvHandlerName="ALL_GL_ITEMS_BSRowChangeEventHandler" msprop:Generator_RowDeletedName="ALL_GL_ITEMS_BSRowDeleted" msprop:Generator_UserTableName="ALL_GL_ITEMS_BS" msprop:Generator_RowChangedName="ALL_GL_ITEMS_BSRowChanged" msprop:Generator_RowEvArgName="ALL_GL_ITEMS_BSRowChangeEvent" msprop:Generator_RowClassName="ALL_GL_ITEMS_BSRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1100,7 +1138,7 @@ FROM            ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ALL_GL_ITEMS_PL" msprop:Generator_TableClassName="ALL_GL_ITEMS_PLDataTable" msprop:Generator_TableVarName="tableALL_GL_ITEMS_PL" msprop:Generator_RowChangedName="ALL_GL_ITEMS_PLRowChanged" msprop:Generator_TablePropName="ALL_GL_ITEMS_PL" msprop:Generator_RowDeletingName="ALL_GL_ITEMS_PLRowDeleting" msprop:Generator_RowChangingName="ALL_GL_ITEMS_PLRowChanging" msprop:Generator_RowEvHandlerName="ALL_GL_ITEMS_PLRowChangeEventHandler" msprop:Generator_RowDeletedName="ALL_GL_ITEMS_PLRowDeleted" msprop:Generator_RowClassName="ALL_GL_ITEMS_PLRow" msprop:Generator_UserTableName="ALL_GL_ITEMS_PL" msprop:Generator_RowEvArgName="ALL_GL_ITEMS_PLRowChangeEvent">
+        <xs:element name="ALL_GL_ITEMS_PL" msprop:Generator_TableClassName="ALL_GL_ITEMS_PLDataTable" msprop:Generator_TableVarName="tableALL_GL_ITEMS_PL" msprop:Generator_TablePropName="ALL_GL_ITEMS_PL" msprop:Generator_RowDeletingName="ALL_GL_ITEMS_PLRowDeleting" msprop:Generator_RowChangingName="ALL_GL_ITEMS_PLRowChanging" msprop:Generator_RowEvHandlerName="ALL_GL_ITEMS_PLRowChangeEventHandler" msprop:Generator_RowDeletedName="ALL_GL_ITEMS_PLRowDeleted" msprop:Generator_UserTableName="ALL_GL_ITEMS_PL" msprop:Generator_RowChangedName="ALL_GL_ITEMS_PLRowChanged" msprop:Generator_RowEvArgName="ALL_GL_ITEMS_PLRowChangeEvent" msprop:Generator_RowClassName="ALL_GL_ITEMS_PLRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1200,7 +1238,7 @@ FROM            ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_TableClassName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTDataTable" msprop:Generator_TableVarName="tableALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_TablePropName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_RowDeletingName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowDeleting" msprop:Generator_RowChangingName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowChanging" msprop:Generator_RowEvHandlerName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowChangeEventHandler" msprop:Generator_RowDeletedName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowDeleted" msprop:Generator_UserTableName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_RowChangedName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowChanged" msprop:Generator_RowEvArgName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowChangeEvent" msprop:Generator_RowClassName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRow">
+        <xs:element name="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_TableClassName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTDataTable" msprop:Generator_TableVarName="tableALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_RowChangedName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowChanged" msprop:Generator_TablePropName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_RowDeletingName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowDeleting" msprop:Generator_RowChangingName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowChanging" msprop:Generator_RowEvHandlerName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowChangeEventHandler" msprop:Generator_RowDeletedName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowDeleted" msprop:Generator_RowClassName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRow" msprop:Generator_UserTableName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_RowEvArgName="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -1267,7 +1305,7 @@ FROM            ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST_ALL_CONTRACTS_ACCOUNTS" msdata:parent="ALL_CONTRACTS_ACCOUNTS" msdata:child="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msdata:parentkey="ID" msdata:childkey="ID_NR" msprop:Generator_UserChildTable="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_ChildPropName="GetALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRows" msprop:Generator_UserRelationName="FK_ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST_ALL_CONTRACTS_ACCOUNTS" msprop:Generator_ParentPropName="ALL_CONTRACTS_ACCOUNTSRow" msprop:Generator_RelationVarName="relationFK_ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST_ALL_CONTRACTS_ACCOUNTS" msprop:Generator_UserParentTable="ALL_CONTRACTS_ACCOUNTS" />
+      <msdata:Relationship name="FK_ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST_ALL_CONTRACTS_ACCOUNTS" msdata:parent="ALL_CONTRACTS_ACCOUNTS" msdata:child="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msdata:parentkey="ID" msdata:childkey="ID_NR" msprop:Generator_UserChildTable="ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST" msprop:Generator_ChildPropName="GetALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTRows" msprop:Generator_UserRelationName="FK_ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST_ALL_CONTRACTS_ACCOUNTS" msprop:Generator_RelationVarName="relationFK_ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST_ALL_CONTRACTS_ACCOUNTS" msprop:Generator_UserParentTable="ALL_CONTRACTS_ACCOUNTS" msprop:Generator_ParentPropName="ALL_CONTRACTS_ACCOUNTSRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

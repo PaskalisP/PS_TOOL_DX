@@ -32,14 +32,11 @@ Imports CrystalDecisions.CrystalReports.Engine
 'Imports DevExpress.XtraEditors.Controls
 Public Class AllContractsAccounts
 
-    Dim conn As New SqlConnection
-    Dim cmd As New SqlCommand
-
-    Private QueryText As String = ""
-    Private da As New SqlDataAdapter
-    Private dt As New DataTable
+    Dim CONTRACT_STATUS_SELECTED As String = Nothing
 
     Private BS_ContractsAll As BindingSource
+    Private BS_ContractsValid As BindingSource
+    Private BS_ContractsMatured As BindingSource
     Private BS_Type_Of_Instrument As BindingSource
     Private BS_AmortizationType As BindingSource
     Private BS_FiduciaryInstrument As BindingSource
@@ -103,17 +100,11 @@ Public Class AllContractsAccounts
         Me.LayoutControl1.Dock = DockStyle.Fill
         'Me.LayoutControl1.Visible = False
         Me.LayoutControlItem3.Visibility = LayoutVisibility.Always
-
-        conn.ConnectionString = My.Settings.PS_TOOL_DX_SQL_Client_ConnectionString
-        cmd.Connection = conn
-
-        Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
-        Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+        Me.ContractsStatus_ImageComboBoxEdit.EditValue = "A"
+        CONTRACT_STATUS_SELECTED = Me.ContractsStatus_ImageComboBoxEdit.EditValue.ToString
 
         AddHandler AllCustomerContracts_GridControl.EmbeddedNavigator.ButtonClick, AddressOf AllCustomerContracts_GridControl_EmbeddedNavigator_ButtonClick
 
-        ALL_CONTRACTS_initData()
-        ALL_CONTRACTS_InitLookUp()
         INSTRUMENT_TYPE_initData()
         INSTRUMENT_TYPE_InitLookUp()
         AMORTIZATION_TYPE_initData()
@@ -150,6 +141,37 @@ Public Class AllContractsAccounts
         COUNTERPARTY_ROLE_InitLookUp()
         SOURCES_ENCUMBRANCE_initData()
         SOURCES_ENCUMBRANCE_InitLookUp()
+    End Sub
+
+    Private Sub ContractsStatus_ImageComboBoxEdit_EditValueChanged(sender As Object, e As EventArgs) Handles ContractsStatus_ImageComboBoxEdit.EditValueChanged
+        CONTRACT_STATUS_SELECTED = Me.ContractsStatus_ImageComboBoxEdit.EditValue.ToString
+        Try
+            SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+            If CONTRACT_STATUS_SELECTED = "A" Then
+                SplashScreenManager.Default.SetWaitFormCaption("Load all active contracts")
+                Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.FillByValid(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+                Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+                VALID_CONTRACTS_initData()
+                VALID_CONTRACTS_InitLookUp()
+            ElseIf CONTRACT_STATUS_SELECTED = "M" Then
+                SplashScreenManager.Default.SetWaitFormCaption("Load all matured contracts")
+                Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.FillByInvalid(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+                Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+                MATURED_CONTRACTS_initData()
+                MATURED_CONTRACTS_InitLookUp()
+            ElseIf CONTRACT_STATUS_SELECTED = "ALL" Then
+                SplashScreenManager.Default.SetWaitFormCaption("Load all contracts")
+                Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+                Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+                ALL_CONTRACTS_initData()
+                ALL_CONTRACTS_InitLookUp()
+            End If
+            SplashScreenManager.CloseForm(False)
+        Catch ex As Exception
+            SplashScreenManager.CloseForm(False)
+            XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1)
+            Return
+        End Try
     End Sub
 
     Private Sub AllCustomerContracts_GridControl_EmbeddedNavigator_ButtonClick(ByVal sender As Object, ByVal e As DevExpress.XtraEditors.NavigatorButtonClickEventArgs)
@@ -208,29 +230,23 @@ Public Class AllContractsAccounts
     End Sub
 
     Private Sub PrintableComponentLink1_CreateMarginalHeaderArea(sender As Object, e As CreateAreaEventArgs) Handles PrintableComponentLink1.CreateMarginalHeaderArea
-        Dim reportfooter As String = "ALL CUSTOMERS CONTRACTS/ACCOUNTS" & "   " & "Printed on: " & Now
+        Dim reportfooter As String = Nothing
+        If CONTRACT_STATUS_SELECTED = "A" Then
+            reportfooter = "ALL ACTIVE CUSTOMERS CONTRACTS/ACCOUNTS" & "   " & "Printed on: " & Now
+        ElseIf CONTRACT_STATUS_SELECTED = "M" Then
+            reportfooter = "ALL MATURED CUSTOMERS CONTRACTS/ACCOUNTS" & "   " & "Printed on: " & Now
+        ElseIf CONTRACT_STATUS_SELECTED = "ALL" Then
+            reportfooter = "ALL CUSTOMERS CONTRACTS/ACCOUNTS" & "   " & "Printed on: " & Now
+        End If
         e.Graph.DrawString(reportfooter, New RectangleF(0, 0, e.Graph.ClientPageSize.Width, 20))
     End Sub
 
 #Region "GRIDVIEWS DEFAULT STYLES"
-    Private Sub ContractNr_Gridview_RowStyle(sender As Object, e As RowStyleEventArgs) Handles ContractNr_Gridview.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub ContractNr_Gridview_ShownEditor(sender As Object, e As EventArgs) Handles ContractNr_Gridview.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
 
     Private Sub AllCustomerContracts_GridView_DoubleClick(sender As Object, e As EventArgs) Handles AllCustomerContracts_GridView.DoubleClick
         'Dim ea As DevExpress.Utils.DXMouseEventArgs = TryCast(e, DevExpress.Utils.DXMouseEventArgs)
         Dim view As GridView = TryCast(sender, GridView)
         'Dim info As GridHitInfo = view.CalcHitInfo(ea.Location)
-
 
         If view.IsFilterRow(view.FocusedRowHandle) = True Then
             Return
@@ -247,257 +263,10 @@ Public Class AllContractsAccounts
 
 
     End Sub
-    Private Sub AllCustomerContracts_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles AllCustomerContracts_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub AllCustomerContracts_GridView_ShownEditor(sender As Object, e As EventArgs) Handles AllCustomerContracts_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub AccClassificInstrum_Gridview_RowStyle(sender As Object, e As RowStyleEventArgs) Handles AccClassificInstrum_Gridview.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub AccClassificInstrum_Gridview_ShownEditor(sender As Object, e As EventArgs) Handles AccClassificInstrum_Gridview.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub AmortizationType_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles AmortizationType_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub AmortizationType_GridView_ShownEditor(sender As Object, e As EventArgs) Handles AmortizationType_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub DefaultStatus_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles DefaultStatus_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub DefaultStatus_GridView_ShownEditor(sender As Object, e As EventArgs) Handles DefaultStatus_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub FiduciaryInstrument_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles FiduciaryInstrument_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub FiduciaryInstrument_GridView_ShownEditor(sender As Object, e As EventArgs) Handles FiduciaryInstrument_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub InterestRateResetFrequency_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles InterestRateResetFrequency_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub InterestRateResetFrequency_GridView_ShownEditor(sender As Object, e As EventArgs) Handles InterestRateResetFrequency_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub InterestRateType_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles InterestRateType_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub InterestRateType_GridView_ShownEditor(sender As Object, e As EventArgs) Handles InterestRateType_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub PaymentFrequency_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles PaymentFrequency_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub PaymentFrequency_GridView_ShownEditor(sender As Object, e As EventArgs) Handles PaymentFrequency_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub PerformingStatus_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles PerformingStatus_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub PerformingStatus_GridView_ShownEditor(sender As Object, e As EventArgs) Handles PerformingStatus_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub ProjectFinanceLoan_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles ProjectFinanceLoan_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub ProjectFinanceLoan_GridView_ShownEditor(sender As Object, e As EventArgs) Handles ProjectFinanceLoan_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub Purpose_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Purpose_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub Purpose_GridView_ShownEditor(sender As Object, e As EventArgs) Handles Purpose_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub Recourse_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles Recourse_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub Recourse_GridView_ShownEditor(sender As Object, e As EventArgs) Handles Recourse_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub ReferenceRate_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles ReferenceRate_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub ReferenceRate_GridView_ShownEditor(sender As Object, e As EventArgs) Handles ReferenceRate_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub RepaymentRights_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles RepaymentRights_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub RepaymentRights_GridView_ShownEditor(sender As Object, e As EventArgs) Handles RepaymentRights_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub StatusForbearance_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles StatusForbearance_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub StatusForbearance_GridView_ShownEditor(sender As Object, e As EventArgs) Handles StatusForbearance_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub TypeOfInstrument_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles TypeOfInstrument_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub TypeOfInstrument_GridView_ShownEditor(sender As Object, e As EventArgs) Handles TypeOfInstrument_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub TypeOfSecurization_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles TypeOfSecurization_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub TypeOfSecurization_GridView_ShownEditor(sender As Object, e As EventArgs) Handles TypeOfSecurization_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub GridView1_RowStyle(sender As Object, e As RowStyleEventArgs) Handles GridView1.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub GridView1_ShownEditor(sender As Object, e As EventArgs) Handles GridView1.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
-
-    Private Sub SourceEncumbrance_GridView_RowStyle(sender As Object, e As RowStyleEventArgs) Handles SourceEncumbrance_GridView.RowStyle
-        If e.RowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            e.Appearance.BackColor = SystemColors.InactiveCaptionText
-        End If
-    End Sub
-
-    Private Sub SourceEncumbrance_GridView_ShownEditor(sender As Object, e As EventArgs) Handles SourceEncumbrance_GridView.ShownEditor
-        Dim view As GridView = CType(sender, GridView)
-        If view.FocusedRowHandle = DevExpress.XtraGrid.GridControl.AutoFilterRowHandle Then
-            view.ActiveEditor.Properties.Appearance.ForeColor = Color.Yellow
-        End If
-    End Sub
 
 #End Region
 
 #Region "SELECTION_DATA_LOAD"
-
     Private Sub ALL_CONTRACTS_initData()
         Dim objCMD1 As SqlCommand = New SqlCommand("SELECT [Contract_Account],[ClientNr],[ClientName],[BusinessType],[Valid],[IsAnaCredit] FROM [ALL_CONTRACTS_ACCOUNTS] where [ClientNr]<>'0' order by [ID] desc", conn)
         objCMD1.CommandTimeout = 5000
@@ -514,9 +283,52 @@ Public Class AllContractsAccounts
         End Try
         BS_ContractsAll = New BindingSource(ds, "ALL_CONTRACTS_ACCOUNTS")
     End Sub
-
     Private Sub ALL_CONTRACTS_InitLookUp()
         Me.ContractSearch_GridLookUpEdit.Properties.DataSource = BS_ContractsAll
+        Me.ContractSearch_GridLookUpEdit.Properties.DisplayMember = "Contract_Account"
+        Me.ContractSearch_GridLookUpEdit.Properties.ValueMember = "Contract_Account"
+    End Sub
+
+    Private Sub VALID_CONTRACTS_initData()
+        Dim objCMD1 As SqlCommand = New SqlCommand("SELECT [Contract_Account],[ClientNr],[ClientName],[BusinessType],[Valid],[IsAnaCredit] FROM [ALL_CONTRACTS_ACCOUNTS] where [ClientNr]<>'0' and [Valid] in ('Y') order by [ID] desc", conn)
+        objCMD1.CommandTimeout = 5000
+        Dim dbAllContracts As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+
+        Dim ds As DataSet = New DataSet()
+        Try
+
+            dbAllContracts.Fill(ds, "VALID_CONTRACTS_ACCOUNTS")
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_ContractsValid = New BindingSource(ds, "VALID_CONTRACTS_ACCOUNTS")
+    End Sub
+    Private Sub VALID_CONTRACTS_InitLookUp()
+        Me.ContractSearch_GridLookUpEdit.Properties.DataSource = BS_ContractsValid
+        Me.ContractSearch_GridLookUpEdit.Properties.DisplayMember = "Contract_Account"
+        Me.ContractSearch_GridLookUpEdit.Properties.ValueMember = "Contract_Account"
+    End Sub
+
+    Private Sub MATURED_CONTRACTS_initData()
+        Dim objCMD1 As SqlCommand = New SqlCommand("SELECT [Contract_Account],[ClientNr],[ClientName],[BusinessType],[Valid],[IsAnaCredit] FROM [ALL_CONTRACTS_ACCOUNTS] where [ClientNr]<>'0' and [Valid] in ('N') order by [ID] desc", conn)
+        objCMD1.CommandTimeout = 5000
+        Dim dbAllContracts As SqlDataAdapter = New SqlDataAdapter(objCMD1)
+
+        Dim ds As DataSet = New DataSet()
+        Try
+
+            dbAllContracts.Fill(ds, "MATURED_CONTRACTS_ACCOUNTS")
+
+        Catch ex As System.Exception
+            MsgBox(ex.Message)
+
+        End Try
+        BS_ContractsMatured = New BindingSource(ds, "MATURED_CONTRACTS_ACCOUNTS")
+    End Sub
+    Private Sub MATURED_CONTRACTS_InitLookUp()
+        Me.ContractSearch_GridLookUpEdit.Properties.DataSource = BS_ContractsMatured
         Me.ContractSearch_GridLookUpEdit.Properties.DisplayMember = "Contract_Account"
         Me.ContractSearch_GridLookUpEdit.Properties.ValueMember = "Contract_Account"
     End Sub
@@ -539,7 +351,6 @@ Public Class AllContractsAccounts
         End Try
         BS_Type_Of_Instrument = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub INSTRUMENT_TYPE_InitLookUp()
         Me.TypeOfInstrument_SearchLookUpEdit.Properties.DataSource = BS_Type_Of_Instrument
         Me.TypeOfInstrument_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -564,7 +375,6 @@ Public Class AllContractsAccounts
         End Try
         BS_AmortizationType = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub AMORTIZATION_TYPE_InitLookUp()
         Me.AmortizationType_SearchLookUpEdit.Properties.DataSource = BS_AmortizationType
         Me.AmortizationType_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -589,7 +399,6 @@ Public Class AllContractsAccounts
         End Try
         BS_FiduciaryInstrument = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub FIDUCIARY_INSTRUMENT_InitLookUp()
         Me.FiduciaryInstrument_SearchLookUpEdit.Properties.DataSource = BS_FiduciaryInstrument
         Me.FiduciaryInstrument_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -614,7 +423,6 @@ Public Class AllContractsAccounts
         End Try
         BS_InterestRateType = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub INTEREST_RATE_TYPE_InitLookUp()
         Me.InterestRateType_SearchLookUpEdit.Properties.DataSource = BS_InterestRateType
         Me.InterestRateType_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -639,7 +447,6 @@ Public Class AllContractsAccounts
         End Try
         BS_ReferenceRate = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub REFERENCE_RATE_InitLookUp()
         Me.ReferenceRate_SearchLookUpEdit.Properties.DataSource = BS_ReferenceRate
         Me.ReferenceRate_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -664,7 +471,6 @@ Public Class AllContractsAccounts
         End Try
         BS_InterestRateResetFrequency = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub INTEREST_RATE_RESET_FREQ_InitLookUp()
         Me.InterestRateResFreq_SearchLookUpEdit.Properties.DataSource = BS_InterestRateResetFrequency
         Me.InterestRateResFreq_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -689,7 +495,6 @@ Public Class AllContractsAccounts
         End Try
         BS_PaymentFrequency = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub PAYMENT_FREQ_InitLookUp()
         Me.PaymentFreq_SearchLookUpEdit.Properties.DataSource = BS_PaymentFrequency
         Me.PaymentFreq_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -714,7 +519,6 @@ Public Class AllContractsAccounts
         End Try
         BS_ProjectFinance = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub PROJECT_FINANCE_LOAN_InitLookUp()
         Me.ProjectFinance_SearchLookUpEdit.Properties.DataSource = BS_ProjectFinance
         Me.ProjectFinance_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -739,7 +543,6 @@ Public Class AllContractsAccounts
         End Try
         BS_Purpose = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub PURPOSE_InitLookUp()
         Me.Purpose_SearchLookUpEdit.Properties.DataSource = BS_Purpose
         Me.Purpose_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -764,7 +567,6 @@ Public Class AllContractsAccounts
         End Try
         BS_Recourse = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub RECOURSE_InitLookUp()
         Me.Recourse_SearchLookUpEdit.Properties.DataSource = BS_Recourse
         Me.Recourse_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -789,7 +591,6 @@ Public Class AllContractsAccounts
         End Try
         BS_RepaymentRights = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub REPAYMENT_RIGHTS_InitLookUp()
         Me.RepaymentRights_SearchLookUpEdit.Properties.DataSource = BS_RepaymentRights
         Me.RepaymentRights_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -814,7 +615,6 @@ Public Class AllContractsAccounts
         End Try
         BS_DefaultStatus = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub DEFAULT_STATUS_InitLookUp()
         Me.DefaultStatus_SearchLookUpEdit.Properties.DataSource = BS_DefaultStatus
         Me.DefaultStatus_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -839,7 +639,6 @@ Public Class AllContractsAccounts
         End Try
         BS_TypeOfSecurization = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub TYPE_OF_SECURIZATION_InitLookUp()
         Me.TypeOfSecurization_SearchLookUpEdit.Properties.DataSource = BS_TypeOfSecurization
         Me.TypeOfSecurization_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -864,7 +663,6 @@ Public Class AllContractsAccounts
         End Try
         BS_AccountingClassificationInstruments = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub ACCOUNTING_CLASSIFICATION_InitLookUp()
         Me.AccountingClassifInstruments_SearchLookUpEdit.Properties.DataSource = BS_AccountingClassificationInstruments
         Me.AccountingClassifInstruments_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -889,7 +687,6 @@ Public Class AllContractsAccounts
         End Try
         BS_PerformingStatusInstrument = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub PERFORMING_STATUS_InitLookUp()
         Me.PerformingStatusInstrument_SearchLookUpEdit.Properties.DataSource = BS_PerformingStatusInstrument
         Me.PerformingStatusInstrument_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -914,7 +711,6 @@ Public Class AllContractsAccounts
         End Try
         BS_StatusForbearance = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub STATUS_FORBEARANCE_InitLookUp()
         Me.StatusForbearance_SearchLookUpEdit.Properties.DataSource = BS_StatusForbearance
         Me.StatusForbearance_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -939,7 +735,6 @@ Public Class AllContractsAccounts
         End Try
         BS_CounterpartyRole = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub COUNTERPARTY_ROLE_InitLookUp()
         Me.CounterpartyRole_SearchLookUpEdit.Properties.DataSource = BS_CounterpartyRole
         Me.CounterpartyRole_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -964,7 +759,6 @@ Public Class AllContractsAccounts
         End Try
         BS_SourcesEncumbrance = New BindingSource(ds, "SQL_PARAMETER_DETAILS_SECOND")
     End Sub
-
     Private Sub SOURCES_ENCUMBRANCE_InitLookUp()
         Me.SourcesOfEncumbrance_SearchLookUpEdit.Properties.DataSource = BS_SourcesEncumbrance
         Me.SourcesOfEncumbrance_SearchLookUpEdit.Properties.DisplayMember = "SQL_Name_1"
@@ -972,8 +766,6 @@ Public Class AllContractsAccounts
     End Sub
 
 #End Region
-
-
 
     Private Sub ANACREDIT_CONTRACT_FIELDS()
         If Me.LayoutControl1.Visible = False Then
@@ -1146,45 +938,44 @@ Public Class AllContractsAccounts
     Private Sub ContractSearch_GridLookUpEdit_ButtonClick(sender As Object, e As DevExpress.XtraEditors.Controls.ButtonPressedEventArgs) Handles ContractSearch_GridLookUpEdit.ButtonClick
         If e.Button.Caption = "Report" Then
             If Me.ContractSearch_GridLookUpEdit.Text <> "" AndAlso IsNumeric(Me.ContractSearch_GridLookUpEdit.Text) = True Then
-                Me.ALL_CONTRACTS_ACCOUNTSBindingSource.CancelEdit()
-                SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-                ContractNrSearch = Me.ContractSearch_GridLookUpEdit.Text
-                SplashScreenManager.Default.SetWaitFormCaption("Create Report for Contract Nr.: " & ContractNrSearch)
-                Me.ContractSearch_GridLookUpEdit.Text = ContractNrSearch
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                If XtraMessageBox.Show("Should the basic report for Contract Nr: " & Me.ContractSearch_GridLookUpEdit.Text & " be created ?", "CREATE BASIC CONTRACT REPORT", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = System.Windows.Forms.DialogResult.Yes Then
+                    Me.ALL_CONTRACTS_ACCOUNTSBindingSource.CancelEdit()
+                    SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
+                    ContractNrSearch = Me.ContractSearch_GridLookUpEdit.Text
+                    SplashScreenManager.Default.SetWaitFormCaption("Create Report for Contract Nr.: " & ContractNrSearch)
+                    Me.ContractSearch_GridLookUpEdit.Text = ContractNrSearch
+                    OpenSqlConnections()
 
-                Dim CUSTOMER_CONTRACTS_Da As New SqlDataAdapter("Select * from ALL_CONTRACTS_ACCOUNTS where [Contract_Account]='" & ContractNrSearch & "' ", conn)
-                Dim CUSTOMER_CONTRACTS_Dataset As New DataSet("ALL_CONTRACTS_ACCOUNTS")
-                CUSTOMER_CONTRACTS_Da.Fill(CUSTOMER_CONTRACTS_Dataset, "ALL_CONTRACTS_ACCOUNTS")
+                    Dim CUSTOMER_CONTRACTS_Da As New SqlDataAdapter("Select * from ALL_CONTRACTS_ACCOUNTS where [Contract_Account]='" & ContractNrSearch & "' ", conn)
+                    Dim CUSTOMER_CONTRACTS_Dataset As New DataSet("ALL_CONTRACTS_ACCOUNTS")
+                    CUSTOMER_CONTRACTS_Da.Fill(CUSTOMER_CONTRACTS_Dataset, "ALL_CONTRACTS_ACCOUNTS")
 
-                Dim CrRep As New ReportDocument
-                CrRep.Load(CrystalRepDir & "\ContractInfo.rpt")
-                CrRep.SetDataSource(CUSTOMER_CONTRACTS_Dataset)
+                    Dim CrRep As New ReportDocument
+                    CrRep.Load(CrystalRepDir & "\ContractInfo.rpt")
+                    CrRep.SetDataSource(CUSTOMER_CONTRACTS_Dataset)
 
-                Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
-                Dim myParams As ParameterField = New ParameterField
-                myValue.Value = ContractNrSearch
-                myParams.ParameterFieldName = "ClientNr"
-                myParams.CurrentValues.Add(myValue)
-                Dim c As New CrystalReportsForm
-                c.MdiParent = Me.MdiParent
-                c.Show()
-                c.WindowState = FormWindowState.Maximized
-                c.Text = "Data Report for Contract Nr. " & ContractNrSearch
-                c.CrystalReportViewer1.ParameterFieldInfo = New ParameterFields
-                c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams)
-                c.CrystalReportViewer1.ReportSource = CrRep
-                c.CrystalReportViewer1.ShowParameterPanelButton = False
-                c.CrystalReportViewer1.ShowRefreshButton = False
-                c.CrystalReportViewer1.ShowGroupTreeButton = False
-                c.CrystalReportViewer1.Zoom(85)
-                SplashScreenManager.CloseForm(False)
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
+                    Dim myValue As ParameterDiscreteValue = New ParameterDiscreteValue
+                    Dim myParams As ParameterField = New ParameterField
+                    myValue.Value = ContractNrSearch
+                    myParams.ParameterFieldName = "ClientNr"
+                    myParams.CurrentValues.Add(myValue)
+                    Dim c As New CrystalReportsForm
+                    c.MdiParent = Me.MdiParent
+                    c.Show()
+                    c.WindowState = FormWindowState.Maximized
+                    c.Text = "Data Report for Contract Nr. " & ContractNrSearch
+                    c.CrystalReportViewer1.ParameterFieldInfo = New ParameterFields
+                    c.CrystalReportViewer1.ParameterFieldInfo.Add(myParams)
+                    c.CrystalReportViewer1.ReportSource = CrRep
+                    c.CrystalReportViewer1.ShowParameterPanelButton = False
+                    c.CrystalReportViewer1.ShowRefreshButton = False
+                    c.CrystalReportViewer1.ShowGroupTreeButton = False
+                    c.CrystalReportViewer1.Zoom(85)
+                    SplashScreenManager.CloseForm(False)
+                    CloseSqlConnections()
                 End If
             End If
+
         End If
     End Sub
 
@@ -1632,14 +1423,10 @@ Public Class AllContractsAccounts
                 Me.TableAdapterManager.UpdateAll(Me.AllContractsAccountsDataSet)
                 '*****************************************************
                 'Update Validity Status in AnaCredit Contracts Table
-                If cmd.Connection.State = ConnectionState.Closed Then
-                    cmd.Connection.Open()
-                End If
+                OpenSqlConnections()
                 cmd.CommandText = "UPDATE A SET A.AnaCredit_Valid=B.AnaCredit_Valid from ANACREDIT_CONTRACTS A INNER JOIN ALL_CONTRACTS_ACCOUNTS B on A.Contract_Account=B.Contract_Account where B.Contract_Account='" & Me.ContractNr_TextEdit.EditValue & "' and B.IsAnaCredit in ('Y')"
                 cmd.ExecuteNonQuery()
-                If cmd.Connection.State = ConnectionState.Open Then
-                    cmd.Connection.Close()
-                End If
+                CloseSqlConnections()
                 '*****************************************************
                 Me.LayoutControl1.Visible = True
                 GridControl2.MainView = AllCustomerContracts_GridView
@@ -1648,8 +1435,19 @@ Public Class AllContractsAccounts
                 Dim view As GridView = AllCustomerContracts_GridView
                 Dim focusedRow As Integer = view.FocusedRowHandle
                 Me.GridControl2.BeginUpdate()
-                Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
-                Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+                If CONTRACT_STATUS_SELECTED = "A" Then
+                    SplashScreenManager.Default.SetWaitFormCaption("Load all active contracts")
+                    Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.FillByValid(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+                    Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+                ElseIf CONTRACT_STATUS_SELECTED = "M" Then
+                    SplashScreenManager.Default.SetWaitFormCaption("Load all matured contracts")
+                    Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.FillByInvalid(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+                    Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+                ElseIf CONTRACT_STATUS_SELECTED = "ALL" Then
+                    SplashScreenManager.Default.SetWaitFormCaption("Load all contracts")
+                    Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+                    Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+                End If
                 view.RefreshData()
                 Me.GridControl2.EndUpdate()
                 view.FocusedRowHandle = focusedRow
@@ -1682,8 +1480,19 @@ Public Class AllContractsAccounts
         Dim view As GridView = AllCustomerContracts_GridView
         Dim focusedRow As Integer = view.FocusedRowHandle
         Me.GridControl2.BeginUpdate()
-        Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
-        Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+        If CONTRACT_STATUS_SELECTED = "A" Then
+            SplashScreenManager.Default.SetWaitFormCaption("Load all active contracts")
+            Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.FillByValid(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+            Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+        ElseIf CONTRACT_STATUS_SELECTED = "M" Then
+            SplashScreenManager.Default.SetWaitFormCaption("Load all matured contracts")
+            Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.FillByInvalid(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+            Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+        ElseIf CONTRACT_STATUS_SELECTED = "ALL" Then
+            SplashScreenManager.Default.SetWaitFormCaption("Load all contracts")
+            Me.ALL_CONTRACTS_ACCOUNTSTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS)
+            Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTTableAdapter.Fill(Me.AllContractsAccountsDataSet.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUST)
+        End If
         view.RefreshData()
         Me.GridControl2.EndUpdate()
         view.FocusedRowHandle = focusedRow
@@ -1779,10 +1588,6 @@ Public Class AllContractsAccounts
         End If
     End Sub
 
-
-
-
-
     Private Sub ClientNr_TextEdit_DoubleClick(sender As Object, e As EventArgs) Handles ClientNr_TextEdit.DoubleClick
         If Me.LayoutControl1.Visible = False Then
             Try
@@ -1821,8 +1626,8 @@ Public Class AllContractsAccounts
                 Return
             End Try
 
-
-
         End If
     End Sub
+
+
 End Class

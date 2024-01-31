@@ -20,9 +20,14 @@ Partial Class RiskStrategyPlanningProcess
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode4 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RiskStrategyPlanningProcess))
-        Dim StyleFormatCondition1 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim StyleFormatCondition2 As DevExpress.XtraGrid.StyleFormatCondition = New DevExpress.XtraGrid.StyleFormatCondition()
+        Dim EditorButtonImageOptions5 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
+        Dim SerializableAppearanceObject17 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject18 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject19 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
+        Dim SerializableAppearanceObject20 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -38,13 +43,8 @@ Partial Class RiskStrategyPlanningProcess
         Dim SerializableAppearanceObject10 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject11 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject12 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim EditorButtonImageOptions4 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
-        Dim SerializableAppearanceObject13 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject14 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject15 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim SerializableAppearanceObject16 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
-        Dim GridLevelNode2 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
-        Dim GridLevelNode3 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode1 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
+        Dim GridLevelNode5 As DevExpress.XtraGrid.GridLevelNode = New DevExpress.XtraGrid.GridLevelNode()
         Me.UnexpectedLoss_DetailView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colID1 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colObligorRate = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -285,18 +285,19 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutViewColumn50 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
         Me.LayoutViewField25 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
         Me.LayoutViewCard2 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
-        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
-        Me.CreateNewRiskStrategy_btn = New DevExpress.XtraEditors.SimpleButton()
-        Me.AnalysisDate_Comboedit = New DevExpress.XtraEditors.ComboBoxEdit()
-        Me.LabelControl2 = New DevExpress.XtraEditors.LabelControl()
+        Me.DisplayAllDates_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.LoadData_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.RiskDate_lbl = New DevExpress.XtraEditors.LabelControl()
         Me.LabelControl6 = New DevExpress.XtraEditors.LabelControl()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
-        Me.SumEL_lbl = New System.Windows.Forms.Label()
-        Me.LabelControl13 = New DevExpress.XtraEditors.LabelControl()
-        Me.SumGA_lbl = New System.Windows.Forms.Label()
-        Me.LabelControl11 = New DevExpress.XtraEditors.LabelControl()
+        Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
+        Me.DefaultRisk_TextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
+        Me.GA_TextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.GroupControl6 = New DevExpress.XtraEditors.GroupControl()
+        Me.UL_TextEdit = New DevExpress.XtraEditors.TextEdit()
+        Me.GroupControl7 = New DevExpress.XtraEditors.GroupControl()
+        Me.EL_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.SumGArel_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.LabelControl10 = New DevExpress.XtraEditors.LabelControl()
         Me.RecalculateEL_UL_GA_btn = New DevExpress.XtraEditors.SimpleButton()
@@ -313,8 +314,6 @@ Partial Class RiskStrategyPlanningProcess
         Me.LabelControl4 = New DevExpress.XtraEditors.LabelControl()
         Me.LevelOfConfidence_SpinEdit = New DevExpress.XtraEditors.SpinEdit()
         Me.LabelControl3 = New DevExpress.XtraEditors.LabelControl()
-        Me.SumUL_lbl = New System.Windows.Forms.Label()
-        Me.LabelControl12 = New DevExpress.XtraEditors.LabelControl()
         Me.GAMMAINV_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.XtraTabControl1 = New DevExpress.XtraTab.XtraTabControl()
         Me.UnexpectedLossBasic_XtraTabPage = New DevExpress.XtraTab.XtraTabPage()
@@ -378,99 +377,9 @@ Partial Class RiskStrategyPlanningProcess
         Me.colK_Value = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSumGA_rel = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSumGA_Total = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDefaultRisk = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colLevelOfConfidence = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colCreationDate = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.RepositoryItemComboBox3 = New DevExpress.XtraEditors.Repository.RepositoryItemComboBox()
-        Me.RepositoryItemTextEdit4 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.RepositoryItemTextEdit5 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.RepositoryItemTextEdit6 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.RepositoryItemMemoExEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit()
-        Me.RepositoryItemImageComboBox2 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridColumn43 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn45 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn46 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn47 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn48 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn49 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn50 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn51 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn52 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn53 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn54 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn55 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn56 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn57 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn58 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn59 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn60 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn61 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn62 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn63 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn64 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn65 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn66 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn67 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn68 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn69 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn70 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn71 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn72 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn73 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn74 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.GridColumn75 = New DevExpress.XtraGrid.Columns.GridColumn()
-        Me.LayoutView3 = New DevExpress.XtraGrid.Views.Layout.LayoutView()
-        Me.LayoutViewColumn51 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField26 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn52 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField27 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn53 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField28 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn54 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField29 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn55 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField30 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn56 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField31 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn57 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField32 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn58 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField33 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn59 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField34 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn60 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField35 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn61 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField36 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn62 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField37 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn63 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField38 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn64 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField39 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn65 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField40 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn66 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField41 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn67 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField42 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn68 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField43 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn69 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField44 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn70 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField45 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn71 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField46 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn72 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField47 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn73 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField49 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn74 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField50 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewColumn75 = New DevExpress.XtraGrid.Columns.LayoutViewColumn()
-        Me.LayoutViewField51 = New DevExpress.XtraGrid.Views.Layout.LayoutViewField()
-        Me.LayoutViewCard3 = New DevExpress.XtraGrid.Views.Layout.LayoutViewCard()
         Me.LayoutControlGroup5 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.UnexpectedLoss_DetailView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -551,11 +460,20 @@ Partial Class RiskStrategyPlanningProcess
         CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl1.SuspendLayout()
-        CType(Me.AnalysisDate_Comboedit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl4.SuspendLayout()
+        CType(Me.DefaultRisk_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl5.SuspendLayout()
+        CType(Me.GA_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl6.SuspendLayout()
+        CType(Me.UL_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl7.SuspendLayout()
+        CType(Me.EL_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SumGArel_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.K_Value_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Delta_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -599,40 +517,6 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControl3.SuspendLayout()
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RiskStrategyPlanningProcessAllDates_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField49, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField50, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField51, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewCard3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -1048,14 +932,14 @@ Partial Class RiskStrategyPlanningProcess
         Me.GridControl1.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GridControl1.EmbeddedNavigator.Buttons.Remove.Visible = False
         Me.GridControl1.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 9, True, True, "Add new Business Type Client Group", "AddNewBTG")})
-        GridLevelNode1.LevelTemplate = Me.UnexpectedLoss_DetailView
-        GridLevelNode1.RelationName = "FK_RiskStrategyPlanningProcess_Details_RiskStrategyPlanningProcess_Totals"
-        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
+        GridLevelNode4.LevelTemplate = Me.UnexpectedLoss_DetailView
+        GridLevelNode4.RelationName = "FK_RiskStrategyPlanningProcess_Details_RiskStrategyPlanningProcess_Totals"
+        Me.GridControl1.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode4})
         Me.GridControl1.Location = New System.Drawing.Point(12, 62)
         Me.GridControl1.MainView = Me.UnexpectedLoss_BasicView
         Me.GridControl1.Name = "GridControl1"
         Me.GridControl1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox1, Me.OdasImportProcedureRepositoryItemTextEdit, Me.RepositoryItemTextEditBIC8, Me.RepositoryItemTextEditBIC3, Me.RepositoryItemMemoExEdit2, Me.ValidRepositoryItemImageComboBox})
-        Me.GridControl1.Size = New System.Drawing.Size(1452, 481)
+        Me.GridControl1.Size = New System.Drawing.Size(1456, 486)
         Me.GridControl1.TabIndex = 0
         Me.GridControl1.ToolTipController = Me.ToolTipController1
         Me.GridControl1.UseEmbeddedNavigator = True
@@ -1140,6 +1024,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.UnexpectedLoss_BasicView.OptionsView.ShowAutoFilterRow = True
         Me.UnexpectedLoss_BasicView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.UnexpectedLoss_BasicView.OptionsView.ShowFooter = True
+        Me.UnexpectedLoss_BasicView.OptionsView.ShowGroupPanel = False
         Me.UnexpectedLoss_BasicView.PaintStyleName = "Skin"
         '
         'colID
@@ -2110,7 +1995,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.GridControl2.MainView = Me.CreditRisk_AllDetailsView
         Me.GridControl2.Name = "GridControl2"
         Me.GridControl2.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox2, Me.RepositoryItemTextEdit1, Me.RepositoryItemTextEdit2, Me.RepositoryItemTextEdit3, Me.RepositoryItemMemoExEdit1, Me.RepositoryItemImageComboBox1})
-        Me.GridControl2.Size = New System.Drawing.Size(1452, 481)
+        Me.GridControl2.Size = New System.Drawing.Size(1456, 486)
         Me.GridControl2.TabIndex = 0
         Me.GridControl2.ToolTipController = Me.ToolTipController1
         Me.GridControl2.UseEmbeddedNavigator = True
@@ -2138,16 +2023,16 @@ Partial Class RiskStrategyPlanningProcess
         Me.CreditRisk_AllDetailsView.Appearance.SelectedRow.Options.UseForeColor = True
         Me.CreditRisk_AllDetailsView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colObligorRate1, Me.GridColumn41, Me.colClientNo1, Me.colMaturityDate1, Me.GridColumn42, Me.colCreditOutstandingEURequ, Me.colNetCreditOutstandingAmountEUR1, Me.colInternalInfo1, Me.colPD1, Me.GridColumn44, Me.colCreditRiskAmountEUREquER451, Me.colNetCreditRiskAmountEUREquER451, Me.colCoreDefinition1, Me.colClientGroup2, Me.colClientGroupName2, Me.colMaturityWithoutCapFloor1, Me.colEaDweigthedMaturityWithoutCapFloor1, Me.colPDxFinalEaD1, Me.colLGDfinalEaDweighted1, Me.colRiskDate2, Me.colIdClientGroup1, Me.colBusinessType, Me.colInputType, Me.colProjectionYear1})
         Me.CreditRisk_AllDetailsView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
-        StyleFormatCondition1.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition1.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        StyleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Black
-        StyleFormatCondition1.Appearance.Options.UseBackColor = True
-        StyleFormatCondition1.Appearance.Options.UseForeColor = True
-        StyleFormatCondition1.ApplyToRow = True
-        StyleFormatCondition1.Column = Me.colInputType
-        StyleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal
-        StyleFormatCondition1.Value1 = "M"
-        Me.CreditRisk_AllDetailsView.FormatConditions.AddRange(New DevExpress.XtraGrid.StyleFormatCondition() {StyleFormatCondition1})
+        StyleFormatCondition2.Appearance.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        StyleFormatCondition2.Appearance.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
+        StyleFormatCondition2.Appearance.ForeColor = System.Drawing.Color.Black
+        StyleFormatCondition2.Appearance.Options.UseBackColor = True
+        StyleFormatCondition2.Appearance.Options.UseForeColor = True
+        StyleFormatCondition2.ApplyToRow = True
+        StyleFormatCondition2.Column = Me.colInputType
+        StyleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Equal
+        StyleFormatCondition2.Value1 = "M"
+        Me.CreditRisk_AllDetailsView.FormatConditions.AddRange(New DevExpress.XtraGrid.StyleFormatCondition() {StyleFormatCondition2})
         Me.CreditRisk_AllDetailsView.GridControl = Me.GridControl2
         Me.CreditRisk_AllDetailsView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditOutstandingAmountEUR", Me.colCreditRiskAmountEUREquER451, "Sum={0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "NetCreditRiskAmountEUREquER45", Me.colNetCreditRiskAmountEUREquER451, "Sum={0:n2}")})
         Me.CreditRisk_AllDetailsView.Name = "CreditRisk_AllDetailsView"
@@ -3420,66 +3305,27 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutViewCard2.OptionsItemText.TextToControlDistance = 5
         Me.LayoutViewCard2.Text = "TemplateCard"
         '
-        'GroupControl1
+        'DisplayAllDates_btn
         '
-        Me.GroupControl1.Controls.Add(Me.CreateNewRiskStrategy_btn)
-        Me.GroupControl1.Controls.Add(Me.AnalysisDate_Comboedit)
-        Me.GroupControl1.Controls.Add(Me.LabelControl2)
-        Me.GroupControl1.Location = New System.Drawing.Point(12, 12)
-        Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(175, 137)
-        Me.GroupControl1.TabIndex = 116
-        Me.GroupControl1.Text = " LOAD NEW DATA"
-        '
-        'CreateNewRiskStrategy_btn
-        '
-        Me.CreateNewRiskStrategy_btn.ImageOptions.ImageIndex = 9
-        Me.CreateNewRiskStrategy_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.CreateNewRiskStrategy_btn.Location = New System.Drawing.Point(13, 73)
-        Me.CreateNewRiskStrategy_btn.Name = "CreateNewRiskStrategy_btn"
-        Me.CreateNewRiskStrategy_btn.Size = New System.Drawing.Size(157, 40)
-        Me.CreateNewRiskStrategy_btn.TabIndex = 41
-        Me.CreateNewRiskStrategy_btn.Text = "Create New Risk Strategy" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Planning Process Date"
-        '
-        'AnalysisDate_Comboedit
-        '
-        Me.AnalysisDate_Comboedit.Location = New System.Drawing.Point(13, 45)
-        Me.AnalysisDate_Comboedit.Name = "AnalysisDate_Comboedit"
-        Me.AnalysisDate_Comboedit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.AnalysisDate_Comboedit.Properties.Appearance.Options.UseFont = True
-        Me.AnalysisDate_Comboedit.Properties.Appearance.Options.UseTextOptions = True
-        Me.AnalysisDate_Comboedit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.AnalysisDate_Comboedit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.AnalysisDate_Comboedit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.AnalysisDate_Comboedit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.AnalysisDate_Comboedit.Properties.AppearanceFocused.Options.UseBackColor = True
-        Me.AnalysisDate_Comboedit.Properties.AppearanceFocused.Options.UseForeColor = True
-        Me.AnalysisDate_Comboedit.Properties.AppearanceFocused.Options.UseTextOptions = True
-        Me.AnalysisDate_Comboedit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.AnalysisDate_Comboedit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.AnalysisDate_Comboedit.Properties.DisplayFormat.FormatString = "d"
-        Me.AnalysisDate_Comboedit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime
-        Me.AnalysisDate_Comboedit.Properties.MaxLength = 8
-        Me.AnalysisDate_Comboedit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        Me.AnalysisDate_Comboedit.Size = New System.Drawing.Size(157, 22)
-        Me.AnalysisDate_Comboedit.TabIndex = 40
-        '
-        'LabelControl2
-        '
-        Me.LabelControl2.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl2.Appearance.Options.UseFont = True
-        Me.LabelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.LabelControl2.Location = New System.Drawing.Point(13, 25)
-        Me.LabelControl2.Name = "LabelControl2"
-        Me.LabelControl2.Size = New System.Drawing.Size(60, 20)
-        Me.LabelControl2.TabIndex = 20
-        Me.LabelControl2.Text = "Date"
+        Me.DisplayAllDates_btn.ImageOptions.Image = CType(resources.GetObject("DisplayAllDates_btn.ImageOptions.Image"), System.Drawing.Image)
+        Me.DisplayAllDates_btn.ImageOptions.ImageIndex = 9
+        Me.DisplayAllDates_btn.ImageOptions.ImageList = Me.ImageCollection1
+        Me.DisplayAllDates_btn.Location = New System.Drawing.Point(1067, 126)
+        Me.DisplayAllDates_btn.Name = "DisplayAllDates_btn"
+        Me.DisplayAllDates_btn.Size = New System.Drawing.Size(188, 20)
+        Me.DisplayAllDates_btn.TabIndex = 41
+        Me.DisplayAllDates_btn.Text = "Display all creation dates data"
+        Me.DisplayAllDates_btn.ToolTip = "Display all available creation dates data"
+        Me.DisplayAllDates_btn.ToolTipAnchor = DevExpress.Utils.ToolTipAnchor.Cursor
+        Me.DisplayAllDates_btn.ToolTipController = Me.ToolTipController1
+        Me.DisplayAllDates_btn.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
         '
         'LoadData_btn
         '
+        Me.LoadData_btn.ImageOptions.Image = CType(resources.GetObject("LoadData_btn.ImageOptions.Image"), System.Drawing.Image)
         Me.LoadData_btn.ImageOptions.ImageIndex = 6
         Me.LoadData_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.LoadData_btn.Location = New System.Drawing.Point(214, 126)
+        Me.LoadData_btn.Location = New System.Drawing.Point(34, 129)
         Me.LoadData_btn.Name = "LoadData_btn"
         Me.LoadData_btn.Size = New System.Drawing.Size(157, 23)
         Me.LoadData_btn.TabIndex = 8
@@ -3495,7 +3341,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.RiskDate_lbl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.RiskDate_lbl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         Me.RiskDate_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "RiskDate", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "d"))
-        Me.RiskDate_lbl.Location = New System.Drawing.Point(200, 36)
+        Me.RiskDate_lbl.Location = New System.Drawing.Point(20, 39)
         Me.RiskDate_lbl.Name = "RiskDate_lbl"
         Me.RiskDate_lbl.Size = New System.Drawing.Size(188, 25)
         Me.RiskDate_lbl.TabIndex = 123
@@ -3508,7 +3354,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LabelControl6.Appearance.Options.UseTextOptions = True
         Me.LabelControl6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.LabelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.LabelControl6.Location = New System.Drawing.Point(193, 12)
+        Me.LabelControl6.Location = New System.Drawing.Point(13, 15)
         Me.LabelControl6.Name = "LabelControl6"
         Me.LabelControl6.Size = New System.Drawing.Size(203, 20)
         Me.LabelControl6.TabIndex = 122
@@ -3518,10 +3364,11 @@ Partial Class RiskStrategyPlanningProcess
         '
         Me.GroupControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupControl2.Controls.Add(Me.SumEL_lbl)
-        Me.GroupControl2.Controls.Add(Me.LabelControl13)
-        Me.GroupControl2.Controls.Add(Me.SumGA_lbl)
-        Me.GroupControl2.Controls.Add(Me.LabelControl11)
+        Me.GroupControl2.Controls.Add(Me.DisplayAllDates_btn)
+        Me.GroupControl2.Controls.Add(Me.GroupControl4)
+        Me.GroupControl2.Controls.Add(Me.GroupControl5)
+        Me.GroupControl2.Controls.Add(Me.GroupControl6)
+        Me.GroupControl2.Controls.Add(Me.GroupControl7)
         Me.GroupControl2.Controls.Add(Me.SumGArel_TextEdit)
         Me.GroupControl2.Controls.Add(Me.LabelControl10)
         Me.GroupControl2.Controls.Add(Me.RecalculateEL_UL_GA_btn)
@@ -3538,64 +3385,199 @@ Partial Class RiskStrategyPlanningProcess
         Me.GroupControl2.Controls.Add(Me.LabelControl4)
         Me.GroupControl2.Controls.Add(Me.LevelOfConfidence_SpinEdit)
         Me.GroupControl2.Controls.Add(Me.LabelControl3)
-        Me.GroupControl2.Controls.Add(Me.SumUL_lbl)
-        Me.GroupControl2.Controls.Add(Me.LabelControl12)
         Me.GroupControl2.Controls.Add(Me.GAMMAINV_TextEdit)
-        Me.GroupControl2.Location = New System.Drawing.Point(414, 12)
+        Me.GroupControl2.Location = New System.Drawing.Point(214, 12)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(1080, 151)
+        Me.GroupControl2.Size = New System.Drawing.Size(1280, 151)
         Me.GroupControl2.TabIndex = 124
         Me.GroupControl2.Text = "RECALCULATIONS"
         '
-        'SumEL_lbl
+        'GroupControl4
         '
-        Me.SumEL_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "SumEL", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
-        Me.SumEL_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.SumEL_lbl.ForeColor = System.Drawing.Color.Aqua
-        Me.SumEL_lbl.Location = New System.Drawing.Point(524, 48)
-        Me.SumEL_lbl.Name = "SumEL_lbl"
-        Me.SumEL_lbl.Size = New System.Drawing.Size(172, 23)
-        Me.SumEL_lbl.TabIndex = 41
-        Me.SumEL_lbl.Text = "Label1"
-        Me.SumEL_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.GroupControl4.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupControl4.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl4.AppearanceCaption.Options.UseTextOptions = True
+        Me.GroupControl4.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GroupControl4.Controls.Add(Me.DefaultRisk_TextEdit)
+        Me.GroupControl4.Location = New System.Drawing.Point(1077, 36)
+        Me.GroupControl4.Name = "GroupControl4"
+        Me.GroupControl4.Size = New System.Drawing.Size(178, 52)
+        Me.GroupControl4.TabIndex = 49
+        Me.GroupControl4.Text = "DEFAULT RISK"
         '
-        'LabelControl13
+        'DefaultRisk_TextEdit
         '
-        Me.LabelControl13.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl13.Appearance.Options.UseFont = True
-        Me.LabelControl13.Appearance.Options.UseTextOptions = True
-        Me.LabelControl13.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.LabelControl13.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.LabelControl13.Location = New System.Drawing.Point(524, 29)
-        Me.LabelControl13.Name = "LabelControl13"
-        Me.LabelControl13.Size = New System.Drawing.Size(169, 20)
-        Me.LabelControl13.TabIndex = 40
-        Me.LabelControl13.Text = "SUM EXPECTED LOSS"
+        Me.DefaultRisk_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "DefaultRisk", True))
+        Me.DefaultRisk_TextEdit.EditValue = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.DefaultRisk_TextEdit.Location = New System.Drawing.Point(5, 26)
+        Me.DefaultRisk_TextEdit.Name = "DefaultRisk_TextEdit"
+        Me.DefaultRisk_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.DefaultRisk_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.DefaultRisk_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.DefaultRisk_TextEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.DefaultRisk_TextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.DefaultRisk_TextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DefaultRisk_TextEdit.Properties.DisplayFormat.FormatString = "n2"
+        Me.DefaultRisk_TextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.DefaultRisk_TextEdit.Properties.EditFormat.FormatString = "n2"
+        Me.DefaultRisk_TextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.DefaultRisk_TextEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered
+        Me.DefaultRisk_TextEdit.Properties.Mask.EditMask = "n2"
+        Me.DefaultRisk_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.DefaultRisk_TextEdit.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.DefaultRisk_TextEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
+        Me.DefaultRisk_TextEdit.Properties.ReadOnly = True
+        Me.DefaultRisk_TextEdit.Size = New System.Drawing.Size(168, 20)
+        Me.DefaultRisk_TextEdit.TabIndex = 45
+        Me.DefaultRisk_TextEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
+        Me.DefaultRisk_TextEdit.ToolTipTitle = "Default Risk"
         '
-        'SumGA_lbl
+        'GroupControl5
         '
-        Me.SumGA_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "SumGA_Total", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
-        Me.SumGA_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.SumGA_lbl.ForeColor = System.Drawing.Color.Aqua
-        Me.SumGA_lbl.Location = New System.Drawing.Point(883, 48)
-        Me.SumGA_lbl.Name = "SumGA_lbl"
-        Me.SumGA_lbl.Size = New System.Drawing.Size(172, 23)
-        Me.SumGA_lbl.TabIndex = 39
-        Me.SumGA_lbl.Text = "Label1"
-        Me.SumGA_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.GroupControl5.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupControl5.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl5.AppearanceCaption.Options.UseTextOptions = True
+        Me.GroupControl5.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GroupControl5.Controls.Add(Me.GA_TextEdit)
+        Me.GroupControl5.Location = New System.Drawing.Point(882, 36)
+        Me.GroupControl5.Name = "GroupControl5"
+        Me.GroupControl5.Size = New System.Drawing.Size(178, 52)
+        Me.GroupControl5.TabIndex = 48
+        Me.GroupControl5.Text = "GRANULARITY ADJUSTMENT"
         '
-        'LabelControl11
+        'GA_TextEdit
         '
-        Me.LabelControl11.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl11.Appearance.Options.UseFont = True
-        Me.LabelControl11.Appearance.Options.UseTextOptions = True
-        Me.LabelControl11.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.LabelControl11.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.LabelControl11.Location = New System.Drawing.Point(872, 29)
-        Me.LabelControl11.Name = "LabelControl11"
-        Me.LabelControl11.Size = New System.Drawing.Size(183, 20)
-        Me.LabelControl11.TabIndex = 38
-        Me.LabelControl11.Text = "SUM GRANULARITY APPROACH"
+        Me.GA_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "SumGA_Total", True))
+        Me.GA_TextEdit.EditValue = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.GA_TextEdit.Location = New System.Drawing.Point(5, 26)
+        Me.GA_TextEdit.Name = "GA_TextEdit"
+        Me.GA_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.GA_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.GA_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.GA_TextEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.GA_TextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.GA_TextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.GA_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.GA_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.GA_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.GA_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.GA_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.GA_TextEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
+        Me.GA_TextEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GA_TextEdit.Properties.DisplayFormat.FormatString = "n2"
+        Me.GA_TextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GA_TextEdit.Properties.EditFormat.FormatString = "n2"
+        Me.GA_TextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GA_TextEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered
+        Me.GA_TextEdit.Properties.Mask.EditMask = "n2"
+        Me.GA_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.GA_TextEdit.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.GA_TextEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
+        Me.GA_TextEdit.Properties.ReadOnly = True
+        Me.GA_TextEdit.Size = New System.Drawing.Size(168, 20)
+        Me.GA_TextEdit.TabIndex = 45
+        Me.GA_TextEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
+        Me.GA_TextEdit.ToolTipTitle = "Granularity Approach"
+        '
+        'GroupControl6
+        '
+        Me.GroupControl6.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupControl6.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl6.AppearanceCaption.Options.UseTextOptions = True
+        Me.GroupControl6.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GroupControl6.Controls.Add(Me.UL_TextEdit)
+        Me.GroupControl6.Location = New System.Drawing.Point(709, 36)
+        Me.GroupControl6.Name = "GroupControl6"
+        Me.GroupControl6.Size = New System.Drawing.Size(167, 52)
+        Me.GroupControl6.TabIndex = 47
+        Me.GroupControl6.Text = "UNEXPECTED LOSS"
+        '
+        'UL_TextEdit
+        '
+        Me.UL_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "SumUL", True))
+        Me.UL_TextEdit.EditValue = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.UL_TextEdit.Location = New System.Drawing.Point(5, 26)
+        Me.UL_TextEdit.Name = "UL_TextEdit"
+        Me.UL_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.UL_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.UL_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.UL_TextEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.UL_TextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.UL_TextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.UL_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.UL_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.UL_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.UL_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.UL_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.UL_TextEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
+        Me.UL_TextEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.UL_TextEdit.Properties.DisplayFormat.FormatString = "n2"
+        Me.UL_TextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.UL_TextEdit.Properties.EditFormat.FormatString = "n2"
+        Me.UL_TextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.UL_TextEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered
+        Me.UL_TextEdit.Properties.Mask.EditMask = "n2"
+        Me.UL_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.UL_TextEdit.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.UL_TextEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
+        Me.UL_TextEdit.Properties.ReadOnly = True
+        Me.UL_TextEdit.Size = New System.Drawing.Size(157, 20)
+        Me.UL_TextEdit.TabIndex = 45
+        Me.UL_TextEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
+        Me.UL_TextEdit.ToolTipTitle = "Unexpected Loss"
+        '
+        'GroupControl7
+        '
+        Me.GroupControl7.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupControl7.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl7.AppearanceCaption.Options.UseTextOptions = True
+        Me.GroupControl7.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GroupControl7.Controls.Add(Me.EL_TextEdit)
+        Me.GroupControl7.Location = New System.Drawing.Point(523, 36)
+        Me.GroupControl7.Name = "GroupControl7"
+        Me.GroupControl7.Size = New System.Drawing.Size(178, 52)
+        Me.GroupControl7.TabIndex = 46
+        Me.GroupControl7.Text = "EXPECTED LOSS"
+        '
+        'EL_TextEdit
+        '
+        Me.EL_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "SumEL", True))
+        Me.EL_TextEdit.EditValue = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.EL_TextEdit.Location = New System.Drawing.Point(5, 26)
+        Me.EL_TextEdit.Name = "EL_TextEdit"
+        Me.EL_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.EL_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.EL_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.EL_TextEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.EL_TextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.EL_TextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.EL_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.EL_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.EL_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.EL_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.EL_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.EL_TextEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
+        Me.EL_TextEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.EL_TextEdit.Properties.DisplayFormat.FormatString = "n2"
+        Me.EL_TextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.EL_TextEdit.Properties.EditFormat.FormatString = "n2"
+        Me.EL_TextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.EL_TextEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered
+        Me.EL_TextEdit.Properties.Mask.EditMask = "n2"
+        Me.EL_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.EL_TextEdit.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.EL_TextEdit.Properties.ReadOnly = True
+        Me.EL_TextEdit.Size = New System.Drawing.Size(168, 20)
+        Me.EL_TextEdit.TabIndex = 45
+        Me.EL_TextEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
+        Me.EL_TextEdit.ToolTipTitle = "Expected Loss"
         '
         'SumGArel_TextEdit
         '
@@ -3624,7 +3606,6 @@ Partial Class RiskStrategyPlanningProcess
         Me.SumGArel_TextEdit.Properties.Mask.EditMask = "n12"
         Me.SumGArel_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.SumGArel_TextEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
-        Me.SumGArel_TextEdit.Properties.NullValuePromptShowForEmptyValue = True
         Me.SumGArel_TextEdit.Properties.ReadOnly = True
         Me.SumGArel_TextEdit.Size = New System.Drawing.Size(132, 20)
         Me.SumGArel_TextEdit.TabIndex = 37
@@ -3648,14 +3629,17 @@ Partial Class RiskStrategyPlanningProcess
         '
         'RecalculateEL_UL_GA_btn
         '
+        Me.RecalculateEL_UL_GA_btn.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RecalculateEL_UL_GA_btn.Appearance.Options.UseFont = True
         Me.RecalculateEL_UL_GA_btn.ImageOptions.ImageIndex = 8
         Me.RecalculateEL_UL_GA_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.RecalculateEL_UL_GA_btn.Location = New System.Drawing.Point(872, 106)
+        Me.RecalculateEL_UL_GA_btn.Location = New System.Drawing.Point(1067, 98)
         Me.RecalculateEL_UL_GA_btn.Name = "RecalculateEL_UL_GA_btn"
         Me.RecalculateEL_UL_GA_btn.Size = New System.Drawing.Size(188, 23)
         Me.RecalculateEL_UL_GA_btn.TabIndex = 8
         Me.RecalculateEL_UL_GA_btn.Text = "Recalculate EL,UL and GA"
-        Me.RecalculateEL_UL_GA_btn.ToolTip = "Recalculate Expected Loss, Unexpected Loss and " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Granularity Approach"
+        Me.RecalculateEL_UL_GA_btn.ToolTip = "Recalculate Expected Loss, Unexpected Loss and " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Granularity Approach for the cur" &
+    "rent creation date"
         Me.RecalculateEL_UL_GA_btn.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
         Me.RecalculateEL_UL_GA_btn.ToolTipTitle = "RECALCULATION"
         '
@@ -3686,7 +3670,6 @@ Partial Class RiskStrategyPlanningProcess
         Me.K_Value_TextEdit.Properties.Mask.EditMask = "n10"
         Me.K_Value_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.K_Value_TextEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
-        Me.K_Value_TextEdit.Properties.NullValuePromptShowForEmptyValue = True
         Me.K_Value_TextEdit.Properties.ReadOnly = True
         Me.K_Value_TextEdit.Size = New System.Drawing.Size(132, 20)
         Me.K_Value_TextEdit.TabIndex = 35
@@ -3735,7 +3718,6 @@ Partial Class RiskStrategyPlanningProcess
         Me.Delta_TextEdit.Properties.Mask.EditMask = "n10"
         Me.Delta_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.Delta_TextEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
-        Me.Delta_TextEdit.Properties.NullValuePromptShowForEmptyValue = True
         Me.Delta_TextEdit.Properties.ReadOnly = True
         Me.Delta_TextEdit.Size = New System.Drawing.Size(132, 20)
         Me.Delta_TextEdit.TabIndex = 33
@@ -3788,16 +3770,15 @@ Partial Class RiskStrategyPlanningProcess
         Me.b_beta_value_SpinEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.b_beta_value_SpinEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
         Me.b_beta_value_SpinEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
-        Me.b_beta_value_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "Changes the b Beta Standard Value", "bBetaChangeStandardValue", Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions5.Image = CType(resources.GetObject("EditorButtonImageOptions5.Image"), System.Drawing.Image)
+        Me.b_beta_value_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions5, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject17, SerializableAppearanceObject18, SerializableAppearanceObject19, SerializableAppearanceObject20, "Changes the b Beta Standard Value", "bBetaChangeStandardValue", Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.b_beta_value_SpinEdit.Properties.EditFormat.FormatString = "n3"
         Me.b_beta_value_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.b_beta_value_SpinEdit.Properties.Mask.EditMask = "n3"
         Me.b_beta_value_SpinEdit.Properties.MaxValue = New Decimal(New Integer() {999, 0, 0, 196608})
         Me.b_beta_value_SpinEdit.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 196608})
         Me.b_beta_value_SpinEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
-        Me.b_beta_value_SpinEdit.Properties.NullValuePromptShowForEmptyValue = True
-        Me.b_beta_value_SpinEdit.Size = New System.Drawing.Size(89, 22)
+        Me.b_beta_value_SpinEdit.Size = New System.Drawing.Size(89, 24)
         Me.b_beta_value_SpinEdit.TabIndex = 29
         Me.b_beta_value_SpinEdit.ToolTip = "Input a new b beta value"
         Me.b_beta_value_SpinEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
@@ -3820,16 +3801,15 @@ Partial Class RiskStrategyPlanningProcess
         Me.p_alpha_value_SpinEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.p_alpha_value_SpinEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
         Me.p_alpha_value_SpinEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
-        Me.p_alpha_value_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "Changes the p Alpha Standard Value", "pAlphaChangeStandardValue", Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions1.Image = CType(resources.GetObject("EditorButtonImageOptions1.Image"), System.Drawing.Image)
+        Me.p_alpha_value_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions1, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject1, SerializableAppearanceObject2, SerializableAppearanceObject3, SerializableAppearanceObject4, "Changes the p Alpha Standard Value", "pAlphaChangeStandardValue", Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.p_alpha_value_SpinEdit.Properties.EditFormat.FormatString = "n3"
         Me.p_alpha_value_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.p_alpha_value_SpinEdit.Properties.Mask.EditMask = "n3"
         Me.p_alpha_value_SpinEdit.Properties.MaxValue = New Decimal(New Integer() {999, 0, 0, 196608})
         Me.p_alpha_value_SpinEdit.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 196608})
         Me.p_alpha_value_SpinEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
-        Me.p_alpha_value_SpinEdit.Properties.NullValuePromptShowForEmptyValue = True
-        Me.p_alpha_value_SpinEdit.Size = New System.Drawing.Size(89, 22)
+        Me.p_alpha_value_SpinEdit.Size = New System.Drawing.Size(89, 24)
         Me.p_alpha_value_SpinEdit.TabIndex = 28
         Me.p_alpha_value_SpinEdit.ToolTip = "Input a new p alpha Value"
         Me.p_alpha_value_SpinEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
@@ -3880,16 +3860,15 @@ Partial Class RiskStrategyPlanningProcess
         Me.nu_Value_SpinEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.nu_Value_SpinEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
         Me.nu_Value_SpinEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
-        Me.nu_Value_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "Changes the nü Standard Value", "nuChangeStandardValue", Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions2.Image = CType(resources.GetObject("EditorButtonImageOptions2.Image"), System.Drawing.Image)
+        Me.nu_Value_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions2, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject5, SerializableAppearanceObject6, SerializableAppearanceObject7, SerializableAppearanceObject8, "Changes the nü Standard Value", "nuChangeStandardValue", Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.nu_Value_SpinEdit.Properties.EditFormat.FormatString = "n3"
         Me.nu_Value_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.nu_Value_SpinEdit.Properties.Mask.EditMask = "n3"
         Me.nu_Value_SpinEdit.Properties.MaxValue = New Decimal(New Integer() {999, 0, 0, 196608})
         Me.nu_Value_SpinEdit.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 196608})
         Me.nu_Value_SpinEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
-        Me.nu_Value_SpinEdit.Properties.NullValuePromptShowForEmptyValue = True
-        Me.nu_Value_SpinEdit.Size = New System.Drawing.Size(89, 22)
+        Me.nu_Value_SpinEdit.Size = New System.Drawing.Size(89, 24)
         Me.nu_Value_SpinEdit.TabIndex = 25
         Me.nu_Value_SpinEdit.ToolTip = "Input a new nü Value"
         Me.nu_Value_SpinEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
@@ -3926,16 +3905,15 @@ Partial Class RiskStrategyPlanningProcess
         Me.LevelOfConfidence_SpinEdit.Properties.AppearanceFocused.Options.UseForeColor = True
         Me.LevelOfConfidence_SpinEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
         Me.LevelOfConfidence_SpinEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        EditorButtonImageOptions4.Image = CType(resources.GetObject("EditorButtonImageOptions4.Image"), System.Drawing.Image)
-        Me.LevelOfConfidence_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions4, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject13, SerializableAppearanceObject14, SerializableAppearanceObject15, SerializableAppearanceObject16, "Changes the Standard Value for the Level of Confidence", "ChangeStandardValue", Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
+        EditorButtonImageOptions3.Image = CType(resources.GetObject("EditorButtonImageOptions3.Image"), System.Drawing.Image)
+        Me.LevelOfConfidence_SpinEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(), New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, True, True, False, EditorButtonImageOptions3, New DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), SerializableAppearanceObject9, SerializableAppearanceObject10, SerializableAppearanceObject11, SerializableAppearanceObject12, "Changes the Standard Value for the Level of Confidence", "ChangeStandardValue", Nothing, DevExpress.Utils.ToolTipAnchor.[Default])})
         Me.LevelOfConfidence_SpinEdit.Properties.EditFormat.FormatString = "n3"
         Me.LevelOfConfidence_SpinEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.LevelOfConfidence_SpinEdit.Properties.Mask.EditMask = "n3"
         Me.LevelOfConfidence_SpinEdit.Properties.MaxValue = New Decimal(New Integer() {999, 0, 0, 196608})
         Me.LevelOfConfidence_SpinEdit.Properties.MinValue = New Decimal(New Integer() {1, 0, 0, 196608})
         Me.LevelOfConfidence_SpinEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
-        Me.LevelOfConfidence_SpinEdit.Properties.NullValuePromptShowForEmptyValue = True
-        Me.LevelOfConfidence_SpinEdit.Size = New System.Drawing.Size(89, 22)
+        Me.LevelOfConfidence_SpinEdit.Size = New System.Drawing.Size(89, 24)
         Me.LevelOfConfidence_SpinEdit.TabIndex = 23
         Me.LevelOfConfidence_SpinEdit.ToolTip = "Input a new Level of Confidence and click the Recalculate UL button" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & " to get a ne" &
     "w Unexpected Loss calculation"
@@ -3955,31 +3933,6 @@ Partial Class RiskStrategyPlanningProcess
         Me.LabelControl3.Size = New System.Drawing.Size(89, 33)
         Me.LabelControl3.TabIndex = 22
         Me.LabelControl3.Text = "Level of " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Confidence"
-        '
-        'SumUL_lbl
-        '
-        Me.SumUL_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "SumUL", True, System.Windows.Forms.DataSourceUpdateMode.OnValidation, Nothing, "N2"))
-        Me.SumUL_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.SumUL_lbl.ForeColor = System.Drawing.Color.Aqua
-        Me.SumUL_lbl.Location = New System.Drawing.Point(694, 48)
-        Me.SumUL_lbl.Name = "SumUL_lbl"
-        Me.SumUL_lbl.Size = New System.Drawing.Size(172, 23)
-        Me.SumUL_lbl.TabIndex = 21
-        Me.SumUL_lbl.Text = "Label1"
-        Me.SumUL_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'LabelControl12
-        '
-        Me.LabelControl12.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LabelControl12.Appearance.Options.UseFont = True
-        Me.LabelControl12.Appearance.Options.UseTextOptions = True
-        Me.LabelControl12.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.LabelControl12.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.LabelControl12.Location = New System.Drawing.Point(697, 29)
-        Me.LabelControl12.Name = "LabelControl12"
-        Me.LabelControl12.Size = New System.Drawing.Size(169, 20)
-        Me.LabelControl12.TabIndex = 20
-        Me.LabelControl12.Text = "SUM UNEXPECTED LOSS"
         '
         'GAMMAINV_TextEdit
         '
@@ -4008,7 +3961,6 @@ Partial Class RiskStrategyPlanningProcess
         Me.GAMMAINV_TextEdit.Properties.Mask.EditMask = "n10"
         Me.GAMMAINV_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
         Me.GAMMAINV_TextEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
-        Me.GAMMAINV_TextEdit.Properties.NullValuePromptShowForEmptyValue = True
         Me.GAMMAINV_TextEdit.Properties.ReadOnly = True
         Me.GAMMAINV_TextEdit.Size = New System.Drawing.Size(132, 20)
         Me.GAMMAINV_TextEdit.TabIndex = 31
@@ -4045,7 +3997,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.UnexpectedLossBasic_XtraTabPage.Controls.Add(Me.LayoutControl1)
         Me.UnexpectedLossBasic_XtraTabPage.Name = "UnexpectedLossBasic_XtraTabPage"
         Me.UnexpectedLossBasic_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.UnexpectedLossBasic_XtraTabPage.Size = New System.Drawing.Size(1476, 555)
+        Me.UnexpectedLossBasic_XtraTabPage.Size = New System.Drawing.Size(1480, 560)
         Me.UnexpectedLossBasic_XtraTabPage.Text = "UNEXPECTED LOSS/GRANULARITY APPROACH BY CLIENT GROUP"
         '
         'LayoutControl1
@@ -4059,7 +4011,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(1476, 555)
+        Me.LayoutControl1.Size = New System.Drawing.Size(1480, 560)
         Me.LayoutControl1.TabIndex = 115
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -4069,7 +4021,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LoadExcelFile_btn.ImageOptions.ImageList = Me.ImageCollection1
         Me.LoadExcelFile_btn.Location = New System.Drawing.Point(196, 24)
         Me.LoadExcelFile_btn.Name = "LoadExcelFile_btn"
-        Me.LoadExcelFile_btn.Size = New System.Drawing.Size(175, 22)
+        Me.LoadExcelFile_btn.Size = New System.Drawing.Size(176, 22)
         Me.LoadExcelFile_btn.StyleController = Me.LayoutControl1
         Me.LoadExcelFile_btn.TabIndex = 130
         Me.LoadExcelFile_btn.Text = "Load Excel File"
@@ -4090,7 +4042,7 @@ Partial Class RiskStrategyPlanningProcess
         '
         Me.Edit_BICDIR_Details_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Edit_BICDIR_Details_btn.ImageOptions.ImageIndex = 5
-        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1374, 24)
+        Me.Edit_BICDIR_Details_btn.Location = New System.Drawing.Point(1378, 24)
         Me.Edit_BICDIR_Details_btn.Name = "Edit_BICDIR_Details_btn"
         Me.Edit_BICDIR_Details_btn.Size = New System.Drawing.Size(78, 22)
         Me.Edit_BICDIR_Details_btn.StyleController = Me.LayoutControl1
@@ -4104,7 +4056,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControlGroup1.GroupBordersVisible = False
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlGroup3})
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1476, 555)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(1480, 560)
         '
         'LayoutControlItem1
         '
@@ -4113,7 +4065,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem1.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(1456, 485)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(1460, 490)
         Me.LayoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
@@ -4124,14 +4076,14 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControlGroup3.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem2, Me.EmptySpaceItem3, Me.LayoutControlItem4, Me.LayoutControlItem8})
         Me.LayoutControlGroup3.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup3.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1456, 50)
+        Me.LayoutControlGroup3.Size = New System.Drawing.Size(1460, 50)
         Me.LayoutControlGroup3.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.Edit_BICDIR_Details_btn
         Me.LayoutControlItem2.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(1350, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(1354, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
         Me.LayoutControlItem2.Size = New System.Drawing.Size(82, 26)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
@@ -4142,9 +4094,9 @@ Partial Class RiskStrategyPlanningProcess
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
         Me.EmptySpaceItem3.CustomizationFormText = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(351, 0)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(352, 0)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(999, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(1002, 26)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem4
@@ -4163,7 +4115,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem8"
         Me.LayoutControlItem8.Location = New System.Drawing.Point(172, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(179, 26)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(180, 26)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -4176,7 +4128,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.UnexpectedLoss_DetailsAll_XtraTabPage.Controls.Add(Me.LayoutControl2)
         Me.UnexpectedLoss_DetailsAll_XtraTabPage.Name = "UnexpectedLoss_DetailsAll_XtraTabPage"
         Me.UnexpectedLoss_DetailsAll_XtraTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.[False]
-        Me.UnexpectedLoss_DetailsAll_XtraTabPage.Size = New System.Drawing.Size(1476, 555)
+        Me.UnexpectedLoss_DetailsAll_XtraTabPage.Size = New System.Drawing.Size(1480, 560)
         Me.UnexpectedLoss_DetailsAll_XtraTabPage.Text = "EXPECTED LOSS and DETAILS"
         '
         'LayoutControl2
@@ -4189,7 +4141,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(420, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup2
-        Me.LayoutControl2.Size = New System.Drawing.Size(1476, 555)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1480, 560)
         Me.LayoutControl2.TabIndex = 116
         Me.LayoutControl2.Text = "LayoutControl2"
         '
@@ -4209,7 +4161,7 @@ Partial Class RiskStrategyPlanningProcess
         '
         Me.SimpleButton2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.SimpleButton2.ImageOptions.ImageIndex = 5
-        Me.SimpleButton2.Location = New System.Drawing.Point(1367, 24)
+        Me.SimpleButton2.Location = New System.Drawing.Point(1371, 24)
         Me.SimpleButton2.Name = "SimpleButton2"
         Me.SimpleButton2.Size = New System.Drawing.Size(85, 22)
         Me.SimpleButton2.StyleController = Me.LayoutControl2
@@ -4223,7 +4175,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControlGroup2.GroupBordersVisible = False
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem3, Me.LayoutControlGroup4})
         Me.LayoutControlGroup2.Name = "Root"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1476, 555)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1480, 560)
         '
         'LayoutControlItem3
         '
@@ -4232,7 +4184,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 50)
         Me.LayoutControlItem3.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem3.Name = "LayoutControlItem1"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(1456, 485)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(1460, 490)
         Me.LayoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
@@ -4243,14 +4195,14 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5, Me.EmptySpaceItem1, Me.LayoutControlItem6})
         Me.LayoutControlGroup4.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup4.Name = "LayoutControlGroup3"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1456, 50)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1460, 50)
         Me.LayoutControlGroup4.TextVisible = False
         '
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.SimpleButton2
         Me.LayoutControlItem5.CustomizationFormText = "LayoutControlItem2"
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(1343, 0)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(1347, 0)
         Me.LayoutControlItem5.Name = "LayoutControlItem2"
         Me.LayoutControlItem5.Size = New System.Drawing.Size(89, 26)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
@@ -4263,7 +4215,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.EmptySpaceItem1.CustomizationFormText = "EmptySpaceItem3"
         Me.EmptySpaceItem1.Location = New System.Drawing.Point(172, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1171, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1175, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem6
@@ -4563,7 +4515,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.LabelControl19.Appearance.Options.UseTextOptions = True
         Me.LabelControl19.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.LabelControl19.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
-        Me.LabelControl19.Location = New System.Drawing.Point(193, 73)
+        Me.LabelControl19.Location = New System.Drawing.Point(13, 76)
         Me.LabelControl19.Name = "LabelControl19"
         Me.LabelControl19.Size = New System.Drawing.Size(203, 20)
         Me.LabelControl19.TabIndex = 127
@@ -4579,7 +4531,7 @@ Partial Class RiskStrategyPlanningProcess
         Me.CreationDate_lbl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.CreationDate_lbl.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None
         Me.CreationDate_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.RiskStrategyPlanningProcess_DateBindingSource, "CreationDate", True))
-        Me.CreationDate_lbl.Location = New System.Drawing.Point(200, 96)
+        Me.CreationDate_lbl.Location = New System.Drawing.Point(20, 99)
         Me.CreationDate_lbl.Name = "CreationDate_lbl"
         Me.CreationDate_lbl.Size = New System.Drawing.Size(181, 25)
         Me.CreationDate_lbl.TabIndex = 128
@@ -4605,19 +4557,20 @@ Partial Class RiskStrategyPlanningProcess
         Me.GridControl3.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
         Me.GridControl3.EmbeddedNavigator.Buttons.Edit.Visible = False
         Me.GridControl3.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+        Me.GridControl3.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GridControl3.EmbeddedNavigator.Buttons.Remove.Visible = False
-        GridLevelNode3.RelationName = "FK_RiskStrategyPlanningProcess_Details_RiskStrategyPlanningProcess_Totals"
-        GridLevelNode2.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode3})
-        GridLevelNode2.RelationName = "FK_RiskStrategyPlanningProcess_Totals_RiskStrategyPlanningProcess_Date"
-        Me.GridControl3.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode2})
+        Me.GridControl3.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 9, True, True, "Create new Risk Strategy planning", "CreateNewRSPP"), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 10, True, True, "Delete Risk Strategy Planning Process", "DeleteRSPP")})
+        GridLevelNode5.RelationName = "FK_RiskStrategyPlanningProcess_Details_RiskStrategyPlanningProcess_Totals"
+        GridLevelNode1.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode5})
+        GridLevelNode1.RelationName = "FK_RiskStrategyPlanningProcess_Totals_RiskStrategyPlanningProcess_Date"
+        Me.GridControl3.LevelTree.Nodes.AddRange(New DevExpress.XtraGrid.GridLevelNode() {GridLevelNode1})
         Me.GridControl3.Location = New System.Drawing.Point(12, 12)
         Me.GridControl3.MainView = Me.RiskStrategyPlanningProcessAllDates_GridView
         Me.GridControl3.Name = "GridControl3"
-        Me.GridControl3.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox3, Me.RepositoryItemTextEdit4, Me.RepositoryItemTextEdit5, Me.RepositoryItemTextEdit6, Me.RepositoryItemMemoExEdit3, Me.RepositoryItemImageComboBox2})
         Me.GridControl3.Size = New System.Drawing.Size(1482, 740)
         Me.GridControl3.TabIndex = 0
         Me.GridControl3.UseEmbeddedNavigator = True
-        Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.RiskStrategyPlanningProcessAllDates_GridView, Me.GridView2, Me.LayoutView3})
+        Me.GridControl3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.RiskStrategyPlanningProcessAllDates_GridView})
         '
         'RiskStrategyPlanningProcessAllDates_GridView
         '
@@ -4632,12 +4585,13 @@ Partial Class RiskStrategyPlanningProcess
         Me.RiskStrategyPlanningProcessAllDates_GridView.AppearancePrint.FilterPanel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.RiskStrategyPlanningProcessAllDates_GridView.AppearancePrint.FilterPanel.Options.UseBackColor = True
         Me.RiskStrategyPlanningProcessAllDates_GridView.AppearancePrint.FilterPanel.Options.UseForeColor = True
-        Me.RiskStrategyPlanningProcessAllDates_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID3, Me.colRiskDate3, Me.colSumEL, Me.colSumUL, Me.colnu_Value, Me.colp_alpha_Value, Me.colb_beta_value, Me.colGamma_inv, Me.colDelta, Me.colK_Value, Me.colSumGA_rel, Me.colSumGA_Total, Me.colLevelOfConfidence, Me.colCreationDate})
+        Me.RiskStrategyPlanningProcessAllDates_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID3, Me.colRiskDate3, Me.colSumEL, Me.colSumUL, Me.colnu_Value, Me.colp_alpha_Value, Me.colb_beta_value, Me.colGamma_inv, Me.colDelta, Me.colK_Value, Me.colSumGA_rel, Me.colSumGA_Total, Me.colDefaultRisk, Me.colLevelOfConfidence, Me.colCreationDate})
         Me.RiskStrategyPlanningProcessAllDates_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.RiskStrategyPlanningProcessAllDates_GridView.GridControl = Me.GridControl3
         Me.RiskStrategyPlanningProcessAllDates_GridView.GroupSummary.AddRange(New DevExpress.XtraGrid.GridSummaryItem() {New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "FinalEadTotalSum", Nothing, "Sum={0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "UL_UnexpectedLoss", Nothing, "UL={0:n2}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SubBorrowersCounter", Nothing, "Total Count={0:n0}"), New DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "GA_n", Nothing, "GA rel={0:n12}")})
         Me.RiskStrategyPlanningProcessAllDates_GridView.Name = "RiskStrategyPlanningProcessAllDates_GridView"
         Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsBehavior.AllowIncrementalSearch = True
+        Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsBehavior.ReadOnly = True
         Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsCustomization.AllowRowSizing = True
         Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsDetail.EnableMasterViewMode = False
         Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsDetail.ShowDetailTabs = False
@@ -4660,7 +4614,10 @@ Partial Class RiskStrategyPlanningProcess
         Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsView.ShowAutoFilterRow = True
         Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
         Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsView.ShowFooter = True
+        Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsView.ShowGroupPanel = False
+        Me.RiskStrategyPlanningProcessAllDates_GridView.OptionsView.ShowViewCaption = True
         Me.RiskStrategyPlanningProcessAllDates_GridView.PaintStyleName = "Skin"
+        Me.RiskStrategyPlanningProcessAllDates_GridView.ViewCaption = "Created Risk Stategy Dates"
         '
         'colID3
         '
@@ -4671,6 +4628,8 @@ Partial Class RiskStrategyPlanningProcess
         '
         'colRiskDate3
         '
+        Me.colRiskDate3.AppearanceCell.Options.UseTextOptions = True
+        Me.colRiskDate3.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
         Me.colRiskDate3.Caption = "Basic Data Date"
         Me.colRiskDate3.FieldName = "RiskDate"
         Me.colRiskDate3.Name = "colRiskDate3"
@@ -4682,17 +4641,29 @@ Partial Class RiskStrategyPlanningProcess
         '
         'colSumEL
         '
+        Me.colSumEL.Caption = "Expected Loss"
+        Me.colSumEL.DisplayFormat.FormatString = "n2"
+        Me.colSumEL.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.colSumEL.FieldName = "SumEL"
         Me.colSumEL.Name = "colSumEL"
         Me.colSumEL.OptionsColumn.AllowEdit = False
         Me.colSumEL.OptionsColumn.ReadOnly = True
+        Me.colSumEL.Visible = True
+        Me.colSumEL.VisibleIndex = 2
+        Me.colSumEL.Width = 94
         '
         'colSumUL
         '
+        Me.colSumUL.Caption = "Unexpected Loss"
+        Me.colSumUL.DisplayFormat.FormatString = "n2"
+        Me.colSumUL.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.colSumUL.FieldName = "SumUL"
         Me.colSumUL.Name = "colSumUL"
         Me.colSumUL.OptionsColumn.AllowEdit = False
         Me.colSumUL.OptionsColumn.ReadOnly = True
+        Me.colSumUL.Visible = True
+        Me.colSumUL.VisibleIndex = 3
+        Me.colSumUL.Width = 112
         '
         'colnu_Value
         '
@@ -4745,10 +4716,27 @@ Partial Class RiskStrategyPlanningProcess
         '
         'colSumGA_Total
         '
+        Me.colSumGA_Total.Caption = "Granularity Adjustment"
+        Me.colSumGA_Total.DisplayFormat.FormatString = "n2"
+        Me.colSumGA_Total.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
         Me.colSumGA_Total.FieldName = "SumGA_Total"
         Me.colSumGA_Total.Name = "colSumGA_Total"
         Me.colSumGA_Total.OptionsColumn.AllowEdit = False
         Me.colSumGA_Total.OptionsColumn.ReadOnly = True
+        Me.colSumGA_Total.Visible = True
+        Me.colSumGA_Total.VisibleIndex = 4
+        Me.colSumGA_Total.Width = 140
+        '
+        'colDefaultRisk
+        '
+        Me.colDefaultRisk.Caption = "Default Risk"
+        Me.colDefaultRisk.DisplayFormat.FormatString = "n2"
+        Me.colDefaultRisk.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colDefaultRisk.FieldName = "DefaultRisk"
+        Me.colDefaultRisk.Name = "colDefaultRisk"
+        Me.colDefaultRisk.Visible = True
+        Me.colDefaultRisk.VisibleIndex = 5
+        Me.colDefaultRisk.Width = 147
         '
         'colLevelOfConfidence
         '
@@ -4759,1010 +4747,16 @@ Partial Class RiskStrategyPlanningProcess
         '
         'colCreationDate
         '
-        Me.colCreationDate.Caption = "Creation Date of the Risk Strategy Planning Process"
+        Me.colCreationDate.AppearanceCell.Options.UseTextOptions = True
+        Me.colCreationDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colCreationDate.Caption = "Creation Date"
         Me.colCreationDate.FieldName = "CreationDate"
         Me.colCreationDate.Name = "colCreationDate"
         Me.colCreationDate.OptionsColumn.AllowEdit = False
         Me.colCreationDate.OptionsColumn.ReadOnly = True
         Me.colCreationDate.Visible = True
         Me.colCreationDate.VisibleIndex = 1
-        Me.colCreationDate.Width = 301
-        '
-        'RepositoryItemComboBox3
-        '
-        Me.RepositoryItemComboBox3.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.RepositoryItemComboBox3.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemComboBox3.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemComboBox3.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemComboBox3.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemComboBox3.Appearance.Options.UseForeColor = True
-        Me.RepositoryItemComboBox3.AppearanceDropDown.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemComboBox3.AppearanceDropDown.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemComboBox3.AppearanceDropDown.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemComboBox3.AppearanceDropDown.Options.UseBackColor = True
-        Me.RepositoryItemComboBox3.AppearanceDropDown.Options.UseForeColor = True
-        Me.RepositoryItemComboBox3.AutoHeight = False
-        Me.RepositoryItemComboBox3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemComboBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.RepositoryItemComboBox3.DropDownRows = 2
-        Me.RepositoryItemComboBox3.EditFormat.FormatType = DevExpress.Utils.FormatType.Custom
-        Me.RepositoryItemComboBox3.ImmediatePopup = True
-        Me.RepositoryItemComboBox3.Items.AddRange(New Object() {"Y", "N"})
-        Me.RepositoryItemComboBox3.Name = "RepositoryItemComboBox3"
-        Me.RepositoryItemComboBox3.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor
-        '
-        'RepositoryItemTextEdit4
-        '
-        Me.RepositoryItemTextEdit4.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.RepositoryItemTextEdit4.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit4.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit4.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemTextEdit4.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit4.Appearance.Options.UseForeColor = True
-        Me.RepositoryItemTextEdit4.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit4.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit4.AppearanceFocused.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.RepositoryItemTextEdit4.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemTextEdit4.AppearanceFocused.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit4.AppearanceFocused.Options.UseFont = True
-        Me.RepositoryItemTextEdit4.AppearanceFocused.Options.UseForeColor = True
-        Me.RepositoryItemTextEdit4.AutoHeight = False
-        Me.RepositoryItemTextEdit4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.RepositoryItemTextEdit4.Name = "RepositoryItemTextEdit4"
-        '
-        'RepositoryItemTextEdit5
-        '
-        Me.RepositoryItemTextEdit5.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.RepositoryItemTextEdit5.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit5.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit5.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.RepositoryItemTextEdit5.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemTextEdit5.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit5.Appearance.Options.UseFont = True
-        Me.RepositoryItemTextEdit5.Appearance.Options.UseForeColor = True
-        Me.RepositoryItemTextEdit5.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit5.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit5.AppearanceFocused.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.RepositoryItemTextEdit5.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemTextEdit5.AppearanceFocused.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit5.AppearanceFocused.Options.UseFont = True
-        Me.RepositoryItemTextEdit5.AppearanceFocused.Options.UseForeColor = True
-        Me.RepositoryItemTextEdit5.AutoHeight = False
-        Me.RepositoryItemTextEdit5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.RepositoryItemTextEdit5.Mask.BeepOnError = True
-        Me.RepositoryItemTextEdit5.Mask.EditMask = "[A-Z]{6}[1-9A-Z]{2}"
-        Me.RepositoryItemTextEdit5.Mask.IgnoreMaskBlank = False
-        Me.RepositoryItemTextEdit5.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Regular
-        Me.RepositoryItemTextEdit5.Name = "RepositoryItemTextEdit5"
-        '
-        'RepositoryItemTextEdit6
-        '
-        Me.RepositoryItemTextEdit6.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
-        Me.RepositoryItemTextEdit6.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit6.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit6.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.RepositoryItemTextEdit6.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit6.Appearance.Options.UseFont = True
-        Me.RepositoryItemTextEdit6.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit6.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemTextEdit6.AppearanceFocused.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.RepositoryItemTextEdit6.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemTextEdit6.AppearanceFocused.Options.UseBackColor = True
-        Me.RepositoryItemTextEdit6.AppearanceFocused.Options.UseFont = True
-        Me.RepositoryItemTextEdit6.AppearanceFocused.Options.UseForeColor = True
-        Me.RepositoryItemTextEdit6.AutoHeight = False
-        Me.RepositoryItemTextEdit6.Mask.EditMask = "[1-9A-Z]{3}"
-        Me.RepositoryItemTextEdit6.Mask.IgnoreMaskBlank = False
-        Me.RepositoryItemTextEdit6.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Regular
-        Me.RepositoryItemTextEdit6.Name = "RepositoryItemTextEdit6"
-        '
-        'RepositoryItemMemoExEdit3
-        '
-        Me.RepositoryItemMemoExEdit3.AllowFocused = False
-        Me.RepositoryItemMemoExEdit3.Appearance.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemMemoExEdit3.Appearance.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemMemoExEdit3.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!)
-        Me.RepositoryItemMemoExEdit3.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemMemoExEdit3.Appearance.Options.UseBackColor = True
-        Me.RepositoryItemMemoExEdit3.Appearance.Options.UseFont = True
-        Me.RepositoryItemMemoExEdit3.Appearance.Options.UseForeColor = True
-        Me.RepositoryItemMemoExEdit3.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemMemoExEdit3.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemMemoExEdit3.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemMemoExEdit3.AppearanceFocused.Options.UseBackColor = True
-        Me.RepositoryItemMemoExEdit3.AppearanceFocused.Options.UseForeColor = True
-        Me.RepositoryItemMemoExEdit3.AutoHeight = False
-        Me.RepositoryItemMemoExEdit3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemMemoExEdit3.Name = "RepositoryItemMemoExEdit3"
-        Me.RepositoryItemMemoExEdit3.PopupFormSize = New System.Drawing.Size(600, 300)
-        Me.RepositoryItemMemoExEdit3.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.RepositoryItemMemoExEdit3.ShowIcon = False
-        '
-        'RepositoryItemImageComboBox2
-        '
-        Me.RepositoryItemImageComboBox2.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
-        Me.RepositoryItemImageComboBox2.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
-        Me.RepositoryItemImageComboBox2.AppearanceFocused.ForeColor = System.Drawing.Color.Black
-        Me.RepositoryItemImageComboBox2.AppearanceFocused.Options.UseBackColor = True
-        Me.RepositoryItemImageComboBox2.AppearanceFocused.Options.UseForeColor = True
-        Me.RepositoryItemImageComboBox2.AutoHeight = False
-        Me.RepositoryItemImageComboBox2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
-        Me.RepositoryItemImageComboBox2.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("VALID", "Y", 4), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("CANCELLED", "N", 3)})
-        Me.RepositoryItemImageComboBox2.Name = "RepositoryItemImageComboBox2"
-        '
-        'GridView2
-        '
-        Me.GridView2.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
-        Me.GridView2.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
-        Me.GridView2.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
-        Me.GridView2.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.GridView2.Appearance.FocusedRow.Options.UseForeColor = True
-        Me.GridView2.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn43, Me.GridColumn45, Me.GridColumn46, Me.GridColumn47, Me.GridColumn48, Me.GridColumn49, Me.GridColumn50, Me.GridColumn51, Me.GridColumn52, Me.GridColumn53, Me.GridColumn54, Me.GridColumn55, Me.GridColumn56, Me.GridColumn57, Me.GridColumn58, Me.GridColumn59, Me.GridColumn60, Me.GridColumn61, Me.GridColumn62, Me.GridColumn63, Me.GridColumn64, Me.GridColumn65, Me.GridColumn66, Me.GridColumn67, Me.GridColumn68, Me.GridColumn69, Me.GridColumn70, Me.GridColumn71, Me.GridColumn72, Me.GridColumn73, Me.GridColumn74, Me.GridColumn75})
-        Me.GridView2.GridControl = Me.GridControl3
-        Me.GridView2.Name = "GridView2"
-        Me.GridView2.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[False]
-        Me.GridView2.OptionsView.ColumnAutoWidth = False
-        Me.GridView2.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
-        Me.GridView2.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
-        Me.GridView2.OptionsView.ShowAutoFilterRow = True
-        Me.GridView2.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
-        Me.GridView2.OptionsView.ShowFooter = True
-        Me.GridView2.ViewCaption = "CREDIT RISK DETAILS"
-        '
-        'GridColumn43
-        '
-        Me.GridColumn43.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn43.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn43.DisplayFormat.FormatString = "n2"
-        Me.GridColumn43.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn43.FieldName = "ID"
-        Me.GridColumn43.Name = "GridColumn43"
-        Me.GridColumn43.OptionsColumn.AllowEdit = False
-        Me.GridColumn43.OptionsColumn.ReadOnly = True
-        '
-        'GridColumn45
-        '
-        Me.GridColumn45.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn45.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn45.FieldName = "Obligor Rate"
-        Me.GridColumn45.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
-        Me.GridColumn45.Name = "GridColumn45"
-        Me.GridColumn45.OptionsColumn.AllowEdit = False
-        Me.GridColumn45.OptionsColumn.ReadOnly = True
-        Me.GridColumn45.Visible = True
-        Me.GridColumn45.VisibleIndex = 2
-        Me.GridColumn45.Width = 94
-        '
-        'GridColumn46
-        '
-        Me.GridColumn46.FieldName = "Contract Type"
-        Me.GridColumn46.Name = "GridColumn46"
-        Me.GridColumn46.OptionsColumn.AllowEdit = False
-        Me.GridColumn46.OptionsColumn.ReadOnly = True
-        Me.GridColumn46.Visible = True
-        Me.GridColumn46.VisibleIndex = 3
-        Me.GridColumn46.Width = 86
-        '
-        'GridColumn47
-        '
-        Me.GridColumn47.FieldName = "Product Type"
-        Me.GridColumn47.Name = "GridColumn47"
-        Me.GridColumn47.OptionsColumn.AllowEdit = False
-        Me.GridColumn47.OptionsColumn.ReadOnly = True
-        Me.GridColumn47.Visible = True
-        Me.GridColumn47.VisibleIndex = 4
-        Me.GridColumn47.Width = 93
-        '
-        'GridColumn48
-        '
-        Me.GridColumn48.FieldName = "GL Master / Account Type"
-        Me.GridColumn48.Name = "GridColumn48"
-        Me.GridColumn48.OptionsColumn.AllowEdit = False
-        Me.GridColumn48.OptionsColumn.ReadOnly = True
-        Me.GridColumn48.Width = 148
-        '
-        'GridColumn49
-        '
-        Me.GridColumn49.FieldName = "Counterparty/Issuer/Collateral Name"
-        Me.GridColumn49.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
-        Me.GridColumn49.Name = "GridColumn49"
-        Me.GridColumn49.OptionsColumn.AllowEdit = False
-        Me.GridColumn49.OptionsColumn.ReadOnly = True
-        Me.GridColumn49.Visible = True
-        Me.GridColumn49.VisibleIndex = 1
-        Me.GridColumn49.Width = 221
-        '
-        'GridColumn50
-        '
-        Me.GridColumn50.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn50.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn50.FieldName = "Client No"
-        Me.GridColumn50.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
-        Me.GridColumn50.Name = "GridColumn50"
-        Me.GridColumn50.OptionsColumn.AllowEdit = False
-        Me.GridColumn50.OptionsColumn.ReadOnly = True
-        Me.GridColumn50.Visible = True
-        Me.GridColumn50.VisibleIndex = 0
-        Me.GridColumn50.Width = 89
-        '
-        'GridColumn51
-        '
-        Me.GridColumn51.FieldName = "Contract Collateral ID"
-        Me.GridColumn51.Name = "GridColumn51"
-        Me.GridColumn51.OptionsColumn.AllowEdit = False
-        Me.GridColumn51.OptionsColumn.ReadOnly = True
-        Me.GridColumn51.Width = 137
-        '
-        'GridColumn52
-        '
-        Me.GridColumn52.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn52.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn52.FieldName = "Maturity Date"
-        Me.GridColumn52.Name = "GridColumn52"
-        Me.GridColumn52.OptionsColumn.AllowEdit = False
-        Me.GridColumn52.OptionsColumn.ReadOnly = True
-        Me.GridColumn52.Visible = True
-        Me.GridColumn52.VisibleIndex = 5
-        Me.GridColumn52.Width = 81
-        '
-        'GridColumn53
-        '
-        Me.GridColumn53.FieldName = "Remaining Year(s) to Maturity"
-        Me.GridColumn53.Name = "GridColumn53"
-        Me.GridColumn53.OptionsColumn.AllowEdit = False
-        Me.GridColumn53.OptionsColumn.ReadOnly = True
-        Me.GridColumn53.Width = 83
-        '
-        'GridColumn54
-        '
-        Me.GridColumn54.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn54.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn54.FieldName = "Org Ccy"
-        Me.GridColumn54.Name = "GridColumn54"
-        Me.GridColumn54.OptionsColumn.AllowEdit = False
-        Me.GridColumn54.OptionsColumn.ReadOnly = True
-        Me.GridColumn54.Visible = True
-        Me.GridColumn54.VisibleIndex = 6
-        Me.GridColumn54.Width = 47
-        '
-        'GridColumn55
-        '
-        Me.GridColumn55.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn55.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn55.DisplayFormat.FormatString = "n2"
-        Me.GridColumn55.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn55.FieldName = "Credit Outstanding (Org Ccy)"
-        Me.GridColumn55.Name = "GridColumn55"
-        Me.GridColumn55.OptionsColumn.AllowEdit = False
-        Me.GridColumn55.OptionsColumn.ReadOnly = True
-        Me.GridColumn55.Visible = True
-        Me.GridColumn55.VisibleIndex = 7
-        Me.GridColumn55.Width = 159
-        '
-        'GridColumn56
-        '
-        Me.GridColumn56.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn56.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn56.DisplayFormat.FormatString = "n2"
-        Me.GridColumn56.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn56.FieldName = "Credit Outstanding (EUR Equ)"
-        Me.GridColumn56.Name = "GridColumn56"
-        Me.GridColumn56.OptionsColumn.AllowEdit = False
-        Me.GridColumn56.OptionsColumn.ReadOnly = True
-        Me.GridColumn56.ToolTip = "without consideration of CASHPLEDGE"
-        Me.GridColumn56.Visible = True
-        Me.GridColumn56.VisibleIndex = 8
-        Me.GridColumn56.Width = 158
-        '
-        'GridColumn57
-        '
-        Me.GridColumn57.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn57.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn57.DisplayFormat.FormatString = "n2"
-        Me.GridColumn57.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn57.FieldName = "NetCreditOutstandingAmountEUR"
-        Me.GridColumn57.Name = "GridColumn57"
-        Me.GridColumn57.OptionsColumn.AllowEdit = False
-        Me.GridColumn57.OptionsColumn.ReadOnly = True
-        Me.GridColumn57.ToolTip = "CASHPLEDGE Consideration"
-        Me.GridColumn57.Visible = True
-        Me.GridColumn57.VisibleIndex = 9
-        Me.GridColumn57.Width = 196
-        '
-        'GridColumn58
-        '
-        Me.GridColumn58.FieldName = "InternalInfo"
-        Me.GridColumn58.Name = "GridColumn58"
-        Me.GridColumn58.OptionsColumn.AllowEdit = False
-        Me.GridColumn58.OptionsColumn.ReadOnly = True
-        Me.GridColumn58.Visible = True
-        Me.GridColumn58.VisibleIndex = 10
-        Me.GridColumn58.Width = 104
-        '
-        'GridColumn59
-        '
-        Me.GridColumn59.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn59.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn59.FieldName = "PD"
-        Me.GridColumn59.Name = "GridColumn59"
-        Me.GridColumn59.OptionsColumn.AllowEdit = False
-        Me.GridColumn59.OptionsColumn.ReadOnly = True
-        Me.GridColumn59.Visible = True
-        Me.GridColumn59.VisibleIndex = 11
-        Me.GridColumn59.Width = 59
-        '
-        'GridColumn60
-        '
-        Me.GridColumn60.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn60.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn60.Caption = "(ER1)"
-        Me.GridColumn60.DisplayFormat.FormatString = "p2"
-        Me.GridColumn60.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn60.FieldName = "(1-ER)"
-        Me.GridColumn60.Name = "GridColumn60"
-        Me.GridColumn60.OptionsColumn.AllowEdit = False
-        Me.GridColumn60.OptionsColumn.ReadOnly = True
-        Me.GridColumn60.Width = 61
-        '
-        'GridColumn61
-        '
-        Me.GridColumn61.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn61.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn61.Caption = "Credit Risk (ER1)"
-        Me.GridColumn61.DisplayFormat.FormatString = "n2"
-        Me.GridColumn61.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn61.FieldName = "Credit Risk Amount(EUR Equ)"
-        Me.GridColumn61.Name = "GridColumn61"
-        Me.GridColumn61.OptionsColumn.AllowEdit = False
-        Me.GridColumn61.OptionsColumn.ReadOnly = True
-        Me.GridColumn61.Width = 150
-        '
-        'GridColumn62
-        '
-        Me.GridColumn62.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn62.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn62.Caption = "Net Credit Risk (ER1)"
-        Me.GridColumn62.DisplayFormat.FormatString = "n2"
-        Me.GridColumn62.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn62.FieldName = "NetCredit Risk Amount(EUR Equ)"
-        Me.GridColumn62.Name = "GridColumn62"
-        Me.GridColumn62.OptionsColumn.AllowEdit = False
-        Me.GridColumn62.OptionsColumn.ReadOnly = True
-        Me.GridColumn62.Width = 172
-        '
-        'GridColumn63
-        '
-        Me.GridColumn63.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn63.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn63.Caption = "(ER2)"
-        Me.GridColumn63.DisplayFormat.FormatString = "p2"
-        Me.GridColumn63.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn63.FieldName = "(1-ER_45)"
-        Me.GridColumn63.Name = "GridColumn63"
-        Me.GridColumn63.OptionsColumn.AllowEdit = False
-        Me.GridColumn63.OptionsColumn.ReadOnly = True
-        Me.GridColumn63.Visible = True
-        Me.GridColumn63.VisibleIndex = 12
-        Me.GridColumn63.Width = 61
-        '
-        'GridColumn64
-        '
-        Me.GridColumn64.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn64.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn64.Caption = "Credit Risk (ER2)"
-        Me.GridColumn64.DisplayFormat.FormatString = "n2"
-        Me.GridColumn64.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn64.FieldName = "CreditRiskAmountEUREquER45"
-        Me.GridColumn64.Name = "GridColumn64"
-        Me.GridColumn64.OptionsColumn.AllowEdit = False
-        Me.GridColumn64.OptionsColumn.ReadOnly = True
-        Me.GridColumn64.Visible = True
-        Me.GridColumn64.VisibleIndex = 13
-        Me.GridColumn64.Width = 181
-        '
-        'GridColumn65
-        '
-        Me.GridColumn65.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn65.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn65.Caption = "Net Credit Risk (ER2)"
-        Me.GridColumn65.DisplayFormat.FormatString = "n2"
-        Me.GridColumn65.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn65.FieldName = "NetCreditRiskAmountEUREquER45"
-        Me.GridColumn65.Name = "GridColumn65"
-        Me.GridColumn65.OptionsColumn.AllowEdit = False
-        Me.GridColumn65.OptionsColumn.ReadOnly = True
-        Me.GridColumn65.Visible = True
-        Me.GridColumn65.VisibleIndex = 14
-        Me.GridColumn65.Width = 192
-        '
-        'GridColumn66
-        '
-        Me.GridColumn66.FieldName = "CoreDefinition"
-        Me.GridColumn66.Name = "GridColumn66"
-        Me.GridColumn66.OptionsColumn.AllowEdit = False
-        Me.GridColumn66.OptionsColumn.ReadOnly = True
-        Me.GridColumn66.Visible = True
-        Me.GridColumn66.VisibleIndex = 15
-        Me.GridColumn66.Width = 85
-        '
-        'GridColumn67
-        '
-        Me.GridColumn67.FieldName = "ClientGroup"
-        Me.GridColumn67.Name = "GridColumn67"
-        Me.GridColumn67.OptionsColumn.AllowEdit = False
-        Me.GridColumn67.OptionsColumn.ReadOnly = True
-        '
-        'GridColumn68
-        '
-        Me.GridColumn68.FieldName = "ClientGroupName"
-        Me.GridColumn68.Name = "GridColumn68"
-        Me.GridColumn68.OptionsColumn.AllowEdit = False
-        Me.GridColumn68.OptionsColumn.ReadOnly = True
-        Me.GridColumn68.Width = 78
-        '
-        'GridColumn69
-        '
-        Me.GridColumn69.Caption = "Maturity(without cap, floor)"
-        Me.GridColumn69.FieldName = "MaturityWithoutCapFloor"
-        Me.GridColumn69.Name = "GridColumn69"
-        Me.GridColumn69.OptionsColumn.AllowEdit = False
-        Me.GridColumn69.OptionsColumn.ReadOnly = True
-        Me.GridColumn69.ToolTip = "If Maturity=31.12.9999 then Maturity=DateAdd(6 Months + Riskdate)-RiskDate/365,25" &
-    "m else Maturity Date-RiskDate/365,25"
-        Me.GridColumn69.Visible = True
-        Me.GridColumn69.VisibleIndex = 16
-        Me.GridColumn69.Width = 145
-        '
-        'GridColumn70
-        '
-        Me.GridColumn70.Caption = "EaD weighted maturity (without cap, floor)"
-        Me.GridColumn70.DisplayFormat.FormatString = "n2"
-        Me.GridColumn70.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn70.FieldName = "EaDweigthedMaturityWithoutCapFloor"
-        Me.GridColumn70.Name = "GridColumn70"
-        Me.GridColumn70.OptionsColumn.AllowEdit = False
-        Me.GridColumn70.OptionsColumn.ReadOnly = True
-        Me.GridColumn70.ToolTip = "Maturity (without cap, floor) * Net credit outstanding Amount EUR"
-        Me.GridColumn70.Visible = True
-        Me.GridColumn70.VisibleIndex = 17
-        Me.GridColumn70.Width = 230
-        '
-        'GridColumn71
-        '
-        Me.GridColumn71.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn71.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn71.Caption = "PD * Final EaD"
-        Me.GridColumn71.DisplayFormat.FormatString = "n2"
-        Me.GridColumn71.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn71.FieldName = "PDxFinalEaD"
-        Me.GridColumn71.Name = "GridColumn71"
-        Me.GridColumn71.OptionsColumn.AllowEdit = False
-        Me.GridColumn71.OptionsColumn.ReadOnly = True
-        Me.GridColumn71.ToolTip = "PD * Net Credit outstanding Amount EUR"
-        Me.GridColumn71.Visible = True
-        Me.GridColumn71.VisibleIndex = 18
-        Me.GridColumn71.Width = 108
-        '
-        'GridColumn72
-        '
-        Me.GridColumn72.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn72.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
-        Me.GridColumn72.Caption = "LGD (final EaD weigthed)"
-        Me.GridColumn72.DisplayFormat.FormatString = "n2"
-        Me.GridColumn72.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn72.FieldName = "LGDfinalEaDweighted"
-        Me.GridColumn72.Name = "GridColumn72"
-        Me.GridColumn72.OptionsColumn.AllowEdit = False
-        Me.GridColumn72.OptionsColumn.ReadOnly = True
-        Me.GridColumn72.ToolTip = "(ER2) * Net Credit Outstanding Amount EUR"
-        Me.GridColumn72.Visible = True
-        Me.GridColumn72.VisibleIndex = 19
-        Me.GridColumn72.Width = 154
-        '
-        'GridColumn73
-        '
-        Me.GridColumn73.FieldName = "RiskDate"
-        Me.GridColumn73.Name = "GridColumn73"
-        Me.GridColumn73.OptionsColumn.AllowEdit = False
-        Me.GridColumn73.OptionsColumn.ReadOnly = True
-        Me.GridColumn73.Width = 93
-        '
-        'GridColumn74
-        '
-        Me.GridColumn74.FieldName = "IdClientGroup"
-        Me.GridColumn74.Name = "GridColumn74"
-        Me.GridColumn74.OptionsColumn.AllowEdit = False
-        Me.GridColumn74.OptionsColumn.ReadOnly = True
-        Me.GridColumn74.Width = 148
-        '
-        'GridColumn75
-        '
-        Me.GridColumn75.AppearanceCell.Options.UseTextOptions = True
-        Me.GridColumn75.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.GridColumn75.Caption = "Projection Year"
-        Me.GridColumn75.DisplayFormat.FormatString = "n0"
-        Me.GridColumn75.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
-        Me.GridColumn75.FieldName = "ProjectionYear"
-        Me.GridColumn75.Name = "GridColumn75"
-        Me.GridColumn75.OptionsColumn.AllowEdit = False
-        Me.GridColumn75.OptionsColumn.ReadOnly = True
-        Me.GridColumn75.Visible = True
-        Me.GridColumn75.VisibleIndex = 20
-        '
-        'LayoutView3
-        '
-        Me.LayoutView3.CardMinSize = New System.Drawing.Size(547, 549)
-        Me.LayoutView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.LayoutViewColumn() {Me.LayoutViewColumn51, Me.LayoutViewColumn52, Me.LayoutViewColumn53, Me.LayoutViewColumn54, Me.LayoutViewColumn55, Me.LayoutViewColumn56, Me.LayoutViewColumn57, Me.LayoutViewColumn58, Me.LayoutViewColumn59, Me.LayoutViewColumn60, Me.LayoutViewColumn61, Me.LayoutViewColumn62, Me.LayoutViewColumn63, Me.LayoutViewColumn64, Me.LayoutViewColumn65, Me.LayoutViewColumn66, Me.LayoutViewColumn67, Me.LayoutViewColumn68, Me.LayoutViewColumn69, Me.LayoutViewColumn70, Me.LayoutViewColumn71, Me.LayoutViewColumn72, Me.LayoutViewColumn73, Me.LayoutViewColumn74, Me.LayoutViewColumn75})
-        Me.LayoutView3.GridControl = Me.GridControl3
-        Me.LayoutView3.HiddenItems.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutViewField47, Me.LayoutViewField46, Me.LayoutViewField44})
-        Me.LayoutView3.Name = "LayoutView3"
-        Me.LayoutView3.OptionsBehavior.AllowRuntimeCustomization = False
-        Me.LayoutView3.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused
-        Me.LayoutView3.OptionsBehavior.ScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Never
-        Me.LayoutView3.OptionsCarouselMode.StretchCardToViewHeight = True
-        Me.LayoutView3.OptionsCarouselMode.StretchCardToViewWidth = True
-        Me.LayoutView3.OptionsCustomization.AllowFilter = False
-        Me.LayoutView3.OptionsCustomization.AllowSort = False
-        Me.LayoutView3.OptionsCustomization.ShowGroupLayoutTreeView = False
-        Me.LayoutView3.OptionsCustomization.ShowGroupView = False
-        Me.LayoutView3.OptionsCustomization.ShowResetShrinkButtons = False
-        Me.LayoutView3.OptionsCustomization.ShowSaveLoadLayoutButtons = False
-        Me.LayoutView3.OptionsFilter.AllowColumnMRUFilterList = False
-        Me.LayoutView3.OptionsHeaderPanel.EnableCarouselModeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.EnableCustomizeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.EnableMultiColumnModeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.EnableMultiRowModeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.ShowCarouselModeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.ShowColumnModeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.ShowCustomizeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.ShowMultiColumnModeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.ShowMultiRowModeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.ShowRowModeButton = False
-        Me.LayoutView3.OptionsHeaderPanel.ShowSingleModeButton = False
-        Me.LayoutView3.OptionsMultiRecordMode.StretchCardToViewHeight = True
-        Me.LayoutView3.OptionsMultiRecordMode.StretchCardToViewWidth = True
-        Me.LayoutView3.OptionsPrint.PrintSelectedCardsOnly = True
-        Me.LayoutView3.OptionsSingleRecordMode.StretchCardToViewHeight = True
-        Me.LayoutView3.OptionsSingleRecordMode.StretchCardToViewWidth = True
-        Me.LayoutView3.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never
-        Me.LayoutView3.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.LayoutViewColumn51, DevExpress.Data.ColumnSortOrder.Ascending)})
-        Me.LayoutView3.TemplateCard = Me.LayoutViewCard3
-        '
-        'LayoutViewColumn51
-        '
-        Me.LayoutViewColumn51.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn51.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn51.FieldName = "Idnr"
-        Me.LayoutViewColumn51.LayoutViewField = Me.LayoutViewField26
-        Me.LayoutViewColumn51.Name = "LayoutViewColumn51"
-        Me.LayoutViewColumn51.OptionsColumn.ReadOnly = True
-        '
-        'LayoutViewField26
-        '
-        Me.LayoutViewField26.EditorPreferredWidth = 86
-        Me.LayoutViewField26.Location = New System.Drawing.Point(0, 80)
-        Me.LayoutViewField26.Name = "LayoutViewField26"
-        Me.LayoutViewField26.Size = New System.Drawing.Size(206, 63)
-        Me.LayoutViewField26.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn52
-        '
-        Me.LayoutViewColumn52.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn52.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn52.FieldName = "TAG"
-        Me.LayoutViewColumn52.LayoutViewField = Me.LayoutViewField27
-        Me.LayoutViewColumn52.Name = "LayoutViewColumn52"
-        '
-        'LayoutViewField27
-        '
-        Me.LayoutViewField27.EditorPreferredWidth = 383
-        Me.LayoutViewField27.Location = New System.Drawing.Point(0, 40)
-        Me.LayoutViewField27.Name = "LayoutViewField27"
-        Me.LayoutViewField27.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField27.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn53
-        '
-        Me.LayoutViewColumn53.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn53.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn53.FieldName = "MODIFICATION FLAG"
-        Me.LayoutViewColumn53.LayoutViewField = Me.LayoutViewField28
-        Me.LayoutViewColumn53.Name = "LayoutViewColumn53"
-        '
-        'LayoutViewField28
-        '
-        Me.LayoutViewField28.EditorPreferredWidth = 383
-        Me.LayoutViewField28.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutViewField28.Name = "LayoutViewField28"
-        Me.LayoutViewField28.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField28.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn54
-        '
-        Me.LayoutViewColumn54.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn54.AppearanceCell.ForeColor = System.Drawing.Color.Blue
-        Me.LayoutViewColumn54.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn54.AppearanceCell.Options.UseForeColor = True
-        Me.LayoutViewColumn54.ColumnEdit = Me.RepositoryItemTextEdit4
-        Me.LayoutViewColumn54.FieldName = "INSTITUTION NAME"
-        Me.LayoutViewColumn54.LayoutViewField = Me.LayoutViewField29
-        Me.LayoutViewColumn54.Name = "LayoutViewColumn54"
-        '
-        'LayoutViewField29
-        '
-        Me.LayoutViewField29.EditorPreferredWidth = 371
-        Me.LayoutViewField29.Location = New System.Drawing.Point(0, 40)
-        Me.LayoutViewField29.Name = "LayoutViewField29"
-        Me.LayoutViewField29.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField29.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn55
-        '
-        Me.LayoutViewColumn55.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn55.AppearanceCell.ForeColor = System.Drawing.Color.Blue
-        Me.LayoutViewColumn55.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn55.AppearanceCell.Options.UseForeColor = True
-        Me.LayoutViewColumn55.FieldName = "BRANCH INFORMATION"
-        Me.LayoutViewColumn55.LayoutViewField = Me.LayoutViewField30
-        Me.LayoutViewColumn55.Name = "LayoutViewColumn55"
-        '
-        'LayoutViewField30
-        '
-        Me.LayoutViewField30.EditorPreferredWidth = 371
-        Me.LayoutViewField30.Location = New System.Drawing.Point(0, 60)
-        Me.LayoutViewField30.Name = "LayoutViewField30"
-        Me.LayoutViewField30.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField30.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn56
-        '
-        Me.LayoutViewColumn56.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn56.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn56.FieldName = "CITY HEADING"
-        Me.LayoutViewColumn56.LayoutViewField = Me.LayoutViewField31
-        Me.LayoutViewColumn56.Name = "LayoutViewColumn56"
-        '
-        'LayoutViewField31
-        '
-        Me.LayoutViewField31.EditorPreferredWidth = 371
-        Me.LayoutViewField31.Location = New System.Drawing.Point(0, 80)
-        Me.LayoutViewField31.Name = "LayoutViewField31"
-        Me.LayoutViewField31.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField31.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn57
-        '
-        Me.LayoutViewColumn57.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn57.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn57.FieldName = "SUBTYPE INDICATION"
-        Me.LayoutViewColumn57.LayoutViewField = Me.LayoutViewField32
-        Me.LayoutViewColumn57.Name = "LayoutViewColumn57"
-        '
-        'LayoutViewField32
-        '
-        Me.LayoutViewField32.EditorPreferredWidth = 86
-        Me.LayoutViewField32.Location = New System.Drawing.Point(0, 60)
-        Me.LayoutViewField32.Name = "LayoutViewField32"
-        Me.LayoutViewField32.Size = New System.Drawing.Size(206, 20)
-        Me.LayoutViewField32.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn58
-        '
-        Me.LayoutViewColumn58.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn58.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn58.FieldName = "VALUE ADDED SERVICES"
-        Me.LayoutViewColumn58.LayoutViewField = Me.LayoutViewField33
-        Me.LayoutViewColumn58.Name = "LayoutViewColumn58"
-        '
-        'LayoutViewField33
-        '
-        Me.LayoutViewField33.EditorPreferredWidth = 371
-        Me.LayoutViewField33.Location = New System.Drawing.Point(0, 120)
-        Me.LayoutViewField33.Name = "LayoutViewField33"
-        Me.LayoutViewField33.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField33.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn59
-        '
-        Me.LayoutViewColumn59.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn59.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn59.FieldName = "EXTRA INFO"
-        Me.LayoutViewColumn59.LayoutViewField = Me.LayoutViewField34
-        Me.LayoutViewColumn59.Name = "LayoutViewColumn59"
-        '
-        'LayoutViewField34
-        '
-        Me.LayoutViewField34.EditorPreferredWidth = 383
-        Me.LayoutViewField34.Location = New System.Drawing.Point(0, 20)
-        Me.LayoutViewField34.Name = "LayoutViewField34"
-        Me.LayoutViewField34.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField34.TextSize = New System.Drawing.Size(111, 13)
-        '
-        'LayoutViewColumn60
-        '
-        Me.LayoutViewColumn60.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn60.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn60.FieldName = "PHYSICAL ADDRESS 1"
-        Me.LayoutViewColumn60.LayoutViewField = Me.LayoutViewField35
-        Me.LayoutViewColumn60.Name = "LayoutViewColumn60"
-        '
-        'LayoutViewField35
-        '
-        Me.LayoutViewField35.EditorPreferredWidth = 384
-        Me.LayoutViewField35.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutViewField35.Name = "LayoutViewField35"
-        Me.LayoutViewField35.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField35.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn61
-        '
-        Me.LayoutViewColumn61.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn61.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn61.FieldName = "PHYSICAL ADDRESS 2"
-        Me.LayoutViewColumn61.LayoutViewField = Me.LayoutViewField36
-        Me.LayoutViewColumn61.Name = "LayoutViewColumn61"
-        '
-        'LayoutViewField36
-        '
-        Me.LayoutViewField36.EditorPreferredWidth = 384
-        Me.LayoutViewField36.Location = New System.Drawing.Point(0, 20)
-        Me.LayoutViewField36.Name = "LayoutViewField36"
-        Me.LayoutViewField36.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField36.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn62
-        '
-        Me.LayoutViewColumn62.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn62.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn62.FieldName = "PHYSICAL ADDRESS 3"
-        Me.LayoutViewColumn62.LayoutViewField = Me.LayoutViewField37
-        Me.LayoutViewColumn62.Name = "LayoutViewColumn62"
-        '
-        'LayoutViewField37
-        '
-        Me.LayoutViewField37.EditorPreferredWidth = 384
-        Me.LayoutViewField37.Location = New System.Drawing.Point(0, 40)
-        Me.LayoutViewField37.Name = "LayoutViewField37"
-        Me.LayoutViewField37.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField37.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn63
-        '
-        Me.LayoutViewColumn63.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn63.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn63.FieldName = "PHYSICAL ADDRESS 4"
-        Me.LayoutViewColumn63.LayoutViewField = Me.LayoutViewField38
-        Me.LayoutViewColumn63.Name = "LayoutViewColumn63"
-        '
-        'LayoutViewField38
-        '
-        Me.LayoutViewField38.EditorPreferredWidth = 384
-        Me.LayoutViewField38.Location = New System.Drawing.Point(0, 60)
-        Me.LayoutViewField38.Name = "LayoutViewField38"
-        Me.LayoutViewField38.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField38.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn64
-        '
-        Me.LayoutViewColumn64.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn64.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn64.FieldName = "LOCATION"
-        Me.LayoutViewColumn64.LayoutViewField = Me.LayoutViewField39
-        Me.LayoutViewColumn64.Name = "LayoutViewColumn64"
-        '
-        'LayoutViewField39
-        '
-        Me.LayoutViewField39.EditorPreferredWidth = 384
-        Me.LayoutViewField39.Location = New System.Drawing.Point(0, 120)
-        Me.LayoutViewField39.Name = "LayoutViewField39"
-        Me.LayoutViewField39.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField39.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn65
-        '
-        Me.LayoutViewColumn65.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn65.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn65.FieldName = "COUNTRY NAME"
-        Me.LayoutViewColumn65.LayoutViewField = Me.LayoutViewField40
-        Me.LayoutViewColumn65.Name = "LayoutViewColumn65"
-        '
-        'LayoutViewField40
-        '
-        Me.LayoutViewField40.EditorPreferredWidth = 384
-        Me.LayoutViewField40.Location = New System.Drawing.Point(0, 80)
-        Me.LayoutViewField40.Name = "LayoutViewField40"
-        Me.LayoutViewField40.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField40.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn66
-        '
-        Me.LayoutViewColumn66.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn66.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn66.FieldName = "POB NUMBER"
-        Me.LayoutViewColumn66.LayoutViewField = Me.LayoutViewField41
-        Me.LayoutViewColumn66.Name = "LayoutViewColumn66"
-        '
-        'LayoutViewField41
-        '
-        Me.LayoutViewField41.EditorPreferredWidth = 384
-        Me.LayoutViewField41.Location = New System.Drawing.Point(0, 140)
-        Me.LayoutViewField41.Name = "LayoutViewField41"
-        Me.LayoutViewField41.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField41.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn67
-        '
-        Me.LayoutViewColumn67.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn67.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn67.FieldName = "POB LOCATION"
-        Me.LayoutViewColumn67.LayoutViewField = Me.LayoutViewField42
-        Me.LayoutViewColumn67.Name = "LayoutViewColumn67"
-        '
-        'LayoutViewField42
-        '
-        Me.LayoutViewField42.EditorPreferredWidth = 384
-        Me.LayoutViewField42.Location = New System.Drawing.Point(0, 160)
-        Me.LayoutViewField42.Name = "LayoutViewField42"
-        Me.LayoutViewField42.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField42.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn68
-        '
-        Me.LayoutViewColumn68.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn68.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn68.FieldName = "POB COUNTRY NAME"
-        Me.LayoutViewColumn68.LayoutViewField = Me.LayoutViewField43
-        Me.LayoutViewColumn68.Name = "LayoutViewColumn68"
-        '
-        'LayoutViewField43
-        '
-        Me.LayoutViewField43.EditorPreferredWidth = 384
-        Me.LayoutViewField43.Location = New System.Drawing.Point(0, 180)
-        Me.LayoutViewField43.Name = "LayoutViewField43"
-        Me.LayoutViewField43.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField43.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewColumn69
-        '
-        Me.LayoutViewColumn69.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn69.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn69.CustomizationCaption = "USER"
-        Me.LayoutViewColumn69.FieldName = "USER"
-        Me.LayoutViewColumn69.LayoutViewField = Me.LayoutViewField44
-        Me.LayoutViewColumn69.Name = "LayoutViewColumn69"
-        Me.LayoutViewColumn69.OptionsColumn.ReadOnly = True
-        '
-        'LayoutViewField44
-        '
-        Me.LayoutViewField44.EditorPreferredWidth = 20
-        Me.LayoutViewField44.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutViewField44.Name = "LayoutViewField44"
-        Me.LayoutViewField44.Size = New System.Drawing.Size(527, 612)
-        Me.LayoutViewField44.TextSize = New System.Drawing.Size(133, 20)
-        '
-        'LayoutViewColumn70
-        '
-        Me.LayoutViewColumn70.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn70.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn70.ColumnEdit = Me.RepositoryItemComboBox3
-        Me.LayoutViewColumn70.FieldName = "VALID"
-        Me.LayoutViewColumn70.LayoutViewField = Me.LayoutViewField45
-        Me.LayoutViewColumn70.Name = "LayoutViewColumn70"
-        '
-        'LayoutViewField45
-        '
-        Me.LayoutViewField45.EditorPreferredWidth = 30
-        Me.LayoutViewField45.Location = New System.Drawing.Point(0, 100)
-        Me.LayoutViewField45.Name = "LayoutViewField45"
-        Me.LayoutViewField45.Size = New System.Drawing.Size(162, 20)
-        Me.LayoutViewField45.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn71
-        '
-        Me.LayoutViewColumn71.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn71.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn71.CustomizationCaption = "UNTER BEARBEITUNG VON"
-        Me.LayoutViewColumn71.FieldName = "UNTER BEARBEITUNG VON"
-        Me.LayoutViewColumn71.LayoutViewField = Me.LayoutViewField46
-        Me.LayoutViewColumn71.Name = "LayoutViewColumn71"
-        Me.LayoutViewColumn71.OptionsColumn.ReadOnly = True
-        '
-        'LayoutViewField46
-        '
-        Me.LayoutViewField46.EditorPreferredWidth = 20
-        Me.LayoutViewField46.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutViewField46.Name = "LayoutViewField46"
-        Me.LayoutViewField46.Size = New System.Drawing.Size(527, 612)
-        Me.LayoutViewField46.TextSize = New System.Drawing.Size(133, 20)
-        '
-        'LayoutViewColumn72
-        '
-        Me.LayoutViewColumn72.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn72.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn72.CustomizationCaption = "BIC11"
-        Me.LayoutViewColumn72.FieldName = "BIC11"
-        Me.LayoutViewColumn72.LayoutViewField = Me.LayoutViewField47
-        Me.LayoutViewColumn72.Name = "LayoutViewColumn72"
-        Me.LayoutViewColumn72.OptionsColumn.ReadOnly = True
-        '
-        'LayoutViewField47
-        '
-        Me.LayoutViewField47.EditorPreferredWidth = 20
-        Me.LayoutViewField47.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutViewField47.Name = "LayoutViewField47"
-        Me.LayoutViewField47.Size = New System.Drawing.Size(527, 612)
-        Me.LayoutViewField47.TextSize = New System.Drawing.Size(133, 20)
-        '
-        'LayoutViewColumn73
-        '
-        Me.LayoutViewColumn73.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn73.AppearanceCell.ForeColor = System.Drawing.Color.Blue
-        Me.LayoutViewColumn73.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn73.AppearanceCell.Options.UseForeColor = True
-        Me.LayoutViewColumn73.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn73.AppearanceHeader.Options.UseFont = True
-        Me.LayoutViewColumn73.ColumnEdit = Me.RepositoryItemTextEdit5
-        Me.LayoutViewColumn73.FieldName = "BIC CODE"
-        Me.LayoutViewColumn73.LayoutViewField = Me.LayoutViewField49
-        Me.LayoutViewColumn73.Name = "LayoutViewColumn73"
-        '
-        'LayoutViewField49
-        '
-        Me.LayoutViewField49.EditorPreferredWidth = 93
-        Me.LayoutViewField49.ImageOptions.ImageIndex = 0
-        Me.LayoutViewField49.Location = New System.Drawing.Point(0, 0)
-        Me.LayoutViewField49.Name = "LayoutViewField49"
-        Me.LayoutViewField49.Size = New System.Drawing.Size(225, 20)
-        Me.LayoutViewField49.TextSize = New System.Drawing.Size(123, 16)
-        '
-        'LayoutViewColumn74
-        '
-        Me.LayoutViewColumn74.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn74.AppearanceCell.ForeColor = System.Drawing.Color.Blue
-        Me.LayoutViewColumn74.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn74.AppearanceCell.Options.UseForeColor = True
-        Me.LayoutViewColumn74.AppearanceHeader.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn74.AppearanceHeader.Options.UseFont = True
-        Me.LayoutViewColumn74.ColumnEdit = Me.RepositoryItemTextEdit6
-        Me.LayoutViewColumn74.FieldName = "BRANCH CODE"
-        Me.LayoutViewColumn74.LayoutViewField = Me.LayoutViewField50
-        Me.LayoutViewColumn74.Name = "LayoutViewColumn74"
-        '
-        'LayoutViewField50
-        '
-        Me.LayoutViewField50.EditorPreferredWidth = 51
-        Me.LayoutViewField50.Location = New System.Drawing.Point(0, 20)
-        Me.LayoutViewField50.Name = "LayoutViewField50"
-        Me.LayoutViewField50.Size = New System.Drawing.Size(183, 20)
-        Me.LayoutViewField50.TextSize = New System.Drawing.Size(123, 13)
-        '
-        'LayoutViewColumn75
-        '
-        Me.LayoutViewColumn75.AppearanceCell.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Me.LayoutViewColumn75.AppearanceCell.Options.UseFont = True
-        Me.LayoutViewColumn75.Caption = "COUNTRY CODE"
-        Me.LayoutViewColumn75.FieldName = "COUNTRY"
-        Me.LayoutViewColumn75.LayoutViewField = Me.LayoutViewField51
-        Me.LayoutViewColumn75.Name = "LayoutViewColumn75"
-        Me.LayoutViewColumn75.OptionsColumn.ReadOnly = True
-        '
-        'LayoutViewField51
-        '
-        Me.LayoutViewField51.EditorPreferredWidth = 384
-        Me.LayoutViewField51.Location = New System.Drawing.Point(0, 100)
-        Me.LayoutViewField51.Name = "LayoutViewField51"
-        Me.LayoutViewField51.Size = New System.Drawing.Size(503, 20)
-        Me.LayoutViewField51.TextSize = New System.Drawing.Size(110, 13)
-        '
-        'LayoutViewCard3
-        '
-        Me.LayoutViewCard3.CaptionImageOptions.Location = DevExpress.Utils.GroupElementLocation.BeforeText
-        Me.LayoutViewCard3.CustomizationFormText = "TemplateCard"
-        Me.LayoutViewCard3.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[False]
-        Me.LayoutViewCard3.HeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText
-        Me.LayoutViewCard3.Name = "LayoutViewCard1"
-        Me.LayoutViewCard3.OptionsItemText.TextToControlDistance = 5
-        Me.LayoutViewCard3.Text = "TemplateCard"
+        Me.colCreationDate.Width = 109
         '
         'LayoutControlGroup5
         '
@@ -5794,13 +4788,12 @@ Partial Class RiskStrategyPlanningProcess
         Me.Controls.Add(Me.XtraTabControl1)
         Me.Controls.Add(Me.LoadData_btn)
         Me.Controls.Add(Me.GroupControl3)
-        Me.Controls.Add(Me.GroupControl1)
         Me.Controls.Add(Me.GroupControl2)
         Me.Controls.Add(Me.CreationDate_lbl)
         Me.Controls.Add(Me.LabelControl19)
         Me.Controls.Add(Me.RiskDate_lbl)
         Me.Controls.Add(Me.LabelControl6)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("RiskStrategyPlanningProcess.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "RiskStrategyPlanningProcess"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -5883,11 +4876,20 @@ Partial Class RiskStrategyPlanningProcess
         CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutViewCard2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupControl1.ResumeLayout(False)
-        CType(Me.AnalysisDate_Comboedit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl4.ResumeLayout(False)
+        CType(Me.DefaultRisk_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl5.ResumeLayout(False)
+        CType(Me.GA_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl6.ResumeLayout(False)
+        CType(Me.UL_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl7.ResumeLayout(False)
+        CType(Me.EL_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SumGArel_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.K_Value_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Delta_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -5932,40 +4934,6 @@ Partial Class RiskStrategyPlanningProcess
         Me.LayoutControl3.ResumeLayout(False)
         CType(Me.GridControl3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RiskStrategyPlanningProcessAllDates_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField49, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField50, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField51, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewCard3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -5973,15 +4941,10 @@ Partial Class RiskStrategyPlanningProcess
     End Sub
     Friend WithEvents PrintingSystem1 As DevExpress.XtraPrinting.PrintingSystem
     Friend WithEvents ImageCollection1 As DevExpress.Utils.ImageCollection
-    Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents AnalysisDate_Comboedit As DevExpress.XtraEditors.ComboBoxEdit
     Friend WithEvents LoadData_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelControl2 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents RiskDate_lbl As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LabelControl6 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents GroupControl2 As DevExpress.XtraEditors.GroupControl
-    Friend WithEvents SumGA_lbl As System.Windows.Forms.Label
-    Friend WithEvents LabelControl11 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents SumGArel_TextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents LabelControl10 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents K_Value_TextEdit As DevExpress.XtraEditors.TextEdit
@@ -5997,9 +4960,7 @@ Partial Class RiskStrategyPlanningProcess
     Friend WithEvents LabelControl4 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LevelOfConfidence_SpinEdit As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents LabelControl3 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents SumUL_lbl As System.Windows.Forms.Label
     Friend WithEvents RecalculateEL_UL_GA_btn As DevExpress.XtraEditors.SimpleButton
-    Friend WithEvents LabelControl12 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents GAMMAINV_TextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents XtraTabControl1 As DevExpress.XtraTab.XtraTabControl
     Friend WithEvents UnexpectedLossBasic_XtraTabPage As DevExpress.XtraTab.XtraTabPage
@@ -6206,8 +5167,6 @@ Partial Class RiskStrategyPlanningProcess
     Friend WithEvents colRiskDate2 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colIdClientGroup1 As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colBusinessType As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents SumEL_lbl As System.Windows.Forms.Label
-    Friend WithEvents LabelControl13 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents RiskStrategyPlanningProcess_AllDetailsBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents RiskStrategyPlanningProcess_AllDetails_TableAdapter As PS_TOOL_DX.RiskStrategyPlanningProcessDatasetTableAdapters.RiskStrategyPlanningProcess_AllDetails_TableAdapter
     Friend WithEvents GroupControl3 As DevExpress.XtraEditors.GroupControl
@@ -6283,7 +5242,7 @@ Partial Class RiskStrategyPlanningProcess
     Friend WithEvents colProjectionYear As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents ProjectionYear_SpinEdit As DevExpress.XtraEditors.SpinEdit
     Friend WithEvents LabelControl18 As DevExpress.XtraEditors.LabelControl
-    Friend WithEvents CreateNewRiskStrategy_btn As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents DisplayAllDates_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LabelControl19 As DevExpress.XtraEditors.LabelControl
     Friend WithEvents CreationDate_lbl As DevExpress.XtraEditors.LabelControl
     Friend WithEvents LayoutControl3 As DevExpress.XtraLayout.LayoutControl
@@ -6303,100 +5262,18 @@ Partial Class RiskStrategyPlanningProcess
     Friend WithEvents colSumGA_Total As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colLevelOfConfidence As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents colCreationDate As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents RepositoryItemComboBox3 As DevExpress.XtraEditors.Repository.RepositoryItemComboBox
-    Friend WithEvents RepositoryItemTextEdit4 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents RepositoryItemTextEdit5 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents RepositoryItemTextEdit6 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents RepositoryItemMemoExEdit3 As DevExpress.XtraEditors.Repository.RepositoryItemMemoExEdit
-    Friend WithEvents RepositoryItemImageComboBox2 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridColumn43 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn45 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn46 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn47 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn48 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn49 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn50 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn51 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn52 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn53 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn54 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn55 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn56 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn57 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn58 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn59 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn60 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn61 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn62 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn63 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn64 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn65 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn66 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn67 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn68 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn69 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn70 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn71 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn72 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn73 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn74 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents GridColumn75 As DevExpress.XtraGrid.Columns.GridColumn
-    Friend WithEvents LayoutView3 As DevExpress.XtraGrid.Views.Layout.LayoutView
-    Friend WithEvents LayoutViewColumn51 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField26 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn52 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField27 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn53 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField28 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn54 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField29 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn55 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField30 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn56 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField31 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn57 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField32 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn58 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField33 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn59 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField34 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn60 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField35 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn61 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField36 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn62 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField37 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn63 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField38 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn64 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField39 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn65 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField40 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn66 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField41 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn67 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField42 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn68 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField43 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn69 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField44 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn70 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField45 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn71 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField46 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn72 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField47 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn73 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField49 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn74 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField50 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewColumn75 As DevExpress.XtraGrid.Columns.LayoutViewColumn
-    Friend WithEvents LayoutViewField51 As DevExpress.XtraGrid.Views.Layout.LayoutViewField
-    Friend WithEvents LayoutViewCard3 As DevExpress.XtraGrid.Views.Layout.LayoutViewCard
     Friend WithEvents LayoutControlGroup5 As DevExpress.XtraLayout.LayoutControlGroup
     Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LoadExcelFile_btn As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents ToolTipController1 As DevExpress.Utils.ToolTipController
+    Friend WithEvents colDefaultRisk As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GroupControl4 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents DefaultRisk_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents GroupControl5 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents GA_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents GroupControl6 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents UL_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents GroupControl7 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents EL_TextEdit As DevExpress.XtraEditors.TextEdit
 End Class

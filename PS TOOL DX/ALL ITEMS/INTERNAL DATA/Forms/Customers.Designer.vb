@@ -215,6 +215,12 @@ Partial Class Customers
         Dim SuperToolTip23 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem37 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem23 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
+        Dim GridFormatRule1 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue1 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule2 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue2 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
+        Dim GridFormatRule3 As DevExpress.XtraGrid.GridFormatRule = New DevExpress.XtraGrid.GridFormatRule()
+        Dim FormatConditionRuleValue3 As DevExpress.XtraEditors.FormatConditionRuleValue = New DevExpress.XtraEditors.FormatConditionRuleValue()
         Dim EditorButtonImageOptions1 As DevExpress.XtraEditors.Controls.EditorButtonImageOptions = New DevExpress.XtraEditors.Controls.EditorButtonImageOptions()
         Dim SerializableAppearanceObject1 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
         Dim SerializableAppearanceObject2 As DevExpress.Utils.SerializableAppearanceObject = New DevExpress.Utils.SerializableAppearanceObject()
@@ -451,6 +457,7 @@ Partial Class Customers
         Me.colBalance_Sheet_Total = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAnnual_Turnover_in_EUR_Mio = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colAnaCredit_Customer = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colESG_ScoringType = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.CustomerAnaCreditBaseView = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridColumn40 = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridColumn41 = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -562,11 +569,13 @@ Partial Class Customers
         Me.item5 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.item7 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.item8 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.RepositoryItemPopupContainerEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit()
         Me.TreeListColumn1 = New DevExpress.XtraTreeList.Columns.TreeListColumn()
         Me.MergedFromClientNr_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.MergedToClientNr_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.CUSTOMER_INFOTableAdapter = New PS_TOOL_DX.PSTOOLDatasetTableAdapters.CUSTOMER_INFOTableAdapter()
         Me.TableAdapterManager = New PS_TOOL_DX.PSTOOLDatasetTableAdapters.TableAdapterManager()
+        Me.CUSTOMER_ESG_SCORINGTableAdapter = New PS_TOOL_DX.PSTOOLDatasetTableAdapters.CUSTOMER_ESG_SCORINGTableAdapter()
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.AnaCreditCustomerViews_btn = New DevExpress.XtraEditors.SimpleButton()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
@@ -994,6 +1003,48 @@ Partial Class Customers
         Me.LayoutControlGroup15 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.SplitterItem4 = New DevExpress.XtraLayout.SplitterItem()
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage = New DevExpress.XtraTab.XtraTabPage()
+        Me.LayoutControl_ESG_Scoring = New DevExpress.XtraLayout.LayoutControl()
+        Me.ESG_Scoring_GridControl = New DevExpress.XtraGrid.GridControl()
+        Me.CUSTOMER_ESG_SCORINGBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ESG_Scoring_DetailsView = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridView()
+        Me.GridBand1 = New DevExpress.XtraGrid.Views.BandedGrid.GridBand()
+        Me.colID2 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colE_Score = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.Scoring_RepositoryItemSpinEdit = New DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit()
+        Me.colS_Score = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colG_Score = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colESG_Score = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colClientNo2 = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.gridBand2 = New DevExpress.XtraGrid.Views.BandedGrid.GridBand()
+        Me.colE_Notation = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colS_Notation = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colG_Notation = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colESG_Notation = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.gridBand3 = New DevExpress.XtraGrid.Views.BandedGrid.GridBand()
+        Me.colValidFrom = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.ScoringValidity_RepositoryItemDateEdit = New DevExpress.XtraEditors.Repository.RepositoryItemDateEdit()
+        Me.colValidTill = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colLastAction = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colLastUpdateDate = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.colLastUpdateUser = New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn()
+        Me.RepositoryItemImageComboBox14 = New DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox()
+        Me.RepositoryItemTextEdit9 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.RepositoryItemTextEdit10 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
+        Me.RepositoryItemCheckEdit2 = New DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit()
+        Me.RepositoryItemGridLookUpEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit()
+        Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
+        Me.GridColumn209 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn210 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn211 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn212 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn213 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.GridColumn214 = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.ESG_ScoringType_ImageComboEdit = New DevExpress.XtraEditors.ImageComboBoxEdit()
+        Me.Root = New DevExpress.XtraLayout.LayoutControlGroup()
+        Me.LayoutControlItem11 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem2 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.LayoutControlItem14 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.ClientStatus_lbl = New System.Windows.Forms.Label()
         Me.OnlineBanking_ImageComboBoxEdit = New DevExpress.XtraEditors.ImageComboBoxEdit()
         Me.ClientNr_TextEdit = New DevExpress.XtraEditors.TextEdit()
@@ -1256,6 +1307,7 @@ Partial Class Customers
         CType(Me.item5, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.item7, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.item8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemPopupContainerEdit2, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.MergedFromClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.MergedToClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit
@@ -1543,6 +1595,26 @@ Partial Class Customers
         CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.SuspendLayout
+        CType(Me.LayoutControl_ESG_Scoring, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl_ESG_Scoring.SuspendLayout
+        CType(Me.ESG_Scoring_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CUSTOMER_ESG_SCORINGBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ESG_Scoring_DetailsView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Scoring_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ScoringValidity_RepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ScoringValidity_RepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox14, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemGridLookUpEdit3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ESG_ScoringType_ImageComboEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.OnlineBanking_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.ClientType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
@@ -2360,6 +2432,13 @@ Partial Class Customers
         Me.ImageCollection1.InsertGalleryImage("meeting_16x16.png", "devav/view/meeting_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("devav/view/meeting_16x16.png"), 14)
         Me.ImageCollection1.Images.SetKeyName(14, "meeting_16x16.png")
         Me.ImageCollection1.Images.SetKeyName(15, "EU-FLAG.jpg")
+        Me.ImageCollection1.Images.SetKeyName(16, "Germany.png")
+        Me.ImageCollection1.Images.SetKeyName(17, "country_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(18, "boreport_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(19, "boreport2_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(20, "showtestreport_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(21, "chartsshowlegend_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(22, "groupheader_16x16.png")
         '
         'layoutViewField_LayoutViewColumn1_1
         '
@@ -2688,7 +2767,7 @@ Partial Class Customers
         Me.CustomerBaseView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.CustomerBaseView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Cyan
         Me.CustomerBaseView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.CustomerBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colClientNo, Me.colClientNrOCBS, Me.colClientNoMergedFrom, Me.colClientNoMergedTo, Me.colMergeDate, Me.colClientType, Me.colCCB_Group, Me.colCCB_Group_OwnID, Me.colCIC_Group, Me.colCentral_Bank, Me.colCRSA_SOEFS, Me.colIDType, Me.colIDNo, Me.colID_TYPE_2, Me.colID_NO_2, Me.colEnglishName, Me.colBIC11, Me.colBIC11_NAME, Me.colBLZ, Me.colLEI_CODE, Me.colESTABLISH_DATE, Me.colJointAccount, Me.colACCOUNT_OFFICER_NAME, Me.colChineseName, Me.colLEGAL_STATUS, Me.colCLIENT_OPEN_DATE, Me.colCLIENT_RISK, Me.colCity, Me.colCOUNTRY_OF_REGISTRATION, Me.colSHORT_NAME, Me.colInternalType, Me.colOICNo, Me.colRiskCountry, Me.colOpenDate, Me.colTeller, Me.colOIC_BR, Me.colCOUNTRY_OF_RESIDENCE, Me.colEU_COUNTRY, Me.colINSTITUTION_SECTOR_CODE, Me.colINSTITUTION_SECTOR_CODE_NAME, Me.colINDUSTRIAL_CLASS_LOCAL, Me.colINDUSTRIAL_CLASS_CN, Me.colFINANCIAL_BACKGROUND, Me.colBUSINESS_GROUP, Me.colCREDIT_AGENCY, Me.colcreditrating, Me.colSector_BISTA, Me.colSector_BISTA_Description, Me.colSector_CRR, Me.colSector_CRR_Description, Me.colSector_FINREP, Me.colSector_FINREP_Description, Me.colSectorKWG, Me.colSectorKWG_Description, Me.colNACE_Branch_Code, Me.colNACE_Branch_Code_Description, Me.colCLOSE_DATE, Me.colADDRESS_NO01, Me.colADDRESS_TYPE01, Me.colADDRESS1, Me.colADDRESS2, Me.colADDRESS3, Me.colPOSTAL_CODE, Me.colADDRESS4, Me.colADDRESS_NO02, Me.colADDRESS5, Me.colADDRESS6, Me.colADDRESS_TYPE02, Me.colNUTS_3_Region, Me.colINDUSTRIAL_CLASS_LOCAL_NAME, Me.colINDUSTRIAL_CLASS_LOCAL_NAME_DE, Me.colOpicsCustomerNr, Me.colOpicsCustomerCode, Me.colTax_Identification_Nr, Me.colSTATUSunbinded, Me.colOnlineBanking, Me.colMasterGroupID, Me.colMasterGroupName, Me.colInterGroupID, Me.colInterGroupName, Me.colLegal_Form, Me.colLegal_Form_Description, Me.colLegal_Form_Other, Me.colLegal_Proceedings_Date, Me.colLegal_Proceedings_Status, Me.colLegal_Proceedings_Status_Description, Me.colNational_Identifier_Type1, Me.colNational_Identifier_Type_Description, Me.colNational_Identifier_Type_Value, Me.colInt_Organ, Me.colEnterprice_Size_Descritption, Me.colEnterprice_Size_Date, Me.colEnterprice_Size, Me.colEmployees_Nr, Me.colBalance_Sheet_Total, Me.colAnnual_Turnover_in_EUR_Mio, Me.colAnaCredit_Customer})
+        Me.CustomerBaseView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID, Me.colClientNo, Me.colClientNrOCBS, Me.colClientNoMergedFrom, Me.colClientNoMergedTo, Me.colMergeDate, Me.colClientType, Me.colCCB_Group, Me.colCCB_Group_OwnID, Me.colCIC_Group, Me.colCentral_Bank, Me.colCRSA_SOEFS, Me.colIDType, Me.colIDNo, Me.colID_TYPE_2, Me.colID_NO_2, Me.colEnglishName, Me.colBIC11, Me.colBIC11_NAME, Me.colBLZ, Me.colLEI_CODE, Me.colESTABLISH_DATE, Me.colJointAccount, Me.colACCOUNT_OFFICER_NAME, Me.colChineseName, Me.colLEGAL_STATUS, Me.colCLIENT_OPEN_DATE, Me.colCLIENT_RISK, Me.colCity, Me.colCOUNTRY_OF_REGISTRATION, Me.colSHORT_NAME, Me.colInternalType, Me.colOICNo, Me.colRiskCountry, Me.colOpenDate, Me.colTeller, Me.colOIC_BR, Me.colCOUNTRY_OF_RESIDENCE, Me.colEU_COUNTRY, Me.colINSTITUTION_SECTOR_CODE, Me.colINSTITUTION_SECTOR_CODE_NAME, Me.colINDUSTRIAL_CLASS_LOCAL, Me.colINDUSTRIAL_CLASS_CN, Me.colFINANCIAL_BACKGROUND, Me.colBUSINESS_GROUP, Me.colCREDIT_AGENCY, Me.colcreditrating, Me.colSector_BISTA, Me.colSector_BISTA_Description, Me.colSector_CRR, Me.colSector_CRR_Description, Me.colSector_FINREP, Me.colSector_FINREP_Description, Me.colSectorKWG, Me.colSectorKWG_Description, Me.colNACE_Branch_Code, Me.colNACE_Branch_Code_Description, Me.colCLOSE_DATE, Me.colADDRESS_NO01, Me.colADDRESS_TYPE01, Me.colADDRESS1, Me.colADDRESS2, Me.colADDRESS3, Me.colPOSTAL_CODE, Me.colADDRESS4, Me.colADDRESS_NO02, Me.colADDRESS5, Me.colADDRESS6, Me.colADDRESS_TYPE02, Me.colNUTS_3_Region, Me.colINDUSTRIAL_CLASS_LOCAL_NAME, Me.colINDUSTRIAL_CLASS_LOCAL_NAME_DE, Me.colOpicsCustomerNr, Me.colOpicsCustomerCode, Me.colTax_Identification_Nr, Me.colSTATUSunbinded, Me.colOnlineBanking, Me.colMasterGroupID, Me.colMasterGroupName, Me.colInterGroupID, Me.colInterGroupName, Me.colLegal_Form, Me.colLegal_Form_Description, Me.colLegal_Form_Other, Me.colLegal_Proceedings_Date, Me.colLegal_Proceedings_Status, Me.colLegal_Proceedings_Status_Description, Me.colNational_Identifier_Type1, Me.colNational_Identifier_Type_Description, Me.colNational_Identifier_Type_Value, Me.colInt_Organ, Me.colEnterprice_Size_Descritption, Me.colEnterprice_Size_Date, Me.colEnterprice_Size, Me.colEmployees_Nr, Me.colBalance_Sheet_Total, Me.colAnnual_Turnover_in_EUR_Mio, Me.colAnaCredit_Customer, Me.colESG_ScoringType})
         Me.CustomerBaseView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.CustomerBaseView.GridControl = Me.GridControl2
         Me.CustomerBaseView.Name = "CustomerBaseView"
@@ -3588,6 +3667,17 @@ Partial Class Customers
         Me.colAnaCredit_Customer.FieldName = "AnaCredit_Customer"
         Me.colAnaCredit_Customer.Name = "colAnaCredit_Customer"
         Me.colAnaCredit_Customer.OptionsColumn.ReadOnly = True
+        '
+        'colESG_ScoringType
+        '
+        Me.colESG_ScoringType.AppearanceCell.Options.UseTextOptions = True
+        Me.colESG_ScoringType.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colESG_ScoringType.Caption = "ESG Scoring Type"
+        Me.colESG_ScoringType.FieldName = "ESG_ScoringType"
+        Me.colESG_ScoringType.Name = "colESG_ScoringType"
+        Me.colESG_ScoringType.OptionsColumn.ReadOnly = True
+        Me.colESG_ScoringType.Visible = True
+        Me.colESG_ScoringType.VisibleIndex = 22
         '
         'CustomerAnaCreditBaseView
         '
@@ -4639,7 +4729,7 @@ Partial Class Customers
         Label41.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label41.AutoSize = True
         Label41.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label41.Location = New System.Drawing.Point(1164, 113)
+        Label41.Location = New System.Drawing.Point(1173, 113)
         Label41.Name = "Label41"
         Label41.Size = New System.Drawing.Size(93, 13)
         Label41.TabIndex = 14
@@ -4716,7 +4806,7 @@ Partial Class Customers
         Label28.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label28.AutoSize = True
         Label28.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label28.Location = New System.Drawing.Point(269, 278)
+        Label28.Location = New System.Drawing.Point(278, 278)
         Label28.Name = "Label28"
         Label28.Size = New System.Drawing.Size(129, 13)
         Label28.TabIndex = 57
@@ -4727,7 +4817,7 @@ Partial Class Customers
         Label29.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label29.AutoSize = True
         Label29.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label29.Location = New System.Drawing.Point(27, 278)
+        Label29.Location = New System.Drawing.Point(36, 278)
         Label29.Name = "Label29"
         Label29.Size = New System.Drawing.Size(135, 13)
         Label29.TabIndex = 55
@@ -4738,7 +4828,7 @@ Partial Class Customers
         Label30.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label30.AutoSize = True
         Label30.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label30.Location = New System.Drawing.Point(33, 163)
+        Label30.Location = New System.Drawing.Point(42, 163)
         Label30.Name = "Label30"
         Label30.Size = New System.Drawing.Size(129, 13)
         Label30.TabIndex = 52
@@ -4749,7 +4839,7 @@ Partial Class Customers
         Label31.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label31.AutoSize = True
         Label31.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label31.Location = New System.Drawing.Point(16, 93)
+        Label31.Location = New System.Drawing.Point(25, 93)
         Label31.Name = "Label31"
         Label31.Size = New System.Drawing.Size(141, 13)
         Label31.TabIndex = 50
@@ -4760,7 +4850,7 @@ Partial Class Customers
         Label32.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label32.AutoSize = True
         Label32.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label32.Location = New System.Drawing.Point(265, 65)
+        Label32.Location = New System.Drawing.Point(274, 65)
         Label32.Name = "Label32"
         Label32.Size = New System.Drawing.Size(130, 13)
         Label32.TabIndex = 48
@@ -4771,7 +4861,7 @@ Partial Class Customers
         Label33.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label33.AutoSize = True
         Label33.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label33.Location = New System.Drawing.Point(64, 63)
+        Label33.Location = New System.Drawing.Point(73, 63)
         Label33.Name = "Label33"
         Label33.Size = New System.Drawing.Size(96, 13)
         Label33.TabIndex = 46
@@ -4782,7 +4872,7 @@ Partial Class Customers
         Label36.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label36.AutoSize = True
         Label36.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label36.Location = New System.Drawing.Point(253, 33)
+        Label36.Location = New System.Drawing.Point(262, 33)
         Label36.Name = "Label36"
         Label36.Size = New System.Drawing.Size(142, 13)
         Label36.TabIndex = 44
@@ -4793,7 +4883,7 @@ Partial Class Customers
         Label37.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label37.AutoSize = True
         Label37.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label37.Location = New System.Drawing.Point(91, 29)
+        Label37.Location = New System.Drawing.Point(100, 29)
         Label37.Name = "Label37"
         Label37.Size = New System.Drawing.Size(69, 13)
         Label37.TabIndex = 42
@@ -4815,7 +4905,7 @@ Partial Class Customers
         Label13.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label13.AutoSize = True
         Label13.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label13.Location = New System.Drawing.Point(365, 107)
+        Label13.Location = New System.Drawing.Point(374, 107)
         Label13.Name = "Label13"
         Label13.Size = New System.Drawing.Size(73, 13)
         Label13.TabIndex = 8
@@ -4826,7 +4916,7 @@ Partial Class Customers
         Label12.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label12.AutoSize = True
         Label12.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label12.Location = New System.Drawing.Point(430, 80)
+        Label12.Location = New System.Drawing.Point(439, 80)
         Label12.Name = "Label12"
         Label12.Size = New System.Drawing.Size(76, 13)
         Label12.TabIndex = 6
@@ -4969,7 +5059,7 @@ Partial Class Customers
         Label11.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label11.AutoSize = True
         Label11.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label11.Location = New System.Drawing.Point(430, 51)
+        Label11.Location = New System.Drawing.Point(439, 51)
         Label11.Name = "Label11"
         Label11.Size = New System.Drawing.Size(77, 13)
         Label11.TabIndex = 4
@@ -4991,7 +5081,7 @@ Partial Class Customers
         ClientDocsDirectoryLabel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         ClientDocsDirectoryLabel.AutoSize = True
         ClientDocsDirectoryLabel.ForeColor = System.Drawing.Color.Black
-        ClientDocsDirectoryLabel.Location = New System.Drawing.Point(1183, 195)
+        ClientDocsDirectoryLabel.Location = New System.Drawing.Point(1200, 195)
         ClientDocsDirectoryLabel.Name = "ClientDocsDirectoryLabel"
         ClientDocsDirectoryLabel.Size = New System.Drawing.Size(111, 13)
         ClientDocsDirectoryLabel.TabIndex = 33
@@ -5011,7 +5101,7 @@ Partial Class Customers
         Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label3.AutoSize = True
         Label3.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label3.Location = New System.Drawing.Point(451, 28)
+        Label3.Location = New System.Drawing.Point(460, 28)
         Label3.Name = "Label3"
         Label3.Size = New System.Drawing.Size(57, 13)
         Label3.TabIndex = 2
@@ -5076,7 +5166,7 @@ Partial Class Customers
         Label60.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label60.AutoSize = True
         Label60.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label60.Location = New System.Drawing.Point(1184, 19)
+        Label60.Location = New System.Drawing.Point(1193, 19)
         Label60.Name = "Label60"
         Label60.Size = New System.Drawing.Size(73, 13)
         Label60.TabIndex = 49
@@ -5087,7 +5177,7 @@ Partial Class Customers
         Label61.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label61.AutoSize = True
         Label61.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label61.Location = New System.Drawing.Point(1163, 42)
+        Label61.Location = New System.Drawing.Point(1172, 42)
         Label61.Name = "Label61"
         Label61.Size = New System.Drawing.Size(93, 13)
         Label61.TabIndex = 51
@@ -5238,7 +5328,7 @@ Partial Class Customers
         Label78.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label78.AutoSize = True
         Label78.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label78.Location = New System.Drawing.Point(1191, 66)
+        Label78.Location = New System.Drawing.Point(1200, 66)
         Label78.Name = "Label78"
         Label78.Size = New System.Drawing.Size(66, 13)
         Label78.TabIndex = 55
@@ -5262,7 +5352,7 @@ Partial Class Customers
         Label79.BackColor = System.Drawing.Color.Aqua
         Label79.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Label79.ForeColor = System.Drawing.Color.Black
-        Label79.Location = New System.Drawing.Point(310, 93)
+        Label79.Location = New System.Drawing.Point(319, 93)
         Label79.Name = "Label79"
         Label79.Size = New System.Drawing.Size(82, 13)
         Label79.TabIndex = 66
@@ -5275,7 +5365,7 @@ Partial Class Customers
         Label81.BackColor = System.Drawing.Color.Aqua
         Label81.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
         Label81.ForeColor = System.Drawing.Color.Black
-        Label81.Location = New System.Drawing.Point(307, 120)
+        Label81.Location = New System.Drawing.Point(316, 120)
         Label81.Name = "Label81"
         Label81.Size = New System.Drawing.Size(85, 13)
         Label81.TabIndex = 68
@@ -5308,7 +5398,7 @@ Partial Class Customers
         Label83.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label83.AutoSize = True
         Label83.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label83.Location = New System.Drawing.Point(1133, 90)
+        Label83.Location = New System.Drawing.Point(1142, 90)
         Label83.Name = "Label83"
         Label83.Size = New System.Drawing.Size(124, 13)
         Label83.TabIndex = 59
@@ -5429,7 +5519,7 @@ Partial Class Customers
         Label59.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label59.AutoSize = True
         Label59.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label59.Location = New System.Drawing.Point(633, 109)
+        Label59.Location = New System.Drawing.Point(642, 109)
         Label59.Name = "Label59"
         Label59.Size = New System.Drawing.Size(124, 13)
         Label59.TabIndex = 61
@@ -5487,7 +5577,7 @@ Partial Class Customers
         Label87.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label87.AutoSize = True
         Label87.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label87.Location = New System.Drawing.Point(300, 363)
+        Label87.Location = New System.Drawing.Point(309, 363)
         Label87.Name = "Label87"
         Label87.Size = New System.Drawing.Size(73, 13)
         Label87.TabIndex = 73
@@ -5498,7 +5588,7 @@ Partial Class Customers
         Label88.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label88.AutoSize = True
         Label88.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label88.Location = New System.Drawing.Point(32, 361)
+        Label88.Location = New System.Drawing.Point(41, 361)
         Label88.Name = "Label88"
         Label88.Size = New System.Drawing.Size(76, 13)
         Label88.TabIndex = 72
@@ -5509,7 +5599,7 @@ Partial Class Customers
         Label89.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label89.AutoSize = True
         Label89.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label89.Location = New System.Drawing.Point(288, 427)
+        Label89.Location = New System.Drawing.Point(297, 427)
         Label89.Name = "Label89"
         Label89.Size = New System.Drawing.Size(89, 13)
         Label89.TabIndex = 79
@@ -5520,7 +5610,7 @@ Partial Class Customers
         Label90.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label90.AutoSize = True
         Label90.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label90.Location = New System.Drawing.Point(28, 425)
+        Label90.Location = New System.Drawing.Point(37, 425)
         Label90.Name = "Label90"
         Label90.Size = New System.Drawing.Size(84, 13)
         Label90.TabIndex = 78
@@ -5531,7 +5621,7 @@ Partial Class Customers
         Label91.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label91.AutoSize = True
         Label91.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label91.Location = New System.Drawing.Point(27, 493)
+        Label91.Location = New System.Drawing.Point(36, 493)
         Label91.Name = "Label91"
         Label91.Size = New System.Drawing.Size(80, 13)
         Label91.TabIndex = 83
@@ -5542,7 +5632,7 @@ Partial Class Customers
         Label68.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label68.AutoSize = True
         Label68.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label68.Location = New System.Drawing.Point(827, 26)
+        Label68.Location = New System.Drawing.Point(836, 26)
         Label68.Name = "Label68"
         Label68.Size = New System.Drawing.Size(122, 13)
         Label68.TabIndex = 63
@@ -5656,7 +5746,7 @@ Partial Class Customers
         Label94.Anchor = System.Windows.Forms.AnchorStyles.Top
         Label94.AutoSize = True
         Label94.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
-        Label94.Location = New System.Drawing.Point(863, 109)
+        Label94.Location = New System.Drawing.Point(872, 109)
         Label94.Name = "Label94"
         Label94.Size = New System.Drawing.Size(154, 13)
         Label94.TabIndex = 65
@@ -5716,6 +5806,17 @@ Partial Class Customers
         Label99.Size = New System.Drawing.Size(48, 13)
         Label99.TabIndex = 64
         Label99.Text = "VAT ID:"
+        '
+        'RepositoryItemPopupContainerEdit2
+        '
+        Me.RepositoryItemPopupContainerEdit2.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemPopupContainerEdit2.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemPopupContainerEdit2.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemPopupContainerEdit2.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemPopupContainerEdit2.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemPopupContainerEdit2.AutoHeight = False
+        Me.RepositoryItemPopupContainerEdit2.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemPopupContainerEdit2.Name = "RepositoryItemPopupContainerEdit2"
         '
         'TreeListColumn1
         '
@@ -5781,6 +5882,7 @@ Partial Class Customers
         Me.TableAdapterManager.ContractTypeTableAdapter = Nothing
         Me.TableAdapterManager.CREDIT_RISKTableAdapter = Nothing
         Me.TableAdapterManager.CUSTOMER_ACCOUNTSTableAdapter = Nothing
+        Me.TableAdapterManager.CUSTOMER_ESG_SCORINGTableAdapter = Me.CUSTOMER_ESG_SCORINGTableAdapter
         Me.TableAdapterManager.CUSTOMER_INFOTableAdapter = Me.CUSTOMER_INFOTableAdapter
         Me.TableAdapterManager.DailyBalanceDetailsSheets2TableAdapter = Nothing
         Me.TableAdapterManager.DailyBalanceDetailsSheetsTableAdapter = Nothing
@@ -5805,6 +5907,10 @@ Partial Class Customers
         Me.TableAdapterManager.SSISTableAdapter = Nothing
         Me.TableAdapterManager.TRIAL_BALANCE_218TableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = PS_TOOL_DX.PSTOOLDatasetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'CUSTOMER_ESG_SCORINGTableAdapter
+        '
+        Me.CUSTOMER_ESG_SCORINGTableAdapter.ClearBeforeFill = True
         '
         'LayoutControl1
         '
@@ -5853,9 +5959,9 @@ Partial Class Customers
         Me.CustomerViews_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.CustomerViews_btn.ImageOptions.ImageIndex = 8
         Me.CustomerViews_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.CustomerViews_btn.Location = New System.Drawing.Point(1345, 12)
+        Me.CustomerViews_btn.Location = New System.Drawing.Point(1344, 12)
         Me.CustomerViews_btn.Name = "CustomerViews_btn"
-        Me.CustomerViews_btn.Size = New System.Drawing.Size(188, 22)
+        Me.CustomerViews_btn.Size = New System.Drawing.Size(189, 22)
         Me.CustomerViews_btn.StyleController = Me.LayoutControl1
         Me.CustomerViews_btn.TabIndex = 7
         Me.CustomerViews_btn.Text = "View/Modify Details"
@@ -5914,9 +6020,9 @@ Partial Class Customers
         '
         Me.LayoutControlItem3.Control = Me.CustomerViews_btn
         Me.LayoutControlItem3.CustomizationFormText = "LayoutControlItem3"
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(1333, 0)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(1332, 0)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(192, 26)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(193, 26)
         Me.LayoutControlItem3.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem3.TextVisible = False
         '
@@ -5926,7 +6032,7 @@ Partial Class Customers
         Me.SimpleSeparator1.CustomizationFormText = "SimpleSeparator1"
         Me.SimpleSeparator1.Location = New System.Drawing.Point(1331, 0)
         Me.SimpleSeparator1.Name = "SimpleSeparator1"
-        Me.SimpleSeparator1.Size = New System.Drawing.Size(2, 26)
+        Me.SimpleSeparator1.Size = New System.Drawing.Size(1, 26)
         '
         'LayoutControlItem4
         '
@@ -5966,9 +6072,9 @@ Partial Class Customers
         Me.XtraTabControl2.Location = New System.Drawing.Point(8, 133)
         Me.XtraTabControl2.Name = "XtraTabControl2"
         Me.XtraTabControl2.SelectedTabPage = Me.BASIC_DATAXtraTabPage
-        Me.XtraTabControl2.Size = New System.Drawing.Size(1541, 641)
+        Me.XtraTabControl2.Size = New System.Drawing.Size(1558, 654)
         Me.XtraTabControl2.TabIndex = 17
-        Me.XtraTabControl2.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.BASIC_DATAXtraTabPage, Me.ADDITIONAL_DATAXtraTabPage, Me.CLIENTS_ACCOUNTS_XtraTabPage, Me.CUSTOMER_RATINGXtraTabPage, Me.CUSTOMER_GROUPINGXtraTabPage, Me.CLIENT_DOCSXtraTabPage, Me.CLIENTS_CONTACTSXtraTabPage})
+        Me.XtraTabControl2.TabPages.AddRange(New DevExpress.XtraTab.XtraTabPage() {Me.BASIC_DATAXtraTabPage, Me.ADDITIONAL_DATAXtraTabPage, Me.CLIENTS_ACCOUNTS_XtraTabPage, Me.CUSTOMER_RATINGXtraTabPage, Me.CUSTOMER_GROUPINGXtraTabPage, Me.CLIENT_DOCSXtraTabPage, Me.CLIENTS_CONTACTSXtraTabPage, Me.CUSTOMER_ESG_SCORINGXtraTabPage})
         '
         'BASIC_DATAXtraTabPage
         '
@@ -5982,7 +6088,7 @@ Partial Class Customers
         Me.BASIC_DATAXtraTabPage.Controls.Add(ClientDocsDirectoryLabel)
         Me.BASIC_DATAXtraTabPage.Controls.Add(Me.ClientDocsDirectoryLabel1)
         Me.BASIC_DATAXtraTabPage.Name = "BASIC_DATAXtraTabPage"
-        Me.BASIC_DATAXtraTabPage.Size = New System.Drawing.Size(1535, 613)
+        Me.BASIC_DATAXtraTabPage.Size = New System.Drawing.Size(1556, 631)
         Me.BASIC_DATAXtraTabPage.Text = "BASIC DATA"
         '
         'GroupControl3
@@ -6031,9 +6137,9 @@ Partial Class Customers
         Me.GroupControl3.Controls.Add(Label50)
         Me.GroupControl3.Controls.Add(Me.Address1_TextEdit)
         Me.GroupControl3.Controls.Add(Label44)
-        Me.GroupControl3.Location = New System.Drawing.Point(1020, 3)
+        Me.GroupControl3.Location = New System.Drawing.Point(1037, 3)
         Me.GroupControl3.Name = "GroupControl3"
-        Me.GroupControl3.Size = New System.Drawing.Size(507, 603)
+        Me.GroupControl3.Size = New System.Drawing.Size(507, 616)
         Me.GroupControl3.TabIndex = 47
         Me.GroupControl3.Text = "Address"
         '
@@ -6398,7 +6504,7 @@ Partial Class Customers
         Me.GroupControl2.Controls.Add(Me.IndClassLocalDescription_lbl)
         Me.GroupControl2.Location = New System.Drawing.Point(483, 3)
         Me.GroupControl2.Name = "GroupControl2"
-        Me.GroupControl2.Size = New System.Drawing.Size(531, 603)
+        Me.GroupControl2.Size = New System.Drawing.Size(548, 616)
         Me.GroupControl2.TabIndex = 41
         Me.GroupControl2.Text = "Country Risk and Business"
         '
@@ -6408,7 +6514,7 @@ Partial Class Customers
         Me.IC_China_Description_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "INDUSTRIAL_CLASS_CN_Description", True))
         Me.IC_China_Description_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.IC_China_Description_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.IC_China_Description_lbl.Location = New System.Drawing.Point(33, 301)
+        Me.IC_China_Description_lbl.Location = New System.Drawing.Point(42, 301)
         Me.IC_China_Description_lbl.Name = "IC_China_Description_lbl"
         Me.IC_China_Description_lbl.Size = New System.Drawing.Size(465, 34)
         Me.IC_China_Description_lbl.TabIndex = 86
@@ -6420,7 +6526,7 @@ Partial Class Customers
         Me.InstitutSectorCodeDescription_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "INSTITUTION_SECTOR_CODE_NAME", True))
         Me.InstitutSectorCodeDescription_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.InstitutSectorCodeDescription_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.InstitutSectorCodeDescription_lbl.Location = New System.Drawing.Point(16, 113)
+        Me.InstitutSectorCodeDescription_lbl.Location = New System.Drawing.Point(25, 113)
         Me.InstitutSectorCodeDescription_lbl.Name = "InstitutSectorCodeDescription_lbl"
         Me.InstitutSectorCodeDescription_lbl.Size = New System.Drawing.Size(215, 34)
         Me.InstitutSectorCodeDescription_lbl.TabIndex = 85
@@ -6433,9 +6539,9 @@ Partial Class Customers
         Me.NACE_Branch_Description_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "NACE_Branch_Code_Description", True))
         Me.NACE_Branch_Description_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.NACE_Branch_Description_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.NACE_Branch_Description_lbl.Location = New System.Drawing.Point(108, 513)
+        Me.NACE_Branch_Description_lbl.Location = New System.Drawing.Point(117, 513)
         Me.NACE_Branch_Description_lbl.Name = "NACE_Branch_Description_lbl"
-        Me.NACE_Branch_Description_lbl.Size = New System.Drawing.Size(395, 83)
+        Me.NACE_Branch_Description_lbl.Size = New System.Drawing.Size(395, 96)
         Me.NACE_Branch_Description_lbl.TabIndex = 84
         Me.NACE_Branch_Description_lbl.Text = "IndClassLocalDescription"
         '
@@ -6443,7 +6549,7 @@ Partial Class Customers
         '
         Me.NACE_Branch_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.NACE_Branch_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "NACE_Branch_Code", True))
-        Me.NACE_Branch_TextEdit.Location = New System.Drawing.Point(110, 488)
+        Me.NACE_Branch_TextEdit.Location = New System.Drawing.Point(119, 488)
         Me.NACE_Branch_TextEdit.Name = "NACE_Branch_TextEdit"
         Me.NACE_Branch_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.NACE_Branch_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6465,7 +6571,7 @@ Partial Class Customers
         Me.SectorFINREP_Description_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "Sector_FINREP_Description", True))
         Me.SectorFINREP_Description_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.SectorFINREP_Description_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.SectorFINREP_Description_lbl.Location = New System.Drawing.Point(302, 447)
+        Me.SectorFINREP_Description_lbl.Location = New System.Drawing.Point(311, 447)
         Me.SectorFINREP_Description_lbl.Name = "SectorFINREP_Description_lbl"
         Me.SectorFINREP_Description_lbl.Size = New System.Drawing.Size(201, 34)
         Me.SectorFINREP_Description_lbl.TabIndex = 81
@@ -6477,7 +6583,7 @@ Partial Class Customers
         Me.SectorBISTA_Description_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "Sector_BISTA_Description", True))
         Me.SectorBISTA_Description_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.SectorBISTA_Description_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.SectorBISTA_Description_lbl.Location = New System.Drawing.Point(28, 447)
+        Me.SectorBISTA_Description_lbl.Location = New System.Drawing.Point(37, 447)
         Me.SectorBISTA_Description_lbl.Name = "SectorBISTA_Description_lbl"
         Me.SectorBISTA_Description_lbl.Size = New System.Drawing.Size(198, 34)
         Me.SectorBISTA_Description_lbl.TabIndex = 80
@@ -6487,7 +6593,7 @@ Partial Class Customers
         '
         Me.SectorFINREP_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.SectorFINREP_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "Sector_FINREP", True))
-        Me.SectorFINREP_TextEdit.Location = New System.Drawing.Point(378, 422)
+        Me.SectorFINREP_TextEdit.Location = New System.Drawing.Point(387, 422)
         Me.SectorFINREP_TextEdit.Name = "SectorFINREP_TextEdit"
         Me.SectorFINREP_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.SectorFINREP_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6507,7 +6613,7 @@ Partial Class Customers
         '
         Me.SectorBISTA_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.SectorBISTA_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "Sector_BISTA", True))
-        Me.SectorBISTA_TextEdit.Location = New System.Drawing.Point(111, 420)
+        Me.SectorBISTA_TextEdit.Location = New System.Drawing.Point(120, 420)
         Me.SectorBISTA_TextEdit.Name = "SectorBISTA_TextEdit"
         Me.SectorBISTA_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.SectorBISTA_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6529,7 +6635,7 @@ Partial Class Customers
         Me.SectorCRR_Description_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "Sector_CRR_Description", True))
         Me.SectorCRR_Description_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.SectorCRR_Description_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.SectorCRR_Description_lbl.Location = New System.Drawing.Point(298, 383)
+        Me.SectorCRR_Description_lbl.Location = New System.Drawing.Point(307, 383)
         Me.SectorCRR_Description_lbl.Name = "SectorCRR_Description_lbl"
         Me.SectorCRR_Description_lbl.Size = New System.Drawing.Size(201, 34)
         Me.SectorCRR_Description_lbl.TabIndex = 75
@@ -6541,7 +6647,7 @@ Partial Class Customers
         Me.SectorKWG_Description_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "SectorKWG_Description", True))
         Me.SectorKWG_Description_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.SectorKWG_Description_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.SectorKWG_Description_lbl.Location = New System.Drawing.Point(33, 384)
+        Me.SectorKWG_Description_lbl.Location = New System.Drawing.Point(42, 384)
         Me.SectorKWG_Description_lbl.Name = "SectorKWG_Description_lbl"
         Me.SectorKWG_Description_lbl.Size = New System.Drawing.Size(198, 34)
         Me.SectorKWG_Description_lbl.TabIndex = 74
@@ -6551,7 +6657,7 @@ Partial Class Customers
         '
         Me.SectorCRR_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.SectorCRR_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "Sector_CRR", True))
-        Me.SectorCRR_TextEdit.Location = New System.Drawing.Point(374, 358)
+        Me.SectorCRR_TextEdit.Location = New System.Drawing.Point(383, 358)
         Me.SectorCRR_TextEdit.Name = "SectorCRR_TextEdit"
         Me.SectorCRR_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.SectorCRR_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6571,7 +6677,7 @@ Partial Class Customers
         '
         Me.SectorKWG_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.SectorKWG_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "SectorKWG", True))
-        Me.SectorKWG_TextEdit.Location = New System.Drawing.Point(111, 358)
+        Me.SectorKWG_TextEdit.Location = New System.Drawing.Point(120, 358)
         Me.SectorKWG_TextEdit.Name = "SectorKWG_TextEdit"
         Me.SectorKWG_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.SectorKWG_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6591,7 +6697,7 @@ Partial Class Customers
         '
         Me.Central_Bank_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Central_Bank_ImageComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "Central_Bank", True))
-        Me.Central_Bank_ImageComboBoxEdit.Location = New System.Drawing.Point(398, 115)
+        Me.Central_Bank_ImageComboBoxEdit.Location = New System.Drawing.Point(407, 115)
         Me.Central_Bank_ImageComboBoxEdit.Name = "Central_Bank_ImageComboBoxEdit"
         Me.Central_Bank_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Central_Bank_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -6622,7 +6728,7 @@ Partial Class Customers
         '
         Me.CRSA_SOEFS_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CRSA_SOEFS_ImageComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "CRSA_SOEFS", True))
-        Me.CRSA_SOEFS_ImageComboBoxEdit.Location = New System.Drawing.Point(398, 88)
+        Me.CRSA_SOEFS_ImageComboBoxEdit.Location = New System.Drawing.Point(407, 88)
         Me.CRSA_SOEFS_ImageComboBoxEdit.Name = "CRSA_SOEFS_ImageComboBoxEdit"
         Me.CRSA_SOEFS_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CRSA_SOEFS_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -6659,7 +6765,7 @@ Partial Class Customers
         Me.Label73.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "INDUSTRIAL_CLASS_LOCAL_NAME_DE", True))
         Me.Label73.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Label73.ForeColor = System.Drawing.Color.Yellow
-        Me.Label73.Location = New System.Drawing.Point(39, 233)
+        Me.Label73.Location = New System.Drawing.Point(48, 233)
         Me.Label73.Name = "Label73"
         Me.Label73.Size = New System.Drawing.Size(465, 34)
         Me.Label73.TabIndex = 65
@@ -6669,7 +6775,7 @@ Partial Class Customers
         '
         Me.FinancialBackground_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.FinancialBackground_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "FINANCIAL_BACKGROUND", True))
-        Me.FinancialBackground_TextEdit.Location = New System.Drawing.Point(398, 273)
+        Me.FinancialBackground_TextEdit.Location = New System.Drawing.Point(407, 273)
         Me.FinancialBackground_TextEdit.Name = "FinancialBackground_TextEdit"
         Me.FinancialBackground_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.FinancialBackground_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6688,7 +6794,7 @@ Partial Class Customers
         '
         Me.IndustrialClassCHINA_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.IndustrialClassCHINA_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "INDUSTRIAL_CLASS_CN", True))
-        Me.IndustrialClassCHINA_TextEdit.Location = New System.Drawing.Point(163, 273)
+        Me.IndustrialClassCHINA_TextEdit.Location = New System.Drawing.Point(172, 273)
         Me.IndustrialClassCHINA_TextEdit.Name = "IndustrialClassCHINA_TextEdit"
         Me.IndustrialClassCHINA_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.IndustrialClassCHINA_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6707,7 +6813,7 @@ Partial Class Customers
         '
         Me.IndustrialClassLocal_TextEdit5.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.IndustrialClassLocal_TextEdit5.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "INDUSTRIAL_CLASS_LOCAL", True))
-        Me.IndustrialClassLocal_TextEdit5.Location = New System.Drawing.Point(163, 160)
+        Me.IndustrialClassLocal_TextEdit5.Location = New System.Drawing.Point(172, 160)
         Me.IndustrialClassLocal_TextEdit5.Name = "IndustrialClassLocal_TextEdit5"
         Me.IndustrialClassLocal_TextEdit5.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.IndustrialClassLocal_TextEdit5.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6728,7 +6834,7 @@ Partial Class Customers
         '
         Me.InstitutionSectorCode_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.InstitutionSectorCode_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "INSTITUTION_SECTOR_CODE", True))
-        Me.InstitutionSectorCode_TextEdit.Location = New System.Drawing.Point(163, 88)
+        Me.InstitutionSectorCode_TextEdit.Location = New System.Drawing.Point(172, 88)
         Me.InstitutionSectorCode_TextEdit.Name = "InstitutionSectorCode_TextEdit"
         Me.InstitutionSectorCode_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.InstitutionSectorCode_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6749,7 +6855,7 @@ Partial Class Customers
         '
         Me.CountryOfResidence_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CountryOfResidence_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "COUNTRY_OF_RESIDENCE", True))
-        Me.CountryOfResidence_TextEdit.Location = New System.Drawing.Point(399, 58)
+        Me.CountryOfResidence_TextEdit.Location = New System.Drawing.Point(408, 58)
         Me.CountryOfResidence_TextEdit.Name = "CountryOfResidence_TextEdit"
         Me.CountryOfResidence_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.CountryOfResidence_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6770,7 +6876,7 @@ Partial Class Customers
         '
         Me.CountryOfRisk_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CountryOfRisk_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "RiskCountry", True))
-        Me.CountryOfRisk_TextEdit.Location = New System.Drawing.Point(163, 58)
+        Me.CountryOfRisk_TextEdit.Location = New System.Drawing.Point(172, 58)
         Me.CountryOfRisk_TextEdit.Name = "CountryOfRisk_TextEdit"
         Me.CountryOfRisk_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.CountryOfRisk_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6791,7 +6897,7 @@ Partial Class Customers
         '
         Me.TextEdit11.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.TextEdit11.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "COUNTRY_OF_REGISTRATION", True))
-        Me.TextEdit11.Location = New System.Drawing.Point(399, 30)
+        Me.TextEdit11.Location = New System.Drawing.Point(408, 30)
         Me.TextEdit11.Name = "TextEdit11"
         Me.TextEdit11.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.TextEdit11.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6812,7 +6918,7 @@ Partial Class Customers
         '
         Me.ClientRisk_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ClientRisk_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "CLIENT_RISK", True))
-        Me.ClientRisk_TextEdit.Location = New System.Drawing.Point(163, 26)
+        Me.ClientRisk_TextEdit.Location = New System.Drawing.Point(172, 26)
         Me.ClientRisk_TextEdit.Name = "ClientRisk_TextEdit"
         Me.ClientRisk_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ClientRisk_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -6835,7 +6941,7 @@ Partial Class Customers
         Me.IndClassLocalDescription_lbl.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "INDUSTRIAL_CLASS_LOCAL_NAME", True))
         Me.IndClassLocalDescription_lbl.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Bold)
         Me.IndClassLocalDescription_lbl.ForeColor = System.Drawing.Color.Yellow
-        Me.IndClassLocalDescription_lbl.Location = New System.Drawing.Point(36, 188)
+        Me.IndClassLocalDescription_lbl.Location = New System.Drawing.Point(45, 188)
         Me.IndClassLocalDescription_lbl.Name = "IndClassLocalDescription_lbl"
         Me.IndClassLocalDescription_lbl.Size = New System.Drawing.Size(468, 34)
         Me.IndClassLocalDescription_lbl.TabIndex = 54
@@ -6885,7 +6991,7 @@ Partial Class Customers
         Me.GroupControl1.Controls.Add(Me.MergeDate_DateEdit)
         Me.GroupControl1.Location = New System.Drawing.Point(14, 3)
         Me.GroupControl1.Name = "GroupControl1"
-        Me.GroupControl1.Size = New System.Drawing.Size(466, 603)
+        Me.GroupControl1.Size = New System.Drawing.Size(466, 616)
         Me.GroupControl1.TabIndex = 16
         Me.GroupControl1.Text = "Default Info"
         '
@@ -7223,7 +7329,7 @@ Partial Class Customers
         '
         Me.ClientDocsDirectoryLabel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ClientDocsDirectoryLabel1.ForeColor = System.Drawing.Color.Black
-        Me.ClientDocsDirectoryLabel1.Location = New System.Drawing.Point(1300, 195)
+        Me.ClientDocsDirectoryLabel1.Location = New System.Drawing.Point(1317, 195)
         Me.ClientDocsDirectoryLabel1.Name = "ClientDocsDirectoryLabel1"
         Me.ClientDocsDirectoryLabel1.Size = New System.Drawing.Size(206, 13)
         Me.ClientDocsDirectoryLabel1.TabIndex = 34
@@ -7247,7 +7353,7 @@ Partial Class Customers
         Me.ADDITIONAL_DATAXtraTabPage.Controls.Add(Me.GroupControl5)
         Me.ADDITIONAL_DATAXtraTabPage.Controls.Add(Me.GroupControl4)
         Me.ADDITIONAL_DATAXtraTabPage.Name = "ADDITIONAL_DATAXtraTabPage"
-        Me.ADDITIONAL_DATAXtraTabPage.Size = New System.Drawing.Size(1535, 613)
+        Me.ADDITIONAL_DATAXtraTabPage.Size = New System.Drawing.Size(1556, 631)
         Me.ADDITIONAL_DATAXtraTabPage.Text = "ADDITIONAL DATA"
         '
         'GroupControl12
@@ -7607,7 +7713,7 @@ Partial Class Customers
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup2
-        Me.LayoutControl2.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1556, 631)
         Me.LayoutControl2.TabIndex = 2
         Me.LayoutControl2.Text = "LayoutControl1"
         '
@@ -7624,11 +7730,11 @@ Partial Class Customers
         Me.AllCustomerContracts_GridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = False
         Me.AllCustomerContracts_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.AllCustomerContracts_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
-        Me.AllCustomerContracts_GridControl.Location = New System.Drawing.Point(24, 47)
+        Me.AllCustomerContracts_GridControl.Location = New System.Drawing.Point(24, 55)
         Me.AllCustomerContracts_GridControl.MainView = Me.AllCustomerContracts_GridView
         Me.AllCustomerContracts_GridControl.Name = "AllCustomerContracts_GridControl"
         Me.AllCustomerContracts_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.Valid_RepositoryItemImageComboBox, Me.ClientIdType_RepositoryItemComboBox, Me.Notes_RepositoryItemMemoExEdit, Me.SignerName_RepositoryItemTextEdit, Me.ID_Type_RepositoryItemImageComboBox})
-        Me.AllCustomerContracts_GridControl.Size = New System.Drawing.Size(1487, 542)
+        Me.AllCustomerContracts_GridControl.Size = New System.Drawing.Size(1508, 552)
         Me.AllCustomerContracts_GridControl.TabIndex = 4
         Me.AllCustomerContracts_GridControl.UseEmbeddedNavigator = True
         Me.AllCustomerContracts_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.AllCustomerContracts_GridView})
@@ -7814,7 +7920,7 @@ Partial Class Customers
         Me.LayoutControlGroup2.GroupBordersVisible = False
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup5, Me.SplitterItem2})
         Me.LayoutControlGroup2.Name = "Root"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1556, 631)
         '
         'LayoutControlGroup5
         '
@@ -7822,9 +7928,9 @@ Partial Class Customers
         Me.LayoutControlGroup5.AppearanceGroup.Options.UseForeColor = True
         Me.LayoutControlGroup5.CustomizationFormText = "All Client Account Signer"
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5})
-        Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 5)
+        Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 10)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1515, 588)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1536, 601)
         Me.LayoutControlGroup5.Text = "All Customers Contracts/Accounts"
         '
         'LayoutControlItem5
@@ -7833,7 +7939,7 @@ Partial Class Customers
         Me.LayoutControlItem5.CustomizationFormText = "LayoutControlItem2"
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem5.Name = "LayoutControlItem2"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1491, 546)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1512, 556)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
@@ -7843,7 +7949,7 @@ Partial Class Customers
         Me.SplitterItem2.CustomizationFormText = "SplitterItem2"
         Me.SplitterItem2.Location = New System.Drawing.Point(0, 0)
         Me.SplitterItem2.Name = "SplitterItem2"
-        Me.SplitterItem2.Size = New System.Drawing.Size(1515, 5)
+        Me.SplitterItem2.Size = New System.Drawing.Size(1536, 10)
         '
         'GroupControl10
         '
@@ -8871,7 +8977,7 @@ Partial Class Customers
         Me.CLIENTS_ACCOUNTS_XtraTabPage.Appearance.HeaderActive.Options.UseForeColor = True
         Me.CLIENTS_ACCOUNTS_XtraTabPage.Controls.Add(Me.LayoutControl2)
         Me.CLIENTS_ACCOUNTS_XtraTabPage.Name = "CLIENTS_ACCOUNTS_XtraTabPage"
-        Me.CLIENTS_ACCOUNTS_XtraTabPage.Size = New System.Drawing.Size(1535, 613)
+        Me.CLIENTS_ACCOUNTS_XtraTabPage.Size = New System.Drawing.Size(1556, 631)
         Me.CLIENTS_ACCOUNTS_XtraTabPage.Text = "ALL CUSTOMER CONTRACTS"
         '
         'CUSTOMER_RATINGXtraTabPage
@@ -8882,7 +8988,7 @@ Partial Class Customers
         Me.CUSTOMER_RATINGXtraTabPage.Appearance.HeaderActive.Options.UseForeColor = True
         Me.CUSTOMER_RATINGXtraTabPage.Controls.Add(Me.LayoutControl6)
         Me.CUSTOMER_RATINGXtraTabPage.Name = "CUSTOMER_RATINGXtraTabPage"
-        Me.CUSTOMER_RATINGXtraTabPage.Size = New System.Drawing.Size(1535, 613)
+        Me.CUSTOMER_RATINGXtraTabPage.Size = New System.Drawing.Size(1556, 631)
         Me.CUSTOMER_RATINGXtraTabPage.Text = "CUSTOMER RATINGS"
         '
         'LayoutControl6
@@ -8893,7 +8999,7 @@ Partial Class Customers
         Me.LayoutControl6.Name = "LayoutControl6"
         Me.LayoutControl6.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 266, 250, 350)
         Me.LayoutControl6.Root = Me.LayoutControlGroup13
-        Me.LayoutControl6.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControl6.Size = New System.Drawing.Size(1556, 631)
         Me.LayoutControl6.TabIndex = 1
         Me.LayoutControl6.Text = "LayoutControl6"
         '
@@ -8914,7 +9020,7 @@ Partial Class Customers
         Me.CustomerRating_GridControl.MainView = Me.CustomerRating_GridView
         Me.CustomerRating_GridControl.Name = "CustomerRating_GridControl"
         Me.CustomerRating_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox4, Me.RepositoryItemTextEdit7, Me.Other_RepositoryItemTextEdit, Me.RepositoryItemTextEdit13, Me.RepositoryItemMemoExEdit6, Me.RepositoryItemGridLookUpEdit4, Me.PEP_RepositoryItemImageComboBox, Me.PersonalPresence_RepositoryItemImageComboBox, Me.CountryClientShareHold_RepositoryItemImageComboBox, Me.LegalStatus_RepositoryItemImageComboBox, Me.RepositoryItemMemoEdit1, Me.TurnoverEUR_RepositoryItemImageComboBox, Me.InternetBanking_RepositoryItemImageComboBox, Me.KindOfBusiness_RepositoryItemImageComboBox, Me.LegalProblems_RepositoryItemImageComboBox})
-        Me.CustomerRating_GridControl.Size = New System.Drawing.Size(1511, 589)
+        Me.CustomerRating_GridControl.Size = New System.Drawing.Size(1532, 607)
         Me.CustomerRating_GridControl.TabIndex = 42
         Me.CustomerRating_GridControl.UseEmbeddedNavigator = True
         Me.CustomerRating_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.CustomerRating_GridView})
@@ -9342,7 +9448,7 @@ Partial Class Customers
         Me.LayoutControlGroup13.GroupBordersVisible = False
         Me.LayoutControlGroup13.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem15})
         Me.LayoutControlGroup13.Name = "Root"
-        Me.LayoutControlGroup13.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControlGroup13.Size = New System.Drawing.Size(1556, 631)
         Me.LayoutControlGroup13.TextVisible = False
         '
         'LayoutControlItem15
@@ -9351,7 +9457,7 @@ Partial Class Customers
         Me.LayoutControlItem15.CustomizationFormText = "LayoutControlItem12"
         Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem15.Name = "LayoutControlItem12"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(1515, 593)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(1536, 611)
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem15.TextVisible = False
         '
@@ -9363,7 +9469,7 @@ Partial Class Customers
         Me.CUSTOMER_GROUPINGXtraTabPage.Appearance.HeaderActive.Options.UseForeColor = True
         Me.CUSTOMER_GROUPINGXtraTabPage.Controls.Add(Me.LayoutControl3)
         Me.CUSTOMER_GROUPINGXtraTabPage.Name = "CUSTOMER_GROUPINGXtraTabPage"
-        Me.CUSTOMER_GROUPINGXtraTabPage.Size = New System.Drawing.Size(1535, 613)
+        Me.CUSTOMER_GROUPINGXtraTabPage.Size = New System.Drawing.Size(1556, 631)
         Me.CUSTOMER_GROUPINGXtraTabPage.Text = "CUSTOMER GROUPING"
         '
         'LayoutControl3
@@ -9376,7 +9482,7 @@ Partial Class Customers
         Me.LayoutControl3.Name = "LayoutControl3"
         Me.LayoutControl3.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 102, 250, 350)
         Me.LayoutControl3.Root = Me.LayoutControlGroup6
-        Me.LayoutControl3.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControl3.Size = New System.Drawing.Size(1556, 631)
         Me.LayoutControl3.TabIndex = 3
         Me.LayoutControl3.Text = "LayoutControl3"
         '
@@ -9390,7 +9496,7 @@ Partial Class Customers
         Me.PanelControl1.Controls.Add(Label45)
         Me.PanelControl1.Location = New System.Drawing.Point(12, 12)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(1511, 95)
+        Me.PanelControl1.Size = New System.Drawing.Size(1532, 98)
         Me.PanelControl1.TabIndex = 5
         '
         'Label43
@@ -9453,11 +9559,11 @@ Partial Class Customers
         Me.GeneralManager_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GeneralManager_GridControl.EmbeddedNavigator.Buttons.Remove.Hint = "Remove General Manager"
         Me.GeneralManager_GridControl.EmbeddedNavigator.Buttons.Remove.ImageIndex = 22
-        Me.GeneralManager_GridControl.Location = New System.Drawing.Point(24, 150)
+        Me.GeneralManager_GridControl.Location = New System.Drawing.Point(24, 157)
         Me.GeneralManager_GridControl.MainView = Me.GeneralManager_GridView
         Me.GeneralManager_GridControl.Name = "GeneralManager_GridControl"
         Me.GeneralManager_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox3, Me.RepositoryItemComboBox1, Me.RepositoryItemMemoExEdit1, Me.RepositoryItemTextEdit2, Me.RepositoryItemImageComboBox4})
-        Me.GeneralManager_GridControl.Size = New System.Drawing.Size(1487, 439)
+        Me.GeneralManager_GridControl.Size = New System.Drawing.Size(1508, 450)
         Me.GeneralManager_GridControl.TabIndex = 4
         Me.GeneralManager_GridControl.UseEmbeddedNavigator = True
         Me.GeneralManager_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GeneralManager_GridView})
@@ -9594,11 +9700,11 @@ Partial Class Customers
         Me.Grouping_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.Grouping_GridControl.EmbeddedNavigator.Buttons.Remove.Hint = "Remove Shareholder"
         Me.Grouping_GridControl.EmbeddedNavigator.Buttons.Remove.ImageIndex = 22
-        Me.Grouping_GridControl.Location = New System.Drawing.Point(24, 150)
+        Me.Grouping_GridControl.Location = New System.Drawing.Point(24, 157)
         Me.Grouping_GridControl.MainView = Me.GroupDetails_GridView
         Me.Grouping_GridControl.Name = "Grouping_GridControl"
         Me.Grouping_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ShareholderType_RepositoryItemComboBox, Me.RepositoryItemTextEdit3, Me.RepositoryItemTextEdit4, Me.RepositoryItemTextEdit5, Me.RepositoryItemMemoExEdit3, Me.RepositoryItemGridLookUpEdit1, Me.ShareholderType_RepositoryItemImageComboBox, Me.RepositoryItemImageComboBox6, Me.RepositoryItemImageComboBox5, Me.RepositoryItemImageComboBox7, Me.SharePercent_RepositoryItemSpinEdit})
-        Me.Grouping_GridControl.Size = New System.Drawing.Size(1487, 439)
+        Me.Grouping_GridControl.Size = New System.Drawing.Size(1508, 450)
         Me.Grouping_GridControl.TabIndex = 0
         Me.Grouping_GridControl.UseEmbeddedNavigator = True
         Me.Grouping_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GroupDetails_GridView, Me.GridView4, Me.LayoutView2})
@@ -10488,15 +10594,15 @@ Partial Class Customers
         Me.LayoutControlGroup6.GroupBordersVisible = False
         Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup1, Me.LayoutControlItem13, Me.SplitterItem3})
         Me.LayoutControlGroup6.Name = "Root"
-        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1556, 631)
         '
         'TabbedControlGroup1
         '
         Me.TabbedControlGroup1.CustomizationFormText = "TabbedControlGroup1"
-        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 104)
+        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 112)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
         Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup7
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1515, 489)
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1536, 499)
         Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup7, Me.LayoutControlGroup8})
         '
         'LayoutControlGroup7
@@ -10511,7 +10617,7 @@ Partial Class Customers
         Me.LayoutControlGroup7.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem10})
         Me.LayoutControlGroup7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup7.Name = "LayoutControlGroup6"
-        Me.LayoutControlGroup7.Size = New System.Drawing.Size(1491, 443)
+        Me.LayoutControlGroup7.Size = New System.Drawing.Size(1512, 454)
         Me.LayoutControlGroup7.Text = "Client Grouping Details"
         '
         'LayoutControlItem10
@@ -10521,7 +10627,7 @@ Partial Class Customers
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem10.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem10.Name = "LayoutControlItem6"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(1491, 443)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(1512, 454)
         Me.LayoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
@@ -10536,7 +10642,7 @@ Partial Class Customers
         Me.LayoutControlGroup8.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem12})
         Me.LayoutControlGroup8.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup8.Name = "LayoutControlGroup8"
-        Me.LayoutControlGroup8.Size = New System.Drawing.Size(1491, 443)
+        Me.LayoutControlGroup8.Size = New System.Drawing.Size(1512, 454)
         Me.LayoutControlGroup8.Text = "Clients General Manager"
         Me.LayoutControlGroup8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
@@ -10546,7 +10652,7 @@ Partial Class Customers
         Me.LayoutControlItem12.CustomizationFormText = "LayoutControlItem2"
         Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem12.Name = "LayoutControlItem7"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(1491, 443)
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(1512, 454)
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem12.TextVisible = False
         '
@@ -10556,7 +10662,7 @@ Partial Class Customers
         Me.LayoutControlItem13.CustomizationFormText = "LayoutControlItem8"
         Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem13.Name = "LayoutControlItem8"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(1515, 99)
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(1536, 102)
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem13.TextVisible = False
         '
@@ -10564,9 +10670,9 @@ Partial Class Customers
         '
         Me.SplitterItem3.AllowHotTrack = True
         Me.SplitterItem3.CustomizationFormText = "SplitterItem3"
-        Me.SplitterItem3.Location = New System.Drawing.Point(0, 99)
+        Me.SplitterItem3.Location = New System.Drawing.Point(0, 102)
         Me.SplitterItem3.Name = "SplitterItem3"
-        Me.SplitterItem3.Size = New System.Drawing.Size(1515, 5)
+        Me.SplitterItem3.Size = New System.Drawing.Size(1536, 10)
         '
         'CLIENT_DOCSXtraTabPage
         '
@@ -10577,7 +10683,7 @@ Partial Class Customers
         Me.CLIENT_DOCSXtraTabPage.Controls.Add(Me.LayoutControl4)
         Me.CLIENT_DOCSXtraTabPage.Name = "CLIENT_DOCSXtraTabPage"
         Me.CLIENT_DOCSXtraTabPage.PageVisible = False
-        Me.CLIENT_DOCSXtraTabPage.Size = New System.Drawing.Size(1535, 613)
+        Me.CLIENT_DOCSXtraTabPage.Size = New System.Drawing.Size(1556, 631)
         Me.CLIENT_DOCSXtraTabPage.Text = "CLIENT DOCUMENTS"
         '
         'LayoutControl4
@@ -10590,7 +10696,7 @@ Partial Class Customers
         Me.LayoutControl4.Name = "LayoutControl4"
         Me.LayoutControl4.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 266, 250, 350)
         Me.LayoutControl4.Root = Me.LayoutControlGroup4
-        Me.LayoutControl4.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControl4.Size = New System.Drawing.Size(1556, 631)
         Me.LayoutControl4.TabIndex = 0
         Me.LayoutControl4.Text = "LayoutControl2"
         '
@@ -10598,19 +10704,19 @@ Partial Class Customers
         '
         Me.AddNewCustomerFile_btn.ImageOptions.ImageIndex = 20
         Me.AddNewCustomerFile_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.AddNewCustomerFile_btn.Location = New System.Drawing.Point(12, 579)
+        Me.AddNewCustomerFile_btn.Location = New System.Drawing.Point(12, 597)
         Me.AddNewCustomerFile_btn.Name = "AddNewCustomerFile_btn"
-        Me.AddNewCustomerFile_btn.Size = New System.Drawing.Size(88, 22)
+        Me.AddNewCustomerFile_btn.Size = New System.Drawing.Size(89, 22)
         Me.AddNewCustomerFile_btn.StyleController = Me.LayoutControl4
         Me.AddNewCustomerFile_btn.TabIndex = 6
         Me.AddNewCustomerFile_btn.Text = "Add new File"
         '
         'WebBrowser1
         '
-        Me.WebBrowser1.Location = New System.Drawing.Point(592, 12)
+        Me.WebBrowser1.Location = New System.Drawing.Point(601, 12)
         Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.Name = "WebBrowser1"
-        Me.WebBrowser1.Size = New System.Drawing.Size(931, 589)
+        Me.WebBrowser1.Size = New System.Drawing.Size(943, 607)
         Me.WebBrowser1.TabIndex = 5
         '
         'TreeList1
@@ -10639,7 +10745,7 @@ Partial Class Customers
         Me.TreeList1.Location = New System.Drawing.Point(12, 12)
         Me.TreeList1.Name = "TreeList1"
         Me.TreeList1.OptionsBehavior.PopulateServiceColumns = True
-        Me.TreeList1.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended
+        Me.TreeList1.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.ParentBranch
         Me.TreeList1.OptionsFind.AllowIncrementalSearch = True
         Me.TreeList1.OptionsFind.AlwaysVisible = True
         Me.TreeList1.OptionsFind.ExpandNodesOnIncrementalSearch = True
@@ -10647,7 +10753,7 @@ Partial Class Customers
         Me.TreeList1.OptionsView.ShowAutoFilterRow = True
         Me.TreeList1.OptionsView.ShowFilterPanelMode = DevExpress.XtraTreeList.ShowFilterPanelMode.ShowAlways
         Me.TreeList1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1})
-        Me.TreeList1.Size = New System.Drawing.Size(571, 563)
+        Me.TreeList1.Size = New System.Drawing.Size(575, 581)
         Me.TreeList1.TabIndex = 4
         '
         'TreeListColumn2
@@ -10704,7 +10810,7 @@ Partial Class Customers
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.LayoutControlItem8, Me.SplitterItem1, Me.EmptySpaceItem5, Me.LayoutControlItem9})
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1556, 631)
         Me.LayoutControlGroup4.TextVisible = False
         '
         'LayoutControlItem7
@@ -10713,7 +10819,7 @@ Partial Class Customers
         Me.LayoutControlItem7.CustomizationFormText = "LayoutControlItem3"
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem3"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(575, 567)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(579, 585)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -10721,9 +10827,9 @@ Partial Class Customers
         '
         Me.LayoutControlItem8.Control = Me.WebBrowser1
         Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(580, 0)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(589, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem4"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(935, 593)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(947, 611)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -10731,26 +10837,26 @@ Partial Class Customers
         '
         Me.SplitterItem1.AllowHotTrack = True
         Me.SplitterItem1.CustomizationFormText = "SplitterItem1"
-        Me.SplitterItem1.Location = New System.Drawing.Point(575, 0)
+        Me.SplitterItem1.Location = New System.Drawing.Point(579, 0)
         Me.SplitterItem1.Name = "SplitterItem1"
-        Me.SplitterItem1.Size = New System.Drawing.Size(5, 593)
+        Me.SplitterItem1.Size = New System.Drawing.Size(10, 611)
         '
         'EmptySpaceItem5
         '
         Me.EmptySpaceItem5.AllowHotTrack = False
         Me.EmptySpaceItem5.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem5.Location = New System.Drawing.Point(92, 567)
+        Me.EmptySpaceItem5.Location = New System.Drawing.Point(93, 585)
         Me.EmptySpaceItem5.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem5.Size = New System.Drawing.Size(483, 26)
+        Me.EmptySpaceItem5.Size = New System.Drawing.Size(486, 26)
         Me.EmptySpaceItem5.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.AddNewCustomerFile_btn
         Me.LayoutControlItem9.CustomizationFormText = "LayoutControlItem5"
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 567)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 585)
         Me.LayoutControlItem9.Name = "LayoutControlItem5"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(92, 26)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(93, 26)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem9.TextVisible = False
         '
@@ -10763,7 +10869,7 @@ Partial Class Customers
         Me.CLIENTS_CONTACTSXtraTabPage.Controls.Add(Me.LayoutControl7)
         Me.CLIENTS_CONTACTSXtraTabPage.Name = "CLIENTS_CONTACTSXtraTabPage"
         Me.CLIENTS_CONTACTSXtraTabPage.PageVisible = False
-        Me.CLIENTS_CONTACTSXtraTabPage.Size = New System.Drawing.Size(1535, 613)
+        Me.CLIENTS_CONTACTSXtraTabPage.Size = New System.Drawing.Size(1556, 631)
         Me.CLIENTS_CONTACTSXtraTabPage.Text = "CLIENT CONTACTS"
         '
         'LayoutControl7
@@ -10775,7 +10881,7 @@ Partial Class Customers
         Me.LayoutControl7.Name = "LayoutControl7"
         Me.LayoutControl7.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 102, 250, 350)
         Me.LayoutControl7.Root = Me.LayoutControlGroup9
-        Me.LayoutControl7.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControl7.Size = New System.Drawing.Size(1556, 631)
         Me.LayoutControl7.TabIndex = 4
         Me.LayoutControl7.Text = "LayoutControl4"
         '
@@ -10791,11 +10897,11 @@ Partial Class Customers
         Me.ClientsContactsNotes_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.ClientsContactsNotes_GridControl.EmbeddedNavigator.Buttons.Remove.Hint = "Remove"
         Me.ClientsContactsNotes_GridControl.EmbeddedNavigator.Buttons.Remove.ImageIndex = 22
-        Me.ClientsContactsNotes_GridControl.Location = New System.Drawing.Point(24, 347)
+        Me.ClientsContactsNotes_GridControl.Location = New System.Drawing.Point(24, 365)
         Me.ClientsContactsNotes_GridControl.MainView = Me.ClientsContactsNotes_GridView
         Me.ClientsContactsNotes_GridControl.Name = "ClientsContactsNotes_GridControl"
         Me.ClientsContactsNotes_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox8, Me.RepositoryItemComboBox2, Me.RepositoryItemMemoExEdit4, Me.RepositoryItemTextEdit6, Me.RepositoryItemImageComboBox9})
-        Me.ClientsContactsNotes_GridControl.Size = New System.Drawing.Size(1487, 242)
+        Me.ClientsContactsNotes_GridControl.Size = New System.Drawing.Size(1508, 242)
         Me.ClientsContactsNotes_GridControl.TabIndex = 4
         Me.ClientsContactsNotes_GridControl.UseEmbeddedNavigator = True
         Me.ClientsContactsNotes_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ClientsContactsNotes_GridView})
@@ -10960,11 +11066,11 @@ Partial Class Customers
         Me.ClientsContactPersons_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.ClientsContactPersons_GridControl.EmbeddedNavigator.Buttons.Remove.Hint = "Remove Contact Person"
         Me.ClientsContactPersons_GridControl.EmbeddedNavigator.Buttons.Remove.ImageIndex = 22
-        Me.ClientsContactPersons_GridControl.Location = New System.Drawing.Point(24, 42)
+        Me.ClientsContactPersons_GridControl.Location = New System.Drawing.Point(24, 45)
         Me.ClientsContactPersons_GridControl.MainView = Me.ClientContactPersons_GridView
         Me.ClientsContactPersons_GridControl.Name = "ClientsContactPersons_GridControl"
         Me.ClientsContactPersons_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox3, Me.Default_RepositoryItemTextEdit1, Me.RepositoryItemTextEdit8, Me.Email_RepositoryItemTextEdit, Me.RepositoryItemMemoExEdit5, Me.RepositoryItemGridLookUpEdit2, Me.RepositoryItemImageComboBox10, Me.RepositoryItemImageComboBox11, Me.RepositoryItemImageComboBox12, Me.RepositoryItemImageComboBox20, Me.RepositoryItemSpinEdit1})
-        Me.ClientsContactPersons_GridControl.Size = New System.Drawing.Size(1487, 254)
+        Me.ClientsContactPersons_GridControl.Size = New System.Drawing.Size(1508, 261)
         Me.ClientsContactPersons_GridControl.TabIndex = 0
         Me.ClientsContactPersons_GridControl.UseEmbeddedNavigator = True
         Me.ClientsContactPersons_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ClientContactPersons_GridView, Me.GridView11, Me.LayoutView3})
@@ -11880,7 +11986,7 @@ Partial Class Customers
         Me.LayoutControlGroup9.GroupBordersVisible = False
         Me.LayoutControlGroup9.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup10, Me.LayoutControlGroup15, Me.SplitterItem4})
         Me.LayoutControlGroup9.Name = "Root"
-        Me.LayoutControlGroup9.Size = New System.Drawing.Size(1535, 613)
+        Me.LayoutControlGroup9.Size = New System.Drawing.Size(1556, 631)
         '
         'LayoutControlGroup10
         '
@@ -11894,7 +12000,7 @@ Partial Class Customers
         Me.LayoutControlGroup10.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem17})
         Me.LayoutControlGroup10.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup10.Name = "LayoutControlGroup9"
-        Me.LayoutControlGroup10.Size = New System.Drawing.Size(1515, 300)
+        Me.LayoutControlGroup10.Size = New System.Drawing.Size(1536, 310)
         Me.LayoutControlGroup10.Text = "Clients Contact Persons"
         '
         'LayoutControlItem17
@@ -11904,7 +12010,7 @@ Partial Class Customers
         Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem17.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem17.Name = "LayoutControlItem9"
-        Me.LayoutControlItem17.Size = New System.Drawing.Size(1491, 258)
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(1512, 265)
         Me.LayoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem17.TextVisible = False
@@ -11921,9 +12027,9 @@ Partial Class Customers
         Me.LayoutControlGroup15.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
         Me.LayoutControlGroup15.CustomizationFormText = "Clients General Manager"
         Me.LayoutControlGroup15.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem18})
-        Me.LayoutControlGroup15.Location = New System.Drawing.Point(0, 305)
+        Me.LayoutControlGroup15.Location = New System.Drawing.Point(0, 320)
         Me.LayoutControlGroup15.Name = "LayoutControlGroup10"
-        Me.LayoutControlGroup15.Size = New System.Drawing.Size(1515, 288)
+        Me.LayoutControlGroup15.Size = New System.Drawing.Size(1536, 291)
         Me.LayoutControlGroup15.Text = "Contacts with Client"
         '
         'LayoutControlItem18
@@ -11932,7 +12038,7 @@ Partial Class Customers
         Me.LayoutControlItem18.CustomizationFormText = "LayoutControlItem2"
         Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem18.Name = "LayoutControlItem10"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(1491, 246)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(1512, 246)
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem18.TextVisible = False
         '
@@ -11940,9 +12046,550 @@ Partial Class Customers
         '
         Me.SplitterItem4.AllowHotTrack = True
         Me.SplitterItem4.CustomizationFormText = "SplitterItem4"
-        Me.SplitterItem4.Location = New System.Drawing.Point(0, 300)
+        Me.SplitterItem4.Location = New System.Drawing.Point(0, 310)
         Me.SplitterItem4.Name = "SplitterItem4"
-        Me.SplitterItem4.Size = New System.Drawing.Size(1515, 5)
+        Me.SplitterItem4.Size = New System.Drawing.Size(1536, 10)
+        '
+        'CUSTOMER_ESG_SCORINGXtraTabPage
+        '
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.Appearance.Header.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.Appearance.Header.Options.UseFont = True
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.Appearance.HeaderActive.ForeColor = System.Drawing.Color.Yellow
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.Appearance.HeaderActive.Options.UseForeColor = True
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.Controls.Add(Me.LayoutControl_ESG_Scoring)
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.Name = "CUSTOMER_ESG_SCORINGXtraTabPage"
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.Size = New System.Drawing.Size(1556, 631)
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.Text = "ESG SCORING"
+        '
+        'LayoutControl_ESG_Scoring
+        '
+        Me.LayoutControl_ESG_Scoring.Controls.Add(Me.ESG_Scoring_GridControl)
+        Me.LayoutControl_ESG_Scoring.Controls.Add(Me.ESG_ScoringType_ImageComboEdit)
+        Me.LayoutControl_ESG_Scoring.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LayoutControl_ESG_Scoring.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl_ESG_Scoring.Name = "LayoutControl_ESG_Scoring"
+        Me.LayoutControl_ESG_Scoring.Root = Me.Root
+        Me.LayoutControl_ESG_Scoring.Size = New System.Drawing.Size(1556, 631)
+        Me.LayoutControl_ESG_Scoring.TabIndex = 0
+        Me.LayoutControl_ESG_Scoring.Text = "LayoutControl5"
+        '
+        'ESG_Scoring_GridControl
+        '
+        Me.ESG_Scoring_GridControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ESG_Scoring_GridControl.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ESG_Scoring_GridControl.DataSource = Me.CUSTOMER_ESG_SCORINGBindingSource
+        Me.ESG_Scoring_GridControl.EmbeddedNavigator.Buttons.Append.Visible = False
+        Me.ESG_Scoring_GridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = False
+        Me.ESG_Scoring_GridControl.EmbeddedNavigator.Buttons.Edit.Visible = False
+        Me.ESG_Scoring_GridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = False
+        Me.ESG_Scoring_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
+        Me.ESG_Scoring_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
+        Me.ESG_Scoring_GridControl.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 7, True, True, "Add new ESG Scoring for current customer", "AddEsgScoring"), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 6, True, True, "Delete ESG Scoring for current customer", "DeleteEsgScoring"), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 3, True, True, "Clear all ESG scores for current customer", "ClearAllEsgScores"), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 18, True, True, "All customers ESG Scorings and Business Volumes for specific Business Date", "EsgScoringVolumes"), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 19, True, True, "All Missing ESG Scores for specific Business Date", "MissingEsgScores"), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 20, True, True, "All expired ESG Scores for specific Business Date", "ExpiredEsgScores"), New DevExpress.XtraEditors.NavigatorCustomButton(-1, 21, True, True, "All available ESG scores", "AllEsgScores")})
+        Me.ESG_Scoring_GridControl.Location = New System.Drawing.Point(12, 36)
+        Me.ESG_Scoring_GridControl.MainView = Me.ESG_Scoring_DetailsView
+        Me.ESG_Scoring_GridControl.Name = "ESG_Scoring_GridControl"
+        Me.ESG_Scoring_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox14, Me.RepositoryItemTextEdit9, Me.RepositoryItemPopupContainerEdit2, Me.RepositoryItemTextEdit10, Me.RepositoryItemCheckEdit2, Me.RepositoryItemGridLookUpEdit3, Me.Scoring_RepositoryItemSpinEdit, Me.ScoringValidity_RepositoryItemDateEdit})
+        Me.ESG_Scoring_GridControl.Size = New System.Drawing.Size(1532, 583)
+        Me.ESG_Scoring_GridControl.TabIndex = 13
+        Me.ESG_Scoring_GridControl.UseEmbeddedNavigator = True
+        Me.ESG_Scoring_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ESG_Scoring_DetailsView})
+        '
+        'CUSTOMER_ESG_SCORINGBindingSource
+        '
+        Me.CUSTOMER_ESG_SCORINGBindingSource.DataMember = "CUSTOMER_ESG_SCORING"
+        Me.CUSTOMER_ESG_SCORINGBindingSource.DataSource = Me.PSTOOLDataset
+        '
+        'ESG_Scoring_DetailsView
+        '
+        Me.ESG_Scoring_DetailsView.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
+        Me.ESG_Scoring_DetailsView.Appearance.FocusedRow.BackColor2 = System.Drawing.Color.Yellow
+        Me.ESG_Scoring_DetailsView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
+        Me.ESG_Scoring_DetailsView.Appearance.FocusedRow.Options.UseBackColor = True
+        Me.ESG_Scoring_DetailsView.Appearance.FocusedRow.Options.UseForeColor = True
+        Me.ESG_Scoring_DetailsView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Aqua
+        Me.ESG_Scoring_DetailsView.Appearance.GroupRow.Options.UseForeColor = True
+        Me.ESG_Scoring_DetailsView.Bands.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.GridBand() {Me.GridBand1, Me.gridBand2, Me.gridBand3})
+        Me.ESG_Scoring_DetailsView.Columns.AddRange(New DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn() {Me.colID2, Me.colE_Score, Me.colS_Score, Me.colG_Score, Me.colESG_Score, Me.colE_Notation, Me.colS_Notation, Me.colG_Notation, Me.colESG_Notation, Me.colValidFrom, Me.colValidTill, Me.colClientNo2, Me.colLastAction, Me.colLastUpdateDate, Me.colLastUpdateUser})
+        Me.ESG_Scoring_DetailsView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        GridFormatRule1.Name = "Format0"
+        FormatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.Red
+        FormatConditionRuleValue1.Appearance.BackColor2 = System.Drawing.Color.Red
+        FormatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.White
+        FormatConditionRuleValue1.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue1.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue1.Value1 = "U"
+        GridFormatRule1.Rule = FormatConditionRuleValue1
+        GridFormatRule2.Name = "Format1"
+        FormatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.Yellow
+        FormatConditionRuleValue2.Appearance.BackColor2 = System.Drawing.Color.Yellow
+        FormatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.Black
+        FormatConditionRuleValue2.Appearance.Options.UseBackColor = True
+        FormatConditionRuleValue2.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal
+        FormatConditionRuleValue2.Value1 = "No Rating"
+        GridFormatRule2.Rule = FormatConditionRuleValue2
+        GridFormatRule3.Name = "Format2"
+        FormatConditionRuleValue3.Appearance.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold)
+        FormatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
+        FormatConditionRuleValue3.Appearance.Options.UseFont = True
+        FormatConditionRuleValue3.Appearance.Options.UseForeColor = True
+        FormatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.NotEqual
+        FormatConditionRuleValue3.Value1 = "No Rating"
+        GridFormatRule3.Rule = FormatConditionRuleValue3
+        Me.ESG_Scoring_DetailsView.FormatRules.Add(GridFormatRule1)
+        Me.ESG_Scoring_DetailsView.FormatRules.Add(GridFormatRule2)
+        Me.ESG_Scoring_DetailsView.FormatRules.Add(GridFormatRule3)
+        Me.ESG_Scoring_DetailsView.GridControl = Me.ESG_Scoring_GridControl
+        Me.ESG_Scoring_DetailsView.Name = "ESG_Scoring_DetailsView"
+        Me.ESG_Scoring_DetailsView.NewItemRowText = "Add new Scoring"
+        Me.ESG_Scoring_DetailsView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.[True]
+        Me.ESG_Scoring_DetailsView.OptionsBehavior.AllowIncrementalSearch = True
+        Me.ESG_Scoring_DetailsView.OptionsBehavior.AutoExpandAllGroups = True
+        Me.ESG_Scoring_DetailsView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditFormInplaceHideCurrentRow
+        Me.ESG_Scoring_DetailsView.OptionsCustomization.AllowRowSizing = True
+        Me.ESG_Scoring_DetailsView.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel
+        Me.ESG_Scoring_DetailsView.OptionsFind.AlwaysVisible = True
+        Me.ESG_Scoring_DetailsView.OptionsSelection.MultiSelect = True
+        Me.ESG_Scoring_DetailsView.OptionsView.ColumnAutoWidth = False
+        Me.ESG_Scoring_DetailsView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.[True]
+        Me.ESG_Scoring_DetailsView.OptionsView.HeaderFilterButtonShowMode = DevExpress.XtraEditors.Controls.FilterButtonShowMode.SmartTag
+        Me.ESG_Scoring_DetailsView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Top
+        Me.ESG_Scoring_DetailsView.OptionsView.ShowAutoFilterRow = True
+        Me.ESG_Scoring_DetailsView.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.ESG_Scoring_DetailsView.OptionsView.ShowFooter = True
+        Me.ESG_Scoring_DetailsView.OptionsView.ShowGroupPanel = False
+        '
+        'GridBand1
+        '
+        Me.GridBand1.Caption = "Scoring"
+        Me.GridBand1.Columns.Add(Me.colID2)
+        Me.GridBand1.Columns.Add(Me.colE_Score)
+        Me.GridBand1.Columns.Add(Me.colS_Score)
+        Me.GridBand1.Columns.Add(Me.colG_Score)
+        Me.GridBand1.Columns.Add(Me.colESG_Score)
+        Me.GridBand1.Columns.Add(Me.colClientNo2)
+        Me.GridBand1.Name = "GridBand1"
+        Me.GridBand1.VisibleIndex = 0
+        Me.GridBand1.Width = 313
+        '
+        'colID2
+        '
+        Me.colID2.FieldName = "ID"
+        Me.colID2.Name = "colID2"
+        Me.colID2.OptionsColumn.ReadOnly = True
+        '
+        'colE_Score
+        '
+        Me.colE_Score.Caption = "E Score"
+        Me.colE_Score.ColumnEdit = Me.Scoring_RepositoryItemSpinEdit
+        Me.colE_Score.DisplayFormat.FormatString = "n2"
+        Me.colE_Score.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colE_Score.FieldName = "E_Score"
+        Me.colE_Score.Name = "colE_Score"
+        Me.colE_Score.Visible = True
+        '
+        'Scoring_RepositoryItemSpinEdit
+        '
+        Me.Scoring_RepositoryItemSpinEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.Scoring_RepositoryItemSpinEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.Scoring_RepositoryItemSpinEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.Scoring_RepositoryItemSpinEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.Scoring_RepositoryItemSpinEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.Scoring_RepositoryItemSpinEdit.AutoHeight = False
+        Me.Scoring_RepositoryItemSpinEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.Scoring_RepositoryItemSpinEdit.DisplayFormat.FormatString = "n2"
+        Me.Scoring_RepositoryItemSpinEdit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.Scoring_RepositoryItemSpinEdit.EditFormat.FormatString = "n2"
+        Me.Scoring_RepositoryItemSpinEdit.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.Scoring_RepositoryItemSpinEdit.Mask.EditMask = "n2"
+        Me.Scoring_RepositoryItemSpinEdit.Mask.UseMaskAsDisplayFormat = True
+        Me.Scoring_RepositoryItemSpinEdit.Name = "Scoring_RepositoryItemSpinEdit"
+        '
+        'colS_Score
+        '
+        Me.colS_Score.Caption = "S Score"
+        Me.colS_Score.ColumnEdit = Me.Scoring_RepositoryItemSpinEdit
+        Me.colS_Score.DisplayFormat.FormatString = "n2"
+        Me.colS_Score.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colS_Score.FieldName = "S_Score"
+        Me.colS_Score.Name = "colS_Score"
+        Me.colS_Score.Visible = True
+        '
+        'colG_Score
+        '
+        Me.colG_Score.Caption = "G Score"
+        Me.colG_Score.ColumnEdit = Me.Scoring_RepositoryItemSpinEdit
+        Me.colG_Score.DisplayFormat.FormatString = "n2"
+        Me.colG_Score.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colG_Score.FieldName = "G_Score"
+        Me.colG_Score.Name = "colG_Score"
+        Me.colG_Score.Visible = True
+        '
+        'colESG_Score
+        '
+        Me.colESG_Score.Caption = "ESG Score"
+        Me.colESG_Score.ColumnEdit = Me.Scoring_RepositoryItemSpinEdit
+        Me.colESG_Score.DisplayFormat.FormatString = "n2"
+        Me.colESG_Score.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colESG_Score.FieldName = "ESG_Score"
+        Me.colESG_Score.Name = "colESG_Score"
+        Me.colESG_Score.Visible = True
+        Me.colESG_Score.Width = 88
+        '
+        'colClientNo2
+        '
+        Me.colClientNo2.FieldName = "ClientNo"
+        Me.colClientNo2.Name = "colClientNo2"
+        Me.colClientNo2.OptionsColumn.ReadOnly = True
+        '
+        'gridBand2
+        '
+        Me.gridBand2.Caption = "Notations"
+        Me.gridBand2.Columns.Add(Me.colE_Notation)
+        Me.gridBand2.Columns.Add(Me.colS_Notation)
+        Me.gridBand2.Columns.Add(Me.colG_Notation)
+        Me.gridBand2.Columns.Add(Me.colESG_Notation)
+        Me.gridBand2.Name = "gridBand2"
+        Me.gridBand2.VisibleIndex = 1
+        Me.gridBand2.Width = 325
+        '
+        'colE_Notation
+        '
+        Me.colE_Notation.AppearanceCell.Options.UseTextOptions = True
+        Me.colE_Notation.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colE_Notation.Caption = "E Notation"
+        Me.colE_Notation.FieldName = "E_Notation"
+        Me.colE_Notation.Name = "colE_Notation"
+        Me.colE_Notation.OptionsColumn.ReadOnly = True
+        Me.colE_Notation.OptionsEditForm.StartNewRow = True
+        Me.colE_Notation.Visible = True
+        Me.colE_Notation.Width = 81
+        '
+        'colS_Notation
+        '
+        Me.colS_Notation.AppearanceCell.Options.UseTextOptions = True
+        Me.colS_Notation.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colS_Notation.Caption = "S Notation"
+        Me.colS_Notation.FieldName = "S_Notation"
+        Me.colS_Notation.Name = "colS_Notation"
+        Me.colS_Notation.OptionsColumn.ReadOnly = True
+        Me.colS_Notation.Visible = True
+        Me.colS_Notation.Width = 81
+        '
+        'colG_Notation
+        '
+        Me.colG_Notation.AppearanceCell.Options.UseTextOptions = True
+        Me.colG_Notation.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colG_Notation.Caption = "G Notation"
+        Me.colG_Notation.FieldName = "G_Notation"
+        Me.colG_Notation.Name = "colG_Notation"
+        Me.colG_Notation.OptionsColumn.ReadOnly = True
+        Me.colG_Notation.Visible = True
+        Me.colG_Notation.Width = 81
+        '
+        'colESG_Notation
+        '
+        Me.colESG_Notation.AppearanceCell.Options.UseTextOptions = True
+        Me.colESG_Notation.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colESG_Notation.Caption = "ESG Notation"
+        Me.colESG_Notation.FieldName = "ESG_Notation"
+        Me.colESG_Notation.Name = "colESG_Notation"
+        Me.colESG_Notation.OptionsColumn.ReadOnly = True
+        Me.colESG_Notation.Visible = True
+        Me.colESG_Notation.Width = 82
+        '
+        'gridBand3
+        '
+        Me.gridBand3.Caption = "Validity"
+        Me.gridBand3.Columns.Add(Me.colValidFrom)
+        Me.gridBand3.Columns.Add(Me.colValidTill)
+        Me.gridBand3.Name = "gridBand3"
+        Me.gridBand3.VisibleIndex = 2
+        Me.gridBand3.Width = 182
+        '
+        'colValidFrom
+        '
+        Me.colValidFrom.AppearanceCell.Options.UseTextOptions = True
+        Me.colValidFrom.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colValidFrom.Caption = "Valid from"
+        Me.colValidFrom.ColumnEdit = Me.ScoringValidity_RepositoryItemDateEdit
+        Me.colValidFrom.FieldName = "ValidFrom"
+        Me.colValidFrom.Name = "colValidFrom"
+        Me.colValidFrom.OptionsEditForm.StartNewRow = True
+        Me.colValidFrom.Visible = True
+        Me.colValidFrom.Width = 91
+        '
+        'ScoringValidity_RepositoryItemDateEdit
+        '
+        Me.ScoringValidity_RepositoryItemDateEdit.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.ScoringValidity_RepositoryItemDateEdit.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.ScoringValidity_RepositoryItemDateEdit.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.ScoringValidity_RepositoryItemDateEdit.AppearanceFocused.Options.UseBackColor = True
+        Me.ScoringValidity_RepositoryItemDateEdit.AppearanceFocused.Options.UseForeColor = True
+        Me.ScoringValidity_RepositoryItemDateEdit.AutoHeight = False
+        Me.ScoringValidity_RepositoryItemDateEdit.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ScoringValidity_RepositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ScoringValidity_RepositoryItemDateEdit.Name = "ScoringValidity_RepositoryItemDateEdit"
+        '
+        'colValidTill
+        '
+        Me.colValidTill.AppearanceCell.Options.UseTextOptions = True
+        Me.colValidTill.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.colValidTill.Caption = "Valid Till"
+        Me.colValidTill.ColumnEdit = Me.ScoringValidity_RepositoryItemDateEdit
+        Me.colValidTill.FieldName = "ValidTill"
+        Me.colValidTill.Name = "colValidTill"
+        Me.colValidTill.Visible = True
+        Me.colValidTill.Width = 91
+        '
+        'colLastAction
+        '
+        Me.colLastAction.FieldName = "LastAction"
+        Me.colLastAction.Name = "colLastAction"
+        Me.colLastAction.OptionsColumn.ReadOnly = True
+        Me.colLastAction.OptionsEditForm.StartNewRow = True
+        Me.colLastAction.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateDate
+        '
+        Me.colLastUpdateDate.FieldName = "LastUpdateDate"
+        Me.colLastUpdateDate.Name = "colLastUpdateDate"
+        Me.colLastUpdateDate.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateDate.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'colLastUpdateUser
+        '
+        Me.colLastUpdateUser.FieldName = "LastUpdateUser"
+        Me.colLastUpdateUser.Name = "colLastUpdateUser"
+        Me.colLastUpdateUser.OptionsColumn.ReadOnly = True
+        Me.colLastUpdateUser.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.[True]
+        '
+        'RepositoryItemImageComboBox14
+        '
+        Me.RepositoryItemImageComboBox14.Appearance.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemImageComboBox14.Appearance.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemImageComboBox14.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemImageComboBox14.Appearance.Options.UseBackColor = True
+        Me.RepositoryItemImageComboBox14.Appearance.Options.UseForeColor = True
+        Me.RepositoryItemImageComboBox14.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemImageComboBox14.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemImageComboBox14.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemImageComboBox14.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemImageComboBox14.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemImageComboBox14.AutoHeight = False
+        Me.RepositoryItemImageComboBox14.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemImageComboBox14.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.RepositoryItemImageComboBox14.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("ACTIVE", "Y", 7), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("CLOSED", "N", 8)})
+        Me.RepositoryItemImageComboBox14.Name = "RepositoryItemImageComboBox14"
+        Me.RepositoryItemImageComboBox14.SmallImages = Me.ImageCollection1
+        '
+        'RepositoryItemTextEdit9
+        '
+        Me.RepositoryItemTextEdit9.AllowNullInput = DevExpress.Utils.DefaultBoolean.[False]
+        Me.RepositoryItemTextEdit9.Appearance.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemTextEdit9.Appearance.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemTextEdit9.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.RepositoryItemTextEdit9.Appearance.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemTextEdit9.Appearance.Options.UseBackColor = True
+        Me.RepositoryItemTextEdit9.Appearance.Options.UseFont = True
+        Me.RepositoryItemTextEdit9.Appearance.Options.UseForeColor = True
+        Me.RepositoryItemTextEdit9.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemTextEdit9.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemTextEdit9.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemTextEdit9.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemTextEdit9.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemTextEdit9.AutoHeight = False
+        Me.RepositoryItemTextEdit9.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.RepositoryItemTextEdit9.DisplayFormat.FormatString = "p2"
+        Me.RepositoryItemTextEdit9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.RepositoryItemTextEdit9.EditFormat.FormatString = "n5"
+        Me.RepositoryItemTextEdit9.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.RepositoryItemTextEdit9.Mask.EditMask = "n5"
+        Me.RepositoryItemTextEdit9.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.RepositoryItemTextEdit9.Name = "RepositoryItemTextEdit9"
+        '
+        'RepositoryItemTextEdit10
+        '
+        Me.RepositoryItemTextEdit10.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemTextEdit10.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemTextEdit10.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemTextEdit10.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemTextEdit10.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemTextEdit10.AutoHeight = False
+        Me.RepositoryItemTextEdit10.DisplayFormat.FormatString = "p2"
+        Me.RepositoryItemTextEdit10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.RepositoryItemTextEdit10.EditFormat.FormatString = "n2"
+        Me.RepositoryItemTextEdit10.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.RepositoryItemTextEdit10.Mask.EditMask = "n2"
+        Me.RepositoryItemTextEdit10.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.RepositoryItemTextEdit10.Name = "RepositoryItemTextEdit10"
+        '
+        'RepositoryItemCheckEdit2
+        '
+        Me.RepositoryItemCheckEdit2.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.RepositoryItemCheckEdit2.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.RepositoryItemCheckEdit2.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.RepositoryItemCheckEdit2.AppearanceFocused.Options.UseBackColor = True
+        Me.RepositoryItemCheckEdit2.AppearanceFocused.Options.UseForeColor = True
+        Me.RepositoryItemCheckEdit2.AutoHeight = False
+        Me.RepositoryItemCheckEdit2.DisplayValueChecked = "ACTIVE"
+        Me.RepositoryItemCheckEdit2.DisplayValueUnchecked = "DEACTIVATED"
+        Me.RepositoryItemCheckEdit2.ImageOptions.ImageIndexChecked = 4
+        Me.RepositoryItemCheckEdit2.ImageOptions.ImageIndexUnchecked = 3
+        Me.RepositoryItemCheckEdit2.ImageOptions.Images = Me.ImageCollection1
+        Me.RepositoryItemCheckEdit2.Name = "RepositoryItemCheckEdit2"
+        '
+        'RepositoryItemGridLookUpEdit3
+        '
+        Me.RepositoryItemGridLookUpEdit3.AutoHeight = False
+        Me.RepositoryItemGridLookUpEdit3.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.RepositoryItemGridLookUpEdit3.Name = "RepositoryItemGridLookUpEdit3"
+        Me.RepositoryItemGridLookUpEdit3.NullText = ""
+        Me.RepositoryItemGridLookUpEdit3.PopupFormSize = New System.Drawing.Size(0, 500)
+        Me.RepositoryItemGridLookUpEdit3.PopupView = Me.GridView3
+        '
+        'GridView3
+        '
+        Me.GridView3.Appearance.FocusedRow.BackColor = System.Drawing.Color.Yellow
+        Me.GridView3.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black
+        Me.GridView3.Appearance.FocusedRow.Options.UseBackColor = True
+        Me.GridView3.Appearance.FocusedRow.Options.UseForeColor = True
+        Me.GridView3.Appearance.SelectedRow.BackColor = System.Drawing.Color.Yellow
+        Me.GridView3.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Black
+        Me.GridView3.Appearance.SelectedRow.Options.UseBackColor = True
+        Me.GridView3.Appearance.SelectedRow.Options.UseForeColor = True
+        Me.GridView3.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.GridColumn209, Me.GridColumn210, Me.GridColumn211, Me.GridColumn212, Me.GridColumn213, Me.GridColumn214})
+        Me.GridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
+        Me.GridView3.Name = "GridView3"
+        Me.GridView3.OptionsBehavior.AllowIncrementalSearch = True
+        Me.GridView3.OptionsFind.AlwaysVisible = True
+        Me.GridView3.OptionsSelection.EnableAppearanceFocusedCell = False
+        Me.GridView3.OptionsView.ColumnAutoWidth = False
+        Me.GridView3.OptionsView.ShowAutoFilterRow = True
+        Me.GridView3.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.ShowAlways
+        Me.GridView3.OptionsView.ShowGroupPanel = False
+        '
+        'GridColumn209
+        '
+        Me.GridColumn209.AppearanceCell.Options.UseTextOptions = True
+        Me.GridColumn209.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GridColumn209.Caption = "Ratings"
+        Me.GridColumn209.FieldName = "Rating"
+        Me.GridColumn209.Name = "GridColumn209"
+        Me.GridColumn209.OptionsColumn.AllowEdit = False
+        Me.GridColumn209.OptionsColumn.ReadOnly = True
+        Me.GridColumn209.Visible = True
+        Me.GridColumn209.VisibleIndex = 0
+        Me.GridColumn209.Width = 88
+        '
+        'GridColumn210
+        '
+        Me.GridColumn210.Caption = "Stufe"
+        Me.GridColumn210.FieldName = "Stufe"
+        Me.GridColumn210.Name = "GridColumn210"
+        Me.GridColumn210.OptionsColumn.AllowEdit = False
+        Me.GridColumn210.OptionsColumn.ReadOnly = True
+        '
+        'GridColumn211
+        '
+        Me.GridColumn211.Caption = "Central Coverment"
+        Me.GridColumn211.DisplayFormat.FormatString = "p2"
+        Me.GridColumn211.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn211.FieldName = "CentralGov"
+        Me.GridColumn211.Name = "GridColumn211"
+        Me.GridColumn211.OptionsColumn.AllowEdit = False
+        Me.GridColumn211.OptionsColumn.ReadOnly = True
+        Me.GridColumn211.Width = 108
+        '
+        'GridColumn212
+        '
+        Me.GridColumn212.Caption = "Institutions (> 3 Months)"
+        Me.GridColumn212.DisplayFormat.FormatString = "p2"
+        Me.GridColumn212.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn212.FieldName = "InstiOver3M"
+        Me.GridColumn212.Name = "GridColumn212"
+        Me.GridColumn212.OptionsColumn.AllowEdit = False
+        Me.GridColumn212.OptionsColumn.ReadOnly = True
+        Me.GridColumn212.Width = 135
+        '
+        'GridColumn213
+        '
+        Me.GridColumn213.Caption = "Institutions (< 3 Months)"
+        Me.GridColumn213.DisplayFormat.FormatString = "p2"
+        Me.GridColumn213.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn213.FieldName = "InstiLess3M"
+        Me.GridColumn213.Name = "GridColumn213"
+        Me.GridColumn213.OptionsColumn.AllowEdit = False
+        Me.GridColumn213.OptionsColumn.ReadOnly = True
+        Me.GridColumn213.Width = 139
+        '
+        'GridColumn214
+        '
+        Me.GridColumn214.Caption = "Corporates"
+        Me.GridColumn214.DisplayFormat.FormatString = "p2"
+        Me.GridColumn214.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.GridColumn214.FieldName = "Corporates"
+        Me.GridColumn214.Name = "GridColumn214"
+        Me.GridColumn214.OptionsColumn.AllowEdit = False
+        Me.GridColumn214.OptionsColumn.ReadOnly = True
+        '
+        'ESG_ScoringType_ImageComboEdit
+        '
+        Me.ESG_ScoringType_ImageComboEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "ESG_ScoringType", True))
+        Me.ESG_ScoringType_ImageComboEdit.Location = New System.Drawing.Point(124, 12)
+        Me.ESG_ScoringType_ImageComboEdit.Name = "ESG_ScoringType_ImageComboEdit"
+        Me.ESG_ScoringType_ImageComboEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ESG_ScoringType_ImageComboEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.ESG_ScoringType_ImageComboEdit.Properties.Appearance.Options.UseFont = True
+        Me.ESG_ScoringType_ImageComboEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.ESG_ScoringType_ImageComboEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.ESG_ScoringType_ImageComboEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.ESG_ScoringType_ImageComboEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ESG_ScoringType_ImageComboEdit.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("2.1", "2.1", 16), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("1.5", "1.5", 17)})
+        Me.ESG_ScoringType_ImageComboEdit.Properties.SmallImages = Me.ImageCollection1
+        Me.ESG_ScoringType_ImageComboEdit.Size = New System.Drawing.Size(73, 20)
+        Me.ESG_ScoringType_ImageComboEdit.StyleController = Me.LayoutControl_ESG_Scoring
+        Me.ESG_ScoringType_ImageComboEdit.TabIndex = 14
+        '
+        'Root
+        '
+        Me.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
+        Me.Root.GroupBordersVisible = False
+        Me.Root.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem11, Me.EmptySpaceItem2, Me.LayoutControlItem14})
+        Me.Root.Name = "Root"
+        Me.Root.Size = New System.Drawing.Size(1556, 631)
+        Me.Root.TextVisible = False
+        '
+        'LayoutControlItem11
+        '
+        Me.LayoutControlItem11.Control = Me.ESG_Scoring_GridControl
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 24)
+        Me.LayoutControlItem11.Name = "LayoutControlItem11"
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(1536, 587)
+        Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem11.TextVisible = False
+        '
+        'EmptySpaceItem2
+        '
+        Me.EmptySpaceItem2.AllowHotTrack = False
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(189, 0)
+        Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(1347, 24)
+        Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'LayoutControlItem14
+        '
+        Me.LayoutControlItem14.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LayoutControlItem14.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem14.Control = Me.ESG_ScoringType_ImageComboEdit
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem14.Name = "LayoutControlItem14"
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(189, 24)
+        Me.LayoutControlItem14.Text = "ESG Scoring Type:"
+        Me.LayoutControlItem14.TextSize = New System.Drawing.Size(100, 13)
         '
         'ClientStatus_lbl
         '
@@ -11958,7 +12605,7 @@ Partial Class Customers
         '
         Me.OnlineBanking_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.OnlineBanking_ImageComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "OnlineBanking", True))
-        Me.OnlineBanking_ImageComboBoxEdit.Location = New System.Drawing.Point(1262, 110)
+        Me.OnlineBanking_ImageComboBoxEdit.Location = New System.Drawing.Point(1271, 110)
         Me.OnlineBanking_ImageComboBoxEdit.Name = "OnlineBanking_ImageComboBoxEdit"
         Me.OnlineBanking_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OnlineBanking_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -11980,7 +12627,7 @@ Partial Class Customers
         '
         Me.ClientNr_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ClientNr_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "ClientNo", True))
-        Me.ClientNr_TextEdit.Location = New System.Drawing.Point(512, 21)
+        Me.ClientNr_TextEdit.Location = New System.Drawing.Point(521, 21)
         Me.ClientNr_TextEdit.Name = "ClientNr_TextEdit"
         Me.ClientNr_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ClientNr_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -12000,7 +12647,7 @@ Partial Class Customers
         '
         Me.ClientType_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ClientType_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "ClientType", True))
-        Me.ClientType_TextEdit.Location = New System.Drawing.Point(440, 104)
+        Me.ClientType_TextEdit.Location = New System.Drawing.Point(449, 104)
         Me.ClientType_TextEdit.Name = "ClientType_TextEdit"
         Me.ClientType_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ClientType_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -12020,7 +12667,7 @@ Partial Class Customers
         '
         Me.ShortName_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ShortName_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "SHORT_NAME", True))
-        Me.ShortName_TextEdit.Location = New System.Drawing.Point(511, 77)
+        Me.ShortName_TextEdit.Location = New System.Drawing.Point(520, 77)
         Me.ShortName_TextEdit.Name = "ShortName_TextEdit"
         Me.ShortName_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ShortName_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -12040,7 +12687,7 @@ Partial Class Customers
         '
         Me.ClientName_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ClientName_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "English Name", True))
-        Me.ClientName_TextEdit.Location = New System.Drawing.Point(511, 48)
+        Me.ClientName_TextEdit.Location = New System.Drawing.Point(520, 48)
         Me.ClientName_TextEdit.Name = "ClientName_TextEdit"
         Me.ClientName_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ClientName_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -12070,7 +12717,7 @@ Partial Class Customers
         '
         Me.CCB_Group_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CCB_Group_ImageComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "CCB_Group", True))
-        Me.CCB_Group_ImageComboBoxEdit.Location = New System.Drawing.Point(1262, 16)
+        Me.CCB_Group_ImageComboBoxEdit.Location = New System.Drawing.Point(1271, 16)
         Me.CCB_Group_ImageComboBoxEdit.Name = "CCB_Group_ImageComboBoxEdit"
         Me.CCB_Group_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CCB_Group_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -12090,7 +12737,7 @@ Partial Class Customers
         '
         Me.CCB_Group_OwnID_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CCB_Group_OwnID_ImageComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "CCB_Group_OwnID", True))
-        Me.CCB_Group_OwnID_ImageComboBoxEdit.Location = New System.Drawing.Point(1262, 39)
+        Me.CCB_Group_OwnID_ImageComboBoxEdit.Location = New System.Drawing.Point(1271, 39)
         Me.CCB_Group_OwnID_ImageComboBoxEdit.Name = "CCB_Group_OwnID_ImageComboBoxEdit"
         Me.CCB_Group_OwnID_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CCB_Group_OwnID_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -12112,7 +12759,7 @@ Partial Class Customers
         Me.SaveChanges_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.SaveChanges_btn.ImageOptions.ImageIndex = 11
         Me.SaveChanges_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.SaveChanges_btn.Location = New System.Drawing.Point(1411, 20)
+        Me.SaveChanges_btn.Location = New System.Drawing.Point(1428, 20)
         Me.SaveChanges_btn.Name = "SaveChanges_btn"
         Me.SaveChanges_btn.Size = New System.Drawing.Size(125, 22)
         Me.SaveChanges_btn.TabIndex = 53
@@ -12125,7 +12772,7 @@ Partial Class Customers
         Me.Cancel_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Cancel_btn.ImageOptions.ImageIndex = 6
         Me.Cancel_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Cancel_btn.Location = New System.Drawing.Point(1411, 47)
+        Me.Cancel_btn.Location = New System.Drawing.Point(1428, 47)
         Me.Cancel_btn.Name = "Cancel_btn"
         Me.Cancel_btn.Size = New System.Drawing.Size(125, 22)
         Me.Cancel_btn.TabIndex = 54
@@ -12135,7 +12782,7 @@ Partial Class Customers
         '
         Me.CIC_Group_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CIC_Group_ImageComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "CIC_Group", True))
-        Me.CIC_Group_ImageComboBoxEdit.Location = New System.Drawing.Point(1262, 63)
+        Me.CIC_Group_ImageComboBoxEdit.Location = New System.Drawing.Point(1271, 63)
         Me.CIC_Group_ImageComboBoxEdit.Name = "CIC_Group_ImageComboBoxEdit"
         Me.CIC_Group_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CIC_Group_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -12707,7 +13354,7 @@ Partial Class Customers
         '
         Me.InternOrganComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.InternOrganComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "Int_Organ", True))
-        Me.InternOrganComboBoxEdit.Location = New System.Drawing.Point(1262, 87)
+        Me.InternOrganComboBoxEdit.Location = New System.Drawing.Point(1271, 87)
         Me.InternOrganComboBoxEdit.Name = "InternOrganComboBoxEdit"
         Me.InternOrganComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.InternOrganComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -12727,7 +13374,7 @@ Partial Class Customers
         '
         Me.AnaCreditCustomer_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.AnaCreditCustomer_ImageComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "AnaCredit_Customer", True))
-        Me.AnaCreditCustomer_ImageComboBoxEdit.Location = New System.Drawing.Point(763, 106)
+        Me.AnaCreditCustomer_ImageComboBoxEdit.Location = New System.Drawing.Point(772, 106)
         Me.AnaCreditCustomer_ImageComboBoxEdit.Name = "AnaCreditCustomer_ImageComboBoxEdit"
         Me.AnaCreditCustomer_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AnaCreditCustomer_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -12753,7 +13400,7 @@ Partial Class Customers
         '
         Me.ClientNrOCBS_TextEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ClientNrOCBS_TextEdit.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.CUSTOMER_INFOBindingSource, "ClientNoM", True))
-        Me.ClientNrOCBS_TextEdit.Location = New System.Drawing.Point(952, 21)
+        Me.ClientNrOCBS_TextEdit.Location = New System.Drawing.Point(961, 21)
         Me.ClientNrOCBS_TextEdit.Name = "ClientNrOCBS_TextEdit"
         Me.ClientNrOCBS_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ClientNrOCBS_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Cyan
@@ -12773,7 +13420,7 @@ Partial Class Customers
         '
         Me.AnaCreditCustValid_ImageComboBoxEdit.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.AnaCreditCustValid_ImageComboBoxEdit.DataBindings.Add(New System.Windows.Forms.Binding("EditValue", Me.CUSTOMER_INFOBindingSource, "AnaCredit_Valid", True))
-        Me.AnaCreditCustValid_ImageComboBoxEdit.Location = New System.Drawing.Point(1020, 105)
+        Me.AnaCreditCustValid_ImageComboBoxEdit.Location = New System.Drawing.Point(1029, 105)
         Me.AnaCreditCustValid_ImageComboBoxEdit.Name = "AnaCreditCustValid_ImageComboBoxEdit"
         Me.AnaCreditCustValid_ImageComboBoxEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AnaCreditCustValid_ImageComboBoxEdit.Properties.Appearance.Options.UseFont = True
@@ -12796,7 +13443,7 @@ Partial Class Customers
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CausesValidation = False
-        Me.ClientSize = New System.Drawing.Size(1565, 835)
+        Me.ClientSize = New System.Drawing.Size(1582, 848)
         Me.Controls.Add(Me.LayoutControl1)
         Me.Controls.Add(Me.XtraTabControl2)
         Me.Controls.Add(Me.ClientStatus_lbl)
@@ -12830,7 +13477,7 @@ Partial Class Customers
         Me.Controls.Add(Label68)
         Me.Controls.Add(Me.AnaCreditCustValid_ImageComboBoxEdit)
         Me.Controls.Add(Label94)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("Customers.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "Customers"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -12919,6 +13566,7 @@ Partial Class Customers
         CType(Me.item5, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.item7, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.item8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemPopupContainerEdit2, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.MergedFromClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.MergedToClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit
@@ -13221,6 +13869,26 @@ Partial Class Customers
         CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).EndInit
+        Me.CUSTOMER_ESG_SCORINGXtraTabPage.ResumeLayout(False)
+        CType(Me.LayoutControl_ESG_Scoring, System.ComponentModel.ISupportInitialize).EndInit
+        Me.LayoutControl_ESG_Scoring.ResumeLayout(False)
+        CType(Me.ESG_Scoring_GridControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CUSTOMER_ESG_SCORINGBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ESG_Scoring_DetailsView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Scoring_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ScoringValidity_RepositoryItemDateEdit.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ScoringValidity_RepositoryItemDateEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox14, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemCheckEdit2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemGridLookUpEdit3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ESG_ScoringType_ImageComboEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Root, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem14, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.OnlineBanking_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.ClientType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
@@ -14095,4 +14763,49 @@ End Sub
     Friend WithEvents MergedFromClientNr_TextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents MergedToClientNr_TextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents VAT_ID_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents CUSTOMER_ESG_SCORINGBindingSource As BindingSource
+    Friend WithEvents CUSTOMER_ESG_SCORINGTableAdapter As PSTOOLDatasetTableAdapters.CUSTOMER_ESG_SCORINGTableAdapter
+    Friend WithEvents CUSTOMER_ESG_SCORINGXtraTabPage As DevExpress.XtraTab.XtraTabPage
+    Friend WithEvents LayoutControl_ESG_Scoring As DevExpress.XtraLayout.LayoutControl
+    Friend WithEvents Root As DevExpress.XtraLayout.LayoutControlGroup
+    Friend WithEvents ESG_Scoring_GridControl As DevExpress.XtraGrid.GridControl
+    Friend WithEvents RepositoryItemPopupContainerEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemPopupContainerEdit
+    Friend WithEvents RepositoryItemImageComboBox14 As DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox
+    Friend WithEvents RepositoryItemTextEdit9 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents RepositoryItemTextEdit10 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
+    Friend WithEvents RepositoryItemCheckEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit
+    Friend WithEvents RepositoryItemGridLookUpEdit3 As DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit
+    Friend WithEvents GridView3 As DevExpress.XtraGrid.Views.Grid.GridView
+    Friend WithEvents GridColumn209 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn210 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn211 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn212 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn213 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GridColumn214 As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents LayoutControlItem11 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem2 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents colESG_ScoringType As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents ESG_Scoring_DetailsView As DevExpress.XtraGrid.Views.BandedGrid.BandedGridView
+    Friend WithEvents GridBand1 As DevExpress.XtraGrid.Views.BandedGrid.GridBand
+    Friend WithEvents colID2 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colE_Score As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents Scoring_RepositoryItemSpinEdit As DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit
+    Friend WithEvents colS_Score As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colG_Score As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colESG_Score As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colClientNo2 As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents gridBand2 As DevExpress.XtraGrid.Views.BandedGrid.GridBand
+    Friend WithEvents colE_Notation As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colS_Notation As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colG_Notation As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colESG_Notation As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents gridBand3 As DevExpress.XtraGrid.Views.BandedGrid.GridBand
+    Friend WithEvents colValidFrom As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents ScoringValidity_RepositoryItemDateEdit As DevExpress.XtraEditors.Repository.RepositoryItemDateEdit
+    Friend WithEvents colValidTill As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents LayoutControlItem14 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents colLastAction As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colLastUpdateDate As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents colLastUpdateUser As DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn
+    Friend WithEvents ESG_ScoringType_ImageComboEdit As DevExpress.XtraEditors.ImageComboBoxEdit
 End Class

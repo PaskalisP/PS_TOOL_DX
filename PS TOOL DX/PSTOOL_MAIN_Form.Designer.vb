@@ -2563,10 +2563,12 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_InterestRateRisk_Element.Name = "RISKCONTROL_InterestRateRisk_Element"
         Me.RISKCONTROL_InterestRateRisk_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.RISKCONTROL_InterestRateRisk_Element.Text = "Interest Rate Risk (till 30.12.2018)"
+        Me.RISKCONTROL_InterestRateRisk_Element.Visible = False
         '
         'AccordionControlSeparator1
         '
         Me.AccordionControlSeparator1.Name = "AccordionControlSeparator1"
+        Me.AccordionControlSeparator1.Visible = False
         '
         'RISKCONTROL_InterestRateRisk_Calc3_Element
         '
@@ -2720,6 +2722,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.RISKCONTROL_StressTestHO_Element.Name = "RISKCONTROL_StressTestHO_Element"
         Me.RISKCONTROL_StressTestHO_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
         Me.RISKCONTROL_StressTestHO_Element.Text = "Stress Tests - Head Office scenario"
+        Me.RISKCONTROL_StressTestHO_Element.Visible = False
         '
         'AccordionControlSeparator13
         '
@@ -2933,7 +2936,7 @@ Partial Class PSTOOL_MAIN_Form
         Me.MELDW_ZV_STATISTIC_GROUP_Element.Elements.AddRange(New DevExpress.XtraBars.Navigation.AccordionControlElement() {Me.MELDW_ZvstatisticTill2013_Element, Me.MELDW_ZvStatisticFrom2014_Element})
         Me.MELDW_ZV_STATISTIC_GROUP_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_ZV_STATISTIC_GROUP_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_ZV_STATISTIC_GROUP_Element.Name = "MELDW_ZV_STATISTIC_GROUP_Element"
-        Me.MELDW_ZV_STATISTIC_GROUP_Element.Text = "ZV-Statistik (Zahlungsverkehrsstatistik)"
+        Me.MELDW_ZV_STATISTIC_GROUP_Element.Text = "ZV-Statistik (Zahlungsverkehrsstatistik till 2021)"
         '
         'MELDW_ZvstatisticTill2013_Element
         '
@@ -2945,11 +2948,11 @@ Partial Class PSTOOL_MAIN_Form
         '
         'MELDW_ZvStatisticFrom2014_Element
         '
-        Me.MELDW_ZvStatisticFrom2014_Element.Hint = "Displays/Calculates the Payments Statistic as from 2014"
+        Me.MELDW_ZvStatisticFrom2014_Element.Hint = "Displays/Calculates the Payments Statistic as from 2014 till 2021"
         Me.MELDW_ZvStatisticFrom2014_Element.ImageOptions.Image = CType(resources.GetObject("MELDW_ZvStatisticFrom2014_Element.ImageOptions.Image"), System.Drawing.Image)
         Me.MELDW_ZvStatisticFrom2014_Element.Name = "MELDW_ZvStatisticFrom2014_Element"
         Me.MELDW_ZvStatisticFrom2014_Element.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.MELDW_ZvStatisticFrom2014_Element.Text = "ZV Statistic as from 2014"
+        Me.MELDW_ZvStatisticFrom2014_Element.Text = "ZV Statistic as from 2014 till 2021"
         '
         'AccordionControlSeparator22
         '
@@ -2967,28 +2970,28 @@ Partial Class PSTOOL_MAIN_Form
         Me.ZvStatistik_Reporting_AccordionControlElement.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
         Me.ZvStatistik_Reporting_AccordionControlElement.Name = "ZvStatistik_Reporting_AccordionControlElement"
         Me.ZvStatistik_Reporting_AccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.ZvStatistik_Reporting_AccordionControlElement.Text = "ZV Statistik - Reporting"
+        Me.ZvStatistik_Reporting_AccordionControlElement.Text = "ZV Statistik - Reporting (as from 2022)"
         '
         'ZvStatistik_Parameter_AccordionControlElement
         '
         Me.ZvStatistik_Parameter_AccordionControlElement.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
         Me.ZvStatistik_Parameter_AccordionControlElement.Name = "ZvStatistik_Parameter_AccordionControlElement"
         Me.ZvStatistik_Parameter_AccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.ZvStatistik_Parameter_AccordionControlElement.Text = "ZV Statistik - Meldeschemas Parameter"
+        Me.ZvStatistik_Parameter_AccordionControlElement.Text = "ZV Statistik - Meldeschemas Parameter (as from 2022)"
         '
         'ZvStatistik_PayCard_Parameter_AccordionControlElement
         '
         Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
         Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.Name = "ZvStatistik_PayCard_Parameter_AccordionControlElement"
         Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.Text = "ZV Statistik - Payments and Cards Parameter"
+        Me.ZvStatistik_PayCard_Parameter_AccordionControlElement.Text = "ZV Statistik - Payments and Cards Parameter (as from 2022)"
         '
         'ZvStatistik_ValidityRules_AccordionControlElement
         '
         Me.ZvStatistik_ValidityRules_AccordionControlElement.ImageOptions.Image = Global.PS_TOOL_DX.My.Resources.Resources.Form
         Me.ZvStatistik_ValidityRules_AccordionControlElement.Name = "ZvStatistik_ValidityRules_AccordionControlElement"
         Me.ZvStatistik_ValidityRules_AccordionControlElement.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item
-        Me.ZvStatistik_ValidityRules_AccordionControlElement.Text = "ZV Statistik - Validity Rules Parameter"
+        Me.ZvStatistik_ValidityRules_AccordionControlElement.Text = "ZV Statistik - Validity Rules Parameter (as from 2022)"
         '
         'AccordionControlSeparator42
         '

@@ -135,9 +135,12 @@ Partial Class UnexpectedLossCalc2023
         Me.colK_Value = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSumGA_rel = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colSumGA_Total = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.colDefaultRisk = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.PrintableComponentLink_SingleDate = New DevExpress.XtraPrinting.PrintableComponentLink(Me.components)
         Me.LayoutControl1 = New DevExpress.XtraLayout.LayoutControl()
         Me.GroupControl2 = New DevExpress.XtraEditors.GroupControl()
+        Me.GroupControl1 = New DevExpress.XtraEditors.GroupControl()
+        Me.DefaultRisk_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.GroupControl5 = New DevExpress.XtraEditors.GroupControl()
         Me.GA_TextEdit = New DevExpress.XtraEditors.TextEdit()
         Me.GroupControl4 = New DevExpress.XtraEditors.GroupControl()
@@ -270,6 +273,9 @@ Partial Class UnexpectedLossCalc2023
         Me.LayoutControl1.SuspendLayout()
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl2.SuspendLayout()
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupControl1.SuspendLayout()
+        CType(Me.DefaultRisk_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupControl5.SuspendLayout()
         CType(Me.GA_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1251,7 +1257,7 @@ Partial Class UnexpectedLossCalc2023
         Me.UL_AllDates_GridView.Appearance.FocusedRow.Options.UseForeColor = True
         Me.UL_AllDates_GridView.Appearance.GroupRow.ForeColor = System.Drawing.Color.Cyan
         Me.UL_AllDates_GridView.Appearance.GroupRow.Options.UseForeColor = True
-        Me.UL_AllDates_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colRiskDate, Me.colLevelOfConfidence, Me.colSumEL, Me.colSumUL, Me.colnu_Value, Me.colp_alpha_Value, Me.colb_beta_value, Me.colGamma_inv, Me.colDelta, Me.colK_Value, Me.colSumGA_rel, Me.colSumGA_Total})
+        Me.UL_AllDates_GridView.Columns.AddRange(New DevExpress.XtraGrid.Columns.GridColumn() {Me.colID2, Me.colRiskDate, Me.colLevelOfConfidence, Me.colSumEL, Me.colSumUL, Me.colnu_Value, Me.colp_alpha_Value, Me.colb_beta_value, Me.colGamma_inv, Me.colDelta, Me.colK_Value, Me.colSumGA_rel, Me.colSumGA_Total, Me.colDefaultRisk})
         Me.UL_AllDates_GridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus
         Me.UL_AllDates_GridView.GridControl = Me.UL_AllDates_GridControl
         Me.UL_AllDates_GridView.Name = "UL_AllDates_GridView"
@@ -1422,6 +1428,17 @@ Partial Class UnexpectedLossCalc2023
         Me.colSumGA_Total.VisibleIndex = 4
         Me.colSumGA_Total.Width = 161
         '
+        'colDefaultRisk
+        '
+        Me.colDefaultRisk.Caption = "Default Risk"
+        Me.colDefaultRisk.DisplayFormat.FormatString = "n2"
+        Me.colDefaultRisk.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.colDefaultRisk.FieldName = "DefaultRisk"
+        Me.colDefaultRisk.Name = "colDefaultRisk"
+        Me.colDefaultRisk.Visible = True
+        Me.colDefaultRisk.VisibleIndex = 5
+        Me.colDefaultRisk.Width = 152
+        '
         'PrintableComponentLink_SingleDate
         '
         Me.PrintableComponentLink_SingleDate.Component = Me.LayoutControl1
@@ -1449,6 +1466,7 @@ Partial Class UnexpectedLossCalc2023
         '
         Me.GroupControl2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupControl2.Controls.Add(Me.GroupControl1)
         Me.GroupControl2.Controls.Add(Me.GroupControl5)
         Me.GroupControl2.Controls.Add(Me.GroupControl4)
         Me.GroupControl2.Controls.Add(Me.GroupControl3)
@@ -1473,6 +1491,52 @@ Partial Class UnexpectedLossCalc2023
         Me.GroupControl2.Size = New System.Drawing.Size(1739, 143)
         Me.GroupControl2.TabIndex = 117
         Me.GroupControl2.Text = "Parameters and results"
+        '
+        'GroupControl1
+        '
+        Me.GroupControl1.AppearanceCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupControl1.AppearanceCaption.Options.UseFont = True
+        Me.GroupControl1.AppearanceCaption.Options.UseTextOptions = True
+        Me.GroupControl1.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.GroupControl1.Controls.Add(Me.DefaultRisk_TextEdit)
+        Me.GroupControl1.Location = New System.Drawing.Point(1194, 54)
+        Me.GroupControl1.Name = "GroupControl1"
+        Me.GroupControl1.Size = New System.Drawing.Size(178, 52)
+        Me.GroupControl1.TabIndex = 45
+        Me.GroupControl1.Text = "DEFAULT RISK"
+        '
+        'DefaultRisk_TextEdit
+        '
+        Me.DefaultRisk_TextEdit.EditValue = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.DefaultRisk_TextEdit.Location = New System.Drawing.Point(5, 26)
+        Me.DefaultRisk_TextEdit.Name = "DefaultRisk_TextEdit"
+        Me.DefaultRisk_TextEdit.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.DefaultRisk_TextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Aqua
+        Me.DefaultRisk_TextEdit.Properties.Appearance.Options.UseFont = True
+        Me.DefaultRisk_TextEdit.Properties.Appearance.Options.UseForeColor = True
+        Me.DefaultRisk_TextEdit.Properties.Appearance.Options.UseTextOptions = True
+        Me.DefaultRisk_TextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.Options.UseTextOptions = True
+        Me.DefaultRisk_TextEdit.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
+        Me.DefaultRisk_TextEdit.Properties.DisplayFormat.FormatString = "n2"
+        Me.DefaultRisk_TextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.DefaultRisk_TextEdit.Properties.EditFormat.FormatString = "n2"
+        Me.DefaultRisk_TextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric
+        Me.DefaultRisk_TextEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered
+        Me.DefaultRisk_TextEdit.Properties.Mask.EditMask = "n2"
+        Me.DefaultRisk_TextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric
+        Me.DefaultRisk_TextEdit.Properties.Mask.UseMaskAsDisplayFormat = True
+        Me.DefaultRisk_TextEdit.Properties.NullValuePrompt = "Please input a nummeric Value between 0 and 1"
+        Me.DefaultRisk_TextEdit.Properties.ReadOnly = True
+        Me.DefaultRisk_TextEdit.Size = New System.Drawing.Size(168, 20)
+        Me.DefaultRisk_TextEdit.TabIndex = 45
+        Me.DefaultRisk_TextEdit.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information
+        Me.DefaultRisk_TextEdit.ToolTipTitle = "Default Risk"
         '
         'GroupControl5
         '
@@ -2479,12 +2543,12 @@ Partial Class UnexpectedLossCalc2023
         '
         'LayoutControlGroup6
         '
-        Me.LayoutControlGroup6.CustomizationFormText = "Currency Risk - Market Risk (Internal Calculation Details)"
+        Me.LayoutControlGroup6.CustomizationFormText = "Expected,Unexpected Loss and granularity adjustment (Calculation Details)"
         Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup2})
         Me.LayoutControlGroup6.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup6.Name = "LayoutControlGroup6"
         Me.LayoutControlGroup6.Size = New System.Drawing.Size(1743, 552)
-        Me.LayoutControlGroup6.Text = "Expected,Unexpected Loss and granularity approach (Calculation Details)"
+        Me.LayoutControlGroup6.Text = "Expected,Unexpected Loss and granularity adjustment (Calculation Details)"
         '
         'TabbedControlGroup2
         '
@@ -2545,7 +2609,7 @@ Partial Class UnexpectedLossCalc2023
         Me.LayoutControlGroup16.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup16.Name = "LayoutControlGroup16"
         Me.LayoutControlGroup16.Size = New System.Drawing.Size(1767, 192)
-        Me.LayoutControlGroup16.Text = "Expected, Unexpected Loss and Granularity approach"
+        Me.LayoutControlGroup16.Text = "Expected, Unexpected Loss and Granularity adjustment"
         '
         'LayoutControlItem8
         '
@@ -2957,7 +3021,7 @@ Partial Class UnexpectedLossCalc2023
         Me.Name = "UnexpectedLossCalc2023"
         Me.Ribbon = Me.RibbonControl2
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Expected, Unexpected Loss and Granularity Approach "
+        Me.Text = "Expected, Unexpected Loss and Granularity adjustment"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.UL_Totals_Details_GridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.UL_Totals_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2974,6 +3038,9 @@ Partial Class UnexpectedLossCalc2023
         Me.LayoutControl1.ResumeLayout(False)
         CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl2.ResumeLayout(False)
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl1.ResumeLayout(False)
+        CType(Me.DefaultRisk_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupControl5.ResumeLayout(False)
         CType(Me.GA_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3301,4 +3368,7 @@ Partial Class UnexpectedLossCalc2023
     Friend WithEvents GA_TextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents UL_TextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents EL_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents colDefaultRisk As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents GroupControl1 As DevExpress.XtraEditors.GroupControl
+    Friend WithEvents DefaultRisk_TextEdit As DevExpress.XtraEditors.TextEdit
 End Class

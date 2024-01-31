@@ -80,7 +80,7 @@ Public Class ExecuteVbCode
         With XtraOpenFileDialog1
             .Filter = "VB.NET files|*.vb"
             .FilterIndex = 1
-            .InitialDirectory = "C:\"
+            '.InitialDirectory = "C:\"
             .FileName = ""
             .RestoreDirectory = True
             .Title = "Load VB.NET Script File"

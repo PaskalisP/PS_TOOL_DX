@@ -278,13 +278,6 @@ Partial Class AllContractsAccounts
         Dim ToolTipItem48 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
         Dim ToolTipSeparatorItem19 As DevExpress.Utils.ToolTipSeparatorItem = New DevExpress.Utils.ToolTipSeparatorItem()
         Dim ToolTipTitleItem67 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
-        'Dim FilterCondition1 As DevExpress.XtraTreeList.filtercondition = New DevExpress.XtraTreeList.FilterCondition()
-        'Dim FilterCondition2 As DevExpress.XtraTreeList.FilterCondition = New DevExpress.XtraTreeList.FilterCondition()
-        'Dim FilterCondition3 As DevExpress.XtraTreeList.FilterCondition = New DevExpress.XtraTreeList.FilterCondition()
-        'Dim FilterCondition4 As DevExpress.XtraTreeList.FilterCondition = New DevExpress.XtraTreeList.FilterCondition()
-        'Dim FilterCondition5 As DevExpress.XtraTreeList.FilterCondition = New DevExpress.XtraTreeList.FilterCondition()
-        'Dim FilterCondition6 As DevExpress.XtraTreeList.FilterCondition = New DevExpress.XtraTreeList.FilterCondition()
-        'Dim FilterCondition7 As DevExpress.XtraTreeList.FilterCondition = New DevExpress.XtraTreeList.FilterCondition()
         Dim SuperToolTip49 As DevExpress.Utils.SuperToolTip = New DevExpress.Utils.SuperToolTip()
         Dim ToolTipTitleItem68 As DevExpress.Utils.ToolTipTitleItem = New DevExpress.Utils.ToolTipTitleItem()
         Dim ToolTipItem49 As DevExpress.Utils.ToolTipItem = New DevExpress.Utils.ToolTipItem()
@@ -890,6 +883,8 @@ Partial Class AllContractsAccounts
         Me.AnaCreditRepValid_ImageComboBoxEdit = New DevExpress.XtraEditors.ImageComboBoxEdit()
         Me.CollateralKEV_ImageComboBoxEdit = New DevExpress.XtraEditors.ImageComboBoxEdit()
         Me.Class_lbl = New System.Windows.Forms.Label()
+        Me.ContractsStatus_ImageComboBoxEdit = New DevExpress.XtraEditors.ImageComboBoxEdit()
+        Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Label5 = New System.Windows.Forms.Label()
         Label82 = New System.Windows.Forms.Label()
         Label41 = New System.Windows.Forms.Label()
@@ -955,344 +950,346 @@ Partial Class AllContractsAccounts
         Label50 = New System.Windows.Forms.Label()
         Label53 = New System.Windows.Forms.Label()
         Label54 = New System.Windows.Forms.Label()
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ALL_CONTRACTS_ACCOUNTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AllContractsAccountsDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AllCustomerContracts_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.KEV_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BIC_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LEI_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CCB_Group_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DefaultRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl1.SuspendLayout()
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ContractSearch_GridLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ContractNr_Gridview, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Valid_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AnaCreditCustomer_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClientName_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ContractNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.XtraTabControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.XtraTabControl2.SuspendLayout()
-        Me.BASIC_DATAXtraTabPage.SuspendLayout()
-        CType(Me.GroupControl17, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl17.SuspendLayout()
-        CType(Me.PrincipalAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PrincipalCCY_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl7.SuspendLayout()
-        CType(Me.SourcesOfEncumbrance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SourceEncumbrance_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl20, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl20.SuspendLayout()
-        CType(Me.ComulativeRecoveryAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DatePastDue_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DatePastDue_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AmountPastDue_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl21, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl21.SuspendLayout()
-        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SearchLookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl2.SuspendLayout()
-        CType(Me.AllCustomerContracts_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClientIdType_RepositoryItemComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CCY_RepositoryItemComboBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SignerName_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Valid_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Notes_RepositoryItemMemoExEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ID_Type_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SpinEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DefaultStatusDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DefaultStatusDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DefaultStatus_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DefaultStatus_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl19, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl19.SuspendLayout()
-        CType(Me.RepaymentRights_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepaymentRights_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl12, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl12.SuspendLayout()
-        CType(Me.TypeOfSecurization_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TypeOfSecurization_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl18, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl18.SuspendLayout()
-        CType(Me.Purpose_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Purpose_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ProjectFinance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ProjectFinanceLoan_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl16, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl16.SuspendLayout()
-        CType(Me.EuroAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.OrigCurAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Currency_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ExchangeRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl15, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl15.SuspendLayout()
-        CType(Me.FiduciaryInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FiduciaryInstrument_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl14, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl14.SuspendLayout()
-        CType(Me.EndDateOfInterestPaymentOnlyPeriodDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EndDateOfInterestPaymentOnlyPeriodDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AmortizationType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AmortizationType_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl6.SuspendLayout()
-        CType(Me.AccountingClassifInstruments_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AccClassificInstrum_Gridview, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl13, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl13.SuspendLayout()
-        CType(Me.TypeOfInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TypeOfInstrument_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl3.SuspendLayout()
-        CType(Me.Recourse_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Recourse_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl2.SuspendLayout()
-        CType(Me.ImpairmentStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.WriteOffsStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AverageInterestRate_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentFreq_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PaymentFrequency_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ReferenceRate_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ReferenceRate_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InterestRateType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InterestRateType_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InterestRateResFreq_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InterestRateResetFrequency_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InterestRateFloor_TextEdit5.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InterestRateCap_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InterestRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Spread_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl1.SuspendLayout()
-        CType(Me.SyndicContractIdent_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MaturityDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MaturityDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StartDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StartDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InputDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InputDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ProductType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ContractType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BusinessType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ADDITIONAL_DATAXtraTabPage.SuspendLayout()
-        CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl5.SuspendLayout()
-        CType(Me.DateForbearanceStatus_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DateForbearanceStatus_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StatusForbearance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.StatusForbearance_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl4.SuspendLayout()
-        CType(Me.DatePerformingStatus_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DatePerformingStatus_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PerformingStatusInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PerformingStatus_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl11, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl11.SuspendLayout()
-        CType(Me.EnterpriseAnnualTurnover_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmployeesNumber_SpinEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnterpriseSize_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnterpriseSize_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EnterpriseSize_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Enterprise_Size_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl10, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl10.SuspendLayout()
-        CType(Me.LegalProceedings_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LegalProceedings_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LegalProceedingsStatus_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LegalProceedingsStatus_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl9, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl9.SuspendLayout()
-        CType(Me.CounterpartyRole_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LegalForm_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.JointLiabilityAmount_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupControl8.SuspendLayout()
-        CType(Me.NACE_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NACE_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.VALUE_ADJUSTMENTS_XtraTabPage.SuspendLayout()
-        Me.CUSTOMER_RATINGXtraTabPage.SuspendLayout()
-        CType(Me.LayoutControl6, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl6.SuspendLayout()
-        CType(Me.CustomerRating_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CustomerRating_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Other_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoExEdit6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemGridLookUpEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PEP_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PersonalPresence_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CountryClientShareHold_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LegalStatus_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TurnoverEUR_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.InternetBanking_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.KindOfBusiness_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LegalProblems_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.CUSTOMER_GROUPINGXtraTabPage.SuspendLayout()
-        CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl3.SuspendLayout()
-        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelControl1.SuspendLayout()
-        CType(Me.GeneralManager_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GeneralManager_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Grouping_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroupDetails_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ShareholderType_RepositoryItemComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ShareholderType_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SharePercent_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField15, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField16, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField19, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField21, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField22, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SplitterItem3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.CLIENT_DOCSXtraTabPage.SuspendLayout()
-        CType(Me.LayoutControl4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl4.SuspendLayout()
-        CType(Me.TreeList1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.CLIENTS_CONTACTSXtraTabPage.SuspendLayout()
-        CType(Me.LayoutControl7, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.LayoutControl7.SuspendLayout()
-        CType(Me.ClientsContactsNotes_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClientsContactsNotes_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoExEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClientsContactPersons_GridControl, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClientContactPersons_GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Default_RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Email_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemMemoExEdit5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemComboBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemImageComboBox20, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField49, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField50, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutViewField51, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Intercompany_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ContractNr_OCBS_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ClientNr_OCBS_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AnaCreditRepValid_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CollateralKEV_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ALL_CONTRACTS_ACCOUNTSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AllContractsAccountsDataSet, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AllCustomerContracts_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.KEV_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.BIC_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LEI_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CCB_Group_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DefaultRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl1.SuspendLayout
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ContractSearch_GridLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ContractNr_Gridview, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Valid_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AnaCreditCustomer_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ClientName_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ContractNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.XtraTabControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.XtraTabControl2.SuspendLayout
+        Me.BASIC_DATAXtraTabPage.SuspendLayout
+        CType(Me.GroupControl17, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl17.SuspendLayout
+        CType(Me.PrincipalAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PrincipalCCY_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl7.SuspendLayout
+        CType(Me.SourcesOfEncumbrance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SourceEncumbrance_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl20, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl20.SuspendLayout
+        CType(Me.ComulativeRecoveryAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DatePastDue_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DatePastDue_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AmountPastDue_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl21, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl21.SuspendLayout
+        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SearchLookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView20, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl2.SuspendLayout
+        CType(Me.AllCustomerContracts_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTBindingSource, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ClientIdType_RepositoryItemComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CCY_RepositoryItemComboBox5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SignerName_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Valid_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Notes_RepositoryItemMemoExEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ID_Type_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SpinEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DefaultStatusDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DefaultStatusDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DefaultStatus_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DefaultStatus_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl19, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl19.SuspendLayout
+        CType(Me.RepaymentRights_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepaymentRights_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl12, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl12.SuspendLayout
+        CType(Me.TypeOfSecurization_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.TypeOfSecurization_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl18, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl18.SuspendLayout
+        CType(Me.Purpose_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Purpose_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ProjectFinance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ProjectFinanceLoan_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl16, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl16.SuspendLayout
+        CType(Me.EuroAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.OrigCurAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Currency_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ExchangeRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl15, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl15.SuspendLayout
+        CType(Me.FiduciaryInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.FiduciaryInstrument_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl14, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl14.SuspendLayout
+        CType(Me.EndDateOfInterestPaymentOnlyPeriodDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EndDateOfInterestPaymentOnlyPeriodDateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AmortizationType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AmortizationType_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl6.SuspendLayout
+        CType(Me.AccountingClassifInstruments_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AccClassificInstrum_Gridview, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl13, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl13.SuspendLayout
+        CType(Me.TypeOfInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.TypeOfInstrument_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl3.SuspendLayout
+        CType(Me.Recourse_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Recourse_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl2.SuspendLayout
+        CType(Me.ImpairmentStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.WriteOffsStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AverageInterestRate_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PaymentFreq_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PaymentFrequency_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ReferenceRate_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ReferenceRate_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InterestRateType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InterestRateType_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InterestRateResFreq_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InterestRateResetFrequency_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InterestRateFloor_TextEdit5.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InterestRateCap_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InterestRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Spread_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl1.SuspendLayout
+        CType(Me.SyndicContractIdent_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.MaturityDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.MaturityDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.StartDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.StartDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InputDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InputDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ProductType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ContractType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.BusinessType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.ADDITIONAL_DATAXtraTabPage.SuspendLayout
+        CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl5.SuspendLayout
+        CType(Me.DateForbearanceStatus_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DateForbearanceStatus_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.StatusForbearance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.StatusForbearance_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl4.SuspendLayout
+        CType(Me.DatePerformingStatus_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.DatePerformingStatus_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PerformingStatusInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PerformingStatus_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl11, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl11.SuspendLayout
+        CType(Me.EnterpriseAnnualTurnover_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmployeesNumber_SpinEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EnterpriseSize_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EnterpriseSize_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EnterpriseSize_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Enterprise_Size_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl10, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl10.SuspendLayout
+        CType(Me.LegalProceedings_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LegalProceedings_DateEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LegalProceedingsStatus_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LegalProceedingsStatus_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl9, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl9.SuspendLayout
+        CType(Me.CounterpartyRole_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LegalForm_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.JointLiabilityAmount_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.GroupControl8.SuspendLayout
+        CType(Me.NACE_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.NACE_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.VALUE_ADJUSTMENTS_XtraTabPage.SuspendLayout
+        Me.CUSTOMER_RATINGXtraTabPage.SuspendLayout
+        CType(Me.LayoutControl6, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl6.SuspendLayout
+        CType(Me.CustomerRating_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CustomerRating_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemComboBox4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Other_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit13, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemMemoExEdit6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemGridLookUpEdit4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PEP_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.PersonalPresence_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CountryClientShareHold_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LegalStatus_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.TurnoverEUR_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.InternetBanking_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.KindOfBusiness_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LegalProblems_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.CUSTOMER_GROUPINGXtraTabPage.SuspendLayout
+        CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl3.SuspendLayout
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.PanelControl1.SuspendLayout
+        CType(Me.GeneralManager_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GeneralManager_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Grouping_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GroupDetails_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ShareholderType_RepositoryItemComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ShareholderType_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SharePercent_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField15, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField16, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField17, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField18, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField19, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField20, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField21, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField22, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SplitterItem3, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.CLIENT_DOCSXtraTabPage.SuspendLayout
+        CType(Me.LayoutControl4, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl4.SuspendLayout
+        CType(Me.TreeList1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.CLIENTS_CONTACTSXtraTabPage.SuspendLayout
+        CType(Me.LayoutControl7, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.LayoutControl7.SuspendLayout
+        CType(Me.ClientsContactsNotes_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ClientsContactsNotes_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemMemoExEdit4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ClientsContactPersons_GridControl, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ClientContactPersons_GridView, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Default_RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Email_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemMemoExEdit5, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemComboBox3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemTextEdit8, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox12, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemImageComboBox20, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.GridView11, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutView3, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField49, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField50, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutViewField51, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Intercompany_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ContractNr_OCBS_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ClientNr_OCBS_TextEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.AnaCreditRepValid_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.CollateralKEV_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.ContractsStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'Label5
         '
@@ -2046,6 +2043,7 @@ Partial Class AllContractsAccounts
         Me.ImageCollection1.Images.SetKeyName(11, "save_16x16.png")
         Me.ImageCollection1.InsertGalleryImage("question_16x16.png", "images/support/question_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/support/question_16x16.png"), 12)
         Me.ImageCollection1.Images.SetKeyName(12, "question_16x16.png")
+        Me.ImageCollection1.Images.SetKeyName(13, "recurrence_16x16.png")
         '
         'TreeListColumn1
         '
@@ -2983,6 +2981,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControl1.Controls.Add(Me.DetailView_btn)
         Me.LayoutControl1.Controls.Add(Me.Customer_Print_Export_btn)
         Me.LayoutControl1.Controls.Add(Me.GridControl2)
+        Me.LayoutControl1.Controls.Add(Me.ContractsStatus_ImageComboBoxEdit)
         Me.LayoutControl1.Location = New System.Drawing.Point(7, 816)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(845, 242, 450, 400)
@@ -3008,9 +3007,9 @@ Partial Class AllContractsAccounts
         Me.Customer_Print_Export_btn.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Customer_Print_Export_btn.ImageOptions.ImageIndex = 2
         Me.Customer_Print_Export_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.Customer_Print_Export_btn.Location = New System.Drawing.Point(12, 12)
+        Me.Customer_Print_Export_btn.Location = New System.Drawing.Point(245, 12)
         Me.Customer_Print_Export_btn.Name = "Customer_Print_Export_btn"
-        Me.Customer_Print_Export_btn.Size = New System.Drawing.Size(169, 22)
+        Me.Customer_Print_Export_btn.Size = New System.Drawing.Size(100, 22)
         Me.Customer_Print_Export_btn.StyleController = Me.LayoutControl1
         Me.Customer_Print_Export_btn.TabIndex = 10
         Me.Customer_Print_Export_btn.Text = "Print or Export"
@@ -3019,7 +3018,7 @@ Partial Class AllContractsAccounts
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.LayoutControlItem3})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.EmptySpaceItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4})
         Me.LayoutControlGroup1.Name = "Root"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(1603, 70)
         Me.LayoutControlGroup1.TextVisible = False
@@ -3036,17 +3035,17 @@ Partial Class AllContractsAccounts
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(173, 0)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(337, 0)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1222, 26)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(1058, 26)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.Customer_Print_Export_btn
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(233, 0)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(173, 26)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(104, 26)
         Me.LayoutControlItem2.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem2.TextVisible = False
         '
@@ -3388,7 +3387,7 @@ Partial Class AllContractsAccounts
         Me.BASIC_DATAXtraTabPage.Controls.Add(Me.GroupControl2)
         Me.BASIC_DATAXtraTabPage.Controls.Add(Me.GroupControl1)
         Me.BASIC_DATAXtraTabPage.Name = "BASIC_DATAXtraTabPage"
-        Me.BASIC_DATAXtraTabPage.Size = New System.Drawing.Size(1620, 670)
+        Me.BASIC_DATAXtraTabPage.Size = New System.Drawing.Size(1624, 675)
         Me.BASIC_DATAXtraTabPage.Text = "BASIC DATA FOR INSTRUMENTS"
         '
         'GroupControl17
@@ -3930,7 +3929,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControl2.Name = "LayoutControl2"
         Me.LayoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 102, 250, 350)
         Me.LayoutControl2.Root = Me.LayoutControlGroup2
-        Me.LayoutControl2.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControl2.Size = New System.Drawing.Size(1624, 675)
         Me.LayoutControl2.TabIndex = 2
         Me.LayoutControl2.Text = "LayoutControl1"
         '
@@ -3949,11 +3948,11 @@ Partial Class AllContractsAccounts
         Me.AllCustomerContracts_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.AllCustomerContracts_GridControl.EmbeddedNavigator.Buttons.Remove.Visible = False
         Me.AllCustomerContracts_GridControl.EmbeddedNavigator.CustomButtons.AddRange(New DevExpress.XtraEditors.NavigatorCustomButton() {New DevExpress.XtraEditors.NavigatorCustomButton(-1, 11, True, True, "Save Value Adjustments", "1")})
-        Me.AllCustomerContracts_GridControl.Location = New System.Drawing.Point(24, 47)
+        Me.AllCustomerContracts_GridControl.Location = New System.Drawing.Point(24, 55)
         Me.AllCustomerContracts_GridControl.MainView = Me.GridView1
         Me.AllCustomerContracts_GridControl.Name = "AllCustomerContracts_GridControl"
         Me.AllCustomerContracts_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.Valid_RepositoryItemImageComboBox, Me.ClientIdType_RepositoryItemComboBox, Me.Notes_RepositoryItemMemoExEdit, Me.SignerName_RepositoryItemTextEdit, Me.ID_Type_RepositoryItemImageComboBox, Me.CCY_RepositoryItemComboBox5})
-        Me.AllCustomerContracts_GridControl.Size = New System.Drawing.Size(1572, 599)
+        Me.AllCustomerContracts_GridControl.Size = New System.Drawing.Size(1576, 596)
         Me.AllCustomerContracts_GridControl.TabIndex = 4
         Me.AllCustomerContracts_GridControl.UseEmbeddedNavigator = True
         Me.AllCustomerContracts_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GridView1})
@@ -4182,7 +4181,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup2.GroupBordersVisible = False
         Me.LayoutControlGroup2.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup5, Me.SplitterItem2})
         Me.LayoutControlGroup2.Name = "Root"
-        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControlGroup2.Size = New System.Drawing.Size(1624, 675)
         '
         'LayoutControlGroup5
         '
@@ -4190,9 +4189,9 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup5.AppearanceGroup.Options.UseForeColor = True
         Me.LayoutControlGroup5.CustomizationFormText = "All Client Account Signer"
         Me.LayoutControlGroup5.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem5})
-        Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 5)
+        Me.LayoutControlGroup5.Location = New System.Drawing.Point(0, 10)
         Me.LayoutControlGroup5.Name = "LayoutControlGroup5"
-        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1600, 645)
+        Me.LayoutControlGroup5.Size = New System.Drawing.Size(1604, 645)
         Me.LayoutControlGroup5.Text = "All Value Adjustments"
         '
         'LayoutControlItem5
@@ -4201,7 +4200,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlItem5.CustomizationFormText = "LayoutControlItem2"
         Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem5.Name = "LayoutControlItem2"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(1576, 603)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(1580, 600)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
@@ -4211,7 +4210,7 @@ Partial Class AllContractsAccounts
         Me.SplitterItem2.CustomizationFormText = "SplitterItem2"
         Me.SplitterItem2.Location = New System.Drawing.Point(0, 0)
         Me.SplitterItem2.Name = "SplitterItem2"
-        Me.SplitterItem2.Size = New System.Drawing.Size(1600, 5)
+        Me.SplitterItem2.Size = New System.Drawing.Size(1604, 10)
         '
         'SpinEdit1
         '
@@ -6680,7 +6679,7 @@ Partial Class AllContractsAccounts
         Me.ADDITIONAL_DATAXtraTabPage.Controls.Add(Me.GroupControl9)
         Me.ADDITIONAL_DATAXtraTabPage.Controls.Add(Me.GroupControl8)
         Me.ADDITIONAL_DATAXtraTabPage.Name = "ADDITIONAL_DATAXtraTabPage"
-        Me.ADDITIONAL_DATAXtraTabPage.Size = New System.Drawing.Size(1620, 670)
+        Me.ADDITIONAL_DATAXtraTabPage.Size = New System.Drawing.Size(1624, 675)
         Me.ADDITIONAL_DATAXtraTabPage.Text = "ADDITIONAL DATA FOR INSTRUMENTS"
         '
         'GroupControl5
@@ -7750,7 +7749,7 @@ Partial Class AllContractsAccounts
         Me.VALUE_ADJUSTMENTS_XtraTabPage.Appearance.HeaderActive.Options.UseForeColor = True
         Me.VALUE_ADJUSTMENTS_XtraTabPage.Controls.Add(Me.LayoutControl2)
         Me.VALUE_ADJUSTMENTS_XtraTabPage.Name = "VALUE_ADJUSTMENTS_XtraTabPage"
-        Me.VALUE_ADJUSTMENTS_XtraTabPage.Size = New System.Drawing.Size(1620, 670)
+        Me.VALUE_ADJUSTMENTS_XtraTabPage.Size = New System.Drawing.Size(1624, 675)
         Me.VALUE_ADJUSTMENTS_XtraTabPage.Text = "VALUE ADJUSTMENTS"
         '
         'CUSTOMER_RATINGXtraTabPage
@@ -7762,7 +7761,7 @@ Partial Class AllContractsAccounts
         Me.CUSTOMER_RATINGXtraTabPage.Controls.Add(Me.LayoutControl6)
         Me.CUSTOMER_RATINGXtraTabPage.Name = "CUSTOMER_RATINGXtraTabPage"
         Me.CUSTOMER_RATINGXtraTabPage.PageVisible = False
-        Me.CUSTOMER_RATINGXtraTabPage.Size = New System.Drawing.Size(1620, 670)
+        Me.CUSTOMER_RATINGXtraTabPage.Size = New System.Drawing.Size(1624, 675)
         Me.CUSTOMER_RATINGXtraTabPage.Text = "CUSTOMER RATINGS"
         '
         'LayoutControl6
@@ -7773,7 +7772,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControl6.Name = "LayoutControl6"
         Me.LayoutControl6.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 266, 250, 350)
         Me.LayoutControl6.Root = Me.LayoutControlGroup13
-        Me.LayoutControl6.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControl6.Size = New System.Drawing.Size(1624, 675)
         Me.LayoutControl6.TabIndex = 1
         Me.LayoutControl6.Text = "LayoutControl6"
         '
@@ -7794,7 +7793,7 @@ Partial Class AllContractsAccounts
         Me.CustomerRating_GridControl.MainView = Me.CustomerRating_GridView
         Me.CustomerRating_GridControl.Name = "CustomerRating_GridControl"
         Me.CustomerRating_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox4, Me.RepositoryItemTextEdit7, Me.Other_RepositoryItemTextEdit, Me.RepositoryItemTextEdit13, Me.RepositoryItemMemoExEdit6, Me.RepositoryItemGridLookUpEdit4, Me.PEP_RepositoryItemImageComboBox, Me.PersonalPresence_RepositoryItemImageComboBox, Me.CountryClientShareHold_RepositoryItemImageComboBox, Me.LegalStatus_RepositoryItemImageComboBox, Me.RepositoryItemMemoEdit1, Me.TurnoverEUR_RepositoryItemImageComboBox, Me.InternetBanking_RepositoryItemImageComboBox, Me.KindOfBusiness_RepositoryItemImageComboBox, Me.LegalProblems_RepositoryItemImageComboBox})
-        Me.CustomerRating_GridControl.Size = New System.Drawing.Size(1596, 646)
+        Me.CustomerRating_GridControl.Size = New System.Drawing.Size(1600, 651)
         Me.CustomerRating_GridControl.TabIndex = 42
         Me.CustomerRating_GridControl.UseEmbeddedNavigator = True
         Me.CustomerRating_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.CustomerRating_GridView})
@@ -8222,7 +8221,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup13.GroupBordersVisible = False
         Me.LayoutControlGroup13.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem15})
         Me.LayoutControlGroup13.Name = "Root"
-        Me.LayoutControlGroup13.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControlGroup13.Size = New System.Drawing.Size(1624, 675)
         Me.LayoutControlGroup13.TextVisible = False
         '
         'LayoutControlItem15
@@ -8231,7 +8230,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlItem15.CustomizationFormText = "LayoutControlItem12"
         Me.LayoutControlItem15.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem15.Name = "LayoutControlItem12"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(1600, 650)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(1604, 655)
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem15.TextVisible = False
         '
@@ -8244,7 +8243,7 @@ Partial Class AllContractsAccounts
         Me.CUSTOMER_GROUPINGXtraTabPage.Controls.Add(Me.LayoutControl3)
         Me.CUSTOMER_GROUPINGXtraTabPage.Name = "CUSTOMER_GROUPINGXtraTabPage"
         Me.CUSTOMER_GROUPINGXtraTabPage.PageVisible = False
-        Me.CUSTOMER_GROUPINGXtraTabPage.Size = New System.Drawing.Size(1620, 670)
+        Me.CUSTOMER_GROUPINGXtraTabPage.Size = New System.Drawing.Size(1624, 675)
         Me.CUSTOMER_GROUPINGXtraTabPage.Text = "CUSTOMER GROUPING"
         '
         'LayoutControl3
@@ -8257,7 +8256,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControl3.Name = "LayoutControl3"
         Me.LayoutControl3.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 102, 250, 350)
         Me.LayoutControl3.Root = Me.LayoutControlGroup6
-        Me.LayoutControl3.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControl3.Size = New System.Drawing.Size(1624, 675)
         Me.LayoutControl3.TabIndex = 3
         Me.LayoutControl3.Text = "LayoutControl3"
         '
@@ -8271,7 +8270,7 @@ Partial Class AllContractsAccounts
         Me.PanelControl1.Controls.Add(Label45)
         Me.PanelControl1.Location = New System.Drawing.Point(12, 12)
         Me.PanelControl1.Name = "PanelControl1"
-        Me.PanelControl1.Size = New System.Drawing.Size(1596, 104)
+        Me.PanelControl1.Size = New System.Drawing.Size(1600, 105)
         Me.PanelControl1.TabIndex = 5
         '
         'Label43
@@ -8330,11 +8329,11 @@ Partial Class AllContractsAccounts
         Me.GeneralManager_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.GeneralManager_GridControl.EmbeddedNavigator.Buttons.Remove.Hint = "Remove General Manager"
         Me.GeneralManager_GridControl.EmbeddedNavigator.Buttons.Remove.ImageIndex = 22
-        Me.GeneralManager_GridControl.Location = New System.Drawing.Point(24, 159)
+        Me.GeneralManager_GridControl.Location = New System.Drawing.Point(24, 164)
         Me.GeneralManager_GridControl.MainView = Me.GeneralManager_GridView
         Me.GeneralManager_GridControl.Name = "GeneralManager_GridControl"
         Me.GeneralManager_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox3, Me.RepositoryItemComboBox1, Me.RepositoryItemMemoExEdit1, Me.RepositoryItemTextEdit2, Me.RepositoryItemImageComboBox4})
-        Me.GeneralManager_GridControl.Size = New System.Drawing.Size(1572, 487)
+        Me.GeneralManager_GridControl.Size = New System.Drawing.Size(1576, 487)
         Me.GeneralManager_GridControl.TabIndex = 4
         Me.GeneralManager_GridControl.UseEmbeddedNavigator = True
         Me.GeneralManager_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GeneralManager_GridView})
@@ -8471,11 +8470,11 @@ Partial Class AllContractsAccounts
         Me.Grouping_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.Grouping_GridControl.EmbeddedNavigator.Buttons.Remove.Hint = "Remove Shareholder"
         Me.Grouping_GridControl.EmbeddedNavigator.Buttons.Remove.ImageIndex = 22
-        Me.Grouping_GridControl.Location = New System.Drawing.Point(24, 159)
+        Me.Grouping_GridControl.Location = New System.Drawing.Point(24, 164)
         Me.Grouping_GridControl.MainView = Me.GroupDetails_GridView
         Me.Grouping_GridControl.Name = "Grouping_GridControl"
         Me.Grouping_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.ShareholderType_RepositoryItemComboBox, Me.RepositoryItemTextEdit3, Me.RepositoryItemTextEdit4, Me.RepositoryItemTextEdit5, Me.RepositoryItemMemoExEdit3, Me.RepositoryItemGridLookUpEdit1, Me.ShareholderType_RepositoryItemImageComboBox, Me.RepositoryItemImageComboBox6, Me.RepositoryItemImageComboBox5, Me.RepositoryItemImageComboBox7, Me.SharePercent_RepositoryItemSpinEdit})
-        Me.Grouping_GridControl.Size = New System.Drawing.Size(1572, 487)
+        Me.Grouping_GridControl.Size = New System.Drawing.Size(1576, 487)
         Me.Grouping_GridControl.TabIndex = 0
         Me.Grouping_GridControl.UseEmbeddedNavigator = True
         Me.Grouping_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.GroupDetails_GridView, Me.GridView4, Me.LayoutView2})
@@ -9365,15 +9364,15 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup6.GroupBordersVisible = False
         Me.LayoutControlGroup6.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.TabbedControlGroup1, Me.LayoutControlItem13, Me.SplitterItem3})
         Me.LayoutControlGroup6.Name = "Root"
-        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControlGroup6.Size = New System.Drawing.Size(1624, 675)
         '
         'TabbedControlGroup1
         '
         Me.TabbedControlGroup1.CustomizationFormText = "TabbedControlGroup1"
-        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 113)
+        Me.TabbedControlGroup1.Location = New System.Drawing.Point(0, 119)
         Me.TabbedControlGroup1.Name = "TabbedControlGroup1"
         Me.TabbedControlGroup1.SelectedTabPage = Me.LayoutControlGroup7
-        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1600, 537)
+        Me.TabbedControlGroup1.Size = New System.Drawing.Size(1604, 536)
         Me.TabbedControlGroup1.TabPages.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup7, Me.LayoutControlGroup8})
         '
         'LayoutControlGroup7
@@ -9388,7 +9387,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup7.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem10})
         Me.LayoutControlGroup7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup7.Name = "LayoutControlGroup6"
-        Me.LayoutControlGroup7.Size = New System.Drawing.Size(1576, 491)
+        Me.LayoutControlGroup7.Size = New System.Drawing.Size(1580, 491)
         Me.LayoutControlGroup7.Text = "Client Grouping Details"
         '
         'LayoutControlItem10
@@ -9398,7 +9397,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem10.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem10.Name = "LayoutControlItem6"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(1576, 491)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(1580, 491)
         Me.LayoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
@@ -9413,7 +9412,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup8.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem12})
         Me.LayoutControlGroup8.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup8.Name = "LayoutControlGroup8"
-        Me.LayoutControlGroup8.Size = New System.Drawing.Size(1576, 491)
+        Me.LayoutControlGroup8.Size = New System.Drawing.Size(1580, 491)
         Me.LayoutControlGroup8.Text = "Clients General Manager"
         Me.LayoutControlGroup8.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
         '
@@ -9423,7 +9422,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlItem12.CustomizationFormText = "LayoutControlItem2"
         Me.LayoutControlItem12.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem12.Name = "LayoutControlItem7"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(1576, 491)
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(1580, 491)
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem12.TextVisible = False
         '
@@ -9433,7 +9432,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlItem13.CustomizationFormText = "LayoutControlItem8"
         Me.LayoutControlItem13.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem13.Name = "LayoutControlItem8"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(1600, 108)
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(1604, 109)
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem13.TextVisible = False
         '
@@ -9441,9 +9440,9 @@ Partial Class AllContractsAccounts
         '
         Me.SplitterItem3.AllowHotTrack = True
         Me.SplitterItem3.CustomizationFormText = "SplitterItem3"
-        Me.SplitterItem3.Location = New System.Drawing.Point(0, 108)
+        Me.SplitterItem3.Location = New System.Drawing.Point(0, 109)
         Me.SplitterItem3.Name = "SplitterItem3"
-        Me.SplitterItem3.Size = New System.Drawing.Size(1600, 5)
+        Me.SplitterItem3.Size = New System.Drawing.Size(1604, 10)
         '
         'CLIENT_DOCSXtraTabPage
         '
@@ -9454,7 +9453,7 @@ Partial Class AllContractsAccounts
         Me.CLIENT_DOCSXtraTabPage.Controls.Add(Me.LayoutControl4)
         Me.CLIENT_DOCSXtraTabPage.Name = "CLIENT_DOCSXtraTabPage"
         Me.CLIENT_DOCSXtraTabPage.PageVisible = False
-        Me.CLIENT_DOCSXtraTabPage.Size = New System.Drawing.Size(1620, 670)
+        Me.CLIENT_DOCSXtraTabPage.Size = New System.Drawing.Size(1624, 675)
         Me.CLIENT_DOCSXtraTabPage.Text = "CLIENT DOCUMENTS"
         '
         'LayoutControl4
@@ -9467,7 +9466,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControl4.Name = "LayoutControl4"
         Me.LayoutControl4.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 266, 250, 350)
         Me.LayoutControl4.Root = Me.LayoutControlGroup4
-        Me.LayoutControl4.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControl4.Size = New System.Drawing.Size(1624, 675)
         Me.LayoutControl4.TabIndex = 0
         Me.LayoutControl4.Text = "LayoutControl2"
         '
@@ -9475,7 +9474,7 @@ Partial Class AllContractsAccounts
         '
         Me.AddNewCustomerFile_btn.ImageOptions.ImageIndex = 20
         Me.AddNewCustomerFile_btn.ImageOptions.ImageList = Me.ImageCollection1
-        Me.AddNewCustomerFile_btn.Location = New System.Drawing.Point(12, 636)
+        Me.AddNewCustomerFile_btn.Location = New System.Drawing.Point(12, 641)
         Me.AddNewCustomerFile_btn.Name = "AddNewCustomerFile_btn"
         Me.AddNewCustomerFile_btn.Size = New System.Drawing.Size(93, 22)
         Me.AddNewCustomerFile_btn.StyleController = Me.LayoutControl4
@@ -9484,10 +9483,10 @@ Partial Class AllContractsAccounts
         '
         'WebBrowser1
         '
-        Me.WebBrowser1.Location = New System.Drawing.Point(625, 12)
+        Me.WebBrowser1.Location = New System.Drawing.Point(627, 12)
         Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
         Me.WebBrowser1.Name = "WebBrowser1"
-        Me.WebBrowser1.Size = New System.Drawing.Size(983, 646)
+        Me.WebBrowser1.Size = New System.Drawing.Size(985, 651)
         Me.WebBrowser1.TabIndex = 5
         '
         'TreeList1
@@ -9513,32 +9512,10 @@ Partial Class AllContractsAccounts
         Me.TreeList1.Appearance.TreeLine.Options.UseForeColor = True
         Me.TreeList1.Columns.AddRange(New DevExpress.XtraTreeList.Columns.TreeListColumn() {Me.TreeListColumn1, Me.TreeListColumn2, Me.TreeListColumn3, Me.TreeListColumn4, Me.TreeListColumn5})
         Me.TreeList1.CustomizationFormBounds = New System.Drawing.Rectangle(1231, 640, 250, 209)
-        'FilterCondition1.Column = Me.TreeListColumn1
-        'FilterCondition1.Condition = DevExpress.XtraTreeList.FilterConditionEnum.EndsWith
-        'FilterCondition1.Value1 = ".doc"
-        'FilterCondition2.Column = Me.TreeListColumn1
-        'FilterCondition2.Condition = DevExpress.XtraTreeList.FilterConditionEnum.EndsWith
-        'FilterCondition2.Value1 = ".docx"
-        'FilterCondition3.Column = Me.TreeListColumn1
-        'FilterCondition3.Condition = DevExpress.XtraTreeList.FilterConditionEnum.EndsWith
-        'FilterCondition3.Value1 = ".db"
-        'FilterCondition4.Column = Me.TreeListColumn1
-        'FilterCondition4.Condition = DevExpress.XtraTreeList.FilterConditionEnum.EndsWith
-        'FilterCondition4.Value1 = ".bak"
-        'FilterCondition5.Column = Me.TreeListColumn1
-        'FilterCondition5.Condition = DevExpress.XtraTreeList.FilterConditionEnum.EndsWith
-        'FilterCondition5.Value1 = ".xls"
-        'FilterCondition6.Column = Me.TreeListColumn1
-        'FilterCondition6.Condition = DevExpress.XtraTreeList.FilterConditionEnum.EndsWith
-        'FilterCondition6.Value1 = ".xlsx"
-        'FilterCondition7.Column = Me.TreeListColumn1
-        'FilterCondition7.Condition = DevExpress.XtraTreeList.FilterConditionEnum.EndsWith
-        'FilterCondition7.Value1 = ".xlsw"
-        'Me.TreeList1.FilterConditions.AddRange(New DevExpress.XtraTreeList.FilterCondition() {FilterCondition1, FilterCondition2, FilterCondition3, FilterCondition4, FilterCondition5, FilterCondition6, FilterCondition7})
         Me.TreeList1.Location = New System.Drawing.Point(12, 12)
         Me.TreeList1.Name = "TreeList1"
         Me.TreeList1.OptionsBehavior.PopulateServiceColumns = True
-        Me.TreeList1.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.Extended
+        Me.TreeList1.OptionsFilter.FilterMode = DevExpress.XtraTreeList.FilterMode.ParentBranch
         Me.TreeList1.OptionsFind.AllowIncrementalSearch = True
         Me.TreeList1.OptionsFind.AlwaysVisible = True
         Me.TreeList1.OptionsFind.ExpandNodesOnIncrementalSearch = True
@@ -9546,7 +9523,7 @@ Partial Class AllContractsAccounts
         Me.TreeList1.OptionsView.ShowAutoFilterRow = True
         Me.TreeList1.OptionsView.ShowFilterPanelMode = DevExpress.XtraTreeList.ShowFilterPanelMode.ShowAlways
         Me.TreeList1.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit1})
-        Me.TreeList1.Size = New System.Drawing.Size(604, 620)
+        Me.TreeList1.Size = New System.Drawing.Size(601, 625)
         Me.TreeList1.TabIndex = 4
         '
         'TreeListColumn2
@@ -9603,7 +9580,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup4.GroupBordersVisible = False
         Me.LayoutControlGroup4.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.LayoutControlItem8, Me.SplitterItem1, Me.EmptySpaceItem5, Me.LayoutControlItem9})
         Me.LayoutControlGroup4.Name = "Root"
-        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControlGroup4.Size = New System.Drawing.Size(1624, 675)
         Me.LayoutControlGroup4.TextVisible = False
         '
         'LayoutControlItem7
@@ -9612,7 +9589,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlItem7.CustomizationFormText = "LayoutControlItem3"
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem3"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(608, 624)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(605, 629)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -9620,9 +9597,9 @@ Partial Class AllContractsAccounts
         '
         Me.LayoutControlItem8.Control = Me.WebBrowser1
         Me.LayoutControlItem8.CustomizationFormText = "LayoutControlItem4"
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(613, 0)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(615, 0)
         Me.LayoutControlItem8.Name = "LayoutControlItem4"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(987, 650)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(989, 655)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
@@ -9630,24 +9607,24 @@ Partial Class AllContractsAccounts
         '
         Me.SplitterItem1.AllowHotTrack = True
         Me.SplitterItem1.CustomizationFormText = "SplitterItem1"
-        Me.SplitterItem1.Location = New System.Drawing.Point(608, 0)
+        Me.SplitterItem1.Location = New System.Drawing.Point(605, 0)
         Me.SplitterItem1.Name = "SplitterItem1"
-        Me.SplitterItem1.Size = New System.Drawing.Size(5, 650)
+        Me.SplitterItem1.Size = New System.Drawing.Size(10, 655)
         '
         'EmptySpaceItem5
         '
         Me.EmptySpaceItem5.AllowHotTrack = False
         Me.EmptySpaceItem5.CustomizationFormText = "EmptySpaceItem1"
-        Me.EmptySpaceItem5.Location = New System.Drawing.Point(97, 624)
+        Me.EmptySpaceItem5.Location = New System.Drawing.Point(97, 629)
         Me.EmptySpaceItem5.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem5.Size = New System.Drawing.Size(511, 26)
+        Me.EmptySpaceItem5.Size = New System.Drawing.Size(508, 26)
         Me.EmptySpaceItem5.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.AddNewCustomerFile_btn
         Me.LayoutControlItem9.CustomizationFormText = "LayoutControlItem5"
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 624)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 629)
         Me.LayoutControlItem9.Name = "LayoutControlItem5"
         Me.LayoutControlItem9.Size = New System.Drawing.Size(97, 26)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
@@ -9662,7 +9639,7 @@ Partial Class AllContractsAccounts
         Me.CLIENTS_CONTACTSXtraTabPage.Controls.Add(Me.LayoutControl7)
         Me.CLIENTS_CONTACTSXtraTabPage.Name = "CLIENTS_CONTACTSXtraTabPage"
         Me.CLIENTS_CONTACTSXtraTabPage.PageVisible = False
-        Me.CLIENTS_CONTACTSXtraTabPage.Size = New System.Drawing.Size(1620, 670)
+        Me.CLIENTS_CONTACTSXtraTabPage.Size = New System.Drawing.Size(1624, 675)
         Me.CLIENTS_CONTACTSXtraTabPage.Text = "CLIENT CONTACTS"
         '
         'LayoutControl7
@@ -9674,7 +9651,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControl7.Name = "LayoutControl7"
         Me.LayoutControl7.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(351, 102, 250, 350)
         Me.LayoutControl7.Root = Me.LayoutControlGroup9
-        Me.LayoutControl7.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControl7.Size = New System.Drawing.Size(1624, 675)
         Me.LayoutControl7.TabIndex = 4
         Me.LayoutControl7.Text = "LayoutControl4"
         '
@@ -9690,11 +9667,11 @@ Partial Class AllContractsAccounts
         Me.ClientsContactsNotes_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.ClientsContactsNotes_GridControl.EmbeddedNavigator.Buttons.Remove.Hint = "Remove"
         Me.ClientsContactsNotes_GridControl.EmbeddedNavigator.Buttons.Remove.ImageIndex = 22
-        Me.ClientsContactsNotes_GridControl.Location = New System.Drawing.Point(24, 376)
+        Me.ClientsContactsNotes_GridControl.Location = New System.Drawing.Point(24, 387)
         Me.ClientsContactsNotes_GridControl.MainView = Me.ClientsContactsNotes_GridView
         Me.ClientsContactsNotes_GridControl.Name = "ClientsContactsNotes_GridControl"
         Me.ClientsContactsNotes_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemImageComboBox8, Me.RepositoryItemComboBox2, Me.RepositoryItemMemoExEdit4, Me.RepositoryItemTextEdit6, Me.RepositoryItemImageComboBox9})
-        Me.ClientsContactsNotes_GridControl.Size = New System.Drawing.Size(1572, 270)
+        Me.ClientsContactsNotes_GridControl.Size = New System.Drawing.Size(1576, 264)
         Me.ClientsContactsNotes_GridControl.TabIndex = 4
         Me.ClientsContactsNotes_GridControl.UseEmbeddedNavigator = True
         Me.ClientsContactsNotes_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ClientsContactsNotes_GridView})
@@ -9859,11 +9836,11 @@ Partial Class AllContractsAccounts
         Me.ClientsContactPersons_GridControl.EmbeddedNavigator.Buttons.ImageList = Me.ImageCollection1
         Me.ClientsContactPersons_GridControl.EmbeddedNavigator.Buttons.Remove.Hint = "Remove Contact Person"
         Me.ClientsContactPersons_GridControl.EmbeddedNavigator.Buttons.Remove.ImageIndex = 22
-        Me.ClientsContactPersons_GridControl.Location = New System.Drawing.Point(24, 42)
+        Me.ClientsContactPersons_GridControl.Location = New System.Drawing.Point(24, 45)
         Me.ClientsContactPersons_GridControl.MainView = Me.ClientContactPersons_GridView
         Me.ClientsContactPersons_GridControl.Name = "ClientsContactPersons_GridControl"
         Me.ClientsContactPersons_GridControl.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemComboBox3, Me.Default_RepositoryItemTextEdit1, Me.RepositoryItemTextEdit8, Me.Email_RepositoryItemTextEdit, Me.RepositoryItemMemoExEdit5, Me.RepositoryItemGridLookUpEdit2, Me.RepositoryItemImageComboBox10, Me.RepositoryItemImageComboBox11, Me.RepositoryItemImageComboBox12, Me.RepositoryItemImageComboBox20, Me.RepositoryItemSpinEdit1})
-        Me.ClientsContactPersons_GridControl.Size = New System.Drawing.Size(1572, 283)
+        Me.ClientsContactPersons_GridControl.Size = New System.Drawing.Size(1576, 283)
         Me.ClientsContactPersons_GridControl.TabIndex = 0
         Me.ClientsContactPersons_GridControl.UseEmbeddedNavigator = True
         Me.ClientsContactPersons_GridControl.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.ClientContactPersons_GridView, Me.GridView11, Me.LayoutView3})
@@ -10779,7 +10756,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup9.GroupBordersVisible = False
         Me.LayoutControlGroup9.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlGroup10, Me.LayoutControlGroup15, Me.SplitterItem4})
         Me.LayoutControlGroup9.Name = "Root"
-        Me.LayoutControlGroup9.Size = New System.Drawing.Size(1620, 670)
+        Me.LayoutControlGroup9.Size = New System.Drawing.Size(1624, 675)
         '
         'LayoutControlGroup10
         '
@@ -10793,7 +10770,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup10.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem17})
         Me.LayoutControlGroup10.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup10.Name = "LayoutControlGroup9"
-        Me.LayoutControlGroup10.Size = New System.Drawing.Size(1600, 329)
+        Me.LayoutControlGroup10.Size = New System.Drawing.Size(1604, 332)
         Me.LayoutControlGroup10.Text = "Clients Contact Persons"
         '
         'LayoutControlItem17
@@ -10803,7 +10780,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem17.MinSize = New System.Drawing.Size(204, 24)
         Me.LayoutControlItem17.Name = "LayoutControlItem9"
-        Me.LayoutControlItem17.Size = New System.Drawing.Size(1576, 287)
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(1580, 287)
         Me.LayoutControlItem17.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem17.TextVisible = False
@@ -10820,9 +10797,9 @@ Partial Class AllContractsAccounts
         Me.LayoutControlGroup15.AppearanceTabPage.HeaderActive.Options.UseForeColor = True
         Me.LayoutControlGroup15.CustomizationFormText = "Clients General Manager"
         Me.LayoutControlGroup15.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem18})
-        Me.LayoutControlGroup15.Location = New System.Drawing.Point(0, 334)
+        Me.LayoutControlGroup15.Location = New System.Drawing.Point(0, 342)
         Me.LayoutControlGroup15.Name = "LayoutControlGroup10"
-        Me.LayoutControlGroup15.Size = New System.Drawing.Size(1600, 316)
+        Me.LayoutControlGroup15.Size = New System.Drawing.Size(1604, 313)
         Me.LayoutControlGroup15.Text = "Contacts with Client"
         '
         'LayoutControlItem18
@@ -10831,7 +10808,7 @@ Partial Class AllContractsAccounts
         Me.LayoutControlItem18.CustomizationFormText = "LayoutControlItem2"
         Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem18.Name = "LayoutControlItem10"
-        Me.LayoutControlItem18.Size = New System.Drawing.Size(1576, 274)
+        Me.LayoutControlItem18.Size = New System.Drawing.Size(1580, 268)
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem18.TextVisible = False
         '
@@ -10839,9 +10816,9 @@ Partial Class AllContractsAccounts
         '
         Me.SplitterItem4.AllowHotTrack = True
         Me.SplitterItem4.CustomizationFormText = "SplitterItem4"
-        Me.SplitterItem4.Location = New System.Drawing.Point(0, 329)
+        Me.SplitterItem4.Location = New System.Drawing.Point(0, 332)
         Me.SplitterItem4.Name = "SplitterItem4"
-        Me.SplitterItem4.Size = New System.Drawing.Size(1600, 5)
+        Me.SplitterItem4.Size = New System.Drawing.Size(1604, 10)
         '
         'Intercompany_ImageComboBoxEdit
         '
@@ -11012,6 +10989,34 @@ Partial Class AllContractsAccounts
         Me.Class_lbl.Text = "Class"
         Me.Class_lbl.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
+        'ContractsStatus_ImageComboBoxEdit
+        '
+        Me.ContractsStatus_ImageComboBoxEdit.Location = New System.Drawing.Point(140, 12)
+        Me.ContractsStatus_ImageComboBoxEdit.Name = "ContractsStatus_ImageComboBoxEdit"
+        Me.ContractsStatus_ImageComboBoxEdit.Properties.AppearanceFocused.BackColor = System.Drawing.Color.Yellow
+        Me.ContractsStatus_ImageComboBoxEdit.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.Yellow
+        Me.ContractsStatus_ImageComboBoxEdit.Properties.AppearanceFocused.ForeColor = System.Drawing.Color.Black
+        Me.ContractsStatus_ImageComboBoxEdit.Properties.AppearanceFocused.Options.UseBackColor = True
+        Me.ContractsStatus_ImageComboBoxEdit.Properties.AppearanceFocused.Options.UseForeColor = True
+        Me.ContractsStatus_ImageComboBoxEdit.Properties.Buttons.AddRange(New DevExpress.XtraEditors.Controls.EditorButton() {New DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)})
+        Me.ContractsStatus_ImageComboBoxEdit.Properties.Items.AddRange(New DevExpress.XtraEditors.Controls.ImageComboBoxItem() {New DevExpress.XtraEditors.Controls.ImageComboBoxItem("ACTIVE", "A", 5), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("MATURED", "M", 6), New DevExpress.XtraEditors.Controls.ImageComboBoxItem("ALL", "ALL", 13)})
+        Me.ContractsStatus_ImageComboBoxEdit.Properties.SmallImages = Me.ImageCollection1
+        Me.ContractsStatus_ImageComboBoxEdit.Size = New System.Drawing.Size(101, 20)
+        Me.ContractsStatus_ImageComboBoxEdit.StyleController = Me.LayoutControl1
+        Me.ContractsStatus_ImageComboBoxEdit.TabIndex = 113
+        '
+        'LayoutControlItem4
+        '
+        Me.LayoutControlItem4.AppearanceItemCaption.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LayoutControlItem4.AppearanceItemCaption.Options.UseFont = True
+        Me.LayoutControlItem4.Control = Me.ContractsStatus_ImageComboBoxEdit
+        Me.LayoutControlItem4.ImageOptions.Image = CType(resources.GetObject("LayoutControlItem4.ImageOptions.Image"), System.Drawing.Image)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControlItem4.Name = "LayoutControlItem4"
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(233, 26)
+        Me.LayoutControlItem4.Text = "Contracts Status"
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(116, 16)
+        '
         'AllContractsAccounts
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -11046,366 +11051,368 @@ Partial Class AllContractsAccounts
         Me.Controls.Add(Label50)
         Me.Controls.Add(Me.CollateralKEV_ImageComboBoxEdit)
         Me.Controls.Add(Me.Class_lbl)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.IconOptions.Icon = CType(resources.GetObject("AllContractsAccounts.IconOptions.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "AllContractsAccounts"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "All Customers Contracts / Accounts"
-        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ALL_CONTRACTS_ACCOUNTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AllContractsAccountsDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AllCustomerContracts_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.KEV_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BIC_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LEI_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CCB_Group_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DefaultRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ImageCollection1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PrintingSystem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ALL_CONTRACTS_ACCOUNTSBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AllContractsAccountsDataSet, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AllCustomerContracts_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.KEV_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.BIC_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LEI_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CCB_Group_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DefaultRepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.BehaviorManager1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl1.ResumeLayout(False)
-        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ContractSearch_GridLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ContractNr_Gridview, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Valid_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AnaCreditCustomer_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClientName_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ContractNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.XtraTabControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DxValidationProvider1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ContractSearch_GridLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ContractNr_Gridview, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Valid_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AnaCreditCustomer_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ClientName_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ClientNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ContractNr_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.XtraTabControl2, System.ComponentModel.ISupportInitialize).EndInit
         Me.XtraTabControl2.ResumeLayout(False)
         Me.BASIC_DATAXtraTabPage.ResumeLayout(False)
-        CType(Me.GroupControl17, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl17, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl17.ResumeLayout(False)
-        Me.GroupControl17.PerformLayout()
-        CType(Me.PrincipalAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PrincipalCCY_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl17.PerformLayout
+        CType(Me.PrincipalAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PrincipalCCY_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl7, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl7.ResumeLayout(False)
-        CType(Me.SourcesOfEncumbrance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SourceEncumbrance_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl20, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SourcesOfEncumbrance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SourceEncumbrance_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl20, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl20.ResumeLayout(False)
-        Me.GroupControl20.PerformLayout()
-        CType(Me.ComulativeRecoveryAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DatePastDue_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DatePastDue_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AmountPastDue_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl21, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl20.PerformLayout
+        CType(Me.ComulativeRecoveryAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DatePastDue_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DatePastDue_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AmountPastDue_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl21, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl21.ResumeLayout(False)
-        Me.GroupControl21.PerformLayout()
-        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SearchLookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl21.PerformLayout
+        CType(Me.DateEdit1.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DateEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SearchLookUpEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView20, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControl2, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl2.ResumeLayout(False)
-        CType(Me.AllCustomerContracts_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClientIdType_RepositoryItemComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CCY_RepositoryItemComboBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SignerName_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Valid_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Notes_RepositoryItemMemoExEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ID_Type_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SpinEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DefaultStatusDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DefaultStatusDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DefaultStatus_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DefaultStatus_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl19, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AllCustomerContracts_GridControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ALL_CONTRACTS_ACCOUNTS_VALUE_ADJUSTBindingSource, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ClientIdType_RepositoryItemComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CCY_RepositoryItemComboBox5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SignerName_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Valid_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Notes_RepositoryItemMemoExEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ID_Type_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SplitterItem2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SpinEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DefaultStatusDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DefaultStatusDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DefaultStatus_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DefaultStatus_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl19, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl19.ResumeLayout(False)
-        Me.GroupControl19.PerformLayout()
-        CType(Me.RepaymentRights_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepaymentRights_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl12, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl19.PerformLayout
+        CType(Me.RepaymentRights_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepaymentRights_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl12, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl12.ResumeLayout(False)
-        Me.GroupControl12.PerformLayout()
-        CType(Me.TypeOfSecurization_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TypeOfSecurization_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl18, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl12.PerformLayout
+        CType(Me.TypeOfSecurization_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TypeOfSecurization_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl18, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl18.ResumeLayout(False)
-        Me.GroupControl18.PerformLayout()
-        CType(Me.Purpose_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Purpose_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ProjectFinance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ProjectFinanceLoan_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl16, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl18.PerformLayout
+        CType(Me.Purpose_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Purpose_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ProjectFinance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ProjectFinanceLoan_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl16, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl16.ResumeLayout(False)
-        Me.GroupControl16.PerformLayout()
-        CType(Me.EuroAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.OrigCurAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Currency_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ExchangeRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl15, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl16.PerformLayout
+        CType(Me.EuroAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.OrigCurAmount_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Currency_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ExchangeRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl15, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl15.ResumeLayout(False)
-        CType(Me.FiduciaryInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FiduciaryInstrument_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl14, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FiduciaryInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.FiduciaryInstrument_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl14, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl14.ResumeLayout(False)
-        Me.GroupControl14.PerformLayout()
-        CType(Me.EndDateOfInterestPaymentOnlyPeriodDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EndDateOfInterestPaymentOnlyPeriodDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AmortizationType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AmortizationType_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl14.PerformLayout
+        CType(Me.EndDateOfInterestPaymentOnlyPeriodDateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EndDateOfInterestPaymentOnlyPeriodDateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AmortizationType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AmortizationType_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl6, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl6.ResumeLayout(False)
-        CType(Me.AccountingClassifInstruments_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AccClassificInstrum_Gridview, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl13, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AccountingClassifInstruments_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AccClassificInstrum_Gridview, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl13, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl13.ResumeLayout(False)
-        CType(Me.TypeOfInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TypeOfInstrument_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TypeOfInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TypeOfInstrument_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl3, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl3.ResumeLayout(False)
-        Me.GroupControl3.PerformLayout()
-        CType(Me.Recourse_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Recourse_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl3.PerformLayout
+        CType(Me.Recourse_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Recourse_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl2, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl2.ResumeLayout(False)
-        Me.GroupControl2.PerformLayout()
-        CType(Me.ImpairmentStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.WriteOffsStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AverageInterestRate_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentFreq_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PaymentFrequency_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ReferenceRate_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ReferenceRate_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InterestRateType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InterestRateType_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InterestRateResFreq_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InterestRateResetFrequency_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InterestRateFloor_TextEdit5.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InterestRateCap_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InterestRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Spread_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl2.PerformLayout
+        CType(Me.ImpairmentStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.WriteOffsStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AverageInterestRate_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PaymentFreq_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PaymentFrequency_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ReferenceRate_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ReferenceRate_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InterestRateType_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InterestRateType_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InterestRateResFreq_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InterestRateResetFrequency_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InterestRateFloor_TextEdit5.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InterestRateCap_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InterestRate_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Spread_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl1.ResumeLayout(False)
-        Me.GroupControl1.PerformLayout()
-        CType(Me.SyndicContractIdent_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MaturityDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MaturityDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StartDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StartDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InputDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InputDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ProductType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ContractType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BusinessType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl1.PerformLayout
+        CType(Me.SyndicContractIdent_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.MaturityDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.MaturityDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.StartDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.StartDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InputDate_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InputDate_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ProductType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ContractType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.BusinessType_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
         Me.ADDITIONAL_DATAXtraTabPage.ResumeLayout(False)
-        CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroupControl5, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl5.ResumeLayout(False)
-        Me.GroupControl5.PerformLayout()
-        CType(Me.DateForbearanceStatus_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DateForbearanceStatus_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StatusForbearance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.StatusForbearance_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl5.PerformLayout
+        CType(Me.DateForbearanceStatus_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DateForbearanceStatus_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.StatusForbearance_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.StatusForbearance_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl4, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl4.ResumeLayout(False)
-        Me.GroupControl4.PerformLayout()
-        CType(Me.DatePerformingStatus_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DatePerformingStatus_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PerformingStatusInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PerformingStatus_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl11, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl4.PerformLayout
+        CType(Me.DatePerformingStatus_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.DatePerformingStatus_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PerformingStatusInstrument_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PerformingStatus_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl11, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl11.ResumeLayout(False)
-        Me.GroupControl11.PerformLayout()
-        CType(Me.EnterpriseAnnualTurnover_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmployeesNumber_SpinEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnterpriseSize_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnterpriseSize_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EnterpriseSize_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Enterprise_Size_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl10, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl11.PerformLayout
+        CType(Me.EnterpriseAnnualTurnover_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmployeesNumber_SpinEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EnterpriseSize_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EnterpriseSize_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EnterpriseSize_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Enterprise_Size_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl10, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl10.ResumeLayout(False)
-        Me.GroupControl10.PerformLayout()
-        CType(Me.LegalProceedings_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LegalProceedings_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LegalProceedingsStatus_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LegalProceedingsStatus_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl9, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl10.PerformLayout
+        CType(Me.LegalProceedings_DateEdit.Properties.CalendarTimeProperties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LegalProceedings_DateEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LegalProceedingsStatus_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LegalProceedingsStatus_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl9, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl9.ResumeLayout(False)
-        Me.GroupControl9.PerformLayout()
-        CType(Me.CounterpartyRole_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LegalForm_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.JointLiabilityAmount_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl9.PerformLayout
+        CType(Me.CounterpartyRole_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LegalForm_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.JointLiabilityAmount_SpinEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupControl8, System.ComponentModel.ISupportInitialize).EndInit
         Me.GroupControl8.ResumeLayout(False)
-        Me.GroupControl8.PerformLayout()
-        CType(Me.NACE_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NACE_GridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupControl8.PerformLayout
+        CType(Me.NACE_SearchLookUpEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.NACE_GridView, System.ComponentModel.ISupportInitialize).EndInit
         Me.VALUE_ADJUSTMENTS_XtraTabPage.ResumeLayout(False)
         Me.CUSTOMER_RATINGXtraTabPage.ResumeLayout(False)
-        CType(Me.LayoutControl6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl6, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl6.ResumeLayout(False)
-        CType(Me.CustomerRating_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CustomerRating_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Other_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoExEdit6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemGridLookUpEdit4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PEP_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PersonalPresence_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CountryClientShareHold_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LegalStatus_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TurnoverEUR_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.InternetBanking_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.KindOfBusiness_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LegalProblems_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CustomerRating_GridControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CustomerRating_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemComboBox4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Other_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit13, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemMemoExEdit6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemGridLookUpEdit4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PEP_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.PersonalPresence_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CountryClientShareHold_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LegalStatus_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemMemoEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TurnoverEUR_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.InternetBanking_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.KindOfBusiness_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LegalProblems_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup13, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit
         Me.CUSTOMER_GROUPINGXtraTabPage.ResumeLayout(False)
-        CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl3, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl3.ResumeLayout(False)
-        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PanelControl1, System.ComponentModel.ISupportInitialize).EndInit
         Me.PanelControl1.ResumeLayout(False)
-        Me.PanelControl1.PerformLayout()
-        CType(Me.GeneralManager_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GeneralManager_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Grouping_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroupDetails_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ShareholderType_RepositoryItemComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ShareholderType_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SharePercent_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField15, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField16, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField19, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField21, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField22, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SplitterItem3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelControl1.PerformLayout
+        CType(Me.GeneralManager_GridControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GeneralManager_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemComboBox1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemMemoExEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Grouping_GridControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GroupDetails_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ShareholderType_RepositoryItemComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemMemoExEdit3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemGridLookUpEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ShareholderType_RepositoryItemImageComboBox, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SharePercent_RepositoryItemSpinEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutView2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField12, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField13, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField14, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField15, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField16, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField17, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField18, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField19, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField20, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField21, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField22, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField23, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField24, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField25, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.TabbedControlGroup1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem12, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SplitterItem3, System.ComponentModel.ISupportInitialize).EndInit
         Me.CLIENT_DOCSXtraTabPage.ResumeLayout(False)
-        CType(Me.LayoutControl4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl4, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl4.ResumeLayout(False)
-        CType(Me.TreeList1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TreeList1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SplitterItem1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit
         Me.CLIENTS_CONTACTSXtraTabPage.ResumeLayout(False)
-        CType(Me.LayoutControl7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControl7, System.ComponentModel.ISupportInitialize).EndInit
         Me.LayoutControl7.ResumeLayout(False)
-        CType(Me.ClientsContactsNotes_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClientsContactsNotes_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoExEdit4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClientsContactPersons_GridControl, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClientContactPersons_GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Default_RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Email_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemMemoExEdit5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemComboBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemImageComboBox20, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField49, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField50, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutViewField51, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Intercompany_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ContractNr_OCBS_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ClientNr_OCBS_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AnaCreditRepValid_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CollateralKEV_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ClientsContactsNotes_GridControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ClientsContactsNotes_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemMemoExEdit4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemComboBox2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ClientsContactPersons_GridControl, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ClientContactPersons_GridView, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Default_RepositoryItemTextEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Email_RepositoryItemTextEdit, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemMemoExEdit5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemComboBox3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemTextEdit8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemGridLookUpEdit2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox12, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemImageComboBox20, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.RepositoryItemSpinEdit1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.GridView11, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutView3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField26, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField27, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField28, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField29, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField30, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField31, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField32, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField33, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField34, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField35, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField36, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField37, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField38, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField39, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField40, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField41, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField42, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField43, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField44, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField45, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField46, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField47, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField49, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField50, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutViewField51, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup10, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem17, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlGroup15, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.SplitterItem4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Intercompany_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ContractNr_OCBS_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ClientNr_OCBS_TextEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.AnaCreditRepValid_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.CollateralKEV_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.ContractsStatus_ImageComboBoxEdit.Properties, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 
@@ -12007,4 +12014,6 @@ End Sub
     Friend WithEvents GroupControl17 As DevExpress.XtraEditors.GroupControl
     Friend WithEvents PrincipalAmount_TextEdit As DevExpress.XtraEditors.TextEdit
     Friend WithEvents PrincipalCCY_TextEdit As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents ContractsStatus_ImageComboBoxEdit As DevExpress.XtraEditors.ImageComboBoxEdit
+    Friend WithEvents LayoutControlItem4 As DevExpress.XtraLayout.LayoutControlItem
 End Class

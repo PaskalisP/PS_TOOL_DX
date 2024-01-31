@@ -2134,7 +2134,7 @@ Public Class PSTOOL_MAIN_Form
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
             SplashScreenManager.Default.SetWaitFormCaption("SCENARIO ANALYZES")
             ' Place code here
-            Dim c As New ScenarioAnalysis
+            Dim c As New ScenarioAnalyzes2023
 
             For Each kf As Form In Me.MdiChildren
                 If c.GetType Is kf.GetType Then
@@ -4495,7 +4495,7 @@ Public Class PSTOOL_MAIN_Form
             Exit Sub
         Else
             SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
-            SplashScreenManager.Default.SetWaitFormCaption("ZV STATISTIC as from 2014")
+            SplashScreenManager.Default.SetWaitFormCaption("ZV STATISTIC as from 2014 till 2021")
             ' Place code here
             Dim c As New ZvSta2014
 
